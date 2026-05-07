@@ -89,10 +89,18 @@ async def download_pdf(analysis_id: str, user=Depends(get_current_user)):
     from app.sera.pdf_generator import generate_pdf
     pdf_bytes = generate_pdf(analysis, event)
 
+    # Build filename: SERA_[EventoSlug]_[YYYY-MM-DD].pdf
+    import re
+    import datetime
+    raw_title = event.get("title", "evento")
+    slug = re.sub(r"[^\w\-]", "-", raw_title)[:40].strip("-")
+    date_str = datetime.date.today().isoformat()
+    filename = f"SERA_{slug}_{date_str}.pdf"
+
     return Response(
         content=pdf_bytes,
         media_type="application/pdf",
-        headers={"Content-Disposition": f"attachment; filename=sera-{analysis_id[:8]}.pdf"}
+        headers={"Content-Disposition": f"attachment; filename=\"{filename}\""}
     )
 
 
