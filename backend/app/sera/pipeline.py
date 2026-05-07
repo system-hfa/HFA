@@ -6,6 +6,33 @@ from app.database import get_supabase_admin
 
 DOCS_PATH = Path(__file__).parent / "documents"
 
+FAILURE_NAMES: dict[str, str] = {
+    # Percepção
+    "P-A": "Nenhuma Falha de Percepção",
+    "P-B": "Falha Sensorial / Perceptual",
+    "P-C": "Falha de Conhecimento / Reconhecimento",
+    "P-D": "Falha de Memória",
+    "P-E": "Falha no Gerenciamento do Tempo",
+    "P-F": "Falha de Percepção / Informação Ambígua",
+    "P-G": "Falha de Atenção",
+    "P-H": "Falha de Comunicação / Informação",
+    # Objetivo
+    "O-A": "Nenhuma Falha de Objetivo",
+    "O-B": "Violação Rotineira",
+    "O-C": "Violação Excepcional",
+    "O-D": "Falha de Intenção / Não Violação",
+    # Ação
+    "A-A": "Deslize, Lapso ou Erro de Execução",
+    "A-B": "Falha de Feedback",
+    "A-C": "Falha de Procedimento",
+    "A-D": "Inabilidade para Resposta",
+    "A-E": "Falha de Conhecimento / Decisão",
+    "A-F": "Falha na Seleção da Ação",
+    "A-G": "Lapso de Memória / Atenção",
+    "A-H": "Falha no Gerenciamento do Tempo",
+    "A-I": "Erro de Execução Motora",
+}
+
 
 def load_doc(filename: str, max_chars: int = 6000) -> str:
     path = DOCS_PATH / filename
@@ -244,6 +271,29 @@ async def run_analysis(event_id: str, raw_input: str, tenant_id: str):
         step4_just = "; ".join([n.get("justificativa", "") for n in step4.get("nos_percorridos", []) if n.get("justificativa")])
         step5_just = "; ".join([n.get("justificativa", "") for n in step5.get("nos_percorridos", []) if n.get("justificativa")])
 
+        # Normalise preconditions: AI returns {codigo, descricao, etapa, evidencia_no_relato}
+        # Frontend expects {code, name, justification}
+        def norm_precondition(p: dict) -> dict:
+            return {
+                "code":         p.get("codigo") or p.get("code", ""),
+                "name":         p.get("descricao") or p.get("name", ""),
+                "justification": p.get("evidencia_no_relato") or p.get("justification", ""),
+                "etapa":        p.get("etapa", ""),
+            }
+
+        # Normalise recommendations: AI returns {acao, falha_relacionada, justificativa}
+        # Frontend expects {title, related_code, description}
+        def norm_recommendation(r: dict) -> dict:
+            return {
+                "title":        r.get("acao") or r.get("title", ""),
+                "related_code": r.get("falha_relacionada") or r.get("related_code", ""),
+                "description":  r.get("justificativa") or r.get("description", ""),
+            }
+
+        p3 = step3.get("codigo", "")
+        p4 = step4.get("codigo", "")
+        p5 = step5.get("codigo", "")
+
         analysis_payload = {
             "event_id": event_id,
             "tenant_id": tenant_id,
@@ -251,21 +301,21 @@ async def run_analysis(event_id: str, raw_input: str, tenant_id: str):
             "escape_point": step2.get("justificativa", ""),
             "unsafe_agent": step2.get("agente", ""),
             "unsafe_act": step2.get("ato_inseguro_factual", ""),
-            "perception_code": step3.get("codigo"),
-            "perception_name": step3.get("codigo", ""),
+            "perception_code": p3,
+            "perception_name": FAILURE_NAMES.get(p3, p3),
             "perception_justification": step3_just,
             "perception_discarded": {"falhas_descartadas": step3.get("falhas_descartadas"), "nos_percorridos": step3.get("nos_percorridos", [])},
-            "objective_code": step4.get("codigo"),
-            "objective_name": step4.get("codigo", ""),
+            "objective_code": p4,
+            "objective_name": FAILURE_NAMES.get(p4, p4),
             "objective_justification": step4_just,
             "objective_discarded": {"falhas_descartadas": step4.get("falhas_descartadas"), "nos_percorridos": step4.get("nos_percorridos", [])},
-            "action_code": step5.get("codigo"),
-            "action_name": step5.get("codigo", ""),
+            "action_code": p5,
+            "action_name": FAILURE_NAMES.get(p5, p5),
             "action_justification": step5_just,
             "action_discarded": {"falhas_descartadas": step5.get("falhas_descartadas"), "nos_percorridos": step5.get("nos_percorridos", [])},
-            "preconditions": step6_7.get("precondicoes", []),
+            "preconditions": [norm_precondition(p) for p in step6_7.get("precondicoes", [])],
             "conclusions": step6_7.get("conclusoes", ""),
-            "recommendations": step6_7.get("recomendacoes", []),
+            "recommendations": [norm_recommendation(r) for r in step6_7.get("recomendacoes", [])],
             "raw_llm_output": {
                 "step2": step2,
                 "step3": step3,
