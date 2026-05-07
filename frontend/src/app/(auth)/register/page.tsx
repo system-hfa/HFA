@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { apiCall } from '@/lib/api'
 import { supabase } from '@/lib/supabase'
+import { getOAuthRedirectUrl } from '@/lib/auth-redirect'
 
 function GoogleIcon() {
   return (
@@ -28,7 +29,7 @@ export default function RegisterPage() {
     setError('')
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
+      options: { redirectTo: getOAuthRedirectUrl() },
     })
     if (error) {
       setError('Erro ao entrar com Google. Tente novamente.')
