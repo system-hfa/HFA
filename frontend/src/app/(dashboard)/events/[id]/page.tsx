@@ -1,0 +1,347 @@
+'use client'
+import { useEffect, useState, useCallback } from 'react'
+import { useParams } from 'next/navigation'
+import dynamic from 'next/dynamic'
+import { supabase } from '@/lib/supabase'
+import { apiCall } from '@/lib/api'
+import FlowStep from '@/components/FlowStep'
+
+const FlowDiagram = dynamic(() => import('@/components/FlowDiagram'), { ssr: false })
+
+type FlowTab = 'perception' | 'objective' | 'action'
+type PdfState = 'idle' | 'loading' | 'done' | 'error'
+
+const failurePrefix: Record<string, string> = { 'P-': 'blue', 'O-': 'purple', 'A-': 'red' }
+
+function FailureBadge({ code }: { code: string }) {
+  const color = failurePrefix[code?.slice(0, 2)] ?? 'slate'
+  return (
+    <span className={`inline-block bg-${color}-600/20 text-${color}-400 border border-${color}-600/30 px-3 py-1 rounded-full text-sm font-mono font-bold`}>
+      {code}
+    </span>
+  )
+}
+
+function MetaItem({ label, value }: { label: string; value?: string | null }) {
+  if (!value) return null
+  return (
+    <div className="min-w-0">
+      <p className="text-xs text-slate-500 uppercase tracking-wider mb-0.5">{label}</p>
+      <p className="text-sm text-slate-200 truncate">{value}</p>
+    </div>
+  )
+}
+
+export default function EventDetailPage() {
+  const { id } = useParams()
+  const [event, setEvent]         = useState<any>(null)
+  const [token, setToken]         = useState<string>('')
+  const [loading, setLoading]     = useState(true)
+  const [flows, setFlows]         = useState<any>(null)
+  const [activeTab, setActiveTab] = useState<FlowTab>('perception')
+  const [pdfState, setPdfState]   = useState<PdfState>('idle')
+
+  useEffect(() => {
+    async function load() {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      setToken(session.access_token)
+      const data = await apiCall(`/events/${id}`, {}, session.access_token)
+      setEvent(data)
+      setLoading(false)
+
+      if (data?.analyses?.id) {
+        try {
+          const flowData = await apiCall(`/analyses/${data.analyses.id}/flows`, {}, session.access_token)
+          setFlows(flowData)
+        } catch {
+          // flows are optional
+        }
+      }
+    }
+    load()
+    const interval = setInterval(load, 5000)
+    return () => clearInterval(interval)
+  }, [id])
+
+  const downloadPdf = useCallback(async () => {
+    if (!event?.analyses || !token) return
+    setPdfState('loading')
+    try {
+      const apiUrl    = process.env.NEXT_PUBLIC_API_URL ?? ''
+      const analysisId = event.analyses.id
+      const res = await fetch(`${apiUrl}/analyses/${analysisId}/pdf`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const blob = await res.blob()
+      const url  = URL.createObjectURL(blob)
+      const a    = document.createElement('a')
+      const date = new Date(event.created_at).toISOString().slice(0, 10)
+      const name = (event.title ?? 'evento').replace(/\s+/g, '-').slice(0, 40)
+      a.href     = url
+      a.download = `SERA_${name}_${date}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+      setPdfState('done')
+      setTimeout(() => setPdfState('idle'), 3000)
+    } catch {
+      setPdfState('error')
+      setTimeout(() => setPdfState('idle'), 3000)
+    }
+  }, [event, token])
+
+  if (loading) return <div className="p-8 text-slate-400">Carregando...</div>
+  if (!event)  return <div className="p-8 text-slate-400">Evento não encontrado</div>
+
+  const analysis = event.analyses
+
+  const pdfLabel: Record<PdfState, string> = {
+    idle:    '⬇ Baixar PDF',
+    loading: 'Gerando PDF…',
+    done:    'PDF gerado ✓',
+    error:   'Erro no PDF',
+  }
+
+  const tabLabels: Record<FlowTab, string> = {
+    perception: `Percepção ${flows?.perception?.codigo ?? ''}`,
+    objective:  `Objetivo ${flows?.objective?.codigo ?? ''}`,
+    action:     `Ação ${flows?.action?.codigo ?? ''}`,
+  }
+
+  /* Best available summary text */
+  const summaryText = analysis?.summary || analysis?.event_summary || null
+
+  return (
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-white mb-1">{event.title}</h1>
+          <p className="text-slate-400 text-sm">
+            {event.operation_type} • {event.aircraft_type} •{' '}
+            {new Date(event.created_at).toLocaleDateString('pt-BR')}
+          </p>
+        </div>
+        <div className="flex gap-2 shrink-0">
+          {analysis && (
+            <button
+              onClick={downloadPdf}
+              disabled={pdfState === 'loading'}
+              className={`text-sm px-4 py-2 rounded-lg transition font-medium ${
+                pdfState === 'done'    ? 'bg-emerald-700 text-white' :
+                pdfState === 'error'  ? 'bg-red-700 text-white' :
+                pdfState === 'loading'? 'bg-slate-600 text-slate-400 cursor-wait' :
+                'bg-slate-800 hover:bg-slate-700 text-white'
+              }`}
+            >
+              {pdfLabel[pdfState]}
+            </button>
+          )}
+          {event.status === 'processing' && (
+            <div className="bg-blue-600/20 text-blue-400 border border-blue-600/30 px-4 py-2 rounded-lg text-sm animate-pulse">
+              ⏳ Analisando...
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Pending / processing state */}
+      {!analysis && event.status !== 'completed' && (
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-8 text-center">
+          <p className="text-slate-400">
+            {event.status === 'processing'
+              ? 'Análise em andamento. A página atualiza automaticamente.'
+              : 'Análise pendente.'}
+          </p>
+        </div>
+      )}
+
+      {/* Analysis content */}
+      {analysis && (
+        <>
+          {/* ── ETAPA 1 — Resumo do Evento ───────────────────────────────── */}
+          <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+            <div className="px-6 py-3 bg-slate-700/50 border-b border-slate-700">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                Etapa 1 — Resumo do Evento
+              </span>
+            </div>
+            <div className="p-6 space-y-4">
+              {/* Metadata grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-4 border-b border-slate-700">
+                <MetaItem
+                  label="Data do evento"
+                  value={analysis.event_date
+                    || (event.occurred_at ? new Date(event.occurred_at).toLocaleDateString('pt-BR') : null)
+                    || new Date(event.created_at).toLocaleDateString('pt-BR')}
+                />
+                <MetaItem label="Tipo de operação"   value={analysis.operation_type  || event.operation_type} />
+                <MetaItem label="Aeronave / tipo"    value={event.aircraft_type} />
+                <MetaItem label="Local"              value={analysis.event_location} />
+                <MetaItem label="Fase do voo"        value={analysis.flight_phase} />
+                <MetaItem label="Cond. meteorológicas" value={analysis.weather_conditions} />
+                <MetaItem label="Sistemas envolvidos"  value={analysis.systems_involved} />
+                <MetaItem label="Ocupantes"            value={analysis.occupants_count} />
+              </div>
+              {/* Narrative summary */}
+              {summaryText ? (
+                <p className="text-slate-200 leading-relaxed text-sm sm:text-base">{summaryText}</p>
+              ) : (
+                <p className="text-slate-500 text-sm italic">
+                  Resumo narrativo gerado pela IA estará disponível nas próximas análises.
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* ── ETAPA 2 — Ponto de Fuga ───────────────────────────────────── */}
+          <div className="bg-amber-950 border border-amber-700 rounded-xl overflow-hidden">
+            <div className="px-6 py-3 bg-amber-900/40 border-b border-amber-800">
+              <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">
+                Etapa 2 — Ponto de Fuga da Operação Segura
+              </span>
+            </div>
+            <div className="p-6 space-y-4">
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
+                {analysis.escape_point}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="bg-amber-900/40 rounded-lg p-3">
+                  <p className="text-xs text-amber-400 mb-1">Agente</p>
+                  <p className="text-sm text-slate-200">{analysis.unsafe_agent}</p>
+                </div>
+                <div className="bg-amber-900/40 rounded-lg p-3">
+                  <p className="text-xs text-amber-400 mb-1">Ato Inseguro</p>
+                  <p className="text-sm text-slate-200">{analysis.unsafe_act}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── ETAPAS 3 / 4 / 5 — Cards P / O / A ──────────────────────── */}
+          <div>
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
+              Etapas 3 · 4 · 5 — Falhas Ativas
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { label: 'Etapa 3 · Percepção', code: analysis.perception_code, name: analysis.perception_name, justification: analysis.perception_justification },
+                { label: 'Etapa 4 · Objetivo',  code: analysis.objective_code,  name: analysis.objective_name,  justification: analysis.objective_justification },
+                { label: 'Etapa 5 · Ação',      code: analysis.action_code,     name: analysis.action_name,     justification: analysis.action_justification },
+              ].map(item => (
+                <div key={item.label} className="bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col gap-2">
+                  <p className="text-xs text-slate-400 uppercase tracking-wider">{item.label}</p>
+                  <span className="text-3xl font-bold text-emerald-400">{item.code}</span>
+                  <p className="text-slate-300 text-sm font-medium">{item.name}</p>
+                  <p className="text-slate-400 text-xs leading-relaxed line-clamp-4">{item.justification}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Fluxo de Decisão SERA ─────────────────────────────────────── */}
+          {flows && (
+            <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+              <h2 className="text-lg font-semibold text-white mb-4">Fluxo de Decisão SERA</h2>
+
+              <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap mb-6">
+                {(['perception', 'objective', 'action'] as FlowTab[]).map(tab => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition ${
+                      activeTab === tab
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                    }`}
+                  >
+                    {tabLabels[tab]}
+                  </button>
+                ))}
+              </div>
+
+              <FlowDiagram chart={flows[activeTab].mermaid} id={activeTab} />
+              <FlowStep
+                nos={flows[activeTab].nos_percorridos}
+                codigo={flows[activeTab].codigo}
+                falhasDescartadas={flows[activeTab].falhas_descartadas}
+              />
+            </div>
+          )}
+
+          {/* ── Pré-condições ─────────────────────────────────────────────── */}
+          {analysis.preconditions?.length > 0 && (
+            <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+              <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  Pré-condições Identificadas
+                </span>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {analysis.preconditions.map((p: any, i: number) => (
+                    <div key={i} className="bg-slate-800 border border-slate-700 rounded-lg p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs font-mono bg-slate-700 text-slate-300 px-2 py-0.5 rounded">
+                          {p.code}
+                        </span>
+                        {p.etapa && (
+                          <span className="text-xs text-slate-500">Etapa {p.etapa}</span>
+                        )}
+                      </div>
+                      <p className="text-sm font-medium text-slate-200 mb-1">{p.name}</p>
+                      <p className="text-xs text-slate-400 leading-relaxed">{p.justification}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── ETAPA 6 — Conclusões ──────────────────────────────────────── */}
+          <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+            <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                Etapa 6 — Conclusão da Análise
+              </span>
+            </div>
+            <div className="p-6">
+              <p className="text-slate-200 leading-relaxed text-sm sm:text-base">{analysis.conclusions}</p>
+            </div>
+          </div>
+
+          {/* ── ETAPA 7 — Recomendações ───────────────────────────────────── */}
+          {analysis.recommendations?.length > 0 && (
+            <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+              <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  Etapa 7 — Ações de Mitigação e Prevenção
+                </span>
+              </div>
+              <div className="p-6 space-y-3">
+                {analysis.recommendations.map((r: any, i: number) => (
+                  <div
+                    key={i}
+                    className="bg-slate-800 border border-slate-700 rounded-lg p-4 flex flex-col sm:flex-row sm:items-start gap-3"
+                  >
+                    <span className="flex-shrink-0 text-xs font-mono bg-blue-900 text-blue-300 px-2 py-1 rounded self-start">
+                      {r.related_code}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-slate-200 mb-1">{r.title}</p>
+                      <p className="text-sm text-slate-400 leading-relaxed">{r.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  )
+}
