@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hfa-backend
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: SUPABASE_URL
+        value: https://zwnxyqfvgvacjqrrvrwb.supabase.co
+      - key: APP_ENV
+        value: production
+      - key: AI_PROVIDER
+        value: deepseek
+      - key: DEEPSEEK_MODEL
+        value: deepseek-chat

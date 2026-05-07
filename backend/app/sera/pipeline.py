@@ -7,10 +7,20 @@ from app.sera.ai_provider import call_ai
 DOCS_PATH = Path(__file__).parent / "documents"
 
 
-def load_doc(filename: str) -> str:
+def safe_parse(raw: str, step: str) -> dict:
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Falha ao parsear JSON na {step}. Erro: {e}. Resposta: {raw[:500]}")
+
+
+def load_doc(filename: str, max_chars: int = 6000) -> str:
     path = DOCS_PATH / filename
     if path.exists():
-        return path.read_text(encoding="utf-8")
+        content = path.read_text(encoding="utf-8")
+        if len(content) > max_chars:
+            return content[:max_chars] + "\n...[truncado]"
+        return content
     return "{}"
 
 
@@ -35,11 +45,11 @@ async def run_analysis(event_id: str, raw_input: str, tenant_id: str):
   "unsafe_act": "descrição do ato inseguro"
 }}
 Baseie-se nesta referência metodológica:
-{load_doc('point.json')}
+{load_doc('Point.json')}
 Retorne APENAS o JSON, sem texto adicional."""
 
         r1 = call_ai(system_1, f"RELATO DO EVENTO:\n{raw_input}")
-        results["step_1_2"] = json.loads(r1)
+        results["step_1_2"] = safe_parse(r1, "Etapa 1-2")
 
         # CHAMADA 2: Etapa 3 - Percepção
         system_3 = f"""Você é um analista SERA. Analise a FALHA DE PERCEPÇÃO seguindo RIGOROSAMENTE o fluxo abaixo.
@@ -54,13 +64,13 @@ Retorne JSON:
 }}
 
 FLUXO OBRIGATÓRIO:
-{load_doc('3-flow.json')}
+{load_doc('3 - Flow.json')}
 
 FALHAS DISPONÍVEIS:
-{load_doc('3-failures.json')}
+{load_doc('3 - Failures.json')}
 
 PRÉ-CONDIÇÕES:
-{load_doc('3-pre.json')}
+{load_doc('3 - Pre.json')}
 
 Retorne APENAS o JSON."""
 
@@ -70,7 +80,7 @@ ATO INSEGURO: {results['step_1_2']['unsafe_act']}
 AGENTE: {results['step_1_2']['unsafe_agent']}"""
 
         r3 = call_ai(system_3, context_3)
-        results["step_3"] = json.loads(r3)
+        results["step_3"] = safe_parse(r3, "Etapa 3 - Percepção")
 
         # CHAMADA 3: Etapa 4 - Objetivo
         system_4 = f"""Você é um analista SERA. Analise a FALHA DE OBJETIVO seguindo RIGOROSAMENTE o fluxo.
@@ -84,13 +94,13 @@ Retorne JSON:
 }}
 
 FLUXO OBRIGATÓRIO:
-{load_doc('4-flow.json')}
+{load_doc('4 - Flow.json')}
 
 FALHAS DISPONÍVEIS:
-{load_doc('4-failures.json')}
+{load_doc('4 - Failures.json')}
 
 PRÉ-CONDIÇÕES:
-{load_doc('4-pre.json')}
+{load_doc('4 - Pre.json')}
 
 Retorne APENAS o JSON."""
 
@@ -99,7 +109,7 @@ ATO INSEGURO: {results['step_1_2']['unsafe_act']}
 FALHA DE PERCEPÇÃO IDENTIFICADA: {results['step_3']['perception_code']} — {results['step_3']['perception_name']}"""
 
         r4 = call_ai(system_4, context_4)
-        results["step_4"] = json.loads(r4)
+        results["step_4"] = safe_parse(r4, "Etapa 4 - Objetivo")
 
         # CHAMADA 4: Etapa 5 - Ação
         system_5 = f"""Você é um analista SERA. Analise a FALHA DE AÇÃO seguindo RIGOROSAMENTE o fluxo.
@@ -113,13 +123,13 @@ Retorne JSON:
 }}
 
 FLUXO OBRIGATÓRIO:
-{load_doc('5-flow.json')}
+{load_doc('5 - Flow.json')}
 
 FALHAS DISPONÍVEIS:
-{load_doc('5-failures.json')}
+{load_doc('5 - Failures.json')}
 
 PRÉ-CONDIÇÕES:
-{load_doc('5-pre.json')}
+{load_doc('5 - Pre.json')}
 
 Retorne APENAS o JSON."""
 
@@ -129,7 +139,7 @@ FALHA DE PERCEPÇÃO: {results['step_3']['perception_code']}
 FALHA DE OBJETIVO: {results['step_4']['objective_code']}"""
 
         r5 = call_ai(system_5, context_5)
-        results["step_5"] = json.loads(r5)
+        results["step_5"] = safe_parse(r5, "Etapa 5 - Ação")
 
         # CHAMADA 5: Etapas 6 e 7
         system_6_7 = """Você é um analista SERA. Com base nas falhas identificadas, elabore conclusões e recomendações práticas.
@@ -153,7 +163,7 @@ OBJETIVO: {results['step_4']['objective_code']} — {results['step_4']['objectiv
 AÇÃO: {results['step_5']['action_code']} — {results['step_5']['action_justification']}"""
 
         r6_7 = call_ai(system_6_7, context_6_7)
-        results["step_6_7"] = json.loads(r6_7)
+        results["step_6_7"] = safe_parse(r6_7, "Etapa 6-7")
 
         # Consolida pré-condições de todas as etapas
         all_preconditions = []

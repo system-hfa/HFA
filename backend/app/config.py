@@ -14,19 +14,21 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]
 
     # IA — provider ativo
-    AI_PROVIDER: str = "google"  # google | anthropic | openai | groq
+    AI_PROVIDER: str = "deepseek"
 
     # Chaves por provider (todas opcionais)
     ANTHROPIC_API_KEY: Optional[str] = None
     OPENAI_API_KEY: Optional[str] = None
     GOOGLE_API_KEY: Optional[str] = None
     GROQ_API_KEY: Optional[str] = None
+    DEEPSEEK_API_KEY: Optional[str] = None
 
     # Modelos padrão por provider
     ANTHROPIC_MODEL: str = "claude-sonnet-4-5"
     OPENAI_MODEL: str = "gpt-4o"
     GOOGLE_MODEL: str = "gemini-2.0-flash"
     GROQ_MODEL: str = "llama-3.3-70b-versatile"
+    DEEPSEEK_MODEL: str = "deepseek-chat"
 
     class Config:
         env_file = ".env"
