@@ -21,13 +21,19 @@ export default function DashboardPage() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
       const token = session.access_token
-      const [riskData, tenantData] = await Promise.all([
-        apiCall('/analyses/risk-profile', {}, token),
-        supabase.from('tenants').select('credits_balance, name').single()
-      ])
-      setRisk(riskData)
-      setCredits(tenantData.data?.credits_balance || 0)
-      setLoading(false)
+      try {
+        const [riskData, tenantRow] = await Promise.all([
+          apiCall('/analyses/risk-profile', {}, token),
+          supabase.from('tenants').select('credits_balance, name').maybeSingle(),
+        ])
+        setRisk(riskData)
+        setCredits(tenantRow.data?.credits_balance ?? 0)
+      } catch {
+        setRisk(null)
+        setCredits(0)
+      } finally {
+        setLoading(false)
+      }
     }
     load()
   }, [])

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
+import { ensureOAuthTenant } from '@/lib/ensure-tenant'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: '📊' },
@@ -18,9 +19,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [userEmail, setUserEmail] = useState('')
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) router.push('/login')
-      else setUserEmail(data.session.user.email || '')
+    supabase.auth.getSession().then(async ({ data }) => {
+      if (!data.session) {
+        router.push('/login')
+      } else {
+        setUserEmail(data.session.user.email || '')
+        await ensureOAuthTenant()
+      }
     })
   }, [router])
 

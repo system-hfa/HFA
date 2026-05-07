@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     APP_SECRET_KEY: str = "dev-secret"
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]
 
+    # CORS: previews e deploys na Vercel (*.vercel.app) sem listar uma a uma
+    ALLOWED_ORIGIN_REGEX: Optional[str] = r"https://.*\.vercel\.app$"
+
     # IA — provider ativo
     AI_PROVIDER: str = "deepseek"
 

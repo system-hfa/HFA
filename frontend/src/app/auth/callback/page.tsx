@@ -2,6 +2,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { ensureOAuthTenant } from '@/lib/ensure-tenant'
 
 export default function AuthCallbackPage() {
   const router = useRouter()
@@ -10,6 +11,7 @@ export default function AuthCallbackPage() {
     const handleCallback = async () => {
       const { data, error } = await supabase.auth.getSession()
       if (data.session) {
+        await ensureOAuthTenant()
         router.replace('/dashboard')
       } else if (error) {
         router.replace('/login?error=auth')
@@ -19,6 +21,7 @@ export default function AuthCallbackPage() {
         setTimeout(async () => {
           const { data: d2 } = await supabase.auth.getSession()
           if (d2.session) {
+            await ensureOAuthTenant()
             router.replace('/dashboard')
           } else {
             router.replace('/login?error=auth')

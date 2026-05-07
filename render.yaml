@@ -4,6 +4,7 @@ services:
     runtime: docker
     rootDir: backend
     dockerfilePath: Dockerfile
+    healthCheckPath: /health
     envVars:
       - key: SUPABASE_URL
         value: https://zwnxyqfvgvacjqrrvrwb.supabase.co
@@ -15,3 +16,11 @@ services:
         value: deepseek-chat
       - key: ALLOWED_ORIGINS
         value: '["https://hfa-omega.vercel.app","https://hfa-omega.vercel.app/","http://localhost:3000"]'
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: APP_SECRET_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false

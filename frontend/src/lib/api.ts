@@ -11,10 +11,23 @@ export async function apiCall(
   }
   if (token) headers['Authorization'] = `Bearer ${token}`
 
-  const res = await fetch(`${API_URL}${endpoint}`, { ...options, headers })
+  let res: Response
+  try {
+    res = await fetch(`${API_URL}${endpoint}`, { ...options, headers })
+  } catch {
+    throw new Error(
+      'Não foi possível conectar ao servidor da API. Confirme que o serviço Render está ativo e que NEXT_PUBLIC_API_URL na Vercel aponta para a URL correta (ex.: https://seu-serviço.onrender.com, sem barra no final).'
+    )
+  }
   if (!res.ok) {
-    const error = await res.json().catch(() => ({ detail: 'Erro desconhecido' }))
-    throw new Error(error.detail || error.message || 'Erro na requisição')
+    const error = await res.json().catch(() => ({ detail: `HTTP ${res.status}` }))
+    const detail =
+      typeof error.detail === 'string'
+        ? error.detail
+        : Array.isArray(error.detail)
+          ? error.detail.map((d: { msg?: string }) => d.msg).filter(Boolean).join(', ')
+          : error.message
+    throw new Error(detail || `Erro na requisição (${res.status})`)
   }
   return res.json()
 }

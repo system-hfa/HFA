@@ -16,7 +16,7 @@ export default function CreditsPage() {
   useEffect(() => {
     async function load() {
       const { data: tenant } = await supabase
-        .from('tenants').select('credits_balance').single()
+        .from('tenants').select('credits_balance').maybeSingle()
       const { data: txs } = await supabase
         .from('credit_transactions')
         .select('*')
