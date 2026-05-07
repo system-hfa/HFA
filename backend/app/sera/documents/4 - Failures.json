@@ -9,7 +9,7 @@
   "Índice": [
     {"Nome": "NENHUMA FALHA DE OBJETIVO", "CÓDIGO": "O-A", "ID": "#O-A"},
     {"Nome": "VIOLAÇÃO ROTINEIRA", "CÓDIGO": "O-B", "ID": "#O-B"},
-    {"Nome": "VIOLAÇÕA EXCEPCIONAL", "CÓDIGO": "O-C", "ID": "#O-C"},
+    {"Nome": "VIOLAÇÃO EXCEPCIONAL", "CÓDIGO": "O-C", "ID": "#O-C"},
     {"Nome": "FALHA DE INTENÇÃO (NÃO VIOLAÇÃO)", "CÓDIGO": "O-D", "ID": "#O-D"}
 
   ],

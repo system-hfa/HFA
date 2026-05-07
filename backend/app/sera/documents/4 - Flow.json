@@ -64,7 +64,7 @@
       "outcome": "FALHA DE INTENCAO (NÃO VIOLAÇÃO)",
       "code": "O-D",
       "type": "end",
-      "explanation": "Refere-se a situações em que as ações dos operadores não atendem aos objetivos planejados, não por desvio intencional das normas, mas devido a erros no planejamento ou entendimento equivocado das condições. Use '4 - Failures.json' para referência."
+      "explanation": "Situações em que o objetivo do operador, apesar de consistente com as normas e regulamentos, não é conservativo ou não gerencia o risco de forma adequada. O operador escolhe intencionalmente uma ação arriscada, sem que haja violação formal de regras. (Hendy, 2003, Figure 5 — 'Failure in intent, Non-violation'). Use '4 - Failures.json' para referência."
     }
   ]
 }

@@ -27,6 +27,15 @@
           "Justificativa": "A pressão do tempo foi identificada como fator predominante, invalidando falhas de conhecimento ou sensoriais."
         }
       },
+      "Consistência Pré-condições × Falhas Ativas": {
+        "Descrição": "Após identificar as pré-condições de cada etapa, o analista DEVE verificar se as pré-condições selecionadas são consistentes com as pré-condições mais prováveis para a falha ativa classificada, conforme Tabela 2 de Daumas (2018) (adaptada de Hendy, 2003, Table 1). Se houver inconsistência, documentar explicitamente a justificativa. Consulte os arquivos '3 - Pre.json', '4 - Pre.json' e '5 - Pre.json' para as pré-condições típicas de cada falha ativa."
+      },
+      "Anti-Salto de Conclusão": {
+        "Descrição": "O analista NUNCA deve classificar uma falha ativa sem ter respondido, explicitamente, todas as perguntas do nó do fluxo correspondente (Flow.json). Cada resposta YES/NO deve ser documentada com justificativa textual. Se a informação para responder uma pergunta não estiver disponível, registrar como 'DADO INSUFICIENTE' e não avançar para a conclusão."
+      },
+      "Diretriz Didática — Tutorial Integrado": {
+        "Descrição": "Para cada código identificado na análise (P-D, O-C, A-F, etc.), o sistema DEVE referenciar o campo correspondente em 'tutorial.json' e incluir no relatório final uma seção 'Fundamentação Científica' com: (1) Definição técnica do código; (2) Por que essa falha ocorre — base IP/PCT; (3) Critério decisor utilizado (CRITÉRIO_DECISOR do arquivo de falhas); (4) Referência bibliográfica precisa (Hendy ou Daumas)."
+      },
       "Exemplos Práticos": {
         "Descrição": "Inclua cenários práticos que demonstrem a aplicação correta das etapas, com classificação de falhas e falhas descartadas.",
         "Exemplos": [

@@ -168,6 +168,7 @@
   "ID": "#A-F",
   "NOME": "FALHA NA SELEÇÃO DE AÇÃO",
   "CÓDIGO": "A-F",
+  "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? NÃO → A-F (sem pressão de tempo). SIM → A-I (com pressão de tempo). (Hendy, 2003, Figure 5; Daumas, 2018, Tabela 17)",
   "DEFINIÇÃO": "A falha na seleção de ação é um erro no processo decisório que resulta na escolha de um plano inadequado para alcançar o objetivo desejado. Este tipo de falha ocorre quando o indivíduo ou equipe, apesar de ter acesso a informações corretas e possuir a capacidade de execução, escolhe uma ação que não é a mais apropriada para a situação. Isso pode incluir a execução de um procedimento incorreto que foi escolhido erroneamente, a falha em selecionar a ação correta disponível na memória, ou a escolha de uma 'não ação' quando uma ação era necessária.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Complexidade da Tarefa Excessiva: Situações onde o operador se depara com múltiplas opções e a complexidade do cenário supera sua capacidade de processamento.",
@@ -205,6 +206,7 @@
   "ID": "#A-G",
   "NOME": "FALHA DE FEEDBACK NA TOMADA DE DECISÃO",
   "CÓDIGO": "A-G",
+  "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? NÃO → A-G (feedback sem pressão de tempo). SIM → A-J (feedback com pressão de tempo). (Hendy, 2003, Figure 5; Daumas, 2018, Tabela 13)",
   "DEFINIÇÃO": "A falha de feedback ocorre quando os mecanismos de controle e correção de erros não estão ativos ou eficientes, geralmente devido à desatenção prematura. Este tipo de falha é crucial porque o feedback adequado é essencial para garantir que as ações estejam alinhadas com os objetivos pretendidos e para corrigir desvios à medida que ocorrem. A ausência de feedback adequado impede a detecção e correção de erros, permitindo que ações incorretas prossigam sem intervenção.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Interrupções Frequentes: Situações onde as constantes interrupções impedem a manutenção de uma supervisão ou monitoramento efetivo.",
@@ -286,6 +288,7 @@
   "ID": "#A-I",
   "NOME": "FALHA NA SELEÇÃO DA AÇÃO POR PRESSÃO DO TEMPO",
   "CÓDIGO": "A-I",
+  "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? SIM → A-I (com pressão de tempo). NÃO → A-F (sem pressão de tempo). (Hendy, 2003, Figure 5)",
   "DEFINIÇÃO": "A falha na seleção da ação ocorre quando há um erro crítico no processo de decisão, caracterizado pela incapacidade de formular o plano correto para alcançar um objetivo. Este tipo de falha não decorre de um equívoco sobre a situação ou de uma percepção errada, mas sim de deficiências na escolha da ação apropriada. Com frequência, isso se deve à falta de tempo para analisar e selecionar entre múltiplas opções, o que pode resultar em uma decisão apressada ou inadequada.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Decisões Sob Pressão: Necessidade de tomar decisões rápidas sob condições de estresse elevado.",
@@ -329,6 +332,7 @@
   "ID": "#A-J",
   "NOME": "FALHA DE FEEDBACK POR PRESSÃO DO TEMPO",
   "CÓDIGO": "A-J",
+  "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? SIM → A-J (feedback com pressão de tempo). NÃO → A-G (feedback sem pressão de tempo). (Hendy, 2003, Figure 5)",
   "DEFINIÇÃO": "A falha de feedback ocorre quando o retorno necessário para verificar e corrigir ações não está disponível, frequentemente devido à atenção sendo deslocada prematuramente antes de se atingir o objetivo. A ausência de feedback adequado impede a execução de ações corretivas essenciais, como backup, verificação cruzada ou monitoramento, essenciais para assegurar a realização dos objetivos estabelecidos.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Interrupções Frequentes: Interrupções constantes que desviam a atenção e impedem o acompanhamento eficaz das ações.",

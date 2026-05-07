@@ -96,9 +96,21 @@
       "Regras e Regulamentos": {
         "CÓDIGO": "O3",
         "DESCRIÇÃO": "Regras e regulamentos formam as restrições dentro das quais a tarefa deve ser executada. Eles são consistentes com os objetivos declarados?"
-        }
+      },
+      "Organizational Process and Practices": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "A organização possui procedimentos operacionais padrão e processos formais de gerenciamento de riscos que orientem situações excepcionais?"
+      },
+      "Organizational Climate": {
+        "CÓDIGO": "O5",
+        "DESCRIÇÃO": "A organização tolera desvios excepcionais de procedimento ou valoriza excessivamente 'fazer o trabalho' acima da segurança?"
+      },
+      "Oversight": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "A ocorrência de violações excepcionais era conhecida e havia ações corretivas ou eram toleradas?"
       }
-    },
+    }
+  },
   "FALHA DE INTENÇÃO (NÃO VIOLAÇÃO) (O-D)": {
     "CÓDIGO DA FALHA": "O-D",
     "PRÉ-CONDIÇÕES PROVÁVEIS": {

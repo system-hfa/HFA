@@ -70,51 +70,6 @@
     
     },
     {
-      "ID": "#P-B",
-      "Nome": "FALHA SENSORIAL",
-      "CÓDIGO": "P-B",
-      "DEFINIÇÃO": "A Falha Sensorial (P-B) ocorre quando um operador ou equipe falha em detectar sinais essenciais visuais, auditivos, táteis ou olfativos necessários para uma operação segura e eficaz. Esta falha geralmente resulta de limitações físicas, uso de equipamento de proteção inadequado, ou condições ambientais adversas que interferem nas capacidades sensoriais normais. As consequências incluem a não detecção de alertas de segurança, má interpretação de dados operacionais críticos e falhas de comunicação, potencialmente levando a erros operacionais graves e acidentes.",
-      "CIRCUNSTÂNCIAS TÍPICAS": [
-        "Visibilidade Reduzida: Em ambientes com visibilidade reduzida, como operações noturnas ou em condições de neblina, operadores podem não detectar sinais visuais críticos. Por exemplo, pilotos podem falhar em ver pistas de pouso ou obstáculos, enquanto marinheiros podem não identificar outras embarcações a tempo, aumentando o risco de colisões.",
-        "Ruído Ambiental Elevado: Em locais com alto nível de ruído, como fábricas ou canteiros de obras, sinais auditivos importantes podem ser mascarados pelo ruído de fundo, levando a falhas em perceber alertas de máquina ou chamadas de evacuação.",
-        "Equipamento de Proteção Inadequado: O uso de equipamentos de proteção pessoal que não se adequa às necessidades sensoriais, como óculos de proteção que distorcem a visão ou protetores auriculares que não atenuam adequadamente o ruído, pode prejudicar a capacidade de resposta a condições perigosas.",
-        "Desgaste Físico: Fadiga ou deterioração das capacidades sensoriais devido a longas horas de trabalho.",
-        "Falta de Adaptações: Ausência de adaptações para pessoas com deficiências sensoriais.",
-        "Interferências Táteis: Uso de luvas que diminuem a sensibilidade tátil.",
-        "Sinais Visuais Confusos: Presença de muitos sinais visuais concorrentes que sobrecarregam a capacidade de processamento visual.",
-        "Falha de Equipamento: Equipamentos de monitoramento que falham em fornecer feedback sensorial adequado.",
-        "Exposição a Toxinas: Exposição a substâncias que podem diminuir temporária ou permanentemente a acuidade sensorial.",
-        "Condições Climáticas Adversas: Clima extremo que pode afetar negativamente a capacidade sensorial, como vento forte ou temperaturas extremas."
-      ],
-      "EXEMPLOS PRÁTICOS": [
-        "Piloto Não Detecta Alarme: Durante voos em condições climáticas adversas, um piloto utilizando fones de ouvido inadequados pode não perceber alarmes críticos de altitude, aumentando o risco de um incidente aéreo.",
-        "Técnico Ignora Vazamento: Um técnico de manutenção, recuperando-se de uma gripe recente que afetou seu olfato, pode não detectar um vazamento de gás perigoso, resultando em potencial risco de explosão.",
-        "Guarda de Segurança Não Vê Intruso: Um guarda não identifica um intruso em um perímetro devido à iluminação externa inadequada.",
-        "Operador de Máquina Não Sente Sobrecarga: Um operador de máquina não percebe o excesso de carga devido ao uso de luvas grossas que diminuem a sensibilidade tátil.",
-        "Mergulhador Subestima Profundidade: Um mergulhador subestima a profundidade devido a distorções visuais sob a água sem equipamento corretivo adequado.",
-        "Motorista Não Ouve Sirene: Um motorista de ambulância não ouve a sirene de um veículo de emergência devido ao som alto dentro da própria ambulância.",
-        "Cirurgião Não Nota Alteração de Cor: Um cirurgião não nota uma alteração crítica na cor da pele do paciente devido à iluminação inadequada na sala de operação.",
-        "Operador de Drone Não Reconhece Obstáculo: Operador de drone falha em reconhecer um obstáculo devido a reflexos na tela de controle.",
-        "Trabalhador Não Detecta Aviso Sonoro: Trabalhador em uma fábrica não detecta um aviso sonoro importante devido ao uso de protetores auriculares defeituosos.",
-        "Pesquisador Não Percebe Erro em Dados: Um pesquisador não percebe um erro crítico nos dados devido à fadiga visual após longas horas em frente ao computador."
-      ],
- 
-      "ESTRATÉGIAS DE MITIGAÇÃO": [
-        "Treinamento e Conscientização: Realizar programas de treinamento regulares para aumentar a conscientização sobre a importância da acuidade sensorial e como preservá-la.",
-        "Exames de Saúde Regulares: Incentivar exames regulares de saúde para identificar e tratar precocemente quaisquer deficiências sensoriais.",
-        "Adaptação de Equipamentos: Providenciar equipamentos adaptados para compensar deficiências sensoriais, como óculos corretivos ou aparelhos auditivos.",
-        "Melhoria das Condições Ambientais: Ajustar as condições de trabalho para minimizar fatores que prejudicam a percepção sensorial, como iluminação inadequada ou ruído excessivo.",
-        "Design Ergonômico: Projetar interfaces e equipamentos que facilitem a percepção sensorial, utilizando sinais visuais, auditivos e táteis claros.",
-        "Política de Pausas Regulares: Implementar pausas regulares para evitar fadiga sensorial, especialmente em ambientes de alta demanda sensorial.",
-        "Equipamento de Proteção Individual (EPI): Fornecer e exigir o uso de EPI adequado para proteger contra danos sensoriais.",
-        "Simplificação de Tarefas: Reduzir a complexidade das tarefas para diminuir a demanda sobre as capacidades sensoriais limitadas.",
-        "Feedback e Revisão Contínuos: Estabelecer um sistema de feedback onde os trabalhadores possam relatar problemas sensoriais e buscar soluções.",
-        "Intervenção Precoce: Identificar e intervir rapidamente em qualquer sinal de diminuição da capacidade sensorial entre os trabalhadores."
-      ],
-      "CONCLUSÃO": "Compreender a falha sensorial e suas pré-condições permite identificar estratégias eficazes de mitigação, enfatizando a importância de processos adequados de seleção, preparação e supervisão. A adoção dessas medidas é essencial para assegurar a percepção correta das informações sensoriais, fundamentais para a execução segura das tarefas."
-    
-    },
-    {
       "ID": "#P-C",
       "Nome": "FALHA DE CONHECIMENTO (PERCEPÇÃO)",
       "CÓDIGO": "P-C",    
@@ -157,6 +112,7 @@
       "ID": "#P-D",
       "Nome": "FALHA DE ATENÇÃO POR PRESSÃO DO TEMPO",
       "CÓDIGO": "P-D",
+      "CRITÉRIO_DECISOR": "Se houvesse mais tempo disponível, o resultado teria sido diferente? SIM → P-D. NÃO → P-G. (Hendy, 2003, Figure 5)",
       "DEFINIÇÃO": "A Falha de Atenção por Pressão do Tempo (P-D) ocorre quando há um desequilíbrio entre as demandas de atenção requeridas por uma tarefa e o tempo disponível para processar essas demandas. Isso geralmente resulta de uma fixação excessiva em certos elementos, negligenciando outros igualmente importantes, ou de uma sobrecarga cognitiva que impede a percepção adequada de todas as informações relevantes. Tais falhas podem levar a decisões equivocadas e ações inseguras em ambientes operacionais.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Ambientes de Alta Pressão: Em ambientes que exigem respostas rápidas sob condições estressantes, a capacidade de manter a atenção dividida é crucial. A pressão para tomar decisões imediatas pode levar à fixação em certos estímulos enquanto outros igualmente importantes são negligenciados.",
@@ -249,6 +205,7 @@
       "ID": "#P-G",
       "Nome": "FALHA DE ATENÇÃO",
       "CÓDIGO": "P-G",
+      "CRITÉRIO_DECISOR": "Se houvesse mais tempo disponível, o resultado teria sido diferente? NÃO → P-G. SIM → P-D. A falha de atenção ocorre independentemente da pressão de tempo — há outro fator (distração, complacência, fadiga). (Hendy, 2003, Figure 5)",
       "DEFINIÇÃO": "A Falha de Atenção (P-G) ocorre quando um indivíduo falha em perceber informações relevantes que estão presentes e acessíveis. Esta falha não inclui cenários onde as informações são inadequadamente apresentadas ou quando há uma ausência de informações necessárias. Frequentemente, isso resulta de uma incapacidade de manter o foco devido a distrações ou sobrecarga, levando à negligência de detalhes vitais que poderiam influenciar decisões importantes.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Ambientes Altamente Distrativos: Locais com múltiplas interrupções visuais e auditivas, como escritórios abertos ou fábricas barulhentas, que desafiam a capacidade de manter a atenção focada.",

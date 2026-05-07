@@ -103,8 +103,9 @@ Responda APENAS com JSON:
 def run_step3(relato: str, ponto_fuga: dict) -> dict:
     system = f"""Você é um especialista SERA aplicando o fluxo de Percepção (3-Flow.json).
 Fluxo: {load_doc('3 - Flow.json')}
-Falhas: {load_doc('3 - Failures.json', max_chars=4000)}
-{NO_ARTIFACTS}"""
+Falhas com CRITÉRIO_DECISOR: {load_doc('3 - Failures.json', max_chars=4000)}
+{NO_ARTIFACTS}
+CRITÉRIO P-D vs P-G: Se houvesse mais tempo, o resultado seria diferente? SIM → P-D. NÃO → P-G."""
 
     ato = ponto_fuga.get("ato_inseguro_factual", "")
 
@@ -147,7 +148,8 @@ def run_step4(relato: str, ponto_fuga: dict, step3: dict) -> dict:
     system = f"""Você é um especialista SERA aplicando o fluxo de Objetivo (4-Flow.json).
 Fluxo: {load_doc('4 - Flow.json')}
 Falhas: {load_doc('4 - Failures.json', max_chars=4000)}
-{NO_ARTIFACTS}"""
+{NO_ARTIFACTS}
+CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerencia risco → O-D (Hendy 2003, Figure 5 — 'Failure in intent, Non-violation')."""
 
     ato = ponto_fuga.get("ato_inseguro_factual", "")
 
@@ -185,8 +187,10 @@ Responda APENAS com JSON: {{"resposta": "Sim/Não", "justificativa": "..."}}""")
 def run_step5(relato: str, ponto_fuga: dict, step3: dict, step4: dict) -> dict:
     system = f"""Você é um especialista SERA aplicando o fluxo de Ação (5-Flow.json).
 Fluxo: {load_doc('5 - Flow.json')}
-Falhas: {load_doc('5 - Failures.json', max_chars=4000)}
+Falhas com CRITÉRIO_DECISOR: {load_doc('5 - Failures.json', max_chars=4000)}
 {NO_ARTIFACTS}
+CRITÉRIO A-F vs A-I: Pressão de tempo excessiva? NÃO → A-F. SIM → A-I.
+CRITÉRIO A-G vs A-J: Pressão de tempo excessiva? NÃO → A-G. SIM → A-J.
 
 ATENÇÃO — REGRA CRÍTICA DO FLUXO:
 - Nó 1: "A ação foi implementada COMO PRETENDIDA?" avalia se a EXECUÇÃO correspondeu à INTENÇÃO
@@ -252,7 +256,8 @@ def run_step6_7(relato: str, ponto_fuga: dict, step3: dict, step4: dict, step5: 
     system = f"""Você é um especialista SERA gerando pré-condições e recomendações.
 Pré-condições disponíveis: {load_doc('Pre-Conditions.json', max_chars=4000)}
 Guidelines: {load_doc('Guidelines.json')}
-Template: {load_doc('Template.json')}"""
+Template: {load_doc('Template.json')}
+Base científica e critérios decisores (tutorial): {load_doc('tutorial.json', max_chars=3000)}"""
 
     r = ask(system, f"""Ato inseguro: {ponto_fuga.get('ato_inseguro_factual')}
 Falha Percepção: {step3['codigo']}
