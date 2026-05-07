@@ -1,3 +1,4 @@
+import json
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import Response
 from app.api.deps import get_current_user
@@ -93,3 +94,54 @@ async def download_pdf(analysis_id: str, user=Depends(get_current_user)):
         media_type="application/pdf",
         headers={"Content-Disposition": f"attachment; filename=sera-{analysis_id[:8]}.pdf"}
     )
+
+
+@router.get("/{analysis_id}/flows")
+async def get_analysis_flows(analysis_id: str, current_user=Depends(get_current_user)):
+    from app.sera.flow_renderer import (
+        build_perception_mermaid,
+        build_objective_mermaid,
+        build_action_mermaid,
+    )
+    admin = get_supabase_admin()
+    r = admin.table("analyses").select("*").eq("id", analysis_id).single().execute()
+    a = r.data
+    if not a:
+        raise HTTPException(404, "Análise não encontrada")
+
+    # *_discarded is a JSONB column — already parsed by the Supabase client
+    def _disc(raw) -> dict:
+        if not raw:
+            return {}
+        if isinstance(raw, str):
+            return json.loads(raw)
+        return raw  # already a dict (JSONB)
+
+    perception_disc = _disc(a.get("perception_discarded"))
+    objective_disc  = _disc(a.get("objective_discarded"))
+    action_disc     = _disc(a.get("action_discarded"))
+
+    perception_flow = {"codigo": a.get("perception_code"), **perception_disc}
+    objective_flow  = {"codigo": a.get("objective_code"),  **objective_disc}
+    action_flow     = {"codigo": a.get("action_code"),     **action_disc}
+
+    return {
+        "perception": {
+            "mermaid":            build_perception_mermaid(perception_flow),
+            "codigo":             a.get("perception_code"),
+            "nos_percorridos":    perception_disc.get("nos_percorridos", []),
+            "falhas_descartadas": perception_disc.get("falhas_descartadas", ""),
+        },
+        "objective": {
+            "mermaid":            build_objective_mermaid(objective_flow),
+            "codigo":             a.get("objective_code"),
+            "nos_percorridos":    objective_disc.get("nos_percorridos", []),
+            "falhas_descartadas": objective_disc.get("falhas_descartadas", ""),
+        },
+        "action": {
+            "mermaid":            build_action_mermaid(action_flow),
+            "codigo":             a.get("action_code"),
+            "nos_percorridos":    action_disc.get("nos_percorridos", []),
+            "falhas_descartadas": action_disc.get("falhas_descartadas", ""),
+        },
+    }
