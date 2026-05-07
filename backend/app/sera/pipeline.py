@@ -1,11 +1,10 @@
 import json
 from pathlib import Path
-from anthropic import Anthropic
 from app.config import settings
 from app.database import get_supabase_admin
+from app.sera.ai_provider import call_ai
 
 DOCS_PATH = Path(__file__).parent / "documents"
-client = Anthropic(api_key=settings.ANTHROPIC_API_KEY)
 
 
 def load_doc(filename: str) -> str:
@@ -13,16 +12,6 @@ def load_doc(filename: str) -> str:
     if path.exists():
         return path.read_text(encoding="utf-8")
     return "{}"
-
-
-def call_claude(system: str, user: str) -> str:
-    response = client.messages.create(
-        model="claude-sonnet-4-5",
-        max_tokens=4096,
-        system=system,
-        messages=[{"role": "user", "content": user}]
-    )
-    return response.content[0].text
 
 
 async def run_analysis(event_id: str, raw_input: str, tenant_id: str):
@@ -49,7 +38,7 @@ Baseie-se nesta referência metodológica:
 {load_doc('point.json')}
 Retorne APENAS o JSON, sem texto adicional."""
 
-        r1 = call_claude(system_1, f"RELATO DO EVENTO:\n{raw_input}")
+        r1 = call_ai(system_1, f"RELATO DO EVENTO:\n{raw_input}")
         results["step_1_2"] = json.loads(r1)
 
         # CHAMADA 2: Etapa 3 - Percepção
@@ -80,7 +69,7 @@ RESUMO DO EVENTO: {results['step_1_2']['event_summary']}
 ATO INSEGURO: {results['step_1_2']['unsafe_act']}
 AGENTE: {results['step_1_2']['unsafe_agent']}"""
 
-        r3 = call_claude(system_3, context_3)
+        r3 = call_ai(system_3, context_3)
         results["step_3"] = json.loads(r3)
 
         # CHAMADA 3: Etapa 4 - Objetivo
@@ -109,7 +98,7 @@ Retorne APENAS o JSON."""
 ATO INSEGURO: {results['step_1_2']['unsafe_act']}
 FALHA DE PERCEPÇÃO IDENTIFICADA: {results['step_3']['perception_code']} — {results['step_3']['perception_name']}"""
 
-        r4 = call_claude(system_4, context_4)
+        r4 = call_ai(system_4, context_4)
         results["step_4"] = json.loads(r4)
 
         # CHAMADA 4: Etapa 5 - Ação
@@ -139,7 +128,7 @@ ATO INSEGURO: {results['step_1_2']['unsafe_act']}
 FALHA DE PERCEPÇÃO: {results['step_3']['perception_code']}
 FALHA DE OBJETIVO: {results['step_4']['objective_code']}"""
 
-        r5 = call_claude(system_5, context_5)
+        r5 = call_ai(system_5, context_5)
         results["step_5"] = json.loads(r5)
 
         # CHAMADA 5: Etapas 6 e 7
@@ -163,7 +152,7 @@ PERCEPÇÃO: {results['step_3']['perception_code']} — {results['step_3']['perc
 OBJETIVO: {results['step_4']['objective_code']} — {results['step_4']['objective_justification']}
 AÇÃO: {results['step_5']['action_code']} — {results['step_5']['action_justification']}"""
 
-        r6_7 = call_claude(system_6_7, context_6_7)
+        r6_7 = call_ai(system_6_7, context_6_7)
         results["step_6_7"] = json.loads(r6_7)
 
         # Consolida pré-condições de todas as etapas

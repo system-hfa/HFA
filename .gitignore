@@ -1,2 +1,7 @@
 .env
 scripts/
+backend/.venv/
+backend/.env
+frontend/.env.local
+frontend/.next/
+frontend/node_modules/
