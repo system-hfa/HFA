@@ -86,8 +86,11 @@ async def download_pdf(analysis_id: str, user=Depends(get_current_user)):
     analysis = result.data
     event = analysis.pop("events", {})
 
-    from app.sera.pdf_generator import generate_pdf
-    pdf_bytes = generate_pdf(analysis, event)
+    try:
+        from app.sera.pdf_generator import generate_pdf
+        pdf_bytes = generate_pdf(analysis, event)
+    except Exception as exc:
+        raise HTTPException(500, f"Falha ao gerar PDF: {exc}")
 
     # Build filename: SERA_[EventoSlug]_[YYYY-MM-DD].pdf
     import re

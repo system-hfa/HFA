@@ -13,3 +13,5 @@ services:
         value: deepseek
       - key: DEEPSEEK_MODEL
         value: deepseek-chat
+      - key: ALLOWED_ORIGINS
+        value: '["https://hfa-omega.vercel.app","https://hfa-omega.vercel.app/","http://localhost:3000"]'
