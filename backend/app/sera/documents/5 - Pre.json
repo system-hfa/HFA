@@ -1,0 +1,273 @@
+[
+  {
+  "ETAPA 5 – AÇÃO": {
+    "NENHUMA FALHA DE AÇÃO (A-A)": {
+      "CÓDIGO DA FALHA": "A-A"
+    },
+    "DESLIZES, OMISSÕES E LAPSOS (A-B)": {
+      "CÓDIGO DA FALHA": "A-B",
+      "PRÉ-CONDIÇÕES PROVÁVEIS": {
+        "Treinamento e Seleção": {
+          "CÓDIGO": "P6",
+          "DESCRIÇÃO": "Muitos erros podem ser rastreados até uma compreensão incompleta (modelo mental) da função do sistema. Isso destaca a necessidade de treinamento robusto e uma seleção cuidadosa para assegurar que os operadores entendam completamente os sistemas que estão manipulando."
+        },
+        "Equipamento": {
+          "CÓDIGO": "W1",
+          "DESCRIÇÃO": "Um design de equipamento ruim pode resultar na definição do cenário para a propagação desses erros. Exemplos incluem a proximidade e semelhança de controles com funções diferentes e layout diferente do arranjo convencional, o que pode confundir os operadores."
+        },
+        "Regras e Regulamentos": {
+          "CÓDIGO": "O3",
+          "DESCRIÇÃO": "Existem regras e regulamentos específicos, como listas de verificação obrigatórias (checklists), que são projetados para capturar esses tipos de erros e prevenir falhas operacionais?"
+        },
+        "Organizational Process and Practices": {
+          "CÓDIGO": "O4",
+          "DESCRIÇÃO": "Os procedimentos operacionais padrão podem auxiliar na prevenção de falhas causadas por limitações de memória, assegurando que passos críticos não sejam esquecidos. Existem procedimentos estabelecidos para capturar esses tipos de erros?"
+        },
+        "Vigilância": {
+          "CÓDIGO": "O6",
+          "DESCRIÇÃO": "Era sabido que havia um grande número desses tipos de incidentes e foram tomadas medidas corretivas? Isso indica a importância da vigilância constante e da resposta rápida a padrões emergentes de falhas."
+        }
+      }
+    },
+ "FALHA NO FEEDBACK NA EXECUÇÃO (A-C)": {
+    "CÓDIGO DA FALHA": "A-C",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Social": {
+        "CÓDIGO": "P3",
+        "DESCRIÇÃO": "É provável que um ambiente de equipe sobrecarregado reduza a disposição dos membros da equipe de fazer backup e fornecer feedback de correção de erros."
+      },
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "Tempos de tarefas que são inerentemente altos geram pressões de tempo e exigem o uso de estratégias eficazes de gerenciamento de tempo para garantir que o feedback não seja eliminado em ciclos críticos."
+      },
+      "Ambiente": {
+        "CÓDIGO": "W3",
+        "DESCRIÇÃO": "Pouca iluminação, ofuscamento, vibração ou ruído podem reduzir as sugestões que facilitariam a captura desses erros."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Os gerentes e supervisores precisam estar cientes das tarefas que impõem pressões de tempo excessivas e iniciar ações corretivas. O monitoramento e a supervisão fornecem feedback de correção de erros para garantir que as armadilhas de erro estejam em vigor."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "Inadequada para os recursos disponíveis. A missão deve ser compatível com as capacidades atuais dos operadores."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "Falta de recursos, 'fazer mais com menos', pode levar a tempos excessivos."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Era sabido que havia problemas sistêmicos com excesso de pressão de tempo no nível da tarefa, ou que havia um excesso desses tipos de incidentes e foram tomadas ações corretivas?"
+      }
+    }
+  },
+  "INABILIDADE PARA A RESPOSTA (A-D)": {
+    "CÓDIGO DA FALHA": "A-D",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Fisiológico": {
+        "CÓDIGO": "P1",
+        "DESCRIÇÃO": "Lesão física ou outros fatores fisiológicos, como exposição ao frio ou estresse por calor, que limitam a capacidade física do operador para implementar a ação necessária."
+      },
+      "Prontidão Pessoal": {
+        "CÓDIGO": "P5",
+        "DESCRIÇÃO": "Fatores de prontidão pessoal, como tensões musculares ou lesões obtidas fora do ambiente de trabalho, ou a falta de equipamento de proteção adequado, podem contribuir para uma incapacidade de implementar a ação necessária."
+      },
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "Falhas no sistema de seleção que não conseguiram filtrar indivíduos sem as capacidades físicas básicas necessárias, como força, alcance, ou esforço de vocalização, essenciais para a realização da ação."
+      },
+      "Qualificação e Autorização": {
+        "CÓDIGO": "P7",
+        "DESCRIÇÃO": "É necessário verificar se a tripulação estava qualificada e autorizada a conduzir a atividade, assegurando que as capacidades correspondam às exigências da tarefa."
+      },
+      "Objetivos": {
+        "CÓDIGO": "T2",
+        "DESCRIÇÃO": "Os objetivos da tarefa devem estar alinhados com as capacidades físicas do pessoal e o desempenho do equipamento fornecido para a tarefa, evitando desajustes que possam impedir a realização da ação."
+      },
+      "Equipamento": {
+        "CÓDIGO": "W1",
+        "DESCRIÇÃO": "Um design de equipamento inadequado ou falhas no mesmo podem tornar a ação impossível para alguns ou todos os operadores, especialmente se itens como luvas, máscaras ou cintos de segurança interferirem na capacidade de resposta."
+      },
+      "Espaço de Trabalho": {
+        "CÓDIGO": "W2",
+        "DESCRIÇÃO": "Restrições físicas dentro do espaço de trabalho, como obstruções ou condições apertadas, podem tornar a resposta necessária difícil ou impossível."
+      },
+      "Fatores Ambientais": {
+        "CÓDIGO": "W3",
+        "DESCRIÇÃO": "Elementos como ruído, força-g, temperaturas extremas ou vibrações que podem dificultar ou impossibilitar a implementação da ação."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Responsabilidade dos supervisores em garantir que os operadores sejam qualificados e capazes de realizar o trabalho, com uma supervisão efetiva para detectar e corrigir deficiências."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "Avaliação se havia material adequado e recursos humanos disponíveis para permitir a execução da tarefa."
+      },
+      "Práticas e Processos Organizacionais": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "Necessidade de garantir que padrões relevantes tenham sido estabelecidos e que o pessoal qualificado tenha sido selecionado conforme esses padrões."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Se foram detectadas deficiências sistêmicas nos padrões de seleção e se ações corretivas foram tomadas para resolver essas questões."
+      }
+    }
+  },
+  "FALHA DE CONHECIMENTO (DECISÃO) (A-E)": {
+    "CÓDIGO DA FALHA": "A-E",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "A tripulação ou tripulante possuía habilidades básicas, mas carecia do conhecimento específico da tarefa necessário para formular uma ação adequada. O sistema de seleção falhou em identificar aqueles que não possuíam habilidades essenciais, como aptidão e capacidade de resolver problemas, e essas habilidades não foram adequadamente atualizadas com o tempo."
+      },
+      "Qualificação e Autorização": {
+        "CÓDIGO": "P7",
+        "DESCRIÇÃO": "Necessidade de verificar se a tripulação estava qualificada e autorizada a conduzir a atividade, garantindo que todas as normas e requisitos legais estavam sendo cumpridos."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Responsabilidade dos supervisores em garantir que os operadores sejam não apenas qualificados, mas também estejam atualizados com as melhores práticas e conhecimentos necessários para a execução segura das suas tarefas."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "A missão atribuída pode exceder a capacidade atual da organização, colocando os operadores em situações para as quais eles não estão devidamente preparados ou equipados."
+      },
+      "Práticas e Processos Organizacionais": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "É crucial que a organização estabeleça padrões relevantes e garanta que o pessoal seja treinado e avaliado de acordo com esses padrões, mantendo a proficiência necessária para a execução das tarefas."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Avaliação de se as deficiências sistêmicas nos procedimentos de seleção, formação, atribuição de tarefas e autorização foram detectadas e se medidas corretivas foram implementadas para resolver essas questões."
+      }
+    }
+  },
+  "FALHA NA SELEÇÃO DE AÇÃO (A-F)": {
+    "CÓDIGO DA FALHA": "A-F",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": "Os limites nas capacidades de memória de trabalho restringem a habilidade de manipular grandes quantidades de informações, o que pode levar a falhas na resolução de problemas em níveis de regra e conhecimento. Tendências de decisão que são estratégias de economia de tempo para resolver problemas podem falhar por filtrarem inadequadamente as informações disponíveis. Exemplos incluem:\nDisponibilidade: Tendência de recorrer à resposta mais familiar ou recentemente utilizada.\nExcesso de confiança: Confiança excessiva no curso de ação escolhido, muitas vezes cessando prematuramente a busca por alternativas devido à confiança desmedida.\nPrimeiro a combinar: Seleção da primeira opção que parece adequada, muitas vezes sem considerar alternativas possíveis.\nTendência de investimento no custo: Persistência em investir em um curso de ação já comprometido, mesmo quando não é a melhor escolha.\nEstratégia de persistência: Continuação de uma ação familiar, mesmo que não seja a mais adequada, muitas vezes sem considerar opções mais eficazes."
+      }
+    }
+  },
+
+  "FALHA DE FEEDBACK NA TOMADA DE DECISÃO (A-G)": {
+    "CÓDIGO DA FALHA": "A-G",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Fisiológico": {
+        "CÓDIGO": "P1",
+        "DESCRIÇÃO": "A fadiga pode resultar em perda de vigilância, diminuindo a capacidade do operador de detectar e corrigir erros."
+      },
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": "O decréscimo de vigilância pode levar a uma mudança prematura de atenção, impedindo a observação dos resultados de uma ação e a correção de desvios."
+      },
+      "Social": {
+        "CÓDIGO": "P3",
+        "DESCRIÇÃO": "O gradiente de autoridade e outras variáveis sociais, como assertividade e receptividade, podem afetar a extensão com que o feedback é oferecido e utilizado para correção de erros dentro da equipe."
+      },
+      "Equipamento": {
+        "CÓDIGO": "W1",
+        "DESCRIÇÃO": "Controles e exibições que devem fornecer feedback claro sobre o estado do sistema para facilitar a identificação e correção de erros."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "O papel do monitoramento e da supervisão é essencial para fornecer feedback corretivo de erros. Interrupções ou falhas no monitoramento e supervisão podem resultar na ausência de correção de erros."
+      }
+    }
+  },
+  "FALHA NO GERENCIAMENTO DO TEMPO (A-H)": {
+    "CÓDIGO DA FALHA": "A-H",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "Parte do processo de treinamento envolve aprender o que é importante e o que pode ser ignorado, além de métodos para controlar o andamento da tarefa. Uma estratégia eficaz de gerenciamento de tempo depende desse conhecimento."
+      },
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "Tempos de tarefa que são inerentemente altos geram pressões de tempo e exigem o uso de estratégias eficazes de gerenciamento de tempo."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Os gerentes e supervisores precisam estar cientes das tarefas que impõem pressões de tempo excessivas e iniciar ações corretivas."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "A missão deve ser compatível com os recursos disponíveis e as capacidades atuais do operador."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "A falta de recursos, 'fazer mais com menos', pode levar a tempos de tarefa excessivos."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Era sabido que havia problemas sistêmicos com excesso de pressão de tempo no nível da tarefa, e foram tomadas ações corretivas."
+      }
+    }
+  },
+
+  "FALHA NA SELEÇÃO DA AÇÃO POR PRESSÃO DO TEMPO (A-I)": {
+    "CÓDIGO DA FALHA": "A-I",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "O tempo da tarefa é excessivo. Há pouco ou nenhum tempo para descansar ou reorganizar, '... não há tempo para pensar.' Os operadores são estimulados pela tarefa e têm pouco espaço para gerenciar o cronograma."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Os gerentes e supervisores precisam estar cientes das tarefas que impõem pressões de tempo excessivas e iniciar ações corretivas."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "A missão deve ser compatível com os recursos disponíveis e as capacidades atuais do operador."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "A falta de recursos, 'fazer mais com menos', pode levar a tempos de tarefa excessivos."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Era sabido que havia problemas sistêmicos com excesso de pressão de tempo no nível da tarefa, e foram tomadas ações corretivas."
+      }
+    }
+  },
+  "FALHA DE FEEDBACK POR PRESSÃO DO TEMPO (A-J)": {
+    "CÓDIGO DA FALHA": "A-J",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "O tempo da tarefa é excessivo. Há pouco ou nenhum tempo para descansar ou reorganizar, '... não há tempo para pensar.' Os operadores são estimulados pela tarefa e têm pouco espaço para gerenciar o cronograma."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Os gerentes e supervisores precisam estar cientes das tarefas que impõem pressões de tempo excessivas e iniciar ações corretivas."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "A missão deve ser compatível com os recursos disponíveis e as capacidades atuais do operador."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "A falta de recursos, 'fazer mais com menos', pode levar a tempos de tarefa excessivos."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Era sabido que havia problemas sistêmicos com excesso de pressão de tempo no nível da tarefa e foram tomadas ações corretivas."
+      }
+    }}}}]
+
+    
+
+    
+
+
+    
+
+
+    
+  
+
+

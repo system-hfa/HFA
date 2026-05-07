@@ -1,0 +1,71 @@
+{
+  "Diretrizes Metodológicas": {
+    "Generalidades": {
+      "Introdução": "Essas Diretrizes Metodológicas estabelecem um procedimento estruturado para a análise de incidentes aéreos, utilizando a metodologia SERA (Systematic Error and Risk Analysis). Este documento deve ser consultado antes de cada análise para garantir a aderência à metodologia atualizada. Inclui um guia detalhado para identificar falhas ativas conforme descrito no 'Template.json', que serve como modelo para os relatórios.",
+      "Objetivo": "Garantir que todas as análises de incidentes aéreos sejam conduzidas de forma consistente e precisa, seguindo as diretrizes da metodologia SERA. As diretrizes foram elaboradas para cobrir todos os aspectos da análise, enfatizando a importância de não forçar conclusões sem dados suficientes.",
+      "Gestão de Incertezas": "Crucial evitar suposições não fundamentadas. Todas as análises devem ser baseadas em dados concretos, e qualquer lacuna de informação deve ser claramente indicada nos relatórios.",
+      "Guia de Estilo de Redação": "Os relatórios devem ser apresentados em linguagem clara, profissional e objetiva, evitando inferências sem suporte de dados.",
+      "Refinamento na Identificação de Atos ou Condições Inseguras": "A identificação deve ser rigorosamente baseada em evidências, sem extrapolar os dados disponíveis.",
+      "Precisão na Classificação das Falhas Ativas": {
+        "Descrição": "As falhas devem ser classificadas com precisão, distinguindo entre 'Violação de Rotina' e 'Violação Excepcional' baseadas em evidências claras de repetição ou ausência dela. A classificação deve refletir cuidadosamente o comportamento habitual ou isolado do operador."
+      },
+      "Maior Rigor na Análise de Atos Inseguros": "Seguir as perguntas de análise sem adicionar interpretações pessoais. Ater-se estritamente aos dados para formular qualquer conclusão.",
+      "Clarificação e Verificação": "Em caso de ambiguidade, optar por uma classificação mais cautelosa ou destacar a necessidade de informações adicionais.",
+      "Validação Cruzada": {
+        "Descrição": "Garantir que a classificação das falhas esteja alinhada com as condições identificadas no fluxo lógico da análise. A validação cruzada é obrigatória em cada etapa.",
+        "Regras": [
+          "Se pressão de tempo foi identificada (P-D ou P-E), falhas como P-C e P-F devem ser descartadas.",
+          "Se a ação foi implementada corretamente, falhas de execução (A-B, A-C) devem ser descartadas.",
+          "Se uma violação foi classificada, falhas de intenção não-violação (O-D) devem ser excluídas."
+        ]
+      },
+      "Documentação de Falhas Descartadas": {
+        "Descrição": "Registrar, em cada etapa, as falhas descartadas e as justificativas para a exclusão. Isso evita ambiguidades e reforça a precisão da análise.",
+        "Exemplo": {
+          "Etapa": "AVALIAÇÃO DA PRESSÃO DO TEMPO",
+          "Falhas Descartadas": ["P-B", "P-C"],
+          "Justificativa": "A pressão do tempo foi identificada como fator predominante, invalidando falhas de conhecimento ou sensoriais."
+        }
+      },
+      "Exemplos Práticos": {
+        "Descrição": "Inclua cenários práticos que demonstrem a aplicação correta das etapas, com classificação de falhas e falhas descartadas.",
+        "Exemplos": [
+          {
+            "Caso": "Um piloto, sob pressão de tempo, comete um erro ao priorizar uma tarefa secundária.",
+            "Identificação": "Falha de Atenção por Pressão do Tempo (P-D)",
+            "Falhas Descartadas": ["P-C"],
+            "Justificativa": "A pressão de tempo influenciou a falha, descartando problemas de conhecimento."
+          },
+          {
+            "Caso": "O operador implementou a ação corretamente, mas a decisão tomada não foi adequada às circunstâncias.",
+            "Identificação": "Falha na Seleção da Ação (A-F)",
+            "Falhas Descartadas": ["A-B", "A-C"],
+            "Justificativa": "A execução foi correta, portanto, falhas de deslizes e feedback foram descartadas."
+          }
+        ]
+      }
+    },
+    "Etapas de Aplicação da Metodologia SERA": {
+      "Etapa 1": "Resumo do Evento Analisado",
+      "Etapa 2": {
+        "Descrição": "Identificação do Ponto de Fuga da Operação Segura",
+        "Referências para Consulta": ["Point"]
+      },
+      "Etapa 3": {
+        "Descrição": "Identificação da Falha de Percepção",
+        "Referências para Consulta": ["3 - Flow", "3 - Failures", "3 - Pre"]
+      },
+      "Etapa 4": {
+        "Descrição": "Identificação da Falha de Objetivo",
+        "Referências para Consulta": ["4 - Flow", "4 - Failures", "4 - Pre"]
+      },
+      "Etapa 5": {
+        "Descrição": "Identificação da Falha de Ação",
+        "Referências para Consulta": ["5 - Flow", "5 - Failures", "5 - Pre"]
+      },
+      "Etapa 6": "Conclusão da Análise do Evento",
+      "Etapa 7": "Apresentação de Sugestões Mitigatórias e de Prevenção"
+    }
+  }
+}
+

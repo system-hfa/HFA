@@ -1,0 +1,85 @@
+{
+  "Modelo_Teorico_SERA": {
+    "Introducao": {
+      "descricao": "Com o avanço da tecnologia e sua maior confiabilidade, acidentes causados por falhas de equipamentos e materiais tornaram-se raros. Os fatores humanos passaram a ser os principais contribuintes para acidentes e incidentes, destacando a importância de investigar, classificar e rastrear suas causas para prevenir recorrências.",
+      "fonte": "SERA.pdf, Introdução, p. 1"
+    },
+    "Modelos": {
+      "Modelo_de_Processamento_de_Informacao": {
+        "descricao": "Foca nos efeitos da quantidade de informação a ser processada e do tempo disponível sobre o trabalho cognitivo humano, destacando o impacto da pressão temporal na tomada de decisões.",
+        "formula": "Pressão do Tempo = Quantidade de Informação / Tempo Disponível",
+        "exemplos": [
+          {
+            "descricao": "Estudo de um caso em que a pressão de tempo resultou em erro crítico na interpretação de alertas em um sistema de monitoramento.",
+            "referencia": "SERA.pdf, Seção 3.1, p. 22"
+          }
+        ],
+        "acoes_corretivas": [
+          {
+            "descricao": "Implementar programas de treinamento voltados à gestão de tempo e processamento eficaz de informações."
+          }
+        ],
+        "aplicabilidade": "Aplica-se a todas as áreas do sistema cognitivo humano que envolvam processamento de informações."
+      },
+      "Teoria_do_Controle_Perceptual": {
+        "descricao": "Propõe que os seres humanos agem como sistemas de controle em laço fechado, guiados por metas perceptuais que determinam comportamentos.",
+        "loops_de_controle": "Os humanos percebem o estado do mundo, formam uma percepção e a comparam com seus objetivos. Caso haja discrepâncias, realizam ações para corrigir a situação.",
+        "exemplos": [
+          {
+            "descricao": "Estudo de um incidente de navegação em que falha na percepção da altitude resultou em aproximação perigosa do terreno.",
+            "referencia": "SERA.pdf, Seção 3.2, p. 25"
+          }
+        ],
+        "acoes_corretivas": [
+          {
+            "descricao": "Aprimorar sistemas de feedback e alerta para aumentar a precisão perceptual dos operadores em relação ao estado real dos sistemas."
+          }
+        ]
+      },
+      "Interconexao_entre_IP_e_PCT": {
+        "descricao": "Destaca como a combinação dos modelos IP e PCT mostra que decisões humanas dependem da gestão do tempo, do conhecimento e dos recursos atencionais.",
+        "principios": [
+          {
+            "nome": "Pressão Temporal",
+            "descricao": "A produção de erros, desempenho e percepção de carga de trabalho dependem da pressão do tempo percebida."
+          },
+          {
+            "nome": "Equilíbrio Velocidade-Precisão",
+            "descricao": "Velocidade e precisão estão sempre em um equilíbrio dinâmico no processamento de informações humanas."
+          },
+          {
+            "nome": "Estratégias para Reduzir Pressão Temporal",
+            "descricao": "Decisões podem ser simplificadas ou tempos de resposta estendidos para reduzir a pressão temporal."
+          },
+          {
+            "nome": "Gestão de Erros",
+            "descricao": "Sistemas de feedback são essenciais para corrigir ações e evitar erros recorrentes."
+          },
+          {
+            "nome": "Gestão de Recursos",
+            "descricao": "Decisões baseadas em conhecimento requerem atenção e tempo adequados."
+          },
+          {
+            "nome": "A Ignorância Não é uma Benção",
+            "descricao": "A falta de conhecimento pode levar a riscos significativos, destacando a importância da consciência situacional."
+          }
+        ],
+        "exemplos": [
+          {
+            "descricao": "Cenário em que a ausência de feedback adequado levou a erros repetidos na operação de sistemas complexos.",
+            "referencia": "SERA.pdf, Seção 3.3, p. 30"
+          }
+        ],
+        "acoes_corretivas": [
+          {
+            "descricao": "Desenvolver sistemas de treinamento robustos e simulações para aprimorar a consciência situacional e gestão de recursos cognitivos."
+          }
+        ]
+      }
+    },
+    "Conclusao": {
+      "descricao": "A aplicação dos modelos teóricos abordados permite desenvolver ambientes mais seguros e resilientes, reduzindo a probabilidade de erros humanos e mitigando suas consequências.",
+      "fonte": "SERA.pdf, Conclusão, p. 50"
+    }
+  }
+}

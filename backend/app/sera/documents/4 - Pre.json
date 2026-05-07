@@ -1,0 +1,159 @@
+[
+{
+  "ETAPA 4 – OBJETIVO": {
+    "VIOLAÇÃO ROTINEIRA (O-B)": {
+      "CÓDIGO DA FALHA": "O-B",
+      "PRÉ-CONDIÇÕES PROVÁVEIS": {
+        "Psicológico": {
+          "CÓDIGO": "P2",
+          "DESCRIÇÃO": "Certos estados de atitude, como anti-autoritarismo ou pensamento de grupo, podem resultar em uma personalidade mais propensa a tolerar violações de rotina."
+        },
+        "Social": {
+          "CÓDIGO": "P3",
+          "DESCRIÇÃO": "Pressões sociais como influência dos colegas e liderança fraca podem contribuir para a manutenção de um comportamento rotineiro de quebra de regras."
+        },
+        "Treinamento e Seleção": {
+          "CÓDIGO": "P6",
+          "DESCRIÇÃO": "Falta de familiaridade com as regras e regulamentos ('... eu não sabia que estava fazendo algo errado')."
+        },
+        "Qualificação e Autorização": {
+          "CÓDIGO": "P7",
+          "DESCRIÇÃO": "A tripulação era qualificada e autorizada a realizar a atividade?"
+        },
+        "Pressão do Tempo": {
+          "CÓDIGO": "T1",
+          "DESCRIÇÃO": "A pressão de tempo excessiva e sistêmica pode fazer com que os operadores procurem atalhos que contornem as restrições das regras e regulamentos."
+        },
+        "Objetivos": {
+          "CÓDIGO": "T2",
+          "DESCRIÇÃO": "Os objetivos da tarefa eram consistentes com os objetivos comunicados?"
+        },
+        "Forming Intent": {
+          "CÓDIGO": "S1",
+          "DESCRIÇÃO": "O objetivo da atividade foi claramente definido e estava de acordo com as regras e regulamentos da organização?"
+        },
+        "Communicating Intent": {
+          "CÓDIGO": "S2",
+          "DESCRIÇÃO": "O objetivo da atividade foi claramente comunicado e compreendido pelos executores?"
+        },
+        "Monitoramento e Supervisão": {
+          "CÓDIGO": "S3",
+          "DESCRIÇÃO": "Comportamentos sistêmicos que se desviam das regras e regulamentos não foram detectados ou corrigidos em algum lugar da cadeia de comando e controle."
+        },
+        "Regras e Regulamentos": {
+          "CÓDIGO": "O3",
+          "DESCRIÇÃO": "Regras e regulamentos formam as restrições dentro das quais a tarefa deve ser executada. Eles são consistentes com os objetivos declarados?"
+        },
+        "Clima Organizacional": {
+          "CÓDIGO": "O5",
+          "DESCRIÇÃO": "A organização não age de acordo com valores baseados em uma operação segura e aderência às regras e não recompensa aqueles que tentam manter esses valores. A organização valoriza e recompensa 'fazer o trabalho' acima de tudo."
+        },
+        "Oversight": {
+          "CÓDIGO": "O6",
+          "DESCRIÇÃO": "A quebra de regras era endêmica e conhecida? Havia ações de correções ou esses comportamentos eram tolerados?"
+        }
+      }
+    },
+  "VIOLAÇÃO EXCEPCIONAL (O-C)": {
+    "CÓDIGO DA FALHA": "O-C",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": "Certos estados de atitude, como a motivação excessiva para realizar a tarefa, podem tornar o operador mais propenso a uma violação excepcional. Tendência de processamento de informação que limita a informação recebida, como ela é percebida e as decisões que vêm do processo de tomada de decisão. A intenção talvez não tenha sido avaliada para potenciais violações."
+      },
+      "Social": {
+        "CÓDIGO": "P3",
+        "DESCRIÇÃO": "Pressões sociais como influência dos colegas e liderança fraca podem contribuir para um comportamento de quebra de regras."
+      },
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "Falta de familiaridade com as regras e regulamentos ('… eu não sabia que estava fazendo algo errado')."
+      },
+      "Qualificação e Autorização": {
+        "CÓDIGO": "P7",
+        "DESCRIÇÃO": "A tripulação era qualificada e autorizada a conduzir a atividade?"
+      },
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "A pressão de tempo excessiva pode fazer com que os operadores procurem atalhos para contornar as restrições das regras e regulamentos."
+      },
+      "Objetivos": {
+        "CÓDIGO": "T2",
+        "DESCRIÇÃO": "Os objetivos da tarefa eram consistentes com o objetivo comunicado?"
+      },
+      "Forming Intent": {
+        "CÓDIGO": "S1",
+        "DESCRIÇÃO": "Os objetivos da tarefa e as linhas de responsabilidade não foram claramente formulados por gerentes e supervisores. Este é o fracasso na formação e não na comunicação dos objetivos estratégicos para a missão. Os objetivos definidos pelos líderes foram contraditórios, ambíguos, em violação com procedimentos, regras e regulamentos ou baseados em expectativas irreais."
+      },
+      "Communicating Intent": {
+        "CÓDIGO": "S2",
+        "DESCRIÇÃO": "Os objetivos da tarefa e as linhas de responsabilidade não foram claramente comunicados pelos gerentes ou supervisores. Isso é uma falha na comunicação do objetivo para aqueles que deverão cumpri-los."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "A supervisão deve assegurar que a equipe esteja qualificada e autorizada a executar a tarefa e que planejou uma atividade de acordo com as regras e regulamentos."
+      },
+      "Regras e Regulamentos": {
+        "CÓDIGO": "O3",
+        "DESCRIÇÃO": "Regras e regulamentos formam as restrições dentro das quais a tarefa deve ser executada. Eles são consistentes com os objetivos declarados?"
+        }
+      }
+    },
+  "FALHA DE INTENÇÃO (NÃO VIOLAÇÃO) (O-D)": {
+    "CÓDIGO DA FALHA": "O-D",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": "Certas características, como uma motivação excessiva para realizar a tarefa ou excesso de confiança, podem tornar o operador mais propenso a escolher comportamentos de risco e menos propenso a avaliar completamente o risco."
+      },
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "Houve uma falta de familiaridade com práticas seguras e estratégias de gerenciamento de risco?"
+      },
+      "Qualificação e Autorização": {
+        "CÓDIGO": "P7",
+        "DESCRIÇÃO": "A tripulação foi qualificada e autorizada a conduzir a atividade?"
+      },
+      "Objetivos": {
+        "CÓDIGO": "T2",
+        "DESCRIÇÃO": "Os objetivos da tarefa envolvem, inerentemente, alto risco?"
+      },
+      "Forming Intent": {
+        "CÓDIGO": "S1",
+        "DESCRIÇÃO": "O objetivo da atividade foi claramente definido no nível de comando, controle e supervisão e o risco versus benefício foi equilibrado?"
+      },
+      "Communicating Intent": {
+        "CÓDIGO": "S2",
+        "DESCRIÇÃO": "O objetivo da atividade foi claramente comunicado pelo nível de comando, controle e supervisão e compreendido pelos operadores?"
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "A supervisão deve assegurar que a equipe esteja qualificada e autorizada a executar a tarefa e que a atividade seja planejada de acordo com práticas seguras e critérios apropriados de gerenciamento de risco."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "A missão supera a capacidade da organização."
+      },
+      "Regras e Regulamentos": {
+        "CÓDIGO": "O3",
+        "DESCRIÇÃO": "As regras e regulamentos gerenciam adequadamente o risco previsível?"
+      },
+      "Organizational Process and Practices": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "A organização possui procedimentos operacionais padrão e processos formais de gerenciamento de riscos?"
+      },
+      "Organizational Climate": {
+        "CÓDIGO": "O5",
+        "DESCRIÇÃO": "A organização tolera uma condição de risco alto?"
+      },
+      "Oversight": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Era sabido que os procedimentos de gerenciamento de risco estabelecidos não estavam sendo usados rotineiramente e quais medidas corretivas foram tomadas?"
+      }
+    }
+  }
+    
+}}]
+    
+
+

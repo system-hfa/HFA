@@ -1,0 +1,116 @@
+{
+  "start": "PERCEPÇÃO",
+  "steps": [
+    {
+      "step_id": "PERCEPÇÃO",
+      "question": "O que o operador que realizou o Ato Inseguro acreditou que estava acontecendo?",
+      "next_step": "AVALIAÇÃO DA PERCEPÇÃO",
+      "reference": "Consulte '3 - Failures.json' para classificar a resposta."
+    },
+    {
+      "step_id": "AVALIAÇÃO DA PERCEPÇÃO",
+      "question": "A avaliação da situação foi correta ou adequada?",
+      "yes": "NENHUMA FALHA DE PERCEPÇÃO (P-A)",
+      "no": "AVALIAÇÃO DA CAPACIDADE",
+      "explanation": "Esta pergunta busca confirmar se a percepção do operador estava alinhada com a realidade da situação. Consulte '3 - Failures.json' para falhas relacionadas.",
+      "restrictions": {
+        "excluded": ["P-B", "P-C", "P-D", "P-E", "P-F", "P-G", "P-H"],
+        "note": "Se 'Sim', nenhuma falha de percepção é aplicável e o fluxo termina."
+      }
+    },
+    {
+      "step_id": "AVALIAÇÃO DA CAPACIDADE",
+      "question": "O operador possuía a capacidade necessária para sentir e perceber a situação adequadamente?",
+      "yes": "AVALIAÇÃO DA PRESSÃO DO TEMPO",
+      "no": "Consulte as opções P-B e P-C em '3 - Failures.json' para determinar a falha apropriada.",
+      "explanation": "Verifique se a falha é devido a uma limitação sensorial (P-B) ou falta de conhecimento adequado (P-C).",
+      "restrictions": {
+        "excluded": ["P-D", "P-E", "P-F", "P-G", "P-H"],
+        "note": "Se 'Sim', falhas relacionadas à falta de capacidade (P-B, P-C) são descartadas."
+      }
+    },
+    {
+      "step_id": "AVALIAÇÃO DA PRESSÃO DO TEMPO",
+      "question": "A pressão do tempo era excessiva?",
+      "yes": "Consulte P-D e P-E em '3 - Failures.json' para documentar a falha.",
+      "no": "AVALIAÇÃO DA INFORMAÇÃO",
+      "explanation": "Determine se a pressão do tempo prejudicou a capacidade de atenção do operador, resultando em P-D ou P-E.",
+      "restrictions": {
+        "excluded": ["P-B", "P-C", "P-F", "P-G", "P-H"],
+        "note": "Se 'Sim', apenas falhas relacionadas à pressão do tempo (P-D, P-E) devem ser consideradas."
+      }
+    },
+    {
+      "step_id": "AVALIAÇÃO DA INFORMAÇÃO",
+      "question": "A informação era ilusória ou ambígua?",
+      "yes": "Consulte P-F em '3 - Failures.json' para documentar a falha de percepção.",
+      "no": "AVALIAÇÃO DA INFORMAÇÃO CORRETA",
+      "explanation": "Esta etapa avalia a qualidade da informação disponível e se a sua natureza pode ter levado a erros de percepção.",
+      "restrictions": {
+        "excluded": ["P-B", "P-C", "P-D", "P-E", "P-G", "P-H"],
+        "note": "Se 'Sim', apenas falhas relacionadas à informação ambígua (P-F) são válidas."
+      }
+    },
+    {
+      "step_id": "AVALIAÇÃO DA INFORMAÇÃO CORRETA",
+      "question": "A informação estava disponível e correta?",
+      "yes": "Consulte P-G em '3 - Failures.json' para falha de atenção.",
+      "no": "Consulte P-H em '3 - Failures.json' para falha de comunicação.",
+      "explanation": "Determine se a falha ocorreu devido à atenção inadequada (P-G) ou falhas de comunicação (P-H).",
+      "restrictions": {
+        "excluded": ["P-B", "P-C", "P-D", "P-E", "P-F"],
+        "note": "Se 'Sim', descartar falhas não relacionadas à atenção ou comunicação (P-G, P-H)."
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome": "NENHUMA FALHA DE PERCEPÇÃO",
+      "code": "P-A",
+      "type": "end",
+      "explanation": "O operador teve uma percepção correta da situação, não contribuindo para o ato inseguro com base na percepção. Consulte '3 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "FALHA SENSORIAL",
+      "code": "P-B",
+      "type": "end",
+      "explanation": "O operador não detectou estímulos sensoriais essenciais, potencialmente devido a limitações físicas ou condições ambientais. Consulte '3 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "FALHA DE CONHECIMENTO/PERCEPÇÃO",
+      "code": "P-C",
+      "type": "end",
+      "explanation": "Apesar das habilidades sensoriais intactas, faltou conhecimento ou experiência ao operador para interpretar a situação corretamente. Consulte '3 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "FALHA DE ATENÇÃO POR PRESSÃO DO TEMPO",
+      "code": "P-D",
+      "type": "end",
+      "explanation": "A pressão do tempo afetou a capacidade do operador de manter a atenção nos elementos críticos da tarefa. Consulte '3 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "FALHA NO GERENCIAMENTO DE TEMPO",
+      "code": "P-E",
+      "type": "end",
+      "explanation": "O operador não conseguiu gerenciar seu tempo efetivamente, prejudicando a execução segura das tarefas. Consulte '3 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "FALHA DE PERCEPÇÃO",
+      "code": "P-F",
+      "type": "end",
+      "explanation": "A informação incorreta ou ambígua levou o operador a uma percepção errada da situação. Consulte '3 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "FALHA DE ATENÇÃO",
+      "code": "P-G",
+      "type": "end",
+      "explanation": "A atenção do operador estava inadequada, levando a possíveis erros de percepção ou ação. Consulte '3 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "FALHA DE COMUNICAÇÃO",
+      "code": "P-H",
+      "type": "end",
+      "explanation": "Houve falhas na comunicação, resultando em informações incorretas ou mal interpretadas. Consulte '3 - Failures.json' para mais detalhes."
+    }
+  ]
+}

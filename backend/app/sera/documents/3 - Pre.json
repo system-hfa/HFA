@@ -1,0 +1,308 @@
+[
+{
+  "ETAPA 3 - PERCEPÇÃO": {
+    "FALHA SENSORIAL (P-B)": {
+      "CÓDIGO DA FALHA": "P-B",
+      "PRÉ-CONDIÇÕES PROVÁVEIS": {
+        "Fisiológico": {
+          "CÓDIGO": "P1",
+          "DESCRIÇÃO": "Faltou ao operador, de forma temporária ou permanente, a capacidade física de sentir a informação? Vários fatores fisiológicos podem prejudicar as capacidades sensoriais, como doenças, efeitos farmacológicos e toxicológicos, efeitos de aceleração etc."
+        },
+        "Prontidão Pessoal": {
+          "CÓDIGO": "P5",
+          "DESCRIÇÃO": "Certos fatores de prontidão pessoal podem contribuir para a incapacidade de sentir as informações recebidas, como não usar lentes corretivas ou não usar proteção auditiva."
+        },
+        "Treinamento e Seleção": {
+          "CÓDIGO": "P6",
+          "DESCRIÇÃO": "O processo de seleção não conseguiu filtrar o pessoal que não possuía as capacidades físicas suficientes (visão, audição, tátil, etc.) para detectar as informações necessárias para executar a tarefa."
+        },
+        "Objetivos": {
+          "CÓDIGO": "T2",
+          "DESCRIÇÃO": "Os objetivos da tarefa são consistentes com as capacidades físicas do pessoal que deve realizar as atividades ou com o desempenho do equipamento fornecido para a tarefa?"
+        },
+        "Equipamento": {
+          "CÓDIGO": "W1",
+          "DESCRIÇÃO": "Alguns equipamentos pessoais podem interferir com a capacidade de receber informações do ambiente, como viseiras coloridas, proteção auditiva, etc."
+        },
+        "Ambiente": {
+          "CÓDIGO": "W3",
+          "DESCRIÇÃO": "Fatores ambientais podem ocasionar uma incapacidade temporária para receber a informação, como vibração, brilho e ruído."
+        },
+        "Monitoramento e Supervisão": {
+          "CÓDIGO": "S3",
+          "DESCRIÇÃO": "A falta de capacidade foi previamente observada e ações foram tomadas para readequar o pessoal?"
+        },
+        "Processos e Práticas Organizacionais": {
+          "CÓDIGO": "O4",
+          "DESCRIÇÃO": "A organização deve assegurar que os padrões relevantes de seleção foram estabelecidos e que o pessoal considerado qualificado foi selecionado conforme esses padrões."
+        },
+        "Vigilância": {
+          "CÓDIGO": "O6",
+          "DESCRIÇÃO": "Foram conhecidas deficiências sistêmicas nos padrões de seleção e tomadas ações corretivas?"
+        }
+      }
+    },
+    "FALHA DE CONHECIMENTO (PERCEPÇÃO) (P-C)": {
+        "CÓDIGO DA FALHA": "P-C",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "A tripulação ou membro da tripulação possuía as aptidões (perceptual, linguagem, matemática, etc.) e capacidades físicas, mas faltava o conhecimento básico, tarefa ou sistema específico necessário para avaliar corretamente a situação. O sistema de seleção não conseguiu filtrar o pessoal que não possuía as aptidões básicas que permitiriam que a situação fosse corretamente percebida. O operador já foi treinado para o padrão, mas as habilidades se degradaram com o tempo e não foram atualizadas."
+      },
+      "Qualificação e Autorização": {
+        "CÓDIGO": "P7",
+        "DESCRIÇÃO": "A tripulação não foi qualificada e/ou autorizada a conduzir a atividade."
+      },
+      "Objetivos": {
+        "CÓDIGO": "T2",
+        "DESCRIÇÃO": "Os objetivos da tarefa são consistentes com o conhecimento do pessoal que deve realizar as atividades?"
+      },
+      "Formação do Propósito": {
+        "CÓDIGO": "S1",
+        "DESCRIÇÃO": "Os requisitos da missão eram apropriados para a organização?"
+      },
+      "Comunicação do Propósito": {
+        "CÓDIGO": "S2",
+        "DESCRIÇÃO": "O objetivo da tarefa foi comunicado e entendido pelos executantes?"
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Ao autorizar uma atividade, os supervisores têm a responsabilidade de garantir que os operadores sejam qualificados, atualizados e tenham o conhecimento necessário para realizar a tarefa."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "A missão excede a capacidade da organização."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "Os recursos humanos adequados estavam disponíveis em termos de qualificação do pessoal?"
+      },
+      "Práticas e Processos Organizacionais": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "A organização deve assegurar que padrões foram estabelecidos, que o pessoal qualificado foi treinado e avaliado em relação a esses padrões e que mantém sua proficiência."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Foram detectadas deficiências sistêmicas nos procedimentos de seleção, formação, atribuição de tarefas e autorização e foram tomadas medidas corretivas?"
+      }
+    }
+  },
+
+  "FALHA DE ATENÇÃO POR PRESSÃO DO TEMPO (P-D)": {
+    "CÓDIGO DA FALHA": "P-D",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Fisiológico": {
+        "CÓDIGO": "P1",
+        "DESCRIÇÃO": "Condições fisiológicas como fadiga, efeitos de agentes farmacológicos e toxicológicos podem retardar o processamento da informação, aumentando o tempo de decisão. Isso aumentará a pressão de tempo percebida. Caso esses fatores não estivessem presentes, a pressão do tempo seria aceitável para a tarefa."
+      },
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": "Fadiga mental: um cansaço sentido após longos períodos de intensa atividade mental e atenção sustentada que afeta a capacidade de se concentrar na tarefa em questão."
+      },
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "As deficiências no conhecimento de base significam que o que deveria ser uma rápida solução de problemas baseada em habilidades torna-se uma solução de problemas mais lenta baseada em regras ou conhecimento. As decisões levam mais tempo para o operador treinado inadequadamente e a pressão de tempo aumenta de acordo."
+      },
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "Tempo insuficiente para atender a todas as informações necessárias. A tarefa usa muito da linha do tempo (> 80%). Mesmo com uma estratégia eficaz de gerenciamento do tempo, não haveria tempo suficiente para atender a todas as informações críticas."
+      },
+      "Equipamento": {
+        "CÓDIGO": "W1",
+        "DESCRIÇÃO": "Equipamentos difíceis de usar ou que tenham uma interface de operação ruim podem retardar o desempenho da tarefa até o ponto em que a pressão de tempo se torna elevada."
+      },
+      "Ambiente": {
+        "CÓDIGO": "W3",
+        "DESCRIÇÃO": "Variáveis ambientais como o brilho, a vibração e o ruído podem aumentar os tempos necessários para assimilar as informações, levando a uma maior pressão de tempo."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Os gerentes e supervisores precisam estar cientes das tarefas que impõem pressões de tempo excessivas e iniciar ações corretivas."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "Inadequada para os recursos disponíveis."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "Falta de recursos, 'fazer mais com menos', pode levar a tempos excessivos."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Sabia-se que havia problemas sistêmicos com excesso de pressão de tempo no nível da tarefa e foram tomadas ações corretivas?"
+      }
+    }
+  },
+  "FALHA NO GERENCIAMENTO DE TEMPO (P-E)": {
+    "CÓDIGO DA FALHA": "P-E",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "Parte do processo de treinamento envolve aprender o que é importante e o que pode ser ignorado, além de métodos para controlar o andamento de uma tarefa. Uma estratégia eficaz de gerenciamento de tempo depende desse conhecimento."
+      },
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "Tempos de tarefas que são inerentemente altos geram pressões excessivas de tempo e exigem rotineiramente o uso de estratégias efetivas de gerenciamento de tempo."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Os gerentes e supervisores precisam estar cientes das tarefas que impõem pressões excessivas de tempo e asseguram que o treinamento seja apropriado para enfrentar essas demandas."
+      },
+      "Missão": {
+        "CÓDIGO": "O1",
+        "DESCRIÇÃO": "Inadequada para os recursos disponíveis. A missão deve ser compatível com as capacidades atuais de todos os operadores, garantindo que não exceda as limitações de tempo disponíveis para tarefas críticas."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "Os recursos necessários para o treinamento adequado devem estar disponíveis para preparar adequadamente os operadores para gerenciar suas tarefas dentro dos tempos estipulados."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Foram identificados tempos de tarefa rotineiramente excessivos, e ações corretivas foram tomadas para ajustar as cargas de trabalho e os padrões de tempo de tarefa."
+      }
+    }
+  },
+  "FALHA DE PERCEPÇÃO (P-F)": {
+    "CÓDIGO DA FALHA": "P-F",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Fisiológico": {
+        "CÓDIGO": "P1",
+        "DESCRIÇÃO": "O movimento da aeronave pode interferir nos fluidos dos canais auditivos semicirculares, afetando a orientação espacial."
+      },
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": "O sistema perceptivo pode ser enganado por informações ilusórias (visuais, auditivas), incluindo aquelas que levam à desorientação espacial. Tendências de processamento de informação, como disponibilidade, ignorar probabilidades prévias, intuição estatística, ancoragem, a tendência ‘como se’, e representatividade heurística, podem distorcer a percepção das informações recebidas, especialmente sob pressão de tempo."
+      },
+      "Treinamento e Seleção": {
+        "CÓDIGO": "P6",
+        "DESCRIÇÃO": "Treinamento em situações ilusórias comuns, como prevenção ao efeito do buraco negro, compensação por pistas inclinadas ou efeitos do terreno na aproximação, é essencial para suprimir sinais vestibulares conflitantes."
+      },
+      "Equipamento": {
+        "CÓDIGO": "W1",
+        "DESCRIÇÃO": "Exibições ambíguas de informações visuais e auditivas podem levar a percepções errôneas."
+      },
+      "Ambiente": {
+        "CÓDIGO": "W3",
+        "DESCRIÇÃO": "Ambientes com iluminação fraca, ofuscados ou ruidosos podem contribuir para a ambiguidade da situação, tornando informações importantes menos detectáveis."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Inadequações no equipamento ou ambiente foram relatadas, e iniciadas ações de acompanhamento?"
+      },
+      "Práticas e Processos Organizacionais": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "Existe um processo para geração de relatórios de risco sobre equipamentos e ambientes perigosos ou insatisfatórios?"
+      },
+      "Clima Organizacional": {
+        "CÓDIGO": "O5",
+        "DESCRIÇÃO": "Existem condições que afetam operações seguras devidamente investigadas e corrigidas?"
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "As deficiências sistêmicas de treinamento, equipamento ou ambiente operacional foram registradas e as ações corretivas foram tomadas?"
+      }
+    }
+  },
+  "FALHA DE ATENÇÃO (P-G)": {
+    "CÓDIGO DA FALHA": "P-G",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Fisiológico": {
+        "CÓDIGO": "P1",
+        "DESCRIÇÃO": "Fadiga e sonolência reduzem significativamente a capacidade de concentração do indivíduo, afetando diretamente a atenção necessária para realizar as tarefas."
+      },
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": [
+          "Decréscimo de vigilância e distração afetam a capacidade de manter o foco em tarefas essenciais.",
+          "Fatores externos, como preocupações pessoais ou eventos da vida, competem pela atenção do indivíduo, diminuindo sua disponibilidade para a tarefa principal.",
+          "Fadiga mental após longos períodos de atividade mental intensa pode diminuir a habilidade de se concentrar efetivamente.",
+          "Tendências de processamento de informação como saliência e tendência de confirmação podem distorcer a percepção e foco nas informações."
+        ]
+      },
+      "Social": {
+        "CÓDIGO": "P3",
+        "DESCRIÇÃO": "A pressão dos pares e a falta de coesão no grupo podem levar à vadiagem social, reduzindo a motivação e a atenção aos detalhes da tarefa. A complacência dentro de equipes excessivamente confiantes pode reduzir a vigilância."
+      },
+      "Prontidão pessoal": {
+        "CÓDIGO": "P5",
+        "DESCRIÇÃO": "Problemas pessoais podem distrair o indivíduo de suas responsabilidades laborais, afetando sua prontidão para realizar tarefas."
+      },
+      "Pressão do Tempo": {
+        "CÓDIGO": "T1",
+        "DESCRIÇÃO": "Tarefas realizadas sob condições de pressão temporal excessiva podem induzir fadiga crônica e reduzir a eficácia na manutenção da atenção ao longo do tempo."
+      },
+      "Equipamento": {
+        "CÓDIGO": "W1",
+        "DESCRIÇÃO": "Displays mal posicionados ou projetados inadequadamente podem dificultar a leitura e interpretação das informações, comprometendo a atenção ao detalhe."
+      },
+      "Fatores ambientais": {
+        "CÓDIGO": "W3",
+        "DESCRIÇÃO": "Ambientes com alto nível de ruído ou vibração intensa podem interferir com a capacidade do operador de manter a atenção."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "A falta de detecção e correção de fadiga crônica entre os operadores pode deixar falhas de atenção sem o devido controle."
+      },
+      "Provisão de Recursos": {
+        "CÓDIGO": "O2",
+        "DESCRIÇÃO": "A insuficiência de recursos humanos pode impedir o planejamento adequado de pausas, aumentando o risco de falhas de atenção devido ao cansaço."
+      },
+      "Práticas e Processos Organizacionais": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "A ausência de processos eficazes para monitorar e ajustar o estado e a carga de trabalho dos operadores pode contribuir para falhas de atenção."
+      },
+      "Clima Organizacional": {
+        "CÓDIGO": "O5",
+        "DESCRIÇÃO": "Um clima organizacional que não respeita os horários de descanso dos trabalhadores ou exige esforços contínuos pode contribuir para o aumento da fadiga e distração."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "Deficiências no acompanhamento de problemas conhecidos de fadiga entre os operadores e a falta de ação corretiva são falhas críticas no sistema de vigilância."
+      }
+    }
+  },
+  "FALHA DE COMUNICAÇÃO (P-H)": {
+    "CÓDIGO DA FALHA": "P-H",
+    "PRÉ-CONDIÇÕES PROVÁVEIS": {
+      "Psicológico": {
+        "CÓDIGO": "P2",
+        "DESCRIÇÃO": "Membros da equipe podem ter percepções incorretas de uma situação ou recuperar informações erradas da memória, levando a comunicações incorretas que podem comprometer a segurança."
+      },
+      "Social": {
+        "CÓDIGO": "P3",
+        "DESCRIÇÃO": "Dinâmicas sociais como o nível de comprometimento com a equipe, confiança, respeito e gradiente de autoridade podem influenciar a disposição dos membros da equipe para se comunicarem abertamente, afetando tanto a receptividade quanto a disposição para transmitir informações."
+      },
+      "Equipamento": {
+        "CÓDIGO": "W1",
+        "DESCRIÇÃO": "Dispositivos de comunicação com falhas ou projetados inadequadamente que mostram informações de maneira confusa podem dificultar a comunicação eficaz entre humanos e máquinas."
+      },
+      "Fatores Ambientais": {
+        "CÓDIGO": "W3",
+        "DESCRIÇÃO": "Condições como iluminação insuficiente, ambientes ofuscados ou excessivamente ruidosos podem mascarar sinais críticos e impedir a comunicação clara e efetiva."
+      },
+      "Monitoramento e Supervisão": {
+        "CÓDIGO": "S3",
+        "DESCRIÇÃO": "Falhas no monitoramento de inadequações no trabalho em equipe, nos equipamentos ou no ambiente podem levar à persistência de falhas de comunicação se medidas corretivas não forem implementadas."
+      },
+      "Práticas e Processos Organizacionais": {
+        "CÓDIGO": "O4",
+        "DESCRIÇÃO": "A ausência de processos formais para reportar riscos relacionados ao trabalho em equipe, equipamentos ou ambientes pode contribuir para falhas de comunicação e para a deterioração das condições de trabalho."
+      },
+      "Clima Organizacional": {
+        "CÓDIGO": "O5",
+        "DESCRIÇÃO": "Um clima organizacional que não investiga nem corrige condições que afetam a segurança das operações pode perpetuar um ambiente onde falhas de comunicação são comuns."
+      },
+      "Vigilância": {
+        "CÓDIGO": "O6",
+        "DESCRIÇÃO": "A falta de detecção e correção de problemas sistêmicos no trabalho em equipe, equipamentos ou ambiente indica uma falha no sistema de vigilância da organização."
+      }
+    }
+  }
+}}
+
+
+
+    
+
+]
+ 

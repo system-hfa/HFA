@@ -1,0 +1,80 @@
+{
+  "Template_para_Apresentacao_do_Relatorio_de_Analise": {
+    "Introducao": {
+      "Descricao": "Este template define o padrão para análises de eventos, assegurando que todas as etapas sejam completadas com detalhamento específico e aderindo estritamente às perguntas e respostas documentadas."
+    },
+    "Etapa_1_Resumo_do_Evento": {
+      "Descricao": "Forneça uma descrição detalhada do evento, incluindo localização exata, data e hora do evento, condições meteorológicas, tipo de operação sendo realizada, número de ocupantes, fases do voo e quaisquer sistemas da aeronave envolvidos ou afetados pelo evento.",
+      "Exemplo": "No dia 01 de abril de 2024, às 14:30, um helicóptero modelo XYZ enfrentou condições adversas de tempo durante uma aproximação em Chicago. A aproximação não estabilizada ocorreu sob chuva intensa, com 3 ocupantes a bordo, durante a fase de descida final."
+    },
+    "Etapa_2_Identificacao_do_Ponto_de_Fuga_da_Operacao_Segura": {
+      "Descricao": "Identifique o 'Ponto de Fuga da Operação Segura', conforme os critérios definidos nos documentos 'Guidelines.json' e 'Point.json', assegurando a adesão estrita às diretrizes estabelecidas. Consulte o documento 'Point.json' para detalhar o processo de identificação.",
+      "Exemplo": "A decisão de continuar a descida abaixo da altitude mínima segura de 700 pés em condições de baixa visibilidade constituiu o Ponto de Fuga da Operação Segura, contrariando os procedimentos de segurança padrão."
+    },
+    "Etapa_3_Falha_Ativa_de_Percepcao": {
+      "Pergunta_Principal": "O que o operador que realizou o Ato Inseguro acreditou que estava acontecendo?",
+      "Falha_Identificada": "Código e descrição conforme '3 - Failures.json'.",
+      "Justificativa_para_falha_encontrada": "Explique as razões que te levaram a concluir essa falha com base no fluxo de perguntas e respostas que você realizou.",
+      "Pre-condicoes_Provaveis": "Códigos e descrições conforme 'Pre-conditions.json'. Liste e justifique detalhadamente cada pré-condição identificada, organizando-as numericamente para garantir uma apresentação clara e sistemática. Detalhe como cada uma foi evidenciada pelo fluxo de perguntas e respostas e sua relação direta com o incidente.",
+      "Falhas_Descartadas": {
+        "Descricao": "Liste todas as falhas descartadas durante esta etapa e justifique por que elas não se aplicam.",
+        "Exemplo": [
+          {
+            "Falha_Descartada": "P-B (Falha Sensorial)",
+            "Justificativa": "O operador tinha plena capacidade sensorial, portanto, falhas sensoriais foram descartadas."
+          },
+          {
+            "Falha_Descartada": "P-C (Falha de Conhecimento)",
+            "Justificativa": "A análise indicou que a pressão do tempo foi o fator predominante, invalidando falhas de conhecimento."
+          }
+        ]
+      }
+    },
+    "Etapa_4_Falha_Ativa_de_Objetivo": {
+      "Pergunta_Principal": "Qual era a intenção ou o objetivo que levou o operador a cometer o ato inseguro?",
+      "Falha_Identificada": "Código e descrição conforme '4 - Failures.json'.",
+      "Justificativa_para_falha_encontrada": "Explique as razões que te levaram a concluir essa falha com base no fluxo de perguntas e respostas que você realizou.",
+      "Pre-condicoes_Provaveis": "Códigos e descrições conforme 'Pre-conditions.json'. Liste e justifique detalhadamente cada pré-condição identificada, organizando-as numericamente para garantir uma apresentação clara e sistemática. Detalhe como cada uma foi evidenciada pelo fluxo de perguntas e respostas e sua relação direta com o incidente.",
+      "Falhas_Descartadas": {
+        "Descricao": "Liste todas as falhas descartadas durante esta etapa e justifique por que elas não se aplicam.",
+        "Exemplo": [
+          {
+            "Falha_Descartada": "O-B (Violação Rotineira)",
+            "Justificativa": "A análise indicou que a falha ocorreu de forma excepcional, não sendo uma violação rotineira."
+          }
+        ]
+      }
+    },
+    "Etapa_5_Falha_Ativa_de_Acao": {
+      "Pergunta_Principal": "Como o operador estava tentando atingir o objetivo quando realizou o ato inseguro?",
+      "Falha_Identificada": "Código e descrição conforme '5 - Failures.json'.",
+      "Justificativa_para_falha_encontrada": "Explique as razões que te levaram a concluir essa falha com base no fluxo de perguntas e respostas que você realizou.",
+      "Pre-condicoes_Provaveis": "Códigos e descrições conforme 'Pre-conditions.json'. Liste e justifique detalhadamente cada pré-condição identificada, organizando-as numericamente para garantir uma apresentação clara e sistemática. Detalhe como cada uma foi evidenciada pelo fluxo de perguntas e respostas e sua relação direta com o incidente.",
+      "Falhas_Descartadas": {
+        "Descricao": "Liste todas as falhas descartadas durante esta etapa e justifique por que elas não se aplicam.",
+        "Exemplo": [
+          {
+            "Falha_Descartada": "A-B (Deslize ou Lapso)",
+            "Justificativa": "A ação foi implementada corretamente, portanto falhas de deslize foram descartadas."
+          }
+        ]
+      }
+    },
+    "Etapa_6_Conclusao_da_Analise_do_Evento": {
+      "Descricao": "Sumarize as principais descobertas da análise, destacando as falhas identificadas e suas causas subjacentes."
+    },
+    "Etapa_7_Acoes_de_Mitigacao_e_Prevencao": {
+      "Descricao": "Liste ações recomendadas para mitigar e prevenir futuras ocorrências com base nas conclusões da análise.",
+      "Validação_das_Recomendações": {
+        "Descricao": "Garanta que as recomendações propostas estejam diretamente vinculadas às falhas identificadas e abordem suas causas raiz.",
+        "Exemplo": [
+          {
+            "Recomendação": "Implementar treinamentos para gerenciar pressão de tempo em operações críticas.",
+            "Falha_Relacionada": "P-D (Falha de Atenção por Pressão do Tempo)",
+            "Justificativa": "A falha ocorreu devido à incapacidade de manter o foco sob pressão excessiva."
+          }
+        ]
+      }
+    }
+  }
+}
