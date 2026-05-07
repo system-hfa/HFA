@@ -57,14 +57,15 @@ async def create_event(data: EventInput, user=Depends(get_current_user)):
             "is_active": True
         }).execute()
 
-    # Verifica créditos
+    # Verifica créditos (enterprise plan = ilimitado)
     tenant = admin.table("tenants")\
-        .select("credits_balance")\
+        .select("plan, credits_balance")\
         .eq("id", tenant_id)\
         .single()\
         .execute()
 
-    if tenant.data["credits_balance"] < 1:
+    is_enterprise = tenant.data.get("plan") == "enterprise"
+    if not is_enterprise and tenant.data["credits_balance"] < 1:
         raise HTTPException(402, "Créditos insuficientes")
 
     # Cria evento
@@ -84,11 +85,12 @@ async def create_event(data: EventInput, user=Depends(get_current_user)):
 
     event_id = event.data[0]["id"]
 
-    # Debita crédito
-    admin.table("tenants")\
-        .update({"credits_balance": tenant.data["credits_balance"] - 1})\
-        .eq("id", tenant_id)\
-        .execute()
+    # Debita crédito (enterprise = sem débito)
+    if not is_enterprise:
+        admin.table("tenants")\
+            .update({"credits_balance": tenant.data["credits_balance"] - 1})\
+            .eq("id", tenant_id)\
+            .execute()
 
     admin.table("credit_transactions").insert({
         "tenant_id": tenant_id,
