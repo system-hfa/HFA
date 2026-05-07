@@ -5,22 +5,15 @@ import dynamic from 'next/dynamic'
 import { supabase } from '@/lib/supabase'
 import { apiCall } from '@/lib/api'
 import FlowStep from '@/components/FlowStep'
+import EditableClassification from '@/components/EditableClassification'
+import EditHistoryPanel from '@/components/EditHistoryPanel'
+import { STEP3_CODES, STEP4_CODES, STEP5_CODES } from '@/data/tutorials'
 
 const FlowDiagram = dynamic(() => import('@/components/FlowDiagram'), { ssr: false })
 
 type FlowTab = 'perception' | 'objective' | 'action'
 type PdfState = 'idle' | 'loading' | 'done' | 'error'
-
-const failurePrefix: Record<string, string> = { 'P-': 'blue', 'O-': 'purple', 'A-': 'red' }
-
-function FailureBadge({ code }: { code: string }) {
-  const color = failurePrefix[code?.slice(0, 2)] ?? 'slate'
-  return (
-    <span className={`inline-block bg-${color}-600/20 text-${color}-400 border border-${color}-600/30 px-3 py-1 rounded-full text-sm font-mono font-bold`}>
-      {code}
-    </span>
-  )
-}
+type BadgeMap = Record<string, 'preserved' | 'recalculated' | null>
 
 function MetaItem({ label, value }: { label: string; value?: string | null }) {
   if (!value) return null
@@ -35,11 +28,13 @@ function MetaItem({ label, value }: { label: string; value?: string | null }) {
 export default function EventDetailPage() {
   const { id } = useParams()
   const [event, setEvent]         = useState<any>(null)
+  const [analysis, setAnalysis]   = useState<any>(null)
   const [token, setToken]         = useState<string>('')
   const [loading, setLoading]     = useState(true)
   const [flows, setFlows]         = useState<any>(null)
   const [activeTab, setActiveTab] = useState<FlowTab>('perception')
   const [pdfState, setPdfState]   = useState<PdfState>('idle')
+  const [badges, setBadges]       = useState<BadgeMap>({})
 
   useEffect(() => {
     async function load() {
@@ -48,28 +43,49 @@ export default function EventDetailPage() {
       setToken(session.access_token)
       const data = await apiCall(`/events/${id}`, {}, session.access_token)
       setEvent(data)
+      if (data?.analyses) setAnalysis(data.analyses)
       setLoading(false)
 
       if (data?.analyses?.id) {
         try {
           const flowData = await apiCall(`/analyses/${data.analyses.id}/flows`, {}, session.access_token)
           setFlows(flowData)
-        } catch {
-          // flows are optional
-        }
+        } catch { /* flows are optional */ }
       }
     }
     load()
-    const interval = setInterval(load, 5000)
+    const interval = setInterval(() => {
+      // Only auto-refresh while processing
+      if (event?.status === 'processing') load()
+    }, 5000)
     return () => clearInterval(interval)
   }, [id])
 
+  const handleRecalculated = useCallback((data: any) => {
+    if (!data?.analysis) return
+    setAnalysis(data.analysis)
+
+    // Apply badges based on recalculate result
+    const stepMap: Record<number, string> = { 3: 'perception', 4: 'objective', 5: 'action' }
+    const newBadges: BadgeMap = {}
+    data.steps_recalculated?.forEach((s: number) => {
+      if (stepMap[s]) newBadges[stepMap[s]] = 'recalculated'
+    })
+    data.steps_preserved?.forEach((s: number) => {
+      if (stepMap[s]) newBadges[stepMap[s]] = 'preserved'
+    })
+    setBadges(newBadges)
+
+    // Clear badges after 8s
+    setTimeout(() => setBadges({}), 8000)
+  }, [])
+
   const downloadPdf = useCallback(async () => {
-    if (!event?.analyses || !token) return
+    if (!analysis || !token) return
     setPdfState('loading')
     try {
-      const apiUrl    = process.env.NEXT_PUBLIC_API_URL ?? ''
-      const analysisId = event.analyses.id
+      const apiUrl     = process.env.NEXT_PUBLIC_API_URL ?? ''
+      const analysisId = analysis.id
       const res = await fetch(`${apiUrl}/analyses/${analysisId}/pdf`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -91,12 +107,10 @@ export default function EventDetailPage() {
       setPdfState('error')
       setTimeout(() => setPdfState('idle'), 3000)
     }
-  }, [event, token])
+  }, [event, analysis, token])
 
   if (loading) return <div className="p-8 text-slate-400">Carregando...</div>
   if (!event)  return <div className="p-8 text-slate-400">Evento não encontrado</div>
-
-  const analysis = event.analyses
 
   const pdfLabel: Record<PdfState, string> = {
     idle:    '⬇ Baixar PDF',
@@ -111,8 +125,12 @@ export default function EventDetailPage() {
     action:     `Ação ${flows?.action?.codigo ?? ''}`,
   }
 
-  /* Best available summary text */
   const summaryText = analysis?.summary || analysis?.event_summary || null
+
+  // Flow path helpers
+  const perceptionFlow = analysis?.perception_discarded?.nos_percorridos ?? []
+  const objectiveFlow  = analysis?.objective_discarded?.nos_percorridos  ?? []
+  const actionFlow     = analysis?.action_discarded?.nos_percorridos     ?? []
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
@@ -160,10 +178,19 @@ export default function EventDetailPage() {
         </div>
       )}
 
-      {/* Analysis content */}
       {analysis && (
         <>
-          {/* ── ETAPA 1 — Resumo do Evento ───────────────────────────────── */}
+          {/* Edit history banner */}
+          {analysis.id && token && (
+            <EditHistoryPanel
+              analysisId={analysis.id}
+              token={token}
+              editCount={analysis.edit_count || 0}
+              onReverted={handleRecalculated}
+            />
+          )}
+
+          {/* ── ETAPA 1 — Resumo do Evento ───────────────────────────── */}
           <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
             <div className="px-6 py-3 bg-slate-700/50 border-b border-slate-700">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -171,7 +198,6 @@ export default function EventDetailPage() {
               </span>
             </div>
             <div className="p-6 space-y-4">
-              {/* Metadata grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-4 border-b border-slate-700">
                 <MetaItem
                   label="Data do evento"
@@ -179,15 +205,14 @@ export default function EventDetailPage() {
                     || (event.occurred_at ? new Date(event.occurred_at).toLocaleDateString('pt-BR') : null)
                     || new Date(event.created_at).toLocaleDateString('pt-BR')}
                 />
-                <MetaItem label="Tipo de operação"   value={analysis.operation_type  || event.operation_type} />
-                <MetaItem label="Aeronave / tipo"    value={event.aircraft_type} />
-                <MetaItem label="Local"              value={analysis.event_location} />
-                <MetaItem label="Fase do voo"        value={analysis.flight_phase} />
+                <MetaItem label="Tipo de operação"    value={analysis.operation_type || event.operation_type} />
+                <MetaItem label="Aeronave / tipo"     value={event.aircraft_type} />
+                <MetaItem label="Local"               value={analysis.event_location} />
+                <MetaItem label="Fase do voo"         value={analysis.flight_phase} />
                 <MetaItem label="Cond. meteorológicas" value={analysis.weather_conditions} />
                 <MetaItem label="Sistemas envolvidos"  value={analysis.systems_involved} />
                 <MetaItem label="Ocupantes"            value={analysis.occupants_count} />
               </div>
-              {/* Narrative summary */}
               {summaryText ? (
                 <p className="text-slate-200 leading-relaxed text-sm sm:text-base">{summaryText}</p>
               ) : (
@@ -198,7 +223,7 @@ export default function EventDetailPage() {
             </div>
           </div>
 
-          {/* ── ETAPA 2 — Ponto de Fuga ───────────────────────────────────── */}
+          {/* ── ETAPA 2 — Ponto de Fuga ───────────────────────────────── */}
           <div className="bg-amber-950 border border-amber-700 rounded-xl overflow-hidden">
             <div className="px-6 py-3 bg-amber-900/40 border-b border-amber-800">
               <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">
@@ -222,32 +247,59 @@ export default function EventDetailPage() {
             </div>
           </div>
 
-          {/* ── ETAPAS 3 / 4 / 5 — Cards P / O / A ──────────────────────── */}
+          {/* ── ETAPAS 3 / 4 / 5 — Editable failure classifications ──── */}
           <div>
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
               Etapas 3 · 4 · 5 — Falhas Ativas
+              <span className="ml-2 normal-case text-slate-600 font-normal">(clique "Editar" para recalcular)</span>
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[
-                { label: 'Etapa 3 · Percepção', code: analysis.perception_code, name: analysis.perception_name, justification: analysis.perception_justification },
-                { label: 'Etapa 4 · Objetivo',  code: analysis.objective_code,  name: analysis.objective_name,  justification: analysis.objective_justification },
-                { label: 'Etapa 5 · Ação',      code: analysis.action_code,     name: analysis.action_name,     justification: analysis.action_justification },
-              ].map(item => (
-                <div key={item.label} className="bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col gap-2">
-                  <p className="text-xs text-slate-400 uppercase tracking-wider">{item.label}</p>
-                  <span className="text-3xl font-bold text-emerald-400">{item.code}</span>
-                  <p className="text-slate-300 text-sm font-medium">{item.name}</p>
-                  <p className="text-slate-400 text-xs leading-relaxed line-clamp-4">{item.justification}</p>
-                </div>
-              ))}
+              <EditableClassification
+                code={analysis.perception_code}
+                name={analysis.perception_name}
+                justification={analysis.perception_justification}
+                flowPath={perceptionFlow}
+                stepAltered="3"
+                field="perception_code"
+                availableCodes={STEP3_CODES}
+                analysisId={analysis.id}
+                token={token}
+                badge={badges['perception'] ?? null}
+                onUpdated={handleRecalculated}
+              />
+              <EditableClassification
+                code={analysis.objective_code}
+                name={analysis.objective_name}
+                justification={analysis.objective_justification}
+                flowPath={objectiveFlow}
+                stepAltered="4"
+                field="objective_code"
+                availableCodes={STEP4_CODES}
+                analysisId={analysis.id}
+                token={token}
+                badge={badges['objective'] ?? null}
+                onUpdated={handleRecalculated}
+              />
+              <EditableClassification
+                code={analysis.action_code}
+                name={analysis.action_name}
+                justification={analysis.action_justification}
+                flowPath={actionFlow}
+                stepAltered="5"
+                field="action_code"
+                availableCodes={STEP5_CODES}
+                analysisId={analysis.id}
+                token={token}
+                badge={badges['action'] ?? null}
+                onUpdated={handleRecalculated}
+              />
             </div>
           </div>
 
-          {/* ── Fluxo de Decisão SERA ─────────────────────────────────────── */}
+          {/* ── Fluxo de Decisão SERA ──────────────────────────────────── */}
           {flows && (
             <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
               <h2 className="text-lg font-semibold text-white mb-4">Fluxo de Decisão SERA</h2>
-
               <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap mb-6">
                 {(['perception', 'objective', 'action'] as FlowTab[]).map(tab => (
                   <button
@@ -263,7 +315,6 @@ export default function EventDetailPage() {
                   </button>
                 ))}
               </div>
-
               <FlowDiagram chart={flows[activeTab].mermaid} id={activeTab} />
               <FlowStep
                 nos={flows[activeTab].nos_percorridos}
@@ -273,7 +324,7 @@ export default function EventDetailPage() {
             </div>
           )}
 
-          {/* ── Pré-condições ─────────────────────────────────────────────── */}
+          {/* ── Pré-condições ──────────────────────────────────────────── */}
           {analysis.preconditions?.length > 0 && (
             <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
               <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
@@ -302,7 +353,7 @@ export default function EventDetailPage() {
             </div>
           )}
 
-          {/* ── ETAPA 6 — Conclusões ──────────────────────────────────────── */}
+          {/* ── ETAPA 6 — Conclusões ───────────────────────────────────── */}
           <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
             <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -314,7 +365,7 @@ export default function EventDetailPage() {
             </div>
           </div>
 
-          {/* ── ETAPA 7 — Recomendações ───────────────────────────────────── */}
+          {/* ── ETAPA 7 — Recomendações ────────────────────────────────── */}
           {analysis.recommendations?.length > 0 && (
             <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
               <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
