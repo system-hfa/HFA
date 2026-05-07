@@ -8,8 +8,8 @@
   "Índice": [
     {"Nome": "NENHUMA FALHA DE PERCEPÇÃO", "CÓDIGO": "P-A", "ID": "#P-A"},
     {"Nome": "FALHA SENSORIAL", "CÓDIGO": "P-B", "ID": "#P-B"},
-    {"Nome": "FALHA DE CONHECIMENTO (PERCEPÇÃO)", "CÓDIGO": "P-C", "ID": "#P-C"},
-    {"Nome": "FALHA DE ATENÇÃO POR PRESSÃO DO TEMPO", "CÓDIGO": "P-D", "ID": "#P-D"},
+    {"Nome": "FALHA DE CONHECIMENTO/PERCEPÇÃO", "CÓDIGO": "P-C", "ID": "#P-C"},
+    {"Nome": "FALHA DE ATENÇÃO", "CÓDIGO": "P-D", "ID": "#P-D"},
     {"Nome": "FALHA NO GERENCIAMENTO DE TEMPO", "CÓDIGO": "P-E", "ID": "#P-E"},
     {"Nome": "FALHA DE PERCEPÇÃO", "CÓDIGO": "P-F", "ID": "#P-F"},
     {"Nome": "FALHA DE ATENÇÃO", "CÓDIGO": "P-G", "ID": "#P-G"},
@@ -20,6 +20,7 @@
       "ID": "#P-A",
       "Nome": "NENHUMA FALHA DE PERCEPÇÃO",
       "CÓDIGO": "P-A",
+      "FONTE": "Daumas (2018); Hendy (2003), Annex A",
       "DEFINIÇÃO": "Nenhuma Falha de Percepção (P-A) é identificada quando, após uma análise cuidadosa, verifica-se que não houve erros na interpretação das informações disponíveis durante o segmento de percepção relacionado ao ato inseguro. Esta constatação indica que as informações foram percebidas e interpretadas corretamente, sem mal-entendidos ou distorções que contribuíram para o ato inseguro. A ausência de falhas nesta etapa sugere que as atenções devem ser dirigidas para as análises nas etapas de Objetivo e Ação, onde outros fatores podem ter influenciado o desfecho do evento.",
       "EXPLICAÇÃO ADICIONAL": "A determinação de 'Nenhuma Falha de Percepção' não implica que o evento em análise foi isento de falhas, mas sim que a etapa de percepção não contribuiu para o ato inseguro. Portanto, é crucial continuar a investigação nas etapas subsequentes para identificar e corrigir falhas que possam ter ocorrido em outras partes do processo."
    
@@ -28,6 +29,7 @@
       "ID": "#P-B",
       "Nome": "FALHA SENSORIAL",
       "CÓDIGO": "P-B",
+      "FONTE": "Daumas (2018), Tabela 2; Hendy (2003), Annex A",
       "DEFINIÇÃO": "A Falha Sensorial (P-B) ocorre quando um operador ou equipe falha em detectar sinais essenciais visuais, auditivos, táteis ou olfativos necessários para uma operação segura e eficaz. Esta falha geralmente resulta de limitações físicas, uso de equipamento de proteção inadequado, ou condições ambientais adversas que interferem nas capacidades sensoriais normais. As consequências incluem a não detecção de alertas de segurança, má interpretação de dados operacionais críticos e falhas de comunicação, potencialmente levando a erros operacionais graves e acidentes.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Visibilidade Reduzida: Em ambientes com visibilidade reduzida, como operações noturnas ou em condições de neblina, operadores podem não detectar sinais visuais críticos. Por exemplo, pilotos podem falhar em ver pistas de pouso ou obstáculos, enquanto marinheiros podem não identificar outras embarcações a tempo, aumentando o risco de colisões.",
@@ -71,8 +73,9 @@
     },
     {
       "ID": "#P-C",
-      "Nome": "FALHA DE CONHECIMENTO (PERCEPÇÃO)",
-      "CÓDIGO": "P-C",    
+      "Nome": "FALHA DE CONHECIMENTO/PERCEPÇÃO",
+      "CÓDIGO": "P-C",
+      "FONTE": "Daumas (2018), Tabela 5; Hendy (2003), Annex A",
       "DEFINIÇÃO": "A Falha de Conhecimento (Percepção) (P-C) é identificada quando indivíduos ou equipes enfrentam situações nas quais a falta de conhecimento fundamental, habilidades, ou experiência impede a interpretação correta e completa das informações recebidas. Isso ocorre frequentemente em ambientes complexos ou sob novas exigências operacionais, onde a familiaridade com o sistema ou processo é crucial. Essa falha pode resultar em ações inadequadas ou inseguras, devido à incapacidade de compreender integralmente a situação ou os dados apresentados.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Diversidade de Equipamentos: Variações no design de equipamentos entre diferentes fabricantes podem exigir conhecimentos específicos para operação segura. A falta de familiaridade com essas variações pode levar a erros operacionais, especialmente em situações de alta pressão ou emergência.",
@@ -110,8 +113,10 @@
     },
     {
       "ID": "#P-D",
-      "Nome": "FALHA DE ATENÇÃO POR PRESSÃO DO TEMPO",
+      "Nome": "FALHA DE ATENÇÃO",
       "CÓDIGO": "P-D",
+      "FONTE": "Daumas (2018), Tabela 8; Hendy (2003), Figure 5",
+      "CRITERIO_CONTEXTO": "P-D: Falha de Atenção COM pressão de tempo excessiva. Pressão de tempo é a CIRCUNSTÂNCIA, não parte do nome canônico.",
       "CRITÉRIO_DECISOR": "Se houvesse mais tempo disponível, o resultado teria sido diferente? SIM → P-D. NÃO → P-G. (Hendy, 2003, Figure 5)",
       "DEFINIÇÃO": "A Falha de Atenção por Pressão do Tempo (P-D) ocorre quando há um desequilíbrio entre as demandas de atenção requeridas por uma tarefa e o tempo disponível para processar essas demandas. Isso geralmente resulta de uma fixação excessiva em certos elementos, negligenciando outros igualmente importantes, ou de uma sobrecarga cognitiva que impede a percepção adequada de todas as informações relevantes. Tais falhas podem levar a decisões equivocadas e ações inseguras em ambientes operacionais.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
@@ -143,7 +148,8 @@
     {
       "ID": "#P-E",
       "Nome": "FALHA NO GERENCIAMENTO DE TEMPO",
-      "CÓDIGO": "P-E",      
+      "CÓDIGO": "P-E",
+      "FONTE": "Daumas (2018), Tabela 9; Hendy (2003), Figure 5",      
       "DEFINIÇÃO": "A Falha no Gerenciamento de Tempo (P-E) ocorre quando há uma priorização incorreta ou inadequada da atenção devido a estratégias de gerenciamento de tempo deficientes. Esta falha geralmente envolve a incapacidade de simplificar tarefas complexas ou ajustar adequadamente os prazos de decisão em resposta a pressões temporais intensas, levando a decisões apressadas e potencialmente perigosas.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Ritmo da Tarefa Elevado: Em ambientes onde o ritmo das tarefas é naturalmente acelerado, como em linhas de montagem ou mercados financeiros, a exigência de decisões rápidas pode levar à negligência de verificações de segurança ou à omissão de etapas críticas.",
@@ -170,6 +176,7 @@
       "ID": "#P-F",
       "Nome": "FALHA DE PERCEPÇÃO",
       "CÓDIGO": "P-F",
+      "FONTE": "Daumas (2018), Tabela 14; Hendy (2003), Figure 5",
       "DEFINIÇÃO": "Falha de Percepção (P-F) ocorre quando as informações sensoriais disponíveis são interpretadas incorretamente, apesar da atenção apropriada a essas informações. Esta falha resulta frequentemente de ilusões sensoriais, ambiguidades nos dados percebidos ou defeitos na apresentação das informações. Tal erro de interpretação pode levar a decisões baseadas em percepções distorcidas, com potenciais consequências negativas em situações críticas.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Ilusões Visuais: Enganos perceptivos ocorrem frequentemente em condições de luz adversa ou em ambientes com configurações visuais complexas, podendo levar a interpretações errôneas de situações críticas.",
@@ -205,6 +212,8 @@
       "ID": "#P-G",
       "Nome": "FALHA DE ATENÇÃO",
       "CÓDIGO": "P-G",
+      "FONTE": "Daumas (2018), Tabela 16; Hendy (2003), Figure 5",
+      "CRITERIO_CONTEXTO": "P-G: Falha de Atenção SEM pressão de tempo excessiva. P-D e P-G têm o mesmo nome canônico; a distinção está no CRITÉRIO_DECISOR.",
       "CRITÉRIO_DECISOR": "Se houvesse mais tempo disponível, o resultado teria sido diferente? NÃO → P-G. SIM → P-D. A falha de atenção ocorre independentemente da pressão de tempo — há outro fator (distração, complacência, fadiga). (Hendy, 2003, Figure 5)",
       "DEFINIÇÃO": "A Falha de Atenção (P-G) ocorre quando um indivíduo falha em perceber informações relevantes que estão presentes e acessíveis. Esta falha não inclui cenários onde as informações são inadequadamente apresentadas ou quando há uma ausência de informações necessárias. Frequentemente, isso resulta de uma incapacidade de manter o foco devido a distrações ou sobrecarga, levando à negligência de detalhes vitais que poderiam influenciar decisões importantes.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
@@ -239,6 +248,7 @@
       "ID": "#P-H",
       "Nome": "FALHA DE COMUNICAÇÃO",
       "CÓDIGO": "P-H",
+      "FONTE": "Daumas (2018), Tabela 12; Hendy (2003), Annex A",
       "DEFINIÇÃO": "Falha de Comunicação (P-H) ocorre quando as informações relevantes não são transmitidas ou são transmitidas de forma incorreta, tanto em comunicações entre humanos quanto entre máquinas e humanos. Essa falha geralmente resulta em uma compreensão equivocada das situações e pode levar a ações inapropriadas ou perigosas, comprometendo a segurança e a eficácia operacional.",
       
       "CIRCUNSTÂNCIAS TÍPICAS": [

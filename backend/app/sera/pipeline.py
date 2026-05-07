@@ -7,32 +7,36 @@ from app.database import get_supabase_admin
 DOCS_PATH = Path(__file__).parent / "documents"
 
 # ── Failure name table aligned with 5-Failures.json ───────────────────────────
+# Canonical names from Daumas (2018) and Hendy (2003).
+# Source of truth: *-Failures.json files, NOT Flow.json node labels.
+# P-D and P-G share the same canonical name "Falha de Atenção";
+# distinction is in CRITÉRIO_DECISOR, not the displayed name.
 FAILURE_NAMES: dict[str, str] = {
-    # Percepção
+    # Etapa 3 — Percepção (Daumas 2018, Tabelas 1-12; Hendy 2003, Annex A)
     "P-A": "Nenhuma Falha de Percepção",
-    "P-B": "Falha Sensorial / Perceptual",
-    "P-C": "Falha de Conhecimento / Reconhecimento",
-    "P-D": "Falha de Memória",
+    "P-B": "Falha Sensorial",
+    "P-C": "Falha de Conhecimento/Percepção",       # Daumas 2018, Tabela 5
+    "P-D": "Falha de Atenção",                       # Daumas 2018, Tabela 8  (com pressão de tempo)
     "P-E": "Falha no Gerenciamento do Tempo",
-    "P-F": "Falha de Percepção / Informação Ambígua",
-    "P-G": "Falha de Atenção",
-    "P-H": "Falha de Comunicação / Informação",
-    # Objetivo
+    "P-F": "Falha de Percepção",
+    "P-G": "Falha de Atenção",                       # Daumas 2018, Tabela 16 (sem pressão de tempo)
+    "P-H": "Falha de Comunicação",                   # Daumas 2018, Tabela 12
+    # Etapa 4 — Objetivo (Daumas 2018, Tabelas 10-11, 15; Hendy 2003)
     "O-A": "Nenhuma Falha de Objetivo",
     "O-B": "Violação Rotineira",
-    "O-C": "Violação Excepcional",
-    "O-D": "Falha de Intenção / Não Violação",
-    # Ação — alinhado com 5-Failures.json (Daumas 2018)
+    "O-C": "Falha de Intenção / Violação Excepcional",  # Daumas 2018, Tabela 11
+    "O-D": "Falha de Intenção (Não Violação)",           # Daumas 2018, Tabela 15
+    # Etapa 5 — Ação (Daumas 2018, Tabelas 3-7, 13, 17-20; Hendy 2003, Figure 5)
     "A-A": "Nenhuma Falha de Ação",
-    "A-B": "Deslizes, Omissões e Lapsos",
-    "A-C": "Falha no Feedback da Execução",
-    "A-D": "Inabilidade para a Resposta",
-    "A-E": "Falha de Conhecimento (Decisão)",
-    "A-F": "Falha na Seleção da Ação",
-    "A-G": "Falha de Feedback na Tomada de Decisão",
+    "A-B": "Deslizes, Omissões e Lapsos",            # Daumas 2018, Tabela 3
+    "A-C": "Falha no Feedback da Execução",          # Daumas 2018, Tabela 4
+    "A-D": "Inabilidade para a Resposta",            # Daumas 2018, Tabela 7
+    "A-E": "Falha de Conhecimento/Decisão",          # Daumas 2018, Tabela 6
+    "A-F": "Falha na Seleção da Ação",               # Daumas 2018, Tabela 17
+    "A-G": "Falha de Feedback",                      # Daumas 2018, Tabela 13
     "A-H": "Falha no Gerenciamento do Tempo",
-    "A-I": "Falha na Seleção da Ação por Pressão do Tempo",
-    "A-J": "Falha de Feedback por Pressão do Tempo",
+    "A-I": "Falha na Seleção da Ação por Pressão do Tempo",   # Daumas 2018, Tabela 19
+    "A-J": "Falha de Feedback por Pressão do Tempo",          # Daumas 2018, Tabela 20
 }
 
 NO_ARTIFACTS = """
@@ -249,15 +253,14 @@ def run_step5(relato: str, ponto_fuga: dict, step3: dict, step4: dict) -> dict:
   NODE 2: Was the action correct/adequate for the situation?
            YES → no action failure → return A-A
            NO  → go to NODE 3
-  NODE 3: Was the error due to LACK OF CAPABILITY/KNOWLEDGE, or WRONG SELECTION/DECISION?
-           INCAPACIDADE (capability) → go to NODE 4-CAPABILITY
-           SELEÇÃO (selection)       → go to NODE 4-SELECTION
-  NODE 4-CAPABILITY: Did the operator have prerequisite physical capability?
-           NO  (physical limitation) → A-D
-           YES (has physical, lacks decision knowledge) → A-E
-  NODE 4-SELECTION: Was time pressure excessive?
-           YES → NODE 5-TIME: A-H / A-I / A-J
-           NO  → NODE 5-NOTM: A-F or A-G
+  NODE 3: Did the operator have prerequisite capability? (physical AND technical ability to do the correct action)
+           YES (had capability, chose wrong) → go to NODE 4 (time pressure check)
+           NO  (lacked capability)           → classify between A-D and A-E:
+               A-D: physical/motor/environmental limitation
+               A-E: lacked knowledge or decision skill
+  NODE 4: Was time pressure excessive?
+           YES → NODE 5-TIME: classify between A-H / A-I / A-J
+           NO  → NODE 5-NOTM: classify between A-F or A-G
 
 - KEY DISTINCTION (NODE 1):
   "Operator intended AND executed the action (even if it was the wrong choice)" → NODE 1 = YES → Selection path
@@ -313,34 +316,33 @@ Responda APENAS com JSON: {{"resposta": "Sim/Não", "justificativa": "..."}}""")
     if no2["resposta"].lower() == "sim":
         return _flow_result("A-A", [no1, no2], "Ação correta e adequada — nenhuma falha de ação")
 
-    # NÓ 3 — Incapacidade física/conhecimento  vs.  Seleção/decisão errada?
+    # NÓ 3 — O operador tinha capacidade pré-requisito?
+    # (capacidade física E técnica para executar a ação correta)
     r3 = ask(system, f"""Nó 1=SIM | Nó 2=NÃO — ação implementada como pretendida, mas foi a escolha errada.
 (A-B, A-C excluídos no Nó 1)
 
-NÓ 3 — A raiz da falha foi INCAPACIDADE do operador ou SELEÇÃO/DECISÃO errada?
-• INCAPACIDADE: o operador não tinha condições físicas, motoras ou de conhecimento para executar a ação correta (→ A-D/A-E)
-• SELEÇÃO: o operador tinha condições, mas escolheu/planejou a ação errada ou não monitorou o resultado (→ A-F/A-G/A-H/A-I/A-J)
-Responda APENAS com JSON: {{"tipo": "incapacidade ou seleção", "justificativa": "..."}}""")
+NÓ 3 — O operador tinha CAPACIDADE PRÉ-REQUISITO para executar a ação correta?
+(avalie: tinha força física, alcance, habilidade motora E conhecimento técnico para realizar a ação certa)
+• SIM: tinha capacidade mas ainda assim escolheu/decidiu errado → ir para Nó 4 (pressão de tempo)
+• NÃO: não tinha capacidade física ou conhecimento → classificar entre A-D e A-E
+  - A-D: INABILIDADE FÍSICA — limitação física, ergonômica, motora ou ambiental (força, alcance, tempo de reação)
+  - A-E: FALHA DE CONHECIMENTO/DECISÃO — tinha capacidade física, mas lhe faltava o conhecimento ou a habilidade de decisão
+Responda APENAS com JSON: {{"capacidade": "Sim/Não", "codigo_se_nao": "A-D ou A-E ou null", "justificativa": "..."}}""")
     no3 = safe_parse(r3, "Etapa 5 - Nó 3")
 
-    if no3.get("tipo", "").lower() == "incapacidade":
-        # Caminho capacidade → A-D ou A-E
-        r4 = ask(system, f"""Nó 3 = INCAPACIDADE — operador não tinha condições para a resposta correta.
-(A-B, A-C, A-F, A-G, A-H, A-I, A-J TODOS EXCLUÍDOS)
-
-NÓ 4 — Classifique a incapacidade:
-• A-D: INABILIDADE FÍSICA — limitação física, ergonômica, motora ou ambiental impediu a ação correta
-• A-E: FALHA DE CONHECIMENTO/DECISÃO — operador tinha capacidade física, mas lhe faltava conhecimento ou habilidade de decisão
-Responda APENAS com JSON: {{"codigo": "A-D ou A-E", "justificativa": "..."}}""")
-        no4 = safe_parse(r4, "Etapa 5 - Nó 4 (capacidade)")
+    if no3.get("capacidade", "").lower() == "não":
+        # Sem capacidade → A-D ou A-E
+        cod = no3.get("codigo_se_nao", "A-E")
+        if cod not in ("A-D", "A-E"):
+            cod = "A-E"
         return _flow_result(
-            no4["codigo"],
-            [no1, no2, no3, no4],
-            "A-B, A-C excluídos no Nó 1; A-F, A-G, A-H, A-I, A-J excluídos no Nó 3 (incapacidade)",
+            cod,
+            [no1, no2, no3],
+            "A-B, A-C excluídos no Nó 1; A-F, A-G, A-H, A-I, A-J excluídos no Nó 3 (sem capacidade)",
         )
 
-    # Caminho seleção → verificar pressão de tempo
-    r4 = ask(system, f"""Nó 3 = SELEÇÃO ERRADA — operador tinha condições mas escolheu/decidiu errado.
+    # Caminho capacidade = SIM → verificar pressão de tempo
+    r4 = ask(system, f"""Nó 3 = SIM — operador tinha capacidade pré-requisito mas escolheu/decidiu errado.
 (A-B, A-C, A-D, A-E TODOS EXCLUÍDOS)
 
 NÓ 4 — A pressão de tempo era EXCESSIVA no momento do ato inseguro?
@@ -370,7 +372,7 @@ Responda APENAS com JSON: {{"codigo": "A-H, A-I ou A-J", "justificativa": "..."}
 
 NÓ 5 — Classifique a falha de seleção/decisão sem pressão de tempo:
 • A-F: SELEÇÃO DE AÇÃO errada — escolheu plano/procedimento incorreto sem pressão de tempo
-• A-G: FALHA DE FEEDBACK NA DECISÃO — não monitorou/verificou o resultado da sua decisão
+• A-G: FALHA DE FEEDBACK — não monitorou/verificou o resultado da sua decisão (trocou atenção antes de confirmar)
 Responda APENAS com JSON: {{"codigo": "A-F ou A-G", "justificativa": "..."}}""")
     no5 = safe_parse(r5, "Etapa 5 - Nó 5 (sem pressão)")
     return _flow_result(

@@ -12,7 +12,7 @@
     {"NOME": "INABILIDADE PARA A RESPOSTA", "Código": "A-D", "ID": "#A-D"},
     {"NOME": "FALHA DE CONHECIMENTO (DECISÃO)", "Código": "A-E", "ID": "#A-E"},
     {"NOME": "FALHA NA SELEÇÃO DE AÇÃO", "Código": "A-F", "ID": "#A-F"},
-    {"NOME": "FALHA DE FEEDBACK NA TOMADA DE DECISÃO", "Código": "A-G", "ID": "#A-G"},
+    {"NOME": "FALHA DE FEEDBACK", "Código": "A-G", "ID": "#A-G"},
     {"NOME": "FALHA NO GERENCIAMENTO DO TEMPO", "Código": "A-H", "ID": "#A-H"},
     {"NOME": "FALHA NA SELEÇÃO DA AÇÃO POR PRESSÃO DO TEMPO", "Código": "A-I", "ID": "#A-I"},
     {"NOME": "FALHA DE FEEDBACK POR PRESSÃO DO TEMPO", "Código": "A-J", "ID": "#A-J"}
@@ -22,12 +22,14 @@
   "ID": "#A-A",
   "NOME": "NENHUMA FALHA DE AÇÃO",
   "CÓDIGO": "A-A",
+  "FONTE": "Daumas (2018); Hendy (2003), Annex A",
   "DEFINIÇÃO": "Quando não forem identificadas falhas no segmento de ação relacionado ao ato inseguro analisado, a análise desta etapa deve ser concluída registrando-se como 'NENHUMA FALHA DE AÇÃO (A-A)'. Isso indica que as ações do operador estavam em conformidade com os procedimentos estabelecidos e as práticas de segurança recomendadas. Após esta conclusão, a análise procederá com a revisão das etapas anteriores de PERCEPÇÃO e OBJETIVO, se necessário, para assegurar uma compreensão completa do evento."
 },
 {
   "ID": "#A-B",
   "NOME": "DESLIZES, OMISSÕES E LAPSOS",
   "CÓDIGO": "A-B",
+  "FONTE": "Daumas (2018), Tabela 3; Hendy (2003), Figure 5",
   "DEFINIÇÃO": "Deslizes, omissões e lapsos são categorias de erros humanos relacionados à execução inadequada de tarefas planejadas. Eles diferem das falhas de decisão ou de percepção, pois ocorrem durante a fase de ação, quando o indivíduo já decidiu o que fazer, mas falha na realização. Deslizes são erros na execução de uma ação devido à ativação de uma resposta automática e habitual que não é apropriada naquele momento específico. Omissões ocorrem quando uma ação planejada ou necessária é completamente esquecida ou negligenciada. Lapsos são falhas de memória onde uma ação intencionada não é realizada no momento certo, frequentemente devido a distrações ou interrupções.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Rotinas Automatizadas versus Tarefas Atípicas: O cérebro humano tende a automatizar tarefas rotineiras para economizar energia cognitiva. Quando uma tarefa atípica é inserida em meio a uma rotina, o risco de realizar a ação automática padrão em vez da ação atípica intencionada aumenta.",
@@ -52,8 +54,10 @@
 },
 {
   "ID": "#A-C",
-  "NOME": "FALHA NO FEEDBACK",
+  "NOME": "FALHA NO FEEDBACK NA EXECUÇÃO",
   "CÓDIGO": "A-C",
+  "FONTE": "Daumas (2018), Tabela 4; Hendy (2003), Figure 5",
+  "NOTA": "Nome canônico completo: 'Falha no Feedback na Execução'. Distinguir: A-C = execução, A-G = decisão, A-J = pressão de tempo.",
   "DEFINIÇÃO": "O feedback é um loop essencial no controle e na execução de qualquer tarefa, permitindo que indivíduos e equipes ajustem suas ações com base em resultados parciais ou finais. Uma Falha no Feedback ocorre quando esse loop é interrompido ou ausente, impedindo a identificação e correção de erros. Isso pode ser resultado da falta de mecanismos de monitoramento, da não observação dos resultados das ações ou da ausência de comunicação entre membros da equipe sobre o progresso e os resultados das tarefas.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Altas Demandas Operacionais: Em ambientes onde as equipes estão sob intensa pressão de tempo, pode haver tendência a pular etapas de feedback para acelerar a conclusão das tarefas.",
@@ -87,6 +91,7 @@
   "ID": "#A-D",
   "NOME": "INABILIDADE PARA A RESPOSTA",
   "CÓDIGO": "A-D",
+  "FONTE": "Daumas (2018), Tabela 7; Hendy (2003), Figure 5",
   "DEFINIÇÃO": "A inabilidade para a Resposta ocorre quando um indivíduo ou equipe possui conhecimento sobre a ação a ser realizada, mas encontra-se incapaz de executá-la devido a limitações físicas, ergonômicas ou ambientais. Diferente de uma falha de conhecimento ou percepção, essa falha destaca a brecha entre a intenção e a capacidade física de resposta. Isso pode acontecer devido a uma variedade de fatores, incluindo condições físicas temporárias, inadequações no design do equipamento ou do ambiente de trabalho, e inadequações na seleção ou treinamento do pessoal.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Força Insuficiente: Situações onde é necessária força física além da capacidade do operador.",
@@ -123,8 +128,9 @@
 },
 {
   "ID": "#A-E",
-  "NOME": "FALHA DE CONHECIMENTO (DECISÃO)",
+  "NOME": "FALHA DE CONHECIMENTO/DECISÃO",
   "CÓDIGO": "A-E",
+  "FONTE": "Daumas (2018), Tabela 6; Hendy (2003), Figure 5",
   "DEFINIÇÃO": "A Falha de Conhecimento (Decisão) ocorre quando um indivíduo ou grupo possui as capacidades físicas para agir, mas não possui o conhecimento ou habilidades necessárias para tomar a decisão correta ou apropriada em resposta a uma situação. Essa falha não é uma questão de incapacidade física, mas de falta de compreensão, experiência ou atualização no conhecimento necessário para responder de forma eficaz.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Situações onde o treinamento específico da tarefa não foi proporcionado.",
@@ -166,8 +172,9 @@
 },
 {
   "ID": "#A-F",
-  "NOME": "FALHA NA SELEÇÃO DE AÇÃO",
+  "NOME": "FALHA NA SELEÇÃO DA AÇÃO",
   "CÓDIGO": "A-F",
+  "FONTE": "Daumas (2018), Tabela 17; Hendy (2003), Figure 5",
   "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? NÃO → A-F (sem pressão de tempo). SIM → A-I (com pressão de tempo). (Hendy, 2003, Figure 5; Daumas, 2018, Tabela 17)",
   "DEFINIÇÃO": "A falha na seleção de ação é um erro no processo decisório que resulta na escolha de um plano inadequado para alcançar o objetivo desejado. Este tipo de falha ocorre quando o indivíduo ou equipe, apesar de ter acesso a informações corretas e possuir a capacidade de execução, escolhe uma ação que não é a mais apropriada para a situação. Isso pode incluir a execução de um procedimento incorreto que foi escolhido erroneamente, a falha em selecionar a ação correta disponível na memória, ou a escolha de uma 'não ação' quando uma ação era necessária.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
@@ -204,8 +211,10 @@
 },
 {
   "ID": "#A-G",
-  "NOME": "FALHA DE FEEDBACK NA TOMADA DE DECISÃO",
+  "NOME": "FALHA DE FEEDBACK",
   "CÓDIGO": "A-G",
+  "FONTE": "Daumas (2018), Tabela 13; Hendy (2003), Figure 5",
+  "NOTA": "Nome canônico é 'Falha de Feedback'. Contexto: decisão sem pressão de tempo. Distinguir: A-C = execução, A-G = decisão, A-J = feedback sob pressão de tempo.",
   "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? NÃO → A-G (feedback sem pressão de tempo). SIM → A-J (feedback com pressão de tempo). (Hendy, 2003, Figure 5; Daumas, 2018, Tabela 13)",
   "DEFINIÇÃO": "A falha de feedback ocorre quando os mecanismos de controle e correção de erros não estão ativos ou eficientes, geralmente devido à desatenção prematura. Este tipo de falha é crucial porque o feedback adequado é essencial para garantir que as ações estejam alinhadas com os objetivos pretendidos e para corrigir desvios à medida que ocorrem. A ausência de feedback adequado impede a detecção e correção de erros, permitindo que ações incorretas prossigam sem intervenção.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
@@ -245,6 +254,7 @@
   "ID": "#A-H",
   "NOME": "FALHA NO GERENCIAMENTO DO TEMPO",
   "CÓDIGO": "A-H",
+  "FONTE": "Daumas (2018), Tabela 18; Hendy (2003), Figure 5",
   "DEFINIÇÃO": "Uma falha no gerenciamento do tempo ocorre quando a alocação e a priorização do tempo não são otimizadas, resultando na incapacidade de completar tarefas de maneira eficiente ou eficaz. Esta falha se manifesta quando as tarefas exigem mais tempo do que o disponível, ou quando a estratégia de execução da tarefa não é adaptada à complexidade ou à urgência da situação. Estratégias inadequadas podem incluir falhar em simplificar tarefas complexas ou em ajustar prazos para acomodar demandas realistas de tempo.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
     "Sobrecarga de Tarefas: Situações onde o volume ou a complexidade das tarefas atribuídas excede a capacidade do indivíduo de gerenciá-las dentro do tempo disponível. Isso frequentemente resulta em decisões apressadas, omissão de procedimentos críticos e erros de priorização.",
@@ -288,6 +298,7 @@
   "ID": "#A-I",
   "NOME": "FALHA NA SELEÇÃO DA AÇÃO POR PRESSÃO DO TEMPO",
   "CÓDIGO": "A-I",
+  "FONTE": "Daumas (2018), Tabela 19; Hendy (2003), Figure 5",
   "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? SIM → A-I (com pressão de tempo). NÃO → A-F (sem pressão de tempo). (Hendy, 2003, Figure 5)",
   "DEFINIÇÃO": "A falha na seleção da ação ocorre quando há um erro crítico no processo de decisão, caracterizado pela incapacidade de formular o plano correto para alcançar um objetivo. Este tipo de falha não decorre de um equívoco sobre a situação ou de uma percepção errada, mas sim de deficiências na escolha da ação apropriada. Com frequência, isso se deve à falta de tempo para analisar e selecionar entre múltiplas opções, o que pode resultar em uma decisão apressada ou inadequada.",
   "CIRCUNSTÂNCIAS TÍPICAS": [
@@ -332,6 +343,7 @@
   "ID": "#A-J",
   "NOME": "FALHA DE FEEDBACK POR PRESSÃO DO TEMPO",
   "CÓDIGO": "A-J",
+  "FONTE": "Daumas (2018), Tabela 20; Hendy (2003), Figure 5",
   "CRITÉRIO_DECISOR": "A pressão de tempo era excessiva? SIM → A-J (feedback com pressão de tempo). NÃO → A-G (feedback sem pressão de tempo). (Hendy, 2003, Figure 5)",
   "DEFINIÇÃO": "A falha de feedback ocorre quando o retorno necessário para verificar e corrigir ações não está disponível, frequentemente devido à atenção sendo deslocada prematuramente antes de se atingir o objetivo. A ausência de feedback adequado impede a execução de ações corretivas essenciais, como backup, verificação cruzada ou monitoramento, essenciais para assegurar a realização dos objetivos estabelecidos.",
   "CIRCUNSTÂNCIAS TÍPICAS": [

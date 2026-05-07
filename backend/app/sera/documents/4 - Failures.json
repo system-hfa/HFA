@@ -9,7 +9,7 @@
   "Índice": [
     {"Nome": "NENHUMA FALHA DE OBJETIVO", "CÓDIGO": "O-A", "ID": "#O-A"},
     {"Nome": "VIOLAÇÃO ROTINEIRA", "CÓDIGO": "O-B", "ID": "#O-B"},
-    {"Nome": "VIOLAÇÃO EXCEPCIONAL", "CÓDIGO": "O-C", "ID": "#O-C"},
+    {"Nome": "FALHA DE INTENÇÃO / VIOLAÇÃO EXCEPCIONAL", "CÓDIGO": "O-C", "ID": "#O-C"},
     {"Nome": "FALHA DE INTENÇÃO (NÃO VIOLAÇÃO)", "CÓDIGO": "O-D", "ID": "#O-D"}
 
   ],
@@ -18,6 +18,7 @@
       "ID": "#O-A",
       "Nome": "NENHUMA FALHA DE OBJETIVO",
       "CÓDIGO": "O-A",
+      "FONTE": "Daumas (2018); Hendy (2003), Annex A",
       "DEFINIÇÃO": "Quando a análise revelar a ausência de falhas no segmento de objetivo relacionado ao ato inseguro analisado, a etapa deve ser concluída como 'Nenhuma Falha de Objetivo (O-A)'. Isso indica que o objetivo do operador estava alinhado com as práticas seguras e regulamentações pertinentes. A análise deve então ser direcionada para as etapas de Ação, prosseguindo de acordo com a metodologia SERA."
    
     },
@@ -25,6 +26,7 @@
       "ID": "#O-B",
       "Nome": "VIOLAÇÃO ROTINEIRA",
       "CÓDIGO": "O-B",
+      "FONTE": "Daumas (2018), Tabela 10; Hendy (2003), Figure 5",
       "DEFINIÇÃO": "Violação Rotineira (O-B) refere-se a desvios recorrentes e habituais das práticas operacionais estabelecidas, adotados como parte do comportamento normal de um indivíduo ou grupo. Estes desvios, frequentemente minimizados ou considerados 'atalhos aceitáveis', podem ser conhecidos e tolerados por supervisores ou gerentes. Crucialmente, essas violações não surgem de decisões conscientes para quebrar as regras em situações críticas, mas de uma cultura organizacional que pode, inadvertidamente, promover tais práticas por falta de reforço das normas.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Cultura de Atalhos: Priorização da eficiência sobre procedimentos seguros.",
@@ -67,8 +69,9 @@
     },
     {
       "ID": "#O-C",
-      "Nome": "VIOLAÇÃO EXCEPCIONAL",
+      "Nome": "FALHA DE INTENÇÃO / VIOLAÇÃO EXCEPCIONAL",
       "CÓDIGO": "O-C",
+      "FONTE": "Daumas (2018), Tabela 11; Hendy (2003), Figure 5",
       "DEFINIÇÃO": "Violações excepcionais representam desvios isolados de autoridade que não são característicos do comportamento habitual de um indivíduo. Esses desvios, geralmente, não são aprovados pela gestão. Diferentemente das violações rotineiras, são consideradas excepcionais não por sua gravidade, mas por serem atípicas para o indivíduo e não sancionadas pela autoridade supervisora.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Situações de Alta Pressão: Circunstâncias que exigem decisões rápidas sob stress.",
@@ -113,7 +116,8 @@
     {
       "ID": "#O-D",
       "Nome": "FALHA DE INTENÇÃO (NÃO VIOLAÇÃO)",
-      "CÓDIGO": "O-D",    
+      "CÓDIGO": "O-D",
+      "FONTE": "Daumas (2018), Tabela 15; Hendy (2003), Figure 5",
       "DEFINIÇÃO": "Uma falha de intenção (não violação) ocorre quando, apesar de uma correta percepção da situação, opta-se intencionalmente por uma ação arriscada. Isso pode acontecer independentemente de o risco ter sido totalmente avaliado ou não. Caso não haja uma opção conservadora que atenda aos objetivos da tarefa, é necessário revisar os objetivos da tarefa e os requisitos da missão para identificar as pré-condições que levaram a essa escolha.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
         "Motivação Excessiva: Uma forte determinação para alcançar um objetivo, mesmo às custas de assumir riscos significativos.",
