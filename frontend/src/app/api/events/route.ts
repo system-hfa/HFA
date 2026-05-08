@@ -17,6 +17,16 @@ function jsonError(message: string, status: number) {
   return NextResponse.json({ detail: message }, { status })
 }
 
+function logEventsError(error: unknown, stage: string) {
+  const e = error instanceof Error ? error : new Error(String(error))
+  console.error('[/api/events Error]', {
+    stage,
+    message: e.message,
+    stack: e.stack,
+    cause: e.cause,
+  })
+}
+
 export async function GET(req: Request) {
   try {
     const user = await requireBearerUser(req)
@@ -173,8 +183,11 @@ export async function POST(req: Request) {
       respostaSucesso = true
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
-      console.error(err)
-      return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
+      logEventsError(err, 'pipeline')
+      return jsonError(
+        err instanceof Error ? `Falha no pipeline SERA: ${err.message}` : 'Falha no pipeline SERA',
+        500
+      )
     } finally {
       // Garante estorno quando o débito ocorreu mas a análise não terminou com sucesso.
       if (creditoDebitado && !respostaSucesso) {
@@ -195,7 +208,7 @@ export async function POST(req: Request) {
             currentBalanceAfterDebit: tNow?.credits_balance ?? 0,
           })
         } catch (refundErr) {
-          console.error('Falha ao estornar crédito após análise com erro', refundErr)
+          logEventsError(refundErr, 'refund')
         }
       }
     }
@@ -223,6 +236,7 @@ export async function POST(req: Request) {
     })
   } catch (e) {
     if (e instanceof Response) return e
+    logEventsError(e, 'top-level')
     return jsonError(String(e), 500)
   }
 }
