@@ -5,6 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-hfa-bg: var(--hfa-bg);
+  --color-hfa-bg-subtle: var(--hfa-bg-subtle);
+  --color-hfa-surface: var(--hfa-surface);
+  --color-hfa-border: var(--hfa-border);
+  --color-hfa-text: var(--hfa-text);
+  --color-hfa-text-muted: var(--hfa-text-muted);
+  --color-hfa-accent: var(--hfa-accent);
+  --color-hfa-accent-hover: var(--hfa-accent-hover);
+  --color-hfa-accent-subtle: var(--hfa-accent-subtle);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -49,6 +58,15 @@
 }
 
 :root {
+  --hfa-bg: #ffffff;
+  --hfa-bg-subtle: #F8F9FA;
+  --hfa-surface: #ffffff;
+  --hfa-border: #E9ECEF;
+  --hfa-text: #212529;
+  --hfa-text-muted: #868E96;
+  --hfa-accent: #2563EB;
+  --hfa-accent-hover: #1D4ED8;
+  --hfa-accent-subtle: #EFF6FF;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -84,6 +102,15 @@
 }
 
 .dark {
+  --hfa-bg: #0F1117;
+  --hfa-bg-subtle: #161B22;
+  --hfa-surface: #161B22;
+  --hfa-border: #30363D;
+  --hfa-text: #E6EDF3;
+  --hfa-text-muted: #8B949E;
+  --hfa-accent: #58A6FF;
+  --hfa-accent-hover: #79B8FF;
+  --hfa-accent-subtle: #1C2A3A;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
