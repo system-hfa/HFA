@@ -46,3 +46,32 @@ export async function debitCreditForEvent(params: {
     description: `Análise SERA: ${title}`,
   })
 }
+
+/** Devolve 1 crédito ao tenant quando a análise falha após o débito (espelha lógica de enterprise). */
+export async function refundCreditForFailedAnalysis(params: {
+  admin: SupabaseClient
+  tenantId: string
+  submittedById: string
+  eventId: string
+  title: string
+  isEnterprise: boolean
+  /** Saldo atual já após o débito (para não-enterprise). */
+  currentBalanceAfterDebit: number
+}) {
+  const { admin, tenantId, submittedById, eventId, title, isEnterprise, currentBalanceAfterDebit } =
+    params
+  if (!isEnterprise) {
+    await admin
+      .from('tenants')
+      .update({ credits_balance: currentBalanceAfterDebit + 1 })
+      .eq('id', tenantId)
+  }
+  await admin.from('credit_transactions').insert({
+    tenant_id: tenantId,
+    user_id: submittedById,
+    type: 'refund',
+    amount: 1,
+    event_id: eventId,
+    description: `Estorno: análise não concluída — ${title}`,
+  })
+}

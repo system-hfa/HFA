@@ -144,7 +144,7 @@ Responda APENAS com JSON: {"resposta": "Sim/Não", "justificativa": "..."}`
   return flowResult(codigo, [no1, no2, no3], 'P-B, P-C, P-D, P-E descartadas pelos nós anteriores')
 }
 
-export async function runStep4(relato: string, pontoFuga: Step2Result, step3: StepFlowResult): Promise<StepFlowResult> {
+export async function runStep4(relato: string, pontoFuga: Step2Result): Promise<StepFlowResult> {
   const system = `CRITICAL RULES:
 - Return ONLY valid JSON. No text outside the JSON block.
 - NEVER skip the first decision node: "Consistent with rules and regulations?" This MUST be answered before any other.
@@ -200,12 +200,7 @@ Responda APENAS com JSON: {"resposta": "Sim/Não", "justificativa": "..."}`
   return flowResult('O-A', [no1, no2], 'O-B, O-C, O-D descartados')
 }
 
-export async function runStep5(
-  relato: string,
-  pontoFuga: Step2Result,
-  _step3: StepFlowResult,
-  _step4: StepFlowResult
-): Promise<StepFlowResult> {
+export async function runStep5(relato: string, pontoFuga: Step2Result): Promise<StepFlowResult> {
   const system = `CRITICAL RULES:
 - Return ONLY valid JSON. No text outside the JSON block.
 - NEVER skip the action flow. Follow this EXACT sequence:

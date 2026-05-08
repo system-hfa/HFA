@@ -3,9 +3,8 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 let cached: SupabaseClient | null = null
 
 const SERVICE_ROLE_MSG =
-  'Supabase (servidor): defina NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY. ' +
-  'Em desenvolvimento, use frontend/.env.local ou o ficheiro .env na raiz do repositório ' +
-  '(o next.config.ts carrega ../.env sem sobrescrever .env.local). Em produção, configure na Vercel.'
+  'Supabase (servidor): defina NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY no frontend/.env.local. ' +
+  'Em produção, configure na Vercel.'
 
 /** Falha cedo; nas rotas POST tratar com HTTP 503 para não parecer bug genérico (500). */
 export function assertServiceRoleEnv(): void {

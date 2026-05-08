@@ -1,0 +1,51 @@
+import type { SupabaseClient } from '@supabase/supabase-js'
+import { decryptString } from '@/lib/server/ai-settings-crypto'
+import { assertLlmEnvConfigured, type AIProvider } from '@/lib/sera/llm'
+
+function parseProvider(p: unknown): AIProvider {
+  const s = String(p ?? '').toLowerCase()
+  if (s === 'deepseek' || s === 'openai' || s === 'anthropic' || s === 'google' || s === 'groq') return s
+  return 'deepseek'
+}
+
+export async function applyUserAiSettingsToEnv(admin: SupabaseClient, userId: string): Promise<AIProvider> {
+  // Default: usa variáveis do ambiente (.env.local / Vercel env).
+  const { data: row, error } = await admin
+    .from('ai_settings')
+    .select(
+      'active_provider, deepseek_api_key, openai_api_key, anthropic_api_key, google_api_key, groq_api_key'
+    )
+    .eq('user_id', userId)
+    .maybeSingle()
+
+  const active = row ? parseProvider(row.active_provider) : parseProvider(process.env.AI_PROVIDER)
+
+  // Se a tabela não existir ainda (ou houver qualquer falha de query), não bloqueamos análises.
+  if (error || !row) {
+    assertLlmEnvConfigured(active as AIProvider)
+    return active as AIProvider
+  }
+
+  process.env.AI_PROVIDER = active
+
+  if (active === 'deepseek') {
+    const enc = row.deepseek_api_key as string | null
+    if (enc) process.env.DEEPSEEK_API_KEY = decryptString(enc)
+  } else if (active === 'openai') {
+    const enc = row.openai_api_key as string | null
+    if (enc) process.env.OPENAI_API_KEY = decryptString(enc)
+  } else if (active === 'anthropic') {
+    const enc = row.anthropic_api_key as string | null
+    if (enc) process.env.ANTHROPIC_API_KEY = decryptString(enc)
+  } else if (active === 'google') {
+    const enc = row.google_api_key as string | null
+    if (enc) process.env.GOOGLE_API_KEY = decryptString(enc)
+  } else if (active === 'groq') {
+    const enc = row.groq_api_key as string | null
+    if (enc) process.env.GROQ_API_KEY = decryptString(enc)
+  }
+
+  assertLlmEnvConfigured(active)
+  return active
+}
+

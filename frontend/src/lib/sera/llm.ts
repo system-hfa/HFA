@@ -1,6 +1,28 @@
 import OpenAI from 'openai'
 import Anthropic from '@anthropic-ai/sdk'
-import Groq from 'groq-sdk'
+import { GoogleGenerativeAI } from '@google/generative-ai'
+
+export type AIProvider = 'deepseek' | 'openai' | 'anthropic' | 'google' | 'groq'
+
+export function getActiveProvider(): AIProvider {
+  const p = (process.env.AI_PROVIDER ?? 'deepseek').toLowerCase()
+  // Only accept known providers; fall back to deepseek for safety.
+  if (p === 'deepseek' || p === 'openai' || p === 'anthropic' || p === 'google' || p === 'groq')
+    return p
+  return 'deepseek'
+}
+
+export function getModelName(provider?: AIProvider): string {
+  const p = provider ?? getActiveProvider()
+  const models: Record<AIProvider, string> = {
+    deepseek: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+    openai: process.env.OPENAI_MODEL || 'gpt-4o',
+    anthropic: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
+    google: process.env.GOOGLE_MODEL || 'gemini-2.0-flash',
+    groq: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+  }
+  return models[p]
+}
 
 function requireApiKey(envName: string, hint?: string): string {
   const v = process.env[envName]?.trim()
@@ -21,7 +43,6 @@ function extractJson(text: string): string {
 }
 
 async function callGoogle(system: string, user: string): Promise<string> {
-  const { GoogleGenerativeAI } = await import('@google/generative-ai')
   const key =
     process.env.GOOGLE_API_KEY?.trim() ||
     process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim()
@@ -30,9 +51,10 @@ async function callGoogle(system: string, user: string): Promise<string> {
       'Chave Google ausente: defina GOOGLE_API_KEY ou GOOGLE_GENERATIVE_AI_API_KEY.'
     )
   }
+
   const genAI = new GoogleGenerativeAI(key)
   const model = genAI.getGenerativeModel({
-    model: process.env.GOOGLE_MODEL || 'gemini-2.0-flash',
+    model: getModelName('google'),
     systemInstruction: system,
   })
   const r = await model.generateContent(user)
@@ -40,7 +62,7 @@ async function callGoogle(system: string, user: string): Promise<string> {
 }
 
 export async function callAi(system: string, userMsg: string): Promise<string> {
-  const provider = (process.env.AI_PROVIDER || 'deepseek').toLowerCase()
+  const provider = getActiveProvider()
   let raw: string
 
   if (provider === 'anthropic') {
@@ -66,9 +88,12 @@ export async function callAi(system: string, userMsg: string): Promise<string> {
   } else if (provider === 'google') {
     raw = await callGoogle(system, userMsg)
   } else if (provider === 'groq') {
-    const client = new Groq({ apiKey: requireApiKey('GROQ_API_KEY') })
+    const client = new OpenAI({
+      apiKey: requireApiKey('GROQ_API_KEY'),
+      baseURL: 'https://api.groq.com/openai/v1',
+    })
     const r = await client.chat.completions.create({
-      model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+      model: getModelName('groq'),
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: userMsg },
@@ -83,10 +108,10 @@ export async function callAi(system: string, userMsg: string): Promise<string> {
         'DEEPSEEK_API_KEY',
         'O padrão é DeepSeek (AI_PROVIDER não definido ou = deepseek). Para usar OpenAI, defina AI_PROVIDER=openai e OPENAI_API_KEY.'
       ),
-      baseURL: 'https://api.deepseek.com',
+      baseURL: 'https://api.deepseek.com/v1',
     })
     const r = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getModelName('deepseek'),
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: userMsg },
@@ -115,43 +140,28 @@ export async function ask(system: string, question: string): Promise<string> {
  * Falha cedo com mensagem clara se o provedor atual não tem chave configurada.
  * Chamar nas rotas **antes** de criar evento / debitar crédito.
  */
-export function assertLlmEnvConfigured(): void {
-  const provider = (process.env.AI_PROVIDER || 'deepseek').toLowerCase()
+export function assertLlmEnvConfigured(provider?: AIProvider): void {
+  const p = provider ?? getActiveProvider()
   const set = (k: string) => Boolean(process.env[k]?.trim())
 
-  if (provider === 'anthropic') {
-    if (!set('ANTHROPIC_API_KEY')) {
-      throw new Error('IA não configurada: defina ANTHROPIC_API_KEY (AI_PROVIDER=anthropic).')
-    }
+  if (p === 'anthropic') {
+    if (!set('ANTHROPIC_API_KEY')) throw new Error('ANTHROPIC_API_KEY não definida (AI_PROVIDER=anthropic).')
     return
   }
-  if (provider === 'openai') {
-    if (!set('OPENAI_API_KEY')) {
-      throw new Error(
-        'IA não configurada: defina OPENAI_API_KEY ou altere AI_PROVIDER e a chave correspondente (ex.: GOOGLE_API_KEY + google).'
-      )
-    }
+  if (p === 'openai') {
+    if (!set('OPENAI_API_KEY')) throw new Error('OPENAI_API_KEY não definida (AI_PROVIDER=openai).')
     return
   }
-  if (provider === 'google') {
+  if (p === 'google') {
     if (!process.env.GOOGLE_API_KEY?.trim() && !process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim()) {
-      throw new Error(
-        'IA não configurada: com AI_PROVIDER=google é obrigatório GOOGLE_API_KEY (ou GOOGLE_GENERATIVE_AI_API_KEY). ' +
-          'Obtenha uma chave em https://aistudio.google.com/apikey e coloque-a na raiz .env ou em frontend/.env.local; reinicie o dev server.'
-      )
+      throw new Error('GOOGLE_API_KEY não definida (AI_PROVIDER=google).')
     }
     return
   }
-  if (provider === 'groq') {
-    if (!set('GROQ_API_KEY')) {
-      throw new Error('IA não configurada: defina GROQ_API_KEY (AI_PROVIDER=groq).')
-    }
+  if (p === 'groq') {
+    if (!set('GROQ_API_KEY')) throw new Error('GROQ_API_KEY não definida (AI_PROVIDER=groq).')
     return
   }
-  /* deepseek / default */
-  if (!set('DEEPSEEK_API_KEY')) {
-    throw new Error(
-      'IA não configurada: defina DEEPSEEK_API_KEY ou defina AI_PROVIDER=openai|google|… com a chave desse provedor.'
-    )
-  }
+  /* deepseek */
+  if (!set('DEEPSEEK_API_KEY')) throw new Error('DEEPSEEK_API_KEY não definida (AI_PROVIDER=deepseek).')
 }

@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin, assertServiceRoleEnv } from '@/lib/server/supabase-admin'
 import { completeSeraAnalysisAfterEventCreated } from '@/lib/server/complete-sera-analysis'
-import { assertLlmEnvConfigured } from '@/lib/sera/llm'
 import { type SourceMeta } from '@/lib/sera/pipeline'
 import {
   debitCreditForEvent,
@@ -14,6 +13,7 @@ import {
   fetchEditHistoryForAnalysis,
   seraAnalysisToJson,
 } from '@/lib/sera/sera-analysis-mapper'
+import { applyUserAiSettingsToEnv } from '@/lib/server/apply-user-ai-settings-to-env'
 
 export const maxDuration = 300
 
@@ -84,7 +84,7 @@ export async function POST(req: Request) {
       if (evErr || !ev) return jsonError('Evento não encontrado', 404)
 
       try {
-        assertLlmEnvConfigured()
+        await applyUserAiSettingsToEnv(admin, user.userId)
       } catch (cfgErr) {
         return jsonError(cfgErr instanceof Error ? cfgErr.message : String(cfgErr), 503)
       }
@@ -148,7 +148,7 @@ export async function POST(req: Request) {
     }
 
     try {
-      assertLlmEnvConfigured()
+      await applyUserAiSettingsToEnv(admin, user.userId)
     } catch (cfgErr) {
       return jsonError(cfgErr instanceof Error ? cfgErr.message : String(cfgErr), 503)
     }
@@ -179,6 +179,10 @@ export async function POST(req: Request) {
 
     const eventId = eventRow.id as string
 
+    let creditoDebitado = false
+    let respostaSucesso = false
+    let analysisId: string | null = null
+
     try {
       await debitCreditForEvent({
         admin,
@@ -189,14 +193,9 @@ export async function POST(req: Request) {
         isEnterprise,
         currentBalance: tenant.credits_balance ?? 0,
       })
-    } catch (debitErr) {
-      console.error(debitErr)
-      await admin.from('events').delete().eq('id', eventId)
-      return jsonError('Não foi possível reservar o crédito para esta análise.', 500)
-    }
+      creditoDebitado = true
 
-    try {
-      const { analysisId } = await completeSeraAnalysisAfterEventCreated(
+      const r = await completeSeraAnalysisAfterEventCreated(
         admin,
         { userId: user.userId, tenantId: user.tenantId },
         eventId,
@@ -205,52 +204,61 @@ export async function POST(req: Request) {
         null
       )
 
-      const { data: row } = await admin
-        .from('analyses')
-        .select('*')
-        .eq('id', analysisId)
-        .single()
-
-      const edits = await fetchEditHistoryForAnalysis(admin, analysisId, user.tenantId)
-      const seraAnalysis = row
-        ? seraAnalysisToJson(
-            buildSeraAnalysisFromDbRow(
-              row as Record<string, unknown>,
-              user.userId,
-              rawInput,
-              edits
-            )
-          )
-        : null
-
-      return NextResponse.json({
-        event_id: eventId,
-        analysis_id: analysisId,
-        seraAnalysis,
-      })
+      analysisId = r.analysisId
+      respostaSucesso = true
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
       console.error(err)
-      try {
-        const { data: tNow } = await admin
-          .from('tenants')
-          .select('credits_balance')
-          .eq('id', user.tenantId)
-          .single()
-        await refundCreditForFailedAnalysis({
-          admin,
-          tenantId: user.tenantId,
-          submittedById,
-          eventId,
-          title,
-          isEnterprise,
-          currentBalanceAfterDebit: tNow?.credits_balance ?? 0,
-        })
-      } catch (refundErr) {
-        console.error('Falha ao estornar crédito após análise com erro', refundErr)
-      }
       return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
+    } finally {
+      if (creditoDebitado && !respostaSucesso) {
+        try {
+          const { data: tNow } = await admin
+            .from('tenants')
+            .select('credits_balance')
+            .eq('id', user.tenantId)
+            .single()
+
+          await refundCreditForFailedAnalysis({
+            admin,
+            tenantId: user.tenantId,
+            submittedById,
+            eventId,
+            title,
+            isEnterprise,
+            currentBalanceAfterDebit: tNow?.credits_balance ?? 0,
+          })
+        } catch (refundErr) {
+          console.error('Falha ao estornar crédito após análise com erro', refundErr)
+        }
+      }
     }
+
+    if (!analysisId) return jsonError('Falha interna: analysisId ausente', 500)
+
+    const { data: row } = await admin
+      .from('analyses')
+      .select('*')
+      .eq('id', analysisId)
+      .single()
+
+    const edits = await fetchEditHistoryForAnalysis(admin, analysisId, user.tenantId)
+    const seraAnalysis = row
+      ? seraAnalysisToJson(
+          buildSeraAnalysisFromDbRow(
+            row as Record<string, unknown>,
+            user.userId,
+            rawInput,
+            edits
+          )
+        )
+      : null
+
+    return NextResponse.json({
+      event_id: eventId,
+      analysis_id: analysisId,
+      seraAnalysis,
+    })
   } catch (e) {
     if (e instanceof Response) return e
     console.error(e)

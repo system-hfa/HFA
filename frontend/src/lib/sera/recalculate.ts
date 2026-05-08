@@ -84,8 +84,10 @@ export async function recalculate(input: {
     const step2 = await runStep2(raw_input)
     if (step2.error) throw new Error(String(step2.error))
     const step3 = await runStep3(raw_input, step2)
-    const step4 = await runStep4(raw_input, step2, step3)
-    const step5 = await runStep5(raw_input, step2, step3, step4)
+      const [step4, step5] = await Promise.all([
+        runStep4(raw_input, step2),
+        runStep5(raw_input, step2),
+      ])
     step6_7_result = await runStep6_7(raw_input, step2, step3, step4, step5)
 
     const p3 = step3.codigo

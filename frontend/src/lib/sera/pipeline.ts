@@ -41,9 +41,12 @@ export async function runSeraPipeline(rawInput: string) {
   const step2 = await runStep2(rawInput)
   if (step2.error) throw new Error(String(step2.error))
 
-  const step3 = await runStep3(rawInput, step2)
-  const step4 = await runStep4(rawInput, step2, step3)
-  const step5 = await runStep5(rawInput, step2, step3, step4)
+  // Steps 3/4/5 depend apenas do Step 2 (ponto de fuga) e podem rodar em paralelo.
+  const [step3, step4, step5] = await Promise.all([
+    runStep3(rawInput, step2),
+    runStep4(rawInput, step2),
+    runStep5(rawInput, step2),
+  ])
   const step6_7 = await runStep6_7(rawInput, step2, step3, step4, step5)
 
   return { step1, step2, step3, step4, step5, step6_7 }
