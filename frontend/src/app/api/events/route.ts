@@ -1,34 +1,19 @@
 import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
-import { buildAnalysisUpsertPayload, runSeraPipeline, type SourceMeta } from '@/lib/sera/pipeline'
-import { assertFileSize, detectDocumentKind } from '@/lib/sera/document-extraction'
+import { type SourceMeta } from '@/lib/sera/pipeline'
+import { completeSeraAnalysisAfterEventCreated } from '@/lib/server/complete-sera-analysis'
+import {
+  buildSeraAnalysisFromDbRow,
+  fetchEditHistoryForAnalysis,
+  seraAnalysisToJson,
+} from '@/lib/sera/sera-analysis-mapper'
+import { debitCreditForEvent, ensurePublicUserRow } from '@/lib/server/tenant-user'
 
 export const maxDuration = 300
 
 function jsonError(message: string, status: number) {
   return NextResponse.json({ detail: message }, { status })
-}
-
-async function ensurePublicUserRow(
-  admin: ReturnType<typeof getSupabaseAdmin>,
-  tenantId: string,
-  authUserId: string,
-  email: string | undefined,
-  role: string
-) {
-  const em = email ?? ''
-  const { data: existing } = await admin.from('users').select('id').eq('email', em).limit(1).maybeSingle()
-  if (existing?.id) return existing.id as string
-  await admin.from('users').insert({
-    id: authUserId,
-    tenant_id: tenantId,
-    email: em,
-    full_name: em ? em.split('@')[0] : 'user',
-    role: role || 'admin',
-    is_active: true,
-  })
-  return authUserId
 }
 
 export async function GET(req: Request) {
@@ -147,77 +132,52 @@ export async function POST(req: Request) {
 
     const eventId = eventRow.id as string
 
-    if (!isEnterprise) {
-      await admin
-        .from('tenants')
-        .update({ credits_balance: (tenant.credits_balance ?? 0) - 1 })
-        .eq('id', user.tenantId)
-    }
-
-    await admin.from('credit_transactions').insert({
-      tenant_id: user.tenantId,
-      user_id: submittedById,
-      type: 'consumption',
-      amount: -1,
-      event_id: eventId,
-      description: `Análise SERA: ${title}`,
+    await debitCreditForEvent({
+      admin,
+      tenantId: user.tenantId,
+      submittedById,
+      eventId,
+      title,
+      isEnterprise,
+      currentBalance: tenant.credits_balance ?? 0,
     })
-
-    await admin.from('events').update({ status: 'processing' }).eq('id', eventId)
 
     sourceMeta.sourceType = sourceMeta.sourceType ?? (input_type === 'text' ? 'text' : input_type)
 
     try {
-      const steps = await runSeraPipeline(raw_input)
-      const payload = buildAnalysisUpsertPayload(
+      const { analysisId } = await completeSeraAnalysisAfterEventCreated(
+        admin,
+        { userId: user.userId, tenantId: user.tenantId },
         eventId,
-        user.tenantId,
         raw_input,
-        steps,
-        sourceMeta
+        sourceMeta,
+        sourceFile
       )
 
-      const { data: upserted, error: aerr } = await admin
+      const { data: row } = await admin
         .from('analyses')
-        .upsert(payload, { onConflict: 'event_id' })
-        .select('id')
+        .select('*')
+        .eq('id', analysisId)
         .single()
 
-      if (aerr || !upserted) throw new Error(aerr?.message || 'Falha ao gravar análise')
+      const edits = await fetchEditHistoryForAnalysis(admin, analysisId, user.tenantId)
+      const seraAnalysis = row
+        ? seraAnalysisToJson(
+            buildSeraAnalysisFromDbRow(row as Record<string, unknown>, user.userId, raw_input, edits)
+          )
+        : null
 
-      const analysisId = upserted.id as string
-
-      if (sourceFile) {
-        assertFileSize(sourceFile.size)
-        const buf = Buffer.from(await sourceFile.arrayBuffer())
-        const kind = detectDocumentKind(buf)
-        const ext =
-          sourceFile.name.toLowerCase().endsWith('.docx') || kind === 'docx' ? 'docx' : 'pdf'
-        if (!kind || (ext === 'docx' && kind !== 'docx') || (ext === 'pdf' && kind !== 'pdf')) {
-          throw new Error('Tipo de arquivo inválido para armazenamento')
-        }
-        const safeName = sourceFile.name.replace(/[^\w.\-]/g, '_').slice(0, 180)
-        const path = `${user.userId}/${analysisId}/${safeName}`
-        const { error: upErr } = await admin.storage.from('analysis-documents').upload(path, buf, {
-          contentType: sourceFile.type || (kind === 'pdf' ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
-          upsert: true,
-        })
-        if (!upErr) {
-          await admin
-            .from('analyses')
-            .update({ source_file_url: path, source_file_name: sourceFile.name })
-            .eq('id', analysisId)
-        }
-      }
-
-      await admin.from('events').update({ status: 'completed', credits_used: 1 }).eq('id', eventId)
+      return NextResponse.json({
+        event_id: eventId,
+        status: 'completed',
+        analysis_id: analysisId,
+        seraAnalysis,
+      })
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
       console.error(err)
       return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
     }
-
-    return NextResponse.json({ event_id: eventId, status: 'completed' })
   } catch (e) {
     if (e instanceof Response) return e
     return jsonError(String(e), 500)
