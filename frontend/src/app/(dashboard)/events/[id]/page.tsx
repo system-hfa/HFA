@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { supabase } from '@/lib/supabase'
-import { apiCall } from '@/lib/api'
+import { apiCall, resolveApiUrl } from '@/lib/api'
 import FlowStep from '@/components/FlowStep'
 import EditableClassification from '@/components/EditableClassification'
 import EditHistoryPanel from '@/components/EditHistoryPanel'
@@ -84,9 +84,8 @@ export default function EventDetailPage() {
     if (!analysis || !token) return
     setPdfState('loading')
     try {
-      const apiUrl     = process.env.NEXT_PUBLIC_API_URL ?? ''
       const analysisId = analysis.id
-      const res = await fetch(`${apiUrl}/analyses/${analysisId}/pdf`, {
+      const res = await fetch(resolveApiUrl(`/analyses/${analysisId}/pdf`), {
         headers: { Authorization: `Bearer ${token}` },
       })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)

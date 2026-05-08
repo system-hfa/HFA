@@ -1,0 +1,143 @@
+{
+  "start": "ETAPA_5",
+  "steps": [
+    {
+      "step_id": "ETAPA_5",
+      "question": "Como o operador estava tentando atingir o objetivo?",
+      "next_step": "ACAO_IMPLEMENTADA",
+      "reference": "Consulte '5 - Failures.json' para determinar e classificar a ação do operador."
+    },
+    {
+      "step_id": "ACAO_IMPLEMENTADA",
+      "question": "A ação foi implementada como pretendida?",
+      "yes": "ACAO_CORRETA_OU_ADEQUADA",
+      "no": "FALHA_EXECUCAO_ACAO",
+      "explanation": "Esta pergunta avalia se a implementação da ação correspondeu ao planejado. Use '5 - Failures.json' para identificar as falhas correspondentes.",
+      "restrictions": {
+        "excluded": ["A-D", "A-E", "A-F", "A-G", "A-H", "A-I", "A-J"],
+        "note": "Se 'Sim', apenas ações não implementadas corretamente devem ser consideradas."
+      }
+    },
+    {
+      "step_id": "ACAO_CORRETA_OU_ADEQUADA",
+      "question": "A ação foi correta ou adequada?",
+      "yes": "NENHUMA_FALHA",
+      "no": "CAPACIDADE",
+      "explanation": "Determine se a ação, embora implementada como pretendida, foi apropriada para as circunstâncias. Consulte '5 - Failures.json' para referências de falhas.",
+      "restrictions": {
+        "excluded": ["A-B", "A-C"],
+        "note": "Se 'Sim', ações inadequadas ou lapsos não devem ser considerados."
+      }
+    },
+    {
+      "step_id": "FALHA_EXECUCAO_ACAO",
+      "action": "Determinar pela descrição mais adequada entre DESLIZES, OMISSÕES E LAPSOS (A-B) ou FALHA DE FEEDBACK NA EXECUÇÃO DA AÇÃO (A-C) conforme detalhado em '5 - Failures.json'.",
+      "restrictions": {
+        "excluded": ["A-D", "A-E", "A-F", "A-G", "A-H", "A-I", "A-J"],
+        "note": "Se nesta etapa, falhas de execução como A-B e A-C são as únicas aplicáveis."
+      }
+    },
+    {
+      "step_id": "CAPACIDADE",
+      "action": "Determinar pela descrição mais adequada entre INABILIDADE PARA A RESPOSTA (A-D) ou FALHA DE CONHECIMENTO (DECISÃO) (A-E), utilizando '5 - Failures.json' se a capacidade para resposta estiver comprometida.",
+      "restrictions": {
+        "excluded": ["A-B", "A-C", "A-F", "A-G", "A-H", "A-I", "A-J"],
+        "note": "Se nesta etapa, apenas falhas relacionadas à capacidade do operador são aplicáveis."
+      }
+    },
+    {
+      "step_id": "PRESSAO_DO_TEMPO",
+      "question": "A pressão do tempo era realmente excessiva?",
+      "yes": "FALHA_POR_PRESSAO_TEMPO",
+      "no": "FALHA_TOMADA_DECISAO",
+      "explanation": "Verifique se a pressão do tempo influenciou negativamente a tomada de decisão, utilizando '5 - Failures.json' para documentar a falha específica.",
+      "restrictions": {
+        "excluded": ["A-B", "A-C", "A-D", "A-E", "A-F", "A-G"],
+        "note": "Se 'Sim', apenas falhas relacionadas à pressão do tempo (A-H, A-I, A-J) devem ser consideradas."
+      }
+    },
+    {
+      "step_id": "FALHA_POR_PRESSAO_TEMPO",
+      "action": "Determinar pela descrição mais adequada entre FALHA NA SELEÇÃO DE AÇÃO (A-I), FALHA DE FEEDBACK POR PRESSÃO DO TEMPO (A-J) ou FALHA NO GERENCIAMENTO DO TEMPO (A-H) com base em '5 - Failures.json'.",
+      "restrictions": {
+        "excluded": ["A-B", "A-C", "A-D", "A-E", "A-F", "A-G"],
+        "note": "Se nesta etapa, apenas falhas relacionadas à pressão do tempo permanecem aplicáveis."
+      }
+    },
+    {
+      "step_id": "FALHA_TOMADA_DECISAO",
+      "action": "Determinar pela descrição mais adequada entre FALHA NA SELEÇÃO DA AÇÃO (A-F) ou FALHA DE FEEDBACK NA TOMADA DE DECISÃO (A-G), referenciando '5 - Failures.json'.",
+      "restrictions": {
+        "excluded": ["A-B", "A-C", "A-D", "A-E", "A-H", "A-I", "A-J"],
+        "note": "Se nesta etapa, apenas falhas relacionadas à tomada de decisão são aplicáveis."
+      }
+    },
+    {
+      "step_id": "NENHUMA_FALHA",
+      "outcome": "NENHUMA FALHA DE AÇÃO (A-A)",
+      "explanation": "O operador realizou a ação correta, não contribuindo para o ato inseguro com base na ação. Confirme com '5 - Failures.json'."
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome": "NENHUMA FALHA DE AÇÃO",
+      "code": "A-A",
+      "type": "end",
+      "explanation": "O operador realizou a ação correta, não contribuindo para o ato inseguro com base na ação. Verifique '5 - Failures.json' para mais detalhes."
+    },
+    {
+      "outcome": "DESLIZES, OMISSÕES E LAPSOS",
+      "code": "A-B",
+      "type": "end",
+      "explanation": "Falhas onde a ação pretendida é substituída por um comportamento habituado devido à confusão ou falta de atenção. Inclui momentos de esquecimento ou desvio do plano original sem intenção. Consulte '5 - Failures.json'."
+    },
+    {
+      "outcome": "FALHA DE FEEDBACK NA EXECUÇÃO DA AÇÃO",
+      "code": "A-C",
+      "type": "end",
+      "explanation": "Ocorre quando o feedback necessário para avaliar a execução de uma ação não está disponível ou é ignorado, impedindo a correção de desvios. Referência: '5 - Failures.json'."
+    },
+    {
+      "outcome": "INABILIDADE PARA A RESPOSTA",
+      "code": "A-D",
+      "type": "end",
+      "explanation": "Falha resultante da falta de habilidade física ou capacidade técnica para realizar a ação necessária, independentemente do conhecimento ou intenção. Detalhes em '5 - Failures.json'."
+    },
+    {
+      "outcome": "FALHA DE CONHECIMENTO (DECISÃO)",
+      "code": "A-E",
+      "type": "end",
+      "explanation": "Falhas devido à falta de conhecimento necessário ou habilidades de decisão para responder corretamente à situação. Veja '5 - Failures.json' para explicação completa."
+    },
+    {
+      "outcome": "FALHA NA SELEÇÃO DA AÇÃO",
+      "code": "A-F",
+      "type": "end",
+      "explanation": "Falhas no processo de decisão onde a escolha da ação não é adequada às circunstâncias, frequentemente devido a preconceitos ou falta de alternativas. Detalhes em '5 - Failures.json'."
+    },
+    {
+      "outcome": "FALHA DE FEEDBACK NA TOMADA DE DECISÃO",
+      "code": "A-G",
+      "type": "end",
+      "explanation": "A falta de feedback durante o processo de decisão impede o reconhecimento de falhas ou a necessidade de ajuste na ação escolhida. Mais informações em '5 - Failures.json'."
+    },
+    {
+      "outcome": "FALHA NO GERENCIAMENTO DO TEMPO",
+      "code": "A-H",
+      "type": "end",
+      "explanation": "Falhas decorrentes de uma má gestão do tempo disponível, levando a decisões apressadas ou atrasadas, sem tempo para a consideração adequada. Consulte '5 - Failures.json'."
+    },
+    {
+      "outcome": "FALHA NA SELEÇÃO DE AÇÃO",
+      "code": "A-I",
+      "type": "end",
+      "explanation": "Semelhante à A-F, mas específica para situações onde a pressão do tempo impede uma seleção de ação cuidadosa e considerada. Referências em '5 - Failures.json'."
+    },
+    {
+      "outcome": "FALHA DE FEEDBACK POR PRESSÃO DO TEMPO",
+      "code": "A-J",
+      "type": "end",
+      "explanation": "Falhas onde a pressão do tempo impede que o feedback seja obtido ou considerado adequadamente, resultando em erros não corrigidos. Detalhes em '5 - Failures.json'."
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+[
+{
+  "Metadados": {
+    "Autor": "FP DAUMAS",
+    "Data da Última Atualização": "2024-04-16",
+    "Versão do Documento": "1.2",
+    "Descrição": "Este documento detalha as falhas de objetivo para a Etapa 4, categorizando cada falha, suas CIRCUNSTÂNCIAS TÍPICAS, EXEMPLOS PRÁTICOS, e estratégias de mitigação."
+  },
+  "Índice": [
+    {"Nome": "NENHUMA FALHA DE OBJETIVO", "CÓDIGO": "O-A", "ID": "#O-A"},
+    {"Nome": "VIOLAÇÃO ROTINEIRA", "CÓDIGO": "O-B", "ID": "#O-B"},
+    {"Nome": "FALHA DE INTENÇÃO / VIOLAÇÃO EXCEPCIONAL", "CÓDIGO": "O-C", "ID": "#O-C"},
+    {"Nome": "FALHA DE INTENÇÃO (NÃO VIOLAÇÃO)", "CÓDIGO": "O-D", "ID": "#O-D"}
+
+  ],
+  "Conteúdo": [
+    {
+      "ID": "#O-A",
+      "Nome": "NENHUMA FALHA DE OBJETIVO",
+      "CÓDIGO": "O-A",
+      "FONTE": "Daumas (2018); Hendy (2003), Annex A",
+      "DEFINIÇÃO": "Quando a análise revelar a ausência de falhas no segmento de objetivo relacionado ao ato inseguro analisado, a etapa deve ser concluída como 'Nenhuma Falha de Objetivo (O-A)'. Isso indica que o objetivo do operador estava alinhado com as práticas seguras e regulamentações pertinentes. A análise deve então ser direcionada para as etapas de Ação, prosseguindo de acordo com a metodologia SERA."
+   
+    },
+    {
+      "ID": "#O-B",
+      "Nome": "VIOLAÇÃO ROTINEIRA",
+      "CÓDIGO": "O-B",
+      "FONTE": "Daumas (2018), Tabela 10; Hendy (2003), Figure 5",
+      "DEFINIÇÃO": "Violação Rotineira (O-B) refere-se a desvios recorrentes e habituais das práticas operacionais estabelecidas, adotados como parte do comportamento normal de um indivíduo ou grupo. Estes desvios, frequentemente minimizados ou considerados 'atalhos aceitáveis', podem ser conhecidos e tolerados por supervisores ou gerentes. Crucialmente, essas violações não surgem de decisões conscientes para quebrar as regras em situações críticas, mas de uma cultura organizacional que pode, inadvertidamente, promover tais práticas por falta de reforço das normas.",
+      "CIRCUNSTÂNCIAS TÍPICAS": [
+        "Cultura de Atalhos: Priorização da eficiência sobre procedimentos seguros.",
+        "Supervisão Leniente: Tolerância de supervisores a pequenos desvios das normas.",
+        "Pressão de Pares: Influência de colegas para aderir a comportamentos de grupo, mesmo que arriscados.",
+        "Subestimação de Riscos: Percepção equivocada de que violações menores não acarretam grandes riscos.",
+        "Recompensas Informais: Reconhecimento ou recompensa pelo 'cumprimento de tarefas', independentemente dos meios.",
+        "Falta de Consequências: Ausência de punições ou consequências negativas por violações.",
+        "Desconhecimento ou Confusão: Falta de clareza ou compreensão inadequada das regras e procedimentos.",
+        "Ambiguidade nos Objetivos: Objetivos de tarefa que parecem justificar desvios das práticas seguras.",
+        "Deficiências no Treinamento: Treinamento insuficiente que não aborda a importância da adesão às normas.",
+        "Falhas na Comunicação: Comunicação deficiente sobre a importância e o propósito das regras."
+      ],
+      "EXEMPLOS PRÁTICOS": [
+        "Ignorar Checklists de Segurança: Por considerá-los demasiado demorados para tarefas rotineiras.",
+        "Uso Inadequado de EPIs: Omitir equipamento de proteção pessoal para maior conforto ou conveniência.",
+        "Exceder Limites de Velocidade em Áreas de Trabalho: Para cumprir prazos apertados.",
+        "Burlar Procedimentos de Manutenção: Para acelerar reparos, mesmo que comprometa a segurança.",
+        "Compartilhamento de Senhas ou Credenciais: Para facilitar o acesso ou a conveniência, contrariando políticas de TI.",
+        "Omissão de Etapas em Protocolos de Segurança: Considerando-as desnecessárias para tarefas 'simples'.",
+        "Substituição Não Autorizada de Materiais ou Peças: Para evitar atrasos, mesmo que os substitutos não sejam certificados.",
+        "Falsificação de Registros ou Logs: Para ocultar pequenas violações ou falhas na execução completa das tarefas.",
+        "Desrespeito às Normas de Trânsito em Áreas Controladas: Como acelerar em zonas de baixa velocidade dentro de instalações.",
+        "Manipulação de Equipamentos de Segurança: Desativar ou ajustar equipamentos para evitar interrupções ou inconveniências."
+      
+      ],
+      "ESTRATÉGIAS DE MITIGAÇÃO": [
+        "Reforço do Treinamento em Conformidade: Implementar sessões regulares de treinamento que enfatizem a importância de seguir procedimentos estabelecidos, com um foco especial em desmistificar os riscos associados às violações rotineiras.",
+        "Melhoria na Comunicação das Políticas: Assegurar que todas as políticas e procedimentos sejam claramente comunicados a todos os funcionários, utilizando múltiplos canais de comunicação para reforçar a mensagem.",
+        "Implementação de um Sistema de Supervisão Mais Eficaz: Intensificar a supervisão nas áreas onde as violações são mais frequentes, incluindo o uso de auditorias surpresa e feedback contínuo.",
+        "Desenvolvimento de uma Cultura de Segurança: Promover uma cultura organizacional que valorize a segurança acima da conveniência ou eficiência, recompensando comportamentos seguros e penalizando violações.",
+        "Clarificação dos Objetivos e Expectativas: Garantir que os objetivos das tarefas sejam alinhados com as práticas seguras e que as expectativas sejam bem entendidas por todos.",
+        "Revisão e Atualização das Políticas: Regularmente revisar e atualizar as políticas e procedimentos para eliminar ambiguidades que possam levar a interpretações errôneas ou a violações das normas.",
+        "Incentivos e Consequências: Estabelecer um sistema claro de incentivos para a adesão às regras e consequências firmes para violações, garantindo que estas sejam consistentemente aplicadas.",
+        "Fortalecimento do Sentimento de Responsabilidade Individual: Encorajar os trabalhadores a assumir responsabilidade pessoal pela segurança, através de programas de conscientização e formação sobre a importância de seguir as normas.",
+        "Integração de Feedback dos Funcionários: Criar canais para que os funcionários possam reportar preocupações ou sugestões sobre as práticas de trabalho sem receio de represálias, usando essa informação para melhorar continuamente os procedimentos.",
+        "Utilização de Tecnologia para Monitoramento: Aplicar tecnologias modernas para monitorar a adesão às práticas seguras, como câmeras em áreas críticas ou sistemas automáticos que alertem quando procedimentos não são seguidos."
+      ],
+      "CONCLUSÃO": "Para abordar efetivamente as violações rotineiras, é crucial uma estratégia integrada que envolva fortalecimento do treinamento, clareza na comunicação de expectativas, supervisão rigorosa e a promoção de uma cultura organizacional que priorize a segurança e a adesão estrita às regras. A responsabilidade recai tanto sobre os indivíduos quanto sobre a liderança organizacional para garantir que as práticas seguras sejam não apenas entendidas, mas integralmente aplicadas."
+    },
+    {
+      "ID": "#O-C",
+      "Nome": "FALHA DE INTENÇÃO / VIOLAÇÃO EXCEPCIONAL",
+      "CÓDIGO": "O-C",
+      "FONTE": "Daumas (2018), Tabela 11; Hendy (2003), Figure 5",
+      "DEFINIÇÃO": "Violações excepcionais representam desvios isolados de autoridade que não são característicos do comportamento habitual de um indivíduo. Esses desvios, geralmente, não são aprovados pela gestão. Diferentemente das violações rotineiras, são consideradas excepcionais não por sua gravidade, mas por serem atípicas para o indivíduo e não sancionadas pela autoridade supervisora.",
+      "CIRCUNSTÂNCIAS TÍPICAS": [
+        "Situações de Alta Pressão: Circunstâncias que exigem decisões rápidas sob stress.",
+        "Confusão sobre Regras: Incompreensão ou desconhecimento das regras e regulamentos aplicáveis.",
+        "Influência Social: Pressões de colegas ou hierarquia induzindo a decisões contra as normas.",
+        "Falta de Supervisão Adequada: Supervisão insuficiente ou ineficaz que falha em orientar comportamentos seguros.",
+        "Motivação Excessiva para Cumprir Objetivos: Desejo de alcançar resultados a qualquer custo, negligenciando normas de segurança.",
+        "Falhas na Comunicação de Intenções: Intenções da tarefa ou atividade mal comunicadas, levando a interpretações errôneas.",
+        "Falta de Treinamento e Conscientização: Desconhecimento das consequências de violações das normas estabelecidas.",
+        "Situações de Emergência ou Excepcionais: Eventos raros que demandam ações não convencionais.",
+        "Deficiências nos Processos de Decisão: Falha em avaliar corretamente os riscos associados a uma decisão.",
+        "Cultura Organizacional Ambígua: Uma cultura que não enfatiza claramente a importância de seguir regras e regulamentos."
+      ]
+       ,
+      "EXEMPLOS PRÁTICOS": [
+        "Desvio de Procedimentos de Emergência: Optar por ações não padronizadas em uma situação de emergência para salvar vidas.",
+        "Uso de Equipamento Não Aprovado: Utilizar equipamento não certificado para completar uma tarefa crucial, acreditando ser seguro.",
+        "Ignorar Protocolos de Segurança: Violação de protocolos de segurança em circunstâncias percebidas como críticas.",
+        "Alteração de Processos Produtivos: Modificação de processos para atender demandas de produção sem avaliação de riscos.",
+        "Supressão de Informações em Relatórios: Omitir dados em relatórios para evitar penalidades, acreditando na não detecção.",
+        "Exceder Limites de Carga: Transportar carga acima do permitido para evitar viagens adicionais, subestimando riscos.",
+        "Bypass de Sistemas de Segurança: Desativação temporária de sistemas de segurança para facilitar operações.",
+        "Não Uso de Equipamento de Proteção: Decidir não usar EPI em uma tarefa específica, julgando o risco como mínimo.",
+        "Decisões Autônomas em Situações Críticas: Tomar decisões sem consulta prévia em situações percebidas como urgentes.",
+        "Violações Induzidas por Falhas de Comunicação: Agir baseado em informações incompletas ou mal interpretadas em situações críticas."
+      ],
+    
+      "ESTRATÉGIAS DE MITIGAÇÃO": [
+        "Reforço de Treinamento e Educação: Ampliar programas de treinamento para cobrir todas as normas relevantes, enfatizando a importância do cumprimento das regras mesmo sob pressão.",
+        "Melhoria na Clareza das Regras: Revisar e esclarecer todas as políticas e procedimentos para garantir que não haja ambiguidade ou espaço para interpretações errôneas que possam levar a violações.",
+        "Fortalecimento das Políticas de Supervisão: Implementar um regime de supervisão mais rigoroso, com supervisores treinados para identificar e corrigir desvios de comportamento antes que se tornem normativos.",
+        "Criação de Canais de Comunicação Eficazes: Estabelecer canais de comunicação claros e eficazes para garantir que todas as instruções e expectativas sejam compreendidas corretamente.",
+        "Implementação de Sistemas de Reporte Anônimo: Encorajar a reportagem de violações ou quase-acidentes através de sistemas anônimos para entender as causas raízes e melhorar as práticas.",
+        "Promoção de uma Cultura de Segurança Positiva: Desenvolver uma cultura organizacional que valorize a segurança acima de prazos apertados ou metas de produção, enfatizando a importância da integridade e do cumprimento das normas.",
+        "Utilização de Simulações e Treinamentos Práticos: Usar simulações de alta fidelidade para treinar funcionários em como responder adequadamente em situações de pressão sem violar as regras.",
+        "Revisão Regular dos Procedimentos de Emergência: Garantir que todos os procedimentos de emergência sejam atualizados e comunicados claramente, preparando os trabalhadores para agir corretamente em situações críticas.",
+        "Análise e Feedback das Violações: Analisar todas as violações ocorridas para entender suas causas e discutir em reuniões de equipe para aprendizado coletivo.",
+        "Incentivos para Comportamentos Seguros: Criar um sistema de recompensas para comportamentos que respeitem as normas e procedimentos, e implementar consequências reais para violações, garantindo que as medidas sejam justas e consistentemente aplicadas."
+      ],
+      "CONCLUSÃO": "Para mitigar a ocorrência de violações excepcionais, é essencial adotar uma abordagem holística que envolva aprimoramento no treinamento, clarificação das regras e regulamentos, fortalecimento da supervisão e alinhamento entre os objetivos das tarefas e as intenções comunicadas. Promover uma cultura organizacional que priorize a segurança e a adesão às normas estabelecidas é fundamental para prevenir tais desvios."
+    }]},
+    {
+      "ID": "#O-D",
+      "Nome": "FALHA DE INTENÇÃO (NÃO VIOLAÇÃO)",
+      "CÓDIGO": "O-D",
+      "FONTE": "Daumas (2018), Tabela 15; Hendy (2003), Figure 5",
+      "DEFINIÇÃO": "Uma falha de intenção (não violação) ocorre quando, apesar de uma correta percepção da situação, opta-se intencionalmente por uma ação arriscada. Isso pode acontecer independentemente de o risco ter sido totalmente avaliado ou não. Caso não haja uma opção conservadora que atenda aos objetivos da tarefa, é necessário revisar os objetivos da tarefa e os requisitos da missão para identificar as pré-condições que levaram a essa escolha.",
+      "CIRCUNSTÂNCIAS TÍPICAS": [
+        "Motivação Excessiva: Uma forte determinação para alcançar um objetivo, mesmo às custas de assumir riscos significativos.",
+        "Excesso de Confiança: Superestimação da própria habilidade de gerenciar riscos ou lidar com situações adversas.",
+        "Pressão para Cumprimento de Metas: A necessidade de atender a expectativas de desempenho ou prazos que encorajam a tomada de atalhos.",
+        "Falta de Opções Conservadoras: Situações em que as alternativas seguras não são viáveis para alcançar os objetivos desejados.",
+        "Cultura Organizacional que Tolera Riscos: Um ambiente que valoriza o sucesso a qualquer custo, promovendo comportamentos arriscados.",
+        "Desconhecimento de Práticas Seguras: Uma lacuna no conhecimento ou na formação que leva a subestimar os riscos envolvidos.",
+        "Falta de Supervisão Adequada: Ausência de orientação ou de verificações que poderiam prevenir a escolha de ações arriscadas.",
+        "Ambiguidade nos Objetivos da Tarefa: Objetivos que não são claramente definidos ou comunicados, resultando em interpretações errôneas sobre a melhor forma de proceder.",
+        "Inadequação dos Recursos Disponíveis: Recursos insuficientes que forçam os operadores a buscar soluções menos seguras para completar a tarefa.",
+        "Regras e Regulamentos Insuficientes: Falta de diretrizes claras para gerenciar riscos previsíveis."
+      ],
+      "EXEMPLOS PRÁTICOS": [
+        "Decisão de Pilotagem Sob Risco: Um piloto decide voar sob condições meteorológicas adversas para manter o cronograma, apesar dos riscos.",
+        "Ignorar Procedimentos de Segurança: Um trabalhador da construção civil escolhe não usar equipamento de proteção para acelerar o trabalho.",
+        "Supressão de Informações em Relatório Médico: Um médico escolhe não relatar um erro de diagnóstico para evitar repercussões.",
+        "Uso de Equipamento Não Certificado: Uma equipe técnica utiliza peças não aprovadas para reparos urgentes.",
+        "Desvio de Rotas de Navegação: Capitão de navio ignora rota segura recomendada para economizar tempo.",
+        "Alteração de Ingredientes em Produção Alimentícia: Decisão de usar substitutos mais baratos sem avaliar completamente os riscos para a saúde.",
+        "Implementação de Software Não Testado: TI implanta uma atualização não testada para cumprir um prazo, arriscando a segurança do sistema.",
+        "Exceder Limites de Carga: Decisão de transportar carga acima do limite para maximizar lucros, comprometendo a segurança.",
+        "Desobediência a Ordens de Evacuação: Moradores decidem ficar em áreas de risco durante desastres naturais, confiando em sua capacidade de sobrevivência.",
+        "Lançamento de Produto com Falhas Conhecidas: Uma empresa decide lançar um produto ciente de seus defeitos para não atrasar o mercado."
+      ],
+      "ESTRATÉGIAS DE MITIGAÇÃO": [
+        "Educação em Gestão de Risco: Fortalecer a consciência sobre riscos e práticas seguras através do treinamento.",
+        "Reforço na Qualificação e Autorização: Assegurar que todos os envolvidos estejam devidamente qualificados e autorizados.",
+        "Clareza nos Objetivos e na Missão: Definir e comunicar claramente os objetivos da tarefa e os requisitos da missão.",
+        "Melhoria das Práticas Organizacionais: Desenvolver e implementar procedimentos operacionais padrão que priorizem a segurança.",
+        "Cultura Organizacional de Segurança: Promover uma cultura que não apenas tolera, mas incentiva a avaliação crítica de riscos.",
+        "Aprimoramento de Regras e Regulamentos: Revisar e fortalecer as regras e regulamentos para gerenciar efetivamente os riscos previsíveis.",
+        "Implementação de Supervisão Eficaz: Estabelecer sistemas de supervisão que monitoram a adesão às práticas seguras.",
+        "Feedback e Ajuste Contínuos: Criar mecanismos para feedback regular e ajuste de práticas com base na avaliação de riscos.",
+        "Promoção do Equilíbrio Risco-Benefício: Encorajar a tomada de decisão que balanceia adequadamente risco contra benefício.",
+        "Reforço na Comunicação da Intenção: Garantir que as intenções das atividades sejam claramente comunicadas e compreendidas em todos os níveis."
+      ],
+      "CONCLUSÃO": "A falha de intenção (não violação) enfatiza a necessidade de um entendimento profundo dos riscos e a promoção de uma cultura organizacional que priorize a segurança e a gestão de riscos. As medidas mitigatórias devem abordar tanto os aspectos psicológicos quanto organizacionais para minimizar a ocorrência dessas falhas."
+ 
+  }
+]

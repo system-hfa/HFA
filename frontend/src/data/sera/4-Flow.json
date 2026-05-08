@@ -1,0 +1,70 @@
+{
+  "start": "OBJETIVO",
+  "steps": [
+    {
+      "step_id": "OBJETIVO",
+      "question": "O que o operador estava tentando alcançar... qual era a intenção ou o objetivo que o levou a cometer o ato inseguro?",
+      "next_step": "OBJETIVO_CONSISTENTE",
+      "reference": "Consulte '4 - Failures.json' para classificar a resposta."
+    },
+    {
+      "step_id": "OBJETIVO_CONSISTENTE",
+      "question": "Consistente com normas e regulamentos?",
+      "yes": "OBJETIVO_GERENCIADO",
+      "no": "VIOLACAO",
+      "explanation": "Esta pergunta verifica se o objetivo do operador está alinhado com as normas e regulamentos existentes. Verifique os códigos em '4 - Failures.json'.",
+      "restrictions": {
+        "excluded": ["O-B", "O-C", "O-D"],
+        "note": "Se 'Sim', falhas relacionadas a violações e intenção não conservadora (O-B, O-C, O-D) devem ser descartadas."
+      }
+    },
+    {
+      "step_id": "OBJETIVO_GERENCIADO",
+      "question": "Conservativo, com risco gerenciado, consistente com os procedimentos?",
+      "yes": "NENHUMA FALHA DE OBJETIVO",
+      "no": "FALHA DE INTENCAO (NÃO VIOLAÇÃO)",
+      "explanation": "Esta pergunta determina se, apesar da consistência com as normas, o objetivo era realizado de maneira conservadora e de acordo com os procedimentos estabelecidos. Use '4 - Failures.json' para classificação de falhas.",
+      "restrictions": {
+        "excluded": ["O-B", "O-C"],
+        "note": "Se 'Sim', apenas falhas de intenção não conservadora podem ser descartadas (O-B, O-C)."
+      }
+    },
+    {
+      "step_id": "VIOLACAO",
+      "question": "Violação de rotina?",
+      "yes": "VIOLACAO_ROTINEIRA",
+      "no": "VIOLACAO_EXCEPCIONAL",
+      "explanation": "Esta etapa determina se a ação do operador representa uma violação habitual dos procedimentos ou se é um caso excepcional. Verifique '4 - Failures.json' para os códigos apropriados.",
+      "restrictions": {
+        "excluded": ["O-D"],
+        "note": "Se 'Sim', apenas violações (O-B, O-C) permanecem aplicáveis."
+      }
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome": "NENHUMA FALHA DE OBJETIVO",
+      "code": "O-A",
+      "type": "end",
+      "explanation": "Indica que não houve falhas nos objetivos dos operadores relacionados ao incidente. As ações e intenções estavam alinhadas com os procedimentos seguros e as expectativas organizacionais."
+    },
+    {
+      "outcome": "VIOLACAO_ROTINEIRA",
+      "code": "O-B",
+      "type": "end",
+      "explanation": "Ocorre quando os operadores desviam dos procedimentos padrão de forma habitual, geralmente devido a uma cultura operacional que tolera tais desvios. Consulte '4 - Failures.json' para detalhes específicos."
+    },
+    {
+      "outcome": "VIOLACAO_EXCEPCIONAL",
+      "code": "O-C",
+      "type": "end",
+      "explanation": "Envolve desvios dos procedimentos padrão sob circunstâncias extraordinárias ou raras. Para detalhes, consulte '4 - Failures.json'."
+    },
+    {
+      "outcome": "FALHA DE INTENCAO (NÃO VIOLAÇÃO)",
+      "code": "O-D",
+      "type": "end",
+      "explanation": "Situações em que o objetivo do operador, apesar de consistente com as normas e regulamentos, não é conservativo ou não gerencia o risco de forma adequada. O operador escolhe intencionalmente uma ação arriscada, sem que haja violação formal de regras. (Hendy, 2003, Figure 5 — 'Failure in intent, Non-violation'). Use '4 - Failures.json' para referência."
+    }
+  ]
+}

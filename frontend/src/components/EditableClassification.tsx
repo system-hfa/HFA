@@ -3,6 +3,7 @@ import { useState } from 'react'
 import DidacticModal from './DidacticModal'
 import ConfirmRecalculateModal from './ConfirmRecalculateModal'
 import { FAILURE_NAMES } from '@/data/tutorials'
+import { resolveApiUrl } from '@/lib/api'
 
 const DEPENDENCY_MAP: Record<string, { recalculate: number[]; preserve: number[] }> = {
   '2': { recalculate: [3, 4, 5, 6, 7], preserve: [] },
@@ -49,8 +50,7 @@ export default function EditableClassification({
   async function handleConfirm() {
     setLoading(true)
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? ''
-      const res = await fetch(`${apiUrl}/analyses/${analysisId}/recalculate`, {
+      const res = await fetch(resolveApiUrl(`/analyses/${analysisId}/recalculate`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({

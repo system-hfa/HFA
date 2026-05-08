@@ -1,0 +1,233 @@
+{
+  "metadados": {
+    "titulo": "Base Científica e Tutorial da Metodologia SERA",
+    "fontes": [
+      "Hendy, K.C. (2003). DRDC Toronto TR 2002-057. Defence R&D Canada.",
+      "Daumas, F.P. (2018). Análise de Fatores Humanos em Incidentes na Aviação Offshore. UFF."
+    ],
+    "versao": "1.0",
+    "descricao": "Conteúdo didático para exibição contextual durante a análise SERA."
+  },
+
+  "introducao_metodologia": {
+    "titulo": "Por que o SERA existe?",
+    "texto": "Durante décadas, investigadores de acidentes concentravam-se no 'quê' causou o acidente — a ação do piloto, a falha mecânica. O SERA foi criado por Keith Hendy (2003) para responder ao 'porquê': por que aquele padrão de comportamento surgiu? Essa mudança de perspectiva é revolucionária.",
+    "contexto_historico": "A aviação reduziu sistematicamente os acidentes técnicos ao longo do século XX. Hoje, entre 70 e 80% dos acidentes são atribuídos a fatores humanos (Shappell e Wiegmann, 1997). O elo mais fraco do sistema não é mais a máquina — é a interface entre o humano e o sistema complexo em que opera.",
+    "problema_com_abordagens_anteriores": "Ferramentas anteriores como o HFACS descrevem O QUE aconteceu (taxonomia descritiva), mas não explicam por que o comportamento ocorreu. Reason (1990) identificou os 'buracos do queijo suíço', mas sua teoria carece de base teórica para conectar causa e efeito de forma inequívoca (Hendy e Lichacz, 1999).",
+    "solucao_sera": "O SERA resolve isso usando dois modelos teóricos validados: o Modelo de Processamento da Informação (IP) e a Teoria do Controle Perceptual (PCT). Juntos, eles fornecem um framework que conecta causa e efeito de forma clara."
+  },
+
+  "base_teorica": {
+    "modelo_IP": {
+      "titulo": "Modelo de Processamento da Informação (IP)",
+      "essencia": "Todos os fatores que afetam a carga cognitiva humana podem ser reduzidos a dois elementos: (1) a quantidade de informação a ser processada e (2) o tempo disponível antes que a decisão precise ser tomada.",
+      "formula": "Pressão de Tempo ∝ Informação a processar / Tempo disponível",
+      "implicacao_pratica": "Se um operador erra sob pressão de tempo, a intervenção correta NÃO é 'ser mais atento'. É reduzir a quantidade de informação ou aumentar o tempo disponível — mudança no sistema, não no indivíduo.",
+      "fonte": "Hendy (2003), p.3-5"
+    },
+    "modelo_PCT": {
+      "titulo": "Teoria do Controle Perceptual (PCT)",
+      "essencia": "Os humanos se comportam como sistemas de controle em malha fechada com múltiplas camadas. O ponto de partida são as percepções relacionadas aos objetivos — o que esperamos ver, ouvir ou sentir do mundo.",
+      "ciclo": "OBJETIVO → Perceber o estado do mundo → Comparar com o objetivo → Se há diferença → Formular ação → Agir sobre o mundo → Nova percepção",
+      "quatro_pilares": ["Objetivos (Goals)", "Atenção (Attention)", "Conhecimento (Knowledge)", "Feedback"],
+      "fonte": "Hendy (2003), p.3-4; Powers (1973)"
+    },
+    "modelo_combinado": {
+      "titulo": "O Modelo Combinado IP/PCT — A Base do SERA",
+      "seis_principios": [
+        "1. PRESSÃO DE TEMPO: Workload, desempenho e produção de erros dependem da pressão de tempo percebida.",
+        "2. TRADE-OFF VELOCIDADE/PRECISÃO: No processamento humano, velocidade e precisão trocam entre si.",
+        "3. DUAS ESTRATÉGIAS DE GESTÃO DO TEMPO: (a) Simplificar a decisão — menos informação a processar. (b) Estender o tempo de resposta.",
+        "4. GESTÃO DE ERROS: Todo sistema corretor de erros usa feedback. Sem feedback, não há correção.",
+        "5. GESTÃO DE RECURSOS: As decisões dependem do que você sabe. Para saber, você precisa prestar atenção. Para prestar atenção, você precisa de tempo.",
+        "6. IGNORÂNCIA NÃO É FELICIDADE: O que você não sabe pode prejudicá-lo."
+      ],
+      "fonte": "Hendy (2003), p.4-5"
+    }
+  },
+
+  "comparacao_ferramentas": {
+    "titulo": "SERA vs. outras ferramentas",
+    "tabela": [
+      {
+        "ferramenta": "HFACS",
+        "base_teorica": "Descritiva (baseada em Reason, 1990)",
+        "responde_ao": "O QUÊ aconteceu",
+        "limitacao": "Não explica por que o comportamento surgiu; categorias se sobrepõem",
+        "fonte_critica": "Hendy e Lichacz (1999); Inglis et al. (2010)"
+      },
+      {
+        "ferramenta": "SERA",
+        "base_teorica": "IP + PCT (modelos validados)",
+        "responde_ao": "O QUÊ e o PORQUÊ",
+        "vantagem": "Categorias ortogonais (não se sobrepõem); conecta causa e efeito; base para gestão de risco",
+        "fonte": "Hendy (2003); Daumas (2018)"
+      },
+      {
+        "ferramenta": "CENIPA/tradicional",
+        "base_teorica": "Causal-descritiva",
+        "limitacao": "Identifica em média menos da metade dos fatores contribuintes vs. HFACS (Fajer et al., 2011); não inclui fatores organizacionais",
+        "fonte": "Daumas (2018), p.17"
+      }
+    ]
+  },
+
+  "ponto_de_fuga": {
+    "titulo": "O Ponto de Fuga da Operação Segura",
+    "definicao": "É o momento exato na linha do tempo em que a operação se desviou dos padrões de segurança — o ponto a partir do qual só existia uma trajetória possível: em direção ao evento indesejado.",
+    "analogia": "Pense em um trem de alta velocidade. Há vários desvios possíveis na rota. O Ponto de Fuga é aquele desvio específico que, uma vez tomado, tornou o destino inevitável. Antes dele, havia opções. Depois, não.",
+    "como_identificar": "Um ato ou condição insegura estará nessa trajetória se sua remoção ou modificação teria impedido o evento. O ato mais crítico é aquele a partir do qual havia apenas um caminho.",
+    "fonte": "Hendy (2003), p.7-8; Sobreda e Soviero (2011)"
+  },
+
+  "tres_perguntas": {
+    "titulo": "As 3 Perguntas Fundamentais do SERA",
+    "introducao": "Toda análise SERA parte de três perguntas derivadas diretamente do modelo PCT. São simples, mas poderosas — e é impossível entender um comportamento sem respondê-las.",
+    "perguntas": [
+      {
+        "id": "OBJETIVO",
+        "pergunta": "O que o operador estava tentando alcançar? Qual era a intenção?",
+        "porque_importa": "Sem saber o objetivo, qualquer julgamento sobre a ação é incompleto. Uma ação que parece irracional pode ser completamente lógica dado o objetivo que o operador acreditava estar perseguindo.",
+        "fonte": "Hendy (2003), p.8"
+      },
+      {
+        "id": "PERCEPÇÃO",
+        "pergunta": "O que o operador acreditava ser o estado do mundo em relação ao objetivo?",
+        "porque_importa": "O operador não age sobre o mundo real — age sobre a sua PERCEPÇÃO do mundo. Se a percepção estava errada, a ação pode ter sido perfeitamente racional dado o que o operador acreditava ser verdade.",
+        "fonte": "Hendy (2003), p.8"
+      },
+      {
+        "id": "AÇÃO",
+        "pergunta": "Como o operador estava tentando alcançar o objetivo? Qual era o plano?",
+        "porque_importa": "Mesmo com objetivo correto e percepção correta, a ação pode falhar — por lapso, por falta de habilidade, por limitação física, ou por seleção inadequada do método.",
+        "fonte": "Hendy (2003), p.8"
+      }
+    ]
+  },
+
+  "falhas_ativas": {
+    "titulo": "As 12 Falhas Ativas — O Que São e Por Que Existem",
+    "introducao": "As falhas ativas representam os 12 pontos de ruptura no sistema de processamento de informação humano. São derivadas diretamente dos modelos IP/PCT — não são uma lista arbitrária, mas uma taxonomia completa e não-sobreposta (ortogonal).",
+    "nota_importante": "Hendy (2003) é claro: não há muito valor em dizer a alguém 'seja mais atento'. O que precisa mudar é a pré-condição que sustenta a falha de atenção. As falhas ativas dizem O QUE falhou; as pré-condições dizem POR QUÊ.",
+    "itens": [
+      {
+        "codigo_daumas": "O-B / O-C / O-D",
+        "nome": "Falhas de Intenção (Etapa 4)",
+        "explicacao_didatica": "Ocorrem no nível do OBJETIVO. O operador fez uma escolha deliberada — seja violar uma regra (O-B rotineira, O-C excepcional) ou perseguir um objetivo arriscado mesmo sem violar formalmente (O-D). A chave: houve intenção consciente.",
+        "distincao_critica": "O-B vs O-C: A violação é HABITUAL (rotina)? → O-B. É EXCEPCIONAL, em circunstância especial? → O-C. O objetivo era consistente com normas mas arriscado? → O-D.",
+        "fonte": "Hendy (2003), Figure 5; Daumas (2018), Tabelas 11 e 15"
+      },
+      {
+        "codigo_daumas": "P-A",
+        "nome": "Falha Sensorial",
+        "explicacao_didatica": "O operador não tinha a capacidade física (visão, audição, etc.) para perceber a informação necessária. É uma limitação do 'sensor humano', não da decisão.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Anexo B"
+      },
+      {
+        "codigo_daumas": "P-B",
+        "nome": "Falha de Atenção (sem pressão de tempo)",
+        "explicacao_didatica": "A informação estava disponível e correta, mas o operador simplesmente não a atendeu. Não havia pressão de tempo excessiva — a falha está na alocação da atenção.",
+        "criterio_decisor": "Se houvesse mais tempo, o resultado seria diferente? NÃO → P-B (ou P-G conforme versão Daumas). SIM → P-D.",
+        "fonte": "Hendy (2003), Figure 5"
+      },
+      {
+        "codigo_daumas": "P-C",
+        "nome": "Falha de Conhecimento/Percepção",
+        "explicacao_didatica": "O operador não tinha o conhecimento ou habilidade para interpretar adequadamente a informação que recebeu. A informação estava lá; a capacidade de interpretá-la, não.",
+        "exemplo_pratico": "Piloto vê instrumentos corretamente mas não sabe interpretar a leitura incomum de torque.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Tabela 5"
+      },
+      {
+        "codigo_daumas": "P-D",
+        "nome": "Falha de Atenção (COM pressão de tempo excessiva)",
+        "explicacao_didatica": "A informação estava disponível, mas a pressão de tempo impediu o operador de processá-la adequadamente. É o trade-off velocidade/precisão do modelo IP em ação.",
+        "criterio_decisor": "Se houvesse mais tempo disponível, o resultado teria sido diferente? SIM → P-D. NÃO → P-G.",
+        "distincao_pd_pg": "P-D: A pressão de tempo é o fator causador. P-G: A falta de atenção ocorre independentemente do tempo — há outro fator (distração, complacência, etc.).",
+        "fonte": "Hendy (2003), Figure 5; Daumas (2018), Tabela 8"
+      },
+      {
+        "codigo_daumas": "P-E / P-F",
+        "nome": "Falha de Percepção (informação ilusória ou ambígua)",
+        "explicacao_didatica": "Todas as informações relevantes foram recebidas, mas o conteúdo é ambíguo ou ilusório. O problema está na natureza da informação, não na capacidade do operador de recebê-la.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Anexo B"
+      },
+      {
+        "codigo_daumas": "P-H",
+        "nome": "Falha de Comunicação",
+        "explicacao_didatica": "Falha no canal de comunicação entre humanos ou entre humano e máquina. O operador não pôde receber a informação relevante, ou recebeu informação incorreta, por falha no canal.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Tabela 12"
+      },
+      {
+        "codigo_daumas": "A-E",
+        "nome": "Falha de Conhecimento/Decisão",
+        "explicacao_didatica": "O operador não tinha o conhecimento ou habilidade para tomar a decisão correta. Percebeu a situação adequadamente, mas no momento de decidir, faltou conhecimento.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Tabela 6"
+      },
+      {
+        "codigo_daumas": "A-F",
+        "nome": "Falha na Seleção da Ação (sem pressão de tempo)",
+        "explicacao_didatica": "Falha no processo decisório pela seleção inadequada da ação — não por mal-entendido da situação, mas pela escolha errada do que fazer. Sem pressão de tempo excessiva.",
+        "criterio_decisor": "A pressão de tempo era excessiva? NÃO → A-F. SIM → A-I.",
+        "fonte": "Hendy (2003), Figure 5; Daumas (2018), Tabela 17"
+      },
+      {
+        "codigo_daumas": "A-G",
+        "nome": "Falha de Feedback (sem pressão de tempo)",
+        "explicacao_didatica": "O operador não recebeu informação de feedback para corrigir suas ações. Sem feedback, não há possibilidade de correção do erro. Inclui falha individual (monitoramento) e de equipe (verificação cruzada).",
+        "criterio_decisor": "A pressão de tempo era excessiva? NÃO → A-G. SIM → A-J.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Tabela 13"
+      },
+      {
+        "codigo_daumas": "A-H",
+        "nome": "Falha no Gerenciamento do Tempo",
+        "explicacao_didatica": "Falha no uso de estratégias eficazes de gestão do tempo: priorização incorreta, falha em delegar, adiamento inadequado, perda de tarefas, falha em simplificar ou pré-planejar.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Tabela 9"
+      },
+      {
+        "codigo_daumas": "A-I",
+        "nome": "Falha na Seleção da Ação (COM pressão de tempo)",
+        "explicacao_didatica": "Igual a A-F, mas o fator causal é a pressão de tempo excessiva. A pressão fez o operador escolher a ação errada.",
+        "criterio_decisor": "A pressão de tempo era excessiva? SIM → A-I. NÃO → A-F.",
+        "fonte": "Hendy (2003), Figure 5"
+      },
+      {
+        "codigo_daumas": "A-J / A-K",
+        "nome": "Deslizes, Lapsos e Erros de Modo / Falha de Execução",
+        "explicacao_didatica": "A resposta não foi executada conforme a intenção. Deslizes ocorrem quando a ação difere ligeiramente da rotina. Erros de modo: ação adequada para outro modo de operação, mas não para o atual.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Anexo B"
+      }
+    ]
+  },
+
+  "preconditions_didatico": {
+    "titulo": "Por Que as Pré-Condições São o Foco da Mudança",
+    "texto_chave": "Hendy (2003) é direto: as falhas ativas representam o que aconteceu, mas são rastreáveis a limitações fundamentais do sistema humano — limitações que não podem ser modificadas. O que PODE ser mudado são as pré-condições. Elas são o verdadeiro foco de intervenção.",
+    "estrutura_camadas": [
+      {
+        "camada": "Condições do Pessoal",
+        "subcategorias": ["Fisiológico (P1)", "Psicológico (P2)", "Social (P3)", "Capacidade Física (P4)", "Prontidão Pessoal (P5)", "Treinamento e Seleção (P6)", "Qualificação e Autorização (P7)"],
+        "explicacao": "Descrevem as condições do INDIVÍDUO — tanto sozinho quanto em grupo. Afetam todos os componentes do modelo IP/PCT."
+      },
+      {
+        "camada": "Condições da Tarefa",
+        "subcategorias": ["Pressão do Tempo (T1)", "Objetivos (T2)"],
+        "explicacao": "Os dois fatores do modelo IP: o tempo disponível e a quantidade de incerteza a ser resolvida."
+      },
+      {
+        "camada": "Condições de Trabalho",
+        "subcategorias": ["Equipamento (E1)", "Espaço de Trabalho (E2)", "Ambiente (E3)"],
+        "explicacao": "O ambiente físico no qual a tarefa é realizada."
+      },
+      {
+        "camada": "Comando, Controle e Supervisão",
+        "subcategorias": ["Forming Intent (S1)", "Communicating Intent (S2)", "Monitoring and Supervision (S3)"],
+        "explicacao": "O conduíte entre a organização e as pré-condições imediatas. Baseado em PCT: formação e comunicação de intenção + monitoramento corretor de erros."
+      },
+      {
+        "camada": "Influências Organizacionais",
+        "subcategorias": ["Missão (O1)", "Provisão de Recursos (O2)", "Regras e Regulamentos (O3)", "Processos e Práticas (O4)", "Clima Organizacional (O5)", "Oversight (O6)"],
+        "explicacao": "Fatores remotos que estabelecem o propósito, controlam recursos, definem o clima e fornecem supervisão sistêmica."
+      }
+    ]
+  }
+}

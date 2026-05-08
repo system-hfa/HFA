@@ -1,0 +1,60 @@
+{
+  "Ponto_de_Desvio_da_Operacao_Segura": {
+    "Descricao": "O 'Ponto de Desvio da Operação Segura' é um termo técnico da metodologia SERA que define o momento exato quando a operação se desvia de procedimentos considerados seguros, iniciando uma trajetória em direção a um evento indesejado. Esse ponto normalmente está associado a uma única decisão de um agente, seja um operador individual, uma equipe ou um setor, mas nunca mais de uma decisão simultânea.",
+    "Importancia_da_Identificacao": "A identificação precisa deste ponto é crucial para traçar a sequência causal dos eventos e compreender a natureza do ato ou condição insegura envolvida.",
+    "Caracteristicas_do_Ponto": {
+      "Ato_Inseguro": "Refere-se a uma única ação ou decisão que diverge dos procedimentos seguros estabelecidos. É essencial na identificação do ponto onde a decisão crítica foi tomada por um agente, seja um indivíduo ou uma equipe.",
+      "Confluencia": "Este ponto marca a confluência entre operações seguras e inseguras, representando uma decisão crítica que transgride os limites de segurança.",
+      "Implicacoes": "Identificar este momento é vital para modificar procedimentos e treinamentos, potencialmente prevenindo resultados adversos semelhantes."
+    },
+    "Processo_de_Identificacao": {
+      "Etapas": [
+        {
+          "Analise_Temporal": "Revisão meticulosa dos eventos em ordem cronológica para detectar quando ocorreu o primeiro indicativo de um ato inseguro.",
+          "Descricao_Factual": "Documentação objetiva e detalhada do ato ou condição insegura, sem atribuir causas preliminares ou inferir motivações.",
+          "Determinacao_da_Criticidade": "Avaliação crítica do impacto potencial do ato ou condição insegura na prevenção do incidente.",
+          "Foco_nos_Operadores": "Focar no único agente, seja um indivíduo, uma equipe ou uma coordenação, que estava controlando as variáveis críticas no momento do desvio. Um exemplo seria um comandante que decide não corrigir incongruências no plano de voo antes da decolagem, mesmo estando ciente do problema.",
+          "Exclusao_de_Fatores_Latentes": "Exclusão temporária de fatores latentes na análise inicial para focar nos aspectos mais diretos e controláveis do incidente.",
+          "Identificacao_do_Agente": "Responder claramente à pergunta: 'Quem cometeu o ponto de fuga da operação segura?', assegurando a identificação do agente ou grupo diretamente responsável pela decisão crítica."
+        }
+      ]
+    },
+    "Exemplos_Praticos": [
+      {
+        "descricao": "O comandante de um voo opta por não corrigir as coordenadas do plano de voo antes da decolagem, mesmo ao perceber a incongruência com os dados recebidos, visando evitar atrasos."
+      },
+      {
+        "descricao": "Um piloto decide não reconfirmar a altitude de pouso com a torre de controle, assumindo que as instruções anteriores permanecem válidas em condições meteorológicas adversas, levando a uma trajetória de descida que só não resulta em colisão devido à intervenção do copiloto."
+      },
+      {
+        "descricao": "Um operador de guindaste decide operar o equipamento além dos limites de peso seguro durante uma tempestade para cumprir prazos apertados, colocando em risco a estabilidade do guindaste."
+      },
+      {
+        "descricao": "Um técnico opta por não usar equipamento de proteção individual enquanto manipula substâncias químicas corrosivas, confiando em sua experiência prévia sem incidentes, arriscando sua saúde."
+      },
+      {
+        "descricao": "Mecânicos de aeronaves decidem usar uma peça não autorizada como uma solução temporária para manter o cronograma de voo, comprometendo a segurança da aeronave."
+      },
+      {
+        "descricao": "Durante uma atualização, um programador decide ignorar a etapa de revisão de código para as funções de segurança, assumindo que modificações anteriores são suficientes."
+      },
+      {
+        "descricao": "Um supervisor decide não realizar o acompanhamento necessário sobre os operários novatos em um ambiente industrial de alto risco, levando a erros críticos na operação das máquinas."
+      },
+      {
+        "descricao": "Um piloto decide ignorar os sinais de aviso do sistema de controle de voo, confiando em sua avaliação visual do ambiente, colocando a aeronave em risco de falha mecânica."
+      },
+      {
+        "descricao": "Um cirurgião escolhe prosseguir com uma operação complexa apesar de não ter todos os resultados dos exames pré-operatórios, aumentando o risco de complicações médicas inesperadas."
+      },
+      {
+        "descricao": "Durante um incêndio inicial em um hotel, o responsável pela segurança decide não acionar o alarme imediatamente, atrasando a evacuação enquanto verifica pessoalmente a extensão do fogo."
+      },
+      {
+        "descricao": "Um operador de construção civil decide desativar os intertravamentos de segurança em uma serra elétrica para acelerar o trabalho, aumentando o risco de ferimentos graves."
+      }
+    ],
+    "Conclusao": "Identificar corretamente o 'Ponto de Desvio da Operação Segura' permite não apenas compreender os eventos que levaram ao incidente, mas também formular medidas preventivas eficazes para evitar a recorrência de tais eventos.",
+    "Importancia_Educacional": "Essencial para o treinamento de analistas de segurança e operadores, oferecendo uma base sólida para o desenvolvimento de estratégias preventivas e aprimoramento contínuo das práticas de segurança."
+  }
+}

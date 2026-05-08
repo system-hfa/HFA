@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { FAILURE_NAMES } from '@/data/tutorials'
+import { resolveApiUrl } from '@/lib/api'
 
 interface EditRecord {
   id: string
@@ -45,8 +46,7 @@ export default function EditHistoryPanel({ analysisId, token, editCount, onRever
 
   useEffect(() => {
     if (!open) return
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? ''
-    fetch(`${apiUrl}/analyses/${analysisId}/edits`, {
+    fetch(resolveApiUrl(`/analyses/${analysisId}/edits`), {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(r => r.json())
@@ -58,8 +58,7 @@ export default function EditHistoryPanel({ analysisId, token, editCount, onRever
     if (!confirm('Reverter esta edição e recalcular os steps dependentes?')) return
     setReverting(editId)
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? ''
-      const res = await fetch(`${apiUrl}/analyses/${analysisId}/edits/${editId}`, {
+      const res = await fetch(resolveApiUrl(`/analyses/${analysisId}/edits/${editId}`), {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       })
