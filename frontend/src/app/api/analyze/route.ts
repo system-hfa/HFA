@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
-import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
+import { getSupabaseAdmin, assertServiceRoleEnv } from '@/lib/server/supabase-admin'
 import { completeSeraAnalysisAfterEventCreated } from '@/lib/server/complete-sera-analysis'
-import { debitCreditForEvent, ensurePublicUserRow } from '@/lib/server/tenant-user'
+import { assertLlmEnvConfigured } from '@/lib/sera/llm'
 import { type SourceMeta } from '@/lib/sera/pipeline'
+import {
+  debitCreditForEvent,
+  ensurePublicUserRow,
+  refundCreditForFailedAnalysis,
+} from '@/lib/server/tenant-user'
 import {
   buildSeraAnalysisFromDbRow,
   fetchEditHistoryForAnalysis,
@@ -26,6 +31,11 @@ function jsonError(message: string, status: number) {
 export async function POST(req: Request) {
   try {
     const user = await requireBearerUser(req)
+    try {
+      assertServiceRoleEnv()
+    } catch (cfg) {
+      return jsonError(cfg instanceof Error ? cfg.message : String(cfg), 503)
+    }
     const admin = getSupabaseAdmin()
     const body = (await req.json()) as {
       eventoNarrativa: string
@@ -72,6 +82,12 @@ export async function POST(req: Request) {
         .maybeSingle()
 
       if (evErr || !ev) return jsonError('Evento não encontrado', 404)
+
+      try {
+        assertLlmEnvConfigured()
+      } catch (cfgErr) {
+        return jsonError(cfgErr instanceof Error ? cfgErr.message : String(cfgErr), 503)
+      }
 
       await admin.from('events').update({ raw_input: rawInput }).eq('id', body.eventId)
 
@@ -131,6 +147,12 @@ export async function POST(req: Request) {
       return jsonError('Créditos insuficientes', 402)
     }
 
+    try {
+      assertLlmEnvConfigured()
+    } catch (cfgErr) {
+      return jsonError(cfgErr instanceof Error ? cfgErr.message : String(cfgErr), 503)
+    }
+
     const inputType = sourceMeta.sourceType === 'docx' || sourceMeta.sourceType === 'pdf'
       ? sourceMeta.sourceType
       : 'text'
@@ -157,15 +179,21 @@ export async function POST(req: Request) {
 
     const eventId = eventRow.id as string
 
-    await debitCreditForEvent({
-      admin,
-      tenantId: user.tenantId,
-      submittedById,
-      eventId,
-      title,
-      isEnterprise,
-      currentBalance: tenant.credits_balance ?? 0,
-    })
+    try {
+      await debitCreditForEvent({
+        admin,
+        tenantId: user.tenantId,
+        submittedById,
+        eventId,
+        title,
+        isEnterprise,
+        currentBalance: tenant.credits_balance ?? 0,
+      })
+    } catch (debitErr) {
+      console.error(debitErr)
+      await admin.from('events').delete().eq('id', eventId)
+      return jsonError('Não foi possível reservar o crédito para esta análise.', 500)
+    }
 
     try {
       const { analysisId } = await completeSeraAnalysisAfterEventCreated(
@@ -203,6 +231,24 @@ export async function POST(req: Request) {
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
       console.error(err)
+      try {
+        const { data: tNow } = await admin
+          .from('tenants')
+          .select('credits_balance')
+          .eq('id', user.tenantId)
+          .single()
+        await refundCreditForFailedAnalysis({
+          admin,
+          tenantId: user.tenantId,
+          submittedById,
+          eventId,
+          title,
+          isEnterprise,
+          currentBalanceAfterDebit: tNow?.credits_balance ?? 0,
+        })
+      } catch (refundErr) {
+        console.error('Falha ao estornar crédito após análise com erro', refundErr)
+      }
       return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
     }
   } catch (e) {
