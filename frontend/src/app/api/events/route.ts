@@ -17,13 +17,14 @@ function jsonError(message: string, status: number) {
   return NextResponse.json({ detail: message }, { status })
 }
 
-function logEventsError(error: unknown, stage: string) {
+function logEventsError(error: unknown, stage: string, extra: Record<string, unknown> = {}) {
   const e = error instanceof Error ? error : new Error(String(error))
   console.error('[/api/events Error]', {
     stage,
     message: e.message,
     stack: e.stack,
     cause: e.cause,
+    ...extra,
   })
 }
 
@@ -45,13 +46,19 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  let stage = 'start'
+  let context: Record<string, unknown> = {}
   try {
+    stage = 'auth'
     const user = await requireBearerUser(req)
+    context = { userId: user.userId, tenantId: user.tenantId }
     try {
+      stage = 'assert-service-role-env'
       assertServiceRoleEnv()
     } catch (cfg) {
       return jsonError(cfg instanceof Error ? cfg.message : String(cfg), 503)
     }
+    stage = 'supabase-admin'
     const admin = getSupabaseAdmin()
     const ct = req.headers.get('content-type') || ''
 
@@ -106,6 +113,7 @@ export async function POST(req: Request) {
       return jsonError('Título e relato são obrigatórios', 400)
     }
 
+    stage = 'ensure-public-user-row'
     const submittedById = await ensurePublicUserRow(
       admin,
       user.tenantId,
@@ -114,6 +122,7 @@ export async function POST(req: Request) {
       user.role
     )
 
+    stage = 'fetch-tenant'
     const { data: tenant, error: terr } = await admin
       .from('tenants')
       .select('plan, credits_balance')
@@ -127,11 +136,13 @@ export async function POST(req: Request) {
     }
 
     try {
+      stage = 'llm-config'
       await applyUserAiSettingsToEnv(admin, user.userId)
     } catch (cfgErr) {
       return jsonError(cfgErr instanceof Error ? cfgErr.message : String(cfgErr), 503)
     }
 
+    stage = 'insert-event'
     const { data: eventRow, error: eerr } = await admin
       .from('events')
       .insert({
@@ -153,6 +164,7 @@ export async function POST(req: Request) {
     }
 
     const eventId = eventRow.id as string
+    context = { ...context, eventId }
 
     sourceMeta.sourceType = sourceMeta.sourceType ?? (input_type === 'text' ? 'text' : input_type)
 
@@ -160,6 +172,7 @@ export async function POST(req: Request) {
     let respostaSucesso = false
     let analysisId: string | null = null
     try {
+      stage = 'debit-credit'
       await debitCreditForEvent({
         admin,
         tenantId: user.tenantId,
@@ -171,6 +184,7 @@ export async function POST(req: Request) {
       })
       creditoDebitado = true
 
+      stage = 'run-pipeline'
       const r = await completeSeraAnalysisAfterEventCreated(
         admin,
         { userId: user.userId, tenantId: user.tenantId },
@@ -183,7 +197,7 @@ export async function POST(req: Request) {
       respostaSucesso = true
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
-      logEventsError(err, 'pipeline')
+      logEventsError(err, stage, context)
       return jsonError(
         err instanceof Error ? `Falha no pipeline SERA: ${err.message}` : 'Falha no pipeline SERA',
         500
@@ -208,7 +222,7 @@ export async function POST(req: Request) {
             currentBalanceAfterDebit: tNow?.credits_balance ?? 0,
           })
         } catch (refundErr) {
-          logEventsError(refundErr, 'refund')
+          logEventsError(refundErr, 'refund', context)
         }
       }
     }
@@ -236,7 +250,7 @@ export async function POST(req: Request) {
     })
   } catch (e) {
     if (e instanceof Response) return e
-    logEventsError(e, 'top-level')
+    logEventsError(e, stage, context)
     return jsonError(String(e), 500)
   }
 }

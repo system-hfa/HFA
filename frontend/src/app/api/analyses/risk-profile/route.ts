@@ -6,15 +6,33 @@ function jsonError(message: string, status: number) {
   return NextResponse.json({ detail: message }, { status })
 }
 
+function logRiskProfileError(error: unknown, stage: string, userId?: string, tenantId?: string) {
+  const e = error instanceof Error ? error : new Error(String(error))
+  console.error('[risk-profile]', {
+    stage,
+    userId,
+    tenantId,
+    message: e.message,
+    stack: e.stack,
+  })
+}
+
 export async function GET(req: Request) {
+  let userId: string | undefined
+  let tenantId: string | undefined
   try {
     const user = await requireBearerUser(req)
+    userId = user.userId
+    tenantId = user.tenantId
     const admin = getSupabaseAdmin()
     const { data, error } = await admin
       .from('analyses')
       .select('perception_code, objective_code, action_code, preconditions')
       .eq('tenant_id', user.tenantId)
-    if (error) return jsonError(error.message, 400)
+    if (error) {
+      logRiskProfileError(error, 'query-analyses', user.userId, user.tenantId)
+      return jsonError(`Falha ao consultar análises: ${error.message}`, 500)
+    }
 
     const perception: Record<string, number> = {}
     const objective: Record<string, number> = {}
@@ -52,6 +70,7 @@ export async function GET(req: Request) {
     })
   } catch (e) {
     if (e instanceof Response) return e
+    logRiskProfileError(e, 'top-level', userId, tenantId)
     return jsonError(String(e), 500)
   }
 }
