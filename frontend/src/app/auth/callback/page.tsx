@@ -9,25 +9,34 @@ export default function AuthCallbackPage() {
 
   useEffect(() => {
     const handleCallback = async () => {
-      const { data, error } = await supabase.auth.getSession()
+      const url = new URL(window.location.href)
+      const code = url.searchParams.get('code')
+      const err = url.searchParams.get('error') || url.searchParams.get('error_description')
+
+      if (err) {
+        router.replace('/login?error=auth')
+        return
+      }
+
+      // Em PKCE, o supabase-js pode não fazer auto-exchange em alguns cenários.
+      // Fazemos o exchange explicitamente quando existir `code`.
+      if (code) {
+        const { error: exErr } = await supabase.auth.exchangeCodeForSession(window.location.href)
+        if (exErr) {
+          router.replace('/login?error=auth')
+          return
+        }
+      }
+
+      const { data } = await supabase.auth.getSession()
       if (data.session) {
         await ensureOAuthTenant()
         router.replace('/dashboard')
-      } else if (error) {
-        router.replace('/login?error=auth')
-      } else {
-        // In PKCE flow, supabase-js auto-exchanges the code from URL
-        // Wait a tick and try again
-        setTimeout(async () => {
-          const { data: d2 } = await supabase.auth.getSession()
-          if (d2.session) {
-            await ensureOAuthTenant()
-            router.replace('/dashboard')
-          } else {
-            router.replace('/login?error=auth')
-          }
-        }, 1500)
+        return
       }
+
+      // fallback: evita loop infinito no callback
+      router.replace('/login?error=auth')
     }
 
     handleCallback()
