@@ -41,6 +41,13 @@ function topCode(counts: Record<string, number>): string | null {
   return entries.sort((a, b) => b[1] - a[1])[0][0]
 }
 
+function topCodes(counts: Record<string, number>, n: number): { code: string; count: number }[] {
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, n)
+    .map(([code, count]) => ({ code, count }))
+}
+
 export async function GET(req: Request) {
   let userId: string | undefined
   let tenantId: string | undefined
@@ -55,10 +62,10 @@ export async function GET(req: Request) {
     const ninetyDaysAgo = new Date(now)
     ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90)
 
-    const [analysesRes, actionsRes, eventsRes] = await Promise.all([
+    const [analysesRes, actionsRes, eventsRes, recentEventsRes] = await Promise.all([
       admin
         .from('analyses')
-        .select('id, perception_code, objective_code, action_code, preconditions, recommendations, created_at')
+        .select('id, event_id, perception_code, objective_code, action_code, preconditions, recommendations, created_at')
         .eq('tenant_id', tenantId),
       admin
         .from('corrective_actions')
@@ -69,6 +76,12 @@ export async function GET(req: Request) {
         .select('id, title, created_at')
         .eq('tenant_id', tenantId)
         .gte('created_at', ninetyDaysAgo.toISOString()),
+      admin
+        .from('events')
+        .select('id, title, created_at')
+        .eq('tenant_id', tenantId)
+        .order('created_at', { ascending: false })
+        .limit(5),
     ])
 
     if (analysesRes.error) {
@@ -83,6 +96,9 @@ export async function GET(req: Request) {
       logError(eventsRes.error, 'query-events', userId, tenantId)
       return jsonError(`Falha ao consultar eventos: ${eventsRes.error.message}`, 500)
     }
+    if (recentEventsRes.error) {
+      logError(recentEventsRes.error, 'query-recent-events', userId, tenantId)
+    }
 
     const analyses = analysesRes.data ?? []
     const actions = actionsRes.data ?? []
@@ -94,6 +110,7 @@ export async function GET(req: Request) {
     const actionCounts: Record<string, number> = {}
     const preconditionCounts: Record<string, number> = {}
     const combinationCounts: Record<string, number> = {}
+    const eventAnalysisMap: Record<string, { perception_code: string | null; objective_code: string | null; action_code: string | null }> = {}
 
     for (const a of analyses) {
       const p = a.perception_code as string | null
@@ -112,7 +129,6 @@ export async function GET(req: Request) {
         }
       }
 
-      // Combinations
       if (p && o) {
         const key = `${p} + ${o}`
         combinationCounts[key] = (combinationCounts[key] || 0) + 1
@@ -124,6 +140,10 @@ export async function GET(req: Request) {
       if (o && ac) {
         const key = `${o} + ${ac}`
         combinationCounts[key] = (combinationCounts[key] || 0) + 1
+      }
+
+      if (a.event_id) {
+        eventAnalysisMap[a.event_id as string] = { perception_code: p, objective_code: o, action_code: ac }
       }
     }
 
@@ -137,16 +157,19 @@ export async function GET(req: Request) {
         count: pTotal,
         pct: total > 0 ? Math.round((pTotal / total) * 100) : 0,
         top_code: topCode(perceptionCounts),
+        top_codes: topCodes(perceptionCounts, 3),
       },
       objective: {
         count: oTotal,
         pct: total > 0 ? Math.round((oTotal / total) * 100) : 0,
         top_code: topCode(objectiveCounts),
+        top_codes: topCodes(objectiveCounts, 3),
       },
       action: {
         count: aTotal,
         pct: total > 0 ? Math.round((aTotal / total) * 100) : 0,
         top_code: topCode(actionCounts),
+        top_codes: topCodes(actionCounts, 3),
       },
       total,
     }
@@ -216,22 +239,17 @@ export async function GET(req: Request) {
       .map(([month, count]) => ({ month, count }))
 
     // --- Risk score ---
-    const pFailures = pTotal
-    const oFailures = oTotal
-    const aFailures = aTotal
-
     const base_score =
       total > 0
-        ? ((pFailures * 1.0 + oFailures * 0.8 + aFailures * 0.6) / total / 3) * 100
+        ? ((pTotal * 1.0 + oTotal * 0.8 + aTotal * 0.6) / total / 3) * 100
         : 0
 
     let penalties = 0
     if (open_overdue > 0) penalties += 15
 
-    // Events this month vs monthly average
     const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1)
     const eventsThisMonth = events.filter((e) => new Date(e.created_at as string) >= thisMonthStart).length
-    const monthsSpan = 3 // 90-day window → ~3 months
+    const monthsSpan = 3
     const monthlyAvg = events.length / monthsSpan
     if (monthlyAvg > 0 && eventsThisMonth > monthlyAvg * 1.5) penalties += 5
 
@@ -256,7 +274,6 @@ export async function GET(req: Request) {
     const monthlyAvgRounded = Math.round(monthlyAvg)
     alerts.push(`${eventsThisMonth} evento${eventsThisMonth !== 1 ? 's' : ''} este mês vs média de ${monthlyAvgRounded}/mês`)
 
-    // Recommendations without corrective action
     const analysisIdsWithActions = new Set(actions.map((a) => a.analysis_id as string))
     let unresolvedRecommendations = 0
     for (const a of analyses) {
@@ -268,6 +285,16 @@ export async function GET(req: Request) {
       alerts.push(`${unresolvedRecommendations} recomendaç${unresolvedRecommendations > 1 ? 'ões' : 'ão'} sem ação corretiva criada`)
     }
 
+    // --- Recent events (join with analyses via eventAnalysisMap) ---
+    const recent_events = recentEventsRes.error
+      ? []
+      : (recentEventsRes.data ?? []).map((e) => ({
+          id: e.id as string,
+          title: e.title as string,
+          created_at: e.created_at as string,
+          ...(eventAnalysisMap[e.id as string] ?? { perception_code: null, objective_code: null, action_code: null }),
+        }))
+
     return NextResponse.json({
       score,
       distribution,
@@ -278,6 +305,7 @@ export async function GET(req: Request) {
       alerts,
       total_analyses: total,
       total_events_90d: events.length,
+      recent_events,
     })
   } catch (e) {
     if (e instanceof Response) return e

@@ -5,12 +5,42 @@ import { supabase } from '@/lib/supabase'
 import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
 
+const CODE_INFO: Record<string, { name: string; def: string; example: string }> = {
+  'P-A': { name: 'Sem Falha de Percepção', def: 'O operador percebeu a situação corretamente. A falha está em outro nível.', example: 'Piloto sabia da condição adversa mas decidiu prosseguir mesmo assim.' },
+  'P-B': { name: 'Falha Sensorial', def: 'Limitação física ou ambiental impediu a detecção de estímulos essenciais.', example: 'Piloto não viu obstáculo por névoa intensa.' },
+  'P-C': { name: 'Falha de Conhecimento', def: 'Operador detectou o sinal mas não tinha conhecimento para interpretá-lo.', example: 'Piloto em adaptação não reconheceu comportamento do flight director.' },
+  'P-D': { name: 'Atenção — Pressão de Tempo Externa', def: 'Situação impôs urgência que capturou a atenção impedindo percepção de informações críticas.', example: 'Piloto focado em localizar plataforma não monitorou velocidade.' },
+  'P-E': { name: 'Gerenciamento de Tempo', def: 'Operador criou a própria pressão de tempo por ansiedade ou impaciência.', example: 'Piloto apressado criou urgência para decolar em condições adversas.' },
+  'P-F': { name: 'Informação Ilusória ou Ambígua', def: 'O ambiente forneceu informações enganosas ou contraditórias.', example: 'Desorientação espacial — piloto percebeu voo nivelado enquanto curvava.' },
+  'P-G': { name: 'Falha de Atenção', def: 'Informação disponível e correta foi ignorada por distração ou viés.', example: 'Piloto ignorou indicadores que contrariavam sua avaliação inicial.' },
+  'P-H': { name: 'Falha de Comunicação', def: 'Informação necessária não chegou ou chegou incorreta.', example: 'Piloto não recebeu atualização meteorológica correta.' },
+  'O-A': { name: 'Sem Falha de Objetivo', def: 'Intenção era correta e conservativa. Falha está em P ou A.', example: 'Piloto tentou arremeter corretamente mas falhou na execução.' },
+  'O-B': { name: 'Violação Rotineira', def: 'Desvio habitual normalizado pela cultura operacional.', example: 'Piloto que habitualmente decolava abaixo dos mínimos.' },
+  'O-C': { name: 'Violação Excepcional', def: 'Desvio isolado em circunstância específica — não é comportamento habitual.', example: 'Piloto cumpridor das normas que, surpreendido, soltou os comandos.' },
+  'O-D': { name: 'Intenção Não Conservativa', def: 'Objetivo formalmente válido mas operador escolheu opção mais arriscada.', example: 'Piloto escolheu pousar pelo lado mais difícil quando havia opção mais segura.' },
+  'A-A': { name: 'Sem Falha de Ação', def: 'Execução correta. Falha está em P ou O.', example: 'Piloto executou manobra corretamente mas objetivo era errado.' },
+  'A-B': { name: 'Deslize, Lapso ou Omissão', def: 'Ação não executada como planejada por erro involuntário.', example: 'Piloto que planejava acionar sistema A acionou B por confusão.' },
+  'A-C': { name: 'Falha de Feedback na Execução', def: 'Ação iniciada corretamente mas operador não percebeu o desvio.', example: 'Piloto não percebeu que manobra produzia resultado diferente do esperado.' },
+  'A-D': { name: 'Inabilidade Física', def: 'Operador sabia o que fazer mas fisicamente não conseguiu executar.', example: 'Força necessária superava capacidade física do piloto no momento.' },
+  'A-E': { name: 'Falha de Conhecimento na Ação', def: 'Operador não sabia qual ação executar — escolheu por analogia incorreta.', example: 'Piloto em adaptação usou procedimento da aeronave anterior.' },
+  'A-F': { name: 'Seleção de Ação Errada', def: 'Com capacidade e sem pressão excessiva, operador escolheu plano incorreto.', example: 'Piloto escolheu lado mais arriscado da plataforma sem pressão de tempo.' },
+  'A-G': { name: 'Falha de Feedback na Decisão', def: 'Operador não monitorou resultado da ação para verificar o efeito.', example: 'Operador ajustou parâmetro e não verificou se produziu o efeito pretendido.' },
+  'A-H': { name: 'Gerenciamento de Tempo na Ação', def: 'Sob pressão real, operador priorizou incorretamente suas atenções.', example: 'Piloto preocupado com plataforma não monitorou instrumentos.' },
+  'A-I': { name: 'Seleção de Ação sob Pressão', def: 'Pressão de tempo foi determinante na escolha incorreta.', example: 'Piloto na urgência selecionou procedimento de emergência errado.' },
+  'A-J': { name: 'Feedback por Pressão de Tempo', def: 'Pressão impediu que operador verificasse se ação estava correta.', example: 'Operador executou correção mas não teve tempo de confirmar resposta do sistema.' },
+}
+
+type ModalState = {
+  title: string
+  sections: { label?: string; content: string }[]
+}
+
 interface Intelligence {
   score: { value: number; level: 'critical' | 'warning' | 'ok'; label: string }
   distribution: {
-    perception: { count: number; pct: number; top_code: string | null }
-    objective: { count: number; pct: number; top_code: string | null }
-    action: { count: number; pct: number; top_code: string | null }
+    perception: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
+    objective: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
+    action: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
     total: number
   }
   top_preconditions: { code: string; count: number; pct: number; name: string }[]
@@ -26,15 +56,7 @@ interface Intelligence {
   alerts: string[]
   total_analyses: number
   total_events_90d: number
-}
-
-interface Event {
-  id: string
-  title: string
-  created_at: string
-  perception_code?: string
-  objective_code?: string
-  action_code?: string
+  recent_events: { id: string; title: string; created_at: string; perception_code: string | null; objective_code: string | null; action_code: string | null }[]
 }
 
 const subtitleMap = {
@@ -49,12 +71,131 @@ const distColors = {
   action: { bar: 'bg-orange-500', border: 'border-orange-500/40', text: 'text-orange-400' },
 }
 
+function buildScoreModal(score: Intelligence['score']): ModalState {
+  return {
+    title: 'Score de Risco Operacional',
+    sections: [
+      { label: 'O que é', content: 'Índice calculado com base nos padrões de falha identificados nas análises SERA do seu tenant.' },
+      { label: 'Como é calculado', content: 'Combina falhas de Percepção (peso 1.0), Objetivo (peso 0.8) e Ação (peso 0.6) pelo total de análises, acrescido de penalidades por ações vencidas e picos de eventos.' },
+      { label: 'Faixas', content: '0–39 → Normal\n40–69 → Atenção (monitoramento recomendado)\n70–100 → Crítico (intervenção imediata)' },
+      { label: 'Score atual', content: `${score.value} — ${score.label}` },
+    ],
+  }
+}
+
+function buildCodeModal(code: string): ModalState {
+  const info = CODE_INFO[code]
+  if (!info) return { title: code, sections: [{ content: 'Código não reconhecido.' }] }
+  return {
+    title: `${code} — ${info.name}`,
+    sections: [
+      { label: 'Definição', content: info.def },
+      { label: 'Exemplo', content: info.example },
+    ],
+  }
+}
+
+function buildPreconditionModal(code: string, name: string): ModalState {
+  return {
+    title: name,
+    sections: [
+      { label: 'Código', content: code },
+      { content: 'Pré-condição identificada nas análises SERA. Representa um fator latente que contribuiu para a ocorrência do evento.' },
+    ],
+  }
+}
+
+function buildAlertModal(alert: string): ModalState {
+  if (alert.includes('vencida') || alert.includes('vencido')) {
+    return {
+      title: 'Ações Corretivas Vencidas',
+      sections: [
+        { label: 'O que significa', content: 'Existem ações corretivas cujo prazo já expirou e ainda não foram concluídas.' },
+        { label: 'O que fazer', content: 'Acesse o módulo de Ações Corretivas, atualize o status ou renegocie prazos com os responsáveis.' },
+      ],
+    }
+  }
+  if (alert.includes('representa') && alert.includes('%')) {
+    return {
+      title: 'Concentração de Falha',
+      sections: [
+        { label: 'O que significa', content: 'Um único código de falha concentra parcela significativa das análises, indicando padrão recorrente.' },
+        { label: 'O que fazer', content: 'Investigue as causas raiz deste código e priorize ações preventivas específicas.' },
+      ],
+    }
+  }
+  if (alert.includes('eventos este mês')) {
+    return {
+      title: 'Frequência de Eventos',
+      sections: [
+        { label: 'O que significa', content: 'Comparação entre eventos registrados neste mês e a média mensal dos últimos 90 dias.' },
+        { label: 'O que fazer', content: 'Se acima da média, revise condições operacionais recentes e reforce o monitoramento preventivo.' },
+      ],
+    }
+  }
+  if (alert.includes('recomendaç')) {
+    return {
+      title: 'Recomendações Pendentes',
+      sections: [
+        { label: 'O que significa', content: 'Existem recomendações geradas em análises SERA sem ações corretivas associadas.' },
+        { label: 'O que fazer', content: 'Acesse as análises e crie ações corretivas para as recomendações identificadas.' },
+      ],
+    }
+  }
+  return {
+    title: 'Alerta Operacional',
+    sections: [
+      { content: alert },
+      { label: 'O que fazer', content: 'Revise as condições operacionais e tome as medidas necessárias.' },
+    ],
+  }
+}
+
+function HelpButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-slate-600 text-slate-400 text-[10px] hover:border-slate-400 hover:text-white transition-colors flex-shrink-0"
+      aria-label="Ajuda"
+    >
+      ?
+    </button>
+  )
+}
+
+function SimpleModal({ state, onClose }: { state: ModalState | null; onClose: () => void }) {
+  if (!state) return null
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={onClose}>
+      <div
+        className="bg-slate-900 border border-slate-700 rounded-xl p-6 max-w-md w-full shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between mb-4 gap-4">
+          <h3 className="text-white font-semibold text-base leading-snug">{state.title}</h3>
+          <button onClick={onClose} className="text-slate-400 hover:text-white text-xl leading-none flex-shrink-0">×</button>
+        </div>
+        <div className="space-y-3">
+          {state.sections.map((s, i) => (
+            <div key={i}>
+              {s.label && (
+                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wide mb-1">{s.label}</p>
+              )}
+              <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-line">{s.content}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function DashboardPage() {
   const [data, setData] = useState<Intelligence | null>(null)
-  const [events, setEvents] = useState<Event[]>([])
   const [token, setToken] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [modal, setModal] = useState<ModalState | null>(null)
 
   useEffect(() => {
     async function load() {
@@ -63,21 +204,12 @@ export default function DashboardPage() {
       const t = session.access_token
       setToken(t)
       try {
-        const [intelRes, eventsRes] = await Promise.all([
-          fetch('/api/org/intelligence', { headers: { Authorization: `Bearer ${t}` } }),
-          fetch('/api/events', { headers: { Authorization: `Bearer ${t}` } }).catch(() => null),
-        ])
-        console.log('Intelligence status:', intelRes.status)
+        const intelRes = await fetch('/api/org/intelligence', { headers: { Authorization: `Bearer ${t}` } })
         const intel = await intelRes.json()
-        console.log('Intelligence data:', intel)
         if (intelRes.ok && intel?.score) {
           setData(intel)
         } else if (!intelRes.ok) {
           setError(intel?.detail ?? `HTTP ${intelRes.status}`)
-        }
-        if (eventsRes?.ok) {
-          const eventsData = await eventsRes.json().catch(() => [])
-          setEvents((Array.isArray(eventsData) ? eventsData : (eventsData.events ?? [])).slice(0, 5))
         }
       } catch (err) {
         console.error('Intelligence fetch error:', err)
@@ -98,9 +230,6 @@ export default function DashboardPage() {
   }
 
   const level = data?.score.level ?? 'ok'
-  const totalFailures = data
-    ? data.distribution.perception.count + data.distribution.objective.count + data.distribution.action.count
-    : 0
   const domDist = data
     ? (['perception', 'objective', 'action'] as const).reduce((best, cur) =>
         (data.distribution[cur].count > data.distribution[best].count ? cur : best),
@@ -110,6 +239,8 @@ export default function DashboardPage() {
 
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
+      <SimpleModal state={modal} onClose={() => setModal(null)} />
+
       {/* 1. Header */}
       <div>
         <h1 className="text-2xl font-bold text-white">Dashboard</h1>
@@ -124,59 +255,114 @@ export default function DashboardPage() {
 
       {/* 2. Score de Risco */}
       {data?.score && (
-        <OrgScoreCard
-          score={data.score.value}
-          level={data.score.level}
-          label={data.score.label}
-          actions={data.actions}
-        />
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-slate-400 text-xs uppercase tracking-wide font-semibold">Score de Risco</span>
+            <HelpButton onClick={() => setModal(buildScoreModal(data.score))} />
+          </div>
+          <OrgScoreCard
+            score={data.score.value}
+            level={data.score.level}
+            label={data.score.label}
+            actions={data.actions}
+          />
+        </div>
       )}
 
       {/* 3. Alertas */}
       {(data?.alerts ?? []).length > 0 && (
         <div className="flex flex-wrap gap-2">
           {data!.alerts.map((alert, i) => (
-            <span
+            <div
               key={i}
               className="inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-xs rounded-full px-3 py-1"
             >
-              ⚠ {alert}
-            </span>
+              <span>⚠ {alert}</span>
+              <HelpButton onClick={() => setModal(buildAlertModal(alert))} />
+            </div>
           ))}
         </div>
       )}
 
-      {/* 4. Distribuição de falhas */}
+      {/* 4. Distribuição de falhas — top 3 por categoria */}
       {data?.distribution && (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {(['perception', 'objective', 'action'] as const).map((key) => {
-            const dist = data.distribution[key]
-            const c = distColors[key]
-            const isDom = key === domDist
-            const labels = { perception: 'Percepção', objective: 'Objetivo', action: 'Ação' }
-            const pct = totalFailures > 0 ? Math.round((dist.count / totalFailures) * 100) : 0
-            return (
-              <div
-                key={key}
-                className={`bg-slate-900 border rounded-xl p-5 ${isDom ? c.border + ' ring-1 ring-inset ' + c.border : 'border-slate-800'}`}
-              >
-                <p className="text-slate-400 text-xs mb-1">{labels[key]}</p>
-                <div className="flex items-end gap-2 mb-3">
-                  <span className={`text-4xl font-bold ${c.text}`}>{pct}%</span>
-                  {dist.top_code && (
-                    <span className={`text-sm font-mono pb-1 ${c.text}`}>{dist.top_code}</span>
-                  )}
+        <div>
+          <h3 className="text-white font-semibold mb-3">Distribuição de Falhas</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {(['perception', 'objective', 'action'] as const).map((key) => {
+              const dist = data.distribution[key]
+              const c = distColors[key]
+              const isDom = key === domDist
+              const labels = { perception: 'Percepção', objective: 'Objetivo', action: 'Ação' }
+              const maxCount = dist.top_codes?.[0]?.count ?? 1
+              return (
+                <div
+                  key={key}
+                  className={`bg-slate-900 border rounded-xl p-5 ${isDom ? c.border + ' ring-1 ring-inset ' + c.border : 'border-slate-800'}`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <p className={`${c.text} text-xs font-semibold uppercase tracking-wide`}>{labels[key]}</p>
+                    {isDom && <span className={`text-xs ${c.text} font-semibold`}>▲ dominante</span>}
+                  </div>
+                  <p className="text-slate-500 text-xs mb-3">Mais frequentes</p>
+                  <div className="space-y-2.5">
+                    {(dist.top_codes ?? []).map((tc) => (
+                      <div key={tc.code} className="flex items-center gap-2">
+                        <button
+                          onClick={() => setModal(buildCodeModal(tc.code))}
+                          className={`font-mono text-xs ${c.text} w-10 text-left hover:underline flex-shrink-0`}
+                        >
+                          {tc.code}
+                        </button>
+                        <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full rounded-full ${c.bar}`}
+                            style={{ width: `${Math.round((tc.count / maxCount) * 100)}%` }}
+                          />
+                        </div>
+                        <span className="text-slate-400 text-xs w-8 text-right flex-shrink-0">{tc.count}x</span>
+                      </div>
+                    ))}
+                    {(dist.top_codes ?? []).length === 0 && (
+                      <p className="text-slate-600 text-xs">Sem dados</p>
+                    )}
+                  </div>
+                  <p className="text-slate-600 text-xs mt-3">
+                    {dist.count} ocorrência{dist.count !== 1 ? 's' : ''} no total
+                  </p>
                 </div>
-                <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className={`h-full rounded-full ${c.bar}`} style={{ width: `${pct}%` }} />
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* 4.5. Padrões Identificados — combinações frequentes */}
+      {(data?.top_combinations ?? []).length > 0 && (
+        <div>
+          <h3 className="text-white font-semibold mb-1">Padrões Identificados</h3>
+          <p className="text-slate-500 text-xs mb-3">Combinações de falha que aparecem juntas</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {data!.top_combinations.slice(0, 3).map((combo) => {
+              const parts = combo.pair.split(' + ')
+              const infoA = parts[0] ? CODE_INFO[parts[0]] : null
+              const infoB = parts[1] ? CODE_INFO[parts[1]] : null
+              const description = infoA && infoB
+                ? `${infoA.name} associada a ${infoB.name.toLowerCase()}`
+                : infoA
+                ? infoA.name
+                : combo.pair
+              return (
+                <div key={combo.pair} className="bg-slate-900 border border-slate-800 rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-mono text-white text-sm font-semibold">{combo.pair}</span>
+                    <span className="text-slate-400 text-xs ml-2 flex-shrink-0">{combo.count}x</span>
+                  </div>
+                  <p className="text-slate-500 text-xs leading-relaxed">{description}</p>
                 </div>
-                <p className="text-slate-500 text-xs mt-2">{dist.count} ocorrências</p>
-                {isDom && (
-                  <span className={`inline-block mt-2 text-xs ${c.text} font-semibold`}>▲ Categoria dominante</span>
-                )}
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
       )}
 
@@ -185,17 +371,23 @@ export default function DashboardPage() {
         <AiInsightPanel intelligenceData={data} token={token} />
       )}
 
-      {/* 6. Top precondições */}
+      {/* 6. Top precondições — nome em destaque */}
       {(data?.top_preconditions ?? []).length > 0 && (
         <div>
           <h3 className="text-white font-semibold mb-3">Top Precondições</h3>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
             {data!.top_preconditions.map((p) => (
-              <div key={p.code} className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
-                <p className="text-yellow-400 font-mono font-bold text-xl">{p.code}</p>
-                <p className="text-white font-semibold text-lg">{p.count}x</p>
-                <p className="text-slate-500 text-xs leading-tight mt-1">{p.name}</p>
-              </div>
+              <button
+                key={p.code}
+                onClick={() => setModal(buildPreconditionModal(p.code, p.name))}
+                className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-left hover:border-slate-600 transition-colors"
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-slate-400 font-mono text-xs">{p.code}</span>
+                  <span className="text-yellow-400 font-semibold text-sm">{p.count}x</span>
+                </div>
+                <p className="text-white font-semibold text-sm leading-snug">{p.name}</p>
+              </button>
             ))}
           </div>
         </div>
@@ -209,8 +401,8 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* 8. Eventos recentes */}
-      {events.length > 0 && (
+      {/* 8. Eventos recentes — via intelligence */}
+      {(data?.recent_events ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-4">Eventos Recentes</h3>
           <table className="w-full text-sm">
@@ -223,7 +415,7 @@ export default function DashboardPage() {
               </tr>
             </thead>
             <tbody>
-              {events.map((ev) => (
+              {data!.recent_events.map((ev) => (
                 <tr key={ev.id} className="border-b border-slate-800/50 last:border-0">
                   <td className="py-2.5 pr-4 text-slate-400 whitespace-nowrap">
                     {new Date(ev.created_at).toLocaleDateString('pt-BR')}
