@@ -48,7 +48,7 @@
           "CÓDIGO": "O5",
           "DESCRIÇÃO": "A organização não age de acordo com valores baseados em uma operação segura e aderência às regras e não recompensa aqueles que tentam manter esses valores. A organização valoriza e recompensa 'fazer o trabalho' acima de tudo."
         },
-        "Oversight": {
+        "Vigilância e Supervisão Sistêmica": {
           "CÓDIGO": "O6",
           "DESCRIÇÃO": "A quebra de regras era endêmica e conhecida? Havia ações de correções ou esses comportamentos eram tolerados?"
         }
@@ -101,11 +101,11 @@
         "CÓDIGO": "O4",
         "DESCRIÇÃO": "A organização possui procedimentos operacionais padrão e processos formais de gerenciamento de riscos que orientem situações excepcionais?"
       },
-      "Organizational Climate": {
+      "Clima Organizacional": {
         "CÓDIGO": "O5",
         "DESCRIÇÃO": "A organização tolera desvios excepcionais de procedimento ou valoriza excessivamente 'fazer o trabalho' acima da segurança?"
       },
-      "Oversight": {
+      "Vigilância e Supervisão Sistêmica": {
         "CÓDIGO": "O6",
         "DESCRIÇÃO": "A ocorrência de violações excepcionais era conhecida e havia ações corretivas ou eram toleradas?"
       }
@@ -154,11 +154,11 @@
         "CÓDIGO": "O4",
         "DESCRIÇÃO": "A organização possui procedimentos operacionais padrão e processos formais de gerenciamento de riscos?"
       },
-      "Organizational Climate": {
+      "Clima Organizacional": {
         "CÓDIGO": "O5",
         "DESCRIÇÃO": "A organização tolera uma condição de risco alto?"
       },
-      "Oversight": {
+      "Vigilância e Supervisão Sistêmica": {
         "CÓDIGO": "O6",
         "DESCRIÇÃO": "Era sabido que os procedimentos de gerenciamento de risco estabelecidos não estavam sendo usados rotineiramente e quais medidas corretivas foram tomadas?"
       }

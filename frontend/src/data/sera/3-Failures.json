@@ -113,10 +113,10 @@
     },
     {
       "ID": "#P-D",
-      "Nome": "FALHA DE ATENÇÃO",
+      "Nome": "FALHA DE ATENÇÃO COM PRESSÃO DE TEMPO",
       "CÓDIGO": "P-D",
       "FONTE": "Daumas (2018), Tabela 8; Hendy (2003), Figure 5",
-      "CRITERIO_CONTEXTO": "P-D: Falha de Atenção COM pressão de tempo excessiva. Pressão de tempo é a CIRCUNSTÂNCIA, não parte do nome canônico.",
+      "CRITERIO_CONTEXTO": "P-D: Falha de Atenção COM pressão de tempo excessiva. A pressão de tempo é o fator causador — sem ela, o resultado teria sido diferente.",
       "CRITÉRIO_DECISOR": "Se houvesse mais tempo disponível, o resultado teria sido diferente? SIM → P-D. NÃO → P-G. (Hendy, 2003, Figure 5)",
       "DEFINIÇÃO": "A Falha de Atenção por Pressão do Tempo (P-D) ocorre quando há um desequilíbrio entre as demandas de atenção requeridas por uma tarefa e o tempo disponível para processar essas demandas. Isso geralmente resulta de uma fixação excessiva em certos elementos, negligenciando outros igualmente importantes, ou de uma sobrecarga cognitiva que impede a percepção adequada de todas as informações relevantes. Tais falhas podem levar a decisões equivocadas e ações inseguras em ambientes operacionais.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
@@ -210,10 +210,10 @@
     },
     {
       "ID": "#P-G",
-      "Nome": "FALHA DE ATENÇÃO",
+      "Nome": "FALHA DE ATENÇÃO SEM PRESSÃO DE TEMPO",
       "CÓDIGO": "P-G",
       "FONTE": "Daumas (2018), Tabela 16; Hendy (2003), Figure 5",
-      "CRITERIO_CONTEXTO": "P-G: Falha de Atenção SEM pressão de tempo excessiva. P-D e P-G têm o mesmo nome canônico; a distinção está no CRITÉRIO_DECISOR.",
+      "CRITERIO_CONTEXTO": "P-G: Falha de Atenção SEM pressão de tempo excessiva. A falha ocorre por outro fator (distração, complacência, fadiga) — mais tempo disponível não teria mudado o resultado.",
       "CRITÉRIO_DECISOR": "Se houvesse mais tempo disponível, o resultado teria sido diferente? NÃO → P-G. SIM → P-D. A falha de atenção ocorre independentemente da pressão de tempo — há outro fator (distração, complacência, fadiga). (Hendy, 2003, Figure 5)",
       "DEFINIÇÃO": "A Falha de Atenção (P-G) ocorre quando um indivíduo falha em perceber informações relevantes que estão presentes e acessíveis. Esta falha não inclui cenários onde as informações são inadequadamente apresentadas ou quando há uma ausência de informações necessárias. Frequentemente, isso resulta de uma incapacidade de manter o foco devido a distrações ou sobrecarga, levando à negligência de detalhes vitais que poderiam influenciar decisões importantes.",
       "CIRCUNSTÂNCIAS TÍPICAS": [
