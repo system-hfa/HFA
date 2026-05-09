@@ -88,7 +88,11 @@ export default function EventDetailPage() {
       const res = await fetch(resolveApiUrl(`/analyses/${analysisId}/pdf`), {
         headers: { Authorization: `Bearer ${token}` },
       })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      if (!res.ok) {
+        const body = await res.text()
+        console.error('PDF response error:', res.status, body)
+        throw new Error(`HTTP ${res.status}: ${body}`)
+      }
       const blob = await res.blob()
       const url  = URL.createObjectURL(blob)
       const a    = document.createElement('a')
@@ -102,7 +106,8 @@ export default function EventDetailPage() {
       URL.revokeObjectURL(url)
       setPdfState('done')
       setTimeout(() => setPdfState('idle'), 3000)
-    } catch {
+    } catch (err) {
+      console.error('PDF error:', err)
       setPdfState('error')
       setTimeout(() => setPdfState('idle'), 3000)
     }
