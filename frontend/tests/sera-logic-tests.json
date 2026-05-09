@@ -1,0 +1,367 @@
+{
+  "unit_tests": [
+    {
+      "nome": "OBJ_sem_falha",
+      "etapa": 4,
+      "descricao": "Objetivo consistente com normas e conservativo → nenhuma falha",
+      "inputs": {
+        "objetivo_consistente_normas": true,
+        "objetivo_conservativo": true
+      },
+      "esperado": { "codigo": "O-A" }
+    },
+    {
+      "nome": "OBJ_violacao_rotineira",
+      "etapa": 4,
+      "descricao": "Inconsistente com normas + evidência de habitualidade → O-B",
+      "inputs": {
+        "objetivo_consistente_normas": false,
+        "violacao_rotina": true
+      },
+      "esperado": { "codigo": "O-B" }
+    },
+    {
+      "nome": "OBJ_violacao_excepcional",
+      "etapa": 4,
+      "descricao": "Inconsistente com normas + primeira vez, sem habitualidade → O-C",
+      "inputs": {
+        "objetivo_consistente_normas": false,
+        "violacao_rotina": false
+      },
+      "esperado": { "codigo": "O-C" }
+    },
+    {
+      "nome": "OBJ_nao_violacao_risco_nao_gerenciado",
+      "etapa": 4,
+      "descricao": "Consistente com normas MAS não conservativo → O-D",
+      "inputs": {
+        "objetivo_consistente_normas": true,
+        "objetivo_conservativo": false
+      },
+      "esperado": { "codigo": "O-D" }
+    },
+    {
+      "nome": "PER_sem_falha",
+      "etapa": 3,
+      "descricao": "Avaliação correta da situação → nenhuma falha",
+      "inputs": {
+        "avaliacao_correta": true
+      },
+      "esperado": { "codigo": "P-A" }
+    },
+    {
+      "nome": "PER_falha_sensorial",
+      "etapa": 3,
+      "descricao": "Avaliação errada + sem capacidade sensorial → P-B",
+      "inputs": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": false
+      },
+      "esperado": { "codigo": "P-B" }
+    },
+    {
+      "nome": "PER_falha_conhecimento",
+      "etapa": 3,
+      "descricao": "Avaliação errada + capacidade sensorial OK + sem conhecimento para interpretar → P-C",
+      "inputs": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": false
+      },
+      "esperado": { "codigo": "P-C" }
+    },
+    {
+      "nome": "PER_falha_atencao_pressao_tempo",
+      "etapa": 3,
+      "descricao": "Avaliação errada + capacidade OK + conhecimento OK + pressão de tempo → P-D",
+      "inputs": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": true,
+        "pressao_tempo_excessiva": true,
+        "pressao_autoimposta": false
+      },
+      "esperado": { "codigo": "P-D" }
+    },
+    {
+      "nome": "PER_falha_gerenciamento_tempo",
+      "etapa": 3,
+      "descricao": "Avaliação errada + capacidade OK + conhecimento OK + pressão autoimposta → P-E",
+      "inputs": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": true,
+        "pressao_tempo_excessiva": true,
+        "pressao_autoimposta": true
+      },
+      "esperado": { "codigo": "P-E" }
+    },
+    {
+      "nome": "PER_informacao_ilusoria",
+      "etapa": 3,
+      "descricao": "Avaliação errada + capacidade OK + informação era ilusória ou ambígua → P-F",
+      "inputs": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": true,
+        "pressao_tempo_excessiva": false,
+        "informacao_ilusoria_ambigua": true
+      },
+      "esperado": { "codigo": "P-F" }
+    },
+    {
+      "nome": "PER_falha_atencao_sem_pressao",
+      "etapa": 3,
+      "descricao": "Avaliação errada + capacidade OK + info disponível + sem pressão + info não ilusória → P-G",
+      "inputs": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": true,
+        "pressao_tempo_excessiva": false,
+        "informacao_ilusoria_ambigua": false,
+        "informacao_disponivel_correta": true
+      },
+      "esperado": { "codigo": "P-G" }
+    },
+    {
+      "nome": "PER_falha_comunicacao",
+      "etapa": 3,
+      "descricao": "Avaliação errada + info indisponível ou incorreta → P-H",
+      "inputs": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": true,
+        "pressao_tempo_excessiva": false,
+        "informacao_ilusoria_ambigua": false,
+        "informacao_disponivel_correta": false
+      },
+      "esperado": { "codigo": "P-H" }
+    },
+    {
+      "nome": "ACO_sem_falha",
+      "etapa": 5,
+      "descricao": "Ação implementada corretamente e adequada → nenhuma falha",
+      "inputs": {
+        "acao_implementada_como_pretendida": true,
+        "acao_correta_adequada": true
+      },
+      "esperado": { "codigo": "A-A" }
+    },
+    {
+      "nome": "ACO_deslize_lapso",
+      "etapa": 5,
+      "descricao": "Ação não implementada como pretendida (deslize/lapso) → A-B",
+      "inputs": {
+        "acao_implementada_como_pretendida": false
+      },
+      "esperado": { "codigo": "A-B" }
+    },
+    {
+      "nome": "ACO_falha_conhecimento_decisao",
+      "etapa": 5,
+      "descricao": "Implementada como pretendida + incorreta + sem capacidade/conhecimento → A-E",
+      "inputs": {
+        "acao_implementada_como_pretendida": true,
+        "acao_correta_adequada": false,
+        "capacidade_conhecimento": false
+      },
+      "esperado": { "codigo": "A-E" }
+    },
+    {
+      "nome": "ACO_selecao_acao_sem_pressao",
+      "etapa": 5,
+      "descricao": "Implementada como pretendida + incorreta + capacidade OK + sem pressão → A-F",
+      "inputs": {
+        "acao_implementada_como_pretendida": true,
+        "acao_correta_adequada": false,
+        "capacidade_conhecimento": true,
+        "pressao_tempo_excessiva": false
+      },
+      "esperado": { "codigo": "A-F" }
+    },
+    {
+      "nome": "ACO_gerenciamento_tempo",
+      "etapa": 5,
+      "descricao": "Implementada como pretendida + incorreta + capacidade OK + pressão de tempo → A-H",
+      "inputs": {
+        "acao_implementada_como_pretendida": true,
+        "acao_correta_adequada": false,
+        "capacidade_conhecimento": true,
+        "pressao_tempo_excessiva": true
+      },
+      "esperado": { "codigo": "A-H" }
+    }
+  ],
+
+  "property_tests": [
+    {
+      "nome": "OBJ_rotina_implica_OB_nao_OC",
+      "tipo": "invariante",
+      "descricao": "Se violacao_rotina=true, resultado NUNCA pode ser O-C",
+      "etapa": 4,
+      "input": {
+        "objetivo_consistente_normas": false,
+        "violacao_rotina": true
+      },
+      "propriedade": "codigo != 'O-C'"
+    },
+    {
+      "nome": "OBJ_sem_rotina_implica_OC_nao_OB",
+      "tipo": "invariante",
+      "descricao": "Se violacao_rotina=false e normas violadas, resultado NUNCA pode ser O-B",
+      "etapa": 4,
+      "input": {
+        "objetivo_consistente_normas": false,
+        "violacao_rotina": false
+      },
+      "propriedade": "codigo != 'O-B'"
+    },
+    {
+      "nome": "PER_sem_capacidade_implica_PB_nao_PD",
+      "tipo": "invariante",
+      "descricao": "Se capacidade_sensorial=false, resultado NUNCA pode ser P-D ou P-G",
+      "etapa": 3,
+      "input": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": false
+      },
+      "propriedade": "codigo != 'P-D' && codigo != 'P-G'"
+    },
+    {
+      "nome": "META_adicionar_pressao_nao_reduz_gravidade",
+      "tipo": "metamorfico",
+      "descricao": "Mudar pressao_tempo de false para true mantendo tudo igual não pode manter P-G (deve migrar para P-D)",
+      "etapa": 3,
+      "input_base": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": true,
+        "pressao_tempo_excessiva": false,
+        "informacao_ilusoria_ambigua": false,
+        "informacao_disponivel_correta": true
+      },
+      "input_modificado": {
+        "avaliacao_correta": false,
+        "capacidade_sensorial": true,
+        "conhecimento_adequado": true,
+        "pressao_tempo_excessiva": true,
+        "informacao_ilusoria_ambigua": false,
+        "informacao_disponivel_correta": true
+      },
+      "relacao": "resultado_base == 'P-G' && resultado_modificado == 'P-D'"
+    },
+    {
+      "nome": "META_OB_vs_OC_rotina",
+      "tipo": "metamorfico",
+      "descricao": "Mudar violacao_rotina de false para true deve migrar O-C para O-B",
+      "etapa": 4,
+      "input_base": {
+        "objetivo_consistente_normas": false,
+        "violacao_rotina": false
+      },
+      "input_modificado": {
+        "objetivo_consistente_normas": false,
+        "violacao_rotina": true
+      },
+      "relacao": "resultado_base == 'O-C' && resultado_modificado == 'O-B'"
+    }
+  ],
+
+  "integration_tests": [
+    {
+      "nome": "caso_PT_CQQ_atibaia",
+      "descricao": "Piloto com pressa autoimposta, violação rotineira, seleção de ação errada",
+      "inputs": {
+        "PER": {
+          "avaliacao_correta": false,
+          "capacidade_sensorial": true,
+          "conhecimento_adequado": true,
+          "pressao_tempo_excessiva": true,
+          "pressao_autoimposta": true
+        },
+        "OBJ": {
+          "objetivo_consistente_normas": false,
+          "violacao_rotina": true
+        },
+        "ACO": {
+          "acao_implementada_como_pretendida": true,
+          "acao_correta_adequada": false,
+          "capacidade_conhecimento": true,
+          "pressao_tempo_excessiva": false
+        }
+      },
+      "esperado": { "P": "P-E", "O": "O-B", "A": "A-F" }
+    },
+    {
+      "nome": "caso_entrevista1_FD_acoplado",
+      "descricao": "Piloto sem conhecimento do sistema, objetivo correto, ação por falta de conhecimento",
+      "inputs": {
+        "PER": {
+          "avaliacao_correta": false,
+          "capacidade_sensorial": true,
+          "conhecimento_adequado": false
+        },
+        "OBJ": {
+          "objetivo_consistente_normas": true,
+          "objetivo_conservativo": true
+        },
+        "ACO": {
+          "acao_implementada_como_pretendida": true,
+          "acao_correta_adequada": false,
+          "capacidade_conhecimento": false
+        }
+      },
+      "esperado": { "P": "P-C", "O": "O-A", "A": "A-E" }
+    },
+    {
+      "nome": "caso_entrevista2_velocidade_zero",
+      "descricao": "Pressão de tempo capturou atenção, objetivo correto, ação mal gerenciada no tempo",
+      "inputs": {
+        "PER": {
+          "avaliacao_correta": false,
+          "capacidade_sensorial": true,
+          "conhecimento_adequado": true,
+          "pressao_tempo_excessiva": true,
+          "pressao_autoimposta": false
+        },
+        "OBJ": {
+          "objetivo_consistente_normas": true,
+          "objetivo_conservativo": true
+        },
+        "ACO": {
+          "acao_implementada_como_pretendida": true,
+          "acao_correta_adequada": false,
+          "capacidade_conhecimento": true,
+          "pressao_tempo_excessiva": true
+        }
+      },
+      "esperado": { "P": "P-D", "O": "O-A", "A": "A-H" }
+    },
+    {
+      "nome": "caso_entrevista4_pouso_lado_errado",
+      "descricao": "Viés de confirmação, não-violação intencional, seleção de ação errada sem pressão",
+      "inputs": {
+        "PER": {
+          "avaliacao_correta": false,
+          "capacidade_sensorial": true,
+          "conhecimento_adequado": true,
+          "pressao_tempo_excessiva": false,
+          "informacao_ilusoria_ambigua": false,
+          "informacao_disponivel_correta": true
+        },
+        "OBJ": {
+          "objetivo_consistente_normas": false,
+          "violacao_rotina": false,
+          "acreditava_ser_correto": true
+        },
+        "ACO": {
+          "acao_implementada_como_pretendida": true,
+          "acao_correta_adequada": false,
+          "capacidade_conhecimento": true,
+          "pressao_tempo_excessiva": false
+        }
+      },
+      "esperado": { "P": "P-G", "O": "O-D", "A": "A-F" }
+    }
+  ]
+}
