@@ -13,14 +13,20 @@ const statusConfig: Record<string, { label: string; color: string; next: string;
 export default function ActionsPage() {
   const [actions, setActions] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState('all')
 
   async function load() {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) return
-    const data = await apiCall('/actions/', {}, session.access_token)
-    setActions(data)
-    setLoading(false)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { setLoading(false); return }
+      const data = await apiCall('/api/actions', {}, session.access_token)
+      setActions(Array.isArray(data) ? data : [])
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e))
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => { load() }, [])
@@ -28,7 +34,7 @@ export default function ActionsPage() {
   async function updateStatus(id: string, status: string) {
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) return
-    await apiCall(`/actions/${id}`, {
+    await apiCall(`/api/actions/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({ status })
     }, session.access_token)
@@ -64,6 +70,12 @@ export default function ActionsPage() {
           </button>
         ))}
       </div>
+
+      {error && (
+        <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg p-4 text-sm mb-4">
+          Erro ao carregar ações: {error}
+        </div>
+      )}
 
       {loading ? <p className="text-slate-400">Carregando...</p> : (
         <div className="space-y-3">
