@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BookOpen, GitBranch, Eye, Target, Hand, List } from 'lucide-react'
+import { BookOpen, FlaskConical, GitBranch, Eye, Target, Hand, List } from 'lucide-react'
 
 const navItems = [
-  { href: '/learn',            label: 'Visão Geral',  icon: BookOpen, badge: null },
-  { href: '/learn/pipeline',   label: 'O Pipeline',   icon: GitBranch, badge: null },
+  { href: '/learn',             label: 'Visão Geral',      icon: BookOpen,    badge: null },
+  { href: '/learn/foundations', label: 'Bases Científicas', icon: FlaskConical, badge: 'Por que funciona' },
+  { href: '/learn/pipeline',    label: 'O Pipeline',        icon: GitBranch,   badge: null },
   { href: '/learn/perception', label: 'Percepção',    icon: Eye,       badge: '8 códigos' },
   { href: '/learn/objective',  label: 'Objetivo',     icon: Target,    badge: '4 códigos' },
   { href: '/learn/action',     label: 'Ação',         icon: Hand,      badge: '10 códigos' },
