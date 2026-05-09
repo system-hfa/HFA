@@ -10,12 +10,13 @@ const VALID_STATUSES = ['pending', 'in_progress', 'completed', 'cancelled']
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await requireBearerUser(req)
     assertServiceRoleEnv()
     const admin = getSupabaseAdmin()
+    const { id } = await params
 
     const body = await req.json().catch(() => ({}))
     const { status } = body as { status?: string }
@@ -30,7 +31,7 @@ export async function PATCH(
     const { data, error } = await admin
       .from('corrective_actions')
       .update(updates)
-      .eq('id', params.id)
+      .eq('id', id)
       .eq('tenant_id', user.tenantId)
       .select('id, status, completed_at')
       .single()
