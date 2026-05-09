@@ -9,6 +9,7 @@ import {
   FilePlus,
   ClipboardList,
   BarChart2,
+  BookOpen,
   Settings,
   CreditCard,
   LogOut,
@@ -32,6 +33,7 @@ const mainNav: NavItem[] = [
   { href: '/events',      label: 'Eventos',           icon: FileText },
   { href: '/actions',     label: 'Ações Corretivas',  icon: ClipboardList },
   { href: '/risk-profile',label: 'Perfil de Risco',   icon: BarChart2 },
+  { href: '/learn',       label: 'Metodologia SERA',  icon: BookOpen },
 ]
 
 const bottomNav: NavItem[] = [
@@ -46,8 +48,14 @@ const ROUTE_LABELS: Record<string, string> = {
   '/events/new':   'Novo Evento',
   '/actions':      'Ações Corretivas',
   '/risk-profile': 'Perfil de Risco',
-  '/settings/ai':  'Configurações › IA',
-  '/credits':      'Créditos',
+  '/settings/ai':       'Configurações › IA',
+  '/credits':           'Créditos',
+  '/learn':             'Metodologia SERA',
+  '/learn/pipeline':    'Metodologia SERA › Pipeline',
+  '/learn/perception':  'Metodologia SERA › Percepção',
+  '/learn/objective':   'Metodologia SERA › Objetivo',
+  '/learn/action':      'Metodologia SERA › Ação',
+  '/learn/codes':       'Metodologia SERA › Glossário',
 }
 
 function useBreadcrumb(pathname: string): { label: string; href?: string }[] {
