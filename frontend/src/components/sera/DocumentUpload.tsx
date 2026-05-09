@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
+import { useT } from '@/lib/i18n'
 
 type UiState = 'idle' | 'uploading' | 'success' | 'error'
 
@@ -22,6 +23,7 @@ type Props = {
 }
 
 export default function DocumentUpload({ onExtracted, onFileReady }: Props) {
+  const t = useT()
   const inputRef = useRef<HTMLInputElement>(null)
   const [state, setState] = useState<UiState>('idle')
   const [fileName, setFileName] = useState('')
@@ -116,9 +118,8 @@ export default function DocumentUpload({ onExtracted, onFileReady }: Props) {
           onClick={() => inputRef.current?.click()}
           className="w-full rounded-xl border-2 border-dashed border-slate-600 bg-slate-900/40 px-6 py-12 text-center text-slate-300 hover:border-blue-500/60 hover:bg-slate-800/50 transition"
         >
-          <div className="text-lg mb-1">📄 Arraste seu arquivo aqui</div>
-          <div className="text-sm text-slate-400">ou clique para selecionar</div>
-          <div className="text-xs text-slate-500 mt-3">PDF ou DOCX · máx. 10MB</div>
+          <div className="text-lg mb-1">📄 {t('analysis.dragDrop')}</div>
+          <div className="text-xs text-slate-500 mt-3">{t('analysis.fileTypes')}</div>
         </button>
       )}
 
@@ -128,14 +129,14 @@ export default function DocumentUpload({ onExtracted, onFileReady }: Props) {
           <div className="h-2 rounded-full bg-slate-700 overflow-hidden">
             <div className="h-full w-2/5 bg-blue-500 animate-pulse rounded-full" />
           </div>
-          <p className="text-xs text-slate-400 mt-2">Extraindo…</p>
+          <p className="text-xs text-slate-400 mt-2">{t('analysis.extracting')}</p>
         </div>
       )}
 
       {state === 'success' && (
         <div className="rounded-xl border border-emerald-800/50 bg-emerald-950/20 px-4 py-4 space-y-3">
           <div className="text-sm text-emerald-200">✅ {fileName}</div>
-          <div className="text-xs text-slate-400">{wordCount} palavras extraídas</div>
+          <div className="text-xs text-slate-400">{wordCount} {t('analysis.wordsExtracted')}</div>
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
@@ -157,14 +158,14 @@ export default function DocumentUpload({ onExtracted, onFileReady }: Props) {
 
       {state === 'error' && (
         <div className="rounded-xl border border-red-800/50 bg-red-950/25 px-4 py-4 space-y-2">
-          <div className="text-sm text-red-300">❌ Erro ao extrair texto</div>
+          <div className="text-sm text-red-300">❌ {t('common.error')}</div>
           <p className="text-xs text-slate-400">{errMsg}</p>
           <button
             type="button"
             className="text-xs px-3 py-1.5 rounded-lg bg-slate-700 text-slate-200"
             onClick={reset}
           >
-            Tentar novamente
+            {t('analysis.retryUpload')}
           </button>
         </div>
       )}

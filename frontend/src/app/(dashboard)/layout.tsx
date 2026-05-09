@@ -19,26 +19,28 @@ import {
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { ensureOAuthTenant } from '@/lib/ensure-tenant'
+import { useT } from '@/lib/i18n'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 /* ── Nav config ─────────────────────────────────────────────── */
 type NavItem = {
   href: string
-  label: string
+  labelKey: string
   icon: React.ElementType
   cta?: boolean
 }
 
 const mainNav: NavItem[] = [
-  { href: '/dashboard',   label: 'Dashboard',        icon: LayoutDashboard },
-  { href: '/events',      label: 'Eventos',           icon: FileText },
-  { href: '/actions',     label: 'Ações Corretivas',  icon: ClipboardList },
-  { href: '/risk-profile',label: 'Perfil de Risco',   icon: BarChart2 },
-  { href: '/learn',       label: 'Metodologia SERA',  icon: BookOpen },
+  { href: '/dashboard',    labelKey: 'nav.dashboard',   icon: LayoutDashboard },
+  { href: '/events',       labelKey: 'nav.events',      icon: FileText },
+  { href: '/actions',      labelKey: 'nav.actions',     icon: ClipboardList },
+  { href: '/risk-profile', labelKey: 'nav.riskProfile', icon: BarChart2 },
+  { href: '/learn',        labelKey: 'nav.methodology', icon: BookOpen },
 ]
 
 const bottomNav: NavItem[] = [
-  { href: '/settings/ai', label: 'Configurações IA',  icon: Settings },
-  { href: '/credits',     label: 'Créditos',           icon: CreditCard },
+  { href: '/settings/ai', labelKey: 'nav.settings', icon: Settings },
+  { href: '/credits',     labelKey: 'nav.credits',  icon: CreditCard },
 ]
 
 /* ── Breadcrumb map ─────────────────────────────────────────── */
@@ -77,7 +79,7 @@ function useBreadcrumb(pathname: string): { label: string; href?: string }[] {
 }
 
 /* ── Sidebar nav item ───────────────────────────────────────── */
-function NavLink({ item, active, onClick }: { item: NavItem; active: boolean; onClick?: () => void }) {
+function NavLink({ item, active, onClick }: { item: NavItem & { label: string }; active: boolean; onClick?: () => void }) {
   const Icon = item.icon
   return (
     <Link
@@ -108,6 +110,7 @@ function Sidebar({
   onLogout: () => void
   onNav?: () => void
 }) {
+  const t = useT()
   const initials = userEmail
     ? userEmail.slice(0, 2).toUpperCase()
     : 'US'
@@ -129,7 +132,7 @@ function Sidebar({
         {mainNav.map((item) => (
           <NavLink
             key={item.href}
-            item={item}
+            item={{ ...item, label: t(item.labelKey) }}
             active={pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))}
             onClick={onNav}
           />
@@ -143,7 +146,7 @@ function Sidebar({
             className="flex items-center justify-center gap-2 mx-0 px-4 py-2.5 bg-hfa-accent hover:bg-hfa-accent-hover text-white text-sm font-medium rounded-lg transition-colors"
           >
             <FilePlus className="size-4" />
-            Nova Análise
+            {t('nav.newAnalysis')}
           </Link>
         </div>
       </nav>
@@ -153,7 +156,7 @@ function Sidebar({
         {bottomNav.map((item) => (
           <NavLink
             key={item.href}
-            item={item}
+            item={{ ...item, label: t(item.labelKey) }}
             active={pathname === item.href}
             onClick={onNav}
           />
@@ -168,13 +171,16 @@ function Sidebar({
           </div>
           <p className="text-xs text-hfa-text-muted truncate">{userEmail}</p>
         </div>
-        <button
-          onClick={onLogout}
-          className="flex items-center gap-2 w-full text-xs text-hfa-text-subtle hover:text-hfa-text transition py-1"
-        >
-          <LogOut className="size-3.5" />
-          Sair da conta
-        </button>
+        <div className="flex items-center justify-between">
+          <button
+            onClick={onLogout}
+            className="flex items-center gap-2 text-xs text-hfa-text-subtle hover:text-hfa-text transition py-1"
+          >
+            <LogOut className="size-3.5" />
+            {t('nav.logout')}
+          </button>
+          <LanguageSwitcher />
+        </div>
       </div>
     </aside>
   )

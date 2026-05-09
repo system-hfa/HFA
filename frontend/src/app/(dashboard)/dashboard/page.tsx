@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
+import { useT } from '@/lib/i18n'
 
 const CODE_INFO: Record<string, { name: string; def: string; example: string }> = {
   'P-A': { name: 'Sem Falha de Percepção', def: 'O operador percebeu a situação corretamente. A falha está em outro nível.', example: 'Piloto sabia da condição adversa mas decidiu prosseguir mesmo assim.' },
@@ -59,11 +60,6 @@ interface Intelligence {
   recent_events: { id: string; title: string; created_at: string; perception_code: string | null; objective_code: string | null; action_code: string | null }[]
 }
 
-const subtitleMap = {
-  critical: '⚠️ Atenção: sua operação requer intervenção imediata',
-  warning: 'Monitoramento ativo recomendado',
-  ok: 'Operação dentro dos parâmetros normais',
-}
 
 const distColors = {
   perception: { bar: 'bg-blue-500', border: 'border-blue-500/40', text: 'text-blue-400' },
@@ -191,6 +187,7 @@ function SimpleModal({ state, onClose }: { state: ModalState | null; onClose: ()
 }
 
 export default function DashboardPage() {
+  const t = useT()
   const [data, setData] = useState<Intelligence | null>(null)
   const [token, setToken] = useState<string>('')
   const [loading, setLoading] = useState(true)
@@ -221,10 +218,16 @@ export default function DashboardPage() {
     load()
   }, [])
 
+  const subtitleMap = {
+    critical: t('dashboard.subtitle_critical'),
+    warning: t('dashboard.subtitle_warning'),
+    ok: t('dashboard.subtitle_ok'),
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full text-slate-400">
-        Carregando...
+        {t('common.loading')}
       </div>
     )
   }
@@ -243,13 +246,13 @@ export default function DashboardPage() {
 
       {/* 1. Header */}
       <div>
-        <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+        <h1 className="text-2xl font-bold text-white">{t('dashboard.title')}</h1>
         <p className="text-slate-400 mt-1">{subtitleMap[level]}</p>
       </div>
 
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg p-4 text-sm">
-          Erro ao carregar dados: {error}
+          {t('common.error')}: {error}
         </div>
       )}
 
@@ -257,7 +260,7 @@ export default function DashboardPage() {
       {data?.score && (
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-slate-400 text-xs uppercase tracking-wide font-semibold">Score de Risco</span>
+            <span className="text-slate-400 text-xs uppercase tracking-wide font-semibold">{t('dashboard.riskScore')}</span>
             <HelpButton onClick={() => setModal(buildScoreModal(data.score))} />
           </div>
           <OrgScoreCard
@@ -287,13 +290,17 @@ export default function DashboardPage() {
       {/* 4. Distribuição de falhas — top 3 por categoria */}
       {data?.distribution && (
         <div>
-          <h3 className="text-white font-semibold mb-3">Distribuição de Falhas</h3>
+          <h3 className="text-white font-semibold mb-3">{t('dashboard.failureDistribution')}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {(['perception', 'objective', 'action'] as const).map((key) => {
               const dist = data.distribution[key]
               const c = distColors[key]
               const isDom = key === domDist
-              const labels = { perception: 'Percepção', objective: 'Objetivo', action: 'Ação' }
+              const labels = {
+                perception: t('dashboard.perception'),
+                objective: t('dashboard.objective'),
+                action: t('dashboard.action'),
+              }
               const maxCount = dist.top_codes?.[0]?.count ?? 1
               return (
                 <div
@@ -302,7 +309,7 @@ export default function DashboardPage() {
                 >
                   <div className="flex items-center justify-between mb-3">
                     <p className={`${c.text} text-xs font-semibold uppercase tracking-wide`}>{labels[key]}</p>
-                    {isDom && <span className={`text-xs ${c.text} font-semibold`}>▲ dominante</span>}
+                    {isDom && <span className={`text-xs ${c.text} font-semibold`}>{t('dashboard.dominant')}</span>}
                   </div>
                   <p className="text-slate-500 text-xs mb-3">Mais frequentes</p>
                   <div className="space-y-2.5">
@@ -328,7 +335,7 @@ export default function DashboardPage() {
                     )}
                   </div>
                   <p className="text-slate-600 text-xs mt-3">
-                    {dist.count} ocorrência{dist.count !== 1 ? 's' : ''} no total
+                    {dist.count} {t('dashboard.occurrences')}
                   </p>
                 </div>
               )
@@ -340,8 +347,8 @@ export default function DashboardPage() {
       {/* 4.5. Padrões Identificados — combinações frequentes */}
       {(data?.top_combinations ?? []).length > 0 && (
         <div>
-          <h3 className="text-white font-semibold mb-1">Padrões Identificados</h3>
-          <p className="text-slate-500 text-xs mb-3">Combinações de falha que aparecem juntas</p>
+          <h3 className="text-white font-semibold mb-1">{t('dashboard.patterns')}</h3>
+          <p className="text-slate-500 text-xs mb-3">{t('dashboard.patternsSubtitle')}</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {data!.top_combinations.slice(0, 3).map((combo) => {
               const parts = combo.pair.split(' + ')
@@ -374,7 +381,7 @@ export default function DashboardPage() {
       {/* 6. Top precondições — nome em destaque */}
       {(data?.top_preconditions ?? []).length > 0 && (
         <div>
-          <h3 className="text-white font-semibold mb-3">Top Precondições</h3>
+          <h3 className="text-white font-semibold mb-3">{t('dashboard.topPreconditions')}</h3>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
             {data!.top_preconditions.map((p) => (
               <button
@@ -396,20 +403,20 @@ export default function DashboardPage() {
       {/* 7. Tendência SVG */}
       {(data?.trend ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-          <h3 className="text-white font-semibold mb-4">Tendência — Últimos 6 Meses</h3>
-          <TrendChart trend={data!.trend} />
+          <h3 className="text-white font-semibold mb-4">{t('dashboard.trend')}</h3>
+          <TrendChart trend={data!.trend} insufficientDataLabel={t('dashboard.insufficientData')} />
         </div>
       )}
 
       {/* 8. Eventos recentes — via intelligence */}
       {(data?.recent_events ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-          <h3 className="text-white font-semibold mb-4">Eventos Recentes</h3>
+          <h3 className="text-white font-semibold mb-4">{t('dashboard.recentEvents')}</h3>
           <table className="w-full text-sm">
             <thead>
               <tr className="text-slate-400 border-b border-slate-800">
-                <th className="text-left pb-2 font-medium">Data</th>
-                <th className="text-left pb-2 font-medium">Título</th>
+                <th className="text-left pb-2 font-medium">{t('dashboard.date')}</th>
+                <th className="text-left pb-2 font-medium">{t('dashboard.title_col')}</th>
                 <th className="text-left pb-2 font-medium">P / O / A</th>
                 <th className="pb-2" />
               </tr>
@@ -425,7 +432,7 @@ export default function DashboardPage() {
                     {[ev.perception_code, ev.objective_code, ev.action_code].filter(Boolean).join(' / ') || '—'}
                   </td>
                   <td className="py-2.5 text-right">
-                    <a href={`/events/${ev.id}`} className="text-blue-400 hover:text-blue-300 text-xs">Ver</a>
+                    <a href={`/events/${ev.id}`} className="text-blue-400 hover:text-blue-300 text-xs">{t('dashboard.view')}</a>
                   </td>
                 </tr>
               ))}
@@ -437,11 +444,11 @@ export default function DashboardPage() {
   )
 }
 
-function TrendChart({ trend }: { trend: { month: string; count: number }[] }) {
+function TrendChart({ trend, insufficientDataLabel }: { trend: { month: string; count: number }[]; insufficientDataLabel: string }) {
   if (trend.length < 2) {
     return (
       <p className="text-slate-500 text-sm text-center py-8">
-        Dados insuficientes para exibir tendência
+        {insufficientDataLabel}
       </p>
     )
   }
