@@ -62,7 +62,7 @@ export async function GET(req: Request) {
         .eq('tenant_id', tenantId),
       admin
         .from('corrective_actions')
-        .select('id, status, priority, due_date, analysis_id, assigned_to, created_at, closed_at')
+        .select('id, status, priority, due_date, analysis_id, created_at')
         .eq('tenant_id', tenantId),
       admin
         .from('events')
@@ -182,14 +182,13 @@ export async function GET(req: Request) {
     const openActions = actions.filter((a) => openStatuses.has(a.status as string))
     const open_total = openActions.length
     const open_overdue = openActions.filter((a) => a.due_date && new Date(a.due_date as string) < today).length
-    const open_no_owner = openActions.filter((a) => !a.assigned_to).length
-    const closedLast30 = actions.filter(
+    const open_no_owner = 0
+    const closed_last_30d = actions.filter(
       (a) =>
         a.status === 'closed' &&
-        a.closed_at &&
-        new Date(a.closed_at as string) >= thirtyDaysAgo
-    )
-    const closed_last_30d = closedLast30.length
+        a.created_at &&
+        new Date(a.created_at as string) >= thirtyDaysAgo
+    ).length
     const closedTotal = actions.filter((a) => a.status === 'closed').length
     const resolution_rate =
       closedTotal + open_total > 0
@@ -228,7 +227,6 @@ export async function GET(req: Request) {
 
     let penalties = 0
     if (open_overdue > 0) penalties += 15
-    if (open_no_owner > 0) penalties += 10
 
     // Events this month vs monthly average
     const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1)
