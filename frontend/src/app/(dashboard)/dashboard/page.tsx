@@ -54,6 +54,7 @@ export default function DashboardPage() {
   const [events, setEvents] = useState<Event[]>([])
   const [token, setToken] = useState<string>('')
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function load() {
@@ -66,16 +67,21 @@ export default function DashboardPage() {
           fetch('/api/org/intelligence', { headers: { Authorization: `Bearer ${t}` } }),
           fetch('/api/events', { headers: { Authorization: `Bearer ${t}` } }).catch(() => null),
         ])
-        if (intelRes.ok) {
-          const intel = await intelRes.json()
-          if (intel?.score) setData(intel)
+        console.log('Intelligence status:', intelRes.status)
+        const intel = await intelRes.json()
+        console.log('Intelligence data:', intel)
+        if (intelRes.ok && intel?.score) {
+          setData(intel)
+        } else if (!intelRes.ok) {
+          setError(intel?.detail ?? `HTTP ${intelRes.status}`)
         }
         if (eventsRes?.ok) {
           const eventsData = await eventsRes.json().catch(() => [])
           setEvents((Array.isArray(eventsData) ? eventsData : (eventsData.events ?? [])).slice(0, 5))
         }
-      } catch {
-        // intentional: setData stays null → empty state rendered
+      } catch (err) {
+        console.error('Intelligence fetch error:', err)
+        setError(err instanceof Error ? err.message : String(err))
       } finally {
         setLoading(false)
       }
@@ -106,6 +112,12 @@ export default function DashboardPage() {
         <h1 className="text-2xl font-bold text-white">Dashboard</h1>
         <p className="text-slate-400 mt-1">{subtitleMap[level]}</p>
       </div>
+
+      {error && (
+        <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg p-4 text-sm">
+          Erro ao carregar dados: {error}
+        </div>
+      )}
 
       {/* 2. Score de Risco */}
       {data?.score && (
