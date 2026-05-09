@@ -98,9 +98,12 @@ export default function DashboardPage() {
   }
 
   const level = data?.score.level ?? 'ok'
+  const totalFailures = data
+    ? data.distribution.perception.count + data.distribution.objective.count + data.distribution.action.count
+    : 0
   const domDist = data
     ? (['perception', 'objective', 'action'] as const).reduce((best, cur) =>
-        (data.distribution[cur].pct > data.distribution[best].pct ? cur : best),
+        (data.distribution[cur].count > data.distribution[best].count ? cur : best),
         'perception' as 'perception' | 'objective' | 'action'
       )
     : 'perception'
@@ -151,6 +154,7 @@ export default function DashboardPage() {
             const c = distColors[key]
             const isDom = key === domDist
             const labels = { perception: 'Percepção', objective: 'Objetivo', action: 'Ação' }
+            const pct = totalFailures > 0 ? Math.round((dist.count / totalFailures) * 100) : 0
             return (
               <div
                 key={key}
@@ -158,13 +162,13 @@ export default function DashboardPage() {
               >
                 <p className="text-slate-400 text-xs mb-1">{labels[key]}</p>
                 <div className="flex items-end gap-2 mb-3">
-                  <span className={`text-4xl font-bold ${c.text}`}>{dist.pct}%</span>
+                  <span className={`text-4xl font-bold ${c.text}`}>{pct}%</span>
                   {dist.top_code && (
                     <span className={`text-sm font-mono pb-1 ${c.text}`}>{dist.top_code}</span>
                   )}
                 </div>
                 <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className={`h-full rounded-full ${c.bar}`} style={{ width: `${dist.pct}%` }} />
+                  <div className={`h-full rounded-full ${c.bar}`} style={{ width: `${pct}%` }} />
                 </div>
                 <p className="text-slate-500 text-xs mt-2">{dist.count} ocorrências</p>
                 {isDom && (
@@ -242,6 +246,14 @@ export default function DashboardPage() {
 }
 
 function TrendChart({ trend }: { trend: { month: string; count: number }[] }) {
+  if (trend.length < 2) {
+    return (
+      <p className="text-slate-500 text-sm text-center py-8">
+        Dados insuficientes para exibir tendência
+      </p>
+    )
+  }
+
   const maxCount = Math.max(...trend.map((t) => t.count), 1)
   const chartH = 120
   const barW = 40
@@ -253,7 +265,7 @@ function TrendChart({ trend }: { trend: { month: string; count: number }[] }) {
     <svg viewBox={`0 0 ${totalW} ${chartH + 40}`} className="w-full overflow-visible">
       {trend.map((t, i) => {
         const x = padX + i * (barW + gap)
-        const barH = Math.max((t.count / maxCount) * chartH, 4)
+        const barH = Math.min(Math.max((t.count / maxCount) * chartH, 4), chartH)
         const y = chartH - barH
         const [year, month] = t.month.split('-')
         const label = new Date(Number(year), Number(month) - 1).toLocaleString('pt-BR', { month: 'short' })
