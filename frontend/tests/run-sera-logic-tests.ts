@@ -171,8 +171,7 @@ async function main() {
     try {
       const got = await classifyStep(t.etapa, t.inputs)
       const ok = got === t.esperado.codigo
-      if (ok) { uPass++; console.log(`PASS  (${got})`) }
-      else     { uFail++; console.log(`FAIL  expected=${t.esperado.codigo} got=${got}`) }
+      if (ok) { uPass++; console.log(`PASS  (${got})`) } else { uFail++; console.log(`FAIL  expected=${t.esperado.codigo} got=${got}`) }
       ;(results.unit_test_results as unknown[]).push({
         nome: t.nome, etapa: t.etapa, descricao: t.descricao,
         status: ok ? 'PASS' : 'FAIL', esperado: t.esperado.codigo, obtido: got,
@@ -218,8 +217,7 @@ async function main() {
       if (t.tipo === 'invariante' && t.input && t.propriedade) {
         const code = await classifyStep(t.etapa, t.input)
         const ok = evalProperty(t.propriedade, code)
-        if (ok) { pPass++; console.log(`PASS  (${code})`) }
-        else     { pFail++; console.log(`FAIL  code=${code} property="${t.propriedade}"`) }
+        if (ok) { pPass++; console.log(`PASS  (${code})`) } else { pFail++; console.log(`FAIL  code=${code} property="${t.propriedade}"`) }
         ;(results.property_test_results as unknown[]).push({
           nome: t.nome, tipo: t.tipo, status: ok ? 'PASS' : 'FAIL',
           obtido: code, propriedade: t.propriedade,
@@ -231,8 +229,7 @@ async function main() {
         await sleep(450)
         const mod = await classifyStep(t.etapa, t.input_modificado)
         const ok = evalRelation(t.relacao, base, mod)
-        if (ok) { pPass++; console.log(`PASS  (base=${base}, mod=${mod})`) }
-        else     { pFail++; console.log(`FAIL  base=${base} mod=${mod} relacao="${t.relacao}"`) }
+        if (ok) { pPass++; console.log(`PASS  (base=${base}, mod=${mod})`) } else { pFail++; console.log(`FAIL  base=${base} mod=${mod} relacao="${t.relacao}"`) }
         ;(results.property_test_results as unknown[]).push({
           nome: t.nome, tipo: t.tipo, status: ok ? 'PASS' : 'FAIL',
           resultado_base: base, resultado_modificado: mod, relacao: t.relacao,
@@ -259,8 +256,8 @@ async function main() {
       try {
         got[key] = await classifyStep(etapa, t.inputs[slot as keyof typeof t.inputs])
         const exp = t.esperado[key as keyof typeof t.esperado]
-        const ok = got[key] === exp
-        console.log(ok ? `PASS  ${got[key]}` : `FAIL  expected=${exp} got=${got[key]}`)
+        const ok2 = got[key] === exp
+        console.log(ok2 ? `PASS  ${got[key]}` : `FAIL  expected=${exp} got=${got[key]}`)
       } catch (e) {
         errs[key] = String(e)
         console.log(`ERROR ${String(e)}`)
@@ -269,7 +266,7 @@ async function main() {
     }
 
     const allOk = (['P', 'O', 'A'] as const).every(k => got[k] === t.esperado[k])
-    if (allOk) iPass++ else iFail++
+    if (allOk) { iPass++ } else { iFail++ }
     ;(results.integration_test_results as unknown[]).push({
       nome: t.nome, descricao: t.descricao,
       status: allOk ? 'PASS' : 'FAIL',

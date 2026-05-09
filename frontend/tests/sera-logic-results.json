@@ -1,0 +1,238 @@
+{
+  "timestamp": "2026-05-09T03:12:29.860Z",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "temperature_note": "callAi() does not expose a temperature parameter. Tests run at provider default, not temperature=0.",
+  "unit_test_results": [
+    {
+      "nome": "OBJ_sem_falha",
+      "etapa": 4,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "OBJ_violacao_rotineira",
+      "etapa": 4,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "OBJ_violacao_excepcional",
+      "etapa": 4,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "OBJ_nao_violacao_risco_nao_gerenciado",
+      "etapa": 4,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_sem_falha",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_falha_sensorial",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_falha_conhecimento",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_falha_atencao_pressao_tempo",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_falha_gerenciamento_tempo",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_informacao_ilusoria",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_falha_atencao_sem_pressao",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_falha_comunicacao",
+      "etapa": 3,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "ACO_sem_falha",
+      "etapa": 5,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "ACO_deslize_lapso",
+      "etapa": 5,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "ACO_falha_conhecimento_decisao",
+      "etapa": 5,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "ACO_selecao_acao_sem_pressao",
+      "etapa": 5,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "ACO_gerenciamento_tempo",
+      "etapa": 5,
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    }
+  ],
+  "step4_determinism": [
+    {
+      "nome": "OBJ_sem_falha",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "OBJ_violacao_rotineira",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "OBJ_violacao_excepcional",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "OBJ_nao_violacao_risco_nao_gerenciado",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    }
+  ],
+  "property_test_results": [
+    {
+      "nome": "OBJ_rotina_implica_OB_nao_OC",
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "OBJ_sem_rotina_implica_OC_nao_OB",
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "PER_sem_capacidade_implica_PB_nao_PD",
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "META_adicionar_pressao_nao_reduz_gravidade",
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    },
+    {
+      "nome": "META_OB_vs_OC_rotina",
+      "status": "ERROR",
+      "error": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+    }
+  ],
+  "integration_test_results": [
+    {
+      "nome": "caso_PT_CQQ_atibaia",
+      "descricao": "Piloto com pressa autoimposta, violação rotineira, seleção de ação errada",
+      "status": "FAIL",
+      "resultados": {},
+      "esperado": {
+        "P": "P-E",
+        "O": "O-B",
+        "A": "A-F"
+      },
+      "erros": {
+        "P": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "O": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "A": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+      }
+    },
+    {
+      "nome": "caso_entrevista1_FD_acoplado",
+      "descricao": "Piloto sem conhecimento do sistema, objetivo correto, ação por falta de conhecimento",
+      "status": "FAIL",
+      "resultados": {},
+      "esperado": {
+        "P": "P-C",
+        "O": "O-A",
+        "A": "A-E"
+      },
+      "erros": {
+        "P": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "O": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "A": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+      }
+    },
+    {
+      "nome": "caso_entrevista2_velocidade_zero",
+      "descricao": "Pressão de tempo capturou atenção, objetivo correto, ação mal gerenciada no tempo",
+      "status": "FAIL",
+      "resultados": {},
+      "esperado": {
+        "P": "P-D",
+        "O": "O-A",
+        "A": "A-H"
+      },
+      "erros": {
+        "P": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "O": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "A": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+      }
+    },
+    {
+      "nome": "caso_entrevista4_pouso_lado_errado",
+      "descricao": "Viés de confirmação, não-violação intencional, seleção de ação errada sem pressão",
+      "status": "FAIL",
+      "resultados": {},
+      "esperado": {
+        "P": "P-G",
+        "O": "O-D",
+        "A": "A-F"
+      },
+      "erros": {
+        "P": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "O": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid",
+        "A": "Error: 401 Authentication Fails, Your api key: ****b7cb is invalid"
+      }
+    }
+  ],
+  "summary": {
+    "unit_tests": {
+      "total": 17,
+      "passed": 0,
+      "failed": 17
+    },
+    "property_tests": {
+      "total": 5,
+      "passed": 0,
+      "failed": 5
+    },
+    "integration_tests": {
+      "total": 4,
+      "passed": 0,
+      "failed": 4
+    }
+  }
+}
