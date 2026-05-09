@@ -53,10 +53,31 @@ const ERC_COLOR: Record<number, string> = {
 }
 
 function tCellColor(score: number): string {
-  if (score >= 17) return '#DC2626'
-  if (score >= 10) return '#EA580C'
-  if (score >= 5) return '#D97706'
-  return '#16A34A'
+  if (score >= 17) return '#7F1D1D'
+  if (score >= 10) return '#9A3412'
+  if (score >= 5)  return '#854D0E'
+  return '#166534'
+}
+
+function colorBg(hex: string, alpha = 0.2): string {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return `rgba(${r},${g},${b},${alpha})`
+}
+
+function riskLevelName(score: number): string {
+  if (score >= 17) return 'Inaceitável'
+  if (score >= 10) return 'Elevado'
+  if (score >= 5)  return 'Tolerável'
+  return 'Aceitável'
+}
+
+function riskMeaning(score: number): string {
+  if (score >= 17) return 'Risco Inaceitável — Ação imediata obrigatória. Operação deve ser revista antes de continuar.'
+  if (score >= 10) return 'Risco Elevado — Ação corretiva necessária em curto prazo. Priorizar intervenções preventivas.'
+  if (score >= 5)  return 'Risco Tolerável — Requer atenção e plano de ação, mas não é urgente. Acompanhar evolução.'
+  return 'Risco Aceitável — O risco está dentro dos limites toleráveis. Monitoramento periódico é suficiente.'
 }
 
 function barrierLevel(score: number): 1 | 2 | 3 | 4 {
@@ -68,25 +89,71 @@ function barrierLevel(score: number): 1 | 2 | 3 | 4 {
 
 // ── Traditional 5×5 Matrix ───────────────────────────────────────────────────
 
+const CELL_SIZE = 64
+
 const SEV_LABELS = [
-  { num: '5', name: 'Catastrófica' },
-  { num: '4', name: 'Grave' },
-  { num: '3', name: 'Moderada' },
-  { num: '2', name: 'Menor' },
-  { num: '1', name: 'Negligível' },
+  { num: '5', name: 'Catastrófica', desc: 'Fatalidades múltiplas ou perda total do equipamento' },
+  { num: '4', name: 'Grave', desc: 'Fatalidade ou incapacidade permanente, dano grave' },
+  { num: '3', name: 'Moderada', desc: 'Lesão grave ou dano significativo ao equipamento' },
+  { num: '2', name: 'Menor', desc: 'Lesão leve, dano menor, impacto operacional limitado' },
+  { num: '1', name: 'Negligível', desc: 'Sem lesão ou dano significativo, impacto mínimo' },
 ]
 
 const PROB_LABELS = [
-  { num: '1', name: 'Improvável' },
-  { num: '2', name: 'Remoto' },
-  { num: '3', name: 'Ocasional' },
-  { num: '4', name: 'Provável' },
-  { num: '5', name: 'Frequente' },
+  { num: '1', name: 'Improvável', desc: 'Quase impossível ocorrer; sem registro histórico similar' },
+  { num: '2', name: 'Remoto', desc: 'Improvável mas possível; poucos registros históricos' },
+  { num: '3', name: 'Ocasional', desc: 'Pode ocorrer algumas vezes durante a vida do sistema' },
+  { num: '4', name: 'Provável', desc: 'Ocorre várias vezes; histórico consistente documentado' },
+  { num: '5', name: 'Frequente', desc: 'Ocorre repetidamente; praticamente esperado' },
 ]
 
-function TraditionalMatrix({ data }: { data: Intelligence }) {
-  const topCodes = data.distribution.perception.top_codes ?? []
+// ── Modal ─────────────────────────────────────────────────────────────────────
 
+function CellModal({ title, onClose, children }: {
+  title: string
+  onClose: () => void
+  children: React.ReactNode
+}) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <div className="bg-slate-900 border border-slate-700 rounded-xl p-6 w-full max-w-lg max-h-[80vh] overflow-y-auto shadow-2xl">
+        <div className="flex items-start justify-between mb-5">
+          <h2 className="text-white font-semibold text-lg leading-tight">{title}</h2>
+          <button
+            onClick={onClose}
+            className="text-slate-400 hover:text-white ml-4 flex-shrink-0 text-2xl leading-none"
+          >
+            ×
+          </button>
+        </div>
+        <div className="space-y-5">{children}</div>
+      </div>
+    </div>
+  )
+}
+
+// ── Traditional 5×5 component ─────────────────────────────────────────────────
+
+interface TradCellInfo {
+  prob: number
+  sev: number
+  score: number
+  cell: { count: number; codes: string[] } | null
+}
+
+function TraditionalMatrix({ data }: { data: Intelligence }) {
+  const [selected, setSelected] = useState<TradCellInfo | null>(null)
+
+  const topCodes = data.distribution.perception.top_codes ?? []
   const cellMap: Record<string, { count: number; codes: string[] }> = {}
   for (const tc of topCodes) {
     const sev = P_SEVERITY[tc.code] ?? 3
@@ -97,111 +164,200 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
     cellMap[key].codes.push(tc.code)
   }
 
-  const lp = 102   // left pad (Y labels)
-  const tp = 10    // top pad
-  const cw = 66    // cell width
-  const ch = 54    // cell height
-  const xh = 46    // x-label height
-  const svgW = lp + 5 * cw + 10
-  const svgH = tp + 5 * ch + xh
-
   return (
     <div>
+      {selected && (
+        <CellModal
+          title={`Risco ${riskLevelName(selected.score)} — Score ${selected.score}`}
+          onClose={() => setSelected(null)}
+        >
+          <div>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">O que significa esta célula</p>
+            <p className="text-slate-300 text-sm">{riskMeaning(selected.score)}</p>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Como esta avaliação foi calculada</p>
+            <div className="bg-slate-800 rounded-lg p-3 text-sm text-slate-300 space-y-2">
+              <p>
+                Score = Probabilidade ({selected.prob}) × Severidade ({selected.sev}) ={' '}
+                <strong className="text-white">{selected.score}</strong>
+              </p>
+              <p>
+                Probabilidade {selected.prob} — {PROB_LABELS[selected.prob - 1].name}: {PROB_LABELS[selected.prob - 1].desc}
+              </p>
+              <p>
+                Severidade {selected.sev} — {SEV_LABELS.find((l) => l.num === String(selected.sev))?.name}:{' '}
+                {SEV_LABELS.find((l) => l.num === String(selected.sev))?.desc}
+              </p>
+              {selected.cell && (
+                <p className="text-slate-400 text-xs mt-2">
+                  Os eventos plotados nesta célula foram classificados aqui com base nos seguintes critérios SERA:
+                  os códigos {selected.cell.codes.join(', ')} mapearam para severidade {selected.sev} e a frequência
+                  ({selected.cell.count} evento{selected.cell.count !== 1 ? 's' : ''}) determinou a probabilidade {selected.prob}.
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Eventos nesta célula</p>
+            {selected.cell ? (
+              <div className="space-y-1">
+                {selected.cell.codes.map((code) => (
+                  <div key={code} className="flex items-center justify-between bg-slate-800 rounded px-3 py-2">
+                    <span className="font-mono text-yellow-400 text-sm font-bold">{code}</span>
+                    <span className="text-slate-400 text-xs">código SERA</span>
+                  </div>
+                ))}
+                <p className="text-slate-500 text-xs mt-1">
+                  Total: {selected.cell.count} análise{selected.cell.count !== 1 ? 's' : ''}
+                </p>
+              </div>
+            ) : (
+              <p className="text-slate-500 text-sm">Nenhum evento foi classificado nesta célula.</p>
+            )}
+          </div>
+
+          <div className="border-t border-slate-800 pt-4">
+            <p className="text-slate-500 text-xs">
+              Referência metodológica: Matriz de risco baseada em ISO 31000:2018 e ICAO Doc 9859 (Safety Management Manual), 4ª edição.
+            </p>
+          </div>
+        </CellModal>
+      )}
+
       <div className="overflow-x-auto">
-        <svg viewBox={`0 0 ${svgW} ${svgH}`} style={{ minWidth: `${svgW}px` }} className="w-full max-w-full">
-          {/* Axis title: SEVERIDADE (rotated) */}
-          <text
-            x={14}
-            y={tp + (5 * ch) / 2}
-            textAnchor="middle"
-            fontSize={9}
-            fill="#64748B"
-            transform={`rotate(-90 14 ${tp + (5 * ch) / 2})`}
-            fontWeight="600"
-            letterSpacing="1"
-          >
-            SEVERIDADE
-          </text>
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          {/* SEVERIDADE vertical label + Y labels */}
+          <div style={{ display: 'flex', alignItems: 'flex-start', flexShrink: 0 }}>
+            <div style={{
+              width: 20,
+              height: CELL_SIZE * 5 + 4 * 2,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}>
+              <span style={{
+                fontSize: 10,
+                letterSpacing: '0.15em',
+                color: '#64748B',
+                fontWeight: 600,
+                whiteSpace: 'nowrap',
+                transform: 'rotate(-90deg)',
+                display: 'block',
+              }}>SEVERIDADE</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginRight: 8, flexShrink: 0 }}>
+              {SEV_LABELS.map((l) => (
+                <div key={l.num} style={{
+                  height: CELL_SIZE,
+                  width: 80,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                  justifyContent: 'center',
+                }}>
+                  <span style={{ fontSize: 10, fontWeight: 600, color: '#94A3B8', lineHeight: 1.3 }}>
+                    {l.num} {l.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          {/* Grid cells */}
-          {SEV_LABELS.map((sevL, row) =>
-            PROB_LABELS.map((_, col) => {
-              const prob = col + 1
-              const sev = 5 - row
-              const score = prob * sev
-              const color = tCellColor(score)
-              const x = lp + col * cw
-              const y = tp + row * ch
-              const key = `${prob}-${sev}`
-              const cell = cellMap[key]
-              return (
-                <g key={`${row}-${col}`}>
-                  <rect
-                    x={x} y={y} width={cw} height={ch}
-                    fill={color} fillOpacity={0.18}
-                    stroke="#1E293B" strokeWidth={1}
-                  />
-                  <text x={x + cw - 5} y={y + 13} textAnchor="end" fontSize={8} fill={color} fillOpacity={0.55}>
-                    {score}
-                  </text>
-                  {cell && (
-                    <g>
-                      <title>{cell.codes.join(', ')} — {cell.count} análise{cell.count !== 1 ? 's' : ''}</title>
-                      <circle cx={x + cw / 2} cy={y + ch / 2} r={15} fill={color} fillOpacity={0.9} />
-                      <text x={x + cw / 2} y={y + ch / 2 + 5} textAnchor="middle" fontSize={12} fontWeight="bold" fill="white">
-                        {cell.count}
-                      </text>
-                    </g>
-                  )}
-                </g>
-              )
-            })
-          )}
+          {/* Grid + X labels */}
+          <div style={{ flexShrink: 0 }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: `repeat(5, ${CELL_SIZE}px)`,
+              gridTemplateRows: `repeat(5, ${CELL_SIZE}px)`,
+              gap: 2,
+            }}>
+              {SEV_LABELS.map((_, row) =>
+                PROB_LABELS.map((_, col) => {
+                  const prob = col + 1
+                  const sev = 5 - row
+                  const score = prob * sev
+                  const color = tCellColor(score)
+                  const key = `${prob}-${sev}`
+                  const cell = cellMap[key]
+                  return (
+                    <div
+                      key={`${row}-${col}`}
+                      onClick={() => setSelected({ prob, sev, score, cell: cell ?? null })}
+                      title={`Score ${score} — clique para detalhes`}
+                      style={{
+                        width: CELL_SIZE,
+                        height: CELL_SIZE,
+                        background: colorBg(color, 0.2),
+                        border: '1px solid #1E293B',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative',
+                        transition: 'filter 0.15s',
+                        flexShrink: 0,
+                      }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1.3)' }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.filter = '' }}
+                    >
+                      <span style={{ position: 'absolute', top: 3, right: 4, fontSize: 8, color, opacity: 0.55 }}>
+                        {score}
+                      </span>
+                      {cell && (
+                        <div style={{
+                          width: 28,
+                          height: 28,
+                          borderRadius: '50%',
+                          background: color,
+                          border: '2px solid white',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                        }}>
+                          <span style={{ fontSize: 11, fontWeight: 'bold', color: 'white' }}>{cell.count}</span>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })
+              )}
+            </div>
 
-          {/* Y axis labels */}
-          {SEV_LABELS.map((l, i) => {
-            const y = tp + i * ch + ch / 2
-            return (
-              <text key={i} x={lp - 8} y={y - 5} textAnchor="end" fontSize={9} fill="#94A3B8">
-                <tspan x={lp - 8} dy="0" fontWeight="600">{l.num}</tspan>
-                <tspan x={lp - 8} dy="12">{l.name}</tspan>
-              </text>
-            )
-          })}
+            {/* X labels */}
+            <div style={{ display: 'grid', gridTemplateColumns: `repeat(5, ${CELL_SIZE}px)`, gap: 2, marginTop: 4 }}>
+              {PROB_LABELS.map((l) => (
+                <div key={l.num} style={{
+                  height: 40,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  paddingTop: 4,
+                }}>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: '#94A3B8', lineHeight: 1.3 }}>{l.num}</span>
+                  <span style={{ fontSize: 9, color: '#64748B', textAlign: 'center' }}>{l.name}</span>
+                </div>
+              ))}
+            </div>
 
-          {/* X axis labels */}
-          {PROB_LABELS.map((l, i) => {
-            const x = lp + i * cw + cw / 2
-            return (
-              <text key={i} x={x} y={tp + 5 * ch + 16} textAnchor="middle" fontSize={9} fill="#94A3B8">
-                <tspan x={x} dy="0" fontWeight="600">{l.num}</tspan>
-                <tspan x={x} dy="12">{l.name}</tspan>
-              </text>
-            )
-          })}
-
-          {/* Axis title: PROBABILIDADE */}
-          <text
-            x={lp + (5 * cw) / 2}
-            y={svgH - 2}
-            textAnchor="middle"
-            fontSize={9}
-            fill="#64748B"
-            fontWeight="600"
-            letterSpacing="1"
-          >
-            PROBABILIDADE
-          </text>
-        </svg>
+            <div style={{ textAlign: 'center', fontSize: 10, letterSpacing: '0.15em', color: '#64748B', fontWeight: 600, marginTop: 4 }}>
+              PROBABILIDADE
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-4 mt-4 text-xs">
+      <div className="flex flex-wrap gap-4 mt-4" style={{ fontSize: 11 }}>
         {[
-          { color: '#16A34A', label: 'Verde — Risco aceitável: monitorar' },
-          { color: '#D97706', label: 'Amarelo — Risco tolerável: ação planejada' },
-          { color: '#EA580C', label: 'Laranja — Risco elevado: ação corretiva urgente' },
-          { color: '#DC2626', label: 'Vermelho — Risco inaceitável: ação imediata' },
+          { color: '#166534', label: 'Aceitável (1–4)' },
+          { color: '#854D0E', label: 'Tolerável (5–9)' },
+          { color: '#9A3412', label: 'Elevado (10–16)' },
+          { color: '#7F1D1D', label: 'Inaceitável (17–25)' },
         ].map((item) => (
           <div key={item.color} className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: item.color }} />
@@ -230,7 +386,28 @@ const ARMS_BARRIER_LABELS = [
   { key: 4 as const, name: 'Efetiva', sub: 'barreiras robustas' },
 ]
 
+interface ARMSCellInfo {
+  cellKey: string
+  erc: number
+  sevLabel: typeof ARMS_SEV_LABELS[0]
+  barLabel: typeof ARMS_BARRIER_LABELS[0]
+  cell: { count: number; codes: string[] } | null
+  barrierScore: number
+}
+
+function ercMeaning(erc: number): string {
+  switch (erc) {
+    case 5: return 'Risco Inaceitável — ação imediata obrigatória'
+    case 4: return 'Risco Urgente — ação corretiva em 24-48h'
+    case 3: return 'Ação Requerida — plano de intervenção necessário'
+    case 2: return 'Monitorar — acompanhar sem ação imediata'
+    default: return 'Aceitável — risco dentro dos parâmetros normais'
+  }
+}
+
 function ARMSMatrix({ data }: { data: Intelligence }) {
+  const [selected, setSelected] = useState<ARMSCellInfo | null>(null)
+
   const topCodes = data.distribution.perception.top_codes ?? []
   const barrier = barrierLevel(data.score.value)
 
@@ -244,106 +421,199 @@ function ARMSMatrix({ data }: { data: Intelligence }) {
     cellMap[key].codes.push(tc.code)
   }
 
-  const lp = 118
-  const tp = 10
-  const cw = 72
-  const ch = 62
-  const xh = 50
-  const svgW = lp + 4 * cw + 10
-  const svgH = tp + 4 * ch + xh
-
   return (
     <div>
+      {selected && (
+        <CellModal
+          title={`ERC ${selected.erc} — ${selected.sevLabel.name} × ${selected.barLabel.name}`}
+          onClose={() => setSelected(null)}
+        >
+          <div>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+              O que significa ERC {selected.erc}
+            </p>
+            <p className="text-slate-300 text-sm">{ercMeaning(selected.erc)}</p>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Como esta avaliação foi calculada</p>
+            <div className="bg-slate-800 rounded-lg p-3 text-sm text-slate-300 space-y-2">
+              <p>
+                Severidade (eixo Y): <strong className="text-white">{selected.sevLabel.key}</strong> — {selected.sevLabel.name}
+              </p>
+              <p className="text-slate-400 text-xs">Avaliação: {selected.sevLabel.sub}</p>
+              <p className="mt-2">
+                Efetividade das barreiras (eixo X): <strong className="text-white">{selected.barLabel.key}</strong> — {selected.barLabel.name}
+              </p>
+              <p className="text-slate-400 text-xs">
+                Avaliação: {selected.barLabel.sub}. Score de risco HFA: {selected.barrierScore}
+              </p>
+              <p className="text-slate-400 text-xs mt-2">
+                Na metodologia ARMS-ERC (EASA, 2010), a pergunta não é &quot;qual a probabilidade histórica?&quot; mas sim
+                &quot;quão efetivas eram as barreiras de segurança presentes no evento?&quot; Esta abordagem reflete melhor
+                o risco real no momento.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Eventos nesta célula</p>
+            {selected.cell ? (
+              <div className="space-y-1">
+                {selected.cell.codes.map((code) => (
+                  <div key={code} className="flex items-center justify-between bg-slate-800 rounded px-3 py-2">
+                    <span className="font-mono text-yellow-400 text-sm font-bold">{code}</span>
+                    <span className="text-slate-400 text-xs">código SERA</span>
+                  </div>
+                ))}
+                <p className="text-slate-500 text-xs mt-1">
+                  Total: {selected.cell.count} análise{selected.cell.count !== 1 ? 's' : ''}
+                </p>
+              </div>
+            ) : (
+              <p className="text-slate-500 text-sm">Nenhum evento foi classificado nesta célula.</p>
+            )}
+          </div>
+
+          <div className="border-t border-slate-800 pt-4">
+            <p className="text-slate-500 text-xs">
+              Referência: ARMS Working Group (EASA/Eurocontrol/IATA, 2010). Aviation Risk Management Solutions.
+            </p>
+          </div>
+        </CellModal>
+      )}
+
       <div className="overflow-x-auto">
-        <svg viewBox={`0 0 ${svgW} ${svgH}`} style={{ minWidth: `${svgW}px` }} className="w-full max-w-full">
-          {/* Axis title: SEVERIDADE */}
-          <text
-            x={14}
-            y={tp + (4 * ch) / 2}
-            textAnchor="middle"
-            fontSize={9}
-            fill="#64748B"
-            transform={`rotate(-90 14 ${tp + (4 * ch) / 2})`}
-            fontWeight="600"
-            letterSpacing="1"
-          >
-            SEVERIDADE DO RESULTADO
-          </text>
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          {/* SEVERIDADE label + Y labels */}
+          <div style={{ display: 'flex', alignItems: 'flex-start', flexShrink: 0 }}>
+            <div style={{
+              width: 20,
+              height: CELL_SIZE * 4 + 3 * 2,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}>
+              <span style={{
+                fontSize: 10,
+                letterSpacing: '0.15em',
+                color: '#64748B',
+                fontWeight: 600,
+                whiteSpace: 'nowrap',
+                transform: 'rotate(-90deg)',
+                display: 'block',
+              }}>SEVERIDADE</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginRight: 8, flexShrink: 0 }}>
+              {ARMS_SEV_LABELS.map((l) => (
+                <div key={l.key} style={{
+                  height: CELL_SIZE,
+                  width: 110,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                  justifyContent: 'center',
+                }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: '#94A3B8', lineHeight: 1.3 }}>
+                    {l.key} — {l.name}
+                  </span>
+                  <span style={{ fontSize: 9, color: '#64748B' }}>{l.sub}</span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          {/* Grid cells */}
-          {ARMS_SEV_LABELS.map((sevL, row) =>
-            ARMS_BARRIER_LABELS.map((barL, col) => {
-              const cellKey = `${sevL.key}${barL.key}`
-              const erc = ARMS_ERC[cellKey] ?? 2
-              const color = ERC_COLOR[erc]
-              const x = lp + col * cw
-              const y = tp + row * ch
-              const cell = cellMap[cellKey]
-              return (
-                <g key={cellKey}>
-                  <rect
-                    x={x} y={y} width={cw} height={ch}
-                    fill={color} fillOpacity={0.18}
-                    stroke="#1E293B" strokeWidth={1}
-                  />
-                  <text x={x + cw - 5} y={y + 13} textAnchor="end" fontSize={8} fill={color} fillOpacity={0.6}>
-                    ERC{erc}
-                  </text>
-                  {cell && (
-                    <g>
-                      <title>{cell.codes.join(', ')} — {cell.count} análise{cell.count !== 1 ? 's' : ''}</title>
-                      <circle cx={x + cw / 2} cy={y + ch / 2} r={15} fill={color} fillOpacity={0.9} />
-                      <text x={x + cw / 2} y={y + ch / 2 + 5} textAnchor="middle" fontSize={12} fontWeight="bold" fill="white">
-                        {cell.count}
-                      </text>
-                    </g>
-                  )}
-                </g>
-              )
-            })
-          )}
+          {/* Grid + X labels */}
+          <div style={{ flexShrink: 0 }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: `repeat(4, ${CELL_SIZE}px)`,
+              gridTemplateRows: `repeat(4, ${CELL_SIZE}px)`,
+              gap: 2,
+            }}>
+              {ARMS_SEV_LABELS.map((sevL) =>
+                ARMS_BARRIER_LABELS.map((barL) => {
+                  const cellKey = `${sevL.key}${barL.key}`
+                  const erc = ARMS_ERC[cellKey] ?? 2
+                  const color = ERC_COLOR[erc]
+                  const cell = cellMap[cellKey]
+                  return (
+                    <div
+                      key={cellKey}
+                      onClick={() => setSelected({
+                        cellKey,
+                        erc,
+                        sevLabel: sevL,
+                        barLabel: barL,
+                        cell: cell ?? null,
+                        barrierScore: data.score.value,
+                      })}
+                      title={`ERC ${erc} — clique para detalhes`}
+                      style={{
+                        width: CELL_SIZE,
+                        height: CELL_SIZE,
+                        background: colorBg(color, 0.2),
+                        border: '1px solid #1E293B',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative',
+                        transition: 'filter 0.15s',
+                        flexShrink: 0,
+                      }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.filter = 'brightness(1.3)' }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.filter = '' }}
+                    >
+                      <span style={{ position: 'absolute', top: 3, right: 4, fontSize: 8, color, opacity: 0.6 }}>
+                        ERC{erc}
+                      </span>
+                      {cell && (
+                        <div style={{
+                          width: 28,
+                          height: 28,
+                          borderRadius: '50%',
+                          background: color,
+                          border: '2px solid white',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                          <span style={{ fontSize: 11, fontWeight: 'bold', color: 'white' }}>{cell.count}</span>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })
+              )}
+            </div>
 
-          {/* Y axis labels */}
-          {ARMS_SEV_LABELS.map((l, i) => {
-            const y = tp + i * ch + ch / 2
-            return (
-              <text key={l.key} x={lp - 8} y={y - 6} textAnchor="end" fontSize={9} fill="#94A3B8">
-                <tspan x={lp - 8} dy="0" fontWeight="700">{l.key}</tspan>
-                <tspan x={lp - 8} dy="12" fontWeight="600">{l.name}</tspan>
-                <tspan x={lp - 8} dy="11" fontSize={8} fill="#64748B">{l.sub}</tspan>
-              </text>
-            )
-          })}
+            {/* X labels */}
+            <div style={{ display: 'grid', gridTemplateColumns: `repeat(4, ${CELL_SIZE}px)`, gap: 2, marginTop: 4 }}>
+              {ARMS_BARRIER_LABELS.map((l) => (
+                <div key={l.key} style={{
+                  height: 40,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  paddingTop: 4,
+                }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#94A3B8', lineHeight: 1.3 }}>{l.key}</span>
+                  <span style={{ fontSize: 9, color: '#64748B', textAlign: 'center' }}>{l.name}</span>
+                </div>
+              ))}
+            </div>
 
-          {/* X axis labels */}
-          {ARMS_BARRIER_LABELS.map((l, i) => {
-            const x = lp + i * cw + cw / 2
-            return (
-              <text key={l.key} x={x} y={tp + 4 * ch + 16} textAnchor="middle" fontSize={9} fill="#94A3B8">
-                <tspan x={x} dy="0" fontWeight="700">{l.key}</tspan>
-                <tspan x={x} dy="12" fontWeight="600">{l.name}</tspan>
-                <tspan x={x} dy="11" fontSize={8} fill="#64748B">{l.sub}</tspan>
-              </text>
-            )
-          })}
-
-          {/* Axis title: BARREIRAS */}
-          <text
-            x={lp + (4 * cw) / 2}
-            y={svgH - 1}
-            textAnchor="middle"
-            fontSize={9}
-            fill="#64748B"
-            fontWeight="600"
-            letterSpacing="1"
-          >
-            EFETIVIDADE DAS BARREIRAS REMANESCENTES
-          </text>
-        </svg>
+            <div style={{ textAlign: 'center', fontSize: 10, letterSpacing: '0.15em', color: '#64748B', fontWeight: 600, marginTop: 4 }}>
+              EFETIVIDADE DAS BARREIRAS REMANESCENTES
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ERC Legend */}
-      <div className="flex flex-wrap gap-4 mt-4 text-xs">
+      <div className="flex flex-wrap gap-4 mt-4" style={{ fontSize: 11 }}>
         {[
           { erc: 5, label: 'ERC 5 — Ação imediata' },
           { erc: 4, label: 'ERC 4 — Urgente' },
