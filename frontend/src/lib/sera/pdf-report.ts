@@ -1,4 +1,5 @@
-import PDFDocument from 'pdfkit'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const PDFDocument = require('pdfkit/js/pdfkit.standalone.js') as typeof import('pdfkit')
 
 function s(v: unknown, fallback = '—'): string {
   if (v === null || v === undefined || v === '') return fallback
