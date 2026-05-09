@@ -30,19 +30,49 @@ export async function applyUserAiSettingsToEnv(admin: SupabaseClient, userId: st
 
   if (active === 'deepseek') {
     const enc = row.deepseek_api_key as string | null
-    if (enc) process.env.DEEPSEEK_API_KEY = decryptString(enc)
+    if (enc) {
+      try {
+        process.env.DEEPSEEK_API_KEY = decryptString(enc)
+      } catch {
+        // chave criptografada com key diferente — usa env var existente
+      }
+    }
   } else if (active === 'openai') {
     const enc = row.openai_api_key as string | null
-    if (enc) process.env.OPENAI_API_KEY = decryptString(enc)
+    if (enc) {
+      try {
+        process.env.OPENAI_API_KEY = decryptString(enc)
+      } catch {
+        // chave criptografada com key diferente — usa env var existente
+      }
+    }
   } else if (active === 'anthropic') {
     const enc = row.anthropic_api_key as string | null
-    if (enc) process.env.ANTHROPIC_API_KEY = decryptString(enc)
+    if (enc) {
+      try {
+        process.env.ANTHROPIC_API_KEY = decryptString(enc)
+      } catch {
+        // chave criptografada com key diferente — usa env var existente
+      }
+    }
   } else if (active === 'google') {
     const enc = row.google_api_key as string | null
-    if (enc) process.env.GOOGLE_API_KEY = decryptString(enc)
+    if (enc) {
+      try {
+        process.env.GOOGLE_API_KEY = decryptString(enc)
+      } catch {
+        // chave criptografada com key diferente — usa env var existente
+      }
+    }
   } else if (active === 'groq') {
     const enc = row.groq_api_key as string | null
-    if (enc) process.env.GROQ_API_KEY = decryptString(enc)
+    if (enc) {
+      try {
+        process.env.GROQ_API_KEY = decryptString(enc)
+      } catch {
+        // chave criptografada com key diferente — usa env var existente
+      }
+    }
   }
 
   assertLlmEnvConfigured(active)
