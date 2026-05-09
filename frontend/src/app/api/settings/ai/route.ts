@@ -48,8 +48,12 @@ export async function GET(req: Request) {
     ] as const) {
       const enc = (stored as any)[field] as string | null | undefined
       if (enc && typeof enc === 'string') {
-        const suffix = maskKeySuffix(decryptString(enc))
-        responseKeys[label] = { configured: true, suffix }
+        try {
+          const suffix = maskKeySuffix(decryptString(enc))
+          responseKeys[label] = { configured: true, suffix }
+        } catch {
+          responseKeys[label] = { configured: false, suffix: '' }
+        }
       } else {
         responseKeys[label] = { configured: false, suffix: '' }
       }
