@@ -1,11 +1,20 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { resolveApiUrl } from '@/lib/api'
 import DocumentUpload from '@/components/sera/DocumentUpload'
 
 type Tab = 'text' | 'upload'
+
+const PROGRESS_STEPS = [
+  { delay: 0, text: 'Iniciando análise SERA...' },
+  { delay: 8000, text: 'Etapa 1 — Resumindo o evento...' },
+  { delay: 15000, text: 'Etapa 2 — Identificando ponto de fuga...' },
+  { delay: 22000, text: 'Etapas 3·4·5 — Classificando falhas...' },
+  { delay: 40000, text: 'Etapa 6·7 — Gerando conclusões e recomendações...' },
+  { delay: 60000, text: 'Finalizando análise...' },
+]
 
 export default function NewEventPage() {
   const router = useRouter()
@@ -23,11 +32,30 @@ export default function NewEventPage() {
   )
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [progressText, setProgressText] = useState('')
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([])
+
+  function startProgress() {
+    setProgressText(PROGRESS_STEPS[0].text)
+    const ids = PROGRESS_STEPS.slice(1).map(({ delay, text }) =>
+      setTimeout(() => setProgressText(text), delay)
+    )
+    timersRef.current = ids
+  }
+
+  function clearProgress() {
+    timersRef.current.forEach(clearTimeout)
+    timersRef.current = []
+    setProgressText('')
+  }
+
+  useEffect(() => () => clearProgress(), [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setError('')
+    startProgress()
     try {
       const {
         data: { session },
@@ -59,6 +87,7 @@ export default function NewEventPage() {
         if (!res.ok) {
           throw new Error(typeof data.detail === 'string' ? data.detail : `HTTP ${res.status}`)
         }
+        clearProgress()
         router.push(`/events/${data.event_id}`)
         return
       }
@@ -83,8 +112,10 @@ export default function NewEventPage() {
       if (!res.ok) {
         throw new Error(typeof data.detail === 'string' ? data.detail : `HTTP ${res.status}`)
       }
+      clearProgress()
       router.push(`/events/${data.event_id}`)
     } catch (err: unknown) {
+      clearProgress()
       setError(err instanceof Error ? err.message : 'Erro ao enviar')
       setLoading(false)
     }
@@ -94,6 +125,17 @@ export default function NewEventPage() {
 
   return (
     <div className="p-8 max-w-3xl">
+      {loading && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 bg-slate-950/70 backdrop-blur-sm">
+          <div className="bg-slate-900 border border-slate-700 rounded-2xl px-8 py-6 flex flex-col items-center gap-4 shadow-2xl max-w-sm w-full mx-4">
+            <div className="w-10 h-10 rounded-full border-4 border-blue-500 border-t-transparent animate-spin" />
+            <p className="text-white font-medium text-center">{progressText}</p>
+            <p className="text-slate-400 text-xs text-center">
+              Este processo leva entre 60 e 120 segundos.
+            </p>
+          </div>
+        </div>
+      )}
       <h1 className="text-2xl font-bold text-white mb-2">Nova Análise SERA</h1>
       <p className="text-slate-400 mb-8">Insira o relato do evento para análise automatizada</p>
 
@@ -220,7 +262,7 @@ export default function NewEventPage() {
             disabled={loading}
             className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-8 py-3 rounded-lg font-medium transition text-white"
           >
-            {loading ? '⏳ Analisando...' : '🔍 Iniciar Análise SERA'}
+            🔍 Iniciar Análise SERA
           </button>
           <button
             type="button"
