@@ -27,6 +27,7 @@ export async function POST(req: Request) {
     userId = user.userId
 
     assertLlmEnvConfigured()
+    console.log('[ai-insight] usando provider:', process.env.AI_PROVIDER ?? 'default')
 
     let body: { intelligence_data?: unknown }
     try {

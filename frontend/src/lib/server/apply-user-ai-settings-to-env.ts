@@ -32,45 +32,50 @@ export async function applyUserAiSettingsToEnv(admin: SupabaseClient, userId: st
     const enc = row.deepseek_api_key as string | null
     if (enc) {
       try {
-        process.env.DEEPSEEK_API_KEY = decryptString(enc)
+        const decrypted = decryptString(enc)
+        if (decrypted.startsWith('sk-')) process.env.DEEPSEEK_API_KEY = decrypted
       } catch {
-        // chave criptografada com key diferente — usa env var existente
+        // usa env var existente
       }
     }
   } else if (active === 'openai') {
     const enc = row.openai_api_key as string | null
     if (enc) {
       try {
-        process.env.OPENAI_API_KEY = decryptString(enc)
+        const decrypted = decryptString(enc)
+        if (decrypted.startsWith('sk-')) process.env.OPENAI_API_KEY = decrypted
       } catch {
-        // chave criptografada com key diferente — usa env var existente
+        // usa env var existente
       }
     }
   } else if (active === 'anthropic') {
     const enc = row.anthropic_api_key as string | null
     if (enc) {
       try {
-        process.env.ANTHROPIC_API_KEY = decryptString(enc)
+        const decrypted = decryptString(enc)
+        if (decrypted.startsWith('sk-ant-')) process.env.ANTHROPIC_API_KEY = decrypted
       } catch {
-        // chave criptografada com key diferente — usa env var existente
+        // usa env var existente
       }
     }
   } else if (active === 'google') {
     const enc = row.google_api_key as string | null
     if (enc) {
       try {
-        process.env.GOOGLE_API_KEY = decryptString(enc)
+        const decrypted = decryptString(enc)
+        if (decrypted.length >= 20) process.env.GOOGLE_API_KEY = decrypted
       } catch {
-        // chave criptografada com key diferente — usa env var existente
+        // usa env var existente
       }
     }
   } else if (active === 'groq') {
     const enc = row.groq_api_key as string | null
     if (enc) {
       try {
-        process.env.GROQ_API_KEY = decryptString(enc)
+        const decrypted = decryptString(enc)
+        if (decrypted.startsWith('gsk_') || decrypted.startsWith('sk-')) process.env.GROQ_API_KEY = decrypted
       } catch {
-        // chave criptografada com key diferente — usa env var existente
+        // usa env var existente
       }
     }
   }
