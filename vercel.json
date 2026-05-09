@@ -1,0 +1,12 @@
+{
+  "framework": "nextjs",
+  "rootDirectory": "frontend",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "functions": {
+    "src/app/api/events/route.ts": { "maxDuration": 60 },
+    "src/app/api/analyze/route.ts": { "maxDuration": 60 },
+    "src/app/api/extract-document/route.ts": { "maxDuration": 60 },
+    "src/app/api/analyses/[analysisId]/recalculate/route.ts": { "maxDuration": 60 }
+  }
+}
