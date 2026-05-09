@@ -77,26 +77,19 @@ export async function extractTextFromBuffer(
     }
   }
 
-  const parser = new PDFParse({ data: new Uint8Array(buffer) })
+  // ── PDF ──────────────────────────────────────────────────────
   try {
-    const textResult = await parser.getText()
-    await parser.destroy().catch(() => {})
-    const text = (textResult.text || '').trim()
+    const result = await PDFParse(buffer)
+    const text = (result.text || '').trim()
     if (!text || text.length < 25) {
-      throw new DocumentExtractError('PDF_NO_TEXT', '')
+      throw new DocumentExtractError(
+        'PDF_NO_TEXT',
+        'Este PDF contém apenas imagens e não pode ser processado automaticamente. Por favor, digite o texto manualmente.'
+      )
     }
-    return textResult.text || ''
+    return result.text
   } catch (err) {
-    await parser.destroy().catch(() => {})
-    if (err instanceof DocumentExtractError) {
-      if (err.code === 'PDF_NO_TEXT') {
-        throw new DocumentExtractError(
-          'PDF_NO_TEXT',
-          'Este PDF contém apenas imagens e não pode ser processado automaticamente. Por favor, digite o texto manualmente.'
-        )
-      }
-      throw err
-    }
+    if (err instanceof DocumentExtractError) throw err
     const msg = err instanceof Error ? err.message.toLowerCase() : ''
     if (msg.includes('password') || msg.includes('encrypt')) {
       throw new DocumentExtractError(
@@ -112,7 +105,7 @@ export async function extractTextFromBuffer(
     }
     throw new DocumentExtractError(
       'PARSE_FAILED',
-      'Não foi possível ler o arquivo. Verifique se ele está corrompido.'
+      'Não foi possível processar o PDF. Tente novamente ou digite o texto manualmente.'
     )
   }
 }
