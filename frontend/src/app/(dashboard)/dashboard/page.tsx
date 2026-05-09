@@ -62,12 +62,18 @@ export default function DashboardPage() {
       const t = session.access_token
       setToken(t)
       try {
-        const [intel, eventsData] = await Promise.all([
-          fetch('/api/org/intelligence', { headers: { Authorization: `Bearer ${t}` } }).then(r => r.json()),
-          fetch('/api/events?limit=5', { headers: { Authorization: `Bearer ${t}` } }).then(r => r.json()).catch(() => ({ events: [] })),
+        const [intelRes, eventsRes] = await Promise.all([
+          fetch('/api/org/intelligence', { headers: { Authorization: `Bearer ${t}` } }),
+          fetch('/api/events', { headers: { Authorization: `Bearer ${t}` } }).catch(() => null),
         ])
-        setData(intel)
-        setEvents(Array.isArray(eventsData) ? eventsData.slice(0, 5) : (eventsData.events ?? []).slice(0, 5))
+        if (intelRes.ok) {
+          const intel = await intelRes.json()
+          if (intel?.score) setData(intel)
+        }
+        if (eventsRes?.ok) {
+          const eventsData = await eventsRes.json().catch(() => [])
+          setEvents((Array.isArray(eventsData) ? eventsData : (eventsData.events ?? [])).slice(0, 5))
+        }
       } catch {
         // intentional: setData stays null → empty state rendered
       } finally {
@@ -102,7 +108,7 @@ export default function DashboardPage() {
       </div>
 
       {/* 2. Score de Risco */}
-      {data && (
+      {data?.score && (
         <OrgScoreCard
           score={data.score.value}
           level={data.score.level}
@@ -126,7 +132,7 @@ export default function DashboardPage() {
       )}
 
       {/* 4. Distribuição de falhas */}
-      {data && (
+      {data?.distribution && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {(['perception', 'objective', 'action'] as const).map((key) => {
             const dist = data.distribution[key]
@@ -159,7 +165,7 @@ export default function DashboardPage() {
       )}
 
       {/* 5. Análise por IA */}
-      {data && token && (
+      {data?.score && token && (
         <AiInsightPanel intelligenceData={data} token={token} />
       )}
 

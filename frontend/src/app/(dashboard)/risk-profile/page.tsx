@@ -112,10 +112,13 @@ export default function RiskProfilePage() {
       const t = session.access_token
       setToken(t)
       try {
-        const intel = await fetch('/api/org/intelligence', {
+        const res = await fetch('/api/org/intelligence', {
           headers: { Authorization: `Bearer ${t}` },
-        }).then(r => r.json())
-        setData(intel)
+        })
+        if (res.ok) {
+          const intel = await res.json()
+          if (intel?.score) setData(intel)
+        }
       } catch {
         // setData stays null → empty state
       } finally {
@@ -152,7 +155,7 @@ export default function RiskProfilePage() {
       </div>
 
       {/* 2. Score + semáforo */}
-      {data && (
+      {data?.score && (
         <OrgScoreCard
           score={data.score.value}
           level={data.score.level}
@@ -224,7 +227,7 @@ export default function RiskProfilePage() {
       )}
 
       {/* 5. Análise por IA */}
-      {data && token && (
+      {data?.score && token && (
         <AiInsightPanel intelligenceData={data} token={token} />
       )}
 
