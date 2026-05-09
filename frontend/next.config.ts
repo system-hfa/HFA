@@ -1,16 +1,12 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ['pdf-parse', 'mammoth', 'canvas'],
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals = [
-        ...(Array.isArray(config.externals) ? config.externals : []),
-        'canvas',
-        'jsdom',
-      ]
-    }
-    return config
+  serverExternalPackages: ['pdf-parse', 'mammoth', 'canvas', 'jsdom'],
+  turbopack: {
+    resolveAlias: {
+      canvas: { browser: './empty-module.ts' },
+      jsdom: { browser: './empty-module.ts' },
+    },
   },
 }
 
