@@ -1,5 +1,5 @@
 import mammoth from 'mammoth'
-import { PDFParse } from 'pdf-parse'
+import PDFParse from 'pdf-parse-fork'
 
 const MAX_BYTES = 10 * 1024 * 1024
 
