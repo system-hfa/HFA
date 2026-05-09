@@ -8,6 +8,8 @@ import FlowStep from '@/components/FlowStep'
 import EditableClassification from '@/components/EditableClassification'
 import EditHistoryPanel from '@/components/EditHistoryPanel'
 import { STEP3_CODES, STEP4_CODES, STEP5_CODES } from '@/data/tutorials'
+import { mapToHfacs, type HfacsEntry, type HfacsResult } from '@/lib/sera/hfacs-mapper'
+import { useT } from '@/lib/i18n'
 
 const FlowDiagram = dynamic(() => import('@/components/FlowDiagram'), { ssr: false })
 
@@ -21,6 +23,72 @@ function MetaItem({ label, value }: { label: string; value?: string | null }) {
     <div className="min-w-0">
       <p className="text-xs text-slate-500 uppercase tracking-wider mb-0.5">{label}</p>
       <p className="text-sm text-slate-200 truncate">{value}</p>
+    </div>
+  )
+}
+
+function HfacsSection({ hfacs }: { hfacs: HfacsResult }) {
+  const t = useT()
+
+  const levels: { key: keyof HfacsResult; labelKey: string; color: string }[] = [
+    { key: 'nivel1_unsafe_acts',   labelKey: 'hfacs.level1', color: 'border-red-700/50 bg-red-950/20' },
+    { key: 'nivel2_preconditions', labelKey: 'hfacs.level2', color: 'border-orange-700/50 bg-orange-950/20' },
+    { key: 'nivel3_supervision',   labelKey: 'hfacs.level3', color: 'border-yellow-700/50 bg-yellow-950/20' },
+    { key: 'nivel4_organization',  labelKey: 'hfacs.level4', color: 'border-purple-700/50 bg-purple-950/20' },
+  ]
+
+  const hasAny = levels.some((l) => hfacs[l.key].length > 0)
+  if (!hasAny) return null
+
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+      <div className="px-6 py-3 bg-slate-800 border-b border-slate-700 flex items-center gap-2">
+        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+          {t('hfacs.title')}
+        </span>
+        <span className="text-xs font-bold text-yellow-400 bg-yellow-400/10 border border-yellow-400/30 px-1.5 py-0.5 rounded">
+          {t('hfacs.bonus')}
+        </span>
+      </div>
+      <div className="p-6 space-y-4">
+        <p className="text-xs text-slate-500 leading-relaxed">{t('hfacs.subtitle')}</p>
+        {levels.map(({ key, labelKey, color }) => {
+          const entries: HfacsEntry[] = hfacs[key]
+          if (entries.length === 0) return null
+          return (
+            <div key={key} className={`border rounded-xl p-4 ${color}`}>
+              <p className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">
+                {t(labelKey)}
+              </p>
+              <div className="space-y-3">
+                {entries.map((item, i) => (
+                  <div key={i} className="bg-slate-900/50 rounded-lg p-3 space-y-1.5">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs font-mono bg-slate-700 text-slate-300 px-2 py-0.5 rounded">
+                        {item.codigo_sera_origem}
+                      </span>
+                      <span className="text-xs text-slate-400">{t('hfacs.origin')}</span>
+                      <span className="mx-1 text-slate-600">→</span>
+                      <span className="text-xs font-semibold text-slate-200">
+                        {t(item.categoria_key)}
+                      </span>
+                      <span className="text-slate-600">·</span>
+                      <span className="text-xs text-slate-300">
+                        {t(item.subcategoria_key)}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {item.justificativa_pt}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        })}
+        <p className="text-xs text-slate-600 pt-1">{t('hfacs.note')}</p>
+        <p className="text-xs text-slate-600">{t('hfacs.reference')}</p>
+      </div>
     </div>
   )
 }
@@ -394,6 +462,17 @@ export default function EventDetailPage() {
                 ))}
               </div>
             </div>
+          )}
+
+          {/* ── HFACS — Classificação Bônus ────────────────────────────── */}
+          {(analysis.perception_code || analysis.objective_code || analysis.action_code) && (
+            <HfacsSection
+              hfacs={mapToHfacs({
+                perception: analysis.perception_code,
+                objective: analysis.objective_code,
+                action: analysis.action_code,
+              })}
+            />
           )}
         </>
       )}
