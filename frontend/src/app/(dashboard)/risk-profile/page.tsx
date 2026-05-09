@@ -1,23 +1,24 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useAuth } from '@/lib/auth'
+import { supabase } from '@/lib/supabase'
 
 export default function RiskProfilePage() {
-  const { token } = useAuth()
   const [data, setData] = useState<Record<string, unknown> | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!token) return
-    fetch('/api/analyses/risk-profile', {
-      headers: { Authorization: `Bearer ${token}` },
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) { setLoading(false); return }
+      fetch('/api/analyses/risk-profile', {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      })
+        .then(r => r.json())
+        .then(setData)
+        .catch(console.error)
+        .finally(() => setLoading(false))
     })
-      .then(r => r.json())
-      .then(setData)
-      .catch(console.error)
-      .finally(() => setLoading(false))
-  }, [token])
+  }, [])
 
   if (loading) return <div className="p-6">Carregando perfil de risco...</div>
 
