@@ -402,7 +402,8 @@ REGRAS OBRIGATÓRIAS:
 4. Se pressão de tempo foi descartada no fluxo de Percepção, T1 só pode aparecer vinculada à Etapa 4 ou 5 com justificativa específica
 5. Recomendações vinculadas aos códigos reais identificados (${step3.codigo}, ${step4.codigo}, ${step5.codigo})
 
-Responda APENAS com JSON.`
+Responda APENAS com JSON.`,
+    { maxTokens: 12000 }
   )
   return safeParse(r, 'Etapa 6-7') as unknown as Step67Result
 }

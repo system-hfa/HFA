@@ -61,7 +61,7 @@ async function callGoogle(system: string, user: string): Promise<string> {
   return r.response.text()
 }
 
-export async function callAi(system: string, userMsg: string): Promise<string> {
+export async function callAi(system: string, userMsg: string, maxTokens = 8192): Promise<string> {
   const provider = getActiveProvider()
   let raw: string
 
@@ -69,7 +69,7 @@ export async function callAi(system: string, userMsg: string): Promise<string> {
     const client = new Anthropic({ apiKey: requireApiKey('ANTHROPIC_API_KEY') })
     const msg = await client.messages.create({
       model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
-      max_tokens: 4096,
+      max_tokens: maxTokens,
       system: system,
       messages: [{ role: 'user', content: userMsg }],
     })
@@ -82,7 +82,7 @@ export async function callAi(system: string, userMsg: string): Promise<string> {
         { role: 'system', content: system },
         { role: 'user', content: userMsg },
       ],
-      max_tokens: 4096,
+      max_tokens: maxTokens,
     })
     raw = r.choices[0]?.message?.content || ''
   } else if (provider === 'google') {
@@ -98,7 +98,7 @@ export async function callAi(system: string, userMsg: string): Promise<string> {
         { role: 'system', content: system },
         { role: 'user', content: userMsg },
       ],
-      max_tokens: 4096,
+      max_tokens: maxTokens,
     })
     raw = r.choices[0]?.message?.content || ''
   } else {
@@ -116,7 +116,7 @@ export async function callAi(system: string, userMsg: string): Promise<string> {
         { role: 'system', content: system },
         { role: 'user', content: userMsg },
       ],
-      max_tokens: 4096,
+      max_tokens: maxTokens,
     })
     raw = r.choices[0]?.message?.content || ''
   }
@@ -132,8 +132,12 @@ export function safeParse(raw: string, step: string): Record<string, unknown> {
   }
 }
 
-export async function ask(system: string, question: string): Promise<string> {
-  return callAi(system, question)
+export async function ask(
+  system: string,
+  user: string,
+  opts?: { maxTokens?: number }
+): Promise<string> {
+  return callAi(system, user, opts?.maxTokens ?? 8192)
 }
 
 /**
