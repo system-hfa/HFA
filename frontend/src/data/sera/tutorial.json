@@ -119,16 +119,15 @@
       },
       {
         "codigo_daumas": "P-A",
-        "nome": "Falha Sensorial",
-        "explicacao_didatica": "O operador não tinha a capacidade física (visão, audição, etc.) para perceber a informação necessária. É uma limitação do 'sensor humano', não da decisão.",
-        "fonte": "Hendy (2003), Annex A; Daumas (2018), Anexo B"
+        "nome": "Nenhuma Falha de Percepção",
+        "explicacao_didatica": "Nenhuma falha de percepção foi identificada. O operador percebeu a situação corretamente. A análise deve prosseguir para as etapas de Objetivo e Ação para identificar onde ocorreu a falha.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018)"
       },
       {
         "codigo_daumas": "P-B",
-        "nome": "Falha de Atenção (sem pressão de tempo)",
-        "explicacao_didatica": "A informação estava disponível e correta, mas o operador simplesmente não a atendeu. Não havia pressão de tempo excessiva — a falha está na alocação da atenção.",
-        "criterio_decisor": "Se houvesse mais tempo, o resultado seria diferente? NÃO → P-B (ou P-G conforme versão Daumas). SIM → P-D.",
-        "fonte": "Hendy (2003), Figure 5"
+        "nome": "Falha Sensorial",
+        "explicacao_didatica": "O operador não tinha a capacidade física (visão, audição, tato, olfato) para detectar os estímulos necessários. É uma limitação do sensor humano — condições ambientais adversas ou limitações fisiológicas impediram a detecção do estímulo.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018), Anexo B"
       },
       {
         "codigo_daumas": "P-C",
@@ -146,9 +145,16 @@
         "fonte": "Hendy (2003), Figure 5; Daumas (2018), Tabela 8"
       },
       {
-        "codigo_daumas": "P-E / P-F",
-        "nome": "Falha de Percepção (informação ilusória ou ambígua)",
-        "explicacao_didatica": "Todas as informações relevantes foram recebidas, mas o conteúdo é ambíguo ou ilusório. O problema está na natureza da informação, não na capacidade do operador de recebê-la.",
+        "codigo_daumas": "P-E",
+        "nome": "Falha no Gerenciamento de Tempo",
+        "explicacao_didatica": "O operador CRIOU a própria pressão de tempo por suas atitudes e decisões. A urgência foi autoimposta, não imposta pela situação. O operador não gerenciou adequadamente o tempo disponível, levando a processamento inadequado das informações.",
+        "criterio_decisor": "A pressão de tempo foi criada pelo próprio operador (autoimposta)? SIM → P-E. Foi imposta pela situação externa? SIM → P-D.",
+        "fonte": "Hendy (2003), Figure 5; Daumas (2018)"
+      },
+      {
+        "codigo_daumas": "P-F",
+        "nome": "Falha de Percepção por Informação Ilusória ou Ambígua",
+        "explicacao_didatica": "A informação disponível era enganosa, ambígua ou contraditória, levando a uma percepção incorreta mesmo com capacidade sensorial e atenção adequadas. O problema está na natureza da informação, não no operador. Inclui ilusões sensoriais (desorientação espacial) e informações tecnicamente incorretas.",
         "fonte": "Hendy (2003), Annex A; Daumas (2018), Anexo B"
       },
       {
@@ -191,10 +197,11 @@
         "fonte": "Hendy (2003), Figure 5"
       },
       {
-        "codigo_daumas": "A-J / A-K",
-        "nome": "Deslizes, Lapsos e Erros de Modo / Falha de Execução",
-        "explicacao_didatica": "A resposta não foi executada conforme a intenção. Deslizes ocorrem quando a ação difere ligeiramente da rotina. Erros de modo: ação adequada para outro modo de operação, mas não para o atual.",
-        "fonte": "Hendy (2003), Annex A; Daumas (2018), Anexo B"
+        "codigo_daumas": "A-J",
+        "nome": "Falha de Feedback por Pressão do Tempo",
+        "explicacao_didatica": "A pressão de tempo impediu que o operador obtivesse ou processasse o feedback necessário para verificar se a ação estava correta. Sem tempo para checar o resultado, erros não foram detectados nem corrigidos.",
+        "criterio_decisor": "A pressão de tempo era excessiva? SIM → A-J. NÃO → A-G.",
+        "fonte": "Hendy (2003), Annex A; Daumas (2018)"
       }
     ]
   },
@@ -215,7 +222,7 @@
       },
       {
         "camada": "Condições de Trabalho",
-        "subcategorias": ["Equipamento (E1)", "Espaço de Trabalho (E2)", "Ambiente (E3)"],
+        "subcategorias": ["Equipamento/Ferramentas (W1)", "Espaço de Trabalho (W2)", "Ambiente (W3)"],
         "explicacao": "O ambiente físico no qual a tarefa é realizada."
       },
       {
@@ -225,7 +232,7 @@
       },
       {
         "camada": "Influências Organizacionais",
-        "subcategorias": ["Missão (O1)", "Provisão de Recursos (O2)", "Regras e Regulamentos (O3)", "Processos e Práticas (O4)", "Clima Organizacional (O5)", "Oversight (O6)"],
+        "subcategorias": ["Missão (O1)", "Provisão de Recursos (O2)", "Regras e Regulamentos (O3)", "Processos e Práticas (O4)", "Clima Organizacional (O5)", "Vigilância e Supervisão Sistêmica (O6)"],
         "explicacao": "Fatores remotos que estabelecem o propósito, controlam recursos, definem o clima e fornecem supervisão sistêmica."
       }
     ]

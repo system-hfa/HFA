@@ -18,7 +18,9 @@
     {"Código": "O1", "Descrição": "Falhas Organizacionais - Missão"},
     {"Código": "O2", "Descrição": "Falhas Organizacionais - Provisão de Recursos"},
     {"Código": "O3", "Descrição": "Falhas Organizacionais - Regras e Regulamentos"},
-    {"Código": "O4", "Descrição": "Falhas Organizacionais - Processo Organizacional"}
+    {"Código": "O4", "Descrição": "Falhas Organizacionais - Processo Organizacional"},
+    {"Código": "O5", "Descrição": "Falhas Organizacionais - Clima Organizacional"},
+    {"Código": "O6", "Descrição": "Falhas Organizacionais - Vigilância e Supervisão Sistêmica"}
   ],
   "Pré-condições para Falhas Ativas": {
     "pré-condições imediatas": {
@@ -689,32 +691,33 @@
           "código": "O4"
         },
         {
-      "CLIMA ORGANIZACIONAL": {
-    "descrição": "O clima organizacional é definido pelas variáveis que influenciam as atitudes e comportamentos dos funcionários em relação à segurança e ao cumprimento das tarefas. Este clima emerge dos valores reais praticados dentro da organização, que podem diferir dos valores declarados formalmente. A IA pode usar dados relacionados à frequência de comunicações sobre segurança, relatórios de incidentes, e feedback de funcionários para avaliar a qualidade do clima organizacional e sua conformidade com as práticas de segurança recomendadas.",
-    "influências": {
-      "Estrutura Organizacional": "Reflete como a organização é estruturada em termos de cadeia de comando e canais de comunicação. Uma estrutura clara e bem adaptada promove uma melhor adesão às normas de segurança, enquanto estruturas confusas ou mal adaptadas aumentam o risco de falhas operacionais. A IA pode analisar a estrutura organizacional para verificar se facilita ou dificulta a comunicação efetiva e o cumprimento das normas de segurança.",
-      "Políticas": "Políticas bem definidas e consistentes com a segurança garantem que os funcionários saibam o que é esperado deles e como devem agir em situações de risco. Inconsistências ou falta de clareza nas políticas podem levar a comportamentos de risco. A IA pode examinar as políticas documentadas e relatórios de conformidade para detectar possíveis áreas de risco.",
-      "Cultura": "A cultura organizacional influencia a maneira como os funcionários percebem e reagem às políticas e estruturas da organização. Culturas que valorizam a segurança e a responsabilidade promovem comportamentos proativos na prevenção de erros. A IA pode utilizar análises de sentimentos e feedback de funcionários para avaliar se a cultura suporta ou prejudica a segurança operacional.",
-      "Comportamento de Cidadania Organizacional": "Atitudes proativas que contribuem para a segurança e eficiência da organização, como o voluntariado para tarefas adicionais de segurança ou a participação em treinamentos. A IA pode medir a frequência e o impacto desses comportamentos na segurança geral para entender como o clima organizacional fomenta a cidadania ativa."
-    },
-    "impacto na segurança": "Um clima organizacional positivo reduz a probabilidade de erros e falhas humanas ao fortalecer a conformidade com as práticas de segurança, melhorar a comunicação e aumentar a vigilância. A IA pode prever a probabilidade de erros futuros com base na qualidade do clima organizacional identificado através dos dados analisados."
+          "O5": {
+            "Código": "O5",
+            "Nome": "Clima Organizacional",
+            "Descrição": "A organização não age de acordo com valores baseados em uma operação segura e aderência às regras. Não recompensa quem tenta manter esses valores. Valoriza 'fazer o trabalho' acima de tudo, criando um clima que tolera ou encoraja comportamentos de risco.",
+            "Perguntas_Guia": [
+              "A organização valoriza e recompensa comportamentos seguros?",
+              "Existem condições que afetam operações seguras sendo investigadas e corrigidas?",
+              "A organização tolera condições de alto risco como norma?",
+              "O clima organizacional encoraja o reporte de problemas de segurança?"
+            ],
+            "Fonte": "Hendy (2003), Table 1; Daumas (2018)"
+          }
         },
-         "código": "O5"
-   },
-          {
-      
-      "SUPERVISÃO": {
-   "descrição": "A supervisão envolve procedimentos administrativos para monitorar e verificar a eficácia dos recursos, do clima organizacional e dos processos internos, com o objetivo de assegurar um ambiente de trabalho seguro e produtivo. A eficácia da supervisão é crucial para prevenir falhas e erros humanos ao garantir que as práticas de segurança sejam seguidas e que as políticas sejam implementadas corretamente.",
-    "funções": {
-      "Monitoramento": "Inclui a supervisão contínua das atividades operacionais para garantir a aderência aos protocolos de segurança estabelecidos e identificar desvios ou não conformidades. A IA pode analisar registros de monitoramento para detectar padrões de comportamento que possam indicar falhas na observância de normas de segurança.",
-      "Feedback Corretivo": "Envolve a análise de incidentes e quase acidentes para fornecer orientações corretivas que evitem a recorrência. A IA pode usar dados de incidentes passados para aprender quais condições tendem a preceder os erros e desenvolver modelos preditivos para alertar sobre riscos futuros.",
-      "Gestão de Riscos": "Refere-se à implementação de estratégias para mitigar riscos identificados e gerenciar mudanças de maneira eficaz. A IA pode avaliar a eficácia das medidas de mitigação de riscos com base em dados históricos e atuais, ajustando alertas e recomendações conforme necessário.",
-      "Programas de Segurança": "A criação e manutenção de programas de segurança que educam e treinam os funcionários sobre as melhores práticas e procedimentos de segurança. A IA pode analisar a participação e os resultados dos programas de treinamento para medir seu impacto na redução de incidentes e melhorar a cultura de segurança."
-    },
-    "impacto na segurança": "A supervisão eficaz aumenta diretamente a segurança operacional ao melhorar a conformidade com as regulamentações, antecipar e corrigir falhas potenciais e fortalecer a cultura de segurança. Com dados adequados, a IA pode identificar falhas na supervisão que podem levar a erros humanos e desenvolver recomendações para fortalecer a supervisão e as práticas de segurança."        
-       },
-        "código": "O6"
-      }]
+        {
+          "O6": {
+            "Código": "O6",
+            "Nome": "Vigilância e Supervisão Sistêmica",
+            "Descrição": "Falha na supervisão sistêmica da organização sobre conformidade e segurança. A quebra de regras era endêmica e conhecida, mas não havia ações corretivas consistentes ou esses comportamentos eram tolerados pela cadeia de comando.",
+            "Perguntas_Guia": [
+              "Foram conhecidas deficiências sistêmicas e tomadas ações corretivas?",
+              "A quebra de regras era endêmica e conhecida pela organização?",
+              "Havia mecanismos efetivos de supervisão e correção de desvios?",
+              "A ocorrência de violações era monitorada e respondida adequadamente?"
+            ],
+            "Fonte": "Hendy (2003), Table 1; Daumas (2018)"
+          }
+        }]
     }}}
   
 

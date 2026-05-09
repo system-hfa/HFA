@@ -9,10 +9,10 @@
     {"Nome": "NENHUMA FALHA DE PERCEPÇÃO", "CÓDIGO": "P-A", "ID": "#P-A"},
     {"Nome": "FALHA SENSORIAL", "CÓDIGO": "P-B", "ID": "#P-B"},
     {"Nome": "FALHA DE CONHECIMENTO/PERCEPÇÃO", "CÓDIGO": "P-C", "ID": "#P-C"},
-    {"Nome": "FALHA DE ATENÇÃO", "CÓDIGO": "P-D", "ID": "#P-D"},
+    {"Nome": "FALHA DE ATENÇÃO COM PRESSÃO DE TEMPO", "CÓDIGO": "P-D", "ID": "#P-D"},
     {"Nome": "FALHA NO GERENCIAMENTO DE TEMPO", "CÓDIGO": "P-E", "ID": "#P-E"},
     {"Nome": "FALHA DE PERCEPÇÃO", "CÓDIGO": "P-F", "ID": "#P-F"},
-    {"Nome": "FALHA DE ATENÇÃO", "CÓDIGO": "P-G", "ID": "#P-G"},
+    {"Nome": "FALHA DE ATENÇÃO SEM PRESSÃO DE TEMPO", "CÓDIGO": "P-G", "ID": "#P-G"},
     {"Nome": "FALHA DE COMUNICAÇÃO", "CÓDIGO": "P-H", "ID": "#P-H"}
   ],
   "Conteúdo": [
