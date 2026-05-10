@@ -524,19 +524,107 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
 
 // ── ARMS-ERC 4×4 Matrix ──────────────────────────────────────────────────────
 
-const ARMS_SEV_LABELS = [
-  { key: 'A' as const, name: 'Catastrófico', sub: 'fatalidades múltiplas' },
-  { key: 'B' as const, name: 'Grave', sub: 'fatalidade ou lesão grave' },
-  { key: 'C' as const, name: 'Significativo', sub: 'lesão leve, dano sério' },
-  { key: 'D' as const, name: 'Menor', sub: 'sem lesão, dano menor' },
+interface BarrierDef {
+  key: 1 | 2 | 3 | 4
+  name: string
+  sub: string
+  justificativa: string
+  base_cientifica: string
+  como_calculamos: string
+  fonte: string
+}
+
+const ARMS_BARRIER_DEFS: BarrierDef[] = [
+  {
+    key: 1,
+    name: 'Nenhuma',
+    sub: 'dependeu de sorte',
+    justificativa: 'As barreiras de segurança estavam ausentes ou foram completamente neutralizadas. O evento dependeu de fatores externos não controláveis para não resultar em acidente. O sistema de defesa falhou em todas as camadas.',
+    base_cientifica: 'No modelo Swiss Cheese de Reason (1990), barreiras nível 1 indicam que todos os "buracos" dos queijos alinharam simultaneamente — não havia nenhuma camada de proteção remanescente. O ARMS Working Group (EASA, 2010) classifica este nível como o mais crítico porque revela vulnerabilidade sistêmica total, não apenas falha pontual.',
+    como_calculamos: 'O score de risco HFA ≥ 70 indica que múltiplos fatores organizacionais e operacionais falharam simultaneamente, caracterizando ausência efetiva de barreiras remanescentes no momento do evento.',
+    fonte: 'Reason (1990); ARMS Working Group, EASA (2010); EU 376/2014',
+  },
+  {
+    key: 2,
+    name: 'Mínima',
+    sub: 'barreiras mínimas',
+    justificativa: 'Existiam barreiras de segurança, mas eram insuficientes ou funcionaram de forma inadequada. O evento foi contido por margem estreita — pequenas variações nas condições poderiam ter resultado em acidente.',
+    base_cientifica: 'O ARMS-ERC diferencia barreiras pela sua robustez e redundância, não apenas pela presença. Barreiras mínimas (nível 2) existem no papel mas carecem de profundidade defensiva. Segundo o ARMS Working Group (2010), este nível caracteriza organizações onde as barreiras são mais simbólicas do que funcionais.',
+    como_calculamos: 'Score HFA entre 40–69 indica falhas em múltiplas camadas com algumas barreiras remanescentes, mas com efetividade comprometida por fatores organizacionais identificados nas pré-condições.',
+    fonte: 'ARMS Working Group, EASA/Eurocontrol/IATA (2010); Reason (1990)',
+  },
+  {
+    key: 3,
+    name: 'Limitada',
+    sub: 'efetividade limitada',
+    justificativa: 'As barreiras de segurança estavam presentes e funcionaram parcialmente. O evento foi contido, mas a efetividade das defesas foi reduzida por fatores identificáveis — o sistema não operou em sua capacidade plena.',
+    base_cientifica: 'Barreiras com efetividade limitada (nível 3) representam o cenário mais comum em organizações com maturidade de segurança intermediária. O ARMS Working Group (2010) identifica que neste nível as barreiras existem e funcionam, mas não foram testadas em sua capacidade máxima ou apresentam degradação conhecida.',
+    como_calculamos: 'Score HFA entre 20–39 indica que o sistema de gestão de segurança está funcional mas apresenta lacunas específicas identificadas na análise SERA das pré-condições.',
+    fonte: 'ARMS Working Group, EASA (2010); ICAO Doc 9859 SMM, 4ª ed.',
+  },
+  {
+    key: 4,
+    name: 'Efetiva',
+    sub: 'barreiras robustas',
+    justificativa: 'As barreiras de segurança funcionaram conforme projetado. O evento ocorreu apesar de um sistema de defesa robusto — indica falha residual dentro de um sistema bem gerenciado.',
+    base_cientifica: 'Barreiras efetivas (nível 4) caracterizam organizações com alta maturidade de segurança. Segundo o ARMS Working Group (2010), neste nível as defesas são redundantes, testadas regularmente e mantidas adequadamente. O fato de um evento ocorrer mesmo com barreiras efetivas é raro e fornece informação valiosa sobre falhas residuais do sistema.',
+    como_calculamos: 'Score HFA < 20 indica que o sistema organizacional de segurança está funcionando bem — poucos fatores de risco identificados nas pré-condições, ações corretivas em dia e supervisão adequada.',
+    fonte: 'ARMS Working Group, EASA (2010); Reason (1990); ICAO Doc 9859',
+  },
 ]
 
-const ARMS_BARRIER_LABELS = [
-  { key: 1 as const, name: 'Nenhuma', sub: 'dependeu de sorte' },
-  { key: 2 as const, name: 'Mínima', sub: 'barreiras mínimas' },
-  { key: 3 as const, name: 'Limitada', sub: 'efetividade limitada' },
-  { key: 4 as const, name: 'Efetiva', sub: 'barreiras robustas' },
+const ARMS_BARRIER_LABELS = ARMS_BARRIER_DEFS.map(d => ({ key: d.key, name: d.name, sub: d.sub }))
+
+interface ArmsSevDef {
+  key: 'A' | 'B' | 'C' | 'D'
+  name: string
+  sub: string
+  justificativa: string
+  base_cientifica: string
+  como_calculamos: string
+  fonte: string
+}
+
+const ARMS_SEV_DEFS: ArmsSevDef[] = [
+  {
+    key: 'A',
+    name: 'Catastrófico',
+    sub: 'fatalidades múltiplas',
+    justificativa: 'O resultado mais provável do evento, caso tivesse escalado completamente, seria fatalidades múltiplas ou perda total de aeronave/instalação. Esta é a categoria de maior impacto irreversível.',
+    base_cientifica: 'O ARMS-ERC avalia o "pior resultado crível" — não o resultado real, mas o que provavelmente teria ocorrido sem intervenção. Catastrófico (A) indica que as consequências máximas envolveriam perda de vidas múltiplas, conforme definição do ICAO Doc 9859 e EASA.',
+    como_calculamos: 'Códigos SERA como P-B e P-F em contextos de alta consequência (voo, operação offshore em condições adversas) mapeiam para severidade A quando a falha elimina completamente a capacidade de evitar o impacto.',
+    fonte: 'ARMS Working Group (2010); ICAO Doc 9859, Table 2.2-1',
+  },
+  {
+    key: 'B',
+    name: 'Grave',
+    sub: 'fatalidade ou lesão grave',
+    justificativa: 'O resultado mais provável seria uma fatalidade individual ou lesão permanentemente incapacitante. Eventos neste nível têm potencial de dano irreversível a pessoas.',
+    base_cientifica: 'Severidade B no ARMS-ERC corresponde a eventos onde o mecanismo de falha identificado tem capacidade de causar dano grave mas não necessariamente catastrófico. Falhas de percepção (P-B, P-F) em contextos operacionais típicos da aviação offshore mapeiam para este nível.',
+    como_calculamos: 'Os códigos de percepção identificados nas análises SERA indicam falhas que eliminam ou comprometem gravemente a capacidade de resposta do operador, com potencial de dano grave conforme o contexto operacional declarado.',
+    fonte: 'ARMS Working Group (2010); EASA AMC 20-8',
+  },
+  {
+    key: 'C',
+    name: 'Significativo',
+    sub: 'lesão leve, dano sério',
+    justificativa: 'O resultado mais provável seria lesão leve a moderada ou dano significativo ao equipamento/operação. Recuperável, mas com impacto operacional e humano relevante.',
+    base_cientifica: 'Falhas cognitivas (P-C, P-D, P-E, P-G) geralmente mapeiam para severidade C porque o operador retém alguma capacidade de percepção e resposta — a falha é parcial, não total. Segundo o ARMS Working Group (2010), neste nível existiam alternativas de resposta disponíveis ao operador.',
+    como_calculamos: 'Códigos SERA de falha cognitiva indicam que o operador tinha informação parcial disponível — o que tipicamente resulta em consequências limitadas quando comparado a falhas sensoriais completas.',
+    fonte: 'ARMS Working Group (2010); ICAO Doc 9859',
+  },
+  {
+    key: 'D',
+    name: 'Menor',
+    sub: 'sem lesão, dano menor',
+    justificativa: 'O resultado mais provável seria sem lesão pessoal ou com dano mínimo e reversível. O evento tem valor preventivo mas impacto real limitado.',
+    base_cientifica: 'Falhas de comunicação (P-H) e ausência de falha de percepção (P-A) mapeiam para severidade D porque o problema reside no sistema de transferência de informação — corrigível sem dano pessoal direto. O ARMS Working Group (2010) classifica neste nível eventos onde as barreiras e a competência do operador limitaram efetivamente as consequências.',
+    como_calculamos: 'Quando a análise SERA identifica falhas de comunicação ou ausência de falhas de percepção, as consequências potenciais são tipicamente menores e o foco preventivo é nos processos organizacionais.',
+    fonte: 'ARMS Working Group (2010); EU 376/2014, Anexo I',
+  },
 ]
+
+const ARMS_SEV_LABELS = ARMS_SEV_DEFS.map(d => ({ key: d.key, name: d.name, sub: d.sub }))
 
 interface ARMSCellInfo {
   cellKey: string
@@ -589,22 +677,48 @@ function ARMSMatrix({ data }: { data: Intelligence }) {
 
           <div>
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Como esta avaliação foi calculada</p>
-            <div className="bg-slate-800 rounded-lg p-3 text-sm text-slate-300 space-y-2">
-              <p>
-                Severidade (eixo Y): <strong className="text-white">{selected.sevLabel.key}</strong> — {selected.sevLabel.name}
-              </p>
-              <p className="text-slate-400 text-xs">Avaliação: {selected.sevLabel.sub}</p>
-              <p className="mt-2">
-                Efetividade das barreiras (eixo X): <strong className="text-white">{selected.barLabel.key}</strong> — {selected.barLabel.name}
-              </p>
-              <p className="text-slate-400 text-xs">
-                Avaliação: {selected.barLabel.sub}. Score de risco HFA: {selected.barrierScore}
-              </p>
-              <p className="text-slate-400 text-xs mt-2">
-                Na metodologia ARMS-ERC (EASA, 2010), a pergunta não é &quot;qual a probabilidade histórica?&quot; mas sim
-                &quot;quão efetivas eram as barreiras de segurança presentes no evento?&quot; Esta abordagem reflete melhor
-                o risco real no momento.
-              </p>
+            <div className="space-y-3">
+              {/* Severidade */}
+              <div className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-3">
+                <p className="text-xs font-semibold text-slate-300 mb-1">
+                  Severidade {selected.sevLabel.key} — {selected.sevLabel.name}
+                </p>
+                {(() => {
+                  const def = ARMS_SEV_DEFS.find(d => d.key === selected.sevLabel.key)
+                  if (!def) return null
+                  return (
+                    <>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-2">{def.justificativa}</p>
+                      <p className="text-xs text-slate-500 italic leading-relaxed mb-1">{def.base_cientifica}</p>
+                      <p className="text-xs text-slate-500 leading-relaxed border-t border-slate-700 pt-2 mt-2">
+                        <strong className="text-slate-400">Como calculamos:</strong>{' '}{def.como_calculamos}
+                      </p>
+                      <p className="text-xs text-slate-600 mt-1">Fonte: {def.fonte}</p>
+                    </>
+                  )
+                })()}
+              </div>
+
+              {/* Efetividade das barreiras */}
+              <div className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-3">
+                <p className="text-xs font-semibold text-slate-300 mb-1">
+                  Barreiras nível {selected.barLabel.key} — {selected.barLabel.name}
+                </p>
+                {(() => {
+                  const def = ARMS_BARRIER_DEFS.find(d => d.key === selected.barLabel.key)
+                  if (!def) return null
+                  return (
+                    <>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-2">{def.justificativa}</p>
+                      <p className="text-xs text-slate-500 italic leading-relaxed mb-1">{def.base_cientifica}</p>
+                      <p className="text-xs text-slate-500 leading-relaxed border-t border-slate-700 pt-2 mt-2">
+                        <strong className="text-slate-400">Como calculamos:</strong>{' '}{def.como_calculamos}
+                      </p>
+                      <p className="text-xs text-slate-600 mt-1">Fonte: {def.fonte}</p>
+                    </>
+                  )
+                })()}
+              </div>
             </div>
           </div>
 
@@ -803,7 +917,7 @@ function ARMSMatrix({ data }: { data: Intelligence }) {
 
 // ── SERA Reasoning Panel ──────────────────────────────────────────────────────
 
-function SeraReasoningPanel({ data }: { data: Intelligence }) {
+function SeraReasoningPanel({ data, matrixTab }: { data: Intelligence; matrixTab: 'traditional' | 'arms' }) {
   const topCodes = data.distribution.perception.top_codes ?? []
   if (topCodes.length === 0) return null
 
@@ -820,6 +934,100 @@ function SeraReasoningPanel({ data }: { data: Intelligence }) {
   const prob = countToProb(topCode.count, data.total_analyses)
   const pct = data.total_analyses > 0 ? Math.round((topCode.count / data.total_analyses) * 100) : 0
   const score = prob * dominantSev
+
+  if (matrixTab === 'arms') {
+    const armsSevKey: 'A' | 'B' | 'C' | 'D' = ARMS_SEV_ROW[topCode.code] ?? 'C'
+    const barKey = barrierLevel(data.score.value)
+    const cellKey = `${armsSevKey}${barKey}`
+    const erc = ARMS_ERC[cellKey] ?? 2
+    const armsSevDef = ARMS_SEV_DEFS.find(d => d.key === armsSevKey)
+    const barDef = ARMS_BARRIER_DEFS.find(d => d.key === barKey)
+
+    return (
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+        <div className="flex items-center gap-2 flex-wrap">
+          <h3 className="text-white font-semibold text-sm">Como a análise chegou aqui</h3>
+          <span className="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full flex-shrink-0">
+            Raciocínio SERA → ARMS-ERC
+          </span>
+        </div>
+
+        {/* BLOCO 1 — Severidade */}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Severidade do resultado (eixo Y)</p>
+          <div className="flex flex-wrap gap-1.5">
+            {topCodes.slice(0, 5).map((tc) => (
+              <span
+                key={tc.code}
+                className="bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs font-mono px-2 py-0.5 rounded"
+              >
+                {tc.code} ×{tc.count}
+              </span>
+            ))}
+          </div>
+          {armsSevDef && (
+            <div className="bg-slate-800/40 rounded-lg p-3 space-y-1">
+              <p className="text-xs font-semibold text-slate-300">
+                Severidade {armsSevDef.key} — {armsSevDef.name}
+              </p>
+              <p className="text-xs text-slate-400 leading-relaxed">{armsSevDef.justificativa}</p>
+              <p className="text-xs text-slate-500 italic leading-relaxed">{armsSevDef.base_cientifica}</p>
+              <p className="text-xs text-slate-600 mt-1">Fonte: {armsSevDef.fonte}</p>
+            </div>
+          )}
+        </div>
+
+        {/* BLOCO 2 — Barreiras */}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Efetividade das barreiras (eixo X)</p>
+          {barDef && (
+            <div className="bg-slate-800/40 rounded-lg p-3 space-y-1">
+              <p className="text-xs font-semibold text-slate-300">
+                Baseada no score de risco HFA: {data.score.value}
+              </p>
+              <p className="text-xs text-slate-400">
+                Score {data.score.value} → Nível {barKey} ({barDef.name})
+              </p>
+              <p className="text-xs text-slate-500 leading-relaxed">{barDef.como_calculamos}</p>
+              <p className="text-xs text-slate-600 mt-1">Fonte: {barDef.fonte}</p>
+            </div>
+          )}
+        </div>
+
+        {/* BLOCO 3 — ERC resultante */}
+        <div className="space-y-2 border-t border-slate-800 pt-3">
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">ERC resultante</p>
+          <p className="text-slate-400 text-xs">
+            Célula <strong className="text-white font-mono">{cellKey}</strong> → ERC{' '}
+            <strong className="text-white">{erc}</strong> —{' '}
+            <strong style={{ color: ERC_COLOR[erc] }}>{ercMeaning(erc)}</strong>
+          </p>
+          <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+            <div
+              className="h-full rounded-full transition-all"
+              style={{ width: `${(erc / 5) * 100}%`, background: ERC_COLOR[erc] }}
+            />
+          </div>
+        </div>
+
+        {/* BLOCO 4 — Nota metodológica */}
+        <div className="bg-blue-500/8 border border-blue-500/20 rounded-lg p-3">
+          <p className="text-blue-300 text-xs leading-relaxed">
+            Na metodologia ARMS-ERC, a pergunta central não é &quot;qual a probabilidade histórica?&quot; mas sim
+            &quot;quão efetivas eram as barreiras no momento do evento?&quot; Esta abordagem é mais adequada para
+            análise retrospectiva de eventos específicos.
+          </p>
+          <p className="text-slate-600 text-xs mt-1">
+            Fonte: ARMS Working Group, EASA (2010).
+          </p>
+        </div>
+
+        <p className="text-blue-400 text-xs">
+          Clique nas células da matriz para ver detalhes →
+        </p>
+      </div>
+    )
+  }
 
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
@@ -1153,7 +1361,7 @@ export default function RiskProfilePage() {
 
           {/* Direita: Raciocínio SERA + Top 5 Precondições */}
           <div className="lg:col-span-2 space-y-4">
-            <SeraReasoningPanel data={data} />
+            <SeraReasoningPanel data={data} matrixTab={matrixTab} />
             {data.top_preconditions.length > 0 && (
               <TopPreconditionsPanel preconditions={data.top_preconditions.slice(0, 5)} />
             )}
