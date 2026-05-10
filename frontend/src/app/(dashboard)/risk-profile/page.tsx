@@ -114,12 +114,22 @@ const SEV_LABELS = [
 ]
 
 const PROB_LABELS = [
-  { num: '1', name: 'Improvável', short: 'Impr.', desc: 'Quase impossível ocorrer; sem registro histórico similar' },
-  { num: '2', name: 'Remoto', short: 'Rem.', desc: 'Improvável mas possível; poucos registros históricos' },
-  { num: '3', name: 'Ocasional', short: 'Ocas.', desc: 'Pode ocorrer algumas vezes durante a vida do sistema' },
-  { num: '4', name: 'Provável', short: 'Prov.', desc: 'Ocorre várias vezes; histórico consistente documentado' },
-  { num: '5', name: 'Frequente', short: 'Freq.', desc: 'Ocorre repetidamente; praticamente esperado' },
+  { num: '1', name: 'Improvável', short: 'Impr.', desc: '< 10% das análises com este padrão' },
+  { num: '2', name: 'Remoto',     short: 'Rem.',  desc: '10–25% das análises' },
+  { num: '3', name: 'Ocasional',  short: 'Ocas.', desc: '25–50% das análises' },
+  { num: '4', name: 'Provável',   short: 'Prov.', desc: '50–75% das análises' },
+  { num: '5', name: 'Frequente',  short: 'Freq.', desc: '> 75% das análises' },
 ]
+
+function countToProb(count: number, total: number): number {
+  if (total === 0) return 1
+  const pct = (count / total) * 100
+  if (pct > 75) return 5
+  if (pct > 50) return 4
+  if (pct > 25) return 3
+  if (pct > 10) return 2
+  return 1
+}
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
 
@@ -171,7 +181,7 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
   const cellMap: Record<string, { count: number; codes: string[] }> = {}
   for (const tc of topCodes) {
     const sev = P_SEVERITY[tc.code] ?? 3
-    const prob = Math.min(5, Math.max(1, Math.ceil(tc.count / 5)))
+    const prob = countToProb(tc.count, data.total_analyses)
     const key = `${prob}-${sev}`
     if (!cellMap[key]) cellMap[key] = { count: 0, codes: [] }
     cellMap[key].count += tc.count
@@ -406,6 +416,15 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
         ))}
       </div>
       <p className="text-slate-600 text-xs mt-2">Referência: ISO 31000:2018 · ICAO Doc 9859 SMM</p>
+      <div className="mt-3 bg-amber-500/8 border border-amber-500/20 rounded-lg p-3">
+        <p className="text-amber-400 text-xs font-semibold mb-1">⚠️ Limitação metodológica</p>
+        <p className="text-slate-400 text-xs leading-relaxed">
+          A probabilidade nesta matriz é inferida da frequência relativa dos padrões de falha dentro do banco
+          de eventos investigados — não da frequência operacional real. Eventos não investigados ou não
+          reportados não estão incluídos, o que pode subestimar o risco real. Para maior precisão, combine
+          estes dados com indicadores operacionais da sua organização.
+        </p>
+      </div>
     </div>
   )
 }
@@ -705,7 +724,8 @@ function SeraReasoningPanel({ data }: { data: Intelligence }) {
   )
 
   const topCode = topCodes[0]
-  const prob = Math.min(5, Math.max(1, Math.ceil(topCode.count / 5)))
+  const prob = countToProb(topCode.count, data.total_analyses)
+  const pct = data.total_analyses > 0 ? Math.round((topCode.count / data.total_analyses) * 100) : 0
   const score = prob * dominantSev
 
   return (
@@ -746,11 +766,18 @@ function SeraReasoningPanel({ data }: { data: Intelligence }) {
       <div className="space-y-2">
         <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Probabilidade inferida</p>
         <p className="text-slate-400 text-xs">
-          A probabilidade foi estimada pela frequência dos padrões de falha observados:{' '}
+          A probabilidade foi estimada pela frequência relativa do padrão de falha dentro do banco de eventos
+          analisados:{' '}
           <strong className="text-white font-mono">{topCode.code}</strong> apareceu{' '}
           <strong className="text-white">{topCode.count}</strong>{' '}
-          {topCode.count === 1 ? 'vez' : 'vezes'} → Probabilidade{' '}
+          {topCode.count === 1 ? 'vez' : 'vezes'} em{' '}
+          <strong className="text-white">{data.total_analyses}</strong> análises (
+          <strong className="text-white">{pct}%</strong>) → Probabilidade{' '}
           <strong className="text-white">{prob}</strong> ({PROB_LABELS[prob - 1].name})
+        </p>
+        <p className="text-amber-400/80 text-xs leading-relaxed">
+          ⚠️ Nota: esta é uma aproximação baseada em eventos investigados. A frequência operacional real pode
+          ser diferente dependendo da taxa de reporte da sua organização.
         </p>
       </div>
 
