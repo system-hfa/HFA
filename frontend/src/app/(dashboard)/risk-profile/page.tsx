@@ -80,6 +80,20 @@ function riskMeaning(score: number): string {
   return 'Risco Aceitável — O risco está dentro dos limites toleráveis. Monitoramento periódico é suficiente.'
 }
 
+function acaoRecomendada(score: number): string {
+  if (score >= 17) return 'intervenção imediata obrigatória'
+  if (score >= 10) return 'ação corretiva prioritária em curto prazo'
+  if (score >= 5)  return 'plano de ação planejado em médio prazo'
+  return 'monitoramento periódico sem ação imediata'
+}
+
+function sevJustification(sev: number): string {
+  if (sev === 4) return 'falhas sensoriais e ilusórias com alto potencial de dano'
+  if (sev === 3) return 'falhas cognitivas com severidade controlável'
+  if (sev === 2) return 'falhas de comunicação com menor impacto direto'
+  return 'impacto mínimo na operação'
+}
+
 function barrierLevel(score: number): 1 | 2 | 3 | 4 {
   if (score >= 70) return 1
   if (score >= 40) return 2
@@ -89,7 +103,7 @@ function barrierLevel(score: number): 1 | 2 | 3 | 4 {
 
 // ── Traditional 5×5 Matrix ───────────────────────────────────────────────────
 
-const CELL_SIZE = 64
+const CELL_SIZE = 56
 
 const SEV_LABELS = [
   { num: '5', name: 'Catastrófica', desc: 'Fatalidades múltiplas ou perda total do equipamento' },
@@ -100,11 +114,11 @@ const SEV_LABELS = [
 ]
 
 const PROB_LABELS = [
-  { num: '1', name: 'Improvável', desc: 'Quase impossível ocorrer; sem registro histórico similar' },
-  { num: '2', name: 'Remoto', desc: 'Improvável mas possível; poucos registros históricos' },
-  { num: '3', name: 'Ocasional', desc: 'Pode ocorrer algumas vezes durante a vida do sistema' },
-  { num: '4', name: 'Provável', desc: 'Ocorre várias vezes; histórico consistente documentado' },
-  { num: '5', name: 'Frequente', desc: 'Ocorre repetidamente; praticamente esperado' },
+  { num: '1', name: 'Improvável', short: 'Impr.', desc: 'Quase impossível ocorrer; sem registro histórico similar' },
+  { num: '2', name: 'Remoto', short: 'Rem.', desc: 'Improvável mas possível; poucos registros históricos' },
+  { num: '3', name: 'Ocasional', short: 'Ocas.', desc: 'Pode ocorrer algumas vezes durante a vida do sistema' },
+  { num: '4', name: 'Provável', short: 'Prov.', desc: 'Ocorre várias vezes; histórico consistente documentado' },
+  { num: '5', name: 'Frequente', short: 'Freq.', desc: 'Ocorre repetidamente; praticamente esperado' },
 ]
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
@@ -178,25 +192,54 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
 
           <div>
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Como esta avaliação foi calculada</p>
-            <div className="bg-slate-800 rounded-lg p-3 text-sm text-slate-300 space-y-2">
-              <p>
-                Score = Probabilidade ({selected.prob}) × Severidade ({selected.sev}) ={' '}
-                <strong className="text-white">{selected.score}</strong>
+            <div className="bg-slate-800 rounded-lg p-3 space-y-3">
+              <p className="text-xs text-slate-400">
+                Os eventos nesta célula foram classificados aqui pelo seguinte raciocínio:
               </p>
-              <p>
-                Probabilidade {selected.prob} — {PROB_LABELS[selected.prob - 1].name}: {PROB_LABELS[selected.prob - 1].desc}
-              </p>
-              <p>
-                Severidade {selected.sev} — {SEV_LABELS.find((l) => l.num === String(selected.sev))?.name}:{' '}
-                {SEV_LABELS.find((l) => l.num === String(selected.sev))?.desc}
-              </p>
-              {selected.cell && (
-                <p className="text-slate-400 text-xs mt-2">
-                  Os eventos plotados nesta célula foram classificados aqui com base nos seguintes critérios SERA:
-                  os códigos {selected.cell.codes.join(', ')} mapearam para severidade {selected.sev} e a frequência
-                  ({selected.cell.count} evento{selected.cell.count !== 1 ? 's' : ''}) determinou a probabilidade {selected.prob}.
+
+              <div>
+                <p className="text-xs font-semibold text-white">
+                  1. SEVERIDADE {selected.sev} ({SEV_LABELS.find((l) => l.num === String(selected.sev))?.name})
                 </p>
-              )}
+                {selected.cell ? (
+                  <p className="text-xs text-slate-400 mt-1">
+                    Os códigos SERA {selected.cell.codes.join(', ')} indicam {sevJustification(selected.sev)}{' '}
+                    segundo o mapeamento SERA → ISO 31000.
+                  </p>
+                ) : (
+                  <p className="text-xs text-slate-400 mt-1">
+                    {SEV_LABELS.find((l) => l.num === String(selected.sev))?.desc}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-white">
+                  2. PROBABILIDADE {selected.prob} ({PROB_LABELS[selected.prob - 1].name})
+                </p>
+                {selected.cell ? (
+                  <p className="text-xs text-slate-400 mt-1">
+                    Foram encontrados {selected.cell.count} evento{selected.cell.count !== 1 ? 's' : ''} com este
+                    padrão de falha nos dados analisados. A frequência observada corresponde ao nível {selected.prob} —{' '}
+                    {PROB_LABELS[selected.prob - 1].name} — da escala ISO 31000.
+                  </p>
+                ) : (
+                  <p className="text-xs text-slate-400 mt-1">
+                    {PROB_LABELS[selected.prob - 1].desc}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-white">
+                  3. SCORE {selected.score} = {selected.prob} × {selected.sev}
+                </p>
+                <p className="text-xs text-slate-400 mt-1">
+                  Este valor coloca o risco na zona{' '}
+                  <strong style={{ color: tCellColor(selected.score) }}>{riskLevelName(selected.score)}</strong>,
+                  que requer {acaoRecomendada(selected.score)}.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -253,15 +296,12 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
               {SEV_LABELS.map((l) => (
                 <div key={l.num} style={{
                   height: CELL_SIZE,
-                  width: 80,
+                  width: 24,
                   display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-end',
-                  justifyContent: 'center',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
                 }}>
-                  <span style={{ fontSize: 10, fontWeight: 600, color: '#94A3B8', lineHeight: 1.3 }}>
-                    {l.num} {l.name}
-                  </span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#94A3B8' }}>{l.num}</span>
                 </div>
               ))}
             </div>
@@ -339,7 +379,7 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
                   paddingTop: 4,
                 }}>
                   <span style={{ fontSize: 11, fontWeight: 600, color: '#94A3B8', lineHeight: 1.3 }}>{l.num}</span>
-                  <span style={{ fontSize: 9, color: '#64748B', textAlign: 'center' }}>{l.name}</span>
+                  <span style={{ fontSize: 9, color: '#64748B', textAlign: 'center' }}>{l.short}</span>
                 </div>
               ))}
             </div>
@@ -649,6 +689,120 @@ function ARMSMatrix({ data }: { data: Intelligence }) {
   )
 }
 
+// ── SERA Reasoning Panel ──────────────────────────────────────────────────────
+
+function SeraReasoningPanel({ data }: { data: Intelligence }) {
+  const topCodes = data.distribution.perception.top_codes ?? []
+  if (topCodes.length === 0) return null
+
+  const sevCount: Record<number, number> = {}
+  for (const tc of topCodes) {
+    const sev = P_SEVERITY[tc.code] ?? 3
+    sevCount[sev] = (sevCount[sev] ?? 0) + tc.count
+  }
+  const dominantSev = Number(
+    Object.entries(sevCount).sort((a, b) => Number(b[1]) - Number(a[1]))[0][0]
+  )
+
+  const topCode = topCodes[0]
+  const prob = Math.min(5, Math.max(1, Math.ceil(topCode.count / 5)))
+  const score = prob * dominantSev
+
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div className="flex items-center gap-2 flex-wrap">
+        <h3 className="text-white font-semibold text-sm">Como a análise chegou aqui</h3>
+        <span className="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full flex-shrink-0">
+          Raciocínio SERA → Matriz
+        </span>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Severidade inferida</p>
+        <p className="text-slate-400 text-xs">
+          Os {data.total_analyses} eventos analisados foram classificados com os seguintes códigos de percepção:
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {topCodes.slice(0, 5).map((tc) => (
+            <span
+              key={tc.code}
+              className="bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs font-mono px-2 py-0.5 rounded"
+            >
+              {tc.code} ×{tc.count}
+            </span>
+          ))}
+        </div>
+        <p className="text-slate-400 text-xs">
+          Estes códigos mapeiam para severidade{' '}
+          <strong className="text-white">{dominantSev}</strong> na matriz porque:
+        </p>
+        <div className="bg-slate-800/60 rounded-lg p-3 text-xs text-slate-400 space-y-1">
+          <p>• P-B, P-F → Grave (4): falhas sensoriais e ilusórias têm alto potencial de dano</p>
+          <p>• P-C, P-D, P-E, P-G → Moderada (3): falhas cognitivas com severidade controlável</p>
+          <p>• P-H → Menor (2): falhas de comunicação com menor impacto direto</p>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Probabilidade inferida</p>
+        <p className="text-slate-400 text-xs">
+          A probabilidade foi estimada pela frequência dos padrões de falha observados:{' '}
+          <strong className="text-white font-mono">{topCode.code}</strong> apareceu{' '}
+          <strong className="text-white">{topCode.count}</strong>{' '}
+          {topCode.count === 1 ? 'vez' : 'vezes'} → Probabilidade{' '}
+          <strong className="text-white">{prob}</strong> ({PROB_LABELS[prob - 1].name})
+        </p>
+      </div>
+
+      <div className="space-y-2 border-t border-slate-800 pt-3">
+        <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Score resultante</p>
+        <p className="text-slate-400 text-xs">
+          Score = {prob} × {dominantSev} ={' '}
+          <strong className="text-white text-sm">{score}</strong> — Classificação:{' '}
+          <strong style={{ color: tCellColor(score) }}>{riskLevelName(score)}</strong>
+        </p>
+        <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <div
+            className="h-full rounded-full transition-all"
+            style={{ width: `${(score / 25) * 100}%`, background: tCellColor(score) }}
+          />
+        </div>
+      </div>
+
+      <p className="text-blue-400 text-xs">
+        Clique nas células da matriz para ver detalhes →
+      </p>
+    </div>
+  )
+}
+
+// ── Top Preconditions Panel ───────────────────────────────────────────────────
+
+function TopPreconditionsPanel({ preconditions }: { preconditions: Intelligence['top_preconditions'] }) {
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+      <h3 className="text-white font-semibold text-sm">Precondições mais frequentes</h3>
+      <div className="space-y-3">
+        {preconditions.map((p, i) => (
+          <div key={p.code} className="flex items-center gap-3">
+            <span className="text-slate-600 text-xs w-4 flex-shrink-0">#{i + 1}</span>
+            <span className="font-mono text-yellow-400 text-xs font-bold w-10 flex-shrink-0">{p.code}</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between mb-0.5">
+                <span className="text-slate-400 text-xs truncate">{p.name}</span>
+                <span className="text-white text-xs font-semibold ml-2 flex-shrink-0">{p.pct}%</span>
+              </div>
+              <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-full bg-yellow-400/60 rounded-full" style={{ width: `${p.pct}%` }} />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ── Utility components ────────────────────────────────────────────────────────
 
 const combinationMeaning: Record<string, string> = {
@@ -773,7 +927,7 @@ export default function RiskProfilePage() {
         </button>
       </div>
 
-      {/* 2. Score + semáforo */}
+      {/* 2. Score card compacto */}
       {data?.score && (
         <OrgScoreCard
           score={data.score.value}
@@ -783,83 +937,92 @@ export default function RiskProfilePage() {
         />
       )}
 
-      {/* 3. Matrizes de Risco */}
+      {/* 3. Grid 2 colunas: Matriz | Raciocínio + Precondições */}
       {data && (
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
-          {/* Tab header */}
-          <div className="flex items-center justify-between flex-wrap gap-3">
-            <h3 className="text-white font-semibold">Matriz de Risco</h3>
-            <div className="flex rounded-lg overflow-hidden border border-slate-700 text-sm">
-              <button
-                onClick={() => setMatrixTab('traditional')}
-                className={`px-4 py-1.5 transition-colors ${matrixTab === 'traditional' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
-              >
-                ISO 31000 / ICAO
-              </button>
-              <button
-                onClick={() => setMatrixTab('arms')}
-                className={`px-4 py-1.5 transition-colors ${matrixTab === 'arms' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
-              >
-                ARMS-ERC
-              </button>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          {/* Esquerda: Matriz */}
+          <div className="lg:col-span-3">
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <h3 className="text-white font-semibold">Matriz de Risco</h3>
+                <div className="flex rounded-lg overflow-hidden border border-slate-700 text-sm">
+                  <button
+                    onClick={() => setMatrixTab('traditional')}
+                    className={`px-4 py-1.5 transition-colors ${matrixTab === 'traditional' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+                  >
+                    ISO 31000 / ICAO
+                  </button>
+                  <button
+                    onClick={() => setMatrixTab('arms')}
+                    className={`px-4 py-1.5 transition-colors ${matrixTab === 'arms' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+                  >
+                    ARMS-ERC
+                  </button>
+                </div>
+              </div>
+
+              {matrixTab === 'traditional' ? (
+                <p className="text-slate-500 text-xs">
+                  Matriz 5×5 baseada em Probabilidade × Severidade — ISO 31000:2018 e ICAO Doc 9859
+                </p>
+              ) : (
+                <p className="text-slate-500 text-xs">
+                  Matriz 4×4 baseada em Severidade do resultado × Efetividade das barreiras — Aviation Risk Management Solutions (EASA, 2010)
+                </p>
+              )}
+
+              {matrixTab === 'traditional' ? (
+                <TraditionalMatrix data={data} />
+              ) : (
+                <ARMSMatrix data={data} />
+              )}
+
+              <div className="border-t border-slate-800 pt-4">
+                <button
+                  onClick={() => setShowGuide((v) => !v)}
+                  className="flex items-center gap-2 text-slate-400 hover:text-white text-sm transition-colors"
+                >
+                  <span className={`transition-transform ${showGuide ? 'rotate-90' : ''}`}>▶</span>
+                  Qual matriz usar para cada situação?
+                </button>
+                {showGuide && (
+                  <div className="mt-4 grid sm:grid-cols-2 gap-4 text-xs text-slate-400 leading-relaxed">
+                    <div className="bg-slate-800/60 rounded-lg p-4 space-y-2">
+                      <p className="text-white font-semibold text-sm mb-1">Use a Matriz Tradicional (ISO 31000) quando:</p>
+                      <p>• Precisa de comparabilidade com outras organizações</p>
+                      <p>• Está fazendo relatório para gestão ou auditoria</p>
+                      <p>• Tem dados históricos suficientes para estimar probabilidade</p>
+                    </div>
+                    <div className="bg-slate-800/60 rounded-lg p-4 space-y-2">
+                      <p className="text-white font-semibold text-sm mb-1">Use a Matriz ARMS-ERC quando:</p>
+                      <p>• Quer avaliar o risco real de um evento específico</p>
+                      <p>• Está triando eventos para priorizar investigações</p>
+                      <p>• Opera sob regulação europeia (EU 376/2014)</p>
+                      <p>• Prefere uma abordagem baseada em barreiras de segurança</p>
+                    </div>
+                    <div className="sm:col-span-2 bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+                      <p className="text-blue-300 text-xs">
+                        Na prática, organizações maduras usam as duas: a tradicional para comunicação executiva e
+                        a ARMS-ERC para gestão operacional de riscos.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Matrix subtitle */}
-          {matrixTab === 'traditional' ? (
-            <p className="text-slate-500 text-xs">
-              Matriz 5×5 baseada em Probabilidade × Severidade — ISO 31000:2018 e ICAO Doc 9859
-            </p>
-          ) : (
-            <p className="text-slate-500 text-xs">
-              Matriz 4×4 baseada em Severidade do resultado × Efetividade das barreiras — Aviation Risk Management Solutions (EASA, 2010)
-            </p>
-          )}
-
-          {/* Matrix render */}
-          {matrixTab === 'traditional' ? (
-            <TraditionalMatrix data={data} />
-          ) : (
-            <ARMSMatrix data={data} />
-          )}
-
-          {/* Collapsible guide: Qual usar? */}
-          <div className="border-t border-slate-800 pt-4">
-            <button
-              onClick={() => setShowGuide((v) => !v)}
-              className="flex items-center gap-2 text-slate-400 hover:text-white text-sm transition-colors"
-            >
-              <span className={`transition-transform ${showGuide ? 'rotate-90' : ''}`}>▶</span>
-              Qual matriz usar para cada situação?
-            </button>
-            {showGuide && (
-              <div className="mt-4 grid sm:grid-cols-2 gap-4 text-xs text-slate-400 leading-relaxed">
-                <div className="bg-slate-800/60 rounded-lg p-4 space-y-2">
-                  <p className="text-white font-semibold text-sm mb-1">Use a Matriz Tradicional (ISO 31000) quando:</p>
-                  <p>• Precisa de comparabilidade com outras organizações</p>
-                  <p>• Está fazendo relatório para gestão ou auditoria</p>
-                  <p>• Tem dados históricos suficientes para estimar probabilidade</p>
-                </div>
-                <div className="bg-slate-800/60 rounded-lg p-4 space-y-2">
-                  <p className="text-white font-semibold text-sm mb-1">Use a Matriz ARMS-ERC quando:</p>
-                  <p>• Quer avaliar o risco real de um evento específico</p>
-                  <p>• Está triando eventos para priorizar investigações</p>
-                  <p>• Opera sob regulação europeia (EU 376/2014)</p>
-                  <p>• Prefere uma abordagem baseada em barreiras de segurança</p>
-                </div>
-                <div className="sm:col-span-2 bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
-                  <p className="text-blue-300 text-xs">
-                    Na prática, organizações maduras usam as duas: a tradicional para comunicação executiva e
-                    a ARMS-ERC para gestão operacional de riscos.
-                  </p>
-                </div>
-              </div>
+          {/* Direita: Raciocínio SERA + Top 5 Precondições */}
+          <div className="lg:col-span-2 space-y-4">
+            <SeraReasoningPanel data={data} />
+            {data.top_preconditions.length > 0 && (
+              <TopPreconditionsPanel preconditions={data.top_preconditions.slice(0, 5)} />
             )}
           </div>
         </div>
       )}
 
-      {/* 4. Mapa de combinações */}
+      {/* 4. Combinações de falha */}
       {(data?.top_combinations ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-4">Combinações de Falha Mais Frequentes</h3>
