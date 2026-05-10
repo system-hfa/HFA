@@ -219,81 +219,115 @@ export default function Home() {
             </div>
 
             {/* Pipeline cards */}
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'stretch', overflowX: 'auto', paddingBottom: '8px' }}>
-              {/* Etapas 1–2 */}
-              {[
-                { n: '1', name: 'Resumo', desc: 'Extração e estruturação do relato do evento' },
-                { n: '2', name: 'Ponto de Fuga', desc: 'Identificação do momento crítico de decisão' },
-              ].map((s) => (
-                <div key={s.n} className="pipeline-card" style={{
-                  flex: '0 0 140px',
-                  backgroundColor: '#0A1628',
-                  border: '1px solid rgba(148,163,184,0.12)',
-                  borderRadius: '10px',
-                  padding: '20px 16px',
-                  transition: 'border-color 0.2s, background-color 0.2s',
-                  cursor: 'default',
-                }}>
-                  <div style={{ fontSize: '11px', color: '#3B82F6', fontWeight: 600, marginBottom: '8px' }}>Etapa {s.n}</div>
-                  <div style={{ fontSize: '15px', color: '#F1F5F9', fontWeight: 500, marginBottom: '8px' }}>{s.name}</div>
-                  <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5 }}>{s.desc}</div>
-                </div>
-              ))}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0,1fr) 20px minmax(0,1fr) 20px minmax(0,1.4fr) 20px minmax(0,1fr) 20px minmax(0,1fr)',
+              gap: '0',
+              alignItems: 'center',
+            }}>
 
-              {/* Conector */}
-              <div style={{ display: 'flex', alignItems: 'center', color: '#334155', fontSize: '18px', padding: '0 4px' }}>→</div>
-
-              {/* Etapas 3-4-5 em paralelo */}
-              <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', gap: '6px', position: 'relative' }}>
-                <div style={{ fontSize: '11px', color: '#64748B', textAlign: 'center', letterSpacing: '0.08em', marginBottom: '4px' }}>PARALELO</div>
-                <div style={{ display: 'flex', gap: '6px', alignItems: 'stretch' }}>
-                  <div style={{ width: '3px', background: 'rgba(59,130,246,0.3)', borderRadius: '2px', alignSelf: 'stretch' }} />
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    {[
-                      { n: '3', name: 'Percepção', desc: 'Análise da percepção do operador' },
-                      { n: '4', name: 'Objetivo', desc: 'Avaliação do objetivo perseguido' },
-                      { n: '5', name: 'Ação', desc: 'Classificação da ação executada' },
-                    ].map((s) => (
-                      <div key={s.n} className="pipeline-card" style={{
-                        width: '148px',
-                        backgroundColor: '#0A1628',
-                        border: '1px solid rgba(59,130,246,0.2)',
-                        borderRadius: '10px',
-                        padding: '14px 16px',
-                        transition: 'border-color 0.2s, background-color 0.2s',
-                        cursor: 'default',
-                      }}>
-                        <div style={{ fontSize: '11px', color: '#3B82F6', fontWeight: 600, marginBottom: '6px' }}>Etapa {s.n}</div>
-                        <div style={{ fontSize: '14px', color: '#F1F5F9', fontWeight: 500, marginBottom: '4px' }}>{s.name}</div>
-                        <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.4 }}>{s.desc}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              {/* Etapa 1 */}
+              <div style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '12px',
+                padding: '20px 16px',
+              }}>
+                <span style={{ fontSize: '11px', fontWeight: 600, color: '#3B82F6', letterSpacing: '0.05em' }}>Etapa 1</span>
+                <p style={{ fontSize: '15px', fontWeight: 600, color: '#fff', margin: '6px 0 4px' }}>Resumo</p>
+                <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5, margin: 0 }}>Extração e estruturação do relato</p>
               </div>
 
               {/* Conector */}
-              <div style={{ display: 'flex', alignItems: 'center', color: '#334155', fontSize: '18px', padding: '0 4px' }}>→</div>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <span style={{ color: '#334155', fontSize: '18px' }}>→</span>
+              </div>
 
-              {/* Etapas 6–7 */}
-              {[
-                { n: '6', name: 'Conclusão', desc: 'Síntese diagnóstica das falhas identificadas' },
-                { n: '7', name: 'Recomendações', desc: 'Ações preventivas estruturadas por nível' },
-              ].map((s) => (
-                <div key={s.n} className="pipeline-card" style={{
-                  flex: '0 0 140px',
-                  backgroundColor: '#0A1628',
-                  border: '1px solid rgba(148,163,184,0.12)',
-                  borderRadius: '10px',
-                  padding: '20px 16px',
-                  transition: 'border-color 0.2s, background-color 0.2s',
-                  cursor: 'default',
-                }}>
-                  <div style={{ fontSize: '11px', color: '#3B82F6', fontWeight: 600, marginBottom: '8px' }}>Etapa {s.n}</div>
-                  <div style={{ fontSize: '15px', color: '#F1F5F9', fontWeight: 500, marginBottom: '8px' }}>{s.name}</div>
-                  <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5 }}>{s.desc}</div>
-                </div>
-              ))}
+              {/* Etapa 2 */}
+              <div style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '12px',
+                padding: '20px 16px',
+              }}>
+                <span style={{ fontSize: '11px', fontWeight: 600, color: '#3B82F6', letterSpacing: '0.05em' }}>Etapa 2</span>
+                <p style={{ fontSize: '15px', fontWeight: 600, color: '#fff', margin: '6px 0 4px' }}>Ponto de Fuga</p>
+                <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5, margin: 0 }}>Momento crítico de decisão</p>
+              </div>
+
+              {/* Conector */}
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <span style={{ color: '#334155', fontSize: '18px' }}>→</span>
+              </div>
+
+              {/* Grupo paralelo 3/4/5 */}
+              <div style={{
+                border: '1px solid rgba(59,130,246,0.25)',
+                borderRadius: '14px',
+                padding: '12px',
+                background: 'rgba(59,130,246,0.04)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+              }}>
+                <span style={{
+                  fontSize: '10px', fontWeight: 700, color: '#3B82F6',
+                  letterSpacing: '0.12em', textAlign: 'center',
+                  textTransform: 'uppercase', marginBottom: '2px',
+                }}>Paralelo</span>
+
+                {[
+                  { n: '3', title: 'Percepção', desc: 'O que o operador acreditava' },
+                  { n: '4', title: 'Objetivo', desc: 'O que tentava alcançar' },
+                  { n: '5', title: 'Ação', desc: 'Como tentou executar' },
+                ].map((e) => (
+                  <div key={e.n} style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(59,130,246,0.15)',
+                    borderRadius: '8px',
+                    padding: '10px 12px',
+                  }}>
+                    <span style={{ fontSize: '10px', fontWeight: 600, color: '#3B82F6' }}>Etapa {e.n}</span>
+                    <p style={{ fontSize: '13px', fontWeight: 600, color: '#fff', margin: '3px 0 2px' }}>{e.title}</p>
+                    <p style={{ fontSize: '11px', color: '#64748B', margin: 0 }}>{e.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Conector */}
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <span style={{ color: '#334155', fontSize: '18px' }}>→</span>
+              </div>
+
+              {/* Etapa 6 */}
+              <div style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '12px',
+                padding: '20px 16px',
+              }}>
+                <span style={{ fontSize: '11px', fontWeight: 600, color: '#3B82F6', letterSpacing: '0.05em' }}>Etapa 6</span>
+                <p style={{ fontSize: '15px', fontWeight: 600, color: '#fff', margin: '6px 0 4px' }}>Conclusão</p>
+                <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5, margin: 0 }}>Síntese diagnóstica das falhas</p>
+              </div>
+
+              {/* Conector */}
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <span style={{ color: '#334155', fontSize: '18px' }}>→</span>
+              </div>
+
+              {/* Etapa 7 */}
+              <div style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '12px',
+                padding: '20px 16px',
+              }}>
+                <span style={{ fontSize: '11px', fontWeight: 600, color: '#3B82F6', letterSpacing: '0.05em' }}>Etapa 7</span>
+                <p style={{ fontSize: '15px', fontWeight: 600, color: '#fff', margin: '6px 0 4px' }}>Recomendações</p>
+                <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5, margin: 0 }}>Ações preventivas por nível</p>
+              </div>
+
             </div>
 
             <p style={{ textAlign: 'center', fontSize: '14px', color: '#475569', marginTop: '36px' }}>
