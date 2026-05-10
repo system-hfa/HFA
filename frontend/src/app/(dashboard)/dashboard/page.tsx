@@ -487,75 +487,48 @@ function PreconditionsChart({
   preconditions: { code: string; count: number; pct: number; name: string }[]
 }) {
   const max = Math.max(...preconditions.map(p => p.count), 1)
-  const BAR_HEIGHT = 28
-  const LABEL_W = 140
-  const BAR_MAX_W = 260
-  const GAP = 8
-  const height = preconditions.length * (BAR_HEIGHT + GAP)
+
+  function codeColor(code: string): string {
+    if (code.startsWith('P')) return '#EAB308'
+    if (code.startsWith('S')) return '#3B82F6'
+    if (code.startsWith('T')) return '#8B5CF6'
+    if (code.startsWith('W')) return '#22C55E'
+    return '#F97316'
+  }
 
   return (
     <div>
-      <h3 className="text-white font-semibold mb-4">
-        Top Pré-condições
-      </h3>
-      <svg
-        viewBox={`0 0 ${LABEL_W + BAR_MAX_W + 60} ${height}`}
-        className="w-full"
-        style={{ overflow: 'visible' }}
-      >
-        {preconditions.map((p, i) => {
-          const y = i * (BAR_HEIGHT + GAP)
-          const barW = (p.count / max) * BAR_MAX_W
-
-          const color = p.code.startsWith('P') ? '#EAB308'
-            : p.code.startsWith('S') ? '#3B82F6'
-            : p.code.startsWith('T') ? '#8B5CF6'
-            : p.code.startsWith('W') ? '#22C55E'
-            : '#F97316'
-
+      <h3 className="text-white font-semibold mb-4">Top Pré-condições</h3>
+      <div className="space-y-3">
+        {preconditions.map(p => {
+          const pct = Math.round((p.count / max) * 100)
+          const color = codeColor(p.code)
           return (
-            <g key={p.code}>
-              <text
-                x={0} y={y + BAR_HEIGHT / 2 + 4}
-                fontSize={11} fontWeight={700}
-                fill={color}
-                fontFamily="monospace"
-              >
-                {p.code}
-              </text>
-
-              <text
-                x={36} y={y + BAR_HEIGHT / 2 + 4}
-                fontSize={10} fill="#94A3B8"
-              >
-                {p.name.length > 22
-                  ? p.name.slice(0, 22) + '…'
-                  : p.name}
-              </text>
-
-              <rect
-                x={LABEL_W} y={y + 4}
-                width={BAR_MAX_W} height={BAR_HEIGHT - 8}
-                rx={4} fill="#1E293B"
-              />
-
-              <rect
-                x={LABEL_W} y={y + 4}
-                width={barW} height={BAR_HEIGHT - 8}
-                rx={4} fill={color} opacity={0.8}
-              />
-
-              <text
-                x={LABEL_W + barW + 6}
-                y={y + BAR_HEIGHT / 2 + 4}
-                fontSize={11} fontWeight={600} fill="#E2E8F0"
-              >
-                {p.count}x
-              </text>
-            </g>
+            <div key={p.code}>
+              <div className="flex items-start gap-2 mb-1">
+                <span
+                  className="font-mono text-xs font-bold shrink-0 w-7 pt-px"
+                  style={{ color }}
+                >
+                  {p.code}
+                </span>
+                <span className="text-slate-400 text-xs leading-tight flex-1">
+                  {p.name}
+                </span>
+                <span className="text-slate-300 text-xs font-semibold shrink-0 tabular-nums">
+                  {p.count}x
+                </span>
+              </div>
+              <div className="ml-9 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full"
+                  style={{ width: `${pct}%`, background: color, opacity: 0.85 }}
+                />
+              </div>
+            </div>
           )
         })}
-      </svg>
+      </div>
 
       <div className="flex flex-wrap gap-4 mt-4" style={{ fontSize: 11 }}>
         {[
@@ -566,8 +539,7 @@ function PreconditionsChart({
           { color: '#F97316', label: 'Organização (O)' },
         ].map(item => (
           <div key={item.color} className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-sm flex-shrink-0"
-              style={{ background: item.color }} />
+            <span className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ background: item.color }} />
             <span className="text-slate-400">{item.label}</span>
           </div>
         ))}

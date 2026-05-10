@@ -26,6 +26,7 @@ interface Intelligence {
   alerts: string[]
   total_analyses: number
   total_events_90d: number
+  modal_erc_level?: number | null
 }
 
 // ── Shared mapping constants ──────────────────────────────────────────────────
@@ -541,7 +542,7 @@ const ARMS_BARRIER_DEFS: BarrierDef[] = [
     sub: 'dependeu de sorte',
     justificativa: 'As barreiras de segurança estavam ausentes ou foram completamente neutralizadas. O evento dependeu de fatores externos não controláveis para não resultar em acidente. O sistema de defesa falhou em todas as camadas.',
     base_cientifica: 'No modelo Swiss Cheese de Reason (1990), barreiras nível 1 indicam que todos os "buracos" dos queijos alinharam simultaneamente — não havia nenhuma camada de proteção remanescente. O ARMS Working Group (EASA, 2010) classifica este nível como o mais crítico porque revela vulnerabilidade sistêmica total, não apenas falha pontual.',
-    como_calculamos: 'O score de risco HFA ≥ 70 indica que múltiplos fatores organizacionais e operacionais falharam simultaneamente, caracterizando ausência efetiva de barreiras remanescentes no momento do evento.',
+    como_calculamos: 'Falhas SERA nas três camadas (percepção, objetivo e ação) simultaneamente, ou violação intencional de procedimento combinada com ausência de barreira técnica — indicam que nenhuma barreira estava efetiva no momento do evento (ARMS Working Group, 2010).',
     fonte: 'Reason (1990); ARMS Working Group, EASA (2010); EU 376/2014',
   },
   {
@@ -550,7 +551,7 @@ const ARMS_BARRIER_DEFS: BarrierDef[] = [
     sub: 'barreiras mínimas',
     justificativa: 'Existiam barreiras de segurança, mas eram insuficientes ou funcionaram de forma inadequada. O evento foi contido por margem estreita — pequenas variações nas condições poderiam ter resultado em acidente.',
     base_cientifica: 'O ARMS-ERC diferencia barreiras pela sua robustez e redundância, não apenas pela presença. Barreiras mínimas (nível 2) existem no papel mas carecem de profundidade defensiva. Segundo o ARMS Working Group (2010), este nível caracteriza organizações onde as barreiras são mais simbólicas do que funcionais.',
-    como_calculamos: 'Score HFA entre 40–69 indica falhas em múltiplas camadas com algumas barreiras remanescentes, mas com efetividade comprometida por fatores organizacionais identificados nas pré-condições.',
+    como_calculamos: 'Falhas SERA em duas das três camadas (percepção, objetivo ou ação) — ou violação de procedimento sem ausência total de barreiras técnicas. Barreiras existem mas são majoritariamente ineficazes no contexto do evento.',
     fonte: 'ARMS Working Group, EASA/Eurocontrol/IATA (2010); Reason (1990)',
   },
   {
@@ -559,7 +560,7 @@ const ARMS_BARRIER_DEFS: BarrierDef[] = [
     sub: 'efetividade limitada',
     justificativa: 'As barreiras de segurança estavam presentes e funcionaram parcialmente. O evento foi contido, mas a efetividade das defesas foi reduzida por fatores identificáveis — o sistema não operou em sua capacidade plena.',
     base_cientifica: 'Barreiras com efetividade limitada (nível 3) representam o cenário mais comum em organizações com maturidade de segurança intermediária. O ARMS Working Group (2010) identifica que neste nível as barreiras existem e funcionam, mas não foram testadas em sua capacidade máxima ou apresentam degradação conhecida.',
-    como_calculamos: 'Score HFA entre 20–39 indica que o sistema de gestão de segurança está funcional mas apresenta lacunas específicas identificadas na análise SERA das pré-condições.',
+    como_calculamos: 'Falha isolada em uma camada SERA (percepção, objetivo ou ação) sem deslize/lapso puro — as demais camadas de barreira estavam funcionando. Ou falha de comunicação combinada com uma segunda falha.',
     fonte: 'ARMS Working Group, EASA (2010); ICAO Doc 9859 SMM, 4ª ed.',
   },
   {
@@ -568,7 +569,7 @@ const ARMS_BARRIER_DEFS: BarrierDef[] = [
     sub: 'barreiras robustas',
     justificativa: 'As barreiras de segurança funcionaram conforme projetado. O evento ocorreu apesar de um sistema de defesa robusto — indica falha residual dentro de um sistema bem gerenciado.',
     base_cientifica: 'Barreiras efetivas (nível 4) caracterizam organizações com alta maturidade de segurança. Segundo o ARMS Working Group (2010), neste nível as defesas são redundantes, testadas regularmente e mantidas adequadamente. O fato de um evento ocorrer mesmo com barreiras efetivas é raro e fornece informação valiosa sobre falhas residuais do sistema.',
-    como_calculamos: 'Score HFA < 20 indica que o sistema organizacional de segurança está funcionando bem — poucos fatores de risco identificados nas pré-condições, ações corretivas em dia e supervisão adequada.',
+    como_calculamos: 'Deslize ou lapso isolado (A-B) com percepção correta e objetivo adequado — ou ausência total de falhas nas três camadas. As barreiras técnicas e procedimentais estavam funcionando; a falha foi pontual e residual.',
     fonte: 'ARMS Working Group, EASA (2010); Reason (1990); ICAO Doc 9859',
   },
 ]
@@ -649,7 +650,7 @@ function ARMSMatrix({ data }: { data: Intelligence }) {
   const [selected, setSelected] = useState<ARMSCellInfo | null>(null)
 
   const topCodes = data.distribution.perception.top_codes ?? []
-  const barrier = barrierLevel(data.score.value)
+  const barrier = (data.modal_erc_level as 1 | 2 | 3 | 4 | null | undefined) ?? barrierLevel(data.score.value)
 
   const cellMap: Record<string, { count: number; codes: string[] }> = {}
   for (const tc of topCodes) {
@@ -937,7 +938,7 @@ function SeraReasoningPanel({ data, matrixTab }: { data: Intelligence; matrixTab
 
   if (matrixTab === 'arms') {
     const armsSevKey: 'A' | 'B' | 'C' | 'D' = ARMS_SEV_ROW[topCode.code] ?? 'C'
-    const barKey = barrierLevel(data.score.value)
+    const barKey = (data.modal_erc_level as 1 | 2 | 3 | 4 | null | undefined) ?? barrierLevel(data.score.value)
     const cellKey = `${armsSevKey}${barKey}`
     const erc = ARMS_ERC[cellKey] ?? 2
     const armsSevDef = ARMS_SEV_DEFS.find(d => d.key === armsSevKey)
@@ -983,12 +984,26 @@ function SeraReasoningPanel({ data, matrixTab }: { data: Intelligence; matrixTab
           {barDef && (
             <div className="bg-slate-800/40 rounded-lg p-3 space-y-1">
               <p className="text-xs font-semibold text-slate-300">
-                Baseada no score de risco HFA: {data.score.value}
+                {data.modal_erc_level
+                  ? `Calculada pelas falhas SERA (ARMS-ERC) — nível modal: ${barKey}`
+                  : `Estimada pelo score HFA: ${data.score.value} (nenhuma análise com ERC calculado ainda)`}
               </p>
               <p className="text-xs text-slate-400">
-                Score {data.score.value} → Nível {barKey} ({barDef.name})
+                Nível {barKey} — {barDef.name}
               </p>
-              <p className="text-xs text-slate-500 leading-relaxed">{barDef.como_calculamos}</p>
+              {data.modal_erc_level ? (
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  O nível de efetividade das barreiras é determinado pelos códigos SERA de cada análise
+                  (percepção, objetivo, ação), conforme o ARMS Working Group (2010). O valor exibido é
+                  o nível mais frequente entre as análises com ERC calculado.
+                </p>
+              ) : (
+                <p className="text-xs text-slate-500 leading-relaxed">{barDef.como_calculamos}</p>
+              )}
+              <p className="text-xs text-slate-400 mt-1">
+                Score HFA: <strong className="text-white">{data.score.value}</strong> — informação complementar,
+                não determina o nível de efetividade.
+              </p>
               <p className="text-xs text-slate-600 mt-1">Fonte: {barDef.fonte}</p>
             </div>
           )}

@@ -21,6 +21,7 @@ import { supabase } from '@/lib/supabase'
 import { ensureOAuthTenant } from '@/lib/ensure-tenant'
 import { useT } from '@/lib/i18n'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { useMe } from '@/hooks/useMe'
 
 /* ── Nav config ─────────────────────────────────────────────── */
 type NavItem = {
@@ -111,9 +112,9 @@ function Sidebar({
   onNav?: () => void
 }) {
   const t = useT()
-  const initials = userEmail
-    ? userEmail.slice(0, 2).toUpperCase()
-    : 'US'
+  const me = useMe()
+  const initials = userEmail ? userEmail.slice(0, 2).toUpperCase() : 'US'
+  const noCredits = !me.loading && !me.isUnlimited && me.credits === 0
 
   return (
     <aside className="flex h-full w-60 flex-col bg-hfa-bg-subtle border-r border-hfa-border">
@@ -140,15 +141,41 @@ function Sidebar({
 
         {/* New Event CTA */}
         <div className="pt-2 pb-1">
-          <Link
-            href="/events/new"
-            onClick={onNav}
-            className="flex items-center justify-center gap-2 mx-0 px-4 py-2.5 bg-hfa-accent hover:bg-hfa-accent-hover text-white text-sm font-medium rounded-lg transition-colors"
-          >
-            <FilePlus className="size-4" />
-            {t('nav.newAnalysis')}
-          </Link>
+          {noCredits ? (
+            <div className="mx-0 px-4 py-2.5 bg-slate-800 border border-slate-700 text-slate-500 text-sm font-medium rounded-lg text-center cursor-not-allowed select-none">
+              <FilePlus className="size-4 inline mr-2 opacity-50" />
+              {t('nav.newAnalysis')}
+            </div>
+          ) : (
+            <Link
+              href="/events/new"
+              onClick={onNav}
+              className="flex items-center justify-center gap-2 mx-0 px-4 py-2.5 bg-hfa-accent hover:bg-hfa-accent-hover text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              <FilePlus className="size-4" />
+              {t('nav.newAnalysis')}
+            </Link>
+          )}
         </div>
+
+        {/* Credits indicator for free plan */}
+        {!me.loading && !me.isUnlimited && (
+          <div className={`mx-1 px-3 py-2 rounded-lg text-xs ${noCredits ? 'bg-red-950/40 border border-red-900/50' : 'bg-slate-800/60'}`}>
+            {noCredits ? (
+              <p className="text-red-400 leading-snug">
+                Você usou todas as suas análises gratuitas.{' '}
+                <Link href="/credits" onClick={onNav} className="underline hover:text-red-300">
+                  Ver planos
+                </Link>
+              </p>
+            ) : (
+              <p className="text-slate-400">
+                <span className="text-white font-semibold">{String(me.credits)}</span>{' '}
+                análise{me.credits !== 1 ? 's' : ''} restante{me.credits !== 1 ? 's' : ''}
+              </p>
+            )}
+          </div>
+        )}
       </nav>
 
       {/* Bottom nav */}
@@ -166,10 +193,22 @@ function Sidebar({
       {/* User footer */}
       <div className="px-4 py-4 border-t border-hfa-border">
         <div className="flex items-center gap-3 mb-3">
-          <div className="size-8 rounded-full bg-hfa-accent text-white text-xs font-bold flex items-center justify-center shrink-0">
-            {initials}
+          <div className="relative">
+            <div className="size-8 rounded-full bg-hfa-accent text-white text-xs font-bold flex items-center justify-center shrink-0">
+              {initials}
+            </div>
+            {me.isAdmin && (
+              <span className="absolute -top-1 -right-1 bg-amber-500 text-black text-[9px] font-bold px-1 rounded leading-tight">
+                Admin
+              </span>
+            )}
           </div>
-          <p className="text-xs text-hfa-text-muted truncate">{userEmail}</p>
+          <div className="min-w-0 flex-1">
+            <p className="text-xs text-hfa-text-muted truncate">{userEmail}</p>
+            {!me.loading && me.isUnlimited && (
+              <p className="text-[10px] text-amber-400/80 font-medium">Enterprise</p>
+            )}
+          </div>
         </div>
         <div className="flex items-center justify-between">
           <button

@@ -8,6 +8,14 @@ from app.database import get_supabase_client, get_supabase_admin
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
+ENTERPRISE_EMAIL = "filipe.daumas@icloud.com"
+
+
+def _tenant_defaults(email: str) -> dict:
+    if email == ENTERPRISE_EMAIL:
+        return {"plan": "enterprise", "credits_balance": -1}
+    return {"plan": "free", "credits_balance": 5}
+
 
 class RegisterInput(BaseModel):
     email: EmailStr
@@ -28,8 +36,7 @@ async def register(data: RegisterInput):
     tenant = admin.table("tenants").insert({
         "name": data.company_name,
         "slug": data.slug,
-        "plan": "trial",
-        "credits_balance": 3
+        **_tenant_defaults(data.email),
     }).execute()
 
     if not tenant.data:
@@ -74,6 +81,28 @@ async def login(data: LoginInput):
     }
 
 
+@router.get("/me")
+async def get_me(user=Depends(get_current_user)):
+    admin = get_supabase_admin()
+    tenant_id = user.user.user_metadata.get("tenant_id")
+    uid = str(user.user.id)
+
+    tenant = admin.table("tenants").select("plan, credits_balance").eq("id", tenant_id).single().execute()
+    user_row = admin.table("users").select("role").eq("id", uid).maybe_single().execute()
+
+    plan = tenant.data.get("plan", "free") if tenant.data else "free"
+    credits_balance = tenant.data.get("credits_balance", 0) if tenant.data else 0
+    role = user_row.data.get("role", "member") if user_row and user_row.data else "member"
+    is_admin = role == "admin" and plan == "enterprise"
+
+    return {
+        "plan": plan,
+        "credits_balance": "unlimited" if credits_balance == -1 else credits_balance,
+        "role": role,
+        "is_admin": is_admin,
+    }
+
+
 @router.post("/oauth/bootstrap")
 async def oauth_bootstrap(user=Depends(get_current_user)):
     """Cria tenant + users + user_metadata para quem entrou com Google (sem registro por email)."""
@@ -98,8 +127,7 @@ async def oauth_bootstrap(user=Depends(get_current_user)):
     tenant = admin.table("tenants").insert({
         "name": local[:255],
         "slug": slug,
-        "plan": "trial",
-        "credits_balance": 3,
+        **_tenant_defaults(email),
     }).execute()
 
     if not tenant.data:

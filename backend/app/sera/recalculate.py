@@ -175,6 +175,14 @@ def recalculate(
     new_llm["step6_7"] = step6_7_result
     updates["raw_llm_output"] = new_llm
 
+    from app.sera.arms_erc import calculate_erc
+    erc = calculate_erc(
+        perception_code=updates.get("perception_code") or analysis.get("perception_code", ""),
+        objective_code=updates.get("objective_code") or analysis.get("objective_code", ""),
+        action_code=updates.get("action_code") or analysis.get("action_code", ""),
+    )
+    updates.update(erc.to_dict())
+
     return {
         "updates": updates,
         "steps_recalculated": dep["recalculate"],

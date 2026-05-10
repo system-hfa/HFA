@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { resolveApiUrl } from '@/lib/api'
 import DocumentUpload from '@/components/sera/DocumentUpload'
+import { useMe } from '@/hooks/useMe'
 
 type Tab = 'text' | 'upload'
 
@@ -18,6 +19,8 @@ const PROGRESS_STEPS = [
 
 export default function NewEventPage() {
   const router = useRouter()
+  const me = useMe()
+  const noCredits = !me.loading && !me.isUnlimited && me.credits === 0
   const [tab, setTab] = useState<Tab>('text')
   const [form, setForm] = useState({
     title: '',
@@ -136,8 +139,28 @@ export default function NewEventPage() {
           </div>
         </div>
       )}
-      <h1 className="text-2xl font-bold text-white mb-2">Nova Análise SERA</h1>
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="text-2xl font-bold text-white">Nova Análise SERA</h1>
+        {!me.loading && (
+          me.isUnlimited ? (
+            <span className="text-xs text-amber-400/80 font-medium bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 rounded-full">
+              Enterprise — ilimitado
+            </span>
+          ) : (
+            <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${noCredits ? 'text-red-400 bg-red-400/10 border border-red-400/20' : 'text-slate-400 bg-slate-800 border border-slate-700'}`}>
+              {noCredits ? 'Sem análises restantes' : `${me.credits} análise${me.credits !== 1 ? 's' : ''} restante${me.credits !== 1 ? 's' : ''}`}
+            </span>
+          )
+        )}
+      </div>
       <p className="text-slate-400 mb-8">Insira o relato do evento para análise automatizada</p>
+
+      {noCredits && (
+        <div className="mb-6 bg-red-950/40 border border-red-900/50 rounded-xl p-4 text-sm">
+          <p className="text-red-300 font-medium mb-1">Você usou todas as suas análises gratuitas</p>
+          <p className="text-red-400/80">Para continuar analisando eventos, entre em contato para upgrade do plano.</p>
+        </div>
+      )}
 
       <div className="flex gap-2 mb-6">
         <button
@@ -259,8 +282,8 @@ export default function NewEventPage() {
         <div className="flex gap-4">
           <button
             type="submit"
-            disabled={loading}
-            className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-8 py-3 rounded-lg font-medium transition text-white"
+            disabled={loading || noCredits}
+            className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed px-8 py-3 rounded-lg font-medium transition text-white"
           >
             🔍 Iniciar Análise SERA
           </button>

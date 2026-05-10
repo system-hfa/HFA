@@ -529,6 +529,10 @@ async def run_analysis(event_id: str, raw_input: str, tenant_id: str):
             },
         }
 
+        from app.sera.arms_erc import erc_from_analysis
+        erc_fields = erc_from_analysis(analysis_payload)
+        analysis_payload.update(erc_fields)
+
         analysis = admin.table("analyses").upsert(analysis_payload, on_conflict="event_id").execute()
 
         admin.table("events").update({"status": "completed", "credits_used": 1}).eq("id", event_id).execute()

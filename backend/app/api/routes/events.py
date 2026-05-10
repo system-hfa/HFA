@@ -64,7 +64,7 @@ async def create_event(data: EventInput, user=Depends(get_current_user)):
         .single()\
         .execute()
 
-    is_enterprise = tenant.data.get("plan") == "enterprise"
+    is_enterprise = tenant.data.get("plan") == "enterprise" or tenant.data.get("credits_balance") == -1
     if not is_enterprise and tenant.data["credits_balance"] < 1:
         raise HTTPException(402, "Créditos insuficientes")
 
