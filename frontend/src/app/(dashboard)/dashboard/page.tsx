@@ -62,9 +62,58 @@ interface Intelligence {
 
 
 const distColors = {
-  perception: { bar: 'bg-blue-500', border: 'border-blue-500/40', text: 'text-blue-400' },
-  objective: { bar: 'bg-purple-500', border: 'border-purple-500/40', text: 'text-purple-400' },
-  action: { bar: 'bg-orange-500', border: 'border-orange-500/40', text: 'text-orange-400' },
+  perception: { bar: '#3B82F6', border: 'border-blue-500/40', text: 'text-blue-400' },
+  objective: { bar: '#A855F7', border: 'border-purple-500/40', text: 'text-purple-400' },
+  action: { bar: '#F97316', border: 'border-orange-500/40', text: 'text-orange-400' },
+}
+
+const FAILURE_NAMES: Record<string, string> = {
+  'P-A': 'Sem falha de percepção',
+  'P-B': 'Falha sensorial',
+  'P-C': 'Falha de conhecimento',
+  'P-D': 'Atenção c/ pressão externa',
+  'P-E': 'Gerenciamento de tempo',
+  'P-F': 'Informação ilusória/ambígua',
+  'P-G': 'Falha de atenção',
+  'P-H': 'Falha de comunicação',
+  'O-A': 'Sem falha de objetivo',
+  'O-B': 'Violação rotineira',
+  'O-C': 'Violação excepcional',
+  'O-D': 'Intenção não conservativa',
+  'A-A': 'Sem falha de ação',
+  'A-B': 'Deslize ou lapso',
+  'A-C': 'Falha de feedback na execução',
+  'A-D': 'Inabilidade física',
+  'A-E': 'Falha de conhecimento',
+  'A-F': 'Seleção de ação errada',
+  'A-G': 'Falha de feedback na decisão',
+  'A-H': 'Gerenciamento de tempo',
+  'A-I': 'Seleção de ação sob pressão',
+  'A-J': 'Feedback por pressão de tempo',
+}
+
+const PRECONDITION_DEFS: Record<string, string> = {
+  'P1': 'Estado fisiológico do operador: doença, fadiga física, uso de medicamentos ou condições médicas que afetam o desempenho.',
+  'P2': 'Estado psicológico: ansiedade, estresse, atitudes de risco, excesso de confiança ou motivação inadequada.',
+  'P3': 'Fatores sociais: pressão de colegas, dinâmica de grupo, dificuldade de comunicação interpessoal.',
+  'P4': 'Habilidade do operador: limitações de destreza, coordenação ou capacidade técnica para executar a tarefa.',
+  'P5': 'Prontidão pessoal: nível de preparação no momento do evento — descanso, alimentação, estado de alerta.',
+  'P6': 'Seleção e treinamento: adequação do processo de seleção e da qualidade do treinamento recebido.',
+  'P7': 'Qualificação e autorização: o operador possuía as habilitações e autorizações necessárias para a tarefa?',
+  'T1': 'Pressão de tempo sistêmica: demandas de tempo impostas pela organização ou pela natureza da tarefa.',
+  'T2': 'Adequação dos objetivos da tarefa: os objetivos definidos eram realistas e compatíveis com os recursos disponíveis?',
+  'W1': 'Ambiente tecnológico: design de equipamentos, interfaces, displays, automação e ferramentas utilizadas.',
+  'W2': 'Espaço de trabalho: condições do ambiente físico — layout, ergonomia, organização do posto de trabalho.',
+  'W3': 'Ambiente operacional: condições externas como clima, visibilidade, ruído, temperatura e terreno.',
+  'S1': 'Formulação de intenções: os objetivos foram claramente definidos pelos líderes e eram consistentes com procedimentos?',
+  'S2': 'Comunicação de intenções: os objetivos foram claramente comunicados e compreendidos pelos executores?',
+  'S3': 'Monitoramento e supervisão: a supervisão assegurou que a equipe estava qualificada e seguia os procedimentos?',
+  'O1': 'Missão organizacional: a missão estava dentro da capacidade da organização?',
+  'O2': 'Provisão de recursos: a organização forneceu recursos humanos, materiais e financeiros adequados?',
+  'O3': 'Regras e regulamentos: as normas eram consistentes com os objetivos declarados e gerenciavam o risco adequadamente?',
+  'O4': 'Processos e práticas: existiam procedimentos operacionais padrão e processos formais de gerenciamento de risco?',
+  'O5': 'Clima organizacional: a organização valoriza segurança acima de produtividade? Encoraja o reporte de problemas?',
+  'O6': 'Vigilância sistêmica: a organização detectava e corrigia desvios sistemáticos de procedimento?',
 }
 
 function buildScoreModal(score: Intelligence['score']): ModalState {
@@ -96,7 +145,7 @@ function buildPreconditionModal(code: string, name: string): ModalState {
     title: name,
     sections: [
       { label: 'Código', content: code },
-      { content: 'Pré-condição identificada nas análises SERA. Representa um fator latente que contribuiu para a ocorrência do evento.' },
+      { content: PRECONDITION_DEFS[code] ?? 'Pré-condição identificada nas análises SERA. Representa um fator latente que contribuiu para a ocorrência do evento.' },
     ],
   }
 }
@@ -301,7 +350,8 @@ export default function DashboardPage() {
                 objective: t('dashboard.objective'),
                 action: t('dashboard.action'),
               }
-              const maxCount = dist.top_codes?.[0]?.count ?? 1
+              const topCodes = dist.top_codes ?? []
+              const maxCount = Math.max(...topCodes.map(t => t.count), 1)
               return (
                 <div
                   key={key}
@@ -313,24 +363,26 @@ export default function DashboardPage() {
                   </div>
                   <p className="text-slate-500 text-xs mb-3">Mais frequentes</p>
                   <div className="space-y-2.5">
-                    {(dist.top_codes ?? []).map((tc) => (
-                      <div key={tc.code} className="flex items-center gap-2">
-                        <button
-                          onClick={() => setModal(buildCodeModal(tc.code))}
-                          className={`font-mono text-xs ${c.text} w-10 text-left hover:underline flex-shrink-0`}
-                        >
+                    {topCodes.map((tc) => (
+                      <div key={tc.code} className="flex items-center gap-2 mb-1.5">
+                        <span className="font-mono text-xs font-bold flex-shrink-0 w-8">
                           {tc.code}
-                        </button>
+                        </span>
+                        <span className="text-slate-400 text-xs flex-shrink-0 min-w-0 truncate" style={{ maxWidth: '140px' }}>
+                          {FAILURE_NAMES[tc.code] ?? tc.code}
+                        </span>
                         <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full rounded-full ${c.bar}`}
-                            style={{ width: `${Math.round((tc.count / maxCount) * 100)}%` }}
-                          />
+                          <div className="h-full rounded-full" style={{
+                            width: `${(tc.count / maxCount) * 100}%`,
+                            background: c.bar
+                          }} />
                         </div>
-                        <span className="text-slate-400 text-xs w-8 text-right flex-shrink-0">{tc.count}x</span>
+                        <span className="text-xs text-slate-500 flex-shrink-0 w-6 text-right">
+                          {tc.count}x
+                        </span>
                       </div>
                     ))}
-                    {(dist.top_codes ?? []).length === 0 && (
+                    {topCodes.length === 0 && (
                       <p className="text-slate-600 text-xs">Sem dados</p>
                     )}
                   </div>
@@ -378,25 +430,10 @@ export default function DashboardPage() {
         <AiInsightPanel intelligenceData={data} token={token} />
       )}
 
-      {/* 6. Top precondições — nome em destaque */}
+      {/* 6. Top precondições — gráfico de barras */}
       {(data?.top_preconditions ?? []).length > 0 && (
-        <div>
-          <h3 className="text-white font-semibold mb-3">{t('dashboard.topPreconditions')}</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-            {data!.top_preconditions.map((p) => (
-              <button
-                key={p.code}
-                onClick={() => setModal(buildPreconditionModal(p.code, p.name))}
-                className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-left hover:border-slate-600 transition-colors"
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-slate-400 font-mono text-xs">{p.code}</span>
-                  <span className="text-yellow-400 font-semibold text-sm">{p.count}x</span>
-                </div>
-                <p className="text-white font-semibold text-sm leading-snug">{p.name}</p>
-              </button>
-            ))}
-          </div>
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <PreconditionsChart preconditions={data!.top_preconditions} />
         </div>
       )}
 
@@ -440,6 +477,101 @@ export default function DashboardPage() {
           </table>
         </div>
       )}
+    </div>
+  )
+}
+
+function PreconditionsChart({
+  preconditions
+}: {
+  preconditions: { code: string; count: number; pct: number; name: string }[]
+}) {
+  const max = Math.max(...preconditions.map(p => p.count), 1)
+  const BAR_HEIGHT = 28
+  const LABEL_W = 140
+  const BAR_MAX_W = 260
+  const GAP = 8
+  const height = preconditions.length * (BAR_HEIGHT + GAP)
+
+  return (
+    <div>
+      <h3 className="text-white font-semibold mb-4">
+        Top Pré-condições
+      </h3>
+      <svg
+        viewBox={`0 0 ${LABEL_W + BAR_MAX_W + 60} ${height}`}
+        className="w-full"
+        style={{ overflow: 'visible' }}
+      >
+        {preconditions.map((p, i) => {
+          const y = i * (BAR_HEIGHT + GAP)
+          const barW = (p.count / max) * BAR_MAX_W
+
+          const color = p.code.startsWith('P') ? '#EAB308'
+            : p.code.startsWith('S') ? '#3B82F6'
+            : p.code.startsWith('T') ? '#8B5CF6'
+            : p.code.startsWith('W') ? '#22C55E'
+            : '#F97316'
+
+          return (
+            <g key={p.code}>
+              <text
+                x={0} y={y + BAR_HEIGHT / 2 + 4}
+                fontSize={11} fontWeight={700}
+                fill={color}
+                fontFamily="monospace"
+              >
+                {p.code}
+              </text>
+
+              <text
+                x={36} y={y + BAR_HEIGHT / 2 + 4}
+                fontSize={10} fill="#94A3B8"
+              >
+                {p.name.length > 22
+                  ? p.name.slice(0, 22) + '…'
+                  : p.name}
+              </text>
+
+              <rect
+                x={LABEL_W} y={y + 4}
+                width={BAR_MAX_W} height={BAR_HEIGHT - 8}
+                rx={4} fill="#1E293B"
+              />
+
+              <rect
+                x={LABEL_W} y={y + 4}
+                width={barW} height={BAR_HEIGHT - 8}
+                rx={4} fill={color} opacity={0.8}
+              />
+
+              <text
+                x={LABEL_W + barW + 6}
+                y={y + BAR_HEIGHT / 2 + 4}
+                fontSize={11} fontWeight={600} fill="#E2E8F0"
+              >
+                {p.count}x
+              </text>
+            </g>
+          )
+        })}
+      </svg>
+
+      <div className="flex flex-wrap gap-4 mt-4" style={{ fontSize: 11 }}>
+        {[
+          { color: '#EAB308', label: 'Pessoal (P)' },
+          { color: '#3B82F6', label: 'Supervisão (S)' },
+          { color: '#8B5CF6', label: 'Tarefa (T)' },
+          { color: '#22C55E', label: 'Trabalho (W)' },
+          { color: '#F97316', label: 'Organização (O)' },
+        ].map(item => (
+          <div key={item.color} className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-sm flex-shrink-0"
+              style={{ background: item.color }} />
+            <span className="text-slate-400">{item.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
