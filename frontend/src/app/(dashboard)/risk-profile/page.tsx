@@ -30,11 +30,76 @@ interface Intelligence {
 
 // ── Shared mapping constants ──────────────────────────────────────────────────
 
-const P_SEVERITY: Record<string, number> = {
-  'P-B': 4, 'P-F': 4,
-  'P-C': 3, 'P-E': 3, 'P-D': 3, 'P-G': 3,
-  'P-H': 2,
+interface SeverityDef {
+  level: number
+  label: string
+  justificativa: string
+  base_cientifica: string
+  fonte: string
 }
+
+const SEVERITY_MAP: Record<string, SeverityDef> = {
+  'P-B': {
+    level: 4,
+    label: 'Grave',
+    justificativa: 'Falha Sensorial (P-B) é classificada como Grave porque o operador não detectou estímulos físicos essenciais — visuais, auditivos ou táteis. Esta ausência de percepção sensorial básica elimina qualquer possibilidade de correção antes da ação, criando trajetória direta para o evento adverso.',
+    base_cientifica: 'Segundo Hendy (2003), falhas sensoriais representam o nível mais fundamental de quebra no ciclo perceptual. Quando o input sensorial falha, nenhum processamento cognitivo posterior pode compensar — o operador age sobre uma representação completamente ausente da realidade.',
+    fonte: 'Daumas (2018), Tabela 2; Hendy (2003), Annex A'
+  },
+  'P-C': {
+    level: 3,
+    label: 'Moderada',
+    justificativa: 'Falha de Conhecimento (P-C) é classificada como Moderada porque o operador detectou os estímulos mas não tinha base cognitiva para interpretá-los. Existe potencial de correção via treinamento e experiência acumulada.',
+    base_cientifica: 'O modelo de Processamento da Informação (Hendy, 2003) distingue entre falhas de detecção (sensoriais) e falhas de interpretação (conhecimento). Falhas de conhecimento são recuperáveis com intervenção organizacional — treinamento adequado pode eliminar a causa raiz.',
+    fonte: 'Daumas (2018), Tabela 5; Hendy (2003), Annex A'
+  },
+  'P-D': {
+    level: 3,
+    label: 'Moderada',
+    justificativa: 'Falha de Atenção com Pressão de Tempo (P-D) é Moderada porque a pressão temporal foi imposta externamente — a organização pode intervir reduzindo a demanda de processamento ou aumentando o tempo disponível.',
+    base_cientifica: 'Hendy (2003) estabelece que Pressão de Tempo = Informação / Tempo. P-D ocorre quando o denominador (tempo) é insuficiente para o numerador (informação). Intervenções organizacionais podem aumentar o tempo disponível ou reduzir a quantidade de informação simultânea.',
+    fonte: 'Hendy (2003), Figure 3; Daumas (2018), Tabela 2'
+  },
+  'P-E': {
+    level: 3,
+    label: 'Moderada',
+    justificativa: 'Gerenciamento de Tempo (P-E) é Moderada porque a pressão foi autoimposta pelo operador. Embora reflita fatores psicológicos individuais, é tratável via avaliação comportamental e cultura organizacional de segurança.',
+    base_cientifica: 'Na Teoria do Controle Perceptual (Powers, 1973; Hendy, 2003), P-E revela que o operador priorizou uma meta perceptual (velocidade, eficiência) sobre a meta de segurança. É corrigível mudando as metas organizacionais percebidas.',
+    fonte: 'Hendy (2003), Figure 5; Daumas (2018)'
+  },
+  'P-F': {
+    level: 4,
+    label: 'Grave',
+    justificativa: 'Informação Ilusória (P-F) é classificada como Grave porque o operador agiu racionalmente sobre uma percepção incorreta — o erro era invisível ao próprio operador. Não há mecanismo interno de detecção ou autocorreção.',
+    base_cientifica: 'Segundo Hendy (2003) e a Teoria do Controle Perceptual, o operador em P-F compara sua percepção com sua meta e a ação parece correta — porque a percepção está corrompida. Isso torna P-F particularmente perigoso: o operador não tem como saber que está errado. Ilusões sensoriais (como desorientação espacial) eliminam qualquer feedback corretivo interno.',
+    fonte: 'Hendy (2003), Annex A; Daumas (2018), Tabela 2'
+  },
+  'P-G': {
+    level: 3,
+    label: 'Moderada',
+    justificativa: 'Falha de Atenção (P-G) é Moderada porque a informação estava disponível e correta — o operador falhou em selecioná-la. Intervenções de CRM, checklists e design de interface podem mitigar efetivamente.',
+    base_cientifica: 'O modelo IP de Hendy (2003) inclui gestão de recursos atencionais como princípio central. P-G reflete má alocação de atenção em ambiente com múltiplos estímulos concorrentes — corrigível via treinamento CRM e redesign de procedimentos.',
+    fonte: 'Hendy (2003), Annex A; Daumas (2018)'
+  },
+  'P-H': {
+    level: 2,
+    label: 'Menor',
+    justificativa: 'Falha de Comunicação (P-H) é classificada como Menor porque a falha está no sistema de transferência de informação — não na capacidade do operador. O problema é externo ao indivíduo e corrigível via procedimentos de comunicação.',
+    base_cientifica: 'Hendy (2003) posiciona falhas de comunicação como falhas latentes do sistema, não falhas ativas do operador. A informação necessária existia mas não chegou adequadamente — o operador não poderia ter agido diferente dado o que recebeu.',
+    fonte: 'Hendy (2003), Annex A; Daumas (2018), Tabela 2'
+  },
+  'P-A': {
+    level: 1,
+    label: 'Negligível',
+    justificativa: 'Sem falha de percepção — a contribuição desta etapa para o risco é mínima.',
+    base_cientifica: 'A ausência de falha de percepção indica que o ciclo perceptual funcionou adequadamente. O risco deve ser avaliado nas etapas de Objetivo e Ação.',
+    fonte: 'Hendy (2003), Annex A'
+  },
+}
+
+const P_SEVERITY: Record<string, number> = Object.fromEntries(
+  Object.entries(SEVERITY_MAP).map(([k, v]) => [k, v.level])
+)
 
 const ARMS_SEV_ROW: Record<string, 'A' | 'B' | 'C' | 'D'> = {
   'P-B': 'B', 'P-F': 'B',
@@ -221,6 +286,34 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
                     {SEV_LABELS.find((l) => l.num === String(selected.sev))?.desc}
                   </p>
                 )}
+                {selected.cell && selected.cell.codes.map(code => {
+                  const sevDef = SEVERITY_MAP[code]
+                  if (!sevDef) return null
+                  return (
+                    <div key={code}
+                      className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-3 mt-2">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="font-mono text-xs font-bold text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded">
+                          {code}
+                        </span>
+                        <span className="text-xs text-slate-300 font-medium">
+                          Severidade {sevDef.level} — {sevDef.label}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed mb-2">
+                        {sevDef.justificativa}
+                      </p>
+                      <div className="border-t border-slate-700 pt-2 mt-2">
+                        <p className="text-xs text-slate-500 leading-relaxed italic">
+                          {sevDef.base_cientifica}
+                        </p>
+                        <p className="text-xs text-slate-600 mt-1">
+                          Fonte: {sevDef.fonte}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
 
               <div>
@@ -756,11 +849,30 @@ function SeraReasoningPanel({ data }: { data: Intelligence }) {
           Estes códigos mapeiam para severidade{' '}
           <strong className="text-white">{dominantSev}</strong> na matriz porque:
         </p>
-        <div className="bg-slate-800/60 rounded-lg p-3 text-xs text-slate-400 space-y-1">
-          <p>• P-B, P-F → Grave (4): falhas sensoriais e ilusórias têm alto potencial de dano</p>
-          <p>• P-C, P-D, P-E, P-G → Moderada (3): falhas cognitivas com severidade controlável</p>
-          <p>• P-H → Menor (2): falhas de comunicação com menor impacto direto</p>
-        </div>
+        {topCodes.slice(0, 3).map(tc => {
+          const sevDef = SEVERITY_MAP[tc.code]
+          if (!sevDef) return null
+          return (
+            <div key={tc.code} className="bg-slate-800/40 rounded p-2 mb-2">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="font-mono text-xs font-bold text-yellow-400">
+                  {tc.code}
+                </span>
+                <span className="text-xs text-slate-400">
+                  → Sev. {sevDef.level} ({sevDef.label})
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                {sevDef.justificativa}
+              </p>
+            </div>
+          )
+        })}
+        <p className="text-xs text-slate-600 mt-2 italic">
+          Classificação baseada em Hendy (2003) e Daumas (2018).
+          Critérios: capacidade de autocorreção, recuperabilidade
+          organizacional e potencial de dano direto.
+        </p>
       </div>
 
       <div className="space-y-2">
