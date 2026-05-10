@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import { apiCall } from '@/lib/api'
 
 const statusConfig: Record<string, { label: string; color: string; next: string; nextLabel: string }> = {
   pending:     { label: 'Pendente',     color: 'yellow', next: 'in_progress', nextLabel: 'Iniciar' },
@@ -20,7 +19,11 @@ export default function ActionsPage() {
     try {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { setLoading(false); return }
-      const data = await apiCall('/api/actions', {}, session.access_token)
+      const res = await fetch('/api/actions', {
+        headers: { Authorization: `Bearer ${session.access_token}` }
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const data = await res.json()
       setActions(Array.isArray(data) ? data : [])
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e))
@@ -34,10 +37,15 @@ export default function ActionsPage() {
   async function updateStatus(id: string, status: string) {
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) return
-    await apiCall(`/api/actions/${id}`, {
+    const res = await fetch(`/api/actions/${id}`, {
       method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${session.access_token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({ status })
-    }, session.access_token)
+    })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
     load()
   }
 
