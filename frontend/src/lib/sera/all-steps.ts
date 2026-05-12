@@ -222,7 +222,6 @@ function evidenceOfCommunicationConfirmationFailure(text: string): boolean {
     'despachante transmitiu alteracao critica de rota',
     'despachante transmite alteracao critica de rota',
     'falha de coordenacao verbal',
-    'falha de comunicacao',
     'falha de transmissao',
     'falha de recepcao',
     'nao aguardou resposta do piloto',
@@ -671,6 +670,16 @@ function evidenceOfMonitoringFailure(text: string): boolean {
     'condicao a verificar estava acessivel',
     'registro de verificacao obrigatorio',
     'formalidade dispensavel',
+    // P-G for own-action-result available in panel but not monitored (A-C context)
+    'sem aguardar a estabilizacao',
+    'sem aguardar estabilizacao',
+    'nao verificou se o indicador estabilizou',
+    'nao confirmou estabilizacao',
+    'indicador de status disponivel',
+    'resultado disponivel no painel',
+    'deveria ter monitorado o indicador',
+    'nao verificou o resultado do reset',
+    'retornou sem verificar o indicador',
   ])
 }
 
@@ -716,7 +725,7 @@ function evidenceOfWrongOperationalSelectionUnderLoad(text: string): boolean {
 }
 
 function evidenceOfOwnActionCheckFailure(text: string): boolean {
-  return containsAny(text, evidenceTerms(actionRules['A-C'], [
+  if (containsAny(text, evidenceTerms(actionRules['A-C'], [
     'nao verificou se',
     'nao verificou o indicador',
     'nao verificou o resultado',
@@ -739,11 +748,24 @@ function evidenceOfOwnActionCheckFailure(text: string): boolean {
     'indicador de trem',
     'trem de pouso',
     'condicao esperada',
-  ]))
+  ]))) return true
+  // supplementary: reset/stabilization result available but not verified
+  return containsAny(text, [
+    'sem aguardar a estabilizacao',
+    'sem aguardar estabilizacao',
+    'nao aguardou estabilizacao',
+    'nao verificou estabilizacao',
+    'nao verificou se o indicador estabilizou',
+    'nao confirmou estabilizacao',
+    'executou reset e nao verificou',
+    'nao verificou o resultado do reset',
+    'retornou sem verificar o indicador',
+    'retornou as atividades sem verificar',
+  ])
 }
 
 function evidenceOfProceduralOmission(text: string): boolean {
-  return containsAny(text, evidenceTerms(actionRules['A-B'], [
+  if (containsAny(text, evidenceTerms(actionRules['A-B'], [
     'nao instalou',
     'nao travou',
     'nao inseriu',
@@ -755,7 +777,20 @@ function evidenceOfProceduralOmission(text: string): boolean {
     'trava',
     'item obrigatorio',
     'check tecnico',
-  ]))
+  ]))) return true
+  // supplementary: physical/procedural step omission patterns not in A-B.json
+  return containsAny(text, [
+    'esqueceu etapa obrigatoria',
+    'etapa obrigatoria omitida',
+    'etapa foi simplesmente omitida',
+    'etapa foi omitida',
+    'nao reinstalou a trava',
+    'reinstalar trava fisica',
+    'trava fisica omitida',
+    'reinstalacao da trava',
+    'omissao de etapa procedural',
+    'omissao de etapa fisica',
+  ])
 }
 
 function evidenceOfObjectiveCForbiddenContext(text: string): boolean {
@@ -800,6 +835,7 @@ function inferDeterministicErcLevel(
   if (actionCode === 'A-I' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-J' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-G') return 3
+  if (actionCode === 'A-B') return 3
   if (actionCode === 'A-J' && evidenceOfCommunicationConfirmationFailure(text)) return 1
   if (actionCode === 'A-C' && evidenceOfOwnActionCheckFailure(text)) return 2
   if (actionCode === 'A-C' && containsAny(text, ['trem de pouso', 'indicador de trem'])) return 2
@@ -1834,7 +1870,7 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (ownActionCheckFailure) {
+  if (ownActionCheckFailure && !evidenceOfProceduralOmission(relatoNorm)) {
     return finishDeterministic(
       'Gate A-C',
       'A-C',
