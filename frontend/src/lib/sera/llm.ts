@@ -1,13 +1,16 @@
 import OpenAI from 'openai'
 import Anthropic from '@anthropic-ai/sdk'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import { createClient } from '@supabase/supabase-js'
 import fs from 'node:fs'
 import path from 'node:path'
+import { decryptString } from '@/lib/server/ai-settings-crypto'
 
 export type AIProvider = 'deepseek' | 'openai' | 'anthropic' | 'google' | 'groq'
 
 let llmConfigLogged = false
 const DEFAULT_DEEPSEEK_MODEL = 'deepseek-reasoner'
+let seraSupabaseLoaded = false
 
 function loadFrontendEnvLocal(options?: { overrideAiKeys?: boolean }): void {
   const envPath = path.resolve(process.cwd(), 'frontend/.env.local')
@@ -48,9 +51,50 @@ function isSeraTestContext(): boolean {
   )
 }
 
+async function loadSeraAiSettingsFromSupabase(): Promise<void> {
+  if (!isSeraTestContext() || seraSupabaseLoaded) return
+  seraSupabaseLoaded = true
+
+  loadFrontendEnvLocal({ overrideAiKeys: true })
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim()
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
+  if (!url || !key) return
+
+  try {
+    const supabase = createClient(url, key)
+    const { data, error } = await supabase
+      .from('ai_settings')
+      .select('active_provider, deepseek_api_key, openai_api_key, anthropic_api_key, google_api_key, groq_api_key, updated_at')
+      .order('updated_at', { ascending: false })
+      .limit(1)
+      .maybeSingle()
+
+    if (error || !data) return
+
+    if (typeof data.active_provider === 'string' && data.active_provider.trim()) {
+      process.env.AI_PROVIDER = data.active_provider.trim()
+    }
+
+    const encryptedKeys: Record<string, unknown> = {
+      DEEPSEEK_API_KEY: data.deepseek_api_key,
+      OPENAI_API_KEY: data.openai_api_key,
+      ANTHROPIC_API_KEY: data.anthropic_api_key,
+      GOOGLE_API_KEY: data.google_api_key,
+      GROQ_API_KEY: data.groq_api_key,
+    }
+
+    for (const [envName, encrypted] of Object.entries(encryptedKeys)) {
+      if (typeof encrypted !== 'string' || !encrypted) continue
+      process.env[envName] = decryptString(encrypted).trim()
+    }
+  } catch {
+    // Mantemos fallback local para não bloquear o runner quando o Supabase não estiver acessível.
+  }
+}
+
 function resolveDeepseekConfig() {
   const seraContext = isSeraTestContext()
-  loadFrontendEnvLocal({ overrideAiKeys: seraContext })
+  loadFrontendEnvLocal({ overrideAiKeys: seraContext && !seraSupabaseLoaded })
   const model = process.env.DEEPSEEK_MODEL ?? DEFAULT_DEEPSEEK_MODEL
   const temperature = seraContext ? 0 : Number(process.env.DEEPSEEK_TEMPERATURE ?? '0')
   const topP = seraContext ? 1 : Number(process.env.DEEPSEEK_TOP_P ?? '1')
@@ -69,7 +113,7 @@ function resolveDeepseekConfig() {
 }
 
 export function getActiveProvider(): AIProvider {
-  loadFrontendEnvLocal({ overrideAiKeys: isSeraTestContext() })
+  loadFrontendEnvLocal({ overrideAiKeys: isSeraTestContext() && !seraSupabaseLoaded })
   const p = (process.env.AI_PROVIDER ?? 'deepseek').toLowerCase()
   // Only accept known providers; fall back to deepseek for safety.
   if (p === 'deepseek' || p === 'openai' || p === 'anthropic' || p === 'google' || p === 'groq')
@@ -175,6 +219,7 @@ async function callGoogle(system: string, user: string): Promise<string> {
 }
 
 export async function callAi(system: string, userMsg: string, maxTokens = 8192): Promise<string> {
+  await loadSeraAiSettingsFromSupabase()
   const provider = getActiveProvider()
   let raw: string
 
