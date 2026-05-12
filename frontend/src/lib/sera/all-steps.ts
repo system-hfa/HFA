@@ -574,6 +574,12 @@ function evidenceOfExplicitHighDemandOperationalContext(text: string): boolean {
   ])
 }
 
+function hasNegatedHighDemand(text: string): boolean {
+  // Detects when high-demand tokens appear in a negation context ("nao havia ... alta demanda").
+  // Prevents false P-D when fixture discriminators explicitly deny high demand.
+  return text.includes('nao havia') && evidenceOfExplicitHighDemandOperationalContext(text)
+}
+
 function evidenceOfTemporalPerceptionFailure(text: string): boolean {
   return containsAny(text, [
     'subestimou tempo',
@@ -837,8 +843,7 @@ function inferDeterministicErcLevel(
   if (actionCode === 'A-G') return 3
   if (actionCode === 'A-B') return 3
   if (actionCode === 'A-J' && evidenceOfCommunicationConfirmationFailure(text)) return 1
-  if (actionCode === 'A-C' && evidenceOfOwnActionCheckFailure(text)) return 2
-  if (actionCode === 'A-C' && containsAny(text, ['trem de pouso', 'indicador de trem'])) return 2
+  if (actionCode === 'A-C') return 2
   if (actionCode === 'A-F' && containsAny(text, ['emergencia', 'qrh', 'procedimento de emergencia'])) return 2
   if (objectiveCode === 'O-D' && evidenceOfEfficiencyObjective(text)) return 2
   if (actionCode === 'A-E' && evidenceOfKnowledgeDeficit(text)) return 2
@@ -963,6 +968,7 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   const ato = String(pontoFuga.ato_inseguro_factual || '')
   const nodes: RawFlowNode[] = []
   const relatoNorm = normalizeEvidenceText(`${relato}\n${ato}`)
+  const genuineHighDemand = evidenceOfExplicitHighDemandOperationalContext(relatoNorm) && !hasNegatedHighDemand(relatoNorm)
 
   if (evidenceOfKnowledgeDeficit(relatoNorm)) {
     const no0 = methodologyNode('Gate determinístico: o relato traz déficit explícito de conhecimento/interpretação.', { resposta: 'Sim' })
@@ -982,11 +988,27 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     return flowResult(code, [node], 'P-B, P-C, P-D, P-E, P-F, P-G, P-H descartadas — A-D não implica falha perceptiva independente')
   }
 
-  if (evidenceOfTemporalPerceptionFailure(relatoNorm) && !evidenceOfExplicitHighDemandOperationalContext(relatoNorm)) {
+  if (evidenceOfTemporalPerceptionFailure(relatoNorm) && !genuineHighDemand) {
     const node = methodologyNode('Gate determinístico: erro de estimativa temporal, janela curta ou sequência interrompida por tempo insuficiente.', { resposta: 'Sim' })
     logMethodology('runStep3', 'Gate P-E', node, ['P-E'], true)
     const code = assertAllowedCode('P-E', ['P-E'], 'runStep3 gate temporal')
     return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-F, P-G, P-H descartadas — falha temporal explícita')
+  }
+
+  // P-G preemptivo: informação disponível não monitorada; dispara antes de P-D quando não há demanda genuína.
+  if (evidenceOfMonitoringFailure(relatoNorm) && !genuineHighDemand) {
+    const node = methodologyNode('Gate determinístico: parâmetro/informação disponível no painel e não conferido; ausência de demanda real confirma P-G.', { resposta: 'Não' })
+    logMethodology('runStep3', 'Gate P-G preemptivo', node, ['P-G'], true)
+    const code = assertAllowedCode('P-G', ['P-G'], 'runStep3 gate monitoramento preemptivo')
+    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-F, P-H descartadas — informação disponível não monitorada sem demanda operacional real')
+  }
+
+  // P-E preemptivo: falha temporal pura sem demanda real; dispara antes de P-D.
+  if ((evidenceOfTemporalExecutionFailure(relatoNorm) || evidenceOfTemporalPerceptionFailure(relatoNorm)) && !genuineHighDemand) {
+    const node = methodologyNode('Gate determinístico: checklist/sequência interrompida por tempo insuficiente sem demanda operacional real.', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-E preemptivo', node, ['P-E'], true)
+    const code = assertAllowedCode('P-E', ['P-E'], 'runStep3 gate temporal preemptivo')
+    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-F, P-G, P-H descartadas — falha temporal pura; demanda real ausente ou negada no relato')
   }
 
   if (evidenceOfOperationalCommunicationPressure(relatoNorm)) {
