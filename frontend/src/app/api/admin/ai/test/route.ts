@@ -18,33 +18,38 @@ function pickProvider(settingsMap: Record<string, string>): Provider {
   return 'deepseek'
 }
 
+function usableKey(value: string | undefined, fallback: string | undefined): string {
+  if (value && !isMasked(value)) return value
+  return fallback || ''
+}
+
 function providerConfig(provider: Provider, settingsMap: Record<string, string>) {
   if (provider === 'anthropic') {
     return {
-      key: settingsMap.anthropic_api_key || process.env.ANTHROPIC_API_KEY || '',
+      key: usableKey(settingsMap.anthropic_api_key, process.env.ANTHROPIC_API_KEY),
       model: settingsMap.anthropic_model || process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
     }
   }
   if (provider === 'openai') {
     return {
-      key: settingsMap.openai_api_key || process.env.OPENAI_API_KEY || '',
+      key: usableKey(settingsMap.openai_api_key, process.env.OPENAI_API_KEY),
       model: settingsMap.openai_model || process.env.OPENAI_MODEL || 'gpt-4o',
     }
   }
   if (provider === 'google') {
     return {
-      key: settingsMap.google_api_key || process.env.GOOGLE_API_KEY || '',
+      key: usableKey(settingsMap.google_api_key, process.env.GOOGLE_API_KEY),
       model: settingsMap.google_model || process.env.GOOGLE_MODEL || 'gemini-2.0-flash',
     }
   }
   if (provider === 'groq') {
     return {
-      key: settingsMap.groq_api_key || process.env.GROQ_API_KEY || '',
+      key: usableKey(settingsMap.groq_api_key, process.env.GROQ_API_KEY),
       model: settingsMap.groq_model || process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
     }
   }
   return {
-    key: settingsMap.deepseek_api_key || process.env.DEEPSEEK_API_KEY || '',
+    key: usableKey(settingsMap.deepseek_api_key, process.env.DEEPSEEK_API_KEY),
     model: settingsMap.deepseek_model || process.env.DEEPSEEK_MODEL || 'deepseek-reasoner',
   }
 }
@@ -95,7 +100,7 @@ async function runTest(provider: Provider, key: string, model: string): Promise<
     return response.choices[0]?.message?.content || ''
   }
 
-  const client = new OpenAI({ apiKey: key, baseURL: 'https://api.deepseek.com' })
+  const client = new OpenAI({ apiKey: key, baseURL: 'https://api.deepseek.com/v1' })
   const response = await client.chat.completions.create({
     model,
     max_tokens: 30,
@@ -129,7 +134,11 @@ export async function POST(req: Request) {
     const { key, model } = providerConfig(provider, settingsMap)
 
     if (!key) {
-      return NextResponse.json({ ok: false, provider, error: `Chave de API não configurada para ${provider}` }, { status: 400 })
+      const savedKey = settingsMap[`${provider}_api_key`]
+      const detail = savedKey && isMasked(savedKey)
+        ? `A chave salva para ${provider} está mascarada. Informe a chave completa e salve novamente antes de testar.`
+        : `Chave de API não configurada para ${provider}`
+      return NextResponse.json({ ok: false, provider, error: detail, detail }, { status: 400 })
     }
 
     const started = performance.now()
