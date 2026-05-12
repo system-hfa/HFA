@@ -1,0 +1,13 @@
+{
+  "code": "A-F",
+  "label": "Seleção errada entre alternativas/procedimentos",
+  "description": "O agente selecionou procedimento, checklist, modo, rota, item, alternativa ou plano errado entre opções disponíveis.",
+  "priority": 10,
+  "positive_evidence": ["procedimento errado", "checklist errado", "selecionou incorretamente", "selecionou o procedimento errado", "confundiu", "alternativa errada", "opcao errada", "modo errado", "rota errada", "item adjacente", "item similar", "layout semelhante", "layout visual similar", "qrh errado", "qrh", "procedimento visualmente similar"],
+  "negative_evidence": ["readback", "supervisor", "incapacidade fisica", "sem treinamento", "nao verificou resultado da propria acao", "rota direta para eficiencia"],
+  "exclusive_against": ["A-A", "A-B", "A-C", "A-D", "A-E", "A-G", "A-H", "A-I", "A-J"],
+  "requires": ["seleção errada explícita entre alternativas"],
+  "forbids": ["converter seleção errada em não verificou"],
+  "examples": ["procedimento ENG 1 FIRE selecionado para alerta ENG 1 OIL PRESSURE LOW por similaridade na QRH"],
+  "target_fixtures": ["TEST-A-F"]
+}

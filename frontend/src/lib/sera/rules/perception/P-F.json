@@ -1,0 +1,13 @@
+{
+  "code": "P-F",
+  "label": "Ilusão ou distorção perceptiva",
+  "description": "Percepção sensorial ilusória, espacial, vestibular, visual ou cognitivamente distorcida.",
+  "priority": 7,
+  "positive_evidence": ["ilusao", "distorcao sensorial", "ilusao vestibular", "ilusao visual", "percepcao espacial equivocada", "sensacao corporal falsa"],
+  "negative_evidence": ["comunicacao ambigua", "readback", "informacao nao recebida", "selecao errada"],
+  "exclusive_against": ["P-A", "P-B", "P-C", "P-D", "P-E", "P-G", "P-H"],
+  "requires": ["evidencia de distorcao perceptiva ou ilusao"],
+  "forbids": ["usar para ambiguidades de briefing ou decisao operacional"],
+  "examples": ["ilusão vestibular em voo", "interpretação espacial falsa"],
+  "target_fixtures": []
+}

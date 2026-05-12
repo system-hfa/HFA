@@ -1,0 +1,13 @@
+{
+  "code": "A-H",
+  "label": "Falha de gerenciamento temporal na execução",
+  "description": "Tarefa ficou incompleta por pressão temporal, interrupção, sequenciamento ou falta de tempo.",
+  "priority": 7,
+  "positive_evidence": ["tempo insuficiente", "interrupcao", "tarefa incompleta", "sequencia nao concluida", "prazo critico", "urgencia", "emergencia"],
+  "negative_evidence": ["readback", "selecao operacional errada", "procedimento errado", "supervisor", "incapacidade fisica"],
+  "exclusive_against": ["A-A", "A-B", "A-C", "A-D", "A-E", "A-F", "A-G", "A-I", "A-J"],
+  "requires": ["falha de conclusão/sequenciamento por tempo"],
+  "forbids": ["usar para seleção errada sob pressão quando A-I explica melhor"],
+  "examples": ["checklist ficou incompleto por interrupções temporais"],
+  "target_fixtures": []
+}

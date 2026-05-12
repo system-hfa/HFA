@@ -1,0 +1,13 @@
+{
+  "code": "P-E",
+  "label": "Erro de gerenciamento temporal perceptivo",
+  "description": "Falha por estimativa incorreta de tempo ou janela temporal disponível.",
+  "priority": 6,
+  "positive_evidence": ["subestimou o tempo", "estimativa temporal errada", "janela disponivel", "calculo temporal inadequado", "duracao prevista"],
+  "negative_evidence": ["alta demanda", "congestionamento", "readback", "procedimento errado"],
+  "exclusive_against": ["P-A", "P-B", "P-C", "P-D", "P-F", "P-G", "P-H"],
+  "requires": ["erro explicito de estimativa temporal"],
+  "forbids": ["confundir com sobrecarga atencional externa"],
+  "examples": ["subestimou duração de tarefa antes de mudança operacional"],
+  "target_fixtures": []
+}

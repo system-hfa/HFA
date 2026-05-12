@@ -37,7 +37,7 @@ export async function requireBearerUser(req: Request): Promise<ApiUserContext> {
     })
   }
   let tenantId = user.user_metadata?.tenant_id as string | undefined
-  let role = String(user.user_metadata?.role ?? 'admin')
+  let role = String(user.user_metadata?.role ?? 'viewer')
 
   // Fallback para contas OAuth com metadata ainda não bootstrapado.
   if (!tenantId) {

@@ -1,0 +1,13 @@
+{
+  "code": "P-H",
+  "label": "Falha de comunicação/informação",
+  "description": "Informação necessária dependia de transmissão, briefing ou instrução e chegou ambígua, incorreta ou incompleta.",
+  "priority": 8,
+  "positive_evidence": ["briefing ambiguo", "instrucao ambigua", "informacao incorreta", "comunicacao inadequada", "informacao incompleta", "informacao nao recebida", "handoff", "crm", "mensagem ambigua"],
+  "negative_evidence": ["informacao disponivel em instrumento", "nao verificou indicador", "selecao errada", "readback sob congestionamento"],
+  "exclusive_against": ["P-A", "P-B", "P-C", "P-D", "P-E", "P-F", "P-G"],
+  "requires": ["dependencia de comunicacao ou transmissao por outro agente"],
+  "forbids": ["usar para simples omissao de verificacao"],
+  "examples": ["briefing passou identificação ambígua de sistema", "handoff incompleto entre turnos"],
+  "target_fixtures": ["TEST-P-H"]
+}

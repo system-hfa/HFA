@@ -39,6 +39,7 @@ export async function GET(req: Request) {
     const active_provider = parseProvider(stored.active_provider)
 
     const responseKeys: Record<string, { configured: boolean; suffix: string }> = {}
+    const storedRecord = stored as Record<string, unknown>
     for (const [field, label] of [
       ['deepseek_api_key', 'deepseek'],
       ['openai_api_key', 'openai'],
@@ -46,7 +47,8 @@ export async function GET(req: Request) {
       ['google_api_key', 'google'],
       ['groq_api_key', 'groq'],
     ] as const) {
-      const enc = (stored as any)[field] as string | null | undefined
+      const value = storedRecord[field]
+      const enc = typeof value === 'string' ? value : null
       if (enc && typeof enc === 'string') {
         try {
           const suffix = maskKeySuffix(decryptString(enc))
@@ -139,4 +141,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ detail: String(e) }, { status: 500 })
   }
 }
-

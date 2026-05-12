@@ -1,6 +1,8 @@
 'use client'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import ptBR from '@/messages/pt-BR.json'
+import en from '@/messages/en.json'
 
 type Locale = 'pt-BR' | 'en'
 
@@ -23,8 +25,8 @@ export const useI18n = create<I18nStore>()(
 export function useT() {
   const { locale } = useI18n()
   const messages = locale === 'pt-BR'
-    ? require('../messages/pt-BR.json')
-    : require('../messages/en.json')
+    ? ptBR
+    : en
 
   return function t(key: string): string {
     const keys = key.split('.')

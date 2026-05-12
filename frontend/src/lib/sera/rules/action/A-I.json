@@ -1,0 +1,13 @@
+{
+  "code": "A-I",
+  "label": "Seleção/instrução inadequada sob pressão",
+  "description": "Escolha, seleção ou instrução operacional errada entre alternativas sob pressão temporal/carga operacional explícita.",
+  "priority": 8,
+  "positive_evidence": ["emitiu instrucao", "instrucao de altitude errada", "instrucao operacional errada", "climb", "descend", "deveria descer", "deveria ser", "conflito iminente", "alta demanda"],
+  "negative_evidence": ["sem pressao de tempo", "readback", "supervisor", "incapacidade fisica", "sem treinamento", "procedimento errado sem pressao"],
+  "exclusive_against": ["A-A", "A-B", "A-C", "A-D", "A-E", "A-F", "A-G", "A-H", "A-J"],
+  "requires": ["pressao temporal explicita", "erro de escolha ou instrucao operacional"],
+  "forbids": ["atuar como fallback universal"],
+  "examples": ["instrução operacional errada em conflito iminente"],
+  "target_fixtures": ["TEST-A-I"]
+}

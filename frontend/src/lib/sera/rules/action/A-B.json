@@ -1,0 +1,13 @@
+{
+  "code": "A-B",
+  "label": "Omissão/lapso/deslize procedural",
+  "description": "Omissão de passo físico ou procedural específico que deveria ter sido executado.",
+  "priority": 4,
+  "positive_evidence": ["nao instalou", "nao travou", "nao inseriu", "nao recolocou", "nao completou checklist", "omitiu passo", "passo obrigatorio", "pino de travamento", "trava", "item obrigatorio", "check tecnico"],
+  "negative_evidence": ["incapacidade fisica", "sem treinamento", "procedimento errado", "supervisor", "readback", "nao verificou resultado"],
+  "exclusive_against": ["A-C", "A-D", "A-E", "A-F", "A-G", "A-H", "A-I", "A-J"],
+  "requires": ["omissao procedural especifica sem mecanismo mais especifico"],
+  "forbids": ["vencer A-D, A-E, A-F, A-G ou A-J"],
+  "examples": ["não instalou pino de travamento obrigatório"],
+  "target_fixtures": ["TEST-A-B"]
+}

@@ -16,6 +16,63 @@ const FlowDiagram = dynamic(() => import('@/components/FlowDiagram'), { ssr: fal
 type FlowTab = 'perception' | 'objective' | 'action'
 type PdfState = 'idle' | 'loading' | 'done' | 'error'
 type BadgeMap = Record<string, 'preserved' | 'recalculated' | null>
+type FlowNodeLike = { justificativa: string; resposta: string; [key: string]: unknown }
+type DiscardedFlow = { nos_percorridos?: FlowNodeLike[] }
+type Precondition = { code?: string; etapa?: number | string; name?: string; justification?: string }
+type Recommendation = { related_code?: string; title?: string; description?: string }
+type AnalysisPayload = {
+  id: string
+  summary?: string | null
+  event_summary?: string | null
+  event_date?: string | null
+  operation_type?: string | null
+  event_location?: string | null
+  flight_phase?: string | null
+  weather_conditions?: string | null
+  systems_involved?: string | null
+  occupants_count?: string | null
+  escape_point?: string | null
+  unsafe_agent?: string | null
+  unsafe_act?: string | null
+  perception_code?: string | null
+  perception_name?: string | null
+  perception_justification?: string | null
+  objective_code?: string | null
+  objective_name?: string | null
+  objective_justification?: string | null
+  action_code?: string | null
+  action_name?: string | null
+  action_justification?: string | null
+  perception_discarded?: DiscardedFlow | null
+  objective_discarded?: DiscardedFlow | null
+  action_discarded?: DiscardedFlow | null
+  preconditions?: Precondition[] | null
+  conclusions?: string | null
+  recommendations?: Recommendation[] | null
+  edit_count?: number | null
+}
+type EventPayload = {
+  id: string
+  title?: string | null
+  status?: string | null
+  operation_type?: string | null
+  aircraft_type?: string | null
+  created_at: string
+  occurred_at?: string | null
+  analyses?: AnalysisPayload | null
+}
+type FlowItem = {
+  mermaid: string
+  nos_percorridos: FlowNodeLike[]
+  codigo: string
+  falhas_descartadas: string
+}
+type FlowMap = Record<FlowTab, FlowItem>
+type RecalculatePayload = {
+  analysis?: AnalysisPayload
+  steps_recalculated?: number[]
+  steps_preserved?: number[]
+}
 
 function MetaItem({ label, value }: { label: string; value?: string | null }) {
   if (!value) return null
@@ -95,11 +152,11 @@ function HfacsSection({ hfacs }: { hfacs: HfacsResult }) {
 
 export default function EventDetailPage() {
   const { id } = useParams()
-  const [event, setEvent]         = useState<any>(null)
-  const [analysis, setAnalysis]   = useState<any>(null)
+  const [event, setEvent]         = useState<EventPayload | null>(null)
+  const [analysis, setAnalysis]   = useState<AnalysisPayload | null>(null)
   const [token, setToken]         = useState<string>('')
   const [loading, setLoading]     = useState(true)
-  const [flows, setFlows]         = useState<any>(null)
+  const [flows, setFlows]         = useState<FlowMap | null>(null)
   const [activeTab, setActiveTab] = useState<FlowTab>('perception')
   const [pdfState, setPdfState]   = useState<PdfState>('idle')
   const [badges, setBadges]       = useState<BadgeMap>({})
@@ -109,14 +166,14 @@ export default function EventDetailPage() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
       setToken(session.access_token)
-      const data = await apiCall(`/events/${id}`, {}, session.access_token)
+      const data = await apiCall(`/events/${id}`, {}, session.access_token) as EventPayload
       setEvent(data)
       if (data?.analyses) setAnalysis(data.analyses)
       setLoading(false)
 
       if (data?.analyses?.id) {
         try {
-          const flowData = await apiCall(`/analyses/${data.analyses.id}/flows`, {}, session.access_token)
+          const flowData = await apiCall(`/analyses/${data.analyses.id}/flows`, {}, session.access_token) as FlowMap
           setFlows(flowData)
         } catch { /* flows are optional */ }
       }
@@ -129,7 +186,7 @@ export default function EventDetailPage() {
     return () => clearInterval(interval)
   }, [id])
 
-  const handleRecalculated = useCallback((data: any) => {
+  const handleRecalculated = useCallback((data: RecalculatePayload) => {
     if (!data?.analysis) return
     setAnalysis(data.analysis)
 
@@ -149,7 +206,7 @@ export default function EventDetailPage() {
   }, [])
 
   const downloadPdf = useCallback(async () => {
-    if (!analysis || !token) return
+    if (!analysis || !token || !event) return
     setPdfState('loading')
     try {
       const analysisId = analysis.id
@@ -203,6 +260,8 @@ export default function EventDetailPage() {
   const perceptionFlow = analysis?.perception_discarded?.nos_percorridos ?? []
   const objectiveFlow  = analysis?.objective_discarded?.nos_percorridos  ?? []
   const actionFlow     = analysis?.action_discarded?.nos_percorridos     ?? []
+  const preconditions = analysis?.preconditions ?? []
+  const recommendations = analysis?.recommendations ?? []
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
@@ -258,7 +317,7 @@ export default function EventDetailPage() {
               analysisId={analysis.id}
               token={token}
               editCount={analysis.edit_count || 0}
-              onReverted={handleRecalculated}
+              onReverted={(payload) => handleRecalculated(payload as RecalculatePayload)}
             />
           )}
 
@@ -323,13 +382,13 @@ export default function EventDetailPage() {
           <div>
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
               Etapas 3 · 4 · 5 — Falhas Ativas
-              <span className="ml-2 normal-case text-slate-600 font-normal">(clique "Editar" para recalcular)</span>
+              <span className="ml-2 normal-case text-slate-600 font-normal">(clique &quot;Editar&quot; para recalcular)</span>
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <EditableClassification
-                code={analysis.perception_code}
-                name={analysis.perception_name}
-                justification={analysis.perception_justification}
+                code={analysis.perception_code ?? ''}
+                name={analysis.perception_name ?? ''}
+                justification={analysis.perception_justification ?? ''}
                 flowPath={perceptionFlow}
                 stepAltered="3"
                 field="perception_code"
@@ -337,12 +396,12 @@ export default function EventDetailPage() {
                 analysisId={analysis.id}
                 token={token}
                 badge={badges['perception'] ?? null}
-                onUpdated={handleRecalculated}
+                onUpdated={(payload) => handleRecalculated(payload as RecalculatePayload)}
               />
               <EditableClassification
-                code={analysis.objective_code}
-                name={analysis.objective_name}
-                justification={analysis.objective_justification}
+                code={analysis.objective_code ?? ''}
+                name={analysis.objective_name ?? ''}
+                justification={analysis.objective_justification ?? ''}
                 flowPath={objectiveFlow}
                 stepAltered="4"
                 field="objective_code"
@@ -350,12 +409,12 @@ export default function EventDetailPage() {
                 analysisId={analysis.id}
                 token={token}
                 badge={badges['objective'] ?? null}
-                onUpdated={handleRecalculated}
+                onUpdated={(payload) => handleRecalculated(payload as RecalculatePayload)}
               />
               <EditableClassification
-                code={analysis.action_code}
-                name={analysis.action_name}
-                justification={analysis.action_justification}
+                code={analysis.action_code ?? ''}
+                name={analysis.action_name ?? ''}
+                justification={analysis.action_justification ?? ''}
                 flowPath={actionFlow}
                 stepAltered="5"
                 field="action_code"
@@ -363,7 +422,7 @@ export default function EventDetailPage() {
                 analysisId={analysis.id}
                 token={token}
                 badge={badges['action'] ?? null}
-                onUpdated={handleRecalculated}
+                onUpdated={(payload) => handleRecalculated(payload as RecalculatePayload)}
               />
             </div>
           </div>
@@ -397,7 +456,7 @@ export default function EventDetailPage() {
           )}
 
           {/* ── Pré-condições ──────────────────────────────────────────── */}
-          {analysis.preconditions?.length > 0 && (
+          {preconditions.length > 0 && (
             <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
               <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -406,7 +465,7 @@ export default function EventDetailPage() {
               </div>
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {analysis.preconditions.map((p: any, i: number) => (
+                  {preconditions.map((p: Precondition, i: number) => (
                     <div key={i} className="bg-slate-800 border border-slate-700 rounded-lg p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-xs font-mono bg-slate-700 text-slate-300 px-2 py-0.5 rounded">
@@ -438,7 +497,7 @@ export default function EventDetailPage() {
           </div>
 
           {/* ── ETAPA 7 — Recomendações ────────────────────────────────── */}
-          {analysis.recommendations?.length > 0 && (
+          {recommendations.length > 0 && (
             <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
               <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -446,7 +505,7 @@ export default function EventDetailPage() {
                 </span>
               </div>
               <div className="p-6 space-y-3">
-                {analysis.recommendations.map((r: any, i: number) => (
+                {recommendations.map((r: Recommendation, i: number) => (
                   <div
                     key={i}
                     className="bg-slate-800 border border-slate-700 rounded-lg p-4 flex flex-col sm:flex-row sm:items-start gap-3"

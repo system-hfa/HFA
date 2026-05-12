@@ -1,5 +1,5 @@
 import mammoth from 'mammoth'
-// @ts-ignore
+// @ts-expect-error No typings for this forked package.
 import PDFParse from 'pdf-parse-fork'
 
 const MAX_BYTES = 10 * 1024 * 1024

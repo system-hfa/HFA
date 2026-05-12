@@ -1,0 +1,13 @@
+{
+  "code": "P-D",
+  "label": "Sobrecarga atencional",
+  "description": "Falha perceptiva por alta demanda, múltiplos estímulos simultâneos ou congestionamento operacional.",
+  "priority": 8,
+  "positive_evidence": ["urgencia", "emergencia", "alta demanda", "multiplos eventos", "multiplas demandas", "congestionamento operacional", "frequencia congestionada", "congestionamento de frequencia", "prazo critico", "tempo insuficiente", "menos de 60 segundos", "nao havia tempo", "conflito iminente"],
+  "negative_evidence": ["rotina normal", "sem pressao de tempo", "nao havia pressao de tempo declarada", "pressao de oleo caiu gradualmente"],
+  "exclusive_against": ["P-A", "P-B", "P-C", "P-E", "P-F", "P-G", "P-H"],
+  "requires": ["demanda atencional ou pressao operacional explicita"],
+  "forbids": ["usar para simples conveniencia ou ganho economico"],
+  "examples": ["controlador em frequência congestionada", "múltiplas aeronaves transmitindo simultaneamente"],
+  "target_fixtures": ["TEST-A-J"]
+}

@@ -65,7 +65,7 @@ export async function GET(req: Request) {
     const [analysesRes, actionsRes, eventsRes, recentEventsRes] = await Promise.all([
       admin
         .from('analyses')
-        .select('id, event_id, perception_code, objective_code, action_code, preconditions, recommendations, created_at, erc_level')
+        .select('id, event_id, perception_code, objective_code, action_code, preconditions, recommendations, created_at')
         .eq('tenant_id', tenantId),
       admin
         .from('corrective_actions')
@@ -238,17 +238,6 @@ export async function GET(req: Request) {
       .sort((a, b) => a[0].localeCompare(b[0]))
       .map(([month, count]) => ({ month, count }))
 
-    // --- Modal ERC level (from ARMS-ERC computation per analysis) ---
-    const ercLevelCounts: Record<number, number> = {}
-    for (const a of analyses) {
-      const lvl = a.erc_level as number | null
-      if (lvl) ercLevelCounts[lvl] = (ercLevelCounts[lvl] || 0) + 1
-    }
-    const ercEntries = Object.entries(ercLevelCounts)
-    const modal_erc_level: number | null = ercEntries.length > 0
-      ? Number(ercEntries.sort((a, b) => Number(b[1]) - Number(a[1]))[0][0])
-      : null
-
     // --- Risk score ---
     const base_score =
       total > 0
@@ -317,7 +306,7 @@ export async function GET(req: Request) {
       total_analyses: total,
       total_events_90d: events.length,
       recent_events,
-      modal_erc_level,
+      modal_erc_level: null,
     })
   } catch (e) {
     if (e instanceof Response) return e

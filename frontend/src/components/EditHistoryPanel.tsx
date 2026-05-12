@@ -41,7 +41,6 @@ function parseValue(v: string | null): string {
 export default function EditHistoryPanel({ analysisId, token, editCount, onReverted }: Props) {
   const [open, setOpen] = useState(false)
   const [edits, setEdits] = useState<EditRecord[]>([])
-  const [loading, setLoading] = useState(false)
   const [reverting, setReverting] = useState<string | null>(null)
 
   useEffect(() => {
@@ -116,7 +115,7 @@ export default function EditHistoryPanel({ analysisId, token, editCount, onRever
                       <span className="text-emerald-400 font-mono">{parseValue(edit.value_after)}</span>
                     </div>
                     {edit.reason && (
-                      <p className="text-xs text-slate-500 mt-1 italic">"{edit.reason}"</p>
+                      <p className="text-xs text-slate-500 mt-1 italic">&quot;{edit.reason}&quot;</p>
                     )}
                     <div className="flex gap-2 mt-1 flex-wrap">
                       {edit.steps_recalculated?.map(s => (

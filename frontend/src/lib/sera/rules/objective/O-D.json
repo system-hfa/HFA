@@ -1,0 +1,13 @@
+{
+  "code": "O-D",
+  "label": "Objetivo de eficiência/economia",
+  "description": "Objetivo de ganho operacional, economia, tempo, produtividade, rota mais curta ou otimização.",
+  "priority": 9,
+  "positive_evidence": ["economizar combustivel", "economia de combustivel", "economizar tempo", "ganhar tempo", "reduzir custo", "eficiencia", "produtividade", "rota mais curta", "rota direta", "ganho operacional", "otimizacao operacional", "janela meteorologica apertada"],
+  "negative_evidence": ["proteger passageiro", "proteger paciente", "salvar alguem", "emergencia humana", "todos fazem assim", "burocracia"],
+  "exclusive_against": ["O-A", "O-B", "O-C"],
+  "requires": ["evidencia explicita de eficiencia, economia ou ganho operacional"],
+  "forbids": ["classificar como O-C sem protecao humana explicita"],
+  "examples": ["rota direta para aproveitar janela meteorológica", "decisão para economizar combustível"],
+  "target_fixtures": ["TEST-O-D"]
+}

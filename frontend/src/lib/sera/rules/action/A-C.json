@@ -1,0 +1,13 @@
+{
+  "code": "A-C",
+  "label": "Não verificar resultado da própria ação",
+  "description": "Falha de confirmar, monitorar ou verificar o resultado após uma ação já executada pelo próprio agente.",
+  "priority": 5,
+  "positive_evidence": ["nao verificou se", "nao verificou o indicador", "nao monitorou", "nao confirmou o resultado", "apos acionar", "depois de acionar", "indicador de trem", "trem de pouso", "condicao esperada"],
+  "negative_evidence": ["acao de outro", "supervisor", "delegou", "readback", "procedimento errado", "incapacidade fisica", "sem treinamento"],
+  "exclusive_against": ["A-B", "A-D", "A-E", "A-F", "A-G", "A-H", "A-I", "A-J"],
+  "requires": ["resultado da propria acao deveria ser verificado"],
+  "forbids": ["usar para supervisao de terceiro ou comunicacao/readback"],
+  "examples": ["não verificou indicador de trem após acionar alavanca"],
+  "target_fixtures": ["TEST-A-C"]
+}

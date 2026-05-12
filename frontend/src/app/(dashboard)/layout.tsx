@@ -12,6 +12,7 @@ import {
   BookOpen,
   Settings,
   CreditCard,
+  ShieldAlert,
   LogOut,
   Menu,
   X,
@@ -180,6 +181,21 @@ function Sidebar({
 
       {/* Bottom nav */}
       <div className="px-3 py-3 border-t border-hfa-border space-y-0.5">
+        {me.isAdmin && (
+          <Link
+            href="/admin"
+            onClick={onNav}
+            className={[
+              'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all',
+              pathname === '/admin' || pathname.startsWith('/admin/')
+                ? 'bg-amber-500/15 text-amber-300 border-r-2 border-amber-400'
+                : 'text-amber-300/80 hover:bg-amber-500/10 hover:text-amber-200',
+            ].join(' ')}
+          >
+            <ShieldAlert className="size-4 shrink-0" />
+            Admin
+          </Link>
+        )}
         {bottomNav.map((item) => (
           <NavLink
             key={item.href}
@@ -295,11 +311,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       }
     })
   }, [router])
-
-  // Close mobile drawer on route change
-  useEffect(() => {
-    setMobileOpen(false)
-  }, [pathname])
 
   async function handleLogout() {
     await supabase.auth.signOut()

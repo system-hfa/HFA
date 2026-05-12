@@ -1,0 +1,10 @@
+{
+  "levels": [
+    {"level": 1, "description": "Risco imediato, crítico, com baixa margem de recuperação ou perda rápida de barreiras."},
+    {"level": 2, "description": "Risco alto, mas ainda com alguma barreira, oportunidade de recuperação ou tempo operacional para correção."},
+    {"level": 3, "description": "Risco moderado, localizado, técnico ou procedural, sem consequência crítica imediata."},
+    {"level": 4, "description": "Risco baixo a moderado, consequência indireta, degradada ou dependente de outras falhas."},
+    {"level": 5, "description": "Risco mínimo, administrativo, documental ou sem degradação operacional relevante."}
+  ],
+  "invariant": "ERC não pode ser inferido apenas pela gravidade narrativa."
+}

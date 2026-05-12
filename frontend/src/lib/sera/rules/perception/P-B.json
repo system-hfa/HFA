@@ -1,0 +1,13 @@
+{
+  "code": "P-B",
+  "label": "Falha sensorial física",
+  "description": "Estímulo não foi recebido por limitação sensorial ou ambiental.",
+  "priority": 6,
+  "positive_evidence": ["nao viu", "nao ouviu", "ruido", "visibilidade reduzida", "sinal nao detectado", "barreira fisica"],
+  "negative_evidence": ["sabia interpretar", "informacao disponivel", "decisao inadequada"],
+  "exclusive_against": ["P-A", "P-C", "P-D", "P-E", "P-F", "P-G", "P-H"],
+  "requires": ["barreira sensorial ou ambiental explicita"],
+  "forbids": ["usar para erro de conhecimento ou decisao"],
+  "examples": ["alarme inaudível por ruído ambiente", "sinal visual encoberto"],
+  "target_fixtures": []
+}

@@ -1,0 +1,13 @@
+{
+  "code": "P-C",
+  "label": "Falha de interpretação/conhecimento perceptivo",
+  "description": "O operador percebeu o estímulo, mas não tinha conhecimento para interpretar seu significado.",
+  "priority": 9,
+  "positive_evidence": ["nao havia recebido treinamento", "sem treinamento", "falta de treinamento", "type-specific", "protocolo desconhecido", "modelo novo", "modelo recem-incorporado", "nao compreendeu", "desconhecia", "nao sabia interpretar", "nao sabia o significado"],
+  "negative_evidence": ["sabia exatamente o que fazer", "selecionou procedimento errado por similaridade", "readback", "supervisao", "incapacidade fisica"],
+  "exclusive_against": ["P-A", "P-B", "P-D", "P-E", "P-F", "P-G", "P-H"],
+  "requires": ["deficit explicito de conhecimento para interpretar sinal, sistema ou procedimento"],
+  "forbids": ["confundir falta de informacao recebida com falta de conhecimento"],
+  "examples": ["não compreendeu lógica BITE de sistema digital novo", "não sabia significado de indicação de instrumento"],
+  "target_fixtures": ["TEST-A-E"]
+}

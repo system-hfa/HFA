@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
@@ -282,6 +283,7 @@ export default function DashboardPage() {
   }
 
   const level = data?.score.level ?? 'ok'
+  const hasAnalyses = (data?.total_analyses ?? 0) > 0
   const domDist = data
     ? (['perception', 'objective', 'action'] as const).reduce((best, cur) =>
         (data.distribution[cur].count > data.distribution[best].count ? cur : best),
@@ -305,8 +307,23 @@ export default function DashboardPage() {
         </div>
       )}
 
+      {!error && !hasAnalyses && (
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <h2 className="text-white font-semibold mb-2">Nenhuma análise disponível</h2>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            O dashboard será preenchido quando existir pelo menos uma análise SERA concluída para este tenant.
+          </p>
+          <Link
+            href="/events/new"
+            className="inline-flex mt-4 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            Criar primeira análise
+          </Link>
+        </div>
+      )}
+
       {/* 2. Score de Risco */}
-      {data?.score && (
+      {data?.score && hasAnalyses && (
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="text-slate-400 text-xs uppercase tracking-wide font-semibold">{t('dashboard.riskScore')}</span>
@@ -322,7 +339,7 @@ export default function DashboardPage() {
       )}
 
       {/* 3. Alertas */}
-      {(data?.alerts ?? []).length > 0 && (
+      {hasAnalyses && (data?.alerts ?? []).length > 0 && (
         <div className="flex flex-wrap gap-2">
           {data!.alerts.map((alert, i) => (
             <div
@@ -337,7 +354,7 @@ export default function DashboardPage() {
       )}
 
       {/* 4. Distribuição de falhas — top 3 por categoria */}
-      {data?.distribution && (
+      {data?.distribution && hasAnalyses && (
         <div>
           <h3 className="text-white font-semibold mb-3">{t('dashboard.failureDistribution')}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -397,7 +414,7 @@ export default function DashboardPage() {
       )}
 
       {/* 4.5. Padrões Identificados — combinações frequentes */}
-      {(data?.top_combinations ?? []).length > 0 && (
+      {hasAnalyses && (data?.top_combinations ?? []).length > 0 && (
         <div>
           <h3 className="text-white font-semibold mb-1">{t('dashboard.patterns')}</h3>
           <p className="text-slate-500 text-xs mb-3">{t('dashboard.patternsSubtitle')}</p>
@@ -426,19 +443,19 @@ export default function DashboardPage() {
       )}
 
       {/* 5. Análise por IA */}
-      {data?.score && token && (
+      {data?.score && token && hasAnalyses && (
         <AiInsightPanel intelligenceData={data} token={token} />
       )}
 
       {/* 6. Top precondições — gráfico de barras */}
-      {(data?.top_preconditions ?? []).length > 0 && (
+      {hasAnalyses && (data?.top_preconditions ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <PreconditionsChart preconditions={data!.top_preconditions} />
         </div>
       )}
 
       {/* 7. Tendência SVG */}
-      {(data?.trend ?? []).length > 0 && (
+      {hasAnalyses && (data?.trend ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-4">{t('dashboard.trend')}</h3>
           <TrendChart trend={data!.trend} insufficientDataLabel={t('dashboard.insufficientData')} />
@@ -446,7 +463,7 @@ export default function DashboardPage() {
       )}
 
       {/* 8. Eventos recentes — via intelligence */}
-      {(data?.recent_events ?? []).length > 0 && (
+      {hasAnalyses && (data?.recent_events ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-4">{t('dashboard.recentEvents')}</h3>
           <table className="w-full text-sm">

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
@@ -1271,6 +1272,8 @@ export default function RiskProfilePage() {
     )
   }
 
+  const hasAnalyses = (data?.total_analyses ?? 0) > 0
+
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
       {/* 1. Header */}
@@ -1282,15 +1285,31 @@ export default function RiskProfilePage() {
           </p>
         </div>
         <button
-          className="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-sm rounded-lg px-4 py-2 transition-colors"
+          className="bg-slate-800 hover:bg-slate-700 disabled:hover:bg-slate-800 disabled:opacity-50 border border-slate-700 text-slate-300 text-sm rounded-lg px-4 py-2 transition-colors"
           onClick={() => alert('Exportação PDF em desenvolvimento')}
+          disabled={!hasAnalyses}
         >
           Exportar Relatório PDF
         </button>
       </div>
 
+      {!hasAnalyses && (
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <h2 className="text-white font-semibold mb-2">Nenhuma análise disponível</h2>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            O perfil de risco organizacional depende de análises SERA concluídas. Assim que o tenant registrar a primeira análise, a matriz, tendências e precondições serão exibidas aqui.
+          </p>
+          <Link
+            href="/events/new"
+            className="inline-flex mt-4 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            Criar primeira análise
+          </Link>
+        </div>
+      )}
+
       {/* 2. Score card compacto */}
-      {data?.score && (
+      {data?.score && hasAnalyses && (
         <OrgScoreCard
           score={data.score.value}
           level={data.score.level}
@@ -1300,7 +1319,7 @@ export default function RiskProfilePage() {
       )}
 
       {/* 3. Grid 2 colunas: Matriz | Raciocínio + Precondições */}
-      {data && (
+      {data && hasAnalyses && (
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Esquerda: Matriz */}
           <div className="lg:col-span-3">
@@ -1385,7 +1404,7 @@ export default function RiskProfilePage() {
       )}
 
       {/* 4. Combinações de falha */}
-      {(data?.top_combinations ?? []).length > 0 && (
+      {hasAnalyses && (data?.top_combinations ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-4">Combinações de Falha Mais Frequentes</h3>
           <table className="w-full text-sm">
@@ -1412,7 +1431,7 @@ export default function RiskProfilePage() {
       )}
 
       {/* 5. Ranking completo de precondições */}
-      {(data?.top_preconditions ?? []).length > 0 && (
+      {hasAnalyses && (data?.top_preconditions ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-4">Ranking de Precondições</h3>
           <table className="w-full text-sm">
@@ -1447,12 +1466,12 @@ export default function RiskProfilePage() {
       )}
 
       {/* 6. Análise por IA */}
-      {data?.score && token && (
+      {data?.score && token && hasAnalyses && (
         <AiInsightPanel intelligenceData={data} token={token} />
       )}
 
       {/* 7. Distribuição temporal */}
-      {(data?.trend ?? []).length > 0 && (
+      {hasAnalyses && (data?.trend ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-4">Distribuição Temporal</h3>
           <TrendLine trend={data!.trend} />

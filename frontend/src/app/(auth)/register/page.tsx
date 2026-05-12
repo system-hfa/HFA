@@ -53,8 +53,8 @@ export default function RegisterPage() {
     try {
       await apiCall('/auth/register', { method: 'POST', body: JSON.stringify(form) })
       router.push('/login?registered=true')
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Falha ao criar conta')
       setLoading(false)
     }
   }

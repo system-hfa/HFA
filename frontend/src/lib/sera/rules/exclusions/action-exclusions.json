@@ -1,0 +1,112 @@
+{
+  "domain": "action",
+  "version": "1.0",
+  "rules": [
+    {
+      "code": "A-D",
+      "excludes": ["A-B", "A-C", "A-F", "A-I"],
+      "when": [
+        "physical_incapacity",
+        "ergonomic_constraint",
+        "force_or_reach_limitation",
+        "ppe_blocks_execution"
+      ],
+      "unless": [],
+      "rationale": "A-D vence omissão/seleção quando a execução correta era fisicamente impedida."
+    },
+    {
+      "code": "A-E",
+      "excludes": ["A-B", "A-C", "A-F", "A-I"],
+      "when": [
+        "knowledge_deficit",
+        "lack_of_training",
+        "unfamiliar_system",
+        "did_not_know_how_to_execute"
+      ],
+      "unless": [],
+      "rationale": "A-E vence omissão quando a causa predominante é incapacidade cognitiva/técnica, não lapso de execução."
+    },
+    {
+      "code": "A-F",
+      "excludes": ["A-B", "A-C", "A-A"],
+      "when": [
+        "wrong_alternative_selected",
+        "wrong_procedure_selected",
+        "wrong_checklist_selected",
+        "wrong_mode_or_route_selected",
+        "similar_items_confused"
+      ],
+      "unless": [],
+      "rationale": "Selecionar alternativa errada não é falha de verificação nem ausência de falha de ação."
+    },
+    {
+      "code": "A-G",
+      "excludes": ["A-C", "A-B", "P-G-derived-action"],
+      "when": [
+        "supervisor_failed_to_verify_other_person_action",
+        "delegated_action_not_confirmed",
+        "coordinator_did_not_check_subordinate_result"
+      ],
+      "unless": [],
+      "rationale": "A-G é falha de supervisão/delegação; A-C é apenas verificação da própria ação."
+    },
+    {
+      "code": "A-J",
+      "excludes": ["A-B", "A-C", "A-A"],
+      "when": [
+        "readback_not_confirmed",
+        "message_receipt_not_confirmed",
+        "communication_feedback_missing",
+        "operational_message_unconfirmed"
+      ],
+      "unless": [
+        "communication_only_context"
+      ],
+      "rationale": "A-J só vale quando comunicação/feedback é a falha central, não mero contexto."
+    },
+    {
+      "code": "A-C",
+      "excludes": ["A-J"],
+      "when": [
+        "own_action_result_not_verified",
+        "indicator_not_checked_after_action",
+        "result_feedback_not_monitored"
+      ],
+      "unless": [
+        "explicit_readback_or_message_confirmation_failure"
+      ],
+      "rationale": "A-C vence A-J quando o ato inseguro é não verificar resultado da própria ação."
+    },
+    {
+      "code": "A-H",
+      "excludes": ["A-B", "A-C"],
+      "when": [
+        "task_incomplete_due_to_time_shortage",
+        "sequence_interrupted_by_time_pressure",
+        "temporal_execution_failure"
+      ],
+      "unless": [],
+      "rationale": "A-H é falha de gerenciamento temporal na execução, não simples omissão."
+    },
+    {
+      "code": "A-I",
+      "excludes": ["A-F", "A-A"],
+      "when": [
+        "wrong_operational_instruction_under_high_demand",
+        "wrong_selection_under_explicit_time_pressure",
+        "multiple_options_under_workload"
+      ],
+      "unless": [],
+      "rationale": "A-I exige pressão temporal/carga explícita; sem isso, usar A-F ou A-A conforme mecanismo."
+    },
+    {
+      "code": "A-I",
+      "excludes": ["A-I"],
+      "when": [
+        "no_specific_mechanism_found"
+      ],
+      "unless": [],
+      "rationale": "A-I requer evidência positiva; não é categoria residual."
+    }
+  ]
+}

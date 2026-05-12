@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
 type AIProvider = 'deepseek' | 'openai' | 'anthropic' | 'google' | 'groq'
@@ -45,7 +45,7 @@ export default function AiSettingsPage() {
     groq: { configured: false, suffix: '' },
   })
 
-  async function load() {
+  const load = useCallback(async () => {
     setLoading(true)
     setStatus('')
     setLatency(null)
@@ -63,9 +63,9 @@ export default function AiSettingsPage() {
       headers: { Authorization: `Bearer ${session.access_token}` },
     })
 
-    const data = (await res.json().catch(() => null)) as SettingsResponse | null
+    const data = (await res.json().catch(() => null)) as (SettingsResponse & { detail?: string }) | null
     if (!res.ok || !data) {
-      setStatus((data as any)?.detail || 'Falha ao carregar configurações')
+      setStatus(data?.detail || 'Falha ao carregar configurações')
       setLoading(false)
       return
     }
@@ -73,12 +73,12 @@ export default function AiSettingsPage() {
     setActiveProvider(data.active_provider)
     setKeyInfo(data.keys)
     setLoading(false)
-  }
+  }, [])
 
   useEffect(() => {
-    load()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    const timer = setTimeout(() => { void load() }, 0)
+    return () => clearTimeout(timer)
+  }, [load])
 
   async function save() {
     setSaving(true)
@@ -90,7 +90,7 @@ export default function AiSettingsPage() {
       } = await supabase.auth.getSession()
       if (!session) throw new Error('Não autenticado')
 
-      const payload: any = { active_provider: activeProvider }
+      const payload: Record<string, string> = { active_provider: activeProvider }
       for (const p of PROVIDERS.map((x) => x.id)) {
         const v = keysDraft[p].trim()
         if (!v) continue
@@ -237,4 +237,3 @@ export default function AiSettingsPage() {
     </div>
   )
 }
-

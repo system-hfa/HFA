@@ -1,0 +1,13 @@
+{
+  "code": "O-A",
+  "label": "Objetivo operacional correto",
+  "description": "Default quando o agente buscava cumprir a tarefa nominal sem intenção desviante explícita.",
+  "priority": 1,
+  "positive_evidence": ["objetivo nominal", "cumprir tarefa", "sem intencao desviante", "erro tecnico", "selecao errada sem intencao"],
+  "negative_evidence": ["economizar combustivel", "ganhar tempo", "proteger passageiro", "todos fazem assim", "burocracia"],
+  "exclusive_against": ["O-B", "O-C", "O-D"],
+  "requires": ["ausencia de objetivo desviante explicito"],
+  "forbids": ["inferir objetivo desviante pela consequencia"],
+  "examples": ["falhou ao executar tarefa esperada", "erro operacional sem motivação desviante"],
+  "target_fixtures": ["TEST-A-D", "TEST-A-E", "TEST-A-F", "TEST-A-G", "TEST-A-C", "TEST-A-J"]
+}

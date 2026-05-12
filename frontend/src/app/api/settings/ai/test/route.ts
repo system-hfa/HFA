@@ -27,7 +27,9 @@ export async function POST(req: Request) {
       .maybeSingle()
 
     const decryptField = (field: 'deepseek_api_key' | 'openai_api_key' | 'anthropic_api_key' | 'google_api_key' | 'groq_api_key') => {
-      const enc = (row as any)?.[field] as string | null | undefined
+      const rowRecord = (row ?? {}) as Record<string, unknown>
+      const raw = rowRecord[field]
+      const enc = typeof raw === 'string' ? raw : null
       if (!enc) return null
       return decryptString(enc)
     }
@@ -90,4 +92,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: String(e) }, { status: 500 })
   }
 }
-

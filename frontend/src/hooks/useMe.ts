@@ -29,23 +29,37 @@ export function useMe(): Me {
         setMe({ ...DEFAULT, loading: false })
         return
       }
+      const sessionRole = String(data.session.user.user_metadata?.role ?? 'member')
+      const sessionPlan = String(data.session.user.user_metadata?.plan ?? 'free')
+      const sessionIsAdmin = sessionRole === 'admin'
+      const sessionIsUnlimited = sessionPlan === 'enterprise'
       try {
         const res = await fetch('/api/auth/me', {
           headers: { Authorization: `Bearer ${data.session.access_token}` },
         })
         if (!res.ok) throw new Error('me fetch failed')
         const json = await res.json()
-        const credits = json.credits_balance === 'unlimited' ? 'unlimited' : Number(json.credits_balance)
+        const isEnterprise = json.plan === 'enterprise'
+        const isUnlimited = json.credits_balance === 'unlimited' || isEnterprise
+        const credits = isUnlimited ? 'unlimited' : Number(json.credits_balance)
         setMe({
           plan: json.plan ?? 'free',
           credits,
           role: json.role ?? 'member',
           isAdmin: Boolean(json.is_admin),
-          isUnlimited: json.credits_balance === 'unlimited',
+          isUnlimited,
           loading: false,
         })
-      } catch {
-        setMe({ ...DEFAULT, loading: false })
+      } catch (error) {
+        console.error('Falha ao carregar /api/auth/me', error)
+        setMe({
+          plan: sessionPlan,
+          credits: sessionIsUnlimited ? 'unlimited' : 0,
+          role: sessionRole,
+          isAdmin: sessionIsAdmin,
+          isUnlimited: sessionIsUnlimited,
+          loading: false,
+        })
       }
     })
   }, [])

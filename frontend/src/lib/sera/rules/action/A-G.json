@@ -1,0 +1,13 @@
+{
+  "code": "A-G",
+  "label": "Falha de supervisão/delegação/verificação de terceiros",
+  "description": "Agente em função de supervisão, comando, coordenação ou delegação não verificou ação executada por outra pessoa.",
+  "priority": 10,
+  "positive_evidence": ["supervisor instruiu", "supervisor", "supervisao", "lider delegou", "delegou", "delegada", "comandante atribuiu", "coordenador atribuiu", "instruiu tecnico", "instruiu um tecnico", "subordinado", "acao de outro", "outra pessoa executou", "nao retornou para verificar", "nao acompanhou", "nao confirmou que o tecnico", "nao verificou o resultado da acao de outro"],
+  "negative_evidence": ["propria acao", "apos acionar", "readback", "procedimento errado", "incapacidade fisica", "sem treinamento"],
+  "exclusive_against": ["A-A", "A-B", "A-C", "A-D", "A-E", "A-F", "A-H", "A-I", "A-J"],
+  "requires": ["terceiro executou a ação e supervisor/coordenador deveria verificar"],
+  "forbids": ["classificar como A-C quando a ação verificada era de outra pessoa"],
+  "examples": ["supervisor instruiu técnico e não retornou para confirmar ajuste"],
+  "target_fixtures": ["TEST-A-G"]
+}

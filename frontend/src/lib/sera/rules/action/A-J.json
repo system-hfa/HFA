@@ -1,0 +1,13 @@
+{
+  "code": "A-J",
+  "label": "Falha de confirmação/readback/comunicação operacional",
+  "description": "Falha central de comunicação quando há evidência explícita de confirmação, readback, recebimento, recepção ou coordenação verbal omitida.",
+  "priority": 10,
+  "positive_evidence": ["nao confirmou readback", "nao aguardou readback", "readback omitido", "nao houve readback", "nao confirmou a leitura", "confirmacao de leitura omitida", "nao aguardou confirmacao", "nao recebeu confirmacao", "confirmacao omitida", "nao confirmou recebimento", "nao confirmou recepcao", "sem confirmacao de recebimento", "transmitiu sem confirmar recepcao", "transmitiu sem confirmar recebimento", "mensagem operacional nao confirmada", "mensagem critica nao confirmada", "mensagem sem confirmacao", "falha de coordenacao verbal", "falha de comunicacao", "falha de transmissao", "falha de recepcao"],
+  "negative_evidence": ["sem comunicacao", "procedimento errado", "supervisor delegou", "incapacidade fisica", "sem treinamento", "nao verificou indicador proprio", "nao verificou indicador", "nao conferiu resultado", "nao monitorou apos acionar", "nao confirmou resultado da propria acao", "atc apenas como contexto", "radio apenas como contexto"],
+  "exclusive_against": ["A-A", "A-B", "A-C", "A-D", "A-E", "A-F", "A-G", "A-H", "A-I"],
+  "requires": ["falha explícita de comunicação, confirmação, readback, transmissão ou recepção"],
+  "forbids": ["classificar como A-J apenas por presença de ATC, rádio, frequência, comunicação, conversa ou coordenação contextual", "classificar como A-J quando a falha central é verificar o resultado da própria ação"],
+  "examples": ["controlador não aguardou readback completo em frequência congestionada"],
+  "target_fixtures": ["TEST-A-J"]
+}

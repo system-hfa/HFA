@@ -21,7 +21,7 @@ export async function GET(req: Request) {
     const plan = (tenantRes.data?.plan as string) ?? 'free'
     const creditsBalance = (tenantRes.data?.credits_balance as number) ?? 0
     const role = (userRes.data?.role as string) ?? user.role ?? 'member'
-    const isAdmin = role === 'admin' && plan === 'enterprise'
+    const isAdmin = role === 'admin'
 
     return NextResponse.json({
       plan,

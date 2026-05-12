@@ -14,8 +14,52 @@ function parseProvider(p: unknown): AIProvider {
   return 'deepseek'
 }
 
+const MODEL_ENV_KEYS: Record<AIProvider, string> = {
+  deepseek: 'DEEPSEEK_MODEL',
+  openai: 'OPENAI_MODEL',
+  anthropic: 'ANTHROPIC_MODEL',
+  google: 'GOOGLE_MODEL',
+  groq: 'GROQ_MODEL',
+}
+
+const API_KEY_ENV_KEYS: Record<AIProvider, string> = {
+  deepseek: 'DEEPSEEK_API_KEY',
+  openai: 'OPENAI_API_KEY',
+  anthropic: 'ANTHROPIC_API_KEY',
+  google: 'GOOGLE_API_KEY',
+  groq: 'GROQ_API_KEY',
+}
+
+function applyGlobalAiSettings(settingsMap: Record<string, string>): AIProvider {
+  const active = parseProvider(settingsMap.ai_provider || process.env.AI_PROVIDER)
+  process.env.AI_PROVIDER = active
+
+  for (const provider of Object.keys(MODEL_ENV_KEYS) as AIProvider[]) {
+    const raw = settingsMap[`${provider}_model`]?.trim()
+    if (raw) process.env[MODEL_ENV_KEYS[provider]] = raw
+  }
+
+  for (const provider of Object.keys(API_KEY_ENV_KEYS) as AIProvider[]) {
+    const raw = settingsMap[`${provider}_api_key`]?.trim()
+    if (raw) process.env[API_KEY_ENV_KEYS[provider]] = raw
+  }
+
+  return active
+}
+
 export async function applyUserAiSettingsToEnv(admin: SupabaseClient, userId: string): Promise<AIProvider> {
-  // Default: usa variáveis do ambiente (.env.local / Vercel env).
+  const globalSettingsMap: Record<string, string> = {}
+  try {
+    const { data: globalRows } = await admin.from('system_settings').select('key, value')
+    for (const row of globalRows ?? []) {
+      globalSettingsMap[String(row.key)] = String(row.value ?? '')
+    }
+  } catch (error) {
+    console.warn('[applyUserAiSettingsToEnv] Falha ao ler system_settings; usando env do deploy', error)
+  }
+
+  const globalActive = applyGlobalAiSettings(globalSettingsMap)
+
   const { data: row, error } = await admin
     .from('ai_settings')
     .select(
@@ -24,59 +68,36 @@ export async function applyUserAiSettingsToEnv(admin: SupabaseClient, userId: st
     .eq('user_id', userId)
     .maybeSingle()
 
-  const active = row ? parseProvider(row.active_provider) : parseProvider(process.env.AI_PROVIDER)
+  const active = row ? parseProvider(row.active_provider) : globalActive
 
   // Se a tabela não existir ainda (ou houver qualquer falha de query), não bloqueamos análises.
   if (error || !row) {
-    assertLlmEnvConfigured(active as AIProvider)
-    return active as AIProvider
+    assertLlmEnvConfigured(active)
+    return active
   }
 
   process.env.AI_PROVIDER = active
 
-  if (active === 'deepseek') {
-    const enc = row.deepseek_api_key as string | null
-    if (enc) {
-      try {
-        const decrypted = decryptString(enc)
-        if (decrypted.startsWith('sk-') && isPlausibleKey(decrypted)) process.env.DEEPSEEK_API_KEY = decrypted
-      } catch { /* usa env var existente */ }
-    }
-  } else if (active === 'openai') {
-    const enc = row.openai_api_key as string | null
-    if (enc) {
-      try {
-        const decrypted = decryptString(enc)
-        if (decrypted.startsWith('sk-') && isPlausibleKey(decrypted)) process.env.OPENAI_API_KEY = decrypted
-      } catch { /* usa env var existente */ }
-    }
-  } else if (active === 'anthropic') {
-    const enc = row.anthropic_api_key as string | null
-    if (enc) {
-      try {
-        const decrypted = decryptString(enc)
-        if (decrypted.startsWith('sk-ant-') && isPlausibleKey(decrypted)) process.env.ANTHROPIC_API_KEY = decrypted
-      } catch { /* usa env var existente */ }
-    }
-  } else if (active === 'google') {
-    const enc = row.google_api_key as string | null
-    if (enc) {
-      try {
-        const decrypted = decryptString(enc)
-        if (isPlausibleKey(decrypted, 20)) process.env.GOOGLE_API_KEY = decrypted
-      } catch { /* usa env var existente */ }
-    }
-  } else if (active === 'groq') {
-    const enc = row.groq_api_key as string | null
-    if (enc) {
-      try {
-        const decrypted = decryptString(enc)
-        if ((decrypted.startsWith('gsk_') || decrypted.startsWith('sk-')) && isPlausibleKey(decrypted)) process.env.GROQ_API_KEY = decrypted
-      } catch { /* usa env var existente */ }
+  for (const provider of Object.keys(API_KEY_ENV_KEYS) as AIProvider[]) {
+    const field = `${provider}_api_key` as keyof typeof row
+    const enc = row[field] as string | null
+    if (!enc) continue
+    try {
+      const decrypted = decryptString(enc)
+      if (provider === 'anthropic' && decrypted.startsWith('sk-ant-') && isPlausibleKey(decrypted)) {
+        process.env[API_KEY_ENV_KEYS[provider]] = decrypted
+      } else if (provider === 'google' && isPlausibleKey(decrypted, 20)) {
+        process.env[API_KEY_ENV_KEYS[provider]] = decrypted
+      } else if (provider === 'groq' && (decrypted.startsWith('gsk_') || decrypted.startsWith('sk-')) && isPlausibleKey(decrypted)) {
+        process.env[API_KEY_ENV_KEYS[provider]] = decrypted
+      } else if ((provider === 'deepseek' || provider === 'openai') && decrypted.startsWith('sk-') && isPlausibleKey(decrypted)) {
+        process.env[API_KEY_ENV_KEYS[provider]] = decrypted
+      }
+    } catch (error) {
+      console.warn(`[applyUserAiSettingsToEnv] Falha ao aplicar chave de ${provider}; mantendo env existente`, error)
     }
   }
 
   assertLlmEnvConfigured(active)
   return active
 }
-

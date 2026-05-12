@@ -118,4 +118,5 @@ export interface Step67Result {
     falha_relacionada?: string
     justificativa?: string
   }>
+  erc_level?: number
 }

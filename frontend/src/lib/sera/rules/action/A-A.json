@@ -1,0 +1,13 @@
+{
+  "code": "A-A",
+  "label": "Sem falha de ação específica",
+  "description": "Ação coerente com crença, percepção ou objetivo já identificado; não há mecanismo de ação mais específico.",
+  "priority": 1,
+  "positive_evidence": ["acao coerente", "nenhuma falha de acao especifica", "objetivo de eficiencia", "decisao consciente"],
+  "negative_evidence": ["readback", "procedimento errado", "supervisor", "incapacidade fisica", "sem treinamento", "nao verificou"],
+  "exclusive_against": ["A-B", "A-C", "A-D", "A-E", "A-F", "A-G", "A-H", "A-I", "A-J"],
+  "requires": ["ausencia de mecanismo de acao especifico"],
+  "forbids": ["usar quando ha falha de comunicacao, selecao, supervisao, capacidade ou verificacao"],
+  "examples": ["ação compatível com objetivo O-D já identificado"],
+  "target_fixtures": ["TEST-O-D"]
+}

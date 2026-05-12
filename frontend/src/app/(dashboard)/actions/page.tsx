@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
 const statusConfig: Record<string, { label: string; color: string; next: string; nextLabel: string }> = {
@@ -10,12 +10,21 @@ const statusConfig: Record<string, { label: string; color: string; next: string;
 }
 
 export default function ActionsPage() {
-  const [actions, setActions] = useState<any[]>([])
+  type ActionItem = {
+    id: string
+    status: string
+    related_failure?: string | null
+    title: string
+    description?: string | null
+    responsible?: string | null
+  }
+
+  const [actions, setActions] = useState<ActionItem[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState('all')
 
-  async function load() {
+  const load = useCallback(async () => {
     try {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { setLoading(false); return }
@@ -30,9 +39,12 @@ export default function ActionsPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
 
-  useEffect(() => { load() }, [])
+  useEffect(() => {
+    const timer = setTimeout(() => { void load() }, 0)
+    return () => clearTimeout(timer)
+  }, [load])
 
   async function updateStatus(id: string, status: string) {
     const { data: { session } } = await supabase.auth.getSession()
@@ -87,7 +99,7 @@ export default function ActionsPage() {
 
       {loading ? <p className="text-slate-400">Carregando...</p> : (
         <div className="space-y-3">
-          {filtered.map((action: any) => {
+          {filtered.map((action) => {
             const s = statusConfig[action.status] || statusConfig.pending
             return (
               <div key={action.id}

@@ -1,0 +1,13 @@
+{
+  "code": "O-B",
+  "label": "Violação rotineira normalizada",
+  "description": "Objetivo desviante por norma informal, atalho cultural ou prática normalizada.",
+  "priority": 8,
+  "positive_evidence": ["todos fazem assim", "sempre fazemos assim", "burocracia", "atalho normalizado", "cultura informal", "norma informal"],
+  "negative_evidence": ["erro tecnico", "desconhecimento", "selecao errada", "proteger passageiro", "economizar combustivel"],
+  "exclusive_against": ["O-A", "O-C", "O-D"],
+  "requires": ["evidencia explicita de violacao rotineira ou cultura de atalho"],
+  "forbids": ["classificar uma violacao isolada como rotina sem evidencia"],
+  "examples": ["checklist considerado burocracia porque todos pulavam"],
+  "target_fixtures": ["TEST-O-B"]
+}

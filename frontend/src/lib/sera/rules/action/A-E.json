@@ -1,0 +1,13 @@
+{
+  "code": "A-E",
+  "label": "Falta de conhecimento/habilidade operacional",
+  "description": "Falha de ação por desconhecimento, falta de treinamento, familiaridade ou competência técnica para saber o que fazer.",
+  "priority": 10,
+  "positive_evidence": ["nao havia recebido treinamento", "sem treinamento", "falta de treinamento", "treinamento especifico", "type-specific", "protocolo desconhecido", "sistema novo", "modelo novo", "modelo recem-incorporado", "nao compreendeu", "desconhecia", "falta de conhecimento", "falta de habilidade", "competencia tecnica insuficiente"],
+  "negative_evidence": ["sabia exatamente o que fazer", "incapacidade fisica", "procedimento errado por similaridade", "readback", "supervisor"],
+  "exclusive_against": ["A-A", "A-B", "A-C", "A-D", "A-F", "A-G", "A-H", "A-I", "A-J"],
+  "requires": ["deficit explicito de conhecimento, treinamento ou habilidade"],
+  "forbids": ["classificar como A-B quando desconhecimento explicito explica a falha"],
+  "examples": ["técnico sem treinamento type-specific não compreendeu BITE de modelo novo"],
+  "target_fixtures": ["TEST-A-E"]
+}

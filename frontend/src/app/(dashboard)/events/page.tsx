@@ -14,7 +14,15 @@ const statusLabel: Record<string, { label: string; color: string }> = {
 
 export default function EventsPage() {
   const t = useT()
-  const [events, setEvents] = useState<any[]>([])
+  type EventItem = {
+    id: string
+    title: string
+    status: string
+    operation_type?: string | null
+    aircraft_type?: string | null
+    created_at: string
+  }
+  const [events, setEvents] = useState<EventItem[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -52,7 +60,7 @@ export default function EventsPage() {
         </div>
       ) : (
         <div className="space-y-3">
-          {events.map((event: any) => {
+          {events.map((event) => {
             const s = statusLabel[event.status] || statusLabel.received
             return (
               <Link key={event.id} href={`/events/${event.id}`}

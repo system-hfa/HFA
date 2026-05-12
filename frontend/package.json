@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:sera": "npx tsx tests/run-sera-logic-tests.ts"
+    "test:sera": "tsx tests/sera/run.ts",
+    "test:sera:single": "SERA_N_RUNS=1 tsx tests/sera/run.ts",
+    "test:sera:filter": "tsx tests/sera/run.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.1",
@@ -45,6 +47,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.5",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

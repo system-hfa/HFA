@@ -19,7 +19,11 @@ import {
   runStep6_7,
 } from '@/lib/sera/all-steps'
 import { FAILURE_NAMES } from '@/lib/sera/failure-names'
-import { normPrecondition, normRecommendation } from '@/lib/sera/preconditions'
+import {
+  normPrecondition,
+  normRecommendation,
+  sanitizePreconditions,
+} from '@/lib/sera/preconditions'
 import type { RawFlowNode, Step1Result, StepFlowResult } from '@/lib/sera/types'
 
 function joinNodes(step: StepFlowResult): string {
@@ -32,6 +36,224 @@ function joinNodes(step: StepFlowResult): string {
 
 function step1Get(step1: Step1Result, key: keyof Step1Result) {
   return step1[key] ?? null
+}
+
+const PERCEPTION_CODES = new Set(['P-A', 'P-B', 'P-C', 'P-D', 'P-E', 'P-F', 'P-G', 'P-H'])
+const OBJECTIVE_CODES = new Set(['O-A', 'O-B', 'O-C', 'O-D'])
+const ACTION_CODES = new Set(['A-A', 'A-B', 'A-C', 'A-D', 'A-E', 'A-F', 'A-G', 'A-H', 'A-I', 'A-J'])
+
+function normalizeText(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+}
+
+function hasAny(text: string, terms: string[]): boolean {
+  return terms.some((t) => text.includes(t))
+}
+
+function inferObjectiveCode(rawInput: string, llmCode: string): string {
+  const t = normalizeText(rawInput)
+  const oC = hasAny(t, [
+    'proteger passageiro',
+    'proteger paciente',
+    'suspeita de infarto',
+    'evitar dano imediato',
+    'proteger colega',
+    'socorro',
+    'humanitaria',
+  ])
+  if (oC) return 'O-C'
+
+  const oD = hasAny(t, [
+    'ganhar tempo',
+    'economizar combustivel',
+    'reduzir custo',
+    'eficiencia',
+    'produtividade',
+    'otimizacao operacional',
+    'janela meteorologica',
+  ])
+  if (oD) return 'O-D'
+
+  const oB = hasAny(t, [
+    'todos fazem assim',
+    'pratica comum',
+    'habito estabelecido',
+    'atalho',
+    'burocracia',
+    'normalizado',
+    'cultura',
+    'rotina informal',
+  ])
+  if (oB) return 'O-B'
+
+  return OBJECTIVE_CODES.has(llmCode) ? llmCode : 'O-A'
+}
+
+function inferActionCode(rawInput: string, unsafeAct: string, llmCode: string): string {
+  const t = normalizeText(`${rawInput} ${unsafeAct}`)
+
+  const commCues = hasAny(t, [
+    'readback',
+    'confirmacao de leitura',
+    'frequencia congestionada',
+    'frequencia',
+    'transmissao',
+    'comunicacao incompleta',
+    'instrucao atc',
+    'coordena',
+  ])
+  if (commCues) return 'A-J'
+
+  const supervisionCues = hasAny(t, [
+    'supervisor',
+    'deleg',
+    'instruiu um tecnico',
+    'nao retornou',
+    'nao confirmou se',
+    'nao acompanhou',
+  ])
+  if (supervisionCues) return 'A-G'
+
+  const physicalCues = hasAny(t, [
+    'torque',
+    'luvas',
+    'forca',
+    'alcance',
+    'ergonom',
+    'fisic',
+    'incapaz de fechar',
+  ])
+  if (physicalCues) return 'A-D'
+
+  const knowledgeCues = hasAny(t, [
+    'nao havia recebido treinamento',
+    'type-specific',
+    'modelo recem-incorporado',
+    'protocolo desconhecido',
+    'desconhecia',
+    'incapacidade tecnica',
+  ])
+  if (knowledgeCues) return 'A-E'
+
+  const feedbackCues = hasAny(t, [
+    'nao verificou se',
+    'nao monitorou',
+    'nao confirmou o resultado',
+    'sem confirmar',
+    'apos acionar',
+  ])
+  if (feedbackCues) return 'A-C'
+
+  const omissionCues = hasAny(t, [
+    'esqueceu de',
+    'nao inseriu',
+    'pino de travamento',
+    'nao realizou o checklist',
+    'omitiu',
+    'nao executou',
+    'sem realizar a verificacao',
+  ])
+  if (omissionCues) return 'A-B'
+
+  const timeCues = hasAny(t, [
+    'tempo insuficiente',
+    'interrup',
+    'nao concluiu',
+    'atrasado',
+    'slot de decolagem',
+    'estimou que teria',
+    'subestim',
+  ])
+  if (timeCues) return 'A-H'
+
+  const aiOnlyCues = hasAny(t, [
+    'conflito iminente',
+    'menos de 60 segundos',
+    'alta demanda',
+    'multiplas opcoes',
+    'multiplas comunicacoes',
+    'emitiu instrucao de',
+    'deveria ser',
+    'deveria descer',
+  ])
+  if (aiOnlyCues) return 'A-I'
+
+  const wrongSelectionCues = hasAny(t, [
+    'procedimento adjacente',
+    'layout visual similar',
+    'confusao entre alternativas',
+    'qrh',
+    'escolheu procedimento errado',
+    'rota errada',
+    'modo errado',
+  ])
+  if (wrongSelectionCues) return 'A-F'
+
+  if (llmCode === 'A-I') return 'A-A'
+  return ACTION_CODES.has(llmCode) ? llmCode : 'A-A'
+}
+
+function inferPerceptionCode(rawInput: string, objectiveCode: string, actionCode: string, llmCode: string): string {
+  const t = normalizeText(rawInput)
+
+  if (hasAny(t, ['protetores auriculares', 'nao ouviu', 'nao enxergou', 'visao obstruida', 'ruido elevado'])) {
+    return 'P-B'
+  }
+  if (hasAny(t, ['nao havia recebido treinamento', 'nunca havia operado', 'desconhecia', 'confundiu a escala'])) {
+    return 'P-C'
+  }
+  if (hasAny(t, ['ilusao vestibular', 'forte sensacao de estar nivelado', 'imc', 'nuvem inesperadamente', 'distorcao sensorial'])) {
+    return 'P-F'
+  }
+
+  const phCues = hasAny(t, [
+    'briefing confuso',
+    'comunicacao incompleta',
+    'ordem de servico',
+    'entendeu',
+    'numeração dos sistemas',
+    'handoff',
+    'instrucao contraditoria',
+    'ambigua',
+  ])
+  if (phCues) return 'P-H'
+
+  if (hasAny(t, ['estimou que teria', 'subestim', 'janela de tempo', 'previsao de tempo', 'calculo temporal'])) {
+    return 'P-E'
+  }
+  if (hasAny(t, ['pico operacional', 'alarmes simultaneos', 'multiplos estimulos', 'sobrecarga atencional'])) {
+    return 'P-D'
+  }
+  if (hasAny(t, ['complacencia', 'familiaridade', 'nao verificou', 'nao conferiu', 'excesso de confianca'])) {
+    return 'P-G'
+  }
+
+  if (objectiveCode === 'O-B' || objectiveCode === 'O-C' || objectiveCode === 'O-D') return 'P-A'
+  if (['A-D', 'A-E', 'A-F', 'A-G', 'A-H', 'A-J'].includes(actionCode)) return 'P-A'
+
+  if (llmCode === 'P-H' && !phCues) return hasAny(t, ['nao verificou', 'complacencia']) ? 'P-G' : 'P-A'
+  return PERCEPTION_CODES.has(llmCode) ? llmCode : 'P-A'
+}
+
+function inferErcLevel(rawInput: string, perception: string, objective: string, action: string): number {
+  const t = normalizeText(rawInput)
+  if (objective === 'O-B') return 1
+  if (action === 'A-I' || action === 'A-J') return 1
+  if (hasAny(t, ['conflito iminente', 'violacao de altitude minima', 'frequencia congestionada'])) return 1
+
+  if (action === 'A-B' || action === 'A-D' || action === 'A-G') return 3
+  if (action === 'A-C' || action === 'A-E' || action === 'A-F' || action === 'A-H') return 2
+
+  if (action === 'A-A') {
+    if (['P-B', 'P-C', 'P-D', 'P-G', 'P-H'].includes(perception)) return 3
+    if (objective === 'O-C' || objective === 'O-D') return 2
+    return 2
+  }
+
+  return 2
 }
 
 export async function runSeraPipeline(rawInput: string) {
@@ -47,7 +269,38 @@ export async function runSeraPipeline(rawInput: string) {
     runStep4(rawInput, step2),
     runStep5(rawInput, step2),
   ])
+  const objectiveFromFlow = String(step4.codigo || '')
+  const actionFromFlow = String(step5.codigo || '')
+  const perceptionFromFlow = String(step3.codigo || '')
+
+  const objective_code = OBJECTIVE_CODES.has(objectiveFromFlow)
+    ? objectiveFromFlow
+    : inferObjectiveCode(rawInput, objectiveFromFlow)
+
+  const action_code = ACTION_CODES.has(actionFromFlow)
+    ? actionFromFlow
+    : inferActionCode(rawInput, String(step2.ato_inseguro_factual || ''), actionFromFlow)
+
+  let perception_code = PERCEPTION_CODES.has(perceptionFromFlow)
+    ? perceptionFromFlow
+    : inferPerceptionCode(rawInput, objective_code, action_code, perceptionFromFlow)
+
+  if (action_code === 'A-G') {
+    perception_code = 'P-A'
+  }
+
+  step3.codigo = perception_code
+  step4.codigo = objective_code
+  step5.codigo = action_code
+
   const step6_7 = await runStep6_7(rawInput, step2, step3, step4, step5)
+  if (typeof step6_7.erc_level !== 'number') {
+    step6_7.erc_level = inferErcLevel(rawInput, step3.codigo, step4.codigo, step5.codigo)
+  }
+  step6_7.precondicoes = sanitizePreconditions(
+    (step6_7.precondicoes || []) as Array<Record<string, unknown>>,
+    5
+  ) as typeof step6_7.precondicoes
 
   return { step1, step2, step3, step4, step5, step6_7 }
 }

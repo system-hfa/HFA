@@ -1,8 +1,56 @@
 import OpenAI from 'openai'
 import Anthropic from '@anthropic-ai/sdk'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import fs from 'node:fs'
+import path from 'node:path'
 
 export type AIProvider = 'deepseek' | 'openai' | 'anthropic' | 'google' | 'groq'
+
+let llmConfigLogged = false
+const DEFAULT_DEEPSEEK_MODEL = 'deepseek-reasoner'
+
+function loadFrontendEnvLocal(): void {
+  const envPath = path.resolve(process.cwd(), 'frontend/.env.local')
+  if (!fs.existsSync(envPath)) return
+  const content = fs.readFileSync(envPath, 'utf8')
+  for (const line of content.split('\n')) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) continue
+    const eq = trimmed.indexOf('=')
+    if (eq <= 0) continue
+    const key = trimmed.slice(0, eq).trim()
+    const value = trimmed.slice(eq + 1).trim()
+    if (!process.env[key]) process.env[key] = value
+  }
+}
+
+function isSeraTestContext(): boolean {
+  return Boolean(
+    process.env.SERA_N_RUNS ||
+      process.env.SERA_FIXTURE ||
+      process.argv.some((a) => a.includes('tests/sera/run.ts') || a.includes('tests/sera/'))
+  )
+}
+
+function resolveDeepseekConfig() {
+  loadFrontendEnvLocal()
+  const seraContext = isSeraTestContext()
+  const model = process.env.DEEPSEEK_MODEL ?? DEFAULT_DEEPSEEK_MODEL
+  const temperature = seraContext ? 0 : Number(process.env.DEEPSEEK_TEMPERATURE ?? '0')
+  const topP = seraContext ? 1 : Number(process.env.DEEPSEEK_TOP_P ?? '1')
+
+  if (!llmConfigLogged) {
+    llmConfigLogged = true
+    console.log('[SERA LLM CONFIG]', {
+      provider: 'deepseek',
+      model,
+      temperature,
+      top_p: topP
+    })
+  }
+
+  return { model, temperature, topP }
+}
 
 export function getActiveProvider(): AIProvider {
   const p = (process.env.AI_PROVIDER ?? 'deepseek').toLowerCase()
@@ -14,8 +62,9 @@ export function getActiveProvider(): AIProvider {
 
 export function getModelName(provider?: AIProvider): string {
   const p = provider ?? getActiveProvider()
+  const deepseek = resolveDeepseekConfig()
   const models: Record<AIProvider, string> = {
-    deepseek: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+    deepseek: deepseek.model,
     openai: process.env.OPENAI_MODEL || 'gpt-4o',
     anthropic: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
     google: process.env.GOOGLE_MODEL || 'gemini-2.0-flash',
@@ -33,13 +82,55 @@ function requireApiKey(envName: string, hint?: string): string {
   )
 }
 
-function extractJson(text: string): string {
+function extractJsonBlock(text: string): string {
   let t = text.trim()
   const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/)
   if (fence) t = fence[1]!.trim()
   const obj = t.match(/(\{[\s\S]*\}|\[[\s\S]*\])/)
-  if (obj) t = obj[1]!
+  if (obj) return obj[1]!
   return t
+}
+
+function sanitizeJsonCandidate(raw: string): string {
+  const candidate = extractJsonBlock(raw).trim()
+  let result = ''
+  let inString = false
+  let escaped = false
+
+  for (const char of candidate) {
+    const code = char.charCodeAt(0)
+
+    if (escaped) {
+      result += char
+      escaped = false
+      continue
+    }
+
+    if (char === '\\') {
+      result += char
+      escaped = true
+      continue
+    }
+
+    if (char === '"') {
+      result += char
+      inString = !inString
+      continue
+    }
+
+    if (code < 0x20) {
+      if (inString) {
+        result += ' '
+      } else if (char === '\n' || char === '\r' || char === '\t') {
+        result += char
+      }
+      continue
+    }
+
+    result += char
+  }
+
+  return result.trim()
 }
 
 async function callGoogle(system: string, user: string): Promise<string> {
@@ -103,6 +194,7 @@ export async function callAi(system: string, userMsg: string, maxTokens = 8192):
     raw = r.choices[0]?.message?.content || ''
   } else {
     /* deepseek — mesmo cliente OpenAI */
+    const deepseek = resolveDeepseekConfig()
     const client = new OpenAI({
       apiKey: requireApiKey(
         'DEEPSEEK_API_KEY',
@@ -111,24 +203,42 @@ export async function callAi(system: string, userMsg: string, maxTokens = 8192):
       baseURL: 'https://api.deepseek.com/v1',
     })
     const r = await client.chat.completions.create({
-      model: getModelName('deepseek'),
+      model: deepseek.model,
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: userMsg },
       ],
-      max_tokens: maxTokens,
+      max_tokens: Math.min(maxTokens, 16000),
+      temperature: deepseek.temperature,
+      top_p: deepseek.topP,
     })
     raw = r.choices[0]?.message?.content || ''
   }
 
-  return extractJson(raw)
+  return raw
 }
 
 export function safeParse(raw: string, step: string): Record<string, unknown> {
   try {
     return JSON.parse(raw) as Record<string, unknown>
+  } catch (_) {}
+
+  const cleaned = extractJsonBlock(raw)
+  try {
+    return JSON.parse(cleaned) as Record<string, unknown>
+  } catch (_) {}
+
+  const sanitized = sanitizeJsonCandidate(cleaned)
+  try {
+    return JSON.parse(sanitized) as Record<string, unknown>
+  } catch (_) {}
+
+  const sanitizedRaw = sanitizeJsonCandidate(raw)
+  try {
+    return JSON.parse(sanitizedRaw) as Record<string, unknown>
   } catch (e) {
-    throw new Error(`Falha ao parsear JSON na ${step}: ${String(e)} — ${raw.slice(0, 400)}`)
+    const preview = raw.slice(0, 600)
+    throw new Error(`Falha ao parsear JSON na ${step}: ${String(e)} — ${preview}`)
   }
 }
 
@@ -137,7 +247,22 @@ export async function ask(
   user: string,
   opts?: { maxTokens?: number }
 ): Promise<string> {
-  return callAi(system, user, opts?.maxTokens ?? 8192)
+  const MAX_RETRIES = 2
+  let lastError: Error | null = null
+
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      return await callAi(system, user, opts?.maxTokens ?? 16000)
+    } catch (e: unknown) {
+      lastError = e instanceof Error ? e : new Error(String(e))
+      if (!lastError.message.includes('Falha ao parsear JSON')) throw lastError
+      if (attempt < MAX_RETRIES) {
+        await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)))
+      }
+    }
+  }
+
+  throw lastError!
 }
 
 /**

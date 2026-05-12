@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
+import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
+import { applyUserAiSettingsToEnv } from '@/lib/server/apply-user-ai-settings-to-env'
 import { ask, safeParse, getModelName, assertLlmEnvConfigured } from '@/lib/sera/llm'
 
 export const maxDuration = 60
@@ -25,7 +27,9 @@ export async function POST(req: Request) {
   try {
     const user = await requireBearerUser(req)
     userId = user.userId
+    const admin = getSupabaseAdmin()
 
+    await applyUserAiSettingsToEnv(admin, user.userId)
     assertLlmEnvConfigured()
     console.log('[ai-insight] usando provider:', process.env.AI_PROVIDER ?? 'default')
 

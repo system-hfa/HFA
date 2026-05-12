@@ -1,0 +1,13 @@
+{
+  "code": "P-A",
+  "label": "Sem falha perceptiva específica",
+  "description": "Default quando não há evidência explícita de falha perceptiva predominante.",
+  "priority": 1,
+  "positive_evidence": ["sem falha perceptiva", "decisao inadequada", "acao errada", "violacao", "seleção errada", "supervisao", "incapacidade fisica", "objetivo desviante"],
+  "negative_evidence": ["nao viu", "nao ouviu", "nao percebeu", "nao recebeu informacao", "interpretou errado", "desconhecia o significado"],
+  "exclusive_against": ["P-B", "P-C", "P-D", "P-E", "P-F", "P-G", "P-H"],
+  "requires": ["ausencia de evidencia perceptiva explicita"],
+  "forbids": ["inferir percepcao pela consequencia operacional"],
+  "examples": ["seleção de procedimento errado sem falha perceptiva independente", "falha de supervisão sem checagem perceptiva própria"],
+  "target_fixtures": ["TEST-A-D", "TEST-A-F", "TEST-A-G", "TEST-O-D"]
+}

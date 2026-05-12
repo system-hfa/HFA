@@ -1,0 +1,80 @@
+{
+  "domain": "objective",
+  "version": "1.0",
+  "rules": [
+    {
+      "code": "O-A",
+      "excludes": ["O-B", "O-C", "O-D"],
+      "when": [
+        "no_explicit_deviant_objective",
+        "nominal_operational_objective"
+      ],
+      "unless": [],
+      "rationale": "O-A é default sem objetivo desviante explícito."
+    },
+    {
+      "code": "O-B",
+      "excludes": ["O-A", "O-D"],
+      "when": [
+        "routine_violation",
+        "normalized_deviation",
+        "informal_shortcut_culture",
+        "considered_bureaucracy"
+      ],
+      "unless": [],
+      "rationale": "O-B é violação rotineira/normalizada."
+    },
+    {
+      "code": "O-C",
+      "excludes": ["O-A", "O-D"],
+      "when": [
+        "explicit_human_protection_intent",
+        "protect_passenger_or_patient",
+        "avoid_immediate_human_harm"
+      ],
+      "unless": [],
+      "rationale": "O-C exige intenção explícita de proteção humana."
+    },
+    {
+      "code": "O-C",
+      "excludes": ["O-C"],
+      "when": [
+        "readback",
+        "radio",
+        "atc",
+        "operational_communication",
+        "coordination",
+        "frequency_congestion"
+      ],
+      "unless": [
+        "explicit_human_protection_intent"
+      ],
+      "rationale": "Comunicação operacional não implica objetivo altruísta."
+    },
+    {
+      "code": "O-D",
+      "excludes": ["O-A", "O-C"],
+      "when": [
+        "fuel_saving",
+        "time_saving",
+        "cost_reduction",
+        "operational_efficiency",
+        "productivity",
+        "shortcut_for_schedule"
+      ],
+      "unless": [],
+      "rationale": "O-D é objetivo de eficiência/economia."
+    },
+    {
+      "code": "O-D",
+      "excludes": ["O-C"],
+      "when": [
+        "efficiency_or_economy_intent"
+      ],
+      "unless": [
+        "explicit_human_protection_intent"
+      ],
+      "rationale": "Eficiência/economia não pode ser reinterpretada como proteção humana."
+    }
+  ]
+}

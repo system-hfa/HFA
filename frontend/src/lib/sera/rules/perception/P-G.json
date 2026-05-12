@@ -1,0 +1,13 @@
+{
+  "code": "P-G",
+  "label": "Falha de monitoramento/verificação",
+  "description": "Informação disponível deveria ter sido checada, monitorada ou confirmada pelo próprio operador.",
+  "priority": 8,
+  "positive_evidence": ["nao verificou se", "nao verificou o indicador", "nao monitorou", "nao confirmou o resultado", "apos acionar", "depois de acionar", "indicador de trem", "trem de pouso", "condicao esperada", "complacencia", "pressuposicao de normalidade"],
+  "negative_evidence": ["acao de outro", "supervisor", "readback", "informacao nao chegou", "briefing ambiguo", "procedimento errado"],
+  "exclusive_against": ["P-A", "P-B", "P-C", "P-D", "P-E", "P-F", "P-H"],
+  "requires": ["informacao disponivel diretamente ao operador"],
+  "forbids": ["usar para supervisao de terceiros ou selecao errada"],
+  "examples": ["não verificou indicador de trem após acionar alavanca"],
+  "target_fixtures": ["TEST-A-C"]
+}

@@ -1,0 +1,13 @@
+{
+  "code": "A-D",
+  "label": "Incapacidade física/ergonômica/motora",
+  "description": "O agente sabia o que fazer, mas limitação física, motora, ergonômica, EPI, força, alcance ou equipamento impediu a execução.",
+  "priority": 10,
+  "positive_evidence": ["incapacidade fisica", "limitacao fisica", "limitacao motora", "nao conseguiu executar fisicamente", "nao conseguiu aplicar", "nao conseguiu fechar", "torque", "forca insuficiente", "preensao", "luvas", "epi", "ergonomia", "ergonomica", "alcance", "equipamento impediu"],
+  "negative_evidence": ["nao havia recebido treinamento", "procedimento errado", "readback", "supervisor", "sabia exatamente o que fazer"],
+  "exclusive_against": ["A-A", "A-B", "A-C", "A-E", "A-F", "A-G", "A-H", "A-I", "A-J"],
+  "requires": ["barreira fisica ou ergonomica explicita"],
+  "forbids": ["classificar como A-B quando havia incapacidade fisica explicita"],
+  "examples": ["luvas espessas impediram aplicar torque necessário em válvula crítica"],
+  "target_fixtures": ["TEST-A-D"]
+}

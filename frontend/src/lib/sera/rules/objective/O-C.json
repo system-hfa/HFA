@@ -1,0 +1,13 @@
+{
+  "code": "O-C",
+  "label": "Violação excepcional/altruística",
+  "description": "Objetivo pró-social conflitante com regra/procedimento para proteger pessoa, passageiro, paciente ou equipe.",
+  "priority": 8,
+  "positive_evidence": ["proteger passageiro", "proteger paciente", "proteger pessoa", "proteger equipe", "passageiro doente", "paciente", "salvar alguem", "evitar mal maior", "evitar piora medica", "emergencia humana"],
+  "negative_evidence": ["readback", "frequencia", "congestionamento", "comunicacao atc", "coordenacao operacional", "radio", "produtividade", "combustivel", "eficiencia", "rota direta", "janela meteorologica"],
+  "exclusive_against": ["O-A", "O-B", "O-D"],
+  "requires": ["intencao explicita de protecao humana"],
+  "forbids": ["comunicacao operacional sem intencao altruistica", "eficiencia ou economia"],
+  "examples": ["pouso sem autorização para proteger passageiro doente"],
+  "target_fixtures": ["TEST-O-C"]
+}

@@ -1,0 +1,97 @@
+{
+  "domain": "perception",
+  "version": "1.0",
+  "rules": [
+    {
+      "code": "P-A",
+      "excludes": ["P-B", "P-C", "P-D", "P-E", "P-F", "P-G", "P-H"],
+      "when": [
+        "no_explicit_perceptual_failure",
+        "main_mechanism_is_action_objective_or_supervision"
+      ],
+      "unless": [],
+      "rationale": "P-A é default sem evidência perceptiva explícita."
+    },
+    {
+      "code": "P-B",
+      "excludes": ["P-C", "P-G"],
+      "when": [
+        "sensory_channel_blocked",
+        "alarm_not_seen_or_heard_due_to_environment"
+      ],
+      "unless": [],
+      "rationale": "P-B é falha sensorial, não interpretação nem monitoramento."
+    },
+    {
+      "code": "P-C",
+      "excludes": ["P-B", "P-G"],
+      "when": [
+        "signal_seen_but_not_understood",
+        "unfamiliar_system",
+        "knowledge_deficit_for_interpretation"
+      ],
+      "unless": [],
+      "rationale": "P-C requer déficit de interpretação/conhecimento."
+    },
+    {
+      "code": "P-D",
+      "excludes": ["P-E"],
+      "when": [
+        "attention_overload",
+        "multiple_simultaneous_demands",
+        "high_workload",
+        "operational_congestion"
+      ],
+      "unless": [],
+      "rationale": "P-D é atenção/sobrecarga; P-E é erro temporal."
+    },
+    {
+      "code": "P-E",
+      "excludes": ["P-D"],
+      "when": [
+        "time_estimation_error",
+        "underestimated_duration",
+        "misjudged_available_time"
+      ],
+      "unless": [
+        "explicit_high_workload_or_multiple_demands"
+      ],
+      "rationale": "P-E é gerenciamento temporal, não sobrecarga atencional geral."
+    },
+    {
+      "code": "P-F",
+      "excludes": ["P-B", "P-C"],
+      "when": [
+        "sensory_illusion",
+        "spatial_disorientation",
+        "false_horizon",
+        "vestibular_or_visual_illusion"
+      ],
+      "unless": [],
+      "rationale": "P-F é percepção ilusória/distorcida, não falta sensorial nem desconhecimento."
+    },
+    {
+      "code": "P-G",
+      "excludes": ["P-A"],
+      "when": [
+        "expected_information_available",
+        "operator_failed_to_check",
+        "complacency_or_assumed_normality"
+      ],
+      "unless": [],
+      "rationale": "P-G exige falha de monitoramento/verificação de informação disponível."
+    },
+    {
+      "code": "P-H",
+      "excludes": ["P-C", "P-G"],
+      "when": [
+        "ambiguous_briefing",
+        "ambiguous_instruction",
+        "wrong_or_incomplete_information_transmitted",
+        "communication_ambiguity"
+      ],
+      "unless": [],
+      "rationale": "P-H é falha de comunicação/informação, não desconhecimento técnico nem mera não checagem."
+    }
+  ]
+}
