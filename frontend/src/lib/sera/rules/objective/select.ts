@@ -20,97 +20,127 @@ function hasAny(text: string, tokens: string[]): boolean {
   return tokens.some((token) => has(text, token))
 }
 
+function hasExplicitProtectiveHumanIntent(text: string): boolean {
+  const directPositive =
+    hasAny(text, [
+      'passageiro doente',
+      'suspeita de infarto',
+      'suspeita de avc',
+      'emergencia medica',
+      'necessidade medica',
+      'evitar agravamento',
+      'evitar piorar',
+      'preservar paciente',
+      'proteger pessoa',
+      'proteger passageiro',
+      'proteger paciente',
+      'pessoa presa em area de risco',
+      'risco humano imediato',
+      'dano humano iminente',
+    ]) ||
+    (has(text, 'passageiro') && (has(text, 'doente') || has(text, 'infarto') || has(text, 'avc'))) ||
+    (has(text, 'condicao') && has(text, 'passageiro') && (has(text, 'piorar') || has(text, 'agravar'))) ||
+    (has(text, 'paciente') && (has(text, 'agravamento') || has(text, 'emergencia medica')))
+
+  if (!directPositive) return false
+
+  const explicitNegative = hasAny(text, [
+    'nao havia passageiro em emergencia medica',
+    'nao havia passageiro com emergencia medica',
+    'nao havia passageiro doente',
+    'nao havia emergencia medica',
+    'nao havia situacao de risco humano imediato',
+    'nao havia risco humano imediato',
+    'sem situacao de risco humano imediato',
+    'sem risco humano imediato',
+    'atendimento eletivo',
+  ])
+
+  return !explicitNegative
+}
+
+function hasExplicitRoutineNormalization(text: string): boolean {
+  const directPositive = hasAny(text, [
+    'pratica tolerada',
+    'pratica ja era tolerada',
+    'pratica aceita',
+    'pratica comum na equipe',
+    'todos faziam assim',
+    'todos na oficina faziam assim',
+    'sempre fazemos assim',
+    'sempre fazia assim',
+    'rotina informal',
+    'cultura informal',
+    'atalho aceito informalmente',
+    'desvio normalizado',
+    'violacao rotineira',
+    'considerado burocracia',
+    'formalidade dispensavel',
+    'todo mundo usa',
+    'nunca ninguem foi cobrado',
+    'rota habitual',
+    'rota conhecida',
+    'rota costumeira',
+    'por habito',
+    'pratica habitual',
+  ]) ||
+    (has(text, 'altitude minima') && has(text, 'rota') && has(text, 'ganhar tempo'))
+
+  if (!directPositive) return false
+
+  const explicitNegative = hasAny(text, [
+    'nao havia historico de pratica similar',
+    'nao havia cultura informal',
+    'nao tinha historico de simplificar procedimentos',
+    'nao tinha historico estabelecido',
+    'nao havia historico estabelecido',
+    'decisao pontual',
+    'decisao individual',
+  ])
+
+  return !explicitNegative
+}
+
+function hasExplicitEfficiencyObjective(text: string): boolean {
+  return hasAny(text, [
+    'reduzir consumo de combustivel',
+    'economizar combustivel',
+    'rota mais curta',
+    'cumprir janela de conexao',
+    'cumprir horario',
+    'aumentar produtividade',
+    'aumentar a produtividade',
+    'produtividade',
+    'metodo mais rapido',
+    'mais rapido',
+    'reduzir tempo',
+    'reduzir tempo de voo',
+    'ganho operacional',
+    'eficiencia operacional',
+    'eficiencia',
+    'economia operacional',
+    'atalho operacional',
+  ])
+}
+
 export function classifyObjectiveByRules(text: string): ObjectiveOverrideResult {
   const t = normalizeObjectiveText(text)
 
-  // O-B is checked BEFORE O-C: routine/normalized violation always beats efficiency and
-  // takes precedence over O-C when no explicit medical/protective emergency is present.
-  const routineViolation =
-    hasAny(t, [
-      'rota habitual',
-      'rota conhecida',
-      'rota costumeira',
-      'por habito',
-      'pratica habitual',
-      'pratica ja era tolerada',
-      'violacao rotineira',
-      'desvio normalizado',
-      'pratica tolerada',
-      'pratica aceita',
-      'tolerada',
-      'considerado burocracia',
-      'formalidade dispensavel',
-      'culturalmente aceita',
-      'aceita informalmente',
-      'aceito informalmente',
-      'atalho aceito informalmente',
-      'todo mundo usa',
-      'nunca ninguem foi cobrado',
-      'cultura informal',
-      'todos faziam assim',
-      'todos na oficina faziam assim',
-      'sempre fazemos assim',
-      'sempre fazia assim',
-      'rotineira',
-      'normalizado',
-    ]) ||
-    (has(t, 'altitude minima') && has(t, 'rota')) ||
-    (has(t, 'altitude minima') && has(t, 'ganhar tempo') && (has(t, 'habitual') || has(t, 'rotina') || has(t, 'costumeira'))) ||
-    (has(t, 'checklist') && (has(t, 'burocracia') || has(t, 'cultura informal')))
-
-  if (routineViolation) {
-    return {
-      code: 'O-B',
-      reason: 'routine or normalized violation',
-    }
-  }
-
-  // O-C requires explicit human/medical protective objective AND no strong O-B routine signals.
-  // Triggers: medical emergency, patient condition, person in immediate risk.
-  // Does NOT trigger for: liberar mais rápido, acelerar liberação, eficiência, prática aceita.
-  const protective =
-    hasAny(t, [
-      'passageiro doente',
-      'evitar piorar',
-      'piorar condicao',
-      'evitar agravamento',
-      'agravamento',
-      'emergencia medica',
-      'necessidade medica',
-      'suspeita de infarto',
-      'atendimento medico',
-      'dano humano',
-      'risco imediato',
-    ]) ||
-    (has(t, 'passageiro') && (has(t, 'doente') || has(t, 'infarto') || has(t, 'emergencia medica'))) ||
-    (has(t, 'paciente') && (has(t, 'agravamento') || has(t, 'atendimento') || has(t, 'emergencia'))) ||
-    (has(t, 'proteger') && (has(t, 'pessoa') || has(t, 'passageiro') || has(t, 'paciente'))) ||
-    (has(t, 'condicao') && has(t, 'passageiro') && (has(t, 'piorar') || has(t, 'agravar')))
-
-  if (protective) {
+  if (hasExplicitProtectiveHumanIntent(t)) {
     return {
       code: 'O-C',
       reason: 'explicit human/protective objective',
     }
   }
 
-  const efficiency = hasAny(t, [
-    'rota mais curta',
-    'economizar combustivel',
-    'cumprir janela de conexao',
-    'janela de conexao',
-    'reduz tempo de voo',
-    'reduzir tempo de voo',
-    'cumprir horario',
-    'ganhar tempo',
-    'atalho operacional',
-    'aumentar produtividade',
-    'produtividade',
-    'economia',
-    'eficiencia',
-  ])
+  if (hasExplicitRoutineNormalization(t)) {
+    return {
+      code: 'O-B',
+      reason: 'routine or normalized violation',
+    }
+  }
 
-  if (efficiency) {
+  if (hasExplicitEfficiencyObjective(t)) {
     return {
       code: 'O-D',
       reason: 'efficiency, economy, time, connection, fuel, or productivity objective',

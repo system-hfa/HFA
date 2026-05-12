@@ -1577,64 +1577,7 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
     return flowResult(objectiveRule.code, [no1], discarded)
   }
 
-  const forcedObjective = forceObjectiveOverride(objectiveDecisionText)
-
-  if (process.env.SERA_DEBUG_OBJECTIVE === '1') {
-    console.log('[SERA OBJECTIVE TEXT]', objectiveDecisionText)
-    console.log('[SERA OBJECTIVE OVERRIDE]', forcedObjective)
-  }
-
-  // Overrides objetivos codificam padrões SERA validados por fixture ouro:
-  // O-C para proteção humana explícita; O-B para violação rotineira/normalizada.
-  // Eles precedem eficiência O-D e default O-A.
-  if (forcedObjective) {
-    const no1 = methodologyNode(`Gate determinístico: ${forcedObjective.reason}.`, {
-      resposta: forcedObjective.code === 'O-C' ? 'Não' : 'Não',
-      objetivo_identificado: forcedObjective.code === 'O-C' ? 'proteção humana explícita' : 'violação rotineira normalizada',
-    })
-    logMethodology('runStep4', `Gate Override ${forcedObjective.code}`, no1, [forcedObjective.code], true)
-    return flowResult(
-      forcedObjective.code,
-      [no1],
-      forcedObjective.code === 'O-C'
-        ? 'O-A, O-B e O-D descartados — override determinístico de proteção humana explícita'
-        : 'O-A, O-C e O-D descartados — override determinístico de violação rotineira/normalizada'
-    )
-  }
-  const medicalProtectiveObjective = evidenceOfMedicalProtectiveObjective(relatoNorm)
-  const habitualViolationObjective = evidenceOfHabitualViolationObjective(relatoNorm)
-
-  // Metodologia: O-C exige intenção protetiva humana explícita;
-  // O-B vence O-D quando há ganho de tempo em rotina/violação normalizada;
-  // O-D cobre eficiência sem normalização nem proteção humana.
-  if (medicalProtectiveObjective) {
-    const no1 = methodologyNode('Gate determinístico: intenção explícita de proteção humana/médica.', {
-      resposta: 'Não',
-      objetivo_identificado: 'proteção humana explícita',
-    })
-    logMethodology('runStep4', 'Gate O-C', no1, ['O-C'], true)
-    return flowResult('O-C', [no1], 'O-A, O-B e O-D descartados — O-C exige e recebeu evidência explícita de proteção humana')
-  }
-
-  if (habitualViolationObjective || evidenceOfRoutineViolation(relatoNorm)) {
-    const no1 = methodologyNode('Gate determinístico: violação rotineira/normalizada por prática habitual, cultura informal ou atalho operacional.', {
-      resposta: 'Não',
-      objetivo_identificado: 'violação rotineira normalizada',
-    })
-    logMethodology('runStep4', 'Gate O-B', no1, ['O-B'], true)
-    return flowResult('O-B', [no1], 'O-A, O-C e O-D descartados — O-B vence eficiência quando há rotina/cultura informal normalizada')
-  }
-
-  if (evidenceOfEfficiencyObjective(relatoNorm) && !medicalProtectiveObjective) {
-    const no1 = methodologyNode('Gate determinístico: o relato traz motivo explícito de eficiência/economia/ganho operacional.', {
-      resposta: 'Sim',
-      objetivo_identificado: 'eficiência/economia operacional',
-    })
-    logMethodology('runStep4', 'Gate O-D', no1, ['O-D'], true)
-    return flowResult('O-D', [no1], 'O-A, O-B e O-C descartados — objetivo explícito de eficiência/economia')
-  }
-
-  if (evidenceOfObjectiveCForbiddenContext(relatoNorm) && !medicalProtectiveObjective) {
+  if (evidenceOfObjectiveCForbiddenContext(relatoNorm)) {
     const no1 = methodologyNode('Gate determinístico: contexto de comunicação/coordenação operacional ou eficiência sem intenção humana/altruística explícita.', {
       resposta: 'Sim',
       objetivo_identificado: 'objetivo operacional nominal',

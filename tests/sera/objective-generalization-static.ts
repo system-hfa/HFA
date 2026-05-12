@@ -54,8 +54,18 @@ const cases: ObjectiveCase[] = [
     expected: 'O-D',
   },
   {
+    name: 'O-D fuel consumption reduction short route',
+    text: 'Comandante escolhe rota mais curta para reduzir consumo de combustível.',
+    expected: 'O-D',
+  },
+  {
     name: 'O-D connection window shortcut',
     text: 'Equipe adota atalho operacional para cumprir janela de conexão.',
+    expected: 'O-D',
+  },
+  {
+    name: 'O-D simplified procedure for connection window',
+    text: 'Equipe simplifica procedimento para cumprir janela de conexão.',
     expected: 'O-D',
   },
   {
@@ -66,6 +76,11 @@ const cases: ObjectiveCase[] = [
   {
     name: 'O-D productivity simplified procedure',
     text: 'Operação escolhe procedimento simplificado para aumentar produtividade.',
+    expected: 'O-D',
+  },
+  {
+    name: 'O-D faster method productivity',
+    text: 'Supervisor escolhe método mais rápido para aumentar produtividade do turno.',
     expected: 'O-D',
   },
   {
@@ -98,6 +113,18 @@ const cases: ObjectiveCase[] = [
   {
     name: 'negative supervision failure',
     text: 'Supervisor não confirma execução de técnico antes de liberar trabalho.',
+    expected: null,
+    forbidden: ['O-B', 'O-C', 'O-D'],
+  },
+  {
+    name: 'negative improvised tool under deadline pressure',
+    text: 'Ferramenta improvisada sob pressão de prazo.',
+    expected: null,
+    forbidden: ['O-B', 'O-C', 'O-D'],
+  },
+  {
+    name: 'negative onboard doctor dose unknown altitude protocol',
+    text: 'Médico de bordo administra dose errada por desconhecer protocolo de altitude.',
     expected: null,
     forbidden: ['O-B', 'O-C', 'O-D'],
   },
