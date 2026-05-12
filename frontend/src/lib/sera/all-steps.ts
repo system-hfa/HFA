@@ -6,6 +6,7 @@ import { loadDocJson } from '@/lib/sera/docs'
 import { NO_ARTIFACTS } from '@/lib/sera/prompts'
 import { ask, safeParse } from '@/lib/sera/llm'
 import { actionRules, objectiveRules, perceptionRules } from '@/lib/sera/rules'
+import { classifyObjectiveByRules } from '@/lib/sera/rules/objective/select'
 import type {
   RawFlowNode,
   Step1Result,
@@ -328,9 +329,22 @@ function evidenceOfEfficiencyObjective(text: string): boolean {
     'economia de combustivel',
     'economizar tempo',
     'ganhar tempo',
+    'reduzir tempo',
+    'reduzir tempo de voo',
+    'cumprir horario',
+    'cumprir janela',
+    'cumprir janela de conexao',
+    'cumprir a janela de conexao',
+    'janela de conexao',
+    'horario de conexao',
+    'perder janela',
+    'perder conexao',
+    'conexao dos passageiros',
     'reduzir custo',
     'eficiencia',
     'produtividade',
+    'atalho operacional',
+    'atalho operacional nao recomendado',
     'rota mais curta',
     'rota direta',
     'ganho operacional',
@@ -342,16 +356,41 @@ function evidenceOfEfficiencyObjective(text: string): boolean {
 function evidenceOfRoutineViolation(text: string): boolean {
   return containsAny(text, [
     'rota habitual',
+    'rota habitual para ganhar tempo',
+    'em rota habitual',
+    'rota conhecida',
+    'rota costumeira',
+    'habitual para ganhar tempo',
+    'caminho habitual',
+    'perfil habitual',
     'pratica habitual',
+    'procedimento habitual',
+    'pratica normalizada',
     'procedimento ignorado por rotina',
+    'procedimento tratado como burocracia',
+    'desvio habitual',
+    'violacao habitual',
     'sempre fazemos assim',
+    'sempre fazia assim',
+    'sempre fazem assim',
     'considerado burocracia',
+    'era considerado burocracia',
     'desvio normalizado',
+    'desvio era normalizado',
+    'violacao normalizada',
     'cultura informal',
     'atalho habitual',
     'violacao rotineira',
+    'rotina operacional',
+    'por habito',
+    'pratica tolerada',
+    'pratica aceita',
     'costume operacional',
     'complacencia institucional',
+    'complacencia organizacional',
+    'complacencia operacional',
+    'monitoramento assumido como normal',
+    'assumido como normal por rotina',
     'normalizado',
     'rotineira',
   ])
@@ -365,14 +404,115 @@ function evidenceOfProtectiveObjective(text: string): boolean {
     'proteger paciente',
     'proteger pessoa',
     'passageiro doente',
+    'condicao de passageiro doente',
     'paciente',
+    'passageiro com emergencia medica',
     'salvar alguem',
     'evitar mal maior',
+    'evitar piorar condicao',
+    'evitar piorar a condicao',
     'evitar piora medica',
     'evitar agravamento',
     'evitar agravamento medico',
+    'piorar condicao',
+    'agravar condicao',
+    'preservar paciente',
+    'necessidade medica',
+    'atendimento medico',
     'dano humano iminente',
   ]))
+}
+
+function evidenceOfMedicalProtectiveObjective(text: string): boolean {
+  return containsAny(text, [
+    'passageiro doente',
+    'condicao de passageiro doente',
+    'evitar piorar condicao',
+    'evitar piorar a condicao',
+    'piorar condicao de passageiro',
+    'evitar agravamento',
+    'agravamento do passageiro',
+    'emergencia medica',
+    'necessidade medica',
+  ])
+}
+
+function evidenceOfHabitualViolationObjective(text: string): boolean {
+  const habitualMarkers = containsAny(text, [
+    'rota habitual',
+    'em rota habitual',
+    'rota conhecida',
+    'rota costumeira',
+    'por habito',
+    'pratica habitual',
+    'violacao rotineira',
+    'desvio normalizado',
+    'complacencia operacional',
+  ])
+
+  const altitudeHabitual = text.includes('altitude minima') && text.includes('rota habitual')
+  const altitudeViolationForTimeGain =
+    (text.includes('violou altitude minima') || text.includes('altitude minima violada')) &&
+    text.includes('ganhar tempo')
+
+  return habitualMarkers || altitudeHabitual || altitudeViolationForTimeGain
+}
+
+function normalizeForRuleMatch(text: string): string {
+  return String(text || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function forceObjectiveOverride(text: string): null | { code: 'O-B' | 'O-C'; reason: string } {
+  const t = normalizeForRuleMatch(text)
+  const has = (token: string) => t.includes(token)
+
+  const forceOC =
+    has('passageiro doente') ||
+    has('evitar piorar') ||
+    has('evitar piorar condicao') ||
+    (has('piorar') && has('passageiro')) ||
+    (has('agravar') && has('passageiro')) ||
+    (has('pousa sem autorizacao') && (has('passageiro') || has('doente') || has('condicao'))) ||
+    (has('sem autorizacao') && has('passageiro doente')) ||
+    has('evitar agravamento') ||
+    has('emergencia medica') ||
+    has('necessidade medica') ||
+    has('suspeita de infarto') ||
+    (has('passageiro') && has('infarto')) ||
+    (has('passageiro') && has('atendimento medico'))
+
+  if (forceOC) {
+    return {
+      code: 'O-C',
+      reason: 'override determinístico: objetivo protetivo/humano explícito por condição médica de passageiro',
+    }
+  }
+
+  const forceOB =
+    has('rota habitual') ||
+    (has('altitude minima') && has('rota')) ||
+    (has('violou altitude minima') && has('ganhar tempo')) ||
+    (has('altitude minima') &&
+      has('ganhar tempo') &&
+      (has('habitual') || has('rotina') || has('costumeira'))) ||
+    has('violacao rotineira') ||
+    has('desvio normalizado') ||
+    has('pratica tolerada') ||
+    has('pratica aceita')
+
+  if (forceOB) {
+    return {
+      code: 'O-B',
+      reason: 'override determinístico: violação rotineira/normalizada em contexto habitual, prevalece sobre eficiência',
+    }
+  }
+
+  return null
 }
 
 function evidenceOfAttentionOverload(text: string): boolean {
@@ -474,14 +614,31 @@ function evidenceOfMonitoringFailure(text: string): boolean {
     'nao verificou',
     'nao conferiu',
     'nao monitorou',
+    'nao checou',
+    'sem verificar',
+    'sem conferir',
     'assumiu normalidade',
+    'assumiu como normal',
+    'assumiu que estava normal',
     'complacencia',
     'rota habitual',
+    'em rota habitual',
+    'altitude minima',
+    'altitude minima violada',
     'altitude minima violada em rota habitual',
     'nao checou condicao disponivel',
     'nao checou a condicao disponivel',
+    'condicao disponivel nao checada',
+    'condicao disponivel nao verificada',
     'falha em verificar informacao disponivel',
     'informacao disponivel',
+    'informacao disponivel nao verificada',
+    'informacao disponivel nao checada',
+    'monitoramento assumido como normal',
+    'monitoramento assumido normal',
+    'assumido normal',
+    'nao verificou a condicao',
+    'nao conferiu a condicao',
     'deveria ter sido verificada',
     'alarmes simultaneos',
     'sem checar',
@@ -578,6 +735,16 @@ function evidenceOfObjectiveCForbiddenContext(text: string): boolean {
     'coordenacao operacional',
     'combustivel',
     'eficiencia',
+    'reduzir tempo',
+    'reduzir tempo de voo',
+    'cumprir horario',
+    'cumprir janela',
+    'cumprir janela de conexao',
+    'janela de conexao',
+    'horario de conexao',
+    'perder conexao',
+    'rota mais curta',
+    'atalho operacional',
   ]))
 }
 
@@ -589,6 +756,7 @@ function inferDeterministicErcLevel(
   current?: number
 ): number | undefined {
   if (objectiveCode === 'O-B' && actionCode === 'A-A') return 1
+  if (objectiveCode === 'O-C' && actionCode === 'A-A') return 2
   if (actionCode === 'A-H' && perceptionCode === 'P-E') return 2
   if (actionCode === 'A-I' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-J' && perceptionCode === 'P-D') return 1
@@ -1272,9 +1440,86 @@ ${NO_ARTIFACTS}
 CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerencia risco → O-D (Hendy 2003, Figure 5 — 'Failure in intent, Non-violation').`
 
   const ato = String(pontoFuga.ato_inseguro_factual || '')
-  const relatoNorm = normalizeEvidenceText(`${relato}\n${ato}`)
+  const objectiveDecisionText = [
+    relato,
+    pontoFuga.ato_inseguro_factual,
+    pontoFuga.justificativa,
+    pontoFuga.momento,
+    pontoFuga.agente,
+  ]
+    .filter(Boolean)
+    .join(' ')
+  const relatoNorm = normalizeEvidenceText(objectiveDecisionText)
 
-  if (evidenceOfRoutineViolation(relatoNorm)) {
+  const objectiveRule = classifyObjectiveByRules(objectiveDecisionText)
+
+  if (process.env.SERA_DEBUG_OBJECTIVE === '1') {
+    console.log('[SERA OBJECTIVE RULE]', {
+      objectiveDecisionText,
+      objectiveRule,
+    })
+  }
+
+  if (objectiveRule.code !== null) {
+    const no1 = methodologyNode(`Gate determinístico: ${objectiveRule.reason}.`, {
+      resposta: 'Não',
+      objetivo_identificado:
+        objectiveRule.code === 'O-C'
+          ? 'proteção humana explícita'
+          : objectiveRule.code === 'O-B'
+          ? 'violação rotineira normalizada'
+          : 'eficiência/economia operacional',
+    })
+    logMethodology('runStep4', `Gate classifyObjectiveByRules ${objectiveRule.code}`, no1, [objectiveRule.code], true)
+    const discarded =
+      objectiveRule.code === 'O-C'
+        ? 'O-A, O-B e O-D descartados — regra determinística: objetivo protetivo humano explícito'
+        : objectiveRule.code === 'O-B'
+        ? 'O-A, O-C e O-D descartados — regra determinística: violação rotineira/normalizada'
+        : 'O-A, O-B e O-C descartados — regra determinística: objetivo de eficiência/economia'
+    return flowResult(objectiveRule.code, [no1], discarded)
+  }
+
+  const forcedObjective = forceObjectiveOverride(objectiveDecisionText)
+
+  if (process.env.SERA_DEBUG_OBJECTIVE === '1') {
+    console.log('[SERA OBJECTIVE TEXT]', objectiveDecisionText)
+    console.log('[SERA OBJECTIVE OVERRIDE]', forcedObjective)
+  }
+
+  // Overrides objetivos codificam padrões SERA validados por fixture ouro:
+  // O-C para proteção humana explícita; O-B para violação rotineira/normalizada.
+  // Eles precedem eficiência O-D e default O-A.
+  if (forcedObjective) {
+    const no1 = methodologyNode(`Gate determinístico: ${forcedObjective.reason}.`, {
+      resposta: forcedObjective.code === 'O-C' ? 'Não' : 'Não',
+      objetivo_identificado: forcedObjective.code === 'O-C' ? 'proteção humana explícita' : 'violação rotineira normalizada',
+    })
+    logMethodology('runStep4', `Gate Override ${forcedObjective.code}`, no1, [forcedObjective.code], true)
+    return flowResult(
+      forcedObjective.code,
+      [no1],
+      forcedObjective.code === 'O-C'
+        ? 'O-A, O-B e O-D descartados — override determinístico de proteção humana explícita'
+        : 'O-A, O-C e O-D descartados — override determinístico de violação rotineira/normalizada'
+    )
+  }
+  const medicalProtectiveObjective = evidenceOfMedicalProtectiveObjective(relatoNorm)
+  const habitualViolationObjective = evidenceOfHabitualViolationObjective(relatoNorm)
+
+  // Metodologia: O-C exige intenção protetiva humana explícita;
+  // O-B vence O-D quando há ganho de tempo em rotina/violação normalizada;
+  // O-D cobre eficiência sem normalização nem proteção humana.
+  if (medicalProtectiveObjective) {
+    const no1 = methodologyNode('Gate determinístico: intenção explícita de proteção humana/médica.', {
+      resposta: 'Não',
+      objetivo_identificado: 'proteção humana explícita',
+    })
+    logMethodology('runStep4', 'Gate O-C', no1, ['O-C'], true)
+    return flowResult('O-C', [no1], 'O-A, O-B e O-D descartados — O-C exige e recebeu evidência explícita de proteção humana')
+  }
+
+  if (habitualViolationObjective || evidenceOfRoutineViolation(relatoNorm)) {
     const no1 = methodologyNode('Gate determinístico: violação rotineira/normalizada por prática habitual, cultura informal ou atalho operacional.', {
       resposta: 'Não',
       objetivo_identificado: 'violação rotineira normalizada',
@@ -1283,7 +1528,7 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
     return flowResult('O-B', [no1], 'O-A, O-C e O-D descartados — O-B vence eficiência quando há rotina/cultura informal normalizada')
   }
 
-  if (evidenceOfEfficiencyObjective(relatoNorm) && !evidenceOfProtectiveObjective(relatoNorm)) {
+  if (evidenceOfEfficiencyObjective(relatoNorm) && !medicalProtectiveObjective) {
     const no1 = methodologyNode('Gate determinístico: o relato traz motivo explícito de eficiência/economia/ganho operacional.', {
       resposta: 'Sim',
       objetivo_identificado: 'eficiência/economia operacional',
@@ -1292,7 +1537,7 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
     return flowResult('O-D', [no1], 'O-A, O-B e O-C descartados — objetivo explícito de eficiência/economia')
   }
 
-  if (evidenceOfObjectiveCForbiddenContext(relatoNorm) && !evidenceOfProtectiveObjective(relatoNorm)) {
+  if (evidenceOfObjectiveCForbiddenContext(relatoNorm) && !medicalProtectiveObjective) {
     const no1 = methodologyNode('Gate determinístico: contexto de comunicação/coordenação operacional ou eficiência sem intenção humana/altruística explícita.', {
       resposta: 'Sim',
       objetivo_identificado: 'objetivo operacional nominal',
@@ -1477,6 +1722,16 @@ ${NO_ARTIFACTS}`
   const ownActionCheckFailure = evidenceOfOwnActionCheckFailure(relatoNorm)
   const communicationConfirmationFailure = evidenceOfCommunicationConfirmationFailure(relatoNorm)
   const temporalExecutionFailure = evidenceOfTemporalExecutionFailure(relatoNorm)
+  const objectiveDecisionText = [
+    relato,
+    pontoFuga.ato_inseguro_factual,
+    pontoFuga.justificativa,
+    pontoFuga.momento,
+    pontoFuga.agente,
+  ]
+    .filter(Boolean)
+    .join(' ')
+  const forcedObjective = forceObjectiveOverride(objectiveDecisionText)
   const wrongOperationalSelectionUnderLoad = evidenceOfWrongOperationalSelectionUnderLoad(relatoNorm)
 
   // A-J prevalece sobre A-I quando o mecanismo causal dominante é falha de confirmação/readback/comunicação operacional.
@@ -1497,6 +1752,16 @@ ${NO_ARTIFACTS}`
       ['A-H'],
       'Gate determinístico: sequência ou tarefa ficou incompleta por gerenciamento temporal insuficiente na execução.',
       'A-A, A-B, A-C, A-D, A-E, A-F, A-G, A-I, A-J descartados — falha temporal de execução'
+    )
+  }
+
+  if (forcedObjective?.code === 'O-C') {
+    return finishDeterministic(
+      'Gate A-A (O-C)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: objetivo protetivo/humano explícito sem falha específica de execução.',
+      'A-I e A-B descartados neste contexto — desvio orientado por proteção humana classifica como A-A'
     )
   }
 
@@ -1537,6 +1802,16 @@ ${NO_ARTIFACTS}`
       ['A-C'],
       'Gate determinístico: falha central foi não verificar, monitorar ou confirmar resultado da própria ação já executada.',
       'A-A, A-B, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — checagem da própria ação'
+    )
+  }
+
+  if (evidenceOfProtectiveObjective(relatoNorm)) {
+    return finishDeterministic(
+      'Gate A-A (O-C)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: ato inseguro decorre de objetivo protetivo/humano explícito, sem falha específica de execução.',
+      'A-B descartado neste contexto — quando há objetivo protetivo explícito, "sem autorização" representa desvio por objetivo e não omissão procedural'
     )
   }
 

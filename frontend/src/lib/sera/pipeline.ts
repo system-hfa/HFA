@@ -24,6 +24,7 @@ import {
   normRecommendation,
   sanitizePreconditions,
 } from '@/lib/sera/preconditions'
+import { selectDeterministicPreconditions } from '@/lib/sera/rules/preconditions'
 import type { RawFlowNode, Step1Result, StepFlowResult } from '@/lib/sera/types'
 
 function joinNodes(step: StepFlowResult): string {
@@ -296,6 +297,23 @@ export async function runSeraPipeline(rawInput: string) {
   const step6_7 = await runStep6_7(rawInput, step2, step3, step4, step5)
   if (typeof step6_7.erc_level !== 'number') {
     step6_7.erc_level = inferErcLevel(rawInput, step3.codigo, step4.codigo, step5.codigo)
+  }
+  const deterministicPreconditions = selectDeterministicPreconditions(
+    {
+      perception_code: step3.codigo,
+      objective_code: step4.codigo,
+      action_code: step5.codigo,
+      erc_level: step6_7.erc_level,
+    },
+    rawInput
+  )
+  if (deterministicPreconditions.length > 0) {
+    step6_7.precondicoes = deterministicPreconditions.map((item) => ({
+      codigo: item.code,
+      etapa: 'DeterministicPreconditions',
+      evidencia_no_relato: item.matchedEvidence.join(', '),
+      descricao: '',
+    }))
   }
   step6_7.precondicoes = sanitizePreconditions(
     (step6_7.precondicoes || []) as Array<Record<string, unknown>>,

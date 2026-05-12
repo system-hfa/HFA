@@ -1,32 +1,22 @@
-# SERA Rules: Preconditions
+# SERA Preconditions Matrix (Deterministic Layer)
 
-Esta camada define as condicoes que precisam ser verdadeiras antes de um passo
-SERA executar sua arvore de decisao.
+Esta pasta contem uma operacionalizacao HFA/SERA derivada de Hendy/Daumas e
+dos fixtures ouro. O objetivo e selecionar preconditions de forma deterministica
+depois que os codigos finais ja foram definidos.
 
-## Responsabilidade
+## Escopo
 
-- Verificar disponibilidade dos dados minimos exigidos pelo passo.
-- Bloquear execucao quando uma entrada obrigatoria estiver ausente, ambigua ou
-  inconsistente.
-- Produzir falhas deterministicas, explicitas e rastreaveis para o caller.
+- Entrada: `perception_code`, `objective_code`, `action_code`, `erc_level` e
+  `eventText`.
+- Saida: lista ordenada, estavel e sem duplicatas de preconditions.
+- Esta camada nao influencia P/O/A/ERC.
 
-## Step 2: Goal, Perception, Action
+## Papel da LLM
 
-No Step 2, as precondicoes devem confirmar que existe material suficiente para
-avaliar separadamente:
+A LLM pode justificar texto, mas nao deve ser a fonte principal de escolha das
+preconditions. A selecao principal e feita pelo selector deterministico.
 
-- `Goal`: intencao, objetivo declarado ou resultado esperado.
-- `Perception`: sinais observaveis, contexto, evidencias e interpretacao do
-  estado atual.
-- `Action`: acao proposta, executada ou recomendada.
+## Evolucao
 
-A ausencia de uma dessas dimensoes nao deve ser tratada como uma falha generica.
-Ela deve direcionar a execucao para o ramo correspondente da arvore de decisao
-do Step 2.
-
-## Forma da regra
-
-P/O/A nao sao uma lista plana de falhas equivalentes. Cada dimensao deve ser
-modelada como arvore de decisao: a resposta de um no determina o proximo teste,
-e a falha final preserva o caminho logico percorrido.
-
+Versoes futuras devem incluir citacao metodologica por regra na matriz
+(`matrix.json`) para rastreabilidade de origem.

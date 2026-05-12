@@ -1,0 +1,112 @@
+import { classifyObjectiveByRules } from '../../frontend/src/lib/sera/rules/objective/select'
+
+type ObjectiveCase = {
+  name: string
+  text: string
+  expected: 'O-B' | 'O-C' | 'O-D' | null
+  forbidden?: Array<'O-B' | 'O-C' | 'O-D'>
+}
+
+const cases: ObjectiveCase[] = [
+  {
+    name: 'O-B tolerated intermediate check omission',
+    text: 'Tripulação omite verificação intermediária porque a prática já era tolerada no setor.',
+    expected: 'O-B',
+  },
+  {
+    name: 'O-B workshop routine acceleration',
+    text: 'Mecânico pula registro obrigatório porque todos na oficina faziam assim para acelerar a liberação.',
+    expected: 'O-B',
+  },
+  {
+    name: 'O-B habitual route altitude violation',
+    text: 'Piloto viola altitude mínima em rota habitual para ganhar tempo.',
+    expected: 'O-B',
+  },
+  {
+    name: 'O-B checklist bureaucracy culture',
+    text: 'Equipe ignora checklist considerado burocracia pela cultura informal da empresa.',
+    expected: 'O-B',
+  },
+  {
+    name: 'O-C passenger suspected infarction',
+    text: 'Piloto pousa sem autorização porque passageiro apresentava suspeita de infarto.',
+    expected: 'O-C',
+  },
+  {
+    name: 'O-C patient aggravation',
+    text: 'Comandante desvia do procedimento para evitar agravamento de paciente a bordo.',
+    expected: 'O-C',
+  },
+  {
+    name: 'O-C person in immediate risk area',
+    text: 'Operador interrompe protocolo para proteger pessoa presa em área de risco imediato.',
+    expected: 'O-C',
+  },
+  {
+    name: 'O-C medical emergency passenger care',
+    text: 'Tripulação prioriza atendimento médico de passageiro em emergência médica.',
+    expected: 'O-C',
+  },
+  {
+    name: 'O-D fuel saving short route',
+    text: 'Capitão escolhe rota mais curta para economizar combustível.',
+    expected: 'O-D',
+  },
+  {
+    name: 'O-D connection window shortcut',
+    text: 'Equipe adota atalho operacional para cumprir janela de conexão.',
+    expected: 'O-D',
+  },
+  {
+    name: 'O-D schedule time reduction',
+    text: 'Piloto reduz tempo de voo para cumprir horário da escala.',
+    expected: 'O-D',
+  },
+  {
+    name: 'O-D productivity simplified procedure',
+    text: 'Operação escolhe procedimento simplificado para aumentar produtividade.',
+    expected: 'O-D',
+  },
+  {
+    name: 'negative readback congestion',
+    text: 'Controlador não confirma readback sob frequência congestionada.',
+    expected: null,
+    forbidden: ['O-B', 'O-C', 'O-D'],
+  },
+  {
+    name: 'negative knowledge deficit',
+    text: 'Técnico não sabe diagnosticar falha em modelo novo.',
+    expected: null,
+    forbidden: ['O-B', 'O-C', 'O-D'],
+  },
+  {
+    name: 'negative supervision failure',
+    text: 'Supervisor não confirma execução de técnico antes de liberar trabalho.',
+    expected: null,
+    forbidden: ['O-B', 'O-C', 'O-D'],
+  },
+]
+
+let failed = false
+
+for (const testCase of cases) {
+  const actual = classifyObjectiveByRules(testCase.text).code
+  const forbiddenHit = testCase.forbidden?.includes(actual as 'O-B' | 'O-C' | 'O-D') ?? false
+  const passed = actual === testCase.expected && !forbiddenHit
+
+  if (passed) {
+    console.log(`PASS ${testCase.name} -> ${actual ?? 'null'}`)
+    continue
+  }
+
+  failed = true
+  console.error(`FAIL ${testCase.name}`)
+  console.error(`  expected: ${testCase.expected ?? 'null'}`)
+  console.error(`  actual: ${actual ?? 'null'}`)
+  if (testCase.forbidden?.length) console.error(`  forbidden: [${testCase.forbidden.join(', ')}]`)
+}
+
+if (failed) process.exit(1)
+
+console.log('PASS all static objective generalization cases')
