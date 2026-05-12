@@ -1,0 +1,25 @@
+{
+  "id": "TEST-A-J-002",
+  "title": "Alteração crítica de rota sem confirmação de recebimento",
+  "domain": "despacho operacional",
+  "description": "Durante congestionamento de rádio, um despachante transmitiu alteração crítica de rota a uma aeronave devido a fechamento temporário de espaço aéreo. A mensagem foi emitida uma vez, mas o canal estava saturado e não houve readback claro. Mesmo assim, o despachante registrou a alteração como comunicada e passou para outra coordenação sem aguardar confirmação de recebimento da tripulação.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-J",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "P-D: a carga de coordenação e múltiplas demandas contribuíram para o processamento incompleto. O-A: o objetivo era comunicar alteração operacional crítica. A-J: a falha específica é transmitir informação crítica sem aguardar confirmação de recebimento. ERC 1: rota crítica sem confirmação pode produzir conflito ou entrada em espaço fechado.",
+  "discriminators": [
+    "Não é A-G: não se trata de execução delegada, mas de confirmação de recebimento de comunicação crítica.",
+    "Não é A-I: a rota transmitida era correta; faltou confirmar que foi recebida.",
+    "Não é O-D: não há escolha deliberada de atalho por produtividade."
+  ]
+}

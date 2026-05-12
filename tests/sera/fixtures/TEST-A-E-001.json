@@ -1,0 +1,24 @@
+{
+  "id": "TEST-A-E-001",
+  "title": "Técnico não sabe diagnosticar falha em sistema fly-by-wire de novo modelo",
+  "domain": "manutenção aeronáutica",
+  "description": "Um técnico de manutenção certificado em aeronaves de geração anterior foi designado para diagnosticar uma falha intermitente no sistema fly-by-wire de um modelo recém-incorporado à frota. O técnico não havia recebido treinamento type-specific para aquele modelo. Consultou o manual mas não compreendeu a lógica de diagnóstico do sistema digital de auto-teste (BITE). Executou checagens analógicas habituais que não eram aplicáveis ao sistema digital, concluiu erroneamente que a falha era no atuador hidráulico e trocou uma peça saudável. A falha real era no módulo de controle eletrônico. A aeronave retornou ao hangar com a mesma falha 2 voos depois.",
+  "expected": {
+    "perception_code": "P-C",
+    "objective_code": "O-A",
+    "action_code": "A-E",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P6",
+      "P7",
+      "O4",
+      "S3"
+    ]
+  },
+  "rationale": "A-E (Falha de Conhecimento na Decisão): o técnico tinha habilidades básicas de manutenção mas carecia do conhecimento específico do sistema fly-by-wire para formular a ação diagnóstica correta. A falha está na tomada de decisão por ausência de conhecimento específico da tarefa — não na execução de um procedimento conhecido. P-C: a interpretação dos sintomas foi equivocada por falta de conhecimento do sistema — falha de conhecimento na percepção que alimentou a decisão errada.",
+  "discriminators": [
+    "NÃO é A-F (Seleção de Ação): A-F ocorre quando o operador TEM o conhecimento mas seleciona a ação errada por viés; aqui a lacuna de conhecimento impediu a formulação correta da solução.",
+    "NÃO é A-D (Inabilidade): o técnico fisicamente conseguia executar qualquer procedimento — a limitação era cognitiva/de conhecimento.",
+    "NÃO é P-B (Sensorial): os sintomas eram visíveis e os instrumentos funcionavam — a falha foi na interpretação por ausência de modelo mental correto do sistema."
+  ]
+}

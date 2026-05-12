@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-D-001",
+  "title": "Controlador de tráfego aéreo não percebe conflito de rota sob alta demanda",
+  "domain": "controle de tráfego aéreo",
+  "description": "Durante um período de pico operacional com 14 aeronaves simultâneas no setor, um controlador estava coordenando clearances de subida quando recebeu simultaneamente 3 solicitações de mudança de rota. Ao emitir instrução para o voo XYZ-456, não percebeu que o voo ABC-123 havia sido vetorizado para a mesma altitude 90 segundos antes. O sistema TCAS alertou ambos os pilotos a 2,3 NM de separação. O controlador afirmou: 'não tive tempo de verificar o strip do ABC-123 antes de dar o clearance'. O número de aeronaves no setor naquele momento excedia a capacidade padrão de 10 definida nos procedimentos.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 3,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3"
+    ]
+  },
+  "rationale": "P-D (Falha de Atenção COM pressão de tempo): o controlador sabia o que verificar (strip do ABC-123), mas a sobrecarga de demandas simultâneas criou pressão de tempo que impediu essa verificação. O próprio controlador confirmou: 'não tive tempo'. Se houvesse tempo, o resultado teria sido diferente — critério decisor de P-D vs P-G. O-A: o objetivo era manter separação segura — não houve intenção de arriscar. A-A: a instrução emitida era tecnicamente correta para o contexto percebido.",
+  "discriminators": [
+    "NÃO é P-G (Atenção SEM pressão): P-G requer que mais tempo disponível NÃO mudaria o resultado. Aqui o próprio relato confirma que a pressão de tempo foi causal.",
+    "NÃO é P-B (Sensorial): o strip estava visível; não houve falha sensorial.",
+    "NÃO é A-H (Gerenciamento de tempo): A-H é sobre falha do operador em GERIR seu tempo; aqui o tempo disponível era objetivamente insuficiente para a carga (estrutural, não individual)."
+  ]
+}

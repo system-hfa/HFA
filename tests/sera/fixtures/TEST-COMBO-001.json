@@ -1,0 +1,26 @@
+{
+  "id": "TEST-COMBO-001",
+  "title": "Operador de sala de controle seleciona procedimento errado sob fadiga e alarmes simultâneos",
+  "domain": "operações de plataforma offshore",
+  "description": "Ao final de turno de 12 horas, operador de sala de controle recebeu 6 alarmes simultâneos de diferentes sistemas. Identificou o alarme prioritário (pressão alta no separador) corretamente. Ao abrir o manual de procedimentos de emergência no sistema digital, selecionou o procedimento de 'alta pressão no scrubber' — procedimento adjacente na interface, com nome similar ao correto ('alta pressão no separador'). Executou o procedimento completo incorreto. O procedimento errado não era prejudicial por si só, mas a falha real (separador) não foi tratada, resultando em shutdown automático 30 minutos depois. Não havia pressão de tempo aguda — o alarme era de nível 2 (não emergência imediata). O operador estava em hora 11 de turno.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-F",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P1",
+      "P2",
+      "W1",
+      "O4",
+      "P6"
+    ]
+  },
+  "rationale": "P-G (Atenção sem pressão de tempo): o operador identificou o alarme correto — a falha de atenção ocorreu na seleção do procedimento na interface digital, por fadiga (hora 11 de turno). Não havia pressão de tempo aguda — era alarme nível 2. A-F (Seleção de Ação errada): selecionou deliberadamente o procedimento errado por similaridade de nome na interface — 'first to match' clássico sob fadiga. O-A: o objetivo era tratar o alarme corretamente — sem violação de intenção.",
+  "discriminators": [
+    "NÃO é P-D (Pressão de tempo): alarme era nível 2, não emergência imediata — não havia urgência temporal causal.",
+    "NÃO é A-B (Deslize): houve seleção deliberada (clique no procedimento) — não foi execução incorreta de procedimento correto.",
+    "NÃO é A-E (Conhecimento): o operador conhecia ambos os procedimentos — a falha foi na seleção entre similares, não em ausência de conhecimento.",
+    "NÃO é P-F (Ilusão): não houve distorção perceptual fisiológica — foi falha de atenção por fadiga."
+  ]
+}

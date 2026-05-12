@@ -1,0 +1,23 @@
+{
+  "id": "TEST-A-G-002",
+  "title": "Isolamento de circuito liberado sem confirmação de execução",
+  "domain": "manutenção elétrica",
+  "description": "Em preparação para trabalho em painel energizado, o coordenador instruiu um auxiliar a isolar o circuito secundário antes da liberação da equipe. O auxiliar respondeu que iria executar a tarefa, mas o coordenador não aguardou retorno positivo nem conferiu o indicador de isolamento. A liberação foi dada assumindo que a instrução havia sido cumprida, e a ausência de confirmação foi percebida apenas na checagem da equipe executora.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "P-A: a necessidade de isolamento era conhecida. O-A: o objetivo era liberar trabalho regular. A-G: a falha está em delegar uma ação crítica sem confirmar sua execução antes de prosseguir. ERC 3: a liberação prematura gerou exposição relevante até ser barrada na checagem.",
+  "discriminators": [
+    "Não é A-C: o coordenador não verificou resultado de sua própria ação técnica, mas confirmação de tarefa delegada.",
+    "Não é A-J: não é falha de aguardar confirmação de mensagem crítica transmitida por canal de comunicação, mas de execução delegada.",
+    "Não é O-D: não há decisão assumida para ganho de produtividade."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "TEST-A-H-002",
+  "title": "Checklist de aproximação interrompido por tempo insuficiente",
+  "domain": "aviação",
+  "description": "Ao iniciar a aproximação final, o piloto começou o checklist correspondente, mas a aeronave já estava próxima do ponto de pouso e havia tráfego sequenciado atrás. Depois dos primeiros itens, interrompeu a sequência por avaliar que não havia tempo suficiente para completá-la sem comprometer a estabilização. Itens pendentes só foram identificados após a arremetida decidida pela tripulação.",
+  "expected": {
+    "perception_code": "P-E",
+    "objective_code": "O-A",
+    "action_code": "A-H",
+    "erc_level": 2,
+    "top_preconditions": [
+      "T1",
+      "P6",
+      "O1",
+      "S3"
+    ]
+  },
+  "rationale": "P-E: a percepção temporal sobre a janela disponível foi central para a interrupção. O-A: o objetivo era executar procedimento normal. A-H: a sequência iniciada foi interrompida antes da conclusão por tempo insuficiente. ERC 2: checklist incompleto em aproximação final representa risco operacional relevante.",
+  "discriminators": [
+    "Não é A-B: não foi um item isolado esquecido, mas interrupção de uma sequência em andamento.",
+    "Não é O-D: a motivação não era economizar tempo por conveniência, mas lidar com janela operacional percebida como insuficiente.",
+    "Não é P-G: a falha não é distração simples, e sim avaliação temporal."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "TEST-T2-W2-001",
+  "title": "Ferramenta improvisada sob pressão de prazo",
+  "domain": "manutenção industrial",
+  "description": "Uma equipe precisava concluir uma intervenção antes do fim da janela de parada definida pela organização. A ferramenta especificada estava indisponível no posto, e o supervisor pressionava pela liberação no horário. Para manter o prazo, a equipe utilizou uma ferramenta improvisada que exigia postura instável e aplicação de força fora do eixo, degradando fisicamente a execução e dificultando o controle fino do torque.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-D",
+    "erc_level": 3,
+    "top_preconditions": [
+      "T2",
+      "W2",
+      "W1",
+      "O4"
+    ]
+  },
+  "rationale": "P-A: a equipe percebia a condição e a limitação da ferramenta. O-A: a tarefa continuava sendo a intervenção regular, sem objetivo de dano. A-D: a ação ficou fisicamente degradada por ferramenta inadequada e postura restritiva. ERC 3: a execução degradada elevou risco técnico, mas sem dano imediato descrito.",
+  "discriminators": [
+    "Não é O-D: o objetivo formal ainda era completar a manutenção, e o foco do caso é reforçar pressão T2/W2 sobre execução física.",
+    "Não é A-B: a etapa não foi omitida; foi executada em condição física inadequada.",
+    "Não é P-B: não houve perda sensorial ou obstrução perceptiva."
+  ]
+}

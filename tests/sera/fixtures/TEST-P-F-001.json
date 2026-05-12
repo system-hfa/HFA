@@ -1,0 +1,25 @@
+{
+  "id": "TEST-P-F-001",
+  "title": "Piloto entra em ilusão de Leans e nivela com asa inclinada",
+  "domain": "aviação — voo por instrumentos",
+  "description": "Em voo noturno sobre oceano sem referências visuais externas, um piloto entrou em nuvem inesperadamente. Após 4 minutos em IMC, seus instrumentos indicavam inclinação de 15° para a esquerda. O piloto, no entanto, tinha forte sensação de estar nivelado. Corrigiu os instrumentos 'para nivelar' (aplicou aileron direito), aumentando a inclinação para 28°. O copiloto interveio. Laudo médico confirmou desorientação espacial — os canais semicirculares do piloto haviam se adaptado à inclinação gradual, criando ilusão de voo nivelado.",
+  "expected": {
+    "perception_code": "P-F",
+    "objective_code": "O-A",
+    "action_code": "A-F",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P1",
+      "P2",
+      "W3",
+      "P6"
+    ]
+  },
+  "rationale": "P-F (Falha de Percepção/Ilusão): o piloto recebeu informação correta dos instrumentos, mas sua percepção fisiológica (vestibular) criou uma realidade distorcida que sobrepôs a informação instrumental. É uma distorção perceptual ativa — diferente de não ver (P-B) ou não saber interpretar (P-C). O-A: o objetivo era manter voo nivelado — correto. A-F (Falha na Seleção de Ação): o piloto selecionou a ação errada (aileron direito para 'corrigir' o que percebia como inclinação esquerda dos instrumentos) baseado em sua percepção distorcida.",
+  "discriminators": [
+    "NÃO é P-B (Sensorial): os instrumentos eram visíveis e legíveis — o piloto VIU os instrumentos mas não acreditou neles devido à ilusão vestibular.",
+    "NÃO é P-C (Conhecimento): o piloto sabia ler altímetro/horizonte artificial — a falha foi fisiológica, não de treinamento técnico.",
+    "NÃO é P-G (Atenção): o piloto estava atento e monitorando ativamente — a falha foi de distorção perceptual fisiológica.",
+    "A-F (não A-B): não foi um deslize involuntário — foi uma seleção deliberada e incorreta de ação baseada em percepção distorcida."
+  ]
+}

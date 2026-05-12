@@ -1,0 +1,22 @@
+{
+  "id": "TEST-ERC-4-001",
+  "title": "Registro secundário de inspeção não crítica omitido",
+  "domain": "manutenção aeronáutica",
+  "description": "Após concluir uma inspeção visual de rotina em componente não crítico, um técnico executou corretamente a verificação principal e liberou o item sem degradação operacional imediata. O procedimento previa também o preenchimento de um registro secundário de controle interno, usado apenas para rastreabilidade administrativa posterior. Esse registro não foi feito no momento da inspeção e a omissão só foi detectada em revisão documental no fim do turno, sem necessidade de retrabalho técnico ou impacto em segurança.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-B",
+    "erc_level": 4,
+    "top_preconditions": [
+      "W1",
+      "O3"
+    ]
+  },
+  "rationale": "P-A: não há falha perceptiva relevante; as condições técnicas foram percebidas adequadamente. O-A: o técnico seguia a tarefa regular, sem intenção de ganho indevido ou violação. A-B: a falha está na omissão de um passo procedural específico, o registro secundário. ERC 4: houve baixa severidade, sem degradação operacional imediata e com detecção em revisão posterior.",
+  "discriminators": [
+    "Não é A-C: o técnico não deixou de verificar resultado técnico após uma ação; o que faltou foi o registro secundário.",
+    "Não é ERC 3: não houve quase-acidente, degradação técnica nem exposição operacional significativa.",
+    "Não é ERC 5: ainda existe falha procedural rastreável que exigiu correção documental posterior."
+  ]
+}

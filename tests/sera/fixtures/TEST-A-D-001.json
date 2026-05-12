@@ -1,0 +1,25 @@
+{
+  "id": "TEST-A-D-001",
+  "title": "Operador incapaz de fechar válvula manual por força insuficiente com luvas de proteção",
+  "domain": "operações industriais — plataforma offshore",
+  "description": "Durante procedimento de emergência em plataforma offshore, o operador de campo foi instruído a fechar manualmente a válvula de isolamento de emergência. A válvula requeria torque de 45 Nm para fechamento. O operador utilizava luvas de proteção química espessas (obrigatórias na área) que reduziam sua capacidade de preensão. Após 3 tentativas, não conseguiu aplicar torque suficiente. Chamou um segundo operador; juntos fecharam a válvula 4 minutos depois. O operador conhecia o procedimento e sabia exatamente o que fazer — apenas não conseguia executar fisicamente.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-D",
+    "erc_level": 3,
+    "top_preconditions": [
+      "W1",
+      "W2",
+      "P1",
+      "O2",
+      "O4"
+    ]
+  },
+  "rationale": "A-D (Inabilidade para a Resposta): o operador tinha percepção correta, objetivo correto e conhecia o procedimento — mas não conseguiu executar fisicamente a ação por limitação ergonômica (EPI incompatível com o torque exigido). É a brecha clássica entre intenção e capacidade física de resposta. P-A: percepção completamente correta — sabia o que estava acontecendo. O-A: objetivo correto — fechar a válvula era exatamente o que deveria fazer.",
+  "discriminators": [
+    "NÃO é A-E (Falha de Conhecimento): o operador sabia exatamente o que fazer — a falha foi física, não cognitiva.",
+    "NÃO é A-B (Deslize): não houve erro de execução de procedimento conhecido; houve impossibilidade física de executar a ação.",
+    "NÃO é A-F (Seleção errada): o operador selecionou a ação correta (fechar aquela válvula) — simplesmente não conseguiu executá-la."
+  ]
+}

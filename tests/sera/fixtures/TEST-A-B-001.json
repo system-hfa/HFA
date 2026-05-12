@@ -1,0 +1,24 @@
+{
+  "id": "TEST-A-B-001",
+  "title": "Técnico omite pino de travamento ao reinstalar tampa de inspeção",
+  "domain": "manutenção aeronáutica",
+  "description": "Ao concluir inspeção de rotina em sistema de combustível, um técnico de manutenção reinstalou a tampa de acesso corretamente mas esqueceu de inserir o pino de travamento de segurança, que normalmente era o último item do procedimento. O técnico foi interrompido por colega durante a reinstalação (pergunta sobre turno seguinte), retornou à tarefa e concluiu sem perceber que havia pulado o último passo. O checklist pós-manutenção não incluía verificação específica do pino de travamento. A tampa se soltou em voo 3h depois. O técnico era certificado e experiente; a tarefa era de baixa complexidade.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-B",
+    "erc_level": 3,
+    "top_preconditions": [
+      "W1",
+      "O3",
+      "O4",
+      "P6"
+    ]
+  },
+  "rationale": "A-B (Deslize/Omissão): o técnico sabia o procedimento correto, tinha a intenção de seguir o checklist, mas a interrupção criou lapso de memória que resultou em omissão do último passo. É falha de execução — a decisão estava correta, a execução falhou. P-G: a interrupção desviou a atenção do técnico; a informação (passo do pino) estava acessível (estava no procedimento), mas a atenção não estava focada — sem pressão de tempo. O-A: o objetivo era realizar a manutenção corretamente — sem violação.",
+  "discriminators": [
+    "NÃO é A-C (Falha de Feedback na Execução): A-C é sobre não verificar o resultado de uma ação executada; aqui o problema foi omitir a ação em si (não a verificação do resultado).",
+    "NÃO é A-F (Seleção de Ação): A-F é seleção deliberada da ação errada; aqui foi esquecimento involuntário de um passo — lapso, não decisão.",
+    "NÃO é O-B (Violação): pular o pino não era prática habitual do técnico ou do grupo."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-H-002",
+  "title": "Manutenção executada no painel errado após briefing ambíguo",
+  "domain": "manutenção aeronáutica",
+  "description": "Antes de uma intervenção, o supervisor informou que o técnico deveria atuar no painel do sistema de controle auxiliar, mas o briefing usou uma identificação abreviada que também correspondia a outro painel próximo. Sem etiqueta física adicional e sem confirmação cruzada, o técnico entendeu que o painel adjacente era o alvo correto e iniciou a manutenção nele. A ambiguidade só foi identificada quando outro membro da equipe comparou o número do sistema no plano de trabalho.",
+  "expected": {
+    "perception_code": "P-H",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 3,
+    "top_preconditions": [
+      "S2",
+      "W1",
+      "O3",
+      "O4"
+    ]
+  },
+  "rationale": "P-H: a falha decorre de identificação ambígua do objeto/sistema alvo. O-A: o técnico pretendia cumprir a ordem regular. A-A: a execução foi coerente com o painel que ele acreditava ser correto. ERC 3: a intervenção no painel errado gerou exposição operacional relevante, embora detectada antes de liberação final.",
+  "discriminators": [
+    "Não é P-B: não houve impedimento sensorial; a identificação era semanticamente ambígua.",
+    "Não é A-D: o técnico conseguiu executar a ação pretendida, mas no alvo percebido errado.",
+    "Não é O-D: não houve escolha consciente de atalho ou violação."
+  ]
+}

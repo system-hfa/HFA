@@ -1,0 +1,23 @@
+{
+  "id": "TEST-P-B-002",
+  "title": "Alarme luminoso encoberto por reflexo intenso",
+  "domain": "operação industrial",
+  "description": "Durante a partida de um painel de controle em área externa, um operador acompanhava os indicadores luminosos exigidos pelo procedimento. Um alarme visual âmbar acendeu no canto superior do painel, mas a luz solar refletida em uma cobertura metálica criou brilho intenso exatamente sobre a lente indicadora. O operador não percebeu o alarme, continuou a sequência normal e só identificou a condição quando outro técnico reposicionou a proteção contra reflexo.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 3,
+    "top_preconditions": [
+      "W1",
+      "W3",
+      "P6"
+    ]
+  },
+  "rationale": "P-B: o sinal estava presente, mas uma barreira sensorial visual impediu sua detecção. O-A: o operador seguia o procedimento sem intenção de violar regra. A-A: a ação executada era coerente com a percepção disponível. ERC 3: a continuação da sequência criou exposição operacional relevante até a condição ser percebida por terceiro.",
+  "discriminators": [
+    "Não é P-G: o indicador não estava acessível apenas por atenção; havia obstrução sensorial por reflexo intenso.",
+    "Não é P-F: não houve interpretação ilusória do sinal recebido; o sinal não foi detectado.",
+    "Não é A-B: não faltou executar uma etapa conhecida, a ação seguiu a leitura disponível."
+  ]
+}

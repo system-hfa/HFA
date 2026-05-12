@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-H-001",
+  "title": "Técnico executa manutenção em sistema errado por briefing ambíguo",
+  "domain": "manutenção aeronáutica",
+  "description": "O supervisor de manutenção passou verbalmente a ordem de serviço para o técnico: 'vá na aeronave PR-XYZ e verifique o sistema hidráulico 2'. O técnico entendeu 'sistema hidráulico 1' — a numeração dos sistemas naquele hangar era apresentada de forma não-padronizada nos painéis (sistema 1 à direita, sistema 2 à esquerda, inversamente ao manual). Não havia ordem de serviço escrita. O técnico realizou o procedimento no sistema errado, deixando o sistema 2 (com vazamento real) sem inspeção. O técnico era experiente e executou o procedimento corretamente no sistema que acreditava ser o correto.",
+  "expected": {
+    "perception_code": "P-H",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 3,
+    "top_preconditions": [
+      "S2",
+      "W1",
+      "O3",
+      "O4"
+    ]
+  },
+  "rationale": "P-H (Falha de Comunicação): a falha está no canal de comunicação — instrução verbal ambígua sem confirmação escrita, combinada com painéis não-padronizados que tornaram a mensagem equívoca. O técnico percebeu a instrução, mas o canal comunicacional falhou em transmiti-la com fidelidade. O-A: o objetivo do técnico (verificar o sistema indicado) estava correto. A-A: a execução técnica foi correta para o sistema que o técnico acreditava estar inspecionando.",
+  "discriminators": [
+    "NÃO é P-C (Conhecimento): o técnico sabia identificar sistemas hidráulicos — o problema foi na comunicação da instrução, não no conhecimento técnico.",
+    "NÃO é P-G (Atenção): o técnico prestou atenção ao briefing — ouviu e executou; a ambiguidade estava na mensagem em si.",
+    "NÃO é A-F (Seleção de Ação): o técnico selecionou corretamente o procedimento para o sistema que acreditava ser o alvo — a falha foi anterior, na percepção da instrução."
+  ]
+}

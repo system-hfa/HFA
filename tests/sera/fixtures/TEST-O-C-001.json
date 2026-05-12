@@ -1,0 +1,24 @@
+{
+  "id": "TEST-O-C-001",
+  "title": "Piloto pousa sem autorização para evitar piorar condição de passageiro doente",
+  "domain": "aviação médica",
+  "description": "Durante voo de transporte de passageiro com suspeita de infarto, o piloto avaliou que o aeródromo mais próximo (privado, sem torre) poderia acolher a aeronave apesar de não ter autorização de pouso para aquele aeródromo em seu certificado de habilitação. Contatou brevemente o operador do aeródromo por rádio, que confirmou pista livre. Pousou sem notificar o CINDACTA nem declarar emergência formalmente (o que daria cobertura legal). Este piloto nunca havia tomado decisão similar antes. Investigação confirmou que a declaração formal de emergência resolveria a questão legalmente e o piloto tinha conhecimento disso.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional): o piloto sabia das regras (conhecia o procedimento de emergência formal), agiu contrariamente ao procedimento em uma situação específica e excepcional (passageiro em risco), pressionado pela urgência percebida. Este comportamento era atípico para ele — critério central de O-C vs O-B. P-A: percepção correta da situação — sabia o que estava fazendo e porque. A-A: executou exatamente o que pretendia — pouso e comunicação com operador do aeródromo.",
+  "discriminators": [
+    "NÃO é O-B (Violação Rotineira): O-B requer comportamento habitual normalizado. Este piloto nunca havia agido assim antes — foi uma decisão isolada em contexto excepcional.",
+    "NÃO é O-D (Falha de Intenção): O-D ocorre quando a ação arriscada NÃO viola regras explícitas. Aqui havia violação clara de procedimento obrigatório (declaração de emergência).",
+    "NÃO é A-F (Seleção de Ação errada): o piloto selecionou corretamente a ação de pousar; a falha foi no objetivo (meio escolhido viola procedimento), não na execução."
+  ]
+}

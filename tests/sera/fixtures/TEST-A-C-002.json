@@ -1,0 +1,26 @@
+{
+  "id": "TEST-A-C-002",
+  "title": "Reset hidráulico sem verificação de pressão estabilizada",
+  "domain": "manutenção aeronáutica",
+  "description": "Durante manutenção corretiva, um técnico acionou o reset do sistema hidráulico conforme orientação de suporte. O painel exibia, ao lado do comando, um indicador específico de estabilidade pós-reset que deveria ser conferido imediatamente após a ação. O indicador permaneceu amarelo e visível, sem obstrução, mas o técnico desviou a atenção para a ordem de serviço e liberou o sistema sem olhar esse feedback final. Não havia pressão de tempo, intervalo mínimo a estimar, dúvida sobre o comando correto ou comunicação externa relevante; a falha foi não verificar o resultado da própria ação recém-executada.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-C",
+    "erc_level": 2,
+    "top_preconditions": [
+      "W1",
+      "S3",
+      "O3",
+      "P3"
+    ]
+  },
+  "rationale": "P-G: o feedback visual de estabilidade estava disponível, visível e deveria ter sido verificado pelo próprio técnico. O-A: a intenção era completar a manutenção regular. A-C: a falha é ausência de confirmação do resultado da ação de reset já executada. ERC 2: liberar sistema hidráulico sem estabilidade confirmada cria risco técnico relevante.",
+  "discriminators": [
+    "Não é A-B: o reset foi feito e não há etapa procedural independente omitida; o problema foi não conferir o feedback da própria ação.",
+    "Não é A-D: não havia incapacidade física de executar comando.",
+    "Não é P-B: o indicador estava disponível, visível e sem obstrução sensorial.",
+    "Não é P-E: não havia estimativa temporal, intervalo mínimo ou pressão de tempo; a falha foi atencional sobre feedback disponível.",
+    "Não é A-J: não há falha de readback, confirmação de recebimento ou comunicação operacional."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "TEST-O-D-001",
+  "title": "Capitão decide navegar por rota não recomendada para economizar combustível",
+  "domain": "navegação marítima",
+  "description": "O capitão de uma embarcação de apoio offshore, enfrentando janela meteorológica apertada, optou por rota direta através de área com histórico de ondas de proa acima de 3m em vez da rota aprovada que contornava a área. A rota direta era tecnicamente permitida pelas regulamentações — não havia proibição explícita. O capitão avaliou o risco como 'aceitável' para as condições previstas, mas não consultou o meteorologista de bordo nem registrou a decisão no diário de bordo. A embarcação sofreu dano estrutural ao casco em ondas de 4,5m. O capitão era experiente e tinha plena consciência das condições.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "S2",
+      "O4",
+      "T2"
+    ]
+  },
+  "rationale": "O-D (Falha de Intenção — não violação): o capitão percebeu corretamente a situação e escolheu INTENCIONALMENTE uma ação arriscada, mas a rota não era proibida — havia discricionariedade. A falha está na avaliação de risco inadequada e na ausência de consulta ao meteorologista — escolha arriscada dentro dos limites formais da autoridade. P-A: percepção correta — o capitão sabia das condições e avaliou (incorretamente) o risco. A-A: a ação de navegar pela rota foi executada conforme a intenção.",
+  "discriminators": [
+    "NÃO é O-B (Violação Rotineira): a rota direta não era proibida — não houve violação de regra.",
+    "NÃO é O-C (Violação Excepcional): O-C requer transgressão de regra explícita; aqui havia discricionariedade regulatória.",
+    "NÃO é A-F: a seleção da rota foi deliberada e corretamente executada; a falha foi no julgamento de risco (etapa objetivo), não na execução (etapa ação)."
+  ]
+}

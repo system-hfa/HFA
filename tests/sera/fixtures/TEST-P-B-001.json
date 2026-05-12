@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-B-001",
+  "title": "Técnico não detecta alarme sonoro em ambiente ruidoso",
+  "domain": "manutenção industrial",
+  "description": "Durante a manutenção de uma válvula de pressão em uma plataforma offshore, um técnico utilizava protetores auriculares de alto nível de atenuação (NRR 33dB) enquanto trabalhava próximo a compressores em operação. O alarme sonoro de pressão excessiva foi ativado, porém o técnico não o detectou. Continuou o procedimento sem isolar o sistema, resultando em despressurização indevida e quase-acidente. Após o evento, o alarme foi testado e confirmou-se estar em pleno funcionamento. O técnico afirmou não ter ouvido nada.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 3,
+    "top_preconditions": [
+      "W1",
+      "W3",
+      "P6"
+    ]
+  },
+  "rationale": "P-B (Falha Sensorial): o sinal estava presente e funcionando, mas o técnico fisicamente não conseguiu detectá-lo devido ao EPI que atenuou o som além do necessário — limitação sensorial causada por equipamento/ambiente. O-A: não há evidência de violação ou intenção arriscada — o técnico seguia o procedimento normalmente, sem saber do alarme. A-A: a ação em si (continuação do procedimento) estava alinhada com o que ele percebia ser a situação correta; não houve falha de execução, seleção ou feedback independente.",
+  "discriminators": [
+    "NÃO é P-G (Atenção sem pressão): P-G requer que a informação fosse acessível atencionalmente — aqui havia impedimento físico-sensorial (EPI + ruído), não falha de foco.",
+    "NÃO é P-F (Falha de Percepção/ilusão): P-F envolve distorção perceptual de informação recebida; aqui a informação simplesmente não chegou ao sistema sensorial.",
+    "NÃO é A-B: não houve deslize de execução; o técnico fez exatamente o que pretendia fazer, baseado na percepção que tinha (ausência de alarme).",
+    "NÃO é O-D: o técnico não escolheu uma ação arriscada conscientemente; ele acreditava estar agindo de forma segura."
+  ]
+}

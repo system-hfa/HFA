@@ -1,0 +1,25 @@
+{
+  "id": "TEST-O-B-001",
+  "title": "Equipe omite checklist de pre-voo por ser considerado 'burocracia' na empresa",
+  "domain": "aviação offshore",
+  "description": "Em uma operadora de helicópteros offshore, a equipe de pilotos tinha o hábito estabelecido de não realizar o checklist completo de pre-voo para voos de posicionamento (ferry flights) internos, considerando-o 'desnecessário para voos curtos'. Este comportamento era conhecido pelos supervisores de linha, que nunca o questionaram. O manual de operações exigia checklist completo para TODOS os voos. Em um desses voos, a ausência do checklist levou à partida sem verificação do nível de óleo do rotor de cauda, resultando em falha mecânica em voo. Investigação confirmou que a prática de pular o checklist era rotineira há pelo menos 18 meses.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-B",
+    "action_code": "A-A",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P3",
+      "S3",
+      "O5",
+      "O6",
+      "T1"
+    ]
+  },
+  "rationale": "O-B (Violação Rotineira): pular o checklist era um desvio habitual, normalizado, tolerado pela supervisão e praticado sistematicamente há 18 meses. Não foi uma decisão isolada — era o comportamento padrão do grupo para esse tipo de voo. P-A: a percepção era correta — os pilotos sabiam que estavam pulando o checklist, o instrumento estava disponível, não havia falha sensorial ou de atenção. A-A: a ação de pular o checklist foi deliberada e executada conforme a intenção — não houve deslize de execução.",
+  "discriminators": [
+    "NÃO é O-C (Violação Excepcional): violação excepcional é atípica para o indivíduo, não sancionada; aqui era habitual, repetida e tolerada pela organização.",
+    "NÃO é O-D (Falha de Intenção/não violação): O-D envolve escolha consciente de ação arriscada MAS dentro das regras. Aqui havia violação explícita de procedimento obrigatório.",
+    "NÃO é A-B (Deslize): pular o checklist foi intencional — não foi um esquecimento acidental mas uma omissão deliberada e recorrente."
+  ]
+}

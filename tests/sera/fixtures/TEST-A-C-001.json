@@ -1,0 +1,24 @@
+{
+  "id": "TEST-A-C-001",
+  "title": "Piloto não verifica se trem de pouso recolheu após acionar alavanca",
+  "domain": "aviação",
+  "description": "Após a decolagem, o piloto acionou a alavanca de recolhimento do trem de pouso. Imediatamente após o acionamento, foi solicitado por ATC a mudar de frequência e iniciou comunicação com o novo setor. Não verificou se o indicador de trem de pouso confirmava o recolhimento completo (3 luzes verdes apagadas). O trem havia travado parcialmente — uma das pernas não recolheu. O alarme de trem não soou porque o circuito de alarme estava com defeito (fault latente). O piloto só descobriu o problema na aproximação final ao receber aviso de torre. A comunicação com ATC foi a única interrupção; não havia pressão de tempo excepcional.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-C",
+    "erc_level": 2,
+    "top_preconditions": [
+      "W1",
+      "S3",
+      "O3",
+      "P3"
+    ]
+  },
+  "rationale": "A-C (Falha no Feedback na Execução): o piloto executou a ação (acionou a alavanca) mas não verificou o resultado da execução — o loop de feedback foi interrompido pela comunicação com ATC. A falha está em não confirmar que a ação produziu o efeito esperado. P-G: a distração da comunicação ATC desviou a atenção da verificação — informação disponível (indicadores) mas não consultada, sem pressão de tempo causal. O-A: o objetivo era recolher o trem corretamente, sem violação.",
+  "discriminators": [
+    "NÃO é A-G (Feedback de Decisão): A-G é sobre não verificar resultado de uma DECISÃO; A-C é específico para feedback durante EXECUÇÃO de ação física/procedimental.",
+    "NÃO é A-J (Feedback por Pressão de Tempo): não havia pressão de tempo — a interrupção foi comunicação, não urgência temporal.",
+    "NÃO é A-B (Deslize): o piloto acionou a alavanca corretamente — a falha foi não confirmar o resultado, não a execução da ação em si."
+  ]
+}

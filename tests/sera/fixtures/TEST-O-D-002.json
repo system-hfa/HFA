@@ -1,0 +1,25 @@
+{
+  "id": "TEST-O-D-002",
+  "title": "Atalho operacional para cumprir janela de conexão",
+  "domain": "aviação",
+  "description": "Com atraso acumulado e risco de perder a janela de conexão dos passageiros, o comandante escolheu uma rota operacional mais curta que não era recomendada pelo manual da companhia para aquela condição meteorológica. A alternativa padrão continuava disponível, mas aumentaria o tempo de voo. A decisão reduziu alguns minutos da etapa, porém expôs a operação a margem menor de separação e aumento de carga de trabalho.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "S2",
+      "O4",
+      "T2"
+    ]
+  },
+  "rationale": "P-A: o comandante compreendia as opções disponíveis. O-D: a decisão priorizou eficiência e cumprimento de janela sobre a recomendação operacional. A-A: a ação executada correspondeu à intenção escolhida. ERC 2: o atalho não recomendado reduziu margem operacional sob meteorologia relevante.",
+  "discriminators": [
+    "Não é O-C: não havia emergência médica ou dano humano iminente a evitar.",
+    "Não é O-A: houve escolha consciente de atalho não recomendado por pressão de prazo.",
+    "Não é A-B: não foi omissão acidental de etapa, mas decisão intencional."
+  ]
+}

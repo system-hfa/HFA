@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-F-002",
+  "title": "Correção errada por horizonte falso em voo noturno",
+  "domain": "aviação",
+  "description": "Em voo noturno sobre área costeira com poucas referências visuais, o piloto percebeu uma linha de luzes inclinada como se fosse o horizonte real. Com base nessa ilusão visual de horizonte falso, interpretou que a aeronave estava com atitude oposta à real e aplicou correção no sentido errado. O instrumento primário indicava a atitude correta, mas a percepção visual ilusória dominou a resposta inicial.",
+  "expected": {
+    "perception_code": "P-F",
+    "objective_code": "O-A",
+    "action_code": "A-F",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P1",
+      "P2",
+      "W3",
+      "P6"
+    ]
+  },
+  "rationale": "P-F: a informação visual foi percebida de forma distorcida por ilusão de horizonte falso. O-A: o objetivo era manter atitude segura. A-F: a ação aplicada foi uma correção na direção errada. ERC 2: a correção incorreta em voo noturno criou risco operacional elevado.",
+  "discriminators": [
+    "Não é P-B: o piloto recebeu informação visual, mas a interpretou incorretamente.",
+    "Não é P-D: não se trata de seleção errada de comando por carga cognitiva, mas de percepção ilusória.",
+    "Não é A-I: a ação errada decorre da ilusão perceptiva, não de escolha de opção discreta incorreta em painel."
+  ]
+}

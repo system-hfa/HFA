@@ -1,0 +1,24 @@
+{
+  "id": "TEST-A-I-002",
+  "title": "Instrução de velocidade errada em pico de tráfego",
+  "domain": "controle de tráfego aéreo",
+  "description": "Durante pico de tráfego, um controlador gerenciava múltiplas aeronaves com conflitos potenciais em setores adjacentes. Ao selecionar uma instrução de velocidade para reduzir fechamento entre dois tráfegos, escolheu a velocidade destinada a outra aeronave em sua lista mental e transmitiu valor incorreto. A instrução gerou aproximação indesejada antes de ser corrigida por alerta do colega de coordenação.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-I",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3"
+    ]
+  },
+  "rationale": "P-D: a falha envolve seleção cognitiva errada sob múltiplas demandas concorrentes. O-A: o objetivo era manter separação. A-I: a ação foi escolher a opção/instrução errada entre alternativas disponíveis. ERC 1: a instrução errada durante conflito de tráfego criou risco crítico antes da correção.",
+  "discriminators": [
+    "Não é A-J: a falha não foi ausência de confirmação de mensagem, mas seleção da instrução incorreta.",
+    "Não é P-F: não houve ilusão perceptiva, e sim erro de seleção sob carga.",
+    "Não é O-D: não houve escolha de atalho por eficiência."
+  ]
+}

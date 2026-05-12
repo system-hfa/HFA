@@ -1,0 +1,25 @@
+{
+  "id": "TEST-A-J-001",
+  "title": "Controlador não confirma leitura de instrução sob congestionamento de frequência",
+  "domain": "controle de tráfego aéreo",
+  "description": "Durante período de congestionamento de frequência com múltiplas aeronaves transmitindo simultaneamente, o controlador emitiu instrução de altitude para o voo TAM-789. O protocolo exige confirmação de leitura (read-back) antes de considerar a instrução aceita. Havia 4 outras aeronaves aguardando na frequência. O controlador, sem aguardar o read-back completo, passou imediatamente para a próxima instrução — havia ouvido o início da resposta do piloto mas não o conteúdo completo. O voo TAM-789 havia entendido altitude errada. O controlador afirmou: 'não havia tempo para aguardar todos os read-backs com aquela fila de aeronaves'.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-J",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "A-J (Falha de Feedback por Pressão de Tempo): o controlador não completou o ciclo de feedback (confirmação do read-back) por pressão de tempo explícita e real — fila de aeronaves aguardando, congestionamento de frequência. A pressão temporal foi o fator direto que eliminou o feedback. P-D: a percepção do read-back foi incompleta sob pressão de tempo — ouviu o início mas não processou o conteúdo por sobrecarga temporal.",
+  "discriminators": [
+    "NÃO é A-G (Feedback sem pressão): A-G ocorre quando há tempo disponível mas o operador não verifica; aqui a pressão de tempo foi explicitamente causal e declarada.",
+    "NÃO é A-C (Feedback na Execução): A-C é sobre feedback de ação física durante execução; A-J é feedback de decisão/comunicação sob pressão de tempo.",
+    "NÃO é A-I (Seleção por Pressão): A-I é seleção da ação errada; aqui a ação (emitir instrução) foi correta — a falha foi não confirmar o feedback."
+  ]
+}

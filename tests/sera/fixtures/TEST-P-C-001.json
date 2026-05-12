@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-C-001",
+  "title": "Piloto novato interpreta erroneamente leitura de altímetro em tipo de aeronave desconhecido",
+  "domain": "aviação",
+  "description": "Um piloto com 200 horas de voo, recentemente certificado em aeronave de turboélice, confundiu a escala secundária do altímetro barométrico de três ponteiros com a leitura de altitude em pés, interpretando 11.000ft como 1.100ft. O piloto nunca havia operado esse modelo de altímetro anteriormente — seu treinamento inicial foi realizado em aeronaves com altímetros digitais. Iniciou descida prematura, sendo alertado pelo TAWS a 800ft AGL. O piloto afirmou que 'a leitura parecia normal para o procedimento de descida'.",
+  "expected": {
+    "perception_code": "P-C",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P6",
+      "P7",
+      "W1"
+    ]
+  },
+  "rationale": "P-C (Falha de Conhecimento/Percepção): o piloto percebeu a informação do instrumento, mas carecia do conhecimento específico sobre aquele modelo de altímetro para interpretá-la corretamente. A falha está no modelo mental incompleto do sistema, não na atenção ou nos sentidos. O-A: o objetivo era executar a descida corretamente — não houve violação de intenção. A-A: a ação de iniciar a descida era coerente com a percepção equivocada que o piloto tinha.",
+  "discriminators": [
+    "NÃO é P-B (Falha Sensorial): os instrumentos funcionavam; o piloto VIU as agulhas — o problema foi a interpretação, não a detecção.",
+    "NÃO é P-G (Atenção): o piloto estava atento ao altímetro; olhou para ele e o leu — o problema foi de conhecimento, não de foco.",
+    "NÃO é P-F (Percepção/ilusão): P-F envolve ilusão sensorial fisiológica; aqui é lacuna de conhecimento técnico sobre um instrumento específico.",
+    "NÃO é A-F (Seleção de Ação): o piloto escolheu corretamente iniciar a descida — o erro foi anterior, na leitura do instrumento."
+  ]
+}

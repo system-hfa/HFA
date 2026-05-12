@@ -1,0 +1,25 @@
+{
+  "id": "TEST-COMBO-003",
+  "title": "Médico de bordo administra dose errada por desconhecer protocolo de altitude",
+  "domain": "aviação médica — saúde offshore",
+  "description": "Médico de bordo recém-contratado administrou 500mg de paracetamol IV a paciente em aeronave pressurizada em cruzeiro. O protocolo da operadora para ambiente pressurizado especificava dose máxima de 250mg IV por absorção alterada em altitude. O médico conhecia o protocolo padrão hospitalar (500mg) mas não havia recebido treinamento específico para medicina aeronáutica/offshore. Não havia pressão de tempo — era atendimento eletivo. O paciente apresentou reação adversa leve. O médico tinha boa-fé e seguiu o que conhecia como protocolo correto.",
+  "expected": {
+    "perception_code": "P-C",
+    "objective_code": "O-A",
+    "action_code": "A-E",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P6",
+      "P7",
+      "O3",
+      "O4",
+      "S3"
+    ]
+  },
+  "rationale": "P-C (Falha de Conhecimento/Percepção): o médico percebeu corretamente a condição do paciente mas interpretou a situação com base em conhecimento hospitalar — sem o modelo mental correto para o ambiente aeronáutico/pressurizado. A-E (Falha de Conhecimento na Decisão): a dose administrada foi baseada em conhecimento específico da tarefa insuficiente — não conhecia o protocolo de altitude. Tinha habilidades médicas mas carecia do conhecimento específico do contexto.",
+  "discriminators": [
+    "NÃO é O-C ou O-B (Violação): o médico acreditava estar seguindo o protocolo correto — não houve intenção de violar nenhuma regra.",
+    "NÃO é A-F (Seleção): A-F requer que o operador TENHA o conhecimento e escolha errado; aqui a lacuna de conhecimento específico impediu a decisão correta.",
+    "NÃO é A-B (Deslize): a dose foi calculada e administrada intencionalmente — não foi erro de execução de procedimento conhecido."
+  ]
+}

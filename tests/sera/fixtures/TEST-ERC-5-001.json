@@ -1,0 +1,21 @@
+{
+  "id": "TEST-ERC-5-001",
+  "title": "Campo administrativo redundante preenchido com atraso",
+  "domain": "operação aeroportuária",
+  "description": "Ao encerrar uma atividade administrativa de despacho já validada por dois sistemas independentes, um operador deixou para preencher um campo redundante de observação que não alimentava decisão técnica, operacional ou de segurança. O campo foi completado com atraso ainda no mesmo turno, antes do fechamento do relatório, sem afetar comunicação, rastreabilidade crítica, liberação de equipamento ou execução de qualquer etapa operacional.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 5,
+    "top_preconditions": [
+      "O3"
+    ]
+  },
+  "rationale": "P-A: não há erro perceptivo; o operador sabia qual campo estava pendente. O-A: a intenção era administrativa regular. A-A: não houve falha de ação técnica relevante, apenas atraso em campo redundante. ERC 5: o caso não produziu impacto técnico, operacional ou de segurança.",
+  "discriminators": [
+    "Não é A-B: não houve omissão definitiva de etapa operacional obrigatória; o campo redundante foi preenchido antes do fechamento.",
+    "Não é ERC 4: não exigiu correção operacional, retrabalho técnico ou revisão de liberação.",
+    "Não é O-D: não houve escolha arriscada para ganhar tempo."
+  ]
+}

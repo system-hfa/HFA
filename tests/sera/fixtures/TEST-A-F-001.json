@@ -1,0 +1,25 @@
+{
+  "id": "TEST-A-F-001",
+  "title": "Piloto seleciona procedimento de emergência errado por similaridade",
+  "domain": "aviação — procedimentos de emergência",
+  "description": "Ao receber alerta de 'ENG 1 OIL PRESSURE LOW', o piloto iniciou o procedimento de 'ENG 1 FIRE' — procedimento adjacente na QRH (Quick Reference Handbook), com layout visual similar e localizado na mesma página. A aeronave tinha dois motores e o procedimento de fire incluía fechar combustível e desligar o motor. O copiloto acompanhava outro problema técnico e não monitorou a leitura do checklist. O motor foi desligado desnecessariamente. O piloto era experiente (8.400h). Não havia pressão de tempo excepcional — a pressão de óleo havia caído gradualmente.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-F",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "W1",
+      "P6",
+      "S3"
+    ]
+  },
+  "rationale": "A-F (Falha na Seleção de Ação): o piloto percebeu corretamente o alerta, tinha objetivo correto (responder à emergência), mas selecionou o procedimento errado. É uma falha de regra — 'first to match', selecionou a primeira entrada similar na QRH sem verificar a correspondência exata. P-A: o alerta foi percebido corretamente. O-A: a intenção era responder à emergência corretamente — sem violação.",
+  "discriminators": [
+    "NÃO é A-B (Deslize): A-B seria executar o procedimento correto com erro de execução; aqui houve seleção deliberada (porém errada) do procedimento.",
+    "NÃO é A-E (Falha de Conhecimento): o piloto conhecia ambos os procedimentos — a falha foi na seleção, não na ausência de conhecimento do procedimento correto.",
+    "NÃO é P-C (Conhecimento de Percepção): o piloto leu corretamente o alerta — a falha foi posterior, na escolha da resposta.",
+    "NÃO é A-I (Seleção por Pressão de Tempo): a degradação de óleo foi gradual, sem urgência extrema — P-D/A-I requerem pressão de tempo causal."
+  ]
+}

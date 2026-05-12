@@ -1,0 +1,24 @@
+{
+  "id": "TEST-O-C-002",
+  "title": "Pouso fora do procedimento padrão por emergência médica",
+  "domain": "aviação",
+  "description": "Durante aproximação para aeroporto alternativo, a tripulação recebeu informação de que um passageiro apresentava deterioração clínica rápida e precisava de atendimento imediato. O piloto aceitou pousar por uma configuração fora do procedimento padrão publicado, mantendo coordenação com controle e tripulação, para reduzir o tempo até atendimento médico. A decisão foi registrada como desvio operacional motivado por mitigação de dano humano iminente.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "P-A: a situação foi percebida de forma adequada. O-C: o objetivo principal era evitar agravamento humano imediato. A-A: a ação foi deliberada e alinhada a esse objetivo. ERC 2: o desvio operacional em aproximação mantém risco significativo, mesmo justificado por emergência médica.",
+  "discriminators": [
+    "Não é O-D: o desvio não foi por conveniência, produtividade ou ganho de tempo organizacional.",
+    "Não é O-A: há objetivo humano emergencial explícito que domina a decisão.",
+    "Não é A-H: não houve interrupção de sequência por tempo, mas escolha operacional deliberada."
+  ]
+}

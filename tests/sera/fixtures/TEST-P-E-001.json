@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-E-001",
+  "title": "Piloto não conclui checklist por subestimar tempo necessário",
+  "domain": "aviação",
+  "description": "Durante preparação para voo IFR, o piloto calculou que teria 12 minutos para completar o checklist de pre-voo completo antes do slot de decolagem. O checklist levava habitualmente 18 minutos. O piloto não ajustou seu plano ao perceber que estava atrasado — continuou no ritmo normal, chegou ao fim do tempo disponível com 4 itens pendentes e decidiu pular os itens restantes. Um dos itens pulados era a verificação dos alternadores. Em voo, falha elétrica foi detectada. O piloto tinha plena consciência do tempo disponível mas não tomou nenhuma ação para reorganizar a execução do checklist.",
+  "expected": {
+    "perception_code": "P-E",
+    "objective_code": "O-A",
+    "action_code": "A-H",
+    "erc_level": 2,
+    "top_preconditions": [
+      "T1",
+      "P6",
+      "O1",
+      "S3"
+    ]
+  },
+  "rationale": "P-E (Falha no Gerenciamento de Tempo): o piloto percebeu corretamente a situação e os itens do checklist, mas falhou em gerenciar o tempo disponível para completar a tarefa — não reorganizou a execução nem priorizou itens críticos quando percebeu o atraso. A-H (Falha no Gerenciamento do Tempo na Ação): a execução da tarefa não foi adaptada à restrição temporal — continuou no ritmo normal sem estratégia de gestão. O-A: o objetivo era completar o checklist corretamente, sem violação de intenção.",
+  "discriminators": [
+    "NÃO é P-D (Atenção com pressão): P-D é quando a pressão de tempo impede a percepção; aqui o piloto percebeu tudo corretamente — a falha foi no gerenciamento, não na percepção.",
+    "NÃO é A-B (Deslize): pular os itens foi decisão consciente, não lapso involuntário.",
+    "NÃO é O-D (Falha de Intenção): o piloto não escolheu intencionalmente uma ação arriscada; ele falhou em reorganizar a execução dentro do tempo disponível."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "TEST-A-D-002",
+  "title": "Alavanca de emergência inacessível por equipamento de proteção",
+  "domain": "operação industrial",
+  "description": "Durante contenção de vazamento, um operador identificou corretamente a necessidade de acionar a alavanca de emergência instalada ao lado do módulo. Ao avançar para o comando, percebeu que a posição da alavanca estava parcialmente obstruída pelo equipamento de proteção volumoso exigido para a área, impedindo alcance firme e curso completo. Ele tentou acionar o comando, mas a alavanca não chegou à posição final.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-D",
+    "erc_level": 3,
+    "top_preconditions": [
+      "W1",
+      "W2",
+      "P1",
+      "O2",
+      "O4"
+    ]
+  },
+  "rationale": "P-A: a necessidade de acionar o comando foi percebida corretamente. O-A: o objetivo era cumprir a resposta emergencial. A-D: a falha está na impossibilidade física de executar plenamente a ação pretendida. ERC 3: houve atraso e degradação de resposta, com risco operacional controlado posteriormente.",
+  "discriminators": [
+    "Não é A-B: o operador tentou executar a etapa; ela não foi omitida.",
+    "Não é P-H: o comando correto foi identificado, sem ambiguidade de alvo.",
+    "Não é P-B: não houve falha sensorial na detecção da necessidade."
+  ]
+}

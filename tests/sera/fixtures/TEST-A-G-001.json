@@ -1,0 +1,23 @@
+{
+  "id": "TEST-A-G-001",
+  "title": "Supervisor não verifica resultado de ação corretiva após instruir técnico",
+  "domain": "operações industriais",
+  "description": "Um supervisor de operações instruiu um técnico a ajustar a pressão de uma linha de processo para 45 bar. O técnico ajustou para 54 bar por erro de leitura do manômetro. O supervisor, após dar a instrução, foi atender outra demanda e não retornou para confirmar o resultado do ajuste. Não havia pressão de tempo declarada naquele momento. O sistema operou por 2 horas na pressão incorreta antes de o problema ser detectado em inspeção de rotina. O supervisor afirmou que 'confia na equipe para executar procedimentos simples sem supervisão constante'.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "A-G (Falha de Feedback — decisão, sem pressão de tempo): o supervisor tomou a decisão de não verificar o resultado da ação delegada. Os mecanismos de controle e correção de erros (verificação pós-ação) foram desativados prematuramente pela desatenção do supervisor após a instrução. Não havia pressão de tempo — critério que separa A-G de A-J. P-A: percepção correta da necessidade do ajuste. O-A: objetivo correto (ajustar pressão para 45 bar).",
+  "discriminators": [
+    "NÃO é A-C (Feedback na Execução): A-C é falha de feedback durante a execução da própria ação; aqui é falha de feedback sobre resultado de ação delegada — contexto de decisão.",
+    "NÃO é A-J (Feedback por Pressão de Tempo): não havia pressão de tempo no momento — a ausência de verificação foi escolha, não imposição temporal.",
+    "NÃO é A-B (Deslize): o supervisor não esqueceu de verificar de forma involuntária; havia uma disposição declarada ('confio na equipe') — foi omissão por crença, não lapso."
+  ]
+}

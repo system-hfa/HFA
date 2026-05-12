@@ -1,0 +1,24 @@
+{
+  "id": "TEST-A-I-001",
+  "title": "Controlador de tráfego seleciona instrução de altitude errada sob alta demanda",
+  "domain": "controle de tráfego aéreo",
+  "description": "Durante pico de tráfego com conflito iminente detectado, o controlador tinha menos de 60 segundos para resolver a separação entre dois voos. Sob essa pressão, emitiu instrução de 'climb FL350' para o voo que deveria descer (deveria ser 'descend FL290'). O controlador estava gerenciando 5 comunicações simultâneas. Após a instrução, percebeu o erro e corrigiu em 8 segundos. O conflito foi resolvido mas com separação mínima. O controlador afirmou: 'tive que agir imediatamente, não havia tempo para confirmar o strips antes de transmitir'.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-I",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3"
+    ]
+  },
+  "rationale": "A-I (Seleção de Ação por Pressão de Tempo): a instrução errada foi selecionada sob pressão de tempo extrema e real — o controlador tinha menos de 60s para agir. A pressão temporal foi o fator causal direto na seleção incorreta da instrução. P-D: a percepção do conflito estava correta mas incompleta devido à pressão — não havia tempo para confirmar os strips (mesma lógica da pressão de tempo como causal). O-A: o objetivo era resolver o conflito corretamente.",
+  "discriminators": [
+    "NÃO é A-F (Seleção sem pressão): A-F ocorre quando há tempo para selecionar mas o operador escolhe errado; aqui a pressão temporal foi explicitamente causal.",
+    "NÃO é A-H (Gerenciamento de Tempo): A-H é sobre falha em gerir o tempo disponível; aqui o tempo era objetivamente insuficiente para o número de tarefas simultâneas.",
+    "NÃO é A-B (Deslize): houve seleção deliberada de instrução, não execução incorreta de uma instrução corretamente selecionada."
+  ]
+}

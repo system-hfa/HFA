@@ -1,0 +1,25 @@
+{
+  "id": "TEST-P-G-001",
+  "title": "Piloto não verifica nível de combustível antes da decolagem por complacência",
+  "domain": "aviação geral",
+  "description": "Um piloto experiente com 3.200 horas de voo realizou o pre-flight check de uma aeronave que voava há 7 anos. Durante a inspeção, o checklist prevê verificação visual do nível de combustível nas asas. O piloto passou pelos tanques sem realizar a verificação visual, assumindo que estavam cheios como de costume. A aeronave foi abastecida apenas parcialmente pelo técnico em serviço — informação que constava no board de operações, que o piloto não consultou. A aeronave pousou de emergência 45 minutos depois por combustível insuficiente. A jornada de trabalho do piloto era normal (6h), sem pressão de tempo declarada.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-B",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P2",
+      "P6",
+      "O4",
+      "O3"
+    ]
+  },
+  "rationale": "P-G (Atenção SEM pressão de tempo): a informação estava disponível (board + tanques visíveis), a jornada era normal, não havia sobrecarga. A falha foi de atenção/complacência — o piloto assumiu o estado sem verificar. Mais tempo NÃO teria mudado o resultado, pois o piloto não tinha intenção de verificar. O-A: não houve violação; o piloto acreditava estar seguindo o procedimento. A-B (Deslize/Omissão): a omissão da verificação visual é um deslize/lapso de execução do checklist — a ação de verificar estava no procedimento mas não foi realizada.",
+  "discriminators": [
+    "NÃO é P-D (Atenção COM pressão): o relato não indica pressão de tempo; a jornada era normal e não havia urgência declarada no evento.",
+    "NÃO é P-B (Sensorial): o nível de combustível era visível; não houve impedimento sensorial.",
+    "NÃO é O-B (Violação Rotineira): pular a verificação não era um desvio habitual sancionado pelo grupo/organização — era um lapso individual naquele evento.",
+    "A ação É A-B (não A-A) porque a omissão da verificação constitui falha de execução do checklist — ação prevista não realizada."
+  ]
+}

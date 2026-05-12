@@ -1,0 +1,24 @@
+{
+  "id": "TEST-P-E-002",
+  "title": "Checklist encerrado por subestimação do tempo restante",
+  "domain": "aviação",
+  "description": "Durante a preparação para aproximação, um piloto estimou que ainda havia tempo suficiente para completar os itens finais depois da interceptação do perfil. Ao perceber a carga de comunicação aumentando, antecipou o encerramento do checklist e declarou a sequência concluída, subestimando o tempo restante antes da aproximação estabilizada. A tripulação precisou retomar itens pendentes em fase de alta carga de trabalho.",
+  "expected": {
+    "perception_code": "P-E",
+    "objective_code": "O-A",
+    "action_code": "A-H",
+    "erc_level": 2,
+    "top_preconditions": [
+      "T1",
+      "P6",
+      "O1",
+      "S3"
+    ]
+  },
+  "rationale": "P-E: a falha central é estimativa temporal incorreta sobre o tempo restante. O-A: o objetivo era completar o procedimento normal. A-H: a sequência foi interrompida por tempo insuficiente antes de sua conclusão adequada. ERC 2: houve execução em fase crítica com aumento claro de risco operacional.",
+  "discriminators": [
+    "Não é P-G: o problema não foi simples desatenção, mas julgamento temporal equivocado.",
+    "Não é A-B: o piloto não esqueceu um item isolado; ele encerrou a sequência por avaliação temporal errada.",
+    "Não é O-D: não há escolha deliberada de atalho por ganho operacional."
+  ]
+}

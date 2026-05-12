@@ -1,0 +1,24 @@
+{
+  "id": "TEST-COMBO-002",
+  "title": "Piloto viola altitude mínima de segurança em rota habitual para ganhar tempo",
+  "domain": "aviação offshore",
+  "description": "Piloto de helicóptero em rota regular para plataforma offshore voou a 800ft em vez da altitude mínima de segurança de 1.000ft definida no manual de operações da empresa. A redução de altitude nessa rota era prática comum na equipe para economizar combustível e encurtar o tempo de voo. Supervisores de linha conheciam a prática. Registros de telemetria mostraram que 11 dos últimos 14 voos daquele piloto nessa rota foram abaixo de 1.000ft. Em condições de neblina naquele dia, o piloto não avistou uma embarcação de apoio que cruzava a rota a 600ft, acionando TCAS.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-B",
+    "action_code": "A-A",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P3",
+      "S3",
+      "O5",
+      "O6",
+      "T1"
+    ]
+  },
+  "rationale": "O-B (Violação Rotineira): voar abaixo de 1.000ft era comportamento habitual, normalizado, conhecido e tolerado pela supervisão — 11 de 14 voos recentes. P-G: em condições de neblina, o piloto não percebeu a embarcação — atenção não voltada para o espaço aéreo abaixo (complacência da rota habitual). A-A: a execução do voo foi conforme a intenção — o erro estava no objetivo.",
+  "discriminators": [
+    "NÃO é O-C (Violação Excepcional): O-C requer comportamento atípico para o indivíduo — aqui era padrão habitual documentado em 11 de 14 voos.",
+    "NÃO é P-B (Sensorial): em condições normais o piloto veria a embarcação — a falha de atenção foi por complacência da rota habitual, não impedimento sensorial."
+  ]
+}
