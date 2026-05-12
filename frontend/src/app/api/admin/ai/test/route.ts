@@ -3,7 +3,7 @@ import Anthropic from '@anthropic-ai/sdk'
 import OpenAI from 'openai'
 import Groq from 'groq-sdk'
 import { GoogleGenerativeAI } from '@google/generative-ai'
-import { requireAdmin, jsonError } from '@/lib/server/admin-auth'
+import { requireAdmin, jsonError, isMasked } from '@/lib/server/admin-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 
 type Provider = 'anthropic' | 'openai' | 'google' | 'groq' | 'deepseek'
@@ -45,7 +45,7 @@ function providerConfig(provider: Provider, settingsMap: Record<string, string>)
   }
   return {
     key: settingsMap.deepseek_api_key || process.env.DEEPSEEK_API_KEY || '',
-    model: 'deepseek-reasoner',
+    model: settingsMap.deepseek_model || process.env.DEEPSEEK_MODEL || 'deepseek-reasoner',
   }
 }
 
@@ -121,7 +121,7 @@ export async function POST(req: Request) {
     for (const provider of ['anthropic', 'openai', 'google', 'groq', 'deepseek'] as const) {
       const apiKey = body[`${provider}_api_key`]
       const model = body[`${provider}_model`]
-      if (apiKey) settingsMap[`${provider}_api_key`] = apiKey
+      if (apiKey && !isMasked(apiKey)) settingsMap[`${provider}_api_key`] = apiKey
       if (model) settingsMap[`${provider}_model`] = model
     }
 

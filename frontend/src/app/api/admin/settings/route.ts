@@ -9,7 +9,7 @@ const SENSITIVE = new Set([
 
 const ENV_DEFAULTS: Record<string, string> = {
   ai_provider: process.env.AI_PROVIDER ?? 'deepseek',
-  deepseek_model: 'deepseek-reasoner',
+  deepseek_model: process.env.DEEPSEEK_MODEL ?? 'deepseek-reasoner',
   openai_model: process.env.OPENAI_MODEL ?? 'gpt-4o',
   anthropic_model: process.env.ANTHROPIC_MODEL ?? 'claude-sonnet-4-5',
   google_model: process.env.GOOGLE_MODEL ?? 'gemini-2.0-flash',
@@ -55,7 +55,7 @@ export async function GET(req: Request) {
       api_url: process.env.NEXT_PUBLIC_API_URL ?? '',
       supabase_url: process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
       ai_provider: process.env.AI_PROVIDER ?? '',
-      deepseek_model: 'deepseek-reasoner',
+      deepseek_model: process.env.DEEPSEEK_MODEL ?? '',
       openai_model: process.env.OPENAI_MODEL ?? '',
       anthropic_model: process.env.ANTHROPIC_MODEL ?? '',
       google_model: process.env.GOOGLE_MODEL ?? '',

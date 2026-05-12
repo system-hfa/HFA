@@ -19,6 +19,10 @@ type ProviderState = {
   model: string
 }
 
+function isMaskedKey(value: string): boolean {
+  return value.includes('****')
+}
+
 const EMPTY: Record<Provider, ProviderState> = {
   anthropic: { api_key: '', model: 'claude-sonnet-4-5' },
   openai: { api_key: '', model: 'gpt-4o' },
@@ -131,7 +135,9 @@ export default function AdminAIPage() {
       }
 
       for (const p of PROVIDERS) {
-        payload[`${p.id}_api_key`] = providers[p.id].api_key
+        if (!isMaskedKey(providers[p.id].api_key)) {
+          payload[`${p.id}_api_key`] = providers[p.id].api_key
+        }
         payload[`${p.id}_model`] = providers[p.id].model
       }
 
@@ -162,7 +168,9 @@ export default function AdminAIPage() {
         ai_provider: activeProvider,
       }
       for (const p of PROVIDERS) {
-        payload[`${p.id}_api_key`] = providers[p.id].api_key
+        if (!isMaskedKey(providers[p.id].api_key)) {
+          payload[`${p.id}_api_key`] = providers[p.id].api_key
+        }
         payload[`${p.id}_model`] = providers[p.id].model
       }
       const res = await fetch('/api/admin/ai/test', {
