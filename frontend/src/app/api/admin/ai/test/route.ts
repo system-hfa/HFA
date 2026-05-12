@@ -19,8 +19,9 @@ function pickProvider(settingsMap: Record<string, string>): Provider {
 }
 
 function usableKey(value: string | undefined, fallback: string | undefined): string {
-  if (value && !isMasked(value)) return value
-  return fallback || ''
+  const saved = value?.trim()
+  if (saved && !isMasked(saved)) return saved
+  return fallback?.trim() || ''
 }
 
 function providerConfig(provider: Provider, settingsMap: Record<string, string>) {
@@ -126,7 +127,7 @@ export async function POST(req: Request) {
     for (const provider of ['anthropic', 'openai', 'google', 'groq', 'deepseek'] as const) {
       const apiKey = body[`${provider}_api_key`]
       const model = body[`${provider}_model`]
-      if (apiKey && !isMasked(apiKey)) settingsMap[`${provider}_api_key`] = apiKey
+      if (apiKey && !isMasked(apiKey)) settingsMap[`${provider}_api_key`] = apiKey.trim()
       if (model) settingsMap[`${provider}_model`] = model
     }
 

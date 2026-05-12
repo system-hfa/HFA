@@ -27,6 +27,11 @@ const SENSITIVE_ENV_KEYS: Record<string, string> = {
   stripe_webhook_secret: process.env.STRIPE_WEBHOOK_SECRET ?? '',
 }
 
+function normalizeSettingValue(key: string, value: unknown): string {
+  const raw = value == null ? '' : String(value)
+  return SENSITIVE.has(key) ? raw.trim() : raw
+}
+
 export async function GET(req: Request) {
   try {
     await requireAdmin(req)
@@ -89,12 +94,13 @@ export async function PATCH(req: Request) {
 
     for (const [key, value] of Object.entries(updates)) {
       if (key === 'env') continue
-      const raw = value == null ? '' : String(value)
+      const raw = normalizeSettingValue(key, value)
       if (isMasked(raw)) continue
-      await admin.from('system_settings').upsert(
+      const { error } = await admin.from('system_settings').upsert(
         { key, value: raw, updated_at: now },
         { onConflict: 'key' }
       )
+      if (error) throw error
     }
 
     return NextResponse.json({ ok: true })
