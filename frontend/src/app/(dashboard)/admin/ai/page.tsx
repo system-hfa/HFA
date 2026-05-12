@@ -234,23 +234,27 @@ export default function AdminAIPage() {
                         placeholder="sk-...****"
                       />
                     </label>
-                    <label className="block">
+                    <div className="block">
                       <span className="text-xs text-slate-400">Modelo padrão</span>
-                      <input
-                        list={`models-${p.id}`}
+                      <select
                         value={providers[p.id].model}
                         onChange={(e) => setProviders((s) => ({ ...s, [p.id]: { ...s[p.id], model: e.target.value } }))}
                         className="mt-1 w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white"
-                      />
-                      <datalist id={`models-${p.id}`}>
+                      >
                         {[...new Set([providers[p.id].model, ...MAIN_MODEL_OPTIONS[p.id]].filter(Boolean))].map((model) => (
-                          <option key={model} value={model} />
+                          <option key={model} value={model}>{model}</option>
                         ))}
-                      </datalist>
+                      </select>
+                      <input
+                        value={providers[p.id].model}
+                        onChange={(e) => setProviders((s) => ({ ...s, [p.id]: { ...s[p.id], model: e.target.value } }))}
+                        className="mt-2 w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white"
+                        placeholder="ID customizado do modelo"
+                      />
                       <p className="mt-1 text-[11px] text-slate-500">
-                        Escolha um modelo sugerido ou informe um ID customizado.
+                        Selecione uma opção sugerida ou informe um ID customizado no campo abaixo.
                       </p>
-                    </label>
+                    </div>
                   </div>
                 </div>
               ))}
