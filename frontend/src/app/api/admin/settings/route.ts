@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin, jsonError, maskSensitive, isMasked } from '@/lib/server/admin-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
+import { decryptString, encryptString } from '@/lib/server/ai-settings-crypto'
 
 const SENSITIVE = new Set([
   'stripe_publishable_key', 'stripe_secret_key', 'stripe_webhook_secret',
@@ -41,18 +42,41 @@ function formatError(error: unknown): string {
   return String(error)
 }
 
+function isMissingSystemSettings(error: unknown): boolean {
+  return Boolean(
+    error &&
+      typeof error === 'object' &&
+      (error as { code?: string }).code === 'PGRST205'
+  )
+}
+
 export async function GET(req: Request) {
   try {
-    await requireAdmin(req)
+    const user = await requireAdmin(req)
     const admin = getSupabaseAdmin()
     const { data, error } = await admin.from('system_settings').select('key, value')
-    if (error) throw error
+    if (error && !isMissingSystemSettings(error)) throw error
 
     const result: Record<string, unknown> = {}
-    for (const row of data ?? []) {
-      const key = String(row.key)
-      const value = String(row.value ?? '')
-      result[key] = SENSITIVE.has(key) ? maskSensitive(value) : value
+    if (error && isMissingSystemSettings(error)) {
+      const { data: aiRow, error: aiError } = await admin
+        .from('ai_settings')
+        .select('active_provider, deepseek_api_key, openai_api_key, anthropic_api_key, google_api_key, groq_api_key')
+        .eq('user_id', user.userId)
+        .maybeSingle()
+      if (aiError) throw aiError
+      if (aiRow?.active_provider) result.ai_provider = String(aiRow.active_provider)
+      for (const key of ['deepseek_api_key', 'openai_api_key', 'anthropic_api_key', 'google_api_key', 'groq_api_key']) {
+        const enc = aiRow?.[key as keyof typeof aiRow]
+        if (typeof enc !== 'string' || !enc) continue
+        result[key] = maskSensitive(decryptString(enc))
+      }
+    } else {
+      for (const row of data ?? []) {
+        const key = String(row.key)
+        const value = String(row.value ?? '')
+        result[key] = SENSITIVE.has(key) ? maskSensitive(value) : value
+      }
     }
 
     for (const [key, value] of Object.entries(ENV_DEFAULTS)) {
@@ -93,13 +117,14 @@ export async function GET(req: Request) {
 
 export async function PATCH(req: Request) {
   try {
-    await requireAdmin(req)
+    const user = await requireAdmin(req)
     const body = await req.json() as Record<string, unknown>
     const updates = (body.updates && typeof body.updates === 'object')
       ? body.updates as Record<string, unknown>
       : body
 
     const admin = getSupabaseAdmin()
+    let systemSettingsMissing = false
 
     for (const [key, value] of Object.entries(updates)) {
       if (key === 'env') continue
@@ -109,6 +134,24 @@ export async function PATCH(req: Request) {
         { key, value: raw },
         { onConflict: 'key' }
       )
+      if (error && isMissingSystemSettings(error)) {
+        systemSettingsMissing = true
+        break
+      }
+      if (error) throw error
+    }
+
+    if (systemSettingsMissing) {
+      const payload: Record<string, unknown> = { user_id: user.userId }
+      const provider = updates.ai_provider
+      if (provider) payload.active_provider = String(provider)
+      for (const key of ['deepseek_api_key', 'openai_api_key', 'anthropic_api_key', 'google_api_key', 'groq_api_key']) {
+        if (!(key in updates)) continue
+        const raw = normalizeSettingValue(key, updates[key])
+        if (isMasked(raw)) continue
+        payload[key] = raw ? encryptString(raw) : null
+      }
+      const { error } = await admin.from('ai_settings').upsert(payload, { onConflict: 'user_id' })
       if (error) throw error
     }
 

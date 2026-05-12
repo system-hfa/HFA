@@ -9,9 +9,25 @@ export type AIProvider = 'deepseek' | 'openai' | 'anthropic' | 'google' | 'groq'
 let llmConfigLogged = false
 const DEFAULT_DEEPSEEK_MODEL = 'deepseek-reasoner'
 
-function loadFrontendEnvLocal(): void {
+function loadFrontendEnvLocal(options?: { overrideAiKeys?: boolean }): void {
   const envPath = path.resolve(process.cwd(), 'frontend/.env.local')
   if (!fs.existsSync(envPath)) return
+  const overrideKeys = new Set([
+    'AI_PROVIDER',
+    'DEEPSEEK_API_KEY',
+    'DEEPSEEK_MODEL',
+    'DEEPSEEK_TEMPERATURE',
+    'DEEPSEEK_TOP_P',
+    'OPENAI_API_KEY',
+    'OPENAI_MODEL',
+    'ANTHROPIC_API_KEY',
+    'ANTHROPIC_MODEL',
+    'GOOGLE_API_KEY',
+    'GOOGLE_GENERATIVE_AI_API_KEY',
+    'GOOGLE_MODEL',
+    'GROQ_API_KEY',
+    'GROQ_MODEL',
+  ])
   const content = fs.readFileSync(envPath, 'utf8')
   for (const line of content.split('\n')) {
     const trimmed = line.trim()
@@ -19,8 +35,8 @@ function loadFrontendEnvLocal(): void {
     const eq = trimmed.indexOf('=')
     if (eq <= 0) continue
     const key = trimmed.slice(0, eq).trim()
-    const value = trimmed.slice(eq + 1).trim()
-    if (!process.env[key]) process.env[key] = value
+    const value = trimmed.slice(eq + 1).trim().replace(/^['"]|['"]$/g, '')
+    if (!process.env[key] || (options?.overrideAiKeys && overrideKeys.has(key))) process.env[key] = value
   }
 }
 
@@ -33,8 +49,8 @@ function isSeraTestContext(): boolean {
 }
 
 function resolveDeepseekConfig() {
-  loadFrontendEnvLocal()
   const seraContext = isSeraTestContext()
+  loadFrontendEnvLocal({ overrideAiKeys: seraContext })
   const model = process.env.DEEPSEEK_MODEL ?? DEFAULT_DEEPSEEK_MODEL
   const temperature = seraContext ? 0 : Number(process.env.DEEPSEEK_TEMPERATURE ?? '0')
   const topP = seraContext ? 1 : Number(process.env.DEEPSEEK_TOP_P ?? '1')
@@ -53,6 +69,7 @@ function resolveDeepseekConfig() {
 }
 
 export function getActiveProvider(): AIProvider {
+  loadFrontendEnvLocal({ overrideAiKeys: isSeraTestContext() })
   const p = (process.env.AI_PROVIDER ?? 'deepseek').toLowerCase()
   // Only accept known providers; fall back to deepseek for safety.
   if (p === 'deepseek' || p === 'openai' || p === 'anthropic' || p === 'google' || p === 'groq')
@@ -75,8 +92,13 @@ export function getModelName(provider?: AIProvider): string {
 
 function requireApiKey(envName: string, hint?: string): string {
   const v = process.env[envName]?.trim()
-  if (v) return v
   const extra = hint ? ` ${hint}` : ''
+  if (v && !v.includes('****')) return v
+  if (v?.includes('****')) {
+    throw new Error(
+      `${envName} contém uma chave mascarada e não pode ser usada para chamada LLM.${extra} Configure a chave real em frontend/.env.local (ou no hospedeiro da API).`
+    )
+  }
   throw new Error(
     `${envName} não está definida.${extra} Configure em frontend/.env.local (ou no hospedeiro da API).`
   )

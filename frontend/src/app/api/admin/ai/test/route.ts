@@ -5,6 +5,7 @@ import Groq from 'groq-sdk'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { requireAdmin, jsonError, isMasked } from '@/lib/server/admin-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
+import { decryptString } from '@/lib/server/ai-settings-crypto'
 
 type Provider = 'anthropic' | 'openai' | 'google' | 'groq' | 'deepseek'
 
@@ -22,6 +23,14 @@ function usableKey(value: string | undefined, fallback: string | undefined): str
   const saved = value?.trim()
   if (saved && !isMasked(saved)) return saved
   return fallback?.trim() || ''
+}
+
+function isMissingSystemSettings(error: unknown): boolean {
+  return Boolean(
+    error &&
+      typeof error === 'object' &&
+      (error as { code?: string }).code === 'PGRST205'
+  )
 }
 
 function providerConfig(provider: Provider, settingsMap: Record<string, string>) {
@@ -115,13 +124,28 @@ async function runTest(provider: Provider, key: string, model: string): Promise<
 
 export async function POST(req: Request) {
   try {
-    await requireAdmin(req)
+    const user = await requireAdmin(req)
     const admin = getSupabaseAdmin()
     const body = (await req.json().catch(() => ({}))) as TestPayload
 
-    const { data } = await admin.from('system_settings').select('key, value')
+    const { data, error } = await admin.from('system_settings').select('key, value')
+    if (error && !isMissingSystemSettings(error)) throw error
     const settingsMap: Record<string, string> = {}
     for (const row of data ?? []) settingsMap[String(row.key)] = String(row.value ?? '')
+    if (error && isMissingSystemSettings(error)) {
+      const { data: aiRow, error: aiError } = await admin
+        .from('ai_settings')
+        .select('active_provider, deepseek_api_key, openai_api_key, anthropic_api_key, google_api_key, groq_api_key')
+        .eq('user_id', user.userId)
+        .maybeSingle()
+      if (aiError) throw aiError
+      const stored = (aiRow ?? {}) as Record<string, unknown>
+      if (stored.active_provider) settingsMap.ai_provider = String(stored.active_provider)
+      for (const provider of ['anthropic', 'openai', 'google', 'groq', 'deepseek'] as const) {
+        const enc = stored[`${provider}_api_key`]
+        if (typeof enc === 'string' && enc) settingsMap[`${provider}_api_key`] = decryptString(enc)
+      }
+    }
 
     if (body.ai_provider) settingsMap.ai_provider = body.ai_provider
     for (const provider of ['anthropic', 'openai', 'google', 'groq', 'deepseek'] as const) {
