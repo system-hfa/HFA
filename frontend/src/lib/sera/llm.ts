@@ -10,6 +10,8 @@ export type AIProvider = 'deepseek' | 'openai' | 'anthropic' | 'google' | 'groq'
 
 let llmConfigLogged = false
 const DEFAULT_DEEPSEEK_MODEL = 'deepseek-reasoner'
+// DeepSeek may show deepseek-v4-flash in billing because deepseek-reasoner is mapped to V4 Flash thinking mode by the provider.
+let deepseekFlashWarningLogged = false
 let seraSupabaseLoaded = false
 
 function loadFrontendEnvLocal(options?: { overrideAiKeys?: boolean }): void {
@@ -95,9 +97,15 @@ async function loadSeraAiSettingsFromSupabase(): Promise<void> {
 function resolveDeepseekConfig() {
   const seraContext = isSeraTestContext()
   loadFrontendEnvLocal({ overrideAiKeys: seraContext && !seraSupabaseLoaded })
-  const model = process.env.DEEPSEEK_MODEL ?? DEFAULT_DEEPSEEK_MODEL
+  const configuredModel = process.env.DEEPSEEK_MODEL?.trim()
+  const model = configuredModel || DEFAULT_DEEPSEEK_MODEL
   const temperature = seraContext ? 0 : Number(process.env.DEEPSEEK_TEMPERATURE ?? '0')
   const topP = seraContext ? 1 : Number(process.env.DEEPSEEK_TOP_P ?? '1')
+
+  if (!deepseekFlashWarningLogged && configuredModel?.toLowerCase().includes('flash')) {
+    deepseekFlashWarningLogged = true
+    console.warn('[SERA LLM WARNING] using flash model id explicitly', { model: configuredModel })
+  }
 
   if (!llmConfigLogged) {
     llmConfigLogged = true
