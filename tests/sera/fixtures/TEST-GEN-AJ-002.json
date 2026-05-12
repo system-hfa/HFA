@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-AJ-002",
+  "title": "Centro de controle não fecha comunicação após instrução operacional urgente em frequência congestionada",
+  "domain": "controle de tráfego aéreo",
+  "description": "O centro de controle emitiu instrução operacional urgente de mudança de nível de voo para uma aeronave durante período de frequência congestionada com múltiplas transmissões simultâneas. Após emitir a instrução, o controlador não confirmou se a mensagem havia sido recebida e lida de volta corretamente pela aeronave antes de autorizá-la a executar a manobra. A aeronave havia entendido um nível diferente. O controlador afirmou que tentou confirmar, mas a frequência estava saturada e assumiu que a leitura estava correta pelo início da resposta ouvida. O mecanismo dominante foi o fechamento incompleto do ciclo de comunicação, não uma instrução errada.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-J",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "A-J (Falha de Confirmação/Readback): o mecanismo dominante foi a ausência de confirmação completa da instrução transmitida em frequência congestionada — critério de A-J. P-D: a saturação da frequência e as múltiplas transmissões simultâneas sobrecarregaram a capacidade de atenção do controlador. O-A: objetivo correto — a instrução em si era adequada; a falha foi na confirmação do recebimento.",
+  "discriminators": [
+    "NÃO é A-I (seleção inadequada sob carga): a instrução de mudança de nível era correta — a falha foi não confirmar que foi recebida corretamente.",
+    "NÃO é P-A: a saturação da frequência e a sobrecarga de múltiplas transmissões configuram P-D, não ausência de falha perceptiva.",
+    "NÃO é O-D (eficiência): não há motivação de ganho operacional — a omissão do ciclo de confirmação foi consequência da sobrecarga."
+  ]
+}

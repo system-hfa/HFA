@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-PG-001",
+  "title": "Operador assume normalidade sem conferir parâmetro disponível no painel após intervenção",
+  "domain": "operações de refinaria",
+  "description": "Após uma intervenção de ajuste em uma válvula de controle de pressão, o operador assumiu que o sistema havia retornado à normalidade com base na resposta inicial dos indicadores. Não conferiu o parâmetro de pressão de linha no painel de controle, que estava acessível e visível na estação de trabalho. Não havia alarme ativo, alta demanda simultânea nem congestionamento de comunicação no momento. O parâmetro exibia valor fora da faixa nominal há 12 minutos antes de um alarme tardio ser gerado. A informação estava acessível e deveria ter sido monitorada após a intervenção.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-C",
+    "erc_level": 2,
+    "top_preconditions": [
+      "W1",
+      "S3",
+      "O3",
+      "P3"
+    ]
+  },
+  "rationale": "P-G (Complacência/Falha de Monitoramento): a informação estava disponível no painel e não foi verificada por complacência com a resposta inicial — critério central de P-G. A-C (Falha de Verificação do Resultado da Própria Ação): o operador não confirmou o resultado final da intervenção na válvula — falha de verificar o resultado da própria ação. O-A: objetivo correto — o operador pretendia restabelecer a normalidade do sistema.",
+  "discriminators": [
+    "NÃO é P-D (sobrecarga de atenção): não havia alarmes simultâneos, alta demanda ou congestionamento — o problema foi monitoramento deficiente em condição normal.",
+    "NÃO é A-G (supervisão de terceiro): a ação foi do próprio operador; a verificação omitida era do resultado da sua própria intervenção.",
+    "NÃO é P-A: a informação estava disponível e acessível no painel — a não verificação configura P-G, não ausência de estímulo perceptivo."
+  ]
+}

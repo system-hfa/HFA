@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-OC-002",
+  "title": "Operador interrompe protocolo para proteger pessoa presa em área de risco",
+  "domain": "operações industriais",
+  "description": "Durante uma operação de manutenção programada em linha de produção, um operador percebeu que um colega havia ficado preso em uma área de risco com equipamento em movimento. O operador interrompeu imediatamente o protocolo de shutdown sequencial previsto no procedimento e acionou a parada de emergência fora da sequência autorizada, para proteger o colega de exposição imediata ao risco. A ação violou a sequência prevista de parada, mas teve intenção explícita e exclusiva de proteção humana. O operador não tinha histórico de interrupções similares fora de emergência.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional — Proteção Humana): a interrupção do protocolo foi motivada por risco humano imediato e concreto — critério definidor de O-C. P-A: o operador percebeu corretamente a situação de risco ao colega. A-A: a parada de emergência foi executada conforme a intenção protetiva, não houve deslize.",
+  "discriminators": [
+    "NÃO é O-B (violação rotineira): a interrupção foi atípica e motivada por emergência real — não era prática habitual do operador.",
+    "NÃO é O-D (eficiência): o objetivo foi proteger pessoa em risco imediato, não eficiência, tempo ou economia.",
+    "NÃO é A-F (seleção errada): a ação de parada de emergência foi selecionada corretamente para o contexto; a falha está no objetivo de desviar do protocolo, não na execução da ação escolhida."
+  ]
+}

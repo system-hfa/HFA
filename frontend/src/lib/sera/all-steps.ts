@@ -375,6 +375,13 @@ function evidenceOfRoutineViolation(text: string): boolean {
     'sempre fazem assim',
     'considerado burocracia',
     'era considerado burocracia',
+    'formalidade dispensavel',
+    'culturalmente aceita',
+    'aceita informalmente',
+    'aceito informalmente',
+    'atalho aceito informalmente',
+    'todo mundo usa',
+    'nunca ninguem foi cobrado',
     'desvio normalizado',
     'desvio era normalizado',
     'violacao normalizada',
@@ -503,7 +510,14 @@ function forceObjectiveOverride(text: string): null | { code: 'O-B' | 'O-C'; rea
     has('violacao rotineira') ||
     has('desvio normalizado') ||
     has('pratica tolerada') ||
-    has('pratica aceita')
+    has('pratica aceita') ||
+    has('formalidade dispensavel') ||
+    has('culturalmente aceita') ||
+    has('aceita informalmente') ||
+    has('aceito informalmente') ||
+    has('todo mundo usa') ||
+    has('nunca ninguem foi cobrado') ||
+    has('atalho aceito informalmente')
 
   if (forceOB) {
     return {
@@ -645,6 +659,11 @@ function evidenceOfMonitoringFailure(text: string): boolean {
     'sem monitorar',
     'nao monitorar adequadamente',
     'fadiga',
+    // P-G for O-B routine-omission cases: inspection/verification/record omitted by complacency
+    'inspecao intermediaria',
+    'condicao a verificar estava acessivel',
+    'registro de verificacao obrigatorio',
+    'formalidade dispensavel',
   ])
 }
 

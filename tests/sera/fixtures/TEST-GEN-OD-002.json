@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OD-002",
+  "title": "Equipe simplifica procedimento para cumprir janela de conexão",
+  "domain": "operações aeroportuárias",
+  "description": "Uma equipe de handling adotou uma versão simplificada do procedimento de inspeção de rampa para cumprir uma janela de conexão apertada entre dois voos. A janela era real e a pressão comercial estava documentada no sistema. Não havia passageiro com emergência médica a bordo, nem situação de risco humano imediato. A equipe não tinha histórico de simplificar procedimentos de forma habitual, e a decisão foi tomada pontualmente em resposta à demanda de tempo. O objetivo declarado foi preservar a conexão e a eficiência da operação.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "S2",
+      "O4",
+      "T2"
+    ]
+  },
+  "rationale": "O-D (Falha de Objetivo — Eficiência/Tempo): a simplificação visava cumprir janela de conexão e preservar eficiência operacional — motivação de tempo/eficiência sem normalização e sem proteção humana. P-A: percepção correta; a equipe sabia o que estava fazendo. A-A: o procedimento simplificado foi executado conforme a intenção.",
+  "discriminators": [
+    "NÃO é O-B (violação rotineira): a simplificação foi pontual, não um hábito institucionalizado ou prática tolerada repetidamente.",
+    "NÃO é O-C (proteção humana): não havia emergência médica nem risco humano imediato — a motivação foi comercial/temporal.",
+    "NÃO é A-H (gestão temporal): A-H requer falha na gestão do próprio tempo de execução; aqui a decisão foi de simplificar o procedimento, não de gerenciar mal o tempo disponível."
+  ]
+}

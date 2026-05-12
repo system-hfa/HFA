@@ -1,0 +1,23 @@
+{
+  "id": "TEST-GEN-AG-001",
+  "title": "Coordenador libera trabalho sem confirmar que auxiliar isolou circuito",
+  "domain": "manutenção elétrica",
+  "description": "O coordenador de equipe instruiu um auxiliar a isolar o circuito de alimentação de um painel antes do início da manutenção. Após dar a instrução, o coordenador assinou a permissão de trabalho e liberou a equipe para iniciar a atividade sem retornar ao local para confirmar que o isolamento havia sido executado pelo auxiliar. O auxiliar havia isolado apenas parte do circuito por entendimento equivocado da instrução. Não havia pressão de tempo declarada naquele momento. O coordenador disse que 'o auxiliar era experiente e a tarefa era simples'.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "A-G (Falha de Supervisão/Verificação de Terceiro): o coordenador delegou a tarefa de isolamento e não verificou se a ação delegada foi corretamente executada pelo auxiliar — critério central de A-G. P-A: percepção correta da necessidade de isolamento; não houve falha sensorial independente. O-A: objetivo correto — o coordenador pretendia isolar o circuito antes da manutenção.",
+  "discriminators": [
+    "NÃO é A-C (verificação da própria ação): A-C seria falha de verificar o resultado da própria ação do coordenador; aqui a ação a verificar foi delegada a terceiro.",
+    "NÃO é A-J (comunicação/confirmação): não há falha de readback ou ciclo de comunicação bilateral; há falha de verificação física de execução delegada.",
+    "NÃO é A-B (deslize/omissão procedural): o coordenador tinha intenção de delegar — a falha foi não fechar o ciclo de supervisão sobre o terceiro."
+  ]
+}

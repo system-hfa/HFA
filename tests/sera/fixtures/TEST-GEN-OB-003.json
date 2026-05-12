@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-OB-003",
+  "title": "Operador usa atalho aceito informalmente apesar de contrariar procedimento formal",
+  "domain": "operações de plataforma",
+  "description": "Um operador de plataforma adotou um atalho na sequência de isolamento de equipamento que contrariava o procedimento formal de lockout/tagout. A prática era conhecida pelos demais operadores e aceita informalmente pelos pares. A supervisão raramente estava presente durante essas operações e nunca havia questionado o método. O atalho havia sido incorporado como forma eficiente de trabalho no turno, sem qualquer registro formal de autorização. O operador seguiu o método que 'todo mundo usa'.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-B",
+    "action_code": "A-A",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P3",
+      "S3",
+      "O5",
+      "O6"
+    ]
+  },
+  "rationale": "O-B (Violação Rotineira): o atalho era prática normalizada, aceita informalmente pelo grupo e raramente contestada — critério central de O-B. P-A: o operador tinha percepção correta do que estava fazendo; não há falha sensorial independente nem complacência de monitoramento — apenas seguiu a norma informal do grupo. A-A: a sequência foi executada conforme a intenção do operador, sem deslize.",
+  "discriminators": [
+    "NÃO é O-D (eficiência isolada): O-D exige decisão individual de ganho operacional sem normalização cultural; aqui a prática era coletiva e informal.",
+    "NÃO é P-G: o operador tinha plena consciência de que usava o atalho — não houve monitoramento omitido de informação disponível.",
+    "NÃO é A-B (deslize): a sequência alternativa foi aplicada intencionalmente, não por esquecimento acidental."
+  ]
+}

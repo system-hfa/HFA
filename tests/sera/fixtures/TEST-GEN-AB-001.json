@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-AB-001",
+  "title": "Técnico esquece etapa obrigatória de reinstalar trava física após intervenção",
+  "domain": "manutenção aeronáutica",
+  "description": "Ao finalizar uma intervenção de manutenção em trem de pouso, o técnico recolocou todos os painéis e componentes, mas não reinstalou a trava física de segurança que impede retração acidental do trem no solo. A trava estava disponível ao lado do componente e o procedimento de reinstalação constava na última etapa da ordem de serviço. Não havia objetivo desviante — o técnico pretendia concluir corretamente a manutenção. Não havia delegação de tarefa a terceiro. A etapa foi simplesmente omitida, provavelmente por interrupção no fluxo de fechamento da ordem de serviço.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-B",
+    "erc_level": 3,
+    "top_preconditions": [
+      "W1",
+      "O3",
+      "O4",
+      "P6"
+    ]
+  },
+  "rationale": "A-B (Omissão Procedural/Deslize): a reinstalação da trava foi omitida inadvertidamente — critério de A-B, omissão de etapa em procedimento conhecido. P-G: a trava e a etapa estavam disponíveis e visíveis; a omissão decorreu de lapso de atenção ao fechar a ordem de serviço. O-A: objetivo correto — o técnico pretendia concluir a manutenção adequadamente.",
+  "discriminators": [
+    "NÃO é A-G (supervisão de terceiro): não houve delegação — a intervenção foi do próprio técnico e a omissão foi na sua própria sequência de fechamento.",
+    "NÃO é O-B (violação rotineira): não há evidência de que omitir a reinstalação da trava era prática habitual ou tolerada.",
+    "NÃO é A-C (verificação de resultado): A-C é falha de confirmar o resultado de uma ação executada; aqui a própria ação de reinstalar a trava não foi executada — é omissão de etapa (A-B)."
+  ]
+}

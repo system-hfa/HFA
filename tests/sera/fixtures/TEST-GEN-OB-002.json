@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OB-002",
+  "title": "Mecânico ignora registro obrigatório porque todos faziam assim para liberar mais rápido",
+  "domain": "manutenção industrial",
+  "description": "Ao concluir uma tarefa de manutenção em um compressor crítico, o mecânico não preencheu o registro de verificação obrigatório previsto no procedimento. O preenchimento do registro era considerado uma formalidade dispensável pela equipe, que frequentemente pulava essa etapa para liberar o equipamento mais rápido. Líderes de turno conheciam a prática e não a coibiram. O mecânico afirmou que 'nunca ninguém foi cobrado por isso aqui'. A omissão foi recorrente e culturalmente aceita no setor.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-B",
+    "action_code": "A-A",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P3",
+      "S3",
+      "O5",
+      "O6",
+      "T1"
+    ]
+  },
+  "rationale": "O-B (Violação Rotineira): pular o registro era desvio habitual, normalizado e culturalmente aceito — não uma decisão isolada de eficiência. P-G: o formulário estava disponível e acessível, mas não foi consultado por complacência com o hábito estabelecido. A-A: a omissão foi intencional e deliberada, não acidental.",
+  "discriminators": [
+    "NÃO é O-D (eficiência pura): O-D exige motivação de ganho operacional sem cultura de violação estabelecida; aqui a normalização do desvio é o mecanismo central.",
+    "NÃO é A-B (deslize): o mecânico não esqueceu o registro — escolheu deliberadamente não fazê-lo, em conformidade com a prática do grupo.",
+    "NÃO é P-A: a informação/formulário estava acessível mas não foi verificada por complacência, configurando P-G e não ausência de estímulo perceptivo."
+  ]
+}

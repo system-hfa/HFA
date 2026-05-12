@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-AC-001",
+  "title": "Técnico executa reset e não verifica se o indicador estabilizou após a ação",
+  "domain": "operações de sala de controle",
+  "description": "Após identificar uma falha de comunicação em um controlador lógico programável (CLP), o técnico executou o procedimento de reset do sistema. O indicador de status inicial respondeu com sinal de reinicialização, sugerindo que o reset havia sido iniciado com sucesso. O técnico, assumindo que o reset havia sido bem-sucedido, retornou às atividades regulares sem aguardar a estabilização completa do indicador de status no painel de controle. O painel estava visível e acessível. O sistema não havia completado a inicialização corretamente e entrou em modo degradado. A informação de status estava disponível no painel durante todo o tempo.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-C",
+    "erc_level": 2,
+    "top_preconditions": [
+      "W1",
+      "S3",
+      "O3",
+      "P3"
+    ]
+  },
+  "rationale": "A-C (Falha de Verificação do Resultado da Própria Ação): o técnico não confirmou o resultado final da própria ação de reset — critério central de A-C. P-G: a informação de status estava disponível no painel e não foi monitorada até estabilização — complacência com o sinal inicial de resposta. O-A: objetivo correto — o técnico pretendia restaurar o sistema.",
+  "discriminators": [
+    "NÃO é A-G (supervisão de terceiro): não há terceiro envolvido — a ação foi do próprio técnico e a verificação omitida era do resultado dessa mesma ação.",
+    "NÃO é A-B (deslize/omissão procedural): o técnico executou o reset intencionalmente; a falha foi não aguardar e verificar o resultado completo da ação.",
+    "NÃO é P-A: o status estava disponível no painel e não foi acompanhado até a estabilização — configurando monitoramento deficiente (P-G), não ausência de estímulo."
+  ]
+}

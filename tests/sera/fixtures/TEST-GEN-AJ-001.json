@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-AJ-001",
+  "title": "Despachante transmite alteração crítica sem obter acknowledgement do destinatário",
+  "domain": "despacho operacional",
+  "description": "Durante período de alta demanda operacional, o despachante transmitiu uma alteração crítica de rota para a tripulação de um voo em preparação para partida. Após transmitir a mensagem, o despachante não aguardou o acknowledgement formal da tripulação e passou imediatamente para a próxima comunicação pendente. A fila de comunicações era extensa. A tripulação havia iniciado uma resposta, mas a transmissão foi cortada. O despachante assumiu que a mensagem havia sido recebida corretamente. A falha central foi a ausência de fechamento do ciclo de confirmação, não uma escolha errada de instrução.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-J",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "A-J (Falha de Confirmação/Acknowledgement): o mecanismo dominante foi a ausência de fechamento do ciclo de recebimento da mensagem crítica — critério central de A-J. P-D: a demanda operacional elevada e a fila de comunicações sobrecxarregou a atenção do despachante, impedindo o processamento completo do ciclo de confirmação. O-A: não há objetivo desviante — a intenção foi transmitir a alteração corretamente.",
+  "discriminators": [
+    "NÃO é A-I (seleção sob carga): A-I requer seleção de instrução inadequada entre alternativas; aqui a instrução foi correta — a falha foi não confirmar o recebimento.",
+    "NÃO é A-G (supervisão de terceiro): não há delegação de ação a terceiro; há falha de fechamento de ciclo de comunicação bilateral.",
+    "NÃO é O-B (violação rotineira): não há evidência de que omitir acknowledgement era prática normalizada — foi consequência da sobrecarga de demanda."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OD-003",
+  "title": "Supervisor escolhe método mais rápido para aumentar produtividade do turno",
+  "domain": "operações industriais",
+  "description": "Durante o turno de produção, o supervisor optou por um método de setup de equipamento mais rápido, porém não homologado pelo departamento de qualidade. A escolha visava aumentar a produtividade e o número de lotes processados no turno. Não havia situação de risco humano imediato, emergência ou passageiro doente envolvido. A equipe não tinha histórico estabelecido de usar esse método alternativo de forma regular; a decisão foi individual do supervisor, motivada pelo desempenho do turno.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "S2",
+      "O4",
+      "T2"
+    ]
+  },
+  "rationale": "O-D (Falha de Objetivo — Eficiência/Produtividade): a motivação foi ganho de produtividade sem normalização cultural e sem proteção humana explícita — padrão puro de O-D. P-A: percepção correta da situação; o supervisor sabia que o método não era homologado. A-A: o método alternativo foi executado conforme a intenção do supervisor.",
+  "discriminators": [
+    "NÃO é O-B (violação rotineira): não havia cultura estabelecida de usar o método alternativo; foi decisão pontual do supervisor.",
+    "NÃO é O-C (proteção humana): o objetivo foi produtividade operacional, sem risco humano imediato envolvido.",
+    "NÃO é A-E (falta de conhecimento): o supervisor conhecia o método homologado e deliberadamente escolheu o alternativo — não há déficit de competência."
+  ]
+}

@@ -23,6 +23,51 @@ function hasAny(text: string, tokens: string[]): boolean {
 export function classifyObjectiveByRules(text: string): ObjectiveOverrideResult {
   const t = normalizeObjectiveText(text)
 
+  // O-B is checked BEFORE O-C: routine/normalized violation always beats efficiency and
+  // takes precedence over O-C when no explicit medical/protective emergency is present.
+  const routineViolation =
+    hasAny(t, [
+      'rota habitual',
+      'rota conhecida',
+      'rota costumeira',
+      'por habito',
+      'pratica habitual',
+      'pratica ja era tolerada',
+      'violacao rotineira',
+      'desvio normalizado',
+      'pratica tolerada',
+      'pratica aceita',
+      'tolerada',
+      'considerado burocracia',
+      'formalidade dispensavel',
+      'culturalmente aceita',
+      'aceita informalmente',
+      'aceito informalmente',
+      'atalho aceito informalmente',
+      'todo mundo usa',
+      'nunca ninguem foi cobrado',
+      'cultura informal',
+      'todos faziam assim',
+      'todos na oficina faziam assim',
+      'sempre fazemos assim',
+      'sempre fazia assim',
+      'rotineira',
+      'normalizado',
+    ]) ||
+    (has(t, 'altitude minima') && has(t, 'rota')) ||
+    (has(t, 'altitude minima') && has(t, 'ganhar tempo') && (has(t, 'habitual') || has(t, 'rotina') || has(t, 'costumeira'))) ||
+    (has(t, 'checklist') && (has(t, 'burocracia') || has(t, 'cultura informal')))
+
+  if (routineViolation) {
+    return {
+      code: 'O-B',
+      reason: 'routine or normalized violation',
+    }
+  }
+
+  // O-C requires explicit human/medical protective objective AND no strong O-B routine signals.
+  // Triggers: medical emergency, patient condition, person in immediate risk.
+  // Does NOT trigger for: liberar mais rápido, acelerar liberação, eficiência, prática aceita.
   const protective =
     hasAny(t, [
       'passageiro doente',
@@ -46,39 +91,6 @@ export function classifyObjectiveByRules(text: string): ObjectiveOverrideResult 
     return {
       code: 'O-C',
       reason: 'explicit human/protective objective',
-    }
-  }
-
-  const routineViolation =
-    hasAny(t, [
-      'rota habitual',
-      'rota conhecida',
-      'rota costumeira',
-      'por habito',
-      'pratica habitual',
-      'pratica ja era tolerada',
-      'violacao rotineira',
-      'desvio normalizado',
-      'pratica tolerada',
-      'pratica aceita',
-      'tolerada',
-      'considerado burocracia',
-      'cultura informal',
-      'todos faziam assim',
-      'todos na oficina faziam assim',
-      'sempre fazemos assim',
-      'sempre fazia assim',
-      'rotineira',
-      'normalizado',
-    ]) ||
-    (has(t, 'altitude minima') && has(t, 'rota')) ||
-    (has(t, 'altitude minima') && has(t, 'ganhar tempo') && (has(t, 'habitual') || has(t, 'rotina') || has(t, 'costumeira'))) ||
-    (has(t, 'checklist') && (has(t, 'burocracia') || has(t, 'cultura informal')))
-
-  if (routineViolation) {
-    return {
-      code: 'O-B',
-      reason: 'routine or normalized violation',
     }
   }
 

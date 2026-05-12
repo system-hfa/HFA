@@ -69,6 +69,21 @@ const cases: ObjectiveCase[] = [
     expected: 'O-D',
   },
   {
+    name: 'O-B ignored mandatory record todos faziam assim',
+    text: 'Mecânico ignora registro obrigatório porque todos faziam assim para liberar mais rápido.',
+    expected: 'O-B',
+  },
+  {
+    name: 'O-B informal shortcut accepted normalization',
+    text: 'Operador usa atalho aceito informalmente apesar de contrariar procedimento formal.',
+    expected: 'O-B',
+  },
+  {
+    name: 'O-B intermediate inspection tolerated sector',
+    text: 'Equipe pula inspeção intermediária porque essa prática já era tolerada no setor.',
+    expected: 'O-B',
+  },
+  {
     name: 'negative readback congestion',
     text: 'Controlador não confirma readback sob frequência congestionada.',
     expected: null,

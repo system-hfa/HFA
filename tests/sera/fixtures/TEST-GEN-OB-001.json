@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OB-001",
+  "title": "Equipe pula inspeção intermediária porque essa prática já era tolerada no setor",
+  "domain": "manutenção aeronáutica",
+  "description": "Durante a preparação operacional de uma aeronave, a equipe de manutenção deixou de realizar uma inspeção intermediária exigida pelo manual de manutenção. O procedimento era de conhecimento de todos, mas a omissão havia se tornado prática tolerada no setor para acelerar a liberação das aeronaves. Supervisores de linha tinham ciência da prática e nunca a questionaram formalmente. Não houve falha perceptiva sensorial independente; a condição a verificar estava acessível, mas foi assumida como aceitável pela rotina informal estabelecida ao longo de meses.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-B",
+    "action_code": "A-A",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P3",
+      "S3",
+      "O5",
+      "O6",
+      "T1"
+    ]
+  },
+  "rationale": "O-B (Violação Rotineira): a omissão da inspeção era prática habitual, normalizada e tolerada pela supervisão — critério central de O-B. P-G: a informação estava disponível mas não foi conferida por complacência com a rotina informal; há falha de monitoramento sem estímulo sensorial ausente. A-A: a omissão foi deliberada e consistente com a intenção do grupo, não um deslize de execução.",
+  "discriminators": [
+    "NÃO é O-D (eficiência pura): O-D requer motivação de ganho operacional sem normalização cultural; aqui a omissão era prática institucionalizada e tolerada, não decisão isolada de eficiência.",
+    "NÃO é A-B (deslize): a equipe omitiu a inspeção intencionalmente e de forma recorrente — não foi esquecimento acidental.",
+    "NÃO é P-A: a informação estava disponível e não foi acessada por complacência com a normalização, configurando P-G."
+  ]
+}

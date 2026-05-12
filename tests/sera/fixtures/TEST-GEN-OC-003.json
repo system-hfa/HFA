@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-OC-003",
+  "title": "Comandante pousa fora do procedimento autorizado para preservar paciente em emergência médica",
+  "domain": "aviação executiva",
+  "description": "O comandante de um voo executivo pousou em aeródromo não constante na autorização de operação da empresa porque havia um passageiro a bordo em emergência médica grave — suspeita de infarto com dor precordial intensa, sudorese e hipotensão. O aeródromo mais próximo autorizado ficava 40 minutos além do não autorizado. O comandante avaliou que o risco de agravamento durante os 40 minutos adicionais era inaceitável. A decisão foi tomada para preservar a condição do paciente. Não havia histórico de pousos similares fora da rede autorizada.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional — Proteção Humana): o pouso fora da rede autorizada foi motivado por emergência médica real e avaliação de risco de agravamento — critério central de O-C. P-A: o comandante percebeu corretamente a situação clínica do passageiro. A-A: o pouso foi executado conforme a intenção protetiva do comandante.",
+  "discriminators": [
+    "NÃO é O-B (violação rotineira): a decisão foi excepcional e atípica para o comandante, motivada por emergência real.",
+    "NÃO é O-D (eficiência): a motivação foi preservar a vida do passageiro, não ganho de tempo ou redução de custo operacional.",
+    "NÃO é A-A por objetivo correto: a ação de pousar foi a ação correta; o desvio foi no objetivo (pouso fora da rede autorizada para proteção), não na execução da ação."
+  ]
+}

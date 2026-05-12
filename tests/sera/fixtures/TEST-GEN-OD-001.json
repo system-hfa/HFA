@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OD-001",
+  "title": "Comandante escolhe rota mais curta para reduzir consumo de combustível",
+  "domain": "aviação comercial",
+  "description": "O comandante de um voo regular decidiu seguir uma rota mais curta não prevista no plano de voo aprovado, com o objetivo de reduzir o consumo de combustível e melhorar a eficiência do voo. A rota alternativa não era recomendada naquele contexto meteorológico, segundo as informações disponíveis no despacho. Não havia passageiro em emergência médica, nem situação de risco humano imediato. Não havia histórico de prática similar na empresa ou cultura informal de rotas não autorizadas. A decisão foi individual e motivada exclusivamente por eficiência operacional.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "S2",
+      "O4",
+      "T2"
+    ]
+  },
+  "rationale": "O-D (Falha de Objetivo — Eficiência/Economia): a motivação foi ganho operacional (redução de combustível) sem violação normalizada e sem proteção humana explícita — critério central de O-D. P-A: a percepção da situação era correta; não houve falha sensorial ou de atenção. A-A: a rota foi executada conforme a intenção do comandante.",
+  "discriminators": [
+    "NÃO é O-B (violação rotineira): não havia cultura informal de rotas alternativas nem histórico de prática similar na empresa.",
+    "NÃO é O-C (proteção humana): não havia passageiro doente nem risco humano imediato que justificasse desvio protetivo.",
+    "NÃO é A-F (seleção errada): o comandante selecionou intencionalmente a rota desejada; a falha está no objetivo, não na execução."
+  ]
+}

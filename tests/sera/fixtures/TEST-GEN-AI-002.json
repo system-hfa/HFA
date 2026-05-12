@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-AI-002",
+  "title": "Operador escolhe instrução inadequada durante pico de carga com múltiplas demandas simultâneas",
+  "domain": "operações de sala de controle",
+  "description": "Durante um pico de carga operacional, com múltiplas demandas simultâneas chegando à sala de controle — três alarmes ativos, duas solicitações de manutenção pendentes e uma transferência de turno em andamento — o operador selecionou o modo de operação errado para um processo crítico entre duas opções disponíveis no painel. O ciclo de comunicação com os demais operadores foi completado normalmente. Não houve falha de readback nem ausência de confirmação. O mecanismo dominante foi a seleção incorreta entre alternativas sob alta carga operacional simultânea.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-I",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3"
+    ]
+  },
+  "rationale": "A-I (Seleção Inadequada sob Carga Operacional): o mecanismo dominante foi a seleção errada entre modos disponíveis sob alta carga operacional explícita — critério central de A-I. P-D: a multiplicidade de alarmes e demandas simultâneas configura sobrecarga de atenção (P-D). O-A: objetivo correto — o operador pretendia selecionar o modo adequado.",
+  "discriminators": [
+    "NÃO é A-J (falha de comunicação/confirmação): o ciclo de comunicação foi completado — a falha foi na seleção do modo, não na confirmação de mensagem.",
+    "NÃO é A-F (seleção sem carga): A-F seria seleção errada sem carga explícita; aqui a alta carga operacional simultânea é o fator causal determinante.",
+    "NÃO é P-A: a multiplicidade de alarmes e demandas simultâneas configura sobrecarga de atenção (P-D), não percepção neutra."
+  ]
+}

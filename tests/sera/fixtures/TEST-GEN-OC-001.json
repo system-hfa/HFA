@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-OC-001",
+  "title": "Tripulação desvia procedimento para atender passageiro com suspeita de AVC",
+  "domain": "aviação médica",
+  "description": "Durante voo de cabotagem, um passageiro apresentou sinais de suspeita de AVC: desvio facial, dificuldade de fala e fraqueza unilateral. A tripulação desviou do procedimento padrão de comunicação com o centro de controle ao solicitar pouso de emergência em aeródromo não previsto no plano de voo, sem aguardar a autorização formal do CINDACTA. A decisão foi tomada para priorizar o atendimento médico e evitar agravamento da condição do passageiro antes da chegada do suporte em solo. A tripulação não tinha histórico de desvios de procedimento similares anteriores.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional — Proteção Humana): o desvio foi motivado por emergência médica explícita e necessidade de proteção humana imediata — critério central de O-C. P-A: a tripulação percebeu corretamente a situação e os sinais do passageiro. A-A: o pouso foi executado conforme a intenção protetiva, sem deslize de ação.",
+  "discriminators": [
+    "NÃO é O-B (violação rotineira): o desvio foi atípico para a tripulação, motivado por emergência excepcional — não era prática habitual.",
+    "NÃO é O-D (eficiência): a motivação foi proteger a vida do passageiro, não ganho operacional ou redução de tempo.",
+    "NÃO é A-J (falha de comunicação): a violação foi no objetivo (desviar para proteger), não em falha de readback ou confirmação de mensagem."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-AH-001",
+  "title": "Piloto interrompe checklist por tempo insuficiente antes da aproximação",
+  "domain": "aviação geral",
+  "description": "Em aproximação para pouso, o piloto iniciou o checklist de aproximação, mas avaliou que o tempo disponível até o threshold era insuficiente para completar todas as itens. Interrompeu o checklist após os itens iniciais e prosseguiu com a aproximação sem completar os itens restantes. Não havia congestionamento de frequência, múltiplos conflitos simultâneos, fila de aeronaves nem sobrecarga de comunicação. O problema foi exclusivamente de gestão temporal da execução do checklist em relação ao perfil da aproximação.",
+  "expected": {
+    "perception_code": "P-E",
+    "objective_code": "O-A",
+    "action_code": "A-H",
+    "erc_level": 2,
+    "top_preconditions": [
+      "T1",
+      "P6",
+      "O1",
+      "S3"
+    ]
+  },
+  "rationale": "A-H (Falha de Gestão Temporal na Execução): o mecanismo dominante foi a gestão inadequada do tempo de execução do checklist em relação ao perfil da aproximação — critério de A-H. P-E: o piloto falhou na estimativa temporal disponível para completar o checklist — falha de estimação temporal (P-E). O-A: objetivo correto — o piloto pretendia executar o checklist, não havia objetivo desviante.",
+  "discriminators": [
+    "NÃO é P-D (sobrecarga de atenção): não havia múltiplos conflitos, congestionamento de frequência ou alta demanda simultânea — o problema foi temporal puro.",
+    "NÃO é A-I (seleção sob carga): não houve seleção errada de instrução sob carga operacional — houve interrupção de checklist por tempo insuficiente.",
+    "NÃO é A-B (omissão procedural): a interrupção foi uma decisão de gestão de tempo, não um esquecimento acidental de etapa específica."
+  ]
+}

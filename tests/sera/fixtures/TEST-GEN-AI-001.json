@@ -1,0 +1,24 @@
+{
+  "id": "TEST-GEN-AI-001",
+  "title": "Controlador escolhe instrução operacional errada sob múltiplos conflitos simultâneos",
+  "domain": "controle de tráfego aéreo",
+  "description": "O controlador de tráfego aéreo lidava simultaneamente com três conflitos de separação em setores adjacentes, além de coordenar transferências com setores vizinhos. Sob essa carga operacional elevada, selecionou uma instrução de descida para a aeronave errada entre dois voos com designadores similares. A instrução foi transmitida e confirmada por readback — o ciclo de comunicação foi fechado corretamente. O erro estava na seleção da aeronave destinatária sob a pressão de múltiplas demandas simultâneas, não em falha de confirmação.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-I",
+    "erc_level": 1,
+    "top_preconditions": [
+      "T1",
+      "O1",
+      "O2",
+      "S3"
+    ]
+  },
+  "rationale": "A-I (Seleção Inadequada sob Carga Operacional): o mecanismo dominante foi a seleção errada da aeronave destinatária entre alternativas similares sob alta carga operacional explícita — critério central de A-I. P-D: os múltiplos conflitos simultâneos e a sobrecarga do setor configuram sobrecarga de atenção (P-D). O-A: não há objetivo desviante — o controlador pretendia dar a instrução correta mas selecionou o alvo errado.",
+  "discriminators": [
+    "NÃO é A-J (falha de comunicação/readback): o readback foi realizado e o ciclo de comunicação foi fechado — a falha foi na seleção, não na confirmação.",
+    "NÃO é A-F (seleção sem carga): A-F seria seleção errada sem carga explícita; aqui a carga operacional intensa é o fator causal determinante.",
+    "NÃO é P-A: a multiplicidade de conflitos e demandas simultâneas configura sobrecarga de atenção (P-D), não percepção neutra."
+  ]
+}
