@@ -32,11 +32,21 @@ function normalizeSettingValue(key: string, value: unknown): string {
   return SENSITIVE.has(key) ? raw.trim() : raw
 }
 
+function formatError(error: unknown): string {
+  if (error instanceof Error) return error.message
+  if (error && typeof error === 'object') {
+    const record = error as Record<string, unknown>
+    return String(record.message || record.details || record.hint || JSON.stringify(record))
+  }
+  return String(error)
+}
+
 export async function GET(req: Request) {
   try {
     await requireAdmin(req)
     const admin = getSupabaseAdmin()
-    const { data } = await admin.from('system_settings').select('*')
+    const { data, error } = await admin.from('system_settings').select('key, value')
+    if (error) throw error
 
     const result: Record<string, unknown> = {}
     for (const row of data ?? []) {
@@ -77,7 +87,7 @@ export async function GET(req: Request) {
     return NextResponse.json(result)
   } catch (e) {
     if (e instanceof Response) return e
-    return jsonError(String(e), 500)
+    return jsonError(formatError(e), 500)
   }
 }
 
@@ -90,14 +100,13 @@ export async function PATCH(req: Request) {
       : body
 
     const admin = getSupabaseAdmin()
-    const now = new Date().toISOString()
 
     for (const [key, value] of Object.entries(updates)) {
       if (key === 'env') continue
       const raw = normalizeSettingValue(key, value)
       if (isMasked(raw)) continue
       const { error } = await admin.from('system_settings').upsert(
-        { key, value: raw, updated_at: now },
+        { key, value: raw },
         { onConflict: 'key' }
       )
       if (error) throw error
@@ -106,6 +115,6 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ ok: true })
   } catch (e) {
     if (e instanceof Response) return e
-    return jsonError(String(e), 500)
+    return jsonError(formatError(e), 500)
   }
 }
