@@ -751,8 +751,16 @@ function evidenceOfOwnActionCheckFailure(text: string): boolean {
     'propria acao recem-executada',
     'apos acionar',
     'depois de acionar',
+    'apos acionar alavanca',
+    'acionar alavanca',
     'indicador de trem',
     'trem de pouso',
+    'trem de pouso recolheu',
+    'verificar se o trem de pouso recolheu',
+    'nao verificou se trem de pouso recolheu',
+    'indicacao de recolhimento',
+    'status do trem de pouso',
+    'confirmacao de recolhimento',
     'condicao esperada',
   ]))) return true
   // supplementary: reset/stabilization result available but not verified
@@ -767,11 +775,14 @@ function evidenceOfOwnActionCheckFailure(text: string): boolean {
     'nao verificou o resultado do reset',
     'retornou sem verificar o indicador',
     'retornou as atividades sem verificar',
+    'nao verificou se recolheu',
+    'nao confirmou se recolheu',
+    'nao monitorou se recolheu',
   ])
 }
 
 function evidenceOfProceduralOmission(text: string): boolean {
-  if (containsAny(text, evidenceTerms(actionRules['A-B'], [
+  const omissionTerms = evidenceTerms(actionRules['A-B'], [
     'nao instalou',
     'nao travou',
     'nao inseriu',
@@ -780,10 +791,12 @@ function evidenceOfProceduralOmission(text: string): boolean {
     'omitiu passo',
     'passo obrigatorio',
     'pino de travamento',
-    'trava',
+    'trava fisica',
     'item obrigatorio',
     'check tecnico',
-  ]))) return true
+  ]).filter((term) => !['trava', 'procedimento', 'checklist'].includes(term))
+
+  if (containsAny(text, omissionTerms)) return true
   // supplementary: physical/procedural step omission patterns not in A-B.json
   return containsAny(text, [
     'esqueceu etapa obrigatoria',
