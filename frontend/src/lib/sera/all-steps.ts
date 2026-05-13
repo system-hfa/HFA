@@ -322,6 +322,52 @@ function evidenceOfSelectionError(text: string): boolean {
   ]))
 }
 
+// Detecta ilusão ou distorção perceptiva fisiológica no relato (P-F).
+// Usado em runStep3 (percepção) e como componente de evidenceOfPerceptualIllusionAction.
+function evidenceOfPerceptualIllusion(text: string): boolean {
+  return containsAny(text, [
+    'ilusao de leans',
+    'ilusao de voo nivelado',
+    'horizonte falso',
+    'ilusao visual de horizonte',
+    'percepcao visual ilusoria',
+    'ilusao vestibular',
+    'desorientacao espacial',
+    'canais semicirculares',
+    'sensacao de estar nivelado',
+    'sensacao corporal falsa',
+    'percepcao falsa',
+    'percepcao distorcida',
+    'ilusao espacial',
+    'asa inclinada por ilusao',
+    'ilusao de inclinacao',
+    'horizonte ilusorio',
+    'distorcao sensorial',
+  ])
+}
+
+// Detecta correção/manobra/ação errada causada por ilusão perceptiva fisiológica.
+// Requer AMBOS: ilusão fisiológica E ação incorreta decorrente.
+// Garante A-F antes de A-D e A-C em casos P-F.
+function evidenceOfPerceptualIllusionAction(text: string): boolean {
+  const hasIncorrectAction = containsAny(text, [
+    'correcao errada',
+    'correcao no sentido errado',
+    'corrigiu no sentido errado',
+    'aplicou aileron',
+    'aplicou correcao',
+    'manobra inadequada',
+    'manobra errada',
+    'nivelou com asa inclinada',
+    'aileron direito',
+    'aileron esquerdo',
+    'correcao incorreta',
+    'procedimento incorreto baseado em percepcao',
+    'selecao incorreta por ilusao',
+  ])
+  return evidenceOfPerceptualIllusion(text) && hasIncorrectAction
+}
+
 function evidenceOfEfficiencyObjective(text: string): boolean {
   return containsAny(text, evidenceTerms(objectiveRules['O-D'], [
     'economizar combustivel',
@@ -689,6 +735,57 @@ function evidenceOfMonitoringFailure(text: string): boolean {
   ])
 }
 
+// Captura falhas de monitoramento que são do próprio operador (não de terceiros).
+// Exclui "nao monitorou" e "sem monitorar" que podem referir-se ao copiloto/terceiro.
+// Usado para diferenciar P-G legítimo de casos onde só o terceiro não monitorou.
+function evidenceOfOperatorOwnMonitoringFailure(text: string): boolean {
+  return containsAny(text, [
+    'nao verificou',
+    'nao conferiu',
+    'nao checou',
+    'sem verificar',
+    'sem conferir',
+    'sem checar',
+    'assumiu normalidade',
+    'assumiu como normal',
+    'assumiu que estava normal',
+    'complacencia',
+    'fadiga',
+    'alarmes simultaneos',
+    'rota habitual',
+    'em rota habitual',
+    'altitude minima',
+    'altitude minima violada',
+    'nao checou condicao disponivel',
+    'nao checou a condicao disponivel',
+    'condicao disponivel nao checada',
+    'condicao disponivel nao verificada',
+    'falha em verificar informacao disponivel',
+    'informacao disponivel',
+    'informacao disponivel nao verificada',
+    'informacao disponivel nao checada',
+    'monitoramento assumido como normal',
+    'monitoramento assumido normal',
+    'assumido normal',
+    'nao verificou a condicao',
+    'nao conferiu a condicao',
+    'deveria ter sido verificada',
+    'formalidade dispensavel',
+    'sem aguardar a estabilizacao',
+    'sem aguardar estabilizacao',
+    'nao verificou se o indicador estabilizou',
+    'nao confirmou estabilizacao',
+    'indicador de status disponivel',
+    'resultado disponivel no painel',
+    'deveria ter monitorado o indicador',
+    'nao verificou o resultado do reset',
+    'retornou sem verificar o indicador',
+    'inspecao intermediaria',
+    'condicao a verificar estava acessivel',
+    'registro de verificacao obrigatorio',
+  ])
+}
+
 function evidenceOfWrongOperationalSelectionUnderLoad(text: string): boolean {
   if (
     !evidenceOfAttentionOverload(text) ||
@@ -857,6 +954,7 @@ function inferDeterministicErcLevel(
   if (actionCode === 'A-B') return 3
   if (actionCode === 'A-J' && evidenceOfCommunicationConfirmationFailure(text)) return 1
   if (actionCode === 'A-C') return 2
+  if (actionCode === 'A-F' && perceptionCode === 'P-F') return 2
   if (actionCode === 'A-F' && containsAny(text, ['emergencia', 'qrh', 'procedimento de emergencia'])) return 2
   if (objectiveCode === 'O-D' && evidenceOfEfficiencyObjective(text)) return 2
   if (actionCode === 'A-E' && evidenceOfKnowledgeDeficit(text)) return 2
@@ -1009,11 +1107,16 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   }
 
   // P-G preemptivo: informação disponível não monitorada; dispara antes de P-D quando não há demanda genuína.
+  // Bloqueado quando mecanismo dominante é seleção errada por similaridade sem falha de monitoramento
+  // do próprio operador (ex: "nao monitorou" do copiloto não constitui P-G do piloto).
   if (evidenceOfMonitoringFailure(relatoNorm) && !genuineHighDemand) {
-    const node = methodologyNode('Gate determinístico: parâmetro/informação disponível no painel e não conferido; ausência de demanda real confirma P-G.', { resposta: 'Não' })
-    logMethodology('runStep3', 'Gate P-G preemptivo', node, ['P-G'], true)
-    const code = assertAllowedCode('P-G', ['P-G'], 'runStep3 gate monitoramento preemptivo')
-    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-F, P-H descartadas — informação disponível não monitorada sem demanda operacional real')
+    const selectionOnlyNoOwnMonitoring = evidenceOfSelectionError(relatoNorm) && !evidenceOfOperatorOwnMonitoringFailure(relatoNorm)
+    if (!selectionOnlyNoOwnMonitoring) {
+      const node = methodologyNode('Gate determinístico: parâmetro/informação disponível no painel e não conferido; ausência de demanda real confirma P-G.', { resposta: 'Não' })
+      logMethodology('runStep3', 'Gate P-G preemptivo', node, ['P-G'], true)
+      const code = assertAllowedCode('P-G', ['P-G'], 'runStep3 gate monitoramento preemptivo')
+      return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-F, P-H descartadas — informação disponível não monitorada sem demanda operacional real')
+    }
   }
 
   // P-E preemptivo: falha temporal pura sem demanda real; dispara antes de P-D.
@@ -1046,10 +1149,13 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   }
 
   if (evidenceOfMonitoringFailure(relatoNorm)) {
-    const node = methodologyNode('Gate determinístico: informação disponível, condição esperada, complacência ou rota habitual exigiam checagem/monitoramento pelo operador.', { resposta: 'Não' })
-    logMethodology('runStep3', 'Gate P-G monitoramento', node, ['P-G'], true)
-    const code = assertAllowedCode('P-G', ['P-G'], 'runStep3 gate monitoramento')
-    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-F, P-H descartadas — falha de monitoramento/verificação de informação disponível')
+    const selectionOnlyNoOwnMonitoring = evidenceOfSelectionError(relatoNorm) && !evidenceOfOperatorOwnMonitoringFailure(relatoNorm)
+    if (!selectionOnlyNoOwnMonitoring) {
+      const node = methodologyNode('Gate determinístico: informação disponível, condição esperada, complacência ou rota habitual exigiam checagem/monitoramento pelo operador.', { resposta: 'Não' })
+      logMethodology('runStep3', 'Gate P-G monitoramento', node, ['P-G'], true)
+      const code = assertAllowedCode('P-G', ['P-G'], 'runStep3 gate monitoramento')
+      return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-F, P-H descartadas — falha de monitoramento/verificação de informação disponível')
+    }
   }
 
   if (
@@ -1073,6 +1179,16 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     logMethodology('runStep3', 'Gate P-A', node, ['P-A'], true)
     const code = assertAllowedCode('P-A', ['P-A'], 'runStep3 gate sem percepção')
     return flowResult(code, [node], 'P-B, P-C, P-D, P-E, P-F, P-G, P-H descartadas — sem evidência perceptiva independente')
+  }
+
+  // Gate determinístico P-F: ilusão perceptiva fisiológica explícita (horizonte falso, vestibular,
+  // desorientação espacial). Precede os nós LLM para evitar que "interpretou" seja classificado
+  // como déficit de conhecimento (P-C) pelo modelo.
+  if (evidenceOfPerceptualIllusion(relatoNorm)) {
+    const node = methodologyNode('Gate determinístico: ilusão ou distorção perceptiva fisiológica explícita (horizonte falso, ilusão vestibular, desorientação espacial).', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-F ilusão', node, ['P-F'], true)
+    const code = assertAllowedCode('P-F', ['P-F'], 'runStep3 gate ilusão perceptiva')
+    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-G, P-H descartadas — ilusão perceptiva fisiológica explícita no relato')
   }
 
   async function askYesNo(node: string, prompt: string, allowedCodes: string[], terminal: boolean): Promise<RawFlowNode> {
@@ -1729,6 +1845,19 @@ ${NO_ARTIFACTS}`
       ['A-J'],
       input.justificativa,
       'A-A, A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I descartados — A-J terminal por falha central de confirmação/readback/comunicação operacional'
+    )
+  }
+
+  // Gate A-F (ilusão perceptiva): precede A-D e A-C para evitar que ilusão vestibular/visual
+  // (desorientação espacial, horizonte falso, leans) seja confundida com incapacidade física.
+  // Ativa somente quando há evidência conjunta de ilusão fisiológica E ação incorreta dela decorrente.
+  if (evidenceOfPerceptualIllusionAction(relatoNorm)) {
+    return finishDeterministic(
+      'Gate A-F (ilusão perceptiva)',
+      'A-F',
+      ['A-F'],
+      'Gate determinístico: correção, manobra ou ação inadequada decorrente de ilusão perceptiva fisiológica (horizonte falso, ilusão vestibular, desorientação espacial).',
+      'A-A, A-B, A-C, A-D, A-E, A-G, A-H, A-I, A-J descartados — ação errada causada por ilusão perceptiva, não por incapacidade física ou ausência de verificação'
     )
   }
 
