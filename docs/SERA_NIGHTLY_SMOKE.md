@@ -18,7 +18,23 @@ Se houver alterações não commitadas em código ou fixtures, o smoke **não é
 
 ## 3. Execução
 
-### 3.1 Verificar status
+### 3.1 Via script (recomendado)
+
+```bash
+bash scripts/run-sera-v0.1.1-smoke.sh
+```
+
+O script automatiza todos os passos abaixo:
+- Verifica working tree limpa.
+- Limpa artefatos temporários (runs anteriores, .DS_Store).
+- Executa o smoke global com `SERA_N_RUNS=3`.
+- Identifica o último relatório gerado.
+- Compara contra o baseline v0.1.
+- Imprime o caminho do relatório e instruções para promoção.
+
+### 3.2 Passo a passo manual
+
+#### Verificar status
 
 ```bash
 git status --short
@@ -27,7 +43,7 @@ git log --oneline -1
 
 Anotar o commit hash atual. O baseline será vinculado a este commit.
 
-### 3.2 Rodar smoke global
+#### Rodar smoke global
 
 ```bash
 SERA_N_RUNS=3 npx tsx tests/sera/run.ts --compact
@@ -39,7 +55,7 @@ Este comando:
 - Gera saída compacta no terminal.
 - Salva o relatório completo em `tests/reports/run-<timestamp>.json`.
 
-### 3.3 Identificar o último run gerado
+#### Identificar o último run gerado
 
 ```bash
 ls -t tests/reports/run-*.json | head -1
@@ -47,7 +63,7 @@ ls -t tests/reports/run-*.json | head -1
 
 O arquivo mais recente é o relatório do smoke recém-executado.
 
-### 3.4 Comparar com baseline v0.1
+#### Comparar com baseline v0.1
 
 ```bash
 npx tsx tests/sera/compare-baseline.ts \
@@ -107,7 +123,13 @@ Se `regressions > 0`:
 3. Confirmar que `improvements` contém TEST-O-D-001 e nenhuma surpresa.
 4. Confirmar que `regressions` = 0.
 5. Confirmar que `determinism_rate` = 100%.
-6. **Avisar** antes de copiar para `tests/reports/baseline/sera-baseline-v0.1.1-smoke.json`.
+6. Promover o relatório a baseline com o script de promoção:
+
+```bash
+bash scripts/promote-sera-v0.1.1-baseline.sh <run-file>
+```
+
+O script valida automaticamente as métricas (54 fixtures, 54 PASS, 0 PARTIAL, 0 FAIL, 0 ERROR, det 100%) antes de copiar para `tests/reports/baseline/sera-baseline-v0.1.1-smoke.json`.
 
 ## 6. O que fazer se falhar
 
