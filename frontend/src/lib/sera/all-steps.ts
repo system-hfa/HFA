@@ -1045,6 +1045,61 @@ function evidenceOfProceduralOmission(text: string): boolean {
   ])
 }
 
+function evidenceOfAdministrativeRedundantNoOperationalImpact(text: string): boolean {
+  const administrativeRedundantTerms = [
+    'campo administrativo redundante',
+    'campo redundante',
+    'registro administrativo redundante',
+    'documento redundante',
+    'informacao duplicada',
+    'informação duplicada',
+  ]
+  const administrativeDelayTerms = [
+    'preenchido com atraso',
+    'com atraso',
+    'completado com atraso',
+    'foi completado com atraso',
+    'atraso documental',
+  ]
+  const noOperationalImpactTerms = [
+    'sem impacto operacional',
+    'sem relevancia operacional',
+    'sem relevância operacional',
+    'nao alimentava decisao tecnica',
+    'nao alimentava decisao operacional',
+    'nao alimentava decisao de seguranca',
+    'sem afetar comunicacao',
+    'sem afetar rastreabilidade critica',
+    'sem afetar liberacao de equipamento',
+    'sem afetar execucao',
+  ]
+
+  const hasRedundantAdmin = containsAny(text, administrativeRedundantTerms)
+  const hasDelay = containsAny(text, administrativeDelayTerms)
+  const hasNoOperationalImpact = containsAny(text, noOperationalImpactTerms)
+
+  // A-A administrativo: discrepância documental redundante sem relevância operacional.
+  return hasRedundantAdmin && (hasDelay || hasNoOperationalImpact)
+}
+
+function evidenceOfSecondaryNonCriticalRecordOmission(text: string): boolean {
+  return containsAny(text, [
+    'registro secundario',
+    'registro secundário',
+    'inspecao nao critica',
+    'inspeção não crítica',
+    'nao critico',
+    'não crítico',
+    'baixo impacto',
+    'registro secundario de inspecao',
+    'registro secundário de inspeção',
+    'tarefa administrativa secundaria',
+    'tarefa administrativa secundária',
+    'omissao nao critica',
+    'omissão não crítica',
+  ])
+}
+
 function evidenceOfObjectiveCForbiddenContext(text: string): boolean {
   return containsAny(text, negativeEvidenceTerms(objectiveRules['O-C'], [
     'checklist',
@@ -1081,6 +1136,8 @@ function inferDeterministicErcLevel(
   actionCode: string,
   current?: number
 ): number | undefined {
+  if (actionCode === 'A-A' && evidenceOfAdministrativeRedundantNoOperationalImpact(text)) return 5
+  if (actionCode === 'A-B' && evidenceOfSecondaryNonCriticalRecordOmission(text)) return 4
   if (objectiveCode === 'O-B' && actionCode === 'A-A') return 1
   if (objectiveCode === 'O-C' && actionCode === 'A-A') return 2
   if (actionCode === 'A-H' && perceptionCode === 'P-E') return 2
@@ -2074,6 +2131,7 @@ ${NO_ARTIFACTS}`
   const ownActionCheckFailure = evidenceOfOwnActionCheckFailure(relatoNorm)
   const communicationConfirmationFailure = evidenceOfCommunicationConfirmationFailure(relatoNorm)
   const temporalExecutionFailure = evidenceOfTemporalExecutionFailure(relatoNorm)
+  const administrativeRedundantNoImpact = evidenceOfAdministrativeRedundantNoOperationalImpact(relatoNorm)
   const objectiveDecisionText = [
     relato,
     pontoFuga.ato_inseguro_factual,
@@ -2114,6 +2172,16 @@ ${NO_ARTIFACTS}`
       ['A-A'],
       'Gate determinístico: objetivo protetivo/humano explícito sem falha específica de execução.',
       'A-I e A-B descartados neste contexto — desvio orientado por proteção humana classifica como A-A'
+    )
+  }
+
+  if (administrativeRedundantNoImpact) {
+    return finishDeterministic(
+      'Gate A-A (administrativo redundante)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: atraso/preenchimento de campo administrativo redundante sem falha operacional específica.',
+      'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — discrepância administrativa redundante sem impacto operacional'
     )
   }
 
