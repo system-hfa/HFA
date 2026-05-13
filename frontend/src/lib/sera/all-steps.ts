@@ -1398,7 +1398,9 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   // P-G preemptivo: informação disponível não monitorada; dispara antes de P-D quando não há demanda genuína.
   // Bloqueado quando mecanismo dominante é seleção errada por similaridade sem falha de monitoramento
   // do próprio operador (ex: "nao monitorou" do copiloto não constitui P-G do piloto).
-  if (evidenceOfMonitoringFailure(relatoNorm) && !genuineHighDemand) {
+  // Bloqueado também quando há objetivo de eficiência/economia (O-D): decisão deliberada de rota/procedimento
+  // não recomendado para economizar combustível/tempo não constitui falha de monitoramento (P-A).
+  if (evidenceOfMonitoringFailure(relatoNorm) && !genuineHighDemand && !evidenceOfEfficiencyObjective(relatoNorm)) {
     const selectionOnlyNoOwnMonitoring = evidenceOfSelectionError(relatoNorm) && !evidenceOfOperatorOwnMonitoringFailure(relatoNorm)
     if (!selectionOnlyNoOwnMonitoring) {
       const node = methodologyNode('Gate determinístico: parâmetro/informação disponível no painel e não conferido; ausência de demanda real confirma P-G.', { resposta: 'Não' })
@@ -1437,7 +1439,7 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-F, P-G, P-H descartadas — falha temporal explícita')
   }
 
-  if (evidenceOfMonitoringFailure(relatoNorm)) {
+  if (evidenceOfMonitoringFailure(relatoNorm) && !evidenceOfEfficiencyObjective(relatoNorm)) {
     const selectionOnlyNoOwnMonitoring = evidenceOfSelectionError(relatoNorm) && !evidenceOfOperatorOwnMonitoringFailure(relatoNorm)
     if (!selectionOnlyNoOwnMonitoring) {
       const node = methodologyNode('Gate determinístico: informação disponível, condição esperada, complacência ou rota habitual exigiam checagem/monitoramento pelo operador.', { resposta: 'Não' })
