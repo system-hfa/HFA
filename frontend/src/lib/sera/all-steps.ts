@@ -137,37 +137,71 @@ function evidenceOfSupervisionFailure(text: string): boolean {
   const hasDelegatedAction = containsAny(text, [
     'delegou',
     'delegada',
-    'tecnico',
-    'auxiliar',
-    'subordinado',
-    'acao de outro',
+    'delegacao',
     'acao delegada',
-    'outra pessoa executou',
-    'tarefa foi executada por outra pessoa',
+    'tarefa delegada',
+    'delegou ao tecnico',
+    'delegou para o tecnico',
+    'delegou ao auxiliar',
+    'delegou para o auxiliar',
+    'delegou ao subordinado',
+    'delegou para o subordinado',
+    'instruiu tecnico',
+    'instruiu o tecnico',
+    'instruiu um tecnico',
+    'instruiu auxiliar',
+    'instruiu o auxiliar',
+    'instruiu um auxiliar',
+    'instruiu terceiro',
+    'instruiu um terceiro',
+    'atribuiu a tarefa',
+    'pediu ao tecnico',
+    'pediu ao auxiliar',
+    'ordenou ao tecnico',
+    'ordenou ao auxiliar',
+    'encarregou o tecnico',
+    'encarregou o auxiliar',
+    'auxiliar a isolar',
+    'tecnico a ajustar',
     'tecnico executaria',
     'auxiliar executaria',
   ])
   const hasThirdPartyConfirmationFailure = containsAny(text, [
     'nao retornou para verificar',
+    'nao retornou para confirmar',
+    'sem retornar ao local para confirmar',
     'nao acompanhou',
     'nao confirmou que o tecnico',
     'nao confirma a execucao',
     'nao confirmou a execucao',
     'nao confirmou execucao',
     'sem confirmacao de execucao',
+    'nao aguardou retorno',
+    'nao aguardou retorno positivo',
+    'nao aguardou retorno do tecnico',
+    'nao aguardou retorno do auxiliar',
+    'nao aguardou confirmacao de execucao',
+    'nao aguardou a confirmacao de execucao',
     'nao confirmou a execucao da acao de outro',
     'nao confirmou execucao da acao de outro',
     'nao verificou o resultado da acao de outro',
     'nao conferiu o resultado da acao de outro',
+    'nao conferiu o indicador de isolamento',
+    'nao conferiu indicador de isolamento',
     'liberar o trabalho',
     'liberou o trabalho',
+    'liberou a equipe',
     'liberacao foi dada',
     'antes de confirmar',
     'antes de confirmar execucao',
     'antes de confirmar a execucao',
+    'sem verificar a execucao',
+    'nao verificou se a tarefa',
   ])
 
-  return hasSupervisorActor && (hasDelegatedAction || hasThirdPartyConfirmationFailure)
+  // A-G exige supervisor + ação delegada + falha explícita de verificar a execução do terceiro.
+  // Briefing ambíguo sem falha de verificação de execução delegada não é A-G — é A-A (com P-H).
+  return hasSupervisorActor && hasDelegatedAction && hasThirdPartyConfirmationFailure
 }
 
 function evidenceOfCommunicationConfirmationFailure(text: string): boolean {
@@ -239,7 +273,6 @@ function evidenceOfCentralCommunicationFailure(text: string): boolean {
     'nao confirma o readback',
     'nao confirmou readback',
     'nao confirmou o readback',
-    'sem confirmacao',
     'sem confirmacao de recebimento',
     'readback ausente',
     'readback nao confirmado',
@@ -626,12 +659,48 @@ function hasNegatedHighDemand(text: string): boolean {
   return text.includes('nao havia') && evidenceOfExplicitHighDemandOperationalContext(text)
 }
 
+// Padrões muito explícitos de falha de estimativa temporal — disparam P-E mesmo com alta demanda presente.
+function evidenceOfVeryStrongTemporalPerceptionFailure(text: string): boolean {
+  return containsAny(text, [
+    'subestimando o tempo restante',
+    'subestimou o tempo restante',
+    'subestimacao do tempo restante',
+    'subestimacao de tempo restante',
+    'subestimou tempo necessario',
+    'subestimar tempo necessario',
+    'tempo restante',
+    'antecipou o encerramento do checklist',
+    'antecipou encerramento de checklist',
+    'encerrou o checklist por subestimar',
+    'nao conclui checklist por subestimar',
+    'nao concluiu checklist por subestimar',
+    'nao conclui checklist por subestimar tempo',
+    'nao concluiu checklist por subestimar tempo',
+    'checklist encerrado por subestimacao',
+    'checklist nao concluido por tempo',
+    'estimou que ainda havia tempo suficiente',
+    'achou que haveria tempo suficiente',
+    'acreditou que haveria tempo suficiente',
+    'calculou que teria tempo suficiente',
+    'duracao maior que o previsto',
+    'estimativa incorreta de duracao',
+    'chegou ao fim do tempo disponivel',
+    'atingiu o limite de tempo disponivel',
+  ])
+}
+
 function evidenceOfTemporalPerceptionFailure(text: string): boolean {
   return containsAny(text, [
     'subestimou tempo',
     'subestimou o tempo',
     'subestimando o tempo',
     'subestimou o tempo restante',
+    'subestimando o tempo restante',
+    'subestimacao do tempo restante',
+    'subestimacao de tempo restante',
+    'subestimou tempo necessario',
+    'subestimar tempo necessario',
+    'tempo restante',
     'tempo insuficiente',
     'antes da aproximacao',
     'antes do pouso',
@@ -647,6 +716,16 @@ function evidenceOfTemporalPerceptionFailure(text: string): boolean {
     'janela temporal curta',
     'sequencia interrompida por tempo',
     'janela disponivel',
+    'chegou ao fim do tempo disponivel',
+    'achou que haveria tempo suficiente',
+    'acreditou que haveria tempo suficiente',
+    'duracao maior que o previsto',
+    'estimativa incorreta de duracao',
+    'nao conclui checklist por subestimar',
+    'nao concluiu checklist por subestimar',
+    'nao conclui checklist por subestimar tempo',
+    'nao concluiu checklist por subestimar tempo',
+    'checklist nao concluido por tempo',
   ])
 }
 
@@ -668,6 +747,63 @@ function evidenceOfTemporalExecutionFailure(text: string): boolean {
     'tempo insuficiente antes da aproximacao',
     'antes do pouso',
     'antes da aproximacao',
+    'chegou ao fim do tempo disponivel',
+    'antecipou o encerramento do checklist',
+    'antecipou encerramento de checklist',
+    'declarou a sequencia concluida',
+    'declarou sequencia concluida',
+    'pular os itens restantes',
+    'subestimando o tempo restante',
+    'subestimacao do tempo restante',
+    'subestimacao de tempo restante',
+    'tempo restante',
+    'nao concluiu checklist por tempo',
+    'nao conclui checklist por subestimar',
+    'nao concluiu checklist por subestimar',
+    'nao conclui checklist por subestimar tempo',
+    'nao concluiu checklist por subestimar tempo',
+    'checklist encerrado por subestimacao',
+    'checklist nao concluido por tempo',
+    'duracao maior que o previsto',
+    'estimativa incorreta de duracao',
+    'achou que haveria tempo suficiente',
+    'acreditou que haveria tempo suficiente',
+  ])
+}
+
+// Detecta falha de canal de informação recebida: briefing/instrução/identificação ambígua ou incompleta.
+// Distingue P-H de P-A (supervisão) quando a falha dominante é na mensagem recebida, não na delegação.
+function evidenceOfInformationChannelFailure(text: string): boolean {
+  return containsAny(text, [
+    'briefing ambiguo',
+    'briefing ambíguo',
+    'informacao ambigua',
+    'informação ambígua',
+    'instrucao ambigua',
+    'instrução ambígua',
+    'instrucao verbal ambigua',
+    'identificacao ambigua',
+    'identificacao abreviada',
+    'nao havia ordem de servico escrita',
+    'nao havia ordem escrita',
+    'sem ordem de servico escrita',
+    'forma nao-padronizada',
+    'nao-padronizada nos paineis',
+    'apresentada de forma nao-padronizada',
+    'instrucao nao padronizada',
+    'briefing incompleto',
+    'comunicacao ambigua',
+    'informacao incompleta',
+    'informacao incompleta recebida',
+    'instrucao incompleta recebida',
+    'painel errado apos briefing ambiguo',
+    'sistema errado por briefing ambiguo',
+    'painel errado por briefing',
+    'sistema errado por instrucao',
+    'manutencao em sistema errado por briefing ambiguo',
+    'manutencao em sistema errado por briefing',
+    'manutencao no painel errado apos briefing ambiguo',
+    'manutencao no painel errado apos briefing',
   ])
 }
 
@@ -948,6 +1084,7 @@ function inferDeterministicErcLevel(
   if (objectiveCode === 'O-B' && actionCode === 'A-A') return 1
   if (objectiveCode === 'O-C' && actionCode === 'A-A') return 2
   if (actionCode === 'A-H' && perceptionCode === 'P-E') return 2
+  if (perceptionCode === 'P-H' && actionCode === 'A-A') return 3
   if (actionCode === 'A-I' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-J' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-G') return 3
@@ -1097,6 +1234,24 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     logMethodology('runStep3', 'Gate P-A anti P-D físico', node, ['P-A'], true)
     const code = assertAllowedCode('P-A', ['P-A'], 'runStep3 gate físico sem percepção')
     return flowResult(code, [node], 'P-B, P-C, P-D, P-E, P-F, P-G, P-H descartadas — A-D não implica falha perceptiva independente')
+  }
+
+  // Gate P-H prioritário: falha dominante de briefing/informação/instrução recebida.
+  // Deve preceder P-A e demais fallbacks para não perder casos de ambiguidade de informação.
+  if (evidenceOfInformationChannelFailure(relatoNorm) && !evidenceOfSupervisionFailure(relatoNorm)) {
+    const node = methodologyNode('Gate determinístico: falha de canal de informação/instrução recebida — briefing, instrução ou identificação ambígua/incompleta sem falha de supervisão independente.', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-H', node, ['P-H'], true)
+    const code = assertAllowedCode('P-H', ['P-H'], 'runStep3 gate informação ambígua')
+    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-F, P-G descartadas — falha dominante de informação/comunicação recebida')
+  }
+
+  // Gate P-E forte: subestimação temporal muito explícita — dispara ANTES do check de alta demanda.
+  // Cobre casos onde "alta carga de trabalho" aparece como consequência da falha, não como causa.
+  if (evidenceOfVeryStrongTemporalPerceptionFailure(relatoNorm)) {
+    const node = methodologyNode('Gate determinístico forte: subestimação de tempo, duração ou sequência temporal explicitamente identificada no relato — P-E terminal independente de contexto de carga.', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-E forte', node, ['P-E'], true)
+    const code = assertAllowedCode('P-E', ['P-E'], 'runStep3 gate temporal forte')
+    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-F, P-G, P-H descartadas — falha temporal muito explícita; supera contexto de carga operacional')
   }
 
   if (evidenceOfTemporalPerceptionFailure(relatoNorm) && !genuineHighDemand) {
@@ -1881,7 +2036,22 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (evidenceOfSupervisionFailure(relatoNorm)) {
+  const supervisionFailure = evidenceOfSupervisionFailure(relatoNorm)
+  const informationChannelFailure = evidenceOfInformationChannelFailure(relatoNorm)
+
+  // Guard rail de P-H no Step5: briefing/informação ambígua sem falha explícita de
+  // delegação + verificação de terceiro não deve abrir A-G.
+  if (informationChannelFailure && !supervisionFailure) {
+    return finishDeterministic(
+      'Gate A-A (briefing/informação ambígua)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: mecanismo dominante é briefing/informação/instrução ambígua recebida, sem falha explícita de supervisão de terceiro.',
+      'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — briefing ambíguo puro não caracteriza A-G'
+    )
+  }
+
+  if (supervisionFailure) {
     return finishDeterministic(
       'Gate A-G',
       'A-G',
