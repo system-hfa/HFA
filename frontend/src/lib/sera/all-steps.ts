@@ -431,6 +431,52 @@ function evidenceOfEfficiencyObjective(text: string): boolean {
   ]))
 }
 
+// Bloqueia P-G apenas quando eficiência é o mecanismo único, sem padrão de rotina/normalização.
+// Casos O-B com "ganhar tempo" mas também com "rota habitual" / "altitude minima" não são O-D puro.
+function isPureEfficiencyObjective(text: string): boolean {
+  return evidenceOfEfficiencyObjective(text) && !evidenceOfRoutineOrNormalizedViolation(text)
+}
+
+function evidenceOfRoutineOrNormalizedViolation(text: string): boolean {
+  return containsAny(text, [
+    'rota habitual',
+    'em rota habitual',
+    'rota conhecida',
+    'rota costumeira',
+    'altitude minima',
+    'violacao normalizada',
+    'desvio normalizado',
+    'pratica normalizada',
+    'complacencia operacional',
+    'complacencia institucional',
+    'complacencia organizacional',
+    'sempre fazemos',
+    'sempre fazia',
+    'sempre fazem',
+    'culturalmente aceita',
+    'aceita informalmente',
+    'aceito informalmente',
+    'atalho aceito informalmente',
+    'todo mundo usa',
+    'nunca ninguem foi cobrado',
+    'desvio habitual',
+    'violacao habitual',
+    'violacao rotineira',
+    'procedimento ignorado por rotina',
+    'procedimento tratado como burocracia',
+    'considerado burocracia',
+    'era considerado burocracia',
+    'formalidade dispensavel',
+    'por habito',
+    'pratica habitual',
+    'pratica tolerada',
+    'pratica aceita',
+    'costume operacional',
+    'rotina operacional',
+    'monitoramento assumido como normal',
+  ])
+}
+
 function evidenceOfRoutineViolation(text: string): boolean {
   return containsAny(text, [
     'rota habitual',
@@ -1400,7 +1446,7 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   // do próprio operador (ex: "nao monitorou" do copiloto não constitui P-G do piloto).
   // Bloqueado também quando há objetivo de eficiência/economia (O-D): decisão deliberada de rota/procedimento
   // não recomendado para economizar combustível/tempo não constitui falha de monitoramento (P-A).
-  if (evidenceOfMonitoringFailure(relatoNorm) && !genuineHighDemand && !evidenceOfEfficiencyObjective(relatoNorm)) {
+  if (evidenceOfMonitoringFailure(relatoNorm) && !genuineHighDemand && !isPureEfficiencyObjective(relatoNorm)) {
     const selectionOnlyNoOwnMonitoring = evidenceOfSelectionError(relatoNorm) && !evidenceOfOperatorOwnMonitoringFailure(relatoNorm)
     if (!selectionOnlyNoOwnMonitoring) {
       const node = methodologyNode('Gate determinístico: parâmetro/informação disponível no painel e não conferido; ausência de demanda real confirma P-G.', { resposta: 'Não' })
@@ -1439,7 +1485,7 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-F, P-G, P-H descartadas — falha temporal explícita')
   }
 
-  if (evidenceOfMonitoringFailure(relatoNorm) && !evidenceOfEfficiencyObjective(relatoNorm)) {
+  if (evidenceOfMonitoringFailure(relatoNorm) && !isPureEfficiencyObjective(relatoNorm)) {
     const selectionOnlyNoOwnMonitoring = evidenceOfSelectionError(relatoNorm) && !evidenceOfOperatorOwnMonitoringFailure(relatoNorm)
     if (!selectionOnlyNoOwnMonitoring) {
       const node = methodologyNode('Gate determinístico: informação disponível, condição esperada, complacência ou rota habitual exigiam checagem/monitoramento pelo operador.', { resposta: 'Não' })
@@ -1464,7 +1510,7 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     evidenceOfPhysicalIncapacity(relatoNorm) ||
     evidenceOfSelectionError(relatoNorm) ||
     evidenceOfSupervisionFailure(relatoNorm) ||
-    evidenceOfEfficiencyObjective(relatoNorm)
+    isPureEfficiencyObjective(relatoNorm)
   ) {
     const node = methodologyNode('Gate determinístico: mecanismo principal é ação, seleção, supervisão, incapacidade ou objetivo, sem falha perceptiva independente.', { resposta: 'Não' })
     logMethodology('runStep3', 'Gate P-A', node, ['P-A'], true)
