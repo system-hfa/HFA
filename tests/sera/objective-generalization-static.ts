@@ -9,6 +9,11 @@ type ObjectiveCase = {
 
 const cases: ObjectiveCase[] = [
   {
+    name: 'O-C off-procedure landing for medical emergency',
+    text: 'Pouso fora do procedimento padrão por emergência médica.',
+    expected: 'O-C',
+  },
+  {
     name: 'O-B tolerated intermediate check omission',
     text: 'Tripulação omite verificação intermediária porque a prática já era tolerada no setor.',
     expected: 'O-B',

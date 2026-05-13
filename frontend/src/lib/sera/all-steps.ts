@@ -569,7 +569,11 @@ function forceObjectiveOverride(text: string): null | { code: 'O-B' | 'O-C'; rea
     has('necessidade medica') ||
     has('suspeita de infarto') ||
     (has('passageiro') && has('infarto')) ||
-    (has('passageiro') && has('atendimento medico'))
+    (has('passageiro') && has('atendimento medico')) ||
+    has('dano humano iminente') ||
+    has('deterioracao clinica') ||
+    (has('atendimento imediato') && has('passageiro')) ||
+    has('mitigacao de dano humano')
 
   if (forceOC) {
     return {
@@ -873,6 +877,9 @@ function evidenceOfMonitoringFailure(text: string): boolean {
     'deveria ter monitorado o indicador',
     'nao verificou o resultado do reset',
     'retornou sem verificar o indicador',
+    'sem realizar a verificacao',
+    'assumindo que',
+    'nao consultou',
   ])
 }
 
@@ -924,6 +931,9 @@ function evidenceOfOperatorOwnMonitoringFailure(text: string): boolean {
     'inspecao intermediaria',
     'condicao a verificar estava acessivel',
     'registro de verificacao obrigatorio',
+    'sem realizar a verificacao',
+    'assumindo que',
+    'nao consultou',
   ])
 }
 
