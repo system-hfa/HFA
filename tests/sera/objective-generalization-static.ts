@@ -99,6 +99,21 @@ const cases: ObjectiveCase[] = [
     expected: 'O-B',
   },
   {
+    name: 'O-B pre-flight checklist bureaucracy quoted',
+    text: "Equipe omite checklist de pre-voo por ser considerado 'burocracia' na empresa.",
+    expected: 'O-B',
+  },
+  {
+    name: 'O-D non-recommended route fuel savings',
+    text: 'Capitão decide navegar por rota não recomendada para economizar combustível.',
+    expected: 'O-D',
+  },
+  {
+    name: 'O-D operational shortcut connection window bare',
+    text: 'Atalho operacional para cumprir janela de conexão.',
+    expected: 'O-D',
+  },
+  {
     name: 'negative readback congestion',
     text: 'Controlador não confirma readback sob frequência congestionada.',
     expected: null,

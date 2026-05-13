@@ -8,6 +8,7 @@ export function normalizeObjectiveText(text: string): string {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
+    .replace(/['"''""\u2018\u2019\u201c\u201d`]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -35,8 +36,6 @@ function hasExplicitProtectiveHumanIntent(text: string): boolean {
       'proteger passageiro',
       'proteger paciente',
       'pessoa presa em area de risco',
-      'risco humano imediato',
-      'dano humano iminente',
     ]) ||
     (has(text, 'passageiro') && (has(text, 'doente') || has(text, 'infarto') || has(text, 'avc'))) ||
     (has(text, 'condicao') && has(text, 'passageiro') && (has(text, 'piorar') || has(text, 'agravar'))) ||
@@ -54,6 +53,10 @@ function hasExplicitProtectiveHumanIntent(text: string): boolean {
     'sem situacao de risco humano imediato',
     'sem risco humano imediato',
     'atendimento eletivo',
+    'ferramenta improvisada',
+    'pressao de prazo',
+    'para manter o prazo',
+    'janela de parada',
   ])
 
   return !explicitNegative
@@ -75,6 +78,9 @@ function hasExplicitRoutineNormalization(text: string): boolean {
     'desvio normalizado',
     'violacao rotineira',
     'considerado burocracia',
+    'burocracia na empresa',
+    'burocracia pela empresa',
+    'burocracia pela equipe',
     'formalidade dispensavel',
     'todo mundo usa',
     'nunca ninguem foi cobrado',
@@ -83,6 +89,8 @@ function hasExplicitRoutineNormalization(text: string): boolean {
     'rota costumeira',
     'por habito',
     'pratica habitual',
+    'habito estabelecido',
+    'era rotineira',
   ]) ||
     (has(text, 'altitude minima') && has(text, 'rota') && has(text, 'ganhar tempo'))
 
@@ -106,7 +114,10 @@ function hasExplicitEfficiencyObjective(text: string): boolean {
     'reduzir consumo de combustivel',
     'economizar combustivel',
     'rota mais curta',
+    'rota operacional mais curta',
     'cumprir janela de conexao',
+    'janela de conexao',
+    'perder a janela',
     'cumprir horario',
     'aumentar produtividade',
     'aumentar a produtividade',
@@ -120,6 +131,7 @@ function hasExplicitEfficiencyObjective(text: string): boolean {
     'eficiencia',
     'economia operacional',
     'atalho operacional',
+    'avaliou o risco como aceitavel',
   ])
 }
 
