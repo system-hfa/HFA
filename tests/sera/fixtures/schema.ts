@@ -67,6 +67,7 @@ export interface RunReport {
   timestamp: string
   n_runs_per_fixture: number
   fixtures_tested: number
+  aborted?: boolean
   summary: {
     total_runs: number
     pass: number

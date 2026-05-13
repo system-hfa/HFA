@@ -24,6 +24,7 @@ export function printSummary(report: RunReport): void {
   console.log('═'.repeat(60))
   console.log(`  Run       : ${report.run_id}`)
   console.log(`  Fixtures  : ${report.fixtures_tested} × ${report.n_runs_per_fixture} runs`)
+  if (report.aborted) console.log(`  ⚠  EXECUÇÃO INTERROMPIDA (fail-fast)`)
   console.log(`\n  PASS      : ${s.pass} (${pct(s.pass_rate)})`)
   console.log(`  PARTIAL   : ${s.partial}`)
   console.log(`  FAIL      : ${s.fail}`)
@@ -41,4 +42,20 @@ export function printSummary(report: RunReport): void {
     console.log(`    ${i+1}. ${id} — ${pct(f.accuracy.overall_accuracy)} — esperado: ${f.expected_codes}`)
   })
   console.log('═'.repeat(60) + '\n')
+}
+
+export function printCompact(report: RunReport): void {
+  const s = report.summary
+  const pct = (n: number) => `${(n * 100).toFixed(1)}%`
+
+  const nonPass = report.by_fixture.filter(f => f.accuracy.overall_accuracy < 1)
+  const nonPassIds = nonPass.map(f =>
+    `${f.fixture_id} (${pct(f.accuracy.overall_accuracy)})`
+  )
+
+  console.log(`[SERA] ${report.fixtures_tested}f × ${report.n_runs_per_fixture}r | PASS ${s.pass} | PARTIAL ${s.partial} | FAIL ${s.fail} | ERROR ${s.error} | rate ${pct(s.pass_rate)} | det ${pct(s.determinism_rate)}`)
+  if (report.aborted) console.log('[SERA] ⚠ interrompido por fail-fast')
+  if (nonPassIds.length) {
+    console.log(`[SERA] não-PASS: ${nonPassIds.join(', ')}`)
+  }
 }
