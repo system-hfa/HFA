@@ -650,6 +650,11 @@ function evidenceOfExplicitHighDemandOperationalContext(text: string): boolean {
     'canal estava saturado',
     'conflito iminente',
     'conflitos potenciais',
+    'pico operacional',
+    'aeronaves simultaneas',
+    'conflito de rota',
+    'nao tive tempo de verificar',
+    'solicitacoes de mudanca de rota',
   ])
 }
 
@@ -1129,6 +1134,43 @@ function evidenceOfObjectiveCForbiddenContext(text: string): boolean {
   ]))
 }
 
+function evidenceOfSensoryBarrier(text: string): boolean {
+  return containsAny(text, [
+    'alarme sonoro',
+    'protetores auriculares',
+    'ambiente ruidoso',
+    'brilho intenso',
+    'reflexo intenso',
+    'encoberto por reflexo',
+    'barreira sensorial',
+    'nao detectou alarme',
+    'nao ouviu',
+    'nao ter ouvido nada',
+    'nao percebeu o alarme',
+    'nao conseguiu detectar',
+    'sinal bloqueado',
+    'obstruido pelo reflexo',
+  ])
+}
+
+function evidenceOfInterpretiveKnowledgeDeficit(text: string): boolean {
+  return containsAny(text, [
+    'piloto novato',
+    'aeronave desconhecida',
+    'tipo de aeronave desconhecido',
+    'tipo desconhecido',
+    'interpretou erroneamente leitura',
+    'interpreta erroneamente leitura',
+    'leitura de altimetro',
+    'altimetro barometrico',
+    'confundiu a escala',
+    'nunca havia operado esse modelo',
+    'falta de familiaridade',
+    'desconhecimento do tipo de aeronave',
+    'interpretacao incorreta por falta de familiaridade',
+  ])
+}
+
 function inferDeterministicErcLevel(
   text: string,
   perceptionCode: string,
@@ -1142,6 +1184,9 @@ function inferDeterministicErcLevel(
   if (objectiveCode === 'O-C' && actionCode === 'A-A') return 2
   if (actionCode === 'A-H' && perceptionCode === 'P-E') return 2
   if (perceptionCode === 'P-H' && actionCode === 'A-A') return 3
+  if (perceptionCode === 'P-B' && actionCode === 'A-A') return 3
+  if (perceptionCode === 'P-C' && actionCode === 'A-A') return 3
+  if (perceptionCode === 'P-D' && actionCode === 'A-A') return 3
   if (actionCode === 'A-I' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-J' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-G') return 3
@@ -1284,6 +1329,28 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     logMethodology('runStep3', 'Gate P-C 2', no2, ['P-C'], true)
     const code = assertAllowedCode('P-C', ['P-C'], 'runStep3 gate conhecimento')
     return flowResult(code, [no0, no1, no2], 'P-A, P-B, P-D, P-E, P-F, P-G, P-H descartadas — déficit explícito de conhecimento/interpretação')
+  }
+
+  if (evidenceOfInterpretiveKnowledgeDeficit(relatoNorm)) {
+    const no0 = methodologyNode('Gate determinístico: o relato traz déficit interpretativo — operador não tinha familiaridade ou conhecimento para interpretar corretamente o instrumento/tipo de aeronave.', { resposta: 'Sim' })
+    const no1 = methodologyNode('Gate determinístico: falha ocorreu na interpretação de leitura/instrumento, não em barreira sensorial física.', { resposta: 'Sim' })
+    const no2 = methodologyNode('Gate determinístico: interpretação incorreta por falta de familiaridade com o tipo/modelo.', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-C interpretativo 0', no0, ['P-A', 'P-C'], false)
+    logMethodology('runStep3', 'Gate P-C interpretativo 1', no1, ['P-B'], false)
+    logMethodology('runStep3', 'Gate P-C interpretativo 2', no2, ['P-C'], true)
+    const code = assertAllowedCode('P-C', ['P-C'], 'runStep3 gate interpretativo')
+    return flowResult(code, [no0, no1, no2], 'P-A, P-B, P-D, P-E, P-F, P-G, P-H descartadas — déficit interpretativo: falta de familiaridade com tipo/modelo/instrumento')
+  }
+
+  // Gate P-B (barreira sensorial): sinal estava presente e disponível, mas barreira física/ambiental
+  // impediu sua detecção. Dispara antes dos gates de informação/temporal para proteger P-B.
+  if (evidenceOfSensoryBarrier(relatoNorm)) {
+    const no0 = methodologyNode('Gate determinístico: houve falha perceptiva explícita — o operador não detectou o sinal presente.', { resposta: 'Sim' })
+    const no1 = methodologyNode('Gate determinístico: barreira sensorial física/ambiental (ruído, brilho intenso, reflexo) impediu a detecção do sinal.', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-B sensorial 0', no0, ['P-A', 'P-C'], false)
+    logMethodology('runStep3', 'Gate P-B sensorial 1', no1, ['P-B'], true)
+    const code = assertAllowedCode('P-B', ['P-B'], 'runStep3 gate barreira sensorial')
+    return flowResult(code, [no0, no1], 'P-A, P-C, P-D, P-E, P-F, P-G, P-H descartadas — barreira sensorial física/ambiental impediu a detecção do sinal presente')
   }
 
   if (evidenceOfPhysicalIncapacity(relatoNorm)) {
@@ -1994,6 +2061,7 @@ ${NO_ARTIFACTS}`
   const ato = String(pontoFuga.ato_inseguro_factual || '')
   const nodes: RawFlowNode[] = []
   const relatoNorm = normalizeEvidenceText(`${relato}\n${ato}`)
+  const relatoOnlyNorm = normalizeEvidenceText(relato)
 
   async function askNode(
     node: string,
@@ -2070,6 +2138,31 @@ ${NO_ARTIFACTS}`
       ['A-F'],
       'Gate determinístico: correção, manobra ou ação inadequada decorrente de ilusão perceptiva fisiológica (horizonte falso, ilusão vestibular, desorientação espacial).',
       'A-A, A-B, A-C, A-D, A-E, A-G, A-H, A-I, A-J descartados — ação errada causada por ilusão perceptiva, não por incapacidade física ou ausência de verificação'
+    )
+  }
+
+  // Gate A-A (barreira sensorial — P-B): sinal existia mas foi bloqueado por barreira física/ambiental.
+  // Precede A-C/A-B para evitar que "não detectou" vire "não verificou".
+  if (evidenceOfSensoryBarrier(relatoNorm)) {
+    return finishDeterministic(
+      'Gate A-A (barreira sensorial)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: barreira sensorial física/ambiental (ruído, brilho, reflexo, protetor auricular) impediu a percepção do sinal.',
+      'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — sinal não detectado por barreira sensorial, não por ausência de verificação'
+    )
+  }
+
+  // Gate A-A (déficit interpretativo — P-C): operador percebeu o sinal mas não tinha
+  // familiaridade/conhecimento para interpretar corretamente. Distinto de A-E (conhecimento
+  // técnico geral ausente): aqui o déficit é específico ao tipo/modelo/instrumento.
+  if (evidenceOfInterpretiveKnowledgeDeficit(relatoNorm)) {
+    return finishDeterministic(
+      'Gate A-A (déficit interpretativo)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: operador interpretou incorretamente a leitura/sinal por falta de familiaridade com o tipo de aeronave ou instrumento — ação foi coerente com a percepção incorreta.',
+      'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — ação derivou de percepção incorreta por déficit interpretativo, não de omissão de verificação'
     )
   }
 
@@ -2182,6 +2275,26 @@ ${NO_ARTIFACTS}`
       ['A-A'],
       'Gate determinístico: atraso/preenchimento de campo administrativo redundante sem falha operacional específica.',
       'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — discrepância administrativa redundante sem impacto operacional'
+    )
+  }
+
+  // Gate A-A (sobrecarga atencional — P-D): alta demanda operacional genuína bloqueou
+  // a percepção/verificação. Precede A-I e A-F para proteger casos P-D onde a falha
+  // foi de percepção/atenção (não percebeu conflito), não de seleção operacional errada.
+  // Usa relatoOnlyNorm para a exclusão de seleção, evitando falso match no ato LLM-gerado.
+  if (
+    evidenceOfExplicitHighDemandOperationalContext(relatoNorm) &&
+    !hasNegatedHighDemand(relatoNorm) &&
+    !communicationConfirmationFailure &&
+    !evidenceOfSelectionError(relatoOnlyNorm) &&
+    !evidenceOfWrongOperationalSelectionUnderLoad(relatoOnlyNorm)
+  ) {
+    return finishDeterministic(
+      'Gate A-A (sobrecarga atencional)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: alta demanda operacional genuína (múltiplos conflitos, pico operacional, aeronaves simultâneas) limitou a capacidade perceptiva/atencional do operador.',
+      'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — falha perceptiva por sobrecarga atencional real, não por omissão voluntária'
     )
   }
 
