@@ -61,3 +61,13 @@ SERA_N_RUNS=1 SERA_FIXTURE=TEST-GEN-AG npx tsx tests/sera/run.ts
 SERA_N_RUNS=1 SERA_FIXTURE=TEST-GEN-AH npx tsx tests/sera/run.ts
 SERA_N_RUNS=1 SERA_FIXTURE=TEST-GEN-PG npx tsx tests/sera/run.ts
 ```
+
+## Interview sufficiency validation
+
+Tests the `assessInterviewSufficiency` pure function against the sufficiency gates defined in `frontend/src/lib/sera/interview/sufficiency-gates.json`. No DeepSeek call is made — no API key or network access required.
+
+```sh
+npx tsx tests/sera/interview-sufficiency-static.ts
+```
+
+Run this whenever `sufficiency-gates.json`, `assess-sufficiency.ts`, or the `EvidenceMap` types change.

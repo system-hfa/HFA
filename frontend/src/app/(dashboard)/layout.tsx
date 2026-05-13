@@ -17,6 +17,7 @@ import {
   Menu,
   X,
   ChevronRight,
+  ClipboardCheck,
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { ensureOAuthTenant } from '@/lib/ensure-tenant'
@@ -33,11 +34,12 @@ type NavItem = {
 }
 
 const mainNav: NavItem[] = [
-  { href: '/dashboard',    labelKey: 'nav.dashboard',   icon: LayoutDashboard },
-  { href: '/events',       labelKey: 'nav.events',      icon: FileText },
-  { href: '/actions',      labelKey: 'nav.actions',     icon: ClipboardList },
-  { href: '/risk-profile', labelKey: 'nav.riskProfile', icon: BarChart2 },
-  { href: '/learn',        labelKey: 'nav.methodology', icon: BookOpen },
+  { href: '/dashboard',      labelKey: 'nav.dashboard',   icon: LayoutDashboard },
+  { href: '/events',         labelKey: 'nav.events',      icon: FileText },
+  { href: '/actions',        labelKey: 'nav.actions',     icon: ClipboardList },
+  { href: '/risk-profile',   labelKey: 'nav.riskProfile', icon: BarChart2 },
+  { href: '/learn',          labelKey: 'nav.methodology', icon: BookOpen },
+  { href: '/sera/interview', labelKey: 'nav.interview',   icon: ClipboardCheck },
 ]
 
 const bottomNav: NavItem[] = [
@@ -54,12 +56,13 @@ const ROUTE_LABELS: Record<string, string> = {
   '/risk-profile': 'Perfil de Risco',
   '/settings/ai':       'Configurações › IA',
   '/credits':           'Créditos',
-  '/learn':             'Metodologia SERA',
-  '/learn/pipeline':    'Metodologia SERA › Pipeline',
-  '/learn/perception':  'Metodologia SERA › Percepção',
-  '/learn/objective':   'Metodologia SERA › Objetivo',
-  '/learn/action':      'Metodologia SERA › Ação',
-  '/learn/codes':       'Metodologia SERA › Glossário',
+  '/learn':                  'Metodologia SERA',
+  '/learn/pipeline':         'Metodologia SERA › Pipeline',
+  '/learn/perception':       'Metodologia SERA › Percepção',
+  '/learn/objective':        'Metodologia SERA › Objetivo',
+  '/learn/action':           'Metodologia SERA › Ação',
+  '/learn/codes':            'Metodologia SERA › Glossário',
+  '/sera/interview':         'Coleta de Evidências SERA',
 }
 
 function useBreadcrumb(pathname: string): { label: string; href?: string }[] {

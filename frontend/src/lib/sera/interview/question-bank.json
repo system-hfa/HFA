@@ -1,0 +1,405 @@
+{
+  "version": "0.1",
+  "language": "pt-BR",
+  "purpose": "Semi-structured evidence collection for SERA analysis",
+  "recommended_input": {
+    "preferred": "reviewed_transcript_from_audio_recording",
+    "acceptable": ["typed_notes", "raw_event_text", "manual_interview_summary"],
+    "warning": "Audio transcripts should be reviewed by a human before SERA analysis."
+  },
+  "sections": [
+    {
+      "id": "narrative",
+      "title": "Narrativa livre",
+      "purpose": "Reconstruir o evento sem indução, na perspectiva do entrevistado",
+      "questions": [
+        {
+          "id": "N-001",
+          "text": "Conte, com suas palavras, o que aconteceu desde o início da atividade até o momento do evento.",
+          "evidence_targets": ["timeline", "context", "sequence"],
+          "related_sera_dimensions": ["perception", "objective", "action"],
+          "non_leading": true
+        },
+        {
+          "id": "N-002",
+          "text": "O que você estava tentando realizar naquele momento?",
+          "evidence_targets": ["stated_intent", "goal"],
+          "related_sera_dimensions": ["objective"],
+          "non_leading": true
+        },
+        {
+          "id": "N-003",
+          "text": "Em que momento percebeu que algo estava diferente do esperado?",
+          "evidence_targets": ["detection_point", "timeline"],
+          "related_sera_dimensions": ["perception"],
+          "non_leading": true
+        },
+        {
+          "id": "N-004",
+          "text": "O que aconteceu imediatamente antes da ação ou decisão principal?",
+          "evidence_targets": ["immediate_context", "triggering_conditions"],
+          "related_sera_dimensions": ["perception", "action", "preconditions"],
+          "non_leading": true
+        }
+      ]
+    },
+    {
+      "id": "perception",
+      "title": "Percepção",
+      "purpose": "Entender o que estava disponível, o que foi percebido e em que condições",
+      "questions": [
+        {
+          "id": "P-001",
+          "text": "Quais informações estavam disponíveis naquele momento? Havia indicadores, alarmes, sinais visuais, comunicações, instruções, parâmetros ou procedimentos acessíveis?",
+          "evidence_targets": ["available_information_described"],
+          "related_sera_dimensions": ["P-A", "P-B", "P-G", "P-H"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Havia algum painel, display, sistema ou documento visível naquele momento?"]
+        },
+        {
+          "id": "P-002",
+          "text": "Você chegou a ver, ouvir ou receber essa informação?",
+          "evidence_targets": ["information_received", "sensory_access"],
+          "related_sera_dimensions": ["P-A", "P-B", "P-G"],
+          "non_leading": true,
+          "follow_up_when_missing": ["O indicador ou sinal estava visível do seu ponto de trabalho?"]
+        },
+        {
+          "id": "P-003",
+          "text": "A informação estava clara, ou havia alguma ambiguidade, sobreposição, ruído ou dificuldade para interpretar?",
+          "evidence_targets": ["information_clarity", "communication_information_quality_described"],
+          "related_sera_dimensions": ["P-C", "P-H"],
+          "non_leading": true
+        },
+        {
+          "id": "P-004",
+          "text": "Havia algum obstáculo físico, barreira sensorial, falha de display, baixa iluminação, interferência ou dificuldade de acesso à informação?",
+          "evidence_targets": ["sensory_conditions_described", "physical_barrier"],
+          "related_sera_dimensions": ["P-B", "P-F"],
+          "non_leading": true
+        },
+        {
+          "id": "P-005",
+          "text": "Havia múltiplas demandas acontecendo ao mesmo tempo? Conflitos simultâneos, alarmes ativos, fila de solicitações, comunicações sobrepostas ou alta carga operacional?",
+          "evidence_targets": ["attention_load_described", "concurrent_demands"],
+          "related_sera_dimensions": ["P-D"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Quantas tarefas ou solicitações você estava gerenciando naquele momento?"]
+        },
+        {
+          "id": "P-006",
+          "text": "A frequência, canal, rádio ou linha de comunicação estava congestionada, saturada ou com muitas transmissões simultâneas?",
+          "evidence_targets": ["attention_load_described", "channel_saturation"],
+          "related_sera_dimensions": ["P-D", "P-H"],
+          "non_leading": true
+        },
+        {
+          "id": "P-007",
+          "text": "Era necessário estimar tempo, duração, sequência ou uma janela operacional disponível?",
+          "evidence_targets": ["temporal_estimation_described"],
+          "related_sera_dimensions": ["P-E"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Você precisou calcular ou estimar quanto tempo tinha disponível para completar a tarefa?"]
+        },
+        {
+          "id": "P-008",
+          "text": "Alguma condição foi assumida como normal sem ser verificada naquele momento?",
+          "evidence_targets": ["monitoring_or_checking_described", "complacency"],
+          "related_sera_dimensions": ["P-G"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Havia algum parâmetro, indicador ou resultado que deveria ter sido conferido e não foi?"]
+        },
+        {
+          "id": "P-009",
+          "text": "Havia algo incerto, ambíguo, incompleto ou mal comunicado antes da ação?",
+          "evidence_targets": ["communication_information_quality_described", "information_gaps"],
+          "related_sera_dimensions": ["P-H", "P-C"],
+          "non_leading": true
+        },
+        {
+          "id": "P-010",
+          "text": "Você verificou algum parâmetro, indicador ou informação depois de executar a ação?",
+          "evidence_targets": ["monitoring_or_checking_described", "post_action_check"],
+          "related_sera_dimensions": ["P-G", "A-C"],
+          "non_leading": true
+        }
+      ]
+    },
+    {
+      "id": "objective",
+      "title": "Objetivo e intenção",
+      "purpose": "Entender o que o operador pretendia fazer e por quê",
+      "questions": [
+        {
+          "id": "O-001",
+          "text": "Qual era seu objetivo naquele momento?",
+          "evidence_targets": ["stated_goal_described"],
+          "related_sera_dimensions": ["O-A", "O-B", "O-C", "O-D"],
+          "non_leading": true
+        },
+        {
+          "id": "O-002",
+          "text": "Você pretendia seguir o procedimento previsto? Se não, qual era o motivo?",
+          "evidence_targets": ["procedural_intent_described"],
+          "related_sera_dimensions": ["O-A", "O-B"],
+          "non_leading": true
+        },
+        {
+          "id": "O-003",
+          "text": "Essa forma de executar era comum na equipe ou no setor? Era tolerada, aceita informalmente ou praticada regularmente por outras pessoas?",
+          "evidence_targets": ["routine_or_normalized_practice_checked"],
+          "related_sera_dimensions": ["O-B"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Já tinha feito dessa forma antes? Era a prática habitual?"]
+        },
+        {
+          "id": "O-004",
+          "text": "Havia pressão para cumprir horário, reduzir tempo, economizar combustível, economizar recursos ou aumentar produtividade?",
+          "evidence_targets": ["efficiency_pressure_checked"],
+          "related_sera_dimensions": ["O-D"],
+          "non_leading": true
+        },
+        {
+          "id": "O-005",
+          "text": "Havia preocupação imediata com a saúde, segurança ou condição de alguma pessoa?",
+          "evidence_targets": ["protective_human_intent_checked"],
+          "related_sera_dimensions": ["O-C"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Havia algum passageiro, paciente ou membro da equipe em situação de risco naquele momento?"]
+        },
+        {
+          "id": "O-006",
+          "text": "A decisão foi tomada para proteger ou auxiliar alguma pessoa?",
+          "evidence_targets": ["protective_human_intent_checked"],
+          "related_sera_dimensions": ["O-C"],
+          "non_leading": true
+        },
+        {
+          "id": "O-007",
+          "text": "Havia alguma razão operacional, técnica ou de contexto que justificou a forma como a tarefa foi executada?",
+          "evidence_targets": ["procedural_intent_described", "contextual_justification"],
+          "related_sera_dimensions": ["O-A", "O-B", "O-D"],
+          "non_leading": true
+        },
+        {
+          "id": "O-008",
+          "text": "A forma como a tarefa foi executada é documentada em algum procedimento, instrução técnica ou norma?",
+          "evidence_targets": ["procedural_intent_described", "procedure_quality"],
+          "related_sera_dimensions": ["O-A", "O-B"],
+          "non_leading": true
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "title": "Ação",
+      "purpose": "Entender o que foi feito, o que não foi feito e como a ação foi executada",
+      "questions": [
+        {
+          "id": "A-001",
+          "text": "Qual ação concreta foi executada naquele momento?",
+          "evidence_targets": ["concrete_action_described"],
+          "related_sera_dimensions": ["A-A", "A-B", "A-C", "A-D", "A-F"],
+          "non_leading": true
+        },
+        {
+          "id": "A-002",
+          "text": "Havia alguma ação pretendida que acabou não sendo executada?",
+          "evidence_targets": ["omitted_step_checked", "concrete_action_described"],
+          "related_sera_dimensions": ["A-B", "A-H"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Algum passo do procedimento foi pulado ou não completado?"]
+        },
+        {
+          "id": "A-003",
+          "text": "Algum passo obrigatório foi omitido ou deixado de fora da sequência?",
+          "evidence_targets": ["omitted_step_checked"],
+          "related_sera_dimensions": ["A-B"],
+          "non_leading": true
+        },
+        {
+          "id": "A-004",
+          "text": "A ação exigia esforço físico específico, alcance, equipamento, EPI, ferramenta ou acesso difícil?",
+          "evidence_targets": ["physical_execution_constraints_checked"],
+          "related_sera_dimensions": ["A-D"],
+          "non_leading": true
+        },
+        {
+          "id": "A-005",
+          "text": "Você tinha treinamento ou familiaridade suficiente para executar essa tarefa naquele momento?",
+          "evidence_targets": ["knowledge_or_training_checked"],
+          "related_sera_dimensions": ["A-E"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Era a primeira vez que você executava essa tarefa ou já havia feito antes?"]
+        },
+        {
+          "id": "A-006",
+          "text": "Você escolheu entre alternativas, modos, rotas, instruções, procedimentos ou sistemas disponíveis?",
+          "evidence_targets": ["wrong_selection_checked"],
+          "related_sera_dimensions": ["A-F", "A-I"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Havia mais de uma opção disponível para executar a tarefa?"]
+        },
+        {
+          "id": "A-007",
+          "text": "Você verificou o resultado da sua própria ação depois de executá-la?",
+          "evidence_targets": ["own_action_result_verification_checked"],
+          "related_sera_dimensions": ["A-C"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Havia um indicador, feedback ou sinal que confirmasse que a ação produziu o resultado esperado?"]
+        },
+        {
+          "id": "A-008",
+          "text": "A ação dependia de outra pessoa executar alguma coisa antes ou depois?",
+          "evidence_targets": ["supervision_or_delegation_checked"],
+          "related_sera_dimensions": ["A-G"],
+          "non_leading": true
+        },
+        {
+          "id": "A-009",
+          "text": "Você estava coordenando, supervisionando ou delegando alguma tarefa a uma outra pessoa?",
+          "evidence_targets": ["supervision_or_delegation_checked"],
+          "related_sera_dimensions": ["A-G"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Você verificou se a outra pessoa executou a tarefa delegada corretamente?"]
+        },
+        {
+          "id": "A-010",
+          "text": "Houve comunicação, confirmação de recebimento, readback, acknowledgement, mensagem de rádio ou coordenação verbal?",
+          "evidence_targets": ["communication_confirmation_checked"],
+          "related_sera_dimensions": ["A-J"],
+          "non_leading": true,
+          "follow_up_when_missing": ["A mensagem foi recebida e confirmada pela outra parte?"]
+        },
+        {
+          "id": "A-011",
+          "text": "Houve algum problema com a sequência da tarefa, com o tempo disponível para executá-la ou com prazo de conclusão?",
+          "evidence_targets": ["temporal_execution_issue_checked"],
+          "related_sera_dimensions": ["A-H"],
+          "non_leading": true
+        },
+        {
+          "id": "A-012",
+          "text": "A seleção foi feita sob alta carga operacional, com múltiplas demandas simultâneas ou em período de congestionamento?",
+          "evidence_targets": ["wrong_selection_checked", "attention_load_described"],
+          "related_sera_dimensions": ["A-I"],
+          "non_leading": true
+        }
+      ]
+    },
+    {
+      "id": "preconditions",
+      "title": "Pré-condições",
+      "purpose": "Mapear os fatores latentes que podem ter contribuído para o evento",
+      "questions": [
+        {
+          "id": "PC-001",
+          "text": "Como estava a carga de trabalho naquele momento?",
+          "evidence_targets": ["workload_context_described"],
+          "related_sera_dimensions": ["P-D", "T1", "O1"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Você estava gerenciando outras tarefas ao mesmo tempo?"]
+        },
+        {
+          "id": "PC-002",
+          "text": "Havia pressão de tempo? Qual era o prazo ou a urgência?",
+          "evidence_targets": ["time_pressure_described"],
+          "related_sera_dimensions": ["T1", "T2", "P-E"],
+          "non_leading": true
+        },
+        {
+          "id": "PC-003",
+          "text": "O procedimento escrito era claro, aplicável à situação e estava disponível no local de trabalho?",
+          "evidence_targets": ["procedure_quality_described"],
+          "related_sera_dimensions": ["O3", "O4"],
+          "non_leading": true
+        },
+        {
+          "id": "PC-004",
+          "text": "O equipamento, sistema ou interface de trabalho ajudou ou dificultou a execução da tarefa?",
+          "evidence_targets": ["equipment_interface_described"],
+          "related_sera_dimensions": ["W1", "W2"],
+          "non_leading": true
+        },
+        {
+          "id": "PC-005",
+          "text": "O ambiente físico — ruído, iluminação, temperatura, layout, ergonomia — influenciou de alguma forma?",
+          "evidence_targets": ["environmental_conditions_described"],
+          "related_sera_dimensions": ["W1", "P-B"],
+          "non_leading": true
+        },
+        {
+          "id": "PC-006",
+          "text": "Havia recursos suficientes — pessoas, equipamentos, informação, tempo — para executar a tarefa?",
+          "evidence_targets": ["workload_context_described", "equipment_interface_described"],
+          "related_sera_dimensions": ["O1", "O4"],
+          "non_leading": true
+        },
+        {
+          "id": "PC-007",
+          "text": "Havia supervisão, apoio técnico, revisão ou monitoramento disponível?",
+          "evidence_targets": ["supervision_context_described"],
+          "related_sera_dimensions": ["S3", "O6"],
+          "non_leading": true
+        },
+        {
+          "id": "PC-008",
+          "text": "Havia práticas informais aceitas, atalhos operacionais ou procedimentos não documentados em uso?",
+          "evidence_targets": ["organizational_practice_described"],
+          "related_sera_dimensions": ["O5", "O6", "S3"],
+          "non_leading": true,
+          "follow_up_when_missing": ["Essa forma de trabalhar era conhecida pela chefia ou supervisionada?"]
+        },
+        {
+          "id": "PC-009",
+          "text": "O treinamento, a experiência ou a familiaridade com a tarefa eram adequados?",
+          "evidence_targets": ["training_experience_described"],
+          "related_sera_dimensions": ["P6", "P7"],
+          "non_leading": true
+        },
+        {
+          "id": "PC-010",
+          "text": "Havia fatores como fadiga, estresse, rotina excessiva, confiança excessiva ou complacência?",
+          "evidence_targets": ["workload_context_described", "training_experience_described"],
+          "related_sera_dimensions": ["P3", "P6"],
+          "non_leading": true
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "title": "Fechamento",
+      "purpose": "Abrir espaço para informações não cobertas e identificar dados complementares",
+      "questions": [
+        {
+          "id": "C-001",
+          "text": "Há algo importante sobre o evento que ainda não foi perguntado?",
+          "evidence_targets": ["additional_context"],
+          "related_sera_dimensions": [],
+          "non_leading": true
+        },
+        {
+          "id": "C-002",
+          "text": "O que você acredita que teria ajudado a evitar o evento?",
+          "evidence_targets": ["contributing_factors", "missing_conditions"],
+          "related_sera_dimensions": ["preconditions"],
+          "non_leading": true
+        },
+        {
+          "id": "C-003",
+          "text": "Que informação, recurso, procedimento, apoio ou condição faltou naquele momento?",
+          "evidence_targets": ["missing_conditions", "precondition_gaps"],
+          "related_sera_dimensions": ["preconditions"],
+          "non_leading": true
+        },
+        {
+          "id": "C-004",
+          "text": "Há documentos, registros, mensagens, gravações, logs ou dados que ajudem a reconstruir o que aconteceu?",
+          "evidence_targets": ["additional_sources", "documentary_evidence"],
+          "related_sera_dimensions": [],
+          "non_leading": true
+        }
+      ]
+    }
+  ]
+}

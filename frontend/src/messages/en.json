@@ -8,7 +8,8 @@
     "methodology": "SERA Methodology",
     "settings": "AI Settings",
     "credits": "Credits",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "interview": "Evidence Intake"
   },
   "dashboard": {
     "title": "Dashboard",

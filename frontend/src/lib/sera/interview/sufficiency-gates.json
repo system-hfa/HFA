@@ -1,0 +1,286 @@
+{
+  "version": "0.1",
+  "description": "Evidence sufficiency gates for SERA interview protocol. Each gate represents a class of evidence that must or should be present before SERA analysis can proceed.",
+  "gates": [
+    {
+      "id": "perception.available_information",
+      "dimension": "perception",
+      "description": "Identifica se o relato descreve quais informações estavam disponíveis ao operador no momento do evento.",
+      "required_for": ["P-B", "P-C", "P-G", "P-H"],
+      "evidence_keys": ["available_information_described"],
+      "minimum": "required",
+      "missing_prompt": "Quais informações, indicadores, alarmes, comunicações, sinais ou parâmetros estavam disponíveis ao operador naquele momento?",
+      "related_questions": ["P-001", "P-002"]
+    },
+    {
+      "id": "perception.sensory_conditions",
+      "dimension": "perception",
+      "description": "Identifica se o relato descreve as condições sensoriais: visibilidade, acústica, display, obstrução física ou barreira de acesso à informação.",
+      "required_for": ["P-B", "P-F"],
+      "evidence_keys": ["sensory_conditions_described"],
+      "minimum": "recommended",
+      "missing_prompt": "Havia alguma barreira sensorial, falha de display, ruído, baixa visibilidade, obstrução ou dificuldade de acesso à informação?",
+      "related_questions": ["P-004"]
+    },
+    {
+      "id": "perception.attention_load",
+      "dimension": "perception",
+      "description": "Identifica se o relato descreve a carga atencional: demandas simultâneas, conflitos, congestionamento ou sobrecarga operacional.",
+      "required_for": ["P-D"],
+      "evidence_keys": ["attention_load_described"],
+      "minimum": "recommended",
+      "missing_prompt": "Havia múltiplas demandas, conflitos simultâneos, canal congestionado ou alta carga operacional naquele momento?",
+      "related_questions": ["P-005", "P-006"]
+    },
+    {
+      "id": "perception.temporal_estimation",
+      "dimension": "perception",
+      "description": "Identifica se o relato descreve estimativa temporal, janela de tempo disponível ou sequência interrompida por tempo insuficiente.",
+      "required_for": ["P-E"],
+      "evidence_keys": ["temporal_estimation_described"],
+      "minimum": "recommended",
+      "missing_prompt": "Era necessário estimar tempo, duração ou uma janela operacional disponível? O tempo foi suficiente?",
+      "related_questions": ["P-007"]
+    },
+    {
+      "id": "perception.monitoring_or_checking",
+      "dimension": "perception",
+      "description": "Identifica se o relato descreve se o operador verificou, monitorou ou conferiu parâmetros, indicadores ou condições disponíveis.",
+      "required_for": ["P-G"],
+      "evidence_keys": ["monitoring_or_checking_described"],
+      "minimum": "required",
+      "missing_prompt": "Alguma condição foi assumida como normal sem ser verificada? Havia parâmetro ou indicador disponível que não foi conferido?",
+      "related_questions": ["P-008", "P-010"]
+    },
+    {
+      "id": "perception.communication_quality",
+      "dimension": "perception",
+      "description": "Identifica se o relato descreve a qualidade da informação comunicada: ambiguidade, incompletude, transmissão incompleta, briefing falho.",
+      "required_for": ["P-H", "P-C"],
+      "evidence_keys": ["communication_information_quality_described"],
+      "minimum": "recommended",
+      "missing_prompt": "A informação comunicada era completa, clara e sem ambiguidade? Havia algo incerto ou mal compreendido antes da ação?",
+      "related_questions": ["P-003", "P-009"]
+    },
+    {
+      "id": "objective.stated_goal",
+      "dimension": "objective",
+      "description": "Identifica se o relato descreve qual era o objetivo ou intenção do operador no momento do evento.",
+      "required_for": ["O-A", "O-B", "O-C", "O-D"],
+      "evidence_keys": ["stated_goal_described"],
+      "minimum": "required",
+      "missing_prompt": "Qual era o objetivo do operador naquele momento? O que ele pretendia realizar?",
+      "related_questions": ["O-001", "N-002"]
+    },
+    {
+      "id": "objective.procedural_intent",
+      "dimension": "objective",
+      "description": "Identifica se o relato descreve a intenção em relação ao procedimento: seguir, desviar, adaptar.",
+      "required_for": ["O-A", "O-B"],
+      "evidence_keys": ["procedural_intent_described"],
+      "minimum": "required",
+      "missing_prompt": "O operador pretendia seguir o procedimento previsto? Se não, qual era a razão?",
+      "related_questions": ["O-002", "O-008"]
+    },
+    {
+      "id": "objective.routine_normalized_practice",
+      "dimension": "objective",
+      "description": "Identifica se o relato menciona se a prática era habitual, tolerada, aceita informalmente ou normalizada.",
+      "required_for": ["O-B"],
+      "evidence_keys": ["routine_or_normalized_practice_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "Essa forma de executar era comum na equipe ou no setor? Era praticada regularmente ou aceita informalmente?",
+      "related_questions": ["O-003"]
+    },
+    {
+      "id": "objective.efficiency_pressure",
+      "dimension": "objective",
+      "description": "Identifica se o relato menciona pressão de eficiência: tempo, custo, produtividade, cumprimento de horário.",
+      "required_for": ["O-D"],
+      "evidence_keys": ["efficiency_pressure_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "Havia pressão para cumprir horário, economizar tempo, reduzir custo ou aumentar produtividade?",
+      "related_questions": ["O-004"]
+    },
+    {
+      "id": "objective.protective_human_intent",
+      "dimension": "objective",
+      "description": "Identifica se o relato menciona intenção protetiva: proteger passageiro, paciente, equipe ou outra pessoa.",
+      "required_for": ["O-C"],
+      "evidence_keys": ["protective_human_intent_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "Havia preocupação imediata com a saúde ou segurança de alguma pessoa? A decisão visou proteger alguém?",
+      "related_questions": ["O-005", "O-006"]
+    },
+    {
+      "id": "action.concrete_action",
+      "dimension": "action",
+      "description": "Identifica se o relato descreve concretamente qual ação foi executada.",
+      "required_for": ["A-A", "A-B", "A-C", "A-D", "A-F", "A-G", "A-H", "A-I", "A-J"],
+      "evidence_keys": ["concrete_action_described"],
+      "minimum": "required",
+      "missing_prompt": "Qual ação concreta foi executada? O que foi feito exatamente?",
+      "related_questions": ["A-001"]
+    },
+    {
+      "id": "action.omitted_step",
+      "dimension": "action",
+      "description": "Identifica se o relato menciona etapa omitida, passo não executado ou checklist incompleto.",
+      "required_for": ["A-B", "A-H"],
+      "evidence_keys": ["omitted_step_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "Algum passo obrigatório foi omitido ou pulado? Havia etapa não executada?",
+      "related_questions": ["A-002", "A-003"]
+    },
+    {
+      "id": "action.own_action_verification",
+      "dimension": "action",
+      "description": "Identifica se o relato descreve se o operador verificou o resultado da sua própria ação.",
+      "required_for": ["A-C"],
+      "evidence_keys": ["own_action_result_verification_checked"],
+      "minimum": "required",
+      "missing_prompt": "O operador verificou o resultado da própria ação depois de executá-la? Havia feedback ou indicador disponível para confirmação?",
+      "related_questions": ["A-007"]
+    },
+    {
+      "id": "action.wrong_selection",
+      "dimension": "action",
+      "description": "Identifica se o relato menciona escolha errada entre alternativas, modos, instruções, rotas ou procedimentos.",
+      "required_for": ["A-F", "A-I"],
+      "evidence_keys": ["wrong_selection_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "A ação envolveu escolha entre alternativas disponíveis? Era possível selecionar opção diferente?",
+      "related_questions": ["A-006", "A-012"]
+    },
+    {
+      "id": "action.physical_execution_constraints",
+      "dimension": "action",
+      "description": "Identifica se o relato menciona limitações físicas, ergonômicas, de alcance, força, EPI ou equipamento.",
+      "required_for": ["A-D"],
+      "evidence_keys": ["physical_execution_constraints_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "A ação exigia esforço físico, alcance especial, ferramenta, EPI ou equipamento? Havia alguma limitação física?",
+      "related_questions": ["A-004"]
+    },
+    {
+      "id": "action.knowledge_or_training",
+      "dimension": "action",
+      "description": "Identifica se o relato menciona treinamento, familiaridade, competência técnica ou capacitação para a tarefa.",
+      "required_for": ["A-E"],
+      "evidence_keys": ["knowledge_or_training_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "O operador tinha treinamento e familiaridade suficientes para executar a tarefa?",
+      "related_questions": ["A-005"]
+    },
+    {
+      "id": "action.supervision_or_delegation",
+      "dimension": "action",
+      "description": "Identifica se o relato menciona delegação, supervisão, verificação de terceiro ou dependência de outra pessoa.",
+      "required_for": ["A-G"],
+      "evidence_keys": ["supervision_or_delegation_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "A ação dependia de outra pessoa? O operador estava supervisionando ou delegando alguma tarefa?",
+      "related_questions": ["A-008", "A-009"]
+    },
+    {
+      "id": "action.communication_confirmation",
+      "dimension": "action",
+      "description": "Identifica se o relato menciona comunicação operacional, readback, confirmação, acknowledgement ou recebimento de mensagem.",
+      "required_for": ["A-J"],
+      "evidence_keys": ["communication_confirmation_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "Houve comunicação, readback, confirmação de recebimento ou coordenação verbal? A mensagem foi confirmada?",
+      "related_questions": ["A-010"]
+    },
+    {
+      "id": "action.temporal_execution",
+      "dimension": "action",
+      "description": "Identifica se o relato menciona problema de sequência, tempo de execução ou prazo de conclusão.",
+      "required_for": ["A-H"],
+      "evidence_keys": ["temporal_execution_issue_checked"],
+      "minimum": "recommended",
+      "missing_prompt": "Houve problema com sequência, tempo disponível ou prazo para completar a tarefa?",
+      "related_questions": ["A-011"]
+    },
+    {
+      "id": "preconditions.workload_context",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato descreve a carga de trabalho e o contexto operacional geral.",
+      "required_for": ["T1", "O1"],
+      "evidence_keys": ["workload_context_described"],
+      "minimum": "required",
+      "missing_prompt": "Como estava a carga de trabalho naquele momento? O operador estava gerenciando outras tarefas?",
+      "related_questions": ["PC-001", "PC-006"]
+    },
+    {
+      "id": "preconditions.time_pressure",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato descreve pressão de tempo, prazo ou urgência.",
+      "required_for": ["T1", "T2"],
+      "evidence_keys": ["time_pressure_described"],
+      "minimum": "recommended",
+      "missing_prompt": "Havia pressão de tempo, prazo ou urgência para executar a tarefa?",
+      "related_questions": ["PC-002"]
+    },
+    {
+      "id": "preconditions.equipment_interface",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato descreve condições do equipamento, sistema ou interface de trabalho.",
+      "required_for": ["W1", "W2"],
+      "evidence_keys": ["equipment_interface_described"],
+      "minimum": "recommended",
+      "missing_prompt": "O equipamento, sistema ou interface de trabalho ajudou ou dificultou a execução?",
+      "related_questions": ["PC-004"]
+    },
+    {
+      "id": "preconditions.procedure_quality",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato menciona qualidade, clareza, disponibilidade ou adequação do procedimento.",
+      "required_for": ["O3", "O4"],
+      "evidence_keys": ["procedure_quality_described"],
+      "minimum": "recommended",
+      "missing_prompt": "O procedimento era claro, aplicável e estava disponível? Era adequado para a situação?",
+      "related_questions": ["PC-003"]
+    },
+    {
+      "id": "preconditions.supervision_context",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato descreve disponibilidade de supervisão, apoio ou revisão.",
+      "required_for": ["S3", "O6"],
+      "evidence_keys": ["supervision_context_described"],
+      "minimum": "recommended",
+      "missing_prompt": "Havia supervisão, apoio técnico ou revisão disponível naquele momento?",
+      "related_questions": ["PC-007"]
+    },
+    {
+      "id": "preconditions.organizational_practice",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato menciona práticas organizacionais informais, atalhos aceitos ou normas não documentadas.",
+      "required_for": ["O5", "O6", "S3"],
+      "evidence_keys": ["organizational_practice_described"],
+      "minimum": "recommended",
+      "missing_prompt": "Havia práticas informais aceitas, atalhos operacionais ou procedimentos não documentados em uso?",
+      "related_questions": ["PC-008"]
+    },
+    {
+      "id": "preconditions.training_experience",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato menciona nível de treinamento, experiência ou familiaridade com a tarefa.",
+      "required_for": ["P6", "P7"],
+      "evidence_keys": ["training_experience_described"],
+      "minimum": "recommended",
+      "missing_prompt": "O treinamento, a experiência e a familiaridade com a tarefa eram adequados?",
+      "related_questions": ["PC-009", "A-005"]
+    },
+    {
+      "id": "preconditions.environmental_conditions",
+      "dimension": "preconditions",
+      "description": "Identifica se o relato menciona condições ambientais físicas: ruído, iluminação, temperatura, layout, ergonomia.",
+      "required_for": ["W1", "P-B"],
+      "evidence_keys": ["environmental_conditions_described"],
+      "minimum": "recommended",
+      "missing_prompt": "O ambiente físico — ruído, iluminação, temperatura, layout — influenciou de alguma forma?",
+      "related_questions": ["PC-005"]
+    }
+  ]
+}
