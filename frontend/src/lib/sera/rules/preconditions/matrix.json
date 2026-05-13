@@ -6,11 +6,11 @@
       "id": "A-D",
       "match": { "action_code": "A-D" },
       "ranked_preconditions": [
-        { "code": "W1", "priority": 1, "required": false, "evidence": ["equipamento", "sistema", "ferramenta", "valvula", "alavanca", "comando"] },
-        { "code": "W2", "priority": 2, "required": false, "evidence": ["EPI", "luva", "protecao", "obstruido", "inacessivel", "alcance", "ergonomia"] },
-        { "code": "P1", "priority": 3, "required": false, "evidence": ["forca", "incapaz", "fisico", "fadiga fisica", "limitacao"] },
-        { "code": "O2", "priority": 4, "required": false, "evidence": ["tarefa", "procedimento", "exigia", "tentativa manual"] },
-        { "code": "O4", "priority": 5, "required": false, "evidence": ["recurso", "equipamento de protecao", "projeto", "desenho"] }
+        { "code": "W1", "priority": 1, "required": true, "evidence": ["equipamento", "sistema", "ferramenta", "valvula", "alavanca", "comando"] },
+        { "code": "W2", "priority": 2, "required": true, "evidence": ["epi", "luva", "protecao", "obstruido", "inacessivel", "alcance", "ergonomia"] },
+        { "code": "P1", "priority": 3, "required": true, "evidence": ["forca", "incapaz", "fisico", "fadiga fisica", "limitacao"] },
+        { "code": "O2", "priority": 4, "required": true, "evidence": ["tarefa", "procedimento", "exigia", "tentativa manual"] },
+        { "code": "O4", "priority": 5, "required": true, "evidence": ["recurso", "equipamento de protecao", "projeto", "desenho"] }
       ],
       "blocked": [],
       "max_items": 5
@@ -43,9 +43,9 @@
       "id": "A-G",
       "match": { "action_code": "A-G" },
       "ranked_preconditions": [
-        { "code": "P2", "priority": 1, "required": false, "evidence": ["assumiu", "julgou", "acreditou", "liberou"] },
-        { "code": "S3", "priority": 2, "required": false, "evidence": ["supervisor", "coordenador", "lider", "supervisao", "instruiu"] },
-        { "code": "O6", "priority": 3, "required": false, "evidence": ["monitoramento", "controle", "coordenacao", "confirmar execucao"] }
+        { "code": "P2", "priority": 1, "required": true, "evidence": ["assumiu", "julgou", "acreditou", "liberou"] },
+        { "code": "S3", "priority": 2, "required": true, "evidence": ["supervisor", "coordenador", "lider", "supervisao", "instruiu"] },
+        { "code": "O6", "priority": 3, "required": true, "evidence": ["monitoramento", "controle", "coordenacao", "confirmar execucao"] }
       ],
       "blocked": [],
       "max_items": 3
@@ -54,10 +54,10 @@
       "id": "A-H-P-E",
       "match": { "perception_code": "P-E", "action_code": "A-H" },
       "ranked_preconditions": [
-        { "code": "T1", "priority": 1, "required": false, "evidence": ["tempo insuficiente", "antes do pouso", "antes da aproximacao", "prazo", "janela"] },
-        { "code": "P6", "priority": 2, "required": false, "evidence": ["checklist", "sequencia", "procedimento"] },
-        { "code": "O1", "priority": 3, "required": false, "evidence": ["carga", "demanda", "multiplas tarefas", "aproximacao"] },
-        { "code": "S3", "priority": 4, "required": false, "evidence": ["supervisao", "acompanhamento", "checagem", "interrompe"] }
+        { "code": "T1", "priority": 1, "required": true, "evidence": ["tempo insuficiente", "antes do pouso", "antes da aproximacao", "prazo", "janela"] },
+        { "code": "P6", "priority": 2, "required": true, "evidence": ["checklist", "sequencia", "procedimento"] },
+        { "code": "O1", "priority": 3, "required": true, "evidence": ["carga", "demanda", "multiplas tarefas", "aproximacao"] },
+        { "code": "S3", "priority": 4, "required": true, "evidence": ["supervisao", "acompanhamento", "checagem", "interrompe"] }
       ],
       "blocked": [],
       "max_items": 4
@@ -66,10 +66,10 @@
       "id": "A-I-P-D",
       "match": { "perception_code": "P-D", "action_code": "A-I" },
       "ranked_preconditions": [
-        { "code": "T1", "priority": 1, "required": false, "evidence": ["alta demanda", "pico", "pressao", "tempo", "trafego"] },
-        { "code": "O1", "priority": 2, "required": false, "evidence": ["multiplas aeronaves", "conflito", "alta demanda", "carga"] },
-        { "code": "O2", "priority": 3, "required": false, "evidence": ["complexidade", "multiplas instrucoes", "coordenacao"] },
-        { "code": "S3", "priority": 4, "required": false, "evidence": ["supervisao", "apoio", "monitoramento"] }
+        { "code": "T1", "priority": 1, "required": true, "evidence": ["alta demanda", "pico", "pressao", "tempo", "trafego"] },
+        { "code": "O1", "priority": 2, "required": true, "evidence": ["multiplas aeronaves", "conflito", "alta demanda", "carga"] },
+        { "code": "O2", "priority": 3, "required": true, "evidence": ["complexidade", "multiplas instrucoes", "coordenacao"] },
+        { "code": "S3", "priority": 4, "required": true, "evidence": ["supervisao", "apoio", "monitoramento"] }
       ],
       "blocked": [],
       "max_items": 4
@@ -78,11 +78,11 @@
       "id": "A-J-P-D",
       "match": { "perception_code": "P-D", "action_code": "A-J" },
       "ranked_preconditions": [
-        { "code": "T1", "priority": 1, "required": false, "evidence": ["congestionamento", "frequencia", "pressao", "critico", "tempo"] },
-        { "code": "O1", "priority": 2, "required": false, "evidence": ["carga", "demanda", "multiplas comunicacoes"] },
-        { "code": "O2", "priority": 3, "required": false, "evidence": ["coordenacao", "complexidade", "canal", "frequencia"] },
-        { "code": "S3", "priority": 4, "required": false, "evidence": ["monitoramento", "supervisao", "checagem", "controlador", "confirmou"] },
-        { "code": "O6", "priority": 5, "required": false, "evidence": ["confirmacao", "readback", "recebimento", "coordenacao"] }
+        { "code": "T1", "priority": 1, "required": true, "evidence": ["congestionamento", "frequencia", "pressao", "critico", "tempo"] },
+        { "code": "O1", "priority": 2, "required": true, "evidence": ["carga", "demanda", "multiplas comunicacoes"] },
+        { "code": "O2", "priority": 3, "required": true, "evidence": ["coordenacao", "complexidade", "canal", "frequencia"] },
+        { "code": "S3", "priority": 4, "required": true, "evidence": ["monitoramento", "supervisao", "checagem", "controlador", "confirmou"] },
+        { "code": "O6", "priority": 5, "required": true, "evidence": ["confirmacao", "readback", "recebimento", "coordenacao"] }
       ],
       "blocked": [],
       "max_items": 5
@@ -91,11 +91,11 @@
       "id": "O-B-A-A",
       "match": { "objective_code": "O-B", "action_code": "A-A" },
       "ranked_preconditions": [
-        { "code": "P3", "priority": 1, "required": false, "evidence": ["habitual", "rotina", "costume", "sempre", "complacencia"] },
-        { "code": "S3", "priority": 2, "required": false, "evidence": ["supervisao", "tolerado", "aceito", "pratica"] },
-        { "code": "O5", "priority": 3, "required": false, "evidence": ["cultura", "empresa", "burocracia", "informal", "pratica", "operacao", "tolerada"] },
-        { "code": "O6", "priority": 4, "required": false, "evidence": ["controle", "monitoramento", "auditoria", "tolerada", "operacao"] },
-        { "code": "T1", "priority": 5, "required": false, "evidence": ["tempo", "pressa", "ganhar tempo"] }
+        { "code": "P3", "priority": 1, "required": true, "evidence": ["habitual", "rotina", "costume", "sempre", "complacencia"] },
+        { "code": "S3", "priority": 2, "required": true, "evidence": ["supervisao", "tolerado", "aceito", "pratica"] },
+        { "code": "O5", "priority": 3, "required": true, "evidence": ["cultura", "empresa", "burocracia", "informal", "pratica", "operacao", "tolerada"] },
+        { "code": "O6", "priority": 4, "required": true, "evidence": ["controle", "monitoramento", "auditoria", "tolerada", "operacao"] },
+        { "code": "T1", "priority": 5, "required": true, "evidence": ["tempo", "pressa", "ganhar tempo"] }
       ],
       "blocked": [],
       "max_items": 5
@@ -104,11 +104,11 @@
       "id": "O-D-A-A",
       "match": { "objective_code": "O-D", "action_code": "A-A" },
       "ranked_preconditions": [
-        { "code": "P2", "priority": 1, "required": false, "evidence": ["decisao", "escolheu", "optou"] },
-        { "code": "S1", "priority": 2, "required": false, "evidence": ["pressao", "passageiro", "conexao", "cliente", "equipe"] },
-        { "code": "S2", "priority": 3, "required": false, "evidence": ["organizacao", "escala", "operacao", "operacional", "comandante"] },
-        { "code": "O4", "priority": 4, "required": false, "evidence": ["recurso", "planejamento", "disponibilidade", "atalho", "janela"] },
-        { "code": "T2", "priority": 5, "required": false, "evidence": ["rota", "combustivel", "janela", "conexao", "prazo"] }
+        { "code": "P2", "priority": 1, "required": true, "evidence": ["decisao", "escolheu", "optou"] },
+        { "code": "S1", "priority": 2, "required": true, "evidence": ["pressao", "passageiro", "conexao", "cliente", "equipe"] },
+        { "code": "S2", "priority": 3, "required": true, "evidence": ["organizacao", "escala", "operacao", "operacional", "comandante"] },
+        { "code": "O4", "priority": 4, "required": true, "evidence": ["recurso", "planejamento", "disponibilidade", "atalho", "janela"] },
+        { "code": "T2", "priority": 5, "required": true, "evidence": ["rota", "combustivel", "janela", "conexao", "prazo"] }
       ],
       "blocked": [],
       "max_items": 5
@@ -117,10 +117,10 @@
       "id": "O-C__A-A",
       "match": { "objective_code": "O-C", "action_code": "A-A" },
       "ranked_preconditions": [
-        { "code": "P2", "priority": 1, "required": false, "evidence": ["decidiu", "aceitou", "julgou", "priorizou"] },
-        { "code": "S1", "priority": 2, "required": false, "evidence": ["passageiro", "paciente", "pessoa", "equipe", "medica", "doente"] },
-        { "code": "O3", "priority": 3, "required": false, "evidence": ["procedimento", "autorizacao", "padrao", "controle"] },
-        { "code": "T1", "priority": 4, "required": false, "evidence": ["urgencia", "emergencia", "tempo", "agravamento", "imediato", "imediata", "necessidade medica", "infarto"] }
+        { "code": "P2", "priority": 1, "required": true, "evidence": ["decidiu", "aceitou", "julgou", "priorizou"] },
+        { "code": "S1", "priority": 2, "required": true, "evidence": ["passageiro", "paciente", "pessoa", "equipe", "medica", "doente"] },
+        { "code": "O3", "priority": 3, "required": true, "evidence": ["procedimento", "autorizacao", "padrao", "controle"] },
+        { "code": "T1", "priority": 4, "required": true, "evidence": ["urgencia", "emergencia", "tempo", "agravamento", "imediato", "imediata", "necessidade medica", "infarto"] }
       ],
       "blocked": [],
       "max_items": 4
@@ -129,10 +129,10 @@
       "id": "P-G-A-B",
       "match": { "perception_code": "P-G", "action_code": "A-B" },
       "ranked_preconditions": [
-        { "code": "P2", "priority": 1, "required": false, "evidence": ["assumiu", "complacencia", "esqueceu", "omitiu"] },
-        { "code": "P6", "priority": 2, "required": false, "evidence": ["checklist", "procedimento", "treinamento"] },
-        { "code": "O4", "priority": 3, "required": false, "evidence": ["recurso", "procedimento", "organizacao"] },
-        { "code": "O3", "priority": 4, "required": false, "evidence": ["revisao", "inspecao", "controle"] }
+        { "code": "W1", "priority": 1, "required": true, "evidence": ["painel", "componente", "tampa", "pino", "trava", "equipamento"] },
+        { "code": "O3", "priority": 2, "required": true, "evidence": ["revisao", "inspecao", "controle", "check tecnico"] },
+        { "code": "O4", "priority": 3, "required": true, "evidence": ["recurso", "procedimento", "organizacao", "ordem de servico"] },
+        { "code": "P6", "priority": 4, "required": true, "evidence": ["checklist", "procedimento", "treinamento", "etapa obrigatoria"] }
       ],
       "blocked": [],
       "max_items": 4
@@ -141,10 +141,22 @@
       "id": "P-G-A-C",
       "match": { "perception_code": "P-G", "action_code": "A-C" },
       "ranked_preconditions": [
-        { "code": "W1", "priority": 1, "required": false, "evidence": ["indicador", "painel", "alarme", "feedback", "pressao", "trem"] },
-        { "code": "S3", "priority": 2, "required": false, "evidence": ["monitoramento", "confirmacao", "checagem"] },
-        { "code": "O3", "priority": 3, "required": false, "evidence": ["revisao", "verificacao", "controle", "verificou", "nao verificou"] },
-        { "code": "P3", "priority": 4, "required": false, "evidence": ["complacencia", "assumiu normalidade", "nao verificou"] }
+        { "code": "W1", "priority": 1, "required": true, "evidence": ["indicador", "painel", "alarme", "feedback", "pressao", "trem"] },
+        { "code": "S3", "priority": 2, "required": true, "evidence": ["monitoramento", "confirmacao", "checagem"] },
+        { "code": "O3", "priority": 3, "required": true, "evidence": ["revisao", "verificacao", "controle", "verificou", "nao verificou"] },
+        { "code": "P3", "priority": 4, "required": true, "evidence": ["complacencia", "assumiu normalidade", "nao verificou"] }
+      ],
+      "blocked": [],
+      "max_items": 4
+    },
+    {
+      "id": "P-F-A-F",
+      "match": { "perception_code": "P-F", "action_code": "A-F" },
+      "ranked_preconditions": [
+        { "code": "P1", "priority": 1, "required": true, "evidence": ["ilusao", "vestibular", "desorientacao", "leans"] },
+        { "code": "P2", "priority": 2, "required": true, "evidence": ["percepcao", "julgamento", "correcao"] },
+        { "code": "W3", "priority": 3, "required": true, "evidence": ["noturno", "horizonte", "imc", "sem referencias visuais"] },
+        { "code": "P6", "priority": 4, "required": true, "evidence": ["instrumento", "voo por instrumentos", "treinamento"] }
       ],
       "blocked": [],
       "max_items": 4
@@ -153,10 +165,10 @@
       "id": "P-H-A-A",
       "match": { "perception_code": "P-H", "action_code": "A-A" },
       "ranked_preconditions": [
-        { "code": "S2", "priority": 1, "required": false, "evidence": ["briefing", "instrucao", "comunicacao", "ambiguo"] },
-        { "code": "W1", "priority": 2, "required": false, "evidence": ["painel", "sistema", "identificacao", "etiqueta"] },
-        { "code": "O3", "priority": 3, "required": false, "evidence": ["procedimento", "documentacao", "controle"] },
-        { "code": "O4", "priority": 4, "required": false, "evidence": ["recurso", "desenho", "padronizacao"] }
+        { "code": "S2", "priority": 1, "required": true, "evidence": ["briefing", "instrucao", "comunicacao", "ambiguo"] },
+        { "code": "W1", "priority": 2, "required": true, "evidence": ["painel", "sistema", "identificacao", "etiqueta"] },
+        { "code": "O3", "priority": 3, "required": true, "evidence": ["procedimento", "documentacao", "controle"] },
+        { "code": "O4", "priority": 4, "required": true, "evidence": ["recurso", "desenho", "padronizacao"] }
       ],
       "blocked": [],
       "max_items": 4

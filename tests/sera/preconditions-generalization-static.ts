@@ -53,13 +53,31 @@ const cases: PreconditionsCase[] = [
     name: 'A-D generalization',
     codes: { perception_code: 'P-A', objective_code: 'O-A', action_code: 'A-D', erc_level: 3 },
     text: 'Operador não conseguiu acionar válvula por força insuficiente usando luvas de proteção.',
-    expected: ['W1', 'W2', 'P1'],
+    expected: ['W1', 'W2', 'P1', 'O2', 'O4'],
   },
   {
     name: 'A-F generalization',
     codes: { perception_code: 'P-G', objective_code: 'O-A', action_code: 'A-F', erc_level: 2 },
     text: 'Operador selecionou procedimento errado por similaridade entre opções no painel.',
     expected: ['P2', 'W1', 'P6', 'S3'],
+  },
+  {
+    name: 'P-G/A-B generalization',
+    codes: { perception_code: 'P-G', objective_code: 'O-A', action_code: 'A-B', erc_level: 3 },
+    text: 'Técnico omitiu etapa obrigatória de reinstalação de trava física prevista em checklist.',
+    expected: ['W1', 'O3', 'O4', 'P6'],
+  },
+  {
+    name: 'P-F/A-F generalization',
+    codes: { perception_code: 'P-F', objective_code: 'O-A', action_code: 'A-F', erc_level: 2 },
+    text: 'Piloto em voo noturno sem referências visuais sofreu ilusão vestibular e aplicou correção errada.',
+    expected: ['P1', 'P2', 'W3', 'P6'],
+  },
+  {
+    name: 'P-H/A-A generalization',
+    codes: { perception_code: 'P-H', objective_code: 'O-A', action_code: 'A-A', erc_level: 3 },
+    text: 'Briefing ambíguo e identificação de painel não padronizada levaram manutenção no sistema errado.',
+    expected: ['S2', 'W1', 'O3', 'O4'],
   },
 ]
 
