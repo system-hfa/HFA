@@ -1058,7 +1058,7 @@ function evidenceOfOwnActionCheckFailure(text: string): boolean {
     'condicao esperada',
   ]))) return true
   // supplementary: reset/stabilization result available but not verified
-  return containsAny(text, [
+  if (containsAny(text, [
     'sem aguardar a estabilizacao',
     'sem aguardar estabilizacao',
     'nao aguardou estabilizacao',
@@ -1072,6 +1072,21 @@ function evidenceOfOwnActionCheckFailure(text: string): boolean {
     'nao verificou se recolheu',
     'nao confirmou se recolheu',
     'nao monitorou se recolheu',
+  ])) return true
+  // supplementary: industrial/operations — operator performed intervention and did not check
+  // the resulting parameter available on panel/display (general A-C pattern for refineries,
+  // manufacturing, utilities, offshore — not aviation-specific)
+  return containsAny(text, [
+    'nao conferiu o parametro',
+    'nao verificou o parametro',
+    'nao monitorou o parametro',
+    'parametro disponivel nao verificado',
+    'parametro disponivel nao conferido',
+    'deveria ter sido monitorado apos',
+    'deveria ter sido monitorada apos',
+    'nao verificou o resultado da intervencao',
+    'nao conferiu o resultado da intervencao',
+    'resultado da intervencao nao verificado',
   ])
 }
 
