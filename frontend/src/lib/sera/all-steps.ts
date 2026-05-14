@@ -1989,7 +1989,9 @@ export async function runStep4(relato: string, pontoFuga: Step2Result): Promise<
 - Return ONLY valid JSON. No text outside the JSON block.
 - NEVER skip the first decision node: "Consistent with rules and regulations?" This MUST be answered before any other.
 - NEVER classify O-D if there is evidence of rule violation — O-D requires the goal to be consistent with rules but not conservative.
-- NEVER classify O-B (routine violation) without evidence of repeated behavior. A single violation with no evidence of habit MUST be O-C, not O-B.
+- NEVER classify O-B (routine violation) without evidence of repeated behavior or normalized shortcut ("todos fazem", "burocracia", atalho cultural).
+- NEVER classify O-C without evidence of EXPLICIT human protective motive (proteger passageiro/paciente/colega/equipe de risco imediato). Exceptional circumstance alone (pressure, tool not available, knowledge gap, administrative omission) is NOT O-C.
+- A single non-routine violation with no explicit human protective motive remains O-A (nominal objective, execution-level problem).
 - Classify objective before action execution details.
 - O-D requires explicit motive of efficiency/economy (tempo, combustível, custo, produtividade).
 - O-C requires explicit prosocial/protective motive (proteger pessoa/paciente/passageiro).
@@ -2079,14 +2081,21 @@ Responda APENAS com JSON:
   if (String(no1.resposta || '').toLowerCase() === 'não') {
     const r2 = await ask(
       system,
-      `Nó 1: Objetivo NÃO consistente com normas (O-A e O-D DESCARTADOS).
+      `Ato inseguro: ${ato}
+Relato: ${relato}
+Nó 1: Objetivo NÃO consistente com normas (O-A e O-D DESCARTADOS).
 
-NÓ 2 — Esta violação é rotineira (padrão no contexto operacional) ou excepcional (situação incomum)?
-Responda APENAS com JSON: {"tipo": "rotineira/excepcional", "justificativa": "..."}`
+NÓ 2 — Qual é a natureza da violação de objetivo? Escolha exatamente um:
+• "protecao_humana": existe evidência EXPLÍCITA e LITERAL de que o objetivo da violação era proteger uma pessoa (passageiro, paciente, colega, equipe) de risco imediato → O-C
+• "rotineira": existe evidência de violação normalizada, atalho cultural repetido ("todos fazem", "burocracia", histórico de repetição) → O-B
+• "nominal": a violação ocorreu no contexto de cumprir a tarefa nominal, sem evidência de objetivo protetivo ou normalizante (inclui pressão de prazo, ferramenta indisponível, lacuna de conhecimento, omissão administrativa) → O-A
+Responda APENAS com JSON: {"tipo": "protecao_humana/rotineira/nominal", "justificativa": "..."}`
     )
     const no2 = safeParse(r2, 'Etapa 4 - Nó 2') as RawFlowNode
-    const codigo = String(no2.tipo || '').toLowerCase() === 'rotineira' ? 'O-B' : 'O-C'
-    return flowResult(codigo, [no1, no2], 'O-A e O-D descartados no Nó 1')
+    const tipo2 = String(no2.tipo || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z_]/g, '')
+    const codigo: 'O-A' | 'O-B' | 'O-C' = tipo2.includes('rotineira') ? 'O-B' : tipo2.includes('protec') ? 'O-C' : 'O-A'
+    const discarded2 = codigo === 'O-B' ? 'O-A, O-C e O-D descartados — violação rotineira normalizada' : codigo === 'O-C' ? 'O-A, O-B e O-D descartados — objetivo protetivo humano explícito' : 'O-B, O-C e O-D descartados — objetivo nominal sem proteção humana'
+    return flowResult(codigo, [no1, no2], discarded2)
   }
 
   const r2 = await ask(

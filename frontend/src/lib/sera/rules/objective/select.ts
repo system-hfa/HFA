@@ -35,7 +35,9 @@ function hasExplicitProtectiveHumanIntent(text: string): boolean {
       'proteger pessoa',
       'proteger passageiro',
       'proteger paciente',
+      'proteger equipe',
       'pessoa presa em area de risco',
+      'colega preso em area de risco',
       'dano humano iminente',
       'deterioracao clinica',
       'mitigacao de dano humano',
@@ -44,7 +46,9 @@ function hasExplicitProtectiveHumanIntent(text: string): boolean {
     ]) ||
     (has(text, 'passageiro') && (has(text, 'doente') || has(text, 'infarto') || has(text, 'avc') || has(text, 'deterioracao'))) ||
     (has(text, 'condicao') && has(text, 'passageiro') && (has(text, 'piorar') || has(text, 'agravar'))) ||
-    (has(text, 'paciente') && (has(text, 'agravamento') || has(text, 'emergencia medica')))
+    (has(text, 'paciente') && (has(text, 'agravamento') || has(text, 'emergencia medica'))) ||
+    (has(text, 'proteger') && has(text, 'colega')) ||
+    (has(text, 'colega') && (has(text, 'risco imediato') || has(text, 'exposicao imediata') || has(text, 'preso em area de risco')))
 
   if (!directPositive) return false
 
