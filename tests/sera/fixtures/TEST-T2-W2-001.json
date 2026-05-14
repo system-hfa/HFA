@@ -17,7 +17,8 @@
   },
   "rationale": "P-A: a equipe percebia a condição e a limitação da ferramenta. O-A: a tarefa continuava sendo a intervenção regular, sem objetivo de dano. A-D: a ação ficou fisicamente degradada por ferramenta inadequada e postura restritiva. ERC 3: a execução degradada elevou risco técnico, mas sem dano imediato descrito.",
   "discriminators": [
-    "Não é O-D: o objetivo formal ainda era completar a manutenção, e o foco do caso é reforçar pressão T2/W2 sobre execução física.",
+    "Não é O-C: O-C requer intenção explícita de proteger uma pessoa (passageiro, paciente, colega ou equipe em risco imediato). A equipe usou ferramenta improvisada para manter o prazo de manutenção, não para proteger ninguém. Não há motivação altruística; o objetivo permaneceu cumprir a intervenção nominal. Circunstância excepcional e pressão de prazo não são critérios de O-C.",
+    "Não é O-D: o objetivo formal ainda era completar a manutenção, e o foco do caso é reforçar pressão T2/W2 sobre execução física. Não houve ganho de eficiência — a execução foi degradada pela ferramenta inadequada.",
     "Não é A-B: a etapa não foi omitida; foi executada em condição física inadequada.",
     "Não é P-B: não houve perda sensorial ou obstrução perceptiva."
   ]

@@ -14,8 +14,10 @@
   },
   "rationale": "P-A: não há erro perceptivo; o operador sabia qual campo estava pendente. O-A: a intenção era administrativa regular. A-A: não houve falha de ação técnica relevante, apenas atraso em campo redundante. ERC 5: o caso não produziu impacto técnico, operacional ou de segurança.",
   "discriminators": [
+    "Não é O-C: O-C requer intenção explícita de proteger uma pessoa de risco imediato. O atraso no preenchimento do campo redundante não teve motivação altruística — o objetivo era cumprir a atividade administrativa regular. Não há proteção humana como motivador.",
+    "Não é O-B: não há evidência de prática normalizada de atrasar o preenchimento; foi episódio isolado.",
+    "Não é O-D: não houve escolha arriscada para ganhar tempo.",
     "Não é A-B: não houve omissão definitiva de etapa operacional obrigatória; o campo redundante foi preenchido antes do fechamento.",
-    "Não é ERC 4: não exigiu correção operacional, retrabalho técnico ou revisão de liberação.",
-    "Não é O-D: não houve escolha arriscada para ganhar tempo."
+    "Não é ERC 4: não exigiu correção operacional, retrabalho técnico ou revisão de liberação."
   ]
 }

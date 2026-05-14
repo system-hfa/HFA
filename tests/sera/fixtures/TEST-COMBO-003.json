@@ -18,7 +18,8 @@
   },
   "rationale": "P-C (Falha de Conhecimento/Percepção): o médico percebeu corretamente a condição do paciente mas interpretou a situação com base em conhecimento hospitalar — sem o modelo mental correto para o ambiente aeronáutico/pressurizado. A-E (Falha de Conhecimento na Decisão): a dose administrada foi baseada em conhecimento específico da tarefa insuficiente — não conhecia o protocolo de altitude. Tinha habilidades médicas mas carecia do conhecimento específico do contexto.",
   "discriminators": [
-    "NÃO é O-C ou O-B (Violação): o médico acreditava estar seguindo o protocolo correto — não houve intenção de violar nenhuma regra.",
+    "NÃO é O-C: O-C requer que o agente desvie conscientemente de uma regra conhecida com objetivo explícito de proteger uma pessoa em risco imediato. O médico não violou um protocolo que conhecia para salvar o paciente — ele aplicou o único protocolo que conhecia, acreditando ser o correto. A causa foi lacuna instrucional (P-C/A-E), não motivação protetiva. O fato de estar atendendo um paciente não transforma um erro de conhecimento em violação altruística.",
+    "NÃO é O-B (Violação rotineira): o médico não seguiu um atalho normalizado culturalmente — aplicou o que genuinamente acreditava ser o protocolo correto.",
     "NÃO é A-F (Seleção): A-F requer que o operador TENHA o conhecimento e escolha errado; aqui a lacuna de conhecimento específico impediu a decisão correta.",
     "NÃO é A-B (Deslize): a dose foi calculada e administrada intencionalmente — não foi erro de execução de procedimento conhecido."
   ]

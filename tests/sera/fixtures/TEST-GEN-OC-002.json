@@ -15,8 +15,10 @@
       "T1"
     ]
   },
-  "rationale": "O-C (Violação Excepcional — Proteção Humana): a interrupção do protocolo foi motivada por risco humano imediato e concreto — critério definidor de O-C. P-A: o operador percebeu corretamente a situação de risco ao colega. A-A: a parada de emergência foi executada conforme a intenção protetiva, não houve deslize.",
+  "rationale": "O-C (Violação Excepcional — Proteção Humana): a interrupção do protocolo foi motivada por risco humano imediato e concreto — colega preso em área de risco com equipamento em movimento. Esse é o critério definidor e exclusivo de O-C: desvio consciente de procedimento motivado por intenção explícita de proteger uma pessoa. P-A: o operador percebeu corretamente a situação de risco ao colega. A-A: a parada de emergência foi executada conforme a intenção protetiva, não houve deslize.",
   "discriminators": [
+    "É O-C: a decisão violou conscientemente a sequência de shutdown autorizada com intenção explícita e exclusiva de proteger o colega de exposição imediata ao risco — pessoa em área de risco com equipamento em movimento. O objetivo do desvio era segurança/vida humana, não eficiência nem tarefa nominal.",
+    "NÃO é O-A: o objetivo não era apenas cumprir a tarefa nominal de shutdown sequencial. O operador desviou conscientemente do procedimento por motivação protetiva humana explícita — isso exclui O-A, que requer ausência de objetivo desviante explícito.",
     "NÃO é O-B (violação rotineira): a interrupção foi atípica e motivada por emergência real — não era prática habitual do operador.",
     "NÃO é O-D (eficiência): o objetivo foi proteger pessoa em risco imediato, não eficiência, tempo ou economia.",
     "NÃO é A-F (seleção errada): a ação de parada de emergência foi selecionada corretamente para o contexto; a falha está no objetivo de desviar do protocolo, não na execução da ação escolhida."
