@@ -207,6 +207,23 @@ function sanitizeJsonCandidate(raw: string): string {
   return result.trim()
 }
 
+const LLM_TIMEOUT_MS = 120_000
+
+function isTransientError(e: Error): boolean {
+  const msg = e.message.toLowerCase()
+  return (
+    msg === 'terminated' ||
+    msg.includes('econnreset') ||
+    msg.includes('econnaborted') ||
+    msg.includes('etimedout') ||
+    msg.includes('socket hang up') ||
+    msg.includes('fetch failed') ||
+    msg.includes('request timed out') ||
+    msg.includes('connection reset') ||
+    msg.includes('connection closed')
+  )
+}
+
 async function callGoogle(system: string, user: string): Promise<string> {
   const key =
     process.env.GOOGLE_API_KEY?.trim() ||
@@ -232,7 +249,7 @@ export async function callAi(system: string, userMsg: string, maxTokens = 8192):
   let raw: string
 
   if (provider === 'anthropic') {
-    const client = new Anthropic({ apiKey: requireApiKey('ANTHROPIC_API_KEY') })
+    const client = new Anthropic({ apiKey: requireApiKey('ANTHROPIC_API_KEY'), timeout: LLM_TIMEOUT_MS })
     const msg = await client.messages.create({
       model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
       max_tokens: maxTokens,
@@ -241,7 +258,7 @@ export async function callAi(system: string, userMsg: string, maxTokens = 8192):
     })
     raw = (msg.content[0] as { text: string }).text
   } else if (provider === 'openai') {
-    const client = new OpenAI({ apiKey: requireApiKey('OPENAI_API_KEY') })
+    const client = new OpenAI({ apiKey: requireApiKey('OPENAI_API_KEY'), timeout: LLM_TIMEOUT_MS })
     const r = await client.chat.completions.create({
       model: process.env.OPENAI_MODEL || 'gpt-4o',
       messages: [
@@ -257,6 +274,7 @@ export async function callAi(system: string, userMsg: string, maxTokens = 8192):
     const client = new OpenAI({
       apiKey: requireApiKey('GROQ_API_KEY'),
       baseURL: 'https://api.groq.com/openai/v1',
+      timeout: LLM_TIMEOUT_MS,
     })
     const r = await client.chat.completions.create({
       model: getModelName('groq'),
@@ -276,6 +294,7 @@ export async function callAi(system: string, userMsg: string, maxTokens = 8192):
         'O padrão é DeepSeek (AI_PROVIDER não definido ou = deepseek). Para usar OpenAI, defina AI_PROVIDER=openai e OPENAI_API_KEY.'
       ),
       baseURL: 'https://api.deepseek.com/v1',
+      timeout: LLM_TIMEOUT_MS,
     })
     const r = await client.chat.completions.create({
       model: deepseek.model,
@@ -330,14 +349,39 @@ export async function ask(
       return await callAi(system, user, opts?.maxTokens ?? 16000)
     } catch (e: unknown) {
       lastError = e instanceof Error ? e : new Error(String(e))
-      if (!lastError.message.includes('Falha ao parsear JSON')) throw lastError
+      if (!isTransientError(lastError)) throw lastError
       if (attempt < MAX_RETRIES) {
-        await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)))
+        console.warn(`[SERA retry] erro transiente (attempt ${attempt + 1}/${MAX_RETRIES + 1}): ${lastError.message}`)
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)))
       }
     }
   }
 
   throw lastError!
+}
+
+export async function askJson(
+  system: string,
+  user: string,
+  step: string,
+  opts?: { maxTokens?: number }
+): Promise<Record<string, unknown>> {
+  const MAX_PARSE_RETRIES = 1
+
+  for (let attempt = 0; attempt <= MAX_PARSE_RETRIES; attempt++) {
+    if (attempt > 0) {
+      console.warn(`[SERA retry] parse error na ${step}, tentativa ${attempt + 1}/${MAX_PARSE_RETRIES + 1} — repetindo chamada LLM`)
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+    }
+    const raw = await ask(system, user, opts)
+    try {
+      return safeParse(raw, step)
+    } catch (e) {
+      if (attempt >= MAX_PARSE_RETRIES) throw e
+    }
+  }
+
+  throw new Error(`askJson: estado inesperado em ${step}`)
 }
 
 /**

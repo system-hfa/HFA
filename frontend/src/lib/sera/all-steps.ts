@@ -4,7 +4,7 @@
  */
 import { loadDocJson } from '@/lib/sera/docs'
 import { NO_ARTIFACTS } from '@/lib/sera/prompts'
-import { ask, safeParse } from '@/lib/sera/llm'
+import { ask, askJson, safeParse } from '@/lib/sera/llm'
 import { actionRules, objectiveRules, perceptionRules } from '@/lib/sera/rules'
 import { classifyObjectiveByRules } from '@/lib/sera/rules/objective/select'
 import type {
@@ -3087,7 +3087,7 @@ Guidelines: ${loadDocJson('Guidelines.json')}
 Template: ${loadDocJson('Template.json')}
 Base científica e critérios decisores (tutorial): ${loadDocJson('tutorial.json', 3000)}`
 
-  const r = await ask(
+  const parsed = await askJson(
     system,
     `Ato inseguro: ${pontoFuga.ato_inseguro_factual}
 Falha Percepção: ${step3.codigo}
@@ -3104,9 +3104,9 @@ REGRAS OBRIGATÓRIAS:
 5. Recomendações vinculadas aos códigos reais identificados (${step3.codigo}, ${step4.codigo}, ${step5.codigo})
 
 	Responda APENAS com JSON.`,
+    'Etapa 6-7',
     { maxTokens: 12000 }
-  )
-  const parsed = safeParse(r, 'Etapa 6-7') as unknown as Step67Result
+  ) as unknown as Step67Result
   const relatoNorm = normalizeEvidenceText(`${relato}\n${pontoFuga.ato_inseguro_factual || ''}`)
   const ercLevel = inferDeterministicErcLevel(relatoNorm, step3.codigo, step4.codigo, step5.codigo, parsed.erc_level)
   if (typeof ercLevel === 'number') parsed.erc_level = ercLevel
