@@ -1,7 +1,7 @@
 # SERA v0.1.1 Frozen Scope
 
-**Data:** 2026-05-14
-**Status:** Release candidate congelado — smoke global definitivo pendente.
+**Data:** 2026-05-14 · **Atualizado:** 2026-05-15
+**Status:** Aprovada — baseline oficial promovido. Commit `0775dc2`.
 
 ---
 
@@ -13,24 +13,24 @@ Este documento define o escopo congelado do SERA v0.1.1 release candidate. Regis
 
 ## 2. Estado atual
 
-**Versão:** SERA v0.1.1 — release candidate.
-**Baseline oficial v0.1.1:** não promovido. Aguarda smoke global definitivo.
+**Versão:** SERA v0.1.1 — **aprovada**.
+**Baseline oficial v0.1.1:** promovido. `tests/reports/baseline/sera-baseline-v0.1.1-smoke.json`
 
-### Smoke global near-pass (último executado)
+### Smoke definitivo (2026-05-15)
 
 | Métrica | Valor |
 |---|---|
 | Fixtures testadas | 54 |
+| Runs por fixture | 3 |
 | Total de runs | 162 |
-| PASS | 161 |
-| PARTIAL | 1 |
+| PASS | 162 |
+| PARTIAL | 0 |
 | FAIL | 0 |
 | ERROR | 0 |
-| pass_rate | 99.38% |
-| determinism_rate | 98.15% |
-| Único bloqueio | TEST-COMBO-003 (objective O-A→O-C em 1/3 runs) |
+| pass_rate | 100% |
+| determinism_rate | 100% |
 
-O bloqueio TEST-COMBO-003 foi corrigido após o near-pass por gate determinístico em `runStep4`. O pipeline agora força O-A quando o relato contém evidência explícita de déficit de conhecimento/treinamento, antes de consultar o LLM.
+Relatório fonte: `tests/reports/run-1778861714570.json`. Provedor: DeepSeek/deepseek-reasoner.
 
 ### Validação seletiva pós-fix
 
@@ -127,41 +127,36 @@ As seguintes alterações não impactam o pipeline e são permitidas sem necessi
 
 ## 8. Baseline v0.1.1
 
-**O baseline oficial v0.1.1 não deve ser promovido ainda.**
+**Baseline oficial v0.1.1 promovido em 2026-05-15.**
 
-- Não copiar o relatório near-pass (`run-1778786318335.json`) para baseline oficial.
-- Não executar o script de promoção até que o smoke definitivo passe.
-- O baseline v0.1.1 só deve ser promovido após o smoke global definitivo atingir:
+| Critério | Valor exigido | Obtido |
+|---|---|---|
+| Fixtures testadas | 54 | 54 |
+| Total de runs | 162 | 162 |
+| PASS | 162 | 162 |
+| PARTIAL | 0 | 0 |
+| FAIL | 0 | 0 |
+| ERROR | 0 | 0 |
+| determinism_rate | 100% | 100% |
+| Regressions vs v0.1 | 0 | 0 |
+| TEST-O-D-001 | improvement | ✅ confirmado |
 
-| Critério | Valor exigido |
-|---|---|
-| Fixtures testadas | 54 |
-| Total de runs | 162 |
-| PASS | 162 |
-| PARTIAL | 0 |
-| FAIL | 0 |
-| ERROR | 0 |
-| determinism_rate | 100% |
-| Regressions vs baseline v0.1 | 0 |
-| TEST-O-D-001 | registrado como improvement |
+Arquivo: `tests/reports/baseline/sera-baseline-v0.1.1-smoke.json`
 
 ---
 
 ## 9. Decisão operacional
 
-- **v0.1.1 pode ser tratada como release candidate** com base nos resultados do near-pass e na validação seletiva pós-fix.
-- **Não deve ser tratada como baseline oficial** até o smoke global definitivo.
-- **A partir de agora, evitar novas correções no motor** salvo bug crítico que comprometa a validade da análise.
-- **Qualquer nova correção metodológica antes do smoke definitivo** exige reinício da validação seletiva e possivelmente um novo smoke global antes da promoção.
+- v0.1.1 **aprovada** como baseline oficial de regressão.
+- Motor congelado — não alterar sem novo ciclo de validação.
+- Próximas evoluções (fixtures adversariais, política de preconditions, setores adicionais) estão registradas em `docs/SERA_KNOWN_RISKS_v0.1.1.md`.
 
 ---
 
-## 10. Próximos passos
+## 10. Backlog pós-v0.1.1
 
-- [ ] Trabalhar textos do site para refletir a proposta de valor do SERA.
-- [ ] Melhorar documentação de produto (suficiência, matriz de evidência, fluxo de análise).
-- [ ] Organizar handoff e contexto para Claude/HFA.
-- [ ] Preparar janela longa para smoke global definitivo.
-- [ ] Promover baseline v0.1.1 somente após smoke definitivo passar nos critérios acima.
-- [ ] Depois da promoção: evoluir fixtures multi-domínio (saúde, offshore, industrial).
-- [ ] Depois da promoção: implementar camada explícita de suficiência com perguntas complementares.
+- Evoluir fixtures multi-domínio (saúde, offshore, construção civil).
+- Adicionar fixtures O-C não protetivas.
+- Formalizar política de preconditions.
+- Implementar camada explícita de suficiência com perguntas complementares.
+- Definir smoke seletivo para gate de PR.
