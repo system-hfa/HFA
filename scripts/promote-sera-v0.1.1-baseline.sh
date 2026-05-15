@@ -36,8 +36,14 @@ const errors = [];
 if (data.fixtures_tested !== 54) {
   errors.push('fixtures_tested = ' + data.fixtures_tested + ' (esperado 54)');
 }
-if (data.summary.pass !== 54) {
-  errors.push('summary.pass = ' + data.summary.pass + ' (esperado 54)');
+if (data.n_runs_per_fixture !== 3) {
+  errors.push('n_runs_per_fixture = ' + data.n_runs_per_fixture + ' (esperado 3)');
+}
+if (data.summary.total_runs !== 162) {
+  errors.push('summary.total_runs = ' + data.summary.total_runs + ' (esperado 162)');
+}
+if (data.summary.pass !== 162) {
+  errors.push('summary.pass = ' + data.summary.pass + ' (esperado 162)');
 }
 if (data.summary.partial !== 0) {
   errors.push('summary.partial = ' + data.summary.partial + ' (esperado 0)');
@@ -47,6 +53,9 @@ if (data.summary.fail !== 0) {
 }
 if (data.summary.error !== 0) {
   errors.push('summary.error = ' + data.summary.error + ' (esperado 0)');
+}
+if (data.summary.pass_rate !== 1) {
+  errors.push('summary.pass_rate = ' + data.summary.pass_rate + ' (esperado 1)');
 }
 if (data.summary.determinism_rate !== 1) {
   errors.push('summary.determinism_rate = ' + data.summary.determinism_rate + ' (esperado 1)');
@@ -58,7 +67,7 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log('Validação OK: 54 fixtures, 54 PASS, 0 PARTIAL, 0 FAIL, 0 ERROR, det 100%');
+console.log('Validação OK: 54 fixtures × 3 runs = 162 PASS, 0 PARTIAL, 0 FAIL, 0 ERROR, pass_rate 100%, det 100%');
 "
 
 # ── Copiar para baseline ─────────────────────────────────────────────
