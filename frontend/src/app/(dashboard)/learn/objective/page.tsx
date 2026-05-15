@@ -47,7 +47,7 @@ const glossary = [
     code: 'O-B',
     name: 'Violação rotineira',
     when: 'Há evidência de que o desvio era comum, esperado ou normalizado no ambiente de trabalho.',
-    example: 'Piloto que habitualmente decolava com condições abaixo dos mínimos e era conhecido por isso na empresa.',
+    example: 'Piloto que habitualmente decolava com condições abaixo dos mínimos e era conhecido por isso na empresa. Técnico de manutenção que rotineiramente pulava etapa de verificação final — prática normalizada e tolerada pela equipe.',
     preconditions: 'O2 (clima organizacional), S1',
   },
   {
@@ -61,7 +61,7 @@ const glossary = [
     code: 'O-D',
     name: 'Intenção não conservativa',
     when: 'Não houve violação de regra, mas houve escolha consciente de maior risco motivada por eficiência, economia de tempo ou ganho operacional proativo. Não confundir com ação sob pressão de prazo imposta externamente sem escolha deliberada de risco adicional.',
-    example: 'Piloto que escolheu pousar pelo lado mais difícil da plataforma (tecnicamente permitido) por necessidade de validar uma afirmação anterior — decisão proativa de maior risco sem violação formal.',
+    example: 'Piloto que escolheu pousar pelo lado mais difícil da plataforma (tecnicamente permitido) por necessidade de validar uma afirmação anterior — decisão proativa de maior risco sem violação formal. Operador que optou por procedimento mais rápido e mais arriscado para antecipar entrega, sem violar regra formal.',
     preconditions: 'P2 (viés de confirmação), P3',
   },
 ]

@@ -28,7 +28,7 @@ const allCodes: CodeEntry[] = [
   { code: 'O-D', name: 'Intenção não conservativa',        category: 'objective',  when: 'Escolha de opção mais arriscada' },
   { code: 'A-A', name: 'Sem falha de ação',                category: 'action',     when: 'Execução correta' },
   { code: 'A-B', name: 'Deslize/lapso/omissão',            category: 'action',     when: 'Erro involuntário de execução' },
-  { code: 'A-C', name: 'Feedback na execução',             category: 'action',     when: 'Sem confirmação durante execução' },
+  { code: 'A-C', name: 'Verificação pós-ação',              category: 'action',     when: 'Sem verificação do resultado após intervenção' },
   { code: 'A-D', name: 'Inabilidade física',               category: 'action',     when: 'Limitação física ou motora' },
   { code: 'A-E', name: 'Falha de conhecimento',            category: 'action',     when: 'Não sabia qual ação executar' },
   { code: 'A-F', name: 'Seleção errada (sem pressão)',     category: 'action',     when: 'Escolha incorreta sem urgência' },

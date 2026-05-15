@@ -77,14 +77,14 @@ const glossary = [
     code: 'P-B',
     name: 'Falha sensorial',
     when: 'Limitação física ou ambiental impediu detecção do estímulo.',
-    example: 'Piloto não viu obstáculo por névoa intensa.',
+    example: 'Técnico não detectou vazamento por ruído excessivo na instalação. Piloto não viu obstáculo por névoa.',
     preconditions: 'P1 (fisiológico), W3 (ambiente)',
   },
   {
     code: 'P-C',
     name: 'Falha de conhecimento',
     when: 'Detectou o sinal mas não soube interpretá-lo.',
-    example: 'Piloto em adaptação não reconheceu comportamento normal do flight director acoplado.',
+    example: 'Enfermeiro em adaptação não identificou padrão de alarme de monitor cardíaco por falta de familiaridade com o equipamento.',
     preconditions: 'P6 (seleção/treinamento), T1',
   },
   {
@@ -112,7 +112,7 @@ const glossary = [
     code: 'P-G',
     name: 'Falha de atenção (info disponível)',
     when: 'Info acessível e correta, mas operador não a buscou ou ignorou.',
-    example: 'Piloto ignorou indicadores contrários à sua avaliação inicial por viés de confirmação.',
+    example: 'Operador ignorou alarme de pressão elevada por acreditar ser falso positivo recorrente. Piloto ignorou indicadores contrários por viés de confirmação.',
     preconditions: 'P2 (psicológico), P5',
   },
   {

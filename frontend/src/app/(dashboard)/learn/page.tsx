@@ -50,7 +50,7 @@ export default function LearnPage() {
           <h1 className="text-3xl font-bold text-white">Centro de Aprendizado SERA</h1>
           <p className="text-slate-400 mt-2 max-w-2xl leading-relaxed">
             Entenda como a análise de fatores humanos é realizada — da teoria à classificação
-            automática dos eventos.
+            assistida dos eventos.
           </p>
         </div>
 
@@ -101,7 +101,7 @@ export default function LearnPage() {
               {
                 n: 2,
                 title: 'Leia cada etapa',
-                desc: 'Cada página explica os nós de decisão com exemplos reais da aviação offshore.',
+                desc: 'Cada página explica os nós de decisão com exemplos de operações de alto risco.',
               },
               {
                 n: 3,

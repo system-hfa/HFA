@@ -18,7 +18,7 @@ const stages = [
     name: 'Ponto de Fuga',
     short: 'Identifica a decisão crítica',
     detail:
-      'Identifica o momento exato em que a operação se desviou dos procedimentos seguros. É sempre uma DECISÃO — nunca o ato físico em si. A pergunta central é: qual decisão iniciou a trajetória em direção ao evento indesejado?\n\nAtenção: o Ponto de Fuga é sempre de UM único agente (pessoa ou equipe). Se houver múltiplos agentes, identifica-se o que tinha controle das variáveis críticas naquele momento.\n\nExemplo correto: "O piloto DECIDIU decolar com visibilidade abaixo dos mínimos"\nExemplo incorreto: "O piloto decolou com visibilidade baixa" (isso é consequência, não decisão)',
+      'Identifica o momento exato em que a operação se desviou dos procedimentos seguros. É sempre uma DECISÃO — nunca o ato físico em si. A pergunta central é: qual decisão iniciou a trajetória em direção ao evento indesejado?\n\nAtenção: o Ponto de Fuga é sempre de UM único agente (pessoa ou equipe). Se houver múltiplos agentes, identifica-se o que tinha controle das variáveis críticas naquele momento.\n\nExemplo correto: "O piloto DECIDIU decolar com visibilidade abaixo dos mínimos"\nExemplo correto: "O técnico DECIDIU prosseguir a manutenção sem aguardar autorização do supervisor"\nExemplo incorreto: "O piloto decolou com visibilidade baixa" (isso é consequência, não decisão)',
   },
   {
     n: 3,
@@ -56,7 +56,7 @@ const stages = [
     name: 'Recomendações',
     short: 'Ações preventivas vinculadas',
     detail:
-      'Com base nos códigos classificados e nas pré-condições, a IA gera recomendações específicas e vinculadas a cada falha identificada. Cada recomendação indica qual código de falha está endereçando.',
+      'Com base nos códigos classificados e nas pré-condições, a IA gera sugestões de recomendação vinculadas a cada falha identificada — sujeitas a revisão e julgamento do investigador. Cada sugestão indica qual código de falha está endereçando.',
   },
 ]
 
