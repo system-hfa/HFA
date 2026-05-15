@@ -491,8 +491,11 @@ export default function EventDetailPage() {
                 Etapa 6 — Conclusão da Análise
               </span>
             </div>
-            <div className="p-6">
+            <div className="p-6 space-y-4">
               <p className="text-slate-200 leading-relaxed text-sm sm:text-base">{analysis.conclusions}</p>
+              <p className="text-xs text-slate-600 border-t border-slate-800 pt-3">
+                Esta conclusão é gerada com apoio de IA com base na evidência disponível no relato. O investigador deve revisar, complementar e validar antes de qualquer encaminhamento formal.
+              </p>
             </div>
           </div>
 

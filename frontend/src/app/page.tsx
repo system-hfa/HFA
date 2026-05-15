@@ -840,9 +840,9 @@ export default function Home() {
                   rule: 'A-J vence A-B/A-C',
                 },
                 {
-                  title: 'Objetivo altruístico exige evidência',
-                  desc: 'O-C só aparece quando o texto mostra intenção explícita de proteger pessoa, passageiro, paciente ou equipe. Sem isso, permanece O-A.',
-                  rule: 'O-C é bloqueado sem intenção explícita',
+                  title: 'Violação excepcional não exige proteção humana',
+                  desc: 'O-C é desvio consciente, pontual e não rotineiro de regra ou procedimento. A motivação pode ser conveniência, improviso, pressão situacional ou proteção humana — qualquer razão circunstancial serve. O que define O-C é o desvio consciente e excepcional.',
+                  rule: 'O-C: desvio consciente excepcional — motivo é evidência, não requisito',
                 },
               ].map((item) => (
                 <div key={item.title} style={{ border: '1px solid rgba(96,165,250,0.16)', backgroundColor: '#0A1628', borderRadius: '10px', padding: '18px 18px' }}>
@@ -932,9 +932,9 @@ export default function Home() {
                 },
                 {
                   icon: Factory,
-                  sector: 'Indústria',
-                  roles: 'Engenheiros de segurança, responsáveis por SSMA, investigadores de acidentes industriais.',
-                  detail: 'Qualquer setor de alto risco.',
+                  sector: 'Indústria & Saúde',
+                  roles: 'Engenheiros de segurança, responsáveis por SSMA, investigadores de acidentes industriais e eventos adversos em saúde.',
+                  detail: 'Qualquer sistema operacional crítico.',
                 },
               ].map((p) => {
                 const Icon = p.icon

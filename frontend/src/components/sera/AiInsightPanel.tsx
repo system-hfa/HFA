@@ -73,8 +73,8 @@ export function AiInsightPanel({ intelligenceData, token }: AiInsightPanelProps)
     <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-white">Análise por IA</h3>
-          <p className="text-slate-500 text-xs mt-0.5">Diagnóstico organizacional gerado por modelo de linguagem</p>
+          <h3 className="font-semibold text-white">Diagnóstico Assistivo por IA</h3>
+          <p className="text-slate-500 text-xs mt-0.5">Padrões identificados com apoio de modelo de linguagem — sujeito a revisão do investigador</p>
         </div>
         <Button
           onClick={generate}
@@ -82,7 +82,7 @@ export function AiInsightPanel({ intelligenceData, token }: AiInsightPanelProps)
           variant={status === 'done' ? 'outline' : 'default'}
           size="sm"
         >
-          {status === 'loading' ? 'Analisando...' : status === 'done' ? 'Regerar' : 'Gerar Diagnóstico Organizacional'}
+          {status === 'loading' ? 'Analisando...' : status === 'done' ? 'Regerar' : 'Gerar Diagnóstico Assistivo'}
         </Button>
       </div>
 
@@ -152,7 +152,7 @@ export function AiInsightPanel({ intelligenceData, token }: AiInsightPanelProps)
           )}
 
           <p className="text-slate-600 text-xs border-t border-slate-800 pt-3">
-            Modelo: {result.model_used} · Gerado em {new Date(result.generated_at).toLocaleString('pt-BR')}
+            Modelo: {result.model_used} · Gerado em {new Date(result.generated_at).toLocaleString('pt-BR')} · Este diagnóstico é assistivo — a decisão final pertence ao investigador.
           </p>
         </div>
       )}

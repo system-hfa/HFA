@@ -153,7 +153,7 @@ export default function NewEventPage() {
           )
         )}
       </div>
-      <p className="text-slate-400 mb-8">Insira o relato do evento para análise automatizada</p>
+      <p className="text-slate-400 mb-8">Insira o relato do evento para análise assistida pela metodologia SERA</p>
 
       {noCredits && (
         <div className="mb-6 bg-red-950/40 border border-red-900/50 rounded-xl p-4 text-sm">
@@ -204,7 +204,7 @@ export default function NewEventPage() {
             value={form.title}
             onChange={(e) => setForm((p) => ({ ...p, title: e.target.value }))}
             className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
-            placeholder="Ex: Aproximação em IMC — Plataforma Albacora"
+            placeholder="Ex: Falha de procedimento em turno noturno — Plataforma Norte"
             required
           />
         </div>
@@ -216,16 +216,16 @@ export default function NewEventPage() {
               value={form.operation_type}
               onChange={(e) => setForm((p) => ({ ...p, operation_type: e.target.value }))}
               className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
-              placeholder="Ex: Voo offshore"
+              placeholder="Ex: Voo offshore, cirurgia, operação industrial"
             />
           </div>
           <div>
-            <label className="block text-sm text-slate-400 mb-1">Aeronave</label>
+            <label className="block text-sm text-slate-400 mb-1">Aeronave / equipamento / sistema</label>
             <input
               value={form.aircraft_type}
               onChange={(e) => setForm((p) => ({ ...p, aircraft_type: e.target.value }))}
               className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
-              placeholder="Ex: Sikorsky S-76"
+              placeholder="Ex: S-76, guindaste, sala cirúrgica"
             />
           </div>
         </div>
@@ -275,7 +275,7 @@ export default function NewEventPage() {
             required
           />
           <p className="text-xs text-slate-500 mt-1">
-            Quanto mais detalhado o relato, mais precisa será a análise
+            Relatos brutos, narrativas parciais e documentos operacionais são aceitos. O sistema identifica lacunas de evidência e as sinaliza ao investigador.
           </p>
         </div>
 
@@ -298,7 +298,7 @@ export default function NewEventPage() {
 
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-sm text-slate-400">
           ⚡ Esta análise consumirá <strong className="text-white">1 crédito</strong>. O relatório
-          será gerado automaticamente seguindo as 7 etapas da metodologia SERA.
+          será gerado com apoio de IA seguindo as 7 etapas da metodologia SERA — a conclusão final é do investigador.
         </div>
       </form>
     </div>

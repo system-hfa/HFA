@@ -111,16 +111,21 @@ export default function DocumentUpload({ onExtracted, onFileReady }: Props) {
       />
 
       {state === 'idle' && (
-        <button
-          type="button"
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={onDrop}
-          onClick={() => inputRef.current?.click()}
-          className="w-full rounded-xl border-2 border-dashed border-slate-600 bg-slate-900/40 px-6 py-12 text-center text-slate-300 hover:border-blue-500/60 hover:bg-slate-800/50 transition"
-        >
-          <div className="text-lg mb-1">📄 {t('analysis.dragDrop')}</div>
-          <div className="text-xs text-slate-500 mt-3">{t('analysis.fileTypes')}</div>
-        </button>
+        <>
+          <button
+            type="button"
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={onDrop}
+            onClick={() => inputRef.current?.click()}
+            className="w-full rounded-xl border-2 border-dashed border-slate-600 bg-slate-900/40 px-6 py-12 text-center text-slate-300 hover:border-blue-500/60 hover:bg-slate-800/50 transition"
+          >
+            <div className="text-lg mb-1">📄 {t('analysis.dragDrop')}</div>
+            <div className="text-xs text-slate-500 mt-3">{t('analysis.fileTypes')}</div>
+          </button>
+          <p className="text-xs text-slate-600 px-1">
+            Relatórios brutos, narrativas parciais e documentos operacionais são aceitos. O sistema identifica lacunas de evidência e as sinaliza ao investigador.
+          </p>
+        </>
       )}
 
       {state === 'uploading' && (
