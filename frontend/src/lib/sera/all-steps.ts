@@ -2069,6 +2069,19 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
     return flowResult('O-A', [no1], 'O-B, O-C e O-D descartados — O-C exige intenção explícita de proteção humana')
   }
 
+  const hasKnowledgeDeficitObjectiveContext =
+    /(nao havia recebido treinamento|nao recebeu treinamento|sem treinamento especifico|desconhecia o protocolo|nao conhecia o protocolo|lacuna de conhecimento|lacuna instrucional|treinamento insuficiente|nao foi treinado|nao tinha treinamento especifico)/.test(
+      relatoNorm
+    )
+  if (hasKnowledgeDeficitObjectiveContext) {
+    const noKD = methodologyNode(
+      'Gate determinístico: déficit explícito de conhecimento/treinamento — causa instrucional sem desvio motivado por objetivo protetivo.',
+      { resposta: 'Sim', objetivo_identificado: 'objetivo operacional nominal' }
+    )
+    logMethodology('runStep4', 'Gate O-A anti O-C (knowledge deficit)', noKD, ['O-A'], true)
+    return flowResult('O-A', [noKD], 'O-B, O-C e O-D descartados — lacuna explícita de conhecimento/treinamento é causa instrucional, não objetivo protetivo desviante')
+  }
+
   const r1 = await ask(
     system,
     `Ato inseguro: ${ato}
