@@ -147,7 +147,7 @@ export default function ObjectivePage() {
                 <CodeBadge code="O-A" size="sm" />
                 <span className="text-white text-sm font-medium">Objetivo nominal</span>
               </div>
-              <p className="text-slate-500 text-xs italic mb-1">"objetivo era nominal; a falha está em outro eixo ou nas precondições"</p>
+              <p className="text-slate-500 text-xs italic mb-1">&quot;objetivo era nominal; a falha está em outro eixo ou nas precondições&quot;</p>
               <p className="text-slate-400 text-sm">O operador não teve objetivo desviante. Tentou cumprir a tarefa de forma legítima — mesmo sob restrição externa (prazo imposto, ferramenta indisponível). A falha está em percepção ou ação, não no objetivo.</p>
             </div>
             <div className="bg-slate-800/60 rounded-lg p-4">
@@ -155,7 +155,7 @@ export default function ObjectivePage() {
                 <CodeBadge code="O-B" size="sm" />
                 <span className="text-white text-sm font-medium">Desvio normalizado/rotineiro</span>
               </div>
-              <p className="text-slate-500 text-xs italic mb-1">"fazemos assim normalmente"</p>
+              <p className="text-slate-500 text-xs italic mb-1">&quot;fazemos assim normalmente&quot;</p>
               <p className="text-slate-400 text-sm">O operador desviou de forma habitual, esperada, normalizada pelo ambiente. Outros fazem o mesmo. A organização, implicitamente, tolerava o comportamento.</p>
             </div>
             <div className="bg-slate-800/60 rounded-lg p-4">
@@ -163,7 +163,7 @@ export default function ObjectivePage() {
                 <CodeBadge code="O-C" size="sm" />
                 <span className="text-white text-sm font-medium">Desvio excepcional/circunstancial</span>
               </div>
-              <p className="text-slate-500 text-xs italic mb-1">"fiz diferente desta vez"</p>
+              <p className="text-slate-500 text-xs italic mb-1">&quot;fiz diferente desta vez&quot;</p>
               <p className="text-slate-400 text-sm">O operador decidiu <span className="text-white">conscientemente</span> desviar de regra, procedimento ou expectativa operacional de forma pontual e não rotineira. O desvio não faz parte da cultura. A motivação pode ser conveniência, improviso, atalho situacional, pressão circunstancial ou proteção humana — proteção humana é um exemplo possível, não um requisito.</p>
             </div>
             <div className="bg-slate-800/60 rounded-lg p-4">
@@ -171,7 +171,7 @@ export default function ObjectivePage() {
                 <CodeBadge code="O-D" size="sm" />
                 <span className="text-white text-sm font-medium">Eficiência/economia como objetivo</span>
               </div>
-              <p className="text-slate-500 text-xs italic mb-1">"fiz para ganhar tempo/economizar/aumentar produtividade/otimizar"</p>
+              <p className="text-slate-500 text-xs italic mb-1">&quot;fiz para ganhar tempo/economizar/aumentar produtividade/otimizar&quot;</p>
               <p className="text-slate-400 text-sm">O operador não violou regra formal, mas escolheu conscientemente a opção mais arriscada por eficiência, economia de tempo ou ganho operacional. A escolha de risco foi proativa, não imposta externamente.</p>
             </div>
           </div>

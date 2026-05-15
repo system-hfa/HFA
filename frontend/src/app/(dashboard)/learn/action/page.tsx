@@ -10,14 +10,21 @@ const nodes: FlowNode[] = [
   {
     id: 'n1',
     question: 'A ação foi implementada COMO PRETENDIDA?',
-    yes: 'n2',
+    yes: 'n1_verify',
     no: 'n1b',
   },
   {
     id: 'n1b',
-    question: 'O operador percebeu o desvio durante a execução?',
-    criterion: 'A-B: deslize/lapso involuntário (percebeu o desvio). A-C: falta de feedback na execução (não percebeu).',
+    question: 'A ação diferiu do planejado — foi um deslize ou lapso involuntário?',
+    criterion: 'A-B: execução diferiu involuntariamente do planejado (deslize, lapso, omissão de passo físico ou procedural). A-C: resultado da ação não foi verificado ou confirmado após a intervenção.',
     yes: 'A-B',
+    no: 'A-C',
+  },
+  {
+    id: 'n1_verify',
+    question: 'O operador verificou o resultado/efeito da ação após executá-la?',
+    criterion: 'A-C: ação realizada como pretendida, mas o operador não conferiu se o resultado ou parâmetro após a intervenção estava correto.',
+    yes: 'n2',
     no: 'A-C',
   },
   {
@@ -70,7 +77,7 @@ const nodes: FlowNode[] = [
 const results: Record<string, FlowResult> = {
   'A-A': { label: 'Nenhuma falha de ação', description: 'A execução foi correta. Se há falha, está em P ou O.' },
   'A-B': { label: 'Deslize, lapso ou omissão', description: 'A ação não foi executada como planejada por um erro involuntário — momento de distração ou confusão entre rotinas automatizadas.' },
-  'A-C': { label: 'Falha de feedback na execução', description: 'A ação foi executada como planejada mas o operador não recebeu feedback confirmatório e não percebeu o desvio.' },
+  'A-C': { label: 'Falha de verificação pós-ação', description: 'O operador realizou a ação ou intervenção mas não verificou se o resultado ou efeito produzido foi o esperado. A falha não está na execução em si, mas na ausência de checagem após a intervenção.' },
   'A-D': { label: 'Inabilidade física para a resposta', description: 'O operador sabia o que fazer mas fisicamente não conseguiu executar — limitação física, motora ou de força.' },
   'A-E': { label: 'Falha de conhecimento — decisão', description: 'O operador não tinha o conhecimento necessário para saber QUAL ação executar. Tentou agir baseado em analogia com outra situação.' },
   'A-F': { label: 'Seleção errada da ação (sem pressão)', description: 'O operador tinha capacidade mas escolheu um plano de ação incorreto quando havia opção melhor disponível, sem pressão de tempo excessiva.' },
@@ -83,7 +90,7 @@ const results: Record<string, FlowResult> = {
 const glossary = [
   { code: 'A-A', name: 'Nenhuma falha', when: 'Execução correta. Falha está em P ou A.', example: 'Piloto executou arremeter perfeitamente mas o objetivo estava errado (O-D).', preconditions: null },
   { code: 'A-B', name: 'Deslize/lapso/omissão', when: 'Sabia o que fazer mas executou diferente involuntariamente.', example: 'Piloto planejava acionar sistema A mas acionou B por confusão entre controles similares.', preconditions: 'P1 (fisiológico), P5' },
-  { code: 'A-C', name: 'Falha de feedback na execução', when: 'Ação começou corretamente mas operador não percebeu que estava desviando.', example: 'Piloto não percebeu que a manobra estava produzindo resultado diferente do esperado.', preconditions: 'W1 (tecnológico)' },
+  { code: 'A-C', name: 'Falha de verificação pós-ação', when: 'Ação ou intervenção realizada, mas o operador não verificou nem monitorou o resultado/efeito produzido.', example: 'Técnico ajustou válvula mas não conferiu o manômetro após o ajuste. Piloto acionou sistema mas não verificou a indicação de confirmação resultante.', preconditions: 'W1 (tecnológico)' },
   { code: 'A-D', name: 'Inabilidade física', when: 'Limitação física, motora ou de força impediu a execução correta.', example: 'Piloto tentou corrigir a aeronave mas a força necessária superava sua capacidade física no momento.', preconditions: 'P1 (fisiológico)' },
   { code: 'A-E', name: 'Falha de conhecimento (decisão)', when: 'Não sabia qual ação executar — escolheu por analogia com situação diferente.', example: 'Piloto em adaptação executou manobra da aeronave anterior porque não conhecia o procedimento correto.', preconditions: 'P6 (treinamento), T1, P7' },
   { code: 'A-F', name: 'Seleção errada (sem pressão)', when: 'Capacidade ok, sem urgência, mas escolheu alternativa errada por viés, hábito ou cálculo inadequado.', example: 'Piloto que escolheu pousar pelo lado mais arriscado sem pressão de tempo, para validar afirmação anterior.', preconditions: 'P2 (psicológico), P3' },

@@ -375,8 +375,8 @@ export default function FoundationsPage() {
             </p>
             <p className="text-slate-400 text-sm leading-relaxed">
               Isso explica a distinção crítica do SERA entre{' '}
-              <CodeBadge code="O-B" size="sm" /> (violação rotineira — "fazemos assim normalmente") e{' '}
-              <CodeBadge code="O-C" size="sm" /> (violação excepcional/circunstancial — "fiz diferente desta vez"):
+              <CodeBadge code="O-B" size="sm" /> (violação rotineira — &quot;fazemos assim normalmente&quot;) e{' '}
+              <CodeBadge code="O-C" size="sm" /> (violação excepcional/circunstancial — &quot;fiz diferente desta vez&quot;):
               na violação rotineira, o estado perceptual buscado é normalizado e reforçado pela organização — o desvio
               é habitual e tolerado. Na excepcional, o operador desviou conscientemente de regra ou procedimento
               de forma pontual e não rotineira — não é seu comportamento habitual nem prática da equipe.
@@ -517,14 +517,14 @@ export default function FoundationsPage() {
                 <p className="text-slate-400 text-sm">O mesmo evento, analisado com os mesmos dados, deve sempre produzir o mesmo resultado — independente do analista ou do sistema de IA.</p>
               </div>
               <div className="bg-slate-800/60 rounded-lg p-4">
-                <p className="text-white text-sm font-semibold mb-1">2. Automabilidade</p>
+                <p className="text-white text-sm font-semibold mb-1">2. Compatibilidade com sistemas assistidos</p>
                 <p className="text-slate-400 text-sm">Um sistema de IA pode seguir o fluxo de decisão exatamente como um analista humano — o que é a base do pipeline HFA.</p>
               </div>
             </div>
             <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-4 mt-2">
               <p className="text-blue-300 text-sm">
                 Esta característica — determinismo via fluxo lógico — é o que torna o SERA fundamentalmente
-                superior para sistemas automatizados de análise de risco.
+                adequado para sistemas assistidos de análise e investigação.
               </p>
             </div>
           </div>
