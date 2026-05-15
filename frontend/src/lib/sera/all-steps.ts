@@ -1205,6 +1205,49 @@ function evidenceOfObjectiveCForbiddenContext(text: string): boolean {
   ]))
 }
 
+// Gate pós-LLM para Step 4: exige evidência de desvio CONSCIENTE de regra/procedimento/expectativa
+// conhecida antes de retornar O-C pelo caminho LLM. Situação excepcional, pressão operacional,
+// ilusão, briefing ambíguo ou ferramenta indisponível NÃO bastam — são O-A até confirmação.
+function hasConsciousObjectiveDeviationEvidence(text: string): boolean {
+  return containsAny(text, [
+    // Conhecimento explícito da proibição/procedimento
+    'sabia que era contra',
+    'sabia que era proibido',
+    'sabia que nao devia',
+    'sabia que precisava de autorizacao',
+    'ciente da proibicao',
+    'ciente de que era contra',
+    // Decisão explícita de não cumprir (verbo de escolha + violação)
+    'decidiu descumprir',
+    'decidiu nao cumprir',
+    'decidiu nao seguir o procedimento',
+    'decidiu nao seguir o protocolo',
+    'decidiu omitir o',
+    'optou por descumprir',
+    'optou por nao seguir o procedimento',
+    'optou por nao seguir o protocolo',
+    'optou por nao cumprir',
+    'optou por ignorar o procedimento',
+    'optou por ignorar o protocolo',
+    'escolheu fazer diferente do procedimento',
+    'escolheu nao seguir o procedimento',
+    // Composto: conhecia + decidiu
+    'conhecia o procedimento e decid',
+    'conhecia a norma e decid',
+    'conhecia a regra e decid',
+    // Violação com advérbio de intencionalidade (composto seguro)
+    'violou conscientemente',
+    'descumpriu conscientemente',
+    'descumpriu deliberadamente',
+    'omitiu deliberadamente',
+    'ignorou deliberadamente',
+    // Padrões O-C específicos de alta precisão
+    'fez uma excecao conscientemente',
+    'adotou atalho fora do procedimento',
+    'nao realizou sobrevoo obrigatorio',
+  ])
+}
+
 function evidenceOfSensoryBarrier(text: string): boolean {
   return containsAny(text, [
     'alarme sonoro',
@@ -2097,6 +2140,13 @@ Responda "Sim" quando NÃO houver intenção desviante explícita, incluindo:
 • seleção errada sem intenção de violar
 • erro técnico sem motivação desviante
 • procedimento incorreto por desconhecimento
+• alta carga operacional ou múltiplas demandas sem intenção de desviar
+• ilusão perceptiva ou desorientação que causou ação incorreta
+• instrução verbal ambígua que gerou mal-entendido
+• ferramenta indisponível que forçou improviso sem decisão consciente de violar regra conhecida
+• restrição física, temporal ou operacional externa sem desvio intencional
+
+ATENÇÃO: situação excepcional, pressão de prazo, evento crítico ou resultado perigoso NÃO são por si sós evidência de objetivo inconsistente. Para "Não", é preciso que o operador tenha CONSCIENTEMENTE decidido agir contra norma/procedimento/expectativa conhecida.
 
 Responda APENAS com JSON:
 {"resposta": "Sim/Não", "objetivo_identificado": "...",
@@ -2119,6 +2169,16 @@ Responda APENAS com JSON: {"tipo": "rotineira/excepcional", "justificativa": "..
     const no2 = safeParse(r2, 'Etapa 4 - Nó 2') as RawFlowNode
     const tipo2 = String(no2.tipo || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z_]/g, '')
     const codigo: 'O-B' | 'O-C' = tipo2.includes('rotineira') ? 'O-B' : 'O-C'
+
+    if (codigo === 'O-C' && !hasConsciousObjectiveDeviationEvidence(relatoNorm)) {
+      const noGuard = methodologyNode(
+        'Gate determinístico: LLM classificou O-C mas não há evidência lexical de desvio CONSCIENTE de regra/procedimento/expectativa operacional conhecida. A situação pode ser excepcional ou conter restrição operacional, mas a falha pertence a percepção/ação/precondições até confirmação adicional. Hipótese de O-C pode ser reavaliada se confirmados: procedimento aplicável, conhecimento do operador e decisão consciente de descumprir.',
+        { codigo: 'O-A', resposta: 'Não' }
+      )
+      logMethodology('runStep4', 'Gate O-A (desvio consciente insuficiente)', noGuard, ['O-A'], true)
+      return flowResult('O-A', [no1, no2, noGuard], 'O-B, O-C e O-D descartados — ausência de evidência de desvio consciente de regra/procedimento/expectativa conhecida; O-A conservador até confirmação')
+    }
+
     const discarded2 = codigo === 'O-B' ? 'O-A, O-C e O-D descartados — violação rotineira/normalizada' : 'O-A, O-B e O-D descartados — violação consciente excepcional/não rotineira'
     return flowResult(codigo, [no1, no2], discarded2)
   }
