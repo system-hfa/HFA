@@ -74,7 +74,7 @@ Para classificar objetivo, o texto deve conter indício do que o operador preten
 
 - **Objetivo operacional nominal:** operador pretendia cumprir a tarefa corretamente; falha foi de percepção ou execução (O-A).
 - **Objetivo rotineiro normalizado:** indício explícito de prática aceita tacitamente, repetida culturalmente (O-B). Exige evidência de normalização, não apenas de repetição.
-- **Objetivo protetivo excepcional:** indício explícito e literal de desvio consciente de protocolo *conhecido*, motivado por proteger uma pessoa de risco imediato (O-C). Circunstância excepcional sozinha não basta — deve haver intenção protetiva declarada ou fortemente evidenciada.
+- **Violação excepcional/circunstancial:** indício explícito de desvio consciente e pontual de regra, procedimento ou expectativa operacional *conhecida*, de forma não rotineira e não normalizada (O-C). A motivação pode ser conveniência, improviso, pressão situacional ou proteção humana — proteção humana é um exemplo possível, não um requisito. Circunstância excepcional sozinha sem desvio consciente não basta.
 - **Objetivo de eficiência:** indício de ganho de tempo, economia ou otimização sem violação de norma (O-D). Exige ausência de normalização cultural e ausência de violação intencional.
 
 ### Ação (Step 5)

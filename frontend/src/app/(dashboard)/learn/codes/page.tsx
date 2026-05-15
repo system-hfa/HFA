@@ -24,7 +24,7 @@ const allCodes: CodeEntry[] = [
   { code: 'P-H', name: 'Falha de comunicação',             category: 'perception', when: 'Info não chegou ou chegou errada' },
   { code: 'O-A', name: 'Sem falha de objetivo',            category: 'objective',  when: 'Intenção correta e conservativa' },
   { code: 'O-B', name: 'Violação rotineira',               category: 'objective',  when: 'Desvio habitual e normalizado' },
-  { code: 'O-C', name: 'Violação excepcional',             category: 'objective',  when: 'Desvio isolado e circunstancial' },
+  { code: 'O-C', name: 'Violação excepcional/circunstancial', category: 'objective',  when: 'Desvio consciente, pontual e não rotineiro' },
   { code: 'O-D', name: 'Intenção não conservativa',        category: 'objective',  when: 'Escolha de opção mais arriscada' },
   { code: 'A-A', name: 'Sem falha de ação',                category: 'action',     when: 'Execução correta' },
   { code: 'A-B', name: 'Deslize/lapso/omissão',            category: 'action',     when: 'Erro involuntário de execução' },

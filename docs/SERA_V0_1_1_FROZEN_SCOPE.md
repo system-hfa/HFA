@@ -55,9 +55,9 @@ Os seguintes pontos metodológicos foram validados e estão congelados para esta
 
 - **Distinção O-D puro vs O-B rotineiro:** O-B exige histórico explícito de prática aceita/normalizada. Objetivo de eficiência sem normalização cultural permanece O-D.
 - **TEST-O-D-001 classificado como P-A / O-D / A-A / ERC 2:** resultado golden validado, registrado como improvement sobre v0.1.
-- **O-C exige proteção humana explícita:** o operador deve ter desviado conscientemente de protocolo *conhecido*, motivado por proteger uma pessoa de risco imediato.
-- **Circunstância excepcional sozinha não é O-C:** pressão de prazo, ferramenta indisponível, omissão administrativa e situações forçadas sem intenção protetiva declarada permanecem O-A.
-- **Déficit de conhecimento ou protocolo médico permanece O-A / A-E, não O-C:** lacuna instrucional não é desvio motivado por objetivo protetivo.
+- **O-C exige desvio consciente excepcional/não rotineiro:** o operador deve ter desviado conscientemente de protocolo *conhecido* de forma pontual e não rotineira. A motivação pode ser conveniência, improviso, pressão situacional ou proteção humana — proteção humana é uma motivação válida, não um requisito.
+- **Circunstância excepcional sozinha não é O-C:** pressão de prazo, ferramenta indisponível, omissão administrativa e situações forçadas sem desvio consciente de regra ou procedimento permanecem O-A.
+- **Déficit de conhecimento ou protocolo médico permanece O-A / A-E, não O-C:** lacuna instrucional não é desvio consciente de objetivo.
 - **A-C cobre não verificação de parâmetro ou resultado da própria intervenção:** checks realizados após a intervenção principal — sem verificação do efeito produzido — são classificados como A-C.
 - **Discriminators de fixtures são documentação/golden rationale, não input de runtime:** o classificador deve funcionar com relato bruto; enriquecer o input com metadados de fixture invalida o baseline.
 - **Sistema deve funcionar com dados brutos e desorganizados:** entrevista estruturada é condição ideal, não pré-requisito.

@@ -375,10 +375,11 @@ export default function FoundationsPage() {
             </p>
             <p className="text-slate-400 text-sm leading-relaxed">
               Isso explica a distinção crítica do SERA entre{' '}
-              <CodeBadge code="O-B" size="sm" /> (violação rotineira) e{' '}
-              <CodeBadge code="O-C" size="sm" /> (violação excepcional): na violação rotineira, o estado perceptual
-              buscado é normalizado e reforçado pela organização. Na excepcional, há uma pressão perceptual
-              específica e temporária que deslocou o comportamento habitual.
+              <CodeBadge code="O-B" size="sm" /> (violação rotineira — "fazemos assim normalmente") e{' '}
+              <CodeBadge code="O-C" size="sm" /> (violação excepcional/circunstancial — "fiz diferente desta vez"):
+              na violação rotineira, o estado perceptual buscado é normalizado e reforçado pela organização — o desvio
+              é habitual e tolerado. Na excepcional, o operador desviou conscientemente de regra ou procedimento
+              de forma pontual e não rotineira — não é seu comportamento habitual nem prática da equipe.
             </p>
           </div>
         </section>

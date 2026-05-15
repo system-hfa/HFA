@@ -33,9 +33,9 @@ Corrigir falhas de classificação identificadas no smoke global v0.1 e aumentar
 - **Problema:** Falhas transientes do LLM (timeout, JSON malformado) causavam erros não recuperáveis que contaminavam a run inteira.
 - **Correção:** Implementação de retry com backoff para falhas transientes de LLM e JSON parse. O pipeline agora reintenta antes de classificar como ERROR.
 
-### 3.4 O-A/O-C — exige proteção humana explícita
-- **Problema:** O-C era atribuído em casos onde não havia evidência explícita e literal de objetivo protetivo humano. Exceções circunstanciais (pressão de prazo, ferramenta indisponível, omissão administrativa) acionavam O-C incorretamente.
-- **Correção:** Gates determinísticos e instruções de prompt reforçadas: O-C exige que o operador tenha desviado conscientemente de um protocolo conhecido, motivado por proteger uma pessoa de risco imediato. Circunstâncias excepcionais sem esse desvio intencional permanecem O-A.
+### 3.4 O-A/O-C — correção da fronteira objetivo nominal vs. desvio excepcional
+- **Problema:** O-C era atribuído em casos onde não havia evidência de desvio consciente de regra ou procedimento conhecido. Exceções circunstanciais sem desvio intencional (pressão de prazo, ferramenta indisponível, omissão administrativa) acionavam O-C incorretamente.
+- **Correção:** Gates determinísticos e instruções de prompt reforçadas: O-C exige que o operador tenha desviado conscientemente de um protocolo conhecido de forma pontual e não rotineira. A motivação pode ser conveniência, improviso, pressão situacional ou proteção humana — proteção humana é um exemplo possível, não um requisito. Circunstâncias excepcionais sem desvio consciente permanecem O-A.
 
 ### 3.5 A-C pós-intervenção/parâmetro
 - **Problema:** Checks de parâmetro realizados após a intervenção principal eram classificados como A-C em vez de permanecer na categoria correta.
@@ -43,7 +43,7 @@ Corrigir falhas de classificação identificadas no smoke global v0.1 e aumentar
 
 ### 3.6 TEST-COMBO-003 — conhecimento médico/protocolo permanece O-A
 - **Problema:** "Médico de bordo administra dose errada por desconhecer protocolo de altitude." Em 1/3 runs do smoke v0.1.1, o LLM classificava o objetivo como O-C (proteção humana) porque confundia *atender o paciente como função nominal* com *desviar conscientemente de protocolo conhecido para proteger alguém*.
-- **Correção:** Gate determinístico inserido em `runStep4` antes do LLM: quando o relato contém evidência explícita de déficit de conhecimento/treinamento (`nao havia recebido treinamento`, `desconhecia o protocolo`, `lacuna de conhecimento`, etc.), o pipeline força O-A sem consultar o LLM. Lacuna instrucional não é desvio motivado por objetivo protetivo.
+- **Correção:** Gate determinístico inserido em `runStep4` antes do LLM: quando o relato contém evidência explícita de déficit de conhecimento/treinamento (`nao havia recebido treinamento`, `desconhecia o protocolo`, `lacuna de conhecimento`, etc.), o pipeline força O-A sem consultar o LLM. Lacuna instrucional não é desvio consciente de objetivo.
 - **Segurança:** Os fixtures O-C legítimos são capturados por `classifyObjectiveByRules` antes de chegar ao novo gate — sem regressão.
 
 ---

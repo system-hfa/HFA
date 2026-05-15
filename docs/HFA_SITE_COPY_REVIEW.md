@@ -44,16 +44,15 @@ A landing page já comunica corretamente:
 
 O formulário de nova análise tem campo "Aeronave" (em vez de "Equipamento" ou campo agnóstico), placeholder "Ex: Voo offshore", placeholder "Ex: Sikorsky S-76" e placeholder "Ex: Aproximação em IMC — Plataforma Albacora". Um investigador de saúde, indústria ou manutenção encontra um formulário que parece feito exclusivamente para pilotos de helicóptero. Isso contradiz a proposta multi-indústria.
 
-### 3.2 O-C definido com a definição metodologicamente incorreta
+### 3.2 O-C definido com a definição metodologicamente incorreta (CORRIGIDO em 2026-05-15)
 
-**Este é o problema mais grave.** Em `learn/objective/page.tsx`:
+**Este foi o problema mais grave — já corrigido.** Em `learn/objective/page.tsx` a definição anterior era imprecisa:
 
-- O nó 3 do fluxo de decisão usa o critério: `"O-C: episódio isolado, circunstancial."` — errado.
-- O resultado O-C diz: "O operador violou normas em circunstâncias específicas e incomuns — não é seu comportamento habitual." — errado.
-- O glossário de O-C diz: "Operador geralmente cumpre as normas mas neste caso específico fez uma exceção." — errado.
-- A seção de distinção crítica diz: "O-C: episódio isolado, geralmente motivado por uma circunstância específica (pressão pontual, surpresa, distração)." — errado.
+- O nó 3 do fluxo de decisão usava o critério: `"O-C: episódio isolado, circunstancial."` — impreciso (não mencionava desvio consciente).
+- O resultado O-C dizia: "O operador violou normas em circunstâncias específicas e incomuns" — impreciso (não exigia consciência do desvio).
+- A seção de distinção crítica dizia: "episódio isolado, geralmente motivado por uma circunstância específica" — impreciso (podia incluir casos sem desvio consciente).
 
-**A definição correta:** O-C exige que o operador tenha desviado conscientemente de um protocolo *conhecido*, motivado por proteger uma pessoa de risco imediato. Circunstância excepcional isolada sem intenção protetiva explícita permanece O-A.
+**A definição correta (já aplicada):** O-C = violação excepcional/circunstancial — desvio consciente, pontual e não rotineiro de regra, procedimento ou expectativa operacional. A motivação pode ser conveniência, improviso, pressão situacional ou proteção humana — proteção humana é um exemplo possível, não um requisito. O que define O-C é o desvio consciente e excepcional, não a motivação protetiva.
 
 ### 3.3 "Automatizada" pode soar como substituição do investigador
 
@@ -83,7 +82,7 @@ As seguintes correções devem ser refletidas nos textos do site e do produto:
 
 | Código/Conceito | Texto atual (errado) | Texto correto |
 |---|---|---|
-| **O-C** | "episódio isolado, circunstancial" / "exceção à regra habitual" | Desvio consciente de protocolo *conhecido*, motivado por proteger uma pessoa de risco imediato. Exige proteção humana explícita. |
+| **O-C** | "episódio isolado, circunstancial" / "exceção à regra habitual" (definição anterior — imprecisa) | Desvio consciente, pontual e não rotineiro de regra, procedimento ou expectativa operacional. A motivação pode ser conveniência, improviso, pressão situacional ou proteção humana — proteção humana é um exemplo possível, não um requisito. |
 | **O-A** | Apenas "tentando fazer a coisa certa" | Inclui tarefa nominal sob restrição externa (prazo, ferramenta indisponível) se não houver objetivo desviante explícito. |
 | **O-D** | Implicitamente ligado a pressão de prazo | Eficiência/economia/ganho operacional proativo. Não é simples pressão de prazo sem escolha consciente de risco. |
 | **A-C** | Referência genérica a feedback | Falha de verificação/feedback da própria ação, incluindo não confirmar parâmetros pós-intervenção. |
@@ -230,7 +229,7 @@ Esta mensagem deve orientar o tom de todos os textos do produto: ela comunica en
 
 | Arquivo | Prioridade | Tipo de alteração | Risco | Teste visual | Teste SERA |
 |---|---|---|---|---|---|
-| `frontend/src/app/(dashboard)/learn/objective/page.tsx` | **Crítico** | Corrigir definição de O-C de "episódio isolado/circunstancial" para "objetivo protetivo humano explícito"; corrigir fluxo de decisão, glossário e seção de distinção crítica | Médio — texto; não altera comportamento do pipeline | Sim (verificar renderização do fluxo de decisão) | Não |
+| `frontend/src/app/(dashboard)/learn/objective/page.tsx` | **Crítico — CORRIGIDO** | Corrigir definição de O-C: "violação excepcional/circunstancial" como desvio consciente, pontual e não rotineiro; proteção humana como exemplo possível, não requisito; fluxo de decisão, glossário e seção de distinção atualizados | Médio — texto; não altera comportamento do pipeline | Sim (verificar renderização do fluxo de decisão) | Não |
 | `frontend/src/app/page.tsx` | **Alta** | Adicionar seção "Que dados posso enviar", seção de suficiência, ampliar exemplos multi-indústria; revisar headline/subheadline | Baixo — página estática | Sim (landing completa) | Não |
 | `frontend/src/app/(dashboard)/events/new/page.tsx` | **Alta** | Tornar campos agnósticos de setor (renomear "Aeronave" → "Equipamento/aeronave", corrigir placeholders de título e operação); atualizar helper text do campo de relato; substituir "análise automatizada" por "análise assistida" | Baixo — apenas texto e placeholder | Sim (formulário de criação) | Não |
 | `frontend/src/app/(dashboard)/learn/foundations/page.tsx` | **Alta** | Verificar e corrigir qualquer menção a O-C que use a definição antiga; verificar A-C pós-intervenção | Baixo — texto | Sim (página learn) | Não |

@@ -173,18 +173,18 @@ Para cada código:
 
 ---
 
-### O-C — Falha de Intenção / Violação Excepcional
+### O-C — Violação Excepcional/Circunstancial
 
-**Definição:** Desvio *isolado* e *consciente* de protocolo conhecido, motivado por objetivo protetivo humano — salvar, proteger ou evitar agravamento de risco imediato a uma pessoa.
+**Definição:** Desvio *isolado*, *consciente* e *não rotineiro* de regra, procedimento ou expectativa operacional conhecida. A motivação pode ser conveniência, improviso, pressão situacional, atalho pontual, proteção humana ou qualquer outra razão circunstancial — proteção humana é um exemplo possível, não um requisito.
 
 | | |
 |---|---|
-| **Evidência positiva** | Operador sabia que estava violando um protocolo; o motivo era explicitamente proteger alguém (passageiro, paciente, colega em risco imediato); violação foi atípica e não habitual |
-| **Evidência negativa** | Operador não conhecia o protocolo que violou (→ O-A/A-E); atendimento médico como função nominal sem emergência (→ O-A); violação habitual sem caráter excepcional (→ O-B); ganho de eficiência como motivo (→ O-D); "atendimento eletivo" explícito; ausência de risco humano imediato |
-| **Confusões comuns** | O-A e O-B — O-C é a **única** categoria que exige desvio consciente de protocolo conhecido + motivação protetiva humana explícita |
-| **Exemplos de fronteira** | Piloto pousa sem autorização para atender passageiro em suspeita de infarto → O-C; médico administra dose errada por desconhecer protocolo de altitude → O-A (não sabia que estava desviando) |
+| **Evidência positiva** | Operador sabia que estava desviando de um protocolo ou expectativa operacional; o desvio foi pontual, atípico e não habitual; o operador normalmente cumpre as regras mas desta vez fez diferente |
+| **Evidência negativa** | Operador não conhecia o protocolo do qual desviou (→ O-A/A-E); violação habitual, repetida ou normalizada pela equipe (→ O-B); ganho de eficiência, economia ou produtividade como objetivo dominante (→ O-D); erro por desconhecimento ou falta de treinamento (→ O-A); pressão de prazo ou ferramenta indisponível sem desvio consciente (→ O-A) |
+| **Confusões comuns** | O-A (objetivo nominal sem desvio) e O-B (violação rotineira/normalizada) — O-C exige desvio consciente de regra/procedimento/expectativa conhecida, de forma pontual e não rotineira |
+| **Exemplos de fronteira** | Operador que decide pular uma etapa de verificação uma única vez por achar que não haveria problema → O-C; piloto pousa sem autorização para atender passageiro em suspeita de infarto → O-C; médico administra dose errada por desconhecer protocolo de altitude → O-A (não sabia que estava desviando) |
 
-> **Regra crítica:** O-C exige proteção humana **explícita e literal** no texto. Circunstância excepcional, pressão de tempo, ferramenta indisponível, lacuna de conhecimento e omissão administrativa **não são O-C** sem evidência de intenção protetiva consciente.
+> **Regra crítica:** O-C exige desvio **consciente** de regra, procedimento ou expectativa operacional conhecida, de forma **pontual e não rotineira**. Proteção humana é uma motivação válida de O-C, mas não é requisito. Circunstância excepcional sem desvio consciente (erro por desconhecimento, falta de treinamento, ferramenta indisponível, pressão de prazo sem decisão de desviar) **não é O-C**. Violação habitual e normalizada culturalmente é O-B. Eficiência/economia/produtividade como objetivo dominante é O-D.
 
 **Fixtures relevantes:** TEST-O-C-001, TEST-O-C-002, TEST-GEN-OC-001, TEST-GEN-OC-002, TEST-GEN-OC-003
 
@@ -463,10 +463,10 @@ As pré-condições SERA identificam os fatores organizacionais, humanos e ambie
 
 ### O-A vs O-C
 
-O-A: objetivo nominal, sem intenção desviante.
-O-C: desvio consciente de protocolo **conhecido**, motivado por proteger uma pessoa de risco imediato.
+O-A: objetivo nominal, sem intenção desviante. O operador não desviou conscientemente de regra ou procedimento.
+O-C: desvio consciente de regra, procedimento ou expectativa operacional **conhecida**, de forma pontual e não rotineira. A motivação pode ser qualquer razão circunstancial — proteção humana é um exemplo possível, não um requisito.
 
-**Regra:** Se o operador não sabia que estava violando um protocolo (lacuna de conhecimento), é O-A — não O-C. O-C exige violação consciente + motivação protetiva explícita e literal.
+**Regra:** Se o operador não sabia que estava desviando de um protocolo (lacuna de conhecimento), é O-A — não O-C. O-C exige desvio consciente + caráter excepcional/não rotineiro.
 
 | Caso | Código |
 |---|---|
@@ -474,6 +474,8 @@ O-C: desvio consciente de protocolo **conhecido**, motivado por proteger uma pes
 | Piloto pousa sem autorização para atender passageiro com suspeita de infarto | O-C |
 | Operador segue procedimento que acredita ser o correto mas não é | O-A |
 | Operador sabe que viola procedimento mas decide fazê-lo para salvar colega | O-C |
+| Operador decide pular uma etapa de verificação uma única vez por achar desnecessária | O-C |
+| Profissional descumpre protocolo isoladamente por pressão situacional, sem ser prática habitual | O-C |
 
 ---
 
