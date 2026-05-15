@@ -2005,12 +2005,10 @@ export async function runStep4(relato: string, pontoFuga: Step2Result): Promise<
 - NEVER skip the first decision node: "Consistent with rules and regulations?" This MUST be answered before any other.
 - NEVER classify O-D if there is evidence of rule violation — O-D requires the goal to be consistent with rules but not conservative.
 - NEVER classify O-B (routine violation) without evidence of repeated behavior or normalized shortcut ("todos fazem", "burocracia", atalho cultural).
-- NEVER classify O-C without evidence of EXPLICIT human protective motive (proteger passageiro/paciente/colega/equipe de risco imediato). Exceptional circumstance alone (pressure, tool not available, knowledge gap, administrative omission) is NOT O-C.
-- A single non-routine violation with no explicit human protective motive remains O-A (nominal objective, execution-level problem).
 - Classify objective before action execution details.
-- O-D requires explicit motive of efficiency/economy (tempo, combustível, custo, produtividade).
-- O-C requires explicit prosocial/protective motive (proteger pessoa/paciente/passageiro).
-- O-B requires explicit normalized shortcut/routine violation ("todos fazem", "burocracia", atalho cultural).
+- O-D requires explicit motive of efficiency/economy (tempo, combustível, custo, produtividade). O-D does NOT involve rule violation.
+- O-C is an exceptional/non-routine conscious violation of a rule or procedure. The motive can be convenience, situational pressure, improvisation, protective intent, or any other circumstantial reason. O-C does NOT require human protective intent.
+- O-B requires explicit normalized shortcut/routine violation ("todos fazem", "burocracia", atalho cultural, histórico repetido).
 - If evidence is insufficient, set justificativa to "DADO INSUFICIENTE".
 
 Você é um especialista SERA aplicando o fluxo de Objetivo (4-Flow.json).
@@ -2045,7 +2043,7 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
       resposta: 'Não',
       objetivo_identificado:
         objectiveRule.code === 'O-C'
-          ? 'proteção humana explícita'
+          ? 'violação excepcional/circunstancial'
           : objectiveRule.code === 'O-B'
           ? 'violação rotineira normalizada'
           : 'eficiência/economia operacional',
@@ -2053,7 +2051,7 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
     logMethodology('runStep4', `Gate classifyObjectiveByRules ${objectiveRule.code}`, no1, [objectiveRule.code], true)
     const discarded =
       objectiveRule.code === 'O-C'
-        ? 'O-A, O-B e O-D descartados — regra determinística: objetivo protetivo humano explícito'
+        ? 'O-A, O-B e O-D descartados — regra determinística: violação consciente excepcional/circunstancial'
         : objectiveRule.code === 'O-B'
         ? 'O-A, O-C e O-D descartados — regra determinística: violação rotineira/normalizada'
         : 'O-A, O-B e O-C descartados — regra determinística: objetivo de eficiência/economia'
@@ -2066,7 +2064,7 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
       objetivo_identificado: 'objetivo operacional nominal',
     })
     logMethodology('runStep4', 'Gate O-A anti O-C', no1, ['O-A'], true)
-    return flowResult('O-A', [no1], 'O-B, O-C e O-D descartados — O-C exige intenção explícita de proteção humana')
+    return flowResult('O-A', [no1], 'O-B, O-C e O-D descartados — contexto de comunicação/coordenação operacional sem desvio consciente de objetivo')
   }
 
   const hasKnowledgeDeficitObjectiveContext =
@@ -2075,11 +2073,11 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
     )
   if (hasKnowledgeDeficitObjectiveContext) {
     const noKD = methodologyNode(
-      'Gate determinístico: déficit explícito de conhecimento/treinamento — causa instrucional sem desvio motivado por objetivo protetivo.',
+      'Gate determinístico: déficit explícito de conhecimento/treinamento — operador não desviou conscientemente de protocolo conhecido; objetivo era nominal.',
       { resposta: 'Sim', objetivo_identificado: 'objetivo operacional nominal' }
     )
-    logMethodology('runStep4', 'Gate O-A anti O-C (knowledge deficit)', noKD, ['O-A'], true)
-    return flowResult('O-A', [noKD], 'O-B, O-C e O-D descartados — lacuna explícita de conhecimento/treinamento é causa instrucional, não objetivo protetivo desviante')
+    logMethodology('runStep4', 'Gate O-A (knowledge deficit)', noKD, ['O-A'], true)
+    return flowResult('O-A', [noKD], 'O-B, O-C e O-D descartados — lacuna explícita de conhecimento/treinamento indica objetivo nominal sem desvio consciente de protocolo')
   }
 
   const r1 = await ask(
@@ -2113,16 +2111,15 @@ Responda APENAS com JSON:
 Relato: ${relato}
 Nó 1: Objetivo NÃO consistente com normas (O-A e O-D DESCARTADOS).
 
-NÓ 2 — Qual é a natureza da violação de objetivo? Escolha exatamente um:
-• "protecao_humana": existe evidência EXPLÍCITA e LITERAL de que o objetivo da violação era proteger uma pessoa (passageiro, paciente, colega, equipe) de risco imediato → O-C
-• "rotineira": existe evidência de violação normalizada, atalho cultural repetido ("todos fazem", "burocracia", histórico de repetição) → O-B
-• "nominal": a violação ocorreu no contexto de cumprir a tarefa nominal, sem evidência de objetivo protetivo ou normalizante (inclui pressão de prazo, ferramenta indisponível, lacuna de conhecimento, omissão administrativa) → O-A
-Responda APENAS com JSON: {"tipo": "protecao_humana/rotineira/nominal", "justificativa": "..."}`
+NÓ 2 — Esta violação de objetivo é rotineira/habitual ou excepcional/isolada?
+• "rotineira": desvio normalizado, habitual, atalho cultural repetido, aceito ou tolerado pela organização/equipe ("todos fazem", "burocracia", histórico explícito de repetição) → O-B
+• "excepcional": desvio consciente, pontual, isolado, não normalizado — a motivação pode ser conveniência, improviso, pressão situacional, proteção humana ou qualquer razão circunstancial que não seja prática habitual → O-C
+Responda APENAS com JSON: {"tipo": "rotineira/excepcional", "justificativa": "..."}`
     )
     const no2 = safeParse(r2, 'Etapa 4 - Nó 2') as RawFlowNode
     const tipo2 = String(no2.tipo || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z_]/g, '')
-    const codigo: 'O-A' | 'O-B' | 'O-C' = tipo2.includes('rotineira') ? 'O-B' : tipo2.includes('protec') ? 'O-C' : 'O-A'
-    const discarded2 = codigo === 'O-B' ? 'O-A, O-C e O-D descartados — violação rotineira normalizada' : codigo === 'O-C' ? 'O-A, O-B e O-D descartados — objetivo protetivo humano explícito' : 'O-B, O-C e O-D descartados — objetivo nominal sem proteção humana'
+    const codigo: 'O-B' | 'O-C' = tipo2.includes('rotineira') ? 'O-B' : 'O-C'
+    const discarded2 = codigo === 'O-B' ? 'O-A, O-C e O-D descartados — violação rotineira/normalizada' : 'O-A, O-B e O-D descartados — violação consciente excepcional/não rotineira'
     return flowResult(codigo, [no1, no2], discarded2)
   }
 

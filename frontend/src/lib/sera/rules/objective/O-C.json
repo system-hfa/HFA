@@ -1,13 +1,13 @@
 {
   "code": "O-C",
-  "label": "Violação excepcional/altruística",
-  "description": "Objetivo pró-social conflitante com regra/procedimento para proteger pessoa, passageiro, paciente ou equipe.",
+  "label": "Violação excepcional/circunstancial",
+  "description": "Desvio consciente e pontual de regra ou procedimento, isolado, não rotineiro, não normalizado pela equipe ou organização. A motivação pode ser conveniência, improviso, pressão situacional, proteção humana ou qualquer razão circunstancial. Proteção humana é um exemplo válido, não um requisito definidor.",
   "priority": 8,
-  "positive_evidence": ["proteger passageiro", "proteger paciente", "proteger pessoa", "proteger equipe", "passageiro doente", "paciente", "salvar alguem", "evitar mal maior", "evitar piora medica", "emergencia humana"],
+  "positive_evidence": ["proteger passageiro", "proteger paciente", "proteger pessoa", "proteger equipe", "passageiro doente", "paciente", "salvar alguem", "evitar mal maior", "evitar piora medica", "emergencia humana", "decidiu pular", "decidiu omitir", "optou por nao seguir", "excecao unica", "desta vez", "neste caso especifico"],
   "negative_evidence": ["readback", "frequencia", "congestionamento", "comunicacao atc", "coordenacao operacional", "radio", "produtividade", "combustivel", "eficiencia", "rota direta", "janela meteorologica"],
   "exclusive_against": ["O-A", "O-B", "O-D"],
-  "requires": ["intencao explicita de protecao humana"],
-  "forbids": ["comunicacao operacional sem intencao altruistica", "eficiencia ou economia"],
-  "examples": ["pouso sem autorização para proteger passageiro doente"],
+  "requires": ["desvio consciente nao rotineiro de regra ou procedimento conhecido ou expectativa operacional aplicavel"],
+  "forbids": ["violacao habitual/normalizada (O-B)", "decisao nao conservativa sem violacao de regra (O-D)", "objetivo nominal sem desvio consciente (O-A)"],
+  "examples": ["pouso sem autorização para proteger passageiro doente", "operador pula etapa de verificação uma única vez por considerar desnecessária naquele contexto", "equipe improvisa atalho pontual não usual por pressão situacional circunstancial"],
   "target_fixtures": ["TEST-O-C"]
 }
