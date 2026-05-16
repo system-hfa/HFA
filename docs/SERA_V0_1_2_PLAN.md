@@ -8,8 +8,8 @@
 | Fase | Escopo | Commit | Status |
 |---|---|---|---|
 | v0.1.2-A | Fixtures O-C não-protetivo (NP-001 a NP-005) | `7f8822dd` | ✅ Concluída — 15/15 PASS, determinism_rate 1.0 |
-| v0.1.2-B | Política de preconditions + draft matriz código-evidência | — | 🔄 Em andamento |
-| v0.1.2-C | Smoke-fast + marcação fixtures precondition-critical | — | ⏳ Pendente |
+| v0.1.2-B | Política de preconditions + draft matriz código-evidência | `7364bb58` | ✅ Concluída |
+| v0.1.2-C | Smoke-fast + marcação fixtures precondition-critical | — | 🔄 Em andamento |
 
 ---
 

@@ -1,0 +1,26 @@
+# SERA Smoke Fast — lista de fixtures v0.1.2
+# Uma fixture ID por linha. Linhas com # são comentários e são ignoradas.
+# Não alterar sem decisão metodológica documentada.
+# Ver: docs/SERA_SMOKE_FAST_v0.1.2.md
+
+# ── Percepção ──────────────────────────────────────────────────────────────
+TEST-P-D-001
+TEST-P-H-001
+TEST-P-G-001
+
+# ── Objetivo — cobertura completa de todos os códigos O ────────────────────
+TEST-O-B-001
+TEST-O-C-001
+TEST-GEN-OC-001
+TEST-O-D-001
+TEST-GEN-OC-NP-001
+TEST-GEN-OC-NP-005
+
+# ── Ação ───────────────────────────────────────────────────────────────────
+TEST-A-B-001
+TEST-A-C-001
+TEST-A-E-001
+
+# ── Combo / ERC alta severidade ────────────────────────────────────────────
+TEST-COMBO-001
+TEST-ERC-4-001
