@@ -1,0 +1,397 @@
+{
+  "version": "v0.1.2-draft",
+  "status": "draft",
+  "baseline_reference": "sera-v0.1.1",
+  "policy_reference": "docs/SERA_PRECONDITIONS_POLICY_v0.1.2.md",
+  "notes": [
+    "This catalog does not change runner behavior.",
+    "Critical/Expected/Optional classes are advisory until runner support exists.",
+    "Noise_if_present flags preconditions whose presence indicates likely spurious inference.",
+    "Recall data from baseline: tests/reports/baseline/sera-baseline-v0.1.1-smoke.json",
+    "NP-001 and NP-005 are from v0.1.2-A validation (not in v0.1.1 baseline).",
+    "catalog_role: 'active' = has Critical preconditions, gate candidate; 'monitoring' = no Critical defined, included for observation; 'audit_anomaly' = top_preconditions require review before use."
+  ],
+  "fixtures": [
+    {
+      "fixture_id": "TEST-P-D-001",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-D",
+        "objective": "O-A",
+        "action": "A-A",
+        "erc": 3
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "0/3",
+        "avg_recall": 0.42,
+        "consistently_returned": ["T1", "O2"],
+        "never_returned": ["O1", "S3"],
+        "extra_returned": ["P2", "T2", "O3"]
+      },
+      "preconditions": {
+        "critical": ["T1", "O1"],
+        "expected": ["O2"],
+        "optional": ["S3"],
+        "noise_if_present": []
+      },
+      "rationale": {
+        "critical": {
+          "T1": "Texto: 'período de pico operacional' e 'simultaneamente 3 solicitações de mudança de rota' — pressão temporal e atencional explícita e central à sobrecarga. T1 retornado em 3/3 runs.",
+          "O1": "Texto: '14 aeronaves simultâneas no setor' — alta carga operacional explicitamente declarada como contexto causal da sobrecarga perceptiva. Apesar de evidência textual clara, O1 nunca retornado pelo motor (ver issue EVM-009)."
+        },
+        "expected": {
+          "O2": "Texto: '3 solicitações de mudança de rota' simultâneas — carga de tarefas paralelas. Plausível e coerente; retornado em 2/3 runs."
+        },
+        "optional": {
+          "S3": "Supervisão não mencionada no relato. Presente em top_preconditions por associação metodológica a P-D, mas sem evidência textual."
+        },
+        "noise_if_present": {}
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "O1 nunca retornado pelo motor apesar de evidência textual explícita ('14 aeronaves simultâneas'). Gap candidato a investigação — ver issue EVM-009. S3 em top_pre parece inflado."
+    },
+    {
+      "fixture_id": "TEST-P-C-001",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-C",
+        "objective": "O-A",
+        "action": "A-A",
+        "erc": 3
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "0/3",
+        "avg_recall": 0.33,
+        "consistently_returned": ["P6"],
+        "never_returned": ["P7", "W1"],
+        "extra_returned": []
+      },
+      "preconditions": {
+        "critical": ["P6"],
+        "expected": [],
+        "optional": ["W1"],
+        "noise_if_present": ["P7"]
+      },
+      "rationale": {
+        "critical": {
+          "P6": "Texto: 'Nunca havia operado esse modelo de altímetro anteriormente — seu treinamento inicial foi realizado em aeronaves com altímetros digitais.' Déficit de conhecimento específico é a causa central e explicitamente declarada. Retornado em 3/3 runs."
+        },
+        "expected": {},
+        "optional": {
+          "W1": "O design do altímetro de três ponteiros pode ser considerado fator de interface. Texto não atribui causa ao equipamento — a causa é o déficit de treinamento. Contextual."
+        },
+        "noise_if_present": {
+          "P7": "Estado psicológico não mencionado no relato. Inferência por plausibilidade geral. Se retornado, recomendação de intervenção psicológica seria metodologicamente incorreta para este caso."
+        }
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "Motor retorna apenas P6, que é correto. P7 e W1 em top_preconditions parecem inflados — considerar remoção em revisão futura da fixture."
+    },
+    {
+      "fixture_id": "TEST-P-G-001",
+      "catalog_role": "monitoring",
+      "classification": {
+        "perception": "P-G",
+        "objective": "O-A",
+        "action": "A-B",
+        "erc": 3
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "0/3",
+        "avg_recall": 0.75,
+        "consistently_returned": ["P6", "W1", "O3", "O4"],
+        "never_returned": ["P2"],
+        "extra_returned": ["W1"]
+      },
+      "preconditions": {
+        "critical": [],
+        "expected": ["P6", "O3", "O4"],
+        "optional": ["P2"],
+        "noise_if_present": ["W1"]
+      },
+      "rationale": {
+        "critical": {},
+        "expected": {
+          "P6": "Derivado da regra determinística P-G+A-B na matrix.json. Texto do relato descreve piloto com 3.200 horas de experiência — sem menção explícita a déficit de treinamento. P6 é plausível metodologicamente para P-G, mas não é evidenciado pelo texto da fixture. Mover para Expected per regra: 'Critical somente com evidência textual explícita'.",
+          "O3": "Checklist prevê verificação visual do combustível, portanto o procedimento EXISTS — o piloto o ignorou por complacência ('assumindo que estavam cheios como de costume'), não por ausência de procedimento. O3 como 'ausência de procedimento formal' não é textualmente explícito; O3 como 'procedimento formal ignorado' é borderline. Mantido como Expected.",
+          "O4": "Texto: 'O checklist prevê verificação visual do nível de combustível' — requisito procedural específico existe. Plausível e coerente. Retornado em 3/3 runs pela matrix."
+        },
+        "optional": {
+          "P2": "Julgamento individual ('assumindo que estavam cheios') — borderline; a causa dominante é complacência (P3), que não está em top_preconditions. P2 nunca retornado pelo motor."
+        },
+        "noise_if_present": {
+          "W1": "Nenhuma falha de equipamento descrita no cenário. Retornado pelo motor em 3/3 runs via regra matrix P-G+A-B, mas a causa é comportamental (complacência do piloto), não falha de hardware. Se retornado, gera recomendação de intervenção em equipamento sem justificativa. Ver issue EVM-008."
+        }
+      },
+      "release_blocking_policy": "none — no critical preconditions defined",
+      "review_notes": "Fixture de MONITORAMENTO — incluída para observação, não é gate release-blocking. Regra matrix P-G+A-B retorna [W1, O3, O4, P6] deterministicamente, mas P6 não tem base textual explícita (piloto experiente, 3.200 horas). P3 (complacência) seria Critical com base no texto ('assumindo como de costume') mas não está em top_preconditions. Fixture candidata a revisão de top_preconditions em versão futura. W1 retornado sem base — ver EVM-008."
+    },
+    {
+      "fixture_id": "TEST-A-E-001",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-C",
+        "objective": "O-A",
+        "action": "A-E",
+        "erc": 2
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "0/3",
+        "avg_recall": 0.50,
+        "consistently_returned": ["P6", "O4"],
+        "never_returned": ["P7", "S3"],
+        "extra_returned": ["W1"]
+      },
+      "preconditions": {
+        "critical": ["P6"],
+        "expected": ["O4"],
+        "optional": ["S3"],
+        "noise_if_present": ["P7"]
+      },
+      "rationale": {
+        "critical": {
+          "P6": "Texto: 'O técnico não havia recebido treinamento type-specific para aquele modelo.' Déficit de conhecimento explicitamente declarado como causa central. Retornado em 3/3 runs."
+        },
+        "expected": {
+          "O4": "Contexto procedural — manual existe mas técnico não compreendeu a lógica do sistema digital. Plausível e retornado em 3/3 runs."
+        },
+        "optional": {
+          "S3": "Ausência de supervisão poderia ter detectado a lacuna de qualificação antes da designação. Não mencionada explicitamente no relato."
+        },
+        "noise_if_present": {
+          "P7": "Estado psicológico ou emocional não evidenciado textualmente. Se retornado, indica overreach do LLM."
+        }
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "W1 retornado em 3/3 runs como 'extra' — candidato a adição em top_pre se o cenário mencionar interface/equipamento. P7 e S3 em top_pre parecem inflados."
+    },
+    {
+      "fixture_id": "TEST-ERC-4-001",
+      "catalog_role": "audit_anomaly",
+      "classification": {
+        "perception": "P-A",
+        "objective": "O-A",
+        "action": "A-B",
+        "erc": 4
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "0/3",
+        "avg_recall": 0.00,
+        "consistently_returned": [],
+        "never_returned": ["W1", "O3"],
+        "extra_returned": ["P2", "T2", "S3", "O4"]
+      },
+      "preconditions": {
+        "critical": [],
+        "expected": ["O3"],
+        "optional": [],
+        "noise_if_present": ["W1"]
+      },
+      "rationale": {
+        "critical": {},
+        "expected": {
+          "O3": "Cenário descreve omissão de registro administrativo secundário — O3 (falha de procedimento formal) é plausível. Porém o procedimento EXISTE (técnico sabia que devia preencher), o que torna O3 discutível (seria mais O4 que O3). Mantido como Expected com ressalva."
+        },
+        "optional": {},
+        "noise_if_present": {
+          "W1": "Falha de equipamento não descrita — técnico executou verificação principal corretamente. W1 em top_pre provavelmente incorreto para este cenário."
+        }
+      },
+      "release_blocking_policy": "none — top_preconditions require review before use",
+      "review_notes": "ANOMALIA DE AUDITORIA: recall=0.00 em 3/3 runs. Motor NUNCA retorna W1 ou O3. Retorna P2/T2/S3/O4 com variação não determinística entre runs. Cenário é omissão de registro administrativo secundário sem falha de equipamento — W1 em top_pre é provavelmente incorreto. O3 é questionável. Não usar como gate de release até revisão do top_preconditions da fixture. Ver issue EVM-007."
+    },
+    {
+      "fixture_id": "TEST-COMBO-003",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-C",
+        "objective": "O-A",
+        "action": "A-E",
+        "erc": 2
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "0/3",
+        "avg_recall": 0.40,
+        "consistently_returned": ["P6", "O4"],
+        "never_returned": ["O3", "P7", "S3"],
+        "extra_returned": []
+      },
+      "preconditions": {
+        "critical": ["P6"],
+        "expected": ["O3", "O4"],
+        "optional": ["S3"],
+        "noise_if_present": ["P7"]
+      },
+      "rationale": {
+        "critical": {
+          "P6": "Texto: 'Não havia recebido treinamento específico para medicina aeronáutica/offshore.' Déficit de conhecimento específico declarado explicitamente. Retornado em 3/3 runs."
+        },
+        "expected": {
+          "O3": "Texto menciona protocolo específico para ambiente pressurizado — procedimento existia mas não foi comunicado/treinado ao médico. Plausível como falha de procedimento formal (comunicação). Nunca retornado — gap candidato.",
+          "O4": "Contexto procedural (protocolo de dosagem alternativa em altitude). Retornado em 3/3 runs."
+        },
+        "optional": {
+          "S3": "Ausência de briefing ou supervisão no onboarding do médico de bordo. Plausível mas não mencionado explicitamente."
+        },
+        "noise_if_present": {
+          "P7": "Estado psicológico ou emocional não mencionado no relato. Inferência sem base textual."
+        }
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "O3 nunca retornado apesar de plausível — gap candidato. Motor consistente em P6+O4, correto para P-C+A-E. P7 e S3 em top_pre parecem inflados."
+    },
+    {
+      "fixture_id": "TEST-O-B-001",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-A",
+        "objective": "O-B",
+        "action": "A-A",
+        "erc": 1
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "3/3",
+        "avg_recall": 1.00,
+        "consistently_returned": ["P3", "T1", "S3", "O5", "O6"],
+        "never_returned": [],
+        "extra_returned": []
+      },
+      "preconditions": {
+        "critical": ["P3", "S3"],
+        "expected": ["O5", "O6"],
+        "optional": ["T1"],
+        "noise_if_present": []
+      },
+      "rationale": {
+        "critical": {
+          "P3": "Texto: 'a equipe de pilotos tinha o hábito estabelecido de não realizar o checklist completo' — complacência coletiva explicitamente declarada. Central para O-B normalizado. Retornado em 3/3 runs.",
+          "S3": "Texto: 'Este comportamento era conhecido pelos supervisores de linha, que nunca o questionaram.' — ausência de supervisão/intervenção explicitamente declarada. Central para O-B: sem supervisão efetiva, o desvio não foi corrigido. Retornado em 3/3 runs."
+        },
+        "expected": {
+          "O5": "Normas organizacionais não cumpridas — consistente com O-B sistêmico. Retornado em 3/3 runs.",
+          "O6": "Cultura organizacional permissiva com desvios — esperado em O-B coletivo. Retornado em 3/3 runs."
+        },
+        "optional": {
+          "T1": "Pressão temporal pode ter sido fator histórico na normalização do desvio, mas não está explicitamente descrita no relato como causa. Retornado em 3/3 runs."
+        },
+        "noise_if_present": {}
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "Fixture de referência positiva para O-B — recall perfeito (3/3 PASS). Regressão em P3 ou S3 indicaria quebra na regra determinística O-B+A-A da matrix.json."
+    },
+    {
+      "fixture_id": "TEST-O-C-001",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-A",
+        "objective": "O-C",
+        "action": "A-A",
+        "erc": 2
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "3/3",
+        "avg_recall": 1.00,
+        "consistently_returned": ["P2", "T1", "S1", "O3"],
+        "never_returned": [],
+        "extra_returned": []
+      },
+      "preconditions": {
+        "critical": ["S1", "O3"],
+        "expected": ["P2", "T1"],
+        "optional": [],
+        "noise_if_present": []
+      },
+      "rationale": {
+        "critical": {
+          "S1": "Texto: 'passageiro com suspeita de infarto' — presença de pessoa em risco que motivou o desvio consciente é explicitamente declarada. Pressão situacional de proteger terceiro é o fator central do O-C protetivo. Retornado em 3/3 runs.",
+          "O3": "Texto: 'não ter autorização de pouso para aquele aeródromo em seu certificado' e 'pousou sem notificar o CINDACTA' — o piloto conhecia as regras que estava descumprindo. Conhecimento do procedimento é explicitamente evidenciado pelo relato. Retornado em 3/3 runs."
+        },
+        "expected": {
+          "P2": "Julgamento individual do piloto — central em O-C, mas mediador do desvio, não causa primária. Retornado em 3/3 runs.",
+          "T1": "Urgência médica — implícita na situação (suspeita de infarto), mas não declarada como pressão temporal explícita com horário/prazo. Retornado em 3/3 runs."
+        },
+        "optional": {},
+        "noise_if_present": {}
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "Fixture de referência positiva para O-C protetivo — recall perfeito (3/3 PASS). Regressão em S1 ou O3 indicaria quebra na regra determinística O-C+A-A da matrix.json. Comparar S1 com TEST-GEN-OC-NP-001 onde S1 não deve ser retornado."
+    },
+    {
+      "fixture_id": "TEST-GEN-OC-NP-001",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-A",
+        "objective": "O-C",
+        "action": "A-A",
+        "erc": 2
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "not_in_v0.1.1_baseline",
+        "avg_recall": null,
+        "consistently_returned": null,
+        "never_returned": null,
+        "extra_returned": null
+      },
+      "preconditions": {
+        "critical": ["P2", "O3"],
+        "expected": [],
+        "optional": ["S3"],
+        "noise_if_present": ["S1", "T1"]
+      },
+      "rationale": {
+        "critical": {
+          "P2": "Texto: 'o técnico julgou a etapa desnecessária para aquele serviço específico' — decisão individual explícita, não motivada por pressão externa. Central para O-C não-protetivo por conveniência.",
+          "O3": "Texto: 'O técnico conhecia a obrigatoriedade da PT antes de qualquer intervenção' — procedimento conhecido explicitamente declarado. Central para distinguir O-C de O-A."
+        },
+        "expected": {},
+        "optional": {
+          "S3": "Texto menciona supervisor em reunião de handover — ausência de supervisão contextual. Não foi a causa do desvio, mas contribuiu para o contexto."
+        },
+        "noise_if_present": {
+          "S1": "Cenário não-protetivo: não há passageiro, paciente ou terceiro vulnerável. Regra O-C__A-A na matrix.json tem evidências de S1 enviesadas para vocabulário protetivo. Se retornado, indica over-match da regra sem base real. Ver issue EVM-001.",
+          "T1": "Nenhuma pressão temporal descrita — técnico decidiu por julgamento próprio, não por urgência. Se retornado, indica inferência sem ancoragem textual."
+        }
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "Fixture v0.1.2-A. Validada PASS 3/3 em P/O/A/ERC. Precondition recall não medido ainda. Issue EVM-001: S1 da matrix O-C__A-A usa vocabulário protetivo — para NP-001, S1 provavelmente não será retornado. Medir precondition_recall em próxima validação seletiva."
+    },
+    {
+      "fixture_id": "TEST-GEN-OC-NP-005",
+      "catalog_role": "active",
+      "classification": {
+        "perception": "P-C",
+        "objective": "O-A",
+        "action": "A-E",
+        "erc": 2
+      },
+      "baseline_precondition_recall": {
+        "pass_rate": "not_in_v0.1.1_baseline",
+        "avg_recall": null,
+        "consistently_returned": null,
+        "never_returned": null,
+        "extra_returned": null
+      },
+      "preconditions": {
+        "critical": ["P5"],
+        "expected": [],
+        "optional": ["S1"],
+        "noise_if_present": ["O1", "T3"]
+      },
+      "rationale": {
+        "critical": {
+          "P5": "Texto: 'não havia recebido treinamento específico para a especificação do [aço de alta resistência]' — falta de qualificação formal para aquela especificação é causa central e explicitamente declarada. P5 distingue-se de P6: ausência de aptidão formal para o tipo específico de material/tarefa."
+        },
+        "expected": {},
+        "optional": {
+          "S1": "Contexto de subcontratação pode implicar pressão organizacional implícita. Não mencionado explicitamente como fator decisor no relato."
+        },
+        "noise_if_present": {
+          "O1": "Alta carga operacional não mencionada no relato. Inferência por contexto genérico de estaleiro. Se retornado, indica sobreatribuição de causa.",
+          "T3": "Fator temporal não evidenciado textualmente. Se retornado, indica inferência sem ancoragem."
+        }
+      },
+      "release_blocking_policy": "critical_missing_in_2_of_3_runs",
+      "review_notes": "Fixture adversarial v0.1.2-A — deve retornar O-A, não O-C. Validada PASS 3/3 em P/O/A/ERC. Precondition recall não medido. Avaliar se motor retorna P5, P6 ou ambas em próxima validação seletiva."
+    }
+  ]
+}
