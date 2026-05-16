@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OC-NP-001",
+  "title": "Técnico de manutenção offshore omite permissão de trabalho por conveniência pontual",
+  "domain": "manutenção industrial offshore",
+  "description": "Um técnico de manutenção de plataforma offshore, ao iniciar uma substituição de válvula de controle em linha de processo ativo, optou por não seguir o procedimento de emissão da permissão de trabalho (PT) porque o supervisor de área estava em reunião de handover e o técnico julgou a etapa desnecessária para aquele serviço específico. O técnico conhecia a obrigatoriedade da PT antes de qualquer intervenção em linha viva e sabia que deveria aguardar a liberação formal antes de atuar. A decisão foi pontual — não havia histórico de simplificação similar naquele setor nem pressão de tempo imposta pela operação. Durante a intervenção sem PT, houve abertura inadvertida de uma linha pressurizada adjacente, resultando em vazamento de fluido inflamável. A investigação confirmou que o técnico havia realizado a mesma tarefa com PT emitida corretamente em todas as ocorrências anteriores.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional — Conveniência Pontual): o técnico conhecia a obrigatoriedade da PT e optou conscientemente por não seguir o procedimento de forma pontual, motivado por conveniência situacional — não havia emergência, não havia pressão de tempo externa, não havia cultura normalizada de pular PT. Este é o critério definidor de O-C: desvio consciente, pontual e não rotineiro de procedimento operacional conhecido, com motivação que não é proteção humana nem eficiência sistêmica. P-A: o técnico percebeu corretamente a situação — conhecia o procedimento e a obrigatoriedade da PT. A-A: a intervenção foi executada conforme a intenção do técnico, sem deslize de execução.",
+  "discriminators": [
+    "NÃO é O-A: há evidência explícita de conhecimento da regra e decisão consciente de não cumpri-la — 'optou por não seguir o procedimento'. Ausência de desvio consciente seria O-A.",
+    "NÃO é O-B (violação rotineira): não havia histórico de simplificação similar no setor, nem cultura de pular PT. A decisão foi pontual e individual.",
+    "NÃO é O-D (eficiência/economia): a motivação foi conveniência situacional momentânea, não ganho operacional, redução de custo ou produtividade como objetivo primário.",
+    "NÃO é A-B (omissão não intencional): a omissão da PT foi deliberada, não um esquecimento acidental — critério A-A por ação executada conforme intenção desviante."
+  ]
+}

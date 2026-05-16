@@ -1,0 +1,26 @@
+{
+  "id": "TEST-GEN-OC-NP-003",
+  "title": "Mecânico aeronáutico decide não cumprir verificação independente de dois mecânicos por pressão auto-imposta",
+  "domain": "manutenção aeronáutica",
+  "description": "Um mecânico de linha de uma companhia aérea de cargas, ao finalizar a substituição e reinstalação do sistema de frenagem de aeronave de médio porte, decidiu não cumprir a etapa de verificação independente por segundo mecânico (two-person rule), obrigatória no manual de manutenção aprovado. O colega de verificação estava ocupado em outra aeronave e o mecânico avaliou que o serviço estava correto. Não havia janela operacional crítica exigida pela escala naquele momento — a pressão era do próprio mecânico, que queria concluir antes do fim do turno. O mecânico sabia que a assinatura de verificação independente era obrigatória e havia cumprido o procedimento corretamente em todas as intervenções anteriores de mesma natureza. Era a primeira vez que ometia essa etapa. Ao retornar à rampa no turno seguinte, foi constatado que o pino de travamento de uma pinça de freio não havia sido reinstalado, condição que seria detectada na verificação independente.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-C",
+    "action_code": "A-B",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional — Decisão Consciente Sob Pressão Auto-Imposta): o mecânico sabia que a verificação independente era obrigatória e decidiu conscientemente não cumpri-la por pressão situacional de origem própria, não imposta externamente. Este é O-C: desvio consciente, pontual e não rotineiro de procedimento operacional conhecido, com motivação circunstancial que não é proteção humana nem eficiência sistêmica. P-G (Falha de Monitoramento): a verificação independente obrigatória estava disponível e deveria ter sido realizada — gate determinístico dispara pois a condição esperada (pino de travamento instalado) deveria ter sido conferida pelo próprio operador antes de liberar o serviço. A-B (Omissão de Passo Obrigatório): a etapa de verificação independente não foi executada — omissão de passo físico/procedural específico obrigatório, gate determinístico. ERC3: P-G + O-C + A-B configuram falha com desvio intencional e omissão de defesa crítica.",
+  "discriminators": [
+    "NÃO é O-A: há evidência explícita de conhecimento da obrigatoriedade e decisão consciente de não cumprir — 'o mecânico sabia que a assinatura de verificação independente era obrigatória'. Sem essa evidência, seria O-A.",
+    "NÃO é O-B (violação rotineira): era a primeira vez que o mecânico ometia essa etapa; não havia histórico de simplificação similar na equipe.",
+    "NÃO é O-D (eficiência/economia): a pressão era de origem própria e situacional, não objetivo de ganho operacional ou redução de tempo como meta.",
+    "NÃO é P-A: o gate P-G dispara deterministicamente — a verificação independente (condição esperada) estava disponível e era responsabilidade do mecânico assegurar antes de liberar o serviço.",
+    "NÃO é A-A: a omissão da verificação independente é passo físico/procedural obrigatório — gate A-B dispara deterministicamente, não A-A (que seria ação coerente com percepção sem gate específico)."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OC-NP-002",
+  "title": "Operador de refinaria decide não seguir protocolo de isolamento duplo em calibração",
+  "domain": "refinaria de petróleo",
+  "description": "Um operador de sala de controle de refinaria, durante procedimento de calibração de sensor de pressão em linha de processo ativo, decidiu não seguir o protocolo de isolamento duplo (bloqueio de válvulas principais e das válvulas secundárias de bypass) por considerar a segunda camada de bloqueio desnecessária naquele ponto específico do processo. O operador tinha experiência de quatro anos na função e conhecia o protocolo de isolamento duplo como obrigatório para intervenções em linha viva. Nenhum colega havia adotado conduta similar naquele setor, e a supervisão não havia autorizado qualquer simplificação do procedimento. Não havia prazo imposto pela operação para conclusão da calibração. A decisão de suprimir o isolamento secundário foi tomada de forma pontual e sem comunicação ao supervisor. Durante a calibração, houve variação de pressão não prevista que danificou o sensor e causou vazamento pelo ponto de instrumentação.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional — Improviso Consciente Não Emergencial): o operador conhecia o protocolo de isolamento duplo e decidiu não segui-lo de forma pontual, sem justificativa de emergência, sem pressão externa e sem cultura normalizada de simplificação. A motivação foi julgamento próprio situacional — característica central de O-C não protetivo. P-A: percepção correta — o operador conhecia o processo e o ponto de risco. A-A: a calibração foi executada conforme a intenção do operador, sem deslize de ação.",
+  "discriminators": [
+    "NÃO é O-A: há evidência explícita de conhecimento do protocolo obrigatório e decisão consciente de não segui-lo — 'decidiu não seguir o protocolo de isolamento duplo'. Sem essa evidência, seria O-A.",
+    "NÃO é O-B (violação rotineira): não havia histórico de simplificação do isolamento naquele setor; a decisão foi pontual e individual, sem tolerância da supervisão.",
+    "NÃO é O-D (eficiência/economia): não havia objetivo de ganho de tempo, economia ou produtividade como motivação primária — o operador apenas julgou a segunda camada desnecessária naquele contexto.",
+    "NÃO é A-B (omissão não intencional): o operador suprimiu deliberadamente o isolamento secundário — ação executada conforme intenção desviante, classificando A-A."
+  ]
+}

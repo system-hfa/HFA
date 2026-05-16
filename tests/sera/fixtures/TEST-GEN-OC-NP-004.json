@@ -1,0 +1,26 @@
+{
+  "id": "TEST-GEN-OC-NP-004",
+  "title": "Operador petroquímico substitui modo SIS automático por modo manual em startup de reator",
+  "domain": "indústria petroquímica",
+  "description": "Um operador sênior de planta petroquímica, ao executar o procedimento de partida de uma seção de reator de processo contínuo, optou por não seguir o protocolo de inicialização automática com intertravamento de segurança (SIS), conduzindo o startup em modo manual. O operador considerou, por julgamento próprio, que o modo manual lhe daria maior controle sobre as variáveis de pressão e temperatura durante a rampa de aquecimento. O operador tinha pleno conhecimento do procedimento de partida e sabia que o uso do SIS em modo automático era obrigatório para aquela fase de inicialização. Não havia histórico de partidas manuais naquela unidade, nem orientação da supervisão para qualquer desvio do procedimento. Não havia janela operacional restrita, urgência de produção ou prazo imposto que justificasse a substituição. A decisão foi individual e pontual. Durante a partida em modo manual, uma anomalia de temperatura foi detectada com atraso de 12 segundos em relação ao tempo de resposta do SIS automático, resultando em sobrepressão transitória que acionou a válvula de alívio.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-C",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "O3",
+      "T1"
+    ]
+  },
+  "rationale": "O-C (Violação Excepcional — Substituição Consciente de Modo Obrigatório por Alternativa Não Autorizada): o operador conhecia o procedimento e optou conscientemente por conduzir o startup em modo manual em vez do modo SIS automático obrigatório, por julgamento próprio situacional, sem pressão externa, sem precedente na unidade e sem autorização. Este é O-C: desvio consciente, pontual e não normalizado de procedimento operacional conhecido, com motivação circunstancial que não é proteção humana nem eficiência sistêmica. P-A: percepção correta — o operador monitorava ativamente as variáveis e conhecia o estado do sistema. A-A: a partida em modo manual foi executada conforme a intenção do operador — a ação (conduzir o startup manualmente) foi coerente com a crença situacional de que o modo manual era suficiente naquele contexto, sem deslize de execução. ERC2: O-C com desvio individual consciente sem omissão de etapa crítica; violação de protocolo de modo operacional.",
+  "discriminators": [
+    "NÃO é O-A: o operador sabia que o SIS automático era obrigatório e optou conscientemente por substituí-lo pelo modo manual. Sem evidência de conhecimento e decisão consciente, seria O-A.",
+    "NÃO é O-B (violação rotineira): não havia histórico de partidas manuais naquela unidade; a decisão foi individual e pontual, sem tolerância da supervisão.",
+    "NÃO é O-D (eficiência/economia): não havia objetivo de ganho de tempo, economia ou produtividade como motivação — o operador julgou que o modo manual lhe daria mais controle, não que era mais eficiente.",
+    "NÃO é A-B (omissão de etapa): o operador não omitiu uma etapa — executou ativamente o startup em modo alternativo não autorizado; a ação foi uma comissão (escolha ativa de modo diferente), não omissão de passo procedural.",
+    "NÃO é P-G (falha de monitoramento): o operador monitorava ativamente as variáveis de processo; a falha foi na escolha do modo operacional, não em deixar de verificar condição esperada."
+  ]
+}

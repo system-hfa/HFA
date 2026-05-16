@@ -1,0 +1,25 @@
+{
+  "id": "TEST-GEN-OC-NP-005",
+  "title": "Adversarial O-A: soldador terceirizado sem treinamento para protocolo de pré-aquecimento",
+  "domain": "construção naval",
+  "description": "Um soldador terceirizado de estaleiro, realizando soldagem em estrutura de casco de embarcação offshore, não verificou nem aplicou a temperatura de pré-aquecimento do material antes de iniciar os passes de solda de produção. O soldador desconhecia o protocolo de pré-aquecimento aplicável àquele tipo de aço de alta resistência, pois não havia recebido treinamento específico para a especificação do material daquele projeto. A atividade era atípica para o perfil habitual do soldador, que atuava normalmente em materiais carbono-manganês sem exigência de pré-aquecimento. O contrato de terceirização não especificava os requisitos de qualificação por material. A ausência do pré-aquecimento gerou trincas de retração nas soldas, identificadas na inspeção por ultrassom. O soldador não sabia que havia uma especificação diferente para aquele material.",
+  "expected": {
+    "perception_code": "P-C",
+    "objective_code": "O-A",
+    "action_code": "A-E",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P5",
+      "S1",
+      "O1",
+      "T3"
+    ]
+  },
+  "rationale": "O-A (Objetivo Nominal sem Desvio Consciente): o soldador não desviou conscientemente de nenhum protocolo conhecido — desconhecia o protocolo aplicável àquele material. A lacuna é de conhecimento e treinamento, não de objetivo. P-C (Déficit de Conhecimento): o soldador não sabia que havia uma exigência de pré-aquecimento para aquele tipo de aço — falha de conhecimento técnico específico, não de percepção sensorial. A-E (Ação por Déficit de Conhecimento): a solda foi realizada sem pré-aquecimento porque o soldador desconhecia a exigência, não porque decidiu conscientemente ignorá-la. ERC2: P-C + O-A + A-E — déficit de conhecimento sem desvio consciente; severidade moderada, trinca detectada em inspeção.",
+  "discriminators": [
+    "NÃO é O-C (violação excepcional): O-C exige desvio CONSCIENTE de regra conhecida. Aqui o soldador desconhecia o protocolo de pré-aquecimento aplicável — não havia decisão consciente de descumprir nenhuma regra. Ausência de conhecimento da regra exclui O-C.",
+    "NÃO é O-B (violação rotineira): não havia cultura de omitir pré-aquecimento; o soldador simplesmente não sabia que era necessário naquele contexto.",
+    "NÃO é P-A: o soldador não percebeu corretamente a situação porque desconhecia que o material exigia procedimento diferente — a lacuna é de conhecimento técnico, não de atenção.",
+    "NÃO é A-B (omissão): a não aplicação do pré-aquecimento não foi omissão de etapa conhecida — o soldador não tinha conhecimento da exigência para aquele material específico, resultando em A-E."
+  ]
+}
