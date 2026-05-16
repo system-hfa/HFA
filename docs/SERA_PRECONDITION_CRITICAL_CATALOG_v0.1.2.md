@@ -150,14 +150,58 @@ Uma fixture `active` deve bloquear release **somente quando**:
 
 ---
 
-## 9. Próximo passo
+## 9. Script de análise report-only (v0.1.2-E)
 
-v0.1.2-E (futura) pode implementar suporte opcional no runner para:
+O script `tests/sera/analyze-precondition-critical-recall.ts` lê o catálogo e um report do runner e calcula métricas de critical recall. **Não altera runner, motor, baseline, fixtures nem expected labels.**
 
-1. Ler `tests/sera/preconditions-critical-catalog.json` ao rodar validação seletiva.
-2. Calcular `precondition_critical_recall` separado de `precondition_recall`.
-3. Reportar quais preconditions Critical estão ausentes sem misturar automaticamente com `overall`.
-4. Flag de `noise_detected` quando precondition listada como `noise_if_present` for retornada.
-5. Filtrar por `catalog_role: "active"` para aplicar bloqueio — ignorar `monitoring` e `audit_anomaly`.
+### Uso
 
-Esta implementação **não deve misturar `precondition_critical_recall` com `overall`** sem revisão e aprovação da política.
+```bash
+# Análise padrão — exit code 0 mesmo com WARN
+npx tsx tests/sera/analyze-precondition-critical-recall.ts \
+  --report tests/reports/baseline/sera-baseline-v0.1.1-smoke.json \
+  --catalog tests/sera/preconditions-critical-catalog.json
+
+# Modo estrito — exit code 1 se houver WARN_CRITICAL_MISSING
+npx tsx tests/sera/analyze-precondition-critical-recall.ts \
+  --report <path> --catalog <path> --strict
+```
+
+### Como interpretar o output
+
+| Status | Significado |
+|---|---|
+| `✓ OK` | Todas as preconditions Critical encontradas em ≥ 2/3 runs |
+| `⚠ WARN_CRITICAL_MISSING` | Critical ausente em ≥ 2 runs — achado diagnóstico; NÃO altera overall |
+| `- NOT_IN_REPORT` | Fixture ativa mas não presente no report (ex: fixtures v0.1.2-A no baseline v0.1.1) |
+| `- NO_CRITICAL` | Fixture `active` sem Critical definido — não incluída na métrica |
+| `~ SKIPPED (monitoring)` | catalog_role = monitoring — NÃO é release-blocking |
+| `~ SKIPPED (audit_anomaly)` | catalog_role = audit_anomaly — NÃO é release-blocking; top_pre requer revisão |
+
+### Regras importantes
+
+- **WARN não é falha de release** — o `overall` do runner não muda.
+- **Fixtures `monitoring` e `audit_anomaly` são sempre skipped** — nunca bloqueiam release.
+- **`--strict` é para CI exploratório opcional** — default é exit code 0.
+- O script pode ser rodado contra qualquer report JSON gerado pelo runner.
+
+### Resultado contra baseline v0.1.1
+
+```
+Active fixtures encontradas no baseline: 6/8
+Active not in report (v0.1.2-A): 2 (NP-001, NP-005)
+Avg critical recall: 0.917
+WARN_CRITICAL_MISSING: 1 (TEST-P-D-001 — O1 nunca retornado, issue EVM-009)
+```
+
+---
+
+## 10. Próximo passo
+
+v0.1.2-F (futura) pode adicionar suporte no runner para:
+
+1. Integrar `precondition_critical_recall` como campo separado no report JSON.
+2. Flag de `noise_detected` quando precondition listada como `noise_if_present` for retornada.
+3. Filtrar por `catalog_role: "active"` para aplicar bloqueio — ignorar `monitoring` e `audit_anomaly`.
+
+Esta integração **não deve misturar `precondition_critical_recall` com `overall`** sem revisão e aprovação da política.
