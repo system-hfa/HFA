@@ -3,6 +3,14 @@
 **Data:** 2026-05-15
 **Baseado em:** `docs/SERA_KNOWN_RISKS_v0.1.1.md`, `docs/SERA_EVIDENCE_SUFFICIENCY_AUDIT.md`, `docs/SERA_VALIDATION_v0.1.1.md`
 
+**Status de execução:**
+
+| Fase | Escopo | Commit | Status |
+|---|---|---|---|
+| v0.1.2-A | Fixtures O-C não-protetivo (NP-001 a NP-005) | `7f8822dd` | ✅ Concluída — 15/15 PASS, determinism_rate 1.0 |
+| v0.1.2-B | Política de preconditions + draft matriz código-evidência | — | 🔄 Em andamento |
+| v0.1.2-C | Smoke-fast + marcação fixtures precondition-critical | — | ⏳ Pendente |
+
 ---
 
 ## 1. Baseline de Partida
