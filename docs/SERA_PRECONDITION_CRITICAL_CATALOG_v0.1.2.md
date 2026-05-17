@@ -118,7 +118,7 @@ Uma fixture `active` deve bloquear release **somente quando**:
 | Runner não consome o catálogo | O runner não lê `preconditions-critical-catalog.json`. Uso é puramente documental. |
 | Catálogo não muda baseline | Nenhuma modificação em `tests/reports/baseline/sera-baseline-v0.1.1-smoke.json`. |
 | Catálogo não retroaltera fixtures | Os arquivos JSON em `tests/sera/fixtures/` não são modificados. |
-| Recall de NP-001 e NP-005 desconhecido | Fixtures v0.1.2-A não passaram por medição de precondition_recall. |
+| Recall de NP-001 e NP-005 medido em v0.1.2-F | NP-001: critical recall 1.00. NP-005: critical recall 0.00 (P6 retornado em vez de P5 — ver EVM-011). |
 | ERC-4-001 com anomalia não resolvida | top_preconditions provavelmente incorretos — não usar para gate até revisão. Catalog_role: audit_anomaly. |
 | P-G-001 sem Critical definido | Nenhuma precondition com evidência textual suficiente para Critical — catalog_role: monitoring, sem bloqueio de release. |
 | Classificação Critical é provisional | Baseada em análise de relato e baseline; pode mudar com revisão metodológica. |
@@ -135,6 +135,8 @@ Uma fixture `active` deve bloquear release **somente quando**:
 | **EVM-008** (nova) | TEST-P-G-001 | Regra P-G+A-B retorna W1 como precondition; W1 sem base textual no cenário (complacência, não falha de equipamento) |
 | **EVM-009** (nova) | TEST-P-D-001 | O1 (alta demanda operacional) com evidência textual clara ('14 aeronaves simultâneas') nunca retornado pelo motor — gap de recall sem causa aparente |
 | **EVM-010** (nova) | Múltiplas (P-C, A-E) | P7 presente em top_preconditions de fixtures P-C/A-E sem evidência textual explícita de estado psicológico — candidato a remoção retroativa |
+| **EVM-001** (confirmada v0.1.2-F) | TEST-GEN-OC-NP-001 | S1 e T1 retornados em 3/3 runs para O-C não-protetivo via regra determinística O-C__A-A — ambos listados como noise_if_present no catálogo. prec_score=PASS porque estão no expected_top da fixture; no entanto S1 não tem base contextual (ausência de terceiro em risco). Requer revisão de expected_top da fixture NP-001 e/ou da regra matrix. |
+| **EVM-011** (nova v0.1.2-F) | TEST-GEN-OC-NP-005 | Motor retorna P6 (déficit genérico de treinamento) em vez de P5 (falta de qualificação formal para especificação específica) em 3/3 runs. prec_score=FAIL; overall=PASS. Regra determinística P-C+A-E usa P6 — não diferencia P5 de P6. Candidato a ajuste de matrix para fixtures P-C/A-E com qualificação específica ausente. |
 
 ---
 
@@ -193,6 +195,40 @@ Active not in report (v0.1.2-A): 2 (NP-001, NP-005)
 Avg critical recall: 0.917
 WARN_CRITICAL_MISSING: 1 (TEST-P-D-001 — O1 nunca retornado, issue EVM-009)
 ```
+
+### Resultado contra report NP v0.1.2-A (v0.1.2-F)
+
+Comando:
+```bash
+frontend/node_modules/.bin/tsx tests/sera/analyze-precondition-critical-recall.ts \
+  --report tests/reports/run-1778961769345.json \
+  --catalog tests/sera/preconditions-critical-catalog.json
+```
+
+Report: `tests/reports/run-1778961769345.json` (5 fixtures NP × 3 runs = 15 chamadas · 15/15 PASS · determinism_rate 1.0)
+
+```
+Active fixtures encontradas no report NP: 2 (NP-001, NP-005)
+Active not in report (baseline v0.1.1 fixtures): 6
+
+TEST-GEN-OC-NP-001  critical=[P2,O3]  recall=1.00  ✓ OK
+TEST-GEN-OC-NP-005  critical=[P5]     recall=0.00  ⚠ WARN_CRITICAL_MISSING
+  run 0: present=(none)  missing=[P5]  (motor retornou P6, O4)
+  run 1: present=(none)  missing=[P5]  (motor retornou P6, O4)
+  run 2: present=(none)  missing=[P5]  (motor retornou P6, O4)
+
+Avg critical recall (NP found): 0.500
+exit code: 0 (report-only; WARN não afeta overall)
+```
+
+**Achados diagnósticos (não bloqueiam release):**
+
+| Fixture | Achado | Issue |
+|---|---|---|
+| NP-001 | S1 e T1 retornados via matrix O-C__A-A em 3/3 runs; ambos são `noise_if_present` no catálogo. prec_score=PASS porque estão em expected_top — mas S1 não tem base contextual (sem terceiro em risco). | EVM-001 confirmada |
+| NP-005 | P5 nunca retornado; motor usa P6 deterministicamente (3/3). prec_score=FAIL; overall=PASS. P6 é genérico; P5 requer qualificação formal específica para o material. | EVM-011 (nova) |
+
+**Overall classification (P/O/A/ERC) correto em todos os casos — achados são exclusivamente de precondition precision.**
 
 ---
 

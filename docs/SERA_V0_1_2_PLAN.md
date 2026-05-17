@@ -12,6 +12,7 @@
 | v0.1.2-C | Smoke-fast + marcação fixtures precondition-critical | `a74401be` | ✅ Concluída — 14/14 PASS |
 | v0.1.2-D | Catálogo precondition-critical (documental) | `2bc6bcb9` | ✅ Concluída — 10 fixtures catalogadas (8 active, 1 monitoring, 1 audit_anomaly) |
 | v0.1.2-E | Script report-only de critical recall | `587d6738` | ✅ Concluída — avg critical recall 0.917 / 1 WARN esperado (EVM-009) |
+| v0.1.2-F | Validar analyzer contra report NP (v0.1.2-A) | — | 🔄 Em andamento |
 
 ---
 
