@@ -1272,7 +1272,9 @@ export default function RiskProfilePage() {
     )
   }
 
-  const hasAnalyses = (data?.total_analyses ?? 0) > 0
+  const totalAnalyses = data?.total_analyses ?? 0
+  const hasAnalyses = totalAnalyses > 0
+  const isForming = totalAnalyses > 0 && totalAnalyses < 10
 
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
@@ -1281,7 +1283,7 @@ export default function RiskProfilePage() {
         <div>
           <h1 className="text-2xl font-bold text-white">Perfil de Risco Organizacional</h1>
           <p className="text-slate-400 mt-1">
-            Baseado em {data?.total_analyses ?? 0} análises SERA
+            Baseado em {totalAnalyses} análise{totalAnalyses !== 1 ? 's' : ''} SERA
           </p>
         </div>
         <button
@@ -1293,18 +1295,76 @@ export default function RiskProfilePage() {
         </button>
       </div>
 
+      {/* Zero-state: nenhuma análise ainda */}
       {!hasAnalyses && (
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-          <h2 className="text-white font-semibold mb-2">Nenhuma análise disponível</h2>
-          <p className="text-slate-400 text-sm leading-relaxed">
-            O perfil de risco organizacional depende de análises SERA concluídas. Assim que o tenant registrar a primeira análise, a matriz, tendências e precondições serão exibidas aqui.
-          </p>
-          <Link
-            href="/events/new"
-            className="inline-flex mt-4 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-          >
-            Criar primeira análise
-          </Link>
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-8">
+          <div className="max-w-lg">
+            <h2 className="text-white font-semibold text-lg mb-2">Seu perfil de risco está em formação</h2>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+              Após algumas análises, o sistema começa a revelar padrões de fatores humanos, precondições recorrentes e exposição por matriz de risco da sua organização.
+            </p>
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+                <div>
+                  <p className="text-white text-sm font-medium">Descreva um evento real</p>
+                  <p className="text-slate-500 text-xs mt-0.5">Relate um ocorrido com detalhes de contexto, erro e consequência</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-slate-700 text-slate-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+                <div>
+                  <p className="text-slate-300 text-sm font-medium">A IA classifica os fatores humanos</p>
+                  <p className="text-slate-500 text-xs mt-0.5">Percepção, Objetivo e Ação — com justificativa metodológica</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-slate-700 text-slate-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+                <div>
+                  <p className="text-slate-300 text-sm font-medium">O padrão organizacional emerge</p>
+                  <p className="text-slate-500 text-xs mt-0.5">Com 10 análises, as matrizes, precondições recorrentes e tendências revelam o perfil real da sua empresa</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/events/new"
+                className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
+              >
+                Criar primeira análise
+              </Link>
+              <p className="text-slate-500 text-xs">10 análises gratuitas por empresa</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Banner "em formação" para 1–9 análises */}
+      {isForming && (
+        <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <p className="text-blue-300 font-medium text-sm mb-1">Perfil de risco em formação</p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Continue registrando eventos — o padrão organizacional fica mais claro a cada análise. Os dados abaixo são preliminares.
+              </p>
+              <div className="mt-3">
+                <div className="flex items-center justify-between text-xs text-slate-500 mb-1.5">
+                  <span>{totalAnalyses} de 10 análises para diagnóstico completo</span>
+                  <span>{totalAnalyses * 10}%</span>
+                </div>
+                <div className="h-1.5 bg-slate-800 rounded-full">
+                  <div className="h-full bg-blue-600 rounded-full" style={{ width: `${totalAnalyses * 10}%` }} />
+                </div>
+              </div>
+            </div>
+            <Link
+              href="/events/new"
+              className="shrink-0 text-xs font-medium text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 px-3 py-2 rounded-lg transition-colors"
+            >
+              + Nova análise
+            </Link>
+          </div>
         </div>
       )}
 

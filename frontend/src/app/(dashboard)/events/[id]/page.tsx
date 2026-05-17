@@ -109,6 +109,119 @@ function SectionNav({ anchors }: { anchors: SectionAnchor[] }) {
   )
 }
 
+// ── Per-event risk computation (ARMS-ERC + ISO severity) ─────────────────────
+
+const EV_P_SEVERITY: Record<string, number> = {
+  'P-B': 4, 'P-F': 4,
+  'P-C': 3, 'P-D': 3, 'P-E': 3, 'P-G': 3,
+  'P-H': 2, 'P-A': 1,
+}
+
+const EV_ARMS_SEV_ROW: Record<string, 'A' | 'B' | 'C' | 'D'> = {
+  'P-B': 'B', 'P-F': 'B', 'P-A': 'D',
+}
+
+const EV_ARMS_ERC: Record<string, number> = {
+  A1: 5, A2: 5, A3: 4, A4: 3,
+  B1: 4, B2: 4, B3: 3, B4: 2,
+  C1: 3, C2: 3, C3: 2, C4: 1,
+  D1: 2, D2: 2, D3: 1, D4: 1,
+}
+
+function evBarrierLevel(p: string | null, o: string | null, a: string | null): 1 | 2 | 3 | 4 {
+  const fails = [p && p !== 'P-A', o && o !== 'O-A', a && a !== 'A-A'].filter(Boolean).length
+  if (fails >= 3) return 1
+  if (fails === 2) return 2
+  if (fails === 1) return 3
+  return 4
+}
+
+type EventRisk = {
+  erc: number
+  ercLabel: string
+  sevLevel: number
+  sevLabel: string
+  sevKey: 'A' | 'B' | 'C' | 'D'
+  barrierKey: 1 | 2 | 3 | 4
+}
+
+function computeEventRisk(
+  p: string | null, o: string | null, a: string | null
+): EventRisk | null {
+  if (!p) return null
+  const sevKey  = EV_ARMS_SEV_ROW[p] ?? 'C'
+  const barrier = evBarrierLevel(p, o, a)
+  const erc     = EV_ARMS_ERC[`${sevKey}${barrier}`] ?? 2
+  const sevLevel = EV_P_SEVERITY[p] ?? 3
+  const ercLabels: Record<number, string> = {
+    5: 'Ação imediata obrigatória',
+    4: 'Urgente — ação em 24–48h',
+    3: 'Ação corretiva requerida',
+    2: 'Monitorar — sem ação imediata',
+    1: 'Aceitável',
+  }
+  const sevLabels: Record<number, string> = {
+    4: 'Grave', 3: 'Moderada', 2: 'Menor', 1: 'Negligível',
+  }
+  return {
+    erc, ercLabel: ercLabels[erc] ?? '',
+    sevLevel, sevLabel: sevLabels[sevLevel] ?? 'Moderada',
+    sevKey: sevKey as 'A' | 'B' | 'C' | 'D',
+    barrierKey: barrier,
+  }
+}
+
+const ERC_STYLE: Record<number, { bg: string; border: string; text: string; bar: string }> = {
+  5: { bg: 'bg-red-950',    border: 'border-red-800',    text: 'text-red-400',    bar: 'bg-red-500' },
+  4: { bg: 'bg-orange-950', border: 'border-orange-800', text: 'text-orange-400', bar: 'bg-orange-500' },
+  3: { bg: 'bg-yellow-950', border: 'border-yellow-800', text: 'text-yellow-400', bar: 'bg-yellow-500' },
+  2: { bg: 'bg-slate-900',  border: 'border-slate-700',  text: 'text-slate-400',  bar: 'bg-slate-500' },
+  1: { bg: 'bg-green-950',  border: 'border-green-800',  text: 'text-green-400',  bar: 'bg-green-500' },
+}
+
+const BARRIER_LABELS: Record<number, string> = {
+  1: 'ausentes', 2: 'mínimas', 3: 'limitadas', 4: 'efetivas',
+}
+
+function EventRiskCard({ risk }: { risk: EventRisk }) {
+  const s = ERC_STYLE[risk.erc] ?? ERC_STYLE[2]
+  return (
+    <div className={`${s.bg} ${s.border} border rounded-xl p-4 space-y-3`}>
+      <div className="flex flex-wrap items-start gap-4">
+        {/* ERC number */}
+        <div className="flex flex-col items-center">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">ARMS-ERC</span>
+          <span className={`text-3xl font-bold leading-none ${s.text}`}>{risk.erc}</span>
+          <span className="text-[9px] text-slate-600 mt-0.5">de 5</span>
+        </div>
+        {/* Separador */}
+        <div className="w-px self-stretch bg-slate-800" />
+        {/* Detalhe */}
+        <div className="flex-1 min-w-0">
+          <p className={`text-sm font-semibold ${s.text} mb-1`}>{risk.ercLabel}</p>
+          <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-slate-500">
+            <span>Severidade {risk.sevKey} — {risk.sevLabel}</span>
+            <span>·</span>
+            <span>Barreiras {BARRIER_LABELS[risk.barrierKey]}</span>
+            <span>·</span>
+            <span>ISO nível {risk.sevLevel}/4</span>
+          </div>
+          {/* Progress bar */}
+          <div className="mt-2 h-1 bg-slate-800 rounded-full overflow-hidden w-full max-w-xs">
+            <div
+              className={`h-full rounded-full ${s.bar}`}
+              style={{ width: `${(risk.erc / 5) * 100}%` }}
+            />
+          </div>
+        </div>
+      </div>
+      <p className="text-xs text-slate-600 border-t border-slate-800/60 pt-2">
+        Nível de risco estimado com base nas evidências disponíveis. Revise a classificação antes de aprovar o relatório formal.
+      </p>
+    </div>
+  )
+}
+
 function HfacsSection({ hfacs }: { hfacs: HfacsResult }) {
   const t = useT()
 
@@ -347,6 +460,16 @@ export default function EventDetailPage() {
             ...(recommendations.length > 0 ? [{ id: 'etapa-7', label: 'Recomendações' }] : []),
           ]} />
 
+          {/* ── Mini-card de risco por evento ─────────────────────────── */}
+          {(() => {
+            const risk = computeEventRisk(
+              analysis.perception_code ?? null,
+              analysis.objective_code  ?? null,
+              analysis.action_code     ?? null,
+            )
+            return risk ? <EventRiskCard risk={risk} /> : null
+          })()}
+
           {/* Edit history banner */}
           {analysis.id && token && (
             <EditHistoryPanel
@@ -558,6 +681,17 @@ export default function EventDetailPage() {
                     </div>
                   </div>
                 ))}
+                <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+                  <p className="text-xs text-slate-600">
+                    As ações corretivas são geradas automaticamente e ficam disponíveis para acompanhamento.
+                  </p>
+                  <a
+                    href="/actions"
+                    className="shrink-0 ml-4 text-xs font-medium text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    Ver ações corretivas →
+                  </a>
+                </div>
               </div>
             </div>
           )}

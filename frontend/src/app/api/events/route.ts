@@ -34,11 +34,22 @@ export async function GET(req: Request) {
     const admin = getSupabaseAdmin()
     const { data, error } = await admin
       .from('events')
-      .select('*')
+      .select('*, analyses(perception_code, objective_code, action_code)')
       .eq('tenant_id', user.tenantId)
       .order('created_at', { ascending: false })
     if (error) return jsonError(error.message, 400)
-    return NextResponse.json(data ?? [])
+    const rows = (data ?? []).map((ev) => {
+      const analyses = ev.analyses
+      const analysis = Array.isArray(analyses) ? (analyses[0] ?? null) : (analyses ?? null)
+      return {
+        ...ev,
+        perception_code: (analysis as { perception_code?: string | null } | null)?.perception_code ?? null,
+        objective_code:  (analysis as { objective_code?:  string | null } | null)?.objective_code  ?? null,
+        action_code:     (analysis as { action_code?:     string | null } | null)?.action_code     ?? null,
+        analyses: undefined,
+      }
+    })
+    return NextResponse.json(rows)
   } catch (e) {
     if (e instanceof Response) return e
     return jsonError(String(e), 500)
