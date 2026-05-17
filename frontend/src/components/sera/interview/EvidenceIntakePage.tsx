@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import { AlertTriangle, ClipboardList, ListChecks, MessagesSquare, ShieldCheck } from 'lucide-react'
 import { assessInterviewSufficiency } from '@/lib/sera/interview/assess-sufficiency'
 import questionBankRaw from '@/lib/sera/interview/question-bank.json'
@@ -39,6 +40,7 @@ const SECTION_META: Record<Section, { icon: React.ElementType; label: string }> 
 }
 
 export function EvidenceIntakePage() {
+  const router = useRouter()
   const [transcript, setTranscript] = useState('')
   const [consentConfirmed, setConsentConfirmed] = useState(false)
   const [transcriptionReviewed, setTranscriptionReviewed] = useState(false)
@@ -72,6 +74,38 @@ export function EvidenceIntakePage() {
     const result = assessInterviewSufficiency(evidenceMap)
     setSufficiencyResult(result)
     setActiveSection('result')
+  }
+
+  const canSend = transcript.trim().length >= 50
+
+  function buildInterviewPayload() {
+    const noteLines: string[] = []
+    for (const section of sections) {
+      for (const q of section.questions) {
+        const qs = questionStates[q.id]
+        if (qs?.asked && qs.notes.trim()) {
+          noteLines.push(`• ${qs.notes.trim()}`)
+        }
+      }
+    }
+    const parts: string[] = []
+    if (transcript.trim()) parts.push(transcript.trim())
+    if (noteLines.length > 0) {
+      parts.push(`Notas adicionais do investigador:\n${noteLines.join('\n')}`)
+    }
+    const raw_input = parts.join('\n\n---\n\n')
+    const today = new Date().toISOString().split('T')[0]
+    return { title: `Entrevista estruturada — ${today}`, raw_input, operation_type: '', aircraft_type: '', occurred_at: '' }
+  }
+
+  function handleSendToAnalysis() {
+    const payload = buildInterviewPayload()
+    try {
+      sessionStorage.setItem('hfa_interview_payload', JSON.stringify(payload))
+    } catch {
+      // sessionStorage indisponível — redireciona sem pré-preenchimento
+    }
+    router.push('/events/new?from=interview')
   }
 
   const askedCount = Object.values(questionStates).filter((s) => s.asked).length
@@ -214,18 +248,31 @@ export function EvidenceIntakePage() {
             <>
               <SufficiencyResultPanel result={sufficiencyResult} />
 
-              {/* Disabled CTA */}
-              <div className="pt-2">
+              <div className="pt-2 space-y-2">
+                {sufficiencyResult.missingRequired.length > 0 && (
+                  <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg px-4 py-3 text-xs text-amber-300 leading-relaxed">
+                    <strong>Lacunas críticas: </strong>
+                    {sufficiencyResult.missingRequired.length} gate(s) obrigatório(s) sem cobertura — a análise poderá ter menor precisão. Você ainda pode continuar e revisar o relato antes de criar a análise.
+                  </div>
+                )}
                 <button
-                  disabled
-                  className="w-full bg-slate-700 text-slate-500 text-sm font-medium px-6 py-3 rounded-xl cursor-not-allowed"
-                  title="Disponível após integração com o pipeline e revisão da transcrição."
+                  disabled={!canSend}
+                  onClick={handleSendToAnalysis}
+                  className={canSend
+                    ? 'w-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-xl transition'
+                    : 'w-full bg-slate-700 text-slate-500 text-sm font-medium px-6 py-3 rounded-xl cursor-not-allowed'}
                 >
-                  Enviar para análise SERA
+                  Usar entrevista em nova análise
                 </button>
-                <p className="text-xs text-slate-600 text-center mt-2">
-                  Disponível após integração com o pipeline e revisão da transcrição.
-                </p>
+                {!canSend ? (
+                  <p className="text-xs text-slate-600 text-center">
+                    Adicione a transcrição (mínimo 50 caracteres) para continuar.
+                  </p>
+                ) : (
+                  <p className="text-xs text-slate-600 text-center">
+                    Você poderá revisar e ajustar o relato antes de iniciar a análise.
+                  </p>
+                )}
               </div>
             </>
           ) : (
@@ -239,6 +286,19 @@ export function EvidenceIntakePage() {
               >
                 Ir para o checklist de evidências →
               </button>
+              {canSend && (
+                <div className="mt-4 pt-4 border-t border-slate-800">
+                  <p className="text-xs text-slate-500 mb-3">
+                    Ou use a transcrição diretamente sem verificação de suficiência:
+                  </p>
+                  <button
+                    onClick={handleSendToAnalysis}
+                    className="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-sm font-medium px-6 py-2.5 rounded-xl transition"
+                  >
+                    Usar entrevista em nova análise →
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </section>

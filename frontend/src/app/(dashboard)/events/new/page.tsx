@@ -34,6 +34,7 @@ export default function NewEventPage() {
     null
   )
   const [showDetails, setShowDetails] = useState(false)
+  const [fromInterview, setFromInterview] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [progressText, setProgressText] = useState('')
@@ -54,6 +55,31 @@ export default function NewEventPage() {
   }
 
   useEffect(() => () => clearProgress(), [])
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('from') !== 'interview') return
+    try {
+      const raw = sessionStorage.getItem('hfa_interview_payload')
+      if (!raw) return
+      const payload = JSON.parse(raw) as {
+        title?: string; raw_input?: string; operation_type?: string;
+        aircraft_type?: string; occurred_at?: string;
+      }
+      sessionStorage.removeItem('hfa_interview_payload')
+      setForm((p) => ({
+        title: payload.title ?? p.title,
+        raw_input: payload.raw_input ?? p.raw_input,
+        operation_type: payload.operation_type ?? p.operation_type,
+        aircraft_type: payload.aircraft_type ?? p.aircraft_type,
+        occurred_at: payload.occurred_at ?? p.occurred_at,
+      }))
+      setFromInterview(true)
+      if (payload.operation_type || payload.aircraft_type) setShowDetails(true)
+    } catch {
+      // payload inválido ou sessionStorage indisponível — ignora
+    }
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -155,6 +181,15 @@ export default function NewEventPage() {
         )}
       </div>
       <p className="text-slate-400 mb-8">Insira o relato do evento para análise assistida pela metodologia SERA</p>
+
+      {fromInterview && (
+        <div className="mb-6 bg-blue-500/10 border border-blue-500/20 rounded-xl px-4 py-4">
+          <p className="text-sm text-blue-300 font-medium">Dados importados da entrevista estruturada</p>
+          <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+            O relato foi consolidado a partir da transcrição e das notas do investigador. Revise e ajuste o título e o relato antes de iniciar a análise — você tem controle total sobre o que será enviado.
+          </p>
+        </div>
+      )}
 
       {noCredits && (
         <div className="mb-6 bg-red-950/40 border border-red-900/50 rounded-xl p-4 text-sm">
