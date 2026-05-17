@@ -1,0 +1,29 @@
+{
+  "id": "TEST-RISK-ERC-005",
+  "title": "Conflito de tráfego aéreo em área não-controlada sem barreiras efetivas (ERC 1 — crítico)",
+  "domain": "operações de voo",
+  "description": "Aeronave comercial em descida inicial cruzou uma área de tráfego VFR intenso em espaço aéreo não controlado. Uma aeronave VFR sem transponder Mode C se aproximou em rota de colisão a menos de 200 pés de separação vertical e 50 metros de separação horizontal. O TCAS da aeronave comercial estava instalado mas não ativou alerta porque a aeronave VFR não possuía transponder compatível. O controlador de área não tinha cobertura de radar para o ponto do conflito. Não havia procedimento ativo de afastamento de tráfego VFR naquela área. A aeronave comercial avistou a aeronave VFR visualmente a menos de 2 segundos do cruzamento e executou manobra evasiva abrupta de descida de emergência. Nenhuma colisão ocorreu. Três passageiros sem cinto sofreram contusões durante a manobra evasiva.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 1,
+    "top_preconditions": ["S3", "W3", "O2"]
+  },
+  "rationale": "P-B: a tripulação não tinha informação sobre o tráfego VFR — o TCAS não ativou e o radar não cobria a área, criando percepção incompleta do espaço aéreo real até o momento de conflito visual. O-A: a tripulação seguia o voo nominal sem intenção de desvio de procedimento. A-G: a manobra evasiva abrupta de emergência configura ação especial com urgência, fora do envelope operacional normal. ERC 1: risco imediato, crítico, com perda de todas as barreiras instrumentadas — TCAS ineficaz (sem transponder no tráfego VFR), radar sem cobertura, separação mínima de 2 segundos. A única barreira que atuou foi a visão dos pilotos a poucos segundos do impacto, configurando margem de recuperação mínima.",
+  "discriminators": [
+    "Não é ERC 2: ERC 2 pressupõe 'alguma barreira' ou 'oportunidade de recuperação com tempo operacional'. O conflito foi resolvido exclusivamente por avistamento visual a 2 segundos, sem nenhuma barreira instrumentada efetiva.",
+    "Não é O-B: não há evidência de violação rotineira da tripulação. O conflito ocorreu por falha sistêmica de cobertura de espaço aéreo e incompatibilidade de equipamentos.",
+    "Não é A-I ou A-J: a manobra evasiva foi executada corretamente pelo comandante; não houve resposta incorreta à ameaça identificada — foi A-G (ação especial urgente executada conforme a situação exigiu)."
+  ],
+  "methodology_notes": "Fixture de âncora para ERC 1 — risco crítico e imediato com perda de barreiras. Representa a célula A1 ou A2 da matriz ARMS padrão (Catastrófico × Não efetiva ou Mínima). O motor deve classificar como ERC 1 ao detectar: conflito iminente de aeronaves, ausência de barreiras instrumentadas efetivas, margem de recuperação mínima. Qualquer ERC > 2 para este relato seria subestimação grave de risco.",
+  "future_expected": {
+    "arms_risk_index_reference": "502 ou 2500 (Catastrófico × Mínima ou Não efetiva)",
+    "arms_color": "RED",
+    "arms_matrix_cell": "A1 ou A2 (Catastrófico × Sem barreira efetiva)",
+    "ui_erc_post_normalizacao": 5,
+    "traditional_matrix_note": "Severidade: catastrófica (potencial de perda das aeronaves). Probabilidade: alta (condições estruturais que permitiram o conflito persistem). Zona: Inaceitável. Requer ação imediata.",
+    "sira_applicable": true,
+    "sira_note": "O conflito expõe Safety Issue sistêmica: área de tráfego VFR intenso sem cobertura radar, sem obrigatoriedade de transponder Mode C e sem procedimentos de separação efetivos. SIRA deve avaliar frequência de tráfego misto nessa área, efetividade de barreiras atuais e severidade potencial. Resultado esperado do SIRA: Stop ou Improve."
+  }
+}

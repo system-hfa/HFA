@@ -1,0 +1,29 @@
+{
+  "id": "TEST-RISK-SIRA-001",
+  "title": "Decolagem sem atualização de ATIS — evento isolado é ERC 4, mas padrão recorrente é Safety Issue",
+  "domain": "operações de voo",
+  "description": "Tripulação de aeronave comercial realizou briefing de decolagem e início de procedimentos de pré-partida sem verificar a última atualização do ATIS disponível. A atualização de ATIS continha mudança de pista ativa por ventos cruzados que havia ocorrido 35 minutos antes. A tripulação utilizou a pista conforme planejamento original, que estava operacional mas com vento cruzado acima do valor de referência de preferência da companhia (não acima do limite regulatório). A decolagem foi realizada com sucesso sem incidentes. A tripulação alegou que o ATIS havia sido checado no início do turno e não havia sido atualizado durante a espera em solo. A investigação revelou que este era o quarto evento similar reportado pela mesma companhia nos últimos três meses, todos envolvendo falta de verificação da atualização de ATIS antes de decolagem.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-B",
+    "erc_level": 4,
+    "top_preconditions": ["O3", "T2", "S2"]
+  },
+  "rationale": "P-A: a tripulação percebia a situação — sabia que havia um ATIS disponível. A omissão foi procedimental, não perceptiva. O-A: o objetivo era cumprir a decolagem nominalmente; não há evidência de violação consciente de regra conhecida — trata-se de omissão de atualização, não de desconsideração deliberada do procedimento. A-B: a tripulação omitiu o passo de verificação de atualização do ATIS conforme procedimento. ERC 4: risco baixo a moderado — o evento não gerou consequência técnica imediata e a pista estava operacional. A consequência potencial (vento cruzado acima do valor de preferência) é indireta e dependente de deterioração adicional das condições. A detecção retroativa na investigação evidencia o baixo impacto imediato.",
+  "discriminators": [
+    "Não é ERC 3 ou 2: a decolagem foi bem-sucedida com condições apenas fora do valor de preferência (não do limite regulatório). O risco imediato era baixo. O risco sistêmico está no padrão de recorrência — que é objeto de SIRA, não de ERC individual.",
+    "Não é O-B: O-B requer padrão normalizado explícito. Aqui a investigação revelou múltiplos eventos similares da companhia, mas não há evidência de que ESTA tripulação tenha padrão habitual de omitir ATIS — pode ser lapso procedimental isolado para este crew.",
+    "ERC 4 deste evento ≠ risco baixo da Safety Issue: o padrão de 4 eventos similares em 3 meses indica que o processo de checagem de ATIS está sistematicamente falhando. A Safety Issue tem perfil de risco mais alto que o evento individual."
+  ],
+  "methodology_notes": "FIXTURE DE REFERÊNCIA PARA DISTINÇÃO ERC vs SIRA.\n\nO ERC deste evento isolado é 4 (baixo, procedural, sem consequência imediata). Mas o PADRÃO de 4 eventos similares em 3 meses na mesma companhia constitui Safety Issue formal: 'falha sistemática de verificação de atualização de ATIS antes de decolagem'.\n\nA Safety Issue deve ser avaliada via SIRA:\n- Triggering event: omissão de verificação de ATIS antes da decolagem\n- Frequência: ~1-2 vezes por mês na companhia\n- Barreiras de evitação: checklist, SOP, treinamento inicial\n- Barreiras de recuperação: detecção pela torre, condições operacionais ainda dentro do limite regulatório\n- Severidade potencial do acidente: variável (vento cruzado severo pode causar acidente durante decolagem = Maior)\n\nIsso demonstra que ERC e SIRA operam em NÍVEIS diferentes: ERC classifica o evento, SIRA avalia o padrão.",
+  "future_expected": {
+    "arms_risk_index_reference": "2 a 10 (Lesões/Danos ou Maior × Efetiva)",
+    "arms_color": "GREEN a YELLOW",
+    "arms_matrix_cell": "C4 ou B4 (Danos Menores ou Maior × Barreira Efetiva)",
+    "ui_erc_post_normalizacao": 1,
+    "traditional_matrix_note": "Para este EVENTO: Severidade = baixa-moderada, Probabilidade = não aplicável (ERC). Para SIRA da Safety Issue: Severidade = Maior (acidente potencial em decolagem com vento cruzado severo), Frequência = 4 em 3 meses (moderada-alta). SIRA resultado estimado: Improve ou Stop dependendo da análise completa das barreiras.",
+    "sira_applicable": true,
+    "sira_note": "SIRA deve ser aberto imediatamente para a Safety Issue de 'omissão de verificação de ATIS antes de decolagem' na companhia. O padrão de 4 eventos similares em 3 meses, combinado com o potencial de acidente em condições adversas de vento cruzado, justifica avaliação formal. Áreas de análise: efetividade do checklist de decolagem, cultura de procedimento, treinamento de atualização de informações AIS."
+  }
+}

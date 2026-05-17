@@ -1,0 +1,29 @@
+{
+  "id": "TEST-RISK-ERC-001",
+  "title": "Erro de preenchimento documental sem consequência operacional (ERC 5 — mínimo)",
+  "domain": "operações aeroportuárias",
+  "description": "Operador de handling aéreo preencheu formulário de controle de combustível abastecido com valor em litros em vez de quilogramas. O erro foi detectado pelo supervisor antes de qualquer comunicação à tripulação. O formulário foi corrigido antes do fechamento do turno. A aeronave não havia recebido o abastecimento no momento do registro e o dado correto foi transmitido à tripulação exclusivamente pelo sistema digital primário de abastecimento, que operou corretamente durante todo o processo. Nenhuma operação de voo foi afetada. Não houve comunicação incorreta de quantidade de combustível a nenhum membro da tripulação.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 5,
+    "top_preconditions": ["O3", "W1"]
+  },
+  "rationale": "P-A: não há falha perceptiva — o operador percebeu corretamente a tarefa e a unidade correta era conhecida. O-A: objetivo era cumprir o preenchimento de controle administrativo regular. A-A: não houve falha de ação técnica operacional; o erro foi documental e sem impacto no processo. ERC 5: o caso é mínimo, administrativo e documental — exatamente a definição do nível 5. Não existe degradação operacional relevante nem potencial de acidente a partir deste evento.",
+  "discriminators": [
+    "Não é ERC 4: ERC 4 requer potencial de consequência indireta dependente de outras falhas. Aqui o dado correto chegou à tripulação pelo sistema primário, independentemente do formulário. Não há cadeia de falhas plausível.",
+    "Não é ERC 3: ERC 3 requer risco moderado ou procedural com potencial técnico. O erro foi puramente documental, sem potencial técnico ou operacional.",
+    "Não é P-C: o operador conhecia a unidade correta — não é déficit de conhecimento, é lapso de registro."
+  ],
+  "methodology_notes": "Fixture de âncora para ERC mínimo. Representa o caso-base da matriz ARMS (linha D — sem desfecho de acidente plausível). O motor SERA deve recusar qualquer ERC < 5 para relatos com esta estrutura. Se o motor retornar ERC 4 ou menor para relatos deste tipo, há superestimação sistemática de risco.",
+  "future_expected": {
+    "arms_risk_index": 1,
+    "arms_color": "GREEN",
+    "arms_matrix_cell": "D (sem desfecho de acidente)",
+    "ui_erc_post_normalizacao": 1,
+    "traditional_matrix_note": "Probabilidade: negligível. Severidade: negligível. Zona: Aceitável. A matriz tradicional concorda com ERC 5.",
+    "sira_applicable": false,
+    "sira_note": "Não constitui Safety Issue. Sem padrão de risco a avaliar."
+  }
+}

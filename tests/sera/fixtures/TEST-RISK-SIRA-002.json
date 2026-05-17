@@ -1,0 +1,30 @@
+{
+  "id": "TEST-RISK-SIRA-002",
+  "title": "Incidente de fadiga após redução de descanso sem avaliação de risco — falha de gestão de mudança",
+  "domain": "operações de voo",
+  "description": "Comandante reportou fadiga severa durante aproximação final para pouso, com dificuldade de manter foco nos instrumentos e resposta lenta a callouts do copiloto. O comandante havia completado quatro etapas de voo em 14 horas após período de descanso de 9 horas entre jornadas. A companhia havia implementado nova política de descanso mínimo de 9 horas entre jornadas no mês anterior, reduzindo o mínimo anterior de 11 horas, como parte de ajuste de escala para otimização de custos. A nova política estava dentro dos limites regulatórios mínimos. Nenhuma avaliação de risco ou estudo de fadiga havia sido realizado antes da mudança. O copiloto assumiu os controles quando o comandante reportou a condição, e o pouso foi realizado com sucesso pelo copiloto. O comandante foi liberado do serviço após o evento.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 2,
+    "top_preconditions": ["P1", "O2", "S1"]
+  },
+  "rationale": "P-B: a fadiga comprometeu a capacidade perceptiva do comandante durante a fase mais crítica do voo — percepção prejudicada por condição fisiológica (P-B cobre falhas perceptivas por estado fisiológico). O-A: o comandante e copiloto seguiam o voo nominal sem violação de procedimento. A-G: a transferência de controles durante a aproximação constitui ação especial com urgência — o copiloto assumiu os controles fora do procedimento padrão por necessidade operacional. ERC 2: risco alto com alguma barreira remanescente — a fadiga do PIC durante aproximação é condição de alto risco, mas a presença de copiloto capaz e a detecção pelo próprio comandante constituíram barreiras efetivas de recuperação que permitiram o pouso seguro.",
+  "discriminators": [
+    "Não é ERC 1: a barreira de copiloto capaz funcionou efetivamente. O comandante identificou a condição e reportou proativamente. Não houve perda iminente de controle sem margem de recuperação.",
+    "Não é ERC 3: degradação fisiológica do PIC durante aproximação é diretamente crítica para a segurança do voo, não moderada ou localizada.",
+    "O ERC do evento ≠ avaliação da decisão de mudança de política: a mudança de 11h para 9h de descanso mínimo deveria ter sido avaliada via SIRA/gestão de mudanças ANTES da implementação. O ERC 2 avalia o incidente que ocorreu, não se a política era correta."
+  ],
+  "methodology_notes": "FIXTURE DE REFERÊNCIA PARA GESTÃO DE MUDANÇA (MoC) E SIRA PROSPECTIVO.\n\nO ERC deste evento é 2 — avalia o incidente específico que ocorreu. Mas a causa-raiz do incidente foi uma MUDANÇA OPERACIONAL (redução de descanso mínimo) implementada SEM avaliação de risco prospectiva.\n\nPara mudanças operacionais futuras, o instrumento correto é SIRA em modo prospectivo (Safety Assessment):\n- Triggering event: redução de descanso mínimo de 11h para 9h\n- Frequência de exposição: todos os voos após a mudança\n- Barreiras de evitação: regulatório (limite mínimo), estudos de fadiga, monitoramento de FRMS\n- Barreiras de recuperação: copiloto capaz, reporte voluntário de fadiga\n- Severidade: catastrófica (LOC por fadiga do PIC em aproximação)\n\nSIRA prospectivo para esta mudança provavelmente teria resultado 'Stop' ou 'Improve', identificando que a redução de 11h para 9h com alta densidade de jornadas é incompatível com o nível de segurança aceitável.\n\nIsso demonstra que ERC (para o evento passado) e SIRA/MoC (para a mudança prospectiva) são instrumentos complementares — um não substitui o outro.",
+  "future_expected": {
+    "arms_risk_index_reference": "10 a 500 (Catastrófico ou Maior × Efetiva a Não efetiva)",
+    "arms_color": "YELLOW a RED",
+    "arms_matrix_cell": "A4 a B1 dependendo da avaliação de barreira do copiloto",
+    "ui_erc_post_normalizacao": 4,
+    "traditional_matrix_note": "Para o EVENTO: Severidade = catastrófica potencial (LOC por fadiga PIC), barreiras = copiloto efetivo. ARMS: célula A4 = YELLOW (Catastrófico × Barreira Efetiva). Para a MUDANÇA DE POLÍTICA via SIRA prospectivo: Frequência = alta (todos os voos pós-mudança), Barreiras de fadiga = mínimas (sem FRMS, sem estudo). Zona SIRA estimada: Stop ou Improve.",
+    "anti_pattern": "ERRADO usar apenas o ERC do incidente resultante para avaliar se a política de descanso é segura. O ERC avalia o evento passado — a política requer SIRA/MoC prospectivo ANTES da implementação.",
+    "sira_applicable": true,
+    "sira_note": "SIRA retrospectivo deve ser aberto para 'política de descanso mínimo de 9h em alta densidade de jornadas'. Adicionalmente, MoC deve ser executado com SIRA prospectivo antes de qualquer futura alteração de parâmetros de descanso. Resultado esperado da SIRA: Stop até que estudo de fadiga (FRMS) demonstre segurança equivalente ao limite anterior."
+  }
+}

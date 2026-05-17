@@ -1,0 +1,29 @@
+{
+  "id": "TEST-RISK-ERC-002",
+  "title": "Omissão de lacre de componente detectada antes da liberação da aeronave (ERC 4 — baixo)",
+  "domain": "manutenção aeronáutica",
+  "description": "Técnico de manutenção em aeroporto de escala concluiu a substituição de filtro de óleo de motor mas não instalou o lacre de proteção de encaixe conforme o procedimento escrito de manutenção. A omissão foi detectada pelo próprio técnico durante a revisão final da área de trabalho, antes do encerramento da ordem de serviço e antes da inspeção pré-voo. O lacre foi instalado corretamente. A aeronave não chegou a ser submetida a partida de motor ou inspeção pré-voo sem o componente corretamente instalado. O procedimento de verificação de fechamento de item funcionou como barreira efetiva. Não houve impacto em qualquer sistema operacional da aeronave.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-B",
+    "erc_level": 4,
+    "top_preconditions": ["W1", "O3"]
+  },
+  "rationale": "P-A: o técnico percebeu corretamente a tarefa e a omissão foi identificada na revisão. O-A: objetivo era cumprir a substituição de filtro conforme procedimento regular. A-B: omissão de etapa procedural — o lacre não foi instalado, configurando omissão de passo obrigatório do procedimento. ERC 4: o risco é baixo a moderado. A consequência (possível vazamento de óleo) é indireta e dependente de falha adicional — a detecção e correção antes da liberação eliminou a exposição operacional real. A barreira de verificação final foi efetiva.",
+  "discriminators": [
+    "Não é ERC 5: houve omissão de etapa procedural real em componente crítico (filtro de óleo de motor), que tem potencial indireto de vazamento — mesmo que detectada antes da operação.",
+    "Não é ERC 3: a omissão foi detectada e corrigida antes da aeronave ser exposta a qualquer risco operacional. Não há situação de risco moderado com consequência técnica em andamento.",
+    "Não é A-A: A-A seria para ausência de falha de ação relevante. Aqui houve omissão real de etapa obrigatória do procedimento, mesmo que corrigida."
+  ],
+  "methodology_notes": "Fixture de âncora para ERC 4 — risco baixo com barreira efetiva. Demonstra que a presença de uma barreira de detecção efetiva (revisão final antes da liberação) reduz o ERC mesmo quando houve falha procedimental real. Diferencia-se de ERC 5 porque existe potencial técnico real, mas dependente de múltiplas falhas adicionais.",
+  "future_expected": {
+    "arms_risk_index_reference": "2 ou 4 (Lesões/Danos × Efetiva ou Limitada)",
+    "arms_color": "GREEN",
+    "arms_matrix_cell": "C4 ou C3 (Lesões/Danos × Barreira Efetiva ou Limitada)",
+    "ui_erc_post_normalizacao": 1,
+    "traditional_matrix_note": "Severidade: menor (dano potencial indireto). Probabilidade: baixa (barreira de detecção funcional). Zona: Aceitável.",
+    "sira_applicable": false,
+    "sira_note": "Evento isolado. Se omissões similares forem detectadas com frequência, pode qualificar como Safety Issue de processo de verificação."
+  }
+}

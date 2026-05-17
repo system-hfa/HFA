@@ -1,0 +1,30 @@
+{
+  "id": "TEST-RISK-ISO-001",
+  "title": "Comandante decide continuar voo com falha de modo não documentado no atuador de aileron — ERC determinístico, matriz tradicional falha (ERC 2 — alto)",
+  "domain": "operações de voo",
+  "description": "Durante cruzeiro em aeronave de modelo há 8 anos em operação, o atuador eletro-hidráulico do aileron direito apresentou falha de modo não documentado previamente: travamento intermitente com resposta de 2 a 3 segundos de delay em relação ao comando. O defeito não constava nos boletins de serviço, nos registros de manutenção da frota nem em bancos de dados de ocorrências da autoridade regulatória. A tripulação identificou a resposta anormal de controle durante manobra de correção de rumo e ativou o protocolo de anomalia de controles. Após consultar o QRH — que não continha procedimento específico para esse modo de falha —, o comandante decidiu continuar o voo até o destino original utilizando controles secundários e monitoramento reforçado com rudder, ao invés de realizar diversão imediata para o aeroporto mais próximo conforme recomendação padrão para falhas de controle primário não identificadas no QRH. O copiloto questionou a decisão e propôs a diversão, mas o comandante avaliou que as margens de segurança com controles secundários eram suficientes para concluir o voo. O pouso foi realizado sem incidentes. A análise técnica pós-voo não identificou causa imediata — o problema não se reproduziu em solo.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-C",
+    "erc_level": 2,
+    "top_preconditions": ["W1", "T2", "S3"]
+  },
+  "rationale": "P-B: a resposta inesperada de controle criou uma percepção incorreta do estado real da aeronave — a tripulação não conseguiu avaliar com precisão o estado do atuador nem a margem de degradação real, pois o modo de falha era completamente novo e não havia referência para comparação. O-A: o objetivo era concluir o voo nominal até o destino. A-C: o comandante verificou que havia uma anomalia no controle (identificou o travamento intermitente), mas não confirmou adequadamente a segurança de continuar — a ausência de procedimento no QRH para esse modo de falha específico tornava impossível verificar se os controles secundários eram suficientes para qualquer cenário de evolução da falha. ERC 2: risco alto com alguma barreira remanescente — a falha afetou diretamente o controle primário da aeronave em voo, mas controles secundários, rudder e protocolo de anomalia estavam disponíveis e efetivos.",
+  "discriminators": [
+    "Não é ERC 1: ERC 1 requer margem mínima de recuperação. A falha foi identificada durante manobra de correção de rumo (não em fase crítica como aproximação) e barreiras secundárias foram efetivas. O comandante completou o pouso com sucesso.",
+    "Não é ERC 3: a falha de atuador de aileron primário em voo é diretamente crítica para o controle da aeronave, não moderada ou localizada. O risco foi alto, mesmo que controlado.",
+    "Não é P-A: o comandante operou com percepção incompleta e degradada do estado real do sistema — a falha intermitente e a ausência de referência no QRH tornavam a avaliação da situação inerentemente imprecisa."
+  ],
+  "methodology_notes": "FIXTURE DE REFERÊNCIA PARA USO DA MATRIZ TRADICIONAL — demonstra o limite do modelo probabilidade × severidade para eventos únicos sem histórico.\n\nO ERC deste evento é determinístico: ERC 2 baseado no potencial (perda de controle de aeronave = catástrofe potencial) e nas barreiras que restaram (parcialmente efetivas). Nenhum dado de frequência é necessário para o ERC.\n\nA matriz tradicional (probabilidade × severidade) FALHA neste caso: 'qual a probabilidade de esta falha específica de atuador ocorrer novamente?' = DESCONHECIDA. Com modo de falha novo, sem histórico, sem reprodução em solo, a probabilidade não pode ser estimada. Tentar estimar resultaria em subjetividade máxima.\n\nIsso ilustra POR QUÊ o ERC existe como instrumento específico para eventos históricos individuais, enquanto a matriz tradicional é melhor aplicada em contextos de Safety Issue (SIRA) onde há dados de frequência.",
+  "future_expected": {
+    "arms_risk_index_reference": "10 a 101 (Catastrófico × Efetiva a Mínima ou Maior × Mínima)",
+    "arms_color": "YELLOW a RED",
+    "arms_matrix_cell": "A4 a B2 dependendo da avaliação de barreira",
+    "ui_erc_post_normalizacao": 4,
+    "traditional_matrix_note": "Severidade: catastrófica (perda de aeronave potencial). Probabilidade: INDETERMINADA (modo de falha novo, sem histórico). A matriz tradicional NÃO pode produzir resultado confiável para este evento sem dados de frequência. ERC é o instrumento correto para este caso.",
+    "anti_pattern": "ERRADO usar matriz tradicional para evento com modo de falha novo e sem dados de recorrência. ERRADO estimar probabilidade subjetivamente para preencher a matriz. O ERC é a resposta metodológica correta para eventos históricos individuais.",
+    "sira_applicable": true,
+    "sira_note": "Este evento deve iniciar investigação técnica aprofundada para caracterizar o modo de falha. Se outras aeronaves do mesmo modelo apresentarem o mesmo defeito, a Safety Issue de 'falha intermitente de atuador de aileron' deve ser formalmente aberta e avaliada via SIRA com dados de exposição da frota."
+  }
+}

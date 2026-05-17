@@ -1,0 +1,30 @@
+{
+  "id": "TEST-RISK-DUAL-002",
+  "title": "Passageiro com fratura por turbulência — ERC baseado em barreiras do evento, não em probabilidade de recorrência",
+  "domain": "operações de voo",
+  "description": "Passageiro sofreu fratura de costela durante turbulência severa inesperada em cruzeiro. O aviso de cinto de segurança estava ativado no momento do evento. Uma comunicação de cabine havia sido feita 8 minutos antes da turbulência orientando todos a manterem o cinto afivelado. O passageiro havia retornado ao assento mas não havia afivelado o cinto após visita ao banheiro. Quando a turbulência severa ocorreu, o passageiro foi projetado contra o encosto do assento à frente. A tripulação de cabine prestou atendimento imediato. Não houve outros feridos. O meteorologista de rota havia emitido SIGMET para turbulência na área, mas o piloto havia recebido a informação com 40 minutos de atraso por falha de uplink do ACARS.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-C",
+    "erc_level": 3,
+    "top_preconditions": ["W1", "S4", "P5"]
+  },
+  "rationale": "P-B: o piloto não recebeu o SIGMET de turbulência a tempo de antecipar a preparação de cabine — falha de percepção induzida por falha de uplink do sistema ACARS. O-A: o objetivo operacional era executar a rota conforme planejado. A-C: a tripulação realizou orientação de cabine (verificação de resultado de procedimento de segurança) e ativou o sinal de cinto, constituindo verificação de resultado de segurança que foi parcialmente efetiva. ERC 3: risco moderado, localizado — o sinal de cinto estava ativo, a orientação havia sido feita, mas a comunicação do SIGMET chegou com atraso. A lesão real confirma que alguma barreira falhou, mas outras (sinal de cinto, comunicação de cabine) funcionaram parcialmente. O resultado foi lesão menor — não um acidente de maior gravidade.",
+  "discriminators": [
+    "Não é ERC 2: ERC 2 pressupõe risco alto com barreiras mínimas. Aqui múltiplas barreiras atuaram (sinal de cinto ativo, orientação de cabine 8 minutos antes). O resultado foi lesão menor, dentro do perfil de risco moderado.",
+    "Não é ERC 4: a lesão real com fratura confirma que barreiras foram insuficientes para prevenir o desfecho. Um evento ERC 4 teria consequência apenas indireta ou dependente de outras falhas adicionais.",
+    "O ERC não muda com a frequência do evento: se turbulências severas nessa rota ocorrem mensalmente (alta frequência), o ERC deste evento específico ainda é 3. A frequência determina se constitui Safety Issue (SIRA), não o ERC do evento individual."
+  ],
+  "methodology_notes": "FIXTURE CHAVE DO MODELO DUAL — demonstra que o ERC de um evento HISTÓRICO não contém probabilidade de recorrência. O ERC 3 deste evento é determinado pelas barreiras que existiam NAQUELE DIA, não pela frequência com que turbulências severas atingem aeronaves nessa rota.\n\nA matriz tradicional (probabilidade × severidade) comete o erro oposto: pode elevar artificialmente o score baseando-se em 'turbulência severa é comum nessa rota' — o que é SIRA, não ERC.\n\nO ERC é do evento. O SIRA é do padrão. Para avaliar se 'turbulência com passageiro não cinturado' é um Safety Issue recorrente, usa-se SIRA com frequência de uplink failures do ACARS + frequência de turbulência não antecipada + taxa de passageiros sem cinto após retorno do banheiro.",
+  "future_expected": {
+    "arms_risk_index_reference": "4 a 20 (Lesões/Danos × Efetiva ou Limitada a Mínima)",
+    "arms_color": "YELLOW",
+    "arms_matrix_cell": "C3 ou C2 (Lesões/Danos × Limitada ou Mínima)",
+    "ui_erc_post_normalizacao": 2,
+    "traditional_matrix_note": "Para este EVENTO: Severidade = menor (fratura), Probabilidade = não aplicável (ERC não avalia probabilidade). Para SIRA desta Safety Issue: Severidade = menor a maior, Probabilidade = função de frequência de uplink failures × turbulência não antecipada. Zona estimada: Tolerável a Elevado dependendo dos dados de frequência.",
+    "anti_pattern": "ERRADO elevar ERC porque 'turbulência é frequente nessa rota'. Frequência é input do SIRA, não do ERC. ERRADO reduzir ERC porque 'só um passageiro se feriu'. A lesão real confirma que barreiras falharam.",
+    "sira_applicable": true,
+    "sira_note": "Potencial Safety Issue dupla: (1) confiabilidade do uplink ACARS para SIGMET em rota; (2) efetividade de procedimentos de cabine para garantir cintos afivelados pós-lavabo. SIRA recomendado para ambas."
+  }
+}

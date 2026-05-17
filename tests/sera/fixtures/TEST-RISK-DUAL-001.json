@@ -1,0 +1,30 @@
+{
+  "id": "TEST-RISK-DUAL-001",
+  "title": "Incursão de pista sem colisão por acaso — resultado leve, potencial catastrófico (demonstração ERC vs resultado observado)",
+  "domain": "operações aeroportuárias",
+  "description": "Aeronave comercial iniciou decolagem em pista ocupada por aeronave de carga que aguardava autorização de cruzamento. A aeronave de carga havia sido inadvertidamente posicionada na pista ativa após falha de comunicação entre torre e solo. A aeronave em decolagem atingiu 140 nós quando avistou a aeronave de carga a 600 metros à frente, já passando do ponto de abortagem segura. A tripulação decidiu continuar a decolagem e a aeronave passou sobre a aeronave de carga por 15 metros de separação vertical após rotação forçada antecipada. Nenhuma colisão ocorreu. Nenhum passageiro ou tripulante se feriu. O único impacto foi uma investigação subsequente. A pista estava ocupada por uma única aeronave posicionada em ângulo que tornou o cruzamento possível.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 1,
+    "top_preconditions": ["S4", "S3", "W3"]
+  },
+  "rationale": "P-B: a tripulação da aeronave em decolagem não recebeu informação sobre a presença da aeronave de carga na pista — falha de percepção induzida por falha de comunicação sistêmica. O-A: a tripulação seguia procedimento de decolagem nominalmente autorizado, sem violação de regra. A-G: a rotação forçada antecipada fora do envelope operacional normal constitui ação especial de urgência. ERC 1: o evento é crítico e imediato. O resultado observado (sem colisão) foi produto de circunstância geométrica favorável, não de barreiras de segurança efetivas. As barreiras falharam completamente: a autorização de pista foi dada incorretamente, não houve alerta de ground radar, não houve comunicação entre solo e torre. A separação de 15 metros não representa uma barreira — representa ausência de impacto por acaso.",
+  "discriminators": [
+    "ERC NÃO é determinado pelo resultado observado: classificar este evento como ERC 4 ou 5 porque 'ninguém se feriu' seria o erro metodológico central que o ERC existe para evitar. O ERC avalia o potencial (catastrófico) e as barreiras remanescentes (inexistentes), não o resultado final.",
+    "Não é ERC 2 ou 3: ERC 2 e 3 pressupõem barreiras funcionais. Neste evento, todas as barreiras instrumentadas falharam. A única razão pela qual não houve colisão foi a geometria favorável — a aeronave de carga estava em ângulo que permitiu cruzamento vertical. Isso não é uma barreira.",
+    "Não é O-B: a tripulação seguiu procedimento autorizado. O problema sistêmico está na falha de coordenação solo-torre, não em violação de procedimento pela tripulação."
+  ],
+  "methodology_notes": "FIXTURE CHAVE DO MODELO DUAL — demonstra o princípio fundamental do ERC: o risco é avaliado com base no potencial do evento e na efetividade das barreiras remanescentes, NÃO no resultado observado.\n\nErro metodológico a evitar: usar 'nenhum ferido' ou 'nenhuma colisão' como base para ERC baixo. No padrão ARMS, a pergunta é 'se o evento tivesse escalado, qual seria o desfecho mais crível?' (catastrófico) e 'que barreiras restaram?' (nenhuma efetiva — apenas sorte geométrica).\n\nA matriz tradicional (probabilidade × severidade) cometeria um erro diferente: poderia subestimar a severidade usando o resultado real (nenhum ferido) em vez do potencial (catástrofe). O ERC é específico ao evento e desacopla potencial de desfecho.",
+  "future_expected": {
+    "arms_risk_index_reference": "2500 (Catastrófico × Não efetiva)",
+    "arms_color": "RED",
+    "arms_matrix_cell": "A1 (Catastrófico × Sem barreiras efetivas)",
+    "ui_erc_post_normalizacao": 5,
+    "traditional_matrix_note": "Severidade: catastrófica. Probabilidade: alta (condições sistêmicas de falha de coordenação persistem). Zona: Inaceitável. Concordância com ERC 1 na urgência de resposta.",
+    "anti_pattern": "ERRADO classificar como ERC 5 porque 'não houve feridos'. ERRADO classificar como ERC 3-4 porque 'foi sorte'. O resultado não determina o ERC — o potencial e as barreiras determinam.",
+    "sira_applicable": true,
+    "sira_note": "Safety Issue: falha de coordenação solo-torre na gestão de ocupação de pista. SIRA deve avaliar: frequência de autorizações simultâneas conflitantes, efetividade do ground radar no aeroporto, procedimentos de confirmação de pista livre."
+  }
+}

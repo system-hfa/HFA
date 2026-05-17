@@ -1,0 +1,29 @@
+{
+  "id": "TEST-RISK-ERC-003",
+  "title": "Comandante não confirma referência altimétrica após falha de rádio altímetro em IMC — barreiras alternativas efetivas (ERC 3 — moderado)",
+  "domain": "operações de voo",
+  "description": "Durante aproximação ILS para pouso em aeroporto com visibilidade reduzida a 2.000 metros por neblina, o rádio altímetro da aeronave apresentou leitura errática e instável abaixo de 300 pés. O copiloto realizou o callout 'rádio altímetro instável, referência barométrica' conforme procedimento. O comandante, com atenção concentrada no display primário de voo, não confirmou verbalmente a transição para referência barométrica nem reconheceu o callout do copiloto. A aproximação prosseguiu com cada piloto operando sob premissas diferentes sobre qual referência altimétrica estava em uso. O ILS operava corretamente e a torre de controle estava ativa. Ao atingir os mínimos, a discordância de leitura de altitude tornou-se evidente e a tripulação executou go-around estabilizado. A investigação pós-evento identificou que a ausência de confirmação explícita do callout de falha do altímetro resultou em discordância não declarada de referência de altitude durante o segmento mais crítico da aproximação.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-A",
+    "action_code": "A-C",
+    "erc_level": 3,
+    "top_preconditions": ["W1", "T2", "P2"]
+  },
+  "rationale": "P-B: o comandante recebeu informação degradada e conflitante durante a fase crítica da aproximação — a falha do instrumento associada à ausência de confirmação CRM criou uma percepção incorreta do estado de referência altimétrica em uso. O-A: o objetivo era a conclusão nominal da aproximação ILS. A-C: o comandante não confirmou o resultado do procedimento de transição altimétrica — falha em verificar se a coordenação de referência entre os pilotos foi completada. ERC 3: risco moderado — a discordância de referência altimétrica em IMC durante aproximação é um risco real, mas múltiplas barreiras alternativas (ILS operacional, ATC ativo, copiloto com referência correta, visibilidade 2.000m) estavam disponíveis e o go-around foi executado corretamente ao detectar a discordância.",
+  "discriminators": [
+    "Não é ERC 2: ERC 2 requer risco alto com barreiras mínimas. Aqui o ILS operava corretamente, o ATC estava ativo, o copiloto mantinha referência correta e a visibilidade permitia referência visual complementar. O risco era moderado, não alto.",
+    "Não é ERC 4: ERC 4 requer consequência indireta e dependente de falhas adicionais. A discordância de referência altimétrica em IMC é uma falha direta de barreira operacional em fase crítica, não consequência indireta.",
+    "Não é P-A: o comandante operou com referência altimétrica incorreta durante segmento crítico — houve percepção efetivamente degradada do estado real, induzida pela combinação de falha de instrumento e ausência de coordenação CRM."
+  ],
+  "methodology_notes": "Fixture de âncora para ERC 3 — risco moderado com barreiras alternativas efetivas. O ato inseguro factual é a falha do comandante em confirmar o callout do copiloto sobre a transição de referência altimétrica (violação de procedimento CRM). Demonstra que um ato de omissão CRM em contexto de falha de equipamento pode gerar risco moderado mesmo quando barreiras alternativas são efetivas.",
+  "future_expected": {
+    "arms_risk_index_reference": "4 a 20 (Lesões/Danos × Efetiva ou Limitada)",
+    "arms_color": "YELLOW",
+    "arms_matrix_cell": "C3 ou C2 (Lesões/Danos × Limitada ou Mínima)",
+    "ui_erc_post_normalizacao": 2,
+    "traditional_matrix_note": "Severidade: menor (potencial de pouso anormal com lesões em IMC). Probabilidade: baixa-moderada (falha de altímetro + omissão CRM). Zona: Tolerável. A matriz tradicional concorda que merece atenção mas não é crítico.",
+    "sira_applicable": false,
+    "sira_note": "Evento isolado. Se eventos de discordância de referência altimétrica por falha de confirmação CRM se repetirem, qualifica como Safety Issue de cultura CRM e efetividade de treinamento de resposta a falhas de instrumentos."
+  }
+}

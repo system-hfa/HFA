@@ -1,0 +1,29 @@
+{
+  "id": "TEST-RISK-ERC-004",
+  "title": "Aproximação instabilizada prosseguida contra call-out do copiloto (ERC 2 — alto)",
+  "domain": "operações de voo",
+  "description": "Aeronave comercial realizou aproximação persistentemente instabilizada abaixo de 500 pés, com taxa de descida 40% acima do limite procedural e velocidade 18 nós acima da referência de pouso. O copiloto realizou o call-out de instabilização conforme procedimento e propôs execução de go-around. O comandante recusou a proposta e optou por continuar a aproximação. O sistema GPWS não ativou alertas durante a aproximação. A aeronave pousou com toque duro, excursão lateral de 4 metros e distância de parada dentro dos limites da pista. Nenhum passageiro relatou lesão. A aeronave foi submetida a inspeção de estrutura que identificou sobrecarga na estrutura do trem de pouso principal.",
+  "expected": {
+    "perception_code": "P-B",
+    "objective_code": "O-B",
+    "action_code": "A-D",
+    "erc_level": 2,
+    "top_preconditions": ["P2", "S1", "W4"]
+  },
+  "rationale": "P-B: o comandante falhou em perceber o estado operacionalmente crítico da aeronave durante a aproximação, desconsiderando os indicadores de instabilização e o call-out do copiloto. O-B: a decisão de continuar uma aproximação instabilizada contra o call-out do copiloto, em desacordo com o procedimento estabelecido, configura violação rotineira normalizada — há evidência de que o comandante não considerou o procedimento de go-around como mandatório nessa situação. A-D: ação de continuar procedimento com dados operacionais inválidos (parâmetros de aproximação fora dos limites). ERC 2: risco alto com alguma barreira remanescente — a única barreira efetiva foi o comprimento de pista. A sobrecarga estrutural identificada confirma que a aproximação ultrapassou limites operacionais seguros.",
+  "discriminators": [
+    "Não é ERC 1: ERC 1 requer perda imediata de barreiras e risco de perda de controle ou colisão. A aeronave pousou com sucesso, indicando que alguma margem de barreira remanesceu — o comprimento de pista absorveu o excesso de energia.",
+    "Não é ERC 3: ERC 3 é moderado, sem consequência crítica imediata. A dano estrutural confirmado e a recusa ao go-around com GPWS ausente colocam este evento em nível de risco alto, não moderado.",
+    "Não é O-C: O-C é violação excepcional/pontual. A recusa ao call-out do copiloto e a desconsideração do procedimento de go-around como mandatório configura padrão comportamental (O-B), não episódio isolado de conveniência."
+  ],
+  "methodology_notes": "Fixture de âncora para ERC 2 — risco alto com barreira mínima. Demonstra o perfil P-B + O-B + A-D que tipicamente gera risco operacional alto. A presença de O-B (violação normalizada) é um indicador de padrão sistêmico que tende a gerar ERC 2 ou 1.",
+  "future_expected": {
+    "arms_risk_index_reference": "10 a 101 (Maior × Efetiva a Mínima)",
+    "arms_color": "YELLOW a RED",
+    "arms_matrix_cell": "B4 a B2 (Acidente Maior × Barreira Efetiva a Mínima)",
+    "ui_erc_post_normalizacao": 4,
+    "traditional_matrix_note": "Severidade: maior (1-2 fatalidades potenciais). Probabilidade: moderada-alta (padrão O-B identificado). Zona: Elevado a Inaceitável. A matriz tradicional requer avaliação SIRA para o padrão de violação de go-around.",
+    "sira_applicable": true,
+    "sira_note": "O padrão O-B (violação normalizada de go-around) constitui Safety Issue potencial. SIRA deve avaliar: frequência de aproximações instabilizadas continuadas, efetividade do treinamento CRM para este perfil, cultura de pressão de conclusão na operação."
+  }
+}
