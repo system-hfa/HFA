@@ -358,11 +358,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="fixed inset-0 z-40 md:hidden">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-hfa-bg/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-hfa-bg/60 backdrop-blur-sm animate-in fade-in-0 duration-200"
             onClick={() => setMobileOpen(false)}
           />
           {/* Drawer */}
-          <div className="absolute inset-y-0 left-0 flex w-60 animate-slide-down">
+          <div className="absolute inset-y-0 left-0 flex w-60 animate-in slide-in-from-left duration-[250ms] ease-[cubic-bezier(0.32,0.72,0,1)]">
             <Sidebar
               pathname={pathname}
               userEmail={userEmail}

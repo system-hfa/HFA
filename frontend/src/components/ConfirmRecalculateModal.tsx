@@ -40,8 +40,8 @@ export default function ConfirmRecalculateModal({
   onConfirm, onCancel, loading,
 }: Props) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in-0 duration-150">
+      <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg shadow-2xl animate-in fade-in-0 zoom-in-95 duration-200">
 
         <div className="p-6 border-b border-slate-700">
           <div className="flex items-center gap-3">
