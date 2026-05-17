@@ -14,12 +14,29 @@ export async function GET(req: Request) {
 
     const { data, error } = await admin
       .from('corrective_actions')
-      .select('id, title, description, related_failure, status, responsible, due_date, completed_at, created_at, analysis_id')
+      .select('id, title, description, related_failure, status, responsible, due_date, completed_at, created_at, analysis_id, analyses(event_id)')
       .eq('tenant_id', user.tenantId)
       .order('created_at', { ascending: false })
 
     if (error) return jsonError(error.message, 500)
-    return NextResponse.json(data ?? [])
+
+    const rows = (data ?? []).map((row) => {
+      const analysis = row.analyses as { event_id?: string | null } | null
+      return {
+        id: row.id,
+        title: row.title,
+        description: row.description,
+        related_failure: row.related_failure,
+        status: row.status,
+        responsible: row.responsible,
+        due_date: row.due_date,
+        completed_at: row.completed_at,
+        created_at: row.created_at,
+        analysis_id: row.analysis_id,
+        event_id: analysis?.event_id ?? null,
+      }
+    })
+    return NextResponse.json(rows)
   } catch (e) {
     if (e instanceof Response) return e
     return jsonError(String(e), 500)

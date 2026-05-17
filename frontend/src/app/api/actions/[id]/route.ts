@@ -19,21 +19,40 @@ export async function PATCH(
     const { id } = await params
 
     const body = await req.json().catch(() => ({}))
-    const { status } = body as { status?: string }
-
-    if (!status || !VALID_STATUSES.includes(status)) {
-      return jsonError('status inválido', 400)
+    const { status, responsible, due_date } = body as {
+      status?: string
+      responsible?: string | null
+      due_date?: string | null
     }
 
-    const updates: Record<string, unknown> = { status }
-    if (status === 'completed') updates.completed_at = new Date().toISOString()
+    const updates: Record<string, unknown> = {}
+
+    if (status !== undefined) {
+      if (!VALID_STATUSES.includes(status)) {
+        return jsonError('status inválido', 400)
+      }
+      updates.status = status
+      if (status === 'completed') updates.completed_at = new Date().toISOString()
+    }
+
+    if (responsible !== undefined) {
+      updates.responsible = responsible?.trim() || null
+    }
+
+    if (due_date !== undefined) {
+      updates.due_date = due_date || null
+    }
+
+    if (Object.keys(updates).length === 0) {
+      return jsonError('Nenhum campo para atualizar', 400)
+    }
 
     const { data, error } = await admin
       .from('corrective_actions')
       .update(updates)
       .eq('id', id)
       .eq('tenant_id', user.tenantId)
-      .select('id, status, completed_at')
+      .select('id, status, responsible, due_date, completed_at')
       .single()
 
     if (error) return jsonError(error.message, 500)
