@@ -298,6 +298,7 @@ export default function EventDetailPage() {
   const [activeTab, setActiveTab] = useState<FlowTab>('perception')
   const [pdfState, setPdfState]   = useState<PdfState>('idle')
   const [badges, setBadges]       = useState<BadgeMap>({})
+  const [actionStates, setActionStates] = useState<Record<number, 'idle' | 'loading' | 'done' | 'error'>>({})
 
   useEffect(() => {
     async function load() {
@@ -375,6 +376,29 @@ export default function EventDetailPage() {
       setTimeout(() => setPdfState('idle'), 3000)
     }
   }, [event, analysis, token])
+
+  async function createAction(index: number, r: Recommendation, analysisId: string) {
+    setActionStates((prev) => ({ ...prev, [index]: 'loading' }))
+    try {
+      const res = await fetch('/api/actions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          analysis_id: analysisId,
+          title: r.title ?? 'Ação corretiva/preventiva',
+          description: r.description ?? null,
+          related_failure: r.related_code ?? null,
+        }),
+      })
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({})) as Record<string, unknown>
+        throw new Error(typeof err.detail === 'string' ? err.detail : `HTTP ${res.status}`)
+      }
+      setActionStates((prev) => ({ ...prev, [index]: 'done' }))
+    } catch {
+      setActionStates((prev) => ({ ...prev, [index]: 'error' }))
+    }
+  }
 
   if (loading) return <div className="p-8 text-slate-400">Carregando...</div>
   if (!event)  return <div className="p-8 text-slate-400">Evento não encontrado</div>
@@ -667,29 +691,62 @@ export default function EventDetailPage() {
                 </span>
               </div>
               <div className="p-6 space-y-3">
-                {recommendations.map((r: Recommendation, i: number) => (
-                  <div
-                    key={i}
-                    className="bg-slate-800 border border-slate-700 rounded-lg p-4 flex flex-col sm:flex-row sm:items-start gap-3"
-                  >
-                    <span className="flex-shrink-0 text-xs font-mono bg-blue-900 text-blue-300 px-2 py-1 rounded self-start">
-                      {r.related_code}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-200 mb-1">{r.title}</p>
-                      <p className="text-sm text-slate-400 leading-relaxed">{r.description}</p>
+                {recommendations.map((r: Recommendation, i: number) => {
+                  const aState = actionStates[i] ?? 'idle'
+                  return (
+                    <div key={i} className="bg-slate-800 border border-slate-700 rounded-lg p-4">
+                      <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+                        <span className="flex-shrink-0 text-xs font-mono bg-blue-900 text-blue-300 px-2 py-1 rounded self-start">
+                          {r.related_code}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-slate-200 mb-1">{r.title}</p>
+                          <p className="text-sm text-slate-400 leading-relaxed">{r.description}</p>
+                        </div>
+                      </div>
+                      {analysis?.id && (
+                        <div className="mt-3 pt-3 border-t border-slate-700/60 flex items-center justify-between gap-3">
+                          <span className={
+                            aState === 'done'  ? 'text-xs text-green-400' :
+                            aState === 'error' ? 'text-xs text-red-400' :
+                            'text-xs text-slate-600'
+                          }>
+                            {aState === 'done'  ? 'Ação criada — revisável em Ações Corretivas' :
+                             aState === 'error' ? 'Erro ao criar. Tente novamente.' :
+                             'Transforme esta recomendação em uma ação rastreável.'}
+                          </span>
+                          {aState === 'done' ? (
+                            <a
+                              href="/actions"
+                              className="shrink-0 text-xs font-medium text-slate-400 hover:text-slate-200 border border-slate-700 hover:border-slate-500 px-3 py-1.5 rounded-lg transition-colors"
+                            >
+                              Ver ações →
+                            </a>
+                          ) : (
+                            <button
+                              disabled={aState === 'loading'}
+                              onClick={() => createAction(i, r, analysis.id)}
+                              className={aState === 'loading'
+                                ? 'shrink-0 text-xs font-medium text-slate-500 border border-slate-700 px-3 py-1.5 rounded-lg cursor-wait'
+                                : 'shrink-0 text-xs font-medium text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 px-3 py-1.5 rounded-lg transition-colors'}
+                            >
+                              {aState === 'loading' ? 'Criando…' : 'Criar ação corretiva'}
+                            </button>
+                          )}
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
                 <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
                   <p className="text-xs text-slate-600">
-                    As ações corretivas são geradas automaticamente e ficam disponíveis para acompanhamento.
+                    Ações corretivas/preventivas criadas aqui ficam disponíveis para acompanhamento na lista de ações.
                   </p>
                   <a
                     href="/actions"
                     className="shrink-0 ml-4 text-xs font-medium text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 px-3 py-1.5 rounded-lg transition-colors"
                   >
-                    Ver ações corretivas →
+                    Ver todas as ações →
                   </a>
                 </div>
               </div>

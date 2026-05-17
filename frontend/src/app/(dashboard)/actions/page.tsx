@@ -71,8 +71,8 @@ export default function ActionsPage() {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white">Ações Corretivas</h1>
-        <p className="text-slate-400">Geradas automaticamente a partir das análises SERA</p>
+        <h1 className="text-2xl font-bold text-white">Ações Corretivas e Preventivas</h1>
+        <p className="text-slate-400">Criadas a partir das recomendações das análises SERA</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-8">
@@ -133,8 +133,19 @@ export default function ActionsPage() {
             )
           })}
           {filtered.length === 0 && (
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-12 text-center">
-              <p className="text-slate-400">Nenhuma ação {filter !== 'all' ? `com status "${statusConfig[filter]?.label}"` : ''}</p>
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-12 text-center space-y-3">
+              <p className="text-slate-400">
+                {filter !== 'all'
+                  ? `Nenhuma ação com status "${statusConfig[filter]?.label}"`
+                  : 'Nenhuma ação criada ainda.'}
+              </p>
+              {filter === 'all' && (
+                <p className="text-slate-500 text-sm">
+                  Para criar uma ação, abra o relatório de um evento e clique em{' '}
+                  <span className="text-slate-300 font-medium">"Criar ação corretiva"</span>{' '}
+                  em qualquer recomendação da Etapa 7.
+                </p>
+              )}
             </div>
           )}
         </div>
