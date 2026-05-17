@@ -6,6 +6,16 @@
 
 ---
 
+## Documentos Relacionados (v0.2)
+
+| Documento | Conteúdo |
+|---|---|
+| `RISK_ERC_SCIENTIFIC_REVIEW_v0.2.md` | Revisão científica do padrão ARMS/ERC a partir de fontes primárias |
+| `RISK_MATRIX_DUAL_MODEL_DECISION_v0.2.md` | Decisão sobre modelo dual de matrizes e recomendação ERC canônico |
+| `RISK_VALIDATION_PLAN_v0.2.md` | Plano de validação: 10 fixtures mínimos, critérios de aceitação, testes |
+
+---
+
 ## 1. Propósito
 
 Este documento define o processo de governança para alterações na metodologia de avaliação de risco do HFA/SERA. Ele complementa a auditoria técnica (`RISK_METHODOLOGY_AUDIT_v0.1.md`) com um framework de decisão sobre quando e como mudanças metodológicas podem ser feitas, quem tem autoridade para aprová-las, e quais critérios devem ser satisfeitos antes de expor novas métricas de risco a usuários.
@@ -178,6 +188,7 @@ Este registro deve ser atualizado sempre que uma decisão metodológica for toma
 | 2026-05-17 | *Auditoria inicial realizada — nenhuma mudança executada* | Auditoria técnica solicitada antes de expansão | Filipe Daumas | `RISK_METHODOLOGY_AUDIT_v0.1.md` |
 | 2026-05-17 | Corrigido F-005: `openStatuses` de `['open','in_progress']` para `['pending','in_progress']`; `'closed'` → `'completed'` | Bug: status 'open' e 'closed' inexistentes no schema de `corrective_actions` | Filipe Daumas | `api/org/intelligence/route.ts` |
 | 2026-05-17 | Escala ERC canônica: **PENDENTE** — seção 7 formalizada com pré-requisitos e opções | F-001 identificado na auditoria; decisão bloqueada até análise metodológica formal | Filipe Daumas | `RISK_METHODOLOGY_GOVERNANCE_v0.1.md` |
+| 2026-05-17 | Revisão científica ARMS/ERC concluída — 3 documentos v0.2 criados | Leitura integral do ARMS WG Report v4.1 (2010) + Quick Reference + ICAO SMS Module 5. Recomendação: Opção A (ERC 5=perigo). Código: sem mudanças. | Filipe Daumas | `RISK_ERC_SCIENTIFIC_REVIEW_v0.2.md`, `RISK_MATRIX_DUAL_MODEL_DECISION_v0.2.md`, `RISK_VALIDATION_PLAN_v0.2.md` |
 
 ---
 
@@ -195,9 +206,9 @@ Para cada componente metodológico protegido, deve existir:
 
 | Componente | Definição | Referência | Casos de teste | Status |
 |---|---|---|---|---|
-| Escala ERC (motor) | ✅ levels.json | Implícita (Daumas 2018) | ⚠️ Apenas ERC 4-5 | Incompleto |
-| Escala ERC (UI) | ⚠️ Implícita no ERC_STYLE | Não documentada | ❌ Nenhum | Ausente |
-| ARMS lookup table | ⚠️ Código não documentado | ARMS metodologia | ❌ Nenhum fixture | Ausente |
+| Escala ERC (motor) | ✅ levels.json | ⚠️ Implícita (aguarda decisão F-001) | ⚠️ 10 fixtures definidos em RISK_VALIDATION_PLAN_v0.2.md — não executados | Pendente execução |
+| Escala ERC (UI) | ✅ Documentada em RISK_ERC_SCIENTIFIC_REVIEW_v0.2.md | ✅ ARMS WG Report v4.1 (2010) | ⚠️ 10 fixtures definidos — não executados | Pendente execução |
+| ARMS lookup table | ✅ Documentada em RISK_MATRIX_DUAL_MODEL_DECISION_v0.2.md | ✅ ARMS WG Report v4.1 (2010) | ⚠️ Fixtures definidos (tabela de referência §3) | Pendente execução |
 | ISO 31000 severidade | ✅ SEVERITY_MAP com justificativas | Daumas 2018 / Hendy 2003 | ❌ Nenhum | Ausente |
 | Score organizacional | ❌ Fórmula sem referência | Não identificada | ❌ Nenhum | Ausente |
 
