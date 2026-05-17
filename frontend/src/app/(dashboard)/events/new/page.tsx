@@ -9,12 +9,12 @@ import { useMe } from '@/hooks/useMe'
 type Tab = 'text' | 'upload'
 
 const PROGRESS_STEPS = [
-  { delay: 0, text: 'Iniciando análise SERA...' },
-  { delay: 8000, text: 'Etapa 1 — Resumindo o evento...' },
-  { delay: 15000, text: 'Etapa 2 — Identificando ponto de fuga...' },
-  { delay: 22000, text: 'Etapas 3·4·5 — Classificando falhas...' },
-  { delay: 40000, text: 'Etapa 6·7 — Gerando conclusões e recomendações...' },
-  { delay: 60000, text: 'Finalizando análise...' },
+  { delay: 0,     text: 'Iniciando análise SERA...' },
+  { delay: 8000,  text: 'Resumindo o evento e extraindo contexto...' },
+  { delay: 15000, text: 'Identificando o ponto de fuga da operação segura...' },
+  { delay: 22000, text: 'Classificando falhas de percepção, objetivo e ação...' },
+  { delay: 40000, text: 'Gerando conclusões e recomendações de segurança...' },
+  { delay: 60000, text: 'Finalizando relatório...' },
 ]
 
 export default function NewEventPage() {
@@ -33,6 +33,7 @@ export default function NewEventPage() {
   const [sourceMeta, setSourceMeta] = useState<{ fileName: string; wordCount: number } | null>(
     null
   )
+  const [showDetails, setShowDetails] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [progressText, setProgressText] = useState('')
@@ -209,35 +210,48 @@ export default function NewEventPage() {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm text-slate-400 mb-1">Tipo de operação</label>
-            <input
-              value={form.operation_type}
-              onChange={(e) => setForm((p) => ({ ...p, operation_type: e.target.value }))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
-              placeholder="Ex: Voo offshore, cirurgia, operação industrial"
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-slate-400 mb-1">Aeronave / equipamento / sistema</label>
-            <input
-              value={form.aircraft_type}
-              onChange={(e) => setForm((p) => ({ ...p, aircraft_type: e.target.value }))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
-              placeholder="Ex: S-76, guindaste, sala cirúrgica"
-            />
-          </div>
-        </div>
-
         <div>
-          <label className="block text-sm text-slate-400 mb-1">Data do evento</label>
-          <input
-            type="date"
-            value={form.occurred_at}
-            onChange={(e) => setForm((p) => ({ ...p, occurred_at: e.target.value }))}
-            className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
-          />
+          <button
+            type="button"
+            onClick={() => setShowDetails((v) => !v)}
+            className="flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 transition-colors"
+          >
+            <span className={`text-xs transition-transform ${showDetails ? 'rotate-90' : ''}`}>▶</span>
+            {showDetails ? 'Ocultar detalhes adicionais' : 'Adicionar detalhes (opcional)'}
+          </button>
+          {showDetails && (
+            <div className="mt-4 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-slate-400 mb-1">Tipo de operação</label>
+                  <input
+                    value={form.operation_type}
+                    onChange={(e) => setForm((p) => ({ ...p, operation_type: e.target.value }))}
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                    placeholder="Ex: Voo offshore, cirurgia, operação industrial"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-slate-400 mb-1">Sistema / equipamento</label>
+                  <input
+                    value={form.aircraft_type}
+                    onChange={(e) => setForm((p) => ({ ...p, aircraft_type: e.target.value }))}
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                    placeholder="Ex: S-76, guindaste, sala cirúrgica"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm text-slate-400 mb-1">Data do evento</label>
+                <input
+                  type="date"
+                  value={form.occurred_at}
+                  onChange={(e) => setForm((p) => ({ ...p, occurred_at: e.target.value }))}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         {tab === 'upload' && (

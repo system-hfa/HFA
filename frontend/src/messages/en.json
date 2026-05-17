@@ -9,11 +9,13 @@
     "settings": "AI Settings",
     "credits": "Credits",
     "logout": "Sign out",
-    "interview": "Evidence Intake"
+    "interview": "Evidence Intake",
+    "groupAnalysis": "Analysis",
+    "groupMethodology": "Methodology"
   },
   "dashboard": {
     "title": "Dashboard",
-    "subtitle_critical": "⚠️ Attention: your operation requires immediate action",
+    "subtitle_critical": "Attention: your operation requires immediate action",
     "subtitle_warning": "Active monitoring recommended",
     "subtitle_ok": "Operation within normal parameters",
     "riskScore": "Risk Score",
@@ -70,7 +72,7 @@
     "uploadFile": "📄 Upload PDF/DOCX",
     "eventTitle": "Event title",
     "operationType": "Operation type",
-    "aircraft": "Aircraft",
+    "aircraft": "System / Equipment",
     "eventDate": "Event date",
     "eventNarrative": "Event narrative",
     "analyze": "Analyze with SERA",
@@ -92,7 +94,7 @@
   },
   "hfacs": {
     "title": "HFACS Classification",
-    "bonus": "BONUS",
+    "bonus": "Supplementary Analysis",
     "subtitle": "Correspondence with the Human Factors Analysis and Classification System (Wiegmann & Shappell, 2003)",
     "level1": "Level 1 — Unsafe Acts",
     "level2": "Level 2 — Preconditions",

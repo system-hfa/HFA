@@ -84,6 +84,31 @@ function MetaItem({ label, value }: { label: string; value?: string | null }) {
   )
 }
 
+type SectionAnchor = { id: string; label: string }
+
+function SectionNav({ anchors }: { anchors: SectionAnchor[] }) {
+  function scrollTo(id: string) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+  return (
+    <nav
+      aria-label="Seções da análise"
+      className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-hide"
+    >
+      {anchors.map(({ id, label }) => (
+        <button
+          key={id}
+          type="button"
+          onClick={() => scrollTo(id)}
+          className="flex-shrink-0 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200 border border-slate-700 transition-colors"
+        >
+          {label}
+        </button>
+      ))}
+    </nav>
+  )
+}
+
 function HfacsSection({ hfacs }: { hfacs: HfacsResult }) {
   const t = useT()
 
@@ -311,6 +336,17 @@ export default function EventDetailPage() {
 
       {analysis && (
         <>
+          {/* Section jump nav */}
+          <SectionNav anchors={[
+            { id: 'etapa-1', label: 'Resumo' },
+            { id: 'etapa-2', label: 'Ponto de Fuga' },
+            { id: 'etapas-3-5', label: 'Falhas Ativas' },
+            ...(flows ? [{ id: 'fluxo', label: 'Fluxo de Decisão' }] : []),
+            ...(preconditions.length > 0 ? [{ id: 'preconditions', label: 'Pré-condições' }] : []),
+            { id: 'etapa-6', label: 'Conclusão' },
+            ...(recommendations.length > 0 ? [{ id: 'etapa-7', label: 'Recomendações' }] : []),
+          ]} />
+
           {/* Edit history banner */}
           {analysis.id && token && (
             <EditHistoryPanel
@@ -322,7 +358,7 @@ export default function EventDetailPage() {
           )}
 
           {/* ── ETAPA 1 — Resumo do Evento ───────────────────────────── */}
-          <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+          <div id="etapa-1" className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
             <div className="px-6 py-3 bg-slate-700/50 border-b border-slate-700">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                 Etapa 1 — Resumo do Evento
@@ -337,7 +373,7 @@ export default function EventDetailPage() {
                     || new Date(event.created_at).toLocaleDateString('pt-BR')}
                 />
                 <MetaItem label="Tipo de operação"    value={analysis.operation_type || event.operation_type} />
-                <MetaItem label="Aeronave / tipo"     value={event.aircraft_type} />
+                <MetaItem label="Sistema / tipo"      value={event.aircraft_type} />
                 <MetaItem label="Local"               value={analysis.event_location} />
                 <MetaItem label="Fase do voo"         value={analysis.flight_phase} />
                 <MetaItem label="Cond. meteorológicas" value={analysis.weather_conditions} />
@@ -355,7 +391,7 @@ export default function EventDetailPage() {
           </div>
 
           {/* ── ETAPA 2 — Ponto de Fuga ───────────────────────────────── */}
-          <div className="bg-amber-950 border border-amber-700 rounded-xl overflow-hidden">
+          <div id="etapa-2" className="bg-amber-950 border border-amber-700 rounded-xl overflow-hidden">
             <div className="px-6 py-3 bg-amber-900/40 border-b border-amber-800">
               <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">
                 Etapa 2 — Ponto de Fuga da Operação Segura
@@ -379,7 +415,7 @@ export default function EventDetailPage() {
           </div>
 
           {/* ── ETAPAS 3 / 4 / 5 — Editable failure classifications ──── */}
-          <div>
+          <div id="etapas-3-5">
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
               Etapas 3 · 4 · 5 — Falhas Ativas
               <span className="ml-2 normal-case text-slate-600 font-normal">(clique &quot;Editar&quot; para recalcular)</span>
@@ -429,7 +465,7 @@ export default function EventDetailPage() {
 
           {/* ── Fluxo de Decisão SERA ──────────────────────────────────── */}
           {flows && (
-            <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+            <div id="fluxo" className="bg-slate-800 rounded-xl p-6 border border-slate-700">
               <h2 className="text-lg font-semibold text-white mb-4">Fluxo de Decisão SERA</h2>
               <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap mb-6">
                 {(['perception', 'objective', 'action'] as FlowTab[]).map(tab => (
@@ -457,7 +493,7 @@ export default function EventDetailPage() {
 
           {/* ── Pré-condições ──────────────────────────────────────────── */}
           {preconditions.length > 0 && (
-            <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+            <div id="preconditions" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
               <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                   Pré-condições Identificadas
@@ -485,7 +521,7 @@ export default function EventDetailPage() {
           )}
 
           {/* ── ETAPA 6 — Conclusões ───────────────────────────────────── */}
-          <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+          <div id="etapa-6" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
             <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                 Etapa 6 — Conclusão da Análise
@@ -501,7 +537,7 @@ export default function EventDetailPage() {
 
           {/* ── ETAPA 7 — Recomendações ────────────────────────────────── */}
           {recommendations.length > 0 && (
-            <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+            <div id="etapa-7" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
               <div className="px-6 py-3 bg-slate-800 border-b border-slate-700">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                   Etapa 7 — Ações de Mitigação e Prevenção

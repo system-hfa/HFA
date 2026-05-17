@@ -33,13 +33,28 @@ type NavItem = {
   cta?: boolean
 }
 
-const mainNav: NavItem[] = [
-  { href: '/dashboard',      labelKey: 'nav.dashboard',   icon: LayoutDashboard },
-  { href: '/events',         labelKey: 'nav.events',      icon: FileText },
-  { href: '/actions',        labelKey: 'nav.actions',     icon: ClipboardList },
-  { href: '/risk-profile',   labelKey: 'nav.riskProfile', icon: BarChart2 },
-  { href: '/learn',          labelKey: 'nav.methodology', icon: BookOpen },
-  { href: '/sera/interview', labelKey: 'nav.interview',   icon: ClipboardCheck },
+type NavGroup = {
+  labelKey: string
+  items: NavItem[]
+}
+
+const navGroups: NavGroup[] = [
+  {
+    labelKey: 'nav.groupAnalysis',
+    items: [
+      { href: '/dashboard',    labelKey: 'nav.dashboard',   icon: LayoutDashboard },
+      { href: '/events',       labelKey: 'nav.events',      icon: FileText },
+      { href: '/actions',      labelKey: 'nav.actions',     icon: ClipboardList },
+      { href: '/risk-profile', labelKey: 'nav.riskProfile', icon: BarChart2 },
+    ],
+  },
+  {
+    labelKey: 'nav.groupMethodology',
+    items: [
+      { href: '/learn',          labelKey: 'nav.methodology', icon: BookOpen },
+      { href: '/sera/interview', labelKey: 'nav.interview',   icon: ClipboardCheck },
+    ],
+  },
 ]
 
 const bottomNav: NavItem[] = [
@@ -134,13 +149,20 @@ function Sidebar({
 
       {/* Main nav */}
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5">
-        {mainNav.map((item) => (
-          <NavLink
-            key={item.href}
-            item={{ ...item, label: t(item.labelKey) }}
-            active={pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))}
-            onClick={onNav}
-          />
+        {navGroups.map((group, gi) => (
+          <div key={group.labelKey} className={gi > 0 ? 'pt-4' : ''}>
+            <p className="px-3 pb-1.5 text-[10px] font-semibold uppercase tracking-widest text-slate-600 select-none">
+              {t(group.labelKey)}
+            </p>
+            {group.items.map((item) => (
+              <NavLink
+                key={item.href}
+                item={{ ...item, label: t(item.labelKey) }}
+                active={pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href))}
+                onClick={onNav}
+              />
+            ))}
+          </div>
         ))}
 
         {/* New Event CTA */}

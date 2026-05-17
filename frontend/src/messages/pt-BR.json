@@ -9,11 +9,13 @@
     "settings": "Configurações IA",
     "credits": "Créditos",
     "logout": "Sair da conta",
-    "interview": "Coleta de Evidências"
+    "interview": "Coleta de Evidências",
+    "groupAnalysis": "Análise",
+    "groupMethodology": "Metodologia"
   },
   "dashboard": {
     "title": "Dashboard",
-    "subtitle_critical": "⚠️ Atenção: sua operação requer intervenção imediata",
+    "subtitle_critical": "Atenção: sua operação requer intervenção imediata",
     "subtitle_warning": "Monitoramento ativo recomendado",
     "subtitle_ok": "Operação dentro dos parâmetros normais",
     "riskScore": "Score de Risco",
@@ -70,7 +72,7 @@
     "uploadFile": "📄 Upload PDF/DOCX",
     "eventTitle": "Título do evento",
     "operationType": "Tipo de operação",
-    "aircraft": "Aeronave",
+    "aircraft": "Sistema / equipamento",
     "eventDate": "Data do evento",
     "eventNarrative": "Relato do evento",
     "analyze": "Analisar com SERA",
@@ -92,7 +94,7 @@
   },
   "hfacs": {
     "title": "Classificação HFACS",
-    "bonus": "BÔNUS",
+    "bonus": "Análise complementar",
     "subtitle": "Correspondência com o Human Factors Analysis and Classification System (Wiegmann & Shappell, 2003)",
     "level1": "Nível 1 — Atos Inseguros",
     "level2": "Nível 2 — Pré-condições",

@@ -308,14 +308,31 @@ export default function DashboardPage() {
       )}
 
       {!error && !hasAnalyses && (
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-          <h2 className="text-white font-semibold mb-2">Nenhuma análise disponível</h2>
-          <p className="text-slate-400 text-sm leading-relaxed">
-            O dashboard será preenchido quando existir pelo menos uma análise SERA concluída para este tenant.
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-8">
+          <h2 className="text-white font-semibold text-lg mb-1">Bem-vindo ao HFA SERA</h2>
+          <p className="text-slate-400 text-sm mb-8">
+            O dashboard de inteligência operacional será preenchido após a primeira análise concluída.
           </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { step: '1', title: 'Descreva o evento', desc: 'Cole o relato do incidente ou faça upload de um PDF/DOCX.' },
+              { step: '2', title: 'IA analisa em ~90s', desc: 'O sistema aplica as 7 etapas da metodologia SERA automaticamente.' },
+              { step: '3', title: 'Revise e exporte', desc: 'Edite as classificações, gere o PDF e crie ações corretivas.' },
+            ].map(({ step, title, desc }) => (
+              <div key={step} className="flex gap-3">
+                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600/20 border border-blue-600/30 text-blue-400 text-xs font-bold flex items-center justify-center">
+                  {step}
+                </span>
+                <div>
+                  <p className="text-sm font-medium text-white mb-0.5">{title}</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
           <Link
             href="/events/new"
-            className="inline-flex mt-4 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
           >
             Criar primeira análise
           </Link>
