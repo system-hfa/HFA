@@ -201,18 +201,18 @@ export async function GET(req: Request) {
     const thirtyDaysAgo = new Date(today)
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
 
-    const openStatuses = new Set(['open', 'in_progress'])
+    const openStatuses = new Set(['pending', 'in_progress'])
     const openActions = actions.filter((a) => openStatuses.has(a.status as string))
     const open_total = openActions.length
     const open_overdue = openActions.filter((a) => a.due_date && new Date(a.due_date as string) < today).length
     const open_no_owner = 0
     const closed_last_30d = actions.filter(
       (a) =>
-        a.status === 'closed' &&
+        a.status === 'completed' &&
         a.created_at &&
         new Date(a.created_at as string) >= thirtyDaysAgo
     ).length
-    const closedTotal = actions.filter((a) => a.status === 'closed').length
+    const closedTotal = actions.filter((a) => a.status === 'completed').length
     const resolution_rate =
       closedTotal + open_total > 0
         ? Math.round((closedTotal / (closedTotal + open_total)) * 100)

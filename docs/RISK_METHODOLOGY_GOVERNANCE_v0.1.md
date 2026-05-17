@@ -98,30 +98,74 @@ As seguintes condições devem pausar a exposição de funcionalidades de risco 
 
 ---
 
-## 7. Definição de Escala ERC Canônica (decisão pendente)
+## 7. DECISION REQUIRED — Canonical ERC Scale
 
-Esta seção DEVE ser preenchida antes de qualquer lançamento público.
+> **Status: PENDENTE — nenhuma mudança de código autorizada até esta decisão ser tomada formalmente.**
 
-**Problema atual:** Existem duas escalas ERC incompatíveis no sistema (ver F-001 em RISK_METHODOLOGY_AUDIT_v0.1.md).
+### 7.1 Situação atual
 
-**Opções:**
+Existem hoje **duas interpretações paralelas e incompatíveis** da escala ERC no sistema (ver achado F-001 em `RISK_METHODOLOGY_AUDIT_v0.1.md`):
 
-**Opção A — Escala UI como canônica (5=perigo)**
-- Prós: consistente com a interpretação visual natural (mais alto = mais perigoso)
-- Prós: consistente com a lookup table ARMS (A1=5 = interseção de maior severidade com menor barreira)
-- Contras: requer inversão completa do motor — levels.json, inferErcLevel(), inferDeterministicErcLevel()
-- Contras: histórico de `analyses.erc_level` ficaria inconsistente (valores antigos têm semântica oposta)
+**Escala do motor** (`pipeline.ts` `inferErcLevel`, `all-steps.ts` `inferDeterministicErcLevel`, `rules/erc/levels.json`):
+- ERC 1 = "Risco imediato, crítico" (MAIS PERIGOSO)
+- ERC 5 = "Risco mínimo, administrativo" (MAIS SEGURO)
+- Esta é a escala persistida no banco de dados (`analyses.erc_level`)
 
-**Opção B — Escala Motor como canônica (1=perigo)**
-- Prós: consistente com levels.json como fonte de verdade
-- Prós: consistente com a intuição "ERC 1 é o pior" (como nível de alerta)
-- Contras: lookup table ARMS precisa ser invertida (A1 passaria a retornar 1, D4 retornaria 5)
-- Contras: labels na UI precisam de inversão completa
+**Escala da UI** (`events/[id]/page.tsx` `EV_ARMS_ERC` + `ERC_STYLE`, `risk-profile/page.tsx` `ARMS_ERC`):
+- ERC 5 = "Ação imediata obrigatória" / vermelho (MAIS PERIGOSO)
+- ERC 1 = "Aceitável" / verde (MAIS SEGURO)
+- Esta é a escala exibida ao usuário via `computeEventRisk()` (cálculo client-side, não usa o valor persistido)
+
+**Consequência imediata:** O campo `analyses.erc_level` armazenado pelo motor NUNCA é exibido na UI. O `computeEventRisk()` recalcula o ERC independentemente. As duas escalas coexistem sem colisão visual hoje — mas qualquer tentativa de conectá-las produziria inversão total de significado.
+
+### 7.2 O que NÃO fazer até a decisão
+
+- Não exibir `analyses.erc_level` diretamente na UI
+- Não conectar `modal_erc_level` (F-002) a dados reais sem antes resolver F-001
+- Não criar fixtures ERC sem escala definida
+- Não misturar a resolução deste item com lançamento de trial ou dashboard
+
+### 7.3 O que a decisão formal deve definir
+
+A decisão deve responder explicitamente a todas as perguntas abaixo:
+
+1. **Qual escala representa maior urgência:** ERC 1 = perigo OU ERC 5 = perigo?
+2. **Qual escala é persistida** no banco de dados (`analyses.erc_level`)?
+3. **Qual escala é exibida** na UI (pode ser diferente da persistida, com conversão)?
+4. **Haverá conversão visual?** Se o motor armazena escala A e a UI exibe escala B, onde ocorre a conversão e quem a garante?
+5. **Como ficam os dados históricos?** `analyses.erc_level` já existente usa qual escala? Serão recalculados, marcados como legacy, ou mantidos como estão?
+6. **Quais fixtures são exigidos?** A decisão deve exigir cobertura ERC 1–5 (mínimo 1 fixture por nível) antes de qualquer deploy.
+
+### 7.4 Opções
+
+**Opção A — Adotar escala da UI como canônica (5=perigo)**
+- Prós: consistente com a lookup table ARMS (A1=5 é a interseção de maior severidade × menor barreira); intuitivo (número maior = risco maior)
+- Contras: requer inversão completa do motor — `levels.json`, `inferErcLevel()`, `inferDeterministicErcLevel()`; dados históricos em `analyses.erc_level` ficam com semântica invertida
+
+**Opção B — Adotar escala do motor como canônica (1=perigo)**
+- Prós: consistente com `levels.json` e com referência Daumas (2018); ERC 1 como código de emergência (análogo a nível de alerta)
+- Contras: lookup table ARMS precisa ser invertida (A1 passaria a retornar 1); todos os labels e estilos da UI precisam de inversão; `ERC_STYLE[1]` passaria a ser vermelho
+
+### 7.5 Pré-requisitos para implementar a decisão
+
+Qualquer que seja a opção escolhida, antes de qualquer mudança de código:
+- [ ] Decisão formal registrada neste documento (seção 7.6)
+- [ ] Fixtures ERC 1, 2, 3, 4, 5 criados (mínimo 1 relato por nível)
+- [ ] Validação smoke passando nos 5 níveis
+- [ ] Atualização de `levels.json` com escala definitiva
+- [ ] Atualização de `EV_ARMS_ERC` e `ARMS_ERC` se necessário
+- [ ] Atualização de `ERC_STYLE`, `ercLabels` e labels na UI
+- [ ] Política de migração para `analyses.erc_level` histórico
+- [ ] Revisão de `inferErcLevel()` e `inferDeterministicErcLevel()`
+- [ ] Não combinar com outras fases de produto (trial, dashboard, novas features)
+
+### 7.6 Registro da Decisão
 
 **Decisão:** `[ ] Opção A` `[ ] Opção B` `[ ] Outra: ___________`  
 **Decidido por:** ___________  
 **Data:** ___________  
-**Referência:** ___________
+**Referência metodológica:** ___________  
+**Política de dados históricos:** ___________
 
 ---
 
@@ -132,7 +176,8 @@ Este registro deve ser atualizado sempre que uma decisão metodológica for toma
 | Data | Decisão | Justificativa | Autorizado por | Arquivo afetado |
 |---|---|---|---|---|
 | 2026-05-17 | *Auditoria inicial realizada — nenhuma mudança executada* | Auditoria técnica solicitada antes de expansão | Filipe Daumas | `RISK_METHODOLOGY_AUDIT_v0.1.md` |
-| | | | | |
+| 2026-05-17 | Corrigido F-005: `openStatuses` de `['open','in_progress']` para `['pending','in_progress']`; `'closed'` → `'completed'` | Bug: status 'open' e 'closed' inexistentes no schema de `corrective_actions` | Filipe Daumas | `api/org/intelligence/route.ts` |
+| 2026-05-17 | Escala ERC canônica: **PENDENTE** — seção 7 formalizada com pré-requisitos e opções | F-001 identificado na auditoria; decisão bloqueada até análise metodológica formal | Filipe Daumas | `RISK_METHODOLOGY_GOVERNANCE_v0.1.md` |
 
 ---
 
