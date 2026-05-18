@@ -1596,8 +1596,8 @@ export default function RiskProfilePage() {
               <div className="flex items-start gap-3">
                 <span className="w-6 h-6 rounded-full bg-slate-700 text-slate-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
                 <div>
-                  <p className="text-slate-300 text-sm font-medium">O padrão organizacional emerge</p>
-                  <p className="text-slate-500 text-xs mt-0.5">Com 10 análises, as matrizes, precondições recorrentes e tendências revelam os primeiros padrões organizacionais observados</p>
+                  <p className="text-slate-300 text-sm font-medium">Padrões organizacionais emergem</p>
+                  <p className="text-slate-500 text-xs mt-0.5">Com 10 análises, o perfil mostra confiança da base, candidatos a Safety Issue, tendência qualitativa e matrizes de apoio à triagem</p>
                 </div>
               </div>
             </div>
@@ -1643,7 +1643,26 @@ export default function RiskProfilePage() {
         </div>
       )}
 
-      {/* 2. Score card compacto */}
+      {/* Como ler este perfil */}
+      {hasAnalyses && (
+        <div className="bg-blue-500/8 border border-blue-500/20 rounded-xl px-5 py-4">
+          <p className="text-blue-300 text-xs font-semibold mb-1">Como ler este perfil</p>
+          <p className="text-slate-400 text-xs leading-relaxed">
+            O perfil organiza as análises em três leituras:{' '}
+            <strong className="text-slate-300">confiança da base</strong>,{' '}
+            <strong className="text-slate-300">padrões recorrentes</strong> e{' '}
+            <strong className="text-slate-300">tendência qualitativa</strong>.
+            As matrizes funcionam como apoio à triagem — não como conclusão isolada.
+          </p>
+        </div>
+      )}
+
+      {/* Confiança dos dados */}
+      {hasAnalyses && (
+        <DataConfidencePanel confidence={data?.data_confidence} />
+      )}
+
+      {/* Índice de Cobertura Analítica */}
       {data?.score && hasAnalyses && (
         <OrgScoreCard
           score={data.score.value}
@@ -1653,19 +1672,26 @@ export default function RiskProfilePage() {
         />
       )}
 
-      {/* 2.5 Confiança dos dados */}
+      {/* Candidatos a Safety Issue */}
       {hasAnalyses && (
-        <DataConfidencePanel confidence={data?.data_confidence} />
+        <SafetyIssueCandidatesPanel
+          candidates={data?.safety_issue_candidates ?? []}
+        />
       )}
 
-      {/* 3. Grid 2 colunas: Matriz | Raciocínio + Precondições */}
+      {/* Tendência qualitativa observada */}
+      {hasAnalyses && (
+        <QualityTrendPanel points={data?.quality_trend ?? []} />
+      )}
+
+      {/* Matrizes de apoio à triagem */}
       {data && hasAnalyses && (
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Esquerda: Matriz */}
           <div className="lg:col-span-3">
             <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
               <div className="flex items-center justify-between flex-wrap gap-3">
-                <h3 className="text-white font-semibold">Matriz de Risco</h3>
+                <h3 className="text-white font-semibold">Matrizes de apoio à triagem</h3>
                 <div className="flex rounded-lg overflow-hidden border border-slate-700 text-sm">
                   <button
                     onClick={() => setMatrixTab('traditional')}
@@ -1814,29 +1840,18 @@ export default function RiskProfilePage() {
         </div>
       )}
 
-      {/* 5.5 Candidatos a Safety Issue */}
-      {hasAnalyses && (
-        <SafetyIssueCandidatesPanel
-          candidates={data?.safety_issue_candidates ?? []}
-        />
-      )}
-
-      {/* 6. Análise por IA */}
+      {/* Análise por IA */}
       {data?.score && token && hasAnalyses && (
         <AiInsightPanel intelligenceData={data} token={token} />
       )}
 
-      {/* 7. Distribuição temporal */}
+      {/* Volume de análises por mês */}
       {hasAnalyses && (data?.trend ?? []).length > 0 && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-          <h3 className="text-white font-semibold mb-4">Distribuição Temporal</h3>
+          <h3 className="text-white font-semibold mb-1">Volume de análises por mês</h3>
+          <p className="text-slate-500 text-xs mb-4">Frequência de registros — separada da qualidade/severidade observada.</p>
           <TrendLine trend={data!.trend} />
         </div>
-      )}
-
-      {/* 8. Tendência qualitativa (ERC por mês) */}
-      {hasAnalyses && (
-        <QualityTrendPanel points={data?.quality_trend ?? []} />
       )}
     </div>
   )
