@@ -39,7 +39,7 @@
     "most_credible_accident_outcome": "Decolagem com vento cruzado acima do limite regulatório em deterioração (se condições piorassem) — desfecho Maior (B) potencial; no evento isolado, pista estava dentro dos limites",
     "remaining_barrier_effectiveness": "effective",
     "arms_risk_index_range": "2 a 10 (C4 ou B4 — Lesões/Danos ou Maior × Efetiva)",
-    "arms_color": "GREEN a YELLOW",
+    "arms_color": "YELLOW",
     "hfa_visual_category": "ERC 1-2 pós-Opção A (evento isolado)",
     "probability_claim_allowed": false,
     "probability_limitation_note": "O ERC 4 deste evento isolado NÃO avalia a frequência do padrão de 4 eventos na companhia. O padrão de recorrência é input do SIRA — não do ERC. Usar a recorrência para elevar o ERC deste evento seria erro metodológico.",

@@ -40,7 +40,7 @@
     "most_credible_accident_outcome": "CFIT ou acidente de pouso por incapacitação do PIC durante aproximação — desfecho Catastrófico (A) se o copiloto não tivesse assumido os controles",
     "remaining_barrier_effectiveness": "limited",
     "arms_risk_index_range": "10 a 100 (A4 ou B1 — Catastrófico × Efetiva ou Maior × Não efetiva)",
-    "arms_color": "YELLOW a RED",
+    "arms_color": "RED",
     "hfa_visual_category": "ERC 3-4 pós-Opção A",
     "probability_claim_allowed": false,
     "probability_limitation_note": "O ERC 2 avalia o incidente específico — não a frequência de fadiga na operação. A frequência de fadiga associada à nova política de 9h é input do SIRA prospectivo, não do ERC.",

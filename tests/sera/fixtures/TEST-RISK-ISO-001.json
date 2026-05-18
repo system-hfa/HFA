@@ -41,7 +41,7 @@
     "most_credible_accident_outcome": "Perda de controle da aeronave (LOC-I) por progressão de falha do atuador de aileron — desfecho Catastrófico (A) se a falha intermitente se tornasse permanente",
     "remaining_barrier_effectiveness": "limited",
     "arms_risk_index_range": "10 a 101 (A4 ou B2 — Catastrófico ou Maior × Limitada ou Mínima)",
-    "arms_color": "YELLOW a RED",
+    "arms_color": "RED",
     "hfa_visual_category": "ERC 3-4 pós-Opção A",
     "probability_claim_allowed": false,
     "probability_limitation_note": "PROBABILIDADE DESCONHECIDA — modo de falha sem precedente documentado, sem reprodução em solo, sem dados de frota. Qualquer estimativa de probabilidade seria subjetiva máxima. A matriz tradicional NÃO PODE ser aplicada para este evento.",
