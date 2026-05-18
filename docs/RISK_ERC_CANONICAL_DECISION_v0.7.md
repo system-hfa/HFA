@@ -4,7 +4,7 @@
 **Fase:** RISK v0.7  
 **Commit base:** b2bfadeb  
 **Decidido por:** Filipe Daumas  
-**Status:** Decisão registrada — código NÃO alterado. Implementação técnica planejada para RISK v0.8.
+**Status:** Decisão registrada — código NÃO alterado. Plano técnico detalhado em `RISK_ERC_IMPLEMENTATION_PLAN_v0.7-B.md`.
 
 ---
 
@@ -144,5 +144,6 @@ Após a inversão, para cada fixture ERC 1–5:
 | `RISK_MATRIX_DUAL_MODEL_DECISION_v0.2.md §6` | Avaliação técnica das opções |
 | `RISK_METHODOLOGY_GOVERNANCE_v0.1.md §7` | Processo de decisão e registro formal |
 | `RISK_IMPLEMENTATION_AUDIT_v0.5.md §4.1` | Estado da inversão pré-decisão |
+| `RISK_ERC_IMPLEMENTATION_PLAN_v0.7-B.md` | **Plano técnico detalhado** — fases v0.8-A/B/C/D/E, função de conversão, estratégia recomendada |
 | ARMS WG Report v4.1 (2010), seção 3.3 | Índice ERC canônico e direção da escala |
 | ARMS WG Report v4.1 (2010), seção 5.3 | Permissão de adaptação para organizações menores |
