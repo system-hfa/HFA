@@ -74,12 +74,20 @@ export default function OnboardingPage() {
           <TrialUsageCard compact />
         </div>
         <div className="pt-2">
-          <Link
-            href="/demo"
-            className="inline-flex items-center justify-center text-xs font-medium bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-lg transition-colors"
-          >
-            Ver demonstração com dados fictícios
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/demo"
+              className="inline-flex items-center justify-center text-xs font-medium bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-lg transition-colors"
+            >
+              Ver demonstracao com dados ficticios
+            </Link>
+            <Link
+              href="/methodology"
+              className="inline-flex items-center justify-center text-xs font-medium bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-lg transition-colors"
+            >
+              Entender a metodologia
+            </Link>
+          </div>
         </div>
       </div>
 
