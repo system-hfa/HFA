@@ -90,17 +90,15 @@ A violação mais grave é **F-001** (inversão de escala motor × UI), já docu
 
 ## 4. Violações Críticas
 
-### 4.1 CRÍTICA — F-001: Inversão de escala motor × UI (não resolvida)
+### 4.1 CRÍTICA — F-001: Inversão de escala motor × UI — decisão registrada, implementação pendente
 
 **Localização:** `frontend/src/lib/sera/pipeline.ts` (motor), `events/[id]/page.tsx` (UI)
 
-**Estado:** Motor usa ERC 1=perigo; UI usa ERC 5=perigo. `analyses.erc_level` nunca é exibido na UI — `computeEventRisk()` recalcula independentemente. Inversão documentada mas não corrigida.
+**Estado (atualizado 2026-05-17, RISK v0.7):** Decisão formal registrada — **Opção A adotada**: ERC 5=crítico, ERC 1=aceitável, escala HFA 1–5 como canônica. Código NÃO alterado. Motor ainda usa ERC 1=perigo. A UI está protegida porque `computeEventRisk()` recalcula independentemente sem ler `analyses.erc_level`.
 
-**Impacto:** Bloqueante de produção. Qualquer conexão futura entre `analyses.erc_level` e a UI causaria inversão total: ERC 1 (maior perigo no motor) seria exibido como "Aceitável" (verde) na UI.
+**Impacto remanescente:** Bloquear conexão UI↔motor até que RISK v0.8 inverta o motor e execute migration de dados históricos. F-002 permanece bloqueado até F-001 ser implementado.
 
-**Contrato §6.3:** A inversão impedirá conexão com dados reais enquanto não resolvida.
-
-**Recomendação:** Seguir plano da seção 8 de `RISK_MATRIX_DUAL_MODEL_DECISION_v0.2.md` (Opção A).
+**Referência:** `RISK_METHODOLOGY_GOVERNANCE_v0.1.md §7.6`, `RISK_ERC_CANONICAL_DECISION_v0.7.md`.
 
 ---
 

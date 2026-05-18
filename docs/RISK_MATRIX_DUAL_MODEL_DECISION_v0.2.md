@@ -2,8 +2,8 @@
 **Versão:** v0.2  
 **Data:** 2026-05-17  
 **Autor:** Revisão técnica Claude (solicitada por Filipe Daumas)  
-**Status:** Proposta — aguardando aprovação do autor do método  
-**Relacionado a:** `RISK_ERC_SCIENTIFIC_REVIEW_v0.2.md`, `RISK_VALIDATION_PLAN_v0.2.md`, `RISK_METHODOLOGY_GOVERNANCE_v0.1.md`
+**Status:** Decisão formal registrada — Opção A aprovada por Filipe Daumas em 2026-05-17 (commit base: b2bfadeb). Código NÃO alterado nesta fase — implementação pendente para RISK v0.8.  
+**Relacionado a:** `RISK_ERC_SCIENTIFIC_REVIEW_v0.2.md`, `RISK_VALIDATION_PLAN_v0.2.md`, `RISK_METHODOLOGY_GOVERNANCE_v0.1.md`, `RISK_ERC_CANONICAL_DECISION_v0.7.md`
 
 ---
 
@@ -185,13 +185,15 @@ O campo `analyses.erc_level` (gerado pelo motor) **nunca é exibido na UI** — 
   - UI inteira precisa ser invertida (`ERC_STYLE`, `ercLabels`, `EV_ARMS_ERC`, `ARMS_ERC`)
   - A lookup table (hoje `A1=5`) precisaria virar `A1=1` — mais confusa de ler
 
-### 6.3 Recomendação: Opção A (ERC 5 = perigo)
+### 6.3 Decisão Formal: Opção A (ERC 5 = perigo) ✅
+
+**Decidido por:** Filipe Daumas — **2026-05-17** — ver `RISK_METHODOLOGY_GOVERNANCE_v0.1.md §7.6`
 
 **Justificativa técnica**: No índice de risco ERC padrão ARMS, o valor 1 representa o evento de menor risco ("sem potencial de acidente") e o valor 2500 representa o maior risco ("catástrofe sem barreiras"). A escala cresce na direção do perigo. A Opção A (ERC 5=perigo) está alinhada com esta direção.
 
 **Justificativa prática**: A maior parte do código que precisa ser alterada está no motor (poucas funções com lógica simples de inversão). A UI — onde o impacto em usuários é direto — já está correta e não precisa ser modificada.
 
-Esta recomendação é técnica. A decisão formal cabe ao autor do método, com registro em `RISK_METHODOLOGY_GOVERNANCE_v0.1.md` seção 7.6.
+**Status de implementação**: Esta é a decisão formal. O código ainda NÃO foi alterado. Nenhum dado histórico foi migrado. A inversão técnica do motor está planejada para RISK v0.8 — ver plano em `RISK_ERC_CANONICAL_DECISION_v0.7.md`.
 
 ---
 
