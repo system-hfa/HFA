@@ -4,6 +4,7 @@ import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 import { calculateModalHfaErcCategory } from '@/lib/sera/erc-modal'
 import { deriveSafetyIssueCandidates } from '@/lib/sera/safety-issue-candidates'
 import type { SafetyIssueCandidateCombinationInput } from '@/lib/sera/safety-issue-candidates'
+import { buildRiskQualityTrend } from '@/lib/sera/risk-quality-trend'
 
 const PRECONDITION_NAMES: Record<string, string> = {
   P1: 'Condição do Pessoal - Fisiológico',
@@ -316,6 +317,14 @@ export async function GET(req: Request) {
         return [{ type, first, second, count }]
       })
 
+    // --- Quality trend (HFA ERC distribution per month) ---
+    const quality_trend = buildRiskQualityTrend(
+      analyses.map((a) => ({
+        created_at: a.created_at as string | null,
+        erc_level: a.erc_level,
+      })),
+    )
+
     const safety_issue_candidates = deriveSafetyIssueCandidates({
       totalAnalyses: total,
       combinations: combinationInput,
@@ -339,6 +348,7 @@ export async function GET(req: Request) {
       recent_events,
       modal_erc_level: calculateModalHfaErcCategory(analyses.map(a => a.erc_level)),
       safety_issue_candidates,
+      quality_trend,
     })
   } catch (e) {
     if (e instanceof Response) return e

@@ -8,6 +8,7 @@ import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
 import { hfaErcToArmsBarrier } from '@/lib/sera/erc-presentation'
 import { isHfaErcCategory } from '@/lib/sera/erc-conversion'
 import type { SafetyIssueCandidate } from '@/lib/sera/safety-issue-candidates'
+import type { RiskQualityTrendPoint } from '@/lib/sera/risk-quality-trend'
 
 interface Intelligence {
   score: { value: number; level: 'critical' | 'warning' | 'ok'; label: string }
@@ -32,6 +33,7 @@ interface Intelligence {
   total_events_90d: number
   modal_erc_level?: number | null
   safety_issue_candidates?: SafetyIssueCandidate[]
+  quality_trend?: RiskQualityTrendPoint[]
 }
 
 // ── Shared mapping constants ──────────────────────────────────────────────────
@@ -1240,6 +1242,127 @@ function TrendLine({ trend }: { trend: { month: string; count: number }[] }) {
   )
 }
 
+// ── Quality Trend Panel ───────────────────────────────────────────────────────
+
+const HFA_ERC_COLOR: Record<1 | 2 | 3 | 4 | 5, string> = {
+  5: '#EF4444',
+  4: '#F97316',
+  3: '#EAB308',
+  2: '#22C55E',
+  1: '#6B7280',
+}
+
+const HFA_ERC_LABEL: Record<1 | 2 | 3 | 4 | 5, string> = {
+  5: 'Crítico',
+  4: 'Alto',
+  3: 'Moderado',
+  2: 'Baixo',
+  1: 'Aceitável',
+}
+
+function QualityTrendPanel({ points }: { points: RiskQualityTrendPoint[] }) {
+  if (points.length === 0) {
+    return (
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <h3 className="text-white font-semibold mb-1">Tendência qualitativa observada</h3>
+        <p className="text-slate-500 text-xs mb-4">
+          Distribuição mensal por categoria HFA ERC. Não ajustada por exposição operacional;
+          volume maior pode refletir maior reporte ou uso da ferramenta.
+        </p>
+        <p className="text-slate-500 text-sm">
+          Ainda não há dados suficientes para tendência qualitativa.
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+      <div className="mb-4">
+        <h3 className="text-white font-semibold">Tendência qualitativa observada</h3>
+        <p className="text-slate-500 text-xs mt-1">
+          Distribuição mensal por categoria HFA ERC. Não ajustada por exposição operacional —
+          volume maior pode refletir maior reporte ou uso da ferramenta, não necessariamente
+          aumento de risco.
+        </p>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm min-w-[480px]">
+          <thead>
+            <tr className="text-slate-400 border-b border-slate-800 text-left">
+              <th className="pb-2 font-medium pr-4">Mês</th>
+              <th className="pb-2 font-medium pr-4 text-right">Análises c/ ERC</th>
+              <th className="pb-2 font-medium pr-4">Dominante</th>
+              <th className="pb-2 font-medium pr-4 text-right">Alto/Crítico</th>
+              <th className="pb-2 font-medium">Distribuição ERC</th>
+            </tr>
+          </thead>
+          <tbody>
+            {points.map((pt) => {
+              const dom = pt.dominant_hfa_erc_category
+              return (
+                <tr key={pt.month} className="border-b border-slate-800/50 last:border-0">
+                  <td className="py-3 pr-4 font-mono text-slate-300">{pt.month}</td>
+                  <td className="py-3 pr-4 text-white font-semibold text-right">{pt.total}</td>
+                  <td className="py-3 pr-4">
+                    {dom ? (
+                      <span
+                        className="px-2 py-0.5 rounded text-xs font-semibold"
+                        style={{
+                          background: HFA_ERC_COLOR[dom] + '22',
+                          color: HFA_ERC_COLOR[dom],
+                          border: `1px solid ${HFA_ERC_COLOR[dom]}44`,
+                        }}
+                      >
+                        {HFA_ERC_LABEL[dom]}
+                      </span>
+                    ) : (
+                      <span className="text-slate-600 text-xs">—</span>
+                    )}
+                  </td>
+                  <td className="py-3 pr-4 text-right">
+                    <span className={pt.critical_or_high_share > 0 ? 'text-orange-400 font-semibold' : 'text-slate-500'}>
+                      {Math.round(pt.critical_or_high_share * 100)}%
+                    </span>
+                  </td>
+                  <td className="py-3">
+                    <div className="flex gap-0.5 h-3">
+                      {([
+                        { cat: 5 as const, count: pt.hfa_erc.c5 },
+                        { cat: 4 as const, count: pt.hfa_erc.c4 },
+                        { cat: 3 as const, count: pt.hfa_erc.c3 },
+                        { cat: 2 as const, count: pt.hfa_erc.c2 },
+                        { cat: 1 as const, count: pt.hfa_erc.c1 },
+                      ]).map(({ cat, count }) => {
+                        const w = pt.total > 0 ? (count / pt.total) * 100 : 0
+                        if (w === 0) return null
+                        return (
+                          <div
+                            key={cat}
+                            title={`HFA ${cat} (${HFA_ERC_LABEL[cat]}): ${count}`}
+                            className="rounded-sm h-full"
+                            style={{ width: `${w}%`, background: HFA_ERC_COLOR[cat] }}
+                          />
+                        )
+                      })}
+                    </div>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <p className="text-xs text-slate-600 mt-4 italic">
+        Esta tendência não estima probabilidade operacional. Descreve a composição qualitativa
+        das análises por mês. Considere amostra, reporte, exposição e qualidade dos relatos.
+      </p>
+    </div>
+  )
+}
+
 // ── Safety Issue Candidates Panel ────────────────────────────────────────────
 
 const CONFIDENCE_LABEL: Record<'preliminary' | 'moderate', string> = {
@@ -1618,6 +1741,11 @@ export default function RiskProfilePage() {
           <h3 className="text-white font-semibold mb-4">Distribuição Temporal</h3>
           <TrendLine trend={data!.trend} />
         </div>
+      )}
+
+      {/* 8. Tendência qualitativa (ERC por mês) */}
+      {hasAnalyses && (
+        <QualityTrendPanel points={data?.quality_trend ?? []} />
       )}
     </div>
   )
