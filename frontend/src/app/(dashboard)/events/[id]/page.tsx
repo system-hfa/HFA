@@ -216,7 +216,7 @@ function EventRiskCard({ risk }: { risk: EventRisk }) {
         </div>
       </div>
       <p className="text-xs text-slate-600 border-t border-slate-800/60 pt-2">
-        Nível de risco estimado com base nas evidências disponíveis. Revise a classificação antes de aprovar o relatório formal.
+        Nível de risco estimado com base nas evidências disponíveis. Escala HFA 1–5 adaptada do ARMS/ERC (EASA, 2010) — não é o índice ARMS canônico (1–2500). Revise a classificação antes de aprovar o relatório formal.
       </p>
     </div>
   )

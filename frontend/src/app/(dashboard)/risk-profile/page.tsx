@@ -324,9 +324,9 @@ function TraditionalMatrix({ data }: { data: Intelligence }) {
                 </p>
                 {selected.cell ? (
                   <p className="text-xs text-slate-400 mt-1">
-                    Foram encontrados {selected.cell.count} evento{selected.cell.count !== 1 ? 's' : ''} com este
-                    padrão de falha nos dados analisados. A frequência observada corresponde ao nível {selected.prob} —{' '}
-                    {PROB_LABELS[selected.prob - 1].name} — da escala ISO 31000.
+                    Na amostra analisada, este padrão apareceu em {selected.cell.count} evento{selected.cell.count !== 1 ? 's' : ''}.
+                    Para fins de visualização, essa frequência foi posicionada na faixa {selected.prob} ({PROB_LABELS[selected.prob - 1].name}) da escala ISO 31000.
+                    Isso não representa probabilidade operacional real sem dados de exposição e frequência de voo.
                   </p>
                 ) : (
                   <p className="text-xs text-slate-400 mt-1">
@@ -1410,6 +1410,15 @@ export default function RiskProfilePage() {
                 <p className="text-slate-500 text-xs">
                   Matriz 4×4 baseada em Severidade do resultado × Efetividade das barreiras — Aviation Risk Management Solutions (EASA, 2010)
                 </p>
+              )}
+
+              {isForming && (
+                <div className="flex items-start gap-2 rounded-lg bg-blue-500/10 border border-blue-500/20 px-3 py-2">
+                  <span className="text-blue-400 text-xs shrink-0 mt-0.5">⚠</span>
+                  <p className="text-xs text-blue-300 leading-relaxed">
+                    Dados preliminares — com menos de 10 análises, as matrizes indicam sinais iniciais, não perfil consolidado.
+                  </p>
+                </div>
               )}
 
               {matrixTab === 'traditional' ? (
