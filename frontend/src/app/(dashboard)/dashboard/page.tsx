@@ -301,6 +301,22 @@ export default function DashboardPage() {
         <p className="text-slate-400 mt-1">{subtitleMap[level]}</p>
       </div>
 
+      {/* Primeiros passos */}
+      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <p className="text-blue-300 text-sm font-semibold">Primeiros passos no HFA/SERA</p>
+          <p className="text-slate-300 text-sm mt-1">
+            Use o guia inicial para registrar suas primeiras análises e formar o perfil organizacional.
+          </p>
+        </div>
+        <Link
+          href="/onboarding"
+          className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors shrink-0"
+        >
+          Comece aqui
+        </Link>
+      </div>
+
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg p-4 text-sm">
           {t('common.error')}: {error}
