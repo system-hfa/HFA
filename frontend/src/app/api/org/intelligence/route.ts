@@ -5,6 +5,8 @@ import { calculateModalHfaErcCategory } from '@/lib/sera/erc-modal'
 import { deriveSafetyIssueCandidates } from '@/lib/sera/safety-issue-candidates'
 import type { SafetyIssueCandidateCombinationInput } from '@/lib/sera/safety-issue-candidates'
 import { buildRiskQualityTrend } from '@/lib/sera/risk-quality-trend'
+import { buildDataConfidence } from '@/lib/sera/data-confidence'
+import { coerceMotorErcToHfaCategory } from '@/lib/sera/erc-conversion'
 
 const PRECONDITION_NAMES: Record<string, string> = {
   P1: 'Condição do Pessoal - Fisiológico',
@@ -299,6 +301,11 @@ export async function GET(req: Request) {
           ...(eventAnalysisMap[e.id as string] ?? { perception_code: null, objective_code: null, action_code: null }),
         }))
 
+    // --- Valid ERC count (for data confidence) ---
+    const validErcCount = analyses.filter(
+      (a) => coerceMotorErcToHfaCategory(a.erc_level) !== null,
+    ).length
+
     // --- Safety Issue Candidates ---
     const combinationInput: SafetyIssueCandidateCombinationInput[] = Object.entries(combinationCounts)
       .sort(([, a], [, b]) => b - a)
@@ -349,6 +356,12 @@ export async function GET(req: Request) {
       modal_erc_level: calculateModalHfaErcCategory(analyses.map(a => a.erc_level)),
       safety_issue_candidates,
       quality_trend,
+      data_confidence: buildDataConfidence({
+        totalAnalyses: total,
+        validErcCount,
+        safetyIssueCandidateCount: safety_issue_candidates.length,
+        minimumRecommended: 10,
+      }),
     })
   } catch (e) {
     if (e instanceof Response) return e

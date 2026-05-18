@@ -9,6 +9,7 @@ import { hfaErcToArmsBarrier } from '@/lib/sera/erc-presentation'
 import { isHfaErcCategory } from '@/lib/sera/erc-conversion'
 import type { SafetyIssueCandidate } from '@/lib/sera/safety-issue-candidates'
 import type { RiskQualityTrendPoint } from '@/lib/sera/risk-quality-trend'
+import type { DataConfidence } from '@/lib/sera/data-confidence'
 
 interface Intelligence {
   score: { value: number; level: 'critical' | 'warning' | 'ok'; label: string }
@@ -34,6 +35,7 @@ interface Intelligence {
   modal_erc_level?: number | null
   safety_issue_candidates?: SafetyIssueCandidate[]
   quality_trend?: RiskQualityTrendPoint[]
+  data_confidence?: DataConfidence
 }
 
 // ── Shared mapping constants ──────────────────────────────────────────────────
@@ -1242,6 +1244,90 @@ function TrendLine({ trend }: { trend: { month: string; count: number }[] }) {
   )
 }
 
+// ── Data Confidence Panel ─────────────────────────────────────────────────────
+
+const CONFIDENCE_LEVEL_LABEL: Record<DataConfidence['level'], string> = {
+  insufficient: 'Insuficiente',
+  limited: 'Limitada',
+  moderate: 'Moderada',
+  strong: 'Mais consolidada',
+}
+
+const CONFIDENCE_LEVEL_COLOR: Record<DataConfidence['level'], string> = {
+  insufficient: '#EF4444',
+  limited: '#F97316',
+  moderate: '#EAB308',
+  strong: '#22C55E',
+}
+
+function DataConfidencePanel({ confidence }: { confidence: DataConfidence | undefined }) {
+  if (!confidence) {
+    return null
+  }
+
+  const color = CONFIDENCE_LEVEL_COLOR[confidence.level]
+  const label = CONFIDENCE_LEVEL_LABEL[confidence.level]
+
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-xl px-6 py-4">
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-3 mb-2">
+            <h3 className="text-white font-semibold text-sm">Confiança dos dados</h3>
+            <span
+              className="px-2 py-0.5 rounded text-xs font-semibold"
+              style={{
+                background: color + '22',
+                color,
+                border: `1px solid ${color}44`,
+              }}
+            >
+              {label}
+            </span>
+          </div>
+          <p className="text-slate-500 text-xs mb-3">
+            Indica a robustez da base analisada, não o nível de risco.
+          </p>
+
+          {confidence.messages.length > 0 && (
+            <ul className="space-y-1 mb-3">
+              {confidence.messages.map((msg, i) => (
+                <li key={i} className="flex items-start gap-1.5 text-xs text-slate-400">
+                  <span className="text-slate-600 mt-0.5 shrink-0">•</span>
+                  {msg}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <p className="text-xs text-slate-600 italic">{confidence.caveat}</p>
+        </div>
+
+        <div className="flex gap-6 shrink-0 border-l border-slate-800 pl-6">
+          <div className="text-center">
+            <p className="text-2xl font-bold text-white tabular-nums">
+              {confidence.total_analyses}
+            </p>
+            <p className="text-xs text-slate-500 whitespace-nowrap">Análises</p>
+          </div>
+          <div className="text-center">
+            <p className="text-2xl font-bold tabular-nums" style={{ color }}>
+              {Math.round(confidence.valid_erc_share * 100)}%
+            </p>
+            <p className="text-xs text-slate-500 whitespace-nowrap">ERC válido</p>
+          </div>
+          <div className="text-center">
+            <p className="text-sm font-medium text-slate-400 tabular-nums">
+              /{confidence.minimum_recommended}
+            </p>
+            <p className="text-xs text-slate-500 whitespace-nowrap">Mín. rec.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Quality Trend Panel ───────────────────────────────────────────────────────
 
 const HFA_ERC_COLOR: Record<1 | 2 | 3 | 4 | 5, string> = {
@@ -1565,6 +1651,11 @@ export default function RiskProfilePage() {
           label={data.score.label}
           actions={data.actions}
         />
+      )}
+
+      {/* 2.5 Confiança dos dados */}
+      {hasAnalyses && (
+        <DataConfidencePanel confidence={data?.data_confidence} />
       )}
 
       {/* 3. Grid 2 colunas: Matriz | Raciocínio + Precondições */}
