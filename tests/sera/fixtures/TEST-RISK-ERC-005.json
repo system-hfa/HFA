@@ -17,6 +17,37 @@
     "Não é A-I ou A-J: a manobra evasiva foi executada corretamente pelo comandante; não houve resposta incorreta à ameaça identificada — foi A-G (ação especial urgente executada conforme a situação exigiu)."
   ],
   "methodology_notes": "Fixture de âncora para ERC 1 — risco crítico e imediato com perda de barreiras. Representa a célula A1 ou A2 da matriz ARMS padrão (Catastrófico × Não efetiva ou Mínima). O motor deve classificar como ERC 1 ao detectar: conflito iminente de aeronaves, ausência de barreiras instrumentadas efetivas, margem de recuperação mínima. Qualquer ERC > 2 para este relato seria subestimação grave de risco.",
+  "sera_context": {
+    "focal_actor": "Piloto da aeronave comercial em descida inicial",
+    "focal_event_for_risk": "Quase colisão com aeronave VFR sem transponder — 2 segundos de margem, sem barreiras instrumentadas efetivas",
+    "sera_expected_frozen": {
+      "perception_code": "P-B",
+      "objective_code": "O-A",
+      "action_code": "A-G"
+    },
+    "acceptable_sera_variants": [
+      "P-B/O-A/A-G",
+      "P-E/O-A/A-C",
+      "P-B/O-A/A-C"
+    ],
+    "risk_scope_note": "P-E (erro de estimativa temporal) é subcategoria válida de P-B para este cenário — o piloto subestimou o tempo até o conflito. A-C (não-verificar tráfego antes de continuar a descida) captura a causa; A-G (manobra evasiva) captura a resposta. Ambas as variantes são defensáveis e NÃO AFETAM a classificação de risco: qualquer combinação resulta em ERC 1 (barreiras inexistentes, potencial catastrófico)."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": true,
+    "traditional_matrix_applicable": "agreed",
+    "most_credible_accident_outcome": "MAC — Mid-Air Collision com perda de ambas as aeronaves — desfecho Catastrófico (A)",
+    "remaining_barrier_effectiveness": "not_effective",
+    "arms_risk_index_range": "502 a 2500 (A1 ou A2 — Catastrófico × Não efetiva ou Mínima)",
+    "arms_color": "RED",
+    "hfa_visual_category": "ERC 5 pós-Opção A",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "ERC 1 não significa que MACs são frequentes nessa área. Significa que neste evento específico, as barreiras eram inexistentes/mínimas e o potencial era catastrófico.",
+    "risk_profile_use": "not_allowed",
+    "sira_note": "Evento expõe Safety Issue sistêmica: área de tráfego VFR intenso sem cobertura radar, sem obrigatoriedade de transponder Mode C compatível e sem procedimentos de separação efetivos. SIRA deve avaliar frequência de tráfego misto nessa área e efetividade de barreiras. Resultado esperado: Stop ou Improve.",
+    "anti_pattern": "ERRADO reduzir ERC porque 'a manobra evasiva funcionou'. 2 segundos de margem não é uma barreira — é ausência de impacto por margem mínima. ERRADO reduzir porque 'as lesões foram leves' — as contusões confirmam que a manobra impactou a cabine."
+  },
   "future_expected": {
     "arms_risk_index_reference": "502 ou 2500 (Catastrófico × Mínima ou Não efetiva)",
     "arms_color": "RED",

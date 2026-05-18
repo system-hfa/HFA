@@ -17,6 +17,36 @@
     "ERC 4 deste evento ≠ risco baixo da Safety Issue: o padrão de 4 eventos similares em 3 meses indica que o processo de checagem de ATIS está sistematicamente falhando. A Safety Issue tem perfil de risco mais alto que o evento individual."
   ],
   "methodology_notes": "FIXTURE DE REFERÊNCIA PARA DISTINÇÃO ERC vs SIRA.\n\nO ERC deste evento isolado é 4 (baixo, procedural, sem consequência imediata). Mas o PADRÃO de 4 eventos similares em 3 meses na mesma companhia constitui Safety Issue formal: 'falha sistemática de verificação de atualização de ATIS antes de decolagem'.\n\nA Safety Issue deve ser avaliada via SIRA:\n- Triggering event: omissão de verificação de ATIS antes da decolagem\n- Frequência: ~1-2 vezes por mês na companhia\n- Barreiras de evitação: checklist, SOP, treinamento inicial\n- Barreiras de recuperação: detecção pela torre, condições operacionais ainda dentro do limite regulatório\n- Severidade potencial do acidente: variável (vento cruzado severo pode causar acidente durante decolagem = Maior)\n\nIsso demonstra que ERC e SIRA operam em NÍVEIS diferentes: ERC classifica o evento, SIRA avalia o padrão.",
+  "sera_context": {
+    "focal_actor": "Tripulação da aeronave",
+    "focal_event_for_risk": "Decolagem sem verificação de atualização de ATIS — evento isolado de omissão procedimental, sem consequência imediata",
+    "sera_expected_frozen": {
+      "perception_code": "P-A",
+      "objective_code": "O-A",
+      "action_code": "A-B"
+    },
+    "acceptable_sera_variants": [
+      "P-A/O-A/A-B",
+      "P-G/O-A/A-B"
+    ],
+    "risk_scope_note": "P-G vs P-A: semanticamente equivalentes para este cenário — ambos indicam que a tripulação tinha capacidade de verificar o ATIS mas não o fez. P-G (informação disponível no painel e não conferida) e P-A (sem falha perceptiva, omissão procedimental pura) descrevem o mesmo ato de ângulos distintos. A divergência NÃO AFETA a classificação de risco: ERC 4 é determinado pela barreira efetiva (pista operacional dentro dos limites regulatórios), não pelo código P. O critério de risco crítico deste fixture é a distinção ERC individual vs SIRA de padrão."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": true,
+    "traditional_matrix_applicable": "agreed",
+    "most_credible_accident_outcome": "Decolagem com vento cruzado acima do limite regulatório em deterioração (se condições piorassem) — desfecho Maior (B) potencial; no evento isolado, pista estava dentro dos limites",
+    "remaining_barrier_effectiveness": "effective",
+    "arms_risk_index_range": "2 a 10 (C4 ou B4 — Lesões/Danos ou Maior × Efetiva)",
+    "arms_color": "GREEN a YELLOW",
+    "hfa_visual_category": "ERC 1-2 pós-Opção A (evento isolado)",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "O ERC 4 deste evento isolado NÃO avalia a frequência do padrão de 4 eventos na companhia. O padrão de recorrência é input do SIRA — não do ERC. Usar a recorrência para elevar o ERC deste evento seria erro metodológico.",
+    "risk_profile_use": "limited",
+    "sira_note": "SIRA deve ser aberto imediatamente para a Safety Issue de 'omissão de verificação de ATIS antes de decolagem' na companhia. O padrão de 4 eventos similares em 3 meses justifica avaliação formal. Áreas de análise: efetividade do checklist de decolagem, cultura de procedimento, treinamento de atualização de informações AIS.",
+    "anti_pattern": "ERRADO elevar o ERC deste evento para 2 ou 3 porque 'o padrão da companhia indica problema sistêmico'. O ERC avalia este evento específico — o padrão sistêmico é objeto do SIRA. ERRADO tratar evento isolado como Safety Issue sem evidência de padrão pessoal desta tripulação."
+  },
   "future_expected": {
     "arms_risk_index_reference": "2 a 10 (Lesões/Danos ou Maior × Efetiva)",
     "arms_color": "GREEN a YELLOW",

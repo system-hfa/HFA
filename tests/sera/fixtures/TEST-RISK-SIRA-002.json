@@ -17,6 +17,37 @@
     "O ERC do evento ≠ avaliação da decisão de mudança de política: a mudança de 11h para 9h de descanso mínimo deveria ter sido avaliada via SIRA/gestão de mudanças ANTES da implementação. O ERC 2 avalia o incidente que ocorreu, não se a política era correta."
   ],
   "methodology_notes": "FIXTURE DE REFERÊNCIA PARA GESTÃO DE MUDANÇA (MoC) E SIRA PROSPECTIVO.\n\nO ERC deste evento é 2 — avalia o incidente específico que ocorreu. Mas a causa-raiz do incidente foi uma MUDANÇA OPERACIONAL (redução de descanso mínimo) implementada SEM avaliação de risco prospectiva.\n\nPara mudanças operacionais futuras, o instrumento correto é SIRA em modo prospectivo (Safety Assessment):\n- Triggering event: redução de descanso mínimo de 11h para 9h\n- Frequência de exposição: todos os voos após a mudança\n- Barreiras de evitação: regulatório (limite mínimo), estudos de fadiga, monitoramento de FRMS\n- Barreiras de recuperação: copiloto capaz, reporte voluntário de fadiga\n- Severidade: catastrófica (LOC por fadiga do PIC em aproximação)\n\nSIRA prospectivo para esta mudança provavelmente teria resultado 'Stop' ou 'Improve', identificando que a redução de 11h para 9h com alta densidade de jornadas é incompatível com o nível de segurança aceitável.\n\nIsso demonstra que ERC (para o evento passado) e SIRA/MoC (para a mudança prospectiva) são instrumentos complementares — um não substitui o outro.",
+  "sera_context": {
+    "focal_actor": "Comandante (fadiga severa durante aproximação) — causa-raiz atribuível à gestão da companhia (mudança de política sem SIRA)",
+    "focal_event_for_risk": "Fadiga severa do PIC durante aproximação final — capacidade operacional comprometida na fase mais crítica do voo",
+    "sera_expected_frozen": {
+      "perception_code": "P-B",
+      "objective_code": "O-A",
+      "action_code": "A-G"
+    },
+    "acceptable_sera_variants": [
+      "P-B/O-A/A-G",
+      "P-G/O-A/A-D",
+      "P-B/O-A/A-D"
+    ],
+    "risk_scope_note": "P-G vs P-B: a fadiga é condição fisiológica que compromete a percepção — P-B é metodologicamente mais preciso. P-G capturou 'parâmetro não conferido' (equivocadamente, pois fadiga não é verificação de painel). A-D (limitação física por fadiga) é factualmente correto para a causa; A-G (transferência de controles = ação urgente) é correto para a resposta de recuperação. O critério de risco para este fixture inclui dois aspectos: (1) ERC do incidente deve ser 2; (2) a mudança de política requer SIRA prospectivo — não pode ser avaliada apenas pelo ERC do incidente."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": true,
+    "traditional_matrix_applicable": "limited",
+    "most_credible_accident_outcome": "CFIT ou acidente de pouso por incapacitação do PIC durante aproximação — desfecho Catastrófico (A) se o copiloto não tivesse assumido os controles",
+    "remaining_barrier_effectiveness": "limited",
+    "arms_risk_index_range": "10 a 100 (A4 ou B1 — Catastrófico × Efetiva ou Maior × Não efetiva)",
+    "arms_color": "YELLOW a RED",
+    "hfa_visual_category": "ERC 3-4 pós-Opção A",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "O ERC 2 avalia o incidente específico — não a frequência de fadiga na operação. A frequência de fadiga associada à nova política de 9h é input do SIRA prospectivo, não do ERC.",
+    "risk_profile_use": "limited",
+    "sira_note": "SIRA retrospectivo: 'política de descanso mínimo de 9h em alta densidade de jornadas'. Adicionalmente, MoC deve ser executado com SIRA prospectivo antes de qualquer futura alteração de parâmetros de descanso. Resultado esperado: Stop até que estudo de fadiga (FRMS) demonstre segurança equivalente ao limite anterior.",
+    "anti_pattern": "ERRADO usar apenas o ERC do incidente para avaliar se a política de descanso é segura. ERC avalia o evento passado — a política requer SIRA/MoC prospectivo ANTES da implementação."
+  },
   "future_expected": {
     "arms_risk_index_reference": "10 a 500 (Catastrófico ou Maior × Efetiva a Não efetiva)",
     "arms_color": "YELLOW a RED",

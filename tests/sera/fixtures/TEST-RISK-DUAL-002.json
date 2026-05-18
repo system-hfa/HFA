@@ -17,6 +17,37 @@
     "O ERC não muda com a frequência do evento: se turbulências severas nessa rota ocorrem mensalmente (alta frequência), o ERC deste evento específico ainda é 3. A frequência determina se constitui Safety Issue (SIRA), não o ERC do evento individual."
   ],
   "methodology_notes": "FIXTURE CHAVE DO MODELO DUAL — demonstra que o ERC de um evento HISTÓRICO não contém probabilidade de recorrência. O ERC 3 deste evento é determinado pelas barreiras que existiam NAQUELE DIA, não pela frequência com que turbulências severas atingem aeronaves nessa rota.\n\nA matriz tradicional (probabilidade × severidade) comete o erro oposto: pode elevar artificialmente o score baseando-se em 'turbulência severa é comum nessa rota' — o que é SIRA, não ERC.\n\nO ERC é do evento. O SIRA é do padrão. Para avaliar se 'turbulência com passageiro não cinturado' é um Safety Issue recorrente, usa-se SIRA com frequência de uplink failures do ACARS + frequência de turbulência não antecipada + taxa de passageiros sem cinto após retorno do banheiro.",
+  "sera_context": {
+    "focal_actor": "Piloto em comando (não recebeu SIGMET a tempo por falha de uplink ACARS)",
+    "focal_event_for_risk": "Turbulência severa com SIGMET recebido com 40 min de atraso — passageiro não-cinturado fraturou costela",
+    "sera_expected_frozen": {
+      "perception_code": "P-B",
+      "objective_code": "O-A",
+      "action_code": "A-C"
+    },
+    "acceptable_sera_variants": [
+      "P-B/O-A/A-C",
+      "P-A/O-A/A-C",
+      "P-A/O-C/A-A"
+    ],
+    "risk_scope_note": "O gate O-C do motor foi acionado pela ação de atendimento da tripulação de cabine ao passageiro ferido (terceiro no evento), não pela ação do protagonista (piloto que não recebeu SIGMET a tempo). Esta é uma observação SERA causal — pertence ao backlog do motor O-C, NÃO ao escopo RISK v0.3-C. O critério de risco para este fixture é: ERC deve ser 3 (moderado). Se o motor produzir ERC 4 ou 5 para este cenário, isso é subestimação — independentemente dos códigos P/O/A. Se produzir ERC 1 ou 2, isso é superestimação para este perfil de barreiras."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": true,
+    "traditional_matrix_applicable": "limited",
+    "most_credible_accident_outcome": "Lesão de passageiro (fratura confirmada) — desfecho Lesões/Danos (C); potencial de lesões múltiplas em turbulência mais severa",
+    "remaining_barrier_effectiveness": "limited",
+    "arms_risk_index_range": "4 a 20 (C3 ou C2 — Lesões/Danos × Limitada ou Mínima)",
+    "arms_color": "YELLOW",
+    "hfa_visual_category": "ERC 2-3 pós-Opção A",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "ERC 3 NÃO implica que turbulência severa é rara ou frequente nessa rota. O ERC avalia as barreiras daquele dia: sinal de cinto ativo, orientação 8 min antes, SIGMET atrasado. A frequência de turbulência na rota é input do SIRA — não do ERC.",
+    "risk_profile_use": "not_allowed",
+    "sira_note": "Potencial Safety Issue dupla: (1) confiabilidade do uplink ACARS para SIGMET em rota; (2) efetividade de procedimentos de cabine para garantir cintos afivelados pós-lavabo. SIRA recomendado para ambas.",
+    "anti_pattern": "ERRADO elevar ERC porque 'turbulência é frequente nessa rota' — frequência é input do SIRA, não do ERC. ERRADO reduzir ERC porque 'só um passageiro se feriu' — a lesão real confirma que barreiras falharam."
+  },
   "future_expected": {
     "arms_risk_index_reference": "4 a 20 (Lesões/Danos × Efetiva ou Limitada a Mínima)",
     "arms_color": "YELLOW",

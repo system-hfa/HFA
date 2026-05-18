@@ -17,6 +17,35 @@
     "Não é P-C: o operador conhecia a unidade correta — não é déficit de conhecimento, é lapso de registro."
   ],
   "methodology_notes": "Fixture de âncora para ERC mínimo. Representa o caso-base da matriz ARMS (linha D — sem desfecho de acidente plausível). O motor SERA deve recusar qualquer ERC < 5 para relatos com esta estrutura. Se o motor retornar ERC 4 ou menor para relatos deste tipo, há superestimação sistemática de risco.",
+  "sera_context": {
+    "focal_actor": "Operador de handling aéreo",
+    "focal_event_for_risk": "Preenchimento incorreto de formulário de controle de combustível — dado corrigido antes de qualquer uso operacional",
+    "sera_expected_frozen": {
+      "perception_code": "P-A",
+      "objective_code": "O-A",
+      "action_code": "A-A"
+    },
+    "acceptable_sera_variants": [
+      "P-A/O-A/A-A",
+      "P-A/O-A/A-C"
+    ],
+    "risk_scope_note": "A divergência A-A vs A-C (ação errada vs não-verificar resultado) é um caso-limite metodológico genuíno. Ambas as variantes são defensáveis e NÃO AFETAM a leitura de risco: o evento permanece ERC 5 em qualquer das classificações."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": false,
+    "traditional_matrix_applicable": "agreed",
+    "most_credible_accident_outcome": "Nenhum — evento sem potencial de desfecho de acidente plausível. Linha D da matriz ARMS: sem acidente credível mesmo em cenário de escalada.",
+    "remaining_barrier_effectiveness": "effective",
+    "arms_risk_index_range": "1 (linha D — sem acidente)",
+    "arms_color": "GREEN",
+    "hfa_visual_category": "ERC 1 pós-Opção A (UI 1 = mínimo; motor ERC 5 = mínimo)",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "ERC não avalia probabilidade de recorrência. Este evento é de risco mínimo independentemente de quantas vezes operadores cometem erros de unidade em formulários.",
+    "risk_profile_use": "not_allowed",
+    "anti_pattern": "ERRADO classificar como ERC 3-4 porque 'poderia ter chegado à tripulação incorretamente'. O dado correto chegou pelo sistema primário operacional — não há cadeia de falhas plausível para acidente."
+  },
   "future_expected": {
     "arms_risk_index": 1,
     "arms_color": "GREEN",

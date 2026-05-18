@@ -17,6 +17,35 @@
     "Não é A-A: A-A seria para ausência de falha de ação relevante. Aqui houve omissão real de etapa obrigatória do procedimento, mesmo que corrigida."
   ],
   "methodology_notes": "Fixture de âncora para ERC 4 — risco baixo com barreira efetiva. Demonstra que a presença de uma barreira de detecção efetiva (revisão final antes da liberação) reduz o ERC mesmo quando houve falha procedimental real. Diferencia-se de ERC 5 porque existe potencial técnico real, mas dependente de múltiplas falhas adicionais.",
+  "sera_context": {
+    "focal_actor": "Técnico de manutenção",
+    "focal_event_for_risk": "Omissão de lacre em substituição de filtro de óleo — detectada antes da liberação da aeronave",
+    "sera_expected_frozen": {
+      "perception_code": "P-A",
+      "objective_code": "O-A",
+      "action_code": "A-B"
+    },
+    "acceptable_sera_variants": [
+      "P-A/O-A/A-B",
+      "P-G/O-A/A-B"
+    ],
+    "risk_scope_note": "P-G vs P-A: ambos indicam ausência de falha perceptiva primária. P-G (informação disponível e não conferida) é uma subcategoria de P-A para este contexto. A divergência NÃO AFETA a classificação de risco: ERC 4 é determinado pela efetividade da barreira de detecção (revisão final), não pelos códigos P exatos."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": false,
+    "traditional_matrix_applicable": "agreed",
+    "most_credible_accident_outcome": "Vazamento de óleo de motor com possível falha de motor em voo — desfecho Maior (B) se a barreira de detecção tivesse falhado e o problema não fosse detectado na pré-voo",
+    "remaining_barrier_effectiveness": "effective",
+    "arms_risk_index_range": "2 a 4 (C4 ou C3 — Lesões/Danos × Efetiva ou Limitada)",
+    "arms_color": "GREEN",
+    "hfa_visual_category": "ERC 1-2 pós-Opção A",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "ERC não avalia frequência de omissões de lacre em manutenção. A barreira de detecção efetiva determina ERC 4 independentemente de quantas vezes esse tipo de erro ocorre.",
+    "risk_profile_use": "not_allowed",
+    "anti_pattern": "ERRADO elevar para ERC 3 com base na severidade potencial (vazamento de motor). A barreira de detecção foi efetiva — o ERC reflete as barreiras remanescentes no evento real, não a severidade do pior caso teórico sem barreiras."
+  },
   "future_expected": {
     "arms_risk_index_reference": "2 ou 4 (Lesões/Danos × Efetiva ou Limitada)",
     "arms_color": "GREEN",

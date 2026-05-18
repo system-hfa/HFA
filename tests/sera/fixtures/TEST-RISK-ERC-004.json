@@ -1,6 +1,6 @@
 {
   "id": "TEST-RISK-ERC-004",
-  "title": "Aproximação instabilizada prosseguida contra call-out do copiloto (ERC 2 — alto)",
+  "title": "Aproximação instabilizada prosseguida contra call-out do copiloto — dano estrutural confirmado (ERC 2 — alto)",
   "domain": "operações de voo",
   "description": "Aeronave comercial realizou aproximação persistentemente instabilizada abaixo de 500 pés, com taxa de descida 40% acima do limite procedural e velocidade 18 nós acima da referência de pouso. O copiloto realizou o call-out de instabilização conforme procedimento e propôs execução de go-around. O comandante recusou a proposta e optou por continuar a aproximação. O sistema GPWS não ativou alertas durante a aproximação. A aeronave pousou com toque duro, excursão lateral de 4 metros e distância de parada dentro dos limites da pista. Nenhum passageiro relatou lesão. A aeronave foi submetida a inspeção de estrutura que identificou sobrecarga na estrutura do trem de pouso principal.",
   "expected": {
@@ -17,6 +17,37 @@
     "Não é O-C: O-C é violação excepcional/pontual. A recusa ao call-out do copiloto e a desconsideração do procedimento de go-around como mandatório configura padrão comportamental (O-B), não episódio isolado de conveniência."
   ],
   "methodology_notes": "Fixture de âncora para ERC 2 — risco alto com barreira mínima. Demonstra o perfil P-B + O-B + A-D que tipicamente gera risco operacional alto. A presença de O-B (violação normalizada) é um indicador de padrão sistêmico que tende a gerar ERC 2 ou 1.",
+  "sera_context": {
+    "focal_actor": "Comandante da aeronave",
+    "focal_event_for_risk": "Recusa do go-around e continuação de aproximação instabilizada até o toque duro com dano estrutural confirmado",
+    "sera_expected_frozen": {
+      "perception_code": "P-B",
+      "objective_code": "O-B",
+      "action_code": "A-D"
+    },
+    "acceptable_sera_variants": [
+      "P-B/O-B/A-D",
+      "P-G/O-A/A-C",
+      "P-B/O-A/A-D"
+    ],
+    "risk_scope_note": "A divergência P-G/O-A/A-C do motor é uma observação SERA causal — pertence ao backlog do motor, não ao escopo RISK v0.3-C. O critério de risco para este fixture é: (1) o ERC calculado pelo motor deve ser 2 (alto) ou 1 (crítico) — não 3 ou menor urgência; (2) o desfecho mais crível deve ser reconhecido como Maior ou Catastrófico; (3) as barreiras remanescentes devem ser avaliadas como mínimas. A divergência P/O/A NÃO é bloqueante para a camada de risco se o ERC resultante for >= 2. Se o motor produzir ERC 3 ou menor urgência para este cenário, isso é um bug de risco — independentemente dos códigos P/O/A."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": true,
+    "traditional_matrix_applicable": "limited",
+    "most_credible_accident_outcome": "Runway excursion com perda de controle no pouso (LOTL) ou acidente de pista — desfecho Maior (B) com dano estrutural confirmado; potencial Catastrófico (A) em excursão severa",
+    "remaining_barrier_effectiveness": "minimal",
+    "arms_risk_index_range": "100 a 500 (C1 ou B1 — barreira mínima ou não efetiva)",
+    "arms_color": "RED",
+    "hfa_visual_category": "ERC 4-5 pós-Opção A",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "ERC não avalia frequência de aproximações instabilizadas continuadas. A barreira mínima (comprimento de pista) determina ERC alto para este evento específico.",
+    "risk_profile_use": "limited",
+    "sira_note": "O padrão O-B (violação normalizada de go-around) constitui Safety Issue potencial se recorrente. SIRA deve avaliar: frequência de aproximações instabilizadas continuadas na companhia, cultura de pressão de conclusão, efetividade do treinamento CRM para call-out de go-around.",
+    "anti_pattern": "ERRADO usar resultado (toque duro sem fatalidade) para reduzir ERC. ERRADO classificar como ERC 3 por causa do comprimento de pista suficiente — o dano estrutural confirmado demonstra que a barreira foi consumida, não que foi efetiva."
+  },
   "future_expected": {
     "arms_risk_index_reference": "10 a 101 (Maior × Efetiva a Mínima)",
     "arms_color": "YELLOW a RED",

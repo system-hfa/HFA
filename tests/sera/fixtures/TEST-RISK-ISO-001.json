@@ -17,6 +17,38 @@
     "Não é P-A: o comandante operou com percepção incompleta e degradada do estado real do sistema — a falha intermitente e a ausência de referência no QRH tornavam a avaliação da situação inerentemente imprecisa."
   ],
   "methodology_notes": "FIXTURE DE REFERÊNCIA PARA USO DA MATRIZ TRADICIONAL — demonstra o limite do modelo probabilidade × severidade para eventos únicos sem histórico.\n\nO ERC deste evento é determinístico: ERC 2 baseado no potencial (perda de controle de aeronave = catástrofe potencial) e nas barreiras que restaram (parcialmente efetivas). Nenhum dado de frequência é necessário para o ERC.\n\nA matriz tradicional (probabilidade × severidade) FALHA neste caso: 'qual a probabilidade de esta falha específica de atuador ocorrer novamente?' = DESCONHECIDA. Com modo de falha novo, sem histórico, sem reprodução em solo, a probabilidade não pode ser estimada. Tentar estimar resultaria em subjetividade máxima.\n\nIsso ilustra POR QUÊ o ERC existe como instrumento específico para eventos históricos individuais, enquanto a matriz tradicional é melhor aplicada em contextos de Safety Issue (SIRA) onde há dados de frequência.",
+  "sera_context": {
+    "focal_actor": "Comandante (decisão de continuar vs diversionar com modo de falha desconhecido)",
+    "focal_event_for_risk": "Falha não documentada de atuador de aileron primário durante cruzeiro — continuação do voo sem procedimento QRH aplicável",
+    "sera_expected_frozen": {
+      "perception_code": "P-B",
+      "objective_code": "O-A",
+      "action_code": "A-C"
+    },
+    "acceptable_sera_variants": [
+      "P-B/O-A/A-C",
+      "P-A/O-A/A-F",
+      "P-B/O-A/A-F",
+      "P-A/O-A/A-C"
+    ],
+    "risk_scope_note": "A-F (seleção errada entre alternativas: continuar vs diversionar) e A-C (não confirmar adequação da decisão de continuar) são ambas defensáveis para este cenário. P-A vs P-B: P-B é mais preciso (modo de falha desconhecido = percepção inerentemente incompleta), mas P-A não invalida a análise de risco. O critério de risco para este fixture é mais importante: a matriz tradicional NÃO pode ser aplicada sem dados de frequência. ERC é o único instrumento válido para primeiro evento com modo de falha novel."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": true,
+    "traditional_matrix_applicable": "not_applicable",
+    "most_credible_accident_outcome": "Perda de controle da aeronave (LOC-I) por progressão de falha do atuador de aileron — desfecho Catastrófico (A) se a falha intermitente se tornasse permanente",
+    "remaining_barrier_effectiveness": "limited",
+    "arms_risk_index_range": "10 a 101 (A4 ou B2 — Catastrófico ou Maior × Limitada ou Mínima)",
+    "arms_color": "YELLOW a RED",
+    "hfa_visual_category": "ERC 3-4 pós-Opção A",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "PROBABILIDADE DESCONHECIDA — modo de falha sem precedente documentado, sem reprodução em solo, sem dados de frota. Qualquer estimativa de probabilidade seria subjetiva máxima. A matriz tradicional NÃO PODE ser aplicada para este evento.",
+    "risk_profile_use": "not_allowed",
+    "sira_note": "Este evento deve iniciar investigação técnica aprofundada. Se outras aeronaves do mesmo modelo apresentarem o defeito, Safety Issue de 'falha intermitente de atuador de aileron' deve ser aberta e avaliada via SIRA com dados de exposição da frota.",
+    "anti_pattern": "ERRADO usar matriz tradicional para evento com modo de falha novel — 'qual a probabilidade?' = DESCONHECIDA. ERRADO estimar probabilidade subjetivamente para preencher a matriz. O ERC é determinístico: alto potencial + barreiras limitadas = ERC alto, independentemente de dados de frequência."
+  },
   "future_expected": {
     "arms_risk_index_reference": "10 a 101 (Catastrófico × Efetiva a Mínima ou Maior × Mínima)",
     "arms_color": "YELLOW a RED",

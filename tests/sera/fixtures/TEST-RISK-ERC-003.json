@@ -17,6 +17,37 @@
     "Não é P-A: o comandante operou com referência altimétrica incorreta durante segmento crítico — houve percepção efetivamente degradada do estado real, induzida pela combinação de falha de instrumento e ausência de coordenação CRM."
   ],
   "methodology_notes": "Fixture de âncora para ERC 3 — risco moderado com barreiras alternativas efetivas. O ato inseguro factual é a falha do comandante em confirmar o callout do copiloto sobre a transição de referência altimétrica (violação de procedimento CRM). Demonstra que um ato de omissão CRM em contexto de falha de equipamento pode gerar risco moderado mesmo quando barreiras alternativas são efetivas.",
+  "sera_context": {
+    "focal_actor": "Comandante da aeronave",
+    "focal_event_for_risk": "Ausência de confirmação CRM da transição altimétrica em aproximação ILS com rádio altímetro falhado — discordância de referência entre pilotos durante segmento crítico",
+    "sera_expected_frozen": {
+      "perception_code": "P-B",
+      "objective_code": "O-A",
+      "action_code": "A-C"
+    },
+    "acceptable_sera_variants": [
+      "P-B/O-A/A-C",
+      "P-A/O-A/A-C",
+      "P-A/O-A/A-B",
+      "P-B/O-A/A-B"
+    ],
+    "risk_scope_note": "P-A vs P-B: ambas capturaram a ausência de confirmação explícita. P-B é mais preciso (contexto de instrumento falhado + atenção concentrada = percepção comprometida), mas P-A não invalida a análise de risco. A-B vs A-C: omissão de passo (A-B) e não-confirmação de resultado (A-C) descrevem o mesmo lapso de ângulos diferentes. Todas as variantes acima produzem ERC 3 — a classificação de risco NÃO depende de qual variante o motor escolhe."
+  },
+  "risk_expected": {
+    "event_type": "historical_event",
+    "arms_applicable": true,
+    "sira_applicable": false,
+    "traditional_matrix_applicable": "agreed",
+    "most_credible_accident_outcome": "CFIT ou pouso anormal em IMC por discordância de referência altimétrica entre pilotos — desfecho Lesões/Danos (C) ou Maior (B) em deterioração das condições",
+    "remaining_barrier_effectiveness": "limited",
+    "arms_risk_index_range": "4 a 20 (C3 ou C2 — Lesões/Danos × Limitada ou Mínima)",
+    "arms_color": "YELLOW",
+    "hfa_visual_category": "ERC 2-3 pós-Opção A",
+    "probability_claim_allowed": false,
+    "probability_limitation_note": "ERC 3 não implica que esse tipo de falha CRM seja rara ou frequente. O ERC avalia as barreiras do evento específico: ILS ativo, ATC presente, copiloto com referência correta, visibilidade 2.000m.",
+    "risk_profile_use": "not_allowed",
+    "anti_pattern": "ERRADO reduzir para ERC 4 porque 'o go-around foi executado com sucesso'. O go-around foi a resolução — não é uma barreira pré-evento. As barreiras avaliadas são as que existiam durante o conflito de referências."
+  },
   "future_expected": {
     "arms_risk_index_reference": "4 a 20 (Lesões/Danos × Efetiva ou Limitada)",
     "arms_color": "YELLOW",
