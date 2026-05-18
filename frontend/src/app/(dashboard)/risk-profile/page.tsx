@@ -914,9 +914,9 @@ function ARMSMatrix({ data }: { data: Intelligence }) {
           de segurança que estavam presentes no momento do evento.
         </p>
         <p>
-          Esta abordagem é mais adequada para eventos de segurança operacional porque reflete o risco real que
-          existia no momento — não uma estimativa estatística baseada em dados históricos que podem não refletir
-          o contexto específico.
+          Esta abordagem é mais adequada para eventos de segurança operacional porque captura a condição das
+          barreiras no momento do evento — não uma estimativa estatística baseada em dados históricos que podem
+          não refletir o contexto específico.
         </p>
         <p className="text-slate-500">
           Desenvolvida pelo ARMS Working Group (EASA, Eurocontrol, IATA, 2007–2010) e adotada pela regulação
@@ -1556,9 +1556,9 @@ export default function RiskProfilePage() {
       {/* 1. Header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Perfil de Risco Organizacional</h1>
+          <h1 className="text-2xl font-bold text-white">Perfil Organizacional</h1>
           <p className="text-slate-400 mt-1">
-            Baseado em {totalAnalyses} análise{totalAnalyses !== 1 ? 's' : ''} SERA
+            Diagnóstico preliminar baseado em {totalAnalyses} análise{totalAnalyses !== 1 ? 's' : ''} SERA registrada{totalAnalyses !== 1 ? 's' : ''}
           </p>
         </div>
         <button
@@ -1574,9 +1574,9 @@ export default function RiskProfilePage() {
       {!hasAnalyses && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-8">
           <div className="max-w-lg">
-            <h2 className="text-white font-semibold text-lg mb-2">Seu perfil de risco está em formação</h2>
+            <h2 className="text-white font-semibold text-lg mb-2">Seu perfil organizacional está em formação</h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Após algumas análises, o sistema começa a revelar padrões de fatores humanos, precondições recorrentes e exposição por matriz de risco da sua organização.
+              Após algumas análises, o sistema começa a revelar padrões de fatores humanos, precondições recorrentes e distribuição por matriz da sua organização.
             </p>
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
@@ -1597,7 +1597,7 @@ export default function RiskProfilePage() {
                 <span className="w-6 h-6 rounded-full bg-slate-700 text-slate-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
                 <div>
                   <p className="text-slate-300 text-sm font-medium">O padrão organizacional emerge</p>
-                  <p className="text-slate-500 text-xs mt-0.5">Com 10 análises, as matrizes, precondições recorrentes e tendências revelam o perfil real da sua empresa</p>
+                  <p className="text-slate-500 text-xs mt-0.5">Com 10 análises, as matrizes, precondições recorrentes e tendências revelam os primeiros padrões organizacionais observados</p>
                 </div>
               </div>
             </div>
@@ -1619,7 +1619,7 @@ export default function RiskProfilePage() {
         <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
-              <p className="text-blue-300 font-medium text-sm mb-1">Perfil de risco em formação</p>
+              <p className="text-blue-300 font-medium text-sm mb-1">Perfil organizacional em formação</p>
               <p className="text-slate-400 text-xs leading-relaxed">
                 Continue registrando eventos — o padrão organizacional fica mais claro a cada análise. Os dados abaixo são preliminares.
               </p>
