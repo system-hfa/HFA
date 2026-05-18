@@ -993,7 +993,7 @@ function SeraReasoningPanel({ data, matrixTab }: { data: Intelligence; matrixTab
               <p className="text-xs font-semibold text-slate-300">
                 {data.modal_erc_level
                   ? `Calculada pelas falhas SERA (ARMS-ERC) — nível modal: ${barKey}`
-                  : `Estimada pelo score HFA: ${data.score.value} (nenhuma análise com ERC calculado ainda)`}
+                  : `Estimada pelo índice de cobertura: ${data.score.value} (nenhuma análise com ERC calculado ainda)`}
               </p>
               <p className="text-xs text-slate-400">
                 Nível {barKey} — {barDef.name}
@@ -1008,7 +1008,7 @@ function SeraReasoningPanel({ data, matrixTab }: { data: Intelligence; matrixTab
                 <p className="text-xs text-slate-500 leading-relaxed">{barDef.como_calculamos}</p>
               )}
               <p className="text-xs text-slate-400 mt-1">
-                Score HFA: <strong className="text-white">{data.score.value}</strong> — informação complementar,
+                Índice de Cobertura: <strong className="text-white">{data.score.value}</strong> — informação complementar,
                 não determina o nível de efetividade.
               </p>
               <p className="text-xs text-slate-600 mt-1">Fonte: {barDef.fonte}</p>

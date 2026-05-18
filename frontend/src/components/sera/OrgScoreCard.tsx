@@ -17,21 +17,33 @@ const COLORS = {
   ok: '#22C55E',
 }
 
-export function OrgScoreCard({ score, level, label, actions }: OrgScoreCardProps) {
+const COVERAGE_LABEL: Record<'critical' | 'warning' | 'ok', string> = {
+  critical: 'Atenção operacional',
+  warning: 'Em acompanhamento',
+  ok: 'Perfil em formação',
+}
+
+export function OrgScoreCard({ score, level, actions }: OrgScoreCardProps) {
   const color = COLORS[level]
+  const coverageLabel = COVERAGE_LABEL[level]
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-xl px-6 py-4
       flex items-center gap-8">
 
-      {/* Score número */}
-      <div className="flex-shrink-0 flex items-baseline gap-2">
-        <span className="text-5xl font-bold tabular-nums"
-          style={{ color, lineHeight: 1 }}>
-          {score}
-        </span>
-        <span className="text-sm font-semibold" style={{ color }}>
-          {label}
-        </span>
+      {/* Índice número */}
+      <div className="flex-shrink-0 flex flex-col gap-0.5">
+        <p className="text-xs font-medium text-slate-400 uppercase tracking-wide">
+          Índice de Cobertura Analítica
+        </p>
+        <div className="flex items-baseline gap-2">
+          <span className="text-5xl font-bold tabular-nums"
+            style={{ color, lineHeight: 1 }}>
+            {score}
+          </span>
+          <span className="text-sm font-semibold" style={{ color }}>
+            {coverageLabel}
+          </span>
+        </div>
       </div>
 
       {/* Barra de progresso */}
@@ -42,7 +54,7 @@ export function OrgScoreCard({ score, level, label, actions }: OrgScoreCardProps
               transition: 'width 0.6s ease' }} />
         </div>
         <p className="text-xs text-slate-600 mt-1.5">
-          0 — 100 · quanto maior, mais crítico
+          Mede cobertura analítica P/O/A e pendências operacionais — não é uma medida direta de risco organizacional.
         </p>
       </div>
 
