@@ -309,12 +309,20 @@ export default function DashboardPage() {
             Use o guia inicial para registrar suas primeiras análises e formar o perfil organizacional.
           </p>
         </div>
-        <Link
-          href="/onboarding"
-          className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors shrink-0"
-        >
-          Comece aqui
-        </Link>
+        <div className="flex flex-wrap gap-2 shrink-0">
+          <Link
+            href="/onboarding"
+            className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            Comece aqui
+          </Link>
+          <Link
+            href="/demo"
+            className="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            Ver demo
+          </Link>
+        </div>
       </div>
 
       {error && (

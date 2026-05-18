@@ -69,6 +69,14 @@ export default function OnboardingPage() {
         <p className="text-slate-400 text-xs">
           Com menos dados, o diagnóstico permanece em formação e deve ser interpretado como sinal inicial, não como conclusão definitiva.
         </p>
+        <div className="pt-2">
+          <Link
+            href="/demo"
+            className="inline-flex items-center justify-center text-xs font-medium bg-slate-800 hover:bg-slate-700 text-white px-3 py-2 rounded-lg transition-colors"
+          >
+            Ver demonstração com dados fictícios
+          </Link>
+        </div>
       </div>
 
       <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
