@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
+import { calculateModalHfaErcCategory } from '@/lib/sera/erc-modal'
 
 const PRECONDITION_NAMES: Record<string, string> = {
   P1: 'Condição do Pessoal - Fisiológico',
@@ -65,7 +66,7 @@ export async function GET(req: Request) {
     const [analysesRes, actionsRes, eventsRes, recentEventsRes] = await Promise.all([
       admin
         .from('analyses')
-        .select('id, event_id, perception_code, objective_code, action_code, preconditions, recommendations, created_at')
+        .select('id, event_id, perception_code, objective_code, action_code, preconditions, recommendations, erc_level, created_at')
         .eq('tenant_id', tenantId),
       admin
         .from('corrective_actions')
@@ -306,7 +307,7 @@ export async function GET(req: Request) {
       total_analyses: total,
       total_events_90d: events.length,
       recent_events,
-      modal_erc_level: null,
+      modal_erc_level: calculateModalHfaErcCategory(analyses.map(a => a.erc_level)),
     })
   } catch (e) {
     if (e instanceof Response) return e
