@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
+import { hfaErcToArmsBarrier } from '@/lib/sera/erc-presentation'
+import { isHfaErcCategory } from '@/lib/sera/erc-conversion'
 
 interface Intelligence {
   score: { value: number; level: 'critical' | 'warning' | 'ok'; label: string }
@@ -651,7 +653,9 @@ function ARMSMatrix({ data }: { data: Intelligence }) {
   const [selected, setSelected] = useState<ARMSCellInfo | null>(null)
 
   const topCodes = data.distribution.perception.top_codes ?? []
-  const barrier = (data.modal_erc_level as 1 | 2 | 3 | 4 | null | undefined) ?? barrierLevel(data.score.value)
+  const barrier = isHfaErcCategory(data.modal_erc_level)
+    ? hfaErcToArmsBarrier(data.modal_erc_level)
+    : barrierLevel(data.score.value)
 
   const cellMap: Record<string, { count: number; codes: string[] }> = {}
   for (const tc of topCodes) {
@@ -939,7 +943,9 @@ function SeraReasoningPanel({ data, matrixTab }: { data: Intelligence; matrixTab
 
   if (matrixTab === 'arms') {
     const armsSevKey: 'A' | 'B' | 'C' | 'D' = ARMS_SEV_ROW[topCode.code] ?? 'C'
-    const barKey = (data.modal_erc_level as 1 | 2 | 3 | 4 | null | undefined) ?? barrierLevel(data.score.value)
+    const barKey = isHfaErcCategory(data.modal_erc_level)
+      ? hfaErcToArmsBarrier(data.modal_erc_level)
+      : barrierLevel(data.score.value)
     const cellKey = `${armsSevKey}${barKey}`
     const erc = ARMS_ERC[cellKey] ?? 2
     const armsSevDef = ARMS_SEV_DEFS.find(d => d.key === armsSevKey)

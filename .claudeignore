@@ -1,0 +1,17 @@
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+dist/
+build/
+coverage/
+.turbo/
+.vercel/
+tests/reports/run-*.json
+tests/reports/candidates/
+handoff-hfa-sera-v0.1.1/
+hfa-sera-v0.1.1-handoff.zip
+project-site-copy-review/
+*.zip
+*.log
+.DS_Store
