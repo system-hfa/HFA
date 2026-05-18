@@ -7,6 +7,7 @@ import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
 import { hfaErcToArmsBarrier } from '@/lib/sera/erc-presentation'
 import { isHfaErcCategory } from '@/lib/sera/erc-conversion'
+import type { SafetyIssueCandidate } from '@/lib/sera/safety-issue-candidates'
 
 interface Intelligence {
   score: { value: number; level: 'critical' | 'warning' | 'ok'; label: string }
@@ -30,6 +31,7 @@ interface Intelligence {
   total_analyses: number
   total_events_90d: number
   modal_erc_level?: number | null
+  safety_issue_candidates?: SafetyIssueCandidate[]
 }
 
 // ── Shared mapping constants ──────────────────────────────────────────────────
@@ -1238,6 +1240,64 @@ function TrendLine({ trend }: { trend: { month: string; count: number }[] }) {
   )
 }
 
+// ── Safety Issue Candidates Panel ────────────────────────────────────────────
+
+const CONFIDENCE_LABEL: Record<'preliminary' | 'moderate', string> = {
+  preliminary: 'Preliminar',
+  moderate: 'Moderado',
+}
+
+const CONFIDENCE_COLOR: Record<'preliminary' | 'moderate', string> = {
+  preliminary: '#F59E0B',
+  moderate: '#3B82F6',
+}
+
+function SafetyIssueCandidatesPanel({ candidates }: { candidates: SafetyIssueCandidate[] }) {
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+      <div className="mb-4">
+        <h3 className="text-white font-semibold">Candidatos a Safety Issue</h3>
+        <p className="text-slate-500 text-xs mt-1">
+          Padrões recorrentes observados nas análises. Não constituem Safety Issues formais sem revisão de contexto, exposição e barreiras.
+        </p>
+      </div>
+
+      {candidates.length === 0 ? (
+        <p className="text-slate-500 text-sm">
+          Ainda não há recorrência suficiente para sugerir candidatos a Safety Issue.
+        </p>
+      ) : (
+        <div className="space-y-3">
+          {candidates.map((c) => (
+            <div key={c.id} className="bg-slate-800/60 rounded-lg p-4 space-y-1.5">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <span className="font-mono text-blue-400 font-semibold text-sm">{c.label}</span>
+                <div className="flex items-center gap-3 text-xs">
+                  <span className="text-slate-300">
+                    {c.count}× ({Math.round(c.share * 100)}%)
+                  </span>
+                  <span
+                    className="px-2 py-0.5 rounded-full text-xs font-medium"
+                    style={{
+                      background: CONFIDENCE_COLOR[c.confidence] + '22',
+                      color: CONFIDENCE_COLOR[c.confidence],
+                      border: `1px solid ${CONFIDENCE_COLOR[c.confidence]}44`,
+                    }}
+                  >
+                    {CONFIDENCE_LABEL[c.confidence]}
+                  </span>
+                </div>
+              </div>
+              <p className="text-slate-400 text-xs">{c.rationale}</p>
+              <p className="text-slate-600 text-xs italic">{c.caveat}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RiskProfilePage() {
@@ -1538,6 +1598,13 @@ export default function RiskProfilePage() {
             </tbody>
           </table>
         </div>
+      )}
+
+      {/* 5.5 Candidatos a Safety Issue */}
+      {hasAnalyses && (
+        <SafetyIssueCandidatesPanel
+          candidates={data?.safety_issue_candidates ?? []}
+        />
       )}
 
       {/* 6. Análise por IA */}

@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 import { calculateModalHfaErcCategory } from '@/lib/sera/erc-modal'
+import { deriveSafetyIssueCandidates } from '@/lib/sera/safety-issue-candidates'
+import type { SafetyIssueCandidateCombinationInput } from '@/lib/sera/safety-issue-candidates'
 
 const PRECONDITION_NAMES: Record<string, string> = {
   P1: 'Condição do Pessoal - Fisiológico',
@@ -296,6 +298,34 @@ export async function GET(req: Request) {
           ...(eventAnalysisMap[e.id as string] ?? { perception_code: null, objective_code: null, action_code: null }),
         }))
 
+    // --- Safety Issue Candidates ---
+    const combinationInput: SafetyIssueCandidateCombinationInput[] = Object.entries(combinationCounts)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 20)
+      .flatMap(([pair, count]) => {
+        const parts = pair.split(' + ')
+        if (parts.length !== 2) return []
+        const [first, second] = parts
+        const firstDim = first.charAt(0)
+        const secondDim = second.charAt(0)
+        let type: 'P+O' | 'P+A' | 'O+A' | null = null
+        if (firstDim === 'P' && secondDim === 'O') type = 'P+O'
+        else if (firstDim === 'P' && secondDim === 'A') type = 'P+A'
+        else if (firstDim === 'O' && secondDim === 'A') type = 'O+A'
+        if (!type) return []
+        return [{ type, first, second, count }]
+      })
+
+    const safety_issue_candidates = deriveSafetyIssueCandidates({
+      totalAnalyses: total,
+      combinations: combinationInput,
+      preconditions: top_preconditions.map(({ code, count, name }) => ({
+        code,
+        label: name,
+        count,
+      })),
+    })
+
     return NextResponse.json({
       score,
       distribution,
@@ -308,6 +338,7 @@ export async function GET(req: Request) {
       total_events_90d: events.length,
       recent_events,
       modal_erc_level: calculateModalHfaErcCategory(analyses.map(a => a.erc_level)),
+      safety_issue_candidates,
     })
   } catch (e) {
     if (e instanceof Response) return e
