@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
+import { TrialUsageCard } from '@/components/product/TrialUsageCard'
 import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
 import { useT } from '@/lib/i18n'
@@ -324,6 +325,8 @@ export default function DashboardPage() {
           </Link>
         </div>
       </div>
+
+      <TrialUsageCard />
 
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg p-4 text-sm">

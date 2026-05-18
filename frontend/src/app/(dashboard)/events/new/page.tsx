@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { resolveApiUrl } from '@/lib/api'
+import { TrialUsageCard } from '@/components/product/TrialUsageCard'
 import DocumentUpload from '@/components/sera/DocumentUpload'
 import { useMe } from '@/hooks/useMe'
 
@@ -173,14 +174,14 @@ export default function NewEventPage() {
             <span className="text-xs text-amber-400/80 font-medium bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 rounded-full">
               Enterprise — ilimitado
             </span>
-          ) : (
-            <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${noCredits ? 'text-red-400 bg-red-400/10 border border-red-400/20' : 'text-slate-400 bg-slate-800 border border-slate-700'}`}>
-              {noCredits ? 'Sem análises restantes' : `${me.credits} análise${me.credits !== 1 ? 's' : ''} restante${me.credits !== 1 ? 's' : ''}`}
-            </span>
-          )
+          ) : null
         )}
       </div>
       <p className="text-slate-400 mb-8">Insira o relato do evento para análise assistida pela metodologia SERA</p>
+
+      <div className="mb-6">
+        <TrialUsageCard compact showCreateCta={false} />
+      </div>
 
       {fromInterview && (
         <div className="mb-6 bg-blue-500/10 border border-blue-500/20 rounded-xl px-4 py-4">
@@ -193,8 +194,8 @@ export default function NewEventPage() {
 
       {noCredits && (
         <div className="mb-6 bg-red-950/40 border border-red-900/50 rounded-xl p-4 text-sm">
-          <p className="text-red-300 font-medium mb-1">Você usou todas as suas análises gratuitas</p>
-          <p className="text-red-400/80">Para continuar analisando eventos, entre em contato para upgrade do plano.</p>
+          <p className="text-red-300 font-medium mb-1">Este ambiente nao tem analises adicionais liberadas no momento</p>
+          <p className="text-red-400/80">O trial inicial ja foi apresentado no produto. Para continuidade neste ambiente, entre em contato.</p>
         </div>
       )}
 
@@ -346,8 +347,8 @@ export default function NewEventPage() {
         </div>
 
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-sm text-slate-400">
-          ⚡ Esta análise consumirá <strong className="text-white">1 crédito</strong>. O relatório
-          será gerado com apoio de IA seguindo as 7 etapas da metodologia SERA — a conclusão final é do investigador.
+          ⚡ Esta analise contara para a formacao do perfil inicial da organizacao. O relatorio
+          sera gerado com apoio de IA seguindo as 7 etapas da metodologia SERA — a conclusao final e do investigador.
         </div>
       </form>
     </div>

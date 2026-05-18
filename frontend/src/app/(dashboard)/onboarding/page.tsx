@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { TrialUsageCard } from '@/components/product/TrialUsageCard'
 
 const RECOMMENDED_FLOW = [
   {
@@ -69,6 +70,9 @@ export default function OnboardingPage() {
         <p className="text-slate-400 text-xs">
           Com menos dados, o diagnóstico permanece em formação e deve ser interpretado como sinal inicial, não como conclusão definitiva.
         </p>
+        <div className="pt-2">
+          <TrialUsageCard compact />
+        </div>
         <div className="pt-2">
           <Link
             href="/demo"
