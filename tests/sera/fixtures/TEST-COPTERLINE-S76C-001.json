@@ -1,0 +1,24 @@
+{
+  "id": "TEST-COPTERLINE-S76C-001",
+  "title": "Copterline S-76C+ — atuador dianteiro permanece em serviço sem teste de vazamento interno obrigatório aos 2250h",
+  "domain": "aviação — manutenção aeronáutica",
+  "description": "O helicóptero Sikorsky S-76C+ matrícula OH-HCI da Copterline colidiu com o Mar de Tallinn em 10 de agosto de 2005, matando as 14 pessoas a bordo. Investigação revelou que o atuador dianteiro do rotor principal, fabricado pela HR Textron, ultrapassou o limite de 2250 horas voadas sem que o teste obrigatório de vazamento interno fosse realizado. O sistema HELOTRAC, responsável pelo controle da manutenção, não gerou corretamente a tarefa de inspeção por cadastro inadequado do componente. Não houve registro de execução do teste nem deferimento documentado. O atuador apresentava contaminação hidráulica e vazamento interno excessivo não detectados. Durante o voo de linha regular sobre o Mar de Tallinn, ocorreu extensão não comandada do atuador dianteiro, resultando em perda de controle do rotor principal. Os pilotos não conseguiram recuperar a aeronave após a extensão não comandada do atuador. A gestão de manutenção da Copterline não verificou que o teste obrigatório havia sido executado antes de liberar a aeronave para operações subsequentes.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "Ponto de fuga: manutenção/gestão de manutenção da Copterline não verificou que o teste obrigatório de vazamento interno do atuador dianteiro foi executado aos 2250h. P-G: o sistema de controle (HELOTRAC) falhou em gerar a tarefa por cadastro inadequado, e não houve verificação independente do cumprimento do intervalo de manutenção — falha de monitoramento de informação disponível. O-A: sem objetivo desviante — manutenção não tinha intenção de negligenciar o teste. A-G: falha de supervisão e verificação de tarefa obrigatória — a gestão de manutenção não confirmou que o teste foi executado antes de liberar o atuador para operações. ERC 1: falha latente não detectável em operações normais — o atuador operava aparentemente normalmente; só testes específicos revelariam o vazamento interno excessivo. A resposta dos pilotos após a extensão não comandada é consequência da falha de manutenção, não o ponto de fuga.",
+  "discriminators": [
+    "NÃO é A-D (Inabilidade Física): A-D exige limitação física, ergonômica ou motora do agente do ponto de fuga. Aqui o agente é a gestão de manutenção da Copterline, sem qualquer limitação física descrita. A incapacidade dos pilotos de recuperar a aeronave é CONSEQUÊNCIA da falha de manutenção — não é o ponto de fuga e não deve ser classificada como ação principal.",
+    "NÃO é A-B (Deslize/Omissão): A-B descreve omissão de passo específico pelo executante direto durante execução. Aqui o mecanismo dominante é supervisão/gestão — a gestão não verificou que a tarefa obrigatória foi executada, não que um técnico individualmente omitiu um passo durante a execução.",
+    "NÃO é A-E (Falha de Conhecimento): os requisitos de manutenção eram conhecidos — o problema foi falha de controle e verificação de execução, não ausência de conhecimento técnico.",
+    "Agente do ponto de fuga é MANUTENÇÃO/GESTÃO DE MANUTENÇÃO — não o piloto. Migrar a classificação para o piloto com base na resposta ao evento viola a regra de consistência causal agente-ato-momento do SERA."
+  ]
+}

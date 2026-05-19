@@ -96,6 +96,115 @@ function evidenceOfPhysicalIncapacity(text: string): boolean {
   ]))
 }
 
+function isMaintainenceOrOrganizationalAgent(agente: string): boolean {
+  if (!agente) return false
+  const t = normalizeEvidenceText(agente)
+  return containsAny(t, [
+    'manutencao',
+    'gestao de manutencao',
+    'gerencia de manutencao',
+    'responsavel de manutencao',
+    'tecnico de manutencao',
+    'mecanico',
+    'organizacao',
+    'gestao organizacional',
+    'gerencia operacional',
+    'despacho',
+    'controle de aeronavegabilidade',
+    'engenharia de manutencao',
+    'grupo de manutencao',
+    'empresa de manutencao',
+    'operador de manutencao',
+    'copterline',
+    'maintenance',
+    'management',
+  ])
+}
+
+function evidenceOfMaintenanceOmissionContext(text: string): boolean {
+  return containsAny(text, [
+    'teste nao executado',
+    'teste obrigatorio nao realizado',
+    'teste de vazamento',
+    'teste de vazamento interno',
+    'manutencao programada nao executada',
+    'tarefa nao gerada',
+    'helotrac',
+    'nao houve registro de execucao',
+    'sem registro de execucao',
+    'sem registro de deferimento',
+    'nao houve deferimento documentado',
+    'sem deferimento documentado',
+    'controle de aeronavegabilidade',
+    'vazamento interno nao detectado',
+    'contaminacao hidraulica',
+    'atuador permaneceu em servico',
+    'permaneceu em servico sem',
+    'ultrapassou limite de horas sem',
+    'excedeu limite de horas sem',
+    'atuador excedeu',
+    'atuador ultrapassou',
+    'sem inspecao obrigatoria',
+    'inspecao obrigatoria nao realizada',
+    'inspecao de manutencao nao realizada',
+    'programa de manutencao',
+    'nao realizou teste',
+    'nao realizou a inspecao',
+    'nao realizou inspecao',
+    'nao realizou o teste',
+    'tarefa de manutencao',
+    'tarefa programada',
+    'intervalo de manutencao',
+    'horas sem inspecao',
+    'horas sem teste',
+    'horas voadas sem',
+    'controle de manutencao',
+    'cadastro inadequado',
+    'cadastro de manutencao',
+    'nao gerou a tarefa',
+    'nao gerou corretamente',
+    'software de manutencao',
+    'sistema de manutencao',
+    'nao verificou que o teste',
+    'nao confirmou que o teste',
+    'nao confirmou execucao do teste',
+    'nao verificou execucao do teste',
+  ])
+}
+
+function evidenceOfPilotResponseToTechnicalFailure(text: string): boolean {
+  const hasTechnicalFailure = containsAny(text, [
+    'falha do atuador',
+    'falha tecnica',
+    'falha hidraulica',
+    'falha mecanica',
+    'extensao nao comandada',
+    'extensao indesejada',
+    'falha de componente',
+    'atuador defeituoso',
+    'componente com defeito',
+    'falha estrutural',
+    'falha do sistema hidraulico',
+    'perda de controle por falha',
+    'perda de autoridade de controle',
+    'quebra de componente',
+  ])
+  const hasPilotResponse = containsAny(text, [
+    'piloto nao conseguiu',
+    'piloto nao conseguiu recuperar',
+    'piloto nao pode recuperar',
+    'piloto foi incapaz de recuperar',
+    'tripulacao nao conseguiu',
+    'incapaz de recuperar',
+    'nao foi possivel recuperar',
+    'nao houve tempo de recuperar',
+    'piloto tentou recuperar',
+    'tentou recuperar a aeronave',
+    'resposta da tripulacao apos',
+  ])
+  return hasTechnicalFailure && hasPilotResponse
+}
+
 function evidenceOfKnowledgeDeficit(text: string): boolean {
   return containsAny(text, evidenceTerms(actionRules['A-E'], [
     'nao havia recebido treinamento',
@@ -1303,6 +1412,7 @@ function inferDeterministicErcLevel(
   if (perceptionCode === 'P-D' && actionCode === 'A-A') return 3
   if (actionCode === 'A-I' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-J' && perceptionCode === 'P-D') return 1
+  if (actionCode === 'A-G' && evidenceOfMaintenanceOmissionContext(text)) return 1
   if (actionCode === 'A-G') return 3
   if (actionCode === 'A-B') return 3
   if (actionCode === 'A-J' && evidenceOfCommunicationConfirmationFailure(text)) return 1
@@ -2214,6 +2324,9 @@ ${NO_ARTIFACTS}`
   const nodes: RawFlowNode[] = []
   const relatoNorm = normalizeEvidenceText(`${relato}\n${ato}`)
   const relatoOnlyNorm = normalizeEvidenceText(relato)
+  const maintenanceOmission =
+    isMaintainenceOrOrganizationalAgent(String(pontoFuga.agente || '')) &&
+    evidenceOfMaintenanceOmissionContext(relatoNorm)
 
   async function askNode(
     node: string,
@@ -2318,7 +2431,7 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (evidenceOfPhysicalIncapacity(relatoNorm)) {
+  if (evidenceOfPhysicalIncapacity(relatoNorm) && !maintenanceOmission) {
     return finishDeterministic(
       'Gate A-D',
       'A-D',
@@ -2343,7 +2456,7 @@ ${NO_ARTIFACTS}`
 
   // Guard rail de P-H no Step5: briefing/informação ambígua sem falha explícita de
   // delegação + verificação de terceiro não deve abrir A-G.
-  if (informationChannelFailure && !supervisionFailure) {
+  if (informationChannelFailure && !supervisionFailure && !maintenanceOmission) {
     return finishDeterministic(
       'Gate A-A (briefing/informação ambígua)',
       'A-A',
@@ -2353,12 +2466,14 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (supervisionFailure) {
+  if (supervisionFailure || maintenanceOmission) {
     return finishDeterministic(
       'Gate A-G',
       'A-G',
       ['A-G'],
-      'Gate determinístico: agente em posição de supervisão/delegação deixou de verificar ação executada por outra pessoa.',
+      maintenanceOmission && !supervisionFailure
+        ? 'Gate determinístico: agente do ponto de fuga é manutenção/organização e não verificou/garantiu execução de tarefa ou teste obrigatório. Resposta de piloto após falha técnica consequente é análise secundária, não ponto de fuga.'
+        : 'Gate determinístico: agente em posição de supervisão/delegação deixou de verificar ação executada por outra pessoa.',
       'A-A, A-B, A-C, A-D, A-E, A-F, A-H, A-I, A-J descartados — A-C é apenas checagem da própria ação'
     )
   }
