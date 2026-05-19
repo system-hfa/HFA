@@ -1770,7 +1770,7 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   const engineeringDesignDominant = evidenceOfEngineeringDesignDominantContext(relatoOnlyForAntiGates)
   const organizationalMonitoringFailure =
     organizationalEscapePoint &&
-    evidenceOfBarrierOrRequirementContext(relatoNorm) &&
+    evidenceOfBarrierOrRequirementContext(relatoOnlyForAntiGates) &&
     evidenceOfVerificationTrackingFailure(relatoNorm) &&
     !engineeringDesignDominant
   const genuineHighDemand = evidenceOfExplicitHighDemandOperationalContext(relatoNorm) && !hasNegatedHighDemand(relatoNorm)
@@ -1922,7 +1922,8 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   if (
     evidenceOfPhysicalIncapacity(relatoNorm) ||
     evidenceOfSelectionError(relatoNorm) ||
-    isPureEfficiencyObjective(relatoNorm)
+    isPureEfficiencyObjective(relatoNorm) ||
+    evidenceOfSupervisionFailure(relatoNorm)
   ) {
     const node = methodologyNode('Gate determinístico: mecanismo principal é ação, seleção, supervisão, incapacidade ou objetivo, sem falha perceptiva independente.', { resposta: 'Não' })
     logMethodology('runStep3', 'Gate P-A', node, ['P-A'], true)

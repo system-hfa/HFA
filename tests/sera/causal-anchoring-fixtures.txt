@@ -1,0 +1,24 @@
+# SERA — Causal Anchoring Gate (v0.1.3-C)
+# Lista oficial de fixtures do gate de validação causal do ponto de fuga.
+# Um ID por linha, sem extensão .json. Linhas em branco e comentários (#) são ignorados.
+# Atualizar este arquivo quando novas fixtures adversariais forem adicionadas.
+
+# Bateria adversarial — Ponto de fuga da operação segura (v0.1.3-A/B)
+TEST-ESCAPE-MAINT-001
+TEST-ESCAPE-DISPATCH-001
+TEST-ESCAPE-PLANNING-001
+TEST-ESCAPE-SUPERVISION-001
+TEST-ESCAPE-TRAINING-001
+TEST-ESCAPE-DESIGN-001
+TEST-ESCAPE-PILOT-LEGIT-001
+TEST-ESCAPE-POST-FAILURE-001
+
+# Controle de caso real — Copterline S-76C+ (Tallinn Bay, 2005)
+TEST-COPTERLINE-S76C-001
+
+# Regressões seletivas — eixos sensíveis à ancoragem causal
+TEST-A-D-001
+TEST-A-G-001
+TEST-A-B-001
+TEST-GEN-OB-001
+TEST-GEN-OC-001
