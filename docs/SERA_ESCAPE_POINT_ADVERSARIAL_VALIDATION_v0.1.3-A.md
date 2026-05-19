@@ -230,6 +230,11 @@ Mudanças principais:
 5. **Correção estrutural no pipeline**:
 - remoção do override que forçava `P-A` sempre que `A-G` era retornado.
 
+6. **Estabilização do anti-gate de engenharia/design (residual DESIGN-001)**:
+- na rodada N_RUNS=3 imediatamente posterior à v0.1.3-B inicial (relatório `tests/reports/run-1779159412281.json`), o `TEST-ESCAPE-DESIGN-001` apresentou 1/3 PARTIAL com `A-G/ERC=1` no lugar de `A-A/ERC=2`. Causa raiz: o anti-gate `engineeringDesignDominant` em `runStep3`/`runStep5` era avaliado sobre `relatoNorm = relato + pontoFuga.ato_inseguro_factual`. Quando o LLM do Step 2 inseria termos como "ordem de serviço", "inspeção programada" ou "manutenção programada" no `ato_inseguro_factual`, o filtro `hasExecutableMaintenanceTask` virava `true`, derrubando o anti-gate de engenharia e permitindo que `maintenanceOmission` disparasse o gate A-G.
+- Correção cirúrgica: `engineeringDesignDominant` (e os dois `evidenceOf*` que compõem `maintenanceOmission`) passam a ser avaliados sobre o **relato bruto normalizado**, isolando o anti-gate da flutuação do Step 2. Mudanças em `frontend/src/lib/sera/all-steps.ts`: linhas ~1762 (`runStep3` — nova `relatoOnlyForAntiGates`) e ~2568, 2574-2575 (`runStep5` — uso de `relatoOnlyNorm` já existente para `engineeringDesignDominant`, `evidenceOfMaintenanceSystemContext` e `evidenceOfMaintenanceOmissionContext`).
+- Nenhuma alteração em motor de conversão ERC, baseline, expected, Risk Profile, UI/produto, schema ou billing.
+
 ### 9.2 Verificações executadas
 
 | Verificação | Resultado |
@@ -241,12 +246,19 @@ Mudanças principais:
 
 ### 9.3 Run IDs e resultados finais
 
+Pré-correção do residual DESIGN-001 (rodada intermediária N_RUNS=3 ainda com fragilidade):
 | Bateria | N | Run ID | Resultado |
 |---|---|---|---|
-| TEST-ESCAPE-* | 1 | `run-1779158375374` | PASS 8 / PARTIAL 0 / FAIL 0 / ERROR 0 |
-| Copterline | 1 | `run-1779159262464` | PASS 1 / PARTIAL 0 / FAIL 0 / ERROR 0 |
-| TEST-ESCAPE-* | 3 | `run-1779165504292` | PASS 24 / PARTIAL 0 / FAIL 0 / ERROR 0 |
-| Copterline | 3 | `run-1779167547925` | PASS 3 / PARTIAL 0 / FAIL 0 / ERROR 0 |
+| TEST-ESCAPE-* (intermediário) | 3 | `run-1779159412281` | PASS 23 / PARTIAL 1 / FAIL 0 — DESIGN-001 run 0 saiu A-G/ERC1 |
+
+Pós-correção definitiva v0.1.3-B (após estabilizar `engineeringDesignDominant` sobre o relato bruto):
+| Bateria | N | Run ID | Resultado |
+|---|---|---|---|
+| TEST-ESCAPE-* | 1 | `run-1779163949241` | PASS 8 / PARTIAL 0 / FAIL 0 / ERROR 0 (rate 100%, det 100%) |
+| Copterline | 1 | `run-1779186638365` | PASS 1 / PARTIAL 0 / FAIL 0 / ERROR 0 (rate 100%, det 100%) |
+| TEST-ESCAPE-* | 3 | `run-1779186743207` | PASS 24 / PARTIAL 0 / FAIL 0 / ERROR 0 (rate 100%, det 100%) |
+| Copterline | 3 | `run-1779188916713` | PASS 3 / PARTIAL 0 / FAIL 0 / ERROR 0 (rate 100%, det 100%) |
+| Regressões legítimas (A-D, A-G, A-B, O-B, O-C) | 1 | `run-1779189220618` (sequência) | 5/5 PASS, 100% det |
 
 ### 9.4 Estado final por fixture
 
@@ -261,6 +273,35 @@ Mudanças principais:
 | TEST-ESCAPE-PILOT-LEGIT-001 | PASS (N=1 e N=3) |
 | TEST-ESCAPE-POST-FAILURE-001 | PASS (N=1 e N=3) |
 | TEST-COPTERLINE-S76C-001 | PASS (N=1 e N=3) |
+
+### 9.5 Regressões seletivas legítimas
+
+Conjunto pequeno de regressões executado em N_RUNS=1 para cobrir os eixos que poderiam ser impactados pela correção do anti-gate de engenharia/design:
+
+| Fixture | Eixo coberto | Resultado |
+|---|---|---|
+| `TEST-A-D-001` | A-D legítimo (incapacidade física) | PASS |
+| `TEST-A-G-001` | A-G legítimo (supervisão + delegação + falha de verificação) | PASS |
+| `TEST-A-B-001` | A-B execução direta (omissão procedural) | PASS |
+| `TEST-GEN-OB-001` | O-B (violação rotineira/normalizada) | PASS |
+| `TEST-GEN-OC-001` | O-C (objetivo protetivo/humano) | PASS |
+
+P-G, O-D e A-G já estão exaustivamente cobertos pelas 8 escape fixtures + Copterline em N_RUNS=3 (27/27 PASS). Não foi rodado smoke global.
+
+### 9.6 Riscos remanescentes
+
+- A correção depende de o relato bruto da fixture conter os marcadores discriminativos de manutenção/engenharia (HELOTRAC, ordem de serviço, programa de manutenção, controle de aeronavegabilidade, retorno ao serviço, intervalo de manutenção). Fixtures novas com narrativa truncada ou descontextualizada podem fugir ao anti-gate; recomenda-se reforçar o vocabulário canônico no relato.
+- O anti-gate `engineeringDesignDominant` continua heurístico (lista lexical). Uma reformulação semântica (Step 2 decide "domínio causal" em vez de apenas extrair texto) eliminaria a fragilidade residual, mas está fora do escopo da v0.1.3-B.
+- O eixo de precondições do `TEST-ESCAPE-DESIGN-001` permanece dependente do LLM; nenhuma divergência observada em N_RUNS=3 pós-correção, mas é o eixo de menor estabilidade estrutural entre os adversariais.
+
+### 9.7 Confirmação de não-regressão (escopo do commit)
+
+- `expected` das fixtures: **não alterado**.
+- Baseline oficial: **não alterado**.
+- UI/produto/conversão ERC: **não alterado**.
+- Risk Profile congelado: **não alterado**.
+- Schema/migrations: **não alterado**.
+- Billing/Stripe: **não alterado**.
 
 ---
 
