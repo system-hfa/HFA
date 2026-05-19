@@ -3,6 +3,7 @@ import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 import { generateSeraPdfBuffer } from '@/lib/sera/pdf-report'
 import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
+import { writeAuditLog } from '@/lib/observability/audit'
 
 export async function GET(req: Request, ctx: { params: Promise<{ analysisId: string }> }) {
   const requestId = getOrCreateRequestId(req)
@@ -45,6 +46,18 @@ export async function GET(req: Request, ctx: { params: Promise<{ analysisId: str
       const slug = rawTitle.replace(/[^\w\-]/g, '-').slice(0, 40).replace(/-+$/g, '')
       const dateStr = new Date().toISOString().slice(0, 10)
       const filename = `SERA_${slug || 'evento'}_${dateStr}.pdf`
+
+      const motorVersion = (analysis as Record<string, unknown>).motor_version as string | null
+      await writeAuditLog({
+        tenantId: user.tenantId, userId: user.userId, requestId,
+        eventType: 'report_generated', entityType: 'analysis', entityId: analysisId,
+        route: '/api/analyses/pdf', method: 'GET',
+        metadata: {
+          report_type: 'analysis_pdf',
+          analysis_completeness: completeness ?? 'legacy',
+          motor_version: motorVersion,
+        },
+      })
 
       const headers: Record<string, string> = {
         'Content-Type': 'application/pdf',

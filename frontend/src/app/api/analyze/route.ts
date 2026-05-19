@@ -15,6 +15,7 @@ import {
 } from '@/lib/sera/sera-analysis-mapper'
 import { applyUserAiSettingsToEnv } from '@/lib/server/apply-user-ai-settings-to-env'
 import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
+import { writeAuditLog } from '@/lib/observability/audit'
 
 export const maxDuration = 300
 
@@ -90,6 +91,13 @@ export async function POST(req: Request) {
 
       await admin.from('events').update({ raw_input: rawInput }).eq('id', body.eventId)
 
+      await writeAuditLog({
+        tenantId: user.tenantId, userId: user.userId, requestId,
+        eventType: 'analysis_started', entityType: 'event', entityId: body.eventId,
+        route: '/api/analyze', method: 'POST',
+        metadata: { source: 'reanalysis' },
+      })
+
       try {
         const { analysisId } = await completeSeraAnalysisAfterEventCreated(
           admin,
@@ -118,6 +126,22 @@ export async function POST(req: Request) {
             )
           : null
 
+        const rowData = row as Record<string, unknown> | null
+        const completeness = rowData?.analysis_completeness as string | null
+        await writeAuditLog({
+          tenantId: user.tenantId, userId: user.userId, requestId,
+          eventType: completeness === 'complete' ? 'analysis_completed' : 'analysis_partial',
+          entityType: 'analysis', entityId: analysisId,
+          route: '/api/analyze', method: 'POST',
+          status: completeness === 'complete' ? 'success' : 'partial',
+          metadata: {
+            motor_version: rowData?.motor_version,
+            analysis_completeness: completeness,
+            completeness_reason: rowData?.completeness_reason,
+            event_id: body.eventId,
+          },
+        })
+
         return NextResponse.json(
           { event_id: body.eventId, analysis_id: analysisId, seraAnalysis },
           { headers: { 'x-request-id': requestId } }
@@ -125,6 +149,12 @@ export async function POST(req: Request) {
       } catch (err) {
         await admin.from('events').update({ status: 'failed' }).eq('id', body.eventId)
         console.error('[/api/analyze]', { requestId, error: err instanceof Error ? err.message : String(err) })
+        await writeAuditLog({
+          tenantId: user.tenantId, userId: user.userId, requestId,
+          eventType: 'analysis_failed', entityType: 'event', entityId: body.eventId,
+          route: '/api/analyze', method: 'POST', status: 'failed',
+          metadata: { source: 'reanalysis' },
+        })
         return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
       }
     }
@@ -177,6 +207,13 @@ export async function POST(req: Request) {
 
     const eventId = eventRow.id as string
 
+    await writeAuditLog({
+      tenantId: user.tenantId, userId: user.userId, requestId,
+      eventType: 'event_created', entityType: 'event', entityId: eventId,
+      route: '/api/analyze', method: 'POST',
+      metadata: { source_type: sourceMeta.sourceType },
+    })
+
     let creditoDebitado = false
     let respostaSucesso = false
     let analysisId: string | null = null
@@ -193,6 +230,13 @@ export async function POST(req: Request) {
       })
       creditoDebitado = true
 
+      await writeAuditLog({
+        tenantId: user.tenantId, userId: user.userId, requestId,
+        eventType: 'analysis_started', entityType: 'event', entityId: eventId,
+        route: '/api/analyze', method: 'POST',
+        metadata: { source: 'new_analysis' },
+      })
+
       const r = await completeSeraAnalysisAfterEventCreated(
         admin,
         { userId: user.userId, tenantId: user.tenantId },
@@ -207,6 +251,12 @@ export async function POST(req: Request) {
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
       console.error('[/api/analyze]', { requestId, error: err instanceof Error ? err.message : String(err) })
+      await writeAuditLog({
+        tenantId: user.tenantId, userId: user.userId, requestId,
+        eventType: 'analysis_failed', entityType: 'event', entityId: eventId,
+        route: '/api/analyze', method: 'POST', status: 'failed',
+        metadata: { source: 'new_analysis' },
+      })
       return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
     } finally {
       if (creditoDebitado && !respostaSucesso) {
@@ -251,6 +301,22 @@ export async function POST(req: Request) {
           )
         )
       : null
+
+    const rowData2 = row as Record<string, unknown> | null
+    const completeness2 = rowData2?.analysis_completeness as string | null
+    await writeAuditLog({
+      tenantId: user.tenantId, userId: user.userId, requestId,
+      eventType: completeness2 === 'complete' ? 'analysis_completed' : 'analysis_partial',
+      entityType: 'analysis', entityId: analysisId,
+      route: '/api/analyze', method: 'POST',
+      status: completeness2 === 'complete' ? 'success' : 'partial',
+      metadata: {
+        motor_version: rowData2?.motor_version,
+        analysis_completeness: completeness2,
+        completeness_reason: rowData2?.completeness_reason,
+        event_id: eventId,
+      },
+    })
 
     return NextResponse.json(
       { event_id: eventId, analysis_id: analysisId, seraAnalysis },

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin, assertServiceRoleEnv } from '@/lib/server/supabase-admin'
 import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
+import { writeAuditLog } from '@/lib/observability/audit'
 
 export async function GET(req: Request) {
   const requestId = getOrCreateRequestId(req)
@@ -83,6 +84,16 @@ export async function POST(req: Request) {
       .single()
 
     if (error) return jsonError(error.message, 500)
+
+    const createdData = data as Record<string, unknown>
+    await writeAuditLog({
+      tenantId: user.tenantId, userId: user.userId, requestId,
+      eventType: 'corrective_action_created',
+      entityType: 'corrective_action', entityId: createdData.id as string | null,
+      route: '/api/actions', method: 'POST',
+      metadata: { analysis_id },
+    })
+
     return NextResponse.json(data, { status: 201, headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e

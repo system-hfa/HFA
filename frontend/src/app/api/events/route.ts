@@ -11,6 +11,7 @@ import {
 import { debitCreditForEvent, ensurePublicUserRow, refundCreditForFailedAnalysis } from '@/lib/server/tenant-user'
 import { applyUserAiSettingsToEnv } from '@/lib/server/apply-user-ai-settings-to-env'
 import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
+import { writeAuditLog } from '@/lib/observability/audit'
 
 export const maxDuration = 300
 
@@ -179,6 +180,13 @@ export async function POST(req: Request) {
     const eventId = eventRow.id as string
     context = { ...context, eventId }
 
+    await writeAuditLog({
+      tenantId: user.tenantId, userId: user.userId, requestId,
+      eventType: 'event_created', entityType: 'event', entityId: eventId,
+      route: '/api/events', method: 'POST',
+      metadata: { source_type: sourceMeta.sourceType ?? input_type },
+    })
+
     sourceMeta.sourceType = sourceMeta.sourceType ?? (input_type === 'text' ? 'text' : input_type)
 
     let creditoDebitado = false
@@ -197,6 +205,13 @@ export async function POST(req: Request) {
       })
       creditoDebitado = true
 
+      await writeAuditLog({
+        tenantId: user.tenantId, userId: user.userId, requestId,
+        eventType: 'analysis_started', entityType: 'event', entityId: eventId,
+        route: '/api/events', method: 'POST',
+        metadata: { source: 'new_event' },
+      })
+
       stage = 'run-pipeline'
       const r = await completeSeraAnalysisAfterEventCreated(
         admin,
@@ -211,6 +226,12 @@ export async function POST(req: Request) {
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
       logEventsError(err, stage, context)
+      await writeAuditLog({
+        tenantId: user.tenantId, userId: user.userId, requestId,
+        eventType: 'analysis_failed', entityType: 'event', entityId: eventId,
+        route: '/api/events', method: 'POST', status: 'failed',
+        metadata: { stage },
+      })
       return jsonError(
         err instanceof Error ? `Falha no pipeline SERA: ${err.message}` : 'Falha no pipeline SERA',
         500
@@ -254,6 +275,22 @@ export async function POST(req: Request) {
           buildSeraAnalysisFromDbRow(row as Record<string, unknown>, user.userId, raw_input, edits)
         )
       : null
+
+    const rowData = row as Record<string, unknown> | null
+    const completeness = rowData?.analysis_completeness as string | null
+    await writeAuditLog({
+      tenantId: user.tenantId, userId: user.userId, requestId,
+      eventType: completeness === 'complete' ? 'analysis_completed' : 'analysis_partial',
+      entityType: 'analysis', entityId: analysisId,
+      route: '/api/events', method: 'POST',
+      status: completeness === 'complete' ? 'success' : 'partial',
+      metadata: {
+        motor_version: rowData?.motor_version,
+        analysis_completeness: completeness,
+        completeness_reason: rowData?.completeness_reason,
+        event_id: eventId,
+      },
+    })
 
     return NextResponse.json(
       { event_id: eventId, status: 'completed', analysis_id: analysisId, seraAnalysis },
