@@ -98,7 +98,7 @@ Helicóptero S-76C+ OH-HCI colidiu com o Mar de Tallinn em 10/08/2005 após exte
 | Percepção | P-G | O sistema de controle (HELOTRAC) falhou em gerar a tarefa; não houve verificação independente — falha de monitoramento de informação disponível |
 | Objetivo | O-A | Manutenção não tinha objetivo desviante; ausência de intenção de negligenciar |
 | Ação | A-G | Gestão de manutenção não confirmou que o teste obrigatório foi executado antes de liberar o atuador — falha de supervisão/verificação de tarefa de terceiro |
-| ERC | 1 | Falha latente não detectável em operações normais; o atuador operava aparentemente normalmente antes da extensão não comandada |
+| ERC | **1 (motor legacy = crítico)** | Falha latente não detectável em operações normais; o atuador operava aparentemente normalmente antes da extensão não comandada. Na escala legacy do motor, 1 = crítico. A UI exibe HFA ERC 5 (vermelho) após conversão. |
 
 ### Classificação errada (proibida)
 | Etapa | Código errado | Por quê é erro |
@@ -126,7 +126,45 @@ Helicóptero S-76C+ OH-HCI colidiu com o Mar de Tallinn em 10/08/2005 após exte
 
 > "Agente: manutenção. A-G. ERC 3 — recuperável."
 
-**Por quê é problemático**: Falhas de manutenção latentes (sem detecção possível em operações normais) têm ERC 1 quando nenhuma barreira operacional rotineira detectaria o problema antes da consequência. ERC 3 genérico pode subestimar a dificuldade real de recuperação.
+**Por quê é problemático**: Falhas de manutenção latentes (sem detecção possível em operações normais) têm ERC 1 **na escala legacy do motor** (= crítico/risco imediato) quando nenhuma barreira operacional rotineira detectaria o problema antes da consequência. ERC 3 genérico pode subestimar a dificuldade real de recuperação. Ver seção 8 para nota sobre escalas ERC.
+
+---
+
+## 8. Nota sobre escala ERC
+
+O sistema HFA/SERA mantém duas escalas ERC coexistentes com direções opostas. Qualquer referência a um nível ERC neste documento ou nas fixtures SERA deve especificar qual escala está em uso.
+
+### Escala legacy do motor SERA
+
+- Campo: `erc_level` em `analyses.erc_level`, `inferDeterministicErcLevel`, `levels.json`, fixtures e runner SERA.
+- Direção: **1 = crítico / risco imediato; 5 = mínimo / administrativo / documental.**
+- Usada internamente pelo pipeline. Valores retornados por `inferDeterministicErcLevel` estão nesta escala.
+- `expected.erc_level` nas fixtures SERA está nesta escala. O runner compara diretamente sem conversão.
+
+### Escala visual HFA (canônica para apresentação ao usuário)
+
+- Campo/conceito: `hfa_erc_category`, `modal_erc_level`, categorias visuais na UI.
+- Direção: **1 = aceitável (verde); 5 = crítico / imediato (vermelho).**
+- Alinhada com o padrão ARMS/ERC (EASA 2010), onde número maior = maior risco.
+- Decisão formal em `docs/RISK_ERC_CANONICAL_DECISION_v0.7.md`.
+
+### Conversão entre escalas
+
+A conversão é feita por `coerceMotorErcToHfaCategory` em `frontend/src/lib/sera/erc-conversion.ts`:
+
+| Motor legacy (`erc_level`) | HFA visual (UI) | Significado |
+|---|---|---|
+| 1 | 5 | Crítico / imediato |
+| 2 | 4 | Alto |
+| 3 | 3 | Moderado |
+| 4 | 2 | Baixo |
+| 5 | 1 | Aceitável |
+
+### Regra de escrita
+
+- Em fixtures e documentação técnica do motor: escrever **"ERC (motor legacy) = N"** ou **"erc\_level = N (escala legacy)"** para evitar confusão com a escala visual.
+- Em comunicação com usuário, relatórios e UI: usar sempre a escala visual HFA, onde ERC 5 = crítico.
+- Evitar escrever apenas "ERC 1" sem indicar se é motor legacy ou HFA visual.
 
 ---
 

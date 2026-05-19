@@ -136,7 +136,22 @@ Após a inversão, para cada fixture ERC 1–5:
 
 ---
 
-## 7. Referências
+## 7. Nota sobre fixtures SERA e ambiguidade de escala
+
+O runner SERA (`tests/sera/runner.ts`) compara `result.erc_level` com `fixture.expected.erc_level` diretamente, sem conversão. Portanto, **`expected.erc_level` nas fixtures usa a escala legacy do motor** (1 = crítico, 5 = mínimo), não a escala visual HFA (Opção A).
+
+Enquanto a inversão do motor (seção 5.2) não for implementada, qualquer fixture que esperasse o acidente crítico como `erc_level: 1` está correta funcionalmente — mas pode ser mal interpretada por um leitor humano que veja "ERC 1 = Aceitável" na UI.
+
+**Regra de escrita para fixtures e documentação do motor:**
+- Escrever `erc_level = 1 (motor legacy = crítico)` quando documentar o valor crítico no motor.
+- Nunca escrever apenas "ERC 1" em documentos que misturem contexto motor e UI.
+- A UI sempre exibirá o valor convertido: motor `1` → HFA ERC `5` (crítico/vermelho).
+
+Esta ambiguidade será eliminada quando a inversão do motor for implementada em RISK v0.8 (seção 5.2), após o que motor e UI usarão a mesma direção (5 = crítico).
+
+---
+
+## 8. Referências
 
 | Documento | Relevância |
 |---|---|
