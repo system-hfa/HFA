@@ -23,6 +23,19 @@ export async function GET(req: Request, ctx: { params: Promise<{ analysisId: str
     if (error) return jsonError(error.message, 400)
     if (!analysis) return jsonError('Análise não encontrada', 404)
 
+    // Bloquear relatório formal se análise incompleta (P0-002 / D-006).
+    // partial   → bloquear com HTTP 422.
+    // null      → análise histórica pré-v0.3-I; permitir com header de aviso.
+    // complete  → normal.
+    const completeness = (analysis as Record<string, unknown>).analysis_completeness as string | null | undefined
+    if (completeness === 'partial') {
+      return jsonError(
+        'Análise incompleta — relatório formal indisponível. Um ou mais campos de classificação (P/O/A/ERC) estão ausentes ou inválidos. Reprocesse o evento ou edite manualmente antes de exportar.',
+        422
+      )
+    }
+    const isLegacyAnalysis = completeness == null
+
     const ev = analysis.events as Record<string, unknown> | null
     const event = ev || {}
     const { events: _, ...analysisFlat } = analysis as Record<string, unknown>
@@ -34,13 +47,16 @@ export async function GET(req: Request, ctx: { params: Promise<{ analysisId: str
       const dateStr = new Date().toISOString().slice(0, 10)
       const filename = `SERA_${slug || 'evento'}_${dateStr}.pdf`
 
-      return new NextResponse(new Uint8Array(pdfBytes), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/pdf',
-          'Content-Disposition': `attachment; filename="${filename}"`,
-        },
-      })
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': `attachment; filename="${filename}"`,
+      }
+      if (isLegacyAnalysis) {
+        headers['X-Analysis-Completeness-Warning'] =
+          'legacy-analysis; completeness unverified (pre-v0.3-I)'
+      }
+
+      return new NextResponse(new Uint8Array(pdfBytes), { status: 200, headers })
     } catch (exc) {
       return jsonError(
         `Falha ao gerar PDF: ${exc instanceof Error ? exc.message : String(exc)}`,

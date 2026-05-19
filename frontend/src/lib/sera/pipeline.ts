@@ -19,6 +19,7 @@ import {
   runStep6_7,
 } from '@/lib/sera/all-steps'
 import { FAILURE_NAMES } from '@/lib/sera/failure-names'
+import { SERA_MOTOR_VERSION } from '@/lib/sera/version'
 import {
   normPrecondition,
   normRecommendation,
@@ -326,6 +327,29 @@ export type SourceMeta = {
   sourceFileUrl?: string | null
 }
 
+const VALID_PERCEPTION_CODES = new Set(['P-A', 'P-B', 'P-C', 'P-D', 'P-E', 'P-F', 'P-G', 'P-H'])
+const VALID_OBJECTIVE_CODES = new Set(['O-A', 'O-B', 'O-C', 'O-D'])
+const VALID_ACTION_CODES = new Set(['A-A', 'A-B', 'A-C', 'A-D', 'A-E', 'A-F', 'A-G', 'A-H', 'A-I', 'A-J'])
+
+function computeCompleteness(
+  p3: string,
+  p4: string,
+  p5: string,
+  ercLevel: unknown
+): { completeness: 'complete' | 'partial'; reason: string | null } {
+  const missing: string[] = []
+  if (!VALID_PERCEPTION_CODES.has(p3)) missing.push('perception_code')
+  if (!VALID_OBJECTIVE_CODES.has(p4)) missing.push('objective_code')
+  if (!VALID_ACTION_CODES.has(p5)) missing.push('action_code')
+  const ercOk = typeof ercLevel === 'number' && ercLevel >= 1 && ercLevel <= 5
+  if (!ercOk) missing.push('erc_level')
+  if (missing.length === 0) return { completeness: 'complete', reason: null }
+  return {
+    completeness: 'partial',
+    reason: `Campos ausentes ou inválidos: ${missing.join(', ')}`,
+  }
+}
+
 export function buildAnalysisUpsertPayload(
   eventId: string,
   tenantId: string,
@@ -341,6 +365,7 @@ export function buildAnalysisUpsertPayload(
   const p4 = step4.codigo
   const p5 = step5.codigo
 
+  const { completeness, reason } = computeCompleteness(p3, p4, p5, step6_7.erc_level)
   const st = sourceMeta?.sourceType ?? 'text'
 
   return {
@@ -397,5 +422,8 @@ export function buildAnalysisUpsertPayload(
     source_file_name: sourceMeta?.sourceFileName ?? null,
     source_word_count: sourceMeta?.sourceWordCount ?? null,
     source_file_url: sourceMeta?.sourceFileUrl ?? null,
+    motor_version: SERA_MOTOR_VERSION,
+    analysis_completeness: completeness,
+    completeness_reason: reason,
   }
 }
