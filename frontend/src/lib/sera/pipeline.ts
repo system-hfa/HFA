@@ -286,10 +286,6 @@ export async function runSeraPipeline(rawInput: string) {
     ? perceptionFromFlow
     : inferPerceptionCode(rawInput, objective_code, action_code, perceptionFromFlow)
 
-  if (action_code === 'A-G') {
-    perception_code = 'P-A'
-  }
-
   step3.codigo = perception_code
   step4.codigo = objective_code
   step5.codigo = action_code

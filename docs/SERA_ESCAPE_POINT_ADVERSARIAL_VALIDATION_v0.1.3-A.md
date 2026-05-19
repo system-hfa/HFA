@@ -2,7 +2,7 @@
 **Versão:** v0.1.3-A  
 **Data:** 2026-05-18  
 **Fase:** RISK v0.7 — validação adversarial pós-implementação da regra de ancoragem  
-**Status:** Fixtures criados — validação estática pendente de execução  
+**Status:** Runner executado (TEST-ESCAPE + Copterline) — validação estática (JSON/preconditions-static) não executada nesta rodada  
 
 ---
 
@@ -131,45 +131,140 @@ A UI converte via `coerceMotorErcToHfaCategory` (motor 1 → HFA 5 = vermelho, m
 
 ### 7.1 Validação de JSON (npx tsc --noEmit e formato)
 
-*A preencher após execução.*
+Não executado nesta rodada.
 
 | Fixture | JSON válido | Erro |
 |---|---|---|
-| TEST-ESCAPE-MAINT-001 | — | — |
-| TEST-ESCAPE-DISPATCH-001 | — | — |
-| TEST-ESCAPE-PLANNING-001 | — | — |
-| TEST-ESCAPE-SUPERVISION-001 | — | — |
-| TEST-ESCAPE-TRAINING-001 | — | — |
-| TEST-ESCAPE-DESIGN-001 | — | — |
-| TEST-ESCAPE-PILOT-LEGIT-001 | — | — |
-| TEST-ESCAPE-POST-FAILURE-001 | — | — |
+| TEST-ESCAPE-MAINT-001 | Não verificado | n/a |
+| TEST-ESCAPE-DISPATCH-001 | Não verificado | n/a |
+| TEST-ESCAPE-PLANNING-001 | Não verificado | n/a |
+| TEST-ESCAPE-SUPERVISION-001 | Não verificado | n/a |
+| TEST-ESCAPE-TRAINING-001 | Não verificado | n/a |
+| TEST-ESCAPE-DESIGN-001 | Não verificado | n/a |
+| TEST-ESCAPE-PILOT-LEGIT-001 | Não verificado | n/a |
+| TEST-ESCAPE-POST-FAILURE-001 | Não verificado | n/a |
 
 ### 7.2 Validação de precondições estáticas
 
-*A preencher após execução de `npx tsx tests/sera/preconditions-static.ts`.*
+Não executado nesta rodada.
 
 ### 7.3 Resultados do runner SERA (se executado)
 
-*A preencher após execução de `npx tsx tests/sera/runner.ts` com as fixtures adversariais.*
+Executado com `N_RUNS=1`:
+- Adversarial ESCAPE (8 fixtures): `tests/reports/run-1779153720233.json`
+- Controle Copterline (1 fixture): `tests/reports/run-1779154661767.json`
+
+Resumo ESCAPE: **0 PASS, 8 PARTIAL, 0 FAIL, 0 ERROR** (`pass_rate=0`, `determinism_rate=1.0`).  
+Resumo Copterline: **0 PASS, 1 PARTIAL, 0 FAIL, 0 ERROR** (`pass_rate=0`, `determinism_rate=1.0`).
 
 | Fixture | P esperado | P obtido | O esperado | O obtido | A esperado | A obtido | ERC esperado | ERC obtido | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| TEST-ESCAPE-MAINT-001 | P-G | — | O-A | — | A-G | — | 1 | — | — |
-| TEST-ESCAPE-DISPATCH-001 | P-A | — | O-D | — | A-A | — | 2 | — | — |
-| TEST-ESCAPE-PLANNING-001 | P-G | — | O-A | — | A-B | — | 3 | — | — |
-| TEST-ESCAPE-SUPERVISION-001 | P-G | — | O-A | — | A-G | — | 3 | — | — |
-| TEST-ESCAPE-TRAINING-001 | P-G | — | O-A | — | A-G | — | 3 | — | — |
-| TEST-ESCAPE-DESIGN-001 | P-A | — | O-D | — | A-A | — | 2 | — | — |
-| TEST-ESCAPE-PILOT-LEGIT-001 | P-G | — | O-B | — | A-A | — | 1 | — | — |
-| TEST-ESCAPE-POST-FAILURE-001 | P-G | — | O-A | — | A-G | — | 1 | — | — |
+| TEST-ESCAPE-MAINT-001 | P-G | P-A | O-A | O-A | A-G | A-G | 1 | 1 | PARTIAL |
+| TEST-ESCAPE-DISPATCH-001 | P-A | P-A | O-D | O-A | A-A | A-I | 2 | 2 | PARTIAL |
+| TEST-ESCAPE-PLANNING-001 | P-G | P-A | O-A | O-A | A-B | A-B | 3 | 3 | PARTIAL |
+| TEST-ESCAPE-SUPERVISION-001 | P-G | P-A | O-A | O-A | A-G | A-D | 3 | 3 | PARTIAL |
+| TEST-ESCAPE-TRAINING-001 | P-G | P-A | O-A | O-A | A-G | A-G | 3 | 3 | PARTIAL |
+| TEST-ESCAPE-DESIGN-001 | P-A | P-A | O-D | O-A | A-A | A-A | 2 | 5 | PARTIAL |
+| TEST-ESCAPE-PILOT-LEGIT-001 | P-G | P-G | O-B | O-D | A-A | A-A | 1 | 2 | PARTIAL |
+| TEST-ESCAPE-POST-FAILURE-001 | P-G | P-G | O-A | O-A | A-G | A-B | 1 | 3 | PARTIAL |
 
 ### 7.4 Falhas documentadas
 
-*Descrever aqui cada falha de teste: fixture ID, campo divergente, valor esperado, valor obtido, análise de causa (gate incorreto? Step 2 extraiu agente errado? LLM divergiu da metodologia Hendy?).*
+| Fixture | Campo(s) divergente(s) | Esperado | Obtido | Nota de causa provável |
+|---|---|---|---|---|
+| TEST-ESCAPE-DESIGN-001 | O, ERC | O-D, ERC 2 | O-A, ERC 5 | LLM não sustentou hipótese de desvio de objetivo por pressão comercial; colapsou para cenário conservativo sem violação. |
+| TEST-ESCAPE-DISPATCH-001 | O, A | O-D, A-A | O-A, A-I | LLM deslocou de decisão organizacional para execução/controle operacional; padrão não alinhado com premissa de O-D. |
+| TEST-ESCAPE-MAINT-001 | P | P-G | P-A | Falha apenas em percepção; trilha O/A/ERC manteve o caminho esperado de maintenanceOmission. |
+| TEST-ESCAPE-PILOT-LEGIT-001 | O, ERC | O-B, ERC 1 | O-D, ERC 2 | LLM interpretou como desvio excepcional (O-D) em vez de violação normalizada (O-B), elevando ERC no motor legacy. |
+| TEST-ESCAPE-PLANNING-001 | P | P-G | P-A | Falha apenas em percepção; O/A/ERC corretos. |
+| TEST-ESCAPE-POST-FAILURE-001 | A, ERC | A-G, ERC 1 | A-B, ERC 3 | Falha no eixo de ação: ponto de fuga foi tratado como execução direta (A-B), não supervisão/manutenção (A-G). |
+| TEST-ESCAPE-SUPERVISION-001 | P, A | P-G, A-G | P-A, A-D | LLM rompeu o caminho de supervisionFailure e classificou como limitação operacional/execução. |
+| TEST-ESCAPE-TRAINING-001 | P | P-G | P-A | Falha apenas em percepção; O/A/ERC corretos. |
+
+Padrão consolidado:
+- **Percepção P-G → P-A** em 4/8 fixtures (MAINT, PLANNING, SUPERVISION, TRAINING), com impacto direto no overall PARTIAL.
+- **Objetivo esperado O-D** não sustentado em 2/2 fixtures (DESIGN e DISPATCH).
+- **Quebra da ancoragem A-G** em 2 fixtures críticas (SUPERVISION e POST-FAILURE).
+
+### 7.5 Controle Copterline (fixture original)
+
+Relatório: `tests/reports/run-1779154661767.json`
+
+| Fixture | P esperado | P obtido | O esperado | O obtido | A esperado | A obtido | ERC esperado | ERC obtido | Status | Preconditions |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TEST-COPTERLINE-S76C-001 | P-G | P-A | O-A | O-A | A-G | A-G | 1 | 1 | PARTIAL | PASS (recall 1.0) |
+
+Observação: o controle Copterline repetiu o mesmo padrão de divergência de percepção (P-G→P-A), com preservação de O/A/ERC.
 
 ---
 
-## 8. Referências
+## 9. Correção funcional v0.1.3-B
+
+### 9.1 Alterações implementadas
+
+Foram aplicadas correções funcionais mínimas e cirúrgicas em:
+
+- `frontend/src/lib/sera/all-steps.ts`
+- `frontend/src/lib/sera/rules/objective/select.ts`
+- `frontend/src/lib/sera/pipeline.ts`
+
+Mudanças principais:
+
+1. **Percepção P-G organizacional reforçada**:
+- novo contexto de agente organizacional + barreira/requisito + falha de verificação/rastreio;
+- novos termos de monitoramento e de requisito obrigatório (incluindo W&B e treinamento).
+
+2. **Bloqueio de A-D indevido**:
+- remoção de gatilho lexical amplo (`torque` isolado) para incapacidade física;
+- remapeamento de `A-D` para alternativas compatíveis em agente organizacional sem evidência física explícita.
+
+3. **A-G fortalecido para supervisão/manutenção**:
+- reforço de `supervisionFailure` e `maintenanceOmission`;
+- separação entre contexto de manutenção real e contexto de engenharia/design para evitar `A-G` espúrio.
+
+4. **O-B/O-D estabilizados**:
+- ampliação lexical de O-D para pressão comercial/operacional e pontualidade;
+- ampliação lexical de O-B para normalização/rotina recorrente;
+- gate de Step 5 para manter `A-A` quando o desvio dominante é O-D (sem mecanismo concorrente).
+
+5. **Correção estrutural no pipeline**:
+- remoção do override que forçava `P-A` sempre que `A-G` era retornado.
+
+### 9.2 Verificações executadas
+
+| Verificação | Resultado |
+|---|---|
+| Parse JSON de `TEST-ESCAPE-*` + `TEST-COPTERLINE-S76C-001` | PASS |
+| `tests/sera/preconditions-static.ts` | PASS |
+| `tests/sera/preconditions-generalization-static.ts` | PASS |
+| `tests/sera/objective-generalization-static.ts` | PASS |
+
+### 9.3 Run IDs e resultados finais
+
+| Bateria | N | Run ID | Resultado |
+|---|---|---|---|
+| TEST-ESCAPE-* | 1 | `run-1779158375374` | PASS 8 / PARTIAL 0 / FAIL 0 / ERROR 0 |
+| Copterline | 1 | `run-1779159262464` | PASS 1 / PARTIAL 0 / FAIL 0 / ERROR 0 |
+| TEST-ESCAPE-* | 3 | `run-1779165504292` | PASS 24 / PARTIAL 0 / FAIL 0 / ERROR 0 |
+| Copterline | 3 | `run-1779167547925` | PASS 3 / PARTIAL 0 / FAIL 0 / ERROR 0 |
+
+### 9.4 Estado final por fixture
+
+| Fixture | Resultado final |
+|---|---|
+| TEST-ESCAPE-MAINT-001 | PASS (N=1 e N=3) |
+| TEST-ESCAPE-DISPATCH-001 | PASS (N=1 e N=3) |
+| TEST-ESCAPE-PLANNING-001 | PASS (N=1 e N=3) |
+| TEST-ESCAPE-SUPERVISION-001 | PASS (N=1 e N=3) |
+| TEST-ESCAPE-TRAINING-001 | PASS (N=1 e N=3) |
+| TEST-ESCAPE-DESIGN-001 | PASS (N=1 e N=3) |
+| TEST-ESCAPE-PILOT-LEGIT-001 | PASS (N=1 e N=3) |
+| TEST-ESCAPE-POST-FAILURE-001 | PASS (N=1 e N=3) |
+| TEST-COPTERLINE-S76C-001 | PASS (N=1 e N=3) |
+
+---
+
+## 10. Referências
 
 | Documento | Relevância |
 |---|---|

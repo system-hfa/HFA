@@ -70,14 +70,14 @@ function negativeEvidenceTerms(rule: { negative_evidence?: string[] } | undefine
 }
 
 function evidenceOfPhysicalIncapacity(text: string): boolean {
-  return containsAny(text, evidenceTerms(actionRules['A-D'], [
+  const terms = evidenceTerms(actionRules['A-D'], [
     'incapacidade fisica',
     'limitacao fisica',
     'limitacao motora',
     'nao conseguiu executar fisicamente',
+    'nao conseguiu aplicar torque',
     'nao conseguiu aplicar',
     'nao conseguiu fechar',
-    'torque',
     'forca insuficiente',
     'preensao',
     'luvas',
@@ -93,7 +93,8 @@ function evidenceOfPhysicalIncapacity(text: string): boolean {
     'obstruida pelo equipamento',
     'obstruido pelo equipamento',
     'equipamento impediu',
-  ]))
+  ]).filter((term) => term.trim() !== 'torque')
+  return containsAny(text, terms)
 }
 
 function isMaintainenceOrOrganizationalAgent(agente: string): boolean {
@@ -118,6 +119,108 @@ function isMaintainenceOrOrganizationalAgent(agente: string): boolean {
     'copterline',
     'maintenance',
     'management',
+  ])
+}
+
+function isEscapePointOrganizationalAgent(agente: string): boolean {
+  if (!agente) return false
+  const t = normalizeEvidenceText(agente)
+  return containsAny(t, [
+    'manutencao',
+    'gestao de manutencao',
+    'gerencia de manutencao',
+    'organizacao',
+    'despacho',
+    'despachante',
+    'planejamento',
+    'engenharia',
+    'controle de aeronavegabilidade',
+    'qualidade',
+    'supervisor',
+    'supervisao',
+    'coordenador',
+    'instrutor',
+    'treinamento',
+    'gestao',
+    'gerencia',
+    'management',
+  ])
+}
+
+function evidenceOfBarrierOrRequirementContext(text: string): boolean {
+  return containsAny(text, [
+    'tarefa obrigatoria',
+    'inspecao obrigatoria',
+    'inspecao de retorno ao servico',
+    'inspecao pos-manutencao',
+    'teste obrigatorio',
+    'requisito vencido',
+    'qualificacao vencida',
+    'treinamento recorrente vencido',
+    'minimo operacional',
+    'peso e balanceamento',
+    'peso e balanceamento incorreto',
+    'centro de gravidade',
+    'liberacao sem verificacao',
+    'aceite sem conferencia',
+    'sem registro',
+    'registro ausente',
+    'sistema nao gerou tarefa',
+    'nao gerou a tarefa',
+    'helotrac',
+    'due list',
+    'controle de aeronavegabilidade',
+    'auditoria',
+    'pendencia de inspecao',
+    'pendencia de teste',
+    'requisito para instalacao',
+    'briefing obrigatorio',
+    'conteudo obrigatorio',
+    'modulo de instrucao',
+    'ordem de servico',
+    'liberacao da aeronave',
+    'tarefa delegada',
+  ])
+}
+
+function evidenceOfVerificationTrackingFailure(text: string): boolean {
+  return containsAny(text, [
+    'nao verificou',
+    'nao monitorou',
+    'nao rastreou',
+    'nao acompanhou',
+    'nao confirmou',
+    'nao conferiu',
+    'sem verificar',
+    'sem verificacao',
+    'sem conferir',
+    'nao realizou verificacao',
+    'nao realizou a verificacao',
+    'nao aplicou os fatores de correcao',
+    'sem confirmacao de execucao',
+    'sem verificar a execucao',
+    'nao retornou para verificar',
+    'nao retornou para confirmar',
+    'liberou sem confirmar',
+    'liberou sem verificar',
+  ])
+}
+
+function evidenceOfOrganizationalRoleContext(text: string): boolean {
+  return containsAny(text, [
+    'gestao de manutencao',
+    'supervisor de manutencao',
+    'supervisor de treinamento',
+    'supervisor',
+    'supervisao',
+    'coordenador',
+    'despachante',
+    'planejamento de carga',
+    'planejador',
+    'engenharia',
+    'controle de aeronavegabilidade',
+    'instrutor',
+    'treinamento',
   ])
 }
 
@@ -169,7 +272,79 @@ function evidenceOfMaintenanceOmissionContext(text: string): boolean {
     'nao confirmou que o teste',
     'nao confirmou execucao do teste',
     'nao verificou execucao do teste',
+    'inspecao de retorno ao servico',
+    'retorno ao servico',
+    'inspecao pos-manutencao',
+    'pos manutencao',
+    'pendencia de inspecao',
+    'pendencia de teste',
+    'nao gerou alerta',
+    'ausencia de cadastro de requisito',
+    'requisito para instalacao',
+    'instalacao do cabo de controle',
+    'roteamento incorreto',
+    'cabo de controle',
   ])
+}
+
+function evidenceOfMaintenanceSystemContext(text: string): boolean {
+  return containsAny(text, [
+    'manutencao',
+    'programa de manutencao',
+    'sistema de manutencao',
+    'controle de manutencao',
+    'controle de aeronavegabilidade',
+    'helotrac',
+    'ordem de servico',
+    'retorno ao servico',
+    'inspecao pos-manutencao',
+    'atuador',
+    'cabo de controle',
+    'motor',
+    'horas voadas',
+    'intervalo de manutencao',
+  ])
+}
+
+// Detecta contexto dominante de engenharia/design/fabricante onde a decisao do agente
+// e de projeto/boletim/aceitacao tecnica, nao tarefa de manutencao executavel em oficina.
+// Usado como anti-gate para impedir que maintenanceOmission/supervisionFailure/
+// organizationalMonitoringFailure disparem em narrativas onde a manutencao operacional
+// nao e o mecanismo causal real.
+function evidenceOfEngineeringDesignDominantContext(text: string): boolean {
+  const hasEngineeringContext = containsAny(text, [
+    'departamento de engenharia',
+    'engenharia de produto',
+    'engenharia do fabricante',
+    'fabricante',
+    'boletim de servico',
+    'service bulletin',
+    'design hazard',
+    'analise de seguranca interna',
+    'classificacao do boletim',
+    'categoria do boletim',
+    'classificou o boletim',
+    'modo de falha catastrofico',
+    'modo de falha foi classificado',
+    'projeto do componente',
+    'aceitacao de requisito',
+  ])
+  const hasExecutableMaintenanceTask = containsAny(text, [
+    'ordem de servico',
+    'tarefa de manutencao programada',
+    'manutencao programada',
+    'inspecao programada',
+    'teste obrigatorio nao realizado',
+    'controle de aeronavegabilidade',
+    'helotrac',
+    'oficina',
+    'part 145',
+    'retorno ao servico',
+    'inspecao pos-manutencao',
+    'inspecao obrigatoria nao realizada',
+    'inspecao de retorno ao servico',
+  ])
+  return hasEngineeringContext && !hasExecutableMaintenanceTask
 }
 
 function evidenceOfPilotResponseToTechnicalFailure(text: string): boolean {
@@ -242,6 +417,10 @@ function evidenceOfSupervisionFailure(text: string): boolean {
     'instrui auxiliar',
     'instruiu auxiliar',
     'instruiu um auxiliar',
+    'gestao de manutencao',
+    'gestao de treinamento',
+    'supervisor de treinamento',
+    'supervisor de manutencao',
   ])
   const hasDelegatedAction = containsAny(text, [
     'delegou',
@@ -270,6 +449,11 @@ function evidenceOfSupervisionFailure(text: string): boolean {
     'ordenou ao auxiliar',
     'encarregou o tecnico',
     'encarregou o auxiliar',
+    'delegou a conducao',
+    'delegou a verificacao',
+    'delegou verificacao',
+    'delegou ao co-instrutor',
+    'delegou ao coinstrutor',
     'auxiliar a isolar',
     'tecnico a ajustar',
     'tecnico executaria',
@@ -306,6 +490,11 @@ function evidenceOfSupervisionFailure(text: string): boolean {
     'antes de confirmar a execucao',
     'sem verificar a execucao',
     'nao verificou se a tarefa',
+    'nao verificou o conteudo entregue',
+    'nao verificou o conteudo obrigatorio',
+    'nao verificou que a tarefa foi executada',
+    'nao confirmou que a tarefa foi executada',
+    'nao confirmou cobertura do conteudo',
   ])
 
   // A-G exige supervisor + ação delegada + falha explícita de verificar a execução do terceiro.
@@ -537,6 +726,26 @@ function evidenceOfEfficiencyObjective(text: string): boolean {
     'ganho operacional',
     'otimizacao operacional',
     'janela meteorologica apertada',
+    'pressao comercial',
+    'pressao operacional',
+    'pressao de producao',
+    'impacto comercial',
+    'pontualidade',
+    'manter a pontualidade',
+    'cumprimento do horario',
+    'cumprimento do horario publicado',
+    'priorizou o cumprimento do horario',
+    'priorizou cumprimento do horario',
+    'para evitar cancelamento',
+    'manter operacao',
+    'manter a operacao',
+    'continuidade do servico',
+    'continuidade da operacao',
+    'apesar do minimo',
+    'apesar do requisito',
+    'mesmo ciente',
+    'aceitou liberar',
+    'decidiu manter',
   ]))
 }
 
@@ -707,7 +916,7 @@ function normalizeForRuleMatch(text: string): string {
     .trim()
 }
 
-function forceObjectiveOverride(text: string): null | { code: 'O-B' | 'O-C'; reason: string } {
+function forceObjectiveOverride(text: string): null | { code: 'O-B' | 'O-C' | 'O-D'; reason: string } {
   const t = normalizeForRuleMatch(text)
   const has = (token: string) => t.includes(token)
 
@@ -760,6 +969,13 @@ function forceObjectiveOverride(text: string): null | { code: 'O-B' | 'O-C'; rea
     return {
       code: 'O-B',
       reason: 'override determinístico: violação rotineira/normalizada em contexto habitual, prevalece sobre eficiência',
+    }
+  }
+
+  if (evidenceOfEfficiencyObjective(t) && !evidenceOfRoutineOrNormalizedViolation(t)) {
+    return {
+      code: 'O-D',
+      reason: 'override determinístico: objetivo explícito de eficiência/economia sem evidência de normalização rotineira',
     }
   }
 
@@ -1412,7 +1628,12 @@ function inferDeterministicErcLevel(
   if (perceptionCode === 'P-D' && actionCode === 'A-A') return 3
   if (actionCode === 'A-I' && perceptionCode === 'P-D') return 1
   if (actionCode === 'A-J' && perceptionCode === 'P-D') return 1
-  if (actionCode === 'A-G' && evidenceOfMaintenanceOmissionContext(text)) return 1
+  if (
+    actionCode === 'A-G' &&
+    evidenceOfMaintenanceSystemContext(text) &&
+    evidenceOfMaintenanceOmissionContext(text) &&
+    !evidenceOfSupervisionFailure(text)
+  ) return 1
   if (actionCode === 'A-G') return 3
   if (actionCode === 'A-B') return 3
   if (actionCode === 'A-J' && evidenceOfCommunicationConfirmationFailure(text)) return 1
@@ -1542,6 +1763,16 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   const ato = String(pontoFuga.ato_inseguro_factual || '')
   const nodes: RawFlowNode[] = []
   const relatoNorm = normalizeEvidenceText(`${relato}\n${ato}`)
+  const relatoOnlyForAntiGates = normalizeEvidenceText(relato)
+  const organizationalEscapePoint =
+    isEscapePointOrganizationalAgent(String(pontoFuga.agente || '')) ||
+    evidenceOfOrganizationalRoleContext(relatoNorm)
+  const engineeringDesignDominant = evidenceOfEngineeringDesignDominantContext(relatoOnlyForAntiGates)
+  const organizationalMonitoringFailure =
+    organizationalEscapePoint &&
+    evidenceOfBarrierOrRequirementContext(relatoNorm) &&
+    evidenceOfVerificationTrackingFailure(relatoNorm) &&
+    !engineeringDesignDominant
   const genuineHighDemand = evidenceOfExplicitHighDemandOperationalContext(relatoNorm) && !hasNegatedHighDemand(relatoNorm)
 
   if (evidenceOfKnowledgeDeficit(relatoNorm)) {
@@ -1575,6 +1806,20 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     logMethodology('runStep3', 'Gate P-B sensorial 1', no1, ['P-B'], true)
     const code = assertAllowedCode('P-B', ['P-B'], 'runStep3 gate barreira sensorial')
     return flowResult(code, [no0, no1], 'P-A, P-C, P-D, P-E, P-F, P-G, P-H descartadas — barreira sensorial física/ambiental impediu a detecção do sinal presente')
+  }
+
+  if (organizationalMonitoringFailure) {
+    const node = methodologyNode(
+      'Gate deterministico: agente organizacional/supervisao com requisito/barreira explicita e falha de verificacao/monitoramento/rastreio.',
+      { resposta: 'Nao' }
+    )
+    logMethodology('runStep3', 'Gate P-G organizacional', node, ['P-G'], true)
+    const code = assertAllowedCode('P-G', ['P-G'], 'runStep3 gate monitoramento organizacional')
+    return flowResult(
+      code,
+      [node],
+      'P-A, P-B, P-C, P-D, P-E, P-F, P-H descartadas — falha de monitoramento organizacional de requisito/barreira'
+    )
   }
 
   if (evidenceOfPhysicalIncapacity(relatoNorm)) {
@@ -1677,7 +1922,6 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
   if (
     evidenceOfPhysicalIncapacity(relatoNorm) ||
     evidenceOfSelectionError(relatoNorm) ||
-    evidenceOfSupervisionFailure(relatoNorm) ||
     isPureEfficiencyObjective(relatoNorm)
   ) {
     const node = methodologyNode('Gate determinístico: mecanismo principal é ação, seleção, supervisão, incapacidade ou objetivo, sem falha perceptiva independente.', { resposta: 'Não' })
@@ -2324,9 +2568,39 @@ ${NO_ARTIFACTS}`
   const nodes: RawFlowNode[] = []
   const relatoNorm = normalizeEvidenceText(`${relato}\n${ato}`)
   const relatoOnlyNorm = normalizeEvidenceText(relato)
+  const organizationalEscapePoint =
+    isEscapePointOrganizationalAgent(String(pontoFuga.agente || '')) ||
+    evidenceOfOrganizationalRoleContext(relatoNorm)
+  const engineeringDesignDominant = evidenceOfEngineeringDesignDominantContext(relatoOnlyNorm)
   const maintenanceOmission =
-    isMaintainenceOrOrganizationalAgent(String(pontoFuga.agente || '')) &&
-    evidenceOfMaintenanceOmissionContext(relatoNorm)
+    (
+      isMaintainenceOrOrganizationalAgent(String(pontoFuga.agente || '')) ||
+      evidenceOfOrganizationalRoleContext(relatoNorm)
+    ) &&
+    evidenceOfMaintenanceSystemContext(relatoOnlyNorm) &&
+    evidenceOfMaintenanceOmissionContext(relatoOnlyNorm) &&
+    !engineeringDesignDominant
+  const supervisionFailure = evidenceOfSupervisionFailure(relatoNorm) && !engineeringDesignDominant
+  const informationChannelFailure = evidenceOfInformationChannelFailure(relatoNorm)
+  const ownActionCheckFailure = evidenceOfOwnActionCheckFailure(relatoNorm)
+  const communicationConfirmationFailure = evidenceOfCommunicationConfirmationFailure(relatoNorm)
+  const temporalExecutionFailure = evidenceOfTemporalExecutionFailure(relatoNorm)
+  const administrativeRedundantNoImpact = evidenceOfAdministrativeRedundantNoOperationalImpact(relatoNorm)
+  const wrongOperationalSelectionUnderLoad = evidenceOfWrongOperationalSelectionUnderLoad(relatoNorm)
+  const proceduralOmissionDetected = evidenceOfProceduralOmission(relatoNorm)
+  const technicalKnowledgeDeficit = evidenceOfKnowledgeDeficit(relatoNorm)
+
+  function remapOrganizationalActionIfInvalidAd(code: string): string {
+    if (code !== 'A-D') return code
+    if (!organizationalEscapePoint) return code
+    if (evidenceOfPhysicalIncapacity(relatoNorm)) return code
+    if (supervisionFailure || maintenanceOmission) return 'A-G'
+    if (technicalKnowledgeDeficit) return 'A-E'
+    if (proceduralOmissionDetected) return 'A-B'
+    if (wrongOperationalSelectionUnderLoad) return 'A-I'
+    if (ownActionCheckFailure) return 'A-C'
+    return 'A-A'
+  }
 
   async function askNode(
     node: string,
@@ -2431,7 +2705,7 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (evidenceOfPhysicalIncapacity(relatoNorm) && !maintenanceOmission) {
+  if (evidenceOfPhysicalIncapacity(relatoNorm) && !maintenanceOmission && !organizationalEscapePoint) {
     return finishDeterministic(
       'Gate A-D',
       'A-D',
@@ -2441,7 +2715,7 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (evidenceOfKnowledgeDeficit(relatoNorm)) {
+  if (technicalKnowledgeDeficit) {
     return finishDeterministic(
       'Gate A-E',
       'A-E',
@@ -2450,9 +2724,6 @@ ${NO_ARTIFACTS}`
       'A-A, A-B, A-C, A-D, A-F, A-G, A-H, A-I, A-J descartados — déficit técnico explícito prevalece sobre omissão/checagem'
     )
   }
-
-  const supervisionFailure = evidenceOfSupervisionFailure(relatoNorm)
-  const informationChannelFailure = evidenceOfInformationChannelFailure(relatoNorm)
 
   // Guard rail de P-H no Step5: briefing/informação ambígua sem falha explícita de
   // delegação + verificação de terceiro não deve abrir A-G.
@@ -2488,10 +2759,6 @@ ${NO_ARTIFACTS}`
     })
   }
 
-  const ownActionCheckFailure = evidenceOfOwnActionCheckFailure(relatoNorm)
-  const communicationConfirmationFailure = evidenceOfCommunicationConfirmationFailure(relatoNorm)
-  const temporalExecutionFailure = evidenceOfTemporalExecutionFailure(relatoNorm)
-  const administrativeRedundantNoImpact = evidenceOfAdministrativeRedundantNoOperationalImpact(relatoNorm)
   const objectiveDecisionText = [
     relato,
     pontoFuga.ato_inseguro_factual,
@@ -2502,7 +2769,6 @@ ${NO_ARTIFACTS}`
     .filter(Boolean)
     .join(' ')
   const forcedObjective = forceObjectiveOverride(objectiveDecisionText)
-  const wrongOperationalSelectionUnderLoad = evidenceOfWrongOperationalSelectionUnderLoad(relatoNorm)
 
   // A-J prevalece sobre A-I quando o mecanismo causal dominante é falha de confirmação/readback/comunicação operacional.
   if (communicationConfirmationFailure) {
@@ -2532,6 +2798,16 @@ ${NO_ARTIFACTS}`
       ['A-A'],
       'Gate determinístico: objetivo protetivo/humano explícito sem falha específica de execução.',
       'A-I e A-B descartados neste contexto — desvio orientado por proteção humana classifica como A-A'
+    )
+  }
+
+  if (forcedObjective?.code === 'O-D' && !communicationConfirmationFailure && !supervisionFailure && !maintenanceOmission) {
+    return finishDeterministic(
+      'Gate A-A (O-D)',
+      'A-A',
+      ['A-A'],
+      'Gate deterministico: objetivo principal de eficiencia/economia, sem evidencia dominante de erro de execucao, comunicacao ou supervisao.',
+      'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — desvio de objetivo (O-D) sem falha de acao independente'
     )
   }
 
@@ -2615,7 +2891,7 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (evidenceOfProceduralOmission(relatoNorm)) {
+  if (proceduralOmissionDetected) {
     return finishDeterministic(
       'Gate A-B',
       'A-B',
@@ -2699,8 +2975,13 @@ Responda APENAS com JSON: {"codigo": "A-D/A-E", "justificativa": "..."}`,
       ['A-D', 'A-E'],
       'runStep5 capacidade (pós Nó 1=Não)'
     )
+    const remappedCode = remapOrganizationalActionIfInvalidAd(code)
+    if (remappedCode !== code) {
+      result.codigo = remappedCode
+      result.justificativa = `${String(result.justificativa || '')} [guard A-D organizacional: remapeado para ${remappedCode}]`.trim()
+    }
     nodes.push(result)
-    return flowResult(code, nodes, 'A-A, A-B, A-C, A-F, A-G, A-H, A-I, A-J descartados — incapacidade pré-requisito')
+    return flowResult(remappedCode, nodes, 'A-A, A-B, A-C, A-F, A-G, A-H, A-I, A-J descartados — incapacidade pré-requisito')
   }
 
   const no2 = await askYesNo(
@@ -2751,8 +3032,13 @@ Responda APENAS com JSON: {"codigo": "A-D/A-E", "justificativa": "..."}`,
       ['A-D', 'A-E'],
       'runStep5 capacidade'
     )
+    const remappedCode = remapOrganizationalActionIfInvalidAd(code)
+    if (remappedCode !== code) {
+      result.codigo = remappedCode
+      result.justificativa = `${String(result.justificativa || '')} [guard A-D organizacional: remapeado para ${remappedCode}]`.trim()
+    }
     nodes.push(result)
-    return flowResult(code, nodes, 'A-A, A-B, A-C, A-F, A-G, A-H, A-I, A-J descartados — incapacidade pré-requisito')
+    return flowResult(remappedCode, nodes, 'A-A, A-B, A-C, A-F, A-G, A-H, A-I, A-J descartados — incapacidade pré-requisito')
   }
 
   const no4 = await askYesNo(
