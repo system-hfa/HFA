@@ -2,12 +2,11 @@ import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 import { generateSeraPdfBuffer } from '@/lib/sera/pdf-report'
-
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
-}
+import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
 
 export async function GET(req: Request, ctx: { params: Promise<{ analysisId: string }> }) {
+  const requestId = getOrCreateRequestId(req)
+  const jsonError = (message: string, status: number) => buildErrorResponse(message, status, requestId)
   try {
     const user = await requireBearerUser(req)
     const { analysisId } = await ctx.params
@@ -50,6 +49,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ analysisId: str
       const headers: Record<string, string> = {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="${filename}"`,
+        'x-request-id': requestId,
       }
       if (isLegacyAnalysis) {
         headers['X-Analysis-Completeness-Warning'] =
@@ -58,6 +58,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ analysisId: str
 
       return new NextResponse(new Uint8Array(pdfBytes), { status: 200, headers })
     } catch (exc) {
+      console.error('[/api/analyses/pdf]', { requestId, error: exc instanceof Error ? exc.message : String(exc) })
       return jsonError(
         `Falha ao gerar PDF: ${exc instanceof Error ? exc.message : String(exc)}`,
         500
@@ -65,6 +66,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ analysisId: str
     }
   } catch (e) {
     if (e instanceof Response) return e
+    console.error('[/api/analyses/pdf]', { requestId, error: String(e) })
     return jsonError(String(e), 500)
   }
 }

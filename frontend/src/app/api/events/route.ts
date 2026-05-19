@@ -10,12 +10,9 @@ import {
 } from '@/lib/sera/sera-analysis-mapper'
 import { debitCreditForEvent, ensurePublicUserRow, refundCreditForFailedAnalysis } from '@/lib/server/tenant-user'
 import { applyUserAiSettingsToEnv } from '@/lib/server/apply-user-ai-settings-to-env'
+import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
 
 export const maxDuration = 300
-
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
-}
 
 function logEventsError(error: unknown, stage: string, extra: Record<string, unknown> = {}) {
   const e = error instanceof Error ? error : new Error(String(error))
@@ -29,6 +26,8 @@ function logEventsError(error: unknown, stage: string, extra: Record<string, unk
 }
 
 export async function GET(req: Request) {
+  const requestId = getOrCreateRequestId(req)
+  const jsonError = (message: string, status: number) => buildErrorResponse(message, status, requestId)
   try {
     const user = await requireBearerUser(req)
     const admin = getSupabaseAdmin()
@@ -49,20 +48,23 @@ export async function GET(req: Request) {
         analyses: undefined,
       }
     })
-    return NextResponse.json(rows)
+    return NextResponse.json(rows, { headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
+    logEventsError(e, 'get-events', { requestId })
     return jsonError(String(e), 500)
   }
 }
 
 export async function POST(req: Request) {
+  const requestId = getOrCreateRequestId(req)
+  const jsonError = (message: string, status: number) => buildErrorResponse(message, status, requestId)
   let stage = 'start'
-  let context: Record<string, unknown> = {}
+  let context: Record<string, unknown> = { requestId }
   try {
     stage = 'auth'
     const user = await requireBearerUser(req)
-    context = { userId: user.userId, tenantId: user.tenantId }
+    context = { requestId, userId: user.userId, tenantId: user.tenantId }
     try {
       stage = 'assert-service-role-env'
       assertServiceRoleEnv()
@@ -253,12 +255,10 @@ export async function POST(req: Request) {
         )
       : null
 
-    return NextResponse.json({
-      event_id: eventId,
-      status: 'completed',
-      analysis_id: analysisId,
-      seraAnalysis,
-    })
+    return NextResponse.json(
+      { event_id: eventId, status: 'completed', analysis_id: analysisId, seraAnalysis },
+      { headers: { 'x-request-id': requestId } }
+    )
   } catch (e) {
     if (e instanceof Response) return e
     logEventsError(e, stage, context)

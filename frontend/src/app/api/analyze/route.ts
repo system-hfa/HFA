@@ -14,12 +14,9 @@ import {
   seraAnalysisToJson,
 } from '@/lib/sera/sera-analysis-mapper'
 import { applyUserAiSettingsToEnv } from '@/lib/server/apply-user-ai-settings-to-env'
+import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
 
 export const maxDuration = 300
-
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
-}
 
 /**
  * POST /api/analyze
@@ -29,6 +26,8 @@ function jsonError(message: string, status: number) {
  * - Sem `eventId`: cria evento mínimo (consome 1 crédito), executa pipeline e devolve `seraAnalysis`.
  */
 export async function POST(req: Request) {
+  const requestId = getOrCreateRequestId(req)
+  const jsonError = (message: string, status: number) => buildErrorResponse(message, status, requestId)
   try {
     const user = await requireBearerUser(req)
     try {
@@ -119,14 +118,13 @@ export async function POST(req: Request) {
             )
           : null
 
-        return NextResponse.json({
-          event_id: body.eventId,
-          analysis_id: analysisId,
-          seraAnalysis,
-        })
+        return NextResponse.json(
+          { event_id: body.eventId, analysis_id: analysisId, seraAnalysis },
+          { headers: { 'x-request-id': requestId } }
+        )
       } catch (err) {
         await admin.from('events').update({ status: 'failed' }).eq('id', body.eventId)
-        console.error(err)
+        console.error('[/api/analyze]', { requestId, error: err instanceof Error ? err.message : String(err) })
         return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
       }
     }
@@ -208,7 +206,7 @@ export async function POST(req: Request) {
       respostaSucesso = true
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
-      console.error(err)
+      console.error('[/api/analyze]', { requestId, error: err instanceof Error ? err.message : String(err) })
       return jsonError(err instanceof Error ? err.message : 'Falha na análise SERA', 500)
     } finally {
       if (creditoDebitado && !respostaSucesso) {
@@ -229,7 +227,7 @@ export async function POST(req: Request) {
             currentBalanceAfterDebit: tNow?.credits_balance ?? 0,
           })
         } catch (refundErr) {
-          console.error('Falha ao estornar crédito após análise com erro', refundErr)
+          console.error('[/api/analyze] refund', { requestId, error: refundErr instanceof Error ? refundErr.message : String(refundErr) })
         }
       }
     }
@@ -254,14 +252,13 @@ export async function POST(req: Request) {
         )
       : null
 
-    return NextResponse.json({
-      event_id: eventId,
-      analysis_id: analysisId,
-      seraAnalysis,
-    })
+    return NextResponse.json(
+      { event_id: eventId, analysis_id: analysisId, seraAnalysis },
+      { headers: { 'x-request-id': requestId } }
+    )
   } catch (e) {
     if (e instanceof Response) return e
-    console.error(e)
+    console.error('[/api/analyze]', { requestId, error: String(e) })
     return jsonError(String(e), 500)
   }
 }

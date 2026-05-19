@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin, assertServiceRoleEnv } from '@/lib/server/supabase-admin'
-
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
-}
+import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
 
 export async function GET(req: Request) {
+  const requestId = getOrCreateRequestId(req)
+  const jsonError = (message: string, status: number) => buildErrorResponse(message, status, requestId)
   try {
     const user = await requireBearerUser(req)
     assertServiceRoleEnv()
@@ -36,14 +35,17 @@ export async function GET(req: Request) {
         event_id: analysis?.event_id ?? null,
       }
     })
-    return NextResponse.json(rows)
+    return NextResponse.json(rows, { headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
+    console.error('[/api/actions GET]', { requestId, error: String(e) })
     return jsonError(String(e), 500)
   }
 }
 
 export async function POST(req: Request) {
+  const requestId = getOrCreateRequestId(req)
+  const jsonError = (message: string, status: number) => buildErrorResponse(message, status, requestId)
   try {
     const user = await requireBearerUser(req)
     assertServiceRoleEnv()
@@ -81,9 +83,10 @@ export async function POST(req: Request) {
       .single()
 
     if (error) return jsonError(error.message, 500)
-    return NextResponse.json(data, { status: 201 })
+    return NextResponse.json(data, { status: 201, headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
+    console.error('[/api/actions POST]', { requestId, error: String(e) })
     return jsonError(String(e), 500)
   }
 }
