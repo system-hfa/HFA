@@ -332,7 +332,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         router.push('/login')
       } else {
         setUserEmail(data.session.user.email ?? '')
-        await ensureOAuthTenant()
+        try {
+          await ensureOAuthTenant()
+        } catch (bootstrapErr) {
+          console.error('[dashboard/layout] tenant bootstrap blocked', {
+            reason: bootstrapErr instanceof Error ? bootstrapErr.message : String(bootstrapErr),
+            source: 'oauth_bootstrap',
+          })
+          await supabase.auth.signOut()
+          router.push('/login?error=tenant')
+        }
       }
     })
   }, [router])

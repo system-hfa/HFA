@@ -41,7 +41,16 @@ export default function AuthCallbackPage() {
         console.error('[auth/callback] getSession failed', { message: sessionErr.message })
       }
       if (data.session) {
-        await ensureOAuthTenant()
+        try {
+          await ensureOAuthTenant()
+        } catch (bootstrapErr) {
+          console.error('[auth/callback] tenant bootstrap blocked', {
+            reason: bootstrapErr instanceof Error ? bootstrapErr.message : String(bootstrapErr),
+            source: 'oauth_bootstrap',
+          })
+          router.replace('/login?error=tenant')
+          return
+        }
         router.replace('/dashboard')
         return
       }

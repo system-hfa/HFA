@@ -12,6 +12,7 @@ export type AuditEventType =
   | 'analysis_failed'
   | 'corrective_action_created'
   | 'report_generated'
+  | 'tenant.bootstrap_failed'
   | 'classification_overridden' // reservado — implementar quando rota de override for instrumentada
 
 export type AuditStatus = 'success' | 'partial' | 'failed' | 'blocked'
