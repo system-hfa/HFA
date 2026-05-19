@@ -1,0 +1,27 @@
+{
+  "id": "TEST-ESCAPE-PILOT-LEGIT-001",
+  "title": "Piloto é o agente legítimo do ponto de fuga — violação normalizada de altitude mínima em corredor montanhoso com CFIT",
+  "domain": "aviação — voo em área montanhosa / CFIT / violação normalizada",
+  "description": "O capitão em comando de um voo regular de passageiros entre dois aeroportos regionais operava rotineiramente abaixo da altitude mínima de segurança no corredor montanhoso ao norte do aeroporto de destino, prática normalizada entre as tripulações daquele operador por razões de eficiência de combustível e redução de tempo de voo. Três ativações do sistema de aviso de proximidade de solo haviam sido registradas em operações anteriores do mesmo capitão naquele corredor nos seis meses anteriores ao acidente, sem que o capitão ou a tripulação tivessem tomado ação corretiva ou registrado os alertas. O capitão não monitorou a altitude mínima de segurança durante a descida de cruzeiro para o destino, descendo para 1.800 pés acima do nível do mar em condições de voo por instrumentos e com teto de nuvem de 1.600 pés, abaixo dos 2.400 pés especificados na carta de área mínima de segurança para aquele segmento. O primeiro oficial não questionou o procedimento. A aeronave colidiu com uma encosta a 1.950 pés acima do nível do mar, a 11 milhas náuticas do aeroporto de destino. Os sete ocupantes morreram. A investigação confirmou que nenhum supervisor operacional ou verificador de voo havia registrado nem corrigido a prática de voo abaixo dos mínimos de altitude naquele corredor, apesar dos alertas de GPWS disponíveis nos registros.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-B",
+    "action_code": "A-A",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P3",
+      "S3",
+      "O5",
+      "O6",
+      "T1"
+    ]
+  },
+  "rationale": "Ponto de fuga: capitão em comando desceu abaixo da altitude mínima de segurança no corredor montanhoso, em violação normalizada habitual à carta de área mínima de segurança. P-G: o capitão tinha acesso aos alertas de GPWS e às cartas de altitude mínima — falhou em monitorar e integrar as informações de altitude de segurança disponíveis. Os alertas anteriores não foram integrados como sinal de risco sistêmico. O-B: violação normalizada — a prática de voo abaixo dos mínimos era habitual e institucionalizada entre as tripulações do operador; o capitão não percebia a prática como violação por estar normalizada no ambiente operacional. A-A: a ação (descida abaixo do mínimo) deriva diretamente do objetivo habitual (O-B), sem erro de execução independente. ERC (motor legacy) = 1: risco crítico imediato — CFIT com sete vítimas fatais; a barreira de monitoramento de altitude estava completamente não funcional para aquele segmento. NOTA CRÍTICA SOBRE AGENTE: O PILOTO É O AGENTE LEGÍTIMO DO PONTO DE FUGA neste caso. Não há migração causal. A investigação de supervisão (verificador de voo que não registrou) pode ser objeto de análise secundária separada mas NÃO é o ponto de fuga. ATENÇÃO SOBRE ESCALA: o campo expected.erc_level usa a escala legacy do motor SERA (1 = crítico). A UI exibe HFA ERC 5 = vermelho/crítico. NOTA: classificação P/O/A e ERC dependem de caminho LLM; falha neste fixture deve ser documentada em SERA_ESCAPE_POINT_ADVERSARIAL_VALIDATION_v0.1.3-A.md.",
+  "discriminators": [
+    "NÃO é caso de manutenção: o agente do ponto de fuga é o PILOTO EM COMANDO, não manutenção, despacho ou organização. Este fixture valida que o sistema classifica corretamente quando o piloto É o agente legítimo da ruptura da barreira operacional.",
+    "NÃO é A-D (Inabilidade Física): não há limitação física do capitão descrita. A-D exige incapacidade física, ergonômica ou motora. A-A deriva de O-B, não de incapacidade.",
+    "NÃO é análise secundária: a menção a verificador de voo que não registrou a prática pode ser objeto de análise secundária separada mas não altera o ponto de fuga principal. A regra anti-migração causal proíbe trocar o agente de capitão para supervisor sem abrir análise separada.",
+    "NÃO é O-D (Pressão Comercial Intencional): a prática era normalizada — o capitão não percebia estar violando intencionalmente por motivação econômica imediata. A normalização é O-B, não O-D.",
+    "Fixture adversarial: valida que o sistema atribui P-G/O-B/A-A ao piloto quando este É o agente legítimo — testa que a regra de ancoragem não gera viés antipilotos nem viés a favor de manutenção. O inverso é TEST-ESCAPE-POST-FAILURE-001, onde o piloto é consequência."
+  ]
+}

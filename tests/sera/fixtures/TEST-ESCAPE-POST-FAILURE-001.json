@@ -1,0 +1,24 @@
+{
+  "id": "TEST-ESCAPE-POST-FAILURE-001",
+  "title": "Gestão de manutenção não verifica instalação de cabo de controle — resposta de piloto à falha subsequente é consequência, não ponto de fuga",
+  "domain": "aviação — manutenção de sistema de controle / resposta de tripulação como consequência",
+  "description": "O helicóptero Robinson R44 operado por uma empresa de filmagem aérea retornou ao serviço após substituição dos cabos do sistema de controle do rotor de cauda realizada em organização de manutenção certificada. O técnico responsável pela substituição roteou incorretamente o cabo pelo fairlead traseiro, criando ponto de abrasão contínua do cabo contra a estrutura da fuselagem. Não houve registro de execução de inspeção de retorno ao serviço para o sistema de controle de cauda. A gestão de manutenção não verificou que a tarefa de manutenção de instalação do cabo de controle foi executada conforme o procedimento aprovado antes de liberar a aeronave. A aeronave acumulou 11 horas voadas sem inspeção obrigatória pós-manutenção do sistema de controle de cauda instalado. O sistema de manutenção da organização não gerou alerta sobre pendência de inspeção pós-manutenção por ausência de cadastro de requisito para instalação de novos cabos. Durante voo de filmagem sobre área rural, o cabo de controle do rotor de cauda rompeu por abrasão no ponto criado pelo roteamento incorreto. Os pilotos tentaram controlar a aeronave com variações de potência do motor mas não conseguiram manter voo controlado. A aeronave entrou em rotação incontrolável e colidiu com o solo em área de vegetação densa. Os dois tripulantes foram mortos. A investigação determinou que o roteamento incorreto do cabo não seria detectável em inspeção visual externa de pré-voo e que a inspeção de retorno ao serviço, não executada, teria identificado o erro de roteamento.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "Ponto de fuga: gestão de manutenção da organização certificada não verificou que a tarefa de manutenção de instalação do cabo de controle foi executada conforme o procedimento aprovado e não realizou inspeção de retorno ao serviço antes de liberar a aeronave. P-G: o sistema de manutenção não gerou alerta por ausência de cadastro de requisito; não houve verificação independente da execução do procedimento de instalação — falha de monitoramento de informação de status disponível. O-A: sem objetivo desviante — a gestão de manutenção não tinha intenção de negligenciar a verificação. A-G: a gestão de manutenção não confirmou que a tarefa de instalação do cabo foi executada corretamente antes de liberar a aeronave para operações — falha de verificação de tarefa de terceiro. ERC (motor legacy) = 1: falha latente não detectável em pré-voo operacional — o roteamento incorreto do cabo não era visível em inspeção externa e produzia degradação interna progressiva. ATENÇÃO SOBRE ESCALA: o campo expected.erc_level usa a escala legacy do motor SERA (1 = crítico). A UI exibe HFA ERC 5 = vermelho/crítico. NOTA CRÍTICA SOBRE RESPOSTA DE PILOTO: a tentativa dos pilotos de controlar a aeronave com variações de potência APÓS a ruptura do cabo é CONSEQUÊNCIA da falha de manutenção — não é o ponto de fuga. Os pilotos não são o agente do ponto de fuga. A-D não se aplica ao ponto de fuga de manutenção.",
+  "discriminators": [
+    "NÃO é A-D aplicado ao piloto: A-D exigiria que os pilotos fossem o agente do ponto de fuga e apresentassem incapacidade física de manter a barreira operacional. Os pilotos não são o agente do ponto de fuga — a barreira operacional necessária era a inspeção de retorno ao serviço pela gestão de manutenção. A incapacidade dos pilotos de controlar a aeronave após a ruptura do cabo é consequência da falha de manutenção.",
+    "NÃO é análise do piloto: a resposta da tripulação à emergência gerada pela falha do cabo pode ser objeto de análise secundária separada, mas não constitui o ponto de fuga da operação segura neste evento. A ruptura do cabo ocorreu APÓS a barreira operacional ter caído em manutenção.",
+    "Agente do ponto de fuga é MANUTENÇÃO/GESTÃO DE MANUTENÇÃO — não o piloto. Migrar a classificação A-G para A-D no piloto viola a regra de consistência causal agente-ato-momento do SERA.",
+    "Fixture espelho de TEST-ESCAPE-PILOT-LEGIT-001: enquanto PILOT-LEGIT-001 valida que o piloto É o agente quando sua violação é o ponto de fuga, POST-FAILURE-001 valida que o piloto NÃO é o agente quando o ponto de fuga é manutenção. Os dois fixtures juntos testam a discriminação bidirecional da regra de ancoragem."
+  ]
+}

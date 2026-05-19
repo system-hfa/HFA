@@ -1,0 +1,24 @@
+{
+  "id": "TEST-ESCAPE-TRAINING-001",
+  "title": "Supervisor de treinamento delega briefing obrigatório de emergência sem verificar conteúdo entregue ao co-instrutor",
+  "domain": "aviação — supervisão de instrução de voo",
+  "description": "O supervisor de treinamento de uma escola de aviação delegou ao co-instrutor a condução do briefing sobre procedimentos de emergência em incêndio de motor para um grupo de quatro pilotos em formação do programa de instrução inicial. O supervisor de treinamento instruiu o co-instrutor a cobrir todos os procedimentos de emergência obrigatórios do programa de instrução e assinar o registro de conclusão do módulo. O supervisor de treinamento não retornou para verificar se o briefing havia sido conduzido com o conteúdo obrigatório completo antes de encerrar o módulo no sistema de registro de instrução. O co-instrutor conduziu o briefing em tempo reduzido por pressão de horário, omitindo integralmente os procedimentos de checklist de incêndio de motor no solo, item obrigatório do programa de instrução inicial. Os quatro pilotos em formação concluíram o módulo sem instrução sobre o procedimento de incêndio de motor no solo. Em sessão de simulação de emergência conduzida pelo coordenador de instrução três semanas depois, dois dos quatro pilotos não executaram o checklist de incêndio de motor no solo de forma correta, demonstrando lacuna de instrução. A investigação de instrução identificou que o módulo havia sido encerrado com assinatura do co-instrutor mas sem evidência de cobertura do conteúdo obrigatório.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "Ponto de fuga: supervisor de treinamento delegou a condução do briefing obrigatório ao co-instrutor e não verificou se o conteúdo obrigatório foi entregue antes de encerrar o módulo no sistema de registro. P-G: o supervisor tinha acesso ao status de execução do módulo e à possibilidade de verificar o conteúdo entregue — falhou em monitorar a conformidade do briefing com o programa obrigatório. O-A: sem objetivo desviante — o supervisor de treinamento não tinha intenção de negligenciar a verificação; delegou com boa-fé mas sem confirmar execução adequada. A-G: falha de supervisão — o supervisor de treinamento delegou ação a terceiro (co-instrutor) e não retornou para verificar se o briefing havia sido conduzido conforme o conteúdo obrigatório. ERC (motor legacy) = 3: risco moderado — a lacuna de instrução foi detectada em simulação antes de evento em voo real; a consequência permaneceu no domínio de instrução. NOTA SOBRE AGENTE: supervisor de treinamento NÃO está na lista isMaintainenceOrOrganizationalAgent — o termo 'treinamento' não consta da lista. Portanto maintenanceOmission=false e a classificação A-G ocorre via supervisionFailure. ATENÇÃO SOBRE ESCALA: a UI converte para HFA ERC 3 = moderado/amarelo.",
+  "discriminators": [
+    "NÃO é A-E (Falha de Conhecimento): os procedimentos de emergência eram conhecidos pelo supervisor de treinamento — o problema foi falha de verificação da delegação, não ausência de conhecimento técnico. A-E exige que o agente do ponto de fuga não possuísse o conhecimento necessário para executar a barreira.",
+    "NÃO é A-B (Deslize/Omissão na Execução Própria): o agente do ponto de fuga é o supervisor de treinamento, não o co-instrutor. A omissão do co-instrutor é uma consequência da falha de supervisão. A-B só se aplicaria se o supervisor tivesse executado diretamente o briefing e omitido conteúdo.",
+    "Agente fora da lista de manutenção: 'supervisor de treinamento' não contém termos da lista isMaintainenceOrOrganizationalAgent ('manutencao', 'gestao de manutencao', 'organizacao', 'despacho', etc.). O gate A-G dispara via supervisionFailure ('supervisor' + 'delegou' + 'não retornou para verificar'), não via maintenanceOmission. ERC = 3, não 1.",
+    "Fixture adversarial: valida que a regra de supervisão A-G generaliza para domínio de instrução (não apenas manutenção). Testa que supervisionFailure dispara para agentes fora da lista de manutenção/organização quando há delegação sem confirmação de execução."
+  ]
+}

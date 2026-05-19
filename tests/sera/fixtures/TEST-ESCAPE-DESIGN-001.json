@@ -1,0 +1,26 @@
+{
+  "id": "TEST-ESCAPE-DESIGN-001",
+  "title": "Departamento de engenharia classifica boletim de serviço para modo de falha catastrófico como recomendado por pressão comercial",
+  "domain": "aviação — engenharia de produto / boletim de serviço",
+  "description": "O departamento de engenharia de produto de um fabricante de helicópteros emitiu boletim de serviço para inspeção visual do pino de articulação do rotor principal, após receber três relatos de fissuras em serviço em aeronaves da frota. O boletim classificou a inspeção como Categoria 2 — Recomendada — em vez de Categoria 1 — Obrigatória — e não divulgou que o modo de falha havia sido classificado como catastrófico e irrecuperável na análise de segurança interna do fabricante. A equipe de engenharia tinha plena ciência da classificação catastrófica do modo de falha antes de emitir o boletim. A decisão de classificar como Categoria 2 foi motivada pela avaliação de que uma classificação obrigatória geraria custos operacionais significativos para os operadores e impacto comercial negativo para o fabricante. O boletim definiu limites de inspeção em 500 horas após a última inspeção. Um operador com aeronave em 480 horas não priorizou a realização da inspeção, por ser de caráter recomendado. Aos 532 horas de operação, o pino de articulação fraturou durante voo de treinamento. O rotor principal separou-se da aeronave em voo. Os quatro ocupantes morreram. A análise pós-acidente confirmou que o modo de falha era detectável por inspeção visual conforme o boletim.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "S2",
+      "O4",
+      "T2"
+    ]
+  },
+  "rationale": "Ponto de fuga: departamento de engenharia do fabricante classificou o boletim de serviço para modo de falha catastrófico como Categoria 2 (Recomendada) em vez de Categoria 1 (Obrigatória), com conhecimento pleno da classificação catastrófica do modo de falha. P-A: não houve falha perceptiva — a equipe de engenharia tinha plena ciência da natureza catastrófica do modo de falha antes de emitir o boletim. A informação estava disponível e foi corretamente percebida. O-D: objetivo desviante por pressão econômica/comercial — a decisão de classificar como Categoria 2 foi explicitamente motivada por considerações de custo operacional e impacto comercial, configurando desvio por eficiência/economia. A-A: a ação (emissão do boletim com classificação inadequada) deriva diretamente do objetivo desviante (O-D), sem erro de execução técnica independente. ERC (motor legacy) = 2: risco alto — falha latente com mecanismo de detecção existente mas desativado pela classificação inadequada do boletim. ATENÇÃO SOBRE ESCALA: a UI converte para HFA ERC 4 = alto/laranja. NOTA: classificação P/O/A e ERC dependem de caminho LLM; falha neste fixture deve ser documentada em SERA_ESCAPE_POINT_ADVERSARIAL_VALIDATION_v0.1.3-A.md.",
+  "discriminators": [
+    "NÃO é P-G (Falha de Monitoramento): o departamento de engenharia tinha plena ciência da natureza catastrófica do modo de falha — a informação estava disponível e foi integrada à análise interna. A falha não foi de percepção, mas de objetivo: optou-se por agir contra o interesse de segurança por razões comerciais.",
+    "NÃO é A-E (Falha de Conhecimento): o risco era conhecido internamente — a análise de segurança do fabricante classificou o modo de falha como catastrófico antes da emissão do boletim. A-E exige que o agente não possuísse o conhecimento necessário.",
+    "NÃO é A-G (Supervisão): não há delegação de ação a terceiro sem verificação de retorno. A decisão de classificação foi tomada pelo próprio departamento de engenharia na elaboração do boletim.",
+    "Fixture adversarial: valida que agente de engenharia com objetivo desviante por pressão comercial produz P-A/O-D/A-A, padrão distinto do padrão de manutenção P-G/O-A/A-G. Testa coexistência de O-D em domínio de engenharia fora de contexto de despacho."
+  ]
+}

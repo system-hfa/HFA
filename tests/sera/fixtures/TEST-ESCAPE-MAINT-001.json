@@ -1,0 +1,24 @@
+{
+  "id": "TEST-ESCAPE-MAINT-001",
+  "title": "Motor PT6A — retorno ao serviço sem inspeção obrigatória de seção quente aos 1800h",
+  "domain": "aviação — manutenção de motor aeronáutico",
+  "description": "O motor PT6A-60A número de série SN-220741 de uma empresa aérea regional foi submetido a manutenção programada em organização de manutenção certificada. O programa de manutenção determinava que a inspeção obrigatória de seção quente fosse realizada a cada 1800 horas de operação. O sistema de manutenção não gerou corretamente a tarefa de inspeção por cadastro inadequado do número de série do componente. Não houve registro de execução da inspeção de seção quente. Sem registro de deferimento documentado, o motor foi liberado para retorno ao serviço. A organização não realizou a inspeção de seção quente no intervalo de manutenção de 1800 horas. A gestão de manutenção não verificou que o teste de inspeção obrigatória foi executado antes de liberar o motor. O motor acumulou 1847 horas voadas sem que a inspeção obrigatória não realizada nos 1800 horas fosse corrigida. A gestão de manutenção da organização certificada liberou o motor para operações sem confirmação de execução. Durante voo regular de passageiros, uma pá de turbina com fadiga não detectada fraturou, causando falha de motor não contida e penetração de fragmentos na fuselagem com dois passageiros feridos. A investigação confirmou que a degradação da pá seria detectável pela inspeção de boroscópio da tarefa de manutenção de seção quente, que permaneceu sem execução.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 1,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "Ponto de fuga: gestão de manutenção da organização certificada não verificou que o teste de inspeção obrigatória de seção quente foi executado nos 1800 horas antes de liberar o motor. P-G: o sistema de manutenção falhou em gerar a tarefa por cadastro inadequado, e não houve verificação independente do cumprimento do intervalo de manutenção — falha de monitoramento de informação disponível. O-A: sem objetivo desviante — a gestão de manutenção não tinha intenção de negligenciar a inspeção. A-G: falha de supervisão e verificação de tarefa obrigatória — a gestão de manutenção não confirmou que a inspeção foi executada antes de liberar o motor para operações. ERC (motor legacy) = 1: falha latente não detectável em operações normais — o motor operava aparentemente dentro dos parâmetros; só testes específicos de seção quente revelariam a degradação da pá. ATENÇÃO SOBRE ESCALA: o campo expected.erc_level usa a escala legacy do motor SERA, na qual 1 = crítico/risco imediato e 5 = mínimo/administrativo. A UI converte para HFA ERC 5 = crítico/vermelho via coerceMotorErcToHfaCategory. Não interpretar erc_level=1 como 'ERC 1 Aceitável'.",
+  "discriminators": [
+    "NÃO é A-D (Inabilidade Física): A-D exige limitação física, ergonômica ou motora do agente do ponto de fuga. Aqui o agente é a gestão de manutenção — sem qualquer limitação física descrita. A-D é explicitamente bloqueado pelo guard !maintenanceOmission quando isMaintainenceOrOrganizationalAgent=true e evidenceOfMaintenanceOmissionContext=true.",
+    "NÃO é A-B (Deslize/Omissão na Execução): A-B descreve omissão de passo específico pelo executante direto durante execução própria. Aqui o mecanismo dominante é supervisão/gestão — a gestão não verificou que a inspeção obrigatória foi executada por terceiro, não que um técnico individualmente omitiu um passo durante sua execução.",
+    "NÃO é A-E (Falha de Conhecimento): os requisitos de manutenção de 1800 horas eram conhecidos — o problema foi falha de controle de execução pelo sistema e não verificação pela gestão, não ausência de conhecimento técnico.",
+    "Fixture adversarial: valida que a regra de A-G com maintenanceOmission generaliza para domínio de manutenção de motor turboélice além do caso Copterline S-76C+ (rotor de helicóptero). A lógica determinística via isMaintainenceOrOrganizationalAgent + evidenceOfMaintenanceOmissionContext deve produzir A-G com ERC 1 motor."
+  ]
+}

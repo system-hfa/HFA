@@ -1,0 +1,24 @@
+{
+  "id": "TEST-ESCAPE-SUPERVISION-001",
+  "title": "Supervisor de manutenção delega verificação de cabos de controle sem confirmar execução — falha de supervisão sem omissão de inspeção obrigatória programada",
+  "domain": "aviação — supervisão de manutenção",
+  "description": "O supervisor de manutenção de um operador de helicóptero delegou ao técnico de manutenção recém-admitido a verificação e o ajuste de tensão dos cabos de controle do aileron após substituição do conjunto de aileron. O supervisor instruiu o técnico a executar a verificação e comunicou ao coordenador de turno que a atividade havia sido delegada. O supervisor não retornou para verificar se a atividade havia sido executada corretamente antes de autorizar o encerramento da ordem de serviço e a liberação da aeronave. O técnico executou a verificação mas aplicou torque insuficiente em um fixador de cabo, erro que não foi detectado pelo inspetor que assinou a documentação sem reinspecionar fisicamente a instalação. O técnico era o único responsável pela execução naquele turno. Durante o voo subsequente de 40 minutos de duração, o fixador com torque insuficiente cedeu progressivamente, causando perda parcial do controle do aileron. O piloto identificou a anomalia e executou pouso de emergência em campo aberto. A aeronave sofreu danos substanciais durante o pouso forçado. Nenhum ocupante sofreu lesões fatais.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 3,
+    "top_preconditions": [
+      "P2",
+      "S3",
+      "O6"
+    ]
+  },
+  "rationale": "Ponto de fuga: supervisor de manutenção delegou verificação ao técnico recém-admitido e não retornou para verificar se a atividade foi executada corretamente antes de autorizar a liberação da aeronave. P-G: o supervisor tinha acesso ao status de conclusão da atividade — a delegação a um técnico inexperiente criava obrigação de verificação independente que não foi realizada. O-A: sem objetivo desviante — o supervisor não tinha intenção de negligenciar a verificação; avaliou equivocadamente que a confirmação verbal do coordenador era suficiente. A-G: falha clássica de supervisão — o supervisor delegou ação a terceiro (técnico recém-admitido) e não verificou se a execução foi realizada corretamente antes do encerramento da ordem de serviço. ERC (motor legacy) = 3: risco moderado — falha de supervisão com barreira de inspeção parcialmente ativa mas ineficaz (inspetor assinou sem reinspecionar). DIFERENÇA CRÍTICA EM RELAÇÃO A TEST-ESCAPE-MAINT-001: esta fixture produz ERC 3, não ERC 1. Motivo: a narrativa não contém evidência de omissão de inspeção ou teste obrigatório programado (evidenceOfMaintenanceOmissionContext = false); a falha é de supervisão de execução (supervisionFailure = true), não de omissão de programa de manutenção. ERC 3 = A-G sem maintenanceOmission. ATENÇÃO SOBRE ESCALA: a UI converte para HFA ERC 3 = moderado/amarelo.",
+  "discriminators": [
+    "NÃO é A-B (Deslize/Omissão na Execução): A-B é omissão de passo pelo executante direto durante sua própria execução. Aqui o agente do ponto de fuga é o SUPERVISOR — não o técnico que aplicou o torque incorreto. A falha do supervisor foi de delegação sem verificação de retorno (A-G), não de execução técnica própria.",
+    "NÃO é A-C (Verificação da Própria Ação): A-C é falha de verificação da própria execução pelo próprio executante. O supervisor não executou a tarefa técnica — delegou. A-G cobre especificamente a falha de verificar ação executada por outra pessoa.",
+    "NÃO produz ERC 1: apesar de o agente ser supervisor de manutenção (isMaintainenceOrOrganizationalAgent=true por conter 'manutencao'), a narrativa NÃO contém evidenceOfMaintenanceOmissionContext — não há termos de inspeção obrigatória não realizada, sistema de manutenção que não gerou tarefa, horas sem inspeção, etc. Portanto maintenanceOmission=false e o ERC é 3 (A-G padrão), não 1.",
+    "Fixture adversarial: valida que supervisionFailure=true (via 'supervisor' + 'delegou' + 'não retornou para verificar') produz A-G com ERC 3 mesmo quando o agente é supervisor de manutenção. Distingue A-G por supervisionFailure (ERC 3) de A-G por maintenanceOmission (ERC 1)."
+  ]
+}

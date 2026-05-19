@@ -1,0 +1,25 @@
+{
+  "id": "TEST-ESCAPE-PLANNING-001",
+  "title": "Planejador de carga aceita dados de peso declarados sem verificação, aeronave parte com CG fora do envelope",
+  "domain": "aviação — planejamento de carga e peso e balanceamento",
+  "description": "O responsável pelo planejamento de carga de uma empresa de táxi aéreo aceitou os dados de peso declarados pelos passageiros de um monomotor turboélice sem aplicar os fatores de correção padronizados nem realizar verificação de peso na rampa. Os procedimentos operacionais da empresa exigiam a aplicação de pesos médios padronizados ou verificação direta quando a carga total declarada excedesse 75% da capacidade máxima útil — condição verificada naquele voo com carga declarada de 78% da capacidade máxima. O planejador completou a documentação de peso e balanceamento indicando centro de gravidade dentro dos limites, com base nos valores declarados pelos passageiros sem verificação. Os pesos reais, determinados post-mortem, excediam o envelope de CG permitido pela aeronave em 12 centímetros em direção à cauda. Nenhuma outra etapa do processo de liberação previu verificação independente dos dados de W&B. A aeronave partiu com o centro de gravidade além do limite aft do envelope operacional autorizado. Após a decolagem, durante a subida inicial, a aeronave desenvolveu pitch-up progressivo não recuperado pelo piloto. O monomotor impactou o terreno além da cabeceira de saída da pista. Os quatro ocupantes morreram.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-B",
+    "erc_level": 3,
+    "top_preconditions": [
+      "W1",
+      "O3",
+      "O4",
+      "P6"
+    ]
+  },
+  "rationale": "Ponto de fuga: responsável pelo planejamento de carga não aplicou os fatores de correção padronizados nem realizou verificação de peso na rampa, conforme exigido pelos procedimentos operacionais quando a carga excedia 75% da capacidade. P-G: os dados de peso declarados discrepavam de limites reconhecíveis pelos padrões operacionais (78% de capacidade com passageiros adultos — verificação era obrigatória). O planejador tinha acesso aos procedimentos e às tabelas de peso médio padronizado; a falha foi de monitoramento do requisito de verificação aplicável. O-A: sem objetivo desviante — o planejador não tinha intenção de violar o procedimento; acreditava que os dados declarados eram suficientes para o voo. A-B: omissão de passo obrigatório da própria execução — o planejador executou a tarefa de cálculo mas omitiu o procedimento de verificação especificamente exigido pela condição de carga. ERC (motor legacy) = 3: risco moderado com consequência catastrófica — houve barreira processual não ativada (verificação obrigatória existia mas não foi aplicada). ATENÇÃO SOBRE ESCALA: o campo expected.erc_level usa a escala legacy do motor SERA, na qual 1 = crítico/risco imediato e 5 = mínimo/administrativo. A UI converte para HFA ERC 3 = moderado/amarelo via coerceMotorErcToHfaCategory. NOTA: classificação P/O/A e ERC dependem de caminho LLM; falha neste fixture deve ser documentada em SERA_ESCAPE_POINT_ADVERSARIAL_VALIDATION_v0.1.3-A.md.",
+  "discriminators": [
+    "NÃO é A-G (Supervisão): A-G exige falha de supervisão — agente que delegou ação a terceiro e não verificou retorno. Aqui o planejador de carga executou diretamente a tarefa de W&B; a falha foi na própria execução (omissão de passo de verificação), não em delegação a terceiro.",
+    "NÃO é A-C (Verificação da Própria Ação): A-C é quando o agente falhou em verificar sua própria execução após completá-la. A-B é quando o agente omitiu um passo obrigatório durante a execução. Aqui o planejador omitiu o procedimento de verificação de peso como parte do processo de cálculo — A-B domina sobre A-C por ser omissão de passo do procedimento, não verificação posterior.",
+    "NÃO é O-D (Objetivo Desviante por Pressão): não há evidência de pressão comercial, eficiência ou economia que tenha motivado a omissão — o planejador acreditava incorretamente que os dados declarados eram suficientes, configurando O-A sem desvio intencional.",
+    "Fixture adversarial: valida que agente de planejamento com omissão de passo de procedimento próprio produz A-B, não A-G. Distingue falha de execução própria de falha de supervisão. Também valida que P-G pode ocorrer sem agente de manutenção."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "TEST-ESCAPE-DISPATCH-001",
+  "title": "Despachante autoriza decolagem com visibilidade abaixo dos mínimos operacionais por pressão comercial",
+  "domain": "aviação — despacho operacional",
+  "description": "O despachante operacional de uma empresa aérea regional autorizou a decolagem de um voo de passageiros com visibilidade reportada de 200 metros no aeroporto de destino, abaixo do mínimo publicado de 400 metros para a categoria de aproximação da aeronave. O despachante tinha plena ciência das condições meteorológicas adversas: os dados de visibilidade estavam disponíveis no sistema de planejamento de voo e eram claramente inferiores aos mínimos operacionais publicados no momento da autorização. O centro de operações da empresa exercia pressão para manutenção da pontualidade durante evento de névoa que afetava operações regionais. O despachante priorizou o cumprimento do horário publicado em detrimento da norma operacional, autorizando a decolagem mesmo com conhecimento da visibilidade abaixo dos mínimos. Informações meteorológicas indicando agravamento das condições e SIGMET para a área de destino não foram transmitidas à tripulação. A aeronave realizou a aproximação, não estabeleceu contato visual com a pista abaixo da altitude de decisão e pousou em aeroporto alternado com nível de combustível abaixo do mínimo final de alternado, situação gerada pela divergência não planejada. Nenhum ocupante sofreu lesões, mas a aeronave sofreu danos menores durante o pouso no alternado.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-A",
+    "erc_level": 2,
+    "top_preconditions": [
+      "P2",
+      "S1",
+      "S2",
+      "O4",
+      "T2"
+    ]
+  },
+  "rationale": "Ponto de fuga: despachante autorizou decolagem com visibilidade 200m, abaixo do mínimo publicado de 400m, com conhecimento da condição. P-A: não houve falha perceptiva — o despachante tinha ciência das condições meteorológicas adversas; a informação estava disponível e foi percebida. O-D: o despachante tinha objetivo desviante motivado por pressão comercial — priorizou pontualidade sobre conformidade operacional, configurando desvio por eficiência/economia. A-A: a ação (autorização de decolagem) deriva diretamente do objetivo desviante (O-D), sem erro de execução independente. ERC (motor legacy) = 2: risco operacional elevado com consequência evitada — o voo foi concluído sem vítimas mas com degradação de segurança significativa e dano material. ATENÇÃO SOBRE ESCALA: o campo expected.erc_level usa a escala legacy do motor SERA, na qual 1 = crítico/risco imediato e 5 = mínimo/administrativo. A UI converte para HFA ERC 4 = alto/laranja via coerceMotorErcToHfaCategory. NOTA: classificação P/O/A e ERC dependem de caminho LLM; falha neste fixture deve ser documentada em SERA_ESCAPE_POINT_ADVERSARIAL_VALIDATION_v0.1.3-A.md.",
+  "discriminators": [
+    "NÃO é A-G (Supervisão): A-G exige que o agente do ponto de fuga estivesse em posição de supervisão delegando ação a terceiro sem verificar retorno. Aqui o despachante autorizou pessoalmente a decolagem — é uma decisão própria, não delegada a terceiro. Não há falha de verificação de ação de terceiro.",
+    "NÃO é O-B (Violação de Rotina): O-B é violação normalizada, habitual, sem motivação imediata identificável. Aqui há motivação explícita de pressão comercial por pontualidade — configurando O-D (eficiência/economia), não normalização passiva.",
+    "NÃO é P-G (Falha de Monitoramento): a informação meteorológica estava disponível e o despachante tinha ciência dela. A falha não foi de percepção ou monitoramento, mas de objetivo — decidiu agir contra a informação disponível por pressão operacional.",
+    "Fixture adversarial: valida que agente de despacho com objetivo desviante (pressão comercial) produz P-A/O-D/A-A, não o padrão de manutenção P-G/O-A/A-G. Testa que o sistema não aplica heurística de manutenção para todos os agentes organizacionais."
+  ]
+}
