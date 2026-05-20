@@ -2,27 +2,28 @@
   "id": "A0-SEP-005",
   "title": "Separacao lateral abaixo do minimo durante desvio offshore",
   "domain": "separacao / trafego / desvio meteorologico",
-  "description": "Durante desvio para evitar chuva, a aeronave reduziu a separacao lateral minima de outra aeronave que seguia rota paralela. O alerta de trafego indicou proximidade antes da correcao.",
+  "description": "Duas aeronaves seguiam rotas offshore aproximadamente paralelas quando uma delas iniciou desvio para evitar chuva intensa. Durante o desvio, a separacao lateral aplicavel no cenario caiu abaixo do minimo operacional antes de qualquer coordenacao corretiva efetiva. O primeiro desvio observavel foi a reducao da separacao abaixo do minimo; o alerta de trafego/TCAS revelou a proximidade e a tripulacao corrigiu a trajetoria em seguida.",
   "expected": {
     "perception_code": "P-G",
     "objective_code": "O-A",
     "action_code": "A-A",
     "erc_level": 2
   },
-  "rationale": "Falha de atencao/monitoramento de separacao lateral durante desvio; objetivo de evitar chuva era adequado; acao de desviar foi coerente com percepcao incompleta do trafego.",
+  "rationale": "Variavel principal era separacao lateral minima entre trafegos paralelos. O objetivo era contornar meteorologia mantendo continuidade operacional, sem objetivo de reduzir separacao. A acao de desvio foi mantida com percepcao incompleta do trafego relativo, sustentando P-G/O-A/A-A.",
   "discriminators": [
-    "Nao O-C.",
-    "Nao transformar ATC ou meteorologia em falha ativa.",
-    "Separacao e variavel operacional principal."
+    "Nao classificar como O-C sem evidencia de aceitacao consciente de separacao abaixo do minimo.",
+    "Nao transformar ATC, TCAS ou meteorologia em falha ativa primaria.",
+    "Primeiro desvio observavel e a quebra da separacao lateral minima, seguida de correcao apos alerta."
   ],
-  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+. A2-g: description enriched to reduce inferential ambiguity and relato insuficiente risk.",
   "sera_context": {
     "track": "methodology-gate",
-    "phase": "SERA v0.1.4-A2-c",
+    "phase": "SERA v0.1.4-A2-g",
     "evidence_level": "E1",
     "erc_policy": "ERC_REVIEW",
-    "gate_candidate": true,
+    "gate_candidate": false,
     "source": "Canonical lateral-separation anchor",
-    "adaptation_note_required": false
+    "adaptation_note_required": false,
+    "review_status": "MOVE_TO_EXPLORATORY_RECOMMENDED"
   }
 }

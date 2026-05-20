@@ -2,23 +2,23 @@
   "id": "A0-FUEL-002",
   "title": "Combustivel remanescente abaixo do minimo planejado durante rota",
   "domain": "combustivel / monitoramento / rota offshore",
-  "description": "Em rota offshore, a tripulacao discutiu alteracao de rota e deixou de monitorar o combustivel por periodo prolongado. Quando voltou ao painel, o combustivel remanescente ja estava abaixo do minimo planejado para continuar ate o destino com reserva adequada.",
+  "description": "Em rota offshore, a tripulacao iniciou discussao de alteracao de rota para contornar meteorologia e otimizar chegada. Durante esse periodo, o monitoramento periodico de combustivel esperado para o trecho nao foi realizado. O primeiro desvio observavel ocorreu quando o combustivel remanescente cruzou o minimo planejado para continuidade com reserva; a discrepancia so foi reconhecida quando a tripulacao retornou ao painel de combustivel.",
   "expected": {
     "perception_code": "P-G",
     "objective_code": "O-A",
     "action_code": "A-A",
     "erc_level": 2
   },
-  "rationale": "Falha de atencao/monitoramento do combustivel; objetivo operacional de rota era adequado; continuacao do voo foi coerente com percepcao incorreta de combustivel suficiente.",
+  "rationale": "Variavel controlada era combustivel remanescente versus minimo planejado. O objetivo operacional de ajustar rota era adequado. A acao de prosseguir refletiu percepcao desatualizada sobre combustivel disponivel, sustentando P-G/O-A/A-A sem evidencia de aceitacao consciente abaixo do minimo.",
   "discriminators": [
-    "Nao O-C sem consciencia de cruzamento do minimo.",
-    "A-A, salvo evidencia explicita de verificacao/feedback omitido apos acao.",
-    "Pressao/carga de trabalho e pre-condicao, nao falha ativa."
+    "Nao classificar como O-C sem awareness explicita de cruzamento do minimo no momento do prosseguimento.",
+    "Nao tratar carga de trabalho como falha ativa primaria; carga de trabalho atua como pre-condicao.",
+    "Primeiro desvio observavel e crossing do minimo de combustivel sem deteccao oportuna."
   ],
-  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+. A2-g: description enriched with explicit minimum crossing and delayed detection timeline.",
   "sera_context": {
     "track": "methodology-gate",
-    "phase": "SERA v0.1.4-A2-c",
+    "phase": "SERA v0.1.4-A2-g",
     "evidence_level": "E2",
     "erc_policy": "ERC_REVIEW",
     "gate_candidate": true,

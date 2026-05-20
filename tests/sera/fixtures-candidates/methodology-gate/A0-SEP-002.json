@@ -2,27 +2,28 @@
   "id": "A0-SEP-002",
   "title": "Entrada em espaco aereo restrito sem autorizacao",
   "domain": "navegacao / espaco aereo",
-  "description": "Durante desvio meteorologico, a aeronave entrou em area restrita sem autorizacao. A tripulacao so percebeu apos alerta do controle.",
+  "description": "Durante desvio meteorologico offshore, a tripulacao alterou a proa para evitar uma celula de chuva e manteve foco na navegacao tatica do desvio. O limite lateral da area restrita aplicavel no cenario foi cruzado sem autorizacao. O primeiro desvio observavel foi a entrada cartografica na area restrita; a tripulacao so reconheceu a violacao apos alerta do ATC e iniciou correcao de rota.",
   "expected": {
     "perception_code": "P-G",
     "objective_code": "O-A",
     "action_code": "A-A",
     "erc_level": 2
   },
-  "rationale": "Falha de atencao/monitoramento da posicao em relacao ao limite de espaco aereo durante desvio; objetivo de evitar meteorologia era adequado; acao de desviar foi coerente com percepcao incompleta da posicao.",
+  "rationale": "Variavel principal era posicao lateral em relacao ao limite da area restrita. O objetivo imediato era evitar meteorologia adversa, nao violar espaco aereo. A acao de desvio permaneceu coerente com percepcao incompleta da posicao, caracterizando P-G/O-A/A-A sem evidencia de violacao consciente.",
   "discriminators": [
-    "Nao O-C sem entrada consciente.",
-    "Nao atribuir meteorologia como falha ativa.",
-    "Contexto meteorologico e pre-condicao."
+    "Nao classificar como O-C sem evidencia de awareness explicita da entrada em area restrita.",
+    "Nao tratar meteorologia como falha ativa; meteorologia atua como pre-condicao.",
+    "Primeiro desvio observavel e o crossing do limite lateral da area restrita, nao a discussao de desvio."
   ],
-  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+. A2-g: description enriched to remove relato insuficiente risk and make first observable deviation explicit.",
   "sera_context": {
     "track": "methodology-gate",
-    "phase": "SERA v0.1.4-A2-c",
+    "phase": "SERA v0.1.4-A2-g",
     "evidence_level": "E1",
     "erc_policy": "ERC_REVIEW",
-    "gate_candidate": true,
+    "gate_candidate": false,
     "source": "Canonical separation-space anchor",
-    "adaptation_note_required": false
+    "adaptation_note_required": false,
+    "review_status": "MOVE_TO_EXPLORATORY_RECOMMENDED"
   }
 }

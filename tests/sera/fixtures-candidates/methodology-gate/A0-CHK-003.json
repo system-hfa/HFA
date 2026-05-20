@@ -2,23 +2,23 @@
   "id": "A0-CHK-003",
   "title": "Checklist declarado completo com configuracao real incompativel",
   "domain": "checklist / configuracao / pouso",
-  "description": "A tripulacao verbalizou checklist de pouso completo, mas a condicao fisica da aeronave permaneceu incompativel com pouso, com um sistema ainda em posicao incorreta. O erro foi identificado apenas por alerta automatico.",
+  "description": "A tripulacao verbalizou checklist de pouso como completo, porem um sistema essencial permaneceu em configuracao fisica incompativel com pouso. Havia verificacao adicional esperada e disponivel (cross-check de indicacao/posicao) logo apos o callout de checklist completo, mas essa confirmacao nao foi efetivada. O primeiro desvio observavel foi a discrepancia entre checklist declarado e estado real, detectada apenas quando alerta automatico sinalizou configuracao incorreta.",
   "expected": {
     "perception_code": "P-G",
     "objective_code": "O-A",
     "action_code": "A-G",
     "erc_level": 2
   },
-  "rationale": "Falha de percepcao/monitoramento do estado real e falha de feedback/verificacao explicita apos checklist declarado completo; objetivo de pouso era adequado.",
+  "rationale": "O objetivo de pousar permanecia adequado, mas o controle de feedback pos-checklist falhou. O caso sustenta P-G pela percepcao incompleta do estado real e A-G pela omissao/falha de verificacao esperada apos declaracao de checklist completo.",
   "discriminators": [
-    "A-G porque havia verificacao esperada e omitida/falha.",
-    "Nao A-A: ha etapa de feedback/check explicita.",
-    "Nao classificar complacencia como falha ativa."
+    "A-G requer etapa de feedback/cross-check disponivel e esperada, explicitada no relato.",
+    "Nao tratar complacencia abstrata como falha ativa sem evento observavel.",
+    "Primeiro desvio observavel e a falta de convergencia entre checklist declarado e configuracao real."
   ],
-  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+. A2-g: description enriched to explicitly encode omitted post-checklist feedback stage for A-G.",
   "sera_context": {
     "track": "methodology-gate",
-    "phase": "SERA v0.1.4-A2-c",
+    "phase": "SERA v0.1.4-A2-g",
     "evidence_level": "E2",
     "erc_policy": "ERC_REVIEW",
     "gate_candidate": true,
