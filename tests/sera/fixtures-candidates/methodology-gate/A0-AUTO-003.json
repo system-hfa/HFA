@@ -1,0 +1,28 @@
+{
+  "id": "A0-AUTO-003",
+  "title": "Velocidade abaixo da faixa segura durante voo manual",
+  "domain": "automacao / controle de velocidade / aproximacao offshore",
+  "description": "Durante aproximacao para sobrevoo de plataforma, o PF cancelou o automatismo e reduziu manualmente a velocidade. A velocidade continuou caindo abaixo da faixa segura para aquela configuracao, gerando atitude anormal e necessidade de recuperacao.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-A",
+    "action_code": "A-H",
+    "erc_level": 2
+  },
+  "rationale": "Atencao sob demanda de tempo e proximidade operacional; objetivo de reduzir velocidade para sobrevoo era adequado; falha de gerenciamento do tempo/monitoramento durante execucao.",
+  "discriminators": [
+    "Nao O-C.",
+    "Nao P-G se o cenario enfatiza demanda temporal operacional.",
+    "Espelho de Daumas E02-B."
+  ],
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "sera_context": {
+    "track": "methodology-gate",
+    "phase": "SERA v0.1.4-A2-c",
+    "evidence_level": "E2",
+    "erc_policy": "ERC_REVIEW",
+    "gate_candidate": true,
+    "source": "Hendy/Daumas aligned speed-management anchor",
+    "adaptation_note_required": false
+  }
+}

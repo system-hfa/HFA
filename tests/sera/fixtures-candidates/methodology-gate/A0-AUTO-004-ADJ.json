@@ -1,0 +1,28 @@
+{
+  "id": "A0-AUTO-004-ADJ",
+  "title": "Modo vertical nao confirmado antes de captura de perfil",
+  "domain": "automacao / FMA / perfil vertical",
+  "description": "Apos mudanca de plano vertical, a tripulacao nao realizou callout ou confirmacao do modo ativo no FMA. Em seguida, a aeronave entrou na fase seguinte com modo vertical ativo divergente do perfil pretendido e capturou altitude intermediaria diferente da autorizada.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-A",
+    "action_code": "A-G",
+    "erc_level": 2
+  },
+  "rationale": "Percepcao primaria pode estar correta quanto ao objetivo; objetivo de alterar plano vertical era adequado; falha ativa e feedback/verificacao do modo FMA apos acao.",
+  "discriminators": [
+    "A-G por falha de verificacao/cross-check de FMA.",
+    "Nao P-G se o foco do cenario e feedback pos-acao.",
+    "Nao O-C."
+  ],
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "sera_context": {
+    "track": "methodology-gate",
+    "phase": "SERA v0.1.4-A2-c",
+    "evidence_level": "E2",
+    "erc_policy": "ERC_REVIEW",
+    "gate_candidate": true,
+    "source": "Adjusted automation feedback anchor",
+    "adaptation_note_required": false
+  }
+}

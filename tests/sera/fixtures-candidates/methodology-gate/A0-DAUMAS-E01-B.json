@@ -1,0 +1,35 @@
+{
+  "id": "A0-DAUMAS-E01-B",
+  "title": "Daumas E01-B - subida manual contra FD acoplado",
+  "domain": "Daumas / automacao / offshore",
+  "description": "Em evento offshore com meteorologia degradada, apos interrupcao da aproximacao, o piloto nos comandos tentou subir manualmente enquanto o diretor de voo/automacao ainda comandava estado anterior. O comportamento da aeronave foi inicialmente interpretado como pane, ate que o instrutor esclareceu que a automacao permanecia acoplada.",
+  "expected": {
+    "perception_code": "P-C",
+    "objective_code": "O-A",
+    "action_code": "A-E",
+    "erc_level": 2
+  },
+  "rationale": "Falha de conhecimento/percepcao sobre logica do diretor de voo; objetivo de subir/arremeter era adequado; acao inadequada por conhecimento/decisao sobre automacao.",
+  "discriminators": [
+    "Nao O-C.",
+    "Nao P-G: ha evidencia de knowledge gap sobre automacao.",
+    "Subcaso B de evento multi-act; nao usar como primeiro desvio global quando E01-A estiver presente."
+  ],
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+. ADAPTATION_NOTE applied in this candidate fixture.",
+  "sera_context": {
+    "track": "methodology-gate",
+    "phase": "SERA v0.1.4-A2-c",
+    "evidence_level": "E3",
+    "erc_policy": "ERC_REVIEW",
+    "gate_candidate": true,
+    "source": "Daumas E01-B interpreted under HFA/SERA A1-GOV+",
+    "adaptation_note_required": true
+  },
+  "adaptation_note": {
+    "source_conflict": "Hendy_vs_Daumas",
+    "original_interpretation": "Caso Daumas em evento multi-act com potencial de leitura agregada.",
+    "hfa_sera_interpretation": "Subcaso B isolado para fixture candidate com expected proprio.",
+    "rationale": "Aplicacao da regra A0 de nao colapsar multi-act e precedencia Hendy/HFA para fixture automatizavel.",
+    "impact_on_expected": "Mantem P-C/O-A/A-E para o subcaso sem representar o evento completo."
+  }
+}

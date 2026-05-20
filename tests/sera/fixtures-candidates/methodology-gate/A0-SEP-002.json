@@ -1,0 +1,28 @@
+{
+  "id": "A0-SEP-002",
+  "title": "Entrada em espaco aereo restrito sem autorizacao",
+  "domain": "navegacao / espaco aereo",
+  "description": "Durante desvio meteorologico, a aeronave entrou em area restrita sem autorizacao. A tripulacao so percebeu apos alerta do controle.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 2
+  },
+  "rationale": "Falha de atencao/monitoramento da posicao em relacao ao limite de espaco aereo durante desvio; objetivo de evitar meteorologia era adequado; acao de desviar foi coerente com percepcao incompleta da posicao.",
+  "discriminators": [
+    "Nao O-C sem entrada consciente.",
+    "Nao atribuir meteorologia como falha ativa.",
+    "Contexto meteorologico e pre-condicao."
+  ],
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "sera_context": {
+    "track": "methodology-gate",
+    "phase": "SERA v0.1.4-A2-c",
+    "evidence_level": "E1",
+    "erc_policy": "ERC_REVIEW",
+    "gate_candidate": true,
+    "source": "Canonical separation-space anchor",
+    "adaptation_note_required": false
+  }
+}

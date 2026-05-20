@@ -1,0 +1,28 @@
+{
+  "id": "A0-CONFIG-001",
+  "title": "Decolagem iniciada com configuracao incorreta de flap",
+  "domain": "configuracao / decolagem",
+  "description": "A aeronave iniciou corrida/decolagem com configuracao de flap diferente da prevista para peso e pista. O aviso de configuracao soou durante a aplicacao de potencia, e a decolagem foi rejeitada tardiamente.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 2
+  },
+  "rationale": "Falha de percepcao/monitoramento de configuracao antes da decolagem; objetivo de decolar era normal; acao de aplicar potencia foi coerente com percepcao incorreta de configuracao adequada.",
+  "discriminators": [
+    "Nao O-C sem evidencia de awareness.",
+    "Nao P-C: a tripulacao conhece configuracao; problema e monitoramento.",
+    "E1 aceito como gate por ser canonico simples."
+  ],
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "sera_context": {
+    "track": "methodology-gate",
+    "phase": "SERA v0.1.4-A2-c",
+    "evidence_level": "E1",
+    "erc_policy": "ERC_REVIEW",
+    "gate_candidate": true,
+    "source": "Canonical simple configuration anchor",
+    "adaptation_note_required": false
+  }
+}

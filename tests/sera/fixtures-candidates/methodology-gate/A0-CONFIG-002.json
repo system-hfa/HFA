@@ -1,0 +1,28 @@
+{
+  "id": "A0-CONFIG-002",
+  "title": "Aproximacao final com trem de pouso recolhido",
+  "domain": "configuracao / pouso",
+  "description": "Na aproximacao final, a aeronave cruzou o ponto de verificacao final com trem de pouso ainda recolhido. O alerta soou em baixa altura e a tripulacao iniciou arremetida.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 2
+  },
+  "rationale": "Falha de percepcao/monitoramento da configuracao de pouso; objetivo de pouso era normal; acao de prosseguir foi coerente com percepcao incorreta de configuracao completa.",
+  "discriminators": [
+    "Nao O-C.",
+    "Nao A-G sem etapa de feedback explicita alem do checklist ja tratado no relato.",
+    "E1 canonico simples."
+  ],
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "sera_context": {
+    "track": "methodology-gate",
+    "phase": "SERA v0.1.4-A2-c",
+    "evidence_level": "E1",
+    "erc_policy": "ERC_REVIEW",
+    "gate_candidate": true,
+    "source": "Canonical simple landing-configuration anchor",
+    "adaptation_note_required": false
+  }
+}

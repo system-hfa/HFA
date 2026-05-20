@@ -1,0 +1,28 @@
+{
+  "id": "A0-VIS-005",
+  "title": "Penetracao em chuva intensa com informacao meteorologica conflitante",
+  "domain": "aproximacao / meteorologia / voo visual",
+  "description": "Durante aproximacao para plataforma, o radar meteorologico sugeria area livre, mas visualmente havia cortina de chuva a frente. A aeronave manteve proa, entrou em chuva intensa, perdeu referencias externas e sofreu aumento de carga de trabalho.",
+  "expected": {
+    "perception_code": "P-H",
+    "objective_code": "O-A",
+    "action_code": "A-A",
+    "erc_level": 2
+  },
+  "rationale": "Informacoes conflitantes radar/visual nao foram resolvidas; objetivo de aproximacao era normal; acao coerente com interpretacao incorreta da informacao.",
+  "discriminators": [
+    "P-H por conflito de informacao, nao P-G generico.",
+    "Nao O-C sem decisao consciente de penetrar celula perigosa.",
+    "Nao A-F se a acao foi coerente com percepcao incorreta."
+  ],
+  "methodology_notes": "Candidate fixture isolated from official baseline. ERC numeric value is a technical placeholder for current runner compatibility. ERC is not PASS/FAIL criterion in A1-GOV+.",
+  "sera_context": {
+    "track": "methodology-gate",
+    "phase": "SERA v0.1.4-A2-c",
+    "evidence_level": "E2",
+    "erc_policy": "ERC_REVIEW",
+    "gate_candidate": true,
+    "source": "Hendy-aligned anchor / methodology-gate",
+    "adaptation_note_required": false
+  }
+}
