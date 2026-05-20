@@ -175,6 +175,70 @@ function hasExplicitEfficiencyObjective(text: string): boolean {
   ])
 }
 
+function hasExplicitConsciousMinimumOrRuleDeviation(text: string): boolean {
+  const awareness = hasAny(text, [
+    'consciencia explicita',
+    'consciencia de que',
+    'consciente de que',
+    'ciente de que',
+    'ciente dos limites',
+    'sabia que estava abaixo',
+    'sabia que estava abaixo do minimo',
+    'sabia que estava abaixo dos minimos',
+    'sabia que havia cruzado',
+    'aware of',
+    'aware that',
+    'knowingly',
+    'knew that',
+    'explicit awareness',
+  ])
+
+  const ruleOrLimit = hasAny(text, [
+    'minimos meteorologicos',
+    'minimo meteorologico',
+    'abaixo do minimo',
+    'abaixo dos minimos',
+    'limite de visibilidade',
+    'limites de visibilidade',
+    'limite de teto',
+    'limites minimos',
+    'regra',
+    'procedimento',
+    'protocolo',
+    'sop',
+    'minimums',
+    'below minimums',
+    'below minimum',
+    'visibility minimum',
+    'ceiling minimum',
+    'rule limit',
+    'procedure limit',
+  ])
+
+  const deviation = hasAny(text, [
+    'ultrapassad',
+    'cruzou',
+    'violou',
+    'descumpr',
+    'crossed',
+    'beyond limit',
+    'violated',
+  ])
+
+  const continued = hasAny(text, [
+    'continuou',
+    'prosseguiu',
+    'manteve',
+    'decidiu prosseguir',
+    'manteve a aproximacao',
+    'continued',
+    'proceeded',
+    'kept going',
+  ])
+
+  return awareness && ruleOrLimit && deviation && continued
+}
+
 export function classifyObjectiveByRules(text: string): ObjectiveOverrideResult {
   const t = normalizeObjectiveText(text)
 
@@ -189,6 +253,13 @@ export function classifyObjectiveByRules(text: string): ObjectiveOverrideResult 
     return {
       code: 'O-B',
       reason: 'routine or normalized violation',
+    }
+  }
+
+  if (hasExplicitConsciousMinimumOrRuleDeviation(t)) {
+    return {
+      code: 'O-C',
+      reason: 'explicit awareness of known limit/rule deviation with continued operation',
     }
   }
 
