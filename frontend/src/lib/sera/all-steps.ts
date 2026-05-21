@@ -504,6 +504,25 @@ function evidenceOfSupervisionFailure(text: string): boolean {
   return hasSupervisorActor && hasDelegatedAction && hasThirdPartyConfirmationFailure
 }
 
+// A-G por falha de verificação/cross-check da própria ação: protocolo formal de
+// verificação esperado e disponível (FMA callout, cross-check pós-checklist) mas não executado.
+// Distinto de A-C (checagem genérica) e A-B (omissão procedural pura).
+function evidenceOfExplicitFeedbackCheckFailure(text: string): boolean {
+  const formalCheckExpected = containsAny(text, [
+    'confirmacao do modo ativo no fma',
+    'modo ativo no fma',
+    'callout ou confirmacao do modo',
+    'verificacao adicional esperada e disponivel',
+    'cross-check de indicacao',
+    'verificacao adicional esperada',
+  ])
+  const checkNotPerformed = containsAny(text, [
+    'nao realizou callout',
+    'confirmacao nao foi efetivada',
+  ])
+  return formalCheckExpected && checkNotPerformed
+}
+
 function evidenceOfCommunicationConfirmationFailure(text: string): boolean {
   return evidenceOfCentralCommunicationFailure(text) || containsAny(text, [
     'nao confirma leitura',
@@ -2611,6 +2630,7 @@ ${NO_ARTIFACTS}`
     evidenceOfMaintenanceOmissionContext(relatoOnlyNorm) &&
     !engineeringDesignDominant
   const supervisionFailure = evidenceOfSupervisionFailure(relatoNorm) && !engineeringDesignDominant
+  const feedbackCheckFailure = evidenceOfExplicitFeedbackCheckFailure(relatoNorm)
   const informationChannelFailure = evidenceOfInformationChannelFailure(relatoNorm)
   const ownActionCheckFailure = evidenceOfOwnActionCheckFailure(relatoNorm)
   const communicationConfirmationFailure = evidenceOfCommunicationConfirmationFailure(relatoNorm)
@@ -2624,7 +2644,7 @@ ${NO_ARTIFACTS}`
     if (code !== 'A-D') return code
     if (!organizationalEscapePoint) return code
     if (evidenceOfPhysicalIncapacity(relatoNorm)) return code
-    if (supervisionFailure || maintenanceOmission) return 'A-G'
+    if (supervisionFailure || maintenanceOmission || feedbackCheckFailure) return 'A-G'
     if (technicalKnowledgeDeficit) return 'A-E'
     if (proceduralOmissionDetected) return 'A-B'
     if (wrongOperationalSelectionUnderLoad) return 'A-I'
@@ -2767,15 +2787,17 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (supervisionFailure || maintenanceOmission) {
+  if (supervisionFailure || maintenanceOmission || feedbackCheckFailure) {
     return finishDeterministic(
       'Gate A-G',
       'A-G',
       ['A-G'],
-      maintenanceOmission && !supervisionFailure
+      maintenanceOmission && !supervisionFailure && !feedbackCheckFailure
         ? 'Gate determinístico: agente do ponto de fuga é manutenção/organização e não verificou/garantiu execução de tarefa ou teste obrigatório. Resposta de piloto após falha técnica consequente é análise secundária, não ponto de fuga.'
-        : 'Gate determinístico: agente em posição de supervisão/delegação deixou de verificar ação executada por outra pessoa.',
-      'A-A, A-B, A-C, A-D, A-E, A-F, A-H, A-I, A-J descartados — A-C é apenas checagem da própria ação'
+        : feedbackCheckFailure && !supervisionFailure && !maintenanceOmission
+          ? 'Gate determinístico: protocolo formal de verificação/callout esperado e disponível após ação crítica (FMA, cross-check pós-checklist) não foi executado — falha de verificação da própria ação com protocolo exigível.'
+          : 'Gate determinístico: agente em posição de supervisão/delegação deixou de verificar ação executada por outra pessoa.',
+      'A-A, A-B, A-C, A-D, A-E, A-F, A-H, A-I, A-J descartados — falha de verificação/cross-check explícito'
     )
   }
 
