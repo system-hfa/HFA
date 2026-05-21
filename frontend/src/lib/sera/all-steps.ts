@@ -398,6 +398,8 @@ function evidenceOfKnowledgeDeficit(text: string): boolean {
     'falta de conhecimento',
     'falta de habilidade',
     'competencia tecnica insuficiente',
+    'acoplado a modo anterior',
+    'automacao permanecia acoplada',
   ]))
 }
 
