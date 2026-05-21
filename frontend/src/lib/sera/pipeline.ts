@@ -34,6 +34,7 @@ import type {
   SeraDecisionTrace,
   SeraEvidenceQuality,
   SeraPreconditionsTrace,
+  SeraQuestionAnswer,
   SeraQuestionTraceItem,
   SeraStep1Step2ExplicitTrace,
   SeraUnsafeEventType,
@@ -844,6 +845,255 @@ function buildStep1Step2ExplicitTrace(
   }
 }
 
+const STEP1_STEP2_QUESTION_TRACE_LIMITATIONS = [
+  'question_trace_step1_step2_only',
+  'observational_only',
+  'does_not_affect_classification',
+  'derived_from_existing_trace',
+  'no_new_llm_call',
+] as const
+
+function composeEscapePointEvidence(
+  step2: Step2Result,
+  step1Step2Trace: SeraStep1Step2ExplicitTrace
+): string | null {
+  const fromTrace = cleanText(step1Step2Trace.safe_operation_escape_point)
+  if (fromTrace) return fromTrace
+
+  const parts = [
+    cleanText(step2.momento),
+    cleanText(step2.ato_inseguro_factual),
+    cleanText(step2.justificativa),
+  ].filter(Boolean)
+  return parts.length > 0 ? parts.join(' | ') : null
+}
+
+function deriveQuestionConfidence(
+  answer: SeraQuestionAnswer,
+  evidence: string | null
+): SeraQuestionTraceItem['confidence'] {
+  if (answer === 'unknown') return 'unknown'
+  if (answer === 'insufficient_evidence') return 'low'
+  if (answer === 'partial') return evidence ? 'medium' : 'low'
+  if (answer === 'yes') return evidence ? 'high' : 'low'
+  if (answer === 'no' || answer === 'not_applicable') return evidence ? 'medium' : 'low'
+  return 'unknown'
+}
+
+function makeQuestionItem(input: {
+  questionId: string
+  step: 'step1' | 'step2'
+  questionText: string
+  answer: SeraQuestionAnswer
+  evidence: string | null
+  source: SeraQuestionTraceItem['source']
+  methodologicalStatus: SeraQuestionTraceItem['methodological_status']
+  unansweredReason?: string | null
+  limitations?: string[]
+}): SeraQuestionTraceItem {
+  return {
+    question_id: input.questionId,
+    step: input.step,
+    question_text: input.questionText,
+    answer: input.answer,
+    evidence: input.evidence,
+    confidence: deriveQuestionConfidence(input.answer, input.evidence),
+    source: input.source,
+    methodological_status: input.methodologicalStatus,
+    produced_code: null,
+    discarded_codes: [],
+    unanswered_reason: input.unansweredReason || null,
+    limitations: dedupeStrings([
+      ...STEP1_STEP2_QUESTION_TRACE_LIMITATIONS,
+      ...(input.limitations || []),
+    ]),
+  }
+}
+
+function buildStep1Step2QuestionTrace(
+  step2: Step2Result,
+  step1Step2Trace: SeraStep1Step2ExplicitTrace
+): SeraQuestionTraceItem[] {
+  const safeOperationEscapePoint = cleanText(step1Step2Trace.safe_operation_escape_point)
+  const unsafeActStatement = cleanText(step1Step2Trace.unsafe_act_statement)
+  const unsafeConditionStatement = cleanText(step1Step2Trace.unsafe_condition_statement)
+  const directActor = cleanText(step1Step2Trace.direct_actor || step2.agente)
+  const actorLevel = step1Step2Trace.actor_level || 'unknown'
+  const goalStatement = cleanText(step1Step2Trace.goal_statement)
+  const goalEvidence = cleanText(step1Step2Trace.goal_evidence)
+  const perceptionStatement = cleanText(step1Step2Trace.perception_statement)
+  const perceptionEvidence = cleanText(step1Step2Trace.perception_evidence)
+  const actionStatement = cleanText(step1Step2Trace.action_statement)
+  const actionEvidence = cleanText(step1Step2Trace.action_evidence)
+  const evidenceQuality = step1Step2Trace.evidence_quality || 'unknown'
+
+  const escapePointEvidence = composeEscapePointEvidence(step2, step1Step2Trace)
+  const unsafeActEvidence = unsafeActStatement || cleanText(step2.ato_inseguro_factual) || null
+  const actorEvidence = cleanText(step1Step2Trace.actor_evidence) || directActor || null
+  const actorLevelEvidence = cleanText(step1Step2Trace.actor_level_evidence)
+  const actorUncertainty = cleanText(step1Step2Trace.actor_uncertainty)
+
+  const questions: SeraQuestionTraceItem[] = []
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S1_ESCAPE_POINT_IDENTIFIED',
+      step: 'step1',
+      questionText: 'O ponto de fuga da operação segura está explicitamente identificado?',
+      answer: escapePointEvidence ? 'yes' : 'insufficient_evidence',
+      evidence: escapePointEvidence,
+      source: 'hendy_ladder',
+      methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+      unansweredReason: escapePointEvidence ? null : 'safe_operation_escape_point_not_explicit',
+    })
+  )
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S1_UNSAFE_ACT_IDENTIFIED',
+      step: 'step1',
+      questionText: 'Há ato inseguro explícito no ponto de fuga?',
+      answer: unsafeActStatement ? 'yes' : unsafeActEvidence ? 'partial' : 'insufficient_evidence',
+      evidence: unsafeActEvidence,
+      source: 'hendy_ladder',
+      methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+      unansweredReason: unsafeActEvidence ? 'unsafe_act_statement_partial' : 'unsafe_act_statement_not_explicit',
+    })
+  )
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S1_UNSAFE_CONDITION_IDENTIFIED',
+      step: 'step1',
+      questionText: 'Há condição insegura explícita e separada do ato inseguro no ponto de fuga?',
+      answer: unsafeConditionStatement ? 'yes' : 'insufficient_evidence',
+      evidence: unsafeConditionStatement || null,
+      source: 'hendy_ladder',
+      methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+      unansweredReason: unsafeConditionStatement ? null : 'unsafe_condition_not_extracted_in_this_phase',
+      limitations: ['unsafe_condition_not_extracted_in_this_phase'],
+    })
+  )
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S1_DIRECT_ACTOR_IDENTIFIED',
+      step: 'step1',
+      questionText: 'O ator direto que controlava a variável crítica está identificado?',
+      answer: directActor
+        ? actorLevel === 'unknown' || actorUncertainty
+          ? 'partial'
+          : 'yes'
+        : 'insufficient_evidence',
+      evidence: actorEvidence,
+      source: 'daumas_operationalization',
+      methodologicalStatus: directActor ? 'SOURCE_INFERRED_FROM_HENDY' : 'DAUMAS_OPERATIONALIZATION',
+      unansweredReason: directActor ? (actorUncertainty || null) : 'direct_actor_not_explicit',
+    })
+  )
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S1_ACTOR_LEVEL_IDENTIFIED',
+      step: 'step1',
+      questionText: 'O nível do ator direto foi identificado com evidência suficiente?',
+      answer: !directActor
+        ? 'insufficient_evidence'
+        : actorLevel !== 'unknown'
+          ? 'yes'
+          : 'partial',
+      evidence: actorLevelEvidence || actorEvidence,
+      source: 'hfa_adaptation',
+      methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+      unansweredReason: !directActor ? 'direct_actor_not_explicit' : actorLevel === 'unknown' ? 'actor_level_uncertain' : null,
+    })
+  )
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S2_GOAL_STATEMENT_EXPLICIT',
+      step: 'step2',
+      questionText: 'O goal statement está explícito e sustentado por evidência textual?',
+      answer: goalStatement && goalEvidence
+        ? 'yes'
+        : goalStatement
+          ? 'partial'
+          : 'insufficient_evidence',
+      evidence: goalEvidence || goalStatement || null,
+      source: 'hendy_ladder',
+      methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+      unansweredReason: goalStatement ? 'goal_statement_evidence_partial' : 'goal_statement_not_explicit',
+    })
+  )
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S2_PERCEPTION_STATEMENT_EXPLICIT',
+      step: 'step2',
+      questionText: 'O perception statement está explícito e sustentado por evidência textual?',
+      answer: perceptionStatement && perceptionEvidence
+        ? 'yes'
+        : perceptionStatement
+          ? 'partial'
+          : 'insufficient_evidence',
+      evidence: perceptionEvidence || perceptionStatement || null,
+      source: 'hendy_ladder',
+      methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+      unansweredReason: perceptionStatement ? 'perception_statement_evidence_partial' : 'perception_statement_not_explicit',
+    })
+  )
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S2_ACTION_STATEMENT_EXPLICIT',
+      step: 'step2',
+      questionText: 'O action statement está explícito e sustentado por evidência textual?',
+      answer: actionStatement && actionEvidence
+        ? 'yes'
+        : actionStatement || unsafeActStatement
+          ? 'partial'
+          : 'insufficient_evidence',
+      evidence: actionEvidence || actionStatement || unsafeActStatement || null,
+      source: 'hendy_ladder',
+      methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+      unansweredReason: actionStatement || unsafeActStatement
+        ? 'action_statement_evidence_partial'
+        : 'action_statement_not_explicit',
+    })
+  )
+
+  const sufficiencyAnswer: SeraQuestionAnswer =
+    evidenceQuality === 'sufficient'
+      ? 'yes'
+      : evidenceQuality === 'partial'
+        ? 'partial'
+        : evidenceQuality === 'insufficient'
+          ? 'insufficient_evidence'
+          : 'unknown'
+
+  questions.push(
+    makeQuestionItem({
+      questionId: 'S2_EVIDENCE_SUFFICIENT_FOR_LADDERS',
+      step: 'step2',
+      questionText: 'A evidência disponível é suficiente para sustentar o uso das ladders SERA?',
+      answer: sufficiencyAnswer,
+      evidence: `evidence_quality=${evidenceQuality}`,
+      source: 'hfa_adaptation',
+      methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+      unansweredReason:
+        sufficiencyAnswer === 'partial'
+          ? 'statement_evidence_partial'
+          : sufficiencyAnswer === 'insufficient_evidence'
+            ? 'evidence_insufficient_for_ladders'
+            : sufficiencyAnswer === 'unknown'
+              ? 'evidence_quality_unknown'
+              : null,
+    })
+  )
+
+  return questions
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -1012,7 +1262,7 @@ export function buildAnalysisUpsertPayload(
     step4,
     step5
   )
-  const question_trace: SeraQuestionTraceItem[] = []
+  const question_trace = buildStep1Step2QuestionTrace(step2, step1_step2_explicit_trace)
 
   return {
     event_id: eventId,
