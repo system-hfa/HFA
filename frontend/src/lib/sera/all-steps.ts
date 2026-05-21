@@ -1261,6 +1261,70 @@ function evidenceOfSpeedManagementAttentionCapture(text: string): boolean {
   return speedBelowSafe && attentionCapturedOrProximity
 }
 
+// Perception-anchored coherent action: the dominant failure mechanism is perceptual
+// (monitoring gap P-G, information conflict P-H, or attention capture P-D) and the
+// operator's action was natural continuation/proceeding coherent with that incorrect
+// perception. When P already captures the causal failure, A-B would double-count the
+// same monitoring/information gap as if it were an independent procedural step omission.
+// Narrow guard for the 5 residual A-A vs A-B cases:
+//   CHK-001, FUEL-002, VIS-003, VIS-004-ADJ, VIS-005.
+// Requires BOTH perception-dominant markers AND coherent-action markers.
+// Excludes cases with stronger A-code signals (A-G feedback check, A-H temporal, A-E
+// knowledge deficit, A-F selection error, A-C own-action check, A-I selection under load,
+// A-J communication, supervision, maintenance, physical incapacity, routine violation).
+function evidenceOfPerceptionAnchoredCoherentAction(text: string): boolean {
+  const perceptionDominant = containsAny(text, [
+    'monitoramento periodico',
+    'combustivel remanescente cruzou o minimo',
+    'so foi reconhecida',
+    'retornou ao painel de combustivel',
+    'item critico pendente',
+    'nao foi efetivamente completado',
+    'sem esse item confirmado',
+    'abaixo da altitude minima',
+    'sem referencia visual',
+    'identificacao incompleta',
+    'conflito entre fontes',
+    'conflito radar versus visual',
+    'fontes nao foram integradas',
+    'sem resolver o conflito',
+    'conflito nao foi resolvido',
+    'identificacao positiva por fontes independentes',
+    'convergencia entre referencia visual',
+    'radar meteorologico sugeria',
+    'cortina de chuva',
+  ])
+  if (!perceptionDominant) return false
+
+  const coherentAction = containsAny(text, [
+    'prosseguiu como se',
+    'aproximacao prosseguiu',
+    'descida continuou',
+    'manteve a proa',
+    'prosseguir no vetor',
+    'descida final foi iniciada',
+    'iniciar descida final',
+    'iniciada antes da identificacao',
+    'prosseguiu com item',
+    'so foi reconhecida',
+  ])
+  if (!coherentAction) return false
+
+  const noPhysicalStepOmission = !containsAny(text, [
+    'nao instalou',
+    'nao travou',
+    'nao inseriu',
+    'nao recolocou',
+    'pino de travamento',
+    'trava fisica',
+    'nao reinstalou',
+    'reinstalar',
+    'etapa obrigatoria',
+    'esqueceu etapa',
+  ])
+  return noPhysicalStepOmission
+}
+
 function evidenceOfMonitoringFailure(text: string): boolean {
   return containsAny(text, [
     'nao verificou',
@@ -2979,6 +3043,23 @@ ${NO_ARTIFACTS}`
       ['A-A'],
       'Gate determinístico: ato inseguro decorre de objetivo protetivo/humano explícito, sem falha específica de execução.',
       'A-B descartado neste contexto — quando há objetivo protetivo explícito, "sem autorização" representa desvio por objetivo e não omissão procedural'
+    )
+  }
+
+  if (evidenceOfPerceptionAnchoredCoherentAction(relatoNorm) &&
+      !feedbackCheckFailure &&
+      !supervisionFailure &&
+      !maintenanceOmission &&
+      !temporalExecutionFailure &&
+      !communicationConfirmationFailure &&
+      !technicalKnowledgeDeficit &&
+      !evidenceOfSelectionError(relatoNorm)) {
+    return finishDeterministic(
+      'Gate A-A (perception-anchored coherent action)',
+      'A-A',
+      ['A-A'],
+      'Gate determinístico: a falha dominante foi perceptual (monitoramento/informação/atenção) e a ação foi continuação coerente com a percepção incorreta — sem omissão de passo físico/procedural independente do eixo P.',
+      'A-B, A-C, A-D, A-E, A-F, A-G, A-H, A-I, A-J descartados — ação coerente com percepção incorreta, ancorada no eixo P'
     )
   }
 
