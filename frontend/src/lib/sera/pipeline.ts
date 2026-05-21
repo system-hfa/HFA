@@ -1571,6 +1571,234 @@ function buildExperimentalObjectiveQuestionTrace(
   return items
 }
 
+function extractActionCodesFromText(text: string): string[] {
+  const matches = text.match(/A-[A-J]/g) || []
+  return [...new Set(matches)].filter((code) => ACTION_CODES.has(code))
+}
+
+const EXPERIMENTAL_ACTION_LIMITATIONS: string[] = [
+  'trace_experimental_only',
+  'action_axis_only',
+  'derived_from_final_snapshot',
+  'derived_from_nos_percorridos',
+  'does_not_affect_classification',
+  'no_new_llm_call',
+  'evidence_may_reflect_engine_path_not_independent_fact',
+  'not_a_full_hendy_ladder_yet',
+]
+
+function makeActionQuestionItem(input: {
+  questionId: string
+  questionText: string
+  answer: SeraQuestionAnswer
+  evidence: string | null
+  source: SeraQuestionTraceItem['source']
+  methodologicalStatus: SeraQuestionTraceItem['methodological_status']
+  actionCode: string | null
+  discardedCodes: string[]
+  unansweredReason?: string | null
+  extraLimitations?: string[]
+}): SeraQuestionTraceItem {
+  return {
+    question_id: input.questionId,
+    step: 'action',
+    question_text: input.questionText,
+    answer: input.answer,
+    evidence: input.evidence,
+    confidence: deriveQuestionConfidence(input.answer, input.evidence),
+    source: input.source,
+    methodological_status: input.methodologicalStatus,
+    produced_code: input.actionCode,
+    discarded_codes: input.discardedCodes,
+    unanswered_reason: input.unansweredReason || null,
+    limitations: dedupeStrings([
+      ...EXPERIMENTAL_ACTION_LIMITATIONS,
+      ...(input.extraLimitations || []),
+    ]),
+  }
+}
+
+function buildExperimentalActionQuestionTrace(
+  snapshot: SeraFinalClassificationSnapshot
+): SeraQuestionTraceItem[] {
+  const actionCode = snapshot.action_code
+  const nodeText = joinNodesFromSnapshot(snapshot.step5_final)
+  const discardedText = String(snapshot.step5_final.falhas_descartadas || '')
+  const allText = normalizeText(`${nodeText} ${discardedText}`)
+  const evidenceFromNodes = nodeText.length > 0 ? nodeText : null
+  const discardedCodes = extractActionCodesFromText(discardedText)
+  const code = actionCode || 'unknown'
+
+  const items: SeraQuestionTraceItem[] = []
+
+  const executedAsIntendedAnswer: SeraQuestionAnswer =
+    code === 'A-A'
+      ? 'yes'
+      : code === 'A-I'
+        ? 'insufficient_evidence'
+        : actionCode !== null
+          ? 'no'
+          : 'insufficient_evidence'
+
+  items.push(makeActionQuestionItem({
+    questionId: 'A_ACTION_EXECUTED_AS_INTENDED',
+    questionText: 'A ação foi executada conforme a intenção do operador, sem falha de implementação física ou procedimental?',
+    answer: executedAsIntendedAnswer,
+    evidence: executedAsIntendedAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `action_code=${code}`) : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: 'SOURCE_INFERRED_FROM_HENDY',
+    actionCode,
+    discardedCodes,
+    unansweredReason: executedAsIntendedAnswer === 'insufficient_evidence' ? 'action_execution_not_directly_assessed_from_code' : null,
+  }))
+
+  const actionMatchedPerceptionAnswer: SeraQuestionAnswer =
+    code === 'A-A'
+      ? 'yes'
+      : code === 'A-F' || code === 'A-H'
+        ? 'no'
+        : code === 'A-B' || code === 'A-C' || code === 'A-G' || code === 'A-J'
+          ? 'partial'
+          : 'insufficient_evidence'
+
+  items.push(makeActionQuestionItem({
+    questionId: 'A_ACTION_MATCHED_PERCEIVED_SITUATION',
+    questionText: 'A ação realizada era coerente com a situação percebida pelo operador?',
+    answer: actionMatchedPerceptionAnswer,
+    evidence: actionMatchedPerceptionAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `action_code=${code}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    actionCode,
+    discardedCodes,
+    unansweredReason: actionMatchedPerceptionAnswer === 'insufficient_evidence' ? 'perception_action_coherence_not_directly_assessed_from_code' : null,
+    extraLimitations: ['action_perception_anchoring_is_hfa_adaptation'],
+  }))
+
+  const physicalStepOmittedAnswer: SeraQuestionAnswer =
+    code === 'A-B'
+      ? 'yes'
+      : code === 'A-A'
+        ? 'no'
+        : 'insufficient_evidence'
+
+  items.push(makeActionQuestionItem({
+    questionId: 'A_PHYSICAL_PROCEDURAL_STEP_OMITTED',
+    questionText: 'Um passo físico ou procedimental foi omitido de forma independente da percepção?',
+    answer: physicalStepOmittedAnswer,
+    evidence: physicalStepOmittedAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `action_code=${code}`) : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: code === 'A-B' ? 'SOURCE_DIRECT_HENDY' : 'DAUMAS_OPERATIONALIZATION',
+    actionCode,
+    discardedCodes,
+    unansweredReason: physicalStepOmittedAnswer === 'insufficient_evidence' ? 'omission_not_directly_assessed_from_code' : null,
+  }))
+
+  const wrongActionAnswer: SeraQuestionAnswer =
+    code === 'A-F' || code === 'A-D'
+      ? 'yes'
+      : code === 'A-A' || code === 'A-B'
+        ? 'no'
+        : 'insufficient_evidence'
+
+  items.push(makeActionQuestionItem({
+    questionId: 'A_WRONG_ACTION_OR_SELECTION',
+    questionText: 'Houve ação errada, seleção equivocada, modo incorreto ou input inadequado?',
+    answer: wrongActionAnswer,
+    evidence: wrongActionAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `action_code=${code}`) : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: code === 'A-F' ? 'SOURCE_DIRECT_HENDY' : 'DAUMAS_OPERATIONALIZATION',
+    actionCode,
+    discardedCodes,
+    unansweredReason: wrongActionAnswer === 'insufficient_evidence' ? 'wrong_action_selection_not_directly_assessed_from_code' : null,
+  }))
+
+  const hasCheckSignal = hasAny(allText, [
+    'checklist',
+    'callout',
+    'crosscheck',
+    'conferencia',
+    'monitoramento',
+    'verificacao',
+    'confirmacao',
+    'feedback',
+    'checagem',
+  ])
+  const checkRequiredAnswer: SeraQuestionAnswer =
+    code === 'A-C' || code === 'A-G'
+      ? 'yes'
+      : code === 'A-B'
+        ? 'partial'
+        : hasCheckSignal
+          ? 'partial'
+          : 'not_applicable'
+
+  items.push(makeActionQuestionItem({
+    questionId: 'A_FEEDBACK_CHECK_REQUIRED',
+    questionText: 'A situação exigia verificação de resultado, callout, checklist ou monitoramento formal?',
+    answer: checkRequiredAnswer,
+    evidence: checkRequiredAnswer !== 'not_applicable' ? (evidenceFromNodes ?? `action_code=${code}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    actionCode,
+    discardedCodes,
+    unansweredReason: checkRequiredAnswer === 'not_applicable' ? 'no_feedback_check_signal_in_step5_nodes' : null,
+    extraLimitations: ['feedback_check_mapping_is_hfa_adaptation'],
+  }))
+
+  const checkPerformedAnswer: SeraQuestionAnswer =
+    code === 'A-C' || code === 'A-G'
+      ? 'no'
+      : checkRequiredAnswer === 'not_applicable'
+        ? 'not_applicable'
+        : 'insufficient_evidence'
+
+  items.push(makeActionQuestionItem({
+    questionId: 'A_FEEDBACK_CHECK_PERFORMED',
+    questionText: 'A verificação de resultado, callout ou monitoramento requerido foi realizado adequadamente?',
+    answer: checkPerformedAnswer,
+    evidence: checkPerformedAnswer === 'no' ? (evidenceFromNodes ?? `action_code=${code}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    actionCode,
+    discardedCodes,
+    unansweredReason: checkPerformedAnswer === 'insufficient_evidence' ? 'feedback_check_execution_not_directly_assessed_from_code' : null,
+    extraLimitations: ['feedback_check_mapping_is_hfa_adaptation'],
+  }))
+
+  const hasTimePressureSignal = hasAny(allText, [
+    'pressao temporal',
+    'pressao de tempo',
+    'tempo insuficiente',
+    'sobrecarga',
+    'interrupcao',
+    'atrasado',
+    'slot',
+    'subestim',
+    'nao concluiu',
+  ])
+  const timePressureAnswer: SeraQuestionAnswer =
+    code === 'A-H'
+      ? 'yes'
+      : hasTimePressureSignal
+        ? 'partial'
+        : 'insufficient_evidence'
+
+  items.push(makeActionQuestionItem({
+    questionId: 'A_TIME_PRESSURE_IMPAIRED_EXECUTION',
+    questionText: 'A pressão temporal ou carga de trabalho prejudicou a execução da ação?',
+    answer: timePressureAnswer,
+    evidence: timePressureAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `action_code=${code}`) : null,
+    source: code === 'A-H' ? 'daumas_operationalization' : 'technical_heuristic',
+    methodologicalStatus: code === 'A-H' ? 'DAUMAS_APPLIED_IMPROVEMENT' : 'TECHNICAL_HEURISTIC',
+    actionCode,
+    discardedCodes,
+    unansweredReason: timePressureAnswer === 'insufficient_evidence' ? 'time_pressure_not_directly_assessed_from_code' : null,
+    extraLimitations: ['time_pressure_action_mapping_is_hfa_adaptation'],
+  }))
+
+  return items
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -1759,6 +1987,7 @@ export function buildAnalysisUpsertPayload(
   })
   const experimentalPerceptionTrace = buildExperimentalPerceptionQuestionTrace(snapshotBeforeTrace)
   const experimentalObjectiveTrace = buildExperimentalObjectiveQuestionTrace(snapshotBeforeTrace)
+  const experimentalActionTrace = buildExperimentalActionQuestionTrace(snapshotBeforeTrace)
   const snapshotAfterTrace = buildFinalClassificationSnapshot({
     rawInput,
     step3,
@@ -1839,6 +2068,7 @@ export function buildAnalysisUpsertPayload(
       trace_experimental: {
         perception_question_trace: experimentalPerceptionTrace,
         objective_question_trace: experimentalObjectiveTrace,
+        action_question_trace: experimentalActionTrace,
       },
     },
     source_type: st,
