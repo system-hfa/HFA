@@ -1199,6 +1199,26 @@ function evidenceOfTimePressure(text: string): boolean {
   ])
 }
 
+function evidenceOfSpeedManagementAttentionCapture(text: string): boolean {
+  const speedBelowSafe = containsAny(text, [
+    'velocidade continuou caindo',
+    'velocidade foi reduzida em voo manual abaixo da faixa segura',
+    'abaixo da faixa segura',
+    'ias continuou caindo',
+    'airspeed continued decreasing',
+    'below safe range',
+  ])
+  const attentionCapturedOrProximity = containsAny(text, [
+    'atencao da tripulacao estava capturada',
+    'atencao capturada pela proximidade',
+    'capturada pela proximidade da plataforma',
+    'proximidade da plataforma',
+    'necessidade de manter referencia visual',
+    'sobrevoo de plataforma',
+  ])
+  return speedBelowSafe && attentionCapturedOrProximity
+}
+
 function evidenceOfMonitoringFailure(text: string): boolean {
   return containsAny(text, [
     'nao verificou',
@@ -1854,6 +1874,13 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     logMethodology('runStep3', 'Gate P-E', node, ['P-E'], true)
     const code = assertAllowedCode('P-E', ['P-E'], 'runStep3 gate temporal')
     return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-F, P-G, P-H descartadas — falha temporal explícita')
+  }
+
+  if (evidenceOfSpeedManagementAttentionCapture(relatoNorm)) {
+    const node = methodologyNode('Gate determinístico: velocidade continuou degradando abaixo da faixa segura enquanto atenção da tripulação estava capturada por tarefa de proximidade operacional.', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-D (atenção capturada/velocidade)', node, ['P-D'], true)
+    const code = assertAllowedCode('P-D', ['P-D'], 'runStep3 gate atenção capturada velocidade')
+    return flowResult(code, [node], 'P-A, P-B, P-C, P-E, P-F, P-G, P-H descartadas — atenção capturada por tarefa de proximidade operacional enquanto parâmetro crítico se degradava')
   }
 
   // P-G preemptivo: informação disponível não monitorada; dispara antes de P-D quando não há demanda genuína.
@@ -2784,13 +2811,13 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (temporalExecutionFailure) {
+  if (temporalExecutionFailure || evidenceOfSpeedManagementAttentionCapture(relatoNorm)) {
     return finishDeterministic(
       'Gate A-H',
       'A-H',
       ['A-H'],
-      'Gate determinístico: sequência ou tarefa ficou incompleta por gerenciamento temporal insuficiente na execução.',
-      'A-A, A-B, A-C, A-D, A-E, A-F, A-G, A-I, A-J descartados — falha temporal de execução'
+      'Gate determinístico: sequência ou tarefa ficou incompleta por gerenciamento temporal insuficiente na execução, ou parâmetro crítico degradou enquanto atenção estava capturada por tarefa de proximidade operacional.',
+      'A-A, A-B, A-C, A-D, A-E, A-F, A-G, A-I, A-J descartados — falha temporal de execução ou gerenciamento de parâmetro sob atenção capturada'
     )
   }
 
