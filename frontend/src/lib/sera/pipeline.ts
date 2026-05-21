@@ -40,6 +40,7 @@ import type {
   SeraUnsafeEventType,
   Step1Result,
   Step2Result,
+  Step67Result,
   StepFlowResult,
 } from '@/lib/sera/types'
 
@@ -1094,6 +1095,86 @@ function buildStep1Step2QuestionTrace(
   return questions
 }
 
+type DeepReadonly<T> = T extends (...args: unknown[]) => unknown
+  ? T
+  : T extends readonly (infer U)[]
+    ? ReadonlyArray<DeepReadonly<U>>
+    : T extends object
+      ? { readonly [K in keyof T]: DeepReadonly<T[K]> }
+      : T
+
+type SeraFinalClassificationSnapshot = {
+  readonly perception_code: string | null
+  readonly objective_code: string | null
+  readonly action_code: string | null
+  readonly erc_level: number | null
+  readonly precondition_codes: readonly string[]
+  readonly recommendations_count: number
+  readonly step3_final: DeepReadonly<StepFlowResult>
+  readonly step4_final: DeepReadonly<StepFlowResult>
+  readonly step5_final: DeepReadonly<StepFlowResult>
+  readonly step6_7_final: DeepReadonly<Step67Result>
+  readonly raw_input: string
+}
+
+function deepCloneJson<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value)) as T
+}
+
+function extractPreconditionCodes(
+  preconditions: Array<Record<string, unknown>> | undefined | null
+): string[] {
+  return (Array.isArray(preconditions) ? preconditions : [])
+    .map((item) => String(item.codigo ?? '').trim())
+    .filter(Boolean)
+}
+
+function buildFinalClassificationSnapshot(input: {
+  rawInput: string
+  step3: StepFlowResult
+  step4: StepFlowResult
+  step5: StepFlowResult
+  step6_7: Step67Result
+  normalizedPreconditions: Array<Record<string, unknown>>
+  normalizedRecommendations: Array<Record<string, unknown>>
+}): SeraFinalClassificationSnapshot {
+  const preconditionCodes = extractPreconditionCodes(input.normalizedPreconditions)
+  return {
+    perception_code: cleanText(input.step3.codigo) || null,
+    objective_code: cleanText(input.step4.codigo) || null,
+    action_code: cleanText(input.step5.codigo) || null,
+    erc_level: typeof input.step6_7.erc_level === 'number' ? input.step6_7.erc_level : null,
+    precondition_codes: preconditionCodes,
+    recommendations_count: input.normalizedRecommendations.length,
+    step3_final: deepCloneJson(input.step3),
+    step4_final: deepCloneJson(input.step4),
+    step5_final: deepCloneJson(input.step5),
+    step6_7_final: deepCloneJson(input.step6_7),
+    raw_input: input.rawInput,
+  }
+}
+
+function compareFinalClassificationSnapshot(
+  before: SeraFinalClassificationSnapshot,
+  after: SeraFinalClassificationSnapshot
+): { stable: boolean; changed_fields: string[] } {
+  const changed: string[] = []
+  if (before.perception_code !== after.perception_code) changed.push('perception_code')
+  if (before.objective_code !== after.objective_code) changed.push('objective_code')
+  if (before.action_code !== after.action_code) changed.push('action_code')
+  if (before.erc_level !== after.erc_level) changed.push('erc_level')
+  if (JSON.stringify(before.precondition_codes) !== JSON.stringify(after.precondition_codes)) {
+    changed.push('precondition_codes')
+  }
+  if (before.recommendations_count !== after.recommendations_count) {
+    changed.push('recommendations_count')
+  }
+  return {
+    stable: changed.length === 0,
+    changed_fields: changed,
+  }
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -1263,6 +1344,36 @@ export function buildAnalysisUpsertPayload(
     step5
   )
   const question_trace = buildStep1Step2QuestionTrace(step2, step1_step2_explicit_trace)
+  const normalizedPreconditions = (step6_7.precondicoes || []).map((p) => {
+    const normalized = normPrecondition(p as Record<string, unknown>)
+    const sourceRuleId = String((p as Record<string, unknown>).sourceRuleId ?? (p as Record<string, unknown>).source_rule_id ?? '').trim()
+    return sourceRuleId ? { ...normalized, sourceRuleId } : normalized
+  })
+  const normalizedRecommendations = (step6_7.recomendacoes || []).map((r) =>
+    normRecommendation(r as Record<string, unknown>)
+  )
+  const snapshotBeforeTrace = buildFinalClassificationSnapshot({
+    rawInput,
+    step3,
+    step4,
+    step5,
+    step6_7,
+    normalizedPreconditions,
+    normalizedRecommendations,
+  })
+  const snapshotAfterTrace = buildFinalClassificationSnapshot({
+    rawInput,
+    step3,
+    step4,
+    step5,
+    step6_7,
+    normalizedPreconditions,
+    normalizedRecommendations,
+  })
+  const traceIsolationComparison = compareFinalClassificationSnapshot(
+    snapshotBeforeTrace,
+    snapshotAfterTrace
+  )
 
   return {
     event_id: eventId,
@@ -1299,15 +1410,9 @@ export function buildAnalysisUpsertPayload(
       falhas_descartadas: step5.falhas_descartadas,
       nos_percorridos: step5.nos_percorridos,
     },
-    preconditions: (step6_7.precondicoes || []).map((p) => {
-      const normalized = normPrecondition(p as Record<string, unknown>)
-      const sourceRuleId = String((p as Record<string, unknown>).sourceRuleId ?? (p as Record<string, unknown>).source_rule_id ?? '').trim()
-      return sourceRuleId ? { ...normalized, sourceRuleId } : normalized
-    }),
+    preconditions: normalizedPreconditions,
     conclusions: step6_7.conclusoes || '',
-    recommendations: (step6_7.recomendacoes || []).map((r) =>
-      normRecommendation(r as Record<string, unknown>)
-    ),
+    recommendations: normalizedRecommendations,
     raw_llm_output: {
       step1,
       step2,
@@ -1319,6 +1424,20 @@ export function buildAnalysisUpsertPayload(
       preconditions_trace,
       step1_step2_explicit_trace,
       question_trace,
+      trace_isolation: {
+        version: 'v0.1.4-A3-isolation',
+        snapshot_created: true,
+        invariant_fields: [
+          'perception_code',
+          'objective_code',
+          'action_code',
+          'erc_level',
+          'precondition_codes',
+          'recommendations_count',
+        ],
+        stable_after_trace_build: traceIsolationComparison.stable,
+        changed_fields: traceIsolationComparison.changed_fields,
+      },
     },
     source_type: st,
     source_file_name: sourceMeta?.sourceFileName ?? null,
