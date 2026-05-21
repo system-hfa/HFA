@@ -1218,6 +1218,29 @@ function evidenceOfTimePressure(text: string): boolean {
   ])
 }
 
+// P-H por conflito não resolvido entre fontes de informação operacional independentes.
+// Distinto de P-H por briefing ambíguo (evidenceOfInformationChannelFailure):
+// aqui múltiplas fontes simultâneas estavam disponíveis mas não foram integradas antes da ação.
+function evidenceOfConflictingOperationalInformation(text: string): boolean {
+  const multiSourceConflict = containsAny(text, [
+    'conflito entre fontes',
+    'conflito radar versus visual',
+    'fontes nao foram integradas',
+    'radar versus visual',
+    'radar meteorologico sugeria',
+    'identificacao positiva por fontes independentes',
+    'convergencia entre referencia visual',
+    'confirmacao de radio e cross-check',
+  ])
+  const conflictUnresolved = containsAny(text, [
+    'nao foi resolvido',
+    'sem resolver o conflito',
+    'nao foram integradas',
+    'identificacao incompleta',
+  ])
+  return multiSourceConflict && conflictUnresolved
+}
+
 function evidenceOfSpeedManagementAttentionCapture(text: string): boolean {
   const speedBelowSafe = containsAny(text, [
     'velocidade continuou caindo',
@@ -1279,6 +1302,13 @@ function evidenceOfMonitoringFailure(text: string): boolean {
     'condicao a verificar estava acessivel',
     'registro de verificacao obrigatorio',
     'formalidade dispensavel',
+    // P-G for parameter/checklist monitoring lapse (fuel, checklist state)
+    'monitoramento periodico de combustivel',
+    'combustivel remanescente cruzou o minimo',
+    'retornou ao painel de combustivel',
+    'checklist declarado e estado real',
+    'alerta automatico sinalizou configuracao incorreta',
+    'item critico pendente',
     // P-G for own-action-result available in panel but not monitored (A-C context)
     'sem aguardar a estabilizacao',
     'sem aguardar estabilizacao',
@@ -1900,6 +1930,15 @@ export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<
     logMethodology('runStep3', 'Gate P-D (atenção capturada/velocidade)', node, ['P-D'], true)
     const code = assertAllowedCode('P-D', ['P-D'], 'runStep3 gate atenção capturada velocidade')
     return flowResult(code, [node], 'P-A, P-B, P-C, P-E, P-F, P-G, P-H descartadas — atenção capturada por tarefa de proximidade operacional enquanto parâmetro crítico se degradava')
+  }
+
+  // Gate P-H por conflito de fontes: múltiplas fontes operacionais disponíveis não integradas.
+  // Deve preceder P-G preemptivo para interceptar casos onde monitoring terms disparam erroneamente.
+  if (evidenceOfConflictingOperationalInformation(relatoNorm)) {
+    const node = methodologyNode('Gate determinístico: conflito não resolvido entre fontes de informação operacional disponíveis — múltiplas fontes independentes (radar/visual/GPS/FMS/rádio) não integradas antes da decisão.', { resposta: 'Sim' })
+    logMethodology('runStep3', 'Gate P-H (conflito de fontes)', node, ['P-H'], true)
+    const code = assertAllowedCode('P-H', ['P-H'], 'runStep3 gate conflito fontes operacionais')
+    return flowResult(code, [node], 'P-A, P-B, P-C, P-D, P-E, P-F, P-G descartadas — conflito de informação operacional não resolvido entre fontes disponíveis')
   }
 
   // P-G preemptivo: informação disponível não monitorada; dispara antes de P-D quando não há demanda genuína.
