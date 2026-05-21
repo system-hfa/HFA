@@ -26,7 +26,15 @@ import {
   sanitizePreconditions,
 } from '@/lib/sera/preconditions'
 import { selectDeterministicPreconditions } from '@/lib/sera/rules/preconditions'
-import type { RawFlowNode, Step1Result, StepFlowResult } from '@/lib/sera/types'
+import type {
+  RawFlowNode,
+  SeraAxisDecisionTrace,
+  SeraDecisionSource,
+  SeraDecisionTrace,
+  SeraPreconditionsTrace,
+  Step1Result,
+  StepFlowResult,
+} from '@/lib/sera/types'
 
 function joinNodes(step: StepFlowResult): string {
   const nos = step.nos_percorridos || []
@@ -258,6 +266,103 @@ function inferErcLevel(rawInput: string, perception: string, objective: string, 
   return 2
 }
 
+function containsInsufficientEvidence(step: StepFlowResult | null | undefined): boolean {
+  if (!step) return false
+  const chunks: string[] = [String(step.falhas_descartadas || '')]
+  for (const node of step.nos_percorridos || []) {
+    chunks.push(String(node.justificativa || ''))
+    chunks.push(String(node.pergunta || ''))
+  }
+  return normalizeText(chunks.join(' ')).includes('dado insuficiente')
+}
+
+function nodeSummary(node: RawFlowNode | undefined): string {
+  if (!node) return ''
+  const no = String(node.no || '').trim()
+  const pergunta = String(node.pergunta || '').trim()
+  const justificativa = String(node.justificativa || '').trim()
+  return [no, pergunta, justificativa].filter(Boolean).join(' | ')
+}
+
+function detectDecisionSource(step: StepFlowResult | null | undefined, inferred: boolean): SeraDecisionSource {
+  if (inferred) return 'infer_function'
+  if (!step || !Array.isArray(step.nos_percorridos) || step.nos_percorridos.length === 0) return 'unknown'
+
+  const isDeterministic = step.nos_percorridos.some((node) => {
+    const txt = normalizeText(`${String(node.justificativa || '')} ${String(node.pergunta || '')}`)
+    return txt.includes('gate determin')
+  })
+  if (isDeterministic) return 'deterministic_gate'
+  return 'llm_node'
+}
+
+function buildAxisDecisionTrace(input: {
+  stepNumber: 3 | 4 | 5
+  axis: 'perception' | 'objective' | 'action'
+  step: StepFlowResult
+  code: string
+  inferred: boolean
+  inferName: 'inferPerceptionCode' | 'inferObjectiveCode' | 'inferActionCode'
+}): SeraAxisDecisionTrace {
+  const source = detectDecisionSource(input.step, input.inferred)
+  const firstNode = input.step.nos_percorridos?.[0]
+  const sourceName =
+    source === 'infer_function'
+      ? input.inferName
+      : source === 'deterministic_gate'
+        ? nodeSummary(firstNode) || 'deterministic_gate'
+        : source === 'llm_node'
+          ? String(firstNode?.no || firstNode?.pergunta || 'llm_node').trim()
+          : undefined
+
+  return {
+    step: input.stepNumber,
+    axis: input.axis,
+    code: input.code,
+    source,
+    source_name: sourceName || undefined,
+    nodes_count: (input.step.nos_percorridos || []).length,
+    discarded: String(input.step.falhas_descartadas || ''),
+    insufficient_evidence_detected: containsInsufficientEvidence(input.step),
+  }
+}
+
+function buildPreconditionsTrace(
+  preconditions: Array<Record<string, unknown>> | undefined | null
+): SeraPreconditionsTrace {
+  const rows = Array.isArray(preconditions) ? preconditions : []
+  const total = rows.length
+  const sourceRuleIds = [...new Set(
+    rows
+      .map((row) => String(row.sourceRuleId ?? row.source_rule_id ?? '').trim())
+      .filter(Boolean)
+  )]
+
+  const hasDeterministicTag = rows.some((row) =>
+    normalizeText(String(row.etapa || '')).includes('deterministicpreconditions')
+  )
+  const hasDeterministic = hasDeterministicTag || sourceRuleIds.length > 0
+  const hasLlm = rows.some((row) => !String(row.sourceRuleId ?? row.source_rule_id ?? '').trim())
+
+  let mechanism: SeraPreconditionsTrace['mechanism'] = 'unknown'
+  if (total === 0) mechanism = 'none'
+  else if (hasDeterministic && hasLlm) mechanism = 'mixed'
+  else if (hasDeterministic) mechanism = 'deterministic_matrix'
+  else if (hasLlm) mechanism = 'llm'
+
+  return {
+    mechanism,
+    total,
+    ...(sourceRuleIds.length > 0 ? { source_rule_ids: sourceRuleIds } : {}),
+  }
+}
+
+type TraceContext = {
+  perception_inferred: boolean
+  objective_inferred: boolean
+  action_inferred: boolean
+}
+
 export async function runSeraPipeline(rawInput: string) {
   const step1 = await runStep1(rawInput)
   if (step1.error) throw new Error(step1.error)
@@ -274,16 +379,19 @@ export async function runSeraPipeline(rawInput: string) {
   const objectiveFromFlow = String(step4.codigo || '')
   const actionFromFlow = String(step5.codigo || '')
   const perceptionFromFlow = String(step3.codigo || '')
+  const objectiveInferred = !OBJECTIVE_CODES.has(objectiveFromFlow)
+  const actionInferred = !ACTION_CODES.has(actionFromFlow)
+  const perceptionInferred = !PERCEPTION_CODES.has(perceptionFromFlow)
 
-  const objective_code = OBJECTIVE_CODES.has(objectiveFromFlow)
+  const objective_code = !objectiveInferred
     ? objectiveFromFlow
     : inferObjectiveCode(rawInput, objectiveFromFlow)
 
-  const action_code = ACTION_CODES.has(actionFromFlow)
+  const action_code = !actionInferred
     ? actionFromFlow
     : inferActionCode(rawInput, String(step2.ato_inseguro_factual || ''), actionFromFlow)
 
-  let perception_code = PERCEPTION_CODES.has(perceptionFromFlow)
+  const perception_code = !perceptionInferred
     ? perceptionFromFlow
     : inferPerceptionCode(rawInput, objective_code, action_code, perceptionFromFlow)
 
@@ -310,6 +418,7 @@ export async function runSeraPipeline(rawInput: string) {
       etapa: 'DeterministicPreconditions',
       evidencia_no_relato: item.matchedEvidence.join(', '),
       descricao: '',
+      sourceRuleId: item.sourceRuleId,
     }))
   }
   step6_7.precondicoes = sanitizePreconditions(
@@ -317,7 +426,19 @@ export async function runSeraPipeline(rawInput: string) {
     5
   ) as typeof step6_7.precondicoes
 
-  return { step1, step2, step3, step4, step5, step6_7 }
+  return {
+    step1,
+    step2,
+    step3,
+    step4,
+    step5,
+    step6_7,
+    trace_context: {
+      perception_inferred: perceptionInferred,
+      objective_inferred: objectiveInferred,
+      action_inferred: actionInferred,
+    } as TraceContext,
+  }
 }
 
 export type SourceMeta = {
@@ -358,6 +479,7 @@ export function buildAnalysisUpsertPayload(
   sourceMeta?: SourceMeta
 ): Record<string, unknown> {
   const { step1, step2, step3, step4, step5, step6_7 } = steps
+  const traceContext = (steps as { trace_context?: TraceContext }).trace_context
   const step1Summary =
     typeof step1.summary === 'string' ? step1.summary : String(step1.summary ?? '')
 
@@ -367,6 +489,35 @@ export function buildAnalysisUpsertPayload(
 
   const { completeness, reason } = computeCompleteness(p3, p4, p5, step6_7.erc_level)
   const st = sourceMeta?.sourceType ?? 'text'
+  const decision_trace: SeraDecisionTrace = {
+    perception: buildAxisDecisionTrace({
+      stepNumber: 3,
+      axis: 'perception',
+      step: step3,
+      code: p3,
+      inferred: Boolean(traceContext?.perception_inferred),
+      inferName: 'inferPerceptionCode',
+    }),
+    objective: buildAxisDecisionTrace({
+      stepNumber: 4,
+      axis: 'objective',
+      step: step4,
+      code: p4,
+      inferred: Boolean(traceContext?.objective_inferred),
+      inferName: 'inferObjectiveCode',
+    }),
+    action: buildAxisDecisionTrace({
+      stepNumber: 5,
+      axis: 'action',
+      step: step5,
+      code: p5,
+      inferred: Boolean(traceContext?.action_inferred),
+      inferName: 'inferActionCode',
+    }),
+  }
+  const preconditions_trace = buildPreconditionsTrace(
+    (step6_7.precondicoes || []) as Array<Record<string, unknown>>
+  )
 
   return {
     event_id: eventId,
@@ -403,9 +554,11 @@ export function buildAnalysisUpsertPayload(
       falhas_descartadas: step5.falhas_descartadas,
       nos_percorridos: step5.nos_percorridos,
     },
-    preconditions: (step6_7.precondicoes || []).map((p) =>
-      normPrecondition(p as Record<string, unknown>)
-    ),
+    preconditions: (step6_7.precondicoes || []).map((p) => {
+      const normalized = normPrecondition(p as Record<string, unknown>)
+      const sourceRuleId = String((p as Record<string, unknown>).sourceRuleId ?? (p as Record<string, unknown>).source_rule_id ?? '').trim()
+      return sourceRuleId ? { ...normalized, sourceRuleId } : normalized
+    }),
     conclusions: step6_7.conclusoes || '',
     recommendations: (step6_7.recomendacoes || []).map((r) =>
       normRecommendation(r as Record<string, unknown>)
@@ -417,6 +570,8 @@ export function buildAnalysisUpsertPayload(
       step4,
       step5,
       step6_7,
+      decision_trace,
+      preconditions_trace,
     },
     source_type: st,
     source_file_name: sourceMeta?.sourceFileName ?? null,

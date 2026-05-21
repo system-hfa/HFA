@@ -13,6 +13,7 @@ export interface Precondition {
   codigo: string
   nome: string
   justificativa: string
+  sourceRuleId?: string
 }
 
 export interface SeraStepResult {
@@ -85,6 +86,35 @@ export interface StepFlowResult {
   _manual_justification?: string
 }
 
+export type SeraDecisionSource =
+  | 'deterministic_gate'
+  | 'llm_node'
+  | 'infer_function'
+  | 'unknown'
+
+export interface SeraAxisDecisionTrace {
+  step: 3 | 4 | 5
+  axis: 'perception' | 'objective' | 'action'
+  code?: string
+  source: SeraDecisionSource
+  source_name?: string
+  nodes_count?: number
+  discarded?: string
+  insufficient_evidence_detected?: boolean
+}
+
+export interface SeraDecisionTrace {
+  perception?: SeraAxisDecisionTrace
+  objective?: SeraAxisDecisionTrace
+  action?: SeraAxisDecisionTrace
+}
+
+export interface SeraPreconditionsTrace {
+  mechanism: 'deterministic_matrix' | 'llm' | 'mixed' | 'none' | 'unknown'
+  total: number
+  source_rule_ids?: string[]
+}
+
 export interface Step1Result {
   summary?: string
   event_date?: string | null
@@ -111,6 +141,8 @@ export interface Step67Result {
     descricao?: string
     etapa?: string
     evidencia_no_relato?: string
+    sourceRuleId?: string
+    source_rule_id?: string
   }>
   conclusoes: string
   recomendacoes: Array<{
