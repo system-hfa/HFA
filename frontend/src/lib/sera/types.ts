@@ -124,6 +124,50 @@ export type SeraActorLevel =
   | 'supervision'
   | 'organization'
   | 'unknown'
+export type SeraQuestionAnswer =
+  | 'yes'
+  | 'no'
+  | 'partial'
+  | 'insufficient_evidence'
+  | 'not_applicable'
+  | 'unknown'
+export type SeraQuestionSource =
+  | 'hendy_ladder'
+  | 'daumas_operationalization'
+  | 'hfa_adaptation'
+  | 'technical_heuristic'
+export type SeraQuestionStep =
+  | 'step1'
+  | 'step2'
+  | 'perception'
+  | 'objective'
+  | 'action'
+  | 'preconditions'
+  | 'erc'
+
+export interface SeraQuestionTraceItem {
+  question_id: string
+  step: SeraQuestionStep
+  question_text: string
+  answer: SeraQuestionAnswer
+  evidence: string | null
+  confidence: 'high' | 'medium' | 'low' | 'unknown'
+  source: SeraQuestionSource
+  methodological_status:
+    | 'SOURCE_DIRECT_HENDY'
+    | 'SOURCE_INFERRED_FROM_HENDY'
+    | 'DAUMAS_TRANSLATION'
+    | 'DAUMAS_OPERATIONALIZATION'
+    | 'DAUMAS_APPLIED_IMPROVEMENT'
+    | 'HFA_ADAPTATION_REQUIRES_NOTE'
+    | 'TECHNICAL_HEURISTIC'
+    | 'GAP'
+    | 'UNCONFIRMED'
+  produced_code?: string | null
+  discarded_codes?: string[]
+  unanswered_reason?: string | null
+  limitations?: string[]
+}
 
 export interface SeraStep1Step2ExplicitTrace {
   safe_operation_escape_point?: string | null

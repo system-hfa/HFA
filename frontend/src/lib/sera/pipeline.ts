@@ -34,6 +34,7 @@ import type {
   SeraDecisionTrace,
   SeraEvidenceQuality,
   SeraPreconditionsTrace,
+  SeraQuestionTraceItem,
   SeraStep1Step2ExplicitTrace,
   SeraUnsafeEventType,
   Step1Result,
@@ -1011,6 +1012,7 @@ export function buildAnalysisUpsertPayload(
     step4,
     step5
   )
+  const question_trace: SeraQuestionTraceItem[] = []
 
   return {
     event_id: eventId,
@@ -1066,6 +1068,7 @@ export function buildAnalysisUpsertPayload(
       decision_trace,
       preconditions_trace,
       step1_step2_explicit_trace,
+      question_trace,
     },
     source_type: st,
     source_file_name: sourceMeta?.sourceFileName ?? null,
