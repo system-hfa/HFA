@@ -132,6 +132,9 @@ export interface SeraStep1Step2ExplicitTrace {
   unsafe_condition_statement?: string | null
   direct_actor?: string | null
   actor_level?: SeraActorLevel
+  actor_evidence?: string | null
+  actor_level_evidence?: string | null
+  actor_uncertainty?: string | null
   goal_statement?: string | null
   goal_evidence?: string | null
   perception_statement?: string | null

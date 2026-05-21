@@ -374,6 +374,16 @@ type DerivedStatement = {
   source: StatementSource
 }
 
+type DerivedActorTrace = {
+  directActor: string | null
+  actorLevel: SeraActorLevel
+  actorEvidence: string | null
+  actorLevelEvidence: string | null
+  actorUncertainty: string | null
+  multipleActorLevelsPossible: boolean
+  contextMayBePrecondition: boolean
+}
+
 function sanitizeStatementChunk(value: string): string {
   return value
     .replace(/\s+/g, ' ')
@@ -471,15 +481,146 @@ function findSentenceByOverlap(base: string, candidates: string[]): string | nul
   return bestScore >= 2 ? bestSentence : null
 }
 
-function inferActorLevel(agent: string): SeraActorLevel {
-  const t = normalizeText(agent)
-  if (!t) return 'unknown'
-  if (hasAny(t, ['crew', 'tripulacao', 'piloto', 'pilot', 'copiloto', 'comandante'])) return 'crew'
-  if (hasAny(t, ['manutencao', 'mecanico', 'maintenance'])) return 'maintenance'
-  if (hasAny(t, ['supervisor', 'supervisao', 'supervision'])) return 'supervision'
-  if (hasAny(t, ['organizacao', 'organizacional', 'empresa', 'gestao', 'management'])) return 'organization'
-  if (hasAny(t, ['operador', 'operator', 'tecnico'])) return 'frontline_operator'
-  return 'unknown'
+function actorLevelMatches(text: string): Array<{ level: SeraActorLevel; cue: string }> {
+  const t = normalizeText(text)
+  if (!t) return []
+
+  const groups: Array<{ level: SeraActorLevel; cues: string[] }> = [
+    { level: 'crew', cues: ['piloto', 'comandante', 'copiloto', 'tripulacao', 'crew', 'pf', 'pm'] },
+    { level: 'maintenance', cues: ['manutencao', 'mecanico', 'equipe de manutencao', 'tecnico de manutencao', 'maintenance'] },
+    { level: 'supervision', cues: ['supervisor', 'supervisao', 'coordenador', 'lideranca operacional', 'gestor direto'] },
+    { level: 'organization', cues: ['empresa', 'organizacao', 'gestao', 'processo organizacional', 'politica', 'planejamento organizacional', 'management'] },
+    { level: 'frontline_operator', cues: ['operador', 'operator', 'tecnico'] },
+  ]
+
+  const found: Array<{ level: SeraActorLevel; cue: string }> = []
+  for (const group of groups) {
+    for (const cue of group.cues) {
+      if (t.includes(normalizeText(cue))) {
+        found.push({ level: group.level, cue })
+        break
+      }
+    }
+  }
+  return found
+}
+
+function detectDirectActorFromContext(input: {
+  directActorFromStep2: string
+  rawSentences: string[]
+  step2Sentences: string[]
+}): { actor: string | null; evidence: string | null; contextMayBePrecondition: boolean } {
+  const actor = cleanText(input.directActorFromStep2)
+  if (actor) return { actor, evidence: actor, contextMayBePrecondition: false }
+
+  const candidates = dedupeStrings([...input.step2Sentences, ...input.rawSentences])
+  for (const sentence of candidates) {
+    if (!sentence || isMetaNarrative(sentence)) continue
+    const matches = actorLevelMatches(sentence)
+    if (matches.length === 0) continue
+
+    const contextMayBePrecondition = hasCue(sentence, [
+      'organizacao',
+      'organização',
+      'gestao',
+      'gestão',
+      'treinamento',
+      'cultura',
+      'fator latente',
+      'precondicao',
+      'pré-condição',
+      'supervisao',
+      'supervisão',
+      'manutencao',
+      'manutenção',
+    ])
+
+    if (contextMayBePrecondition) {
+      return { actor: null, evidence: sentence, contextMayBePrecondition: true }
+    }
+
+    return { actor: sentence, evidence: sentence, contextMayBePrecondition: false }
+  }
+
+  return { actor: null, evidence: null, contextMayBePrecondition: false }
+}
+
+function deriveActorTrace(input: {
+  rawInput: string
+  step2Agente: string
+  step2Ato: string
+  step2Justificativa: string
+  step3: StepFlowResult
+  step4: StepFlowResult
+  step5: StepFlowResult
+}): DerivedActorTrace {
+  const rawSentences = splitIntoSentences(input.rawInput)
+  const step2Sentences = splitIntoSentences(
+    [input.step2Agente, input.step2Ato, input.step2Justificativa].filter(Boolean).join('. ')
+  )
+  const ctxActor = detectDirectActorFromContext({
+    directActorFromStep2: input.step2Agente,
+    rawSentences,
+    step2Sentences,
+  })
+
+  const directActor = ctxActor.actor
+  const actorEvidence = ctxActor.evidence
+  const directActorText = directActor || ''
+
+  const levelMatchesFromActor = actorLevelMatches(directActorText)
+  const contextMatches = actorLevelMatches(
+    dedupeStrings([
+      ...splitIntoSentences(collectStepNodeText(input.step3).join('. ')),
+      ...splitIntoSentences(collectStepNodeText(input.step4).join('. ')),
+      ...splitIntoSentences(collectStepNodeText(input.step5).join('. ')),
+      ...rawSentences,
+    ]).join('. ')
+  )
+
+  const uniqueActorLevels = [...new Set(levelMatchesFromActor.map((item) => item.level))]
+  const uniqueContextLevels = [...new Set(contextMatches.map((item) => item.level))]
+  const multipleActorLevelsPossible = uniqueActorLevels.length > 1
+
+  let actorLevel: SeraActorLevel = 'unknown'
+  let actorLevelEvidence: string | null = null
+  let actorUncertainty: string | null = null
+
+  if (!directActor) {
+    actorUncertainty = ctxActor.contextMayBePrecondition
+      ? 'actor mencionado apenas em contexto potencial de precondition, sem ator direto explícito.'
+      : 'ator direto não explícito no ponto de fuga.'
+  } else if (multipleActorLevelsPossible) {
+    actorLevel = 'unknown'
+    actorLevelEvidence = levelMatchesFromActor.map((m) => `${m.level}:${m.cue}`).join(', ')
+    actorUncertainty = 'múltiplos níveis possíveis no texto do ator direto.'
+  } else if (uniqueActorLevels.length === 1) {
+    actorLevel = uniqueActorLevels[0]
+    actorLevelEvidence = `step2.agente lexical cue: ${levelMatchesFromActor[0].cue}`
+  } else {
+    actorLevel = 'unknown'
+    actorUncertainty = 'nível do ator direto não identificado com segurança.'
+  }
+
+  if (
+    actorLevel !== 'unknown' &&
+    uniqueContextLevels.length > 0 &&
+    !uniqueContextLevels.includes(actorLevel)
+  ) {
+    actorUncertainty = actorUncertainty
+      ? `${actorUncertainty} contexto também menciona outros níveis possivelmente latentes.`
+      : 'contexto menciona outros níveis possivelmente latentes.'
+  }
+
+  return {
+    directActor: directActor || null,
+    actorLevel,
+    actorEvidence: actorEvidence || null,
+    actorLevelEvidence,
+    actorUncertainty,
+    multipleActorLevelsPossible,
+    contextMayBePrecondition: ctxActor.contextMayBePrecondition,
+  }
 }
 
 function detectUnsafeConditionStatement(step2: Step2Result, rawInput: string): string | null {
@@ -529,8 +670,16 @@ function buildStep1Step2ExplicitTrace(
   const momento = cleanText(step2.momento)
   const unsafeAct = cleanText(step2.ato_inseguro_factual)
   const justificativa = cleanText(step2.justificativa)
-  const directActorValue = cleanText(step2.agente)
-  const directActor = directActorValue || null
+  const actorTrace = deriveActorTrace({
+    rawInput,
+    step2Agente: cleanText(step2.agente),
+    step2Ato: unsafeAct,
+    step2Justificativa: justificativa,
+    step3,
+    step4,
+    step5,
+  })
+  const directActor = actorTrace.directActor
 
   const safeOperationEscapePointParts = [momento, unsafeAct, justificativa].filter(Boolean)
   const safeOperationEscapePoint =
@@ -635,14 +784,17 @@ function buildStep1Step2ExplicitTrace(
   const perceptionEvidence = perceptionDerived.evidence
   const actionStatement = actionDerived.statement
   const actionEvidence = actionDerived.evidence
-  const actorLevel = directActor ? inferActorLevel(directActor) : 'unknown'
+  const actorLevel = actorTrace.actorLevel
 
   const unansweredQuestions: string[] = []
+  if (!directActor) unansweredQuestions.push('direct_actor_not_explicit')
   if (!goalStatement) unansweredQuestions.push('goal_statement_not_explicit')
   if (!perceptionStatement) unansweredQuestions.push('perception_statement_not_explicit')
   if (!unsafeConditionStatement) unansweredQuestions.push('unsafe_condition_not_separated')
   if (!actionStatement) unansweredQuestions.push('action_statement_not_explicit')
   if (actorLevel === 'unknown') unansweredQuestions.push('actor_level_uncertain')
+  if (actorTrace.multipleActorLevelsPossible) unansweredQuestions.push('multiple_actor_levels_possible')
+  if (actorTrace.contextMayBePrecondition) unansweredQuestions.push('actor_context_may_be_precondition_not_direct_actor')
   if (
     goalDerived.source === 'step_nodes' ||
     perceptionDerived.source === 'step_nodes' ||
@@ -658,6 +810,9 @@ function buildStep1Step2ExplicitTrace(
     unsafe_condition_statement: unsafeConditionStatement,
     direct_actor: directActor,
     actor_level: actorLevel,
+    actor_evidence: actorTrace.actorEvidence,
+    actor_level_evidence: actorTrace.actorLevelEvidence,
+    actor_uncertainty: actorTrace.actorUncertainty,
     goal_statement: goalStatement,
     goal_evidence: goalEvidence,
     perception_statement: perceptionStatement,
@@ -677,6 +832,10 @@ function buildStep1Step2ExplicitTrace(
     unanswered_questions: dedupeStrings(unansweredQuestions),
     source: 'derived_from_existing_steps',
     limitations: [
+      'A3-d4: actor trace experimental derivado em pos-processamento read-only.',
+      'Actor_level e heuristica conservadora e nao altera classificacao.',
+      'Supervisao/manutencao/organizacao podem ser preconditions e nao necessariamente direct_actor.',
+      'Identificacao definitiva de ator direto exige question_trace futuro e Step 1 explicito.',
       'A3-d2: statements experimentais derivados de dados existentes do pipeline.',
       'Extracao heuristica conservadora sem nova chamada LLM.',
       'Statements nao influenciam classificacao P/O/A/ERC e podem permanecer nulos sem evidencia textual suficiente.',
