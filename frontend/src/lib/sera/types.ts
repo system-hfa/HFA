@@ -133,8 +133,11 @@ export interface SeraStep1Step2ExplicitTrace {
   direct_actor?: string | null
   actor_level?: SeraActorLevel
   goal_statement?: string | null
+  goal_evidence?: string | null
   perception_statement?: string | null
+  perception_evidence?: string | null
   action_statement?: string | null
+  action_evidence?: string | null
   evidence_quality?: SeraEvidenceQuality
   unanswered_questions?: string[]
   source?: 'derived_from_existing_steps'

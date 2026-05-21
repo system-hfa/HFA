@@ -366,6 +366,111 @@ function cleanText(value: unknown): string {
   return String(value ?? '').trim()
 }
 
+type StatementSource = 'raw_input' | 'step2' | 'step_nodes' | 'none'
+
+type DerivedStatement = {
+  statement: string | null
+  evidence: string | null
+  source: StatementSource
+}
+
+function sanitizeStatementChunk(value: string): string {
+  return value
+    .replace(/\s+/g, ' ')
+    .replace(/^gate determin[íi]stico:\s*/i, '')
+    .replace(/^n[oó]\s*\d+[a-z\-]?:?\s*/i, '')
+    .trim()
+}
+
+function splitIntoSentences(text: string): string[] {
+  return text
+    .split(/[.!?;\n]+/)
+    .map((chunk) => sanitizeStatementChunk(chunk))
+    .filter((chunk) => chunk.length >= 20)
+}
+
+function dedupeStrings(values: string[]): string[] {
+  return [...new Set(values.map((value) => cleanText(value)).filter(Boolean))]
+}
+
+function collectStepNodeText(step: StepFlowResult): string[] {
+  const chunks: string[] = []
+  chunks.push(String(step.falhas_descartadas || ''))
+  for (const node of step.nos_percorridos || []) {
+    chunks.push(String(node.justificativa || ''))
+    chunks.push(String(node.pergunta || ''))
+    chunks.push(String(node.objetivo_identificado || ''))
+  }
+  return chunks
+}
+
+function isMetaNarrative(text: string): boolean {
+  const t = normalizeText(text)
+  return hasAny(t, [
+    'pergunta local',
+    'responda apenas com json',
+    'gate determin',
+    'descartad',
+    'allowedcodes',
+    'violacao metodologica',
+  ])
+}
+
+function hasCue(text: string, cues: string[]): boolean {
+  const t = normalizeText(text)
+  return cues.some((cue) => t.includes(normalizeText(cue)))
+}
+
+function extractStatementByCues(
+  sources: Array<{ source: StatementSource; chunks: string[] }>,
+  cues: string[]
+): DerivedStatement {
+  for (const source of sources) {
+    for (const chunk of source.chunks) {
+      const cleanChunk = sanitizeStatementChunk(chunk)
+      if (!cleanChunk || isMetaNarrative(cleanChunk)) continue
+      if (!hasCue(cleanChunk, cues)) continue
+      return {
+        statement: cleanChunk,
+        evidence: cleanChunk,
+        source: source.source,
+      }
+    }
+  }
+  return { statement: null, evidence: null, source: 'none' }
+}
+
+function tokenizeForOverlap(text: string): string[] {
+  const stop = new Set([
+    'de', 'da', 'do', 'das', 'dos', 'para', 'com', 'sem', 'por', 'uma', 'um', 'que', 'na', 'no',
+    'nas', 'nos', 'foi', 'era', 'ser', 'ter', 'em', 'ao', 'aos', 'as', 'os', 'e', 'o', 'a',
+  ])
+  return normalizeText(text)
+    .split(/[^a-z0-9]+/)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 4 && !stop.has(token))
+}
+
+function findSentenceByOverlap(base: string, candidates: string[]): string | null {
+  const tokens = tokenizeForOverlap(base)
+  if (tokens.length === 0) return null
+
+  let bestSentence = ''
+  let bestScore = 0
+  for (const candidate of candidates) {
+    const c = normalizeText(candidate)
+    let score = 0
+    for (const token of tokens) {
+      if (c.includes(token)) score += 1
+    }
+    if (score > bestScore) {
+      bestScore = score
+      bestSentence = sanitizeStatementChunk(candidate)
+    }
+  }
+  return bestScore >= 2 ? bestSentence : null
+}
+
 function inferActorLevel(agent: string): SeraActorLevel {
   const t = normalizeText(agent)
   if (!t) return 'unknown'
@@ -396,19 +501,31 @@ function inferEvidenceQuality(input: {
   safeOperationEscapePoint: string | null
   directActor: string | null
   goalStatement: string | null
+  goalEvidence: string | null
   perceptionStatement: string | null
+  perceptionEvidence: string | null
   actionStatement: string | null
+  actionEvidence: string | null
 }): SeraEvidenceQuality {
   const hasEscape = Boolean(input.safeOperationEscapePoint)
   const hasActor = Boolean(input.directActor)
-  const hasAction = Boolean(input.actionStatement)
-  if (!hasEscape || !hasActor) return 'insufficient'
-  if (!input.goalStatement || !input.perceptionStatement || !hasAction) return 'partial'
-  if (hasEscape && hasActor && hasAction) return 'sufficient'
+  const hasAction = Boolean(input.actionStatement && input.actionEvidence)
+  if (!hasEscape || !hasActor || !hasAction) return 'insufficient'
+
+  const hasGoalWithEvidence = Boolean(input.goalStatement && input.goalEvidence)
+  const hasPerceptionWithEvidence = Boolean(input.perceptionStatement && input.perceptionEvidence)
+  if (hasGoalWithEvidence || hasPerceptionWithEvidence) return 'sufficient'
+  if (hasEscape && hasActor && hasAction) return 'partial'
   return 'unknown'
 }
 
-function buildStep1Step2ExplicitTrace(rawInput: string, step2: Step2Result): SeraStep1Step2ExplicitTrace {
+function buildStep1Step2ExplicitTrace(
+  rawInput: string,
+  step2: Step2Result,
+  step3: StepFlowResult,
+  step4: StepFlowResult,
+  step5: StepFlowResult
+): SeraStep1Step2ExplicitTrace {
   const momento = cleanText(step2.momento)
   const unsafeAct = cleanText(step2.ato_inseguro_factual)
   const justificativa = cleanText(step2.justificativa)
@@ -431,9 +548,93 @@ function buildStep1Step2ExplicitTrace(rawInput: string, step2: Step2Result): Ser
         ? 'unsafe_condition'
         : 'unknown'
 
-  const goalStatement: string | null = null
-  const perceptionStatement: string | null = null
-  const actionStatement = unsafeAct || null
+  const rawSentences = splitIntoSentences(rawInput)
+  const step2Sentences = splitIntoSentences([momento, justificativa, unsafeAct].filter(Boolean).join('. '))
+  const step3Sentences = splitIntoSentences(collectStepNodeText(step3).join('. '))
+  const step4Sentences = splitIntoSentences(collectStepNodeText(step4).join('. '))
+  const step5Sentences = splitIntoSentences(collectStepNodeText(step5).join('. '))
+
+  const goalDerived = extractStatementByCues(
+    [
+      { source: 'raw_input', chunks: rawSentences },
+      { source: 'step2', chunks: step2Sentences },
+      { source: 'step_nodes', chunks: step4Sentences },
+    ],
+    [
+      'pretendia',
+      'tentava',
+      'objetivo era',
+      'com a intenção de',
+      'com a intencao de',
+      'decidiu prosseguir para',
+      'buscava',
+      'planejava',
+      'intenção era',
+      'intencao era',
+    ]
+  )
+
+  const perceptionDerived = extractStatementByCues(
+    [
+      { source: 'raw_input', chunks: rawSentences },
+      { source: 'step2', chunks: step2Sentences },
+      { source: 'step_nodes', chunks: step3Sentences },
+    ],
+    [
+      'percebeu',
+      'nao percebeu',
+      'não percebeu',
+      'entendeu que',
+      'interpretou',
+      'observou',
+      'viu',
+      'ouviu',
+      'acreditou que',
+      'indicava',
+      'radar mostrava',
+      'gps',
+      'fms',
+      'radio informava',
+      'rádio informava',
+    ]
+  )
+
+  let actionDerived: DerivedStatement
+  if (unsafeAct) {
+    const actionEvidence =
+      findSentenceByOverlap(unsafeAct, dedupeStrings([...rawSentences, ...step5Sentences, ...step2Sentences])) ||
+      unsafeAct
+    actionDerived = {
+      statement: unsafeAct,
+      evidence: actionEvidence,
+      source: actionEvidence === unsafeAct ? 'step2' : 'raw_input',
+    }
+  } else {
+    actionDerived = extractStatementByCues(
+      [
+        { source: 'raw_input', chunks: rawSentences },
+        { source: 'step_nodes', chunks: step5Sentences },
+      ],
+      [
+        'acionou',
+        'executou',
+        'omitiu',
+        'nao realizou',
+        'não realizou',
+        'prosseguiu',
+        'manteve',
+        'selecionou',
+        'aplicou',
+      ]
+    )
+  }
+
+  const goalStatement = goalDerived.statement
+  const goalEvidence = goalDerived.evidence
+  const perceptionStatement = perceptionDerived.statement
+  const perceptionEvidence = perceptionDerived.evidence
+  const actionStatement = actionDerived.statement
+  const actionEvidence = actionDerived.evidence
   const actorLevel = directActor ? inferActorLevel(directActor) : 'unknown'
 
   const unansweredQuestions: string[] = []
@@ -442,6 +643,13 @@ function buildStep1Step2ExplicitTrace(rawInput: string, step2: Step2Result): Ser
   if (!unsafeConditionStatement) unansweredQuestions.push('unsafe_condition_not_separated')
   if (!actionStatement) unansweredQuestions.push('action_statement_not_explicit')
   if (actorLevel === 'unknown') unansweredQuestions.push('actor_level_uncertain')
+  if (
+    goalDerived.source === 'step_nodes' ||
+    perceptionDerived.source === 'step_nodes' ||
+    actionDerived.source === 'step_nodes'
+  ) {
+    unansweredQuestions.push('statement_evidence_partial')
+  }
 
   return {
     safe_operation_escape_point: safeOperationEscapePoint,
@@ -451,21 +659,27 @@ function buildStep1Step2ExplicitTrace(rawInput: string, step2: Step2Result): Ser
     direct_actor: directActor,
     actor_level: actorLevel,
     goal_statement: goalStatement,
+    goal_evidence: goalEvidence,
     perception_statement: perceptionStatement,
+    perception_evidence: perceptionEvidence,
     action_statement: actionStatement,
+    action_evidence: actionEvidence,
     evidence_quality: inferEvidenceQuality({
       safeOperationEscapePoint,
       directActor,
       goalStatement,
+      goalEvidence,
       perceptionStatement,
+      perceptionEvidence,
       actionStatement,
+      actionEvidence,
     }),
-    unanswered_questions: unansweredQuestions,
+    unanswered_questions: dedupeStrings(unansweredQuestions),
     source: 'derived_from_existing_steps',
     limitations: [
-      'A3-d1: trace observacional derivado apenas de steps existentes.',
-      'Nao implementa Hendy Step 2 completo (goal/perception/action statements explicitos).',
-      'Nao adiciona nova chamada LLM e nao altera classificacao P/O/A/ERC.',
+      'A3-d2: statements experimentais derivados de dados existentes do pipeline.',
+      'Extracao heuristica conservadora sem nova chamada LLM.',
+      'Statements nao influenciam classificacao P/O/A/ERC e podem permanecer nulos sem evidencia textual suficiente.',
     ],
   }
 }
@@ -631,7 +845,13 @@ export function buildAnalysisUpsertPayload(
   const preconditions_trace = buildPreconditionsTrace(
     (step6_7.precondicoes || []) as Array<Record<string, unknown>>
   )
-  const step1_step2_explicit_trace = buildStep1Step2ExplicitTrace(rawInput, step2)
+  const step1_step2_explicit_trace = buildStep1Step2ExplicitTrace(
+    rawInput,
+    step2,
+    step3,
+    step4,
+    step5
+  )
 
   return {
     event_id: eventId,
