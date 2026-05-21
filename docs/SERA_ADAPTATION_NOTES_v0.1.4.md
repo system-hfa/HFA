@@ -17,7 +17,7 @@ O objetivo não é justificar as adaptações, mas torná-las auditáveis. Um pi
 
 ## 2. Resumo Executivo
 
-**A2 foi um sucesso técnico.** O motor atingiu em A2-n 12/13 P/O/A corretos, FAIL=0, determinism_rate=100%. As correções aplicadas em A2-i a A2-n são tecnicamente estáveis e devem ser preservadas.
+**A2 foi um sucesso técnico.** Em A2-n (candidate-only `N_RUNS=1`), o motor atingiu 12/13 P/O/A corretos, `FAIL=0` e `determinism_rate=100%`. Em A2-o (candidate-only `N_RUNS=3`), a estabilidade dos anchors foi confirmada em 13 fixtures × 3 = 39 runs, com `FAIL=0`, `ERROR=0` e `determinism_rate=92,3%`. O resultado de A2-o teve PASS/PARTIAL influenciado por ERC/partials e não deve ser descrito como “100% determinístico”. As correções aplicadas em A2-i a A2-o são tecnicamente estáveis e devem ser preservadas.
 
 **A2 não é baseline metodológico.** Sucesso em fixtures não equivale a validação metodológica. O motor implementa Hendy de forma implícita e parcial: HFA Step 1/Step 2 não correspondem aos Hendy Step 1/2, goal/perception/action statements pré-ladder estão ausentes, preconditions são derivadas por lookup sem trace causal, e a rastreabilidade das decisões de classificação é insuficiente para auditoria externa.
 
@@ -451,21 +451,21 @@ A3-f: adicionar campos `direct_actor` e `actor_level` ao schema de output, torna
 
 ## 17. AN-012 — Candidates A2 como Sucesso Técnico, Não Baseline Metodológico
 
-**Tema:** Resultado 12/13 P/O/A corretos em A2-n é validação técnica de fixtures, não promoção de baseline
+**Tema:** Resultado técnico de A2 (A2-n/A2-o) valida estabilidade em fixtures, não promoção de baseline
 
 **Status metodológico:** `TECHNICAL_HEURISTIC` com observação de validação técnica; `HFA_ADAPTATION_REQUIRES_NOTE` quando relacionado ao uso de candidates como critério de decisão metodológica.
 
 **Fonte/camada:** HFA — resultado de calibração empírica com fixtures.
 
 **O que o HFA/SERA faz hoje:**
-O motor atingiu em A2-n 12/13 P/O/A corretos, FAIL=0, determinism_rate=100%, com 5 PASS e 8 PARTIAL (divergência apenas em ERC, que é LLM-variável). A única divergência P/O/A remanescente é A0-CHK-002-ADJ (P-A actual vs P-D expected, MOVE_TO_EXPLORATORY). Esse resultado foi obtido por calibração iterativa em A2-i a A2-n, com cada fase atacando um cluster de divergências.
+O motor atingiu em A2-n (candidate-only `N_RUNS=1`) 12/13 P/O/A corretos, `FAIL=0`, `determinism_rate=100%`, com 5 PASS e 8 PARTIAL (divergência principalmente em ERC). A única divergência P/O/A remanescente foi A0-CHK-002-ADJ (P-A actual vs P-D expected, MOVE_TO_EXPLORATORY). Em A2-o (candidate-only `N_RUNS=3`), a estabilidade dos anchors foi confirmada em 39 runs (13 fixtures × 3), com `FAIL=0`, `ERROR=0` e `determinism_rate=92,3%`, mantendo PASS/PARTIAL afetado por ERC/partials. Esse resultado foi obtido por calibração iterativa em A2-i a A2-o, com cada fase atacando um cluster de divergências.
 
 **Por que é adaptação:**
 Sucesso técnico em fixtures não equivale a validação metodológica pelas seguintes razões:
 1. A maioria das fixtures foi criada iterativamente durante a calibração — há risco de circularidade entre motor e fixtures.
 2. O motor implementa Hendy de forma implícita e parcial (ver AN-002, AN-003).
 3. Preconditions são derivadas por lookup, não por trace causal (ver AN-009).
-4. A2-n não foi submetido a N_RUNS=3 (critério de estabilidade estatística).
+4. A2-o já executou candidate-only `N_RUNS=3` e confirmou estabilidade técnica (0 FAIL/ERROR), mas isso não elimina os gaps metodológicos estruturais.
 5. `decision_trace` e `preconditions_trace` formais estavam ausentes até A3-b.
 
 **Risco metodológico:**
@@ -552,7 +552,7 @@ Todo novo gate, patch ou adaptação deve:
 
 O pipeline HFA/SERA em A3-c tem:
 
-- **Resultado técnico sólido**: 12/13 P/O/A corretos, FAIL=0, determinism_rate=100%, motor determinístico e estável.
+- **Resultado técnico sólido**: A2-n (candidate-only `N_RUNS=1`) com 12/13 P/O/A corretos, `FAIL=0`, `determinism_rate=100%`; A2-o (candidate-only `N_RUNS=3`) com 39 runs, `FAIL=0`, `ERROR=0`, `determinism_rate=92,3%` e variação concentrada em ERC/partials.
 - **Rastreabilidade mínima inaugurada**: A3-b adicionou `decision_trace` e `preconditions_trace` mínimos, expondo o caminho de classificação para cada análise.
 - **Adaptações documentadas**: este documento formaliza 12 notas com status, risco e evolução recomendada para cada desvio em relação a Hendy/Daumas.
 
