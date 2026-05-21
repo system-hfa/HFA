@@ -1384,6 +1384,193 @@ function buildExperimentalPerceptionQuestionTrace(
   return items
 }
 
+function extractObjectiveCodesFromText(text: string): string[] {
+  const matches = text.match(/O-[A-D]/g) || []
+  return [...new Set(matches)].filter((code) => OBJECTIVE_CODES.has(code))
+}
+
+const EXPERIMENTAL_OBJECTIVE_LIMITATIONS: string[] = [
+  'trace_experimental_only',
+  'objective_axis_only',
+  'derived_from_final_snapshot',
+  'derived_from_nos_percorridos',
+  'does_not_affect_classification',
+  'no_new_llm_call',
+  'evidence_may_reflect_engine_path_not_independent_fact',
+  'not_a_full_hendy_ladder_yet',
+]
+
+function makeObjectiveQuestionItem(input: {
+  questionId: string
+  questionText: string
+  answer: SeraQuestionAnswer
+  evidence: string | null
+  source: SeraQuestionTraceItem['source']
+  methodologicalStatus: SeraQuestionTraceItem['methodological_status']
+  objectiveCode: string | null
+  discardedCodes: string[]
+  unansweredReason?: string | null
+  extraLimitations?: string[]
+}): SeraQuestionTraceItem {
+  return {
+    question_id: input.questionId,
+    step: 'objective',
+    question_text: input.questionText,
+    answer: input.answer,
+    evidence: input.evidence,
+    confidence: deriveQuestionConfidence(input.answer, input.evidence),
+    source: input.source,
+    methodological_status: input.methodologicalStatus,
+    produced_code: input.objectiveCode,
+    discarded_codes: input.discardedCodes,
+    unanswered_reason: input.unansweredReason || null,
+    limitations: dedupeStrings([
+      ...EXPERIMENTAL_OBJECTIVE_LIMITATIONS,
+      ...(input.extraLimitations || []),
+    ]),
+  }
+}
+
+function buildExperimentalObjectiveQuestionTrace(
+  snapshot: SeraFinalClassificationSnapshot
+): SeraQuestionTraceItem[] {
+  const objectiveCode = snapshot.objective_code
+  const nodeText = joinNodesFromSnapshot(snapshot.step4_final)
+  const discardedText = String(snapshot.step4_final.falhas_descartadas || '')
+  const allText = normalizeText(`${nodeText} ${discardedText}`)
+  const evidenceFromNodes = nodeText.length > 0 ? nodeText : null
+  const discardedCodes = extractObjectiveCodesFromText(discardedText)
+  const code = objectiveCode || 'unknown'
+
+  const items: SeraQuestionTraceItem[] = []
+
+  const goalIdentifiableAnswer: SeraQuestionAnswer =
+    code === 'O-B' || code === 'O-C' || code === 'O-D'
+      ? 'yes'
+      : code === 'O-A'
+        ? 'partial'
+        : 'insufficient_evidence'
+
+  items.push(makeObjectiveQuestionItem({
+    questionId: 'O_GOAL_IDENTIFIABLE',
+    questionText: 'O objetivo perseguido pelo operador no momento do evento é identificável?',
+    answer: goalIdentifiableAnswer,
+    evidence: goalIdentifiableAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `objective_code=${code}`) : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: code === 'O-A' ? 'SOURCE_INFERRED_FROM_HENDY' : 'SOURCE_DIRECT_HENDY',
+    objectiveCode,
+    discardedCodes,
+    unansweredReason: goalIdentifiableAnswer === 'insufficient_evidence' ? 'objective_code_not_available' : null,
+  }))
+
+  const goalCompatibleAnswer: SeraQuestionAnswer =
+    code === 'O-A'
+      ? 'yes'
+      : code === 'O-B' || code === 'O-D'
+        ? 'no'
+        : code === 'O-C'
+          ? 'partial'
+          : 'insufficient_evidence'
+
+  items.push(makeObjectiveQuestionItem({
+    questionId: 'O_GOAL_COMPATIBLE_WITH_SAFE_OPERATION',
+    questionText: 'O objetivo do operador era compatível com a operação segura?',
+    answer: goalCompatibleAnswer,
+    evidence: goalCompatibleAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `objective_code=${code}`) : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+    objectiveCode,
+    discardedCodes,
+    unansweredReason: goalCompatibleAnswer === 'insufficient_evidence' ? 'objective_code_not_available' : null,
+  }))
+
+  const hasRuleSignal = hasAny(allText, [
+    'regra',
+    'limite',
+    'minimo',
+    'procedimento',
+    'briefing',
+    'checklist',
+    'expectativa operacional',
+    'norma',
+  ])
+  const ruleAwarenessAnswer: SeraQuestionAnswer =
+    code === 'O-B'
+      ? 'yes'
+      : code === 'O-C'
+        ? 'partial'
+        : hasRuleSignal
+          ? 'partial'
+          : 'insufficient_evidence'
+
+  items.push(makeObjectiveQuestionItem({
+    questionId: 'O_RULE_LIMIT_PROCEDURE_AWARENESS',
+    questionText: 'O operador tinha consciência da regra, limite ou procedimento relevante?',
+    answer: ruleAwarenessAnswer,
+    evidence: ruleAwarenessAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `objective_code=${code}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: code === 'O-B' ? 'SOURCE_INFERRED_FROM_HENDY' : 'HFA_ADAPTATION_REQUIRES_NOTE',
+    objectiveCode,
+    discardedCodes,
+    unansweredReason: ruleAwarenessAnswer === 'insufficient_evidence' ? 'rule_awareness_not_directly_assessed_from_code' : null,
+  }))
+
+  const consciousDeviationAnswer: SeraQuestionAnswer =
+    code === 'O-C'
+      ? 'yes'
+      : code === 'O-A'
+        ? 'no'
+        : code === 'O-B' || code === 'O-D'
+          ? 'partial'
+          : 'insufficient_evidence'
+
+  items.push(makeObjectiveQuestionItem({
+    questionId: 'O_CONSCIOUS_DEVIATION_EVIDENCE',
+    questionText: 'Há evidência de afastamento consciente de regra, limite ou procedimento?',
+    answer: consciousDeviationAnswer,
+    evidence: consciousDeviationAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `objective_code=${code}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    objectiveCode,
+    discardedCodes,
+    unansweredReason: consciousDeviationAnswer === 'insufficient_evidence'
+      ? 'conscious_deviation_not_directly_assessed_from_code'
+      : null,
+    extraLimitations: ['oc_awareness_strict_is_hfa_adaptation'],
+  }))
+
+  const hasConstraintSignal = hasAny(allText, [
+    'janela',
+    'pressao operacional',
+    'restricao',
+    'necessidade',
+    'urgencia',
+    'urgência',
+    'missao',
+    'contexto operacional',
+  ])
+  const constrainedAnswer: SeraQuestionAnswer =
+    code === 'O-C' || code === 'O-D'
+      ? 'yes'
+      : hasConstraintSignal
+        ? 'partial'
+        : 'not_applicable'
+
+  items.push(makeObjectiveQuestionItem({
+    questionId: 'O_GOAL_CONSTRAINED_BY_OPERATIONAL_CONTEXT',
+    questionText: 'O objetivo do operador estava constrangido por contexto operacional externo?',
+    answer: constrainedAnswer,
+    evidence: constrainedAnswer !== 'not_applicable' ? (evidenceFromNodes ?? `objective_code=${code}`) : null,
+    source: code === 'O-C' || code === 'O-D' ? 'daumas_operationalization' : 'hfa_adaptation',
+    methodologicalStatus: code === 'O-C' || code === 'O-D' ? 'DAUMAS_APPLIED_IMPROVEMENT' : 'HFA_ADAPTATION_REQUIRES_NOTE',
+    objectiveCode,
+    discardedCodes,
+    unansweredReason: constrainedAnswer === 'not_applicable' ? 'no_operational_constraint_signal_in_step4_nodes' : null,
+  }))
+
+  return items
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -1571,6 +1758,7 @@ export function buildAnalysisUpsertPayload(
     normalizedRecommendations,
   })
   const experimentalPerceptionTrace = buildExperimentalPerceptionQuestionTrace(snapshotBeforeTrace)
+  const experimentalObjectiveTrace = buildExperimentalObjectiveQuestionTrace(snapshotBeforeTrace)
   const snapshotAfterTrace = buildFinalClassificationSnapshot({
     rawInput,
     step3,
@@ -1650,6 +1838,7 @@ export function buildAnalysisUpsertPayload(
       },
       trace_experimental: {
         perception_question_trace: experimentalPerceptionTrace,
+        objective_question_trace: experimentalObjectiveTrace,
       },
     },
     source_type: st,
