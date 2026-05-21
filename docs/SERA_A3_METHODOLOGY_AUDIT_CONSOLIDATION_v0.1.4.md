@@ -9,6 +9,8 @@
 
 ---
 
+**Nota pós-A3-b/A3-c:** este documento é uma consolidação A3-a-final pré-A3-b. Posteriormente, A3-b implementou `decision_trace`/`preconditions_trace` mínimos e A3-c formalizou `ADAPTATION_NOTES`. As recomendações de A3-b/A3-c neste texto devem ser lidas como histórico de decisão, não como tarefas pendentes.
+
 ## 1. Resumo Executivo
 
 Esta consolidação integra três insumos — a revisão crítica Opus da auditoria A3, a auditoria empírica do código (A3-a-mini) e os documentos de cada fase A2 — para estabelecer a governança metodológica correta do HFA/SERA.
@@ -21,14 +23,14 @@ O SERA de Hendy define a **lógica causal original**. Daumas a **aplica e operac
 
 | Dimensão | Status |
 |---|---|
-| Resultado técnico A2 (12/13 P/O/A corretos, FAIL=0) | Tecnicamente estável |
+| Resultado técnico A2 | A2-n (`N_RUNS=1`): 12/13 P/O/A, `FAIL=0`, `determinism_rate=100%`; A2-o (`N_RUNS=3`): 39 runs, `FAIL=0`, `ERROR=0`, `determinism_rate=92,3%` |
 | Promoção para baseline metodológico oficial | NÃO AUTORIZADA |
 | Implementação explícita de Step 1/2 de Hendy | AUSENTE |
 | Ladders interrogativas com question IDs | AUSENTE — gates + LLM fallback |
 | Preconditions por trace causal | AUSENTE — lookup por código P/O/A/ERC |
-| decision_trace estruturado | AUSENTE |
+| decision_trace estruturado | AUSENTE no recorte A3-a; parcialmente endereçado em A3-b |
 | Papel de Daumas documentado formalmente | AUSENTE (corrigido neste documento) |
-| Próximo passo recomendado | A3-b: decision_trace mínimo sem alterar classificação |
+| Próximo passo recomendado (histórico) | A3-b foi implementada; após A3-c, resolver pendências de ambiente/typecheck antes da próxima fase de código |
 
 ---
 
@@ -131,11 +133,13 @@ O MDC de Daumas é uma técnica de **elicitação e aprofundamento narrativo** �
 
 ---
 
-## 4. Resultado Técnico A2 (A2-n)
+## 4. Resultado Técnico A2 (A2-n e A2-o)
 
 ### 4.1 Status consolidado
 
-O motor atingiu, na iteração A2-n, o seguinte resultado:
+O motor atingiu os seguintes resultados:
+
+**A2-n (candidate-only `N_RUNS=1`):**
 
 | Métrica | Valor |
 |---|---|
@@ -146,6 +150,13 @@ O motor atingiu, na iteração A2-n, o seguinte resultado:
 | ERROR | 0 |
 | determinism_rate | 100% |
 | Divergência remanescente | A0-CHK-002-ADJ: P-A actual vs P-D expected (MOVE_TO_EXPLORATORY) |
+
+**A2-o (candidate-only `N_RUNS=3`):**
+- 13 fixtures × 3 = 39 runs
+- `FAIL=0`
+- `ERROR=0`
+- `determinism_rate=92,3%`
+- estabilidade técnica dos anchors confirmada, sem autorizar baseline metodológico
 
 ### 4.2 Trajetória A2
 
@@ -165,7 +176,7 @@ Sucesso técnico em fixtures não equivale a validação metodológica. As razõ
 1. A maior parte das fixtures foi criada iterativamente durante o processo de calibração — há risco de circularidade entre motor e fixtures.
 2. O motor implementa Hendy de forma implícita e parcial (ver seção 7).
 3. As preconditions são derivadas por lookup, não por trace causal.
-4. A2-n não foi submetido a N_RUNS=3 (critério de estabilidade estatística).
+4. A2-o submeteu candidate-only `N_RUNS=3` e confirmou estabilidade técnica (0 FAIL/ERROR), mas isso não elimina os gaps metodológicos estruturais.
 5. Decisão Opus: confirmar empiricamente Step 1/2 e preconditions antes de qualquer promoção.
 
 ---
@@ -233,7 +244,7 @@ Os cinco riscos identificados pela revisão Opus permanecem válidos após a aud
 
 A recomendação Opus de não promover baseline, confirmar empiricamente Step 1/2 e preconditions antes de avançar para decision_trace, é mantida e endossada.
 
-A auditoria A3-a-mini confirmou empiricamente os pontos que a revisão Opus levantou como hipóteses. O próximo passo lógico é A3-b: adicionar rastreabilidade (decision_trace mínimo) sem alterar a lógica de classificação.
+A auditoria A3-a-mini confirmou empiricamente os pontos que a revisão Opus levantou como hipóteses. Historicamente, o próximo passo foi A3-b (rastreabilidade mínima), já implementada posteriormente.
 
 ---
 
@@ -360,21 +371,21 @@ Cada item abaixo deve ser formalmente documentado como ADAPTATION_NOTE antes de 
 
 ---
 
-## 10. Decisão de Arquitetura
+## 10. Decisão de Arquitetura (Histórico)
 
 ### 10.1 Não reescrever o motor agora
 
-O motor atual está tecnicamente estável (12/13 P/O/A, FAIL=0, determinism_rate=100%). Reescrever a arquitetura de gates para ladders interrogativas com question IDs, ou adicionar uma etapa de extração de goal/perception/action statements, são mudanças de alto impacto que requerem nova campanha de fixtures e validação extensiva.
+No recorte A3-a, o motor estava tecnicamente estável em A2-n (12/13 P/O/A, `FAIL=0`, `determinism_rate=100%` em `N_RUNS=1`). Posteriormente, A2-o confirmou em `N_RUNS=3` (39 runs) `FAIL=0`, `ERROR=0` e `determinism_rate=92,3%`. Reescrever a arquitetura de gates para ladders interrogativas com question IDs, ou adicionar uma etapa de extração de goal/perception/action statements, continua sendo mudança de alto impacto que requer nova campanha de fixtures e validação extensiva.
 
 Essas mudanças são desejáveis no longo prazo, mas não agora.
 
 ### 10.2 Não promover baseline agora
 
-O baseline oficial exige que o motor implemente a metodologia de forma rastreável e documentada. As lacunas de rastreabilidade identificadas (decision_trace ausente, preconditions_trace ausente, Hendy Step 2 colapsado) precisam ser endereçadas antes.
+O baseline oficial exige que o motor implemente a metodologia de forma rastreável e documentada. As lacunas de rastreabilidade identificadas no recorte A3-a foram parcialmente endereçadas em A3-b (`decision_trace`/`preconditions_trace` mínimos), mas permanecem abertas lacunas estruturais (Hendy Step 2 explícito, question_trace completo, preconditions causal trace) antes de qualquer promoção de baseline.
 
-### 10.3 Avançar para A3-b: decision_trace mínimo sem alterar classificação
+### 10.3 Histórico A3-b: decision_trace mínimo sem alterar classificação
 
-A3-b tem escopo cirurgico: adicionar rastreabilidade ao que já existe, sem alterar a lógica de classificação.
+A3-b foi implementada com escopo cirúrgico: adicionar rastreabilidade ao que já existe, sem alterar a lógica de classificação.
 
 O objetivo é que, para cada análise, seja possível saber:
 - Para cada código P/O/A: o resultado veio de gate determinístico, infer function ou nó LLM?
@@ -385,7 +396,7 @@ Isso resolve a lacuna mais urgente (auditabilidade) sem nenhuma mudança de comp
 
 ### 10.4 Preservar o que funcionou tecnicamente em A2
 
-As correções de A2-i a A2-n (O-C awareness, P-C/A-E, P-D/A-H, A-G, P-H, P-G, A-A/A-B) são tecnicamente estáveis e devem ser preservadas. Seu status metodológico é TECHNICAL_HEURISTIC ou HFA_ADAPTATION_REQUIRES_NOTE — mas funcionam empiricamente e a A3-b não deve alterá-las.
+As correções de A2-i a A2-n (O-C awareness, P-C/A-E, P-D/A-H, A-G, P-H, P-G, A-A/A-B) são tecnicamente estáveis e devem ser preservadas. Seu status metodológico é TECHNICAL_HEURISTIC ou HFA_ADAPTATION_REQUIRES_NOTE — funcionam empiricamente e A3-b preservou esse comportamento.
 
 ---
 
@@ -441,7 +452,7 @@ Reiterando explicitamente para evitar scope creep:
 
 ---
 
-## 13. Próximas Fases Propostas
+## 13. Próximas Fases Propostas (Histórico)
 
 | Fase | Foco | Pré-requisito |
 |---|---|---|
@@ -452,19 +463,19 @@ Reiterando explicitamente para evitar scope creep:
 | **A3-f** | Avaliação de `unsafe_condition` e `direct_actor` no schema de banco | A3-c + decisão de produto |
 | **A3-g** | Avaliação de promoção de baseline | A3-b + A3-c completos + N_RUNS=3 candidate |
 
-A ordem de A3-d, A3-e, A3-f pode ser ajustada por decisão humana conforme prioridade de negócio. A3-b e A3-c são bloqueadores para qualquer promoção de baseline.
+A ordem de A3-d, A3-e, A3-f pode ser ajustada por decisão humana conforme prioridade de negócio. Como A3-b e A3-c já foram executadas, o próximo passo prático é resolver pendências de ambiente/typecheck antes de nova fase de código e, depois, avançar para Step 1/2 explícitos ou preconditions causal trace conforme decisão humana.
 
 ---
 
 ## 14. Conclusão
 
-A2 foi um **sucesso técnico**: 12/13 P/O/A corretos, FAIL=0, motor determinístico e estável. As correções de A2-i a A2-n resolveram clusters específicos com precisão cirúrgica e sem regressões.
+A2 foi um **sucesso técnico**: em A2-n (`N_RUNS=1`), 12/13 P/O/A corretos com `FAIL=0` e `determinism_rate=100%`; em A2-o (`N_RUNS=3`), 39 runs com `FAIL=0`, `ERROR=0` e `determinism_rate=92,3%`, confirmando estabilidade técnica dos anchors sem promoção metodológica. As correções de A2-i a A2-n resolveram clusters específicos com precisão cirúrgica e sem regressões.
 
 A2 **não é um baseline metodológico**: o motor implementa Hendy de forma implícita e parcial, as preconditions não têm trace causal, e a rastreabilidade das decisões de classificação é insuficiente para auditoria externa.
 
 **Daumas não é uma fonte secundária fraca**. É a operacionalização aplicada do SERA no contexto offshore/MDC que torna a metodologia ensinável, tabulável, comparável e utilizável em banco de dados e dashboards. As melhorias de Daumas — especialmente a codificação sistemática das falhas e a separação didática das etapas — devem ser aproveitadas e mantidas quando preservam a lógica causal de Hendy.
 
-**O próximo passo é rastreabilidade, não nova classificação.** A3-b deve adicionar `decision_trace` e `preconditions_trace` mínimos sem alterar nada na lógica de classificação. Isso abre o caminho para auditoria, ADAPTATION_NOTES formais e, posteriormente, avaliação de promoção de baseline.
+**O próximo passo após A3-c é consolidar ambiente/typecheck antes de nova fase de código.** Com A3-b já implementada (`decision_trace`/`preconditions_trace` mínimos) e A3-c formalizada (ADAPTATION_NOTES), a evolução seguinte deve ser decidida entre Step 1/2 explícitos e preconditions causal trace, sem alterar classificações sem decisão humana explícita.
 
 ---
 

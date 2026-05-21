@@ -8,6 +8,8 @@
 
 ---
 
+**Nota pós-A3-b:** este documento descreve o estado observado antes da implementação de A3-b. As lacunas `decision_trace`, `preconditions_trace` e preservação de `sourceRuleId` foram parcialmente endereçadas em `docs/SERA_DECISION_TRACE_MINIMUM_v0.1.4.md`. Permanecem abertas as lacunas de Step 1/2 explícitos, `unsafe_condition`, `direct_actor`, goal/perception/action statements pré-ladder, question_trace completo e unanswered_questions.
+
 ## 1. Resumo Executivo
 
 Esta auditoria confirma empiricamente, lendo o código atual do pipeline HFA/SERA, se os elementos centrais do SERA de Hendy estão explicitamente implementados: departure from safe operation, unsafe act/condition, ator direto, goal/perception/action statements, ladders interrogativas e preconditions por active failure.
