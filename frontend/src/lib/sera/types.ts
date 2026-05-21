@@ -115,6 +115,32 @@ export interface SeraPreconditionsTrace {
   source_rule_ids?: string[]
 }
 
+export type SeraEvidenceQuality = 'sufficient' | 'partial' | 'insufficient' | 'unknown'
+export type SeraUnsafeEventType = 'unsafe_act' | 'unsafe_condition' | 'mixed' | 'unknown'
+export type SeraActorLevel =
+  | 'frontline_operator'
+  | 'crew'
+  | 'maintenance'
+  | 'supervision'
+  | 'organization'
+  | 'unknown'
+
+export interface SeraStep1Step2ExplicitTrace {
+  safe_operation_escape_point?: string | null
+  unsafe_event_type?: SeraUnsafeEventType
+  unsafe_act_statement?: string | null
+  unsafe_condition_statement?: string | null
+  direct_actor?: string | null
+  actor_level?: SeraActorLevel
+  goal_statement?: string | null
+  perception_statement?: string | null
+  action_statement?: string | null
+  evidence_quality?: SeraEvidenceQuality
+  unanswered_questions?: string[]
+  source?: 'derived_from_existing_steps'
+  limitations?: string[]
+}
+
 export interface Step1Result {
   summary?: string
   event_date?: string | null

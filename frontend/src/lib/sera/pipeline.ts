@@ -28,11 +28,16 @@ import {
 import { selectDeterministicPreconditions } from '@/lib/sera/rules/preconditions'
 import type {
   RawFlowNode,
+  SeraActorLevel,
   SeraAxisDecisionTrace,
   SeraDecisionSource,
   SeraDecisionTrace,
+  SeraEvidenceQuality,
   SeraPreconditionsTrace,
+  SeraStep1Step2ExplicitTrace,
+  SeraUnsafeEventType,
   Step1Result,
+  Step2Result,
   StepFlowResult,
 } from '@/lib/sera/types'
 
@@ -357,6 +362,114 @@ function buildPreconditionsTrace(
   }
 }
 
+function cleanText(value: unknown): string {
+  return String(value ?? '').trim()
+}
+
+function inferActorLevel(agent: string): SeraActorLevel {
+  const t = normalizeText(agent)
+  if (!t) return 'unknown'
+  if (hasAny(t, ['crew', 'tripulacao', 'piloto', 'pilot', 'copiloto', 'comandante'])) return 'crew'
+  if (hasAny(t, ['manutencao', 'mecanico', 'maintenance'])) return 'maintenance'
+  if (hasAny(t, ['supervisor', 'supervisao', 'supervision'])) return 'supervision'
+  if (hasAny(t, ['organizacao', 'organizacional', 'empresa', 'gestao', 'management'])) return 'organization'
+  if (hasAny(t, ['operador', 'operator', 'tecnico'])) return 'frontline_operator'
+  return 'unknown'
+}
+
+function detectUnsafeConditionStatement(step2: Step2Result, rawInput: string): string | null {
+  const justificativa = cleanText(step2.justificativa)
+  const sourceText = normalizeText(`${rawInput} ${justificativa}`)
+  const hasConditionSignal = hasAny(sourceText, [
+    'unsafe condition',
+    'condicao insegura',
+    'condicao latente',
+    'falha latente',
+    'ambiente inseguro',
+    'sistema inseguro',
+  ])
+  if (!hasConditionSignal) return null
+  return justificativa || null
+}
+
+function inferEvidenceQuality(input: {
+  safeOperationEscapePoint: string | null
+  directActor: string | null
+  goalStatement: string | null
+  perceptionStatement: string | null
+  actionStatement: string | null
+}): SeraEvidenceQuality {
+  const hasEscape = Boolean(input.safeOperationEscapePoint)
+  const hasActor = Boolean(input.directActor)
+  const hasAction = Boolean(input.actionStatement)
+  if (!hasEscape || !hasActor) return 'insufficient'
+  if (!input.goalStatement || !input.perceptionStatement || !hasAction) return 'partial'
+  if (hasEscape && hasActor && hasAction) return 'sufficient'
+  return 'unknown'
+}
+
+function buildStep1Step2ExplicitTrace(rawInput: string, step2: Step2Result): SeraStep1Step2ExplicitTrace {
+  const momento = cleanText(step2.momento)
+  const unsafeAct = cleanText(step2.ato_inseguro_factual)
+  const justificativa = cleanText(step2.justificativa)
+  const directActorValue = cleanText(step2.agente)
+  const directActor = directActorValue || null
+
+  const safeOperationEscapePointParts = [momento, unsafeAct, justificativa].filter(Boolean)
+  const safeOperationEscapePoint =
+    safeOperationEscapePointParts.length > 0 ? safeOperationEscapePointParts.join(' | ') : null
+
+  const unsafeConditionStatement = detectUnsafeConditionStatement(step2, rawInput)
+  const hasUnsafeAct = Boolean(unsafeAct)
+  const hasUnsafeCondition = Boolean(unsafeConditionStatement)
+
+  const unsafeEventType: SeraUnsafeEventType = hasUnsafeAct && hasUnsafeCondition
+    ? 'mixed'
+    : hasUnsafeAct
+      ? 'unsafe_act'
+      : hasUnsafeCondition
+        ? 'unsafe_condition'
+        : 'unknown'
+
+  const goalStatement: string | null = null
+  const perceptionStatement: string | null = null
+  const actionStatement = unsafeAct || null
+  const actorLevel = directActor ? inferActorLevel(directActor) : 'unknown'
+
+  const unansweredQuestions: string[] = []
+  if (!goalStatement) unansweredQuestions.push('goal_statement_not_explicit')
+  if (!perceptionStatement) unansweredQuestions.push('perception_statement_not_explicit')
+  if (!unsafeConditionStatement) unansweredQuestions.push('unsafe_condition_not_separated')
+  if (!actionStatement) unansweredQuestions.push('action_statement_not_explicit')
+  if (actorLevel === 'unknown') unansweredQuestions.push('actor_level_uncertain')
+
+  return {
+    safe_operation_escape_point: safeOperationEscapePoint,
+    unsafe_event_type: unsafeEventType,
+    unsafe_act_statement: unsafeAct || null,
+    unsafe_condition_statement: unsafeConditionStatement,
+    direct_actor: directActor,
+    actor_level: actorLevel,
+    goal_statement: goalStatement,
+    perception_statement: perceptionStatement,
+    action_statement: actionStatement,
+    evidence_quality: inferEvidenceQuality({
+      safeOperationEscapePoint,
+      directActor,
+      goalStatement,
+      perceptionStatement,
+      actionStatement,
+    }),
+    unanswered_questions: unansweredQuestions,
+    source: 'derived_from_existing_steps',
+    limitations: [
+      'A3-d1: trace observacional derivado apenas de steps existentes.',
+      'Nao implementa Hendy Step 2 completo (goal/perception/action statements explicitos).',
+      'Nao adiciona nova chamada LLM e nao altera classificacao P/O/A/ERC.',
+    ],
+  }
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -518,6 +631,7 @@ export function buildAnalysisUpsertPayload(
   const preconditions_trace = buildPreconditionsTrace(
     (step6_7.precondicoes || []) as Array<Record<string, unknown>>
   )
+  const step1_step2_explicit_trace = buildStep1Step2ExplicitTrace(rawInput, step2)
 
   return {
     event_id: eventId,
@@ -572,6 +686,7 @@ export function buildAnalysisUpsertPayload(
       step6_7,
       decision_trace,
       preconditions_trace,
+      step1_step2_explicit_trace,
     },
     source_type: st,
     source_file_name: sourceMeta?.sourceFileName ?? null,
