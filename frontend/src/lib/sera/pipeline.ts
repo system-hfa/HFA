@@ -1175,6 +1175,215 @@ function compareFinalClassificationSnapshot(
   }
 }
 
+function joinNodesFromSnapshot(step: DeepReadonly<StepFlowResult>): string {
+  return step.nos_percorridos
+    .map((n) => String((n as RawFlowNode).justificativa || ''))
+    .filter(Boolean)
+    .join('; ')
+}
+
+function extractPerceptionCodesFromText(text: string): string[] {
+  const matches = text.match(/P-[A-H]/g) || []
+  return [...new Set(matches)].filter((code) => PERCEPTION_CODES.has(code))
+}
+
+const EXPERIMENTAL_PERCEPTION_LIMITATIONS: string[] = [
+  'trace_experimental_only',
+  'perception_axis_only',
+  'derived_from_final_snapshot',
+  'derived_from_nos_percorridos',
+  'does_not_affect_classification',
+  'no_new_llm_call',
+  'evidence_may_reflect_engine_path_not_independent_fact',
+  'not_a_full_hendy_ladder_yet',
+]
+
+function makePerceptionQuestionItem(input: {
+  questionId: string
+  questionText: string
+  answer: SeraQuestionAnswer
+  evidence: string | null
+  source: SeraQuestionTraceItem['source']
+  methodologicalStatus: SeraQuestionTraceItem['methodological_status']
+  perceptionCode: string | null
+  discardedCodes: string[]
+  unansweredReason?: string | null
+}): SeraQuestionTraceItem {
+  return {
+    question_id: input.questionId,
+    step: 'perception',
+    question_text: input.questionText,
+    answer: input.answer,
+    evidence: input.evidence,
+    confidence: deriveQuestionConfidence(input.answer, input.evidence),
+    source: input.source,
+    methodological_status: input.methodologicalStatus,
+    produced_code: input.perceptionCode,
+    discarded_codes: input.discardedCodes,
+    unanswered_reason: input.unansweredReason || null,
+    limitations: [...EXPERIMENTAL_PERCEPTION_LIMITATIONS],
+  }
+}
+
+function buildExperimentalPerceptionQuestionTrace(
+  snapshot: SeraFinalClassificationSnapshot
+): SeraQuestionTraceItem[] {
+  const perceptionCode = snapshot.perception_code
+  const nodeText = joinNodesFromSnapshot(snapshot.step3_final)
+  const discardedText = String(snapshot.step3_final.falhas_descartadas || '')
+  const allText = normalizeText(`${nodeText} ${discardedText}`)
+  const evidenceFromNodes = nodeText.length > 0 ? nodeText : null
+  const discardedCodes = extractPerceptionCodesFromText(discardedText)
+  const code = perceptionCode || 'unknown'
+
+  const items: SeraQuestionTraceItem[] = []
+
+  const sensoryAnswer: SeraQuestionAnswer =
+    code === 'P-B'
+      ? 'no'
+      : code === 'P-F'
+        ? 'partial'
+        : perceptionCode !== null
+          ? 'yes'
+          : 'insufficient_evidence'
+
+  items.push(makePerceptionQuestionItem({
+    questionId: 'P_SENSORY_INFORMATION_AVAILABLE',
+    questionText: 'As informações sensoriais necessárias estavam fisicamente disponíveis para o operador?',
+    answer: sensoryAnswer,
+    evidence: sensoryAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `perception_code=${code}`) : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: 'SOURCE_INFERRED_FROM_HENDY',
+    perceptionCode,
+    discardedCodes,
+    unansweredReason: sensoryAnswer === 'insufficient_evidence' ? 'perception_code_not_available' : null,
+  }))
+
+  const attendedAnswer: SeraQuestionAnswer =
+    code === 'P-G' || code === 'P-D'
+      ? 'no'
+      : code === 'P-B'
+        ? 'insufficient_evidence'
+        : code === 'P-H'
+          ? 'partial'
+          : code === 'P-C' || code === 'P-E' || code === 'P-F'
+            ? 'yes'
+            : 'insufficient_evidence'
+
+  items.push(makePerceptionQuestionItem({
+    questionId: 'P_INFORMATION_ATTENDED',
+    questionText: 'O operador prestou atenção às informações disponíveis?',
+    answer: attendedAnswer,
+    evidence: attendedAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `perception_code=${code}`) : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+    perceptionCode,
+    discardedCodes,
+    unansweredReason: attendedAnswer === 'insufficient_evidence' ? 'attention_not_directly_assessed_from_code' : null,
+  }))
+
+  const interpretedAnswer: SeraQuestionAnswer =
+    code === 'P-C' || code === 'P-F' || code === 'P-E' || code === 'P-H'
+      ? 'no'
+      : code === 'P-B'
+        ? 'not_applicable'
+        : code === 'P-D'
+          ? 'partial'
+          : 'insufficient_evidence'
+
+  items.push(makePerceptionQuestionItem({
+    questionId: 'P_INFORMATION_INTERPRETED',
+    questionText: 'O operador interpretou corretamente as informações percebidas?',
+    answer: interpretedAnswer,
+    evidence: interpretedAnswer !== 'insufficient_evidence' && interpretedAnswer !== 'not_applicable'
+      ? (evidenceFromNodes ?? `perception_code=${code}`)
+      : null,
+    source: 'hendy_ladder',
+    methodologicalStatus: 'SOURCE_DIRECT_HENDY',
+    perceptionCode,
+    discardedCodes,
+    unansweredReason: interpretedAnswer === 'insufficient_evidence'
+      ? 'interpretation_not_directly_assessed_from_code'
+      : null,
+  }))
+
+  const hasConflictSignal = hasAny(allText, [
+    'conflito',
+    'divergencia',
+    'ambigua',
+    'contraditoria',
+    'briefing confuso',
+  ])
+  const conflictAnswer: SeraQuestionAnswer =
+    code === 'P-H' || hasConflictSignal ? 'no' : 'not_applicable'
+
+  items.push(makePerceptionQuestionItem({
+    questionId: 'P_CONFLICTING_INFORMATION_INTEGRATED',
+    questionText: 'O operador integrou corretamente informações conflitantes ou divergentes?',
+    answer: conflictAnswer,
+    evidence: conflictAnswer === 'no' ? (evidenceFromNodes ?? `perception_code=${code}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: code === 'P-H' ? 'SOURCE_INFERRED_FROM_HENDY' : 'HFA_ADAPTATION_REQUIRES_NOTE',
+    perceptionCode,
+    discardedCodes,
+    unansweredReason: conflictAnswer === 'not_applicable' ? 'no_conflict_signal_in_step3_nodes' : null,
+  }))
+
+  const knowledgeAnswer: SeraQuestionAnswer =
+    code === 'P-C'
+      ? 'no'
+      : code === 'P-G'
+        ? 'yes'
+        : code === 'P-F'
+          ? 'partial'
+          : 'insufficient_evidence'
+
+  items.push(makePerceptionQuestionItem({
+    questionId: 'P_KNOWLEDGE_SUFFICIENT',
+    questionText: 'O operador possuía conhecimento técnico suficiente para interpretar as informações percebidas?',
+    answer: knowledgeAnswer,
+    evidence: knowledgeAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `perception_code=${code}`) : null,
+    source: code === 'P-C' ? 'hendy_ladder' : 'daumas_operationalization',
+    methodologicalStatus: code === 'P-C' ? 'SOURCE_DIRECT_HENDY' : 'DAUMAS_OPERATIONALIZATION',
+    perceptionCode,
+    discardedCodes,
+    unansweredReason: knowledgeAnswer === 'insufficient_evidence'
+      ? 'knowledge_not_directly_assessed_from_perception_code'
+      : null,
+  }))
+
+  const hasTimePressureSignal = hasAny(allText, [
+    'pressao temporal',
+    'pressao de tempo',
+    'tempo insuficiente',
+    'sobrecarga atencional',
+    'alta demanda',
+    'multiplos estimulos',
+  ])
+  const timeAnswer: SeraQuestionAnswer =
+    code === 'P-D' || code === 'P-E'
+      ? 'no'
+      : hasTimePressureSignal
+        ? 'partial'
+        : 'insufficient_evidence'
+
+  items.push(makePerceptionQuestionItem({
+    questionId: 'P_TIME_ATTENTION_ADEQUATE',
+    questionText: 'O operador dispunha de tempo e recursos atencionais adequados?',
+    answer: timeAnswer,
+    evidence: timeAnswer !== 'insufficient_evidence' ? (evidenceFromNodes ?? `perception_code=${code}`) : null,
+    source: code === 'P-D' || code === 'P-E' ? 'daumas_operationalization' : 'technical_heuristic',
+    methodologicalStatus: code === 'P-D' || code === 'P-E' ? 'DAUMAS_APPLIED_IMPROVEMENT' : 'TECHNICAL_HEURISTIC',
+    perceptionCode,
+    discardedCodes,
+    unansweredReason: timeAnswer === 'insufficient_evidence'
+      ? 'time_attention_not_directly_assessed_from_code'
+      : null,
+  }))
+
+  return items
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -1361,6 +1570,7 @@ export function buildAnalysisUpsertPayload(
     normalizedPreconditions,
     normalizedRecommendations,
   })
+  const experimentalPerceptionTrace = buildExperimentalPerceptionQuestionTrace(snapshotBeforeTrace)
   const snapshotAfterTrace = buildFinalClassificationSnapshot({
     rawInput,
     step3,
@@ -1437,6 +1647,9 @@ export function buildAnalysisUpsertPayload(
         ],
         stable_after_trace_build: traceIsolationComparison.stable,
         changed_fields: traceIsolationComparison.changed_fields,
+      },
+      trace_experimental: {
+        perception_question_trace: experimentalPerceptionTrace,
       },
     },
     source_type: st,
