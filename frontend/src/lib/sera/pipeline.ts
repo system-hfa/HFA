@@ -1799,6 +1799,108 @@ function buildExperimentalActionQuestionTrace(
   return items
 }
 
+const EXPERIMENTAL_PRECONDITIONS_LIMITATIONS: string[] = [
+  'trace_experimental_only',
+  'preconditions_axis_only',
+  'derived_from_final_snapshot',
+  'derived_from_preconditions_trace',
+  'does_not_affect_classification',
+  'no_new_llm_call',
+  'evidence_may_reflect_engine_path_not_independent_fact',
+  'precondition_source_may_be_matrix_or_heuristic',
+  'not_full_hendy_precondition_causal_chain_yet',
+  'active_failure_to_precondition_link_may_be_implicit',
+]
+
+function makePreconditionsQuestionItem(input: {
+  questionId: string
+  questionText: string
+  answer: SeraQuestionAnswer
+  evidence: string | null
+  source: SeraQuestionTraceItem['source']
+  methodologicalStatus: SeraQuestionTraceItem['methodological_status']
+  producedCodeStr: string | null
+  discardedCodes: string[]
+  unansweredReason?: string | null
+  extraLimitations?: string[]
+}): SeraQuestionTraceItem {
+  return {
+    question_id: input.questionId,
+    step: 'preconditions',
+    question_text: input.questionText,
+    answer: input.answer,
+    evidence: input.evidence,
+    confidence: deriveQuestionConfidence(input.answer, input.evidence),
+    source: input.source,
+    methodological_status: input.methodologicalStatus,
+    produced_code: input.producedCodeStr,
+    discarded_codes: input.discardedCodes,
+    unanswered_reason: input.unansweredReason || null,
+    limitations: dedupeStrings([
+      ...EXPERIMENTAL_PRECONDITIONS_LIMITATIONS,
+      ...(input.extraLimitations || []),
+    ]),
+  }
+}
+
+function buildExperimentalPreconditionsQuestionTrace(
+  snapshot: SeraFinalClassificationSnapshot
+): SeraQuestionTraceItem[] {
+  const preconditionCodes = [...snapshot.precondition_codes]
+  const precondicoes = Array.isArray(snapshot.step6_7_final.precondicoes)
+    ? snapshot.step6_7_final.precondicoes
+    : []
+  const evidenceTexts = precondicoes
+    .map((p) => String(p.evidencia_no_relato ?? ''))
+    .filter(Boolean)
+  const joinedCodes = preconditionCodes.length > 0 ? preconditionCodes.join(', ') : null
+  const evidenceStr = evidenceTexts.length > 0 ? evidenceTexts.join('; ') : null
+  const hasPreconditions = preconditionCodes.length > 0
+
+  const items: SeraQuestionTraceItem[] = []
+
+  const linkedAnswer: SeraQuestionAnswer = hasPreconditions ? 'partial' : 'insufficient_evidence'
+  items.push(makePreconditionsQuestionItem({
+    questionId: 'PRE_ACTIVE_FAILURE_LINKED_TO_PRECONDITION',
+    questionText: 'A falha ativa identificada (P/O/A) está vinculada a uma ou mais pré-condições?',
+    answer: linkedAnswer,
+    evidence: hasPreconditions ? (evidenceStr ?? `precondition_codes=${joinedCodes}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    producedCodeStr: joinedCodes,
+    discardedCodes: [],
+    unansweredReason: !hasPreconditions ? 'no_precondition_codes_in_snapshot' : null,
+  }))
+
+  const evidencedAnswer: SeraQuestionAnswer = evidenceStr !== null ? 'partial' : 'insufficient_evidence'
+  items.push(makePreconditionsQuestionItem({
+    questionId: 'PRE_PRECONDITION_SUPPORTED_BY_EVIDENCE',
+    questionText: 'Há evidência textual no relato que suporte a identificação das pré-condições?',
+    answer: evidencedAnswer,
+    evidence: evidenceStr,
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    producedCodeStr: joinedCodes,
+    discardedCodes: [],
+    unansweredReason: evidencedAnswer === 'insufficient_evidence' ? 'no_evidencia_no_relato_in_preconditions' : null,
+  }))
+
+  const interventionAnswer: SeraQuestionAnswer = hasPreconditions ? 'partial' : 'unknown'
+  items.push(makePreconditionsQuestionItem({
+    questionId: 'PRE_PRECONDITION_IS_INTERVENTION_POINT',
+    questionText: 'A pré-condição identificada representa um ponto plausível de intervenção de segurança operacional?',
+    answer: interventionAnswer,
+    evidence: hasPreconditions ? (evidenceStr ?? `precondition_codes=${joinedCodes}`) : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: hasPreconditions ? 'SOURCE_INFERRED_FROM_HENDY' : 'HFA_ADAPTATION_REQUIRES_NOTE',
+    producedCodeStr: joinedCodes,
+    discardedCodes: [],
+    unansweredReason: !hasPreconditions ? 'no_precondition_codes_in_snapshot' : null,
+  }))
+
+  return items
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -1988,6 +2090,7 @@ export function buildAnalysisUpsertPayload(
   const experimentalPerceptionTrace = buildExperimentalPerceptionQuestionTrace(snapshotBeforeTrace)
   const experimentalObjectiveTrace = buildExperimentalObjectiveQuestionTrace(snapshotBeforeTrace)
   const experimentalActionTrace = buildExperimentalActionQuestionTrace(snapshotBeforeTrace)
+  const experimentalPreconditionsTrace = buildExperimentalPreconditionsQuestionTrace(snapshotBeforeTrace)
   const snapshotAfterTrace = buildFinalClassificationSnapshot({
     rawInput,
     step3,
@@ -2069,6 +2172,7 @@ export function buildAnalysisUpsertPayload(
         perception_question_trace: experimentalPerceptionTrace,
         objective_question_trace: experimentalObjectiveTrace,
         action_question_trace: experimentalActionTrace,
+        preconditions_question_trace: experimentalPreconditionsTrace,
       },
     },
     source_type: st,
