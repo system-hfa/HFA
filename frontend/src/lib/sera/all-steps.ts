@@ -1708,6 +1708,33 @@ function hasConsciousObjectiveDeviationEvidence(text: string): boolean {
   ])
 }
 
+function evidenceOfKnownLimitDeviationContinuation(text: string): boolean {
+  const hasLimitDeviation = containsAny(text, [
+    'limites minimos',
+    'limites de visibilidade',
+    'limites de teto',
+    'minimos de teto e visibilidade',
+    'ultrapassou os limites',
+    'limites haviam sido ultrapassados',
+    'abaixo da altitude minima',
+    'abaixo da mda',
+    'violacao de altitude minima',
+  ])
+  if (!hasLimitDeviation) return false
+
+  return containsAny(text, [
+    'ciente de que',
+    'consciencia explicita',
+    'sabendo que',
+    'mesmo assim',
+    'ainda assim',
+    'prosseguiu aproximacao',
+    'aproximacao continuou',
+    'continuou a aproximacao',
+    'descida continuou',
+  ])
+}
+
 function evidenceOfSensoryBarrier(text: string): boolean {
   return containsAny(text, [
     'alarme sonoro',
@@ -2923,6 +2950,7 @@ ${NO_ARTIFACTS}`
   ]
     .filter(Boolean)
     .join(' ')
+  const objectiveDecisionNorm = normalizeEvidenceText(objectiveDecisionText)
   const forcedObjective = forceObjectiveOverride(objectiveDecisionText)
 
   // A-J prevalece sobre A-I quando o mecanismo causal dominante é falha de confirmação/readback/comunicação operacional.
@@ -2956,7 +2984,14 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (forcedObjective?.code === 'O-D' && !communicationConfirmationFailure && !supervisionFailure && !maintenanceOmission) {
+  if (
+    forcedObjective?.code === 'O-D' &&
+    !communicationConfirmationFailure &&
+    !supervisionFailure &&
+    !maintenanceOmission &&
+    !hasConsciousObjectiveDeviationEvidence(objectiveDecisionNorm) &&
+    !evidenceOfKnownLimitDeviationContinuation(objectiveDecisionNorm)
+  ) {
     return finishDeterministic(
       'Gate A-A (O-D)',
       'A-A',
