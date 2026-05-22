@@ -2614,6 +2614,15 @@ CRITÉRIO O-D: Objetivo consistente com normas MAS não conservativo/não gerenc
     })
   }
 
+  if (objectiveRule.code === 'O-D' && evidenceOfSpeedManagementAttentionCapture(relatoNorm)) {
+    const noSpeedGuard = methodologyNode(
+      'Gate determinístico: cenário de gerenciamento de velocidade com atenção capturada por proximidade operacional — parâmetro degradou abaixo da faixa segura, não há objetivo de eficiência/economia. Objetivo nominal de execução da aproximação (O-A). [AN-008: DAUMAS_APPLIED_IMPROVEMENT]',
+      { resposta: 'Sim', objetivo_identificado: 'objetivo operacional nominal' }
+    )
+    logMethodology('runStep4', 'Gate O-A (speed management / atenção capturada)', noSpeedGuard, ['O-A'], true)
+    return flowResult('O-A', [noSpeedGuard], 'O-B, O-C e O-D descartados — gerenciamento de velocidade com atenção capturada por proximidade operacional: objetivo nominal de execução da aproximação, não eficiência/economia')
+  }
+
   if (objectiveRule.code !== null) {
     const no1 = methodologyNode(`Gate determinístico: ${objectiveRule.reason}.`, {
       resposta: 'Não',
