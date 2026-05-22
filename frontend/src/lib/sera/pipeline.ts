@@ -1901,6 +1901,217 @@ function buildExperimentalPreconditionsQuestionTrace(
   return items
 }
 
+const EXPERIMENTAL_ERC_LIMITATIONS: string[] = [
+  'trace_experimental_only',
+  'erc_axis_only',
+  'derived_from_final_snapshot',
+  'derived_from_step6_7_final',
+  'does_not_affect_classification',
+  'does_not_recalculate_erc',
+  'no_new_llm_call',
+  'evidence_may_reflect_engine_path_not_independent_fact',
+  'erc_trace_is_observational_read_only',
+  'not_full_erc_rubric_yet',
+]
+
+function makeErcQuestionItem(input: {
+  questionId: string
+  questionText: string
+  answer: SeraQuestionAnswer
+  evidence: string | null
+  source: SeraQuestionTraceItem['source']
+  methodologicalStatus: SeraQuestionTraceItem['methodological_status']
+  ercLevel: number | null
+  unansweredReason?: string | null
+  extraLimitations?: string[]
+}): SeraQuestionTraceItem {
+  return {
+    question_id: input.questionId,
+    step: 'erc',
+    question_text: input.questionText,
+    answer: input.answer,
+    evidence: input.evidence,
+    confidence: deriveQuestionConfidence(input.answer, input.evidence),
+    source: input.source,
+    methodological_status: input.methodologicalStatus,
+    produced_code: input.ercLevel !== null ? `ERC-${input.ercLevel}` : null,
+    discarded_codes: [],
+    unanswered_reason: input.unansweredReason || null,
+    limitations: dedupeStrings([
+      ...EXPERIMENTAL_ERC_LIMITATIONS,
+      ...(input.extraLimitations || []),
+    ]),
+  }
+}
+
+function buildExperimentalErcQuestionTrace(
+  snapshot: SeraFinalClassificationSnapshot
+): SeraQuestionTraceItem[] {
+  const ercLevel = snapshot.erc_level
+  const conclusoes = cleanText(snapshot.step6_7_final.conclusoes)
+  const perceptionCode = snapshot.perception_code
+  const objectiveCode = snapshot.objective_code
+  const actionCode = snapshot.action_code
+  const preconditionCodes = snapshot.precondition_codes
+  const hasCodes = perceptionCode !== null && objectiveCode !== null && actionCode !== null
+  const ercLabel = ercLevel !== null ? `ERC-${ercLevel}` : null
+  const codesSummary = [`P=${perceptionCode ?? '?'}`, `O=${objectiveCode ?? '?'}`, `A=${actionCode ?? '?'}`]
+  if (preconditionCodes.length > 0) codesSummary.push(`PRE=[${preconditionCodes.join(',')}]`)
+  const codesText = codesSummary.join(' | ')
+
+  const conclusoesNorm = normalizeText(conclusoes)
+
+  const hasRecoverySignal = hasAny(conclusoesNorm, [
+    'recupera',
+    'recovery',
+    'recuperave',
+    'mitiga',
+    'retorno',
+    'correc',
+  ])
+
+  const hasBarrierSignal = hasAny(conclusoesNorm, [
+    'barreira',
+    'barrier',
+    'defesa',
+    'protec',
+    'salvaguarda',
+    'contenc',
+  ])
+
+  const hasContextSignal = hasAny(conclusoesNorm, [
+    'contexto operacional',
+    'pressao operacional',
+    'operational context',
+    'pressao',
+    'restric',
+    'urgencia',
+    'janela',
+    'carga de trabalho',
+  ])
+
+  const hasPreconditions = preconditionCodes.length > 0
+
+  const items: SeraQuestionTraceItem[] = []
+
+  items.push(makeErcQuestionItem({
+    questionId: 'ERC_EVENT_OUTCOME_SEVERITY_IDENTIFIED',
+    questionText: 'A severidade do outcome do evento foi explicitamente identificada na classificação ERC?',
+    answer: ercLevel !== null ? 'yes' : 'insufficient_evidence',
+    evidence: ercLabel,
+    source: 'hfa_adaptation',
+    methodologicalStatus: ercLevel !== null ? 'SOURCE_DIRECT_HENDY' : 'GAP',
+    ercLevel,
+    unansweredReason: ercLevel === null ? 'erc_level_not_available' : null,
+  }))
+
+  const recoveryAnswer: SeraQuestionAnswer = hasRecoverySignal
+    ? 'yes'
+    : ercLevel !== null
+      ? 'partial'
+      : 'insufficient_evidence'
+  items.push(makeErcQuestionItem({
+    questionId: 'ERC_RECOVERY_POTENTIAL_ASSESSED',
+    questionText: 'O potencial de recuperação (possibilidade de retorno à operação segura) foi avaliado?',
+    answer: recoveryAnswer,
+    evidence: hasRecoverySignal ? conclusoes : ercLabel,
+    source: 'hfa_adaptation',
+    methodologicalStatus: hasRecoverySignal ? 'SOURCE_INFERRED_FROM_HENDY' : 'HFA_ADAPTATION_REQUIRES_NOTE',
+    ercLevel,
+    unansweredReason: recoveryAnswer === 'insufficient_evidence' ? 'erc_level_not_available' : null,
+  }))
+
+  const barrierAnswer: SeraQuestionAnswer = hasBarrierSignal
+    ? 'yes'
+    : hasPreconditions
+      ? 'partial'
+      : 'insufficient_evidence'
+  items.push(makeErcQuestionItem({
+    questionId: 'ERC_BARRIER_EFFECTIVENESS_ASSESSED',
+    questionText: 'A efetividade das barreiras de segurança existentes foi avaliada?',
+    answer: barrierAnswer,
+    evidence: hasBarrierSignal
+      ? conclusoes
+      : hasPreconditions
+        ? `precondition_codes=${preconditionCodes.join(',')}`
+        : null,
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    ercLevel,
+    unansweredReason: barrierAnswer === 'insufficient_evidence' ? 'no_barrier_or_precondition_signal_in_step6_7' : null,
+  }))
+
+  items.push(makeErcQuestionItem({
+    questionId: 'ERC_ESCALATION_PROXIMITY_ASSESSED',
+    questionText: 'A proximidade de escalação (quão perto o evento chegou de um acidente) foi avaliada?',
+    answer: ercLevel !== null ? 'yes' : 'insufficient_evidence',
+    evidence: ercLabel,
+    source: 'daumas_operationalization',
+    methodologicalStatus: ercLevel !== null ? 'SOURCE_DIRECT_HENDY' : 'GAP',
+    ercLevel,
+    unansweredReason: ercLevel === null ? 'erc_level_not_available' : null,
+  }))
+
+  const contextAnswer: SeraQuestionAnswer = hasContextSignal
+    ? 'yes'
+    : hasCodes
+      ? 'partial'
+      : 'insufficient_evidence'
+  items.push(makeErcQuestionItem({
+    questionId: 'ERC_OPERATIONAL_CONTEXT_CONSIDERED',
+    questionText: 'O contexto operacional (pressões, restrições, ambiente) foi considerado na determinação do ERC?',
+    answer: contextAnswer,
+    evidence: hasContextSignal ? conclusoes : (hasCodes ? codesText : null),
+    source: 'hfa_adaptation',
+    methodologicalStatus: 'HFA_ADAPTATION_REQUIRES_NOTE',
+    ercLevel,
+    unansweredReason: contextAnswer === 'insufficient_evidence' ? 'no_context_signal_and_no_codes' : null,
+  }))
+
+  const hasConclusoes = conclusoes.length > 0
+  const supportedAnswer: SeraQuestionAnswer = hasConclusoes
+    ? 'yes'
+    : ercLevel !== null
+      ? 'partial'
+      : 'insufficient_evidence'
+  items.push(makeErcQuestionItem({
+    questionId: 'ERC_LEVEL_SUPPORTED_BY_EVIDENCE',
+    questionText: 'O nível ERC atribuído está sustentado por evidência textual nas conclusões?',
+    answer: supportedAnswer,
+    evidence: hasConclusoes ? conclusoes : ercLabel,
+    source: 'hfa_adaptation',
+    methodologicalStatus: hasConclusoes ? 'SOURCE_INFERRED_FROM_HENDY' : 'HFA_ADAPTATION_REQUIRES_NOTE',
+    ercLevel,
+    unansweredReason: supportedAnswer === 'insufficient_evidence' ? 'erc_level_not_available' : null,
+    extraLimitations: ['evidence_quality_is_observational_not_evaluative'],
+  }))
+
+  const allPresent = ercLevel !== null && hasCodes
+  const consistencyAnswer: SeraQuestionAnswer = allPresent
+    ? 'yes'
+    : ercLevel !== null || hasCodes
+      ? 'partial'
+      : 'insufficient_evidence'
+  items.push(makeErcQuestionItem({
+    questionId: 'ERC_LEVEL_CONSISTENT_WITH_POA_AND_PRECONDITIONS',
+    questionText: 'O nível ERC é internamente consistente com os códigos P/O/A e pré-condições identificados?',
+    answer: consistencyAnswer,
+    evidence: allPresent ? `${codesText} | erc_level=${ercLevel}` : (ercLabel ?? codesText),
+    source: 'hfa_adaptation',
+    methodologicalStatus: allPresent ? 'SOURCE_INFERRED_FROM_HENDY' : 'HFA_ADAPTATION_REQUIRES_NOTE',
+    ercLevel,
+    unansweredReason: !allPresent
+      ? (!ercLevel ? 'erc_level_missing' : 'poa_codes_missing')
+      : null,
+    extraLimitations: [
+      'consistency_is_by_construction_from_single_pipeline_run',
+      'no_independent_recalculation_of_erc',
+    ],
+  }))
+
+  return items
+}
+
 type TraceContext = {
   perception_inferred: boolean
   objective_inferred: boolean
@@ -2091,6 +2302,7 @@ export function buildAnalysisUpsertPayload(
   const experimentalObjectiveTrace = buildExperimentalObjectiveQuestionTrace(snapshotBeforeTrace)
   const experimentalActionTrace = buildExperimentalActionQuestionTrace(snapshotBeforeTrace)
   const experimentalPreconditionsTrace = buildExperimentalPreconditionsQuestionTrace(snapshotBeforeTrace)
+  const experimentalErcTrace = buildExperimentalErcQuestionTrace(snapshotBeforeTrace)
   const snapshotAfterTrace = buildFinalClassificationSnapshot({
     rawInput,
     step3,
@@ -2173,6 +2385,7 @@ export function buildAnalysisUpsertPayload(
         objective_question_trace: experimentalObjectiveTrace,
         action_question_trace: experimentalActionTrace,
         preconditions_question_trace: experimentalPreconditionsTrace,
+        erc_question_trace: experimentalErcTrace,
       },
     },
     source_type: st,
