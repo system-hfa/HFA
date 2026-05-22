@@ -7,7 +7,7 @@
     "perception_code": "P-H",
     "objective_code": "O-A",
     "action_code": "A-A",
-    "erc_level": 2
+    "erc_level": 3
   },
   "rationale": "O caso sustenta P-H por conflito informacional nao resolvido entre sensores e referencia visual. O objetivo de aproximacao era operacionalmente adequado (O-A) e a acao seguiu percepcao incorreta de rota segura (A-A), sem evidencia de violacao consciente.",
   "discriminators": [

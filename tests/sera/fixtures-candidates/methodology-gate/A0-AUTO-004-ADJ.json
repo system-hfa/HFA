@@ -7,7 +7,7 @@
     "perception_code": "P-A",
     "objective_code": "O-A",
     "action_code": "A-G",
-    "erc_level": 2
+    "erc_level": 3
   },
   "rationale": "Percepcao primaria pode estar correta quanto ao objetivo; objetivo de alterar plano vertical era adequado; falha ativa e feedback/verificacao do modo FMA apos acao.",
   "discriminators": [

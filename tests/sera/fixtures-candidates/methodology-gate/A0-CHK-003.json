@@ -7,7 +7,7 @@
     "perception_code": "P-G",
     "objective_code": "O-A",
     "action_code": "A-G",
-    "erc_level": 2
+    "erc_level": 3
   },
   "rationale": "O objetivo de pousar permanecia adequado, mas o controle de feedback pos-checklist falhou. O caso sustenta P-G pela percepcao incompleta do estado real e A-G pela omissao/falha de verificacao esperada apos declaracao de checklist completo.",
   "discriminators": [
