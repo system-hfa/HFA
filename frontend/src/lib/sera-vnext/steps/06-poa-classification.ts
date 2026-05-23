@@ -21,6 +21,36 @@ function confidenceFromEvidence(size: number): 'low' | 'medium' | 'high' {
   return 'low'
 }
 
+function axisMissingEvidenceUncertainty(axis: PoaAxis): string {
+  if (axis === 'perception') {
+    return 'No perception-specific evidence was extracted from the neutral narrative.'
+  }
+  if (axis === 'objective') {
+    return 'No objective/intent-specific evidence was extracted from the neutral narrative.'
+  }
+  return 'No action-execution-specific evidence was extracted from the neutral narrative.'
+}
+
+function axisInsufficientMechanismUncertainty(axis: PoaAxis): string {
+  if (axis === 'perception') {
+    return 'Insufficient evidence to determine cue recognition, cue uptake, or perception mechanism.'
+  }
+  if (axis === 'objective') {
+    return 'Insufficient evidence to determine objective intent, conscious deviation, or rule awareness.'
+  }
+  return 'Insufficient evidence to determine concrete action execution, actor-action linkage, or action mechanism.'
+}
+
+function axisStandardBlocking(axis: PoaAxis): string[] {
+  if (axis === 'perception') {
+    return ['perception_specific_evidence_missing', 'cue_recognition_not_established']
+  }
+  if (axis === 'objective') {
+    return ['objective_specific_evidence_missing', 'intent_rule_awareness_not_established']
+  }
+  return ['action_execution_specific_evidence_missing', 'actor_action_link_not_established']
+}
+
 function buildAxisResult(input: {
   axis: PoaAxis
   statement: string | null
@@ -41,12 +71,18 @@ function buildAxisResult(input: {
   const hasMaterialUncertainty = input.uncertainty.length > 0
   const hasContextRisk = (input.contextRiskFlags ?? []).length > 0
 
+  const baseBlocking = [...input.blockingForClassification, ...axisStandardBlocking(input.axis)]
+
   const linkedUncertainties = [...input.uncertainty]
   const linkedEvidence = [...input.evidence]
+  if (linkedUncertainties.length === 0 && linkedEvidence.length === 0) {
+    linkedUncertainties.push(axisMissingEvidenceUncertainty(input.axis))
+    linkedUncertainties.push(axisInsufficientMechanismUncertainty(input.axis))
+  }
 
   if (!hasStatement || !hasEvidence) {
     const reviewReason = 'No sufficient statement/evidence package to classify this axis.'
-    const blocking = [...new Set([...input.blockingForClassification, 'missing_statement_or_evidence'])]
+    const blocking = [...new Set([...baseBlocking, 'missing_statement_or_evidence'])]
     return {
       axis: input.axis,
       selectedCode: 'UNRESOLVED',
@@ -86,7 +122,7 @@ function buildAxisResult(input: {
       : input.fallbackReviewReason
 
   const blocking = [...new Set([
-    ...input.blockingForClassification,
+    ...baseBlocking,
     ...(hasMaterialUncertainty ? ['material_uncertainty_present'] : []),
     ...((input.contextRiskFlags ?? []).map((f) => `context_risk:${f}`)),
   ])]

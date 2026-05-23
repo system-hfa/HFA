@@ -21,6 +21,62 @@ function unresolved(axis: PoaAxisClassification): boolean {
   return axis.status === 'REVIEW_REQUIRED' || axis.status === 'INSUFFICIENT_EVIDENCE'
 }
 
+function unresolvedTraceFieldIssues(axis: PoaAxisClassification): string[] {
+  if (!unresolved(axis)) return []
+
+  const issues: string[] = []
+  const trace = axis.reviewTrace
+
+  if (!trace) {
+    issues.push(`${axis.axis}.reviewTrace missing`)
+    return issues
+  }
+
+  if (!axis.reviewReasonCode || axis.reviewReasonCode.trim().length === 0) {
+    issues.push(`${axis.axis}.reviewReasonCode missing`)
+  }
+
+  const axisHasLinks = axis.linkedUncertainties.length > 0 || axis.linkedEvidence.length > 0
+  if (!axisHasLinks) {
+    issues.push(`${axis.axis}.linkedUncertainties|linkedEvidence missing`)
+  }
+
+  if (axis.blockingForClassification.length === 0) {
+    issues.push(`${axis.axis}.blockingForClassification missing`)
+  }
+
+  if (!axis.requiredHumanDecision || axis.requiredHumanDecision.trim().length === 0) {
+    issues.push(`${axis.axis}.requiredHumanDecision missing`)
+  }
+
+  if (axis.transitionCriteria.length === 0) {
+    issues.push(`${axis.axis}.transitionCriteria missing`)
+  }
+
+  if (!trace.reviewReasonCode || trace.reviewReasonCode.trim().length === 0) {
+    issues.push(`${axis.axis}.reviewTrace.reviewReasonCode missing`)
+  }
+
+  const traceHasLinks = trace.linkedUncertainties.length > 0 || trace.linkedEvidence.length > 0
+  if (!traceHasLinks) {
+    issues.push(`${axis.axis}.reviewTrace.linkedUncertainties|linkedEvidence missing`)
+  }
+
+  if (trace.blockingForClassification.length === 0) {
+    issues.push(`${axis.axis}.reviewTrace.blockingForClassification missing`)
+  }
+
+  if (!trace.requiredHumanDecision || trace.requiredHumanDecision.trim().length === 0) {
+    issues.push(`${axis.axis}.reviewTrace.requiredHumanDecision missing`)
+  }
+
+  if (trace.transitionCriteria.length === 0) {
+    issues.push(`${axis.axis}.reviewTrace.transitionCriteria missing`)
+  }
+
+  return issues
+}
+
 export function runStep10CausalAssurance(input: {
   factualSummary: FactualSummary
   unsafeState: OperationalUnsafeState
@@ -215,29 +271,23 @@ export function runStep10CausalAssurance(input: {
       : 'Semantic guardrails are missing in at least one axis.',
   })
 
-  const reviewTracePresentForUnresolved = axes.every(
-    (axis) => !unresolved(axis) || Boolean(axis.reviewTrace)
-  )
+  const unresolvedTraceIssues = axes.flatMap((axis) => unresolvedTraceFieldIssues(axis))
+  const reviewTracePresentForUnresolved = unresolvedTraceIssues.every((issue) => !issue.includes('.reviewTrace missing'))
   checks.push({
     checkId: 'CHK-REVIEW-TRACE-PRESENT-FOR-UNRESOLVED',
     passed: reviewTracePresentForUnresolved,
     details: reviewTracePresentForUnresolved
       ? 'Every unresolved axis has review trace.'
-      : 'At least one unresolved axis is missing review trace.',
+      : `Missing reviewTrace for unresolved axis: ${unresolvedTraceIssues.filter((issue) => issue.includes('.reviewTrace missing')).join('; ')}`,
   })
 
-  const reviewTraceLinked = axes.every((axis) => {
-    if (!unresolved(axis)) return true
-    const hasLinks = axis.linkedUncertainties.length > 0 || axis.linkedEvidence.length > 0
-    const hasTraceLinks = axis.reviewTrace.linkedUncertainties.length > 0 || axis.reviewTrace.linkedEvidence.length > 0
-    return hasLinks && hasTraceLinks
-  })
+  const reviewTraceLinked = unresolvedTraceIssues.length === 0
   checks.push({
     checkId: 'CHK-REVIEW-TRACE-LINKS-PRESENT',
     passed: reviewTraceLinked,
     details: reviewTraceLinked
       ? 'Every unresolved axis review trace links to uncertainty/evidence.'
-      : 'At least one unresolved axis lacks trace links to uncertainty/evidence.',
+      : `Unresolved axis trace completeness failed: ${unresolvedTraceIssues.join('; ')}`,
   })
 
   const transitionCriteriaPresentForUnresolved = axes.every(
