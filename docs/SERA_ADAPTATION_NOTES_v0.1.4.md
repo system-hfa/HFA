@@ -29,6 +29,17 @@ O objetivo não é justificar as adaptações, mas torná-las auditáveis. Um pi
 
 ---
 
+## 2.1 Post-A4-Z correction (v0.1.4-A4-Z2)
+
+Correção documental aplicada após o fechamento A4:
+
+- `erc_level`/ERC operacional atual deve ser tratado como metadata legacy da HFA Risk Layer.
+- Não usar ERC como eixo causal original comprovado de Hendy/SERA.
+- Hendy permanece como fonte de framing de risk management (tático/estratégico), active failures e preconditions.
+- Governança e redesign da Risk Layer permanecem no escopo de A5.
+
+---
+
 ## 3. Governança Metodológica
 
 ### Hendy como fonte primária da lógica original
@@ -41,7 +52,7 @@ Hendy (2003) define a estrutura causal do SERA:
 - **Active failures**: classificáveis pelos três eixos, após as três perguntas.
 - **Preconditions**: derivadas da active failure identificada, não inferidas genericamente.
 - **Decision aid sequencial**: ferramenta de apoio à análise, não algoritmo de classificação automática.
-- **ERC**: métrica de detectabilidade/reversibilidade.
+- **Risk management framing**: extensão tático/estratégica para gestão de risco, sem assumir sigla/escala ERC original no material Hendy revisado.
 
 Em qualquer conflito conceitual direto entre Hendy e Daumas ou adaptações HFA, Hendy prevalece.
 
@@ -139,7 +150,7 @@ Os **códigos P-A/P-B.../P-H, O-A.../O-D, A-A.../A-J** são operacionalização 
 Hendy define as categorias lógicas e as perguntas das ladders. Daumas e HFA atribuíram códigos, nomes e descritores a essas categorias para fins de tabulação, banco de dados, comparação entre eventos, dashboard e treinamento. Essa codificação é útil e deve ser mantida; o que falta é o mapeamento explícito de cada código para a pergunta da ladder de Hendy que o originou.
 
 **Risco metodológico:**
-Baixo, se os códigos forem usados com mapeamento explícito para as categorias de Hendy. Médio, se forem tratados como nomenclatura original de Hendy ou como fonte metodológica independente. Em especial: ERC é referência Hendy 2003 e tem semântica precisa que não deve ser diluída pelo uso no pipeline.
+Baixo, se os códigos forem usados com mapeamento explícito para as categorias de Hendy. Médio, se forem tratados como nomenclatura original de Hendy ou como fonte metodológica independente. Em especial: no estado atual consolidado (A4), `erc_level`/ERC operacional é metadata legacy da HFA Risk Layer e não deve ser tratado como eixo causal original de Hendy; sua governança metodológica permanece pendente para A5.
 
 **Mitigação atual:**
 Os nomes descritivos das falhas (ex: "P-C: Déficit de Conhecimento para Interpretação", "A-G: Falha de Supervisão de Delegação") preservam a semântica Hendy mesmo sem o mapeamento formal. A taxonomia de preconditions P1-P7, T1-T2, W1-W3, S1-S3, O1-O6 é compatível com as categorias de Hendy.
