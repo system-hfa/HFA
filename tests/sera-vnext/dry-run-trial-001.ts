@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { analyzeSeraVNext } from '../frontend/src/lib/sera-vnext'
+import { analyzeSeraVNext } from '../../frontend/src/lib/sera-vnext'
 
 const narrative = `A Sikorsky S-92A was conducting an offshore transport flight from Halifax/Stanfield International Airport to the Thebaud Central Facility with two pilots and passengers on board. The flight was conducted under IFR to an offshore installation.
 
