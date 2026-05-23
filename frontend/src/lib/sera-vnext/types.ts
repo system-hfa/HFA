@@ -373,6 +373,51 @@ export interface CodeReleaseGateResult {
   causalCoreOnly: boolean
 }
 
+export interface ReleasedCodeSemanticCheck {
+  checkId: string
+  passed: boolean
+  details: string
+}
+
+export interface ReleasedCodeAcknowledgementCheck {
+  checkId: string
+  passed: boolean
+  details: string
+}
+
+export interface ReleasedCodeWaiverConsistency {
+  waiverRequired: boolean
+  waiverApplied: boolean
+  consistent: boolean
+  details: string
+}
+
+export interface ReleasedCodeSemanticConsistencyResult {
+  axis: PoaAxis
+  releasedCode: string | null
+  status: 'SEMANTICALLY_CONSISTENT' | 'SEMANTIC_REVIEW_REQUIRED' | 'SEMANTICALLY_BLOCKED'
+  checks: ReleasedCodeSemanticCheck[]
+  blockingIssues: string[]
+  warnings: string[]
+  requiredEvidence: string[]
+  matchedEvidence: string[]
+  missingEvidence: string[]
+  acknowledgementChecks: ReleasedCodeAcknowledgementCheck[]
+  waiverConsistency: ReleasedCodeWaiverConsistency
+  semanticRuleVersion: string
+}
+
+export interface SemanticConsistencyGateResult {
+  inputId: string
+  gateStatus: 'SEMANTIC_GATE_READY' | 'SEMANTIC_GATE_PARTIAL' | 'SEMANTIC_GATE_BLOCKED'
+  axisResults: ReleasedCodeSemanticConsistencyResult[]
+  globalBlockingIssues: string[]
+  outputLocks: string[]
+  downstreamStillLocked: boolean
+  finalConclusionStillLocked: boolean
+  causalCoreOnly: boolean
+}
+
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 
 export interface HumanReviewStatus {

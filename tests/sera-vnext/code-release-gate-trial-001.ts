@@ -110,6 +110,10 @@ async function main() {
 
   const scenarioA = buildCodeReleaseGateResult({ result: base001, inputSet: scenarioAInput })
   assert.equal(scenarioA.codeReleaseGateResult.gateStatus, 'RELEASE_READY_FOR_CAUSAL_CORE', 'Scenario A: gate should be release-ready')
+  assert.ok(
+    !('semanticGateStatus' in (scenarioA.codeReleaseGateResult as unknown as Record<string, unknown>)),
+    'Scenario A: semantic consistency should not run implicitly inside code release gate helper'
+  )
   for (const axisRelease of scenarioA.codeReleaseGateResult.axisReleases) {
     assert.equal(axisRelease.releaseStatus, 'RELEASED_BY_HUMAN_REVIEW', `Scenario A/${axisRelease.axis}: axis should be released`)
     assert.ok(axisRelease.releasedCode, `Scenario A/${axisRelease.axis}: releasedCode should be present`)
