@@ -1,7 +1,7 @@
 # SERA Engine vNext Candidate Freeze Readiness v0.2.0
 
 Status: DRAFT_FOR_REVIEW  
-Phase: A4+R-51 — Candidate Freeze Readiness (atualizado com contract tests do adversarial set 2)
+Phase: A4+R-53 — Candidate Freeze Readiness (atualizado com draft batch + review package)
 
 ## Objetivo
 Consolidar o estado de maturidade do núcleo causal vNext e explicitar critérios mínimos para um candidate freeze futuro, sem declarar validação metodológica final.
@@ -107,6 +107,30 @@ Pendências remanescentes:
 - executar revisão independente 2+ avaliadores por caso candidato;
 - executar protocolo inter-rater com thresholds aceitos;
 - só depois avaliar promoção de casos para consenso e readiness de freeze final.
+
+## A4+R-53 — Reference Case Draft Batch + Review Package
+
+Esta fase consolidou um lote inicial de drafts e o pacote de revisão independente:
+- novos drafts materializados:
+  - [CRC-NOMINAL-DRAFT-001](./reference-cases/CRC-NOMINAL-DRAFT-001.md)
+  - [CRC-NEGATIVE-CONTROL-DRAFT-001](./reference-cases/CRC-NEGATIVE-CONTROL-DRAFT-001.md)
+  - [CRC-ADVERSARIAL-DRAFT-002](./reference-cases/CRC-ADVERSARIAL-DRAFT-002.md)
+- package de revisão:
+  - [Reference Case Review Package](./SERA_ENGINE_VNEXT_REFERENCE_CASE_REVIEW_PACKAGE_v0.2.0.md)
+- tracker de revisão:
+  - [Review Tracker](./reference-cases/REVIEW_TRACKER_v0.2.0.md)
+
+Estado após A4+R-53:
+- lote inicial de drafts materializados disponível para revisão independente.
+- nenhum caso foi promovido para `CONSENSUS_VALIDATED`.
+- inter-rater ainda não executado.
+- freeze final continua não autorizado.
+
+Pendências remanescentes:
+- concluir revisão independente (2+ avaliadores) para todos os drafts do lote;
+- registrar divergências por eixo e consolidar candidatos a consenso em fase posterior;
+- executar protocolo inter-rater e avaliar thresholds;
+- somente após isso reavaliar autorização de freeze final.
 
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.

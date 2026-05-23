@@ -7,7 +7,7 @@ Phase: A4+R-50 — Consensus Reference Cases Skeleton
 Este diretório contém os consensus reference cases do pipeline SERA vNext, organizados conforme a [Consensus Reference Cases Policy](../SERA_ENGINE_VNEXT_CONSENSUS_REFERENCE_CASES_POLICY_v0.2.0.md) e usando o [Consensus Reference Case Template](../SERA_ENGINE_VNEXT_CONSENSUS_REFERENCE_CASE_TEMPLATE_v0.2.0.md).
 
 ## Status atual
-**Nenhum caso neste diretório está validado para consenso.** Todos os arquivos `CRC-SKELETON-*` são skeletons, não casos de referência. O status `CONSENSUS_VALIDATED` só será atribuído após revisão por pelo menos 2 avaliadores qualificados.
+**Nenhum caso neste diretório está validado para consenso.** Todos os drafts e skeletons continuam `NOT_CONSENSUS_VALIDATED`. O status `CONSENSUS_VALIDATED` só será atribuído após revisão por pelo menos 2 avaliadores qualificados e execução do protocolo aplicável.
 
 ## Workflow de status
 1. `DRAFT_CASE_SKELETON` -> estrutura inicial sem conteúdo completo.
@@ -44,6 +44,15 @@ Padrão de arquivos para novas materializações:
 | CRC-NEGATIVE-CONTROL-SKELETON-001.md | Negative control | DRAFT_CASE_SKELETON |
 | CRC-ADVERSARIAL-SKELETON-001.md | Adversarial | DRAFT_CASE_SKELETON |
 | CRC-ADVERSARIAL-DRAFT-001.md | Adversarial | MATERIALIZED_DRAFT / NOT_CONSENSUS_VALIDATED |
+| CRC-NOMINAL-DRAFT-001.md | Nominal | MATERIALIZED_DRAFT / NOT_CONSENSUS_VALIDATED |
+| CRC-NEGATIVE-CONTROL-DRAFT-001.md | Negative control | MATERIALIZED_DRAFT / NOT_CONSENSUS_VALIDATED |
+| CRC-ADVERSARIAL-DRAFT-002.md | Adversarial | MATERIALIZED_DRAFT / NOT_CONSENSUS_VALIDATED |
+
+## Pacote de revisão
+- [Reference Case Review Package](../SERA_ENGINE_VNEXT_REFERENCE_CASE_REVIEW_PACKAGE_v0.2.0.md)
+- [Review Tracker](./REVIEW_TRACKER_v0.2.0.md)
+
+Todos os drafts listados acima permanecem `NOT_CONSENSUS_VALIDATED` nesta fase.
 
 ## Como adicionar um caso
 1. Copiar o [template](../SERA_ENGINE_VNEXT_CONSENSUS_REFERENCE_CASE_TEMPLATE_v0.2.0.md).
