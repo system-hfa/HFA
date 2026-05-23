@@ -1,4 +1,5 @@
 import { SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS } from './constants'
+import { buildPassiveEvidenceCategoryHints } from './evidence-categories'
 import type {
   CodeReleaseGateResult,
   ReleasedCodeTraceabilityResult,
@@ -193,6 +194,11 @@ export function buildReleasedCodeTraceability(input: {
       const timePressureExcessive = mapTimePressureExcessive(code)
       const warnings: string[] = []
       const blockingIssues: string[] = []
+      const evidenceCategoryHints = buildPassiveEvidenceCategoryHints({
+        releasedCode: code,
+        evidenceRefs: axisRelease.evidenceReferences,
+        rationaleRefs: axisRelease.reviewerRationale ? [axisRelease.reviewerRationale] : [],
+      })
 
       if (axisRelease.source !== 'HUMAN_REVIEW') {
         blockingIssues.push('Released code traceability requires source=HUMAN_REVIEW.')
@@ -223,6 +229,7 @@ export function buildReleasedCodeTraceability(input: {
         hendyCategory,
         isNoFailure,
         timePressureExcessive,
+        evidenceCategoryHints: evidenceCategoryHints.length > 0 ? evidenceCategoryHints : undefined,
         derivationPath: buildBaseDerivationPath({
           axis: axisRelease.axis,
           code,

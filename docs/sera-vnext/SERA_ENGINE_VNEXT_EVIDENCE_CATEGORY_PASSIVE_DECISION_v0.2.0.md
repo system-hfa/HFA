@@ -47,3 +47,10 @@ Formalizar a decisão de adoção imediata das evidence categories no core vNext
 - Sem ativação de `O-E`.
 - Sem downstream.
 - Sem claim de validação científica.
+
+## Atualização A4+R-58 — implementação runtime passiva
+- Decisão `PASSIVE_OPTIONAL_METADATA` materializada no runtime vNext.
+- Tipos e helper passivo adicionados sem criar bloqueio obrigatório.
+- Hints podem ser anexados a traceability e preconditions como metadado opcional.
+- Ausência de hint continua sem bloqueio.
+- Presença de hint continua sem alterar classificação.

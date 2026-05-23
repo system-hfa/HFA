@@ -432,6 +432,7 @@ export interface VNextPreconditionCandidate {
   sourceHendyCategory?: SeraVNextHendyCategory
   sourceIsNoFailure?: boolean
   sourceTimePressureExcessive?: boolean | null
+  evidenceCategoryHints?: SeraVNextEvidenceCategoryHint[]
   traceabilityVersion?: string | null
   confidence: 'LOW' | 'MEDIUM' | 'HIGH'
   status: PreconditionCandidateStatus
@@ -473,6 +474,7 @@ export interface SeraVNextCodeTraceability {
   hendyCategory: SeraVNextHendyCategory
   isNoFailure: boolean
   timePressureExcessive: boolean | null
+  evidenceCategoryHints?: SeraVNextEvidenceCategoryHint[]
   derivationPath: SeraVNextDerivationStep[]
   evidenceRefs: string[]
   rationaleRefs: string[]
@@ -513,6 +515,15 @@ export type SeraVNextEvidenceCategory =
   | 'FEEDBACK_VERIFICATION'
   | 'RULE_NORM_CONTEXT'
   | 'UNKNOWN_OR_UNCATEGORIZED'
+
+export type SeraVNextEvidenceCategoryMode = 'PASSIVE_OPTIONAL_METADATA'
+
+export interface SeraVNextEvidenceCategoryHint {
+  category: SeraVNextEvidenceCategory
+  source: 'manual' | 'inferred' | 'mapped'
+  evidenceRef?: string
+  note?: string
+}
 
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 

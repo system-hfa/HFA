@@ -283,6 +283,7 @@ export function derivePreconditionsFromReleasedCodes(input: {
       sourceHendyCategory: axisTraceability?.hendyCategory,
       sourceIsNoFailure: axisTraceability?.isNoFailure,
       sourceTimePressureExcessive: axisTraceability?.timePressureExcessive ?? null,
+      evidenceCategoryHints: axisTraceability?.evidenceCategoryHints,
       traceabilityVersion: axisTraceability?.traceabilityVersion || null,
       confidence: mapping?.confidence || 'LOW',
       status,

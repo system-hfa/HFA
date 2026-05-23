@@ -25,7 +25,7 @@ Consolidar o estado de maturidade do núcleo causal vNext e explicitar critério
 - Testes vNext da cadeia causal executando com sucesso.
 
 ## Critérios pendentes para freeze robusto
-- Evidence category runtime (atualmente design-only).
+- Evidence category runtime warning/blocking progression (passive runtime implementado em A4+R-58).
 - ~~Contrato operacional LLM (fora desta fase).~~ → Definido em A4+R-49, pendente execução.
 - ~~Conjunto de casos de referência por consenso metodológico.~~ → Política definida em A4+R-49, pendente materialização dos casos.
 - Adversarial Set 2 → Convertido materialmente em A4+R-51 como contract tests controlados; ainda pendente evolução para reference/consensus e uso inter-rater.
@@ -209,6 +209,28 @@ Pendências remanescentes:
 - Executar revisão real com avaliadores independentes aplicando o guia A4+R-55.
 - Executar protocolo inter-rater com métricas completas.
 - Somente após evidência formal reavaliar readiness para freeze final.
+
+## A4+R-58 — Evidence Categories Passive Runtime
+
+Esta fase implementou evidence categories no runtime vNext como metadado passivo/opcional:
+
+- [Evidence Category Passive Runtime](./SERA_ENGINE_VNEXT_EVIDENCE_CATEGORY_PASSIVE_RUNTIME_v0.2.0.md)
+- Helper passivo e contrato de tipos adicionados no escopo `frontend/src/lib/sera-vnext/*`.
+- Trial dedicado executável adicionado:
+  - [Evidence Categories Passive Trial](../tests/sera-vnext/evidence-categories-passive-trial-001.ts)
+
+Estado após A4+R-58:
+- modo `PASSIVE_OPTIONAL_METADATA` materializado no runtime.
+- ausência de evidence category continua sem bloqueio.
+- presença de evidence category continua sem alterar classificação.
+- nenhum downstream habilitado.
+- nenhum `CONSENSUS_VALIDATED`.
+- AI/Author adjudication permanece vigente.
+
+Pendências remanescentes:
+- calibrar possível evolução para modo `warning` sem aumento relevante de falso bloqueio/falso alarme;
+- manter trilha opcional de validação externa para claims científicos/externos;
+- reavaliar freeze final conforme objetivo operacional vs externo.
 
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
