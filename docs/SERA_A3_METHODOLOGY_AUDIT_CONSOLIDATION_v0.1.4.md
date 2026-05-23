@@ -47,7 +47,7 @@ Hendy (2003) define a estrutura lógica e causal do SERA:
 - **Active failures**: as falhas classificáveis pelos três eixos.
 - **Preconditions**: condições latentes derivadas da active failure identificada, não inferidas genericamente.
 - **Decision aid sequencial**: ferramenta de apoio à análise, não um algoritmo de classificação automática.
-- **ERC (Error Recovery Characteristics)**: métrica de detectabilidade/reversibilidade, referência Hendy 2003.
+- **Risk management framing**: Hendy 2003 descreve extensões de risk management (tático/estratégico); a sigla/escala ERC operacional usada no HFA é tratada como adaptação/metadata legacy e não como eixo causal original.
 
 Hendy prevalece em qualquer conflito conceitual direto com Daumas ou com adaptações HFA.
 
@@ -203,7 +203,7 @@ Todo documento e relatório HFA/SERA deve deixar claro que:
 
 - Os eixos P/O/A são de Hendy.
 - Os códigos internos (P-A, O-C, A-J, etc.) são da operacionalização Daumas/HFA.
-- ERC como métrica é de Hendy 2003.
+- O framing de risk management é de Hendy 2003; a sigla/escala ERC operacional no HFA deve ser tratada como adaptação/metadata legacy.
 - A taxonomia de preconditions (P1–P7, T1–T2, W1–W3, S1–S3, O1–O6) é compatível com Hendy e operacionalizada por Daumas/HFA.
 
 ---

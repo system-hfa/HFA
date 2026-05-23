@@ -11,6 +11,13 @@ This baseline freezes, for now, the current methodological behavior of the SERA 
 
 The purpose is to preserve the stabilized discriminators while new fixtures and adversarial cases are added.
 
+## Governance note (A4-j)
+
+- This document describes SERA causal classification logic (P/O/A + preconditions) used by the current implementation.
+- `erc_level` must be treated as legacy HFA Risk Layer metadata, not as an original Hendy/SERA causal axis.
+- Official causal baseline artifact for v0.1.4: `tests/reports/baseline/sera-causal-baseline-v0.1.4.json`.
+- Risk Layer baseline (traditional matrix, ARMS/ERC, Hendy risk management usage in product risk claims) is not frozen in this document.
+
 ## Core methodological discriminators
 
 ### Perception
@@ -54,7 +61,7 @@ The purpose is to preserve the stabilized discriminators while new fixtures and 
 
 ## Preconditions
 
-Preconditions are selected after the final P/O/A/ERC codes are known.
+Preconditions are selected after the final P/O/A codes and legacy risk metadata are known.
 
 The selection is deterministic. The LLM should not be the primary source of precondition selection. The selector uses the matrix in `rules/preconditions/matrix.json`, and the runner should receive a final array of codes, for example:
 

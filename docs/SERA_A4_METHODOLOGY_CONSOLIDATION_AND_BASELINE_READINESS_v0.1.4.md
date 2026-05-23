@@ -6,6 +6,16 @@ Consolidar o estado metodologico HFA/SERA v0.1.4 como um sistema validavel, defe
 
 Esta fase e documental/metodologica. Nao altera motor, fixtures oficiais, baseline, candidates JSON, reports ou contrato `erc_question_trace`.
 
+## 1.1 Status update (pos A4-h/A4-i)
+
+Este documento registra o estado de consolidacao A4 no momento em que foi produzido.  
+Status atual apos A4-h/A4-i:
+
+- baseline causal v0.1.4 foi criada em `tests/reports/baseline/sera-causal-baseline-v0.1.4.json`;
+- baseline causal cobre classificacao causal (P/O/A + preconditions);
+- risk layer permanece separada e pendente de redesign/validacao em A5;
+- `erc_level` permanece metadata legacy da HFA Risk Layer.
+
 ## 2. Decisao executiva
 
 | Pergunta | Decisao A4 |
@@ -72,7 +82,7 @@ Arquivos opcionais `docs/SERA_GOVERNANCE.md` e `docs/SERA_FROZEN_v0.1.md` nao es
 
 | Tipo | Componentes |
 |---|---|
-| Dependencia direta de Hendy | Ladders P/O/A, conceito ERC, nocao de recuperabilidade/detectabilidade, unsafe act vs preconditions, necessidade de cadeia causal defensavel. |
+| Dependencia direta de Hendy | Ladders P/O/A, nocao de recuperabilidade/detectabilidade e risk management como conceito, unsafe act vs preconditions, necessidade de cadeia causal defensavel. |
 | Dependencia de Daumas | Casos E01/E02, aplicacao em aviacao offshore, operacionalizacao de automacao, velocidade/atencao e multi-act em contexto real. |
 | Adaptacao HFA/SERA | Regras de precedencia, O-C estrito, split de subcasos, causal anchoring, A-A vs A-B perceptual, feedback/check A-G, politica de candidates. |
 | Convencao interna do sistema | Runner PASS/PARTIAL/FAIL, listas de gate, reports segregados, guardrail FAIL/ERROR, `trace_experimental`, score ERC numerico placeholder em candidates. |
@@ -131,13 +141,13 @@ Arquivos opcionais `docs/SERA_GOVERNANCE.md` e `docs/SERA_FROZEN_v0.1.md` nao es
 
 | Item | Estado |
 |---|---|
-| Fontes | Hendy ERC; convencao interna de escala legacy do motor e calibracoes de projeto. |
+| Fontes | Hendy risk management framing (sem sigla/escala ERC original explicitada no material revisado); convencao interna de escala legacy do motor e calibracoes de projeto. |
 | Comportamento atual | Step 6/7 pede ERC ao LLM e depois aplica `inferDeterministicErcLevel`; `pipeline.ts` tambem tem fallback `inferErcLevel`. |
 | Validacao forte | Fixtures oficiais de risco e baseline v0.1.1; candidates ainda mostram divergencias ERC 2 vs 3. |
 | Candidates que validam bem | `A0-AUTO-001`, `A0-AUTO-003`, `A0-AUTO-004-ADJ`, `A0-CHK-003`, `A0-DAUMAS-E01-B`, `A0-DAUMAS-E02-A`, `A0-VIS-003`, `A0-VIS-004-ADJ`, `A0-VIS-005` no ultimo N_RUNS=1. |
 | Problematicos | `A0-CHK-001`, `A0-DAUMAS-E02-B`, `A0-FUEL-002` atuais: P/O/A corretos, ERC 3 vs expected 2; `A0-CHK-002-ADJ` tem historico estrutural P/A + ERC. |
 | Risco conhecido | Escala/threshold issue, especialmente nivel 2 vs 3; `erc_question_trace` nao ativo; candidates tratam ERC como placeholder historico, mas runner ainda o pontua. |
-| Readiness | Nao pronto para baseline amplo. Precisa fase propria de calibracao ERC e decisao de expected. |
+| Readiness | Fora do escopo da baseline causal v0.1.4; segue para A5 Risk Layer Redesign e validacao dedicada. |
 
 ## 6. Candidate triage
 

@@ -19,9 +19,9 @@ This contract does not change code, fixtures, candidates, reports, baseline file
 |---|---|
 | Status | Methodology contract, not implementation patch. |
 | Version | v0.1.4. |
-| Scope | Perception, Objective, Action, Preconditions, ERC, evidence policy, baseline policy and trace policy. |
+| Scope | Perception, Objective, Action and Preconditions for causal classification baseline; legacy risk-layer metadata governance; evidence policy; baseline policy; trace policy. |
 | Out of scope | Engine changes, expected changes, candidate promotion, baseline freeze, `erc_question_trace`. |
-| Effective use | Must be used before A4-b candidate admission, A4-c ERC calibration and A4-d baseline freeze. |
+| Effective use | Normative reference for A4 phase decisions and for A5 risk-layer redesign planning. |
 
 ## 3. Authority Order
 
@@ -44,7 +44,7 @@ Normative rule: current engine behavior never overrides Hendy, Daumas or documen
 | Label | Meaning | Example |
 |---|---|---|
 | `SOURCE_DIRECT_HENDY` | Directly follows the SERA ladder/question structure. | Perception asks what the operator believed about the world state. |
-| `SOURCE_INFERRED_FROM_HENDY` | Inferred from Hendy but operationalized for software. | ERC support from detectability/reversibility evidence. |
+| `SOURCE_INFERRED_FROM_HENDY` | Inferred from Hendy but operationalized for software. | Tactical/strategic risk-management framing as a concept, without claiming an original ERC acronym/scale in Hendy. |
 | `DAUMAS_OPERATIONALIZATION` | Applied offshore aviation use or Daumas case interpretation. | E01/E02 automation and attention-management examples. |
 | `HFA_ADAPTATION_REQUIRES_NOTE` | HFA/SERA product adaptation requiring explicit rationale. | O-C strict awareness rule, A-A coherent action rule. |
 | `TECHNICAL_HEURISTIC` | Internal software or runner convention. | Candidate runner scoring, trace isolation fields, deterministic matrix. |
@@ -216,7 +216,7 @@ Preconditions are contextual, organizational, operator, task or environmental fa
 |---|---|
 | Hendy | Preconditions explain conditions behind active failures and support intervention points. |
 | Daumas | Applied offshore analysis emphasizes latent factors such as crew relationship, emotional control, fatigue, planning and training. |
-| HFA/SERA adaptation | Uses deterministic matrix after final P/O/A/ERC to select likely preconditions. |
+| HFA/SERA adaptation | Uses deterministic matrix after final P/O/A plus legacy risk metadata to select likely preconditions. |
 | Software convention | `selectDeterministicPreconditions` and `preconditions_trace` are operational selectors, not independent clinical causal proof. |
 
 ### 9.3 Contract Rules
@@ -226,7 +226,7 @@ Preconditions are contextual, organizational, operator, task or environmental fa
 | Active failure separation | Preconditions must not duplicate P/O/A active-failure codes. |
 | Evidence | A precondition should be tied to direct narrative evidence or declared as matrix-derived. |
 | Trace confidence | Experimental precondition trace must remain conservative; `partial` can be maximum where causal link is matrix-derived. |
-| Baseline | Preconditions may be scored in fixtures, but baseline confidence requires stable P/O/A/ERC plus stable precondition recall. |
+| Baseline | Preconditions may be scored in fixtures, but causal baseline confidence requires stable P/O/A plus stable precondition behavior. |
 
 ### 9.4 Limits
 
@@ -235,17 +235,17 @@ Preconditions are contextual, organizational, operator, task or environmental fa
 | Matrix selection is not an independent causal chain. | Must be documented in every methodology-facing use. |
 | Candidates currently show operational PASS in latest N_RUNS=1, but this is not full methodological validation. | Requires A4-b/A4-d gates. |
 
-## 10. Axis Contract - ERC
+## 10. Risk Layer Legacy Metadata - ERC
 
 ### 10.1 Definition
 
-ERC is the Error Recovery Characteristics risk dimension: how detectable and reversible the unsafe act/condition was before consequences.
+`erc_level` is currently a legacy HFA risk-layer metadata field used in scoring/reporting compatibility. It is not treated as an original causal SERA/Hendy axis in the v0.1.4 causal baseline.
 
 ### 10.2 Source and Adaptation
 
 | Layer | Contract |
 |---|---|
-| Hendy | ERC belongs to risk/recovery framing derived from SERA factors. |
+| Hendy | Hendy provides risk-management framing (tactical/strategic), but no direct ERC acronym/1-5 scale claim is accepted from the reviewed source. |
 | Daumas | Supports prevention/risk-factor orientation in offshore aviation, not a fully calibrated SaaS numeric scale. |
 | HFA/SERA adaptation | Uses motor legacy numeric scale and product presentation mapping. |
 | Software convention | Current runner compares numeric `expected.erc_level`; candidates historically used numeric ERC as compatibility placeholder. |
@@ -254,9 +254,9 @@ ERC is the Error Recovery Characteristics risk dimension: how detectable and rev
 
 | Item | Decision |
 |---|---|
-| Baseline readiness | ERC is not calibrated enough for broad v0.1.4 baseline admission. |
+| Baseline readiness | ERC is outside the causal baseline freeze scope for v0.1.4. |
 | Known gap | Recurrent candidate divergence ERC 2 vs 3. |
-| Required phase | A4-c ERC Calibration and Scale Governance. |
+| Required phase | A5 Risk Layer Redesign and risk-layer validation governance. |
 | `erc_question_trace` | Prohibited until ERC scale/threshold governance is complete. |
 | Candidate interpretation | A PARTIAL caused only by ERC remains PARTIAL, not PASS. |
 
@@ -420,9 +420,10 @@ ERC is the Error Recovery Characteristics risk dimension: how detectable and rev
 |---|---|
 | PARTIAL is not PASS | No exception for baseline. |
 | `FAIL/ERROR=0` is not enough | It is a release guard, not a baseline gate. |
+| Causal baseline artifact exists | `tests/reports/baseline/sera-causal-baseline-v0.1.4.json` is the official causal-classification artifact for v0.1.4. |
 | Candidates are not baseline | They require admission, N_RUNS=3 and review. |
 | Reports are evidence, not decisions | Human review and contract alignment are required. |
-| ERC-sensitive cases are blocked | Until A4-c. |
+| Risk-layer baseline remains open | Causal baseline does not imply risk-layer baseline freeze. |
 | `erc_question_trace` is blocked | Until ERC calibration is complete and separately approved. |
 
 Minimum v0.1.4 baseline freeze:
@@ -472,6 +473,6 @@ Minimum v0.1.4 baseline freeze:
 4. Current engine behavior is evidence of implementation state, not methodology authority.
 5. Official baseline is stronger than release guard and stronger than candidate PASS in N_RUNS=1.
 6. PARTIAL never counts as PASS for baseline.
-7. ERC is not ready for broad baseline expansion and must go through A4-c.
+7. `erc_level` remains legacy risk-layer metadata and is not part of the causal baseline acceptance gate.
 8. Experimental traces are derived observability artifacts and must not be used as independent proof.
 9. No baseline v0.1.4 promotion is authorized by this document.
