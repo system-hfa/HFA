@@ -112,3 +112,11 @@ A derivação bloqueia quando detecta:
 
 ## Próxima fase recomendada
 A4+R-47 — Code Assignment Traceability Model (ou equivalente), para aprofundar rastreabilidade de derivação sem abrir downstream final.
+
+## A4+R-48 Update
+- `derivePreconditionsFromReleasedCodes(...)` agora suporta input opcional de traceability (`ReleasedCodeTraceabilityResult`).
+- Quando traceability está presente, candidatos carregam referência de origem (`sourceTraceabilityRefs`) e metadados (`sourceHendyCategory`, `sourceIsNoFailure`, `sourceTimePressureExcessive`, `traceabilityVersion`).
+- Quando traceability está ausente, a função preserva compatibilidade com A4+R-46 e registra limitação de modo compatível.
+- `isNoFailure=true` via traceability bloqueia derivação de precondition de falha.
+- `RESERVED_NOT_ACTIVE` ou `BLOCKED` em traceability bloqueiam derivação.
+- Downstream permanece bloqueado.

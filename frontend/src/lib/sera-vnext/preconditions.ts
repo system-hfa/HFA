@@ -2,7 +2,9 @@ import { SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS } from './constants'
 import type {
   CodeReleaseGateResult,
   PreconditionsFromReleasedCodesResult,
+  ReleasedCodeTraceabilityResult,
   SemanticConsistencyGateResult,
+  SeraVNextCodeTraceability,
   SeraVNextResult,
   VNextPreconditionCandidate,
 } from './types'
@@ -109,9 +111,14 @@ function pickGateStatus(candidates: VNextPreconditionCandidate[], globalBlocking
   return 'PRECONDITION_CANDIDATES_READY'
 }
 
+function buildTraceabilityRef(trace: SeraVNextCodeTraceability): string {
+  return `TRACE-${trace.axis.toUpperCase()}-${trace.code.toUpperCase()}`
+}
+
 export function derivePreconditionsFromReleasedCodes(input: {
   codeReleaseGateResult: CodeReleaseGateResult
   semanticConsistencyGateResult: SemanticConsistencyGateResult
+  traceabilityResult?: ReleasedCodeTraceabilityResult
   baseResult?: SeraVNextResult
 }): PreconditionsFromReleasedCodesResult {
   const globalBlockingIssues: string[] = []
@@ -150,11 +157,32 @@ export function derivePreconditionsFromReleasedCodes(input: {
   }
 
   const semanticByAxis = new Map(input.semanticConsistencyGateResult.axisResults.map((item) => [item.axis, item]))
+  const traceabilityByAxis = new Map(input.traceabilityResult?.traces.map((item) => [item.axis, item]) || [])
+  const hasTraceability = Boolean(input.traceabilityResult)
+
+  if (input.traceabilityResult) {
+    if (!input.traceabilityResult.downstreamLocked) {
+      globalBlockingIssues.push('Traceability downstream lock violation detected; precondition derivation is blocked.')
+    }
+    if (!input.traceabilityResult.finalConclusionLocked) {
+      globalBlockingIssues.push('Traceability final conclusion lock violation detected; precondition derivation is blocked.')
+    }
+    if (!input.traceabilityResult.causalCoreOnly) {
+      globalBlockingIssues.push('Traceability package is not causal-core-only; precondition derivation is blocked.')
+    }
+
+    for (const issue of input.traceabilityResult.globalBlockingIssues) {
+      if (includesAny(issue, ['downstream', 'final conclusion', 'hfacs', 'risk/erc', 'arms/erc', 'recommendation'])) {
+        globalBlockingIssues.push(`Blocking issue propagated from traceability gate: ${issue}`)
+      }
+    }
+  }
 
   const candidates: VNextPreconditionCandidate[] = input.codeReleaseGateResult.axisReleases.map((axisRelease) => {
     const code = axisRelease.releasedCode || ''
     const codeUpper = code.toUpperCase()
     const semanticAxis = semanticByAxis.get(axisRelease.axis)
+    const axisTraceability = traceabilityByAxis.get(axisRelease.axis)
     const mapping = PRECONDITION_MAPPING[codeUpper]
     const blockingIssues: string[] = []
     const limitations: string[] = []
@@ -202,6 +230,32 @@ export function derivePreconditionsFromReleasedCodes(input: {
       blockingIssues.push('No explicit conservative precondition mapping exists for this released code.')
     }
 
+    if (!hasTraceability) {
+      limitations.push('Traceability input is not provided; running in A4+R-46 compatibility mode.')
+    }
+
+    if (hasTraceability && !axisTraceability) {
+      limitations.push('No axis-specific traceability record found; conservative derivation applied.')
+    }
+
+    if (axisTraceability) {
+      if (axisTraceability.code.toUpperCase() !== codeUpper) {
+        blockingIssues.push('Traceability code mismatch with releasedCode; derivation blocked for axis.')
+      }
+      if (axisTraceability.status === 'RESERVED_NOT_ACTIVE') {
+        blockingIssues.push('Traceability marks this code as RESERVED_NOT_ACTIVE; precondition derivation is blocked.')
+      }
+      if (axisTraceability.status === 'BLOCKED') {
+        blockingIssues.push('Traceability marks this code as BLOCKED; precondition derivation is blocked.')
+      }
+      if (axisTraceability.isNoFailure) {
+        blockingIssues.push('Traceability marks this code as no-failure; failure-type precondition derivation is blocked.')
+        limitations.push('No failure-type precondition derived from no-failure traceability status.')
+      }
+      limitations.push(...axisTraceability.warnings)
+      limitations.push(...axisTraceability.blockingIssues)
+    }
+
     if (input.baseResult) {
       const baseAxis = input.baseResult.poaClassification[axisRelease.axis]
       if (!(baseAxis.selectedCode === 'UNRESOLVED' && baseAxis.status !== 'CLASSIFIED')) {
@@ -225,9 +279,14 @@ export function derivePreconditionsFromReleasedCodes(input: {
       sourceReleasedCode: axisRelease.releasedCode || 'UNDEFINED',
       sourceEvidenceRefs: [...axisRelease.evidenceReferences],
       sourceRationaleRefs: axisRelease.reviewerRationale ? [axisRelease.reviewerRationale] : [],
+      sourceTraceabilityRefs: axisTraceability ? [buildTraceabilityRef(axisTraceability)] : [],
+      sourceHendyCategory: axisTraceability?.hendyCategory,
+      sourceIsNoFailure: axisTraceability?.isNoFailure,
+      sourceTimePressureExcessive: axisTraceability?.timePressureExcessive ?? null,
+      traceabilityVersion: axisTraceability?.traceabilityVersion || null,
       confidence: mapping?.confidence || 'LOW',
       status,
-      limitations,
+      limitations: Array.from(new Set(limitations)),
       derivedBy: DERIVATION_RULE,
       taxonomyVersion: TAXONOMY_VERSION,
       authorDecisionVersion: AUTHOR_DECISION_VERSION,

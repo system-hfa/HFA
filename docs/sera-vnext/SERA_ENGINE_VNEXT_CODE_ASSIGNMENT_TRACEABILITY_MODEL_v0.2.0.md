@@ -126,3 +126,8 @@ O traceability model mantém os locks:
 
 ## Próxima fase recomendada
 A4+R-48 — Preconditions Traceability Refinement (expansão controlada de rastreabilidade de derivação de preconditions, ainda sem downstream final).
+
+## A4+R-48 Update
+- O traceability model passou a ser consumível opcionalmente pela derivação de preconditions candidatas.
+- Não houve mudança de decisão de release/classificação.
+- Evidence categories permanecem design-only e não obrigatórias no runtime desta fase.

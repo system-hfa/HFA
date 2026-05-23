@@ -428,6 +428,11 @@ export interface VNextPreconditionCandidate {
   sourceReleasedCode: string
   sourceEvidenceRefs: string[]
   sourceRationaleRefs: string[]
+  sourceTraceabilityRefs?: string[]
+  sourceHendyCategory?: SeraVNextHendyCategory
+  sourceIsNoFailure?: boolean
+  sourceTimePressureExcessive?: boolean | null
+  traceabilityVersion?: string | null
   confidence: 'LOW' | 'MEDIUM' | 'HIGH'
   status: PreconditionCandidateStatus
   limitations: string[]
@@ -493,6 +498,21 @@ export interface ReleasedCodeTraceabilityResult {
   selectedCodesRemainUnresolved: boolean
   causalCoreOnly: true
 }
+
+export type SeraVNextEvidenceCategory =
+  | 'PHYSICAL_CAPABILITY'
+  | 'INTENT_AWARENESS'
+  | 'TIME_PRESSURE'
+  | 'COMMUNICATION_INFORMATION'
+  | 'PROCEDURAL_MONITORING'
+  | 'KNOWLEDGE_TRAINING'
+  | 'SUPERVISION_COORDINATION'
+  | 'OPERATIONAL_EFFICIENCY_PRESSURE'
+  | 'SENSORY_LIMITATION'
+  | 'PERCEPTUAL_AMBIGUITY'
+  | 'FEEDBACK_VERIFICATION'
+  | 'RULE_NORM_CONTEXT'
+  | 'UNKNOWN_OR_UNCATEGORIZED'
 
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 
