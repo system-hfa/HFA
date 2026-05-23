@@ -1,7 +1,7 @@
 # SERA Engine vNext Candidate Freeze Readiness v0.2.0
 
 Status: DRAFT_FOR_REVIEW  
-Phase: A4+R-56 — Candidate Freeze Readiness (atualizado com formal reviewer packet)
+Phase: A4+R-57 — Candidate Freeze Readiness (atualizado com ai/author adjudication mode)
 
 ## Objetivo
 Consolidar o estado de maturidade do núcleo causal vNext e explicitar critérios mínimos para um candidate freeze futuro, sem declarar validação metodológica final.
@@ -29,7 +29,7 @@ Consolidar o estado de maturidade do núcleo causal vNext e explicitar critério
 - ~~Contrato operacional LLM (fora desta fase).~~ → Definido em A4+R-49, pendente execução.
 - ~~Conjunto de casos de referência por consenso metodológico.~~ → Política definida em A4+R-49, pendente materialização dos casos.
 - Adversarial Set 2 → Convertido materialmente em A4+R-51 como contract tests controlados; ainda pendente evolução para reference/consensus e uso inter-rater.
-- ~~Protocolo inter-rater.~~ → Protocolo definido em A4+R-49, pendente execução.
+- ~~Protocolo inter-rater.~~ → Protocolo definido em A4+R-49; execução passa a trilha opcional de validação futura (não bloqueio operacional imediato).
 - Plano final de integração (ainda sem UI/API/DB).
 
 ## Gate de linguagem metodológica
@@ -171,6 +171,25 @@ Pendências remanescentes:
 - consolidar intake formal de resultados na fase A4+R-57;
 - somente após intake formal e execução inter-rater reavaliar candidatura a freeze final.
 
+## A4+R-57 — AI/Author Adjudication Operating Mode
+
+Esta fase formalizou o modo operacional de adjudicação AI/Author:
+- [AI/Author Adjudication Mode](./SERA_ENGINE_VNEXT_AI_AUTHOR_ADJUDICATION_MODE_v0.2.0.md)
+
+Decisão registrada:
+- revisão humana externa/inter-rater deixa de ser bloqueio operacional obrigatório imediato;
+- agente aplica metodologia SERA-PT/HFA;
+- usuário atua como adjudicador metodológico final;
+- dúvidas pontuais devem ser perguntadas durante a execução;
+- decisões relevantes devem ser registradas;
+- erros apontados pelo usuário entram em trilha de correção controlada.
+
+Estado após A4+R-57:
+- evolução operacional do produto pode continuar sem gate obrigatório de inter-rater.
+- inter-rater/kappa permanecem como validação futura opcional (especialmente para claims externos/científicos).
+- nenhum caso promovido para `CONSENSUS_VALIDATED`.
+- freeze final científico/externo continua não autorizado sem validação adicional.
+
 ## A4+R-55 — Dry Run Divergence Resolution Guide
 
 Esta fase transformou as divergências encontradas no dry run A4+R-54 em guia de decisão para revisores reais:
@@ -197,6 +216,6 @@ Pendências remanescentes:
 
 ## Próximas fases recomendadas
 1. Consolidar evidence categories em modo passivo -> warning -> regra.
-2. Fechar pacote de referência e protocolo inter-rater.
-3. Executar adversarial Set 2 e revisão de consistência.
-4. Só então preparar freeze candidate formal.
+2. Executar intake de adjudicações AI/Author com registro de decisões e correções controladas.
+3. Manter trilha opcional de validação externa (inter-rater/kappa) para uso futuro.
+4. Só então avaliar freeze candidate conforme objetivo (operacional interno vs científico/externo).

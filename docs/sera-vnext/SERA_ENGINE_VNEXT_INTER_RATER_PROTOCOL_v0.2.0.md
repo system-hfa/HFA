@@ -2,9 +2,15 @@
 
 Status: DRAFT_FOR_REVIEW
 Phase: A4+R-49 — Inter-Rater Reliability Protocol
+OPTIONAL_FUTURE_VALIDATION: true
 
 ## Objetivo
 Definir o protocolo metodológico para avaliação de confiabilidade entre revisores (inter-rater reliability) na aplicação da taxonomia SERA-PT/HFA, estabelecendo métricas, procedimentos e thresholds para uso como gate de qualidade metodológica futura.
+
+## Governança A4+R-57
+- Após A4+R-57, este protocolo passa a trilha opcional de validação futura.
+- A evolução operacional vNext não depende de execução imediata deste protocolo.
+- O protocolo permanece recomendado para validação externa/academicamente orientada.
 
 ## Por que inter-rater é necessário antes de claim forte de validação
 - A classificação SERA-PT depende de julgamento humano informado por evidências, não de algoritmo determinístico.
@@ -112,7 +118,8 @@ Calculado para o conjunto de revisores quando houver 3 ou mais, por eixo e para 
 - O resultado do protocolo, quando executado, será documentado como evidência de confiabilidade metodológica, não como prova de validade científica absoluta.
 
 ## Relação com candidate freeze
-- O protocolo inter-rater é pré-requisito para declaração de candidate freeze final.
+- O protocolo inter-rater é pré-requisito para freeze científico/externo.
+- Para evolução operacional interna sob modo AI/Author adjudication, a execução imediata do protocolo não é bloqueio obrigatório.
 - A definição do protocolo (este documento) reduz a lacuna de governança, mas não a fecha.
 - A execução do protocolo com resultados aceitáveis é condição necessária para o freeze.
 

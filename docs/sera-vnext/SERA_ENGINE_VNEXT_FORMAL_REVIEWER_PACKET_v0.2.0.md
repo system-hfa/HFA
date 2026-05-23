@@ -5,9 +5,14 @@ Phase: A4+R-56 — Formal Reviewer Packet
 NOT_FORMAL_INTER_RATER_RESULT: true
 NOT_CONSENSUS_VALIDATED: true
 NOT_FOR_VALIDATION_CLAIM: true
+OPTIONAL_FUTURE_VALIDATION: true
 
 ## Objetivo
 Preparar avaliadores reais para revisão independente dos drafts materializados, com orientação operacional consistente às regras de divergência da A4+R-55.
+
+## Governança A4+R-57
+- Este packet permanece utilizável para validação futura opcional.
+- Este packet não é gate operacional obrigatório para evolução do produto.
 
 ## Escopo
 - Revisão independente de 4 drafts.
