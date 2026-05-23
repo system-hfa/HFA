@@ -452,6 +452,48 @@ export interface PreconditionsFromReleasedCodesResult {
   causalCoreOnly: true
 }
 
+export type SeraVNextHendyCategory = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | null
+
+export interface SeraVNextDerivationStep {
+  step: string
+  answer: string
+  rationale?: string
+}
+
+export type SeraVNextCodeTraceabilityStatus = 'TRACEABLE' | 'RESERVED_NOT_ACTIVE' | 'BLOCKED'
+
+export interface SeraVNextCodeTraceability {
+  axis: PoaAxis
+  code: string
+  hendyCategory: SeraVNextHendyCategory
+  isNoFailure: boolean
+  timePressureExcessive: boolean | null
+  derivationPath: SeraVNextDerivationStep[]
+  evidenceRefs: string[]
+  rationaleRefs: string[]
+  source: 'HUMAN_REVIEW'
+  taxonomyVersion: 'SERA_PT_CANONICAL_v1.0'
+  authorDecisionVersion: 'SERA_PT_AUTHOR_DECISION_AA_CANONICALIZATION_v1.0'
+  traceabilityVersion: 'v0.2.0'
+  status: SeraVNextCodeTraceabilityStatus
+  warnings: string[]
+  blockingIssues: string[]
+}
+
+export interface ReleasedCodeTraceabilityResult {
+  inputId: string
+  traces: SeraVNextCodeTraceability[]
+  globalBlockingIssues: string[]
+  outputLocks: string[]
+  downstreamLocked: true
+  finalConclusionLocked: true
+  hfacsLocked: true
+  riskLocked: true
+  recommendationsLocked: true
+  selectedCodesRemainUnresolved: boolean
+  causalCoreOnly: true
+}
+
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 
 export interface HumanReviewStatus {
