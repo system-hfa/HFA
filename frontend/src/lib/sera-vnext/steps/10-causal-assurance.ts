@@ -378,6 +378,19 @@ export function runStep10CausalAssurance(input: {
       : 'At least one eligible axis is missing required human decision guidance.',
   })
 
+  const eligibleAxesHaveEvidenceAndReviewTrace = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || !el.eligibleForHumanClassification) return true
+    return axis.evidence.length > 0 && Boolean(axis.reviewTrace)
+  })
+  checks.push({
+    checkId: 'CHK-ELIGIBLE-AXIS-HAS-EVIDENCE-AND-TRACE',
+    passed: eligibleAxesHaveEvidenceAndReviewTrace,
+    details: eligibleAxesHaveEvidenceAndReviewTrace
+      ? 'Every eligible axis has evidence and review trace.'
+      : 'At least one eligible axis is missing evidence or review trace.',
+  })
+
   const noBlockedAxisFromOrdinaryMissingEvidenceOnly = axes.every((axis) => {
     const el = axis.classificationEligibility
     if (!el || el.eligibilityStatus !== 'BLOCKED_BY_GUARDRAIL') return true
@@ -408,7 +421,7 @@ export function runStep10CausalAssurance(input: {
   const waiverRequiredOnlyForWaivableCriteria = axes.every((axis) => {
     const el = axis.classificationEligibility
     if (!el || !el.waiverRequired) return true
-    return el.waiverAllowed && el.absoluteBlockers.length === 0 && el.unmetCriteria.length > 0 && !el.eligibleForHumanClassification
+    return el.waiverAllowed && el.absoluteBlockers.length === 0
   })
   checks.push({
     checkId: 'CHK-WAIVER-REQUIRED-ONLY-FOR-WAIVABLE-CRITERIA',
@@ -418,10 +431,40 @@ export function runStep10CausalAssurance(input: {
       : 'WaiverRequired is set in a non-waivable or inconsistent situation.',
   })
 
+  const eligibleAxesWithResidualNeedWaiverPolicy = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || !el.eligibleForHumanClassification) return true
+    const hasResidualSignals =
+      axis.blockingForClassification.some((item) => item.includes('waivable:')) ||
+      axis.linkedUncertainties.length > 0
+    if (!hasResidualSignals) return true
+    return el.waiverAllowed
+  })
+  checks.push({
+    checkId: 'CHK-ELIGIBLE-AXIS-HAS-WAIVER-POLICY-WHEN-RESIDUAL',
+    passed: eligibleAxesWithResidualNeedWaiverPolicy,
+    details: eligibleAxesWithResidualNeedWaiverPolicy
+      ? 'Eligible axes with residual uncertainty keep explicit waiver policy semantics.'
+      : 'An eligible axis has residual uncertainty without coherent waiver policy semantics.',
+  })
+
+  const notEligibleWaiverAllowedOnlyWhenNotReady = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || el.eligibilityStatus !== 'NOT_ELIGIBLE') return true
+    return el.eligibleForHumanClassification === false && el.waiverAllowed === true
+  })
+  checks.push({
+    checkId: 'CHK-NOT-ELIGIBLE-WAIVER-COHERENCE',
+    passed: notEligibleWaiverAllowedOnlyWhenNotReady,
+    details: notEligibleWaiverAllowedOnlyWhenNotReady
+      ? 'NOT_ELIGIBLE waiver semantics are coherent (not ready, waivable path only).'
+      : 'NOT_ELIGIBLE waiver semantics are inconsistent.',
+  })
+
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_ELIGIBILITY_CALIBRATED_NOT_CLASSIFIED,
+    status: SERA_VNEXT_STATUS.PARTIAL_READINESS_REFINED_NOT_CLASSIFIED,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,

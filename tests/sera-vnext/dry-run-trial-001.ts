@@ -114,7 +114,16 @@ async function main() {
       assert.ok(axis.blockingForClassification.length > 0, `${axis.axis} REVIEW_REQUIRED must include blockingForClassification`)
     }
     if (axis.status === 'READY_FOR_HUMAN_CLASSIFICATION') {
-      assert.equal(axis.blockingForClassification.length, 0, `${axis.axis} READY status must not keep blocking items`)
+      assert.equal(
+        axis.classificationEligibility.absoluteBlockers.length,
+        0,
+        `${axis.axis} READY status must not have absolute blockers`
+      )
+      assert.equal(
+        axis.classificationEligibility.eligibilityStatus,
+        'ELIGIBLE_FOR_HUMAN_REVIEW',
+        `${axis.axis} READY status must map to ELIGIBLE_FOR_HUMAN_REVIEW`
+      )
     }
     assert.notEqual(axis.status, 'CLASSIFIED', `${axis.axis} must not be CLASSIFIED in eligibility phase`)
   }

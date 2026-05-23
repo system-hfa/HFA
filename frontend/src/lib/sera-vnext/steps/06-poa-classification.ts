@@ -47,28 +47,17 @@ function axisInsufficientMechanismUncertainty(axis: PoaAxis): string {
   return 'Insufficient evidence to determine concrete action execution, actor-action linkage, or action mechanism.'
 }
 
-function axisStandardBlocking(axis: PoaAxis): string[] {
-  if (axis === 'perception') {
-    return ['perception_specific_evidence_missing', 'cue_recognition_not_established']
-  }
-  if (axis === 'objective') {
-    return ['objective_specific_evidence_missing', 'intent_rule_awareness_not_established']
-  }
-  return ['action_execution_specific_evidence_missing', 'actor_action_link_not_established']
-}
-
 function axisDefaultReadyReason(axis: PoaAxis): string {
   if (axis === 'perception') {
-    return 'Perception axis meets eligibility gates and is ready for human classification decision.'
+    return 'Perception axis has minimum evidence and guardrail-safe posture for human review, with residual uncertainty tracked for waiver decision.'
   }
   if (axis === 'objective') {
-    return 'Objective axis meets eligibility gates and is ready for human classification decision.'
+    return 'Objective axis has minimum evidence and guardrail-safe posture for human review, with residual uncertainty tracked for waiver decision.'
   }
-  return 'Action axis meets eligibility gates and is ready for human classification decision.'
+  return 'Action axis has minimum evidence and guardrail-safe posture for human review, with residual uncertainty tracked for waiver decision.'
 }
 
 function buildClassificationEligibility(input: {
-  axis: PoaAxis
   status: PoaAxisClassification['status']
   statement: string
   evidence: string[]
@@ -78,12 +67,12 @@ function buildClassificationEligibility(input: {
   transitionCriteria: string[]
   semanticGuardrails: string[]
   requiredHumanDecision: string
-  blockingForClassification: string[]
   hasReviewTrace: boolean
   noFinalConclusionRequested: boolean
   noDownstreamOutputsRequested: boolean
   noAutoClassificationRequested: boolean
-  unmetCriteriaFromAxis: string[]
+  essentialUnmetCriteria: string[]
+  waivableCriteria: string[]
   absoluteBlockersFromAxis: string[]
   readyReason: string | null
 }): PoaClassificationEligibility {
@@ -137,12 +126,6 @@ function buildClassificationEligibility(input: {
       isAbsoluteBlocker: false,
     },
     {
-      checkId: 'ELIG-BLOCKING-LIST-EMPTY',
-      passed: input.blockingForClassification.length === 0,
-      details: 'Axis blockingForClassification is empty for readiness.',
-      isAbsoluteBlocker: false,
-    },
-    {
       checkId: 'ELIG-NO-FINAL-CONCLUSION-REQUEST',
       passed: input.noFinalConclusionRequested,
       details: 'No final conclusion request/field was detected in causal-core eligibility path.',
@@ -162,15 +145,12 @@ function buildClassificationEligibility(input: {
     },
   ]
 
-  const unmetCriteria = unique([
-    ...checks.filter((c) => !c.passed && !c.isAbsoluteBlocker).map((c) => c.checkId),
-    ...input.unmetCriteriaFromAxis,
-  ])
+  const essentialFromChecks = checks.filter((c) => !c.passed && !c.isAbsoluteBlocker).map((c) => c.checkId)
+  const absoluteFromChecks = checks.filter((c) => !c.passed && c.isAbsoluteBlocker).map((c) => c.checkId)
 
-  const absoluteBlockers = unique([
-    ...input.absoluteBlockersFromAxis,
-    ...checks.filter((c) => !c.passed && c.isAbsoluteBlocker).map((c) => c.checkId),
-  ])
+  const unmetCriteria = unique([...essentialFromChecks, ...input.essentialUnmetCriteria])
+  const absoluteBlockers = unique([...absoluteFromChecks, ...input.absoluteBlockersFromAxis])
+  const residualWaivable = unique(input.waivableCriteria)
 
   const blockedByGuardrail = absoluteBlockers.length > 0
   const eligibleForHumanClassification =
@@ -187,12 +167,18 @@ function buildClassificationEligibility(input: {
     eligibleForHumanClassification,
     eligibilityChecks: checks,
     unmetCriteria,
-    waiverRequired: !blockedByGuardrail && !eligibleForHumanClassification && unmetCriteria.length > 0,
+    waiverRequired:
+      !blockedByGuardrail &&
+      ((eligibleForHumanClassification && residualWaivable.length > 0) ||
+        (!eligibleForHumanClassification && (unmetCriteria.length > 0 || residualWaivable.length > 0))),
     waiverAllowed: !blockedByGuardrail,
     waiverProhibitedReason: blockedByGuardrail ? 'Absolute methodological blockers present.' : null,
     absoluteBlockers,
     whyBlocked: blockedByGuardrail ? absoluteBlockers.join('; ') : null,
-    whyNotEligible: !blockedByGuardrail && !eligibleForHumanClassification ? unmetCriteria.join('; ') : null,
+    whyNotEligible:
+      !blockedByGuardrail && !eligibleForHumanClassification
+        ? unique([...unmetCriteria, ...residualWaivable]).join('; ')
+        : null,
     readyForHumanClassificationReason: eligibleForHumanClassification ? input.readyReason : null,
   }
 }
@@ -208,9 +194,10 @@ function buildAxisResult(input: {
   disallowedInterpretations: string[]
   requiredHumanDecision: string
   transitionCriteria: string[]
-  blockingForClassification: string[]
+  baseBlockingForClassification: string[]
   contextRiskFlags?: string[]
-  unmetCriteriaFromAxis: string[]
+  essentialUnmetCriteria: string[]
+  waivableCriteria: string[]
   absoluteBlockersFromAxis: string[]
   noFinalConclusionRequested: boolean
   noDownstreamOutputsRequested: boolean
@@ -219,8 +206,6 @@ function buildAxisResult(input: {
   const statement = input.statement || ''
   const hasStatement = statement.trim().length > 0
   const hasEvidence = input.evidence.length > 0
-  const hasMaterialUncertainty = input.uncertainty.length > 0
-  const hasContextRisk = (input.contextRiskFlags ?? []).length > 0
 
   const linkedUncertainties = [...input.uncertainty]
   const linkedEvidence = [...input.evidence]
@@ -228,6 +213,9 @@ function buildAxisResult(input: {
     linkedUncertainties.push(axisMissingEvidenceUncertainty(input.axis))
     linkedUncertainties.push(axisInsufficientMechanismUncertainty(input.axis))
   }
+
+  const hasAbsoluteBlockers = input.absoluteBlockersFromAxis.length > 0
+  const hasEssentialGaps = input.essentialUnmetCriteria.length > 0
 
   let status: PoaAxisClassification['status']
   let reviewReason: string
@@ -245,38 +233,39 @@ function buildAxisResult(input: {
     evidenceSufficiency = 'insufficient'
     codeMeaning = 'Insufficient evidence for controlled axis classification.'
     blockingForClassification = unique([
-      ...input.blockingForClassification,
-      ...axisStandardBlocking(input.axis),
+      ...input.baseBlockingForClassification,
       'missing_statement_or_evidence',
-      ...input.unmetCriteriaFromAxis.map((id) => `eligibility_gate:${id}`),
+      ...input.essentialUnmetCriteria.map((id) => `essential:${id}`),
+      ...input.waivableCriteria.map((id) => `waivable:${id}`),
+      ...input.absoluteBlockersFromAxis.map((id) => `absolute:${id}`),
     ])
-  } else if (hasMaterialUncertainty || hasContextRisk || input.unmetCriteriaFromAxis.length > 0 || input.absoluteBlockersFromAxis.length > 0) {
+  } else if (hasAbsoluteBlockers || hasEssentialGaps) {
     status = 'REVIEW_REQUIRED'
-    reviewReason = hasMaterialUncertainty
-      ? 'Material uncertainty remains in the statement package.'
-      : hasContextRisk
-        ? 'Contextual risk flags prevent safe readiness transition.'
-        : 'Eligibility criteria are not yet satisfied for human classification readiness.'
+    reviewReason = hasAbsoluteBlockers
+      ? 'Absolute methodological guardrail blockers prevent readiness transition.'
+      : 'Essential readiness criteria are still unmet.'
     rejectionReason = input.fallbackReviewReason
     alternativesConsidered = ['READY_FOR_HUMAN_CLASSIFICATION', 'INSUFFICIENT_EVIDENCE']
-    evidenceSufficiency = hasMaterialUncertainty || hasContextRisk ? 'partial' : 'sufficient'
-    codeMeaning = 'Axis remains under controlled review pending eligibility closure.'
+    evidenceSufficiency = input.evidence.length > 0 ? 'partial' : 'insufficient'
+    codeMeaning = 'Axis remains under controlled review pending essential/guardrail closure.'
     blockingForClassification = unique([
-      ...input.blockingForClassification,
-      ...axisStandardBlocking(input.axis),
-      ...(hasMaterialUncertainty ? ['material_uncertainty_present'] : []),
+      ...input.baseBlockingForClassification,
+      ...input.essentialUnmetCriteria.map((id) => `essential:${id}`),
+      ...input.waivableCriteria.map((id) => `waivable:${id}`),
+      ...input.absoluteBlockersFromAxis.map((id) => `absolute:${id}`),
       ...((input.contextRiskFlags ?? []).map((f) => `context_risk:${f}`)),
-      ...input.unmetCriteriaFromAxis.map((id) => `eligibility_gate:${id}`),
-      ...input.absoluteBlockersFromAxis.map((id) => `guardrail_blocker:${id}`),
     ])
   } else {
     status = 'READY_FOR_HUMAN_CLASSIFICATION'
-    reviewReason = 'Eligibility checks satisfied; pending explicit human review decision.'
+    reviewReason = 'Eligibility thresholds are met for human review; residual uncertainty is tracked as waivable.'
     rejectionReason = null
     alternativesConsidered = ['REVIEW_REQUIRED']
     evidenceSufficiency = 'sufficient'
     codeMeaning = 'Axis is eligible for human classification decision; automatic classification remains disabled.'
-    blockingForClassification = []
+    blockingForClassification = unique([
+      ...input.baseBlockingForClassification,
+      ...input.waivableCriteria.map((id) => `waivable:${id}`),
+    ])
   }
 
   const reviewTrace = {
@@ -290,7 +279,6 @@ function buildAxisResult(input: {
   }
 
   const classificationEligibility = buildClassificationEligibility({
-    axis: input.axis,
     status,
     statement,
     evidence: input.evidence,
@@ -300,12 +288,12 @@ function buildAxisResult(input: {
     transitionCriteria: input.transitionCriteria,
     semanticGuardrails: input.semanticGuardrails,
     requiredHumanDecision: input.requiredHumanDecision,
-    blockingForClassification,
     hasReviewTrace: Boolean(reviewTrace),
     noFinalConclusionRequested: input.noFinalConclusionRequested,
     noDownstreamOutputsRequested: input.noDownstreamOutputsRequested,
     noAutoClassificationRequested: input.noAutoClassificationRequested,
-    unmetCriteriaFromAxis: input.unmetCriteriaFromAxis,
+    essentialUnmetCriteria: input.essentialUnmetCriteria,
+    waivableCriteria: input.waivableCriteria,
     absoluteBlockersFromAxis: input.absoluteBlockersFromAxis,
     readyReason: axisDefaultReadyReason(input.axis),
   })
@@ -362,6 +350,17 @@ export function runStep06PoaClassification(input: {
     ...input.poaStatements.evidenceForEach.action,
   ].join(' ')
 
+  const commonAbsoluteBlockers: string[] = []
+  if (!noFinalConclusionRequested) {
+    commonAbsoluteBlockers.push('final_conclusion_request_detected')
+  }
+  if (!noDownstreamOutputsRequested) {
+    commonAbsoluteBlockers.push('downstream_hfacs_or_risk_request_detected')
+  }
+  if (!noAutoClassificationRequested) {
+    commonAbsoluteBlockers.push('automatic_final_classification_request_detected')
+  }
+
   const perceptionContextRisks: string[] = []
   if (hasAny(raw, ['warning system did not generate an alert', 'failed to alert'])) {
     perceptionContextRisks.push('warning_barrier_non_alert_present')
@@ -369,12 +368,6 @@ export function runStep06PoaClassification(input: {
   if (hasAny(raw, ['degraded visual references', 'poor visibility', 'low cloud'])) {
     perceptionContextRisks.push('degraded_visual_cue_quality')
   }
-  if (hasAny(input.poaStatements.uncertaintyForEach.perception.join(' '), ['recognition timing', 'timing'])) {
-    perceptionContextRisks.push('recognition_timing_not_established')
-  }
-
-  const perceptionUnmetCriteria: string[] = []
-  const perceptionAbsoluteBlockers: string[] = []
 
   const hasPerceptionCueAvailability = hasAny(perceptionEvidenceText, [
     'instrument',
@@ -384,19 +377,22 @@ export function runStep06PoaClassification(input: {
     'airspeed',
     'descent',
     'warning',
+    'reference',
   ])
-  if (!hasPerceptionCueAvailability) {
-    perceptionUnmetCriteria.push('cue_availability_evidence_missing')
-  }
+  const hasPerceptionRecognitionSignal = hasAny(
+    perceptionEvidenceText + ' ' + input.poaStatements.uncertaintyForEach.perception.join(' '),
+    ['recognition', 'recognized', 'timing', 'awareness', 'cue uptake']
+  )
 
-  const hasPerceptionRecognitionTimelineEvidence = hasAny(perceptionEvidenceText, [
-    'recognized',
-    'recognition timeline',
-    'recognized late',
-    'cue uptake',
-  ])
-  if (!hasPerceptionRecognitionTimelineEvidence) {
-    perceptionUnmetCriteria.push('cue_uptake_or_recognition_timeline_not_established')
+  const perceptionEssentialUnmet: string[] = []
+  const perceptionWaivableCriteria: string[] = []
+  const perceptionAbsoluteBlockers: string[] = []
+
+  if (!hasPerceptionCueAvailability) {
+    perceptionEssentialUnmet.push('cue_availability_evidence_missing')
+  }
+  if (!hasPerceptionRecognitionSignal) {
+    perceptionWaivableCriteria.push('recognition_timeline_unresolved_but_waivable')
   }
 
   const perceptionFailureClaimed = hasAny(perceptionEvidenceText, [
@@ -405,11 +401,11 @@ export function runStep06PoaClassification(input: {
     'did not perceive',
     'misperceived',
   ])
-  const weatherOrWarningContextOnly =
+  const weatherOrWarningOnly =
     hasAny(perceptionEvidenceText, ['degraded visual', 'poor visibility', 'low cloud', 'warning']) &&
-    !hasPerceptionRecognitionTimelineEvidence
-  if (perceptionFailureClaimed && weatherOrWarningContextOnly) {
-    perceptionAbsoluteBlockers.push('perception_failure_inferred_from_weather_or_warning_alone')
+    !hasPerceptionCueAvailability
+  if (perceptionFailureClaimed && weatherOrWarningOnly) {
+    perceptionAbsoluteBlockers.push('perception_failure_inferred_from_weather_warning_without_cue_evidence')
   }
 
   const objectiveContextRisks: string[] = []
@@ -420,22 +416,30 @@ export function runStep06PoaClassification(input: {
     objectiveContextRisks.push('objective_statement_marks_intent_uncertain')
   }
 
-  const objectiveUnmetCriteria: string[] = []
+  const objectiveEssentialUnmet: string[] = []
+  const objectiveWaivableCriteria: string[] = []
   const objectiveAbsoluteBlockers: string[] = []
 
-  const hasObjectiveIntentEvidence = hasAny(objectiveEvidenceText, ['intent', 'objective intent', 'goal intent', 'conscious intent'])
+  const hasObjectiveContextEvidence = hasAny(objectiveEvidenceText, [
+    'approach continuation',
+    'continuation',
+    'goal context',
+    'operational goal',
+    'decision context',
+  ])
+  if (!hasObjectiveContextEvidence) {
+    objectiveEssentialUnmet.push('objective_context_evidence_missing')
+  }
+
+  const hasObjectiveIntentEvidence = hasAny(objectiveEvidenceText, ['intent', 'conscious intent', 'deliberate intent'])
   if (!hasObjectiveIntentEvidence) {
-    objectiveUnmetCriteria.push('objective_intent_evidence_missing')
+    objectiveWaivableCriteria.push('explicit_intent_evidence_missing_but_waivable_for_human_review')
   }
 
   const hasRuleAwarenessEvidence = hasAny(objectiveEvidenceText, ['rule awareness', 'procedure awareness', 'knowingly'])
   const objectiveViolationClaimed = hasAny(objectiveEvidenceText, ['violation', 'deliberate deviation', 'conscious deviation'])
   if (objectiveViolationClaimed && !hasRuleAwarenessEvidence) {
-    objectiveAbsoluteBlockers.push('objective_violation_without_intent_or_rule_awareness_evidence')
-  }
-
-  if (hasAny(objectiveEvidenceText, ['continuation']) && !hasObjectiveIntentEvidence) {
-    objectiveUnmetCriteria.push('continuation_context_not_equivalent_to_intent_evidence')
+    objectiveAbsoluteBlockers.push('objective_violation_claim_without_rule_awareness_evidence')
   }
 
   const actionContextRisks: string[] = []
@@ -445,43 +449,33 @@ export function runStep06PoaClassification(input: {
   if (hasAny(input.poaStatements.actionStatement || '', ['aircraft state'])) {
     actionContextRisks.push('action_statement_separates_aircraft_state_from_action_quality')
   }
-  if (hasAny(input.poaStatements.uncertaintyForEach.action.join(' '), ['Exact control-input sequence is not established'])) {
-    actionContextRisks.push('exact_control_inputs_missing')
-  }
-  if (hasAny(input.directActor.uncertainty.join(' '), ['PF/PM'])) {
-    actionContextRisks.push('direct_actor_pf_pm_precision_missing')
-  }
-  if (!hasAny(raw, ['physical inability', 'incapacidade fisica', 'ergonomic', 'ergonomica', 'motor limitation'])) {
-    actionContextRisks.push('no_physical_motor_ergonomic_inability_evidence')
-  }
 
-  const actionUnmetCriteria: string[] = []
+  const actionEssentialUnmet: string[] = []
+  const actionWaivableCriteria: string[] = []
   const actionAbsoluteBlockers: string[] = []
 
-  const hasConcreteActionEvidence = hasAny(actionEvidenceText, [
+  const hasActionEvidence = hasAny(actionEvidenceText, [
     'continued',
     'continuation',
     'recovery',
-    'control input',
-    'action sequence',
-    'non-action',
+    'control',
+    'action',
   ])
-  if (!hasConcreteActionEvidence) {
-    actionUnmetCriteria.push('concrete_action_or_non_action_evidence_missing')
+  if (!hasActionEvidence) {
+    actionEssentialUnmet.push('action_evidence_missing')
   }
 
+  const hasSequenceSignal = !hasAny(input.poaStatements.uncertaintyForEach.action.join(' '), ['exact control-input sequence is not established'])
+  if (!hasSequenceSignal) {
+    actionWaivableCriteria.push('exact_control_input_sequence_unresolved_but_waivable')
+  }
+
+  const actorSpecificDemand = hasAny(raw, ['single pilot'])
   const hasActorActionLink = input.directActor.actorKind !== 'unknown' && input.directActor.actorKind !== 'system_or_condition_dominant'
-  if (!hasActorActionLink) {
-    actionUnmetCriteria.push('actor_action_link_not_established')
-  }
-
-  const hasSequenceOrTimingEvidence = !hasAny(input.poaStatements.uncertaintyForEach.action.join(' '), [
-    'not established',
-    'exact control-input',
-    'timing',
-  ])
-  if (!hasSequenceOrTimingEvidence) {
-    actionUnmetCriteria.push('sequence_or_timing_evidence_missing')
+  if (actorSpecificDemand && !hasActorActionLink) {
+    actionEssentialUnmet.push('actor_action_link_missing_for_specific_actor_demand')
+  } else if (!hasActorActionLink) {
+    actionWaivableCriteria.push('actor_action_precision_unresolved_but_waivable')
   }
 
   const actionFailureClaimed = hasAny(actionEvidenceText, ['action failure', 'execution failure', 'performance failure'])
@@ -506,17 +500,6 @@ export function runStep06PoaClassification(input: {
     actionAbsoluteBlockers.push('a_d_inability_attempt_without_physical_motor_ergonomic_evidence')
   }
 
-  const commonAbsoluteBlockers: string[] = []
-  if (!noFinalConclusionRequested) {
-    commonAbsoluteBlockers.push('final_conclusion_request_detected')
-  }
-  if (!noDownstreamOutputsRequested) {
-    commonAbsoluteBlockers.push('downstream_hfacs_or_risk_request_detected')
-  }
-  if (!noAutoClassificationRequested) {
-    commonAbsoluteBlockers.push('automatic_final_classification_request_detected')
-  }
-
   const perception = buildAxisResult({
     axis: 'perception',
     statement: input.poaStatements.perceptionStatement,
@@ -539,12 +522,13 @@ export function runStep06PoaClassification(input: {
       'Evidence separating cue availability from cue uptake/interpretation timing.',
       'Corroboration beyond degraded-visual and warning-barrier context alone.',
     ],
-    blockingForClassification: [
+    baseBlockingForClassification: [
       'recognition_timing_not_established',
       'degraded_visual_and_warning_context_not_disambiguated',
     ],
     contextRiskFlags: perceptionContextRisks,
-    unmetCriteriaFromAxis: perceptionUnmetCriteria,
+    essentialUnmetCriteria: perceptionEssentialUnmet,
+    waivableCriteria: perceptionWaivableCriteria,
     absoluteBlockersFromAxis: [...perceptionAbsoluteBlockers, ...commonAbsoluteBlockers],
     noFinalConclusionRequested,
     noDownstreamOutputsRequested,
@@ -573,12 +557,13 @@ export function runStep06PoaClassification(input: {
       'Explicit evidence of rule awareness/non-compliance awareness.',
       'Evidence distinguishing continuation context from conscious deviation.',
     ],
-    blockingForClassification: [
+    baseBlockingForClassification: [
       'objective_intent_not_explicitly_supported',
       'rule_awareness_not_demonstrated',
     ],
     contextRiskFlags: objectiveContextRisks,
-    unmetCriteriaFromAxis: objectiveUnmetCriteria,
+    essentialUnmetCriteria: objectiveEssentialUnmet,
+    waivableCriteria: objectiveWaivableCriteria,
     absoluteBlockersFromAxis: [...objectiveAbsoluteBlockers, ...commonAbsoluteBlockers],
     noFinalConclusionRequested,
     noDownstreamOutputsRequested,
@@ -607,14 +592,15 @@ export function runStep06PoaClassification(input: {
       'Evidence linking actor to specific control inputs and timing.',
       'Evidence proving or disproving physical/motor/ergonomic inability before any inability-style action classification.',
     ],
-    blockingForClassification: [
+    baseBlockingForClassification: [
       'exact_control_inputs_not_established',
       'actor_action_link_not_precise',
       'aircraft_state_not_equivalent_to_action_error',
       'a_d_blocked_without_physical_evidence',
     ],
     contextRiskFlags: actionContextRisks,
-    unmetCriteriaFromAxis: actionUnmetCriteria,
+    essentialUnmetCriteria: actionEssentialUnmet,
+    waivableCriteria: actionWaivableCriteria,
     absoluteBlockersFromAxis: [...actionAbsoluteBlockers, ...commonAbsoluteBlockers],
     noFinalConclusionRequested,
     noDownstreamOutputsRequested,

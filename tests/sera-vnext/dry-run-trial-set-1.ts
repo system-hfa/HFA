@@ -168,7 +168,18 @@ function assertCommon(result: any, inputId: string) {
       assertAxisTrace(axis, inputId)
     }
     if (axis.status === 'READY_FOR_HUMAN_CLASSIFICATION') {
-      assert.equal(axis.blockingForClassification.length, 0, `${inputId}/${axis.axis}: READY status must not keep blocking items`)
+      assert.equal(
+        axis.classificationEligibility.eligibilityStatus,
+        'ELIGIBLE_FOR_HUMAN_REVIEW',
+        `${inputId}/${axis.axis}: READY status must map to ELIGIBLE_FOR_HUMAN_REVIEW`
+      )
+      assert.equal(
+        axis.classificationEligibility.absoluteBlockers.length,
+        0,
+        `${inputId}/${axis.axis}: READY status must not have absolute blockers`
+      )
+      assert.ok(axis.evidence.length > 0, `${inputId}/${axis.axis}: READY status must retain evidence`)
+      assert.ok(axis.reviewTrace, `${inputId}/${axis.axis}: READY status must retain reviewTrace`)
     }
   }
 
@@ -250,6 +261,7 @@ function assertTrialSpecific(result: any, inputId: string) {
 async function main() {
   const summaries: TrialSummary[] = []
   const failures: string[] = []
+  let eligibleAxesCount = 0
 
   for (const trial of trialSet) {
     const result = await analyzeSeraVNext({
@@ -312,6 +324,12 @@ async function main() {
       assertionsPassed,
       assertionError,
     })
+
+    for (const axis of [result.poaClassification.perception, result.poaClassification.objective, result.poaClassification.action]) {
+      if (axis.classificationEligibility.eligibilityStatus === 'ELIGIBLE_FOR_HUMAN_REVIEW') {
+        eligibleAxesCount += 1
+      }
+    }
   }
 
   const trial004 = summaries.find((item) => item.inputId === 'TRIAL-SET1-004')
@@ -319,6 +337,7 @@ async function main() {
   if (failures.length > 0) {
     throw new Error(`Review-trace stability assertions failed for ${failures.length} trial(s).`)
   }
+  assert.ok(eligibleAxesCount >= 1, 'Expected at least one ELIGIBLE_FOR_HUMAN_REVIEW axis after readiness refinement')
   console.log('SERA vNext Trial Set 1 review-trace stability PASS')
 }
 
