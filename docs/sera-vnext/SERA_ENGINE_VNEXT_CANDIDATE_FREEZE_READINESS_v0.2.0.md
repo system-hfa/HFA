@@ -1,7 +1,7 @@
 # SERA Engine vNext Candidate Freeze Readiness v0.2.0
 
 Status: DRAFT_FOR_REVIEW  
-Phase: A4+R-54 — Candidate Freeze Readiness (atualizado com independent review dry run)
+Phase: A4+R-56 — Candidate Freeze Readiness (atualizado com formal reviewer packet)
 
 ## Objetivo
 Consolidar o estado de maturidade do núcleo causal vNext e explicitar critérios mínimos para um candidate freeze futuro, sem declarar validação metodológica final.
@@ -151,6 +151,25 @@ Pendências remanescentes:
 - preparar `CONSENSUS_CANDIDATE` apenas após revisão formal;
 - executar protocolo inter-rater com métricas completas;
 - somente após evidência formal reavaliar readiness para freeze final.
+
+## A4+R-56 — Formal Reviewer Packet
+
+Esta fase preparou o pacote operacional para revisão real por avaliadores independentes:
+- [Formal Reviewer Packet](./SERA_ENGINE_VNEXT_FORMAL_REVIEWER_PACKET_v0.2.0.md)
+- [Reviewer Response Template](./reference-cases/REVIEWER_RESPONSE_TEMPLATE_v0.2.0.md)
+- [Formal Review Tracker](./reference-cases/FORMAL_REVIEW_TRACKER_v0.2.0.md)
+
+Estado após A4+R-56:
+- pacote formal de revisão criado.
+- revisão real ainda não executada.
+- inter-rater formal ainda não executado.
+- nenhum caso promovido para `CONSENSUS_VALIDATED`.
+- freeze final continua não autorizado.
+
+Pendências remanescentes:
+- executar coleta real de respostas com 2+ avaliadores independentes;
+- consolidar intake formal de resultados na fase A4+R-57;
+- somente após intake formal e execução inter-rater reavaliar candidatura a freeze final.
 
 ## A4+R-55 — Dry Run Divergence Resolution Guide
 

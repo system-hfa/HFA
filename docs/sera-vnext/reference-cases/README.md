@@ -54,6 +54,16 @@ Padrão de arquivos para novas materializações:
 
 Todos os drafts listados acima permanecem `NOT_CONSENSUS_VALIDATED` nesta fase.
 
+## A4+R-56 — Formal Reviewer Packet
+- [Formal Reviewer Packet](../SERA_ENGINE_VNEXT_FORMAL_REVIEWER_PACKET_v0.2.0.md)
+- [Reviewer Response Template](./REVIEWER_RESPONSE_TEMPLATE_v0.2.0.md)
+- [Formal Review Tracker](./FORMAL_REVIEW_TRACKER_v0.2.0.md)
+
+Status atual A4+R-56:
+- revisão real ainda não executada;
+- inter-rater formal ainda não executado;
+- nenhum caso `CONSENSUS_VALIDATED`.
+
 ## Como adicionar um caso
 1. Copiar o [template](../SERA_ENGINE_VNEXT_CONSENSUS_REFERENCE_CASE_TEMPLATE_v0.2.0.md).
 2. Preencher todos os campos obrigatórios.
