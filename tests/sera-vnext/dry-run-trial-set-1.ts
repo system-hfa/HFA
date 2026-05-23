@@ -115,7 +115,7 @@ const allowedStatuses = new Set([
 ])
 
 function assertNoForbiddenTopLevel(result: Record<string, unknown>, inputId: string) {
-  for (const forbidden of ['hfacs', 'erc_level', 'risk', 'arms', 'finalConclusion']) {
+  for (const forbidden of ['hfacs', 'erc_level', 'risk', 'arms', 'finalConclusion', 'codeReleaseGate']) {
     assert.ok(!(forbidden in result), `${inputId}: forbidden top-level key present: ${forbidden}`)
   }
 }

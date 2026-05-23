@@ -170,6 +170,7 @@ async function main() {
   for (const forbidden of ['hfacs', 'erc_level', 'risk', 'arms']) {
     assert.ok(!(forbidden in resultAny), `forbidden key present in output: ${forbidden}`)
   }
+  assert.ok(!('codeReleaseGate' in resultAny), 'codeReleaseGate must not be present in base analyze output')
 
   assert.ok(!('finalConclusion' in resultAny), 'output must not include final free conclusion')
   assert.equal(result.humanReview.required, true, 'humanReview.required must be true')

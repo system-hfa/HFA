@@ -348,6 +348,31 @@ export interface ManualClassificationDryRunResult {
   outputLocks: string[]
 }
 
+export interface HumanValidatedAxisClassification {
+  axis: PoaAxis
+  releasedCode: string | null
+  source: 'HUMAN_REVIEW'
+  reviewerRationale: string
+  evidenceReferences: string[]
+  acceptedUncertainties: string[]
+  waiverApplied: boolean
+  guardrailAcknowledgements: string[]
+  releaseStatus: 'RELEASED_BY_HUMAN_REVIEW' | 'RELEASE_BLOCKED'
+  releaseBlockingIssues: string[]
+  auditTrace: string[]
+}
+
+export interface CodeReleaseGateResult {
+  inputId: string
+  gateStatus: 'RELEASE_READY_FOR_CAUSAL_CORE' | 'PARTIAL_RELEASE' | 'RELEASE_BLOCKED'
+  axisReleases: HumanValidatedAxisClassification[]
+  globalBlockingIssues: string[]
+  outputLocks: string[]
+  downstreamStillLocked: boolean
+  finalConclusionStillLocked: boolean
+  causalCoreOnly: boolean
+}
+
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 
 export interface HumanReviewStatus {
