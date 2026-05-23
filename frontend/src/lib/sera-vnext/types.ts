@@ -127,7 +127,11 @@ export interface PoaClassificationEligibility {
   eligibilityChecks: PoaEligibilityCheck[]
   unmetCriteria: string[]
   waiverRequired: boolean
+  waiverAllowed: boolean
+  waiverProhibitedReason: string | null
   absoluteBlockers: string[]
+  whyBlocked: string | null
+  whyNotEligible: string | null
   readyForHumanClassificationReason: string | null
 }
 
@@ -201,6 +205,7 @@ export type CausalAssuranceStatus =
   | 'PARTIAL_POA_REVIEW_REQUIRED'
   | 'PARTIAL_POA_REVIEW_TRACEABLE'
   | 'PARTIAL_ELIGIBILITY_CHECKED_NOT_CLASSIFIED'
+  | 'PARTIAL_ELIGIBILITY_CALIBRATED_NOT_CLASSIFIED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'

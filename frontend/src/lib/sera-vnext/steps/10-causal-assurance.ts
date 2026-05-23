@@ -378,10 +378,50 @@ export function runStep10CausalAssurance(input: {
       : 'At least one eligible axis is missing required human decision guidance.',
   })
 
+  const noBlockedAxisFromOrdinaryMissingEvidenceOnly = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || el.eligibilityStatus !== 'BLOCKED_BY_GUARDRAIL') return true
+    return el.absoluteBlockers.length > 0
+  })
+  checks.push({
+    checkId: 'CHK-BLOCKED-AXIS-REQUIRES-ABSOLUTE-BLOCKER',
+    passed: noBlockedAxisFromOrdinaryMissingEvidenceOnly,
+    details: noBlockedAxisFromOrdinaryMissingEvidenceOnly
+      ? 'Every BLOCKED_BY_GUARDRAIL axis has explicit absolute blockers.'
+      : 'A blocked axis appears blocked only by ordinary missing evidence/criteria.',
+  })
+
+  const waiverProhibitedWhenAbsoluteBlockersExist = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el) return true
+    if (el.absoluteBlockers.length === 0) return true
+    return el.waiverAllowed === false && el.waiverRequired === false && Boolean(el.waiverProhibitedReason)
+  })
+  checks.push({
+    checkId: 'CHK-WAIVER-PROHIBITED-WHEN-ABSOLUTE-BLOCKER',
+    passed: waiverProhibitedWhenAbsoluteBlockersExist,
+    details: waiverProhibitedWhenAbsoluteBlockersExist
+      ? 'Waiver is prohibited whenever absolute blockers exist.'
+      : 'Waiver governance is inconsistent for axes with absolute blockers.',
+  })
+
+  const waiverRequiredOnlyForWaivableCriteria = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || !el.waiverRequired) return true
+    return el.waiverAllowed && el.absoluteBlockers.length === 0 && el.unmetCriteria.length > 0 && !el.eligibleForHumanClassification
+  })
+  checks.push({
+    checkId: 'CHK-WAIVER-REQUIRED-ONLY-FOR-WAIVABLE-CRITERIA',
+    passed: waiverRequiredOnlyForWaivableCriteria,
+    details: waiverRequiredOnlyForWaivableCriteria
+      ? 'WaiverRequired is set only for waivable unresolved criteria.'
+      : 'WaiverRequired is set in a non-waivable or inconsistent situation.',
+  })
+
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_ELIGIBILITY_CHECKED_NOT_CLASSIFIED,
+    status: SERA_VNEXT_STATUS.PARTIAL_ELIGIBILITY_CALIBRATED_NOT_CLASSIFIED,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,

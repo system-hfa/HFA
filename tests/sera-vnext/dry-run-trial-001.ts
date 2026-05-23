@@ -84,6 +84,21 @@ async function main() {
       axis.status === 'READY_FOR_HUMAN_CLASSIFICATION',
       `${axis.axis} readiness status must match eligibility flag`
     )
+    if (axis.classificationEligibility.eligibilityStatus === 'BLOCKED_BY_GUARDRAIL') {
+      assert.ok(
+        axis.classificationEligibility.absoluteBlockers.length > 0,
+        `${axis.axis} blocked status must include absolute blockers`
+      )
+      assert.equal(axis.classificationEligibility.waiverAllowed, false, `${axis.axis} blocked status must prohibit waiver`)
+      assert.equal(axis.classificationEligibility.waiverRequired, false, `${axis.axis} blocked status must not require waiver`)
+    }
+    if (axis.classificationEligibility.eligibilityStatus === 'NOT_ELIGIBLE') {
+      assert.equal(
+        axis.classificationEligibility.absoluteBlockers.length,
+        0,
+        `${axis.axis} NOT_ELIGIBLE should not depend on absolute blockers`
+      )
+    }
     assert.ok(axis.reviewTrace, `${axis.axis} must include reviewTrace`)
     assert.ok(axis.reviewReasonCode, `${axis.axis} must include reviewReasonCode`)
     assert.ok(

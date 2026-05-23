@@ -12,12 +12,24 @@ type TrialSummary = {
   perceptionStatus: string
   perceptionReviewReasonCode: string
   perceptionEligibility: string
+  perceptionWaiverRequired: boolean
+  perceptionWaiverAllowed: boolean
+  perceptionWhyBlocked: string | null
+  perceptionWhyNotEligible: string | null
   objectiveStatus: string
   objectiveReviewReasonCode: string
   objectiveEligibility: string
+  objectiveWaiverRequired: boolean
+  objectiveWaiverAllowed: boolean
+  objectiveWhyBlocked: string | null
+  objectiveWhyNotEligible: string | null
   actionStatus: string
   actionReviewReasonCode: string
   actionEligibility: string
+  actionWaiverRequired: boolean
+  actionWaiverAllowed: boolean
+  actionWhyBlocked: string | null
+  actionWhyNotEligible: string | null
   unmetCriteriaCount: number
   absoluteBlockersCount: number
   dominance: string
@@ -122,6 +134,36 @@ function assertCommon(result: any, inputId: string) {
       axis.status === 'READY_FOR_HUMAN_CLASSIFICATION',
       `${inputId}/${axis.axis}: eligibility flag must match READY status`
     )
+    if (axis.classificationEligibility.eligibilityStatus === 'BLOCKED_BY_GUARDRAIL') {
+      assert.ok(
+        axis.classificationEligibility.absoluteBlockers.length > 0,
+        `${inputId}/${axis.axis}: blocked status must have absolute blockers`
+      )
+      assert.equal(
+        axis.classificationEligibility.waiverAllowed,
+        false,
+        `${inputId}/${axis.axis}: blocked status must prohibit waiver`
+      )
+      assert.equal(
+        axis.classificationEligibility.waiverRequired,
+        false,
+        `${inputId}/${axis.axis}: blocked status must not require waiver`
+      )
+    }
+    if (axis.classificationEligibility.eligibilityStatus === 'NOT_ELIGIBLE') {
+      assert.equal(
+        axis.classificationEligibility.absoluteBlockers.length,
+        0,
+        `${inputId}/${axis.axis}: NOT_ELIGIBLE should not depend on absolute blockers`
+      )
+    }
+    if (axis.classificationEligibility.absoluteBlockers.length > 0) {
+      assert.notEqual(
+        axis.classificationEligibility.eligibilityStatus,
+        'ELIGIBLE_FOR_HUMAN_REVIEW',
+        `${inputId}/${axis.axis}: absolute blockers cannot be ELIGIBLE_FOR_HUMAN_REVIEW`
+      )
+    }
     if (axis.status === 'REVIEW_REQUIRED' || axis.status === 'INSUFFICIENT_EVIDENCE') {
       assertAxisTrace(axis, inputId)
     }
@@ -181,8 +223,18 @@ function assertTrialSpecific(result: any, inputId: string) {
       `${inputId}: perception must include trace links after completeness fix`
     )
     assert.ok(
-      ['NOT_ELIGIBLE', 'BLOCKED_BY_GUARDRAIL'].includes(p.classificationEligibility.eligibilityStatus),
-      `${inputId}: perception must remain conservative (NOT_ELIGIBLE or BLOCKED_BY_GUARDRAIL)`
+      p.classificationEligibility.eligibilityStatus === 'NOT_ELIGIBLE',
+      `${inputId}: perception should remain NOT_ELIGIBLE for ordinary evidence insufficiency`
+    )
+    assert.equal(
+      o.classificationEligibility.eligibilityStatus,
+      'NOT_ELIGIBLE',
+      `${inputId}: objective should remain NOT_ELIGIBLE for ordinary evidence insufficiency`
+    )
+    assert.equal(
+      a.classificationEligibility.eligibilityStatus,
+      'NOT_ELIGIBLE',
+      `${inputId}: action should remain NOT_ELIGIBLE for ordinary evidence insufficiency`
     )
   }
 
@@ -229,12 +281,24 @@ async function main() {
       perceptionStatus: result.poaClassification.perception.status,
       perceptionReviewReasonCode: result.poaClassification.perception.reviewReasonCode,
       perceptionEligibility: result.poaClassification.perception.classificationEligibility.eligibilityStatus,
+      perceptionWaiverRequired: result.poaClassification.perception.classificationEligibility.waiverRequired,
+      perceptionWaiverAllowed: result.poaClassification.perception.classificationEligibility.waiverAllowed,
+      perceptionWhyBlocked: result.poaClassification.perception.classificationEligibility.whyBlocked,
+      perceptionWhyNotEligible: result.poaClassification.perception.classificationEligibility.whyNotEligible,
       objectiveStatus: result.poaClassification.objective.status,
       objectiveReviewReasonCode: result.poaClassification.objective.reviewReasonCode,
       objectiveEligibility: result.poaClassification.objective.classificationEligibility.eligibilityStatus,
+      objectiveWaiverRequired: result.poaClassification.objective.classificationEligibility.waiverRequired,
+      objectiveWaiverAllowed: result.poaClassification.objective.classificationEligibility.waiverAllowed,
+      objectiveWhyBlocked: result.poaClassification.objective.classificationEligibility.whyBlocked,
+      objectiveWhyNotEligible: result.poaClassification.objective.classificationEligibility.whyNotEligible,
       actionStatus: result.poaClassification.action.status,
       actionReviewReasonCode: result.poaClassification.action.reviewReasonCode,
       actionEligibility: result.poaClassification.action.classificationEligibility.eligibilityStatus,
+      actionWaiverRequired: result.poaClassification.action.classificationEligibility.waiverRequired,
+      actionWaiverAllowed: result.poaClassification.action.classificationEligibility.waiverAllowed,
+      actionWhyBlocked: result.poaClassification.action.classificationEligibility.whyBlocked,
+      actionWhyNotEligible: result.poaClassification.action.classificationEligibility.whyNotEligible,
       unmetCriteriaCount:
         result.poaClassification.perception.classificationEligibility.unmetCriteria.length +
         result.poaClassification.objective.classificationEligibility.unmetCriteria.length +
