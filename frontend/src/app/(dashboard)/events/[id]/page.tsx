@@ -50,6 +50,13 @@ type AnalysisPayload = {
   conclusions?: string | null
   recommendations?: Recommendation[] | null
   edit_count?: number | null
+  raw_llm_output?: {
+    causal_consistency?: {
+      passed?: boolean
+      issues?: string[]
+      guard_applied?: boolean
+    }
+  } | null
 }
 type EventPayload = {
   id: string
@@ -424,6 +431,8 @@ export default function EventDetailPage() {
   const actionFlow     = analysis?.action_discarded?.nos_percorridos     ?? []
   const preconditions = analysis?.preconditions ?? []
   const recommendations = analysis?.recommendations ?? []
+  const causalConsistency = analysis?.raw_llm_output?.causal_consistency ?? null
+  const causalConsistencyFailed = causalConsistency?.passed === false
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
@@ -492,6 +501,18 @@ export default function EventDetailPage() {
 
           {/* ── Mini-card de risco por evento ─────────────────────────── */}
           {(() => {
+            if (causalConsistencyFailed) {
+              return (
+                <div className="bg-amber-950 border border-amber-800 rounded-xl p-4 space-y-2">
+                  <p className="text-sm font-semibold text-amber-300">
+                    Risk layer not validated — causal analysis requires review.
+                  </p>
+                  <p className="text-xs text-amber-200/80">
+                    Camada de risco/ERC suprimida nesta análise devido a inconsistência causal detectada nos códigos/conclusão.
+                  </p>
+                </div>
+              )
+            }
             const risk = computeEventRisk(
               analysis.perception_code ?? null,
               analysis.objective_code  ?? null,
@@ -760,14 +781,25 @@ export default function EventDetailPage() {
           )}
 
           {/* ── HFACS — Classificação Bônus ────────────────────────────── */}
-          {(analysis.perception_code || analysis.objective_code || analysis.action_code) && (
-            <HfacsSection
-              hfacs={mapToHfacs({
-                perception: analysis.perception_code,
-                objective: analysis.objective_code,
-                action: analysis.action_code,
-              })}
-            />
+          {causalConsistencyFailed ? (
+            <div className="bg-amber-950 border border-amber-800 rounded-xl p-4 space-y-2">
+              <p className="text-sm font-semibold text-amber-300">
+                Mapeamento HFACS suprimido por inconsistência causal.
+              </p>
+              <p className="text-xs text-amber-200/80">
+                A classificação HFACS automática volta a ser exibida após revisão humana e consistência causal validada.
+              </p>
+            </div>
+          ) : (
+            (analysis.perception_code || analysis.objective_code || analysis.action_code) && (
+              <HfacsSection
+                hfacs={mapToHfacs({
+                  perception: analysis.perception_code,
+                  objective: analysis.objective_code,
+                  action: analysis.action_code,
+                })}
+              />
+            )
           )}
         </>
       )}

@@ -136,15 +136,41 @@ function inferActionCode(rawInput: string, unsafeAct: string, llmCode: string): 
   if (supervisionCues) return 'A-G'
 
   const physicalCues = hasAny(t, [
-    'torque',
+    'incapacidade fisica',
+    'limitacao fisica',
+    'limitacao motora',
+    'nao conseguiu executar fisicamente',
+    'nao conseguiu aplicar',
+    'nao conseguiu fechar',
+    'forca insuficiente',
+    'preensao',
     'luvas',
-    'forca',
-    'alcance',
+    'epi',
     'ergonom',
-    'fisic',
+    'alcance',
     'incapaz de fechar',
   ])
-  if (physicalCues) return 'A-D'
+  const aircraftSystemBarrierCues = hasAny(t, [
+    'warning system did not generate an alert',
+    'available warning system failed to alert',
+    'nao gerou alerta',
+    'sistema de alerta nao alertou',
+    'sistema de alerta nao gerou alerta',
+    'alerting system',
+    'warning system',
+    'egpws',
+    'gpws',
+    'flight instruments',
+    'aircraft system',
+    'automation degradation',
+    'degradacao de automacao',
+    'degradacao de sistema',
+    'falha de sistema',
+    'engine torque increased',
+  ])
+  if (physicalCues && !(aircraftSystemBarrierCues && !hasAny(t, ['incapacidade fisica', 'limitacao fisica', 'limitacao motora', 'forca insuficiente', 'ergonom', 'alcance', 'luvas', 'epi']))) {
+    return 'A-D'
+  }
 
   const knowledgeCues = hasAny(t, [
     'nao havia recebido treinamento',
@@ -2015,6 +2041,157 @@ function computeCompleteness(
   }
 }
 
+type CausalConsistencyResult = {
+  passed: boolean
+  issues: string[]
+  guard_applied: boolean
+  original_conclusions: string
+  final_conclusions: string
+}
+
+function detectCodeSemanticContradictions(input: {
+  perceptionCode: string
+  objectiveCode: string
+  actionCode: string
+  conclusion: string
+}): string[] {
+  const text = normalizeText(input.conclusion)
+  const issues: string[] = []
+
+  const hasPerceptionFailureNarrative = hasAny(text, [
+    'percepcao inadequada',
+    'percepcao incorreta',
+    'falha de percepcao',
+    'falha perceptiva',
+  ])
+  const hasObjectiveFailureNarrative = hasAny(text, [
+    'objetivo inadequado',
+    'objetivo desviante',
+    'falha de objetivo',
+    'intencao inadequada',
+  ])
+  const hasActionFailureNarrative = hasAny(text, [
+    'falha de acao',
+    'acao inadequada',
+    'selecao do procedimento errado',
+    'procedimento errado',
+  ])
+
+  if (input.perceptionCode === 'P-A' && hasPerceptionFailureNarrative) {
+    issues.push('P-A contradiction: neutral perception code described as active perception failure')
+  }
+  if (input.objectiveCode === 'O-A' && hasObjectiveFailureNarrative) {
+    issues.push('O-A contradiction: neutral objective code described as active objective failure')
+  }
+  if (input.actionCode === 'A-A' && hasActionFailureNarrative) {
+    issues.push('A-A contradiction: neutral action code described as active action failure')
+  }
+
+  return issues
+}
+
+function detectUnsupportedAd(input: {
+  actionCode: string
+  rawInput: string
+}): string[] {
+  if (input.actionCode !== 'A-D') return []
+
+  const t = normalizeText(input.rawInput)
+  const hasSystemBarrierSignal = hasAny(t, [
+    'warning system did not generate an alert',
+    'available warning system failed to alert',
+    'nao gerou alerta',
+    'sistema de alerta nao alertou',
+    'sistema de alerta nao gerou alerta',
+    'alerting system',
+    'warning system',
+    'egpws',
+    'gpws',
+    'flight instruments',
+    'aircraft system',
+    'automation degradation',
+    'degradacao de automacao',
+    'degradacao de sistema',
+    'falha de sistema',
+    'engine torque increased',
+  ])
+  const hasExplicitHumanPhysicalSignal = hasAny(t, [
+    'incapacidade fisica',
+    'limitacao fisica',
+    'limitacao motora',
+    'nao conseguiu executar fisicamente',
+    'nao conseguiu aplicar',
+    'nao conseguiu fechar',
+    'forca insuficiente',
+    'preensao',
+    'luvas',
+    'epi',
+    'ergonom',
+    'alcance',
+  ])
+
+  if (hasSystemBarrierSignal && !hasExplicitHumanPhysicalSignal) {
+    return ['A-D unsupported: system/barrier degradation without explicit human physical incapacity evidence']
+  }
+
+  return []
+}
+
+function buildCodeAwareConclusion(input: {
+  perceptionCode: string
+  objectiveCode: string
+  actionCode: string
+  issues: string[]
+}): string {
+  const pName = FAILURE_NAMES[input.perceptionCode] || input.perceptionCode
+  const oName = FAILURE_NAMES[input.objectiveCode] || input.objectiveCode
+  const aName = FAILURE_NAMES[input.actionCode] || input.actionCode
+
+  return [
+    'Guardrail de consistência causal aplicado: a conclusão textual automática foi substituída por inconsistência semântica com os códigos finais.',
+    `Códigos finais: Percepção ${input.perceptionCode} (${pName}); Objetivo ${input.objectiveCode} (${oName}); Ação ${input.actionCode} (${aName}).`,
+    'A análise requer revisão humana antes de uso para mapeamento HFACS ou validação de camada de risco/ERC.',
+    `Motivos: ${input.issues.join(' | ')}`,
+  ].join(' ')
+}
+
+function applyCausalConsistencyGuard(input: {
+  rawInput: string
+  perceptionCode: string
+  objectiveCode: string
+  actionCode: string
+  conclusion: string
+}): CausalConsistencyResult {
+  const semanticIssues = detectCodeSemanticContradictions({
+    perceptionCode: input.perceptionCode,
+    objectiveCode: input.objectiveCode,
+    actionCode: input.actionCode,
+    conclusion: input.conclusion,
+  })
+  const adIssues = detectUnsupportedAd({
+    actionCode: input.actionCode,
+    rawInput: input.rawInput,
+  })
+  const issues = [...semanticIssues, ...adIssues]
+  const passed = issues.length === 0
+  const finalConclusion = passed
+    ? input.conclusion
+    : buildCodeAwareConclusion({
+      perceptionCode: input.perceptionCode,
+      objectiveCode: input.objectiveCode,
+      actionCode: input.actionCode,
+      issues,
+    })
+
+  return {
+    passed,
+    issues,
+    guard_applied: !passed,
+    original_conclusions: input.conclusion,
+    final_conclusions: finalConclusion,
+  }
+}
+
 export function buildAnalysisUpsertPayload(
   eventId: string,
   tenantId: string,
@@ -2030,6 +2207,13 @@ export function buildAnalysisUpsertPayload(
   const p3 = step3.codigo
   const p4 = step4.codigo
   const p5 = step5.codigo
+  const conclusionGuard = applyCausalConsistencyGuard({
+    rawInput,
+    perceptionCode: p3,
+    objectiveCode: p4,
+    actionCode: p5,
+    conclusion: String(step6_7.conclusoes || ''),
+  })
 
   const { completeness, reason } = computeCompleteness(p3, p4, p5, step6_7.erc_level)
   const st = sourceMeta?.sourceType ?? 'text'
@@ -2141,7 +2325,7 @@ export function buildAnalysisUpsertPayload(
       nos_percorridos: step5.nos_percorridos,
     },
     preconditions: normalizedPreconditions,
-    conclusions: step6_7.conclusoes || '',
+    conclusions: conclusionGuard.final_conclusions || '',
     recommendations: normalizedRecommendations,
     raw_llm_output: {
       step1,
@@ -2154,6 +2338,13 @@ export function buildAnalysisUpsertPayload(
       preconditions_trace,
       step1_step2_explicit_trace,
       question_trace,
+      causal_consistency: {
+        passed: conclusionGuard.passed,
+        issues: conclusionGuard.issues,
+        guard_applied: conclusionGuard.guard_applied,
+        original_conclusions: conclusionGuard.original_conclusions,
+        final_conclusions: conclusionGuard.final_conclusions,
+      },
       trace_isolation: {
         version: 'v0.1.4-A3-isolation',
         snapshot_created: true,

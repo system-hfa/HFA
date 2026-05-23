@@ -97,6 +97,51 @@ function evidenceOfPhysicalIncapacity(text: string): boolean {
   return containsAny(text, terms)
 }
 
+function evidenceOfExplicitHumanPhysicalLimitation(text: string): boolean {
+  return containsAny(text, [
+    'incapacidade fisica',
+    'limitacao fisica',
+    'limitacao motora',
+    'nao conseguiu executar fisicamente',
+    'nao conseguiu aplicar',
+    'nao conseguiu fechar',
+    'forca insuficiente',
+    'preensao',
+    'luvas',
+    'epi',
+    'equipamento de protecao',
+    'ergonomia',
+    'ergonomica',
+    'alcance',
+    'nao alcanca',
+    'nao alcancou',
+    'posicao obstruida',
+    'obstruida pelo equipamento',
+    'obstruido pelo equipamento',
+  ])
+}
+
+function evidenceOfAircraftSystemBarrierDegradation(text: string): boolean {
+  return containsAny(text, [
+    'warning system did not generate an alert',
+    'available warning system failed to alert',
+    'nao gerou alerta',
+    'sistema de alerta nao alertou',
+    'sistema de alerta nao gerou alerta',
+    'alerting system',
+    'warning system',
+    'egpws',
+    'gpws',
+    'flight instruments',
+    'aircraft system',
+    'automation degradation',
+    'degradacao de automacao',
+    'degradacao de sistema',
+    'falha de sistema',
+    'engine torque increased',
+  ])
+}
+
 function isMaintainenceOrOrganizationalAgent(agente: string): boolean {
   if (!agente) return false
   const t = normalizeEvidenceText(agente)
@@ -2778,11 +2823,23 @@ ${NO_ARTIFACTS}`
   const wrongOperationalSelectionUnderLoad = evidenceOfWrongOperationalSelectionUnderLoad(relatoNorm)
   const proceduralOmissionDetected = evidenceOfProceduralOmission(relatoNorm)
   const technicalKnowledgeDeficit = evidenceOfKnowledgeDeficit(relatoNorm)
+  const explicitHumanPhysicalLimitation = evidenceOfExplicitHumanPhysicalLimitation(relatoNorm)
+  const aircraftSystemBarrierDegradation = evidenceOfAircraftSystemBarrierDegradation(relatoNorm)
+  const adSystemBarrierFalsePositive =
+    aircraftSystemBarrierDegradation && !explicitHumanPhysicalLimitation
 
   function remapOrganizationalActionIfInvalidAd(code: string): string {
     if (code !== 'A-D') return code
+    if (adSystemBarrierFalsePositive) {
+      if (supervisionFailure || maintenanceOmission || feedbackCheckFailure) return 'A-G'
+      if (technicalKnowledgeDeficit) return 'A-E'
+      if (proceduralOmissionDetected) return 'A-B'
+      if (wrongOperationalSelectionUnderLoad) return 'A-I'
+      if (ownActionCheckFailure) return 'A-C'
+      return 'A-A'
+    }
     if (!organizationalEscapePoint) return code
-    if (evidenceOfPhysicalIncapacity(relatoNorm)) return code
+    if (explicitHumanPhysicalLimitation) return code
     if (supervisionFailure || maintenanceOmission || feedbackCheckFailure) return 'A-G'
     if (technicalKnowledgeDeficit) return 'A-E'
     if (proceduralOmissionDetected) return 'A-B'
@@ -2894,7 +2951,12 @@ ${NO_ARTIFACTS}`
     )
   }
 
-  if (evidenceOfPhysicalIncapacity(relatoNorm) && !maintenanceOmission && !organizationalEscapePoint) {
+  if (
+    evidenceOfPhysicalIncapacity(relatoNorm) &&
+    !maintenanceOmission &&
+    !organizationalEscapePoint &&
+    !adSystemBarrierFalsePositive
+  ) {
     return finishDeterministic(
       'Gate A-D',
       'A-D',
