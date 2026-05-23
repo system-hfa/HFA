@@ -42,7 +42,7 @@ Perception:
 - Requires cue-uptake / recognition / timing / interpretation semantics for strict failure codes.
 
 Objective:
-- `O-C/O-D/O-E` requires intent and rule-awareness semantic support.
+- `O-C/O-D` requires intent and rule-awareness semantic support.
 - Continuation context alone is insufficient.
 
 Action:
@@ -68,7 +68,7 @@ General:
 
 ## Blocking Results
 - `A-D` without physical/motor/ergonomic evidence semantics -> `SEMANTICALLY_BLOCKED`.
-- `O-C/O-D/O-E` without intent/rule-awareness semantics -> `SEMANTICALLY_BLOCKED`.
+- `O-C/O-D` without intent/rule-awareness semantics -> `SEMANTICALLY_BLOCKED`.
 - Perception failure from weather/warning-only context -> not semantically consistent.
 
 ## Output Locks

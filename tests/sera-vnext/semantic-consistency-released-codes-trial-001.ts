@@ -128,7 +128,7 @@ async function main() {
   const semanticActionB = semanticScenarioB.axisResults.find((axis) => axis.axis === 'action')
   assert.equal(semanticActionB?.status, 'SEMANTICALLY_BLOCKED', 'Scenario B: A-D without physical/motor/ergonomic support must be blocked')
 
-  // Scenario C: O-C/O-D/O-E without intent/rule-awareness -> semantic block
+  // Scenario C: O-C/O-D without intent/rule-awareness -> semantic block
   const scenarioCGate = cloneGate(releaseScenarioA.codeReleaseGateResult)
   const objectiveRelease = scenarioCGate.axisReleases.find((axis) => axis.axis === 'objective')
   assert.ok(objectiveRelease, 'Scenario C: objective release must exist')

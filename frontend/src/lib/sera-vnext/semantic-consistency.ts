@@ -11,7 +11,7 @@ import type {
 
 const SEMANTIC_RULE_VERSION = 'v0.2.0'
 const PERCEPTION_FAILURE_CODES = new Set(['P-D', 'P-F', 'P-G'])
-const OBJECTIVE_STRICT_CODES = new Set(['O-C', 'O-D', 'O-E'])
+const OBJECTIVE_STRICT_CODES = new Set(['O-C', 'O-D'])
 
 function normalize(value: string): string {
   return value.trim().toLowerCase()
