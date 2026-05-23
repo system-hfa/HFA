@@ -9,12 +9,13 @@ Controlar o andamento da revisão independente dos drafts de reference cases e r
 ## Tabela de controle
 | caseId | status | reviewerA | reviewerB | divergenceStatus | consensusCandidate | notes |
 |---|---|---|---|---|---|---|
-| CRC-ADVERSARIAL-DRAFT-001 | MATERIALIZED_DRAFT | pending | pending | not_assessed | no | NOT_CONSENSUS_VALIDATED |
-| CRC-NOMINAL-DRAFT-001 | MATERIALIZED_DRAFT | pending | pending | not_assessed | no | NOT_CONSENSUS_VALIDATED |
-| CRC-NEGATIVE-CONTROL-DRAFT-001 | MATERIALIZED_DRAFT | pending | pending | not_assessed | no | NOT_CONSENSUS_VALIDATED |
-| CRC-ADVERSARIAL-DRAFT-002 | MATERIALIZED_DRAFT | pending | pending | not_assessed | no | NOT_CONSENSUS_VALIDATED |
+| CRC-ADVERSARIAL-DRAFT-001 | MATERIALIZED_DRAFT | dry_run_done | dry_run_done | minor_divergence | dry_run_candidate_only | dry run only; not formal inter-rater; not consensus validated |
+| CRC-NOMINAL-DRAFT-001 | MATERIALIZED_DRAFT | dry_run_done | dry_run_done | no_divergence | dry_run_candidate_only | dry run only; not formal inter-rater; not consensus validated |
+| CRC-NEGATIVE-CONTROL-DRAFT-001 | MATERIALIZED_DRAFT | dry_run_done | dry_run_done | minor_divergence | no | dry run only; not formal inter-rater; not consensus validated |
+| CRC-ADVERSARIAL-DRAFT-002 | MATERIALIZED_DRAFT | dry_run_done | dry_run_done | major_divergence | no | dry run only; not formal inter-rater; not consensus validated |
 
 ## Regras do tracker
 - Todos os casos iniciam como `pending` para reviewerA/reviewerB.
 - `consensusCandidate` permanece `no` nesta fase.
 - Nenhuma linha pode ser marcada como `CONSENSUS_VALIDATED` neste ciclo A4+R-53.
+- Atualizações `dry_run_done` representam apenas simulação documental e não substituem revisão formal.
