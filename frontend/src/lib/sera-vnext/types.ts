@@ -210,6 +210,7 @@ export type CausalAssuranceStatus =
   | 'PARTIAL_READINESS_REFINED_NOT_CLASSIFIED'
   | 'PARTIAL_HUMAN_REVIEW_GATE_READY_NOT_CLASSIFIED'
   | 'PARTIAL_HUMAN_DECISION_INPUT_VALIDATED_NOT_CLASSIFIED'
+  | 'PARTIAL_MANUAL_CLASSIFICATION_DRY_RUN_NOT_RELEASED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'
@@ -329,6 +330,22 @@ export interface HumanDecisionInputValidation {
   rejectedAxesForNextGate: PoaAxis[]
   blockingIssues: string[]
   warnings: string[]
+}
+
+export type ManualClassificationDryRunReleaseStatus =
+  | 'MANUAL_INPUT_VALIDATED_NOT_RELEASED'
+  | 'MANUAL_INPUT_REJECTED'
+
+export interface ManualClassificationDryRunResult {
+  inputId: string
+  axisDecisionInputs: HumanAxisDecisionInput[]
+  validationResults: HumanDecisionValidationResult[]
+  acceptedForNextGate: boolean
+  releaseStatus: ManualClassificationDryRunReleaseStatus
+  releaseBlockedReason: string
+  selectedCodesRemainUnresolved: boolean
+  proposedCodes: Partial<Record<PoaAxis, string>>
+  outputLocks: string[]
 }
 
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'

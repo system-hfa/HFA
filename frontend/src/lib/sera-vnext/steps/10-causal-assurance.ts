@@ -619,10 +619,22 @@ export function runStep10CausalAssurance(input: {
       : 'A proposed human code was promoted to selectedCode, which is forbidden in this phase.',
   })
 
+  const manualDryRunPackageRemainsPreRelease = (() => {
+    if (!input.humanDecisionValidation || !input.humanDecisionValidation.inputProvided) return true
+    return axes.every((axis) => axis.selectedCode === 'UNRESOLVED' && axis.status !== 'CLASSIFIED')
+  })()
+  checks.push({
+    checkId: 'CHK-MANUAL-DRY-RUN-PACKAGE-NOT-RELEASED',
+    passed: manualDryRunPackageRemainsPreRelease,
+    details: manualDryRunPackageRemainsPreRelease
+      ? 'Manual decision package remains pre-release and does not emit final axis classification.'
+      : 'Manual decision package appears to have released final axis classification, which is forbidden.',
+  })
+
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_HUMAN_DECISION_INPUT_VALIDATED_NOT_CLASSIFIED,
+    status: SERA_VNEXT_STATUS.PARTIAL_MANUAL_CLASSIFICATION_DRY_RUN_NOT_RELEASED,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,
