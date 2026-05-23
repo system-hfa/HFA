@@ -418,6 +418,40 @@ export interface SemanticConsistencyGateResult {
   causalCoreOnly: boolean
 }
 
+export type PreconditionCandidateStatus = 'CANDIDATE_PRECONDITION' | 'REVIEW_REQUIRED' | 'BLOCKED'
+
+export interface VNextPreconditionCandidate {
+  id: string
+  label: string
+  category: string
+  sourceAxis: PoaAxis
+  sourceReleasedCode: string
+  sourceEvidenceRefs: string[]
+  sourceRationaleRefs: string[]
+  confidence: 'LOW' | 'MEDIUM' | 'HIGH'
+  status: PreconditionCandidateStatus
+  limitations: string[]
+  derivedBy: 'SERA_VNEXT_PRECONDITION_RULE'
+  taxonomyVersion: 'SERA_PT_CANONICAL_v1.0'
+  authorDecisionVersion: 'SERA_PT_AUTHOR_DECISION_AA_CANONICALIZATION_v1.0'
+  blockingIssues: string[]
+}
+
+export interface PreconditionsFromReleasedCodesResult {
+  inputId: string
+  gateStatus: 'PRECONDITION_CANDIDATES_READY' | 'PRECONDITION_CANDIDATES_PARTIAL' | 'PRECONDITION_CANDIDATES_BLOCKED'
+  candidates: VNextPreconditionCandidate[]
+  globalBlockingIssues: string[]
+  outputLocks: string[]
+  downstreamLocked: true
+  finalConclusionLocked: true
+  hfacsLocked: true
+  riskLocked: true
+  recommendationsLocked: true
+  selectedCodesRemainUnresolved: boolean
+  causalCoreOnly: true
+}
+
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 
 export interface HumanReviewStatus {
