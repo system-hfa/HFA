@@ -62,21 +62,28 @@ async function main() {
     assert.ok(!pattern.test(joinedStatements), `forbidden statement pattern matched: ${String(pattern)}`)
   }
 
-  const allowedStatuses = ['REVIEW_REQUIRED', 'INSUFFICIENT_EVIDENCE']
+  const allowedStatuses = ['REVIEW_REQUIRED', 'INSUFFICIENT_EVIDENCE', 'READY_FOR_HUMAN_CLASSIFICATION']
   assert.ok(
     allowedStatuses.includes(result.poaClassification.perception.status),
-    'perception status must be REVIEW_REQUIRED or INSUFFICIENT_EVIDENCE'
+    'perception status must be REVIEW_REQUIRED, INSUFFICIENT_EVIDENCE or READY_FOR_HUMAN_CLASSIFICATION'
   )
   assert.ok(
     allowedStatuses.includes(result.poaClassification.objective.status),
-    'objective status must be REVIEW_REQUIRED or INSUFFICIENT_EVIDENCE'
+    'objective status must be REVIEW_REQUIRED, INSUFFICIENT_EVIDENCE or READY_FOR_HUMAN_CLASSIFICATION'
   )
   assert.ok(
     allowedStatuses.includes(result.poaClassification.action.status),
-    'action status must be REVIEW_REQUIRED or INSUFFICIENT_EVIDENCE'
+    'action status must be REVIEW_REQUIRED, INSUFFICIENT_EVIDENCE or READY_FOR_HUMAN_CLASSIFICATION'
   )
 
   for (const axis of [result.poaClassification.perception, result.poaClassification.objective, result.poaClassification.action]) {
+    assert.ok(axis.classificationEligibility, `${axis.axis} must include classificationEligibility`)
+    assert.ok(axis.classificationEligibility.eligibilityStatus, `${axis.axis} must include eligibilityStatus`)
+    assert.equal(
+      axis.classificationEligibility.eligibleForHumanClassification,
+      axis.status === 'READY_FOR_HUMAN_CLASSIFICATION',
+      `${axis.axis} readiness status must match eligibility flag`
+    )
     assert.ok(axis.reviewTrace, `${axis.axis} must include reviewTrace`)
     assert.ok(axis.reviewReasonCode, `${axis.axis} must include reviewReasonCode`)
     assert.ok(
@@ -91,6 +98,10 @@ async function main() {
     if (axis.status === 'REVIEW_REQUIRED') {
       assert.ok(axis.blockingForClassification.length > 0, `${axis.axis} REVIEW_REQUIRED must include blockingForClassification`)
     }
+    if (axis.status === 'READY_FOR_HUMAN_CLASSIFICATION') {
+      assert.equal(axis.blockingForClassification.length, 0, `${axis.axis} READY status must not keep blocking items`)
+    }
+    assert.notEqual(axis.status, 'CLASSIFIED', `${axis.axis} must not be CLASSIFIED in eligibility phase`)
   }
 
   assert.notEqual(result.poaClassification.action.selectedCode, 'A-D', 'action must not classify as A-D')

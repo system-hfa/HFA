@@ -5,6 +5,7 @@ import type {
   PoaAxis,
   PoaAxisClassification,
   PoaClassification,
+  PoaClassificationEligibility,
   PoaStatements,
   SeraVNextInput,
   UnsafeActConditionAnalysis,
@@ -51,6 +52,132 @@ function axisStandardBlocking(axis: PoaAxis): string[] {
   return ['action_execution_specific_evidence_missing', 'actor_action_link_not_established']
 }
 
+function axisDefaultReadyReason(axis: PoaAxis): string {
+  if (axis === 'perception') {
+    return 'Perception axis meets eligibility gates and is ready for human classification decision.'
+  }
+  if (axis === 'objective') {
+    return 'Objective axis meets eligibility gates and is ready for human classification decision.'
+  }
+  return 'Action axis meets eligibility gates and is ready for human classification decision.'
+}
+
+function buildClassificationEligibility(input: {
+  axis: PoaAxis
+  status: PoaAxisClassification['status']
+  statement: string
+  evidence: string[]
+  linkedUncertainties: string[]
+  linkedEvidence: string[]
+  reviewReasonCode: string
+  transitionCriteria: string[]
+  semanticGuardrails: string[]
+  requiredHumanDecision: string
+  blockingForClassification: string[]
+  hasReviewTrace: boolean
+  noFinalConclusionRequested: boolean
+  noDownstreamOutputsRequested: boolean
+  eligibilityGateFailures: string[]
+  absoluteBlockers: string[]
+  readyReason: string | null
+}): PoaClassificationEligibility {
+  const checks = [
+    {
+      checkId: 'ELIG-STATEMENT-PRESENT',
+      passed: input.statement.trim().length > 0,
+      details: 'Axis statement is present.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-EVIDENCE-NON-EMPTY',
+      passed: input.evidence.length > 0,
+      details: 'Axis evidence list is non-empty.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-REVIEW-TRACE-PRESENT',
+      passed: input.hasReviewTrace,
+      details: 'Axis reviewTrace is present.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-REVIEW-REASON-CODE-PRESENT',
+      passed: input.reviewReasonCode.trim().length > 0,
+      details: 'Axis reviewReasonCode is present.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-TRANSITION-CRITERIA-PRESENT',
+      passed: input.transitionCriteria.length > 0,
+      details: 'Axis transitionCriteria are present.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-SEMANTIC-GUARDRAILS-PRESENT',
+      passed: input.semanticGuardrails.length > 0,
+      details: 'Axis semanticGuardrails are present.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-REQUIRED-HUMAN-DECISION-PRESENT',
+      passed: input.requiredHumanDecision.trim().length > 0,
+      details: 'Axis requiredHumanDecision is present.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-NO-FINAL-CONCLUSION',
+      passed: input.noFinalConclusionRequested,
+      details: 'No final conclusion request/field was detected in causal-core eligibility path.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-NO-DOWNSTREAM-HFACS-RISK',
+      passed: input.noDownstreamOutputsRequested,
+      details: 'No downstream HFACS/Risk/ERC/ARMS output request/field was detected in causal-core eligibility path.',
+      isAbsoluteBlocker: true,
+    },
+    {
+      checkId: 'ELIG-AXIS-LINKED-TRACE-PRESENT',
+      passed: input.linkedUncertainties.length > 0 || input.linkedEvidence.length > 0,
+      details: 'Axis links uncertainty/evidence for auditability.',
+      isAbsoluteBlocker: false,
+    },
+    {
+      checkId: 'ELIG-BLOCKING-LIST-EMPTY',
+      passed: input.blockingForClassification.length === 0,
+      details: 'Axis blockingForClassification is empty for readiness.',
+      isAbsoluteBlocker: false,
+    },
+  ]
+
+  const unmetCriteria = [
+    ...checks.filter((c) => !c.passed).map((c) => c.checkId),
+    ...input.eligibilityGateFailures,
+  ]
+
+  const guardrailBlockers = [
+    ...input.absoluteBlockers,
+    ...checks.filter((c) => c.isAbsoluteBlocker && !c.passed).map((c) => c.checkId),
+  ]
+
+  const hasGuardrailBlocker = guardrailBlockers.length > 0
+  const eligible = !hasGuardrailBlocker && unmetCriteria.length === 0 && input.status === 'READY_FOR_HUMAN_CLASSIFICATION'
+
+  return {
+    eligibilityStatus: hasGuardrailBlocker
+      ? 'BLOCKED_BY_GUARDRAIL'
+      : eligible
+        ? 'ELIGIBLE_FOR_HUMAN_REVIEW'
+        : 'NOT_ELIGIBLE',
+    eligibleForHumanClassification: eligible,
+    eligibilityChecks: checks,
+    unmetCriteria,
+    waiverRequired: !eligible && !hasGuardrailBlocker,
+    absoluteBlockers: guardrailBlockers,
+    readyForHumanClassificationReason: eligible ? input.readyReason : null,
+  }
+}
+
 function buildAxisResult(input: {
   axis: PoaAxis
   statement: string | null
@@ -64,14 +191,16 @@ function buildAxisResult(input: {
   transitionCriteria: string[]
   blockingForClassification: string[]
   contextRiskFlags?: string[]
+  eligibilityGateFailures: string[]
+  absoluteBlockers: string[]
+  noFinalConclusionRequested: boolean
+  noDownstreamOutputsRequested: boolean
 }): PoaAxisClassification {
   const statement = input.statement || ''
   const hasStatement = statement.trim().length > 0
   const hasEvidence = input.evidence.length > 0
   const hasMaterialUncertainty = input.uncertainty.length > 0
   const hasContextRisk = (input.contextRiskFlags ?? []).length > 0
-
-  const baseBlocking = [...input.blockingForClassification, ...axisStandardBlocking(input.axis)]
 
   const linkedUncertainties = [...input.uncertainty]
   const linkedEvidence = [...input.evidence]
@@ -80,82 +209,112 @@ function buildAxisResult(input: {
     linkedUncertainties.push(axisInsufficientMechanismUncertainty(input.axis))
   }
 
+  let status: PoaAxisClassification['status']
+  let reviewReason: string
+  let rejectionReason: string | null
+  let alternativesConsidered: string[]
+  let evidenceSufficiency: PoaAxisClassification['evidenceSufficiency']
+  let codeMeaning: string
+  let blockingForClassification: string[]
+
   if (!hasStatement || !hasEvidence) {
-    const reviewReason = 'No sufficient statement/evidence package to classify this axis.'
-    const blocking = [...new Set([...baseBlocking, 'missing_statement_or_evidence'])]
-    return {
-      axis: input.axis,
-      selectedCode: 'UNRESOLVED',
-      status: 'INSUFFICIENT_EVIDENCE',
-      confidence: 'low',
-      evidence: linkedEvidence,
-      alternativesConsidered: ['REVIEW_REQUIRED'],
-      rejectionReason: input.fallbackReviewReason,
-      reviewReason,
-      reviewReasonCode: input.reviewReasonCode,
-      linkedUncertainties,
-      linkedEvidence,
-      blockingForClassification: blocking,
-      requiredHumanDecision: input.requiredHumanDecision,
-      transitionCriteria: input.transitionCriteria,
-      reviewTrace: {
-        reviewReason,
-        reviewReasonCode: input.reviewReasonCode,
-        linkedUncertainties,
-        linkedEvidence,
-        blockingForClassification: blocking,
-        requiredHumanDecision: input.requiredHumanDecision,
-        transitionCriteria: input.transitionCriteria,
-      },
-      humanReviewRequired: true,
-      evidenceSufficiency: 'insufficient',
-      semanticGuardrails: input.semanticGuardrails,
-      codeMeaning: 'Insufficient evidence for controlled axis classification.',
-      disallowedInterpretations: input.disallowedInterpretations,
-    }
+    status = 'INSUFFICIENT_EVIDENCE'
+    reviewReason = 'No sufficient statement/evidence package to classify this axis.'
+    rejectionReason = input.fallbackReviewReason
+    alternativesConsidered = ['REVIEW_REQUIRED', 'READY_FOR_HUMAN_CLASSIFICATION']
+    evidenceSufficiency = 'insufficient'
+    codeMeaning = 'Insufficient evidence for controlled axis classification.'
+    blockingForClassification = [
+      ...new Set([
+        ...input.blockingForClassification,
+        ...axisStandardBlocking(input.axis),
+        'missing_statement_or_evidence',
+        ...input.eligibilityGateFailures.map((id) => `eligibility_gate:${id}`),
+      ]),
+    ]
+  } else if (hasMaterialUncertainty || hasContextRisk || input.eligibilityGateFailures.length > 0 || input.absoluteBlockers.length > 0) {
+    status = 'REVIEW_REQUIRED'
+    reviewReason = hasMaterialUncertainty
+      ? 'Material uncertainty remains in the statement package.'
+      : hasContextRisk
+        ? 'Contextual risk flags prevent safe readiness transition.'
+        : 'Eligibility criteria are not yet satisfied for human classification readiness.'
+    rejectionReason = input.fallbackReviewReason
+    alternativesConsidered = ['READY_FOR_HUMAN_CLASSIFICATION', 'INSUFFICIENT_EVIDENCE']
+    evidenceSufficiency = hasMaterialUncertainty || hasContextRisk ? 'partial' : 'sufficient'
+    codeMeaning = 'Axis remains under controlled review pending eligibility closure.'
+    blockingForClassification = [
+      ...new Set([
+        ...input.blockingForClassification,
+        ...axisStandardBlocking(input.axis),
+        ...(hasMaterialUncertainty ? ['material_uncertainty_present'] : []),
+        ...((input.contextRiskFlags ?? []).map((f) => `context_risk:${f}`)),
+        ...input.eligibilityGateFailures.map((id) => `eligibility_gate:${id}`),
+        ...input.absoluteBlockers.map((id) => `guardrail_blocker:${id}`),
+      ]),
+    ]
+  } else {
+    status = 'READY_FOR_HUMAN_CLASSIFICATION'
+    reviewReason = 'Eligibility checks satisfied; pending explicit human review decision.'
+    rejectionReason = null
+    alternativesConsidered = ['REVIEW_REQUIRED']
+    evidenceSufficiency = 'sufficient'
+    codeMeaning = 'Axis is eligible for human classification decision; automatic classification remains disabled.'
+    blockingForClassification = []
   }
 
-  const reviewReason = hasMaterialUncertainty
-    ? 'Material uncertainty remains in the statement package.'
-    : hasContextRisk
-      ? 'Contextual risk flags prevent safe auto-classification.'
-      : input.fallbackReviewReason
-
-  const blocking = [...new Set([
-    ...baseBlocking,
-    ...(hasMaterialUncertainty ? ['material_uncertainty_present'] : []),
-    ...((input.contextRiskFlags ?? []).map((f) => `context_risk:${f}`)),
-  ])]
-
-  return {
-    axis: input.axis,
-    selectedCode: 'UNRESOLVED',
-    status: 'REVIEW_REQUIRED',
-    confidence: confidenceFromEvidence(linkedEvidence.length),
-    evidence: linkedEvidence,
-    alternativesConsidered: ['INSUFFICIENT_EVIDENCE'],
-    rejectionReason: input.fallbackReviewReason,
+  const reviewTrace = {
     reviewReason,
     reviewReasonCode: input.reviewReasonCode,
     linkedUncertainties,
     linkedEvidence,
-    blockingForClassification: blocking,
+    blockingForClassification,
     requiredHumanDecision: input.requiredHumanDecision,
     transitionCriteria: input.transitionCriteria,
-    reviewTrace: {
-      reviewReason,
-      reviewReasonCode: input.reviewReasonCode,
-      linkedUncertainties,
-      linkedEvidence,
-      blockingForClassification: blocking,
-      requiredHumanDecision: input.requiredHumanDecision,
-      transitionCriteria: input.transitionCriteria,
-    },
-    humanReviewRequired: true,
-    evidenceSufficiency: hasMaterialUncertainty || hasContextRisk ? 'partial' : 'sufficient',
+  }
+
+  const classificationEligibility = buildClassificationEligibility({
+    axis: input.axis,
+    status,
+    statement,
+    evidence: input.evidence,
+    linkedUncertainties,
+    linkedEvidence,
+    reviewReasonCode: input.reviewReasonCode,
+    transitionCriteria: input.transitionCriteria,
     semanticGuardrails: input.semanticGuardrails,
-    codeMeaning: 'Axis requires controlled human review before classification release.',
+    requiredHumanDecision: input.requiredHumanDecision,
+    blockingForClassification,
+    hasReviewTrace: Boolean(reviewTrace),
+    noFinalConclusionRequested: input.noFinalConclusionRequested,
+    noDownstreamOutputsRequested: input.noDownstreamOutputsRequested,
+    eligibilityGateFailures: input.eligibilityGateFailures,
+    absoluteBlockers: input.absoluteBlockers,
+    readyReason: axisDefaultReadyReason(input.axis),
+  })
+
+  return {
+    axis: input.axis,
+    selectedCode: 'UNRESOLVED',
+    status,
+    confidence: status === 'INSUFFICIENT_EVIDENCE' ? 'low' : confidenceFromEvidence(linkedEvidence.length),
+    evidence: linkedEvidence,
+    alternativesConsidered,
+    rejectionReason,
+    reviewReason,
+    reviewReasonCode: input.reviewReasonCode,
+    linkedUncertainties,
+    linkedEvidence,
+    blockingForClassification,
+    requiredHumanDecision: input.requiredHumanDecision,
+    transitionCriteria: input.transitionCriteria,
+    reviewTrace,
+    humanReviewRequired: true,
+    evidenceSufficiency,
+    semanticGuardrails: input.semanticGuardrails,
+    codeMeaning,
     disallowedInterpretations: input.disallowedInterpretations,
+    classificationEligibility,
   }
 }
 
@@ -169,6 +328,22 @@ export function runStep06PoaClassification(input: {
 }): PoaClassification {
   const raw = input.input.narrative
 
+  const noFinalConclusionRequested = !hasAny(raw, ['final conclusion', 'conclusão final'])
+  const noDownstreamOutputsRequested = !hasAny(raw, ['hfacs', 'risk/erc', 'erc_level', 'arms/erc'])
+
+  const perceptionEvidenceText = [
+    input.poaStatements.perceptionStatement || '',
+    ...input.poaStatements.evidenceForEach.perception,
+  ].join(' ')
+  const objectiveEvidenceText = [
+    input.poaStatements.objectiveStatement || '',
+    ...input.poaStatements.evidenceForEach.objective,
+  ].join(' ')
+  const actionEvidenceText = [
+    input.poaStatements.actionStatement || '',
+    ...input.poaStatements.evidenceForEach.action,
+  ].join(' ')
+
   const perceptionContextRisks: string[] = []
   if (hasAny(raw, ['warning system did not generate an alert', 'failed to alert'])) {
     perceptionContextRisks.push('warning_barrier_non_alert_present')
@@ -180,12 +355,58 @@ export function runStep06PoaClassification(input: {
     perceptionContextRisks.push('recognition_timing_not_established')
   }
 
+  const perceptionEligibilityGateFailures: string[] = []
+  const perceptionAbsoluteBlockers: string[] = []
+  const hasPerceptionCueAvailability = hasAny(perceptionEvidenceText, [
+    'instrument',
+    'visual',
+    'cue',
+    'flight path',
+    'airspeed',
+    'descent',
+    'warning',
+  ])
+  if (!hasPerceptionCueAvailability) {
+    perceptionEligibilityGateFailures.push('cue_availability_evidence_missing')
+  }
+  const hasPerceptionRecognitionTiming = hasAny(perceptionEvidenceText, [
+    'recognition',
+    'recognized',
+    'timing',
+    'awareness',
+    'aware',
+  ]) && !hasAny(input.poaStatements.uncertaintyForEach.perception.join(' '), ['not established'])
+  if (!hasPerceptionRecognitionTiming) {
+    perceptionEligibilityGateFailures.push('cue_uptake_or_recognition_timing_evidence_missing')
+  }
+  const weatherOrWarningOnly =
+    hasAny(perceptionEvidenceText, ['degraded visual', 'poor visibility', 'low cloud', 'warning']) &&
+    !hasPerceptionRecognitionTiming
+  if (weatherOrWarningOnly) {
+    perceptionAbsoluteBlockers.push('perception_failure_from_weather_or_warning_alone')
+  }
+
   const objectiveContextRisks: string[] = []
   if (!hasAny(raw, ['intent', 'conscious', 'knowingly', 'rule awareness', 'deliberate'])) {
     objectiveContextRisks.push('no_explicit_intent_or_rule_awareness_evidence')
   }
   if (hasAny(input.poaStatements.objectiveStatement || '', ['insufficient', 'not explicitly established'])) {
     objectiveContextRisks.push('objective_statement_marks_intent_uncertain')
+  }
+
+  const objectiveEligibilityGateFailures: string[] = []
+  const objectiveAbsoluteBlockers: string[] = []
+  const hasObjectiveIntentEvidence = hasAny(objectiveEvidenceText, ['intent', 'objective', 'goal', 'conscious', 'deliberate'])
+  if (!hasObjectiveIntentEvidence) {
+    objectiveEligibilityGateFailures.push('objective_intent_evidence_missing')
+  }
+  const hasRuleAwarenessEvidence = hasAny(objectiveEvidenceText, ['rule awareness', 'procedure awareness', 'knew', 'knowingly'])
+  const objectiveViolationStyle = hasAny(objectiveEvidenceText, ['violation', 'deviation', 'non-compliance'])
+  if (objectiveViolationStyle && !hasRuleAwarenessEvidence) {
+    objectiveAbsoluteBlockers.push('objective_violation_without_rule_awareness_evidence')
+  }
+  if (hasAny(objectiveEvidenceText, ['continuation']) && !hasObjectiveIntentEvidence) {
+    objectiveEligibilityGateFailures.push('continuation_context_without_intent_evidence')
   }
 
   const actionContextRisks: string[] = []
@@ -203,6 +424,43 @@ export function runStep06PoaClassification(input: {
   }
   if (!hasAny(raw, ['physical inability', 'incapacidade fisica', 'ergonomic', 'ergonomica', 'motor limitation'])) {
     actionContextRisks.push('no_physical_motor_ergonomic_inability_evidence')
+  }
+
+  const actionEligibilityGateFailures: string[] = []
+  const actionAbsoluteBlockers: string[] = []
+  const hasConcreteActionEvidence = hasAny(actionEvidenceText, ['continued', 'continuation', 'recovery', 'control', 'action'])
+  if (!hasConcreteActionEvidence) {
+    actionEligibilityGateFailures.push('concrete_action_or_non_action_evidence_missing')
+  }
+  const hasActorActionLink = input.directActor.actorKind !== 'unknown' && input.directActor.actorKind !== 'system_or_condition_dominant'
+  if (!hasActorActionLink) {
+    actionEligibilityGateFailures.push('actor_action_link_not_established')
+  }
+  const hasSequenceTiming = !hasAny(input.poaStatements.uncertaintyForEach.action.join(' '), [
+    'not established',
+    'timing',
+    'exact control-input',
+  ])
+  if (!hasSequenceTiming) {
+    actionEligibilityGateFailures.push('sequence_or_timing_evidence_missing')
+  }
+  const aircraftStateWithoutActionQuality =
+    hasAny(actionEvidenceText, ['aircraft state', 'low-airspeed', 'high-descent']) &&
+    !hasAny(actionEvidenceText, ['control input', 'callout', 'input sequence'])
+  if (aircraftStateWithoutActionQuality) {
+    actionAbsoluteBlockers.push('aircraft_state_collapsed_into_action_failure')
+  }
+  const attemptsInability = hasAny(actionEvidenceText, ['inability', 'unable', 'incapacity'])
+  const hasPhysicalEvidence = hasAny(raw + ' ' + actionEvidenceText, [
+    'physical inability',
+    'motor limitation',
+    'ergonomic',
+    'restricted movement',
+    'ppe',
+    'epi',
+  ])
+  if (attemptsInability && !hasPhysicalEvidence) {
+    actionAbsoluteBlockers.push('action_inability_without_physical_motor_ergonomic_evidence')
   }
 
   const perception = buildAxisResult({
@@ -232,6 +490,10 @@ export function runStep06PoaClassification(input: {
       'degraded_visual_and_warning_context_not_disambiguated',
     ],
     contextRiskFlags: perceptionContextRisks,
+    eligibilityGateFailures: perceptionEligibilityGateFailures,
+    absoluteBlockers: perceptionAbsoluteBlockers,
+    noFinalConclusionRequested,
+    noDownstreamOutputsRequested,
   })
 
   const objective = buildAxisResult({
@@ -261,6 +523,10 @@ export function runStep06PoaClassification(input: {
       'rule_awareness_not_demonstrated',
     ],
     contextRiskFlags: objectiveContextRisks,
+    eligibilityGateFailures: objectiveEligibilityGateFailures,
+    absoluteBlockers: objectiveAbsoluteBlockers,
+    noFinalConclusionRequested,
+    noDownstreamOutputsRequested,
   })
 
   const action = buildAxisResult({
@@ -292,6 +558,10 @@ export function runStep06PoaClassification(input: {
       'a_d_blocked_without_physical_evidence',
     ],
     contextRiskFlags: actionContextRisks,
+    eligibilityGateFailures: actionEligibilityGateFailures,
+    absoluteBlockers: actionAbsoluteBlockers,
+    noFinalConclusionRequested,
+    noDownstreamOutputsRequested,
   })
 
   return {

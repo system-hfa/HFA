@@ -101,11 +101,35 @@ export type PoaAxis = 'perception' | 'objective' | 'action'
 
 export type PoaAxisStatus =
   | 'CLASSIFIED'
+  | 'READY_FOR_HUMAN_CLASSIFICATION'
+  | 'BLOCKED_BY_GUARDRAIL'
   | 'REVIEW_REQUIRED'
   | 'INSUFFICIENT_EVIDENCE'
   | 'NOT_IMPLEMENTED'
 
 export type PoaEvidenceSufficiency = 'sufficient' | 'partial' | 'insufficient'
+
+export type PoaEligibilityStatus =
+  | 'NOT_ELIGIBLE'
+  | 'ELIGIBLE_FOR_HUMAN_REVIEW'
+  | 'BLOCKED_BY_GUARDRAIL'
+
+export interface PoaEligibilityCheck {
+  checkId: string
+  passed: boolean
+  details: string
+  isAbsoluteBlocker?: boolean
+}
+
+export interface PoaClassificationEligibility {
+  eligibilityStatus: PoaEligibilityStatus
+  eligibleForHumanClassification: boolean
+  eligibilityChecks: PoaEligibilityCheck[]
+  unmetCriteria: string[]
+  waiverRequired: boolean
+  absoluteBlockers: string[]
+  readyForHumanClassificationReason: string | null
+}
 
 export interface PoaAxisReviewTrace {
   reviewReason: string
@@ -138,6 +162,7 @@ export interface PoaAxisClassification {
   semanticGuardrails: string[]
   codeMeaning: string
   disallowedInterpretations: string[]
+  classificationEligibility: PoaClassificationEligibility
 }
 
 export interface PoaClassification {
@@ -175,6 +200,7 @@ export type CausalAssuranceStatus =
   | 'PARTIAL_STEPS_1_5_NOT_CLASSIFIED'
   | 'PARTIAL_POA_REVIEW_REQUIRED'
   | 'PARTIAL_POA_REVIEW_TRACEABLE'
+  | 'PARTIAL_ELIGIBILITY_CHECKED_NOT_CLASSIFIED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'

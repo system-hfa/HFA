@@ -207,6 +207,15 @@ export function runStep10CausalAssurance(input: {
     input.poaClassification.action,
   ]
 
+  const noAxisClassified = axes.every((axis) => axis.status !== 'CLASSIFIED')
+  checks.push({
+    checkId: 'CHK-NO-AUTO-CLASSIFIED-AXIS',
+    passed: noAxisClassified,
+    details: noAxisClassified
+      ? 'No axis is auto-classified in vNext eligibility phase.'
+      : 'At least one axis is marked CLASSIFIED, which is forbidden in this phase.',
+  })
+
   const noAxisClassifiedWithoutSufficientEvidence = axes.every(
     (axis) => !(axis.status === 'CLASSIFIED' && axis.evidenceSufficiency !== 'sufficient')
   )
@@ -302,7 +311,7 @@ export function runStep10CausalAssurance(input: {
   })
 
   const trial001ReviewRequiredTraceable = axes.every((axis) =>
-    unresolved(axis) && axis.blockingForClassification.length > 0 && Boolean(axis.reviewReasonCode)
+    (unresolved(axis) || axis.status === 'READY_FOR_HUMAN_CLASSIFICATION') && Boolean(axis.reviewReasonCode)
   )
   checks.push({
     checkId: 'CHK-TRIAL001-REVIEW-REQUIRED-TRACEABLE',
@@ -321,10 +330,58 @@ export function runStep10CausalAssurance(input: {
       : 'Unexpected final free conclusion field detected.',
   })
 
+  const eligibilityPresentForEveryAxis = axes.every((axis) => Boolean(axis.classificationEligibility))
+  checks.push({
+    checkId: 'CHK-ELIGIBILITY-PRESENT-FOR-EVERY-AXIS',
+    passed: eligibilityPresentForEveryAxis,
+    details: eligibilityPresentForEveryAxis
+      ? 'Eligibility payload is present for every axis.'
+      : 'At least one axis is missing eligibility payload.',
+  })
+
+  const noEligibleAxisWithAbsoluteBlockers = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || !el.eligibleForHumanClassification) return true
+    return el.absoluteBlockers.length === 0
+  })
+  checks.push({
+    checkId: 'CHK-ELIGIBLE-AXIS-HAS-NO-ABSOLUTE-BLOCKERS',
+    passed: noEligibleAxisWithAbsoluteBlockers,
+    details: noEligibleAxisWithAbsoluteBlockers
+      ? 'No eligible axis contains absolute blockers.'
+      : 'An eligible axis still contains absolute blockers.',
+  })
+
+  const noEligibleAxisWithoutTransitionCriteria = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || !el.eligibleForHumanClassification) return true
+    return axis.transitionCriteria.length > 0
+  })
+  checks.push({
+    checkId: 'CHK-ELIGIBLE-AXIS-HAS-TRANSITION-CRITERIA',
+    passed: noEligibleAxisWithoutTransitionCriteria,
+    details: noEligibleAxisWithoutTransitionCriteria
+      ? 'Every eligible axis has transition criteria.'
+      : 'At least one eligible axis is missing transition criteria.',
+  })
+
+  const noEligibleAxisWithoutRequiredHumanDecision = axes.every((axis) => {
+    const el = axis.classificationEligibility
+    if (!el || !el.eligibleForHumanClassification) return true
+    return Boolean(axis.requiredHumanDecision.trim())
+  })
+  checks.push({
+    checkId: 'CHK-ELIGIBLE-AXIS-HAS-REQUIRED-HUMAN-DECISION',
+    passed: noEligibleAxisWithoutRequiredHumanDecision,
+    details: noEligibleAxisWithoutRequiredHumanDecision
+      ? 'Every eligible axis has required human decision guidance.'
+      : 'At least one eligible axis is missing required human decision guidance.',
+  })
+
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_POA_REVIEW_TRACEABLE,
+    status: SERA_VNEXT_STATUS.PARTIAL_ELIGIBILITY_CHECKED_NOT_CLASSIFIED,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,

@@ -11,10 +11,15 @@ type TrialSummary = {
   assuranceStatus: string
   perceptionStatus: string
   perceptionReviewReasonCode: string
+  perceptionEligibility: string
   objectiveStatus: string
   objectiveReviewReasonCode: string
+  objectiveEligibility: string
   actionStatus: string
   actionReviewReasonCode: string
+  actionEligibility: string
+  unmetCriteriaCount: number
+  absoluteBlockersCount: number
   dominance: string
   humanReviewRequired: boolean
   assertionsPassed: boolean
@@ -74,7 +79,12 @@ Available information included aircraft flight instruments, avionics or automati
   },
 ]
 
-const allowedStatuses = new Set(['REVIEW_REQUIRED', 'INSUFFICIENT_EVIDENCE', 'NOT_IMPLEMENTED'])
+const allowedStatuses = new Set([
+  'REVIEW_REQUIRED',
+  'INSUFFICIENT_EVIDENCE',
+  'READY_FOR_HUMAN_CLASSIFICATION',
+  'NOT_IMPLEMENTED',
+])
 
 function assertNoForbiddenTopLevel(result: Record<string, unknown>, inputId: string) {
   for (const forbidden of ['hfacs', 'erc_level', 'risk', 'arms', 'finalConclusion']) {
@@ -104,8 +114,19 @@ function assertCommon(result: any, inputId: string) {
 
   for (const axis of [result.poaClassification.perception, result.poaClassification.objective, result.poaClassification.action]) {
     assert.ok(allowedStatuses.has(axis.status), `${inputId}/${axis.axis}: unexpected status ${axis.status}`)
+    assert.notEqual(axis.status, 'CLASSIFIED', `${inputId}/${axis.axis}: CLASSIFIED is forbidden in this phase`)
+    assert.ok(axis.classificationEligibility, `${inputId}/${axis.axis}: missing classificationEligibility`)
+    assert.ok(axis.classificationEligibility.eligibilityStatus, `${inputId}/${axis.axis}: missing eligibilityStatus`)
+    assert.equal(
+      axis.classificationEligibility.eligibleForHumanClassification,
+      axis.status === 'READY_FOR_HUMAN_CLASSIFICATION',
+      `${inputId}/${axis.axis}: eligibility flag must match READY status`
+    )
     if (axis.status === 'REVIEW_REQUIRED' || axis.status === 'INSUFFICIENT_EVIDENCE') {
       assertAxisTrace(axis, inputId)
+    }
+    if (axis.status === 'READY_FOR_HUMAN_CLASSIFICATION') {
+      assert.equal(axis.blockingForClassification.length, 0, `${inputId}/${axis.axis}: READY status must not keep blocking items`)
     }
   }
 
@@ -159,6 +180,10 @@ function assertTrialSpecific(result: any, inputId: string) {
       p.linkedUncertainties.length > 0 || p.linkedEvidence.length > 0,
       `${inputId}: perception must include trace links after completeness fix`
     )
+    assert.ok(
+      ['NOT_ELIGIBLE', 'BLOCKED_BY_GUARDRAIL'].includes(p.classificationEligibility.eligibilityStatus),
+      `${inputId}: perception must remain conservative (NOT_ELIGIBLE or BLOCKED_BY_GUARDRAIL)`
+    )
   }
 
   if (inputId === 'TRIAL-SET1-005') {
@@ -203,10 +228,21 @@ async function main() {
       assuranceStatus: result.causalAssurance.status,
       perceptionStatus: result.poaClassification.perception.status,
       perceptionReviewReasonCode: result.poaClassification.perception.reviewReasonCode,
+      perceptionEligibility: result.poaClassification.perception.classificationEligibility.eligibilityStatus,
       objectiveStatus: result.poaClassification.objective.status,
       objectiveReviewReasonCode: result.poaClassification.objective.reviewReasonCode,
+      objectiveEligibility: result.poaClassification.objective.classificationEligibility.eligibilityStatus,
       actionStatus: result.poaClassification.action.status,
       actionReviewReasonCode: result.poaClassification.action.reviewReasonCode,
+      actionEligibility: result.poaClassification.action.classificationEligibility.eligibilityStatus,
+      unmetCriteriaCount:
+        result.poaClassification.perception.classificationEligibility.unmetCriteria.length +
+        result.poaClassification.objective.classificationEligibility.unmetCriteria.length +
+        result.poaClassification.action.classificationEligibility.unmetCriteria.length,
+      absoluteBlockersCount:
+        result.poaClassification.perception.classificationEligibility.absoluteBlockers.length +
+        result.poaClassification.objective.classificationEligibility.absoluteBlockers.length +
+        result.poaClassification.action.classificationEligibility.absoluteBlockers.length,
       dominance: result.unsafeActCondition.dominance,
       humanReviewRequired: result.humanReview.required,
       assertionsPassed,
