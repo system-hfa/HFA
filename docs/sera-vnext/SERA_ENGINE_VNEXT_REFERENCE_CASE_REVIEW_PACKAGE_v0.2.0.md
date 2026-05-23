@@ -56,8 +56,23 @@ Padronizar a revisão independente inicial de drafts de reference cases para pre
 - `dúvidas metodológicas`
 - `recomendação final` (`REVIEW_READY | NEEDS_MORE_EVIDENCE | REJECT_OR_DEFER`)
 
+## Dry Run Divergence Rules before Formal Review
+
+Regras derivadas do dry run A4+R-54, formalizadas no guia A4+R-55, que revisores reais devem aplicar antes da classificação independente:
+
+1. **no-failure não é fallback para unknown**: P-A, O-A e A-A exigem evidência negativa mínima. Ausência de evidência não é automaticamente ausência de falha. Quando a evidência disponível não permite afirmar que não houve falha, marcar UNRESOLVED / INSUFFICIENT_EVIDENCE, não forçar P-A/O-A/A-A.
+
+2. **O-E reservado não vira O-A automático**: O-E é RESERVED / NOT_ACTIVE conforme taxonomia canônica v1.0. Se O-E for proposto, deve ser bloqueado. O bloqueio de O-E não empurra automaticamente o eixo para O-A — o eixo deve ser reavaliado com base em evidência para os códigos ativos (O-A a O-D). Se não houver evidência suficiente para nenhum código ativo, marcar UNRESOLVED.
+
+3. **A-C exige falha de verificação pós-ação própria**: A distinção A-A/A-C depende de evidência específica. A-A = ação coerente sem mecanismo de falha identificável. A-C = ação executada com ausência de verificação do resultado da própria ação. Se há evidência de ausência de verificação, preferir A-C. Se a evidência é insuficiente para determinar se houve verificação, marcar UNRESOLVED, não forçar A-A nem A-C.
+
+Estas regras devem ser lidas e compreendidas por todos os revisores antes do início da Fase 2 (classificação independente) do protocolo inter-rater.
+
+Referência: [Dry Run Divergence Resolution Guide](./SERA_ENGINE_VNEXT_DRY_RUN_DIVERGENCE_RESOLUTION_GUIDE_v0.2.0.md)
+
 ## Regras de execução
 - Revisores devem trabalhar independentemente.
 - Não discutir casos antes da classificação inicial individual.
 - Não promover casos para consenso nesta fase.
 - Consenso só em fase posterior com trilha formal de divergências.
+- Aplicar as Dry Run Divergence Rules antes da classificação independente.

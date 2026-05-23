@@ -152,6 +152,26 @@ Pendências remanescentes:
 - executar protocolo inter-rater com métricas completas;
 - somente após evidência formal reavaliar readiness para freeze final.
 
+## A4+R-55 — Dry Run Divergence Resolution Guide
+
+Esta fase transformou as divergências encontradas no dry run A4+R-54 em guia de decisão para revisores reais:
+
+- [Dry Run Divergence Resolution Guide](./SERA_ENGINE_VNEXT_DRY_RUN_DIVERGENCE_RESOLUTION_GUIDE_v0.2.0.md) criado.
+- Três regras-síntese estabelecidas: no-failure não é fallback para unknown; O-E reservado não vira O-A automático; A-C exige falha de verificação pós-ação própria.
+- [Review Package](./SERA_ENGINE_VNEXT_REFERENCE_CASE_REVIEW_PACKAGE_v0.2.0.md) atualizado com as regras pré-revisão.
+- [Review Tracker](./reference-cases/REVIEW_TRACKER_v0.2.0.md) atualizado com referência ao guia.
+
+Estado após A4+R-55:
+- Divergências do dry run foram transformadas em orientações para revisão real.
+- Ainda não é inter-rater formal.
+- Nenhum caso foi promovido para CONSENSUS_VALIDATED.
+- Freeze final continua não autorizado.
+
+Pendências remanescentes:
+- Executar revisão real com avaliadores independentes aplicando o guia A4+R-55.
+- Executar protocolo inter-rater com métricas completas.
+- Somente após evidência formal reavaliar readiness para freeze final.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.
