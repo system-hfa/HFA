@@ -9,3 +9,8 @@ frontend/node_modules/
 
 # Local backup archives
 archives/
+
+# Editor swap files
+*.swp
+*.swo
+*.swn
