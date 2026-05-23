@@ -99,14 +99,28 @@ export interface PoaStatements {
 
 export type PoaAxis = 'perception' | 'objective' | 'action'
 
+export type PoaAxisStatus =
+  | 'CLASSIFIED'
+  | 'REVIEW_REQUIRED'
+  | 'INSUFFICIENT_EVIDENCE'
+  | 'NOT_IMPLEMENTED'
+
+export type PoaEvidenceSufficiency = 'sufficient' | 'partial' | 'insufficient'
+
 export interface PoaAxisClassification {
   axis: PoaAxis
   selectedCode: string
+  status: PoaAxisStatus
   confidence: 'low' | 'medium' | 'high'
   evidence: string[]
   alternativesConsidered: string[]
   rejectionReason: string | null
+  reviewReason: string | null
   humanReviewRequired: boolean
+  evidenceSufficiency: PoaEvidenceSufficiency
+  semanticGuardrails: string[]
+  codeMeaning: string
+  disallowedInterpretations: string[]
 }
 
 export interface PoaClassification {
@@ -142,6 +156,7 @@ export type CausalAssuranceStatus =
   | 'SKELETON_NOT_VALIDATED'
   | 'PARTIAL_STEPS_1_3_NOT_CLASSIFIED'
   | 'PARTIAL_STEPS_1_5_NOT_CLASSIFIED'
+  | 'PARTIAL_POA_REVIEW_REQUIRED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'

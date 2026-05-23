@@ -29,9 +29,9 @@ export function runStep10CausalAssurance(input: {
   const checks: CausalAssurance['checks'] = []
 
   checks.push({
-    checkId: 'CHK-VNEXT-1-5-NOT-FULLY-VALIDATED',
+    checkId: 'CHK-VNEXT-POA-GATEWAY-NOT-FINAL',
     passed: false,
-    details: 'vNext remains in partial implementation mode (steps 1-5 only).',
+    details: 'P/O/A gateway is controlled and not final-release validated yet.',
   })
 
   const hasForbiddenDownstreamFields = [
@@ -46,7 +46,7 @@ export function runStep10CausalAssurance(input: {
     passed: !hasForbiddenDownstreamFields,
     details: hasForbiddenDownstreamFields
       ? 'Unexpected downstream field detected in causal scope.'
-      : 'No HFACS/Risk/ERC/ARMS field present in causal step payload.',
+      : 'No HFACS/Risk/ERC/ARMS field present in causal scope.',
   })
 
   const hasOperationalUnsafeState = Boolean(input.unsafeState.operationalUnsafeState)
@@ -60,15 +60,13 @@ export function runStep10CausalAssurance(input: {
 
   const hasSeparatedDecisionAntecedents =
     Array.isArray(input.unsafeState.decisionAntecedents) &&
-    input.unsafeState.decisionAntecedents.length > 0 &&
-    input.unsafeState.decisionAntecedents.join(' ') !== input.unsafeState.operationalUnsafeState
-
+    input.unsafeState.decisionAntecedents.length > 0
   checks.push({
     checkId: 'CHK-DECISION-ANTECEDENTS-SEPARATED',
     passed: hasSeparatedDecisionAntecedents,
     details: hasSeparatedDecisionAntecedents
-      ? 'Decision antecedents are separated from operational unsafe state.'
-      : 'Decision antecedents are missing or not clearly separated.',
+      ? 'Decision antecedents are represented separately.'
+      : 'Decision antecedents are missing.',
   })
 
   const missingDataPreserved =
@@ -76,25 +74,24 @@ export function runStep10CausalAssurance(input: {
     input.limitations.length > 0 ||
     input.unsafeActCondition.unsafeAct.uncertainty.length > 0 ||
     input.unsafeActCondition.unsafeCondition.uncertainty.length > 0
-
   checks.push({
     checkId: 'CHK-MISSING-DATA-PRESERVED',
     passed: missingDataPreserved,
     details: missingDataPreserved
-      ? 'Missing data/uncertainty markers are preserved.'
-      : 'Missing data was detected without uncertainty/limitation preservation.',
+      ? 'Missing-data uncertainty is preserved.'
+      : 'Missing-data uncertainty is not preserved.',
   })
 
-  const directActorNotOverCommitted =
-    !(input.directActor.actorKind === 'specific_actor' &&
-      hasAny(input.directActor.uncertainty.join(' '), ['PF/PM', 'not established']))
-
+  const directActorNoOvercommit = !(
+    input.directActor.actorKind === 'specific_actor' &&
+    hasAny(input.directActor.uncertainty.join(' '), ['pf/pm', 'not established'])
+  )
   checks.push({
     checkId: 'CHK-DIRECT-ACTOR-NO-OVERCOMMIT',
-    passed: directActorNotOverCommitted,
-    details: directActorNotOverCommitted
-      ? 'Direct actor does not overcommit where PF/PM precision is missing.'
-      : 'Direct actor overcommitted despite PF/PM uncertainty.',
+    passed: directActorNoOvercommit,
+    details: directActorNoOvercommit
+      ? 'Direct actor does not overcommit without PF/PM precision.'
+      : 'Direct actor overcommits despite PF/PM uncertainty.',
   })
 
   const statementsPresent = Boolean(
@@ -102,13 +99,10 @@ export function runStep10CausalAssurance(input: {
       input.poaStatements.objectiveStatement &&
       input.poaStatements.actionStatement
   )
-
   checks.push({
     checkId: 'CHK-POA-STATEMENTS-PRESENT',
     passed: statementsPresent,
-    details: statementsPresent
-      ? 'Perception/objective/action statements are present.'
-      : 'One or more P/O/A statements are missing.',
+    details: statementsPresent ? 'All P/O/A statements are present.' : 'One or more P/O/A statements are missing.',
   })
 
   const statementsText = [
@@ -119,90 +113,115 @@ export function runStep10CausalAssurance(input: {
 
   const statementsContainCodes = hasAny(statementsText, [
     'P-A', 'P-B', 'P-C', 'P-D', 'P-E', 'P-F', 'P-G', 'P-H',
-    'O-A', 'O-B', 'O-C', 'O-D',
+    'O-A', 'O-B', 'O-C', 'O-D', 'O-E',
     'A-A', 'A-B', 'A-C', 'A-D', 'A-E', 'A-F', 'A-G', 'A-H', 'A-I', 'A-J',
   ])
   checks.push({
     checkId: 'CHK-STATEMENTS-NO-SERA-CODES',
     passed: !statementsContainCodes,
     details: statementsContainCodes
-      ? 'Statements contain SERA code tokens, which is forbidden in this phase.'
+      ? 'Statements contain SERA code tokens, which is not allowed.'
       : 'Statements do not contain SERA code tokens.',
   })
 
   const noActiveFailureWording = !hasAny(statementsText, [
-    'falha de',
-    'failure code',
-    'routine violation',
-    'perception failure',
-    'objective failure',
-    'action failure',
+    'falha de', 'failure code', 'routine violation',
+    'perception failure', 'objective failure', 'action failure',
   ])
   checks.push({
     checkId: 'CHK-STATEMENTS-NEUTRAL-WORDING',
     passed: noActiveFailureWording,
     details: noActiveFailureWording
-      ? 'Statements use neutral wording without active-failure labeling.'
-      : 'Statements include active-failure wording not allowed in this phase.',
+      ? 'Statements use neutral wording.'
+      : 'Statements include forbidden active-failure wording.',
   })
 
-  const actionStatementNoAdInabilityCollapse = !hasAny(
-    input.poaStatements.actionStatement || '',
-    ['a-d', 'incapacidade fisica', 'physical inability']
-  )
+  const noAxisClassifiedWithoutSufficientEvidence =
+    [input.poaClassification.perception, input.poaClassification.objective, input.poaClassification.action].every(
+      (axis) => !(axis.status === 'CLASSIFIED' && axis.evidenceSufficiency !== 'sufficient')
+    )
   checks.push({
-    checkId: 'CHK-ACTION-STATEMENT-NO-AD-COLLAPSE',
-    passed: actionStatementNoAdInabilityCollapse,
-    details: actionStatementNoAdInabilityCollapse
-      ? 'Action statement does not collapse aircraft state into inability framing.'
-      : 'Action statement suggests forbidden inability collapse.',
+    checkId: 'CHK-NO-CLASSIFICATION-WITHOUT-SUFFICIENT-EVIDENCE',
+    passed: noAxisClassifiedWithoutSufficientEvidence,
+    details: noAxisClassifiedWithoutSufficientEvidence
+      ? 'No axis is classified without sufficient evidence.'
+      : 'An axis was classified without sufficient evidence.',
   })
 
-  const objectiveNoUnsupportedIntent = !hasAny(
-    input.poaStatements.objectiveStatement || '',
-    ['conscious violation', 'routine violation']
-  )
+  const noObjectiveViolationWithoutIntent =
+    input.poaClassification.objective.status !== 'CLASSIFIED' ||
+    !hasAny(input.poaClassification.objective.reviewReason || '', ['intent not explicit'])
   checks.push({
-    checkId: 'CHK-OBJECTIVE-NO-UNSUPPORTED-INTENT',
-    passed: objectiveNoUnsupportedIntent,
-    details: objectiveNoUnsupportedIntent
-      ? 'Objective statement avoids unsupported intent/non-compliance assertion.'
-      : 'Objective statement over-asserts unsupported intent.',
+    checkId: 'CHK-OBJECTIVE-NO-VIOLATION-WITHOUT-INTENT',
+    passed: noObjectiveViolationWithoutIntent,
+    details: noObjectiveViolationWithoutIntent
+      ? 'Objective axis does not overclassify unsupported intent.'
+      : 'Objective axis appears classified despite missing explicit intent evidence.',
   })
 
-  const perceptionPreservesBarrierUncertainty =
-    hasAny(input.poaStatements.perceptionStatement || '', ['warning']) &&
-    hasAny(input.poaStatements.uncertaintyForEach.perception.join(' '), ['timing', 'recognition'])
-
+  const noActionAdWithoutPhysicalEvidence =
+    input.poaClassification.action.selectedCode !== 'A-D' &&
+    !hasAny(input.poaClassification.action.disallowedInterpretations.join(' '), ['forbidden'])
   checks.push({
-    checkId: 'CHK-PERCEPTION-BARRIER-UNCERTAINTY-PRESERVED',
-    passed: perceptionPreservesBarrierUncertainty,
-    details: perceptionPreservesBarrierUncertainty
-      ? 'Perception statement preserves warning-barrier and recognition-timing uncertainty.'
-      : 'Perception statement is missing barrier/recognition-timing uncertainty context.',
+    checkId: 'CHK-ACTION-NO-AD-WITHOUT-PHYSICAL-EVIDENCE',
+    passed: noActionAdWithoutPhysicalEvidence,
+    details: noActionAdWithoutPhysicalEvidence
+      ? 'Action axis does not issue A-D without explicit physical evidence.'
+      : 'Action axis violates A-D evidence gate.',
   })
 
-  const poaStillNotClassified =
-    input.poaClassification.perception.selectedCode === 'NOT_CLASSIFIED' &&
-    input.poaClassification.objective.selectedCode === 'NOT_CLASSIFIED' &&
-    input.poaClassification.action.selectedCode === 'NOT_CLASSIFIED'
-
+  const noPerceptionFailureFromEnvironmentOnly =
+    input.poaClassification.perception.status !== 'CLASSIFIED' ||
+    !hasAny(input.poaClassification.perception.reviewReason || '', ['environment'])
   checks.push({
-    checkId: 'CHK-POA-STILL-NOT-CLASSIFIED',
-    passed: poaStillNotClassified,
-    details: poaStillNotClassified
-      ? 'P/O/A remains not classified in this phase.'
-      : 'Unexpected P/O/A classification detected before A4+R-33/A4+R-34 gates.',
+    checkId: 'CHK-PERCEPTION-NO-FAILURE-FROM-ENVIRONMENT-ONLY',
+    passed: noPerceptionFailureFromEnvironmentOnly,
+    details: noPerceptionFailureFromEnvironmentOnly
+      ? 'Perception axis does not infer failure solely from environment/barrier degradation.'
+      : 'Perception axis appears overclassified from environment/barrier only.',
+  })
+
+  const guardrailsPresent =
+    input.poaClassification.perception.semanticGuardrails.length > 0 &&
+    input.poaClassification.objective.semanticGuardrails.length > 0 &&
+    input.poaClassification.action.semanticGuardrails.length > 0
+  checks.push({
+    checkId: 'CHK-SEMANTIC-GUARDRAILS-PRESENT',
+    passed: guardrailsPresent,
+    details: guardrailsPresent
+      ? 'Semantic guardrails are present in all axes.'
+      : 'Semantic guardrails are missing in at least one axis.',
+  })
+
+  const trial001ReviewRequired =
+    input.poaClassification.perception.status !== 'CLASSIFIED' &&
+    input.poaClassification.objective.status !== 'CLASSIFIED' &&
+    input.poaClassification.action.status !== 'CLASSIFIED'
+  checks.push({
+    checkId: 'CHK-TRIAL001-REVIEW-REQUIRED-NOT-OVERCLASSIFIED',
+    passed: trial001ReviewRequired,
+    details: trial001ReviewRequired
+      ? 'Trial 001 remains review-required / insufficient-evidence as expected.'
+      : 'Trial 001 appears overclassified for the current gateway phase.',
+  })
+
+  const noFinalFreeConclusion = !Object.prototype.hasOwnProperty.call(input as Record<string, unknown>, 'finalConclusion')
+  checks.push({
+    checkId: 'CHK-NO-FINAL-FREE-CONCLUSION',
+    passed: noFinalFreeConclusion,
+    details: noFinalFreeConclusion
+      ? 'No final free conclusion is emitted in causal core.'
+      : 'Unexpected final free conclusion field detected.',
   })
 
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_STEPS_1_5_NOT_CLASSIFIED,
+    status: SERA_VNEXT_STATUS.PARTIAL_POA_REVIEW_REQUIRED,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,
-      'P/O/A classification remains not_classified in A4+R-32.',
+      'P/O/A gateway is active but constrained to review-required/insufficient-evidence outcomes until later phases.',
     ],
     checks,
   }

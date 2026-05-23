@@ -62,15 +62,36 @@ async function main() {
     assert.ok(!pattern.test(joinedStatements), `forbidden statement pattern matched: ${String(pattern)}`)
   }
 
-  assert.equal(result.poaClassification.perception.selectedCode, 'NOT_CLASSIFIED', 'perception unexpectedly classified')
-  assert.equal(result.poaClassification.objective.selectedCode, 'NOT_CLASSIFIED', 'objective unexpectedly classified')
-  assert.equal(result.poaClassification.action.selectedCode, 'NOT_CLASSIFIED', 'action unexpectedly classified')
+  const allowedStatuses = ['REVIEW_REQUIRED', 'INSUFFICIENT_EVIDENCE']
+  assert.ok(
+    allowedStatuses.includes(result.poaClassification.perception.status),
+    'perception status must be REVIEW_REQUIRED or INSUFFICIENT_EVIDENCE'
+  )
+  assert.ok(
+    allowedStatuses.includes(result.poaClassification.objective.status),
+    'objective status must be REVIEW_REQUIRED or INSUFFICIENT_EVIDENCE'
+  )
+  assert.ok(
+    allowedStatuses.includes(result.poaClassification.action.status),
+    'action status must be REVIEW_REQUIRED or INSUFFICIENT_EVIDENCE'
+  )
+
+  assert.notEqual(result.poaClassification.action.selectedCode, 'A-D', 'action must not classify as A-D')
+  assert.ok(
+    !['O-C', 'O-D', 'O-E'].includes(result.poaClassification.objective.selectedCode),
+    'objective must not classify as O-C/O-D/O-E without explicit intent evidence'
+  )
+  assert.ok(
+    !['P-G', 'P-F', 'P-D'].includes(result.poaClassification.perception.selectedCode),
+    'perception must not classify as failure based only on environment/barrier degradation'
+  )
 
   const resultAny = result as unknown as Record<string, unknown>
   for (const forbidden of ['hfacs', 'erc_level', 'risk', 'arms']) {
     assert.ok(!(forbidden in resultAny), `forbidden key present in output: ${forbidden}`)
   }
 
+  assert.ok(!('finalConclusion' in resultAny), 'output must not include final free conclusion')
   assert.equal(result.humanReview.required, true, 'humanReview.required must be true')
   assert.notEqual(result.causalAssurance.status, 'PASSED', 'causalAssurance must not be PASSED')
 
