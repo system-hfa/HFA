@@ -1,7 +1,7 @@
 # SERA Engine vNext Candidate Freeze Readiness v0.2.0
 
 Status: DRAFT_FOR_REVIEW  
-Phase: A4+R-49 — Candidate Freeze Readiness (atualizado com governance pack)
+Phase: A4+R-50 — Candidate Freeze Readiness (atualizado com skeletons e adversarial set 2)
 
 ## Objetivo
 Consolidar o estado de maturidade do núcleo causal vNext e explicitar critérios mínimos para um candidate freeze futuro, sem declarar validação metodológica final.
@@ -28,7 +28,7 @@ Consolidar o estado de maturidade do núcleo causal vNext e explicitar critério
 - Evidence category runtime (atualmente design-only).
 - ~~Contrato operacional LLM (fora desta fase).~~ → Definido em A4+R-49, pendente execução.
 - ~~Conjunto de casos de referência por consenso metodológico.~~ → Política definida em A4+R-49, pendente materialização dos casos.
-- Adversarial Set 2.
+- Adversarial Set 2 → Desenhado em A4+R-50 (14 casos), pendente implementação executável.
 - ~~Protocolo inter-rater.~~ → Protocolo definido em A4+R-49, pendente execução.
 - Plano final de integração (ainda sem UI/API/DB).
 
@@ -42,7 +42,21 @@ Linguagem a evitar nesta fase:
 - `scientifically validated`
 - `production-ready full methodology`
 
-## A4+R-49 — Governance Pack (documentos adicionados)
+## A4+R-50 — Consensus Reference Cases Skeleton + Adversarial Set 2 (documentos adicionados)
+
+Dois artefatos preparatórios foram criados nesta fase, avançando a prontidão sem executar validação empírica:
+
+- [Consensus Reference Case Template](../docs/sera-vnext/SERA_ENGINE_VNEXT_CONSENSUS_REFERENCE_CASE_TEMPLATE_v0.2.0.md) — estrutura padrão para documentar casos de referência.
+- [Reference Cases Directory](../docs/sera-vnext/reference-cases/) — diretório com skeletons (CRC-SKELETON-001, CRC-NEGATIVE-CONTROL-SKELETON-001, CRC-ADVERSARIAL-SKELETON-001), todos com status `DRAFT_CASE_SKELETON` e `NOT_CONSENSUS_VALIDATED`.
+- [Adversarial Set 2 Design](../docs/sera-vnext/SERA_ENGINE_VNEXT_ADVERSARIAL_SET_2_DESIGN_v0.2.0.md) — 14 casos adversariais desenhados cobrindo fronteiras críticas da taxonomia, todos com status `DESIGN_ONLY`.
+
+Estes artefatos preparam o terreno para materialização futura, mas não a executam:
+- Templates e skeletons existem, mas nenhum caso real foi materializado.
+- Adversarial set 2 está desenhado, mas não implementado como testes executáveis.
+- Consensus reference cases continuam pendentes de materialização com dados reais ou sintéticos completos.
+- Inter-rater protocol continua pendente de execução.
+
+O candidate freeze final permanece não autorizado.
 Três documentos de governança metodológica foram criados nesta fase, reduzindo lacunas de governança sem executar validação empírica:
 
 - [LLM Operational Contract](../docs/sera-vnext/SERA_ENGINE_VNEXT_LLM_OPERATIONAL_CONTRACT_v0.2.0.md) — define limites operacionais do uso de LLM como auxiliar, não autoridade classificatória.
