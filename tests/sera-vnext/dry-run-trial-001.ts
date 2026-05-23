@@ -11,6 +11,17 @@ The event occurred in an offshore visual approach environment with degraded visu
 
 The available source material does not fully establish, in this neutral narrative, which pilot was flying, which pilot was monitoring, the exact callouts, the precise timing of recognition, or the exact control inputs during the recovery.`
 
+const forbiddenStatementPatterns = [
+  /\bP-A\b/i,
+  /\bO-A\b/i,
+  /\bA-A\b/i,
+  /\bA-D\b/i,
+  /\bP-G\b/i,
+  /falha de/i,
+  /failure code/i,
+  /routine violation/i,
+]
+
 async function main() {
   const result = await analyzeSeraVNext({
     inputId: 'TRIAL-SET1-001',
@@ -30,6 +41,26 @@ async function main() {
   assert.ok(result.unsafeState?.operationalUnsafeState, 'unsafeState.operationalUnsafeState missing')
   assert.ok(Array.isArray(result.unsafeState?.decisionAntecedents), 'unsafeState.decisionAntecedents missing')
   assert.ok(result.unsafeActCondition, 'unsafeActCondition missing')
+
+  assert.ok(result.directActor, 'directActor missing')
+  assert.notEqual(result.directActor.actor, 'pilot flying', 'directActor must not assume PF')
+  assert.notEqual(result.directActor.actor, 'pilot monitoring', 'directActor must not assume PM')
+
+  assert.ok(result.poaStatements.perceptionStatement, 'perceptionStatement missing')
+  assert.ok(result.poaStatements.objectiveStatement, 'objectiveStatement missing')
+  assert.ok(result.poaStatements.actionStatement, 'actionStatement missing')
+
+  const joinedStatements = [
+    result.poaStatements.perceptionStatement,
+    result.poaStatements.objectiveStatement,
+    result.poaStatements.actionStatement,
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  for (const pattern of forbiddenStatementPatterns) {
+    assert.ok(!pattern.test(joinedStatements), `forbidden statement pattern matched: ${String(pattern)}`)
+  }
 
   assert.equal(result.poaClassification.perception.selectedCode, 'NOT_CLASSIFIED', 'perception unexpectedly classified')
   assert.equal(result.poaClassification.objective.selectedCode, 'NOT_CLASSIFIED', 'objective unexpectedly classified')

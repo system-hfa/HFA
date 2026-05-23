@@ -65,8 +65,15 @@ export type DirectActorKind =
 export interface DirectActorAnalysis {
   actor: string | null
   actorKind: DirectActorKind
+  confidence: 'low' | 'medium' | 'high'
   evidence: string[]
   uncertainty: string[]
+  humanReviewRequired: boolean
+}
+
+export interface PoaAxisStatementMeta {
+  confidence: 'low' | 'medium' | 'high'
+  humanReviewRequired: boolean
 }
 
 export interface PoaStatements {
@@ -82,6 +89,11 @@ export interface PoaStatements {
     perception: string[]
     objective: string[]
     action: string[]
+  }
+  statementMeta: {
+    perception: PoaAxisStatementMeta
+    objective: PoaAxisStatementMeta
+    action: PoaAxisStatementMeta
   }
 }
 
@@ -129,6 +141,7 @@ export interface Recommendation {
 export type CausalAssuranceStatus =
   | 'SKELETON_NOT_VALIDATED'
   | 'PARTIAL_STEPS_1_3_NOT_CLASSIFIED'
+  | 'PARTIAL_STEPS_1_5_NOT_CLASSIFIED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'
