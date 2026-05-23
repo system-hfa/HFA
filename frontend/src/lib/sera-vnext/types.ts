@@ -21,9 +21,11 @@ export interface FactualSummary {
   aircraftOrSystem: string[]
   operationType: string | null
   phase: string | null
+  location: string | null
   sequence: string[]
   environment: string[]
   availableCues: string[]
+  availableBarriers: string[]
   missingData: string[]
 }
 
@@ -39,12 +41,18 @@ export type UnsafeActConditionDominance =
   | 'mixed'
   | 'insufficient_evidence'
 
-export interface UnsafeActConditionAnalysis {
-  unsafeAct: string | null
-  unsafeCondition: string | null
-  dominance: UnsafeActConditionDominance
+export interface UnsafeElementAssessment {
+  statement: string | null
   evidence: string[]
+  confidence: 'low' | 'medium' | 'high'
   uncertainty: string[]
+  humanReviewRequired: boolean
+}
+
+export interface UnsafeActConditionAnalysis {
+  unsafeAct: UnsafeElementAssessment
+  unsafeCondition: UnsafeElementAssessment
+  dominance: UnsafeActConditionDominance
 }
 
 export type DirectActorKind =
@@ -120,6 +128,7 @@ export interface Recommendation {
 
 export type CausalAssuranceStatus =
   | 'SKELETON_NOT_VALIDATED'
+  | 'PARTIAL_STEPS_1_3_NOT_CLASSIFIED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'
