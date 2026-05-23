@@ -107,6 +107,16 @@ export type PoaAxisStatus =
 
 export type PoaEvidenceSufficiency = 'sufficient' | 'partial' | 'insufficient'
 
+export interface PoaAxisReviewTrace {
+  reviewReason: string
+  reviewReasonCode: string
+  linkedUncertainties: string[]
+  linkedEvidence: string[]
+  blockingForClassification: string[]
+  requiredHumanDecision: string
+  transitionCriteria: string[]
+}
+
 export interface PoaAxisClassification {
   axis: PoaAxis
   selectedCode: string
@@ -116,6 +126,13 @@ export interface PoaAxisClassification {
   alternativesConsidered: string[]
   rejectionReason: string | null
   reviewReason: string | null
+  reviewReasonCode: string
+  linkedUncertainties: string[]
+  linkedEvidence: string[]
+  blockingForClassification: string[]
+  requiredHumanDecision: string
+  transitionCriteria: string[]
+  reviewTrace: PoaAxisReviewTrace
   humanReviewRequired: boolean
   evidenceSufficiency: PoaEvidenceSufficiency
   semanticGuardrails: string[]
@@ -157,6 +174,7 @@ export type CausalAssuranceStatus =
   | 'PARTIAL_STEPS_1_3_NOT_CLASSIFIED'
   | 'PARTIAL_STEPS_1_5_NOT_CLASSIFIED'
   | 'PARTIAL_POA_REVIEW_REQUIRED'
+  | 'PARTIAL_POA_REVIEW_TRACEABLE'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'

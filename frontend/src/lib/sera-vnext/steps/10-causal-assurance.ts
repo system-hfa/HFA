@@ -5,6 +5,7 @@ import type {
   FactualSummary,
   Limitation,
   OperationalUnsafeState,
+  PoaAxisClassification,
   PoaClassification,
   PoaStatements,
   PreconditionsAnalysis,
@@ -14,6 +15,10 @@ import type {
 function hasAny(text: string, patterns: string[]): boolean {
   const t = text.toLowerCase()
   return patterns.some((p) => t.includes(p.toLowerCase()))
+}
+
+function unresolved(axis: PoaAxisClassification): boolean {
+  return axis.status === 'REVIEW_REQUIRED' || axis.status === 'INSUFFICIENT_EVIDENCE'
 }
 
 export function runStep10CausalAssurance(input: {
@@ -125,8 +130,12 @@ export function runStep10CausalAssurance(input: {
   })
 
   const noActiveFailureWording = !hasAny(statementsText, [
-    'falha de', 'failure code', 'routine violation',
-    'perception failure', 'objective failure', 'action failure',
+    'falha de',
+    'failure code',
+    'routine violation',
+    'perception failure',
+    'objective failure',
+    'action failure',
   ])
   checks.push({
     checkId: 'CHK-STATEMENTS-NEUTRAL-WORDING',
@@ -136,10 +145,15 @@ export function runStep10CausalAssurance(input: {
       : 'Statements include forbidden active-failure wording.',
   })
 
-  const noAxisClassifiedWithoutSufficientEvidence =
-    [input.poaClassification.perception, input.poaClassification.objective, input.poaClassification.action].every(
-      (axis) => !(axis.status === 'CLASSIFIED' && axis.evidenceSufficiency !== 'sufficient')
-    )
+  const axes = [
+    input.poaClassification.perception,
+    input.poaClassification.objective,
+    input.poaClassification.action,
+  ]
+
+  const noAxisClassifiedWithoutSufficientEvidence = axes.every(
+    (axis) => !(axis.status === 'CLASSIFIED' && axis.evidenceSufficiency !== 'sufficient')
+  )
   checks.push({
     checkId: 'CHK-NO-CLASSIFICATION-WITHOUT-SUFFICIENT-EVIDENCE',
     passed: noAxisClassifiedWithoutSufficientEvidence,
@@ -148,43 +162,51 @@ export function runStep10CausalAssurance(input: {
       : 'An axis was classified without sufficient evidence.',
   })
 
-  const noObjectiveViolationWithoutIntent =
+  const noAxisClassifiedWithBlocking = axes.every(
+    (axis) => !(axis.status === 'CLASSIFIED' && axis.blockingForClassification.length > 0)
+  )
+  checks.push({
+    checkId: 'CHK-NO-CLASSIFIED-WITH-BLOCKING-ITEMS',
+    passed: noAxisClassifiedWithBlocking,
+    details: noAxisClassifiedWithBlocking
+      ? 'No axis is classified while blocking items remain.'
+      : 'At least one axis is classified despite non-empty blocking list.',
+  })
+
+  const objectiveNoViolationWithoutIntent =
     input.poaClassification.objective.status !== 'CLASSIFIED' ||
-    !hasAny(input.poaClassification.objective.reviewReason || '', ['intent not explicit'])
+    !hasAny(input.poaClassification.objective.reviewReason || '', ['intent'])
   checks.push({
     checkId: 'CHK-OBJECTIVE-NO-VIOLATION-WITHOUT-INTENT',
-    passed: noObjectiveViolationWithoutIntent,
-    details: noObjectiveViolationWithoutIntent
+    passed: objectiveNoViolationWithoutIntent,
+    details: objectiveNoViolationWithoutIntent
       ? 'Objective axis does not overclassify unsupported intent.'
       : 'Objective axis appears classified despite missing explicit intent evidence.',
   })
 
-  const noActionAdWithoutPhysicalEvidence =
+  const actionNoAdWithoutPhysicalEvidence =
     input.poaClassification.action.selectedCode !== 'A-D' &&
     !hasAny(input.poaClassification.action.disallowedInterpretations.join(' '), ['forbidden'])
   checks.push({
     checkId: 'CHK-ACTION-NO-AD-WITHOUT-PHYSICAL-EVIDENCE',
-    passed: noActionAdWithoutPhysicalEvidence,
-    details: noActionAdWithoutPhysicalEvidence
+    passed: actionNoAdWithoutPhysicalEvidence,
+    details: actionNoAdWithoutPhysicalEvidence
       ? 'Action axis does not issue A-D without explicit physical evidence.'
       : 'Action axis violates A-D evidence gate.',
   })
 
-  const noPerceptionFailureFromEnvironmentOnly =
+  const perceptionNoFailureFromEnvironmentOnly =
     input.poaClassification.perception.status !== 'CLASSIFIED' ||
     !hasAny(input.poaClassification.perception.reviewReason || '', ['environment'])
   checks.push({
     checkId: 'CHK-PERCEPTION-NO-FAILURE-FROM-ENVIRONMENT-ONLY',
-    passed: noPerceptionFailureFromEnvironmentOnly,
-    details: noPerceptionFailureFromEnvironmentOnly
+    passed: perceptionNoFailureFromEnvironmentOnly,
+    details: perceptionNoFailureFromEnvironmentOnly
       ? 'Perception axis does not infer failure solely from environment/barrier degradation.'
       : 'Perception axis appears overclassified from environment/barrier only.',
   })
 
-  const guardrailsPresent =
-    input.poaClassification.perception.semanticGuardrails.length > 0 &&
-    input.poaClassification.objective.semanticGuardrails.length > 0 &&
-    input.poaClassification.action.semanticGuardrails.length > 0
+  const guardrailsPresent = axes.every((axis) => axis.semanticGuardrails.length > 0)
   checks.push({
     checkId: 'CHK-SEMANTIC-GUARDRAILS-PRESENT',
     passed: guardrailsPresent,
@@ -193,16 +215,51 @@ export function runStep10CausalAssurance(input: {
       : 'Semantic guardrails are missing in at least one axis.',
   })
 
-  const trial001ReviewRequired =
-    input.poaClassification.perception.status !== 'CLASSIFIED' &&
-    input.poaClassification.objective.status !== 'CLASSIFIED' &&
-    input.poaClassification.action.status !== 'CLASSIFIED'
+  const reviewTracePresentForUnresolved = axes.every(
+    (axis) => !unresolved(axis) || Boolean(axis.reviewTrace)
+  )
   checks.push({
-    checkId: 'CHK-TRIAL001-REVIEW-REQUIRED-NOT-OVERCLASSIFIED',
-    passed: trial001ReviewRequired,
-    details: trial001ReviewRequired
-      ? 'Trial 001 remains review-required / insufficient-evidence as expected.'
-      : 'Trial 001 appears overclassified for the current gateway phase.',
+    checkId: 'CHK-REVIEW-TRACE-PRESENT-FOR-UNRESOLVED',
+    passed: reviewTracePresentForUnresolved,
+    details: reviewTracePresentForUnresolved
+      ? 'Every unresolved axis has review trace.'
+      : 'At least one unresolved axis is missing review trace.',
+  })
+
+  const reviewTraceLinked = axes.every((axis) => {
+    if (!unresolved(axis)) return true
+    const hasLinks = axis.linkedUncertainties.length > 0 || axis.linkedEvidence.length > 0
+    const hasTraceLinks = axis.reviewTrace.linkedUncertainties.length > 0 || axis.reviewTrace.linkedEvidence.length > 0
+    return hasLinks && hasTraceLinks
+  })
+  checks.push({
+    checkId: 'CHK-REVIEW-TRACE-LINKS-PRESENT',
+    passed: reviewTraceLinked,
+    details: reviewTraceLinked
+      ? 'Every unresolved axis review trace links to uncertainty/evidence.'
+      : 'At least one unresolved axis lacks trace links to uncertainty/evidence.',
+  })
+
+  const transitionCriteriaPresentForUnresolved = axes.every(
+    (axis) => !unresolved(axis) || axis.transitionCriteria.length > 0
+  )
+  checks.push({
+    checkId: 'CHK-TRANSITION-CRITERIA-PRESENT-FOR-UNRESOLVED',
+    passed: transitionCriteriaPresentForUnresolved,
+    details: transitionCriteriaPresentForUnresolved
+      ? 'Transition criteria exist for all unresolved axes.'
+      : 'At least one unresolved axis is missing transition criteria.',
+  })
+
+  const trial001ReviewRequiredTraceable = axes.every((axis) =>
+    unresolved(axis) && axis.blockingForClassification.length > 0 && Boolean(axis.reviewReasonCode)
+  )
+  checks.push({
+    checkId: 'CHK-TRIAL001-REVIEW-REQUIRED-TRACEABLE',
+    passed: trial001ReviewRequiredTraceable,
+    details: trial001ReviewRequiredTraceable
+      ? 'Trial 001 review-required posture is explicit and traceable for all axes.'
+      : 'Trial 001 has unresolved axes without explicit traceability scaffolding.',
   })
 
   const noFinalFreeConclusion = !Object.prototype.hasOwnProperty.call(input as Record<string, unknown>, 'finalConclusion')
@@ -217,11 +274,11 @@ export function runStep10CausalAssurance(input: {
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_POA_REVIEW_REQUIRED,
+    status: SERA_VNEXT_STATUS.PARTIAL_POA_REVIEW_TRACEABLE,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,
-      'P/O/A gateway is active but constrained to review-required/insufficient-evidence outcomes until later phases.',
+      'P/O/A gateway remains review-traceable and non-final until transition criteria are satisfied by human review.',
     ],
     checks,
   }

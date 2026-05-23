@@ -76,6 +76,23 @@ async function main() {
     'action status must be REVIEW_REQUIRED or INSUFFICIENT_EVIDENCE'
   )
 
+  for (const axis of [result.poaClassification.perception, result.poaClassification.objective, result.poaClassification.action]) {
+    assert.ok(axis.reviewTrace, `${axis.axis} must include reviewTrace`)
+    assert.ok(axis.reviewReasonCode, `${axis.axis} must include reviewReasonCode`)
+    assert.ok(
+      axis.linkedUncertainties.length > 0 || axis.linkedEvidence.length > 0,
+      `${axis.axis} must link uncertainties or evidence`
+    )
+    assert.ok(
+      axis.reviewTrace.linkedUncertainties.length > 0 || axis.reviewTrace.linkedEvidence.length > 0,
+      `${axis.axis} reviewTrace must link uncertainties or evidence`
+    )
+    assert.ok(axis.transitionCriteria.length > 0, `${axis.axis} must include transitionCriteria`)
+    if (axis.status === 'REVIEW_REQUIRED') {
+      assert.ok(axis.blockingForClassification.length > 0, `${axis.axis} REVIEW_REQUIRED must include blockingForClassification`)
+    }
+  }
+
   assert.notEqual(result.poaClassification.action.selectedCode, 'A-D', 'action must not classify as A-D')
   assert.ok(
     !['O-C', 'O-D', 'O-E'].includes(result.poaClassification.objective.selectedCode),
