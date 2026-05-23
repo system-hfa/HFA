@@ -1,10 +1,16 @@
-import { SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS, SERA_VNEXT_STATUS } from '../constants'
+import {
+  SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS,
+  SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS,
+  SERA_VNEXT_STATUS,
+} from '../constants'
 import type {
   CausalAssurance,
   DirectActorAnalysis,
   FactualSummary,
+  HumanReviewDecisionGate,
   Limitation,
   OperationalUnsafeState,
+  PoaAxis,
   PoaAxisClassification,
   PoaClassification,
   PoaStatements,
@@ -77,6 +83,11 @@ function unresolvedTraceFieldIssues(axis: PoaAxisClassification): string[] {
   return issues
 }
 
+function contractForAxis(gate: HumanReviewDecisionGate | null, axis: PoaAxis) {
+  if (!gate) return null
+  return gate.axisContracts.find((contract) => contract.axis === axis) || null
+}
+
 export function runStep10CausalAssurance(input: {
   factualSummary: FactualSummary
   unsafeState: OperationalUnsafeState
@@ -86,6 +97,7 @@ export function runStep10CausalAssurance(input: {
   limitations: Limitation[]
   poaClassification: PoaClassification
   preconditions: PreconditionsAnalysis
+  humanReviewDecisionGate: HumanReviewDecisionGate | null
 }): CausalAssurance {
   const checks: CausalAssurance['checks'] = []
 
@@ -461,14 +473,99 @@ export function runStep10CausalAssurance(input: {
       : 'NOT_ELIGIBLE waiver semantics are inconsistent.',
   })
 
+  const gate = input.humanReviewDecisionGate
+
+  const humanReviewGateExists = Boolean(gate)
+  checks.push({
+    checkId: 'CHK-HUMAN-REVIEW-DECISION-GATE-EXISTS',
+    passed: humanReviewGateExists,
+    details: humanReviewGateExists
+      ? 'Human review decision gate payload is present.'
+      : 'Human review decision gate payload is missing.',
+  })
+
+  const eligibleAxesHaveReadyDecisionContract = axes.every((axis) => {
+    if (axis.classificationEligibility.eligibilityStatus !== 'ELIGIBLE_FOR_HUMAN_REVIEW') return true
+    const contract = contractForAxis(gate, axis.axis)
+    return Boolean(contract) && contract?.decisionStatus === 'READY_FOR_HUMAN_DECISION'
+  })
+  checks.push({
+    checkId: 'CHK-ELIGIBLE-AXES-HAVE-READY-DECISION-CONTRACT',
+    passed: eligibleAxesHaveReadyDecisionContract,
+    details: eligibleAxesHaveReadyDecisionContract
+      ? 'All eligible axes expose READY_FOR_HUMAN_DECISION contract.'
+      : 'At least one eligible axis is missing READY_FOR_HUMAN_DECISION contract.',
+  })
+
+  const notEligibleAxesNotMarkedReadyForDecision = axes.every((axis) => {
+    if (axis.classificationEligibility.eligibilityStatus !== 'NOT_ELIGIBLE') return true
+    const contract = contractForAxis(gate, axis.axis)
+    return Boolean(contract) && contract?.decisionStatus === 'NOT_READY_FOR_HUMAN_DECISION'
+  })
+  checks.push({
+    checkId: 'CHK-NOT-ELIGIBLE-AXES-NOT-READY-FOR-DECISION',
+    passed: notEligibleAxesNotMarkedReadyForDecision,
+    details: notEligibleAxesNotMarkedReadyForDecision
+      ? 'No NOT_ELIGIBLE axis is marked ready for human decision.'
+      : 'A NOT_ELIGIBLE axis is incorrectly marked ready for human decision.',
+  })
+
+  const blockedAxesDoNotAllowWaiver = axes.every((axis) => {
+    if (axis.classificationEligibility.eligibilityStatus !== 'BLOCKED_BY_GUARDRAIL') return true
+    const contract = contractForAxis(gate, axis.axis)
+    return Boolean(contract) && contract?.waiverDecisionAllowed === false
+  })
+  checks.push({
+    checkId: 'CHK-BLOCKED-AXES-DO-NOT-ALLOW-WAIVER',
+    passed: blockedAxesDoNotAllowWaiver,
+    details: blockedAxesDoNotAllowWaiver
+      ? 'Blocked axes correctly prohibit waiver decisions.'
+      : 'At least one blocked axis incorrectly allows waiver decisions.',
+  })
+
+  const noAxisContractPermitsAutoClassified = (gate?.axisContracts || []).every(
+    (contract) =>
+      contract.outputLock.autoClassificationForbidden &&
+      contract.outputLock.prohibitedStatuses.includes('CLASSIFIED')
+  )
+  checks.push({
+    checkId: 'CHK-NO-AXIS-CONTRACT-PERMITS-AUTO-CLASSIFIED',
+    passed: noAxisContractPermitsAutoClassified,
+    details: noAxisContractPermitsAutoClassified
+      ? 'Axis contracts explicitly forbid automatic CLASSIFIED emission.'
+      : 'At least one axis contract does not forbid automatic CLASSIFIED emission.',
+  })
+
+  const noAxisContractPermitsDownstreamOutputs = (gate?.axisContracts || []).every((contract) =>
+    SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS.every((output) => contract.outputLock.prohibitedOutputs.includes(output))
+  )
+  checks.push({
+    checkId: 'CHK-NO-AXIS-CONTRACT-PERMITS-DOWNSTREAM-OUTPUTS',
+    passed: noAxisContractPermitsDownstreamOutputs,
+    details: noAxisContractPermitsDownstreamOutputs
+      ? 'Axis contracts forbid finalConclusion/HFACS/Risk/ERC/ARMS outputs.'
+      : 'At least one axis contract is missing downstream output locks.',
+  })
+
+  const globalOutputLocksPresent = SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS.every((output) =>
+    (gate?.globalProhibitedOutputs || []).includes(output)
+  )
+  checks.push({
+    checkId: 'CHK-GLOBAL-OUTPUT-LOCKS-PRESENT',
+    passed: globalOutputLocksPresent,
+    details: globalOutputLocksPresent
+      ? 'Global decision gate output locks are present.'
+      : 'Global decision gate output locks are missing or incomplete.',
+  })
+
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_READINESS_REFINED_NOT_CLASSIFIED,
+    status: SERA_VNEXT_STATUS.PARTIAL_HUMAN_REVIEW_GATE_READY_NOT_CLASSIFIED,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,
-      'P/O/A gateway remains review-traceable and non-final until transition criteria are satisfied by human review.',
+      'P/O/A human decision gate remains non-final; automatic CLASSIFIED/HFACS/Risk/ERC/finalConclusion outputs stay locked.',
     ],
     checks,
   }

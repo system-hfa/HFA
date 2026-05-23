@@ -12,22 +12,31 @@ type TrialSummary = {
   perceptionStatus: string
   perceptionReviewReasonCode: string
   perceptionEligibility: string
+  perceptionDecisionStatus: string
   perceptionWaiverRequired: boolean
+  perceptionDecisionWaiverRequired: boolean
   perceptionWaiverAllowed: boolean
+  perceptionProhibitedOutputsCount: number
   perceptionWhyBlocked: string | null
   perceptionWhyNotEligible: string | null
   objectiveStatus: string
   objectiveReviewReasonCode: string
   objectiveEligibility: string
+  objectiveDecisionStatus: string
   objectiveWaiverRequired: boolean
+  objectiveDecisionWaiverRequired: boolean
   objectiveWaiverAllowed: boolean
+  objectiveProhibitedOutputsCount: number
   objectiveWhyBlocked: string | null
   objectiveWhyNotEligible: string | null
   actionStatus: string
   actionReviewReasonCode: string
   actionEligibility: string
+  actionDecisionStatus: string
   actionWaiverRequired: boolean
+  actionDecisionWaiverRequired: boolean
   actionWaiverAllowed: boolean
+  actionProhibitedOutputsCount: number
   actionWhyBlocked: string | null
   actionWhyNotEligible: string | null
   unmetCriteriaCount: number
@@ -116,6 +125,12 @@ function assertAxisTrace(axis: any, inputId: string) {
   assert.ok(axis.transitionCriteria.length > 0, `${inputId}/${axis.axis}: transitionCriteria missing`)
 }
 
+function expectedDecisionStatusFromEligibility(eligibilityStatus: string): string {
+  if (eligibilityStatus === 'ELIGIBLE_FOR_HUMAN_REVIEW') return 'READY_FOR_HUMAN_DECISION'
+  if (eligibilityStatus === 'BLOCKED_BY_GUARDRAIL') return 'BLOCKED_BY_GUARDRAIL'
+  return 'NOT_READY_FOR_HUMAN_DECISION'
+}
+
 function assertCommon(result: any, inputId: string) {
   assert.ok(result.engineVersion, `${inputId}: engineVersion missing`)
   assert.ok(result.unsafeState?.operationalUnsafeState, `${inputId}: operationalUnsafeState missing`)
@@ -184,6 +199,69 @@ function assertCommon(result: any, inputId: string) {
   }
 
   assert.equal(result.humanReview.required, true, `${inputId}: humanReview.required must be true`)
+  assert.ok(result.humanReviewDecisionGate, `${inputId}: humanReviewDecisionGate missing`)
+  assert.equal(result.humanReviewDecisionGate.required, true, `${inputId}: humanReviewDecisionGate.required must be true`)
+  assert.equal(result.humanReview.status, 'HUMAN_DECISION_REQUIRED', `${inputId}: humanReview status must be HUMAN_DECISION_REQUIRED`)
+
+  const gateByAxis = new Map(result.humanReviewDecisionGate.axisContracts.map((contract: any) => [contract.axis, contract]))
+  for (const axis of [result.poaClassification.perception, result.poaClassification.objective, result.poaClassification.action]) {
+    const contract = gateByAxis.get(axis.axis)
+    assert.ok(contract, `${inputId}/${axis.axis}: missing decision gate contract`)
+
+    const expectedDecisionStatus = expectedDecisionStatusFromEligibility(axis.classificationEligibility.eligibilityStatus)
+    assert.equal(
+      contract.decisionStatus,
+      expectedDecisionStatus,
+      `${inputId}/${axis.axis}: decision status must match eligibility status`
+    )
+
+    if (axis.classificationEligibility.eligibilityStatus === 'ELIGIBLE_FOR_HUMAN_REVIEW') {
+      assert.equal(
+        contract.decisionStatus,
+        'READY_FOR_HUMAN_DECISION',
+        `${inputId}/${axis.axis}: eligible axis must be READY_FOR_HUMAN_DECISION`
+      )
+    }
+    if (axis.classificationEligibility.eligibilityStatus === 'NOT_ELIGIBLE') {
+      assert.equal(
+        contract.decisionStatus,
+        'NOT_READY_FOR_HUMAN_DECISION',
+        `${inputId}/${axis.axis}: NOT_ELIGIBLE axis must be NOT_READY_FOR_HUMAN_DECISION`
+      )
+    }
+    if (axis.classificationEligibility.eligibilityStatus === 'BLOCKED_BY_GUARDRAIL') {
+      assert.equal(
+        contract.decisionStatus,
+        'BLOCKED_BY_GUARDRAIL',
+        `${inputId}/${axis.axis}: blocked axis must be BLOCKED_BY_GUARDRAIL`
+      )
+      assert.equal(contract.waiverDecisionAllowed, false, `${inputId}/${axis.axis}: blocked axis must not allow waiver`)
+    }
+
+    assert.equal(
+      contract.outputLock.autoClassificationForbidden,
+      true,
+      `${inputId}/${axis.axis}: axis contract must forbid auto-classification`
+    )
+    assert.ok(
+      contract.outputLock.prohibitedStatuses.includes('CLASSIFIED'),
+      `${inputId}/${axis.axis}: axis contract must explicitly lock CLASSIFIED`
+    )
+    for (const forbiddenOutput of ['finalConclusion', 'HFACS', 'Risk/ERC', 'ARMS/ERC']) {
+      assert.ok(
+        contract.outputLock.prohibitedOutputs.includes(forbiddenOutput),
+        `${inputId}/${axis.axis}: downstream output must be prohibited (${forbiddenOutput})`
+      )
+    }
+  }
+
+  for (const forbiddenOutput of ['CLASSIFIED', 'finalConclusion', 'HFACS', 'Risk/ERC', 'ARMS/ERC']) {
+    assert.ok(
+      result.humanReviewDecisionGate.globalProhibitedOutputs.includes(forbiddenOutput),
+      `${inputId}: global decision gate must prohibit ${forbiddenOutput}`
+    )
+  }
+
   assert.notEqual(result.causalAssurance.status, 'PASSED', `${inputId}: assurance must not be PASSED`)
 
   assertNoForbiddenTopLevel(result as Record<string, unknown>, inputId)
@@ -247,6 +325,11 @@ function assertTrialSpecific(result: any, inputId: string) {
       'NOT_ELIGIBLE',
       `${inputId}: action should remain NOT_ELIGIBLE for ordinary evidence insufficiency`
     )
+    const contracts = result.humanReviewDecisionGate.axisContracts
+    assert.ok(
+      contracts.every((contract: any) => contract.decisionStatus === 'NOT_READY_FOR_HUMAN_DECISION'),
+      `${inputId}: all axes must remain NOT_READY_FOR_HUMAN_DECISION`
+    )
   }
 
   if (inputId === 'TRIAL-SET1-005') {
@@ -293,22 +376,40 @@ async function main() {
       perceptionStatus: result.poaClassification.perception.status,
       perceptionReviewReasonCode: result.poaClassification.perception.reviewReasonCode,
       perceptionEligibility: result.poaClassification.perception.classificationEligibility.eligibilityStatus,
+      perceptionDecisionStatus:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'perception')?.decisionStatus || 'MISSING',
       perceptionWaiverRequired: result.poaClassification.perception.classificationEligibility.waiverRequired,
+      perceptionDecisionWaiverRequired:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'perception')?.waiverDecisionRequired || false,
       perceptionWaiverAllowed: result.poaClassification.perception.classificationEligibility.waiverAllowed,
+      perceptionProhibitedOutputsCount:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'perception')?.outputLock.prohibitedOutputs.length || 0,
       perceptionWhyBlocked: result.poaClassification.perception.classificationEligibility.whyBlocked,
       perceptionWhyNotEligible: result.poaClassification.perception.classificationEligibility.whyNotEligible,
       objectiveStatus: result.poaClassification.objective.status,
       objectiveReviewReasonCode: result.poaClassification.objective.reviewReasonCode,
       objectiveEligibility: result.poaClassification.objective.classificationEligibility.eligibilityStatus,
+      objectiveDecisionStatus:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'objective')?.decisionStatus || 'MISSING',
       objectiveWaiverRequired: result.poaClassification.objective.classificationEligibility.waiverRequired,
+      objectiveDecisionWaiverRequired:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'objective')?.waiverDecisionRequired || false,
       objectiveWaiverAllowed: result.poaClassification.objective.classificationEligibility.waiverAllowed,
+      objectiveProhibitedOutputsCount:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'objective')?.outputLock.prohibitedOutputs.length || 0,
       objectiveWhyBlocked: result.poaClassification.objective.classificationEligibility.whyBlocked,
       objectiveWhyNotEligible: result.poaClassification.objective.classificationEligibility.whyNotEligible,
       actionStatus: result.poaClassification.action.status,
       actionReviewReasonCode: result.poaClassification.action.reviewReasonCode,
       actionEligibility: result.poaClassification.action.classificationEligibility.eligibilityStatus,
+      actionDecisionStatus:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'action')?.decisionStatus || 'MISSING',
       actionWaiverRequired: result.poaClassification.action.classificationEligibility.waiverRequired,
+      actionDecisionWaiverRequired:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'action')?.waiverDecisionRequired || false,
       actionWaiverAllowed: result.poaClassification.action.classificationEligibility.waiverAllowed,
+      actionProhibitedOutputsCount:
+        result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'action')?.outputLock.prohibitedOutputs.length || 0,
       actionWhyBlocked: result.poaClassification.action.classificationEligibility.whyBlocked,
       actionWhyNotEligible: result.poaClassification.action.classificationEligibility.whyNotEligible,
       unmetCriteriaCount:

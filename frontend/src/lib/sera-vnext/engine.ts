@@ -29,6 +29,22 @@ export async function analyzeSeraVNext(input: SeraVNextInput): Promise<SeraVNext
   const preconditions = runStep07Preconditions(poaClassification)
   const limitations = runStep08Limitations(input)
   const recommendations = runStep09Recommendations(poaClassification, preconditions, limitations)
+  const preGateCausalAssurance = runStep10CausalAssurance({
+    factualSummary,
+    unsafeState,
+    unsafeActCondition,
+    directActor,
+    poaStatements,
+    limitations,
+    poaClassification,
+    preconditions,
+    humanReviewDecisionGate: null,
+  })
+  const { humanReview, humanReviewDecisionGate } = runStep11HumanReview({
+    input,
+    poaClassification,
+    causalAssurance: preGateCausalAssurance,
+  })
   const causalAssurance = runStep10CausalAssurance({
     factualSummary,
     unsafeState,
@@ -38,8 +54,8 @@ export async function analyzeSeraVNext(input: SeraVNextInput): Promise<SeraVNext
     limitations,
     poaClassification,
     preconditions,
+    humanReviewDecisionGate,
   })
-  const humanReview = runStep11HumanReview(input, causalAssurance)
 
   return {
     engineVersion: SERA_VNEXT_ENGINE_VERSION,
@@ -59,6 +75,7 @@ export async function analyzeSeraVNext(input: SeraVNextInput): Promise<SeraVNext
       ...humanReview,
       required: true,
     },
+    humanReviewDecisionGate,
     trace: {
       stepOrder: [...SERA_VNEXT_STEP_ORDER],
       stepStatus: {

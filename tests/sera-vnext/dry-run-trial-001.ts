@@ -128,6 +128,33 @@ async function main() {
     assert.notEqual(axis.status, 'CLASSIFIED', `${axis.axis} must not be CLASSIFIED in eligibility phase`)
   }
 
+  assert.ok(result.humanReviewDecisionGate, 'humanReviewDecisionGate must be present')
+  assert.equal(result.humanReviewDecisionGate.required, true, 'humanReviewDecisionGate.required must be true')
+  assert.equal(result.humanReviewDecisionGate.status, 'HUMAN_DECISION_GATE_READY', 'Trial 001 gate should be fully ready')
+  assert.equal(result.humanReview.status, 'HUMAN_DECISION_REQUIRED', 'humanReview status must require human decision')
+
+  const gateByAxis = new Map(result.humanReviewDecisionGate.axisContracts.map((contract) => [contract.axis, contract]))
+  for (const axis of [result.poaClassification.perception, result.poaClassification.objective, result.poaClassification.action]) {
+    const contract = gateByAxis.get(axis.axis)
+    assert.ok(contract, `${axis.axis}: missing human review axis contract`)
+    assert.equal(
+      contract?.decisionStatus,
+      'READY_FOR_HUMAN_DECISION',
+      `${axis.axis}: Trial 001 must be READY_FOR_HUMAN_DECISION`
+    )
+    assert.equal(contract?.outputLock.autoClassificationForbidden, true, `${axis.axis}: auto-classification must be forbidden`)
+    assert.ok(
+      contract?.outputLock.prohibitedStatuses.includes('CLASSIFIED'),
+      `${axis.axis}: CLASSIFIED must be explicitly prohibited`
+    )
+    for (const lockedOutput of ['finalConclusion', 'HFACS', 'Risk/ERC']) {
+      assert.ok(
+        contract?.outputLock.prohibitedOutputs.includes(lockedOutput),
+        `${axis.axis}: outputLock must prohibit ${lockedOutput}`
+      )
+    }
+  }
+
   assert.notEqual(result.poaClassification.action.selectedCode, 'A-D', 'action must not classify as A-D')
   assert.ok(
     !['O-C', 'O-D', 'O-E'].includes(result.poaClassification.objective.selectedCode),
@@ -145,6 +172,12 @@ async function main() {
 
   assert.ok(!('finalConclusion' in resultAny), 'output must not include final free conclusion')
   assert.equal(result.humanReview.required, true, 'humanReview.required must be true')
+  assert.ok(
+    result.humanReviewDecisionGate.globalProhibitedOutputs.includes('finalConclusion') &&
+      result.humanReviewDecisionGate.globalProhibitedOutputs.includes('HFACS') &&
+      result.humanReviewDecisionGate.globalProhibitedOutputs.includes('Risk/ERC'),
+    'global gate outputs must prohibit finalConclusion/HFACS/Risk/ERC'
+  )
   assert.notEqual(result.causalAssurance.status, 'PASSED', 'causalAssurance must not be PASSED')
 
   console.log('SERA vNext Trial 001 dry-run PASS')

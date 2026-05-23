@@ -207,6 +207,7 @@ export type CausalAssuranceStatus =
   | 'PARTIAL_ELIGIBILITY_CHECKED_NOT_CLASSIFIED'
   | 'PARTIAL_ELIGIBILITY_CALIBRATED_NOT_CLASSIFIED'
   | 'PARTIAL_READINESS_REFINED_NOT_CLASSIFIED'
+  | 'PARTIAL_HUMAN_REVIEW_GATE_READY_NOT_CLASSIFIED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'
@@ -222,10 +223,56 @@ export interface CausalAssurance {
   }>
 }
 
+export type HumanReviewAxisDecisionStatus =
+  | 'HUMAN_DECISION_REQUIRED'
+  | 'READY_FOR_HUMAN_DECISION'
+  | 'NOT_READY_FOR_HUMAN_DECISION'
+  | 'BLOCKED_BY_GUARDRAIL'
+
+export interface HumanReviewAxisOutputLock {
+  autoClassificationForbidden: boolean
+  prohibitedOutputs: string[]
+  prohibitedStatuses: string[]
+}
+
+export interface HumanReviewAxisDecisionContract {
+  axis: PoaAxis
+  decisionStatus: HumanReviewAxisDecisionStatus
+  eligibleForDecision: boolean
+  requiredInputs: string[]
+  requiredEvidenceReferences: string[]
+  waiverDecisionRequired: boolean
+  waiverDecisionAllowed: boolean
+  waiverDecisionProhibitedReason: string | null
+  allowedReviewerActions: string[]
+  prohibitedReviewerActions: string[]
+  decisionChecklist: string[]
+  residualUncertainty: string[]
+  traceLinks: string[]
+  outputLock: HumanReviewAxisOutputLock
+}
+
+export type HumanReviewDecisionGateStatus =
+  | 'HUMAN_DECISION_GATE_READY'
+  | 'HUMAN_DECISION_GATE_PARTIAL'
+  | 'HUMAN_DECISION_GATE_BLOCKED'
+
+export interface HumanReviewDecisionGate {
+  required: boolean
+  status: HumanReviewDecisionGateStatus
+  axisContracts: HumanReviewAxisDecisionContract[]
+  globalProhibitedOutputs: string[]
+  globalDecisionRules: string[]
+}
+
+export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
+
 export interface HumanReviewStatus {
   required: boolean
+  status: HumanReviewStatusCode
   rationale: string
   checklist: string[]
+  prohibitedOutputs: string[]
 }
 
 export interface SeraVNextTrace {
@@ -249,5 +296,6 @@ export interface SeraVNextResult {
   causalAssurance: CausalAssurance
   humanReviewRequired: boolean
   humanReview: HumanReviewStatus
+  humanReviewDecisionGate: HumanReviewDecisionGate
   trace: SeraVNextTrace
 }
