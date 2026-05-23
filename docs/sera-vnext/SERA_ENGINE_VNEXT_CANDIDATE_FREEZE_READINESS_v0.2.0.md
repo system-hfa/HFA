@@ -1,7 +1,7 @@
 # SERA Engine vNext Candidate Freeze Readiness v0.2.0
 
 Status: DRAFT_FOR_REVIEW  
-Phase: A4+R-50 — Candidate Freeze Readiness (atualizado com skeletons e adversarial set 2)
+Phase: A4+R-51 — Candidate Freeze Readiness (atualizado com contract tests do adversarial set 2)
 
 ## Objetivo
 Consolidar o estado de maturidade do núcleo causal vNext e explicitar critérios mínimos para um candidate freeze futuro, sem declarar validação metodológica final.
@@ -28,7 +28,7 @@ Consolidar o estado de maturidade do núcleo causal vNext e explicitar critério
 - Evidence category runtime (atualmente design-only).
 - ~~Contrato operacional LLM (fora desta fase).~~ → Definido em A4+R-49, pendente execução.
 - ~~Conjunto de casos de referência por consenso metodológico.~~ → Política definida em A4+R-49, pendente materialização dos casos.
-- Adversarial Set 2 → Desenhado em A4+R-50 (14 casos), pendente implementação executável.
+- Adversarial Set 2 → Convertido materialmente em A4+R-51 como contract tests controlados; ainda pendente evolução para reference/consensus e uso inter-rater.
 - ~~Protocolo inter-rater.~~ → Protocolo definido em A4+R-49, pendente execução.
 - Plano final de integração (ainda sem UI/API/DB).
 
@@ -69,6 +69,25 @@ Estes documentos estabelecem a base de governança, mas sua mera existência nã
 - adversarial Set 2 seja executado;
 - protocolo inter-rater seja executado com thresholds aceitáveis;
 - plano de integração seja definido.
+
+## A4+R-51 — Adversarial Set 2 Contract Tests (execução controlada)
+
+Esta fase converteu o design adversarial em contratos vNext executáveis sem abrir downstream:
+- [Adversarial Set 2 Contract Tests](../docs/sera-vnext/SERA_ENGINE_VNEXT_ADVERSARIAL_SET_2_CONTRACT_TESTS_v0.2.0.md)
+- [Trial executável](../tests/sera-vnext/adversarial-set-2-contract-trial-001.ts)
+
+Estado metodológico após A4+R-51:
+- Adversarial Set 2 está parcialmente/materialmente convertido em testes de contrato.
+- O pacote continua `candidate causal core under validation`.
+- Ainda não é consensus reference.
+- Ainda não é evidência inter-rater.
+- Ainda não autoriza freeze final.
+
+Pendências remanescentes:
+- materialização de consensus reference cases (sem marcar como `CONSENSUS_VALIDATED` nesta etapa);
+- execução formal do protocolo inter-rater;
+- decisão explícita sobre evidence categories runtime (ou formalização de manutenção em design-only);
+- plano de integração final preservando locks metodológicos.
 
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
