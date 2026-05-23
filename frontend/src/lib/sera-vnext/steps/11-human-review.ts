@@ -1,6 +1,8 @@
 import { SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS } from '../constants'
+import { validateHumanDecisionInput } from '../human-decision'
 import type {
   CausalAssurance,
+  HumanDecisionInputValidation,
   HumanReviewAxisDecisionContract,
   HumanReviewDecisionGate,
   HumanReviewStatus,
@@ -142,13 +144,22 @@ export function runStep11HumanReview(input: {
   input: SeraVNextInput
   poaClassification: PoaClassification
   causalAssurance: CausalAssurance
-}): { humanReview: HumanReviewStatus; humanReviewDecisionGate: HumanReviewDecisionGate } {
+}): {
+  humanReview: HumanReviewStatus
+  humanReviewDecisionGate: HumanReviewDecisionGate
+  humanDecisionValidation: HumanDecisionInputValidation
+} {
   const decisionGate = buildDecisionGate(input.poaClassification)
+  const humanDecisionValidation = validateHumanDecisionInput(decisionGate, input.input.humanDecisionInput)
+  const humanReviewStatus: HumanReviewStatus['status'] =
+    humanDecisionValidation.inputProvided && humanDecisionValidation.allValid
+      ? 'HUMAN_DECISION_CONTRACT_READY'
+      : 'HUMAN_DECISION_REQUIRED'
 
   return {
     humanReview: {
       required: true,
-      status: 'HUMAN_DECISION_REQUIRED',
+      status: humanReviewStatus,
       rationale:
         'Human decision gate contract is mandatory before any future classification release; automatic CLASSIFIED output remains forbidden.',
       checklist: [
@@ -160,5 +171,6 @@ export function runStep11HumanReview(input: {
       prohibitedOutputs: [...SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS],
     },
     humanReviewDecisionGate: decisionGate,
+    humanDecisionValidation,
   }
 }

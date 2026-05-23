@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { analyzeSeraVNext } from '../../frontend/src/lib/sera-vnext'
+import type { HumanDecisionInputSet } from '../../frontend/src/lib/sera-vnext/types'
 
 type TrialInput = {
   inputId: string
@@ -13,6 +14,8 @@ type TrialSummary = {
   perceptionReviewReasonCode: string
   perceptionEligibility: string
   perceptionDecisionStatus: string
+  perceptionMockDecisionValid: boolean
+  perceptionMockAcceptedForNextGate: boolean
   perceptionWaiverRequired: boolean
   perceptionDecisionWaiverRequired: boolean
   perceptionWaiverAllowed: boolean
@@ -23,6 +26,8 @@ type TrialSummary = {
   objectiveReviewReasonCode: string
   objectiveEligibility: string
   objectiveDecisionStatus: string
+  objectiveMockDecisionValid: boolean
+  objectiveMockAcceptedForNextGate: boolean
   objectiveWaiverRequired: boolean
   objectiveDecisionWaiverRequired: boolean
   objectiveWaiverAllowed: boolean
@@ -33,6 +38,8 @@ type TrialSummary = {
   actionReviewReasonCode: string
   actionEligibility: string
   actionDecisionStatus: string
+  actionMockDecisionValid: boolean
+  actionMockAcceptedForNextGate: boolean
   actionWaiverRequired: boolean
   actionDecisionWaiverRequired: boolean
   actionWaiverAllowed: boolean
@@ -129,6 +136,48 @@ function expectedDecisionStatusFromEligibility(eligibilityStatus: string): strin
   if (eligibilityStatus === 'ELIGIBLE_FOR_HUMAN_REVIEW') return 'READY_FOR_HUMAN_DECISION'
   if (eligibilityStatus === 'BLOCKED_BY_GUARDRAIL') return 'BLOCKED_BY_GUARDRAIL'
   return 'NOT_READY_FOR_HUMAN_DECISION'
+}
+
+function buildMockHumanDecisionInput(result: any, inputId: string): HumanDecisionInputSet {
+  const contracts = result.humanReviewDecisionGate.axisContracts
+
+  return {
+    inputId: `MOCK-HUMAN-DECISION-${inputId}`,
+    reviewerId: 'set1-reviewer',
+    reviewTimestamp: '2026-05-23T12:00:00Z',
+    axisDecisions: contracts.map((contract: any) => {
+      const axisClassification = result.poaClassification[contract.axis]
+      const base = {
+        axis: contract.axis,
+        decisionIntent: 'PROPOSE_CODE' as const,
+        proposedCode:
+          contract.axis === 'perception'
+            ? 'P-B'
+            : contract.axis === 'objective'
+              ? 'O-B'
+              : 'A-C',
+        evidenceReferences: axisClassification.evidence.length > 0 ? [axisClassification.evidence[0]] : ['fallback_evidence_reference'],
+        reviewerRationale: `Mock proposal for ${contract.axis} under trial ${inputId}.`,
+        acceptedUncertainties: axisClassification.linkedUncertainties.slice(0, 2),
+        rejectedUncertainties: [],
+        waiverDecision: {
+          requested: Boolean(contract.waiverDecisionRequired),
+          approved: Boolean(contract.waiverDecisionRequired),
+          rationale: contract.waiverDecisionRequired ? 'Required waiver accepted for controlled mock validation.' : null,
+          acceptedResidualUncertainty: contract.waiverDecisionRequired ? ['mock_residual_uncertainty'] : [],
+          prohibitedIfAbsoluteBlocker: true,
+        },
+        guardrailAcknowledgements: [
+          'cue uptake recognition timing verified',
+          'intent and rule awareness boundary checked',
+          'physical motor ergonomic evidence boundary checked',
+        ],
+        limitations: [],
+        confidenceByReviewer: 'medium' as const,
+      }
+      return base
+    }),
+  }
 }
 
 function assertCommon(result: any, inputId: string) {
@@ -341,6 +390,45 @@ function assertTrialSpecific(result: any, inputId: string) {
   }
 }
 
+function assertMockHumanDecisionResult(baseResult: any, decisionResult: any, inputId: string) {
+  assert.equal(decisionResult.humanDecisionValidation.inputProvided, true, `${inputId}: mock human decision input must be provided`)
+  assert.ok(
+    decisionResult.humanDecisionValidation.results.length >= 3,
+    `${inputId}: mock validation must include results for the proposed axes`
+  )
+
+  const contractsByAxis = new Map(baseResult.humanReviewDecisionGate.axisContracts.map((contract: any) => [contract.axis, contract]))
+  const validationByAxis = new Map(decisionResult.humanDecisionValidation.results.map((item: any) => [item.axis, item]))
+
+  for (const axis of ['perception', 'objective', 'action']) {
+    const contract = contractsByAxis.get(axis)
+    const validation = validationByAxis.get(axis)
+    const classification = decisionResult.poaClassification[axis]
+
+    assert.ok(contract, `${inputId}/${axis}: missing base contract`)
+    assert.ok(validation, `${inputId}/${axis}: missing mock validation result`)
+    assert.notEqual(classification.status, 'CLASSIFIED', `${inputId}/${axis}: mock decision must not emit CLASSIFIED`)
+    assert.equal(classification.selectedCode, 'UNRESOLVED', `${inputId}/${axis}: mock decision must not change selectedCode`)
+
+    if (contract.decisionStatus === 'READY_FOR_HUMAN_DECISION') {
+      assert.equal(validation.valid, true, `${inputId}/${axis}: ready axis should accept PROPOSE_CODE`)
+      assert.equal(validation.status, 'VALID_FOR_RELEASE_GATE', `${inputId}/${axis}: ready axis should be VALID_FOR_RELEASE_GATE`)
+      assert.equal(validation.acceptedForNextGate, true, `${inputId}/${axis}: ready axis should be accepted for next gate`)
+    } else {
+      assert.equal(validation.valid, false, `${inputId}/${axis}: non-ready axis must reject PROPOSE_CODE`)
+      assert.equal(validation.status, 'INVALID_NOT_READY', `${inputId}/${axis}: non-ready axis should fail as INVALID_NOT_READY`)
+      assert.equal(validation.acceptedForNextGate, false, `${inputId}/${axis}: non-ready axis must not be accepted`)
+    }
+  }
+
+  if (inputId === 'TRIAL-SET1-004') {
+    assert.ok(
+      decisionResult.humanDecisionValidation.results.every((item: any) => item.valid === false),
+      `${inputId}: all axes must reject proposal under not-ready posture`
+    )
+  }
+}
+
 async function main() {
   const summaries: TrialSummary[] = []
   const failures: string[] = []
@@ -359,25 +447,46 @@ async function main() {
       },
     })
 
+    const mockHumanDecisionInput = buildMockHumanDecisionInput(result, trial.inputId)
+    const resultWithMockDecision = await analyzeSeraVNext({
+      inputId: trial.inputId,
+      sourceType: 'neutral_trial',
+      narrative: trial.narrative,
+      locale: 'en',
+      humanDecisionInput: mockHumanDecisionInput,
+      options: {
+        allowLlm: false,
+        requireHumanReview: true,
+        includeDebugTrace: true,
+      },
+    })
+
     let assertionsPassed = true
     let assertionError: string | undefined
     try {
       assertCommon(result, trial.inputId)
       assertTrialSpecific(result, trial.inputId)
+      assertMockHumanDecisionResult(result, resultWithMockDecision, trial.inputId)
     } catch (error) {
       assertionsPassed = false
       assertionError = error instanceof Error ? error.message : String(error)
       failures.push(`${trial.inputId}: ${assertionError}`)
     }
 
+    const mockValidationByAxis = new Map(
+      resultWithMockDecision.humanDecisionValidation.results.map((item) => [item.axis, item])
+    )
+
     summaries.push({
       inputId: trial.inputId,
-      assuranceStatus: result.causalAssurance.status,
+      assuranceStatus: resultWithMockDecision.causalAssurance.status,
       perceptionStatus: result.poaClassification.perception.status,
       perceptionReviewReasonCode: result.poaClassification.perception.reviewReasonCode,
       perceptionEligibility: result.poaClassification.perception.classificationEligibility.eligibilityStatus,
       perceptionDecisionStatus:
         result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'perception')?.decisionStatus || 'MISSING',
+      perceptionMockDecisionValid: mockValidationByAxis.get('perception')?.valid || false,
+      perceptionMockAcceptedForNextGate: mockValidationByAxis.get('perception')?.acceptedForNextGate || false,
       perceptionWaiverRequired: result.poaClassification.perception.classificationEligibility.waiverRequired,
       perceptionDecisionWaiverRequired:
         result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'perception')?.waiverDecisionRequired || false,
@@ -391,6 +500,8 @@ async function main() {
       objectiveEligibility: result.poaClassification.objective.classificationEligibility.eligibilityStatus,
       objectiveDecisionStatus:
         result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'objective')?.decisionStatus || 'MISSING',
+      objectiveMockDecisionValid: mockValidationByAxis.get('objective')?.valid || false,
+      objectiveMockAcceptedForNextGate: mockValidationByAxis.get('objective')?.acceptedForNextGate || false,
       objectiveWaiverRequired: result.poaClassification.objective.classificationEligibility.waiverRequired,
       objectiveDecisionWaiverRequired:
         result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'objective')?.waiverDecisionRequired || false,
@@ -404,6 +515,8 @@ async function main() {
       actionEligibility: result.poaClassification.action.classificationEligibility.eligibilityStatus,
       actionDecisionStatus:
         result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'action')?.decisionStatus || 'MISSING',
+      actionMockDecisionValid: mockValidationByAxis.get('action')?.valid || false,
+      actionMockAcceptedForNextGate: mockValidationByAxis.get('action')?.acceptedForNextGate || false,
       actionWaiverRequired: result.poaClassification.action.classificationEligibility.waiverRequired,
       actionDecisionWaiverRequired:
         result.humanReviewDecisionGate.axisContracts.find((contract) => contract.axis === 'action')?.waiverDecisionRequired || false,

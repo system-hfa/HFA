@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { analyzeSeraVNext } from '../../frontend/src/lib/sera-vnext'
+import type { HumanDecisionInputSet } from '../../frontend/src/lib/sera-vnext/types'
 
 const narrative = `A Sikorsky S-92A was conducting an offshore transport flight from Halifax/Stanfield International Airport to the Thebaud Central Facility with two pilots and passengers on board. The flight was conducted under IFR to an offshore installation.
 
@@ -179,6 +180,236 @@ async function main() {
     'global gate outputs must prohibit finalConclusion/HFACS/Risk/ERC'
   )
   assert.notEqual(result.causalAssurance.status, 'PASSED', 'causalAssurance must not be PASSED')
+
+  const validDecisionInput: HumanDecisionInputSet = {
+    inputId: 'HR-TRIAL-001-VALID',
+    reviewerId: 'reviewer-alpha',
+    reviewTimestamp: '2026-05-23T12:00:00Z',
+    axisDecisions: [
+      {
+        axis: 'perception',
+        decisionIntent: 'PROPOSE_CODE',
+        proposedCode: 'P-B',
+        evidenceReferences: ['Instrument cues were available in the narrative context.'],
+        reviewerRationale: 'Perception proposal references explicit cue processing evidence.',
+        acceptedUncertainties: ['Exact recognition timing remains partially uncertain.'],
+        rejectedUncertainties: [],
+        waiverDecision: {
+          requested: false,
+          approved: false,
+          rationale: null,
+          acceptedResidualUncertainty: [],
+          prohibitedIfAbsoluteBlocker: true,
+        },
+        guardrailAcknowledgements: ['cue uptake and recognition timing checked'],
+        limitations: [],
+        confidenceByReviewer: 'medium',
+      },
+      {
+        axis: 'objective',
+        decisionIntent: 'PROPOSE_CODE',
+        proposedCode: 'O-B',
+        evidenceReferences: ['Approach continuation after visual contact is observable in the sequence.'],
+        reviewerRationale: 'Objective proposal remains tied to observed continuation context.',
+        acceptedUncertainties: ['Intent framing remains partially uncertain.'],
+        rejectedUncertainties: [],
+        waiverDecision: {
+          requested: false,
+          approved: false,
+          rationale: null,
+          acceptedResidualUncertainty: [],
+          prohibitedIfAbsoluteBlocker: true,
+        },
+        guardrailAcknowledgements: ['intent evidence reviewed with rule awareness boundary maintained'],
+        limitations: [],
+        confidenceByReviewer: 'medium',
+      },
+      {
+        axis: 'action',
+        decisionIntent: 'PROPOSE_CODE',
+        proposedCode: 'A-C',
+        evidenceReferences: ['A recovery action sequence is observed at very low height.'],
+        reviewerRationale: 'Action proposal is tied to observed sequence and explicit residual waiver handling.',
+        acceptedUncertainties: ['Exact control-input sequence unresolved.'],
+        rejectedUncertainties: [],
+        waiverDecision: {
+          requested: true,
+          approved: true,
+          rationale: 'Residual uncertainty is explicit and acceptable for next gate review.',
+          acceptedResidualUncertainty: ['exact_control_input_sequence_unresolved_but_waivable'],
+          prohibitedIfAbsoluteBlocker: true,
+        },
+        guardrailAcknowledgements: ['physical motor ergonomic evidence boundary checked'],
+        limitations: [],
+        confidenceByReviewer: 'medium',
+      },
+    ],
+  }
+
+  const resultWithValidHumanInput = await analyzeSeraVNext({
+    inputId: 'TRIAL-SET1-001',
+    sourceType: 'neutral_trial',
+    narrative,
+    locale: 'en',
+    humanDecisionInput: validDecisionInput,
+    options: {
+      allowLlm: false,
+      requireHumanReview: true,
+      includeDebugTrace: true,
+    },
+  })
+
+  assert.equal(resultWithValidHumanInput.humanDecisionValidation.inputProvided, true, 'human decision input should be detected')
+  assert.ok(resultWithValidHumanInput.humanDecisionValidation.results.length >= 3, 'human decision validation must include axis results')
+  for (const axisResult of resultWithValidHumanInput.humanDecisionValidation.results) {
+    assert.equal(axisResult.status, 'VALID_FOR_RELEASE_GATE', `${axisResult.axis}: expected VALID_FOR_RELEASE_GATE`)
+    assert.equal(axisResult.valid, true, `${axisResult.axis}: valid input should pass`)
+    assert.equal(axisResult.acceptedForNextGate, true, `${axisResult.axis}: valid proposal should be accepted for next gate`)
+  }
+  assert.equal(
+    resultWithValidHumanInput.humanReview.status,
+    'HUMAN_DECISION_CONTRACT_READY',
+    'valid human input should mark contract as ready'
+  )
+  for (const axis of [resultWithValidHumanInput.poaClassification.perception, resultWithValidHumanInput.poaClassification.objective, resultWithValidHumanInput.poaClassification.action]) {
+    assert.notEqual(axis.status, 'CLASSIFIED', `${axis.axis}: CLASSIFIED must remain forbidden`)
+    assert.equal(axis.selectedCode, 'UNRESOLVED', `${axis.axis}: selectedCode must remain unresolved in this phase`)
+  }
+
+  const missingEvidenceInput: HumanDecisionInputSet = {
+    inputId: 'HR-TRIAL-001-MISSING-EVIDENCE',
+    axisDecisions: [
+      {
+        axis: 'perception',
+        decisionIntent: 'PROPOSE_CODE',
+        proposedCode: 'P-B',
+        evidenceReferences: [],
+        reviewerRationale: 'Rationale present but no evidence references.',
+        acceptedUncertainties: [],
+        rejectedUncertainties: [],
+        waiverDecision: {
+          requested: false,
+          approved: false,
+          rationale: null,
+          acceptedResidualUncertainty: [],
+          prohibitedIfAbsoluteBlocker: true,
+        },
+        guardrailAcknowledgements: ['cue uptake recognition timing verified'],
+        limitations: [],
+        confidenceByReviewer: 'low',
+      },
+    ],
+  }
+
+  const resultMissingEvidence = await analyzeSeraVNext({
+    inputId: 'TRIAL-SET1-001',
+    sourceType: 'neutral_trial',
+    narrative,
+    locale: 'en',
+    humanDecisionInput: missingEvidenceInput,
+    options: {
+      allowLlm: false,
+      requireHumanReview: true,
+      includeDebugTrace: true,
+    },
+  })
+  const missingEvidenceValidation = resultMissingEvidence.humanDecisionValidation.results.find((item) => item.axis === 'perception')
+  assert.ok(missingEvidenceValidation, 'missing-evidence scenario must produce perception validation')
+  assert.equal(missingEvidenceValidation?.valid, false, 'missing evidence must be invalid')
+  assert.equal(
+    missingEvidenceValidation?.status,
+    'INVALID_MISSING_EVIDENCE_REFERENCES',
+    'missing evidence should be rejected with INVALID_MISSING_EVIDENCE_REFERENCES'
+  )
+
+  const invalidAdInput: HumanDecisionInputSet = {
+    inputId: 'HR-TRIAL-001-INVALID-AD',
+    axisDecisions: [
+      {
+        axis: 'action',
+        decisionIntent: 'PROPOSE_CODE',
+        proposedCode: 'A-D',
+        evidenceReferences: ['A recovery action sequence is observed at very low height.'],
+        reviewerRationale: 'Attempting inability-style proposal without explicit required acknowledgement.',
+        acceptedUncertainties: ['Exact control-input sequence unresolved.'],
+        rejectedUncertainties: [],
+        waiverDecision: {
+          requested: true,
+          approved: true,
+          rationale: 'Residual uncertainty accepted.',
+          acceptedResidualUncertainty: ['exact_control_input_sequence_unresolved_but_waivable'],
+          prohibitedIfAbsoluteBlocker: true,
+        },
+        guardrailAcknowledgements: ['action evidence reviewed'],
+        limitations: [],
+        confidenceByReviewer: 'low',
+      },
+    ],
+  }
+
+  const resultInvalidAd = await analyzeSeraVNext({
+    inputId: 'TRIAL-SET1-001',
+    sourceType: 'neutral_trial',
+    narrative,
+    locale: 'en',
+    humanDecisionInput: invalidAdInput,
+    options: {
+      allowLlm: false,
+      requireHumanReview: true,
+      includeDebugTrace: true,
+    },
+  })
+  const adValidation = resultInvalidAd.humanDecisionValidation.results.find((item) => item.axis === 'action')
+  assert.ok(adValidation, 'A-D scenario must produce action validation')
+  assert.equal(adValidation?.valid, false, 'A-D without physical/motor/ergonomic acknowledgement must be invalid')
+  assert.equal(adValidation?.status, 'INVALID_GUARDRAIL_CONFLICT', 'A-D scenario must fail guardrail validation')
+
+  const downstreamAttemptInput: HumanDecisionInputSet = {
+    inputId: 'HR-TRIAL-001-DOWNSTREAM',
+    axisDecisions: [
+      {
+        axis: 'objective',
+        decisionIntent: 'PROPOSE_CODE',
+        proposedCode: 'O-B',
+        evidenceReferences: ['Continuation context followed unsuccessful instrument approaches in degraded conditions.'],
+        reviewerRationale: 'Attempt includes downstream unlock request.',
+        acceptedUncertainties: [],
+        rejectedUncertainties: [],
+        waiverDecision: {
+          requested: false,
+          approved: false,
+          rationale: null,
+          acceptedResidualUncertainty: [],
+          prohibitedIfAbsoluteBlocker: true,
+        },
+        guardrailAcknowledgements: ['intent and rule awareness boundary reviewed'],
+        limitations: [],
+        confidenceByReviewer: 'low',
+        requestedDownstreamOutputs: ['finalConclusion'],
+      },
+    ],
+  }
+
+  const resultDownstream = await analyzeSeraVNext({
+    inputId: 'TRIAL-SET1-001',
+    sourceType: 'neutral_trial',
+    narrative,
+    locale: 'en',
+    humanDecisionInput: downstreamAttemptInput,
+    options: {
+      allowLlm: false,
+      requireHumanReview: true,
+      includeDebugTrace: true,
+    },
+  })
+  const downstreamValidation = resultDownstream.humanDecisionValidation.results.find((item) => item.axis === 'objective')
+  assert.ok(downstreamValidation, 'downstream scenario must produce objective validation')
+  assert.equal(downstreamValidation?.valid, false, 'downstream unlock attempt must be invalid')
+  assert.equal(downstreamValidation?.status, 'INVALID_GUARDRAIL_CONFLICT', 'downstream unlock should fail guardrail validation')
+  for (const axis of [resultDownstream.poaClassification.perception, resultDownstream.poaClassification.objective, resultDownstream.poaClassification.action]) {
+    assert.notEqual(axis.status, 'CLASSIFIED', `${axis.axis}: downstream attempt must not release CLASSIFIED`)
+    assert.equal(axis.selectedCode, 'UNRESOLVED', `${axis.axis}: downstream attempt must not alter selectedCode`)
+  }
 
   console.log('SERA vNext Trial 001 dry-run PASS')
 }

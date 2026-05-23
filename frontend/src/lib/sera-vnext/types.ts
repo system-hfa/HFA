@@ -9,6 +9,7 @@ export interface SeraVNextInput {
   narrative: string
   sourceType: SeraVNextSourceType
   locale?: SeraVNextLocale
+  humanDecisionInput?: HumanDecisionInputSet
   options?: {
     allowLlm?: boolean
     requireHumanReview?: boolean
@@ -208,6 +209,7 @@ export type CausalAssuranceStatus =
   | 'PARTIAL_ELIGIBILITY_CALIBRATED_NOT_CLASSIFIED'
   | 'PARTIAL_READINESS_REFINED_NOT_CLASSIFIED'
   | 'PARTIAL_HUMAN_REVIEW_GATE_READY_NOT_CLASSIFIED'
+  | 'PARTIAL_HUMAN_DECISION_INPUT_VALIDATED_NOT_CLASSIFIED'
   | 'PASSED'
   | 'FAILED'
   | 'REVIEW_REQUIRED'
@@ -265,6 +267,70 @@ export interface HumanReviewDecisionGate {
   globalDecisionRules: string[]
 }
 
+export type HumanDecisionIntent =
+  | 'PROPOSE_CODE'
+  | 'DEFER_AXIS'
+  | 'REQUEST_MORE_EVIDENCE'
+  | 'REJECT_AXIS_CLASSIFICATION'
+
+export interface HumanWaiverDecision {
+  requested: boolean
+  approved: boolean
+  rationale: string | null
+  acceptedResidualUncertainty: string[]
+  prohibitedIfAbsoluteBlocker: boolean
+}
+
+export interface HumanAxisDecisionInput {
+  axis: PoaAxis
+  decisionIntent: HumanDecisionIntent
+  proposedCode: string | null
+  evidenceReferences: string[]
+  reviewerRationale: string
+  acceptedUncertainties: string[]
+  rejectedUncertainties: string[]
+  waiverDecision: HumanWaiverDecision
+  guardrailAcknowledgements: string[]
+  limitations: string[]
+  confidenceByReviewer: 'low' | 'medium' | 'high'
+  requestedDownstreamOutputs?: string[]
+}
+
+export interface HumanDecisionInputSet {
+  inputId: string
+  reviewerId?: string
+  reviewTimestamp?: string
+  axisDecisions: HumanAxisDecisionInput[]
+}
+
+export type HumanDecisionValidationStatus =
+  | 'VALID_FOR_RELEASE_GATE'
+  | 'INVALID_NOT_READY'
+  | 'INVALID_MISSING_EVIDENCE_REFERENCES'
+  | 'INVALID_MISSING_RATIONALE'
+  | 'INVALID_WAIVER_CONFLICT'
+  | 'INVALID_GUARDRAIL_CONFLICT'
+
+export interface HumanDecisionValidationResult {
+  axis: PoaAxis
+  valid: boolean
+  status: HumanDecisionValidationStatus
+  blockingIssues: string[]
+  warnings: string[]
+  acceptedForNextGate: boolean
+}
+
+export interface HumanDecisionInputValidation {
+  inputProvided: boolean
+  inputId: string | null
+  results: HumanDecisionValidationResult[]
+  allValid: boolean
+  acceptedAxesForNextGate: PoaAxis[]
+  rejectedAxesForNextGate: PoaAxis[]
+  blockingIssues: string[]
+  warnings: string[]
+}
+
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 
 export interface HumanReviewStatus {
@@ -297,5 +363,6 @@ export interface SeraVNextResult {
   humanReviewRequired: boolean
   humanReview: HumanReviewStatus
   humanReviewDecisionGate: HumanReviewDecisionGate
+  humanDecisionValidation: HumanDecisionInputValidation
   trace: SeraVNextTrace
 }

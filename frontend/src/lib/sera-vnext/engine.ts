@@ -39,8 +39,10 @@ export async function analyzeSeraVNext(input: SeraVNextInput): Promise<SeraVNext
     poaClassification,
     preconditions,
     humanReviewDecisionGate: null,
+    humanDecisionInput: input.humanDecisionInput,
+    humanDecisionValidation: null,
   })
-  const { humanReview, humanReviewDecisionGate } = runStep11HumanReview({
+  const { humanReview, humanReviewDecisionGate, humanDecisionValidation } = runStep11HumanReview({
     input,
     poaClassification,
     causalAssurance: preGateCausalAssurance,
@@ -55,6 +57,8 @@ export async function analyzeSeraVNext(input: SeraVNextInput): Promise<SeraVNext
     poaClassification,
     preconditions,
     humanReviewDecisionGate,
+    humanDecisionInput: input.humanDecisionInput,
+    humanDecisionValidation,
   })
 
   return {
@@ -76,6 +80,7 @@ export async function analyzeSeraVNext(input: SeraVNextInput): Promise<SeraVNext
       required: true,
     },
     humanReviewDecisionGate,
+    humanDecisionValidation,
     trace: {
       stepOrder: [...SERA_VNEXT_STEP_ORDER],
       stepStatus: {

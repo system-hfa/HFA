@@ -7,6 +7,8 @@ import type {
   CausalAssurance,
   DirectActorAnalysis,
   FactualSummary,
+  HumanDecisionInputSet,
+  HumanDecisionInputValidation,
   HumanReviewDecisionGate,
   Limitation,
   OperationalUnsafeState,
@@ -88,6 +90,11 @@ function contractForAxis(gate: HumanReviewDecisionGate | null, axis: PoaAxis) {
   return gate.axisContracts.find((contract) => contract.axis === axis) || null
 }
 
+function decisionInputForAxis(inputSet: HumanDecisionInputSet | undefined, axis: PoaAxis) {
+  if (!inputSet) return null
+  return inputSet.axisDecisions.find((item) => item.axis === axis) || null
+}
+
 export function runStep10CausalAssurance(input: {
   factualSummary: FactualSummary
   unsafeState: OperationalUnsafeState
@@ -98,6 +105,8 @@ export function runStep10CausalAssurance(input: {
   poaClassification: PoaClassification
   preconditions: PreconditionsAnalysis
   humanReviewDecisionGate: HumanReviewDecisionGate | null
+  humanDecisionInput: HumanDecisionInputSet | undefined
+  humanDecisionValidation: HumanDecisionInputValidation | null
 }): CausalAssurance {
   const checks: CausalAssurance['checks'] = []
 
@@ -558,10 +567,62 @@ export function runStep10CausalAssurance(input: {
       : 'Global decision gate output locks are missing or incomplete.',
   })
 
+  const humanDecisionInputProvided = Boolean(input.humanDecisionInput)
+  const humanDecisionInputValidated =
+    !humanDecisionInputProvided ||
+    !gate ||
+    (Boolean(input.humanDecisionValidation) && input.humanDecisionValidation?.inputProvided === true)
+  checks.push({
+    checkId: 'CHK-HUMAN-DECISION-INPUT-VALIDATED-WHEN-PRESENT',
+    passed: humanDecisionInputValidated,
+    details: humanDecisionInputValidated
+      ? 'Human decision input is validated when present.'
+      : 'Human decision input is present but validation payload is missing.',
+  })
+
+  const invalidHumanInputDoesNotReleaseCode = (() => {
+    if (!input.humanDecisionValidation || !input.humanDecisionValidation.inputProvided) return true
+    if (input.humanDecisionValidation.results.every((item) => item.valid)) return true
+    return axes.every((axis) => axis.status !== 'CLASSIFIED' && axis.selectedCode === 'UNRESOLVED')
+  })()
+  checks.push({
+    checkId: 'CHK-INVALID-HUMAN-INPUT-DOES-NOT-RELEASE-CODE',
+    passed: invalidHumanInputDoesNotReleaseCode,
+    details: invalidHumanInputDoesNotReleaseCode
+      ? 'Invalid human input does not release any final axis code.'
+      : 'Invalid human input appears to have released a final axis code.',
+  })
+
+  const validHumanInputStillDoesNotReleaseCode = (() => {
+    if (!input.humanDecisionValidation || !input.humanDecisionValidation.inputProvided) return true
+    if (!input.humanDecisionValidation.results.every((item) => item.valid)) return true
+    return axes.every((axis) => axis.status !== 'CLASSIFIED' && axis.selectedCode === 'UNRESOLVED')
+  })()
+  checks.push({
+    checkId: 'CHK-VALID-HUMAN-INPUT-STILL-NOT-CLASSIFIED',
+    passed: validHumanInputStillDoesNotReleaseCode,
+    details: validHumanInputStillDoesNotReleaseCode
+      ? 'Valid human input remains gated and does not emit CLASSIFIED in this phase.'
+      : 'Valid human input incorrectly released CLASSIFIED in this phase.',
+  })
+
+  const proposedCodeNeverBecomesSelectedCode = axes.every((axis) => {
+    const axisInput = decisionInputForAxis(input.humanDecisionInput, axis.axis)
+    if (!axisInput || !axisInput.proposedCode) return true
+    return axis.selectedCode !== axisInput.proposedCode
+  })
+  checks.push({
+    checkId: 'CHK-PROPOSED-CODE-NOT-PROMOTED-TO-SELECTED',
+    passed: proposedCodeNeverBecomesSelectedCode,
+    details: proposedCodeNeverBecomesSelectedCode
+      ? 'Proposed human codes are not promoted to selectedCode in this phase.'
+      : 'A proposed human code was promoted to selectedCode, which is forbidden in this phase.',
+  })
+
   const blockingIssues = checks.filter((c) => !c.passed).map((c) => `${c.checkId}: ${c.details}`)
 
   return {
-    status: SERA_VNEXT_STATUS.PARTIAL_HUMAN_REVIEW_GATE_READY_NOT_CLASSIFIED,
+    status: SERA_VNEXT_STATUS.PARTIAL_HUMAN_DECISION_INPUT_VALIDATED_NOT_CLASSIFIED,
     blockingIssues,
     warnings: [
       `Downstream outputs remain forbidden in causal core: ${SERA_VNEXT_FORBIDDEN_DOWNSTREAM_OUTPUTS.join(', ')}`,
