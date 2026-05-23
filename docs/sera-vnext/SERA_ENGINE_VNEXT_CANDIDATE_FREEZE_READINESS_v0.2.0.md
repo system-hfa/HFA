@@ -1,7 +1,7 @@
 # SERA Engine vNext Candidate Freeze Readiness v0.2.0
 
 Status: DRAFT_FOR_REVIEW  
-Phase: A4+R-48 — Candidate Freeze Readiness Prep
+Phase: A4+R-49 — Candidate Freeze Readiness (atualizado com governance pack)
 
 ## Objetivo
 Consolidar o estado de maturidade do núcleo causal vNext e explicitar critérios mínimos para um candidate freeze futuro, sem declarar validação metodológica final.
@@ -26,10 +26,10 @@ Consolidar o estado de maturidade do núcleo causal vNext e explicitar critério
 
 ## Critérios pendentes para freeze robusto
 - Evidence category runtime (atualmente design-only).
-- Contrato operacional LLM (fora desta fase).
-- Conjunto de casos de referência por consenso metodológico.
+- ~~Contrato operacional LLM (fora desta fase).~~ → Definido em A4+R-49, pendente execução.
+- ~~Conjunto de casos de referência por consenso metodológico.~~ → Política definida em A4+R-49, pendente materialização dos casos.
 - Adversarial Set 2.
-- Protocolo inter-rater.
+- ~~Protocolo inter-rater.~~ → Protocolo definido em A4+R-49, pendente execução.
 - Plano final de integração (ainda sem UI/API/DB).
 
 ## Gate de linguagem metodológica
@@ -41,6 +41,20 @@ Linguagem recomendada:
 Linguagem a evitar nesta fase:
 - `scientifically validated`
 - `production-ready full methodology`
+
+## A4+R-49 — Governance Pack (documentos adicionados)
+Três documentos de governança metodológica foram criados nesta fase, reduzindo lacunas de governança sem executar validação empírica:
+
+- [LLM Operational Contract](../docs/sera-vnext/SERA_ENGINE_VNEXT_LLM_OPERATIONAL_CONTRACT_v0.2.0.md) — define limites operacionais do uso de LLM como auxiliar, não autoridade classificatória.
+- [Consensus Reference Cases Policy](../docs/sera-vnext/SERA_ENGINE_VNEXT_CONSENSUS_REFERENCE_CASES_POLICY_v0.2.0.md) — define política de criação e governança de casos de referência por consenso.
+- [Inter-Rater Reliability Protocol](../docs/sera-vnext/SERA_ENGINE_VNEXT_INTER_RATER_PROTOCOL_v0.2.0.md) — define protocolo para avaliação de confiabilidade entre revisores.
+
+Estes documentos estabelecem a base de governança, mas sua mera existência não executa validação empírica. O candidate freeze final continua pendente até que:
+- evidence category runtime seja implementado ou a decisão de manter design-only seja formalizada;
+- consensus reference cases sejam materializados (casos reais documentados);
+- adversarial Set 2 seja executado;
+- protocolo inter-rater seja executado com thresholds aceitáveis;
+- plano de integração seja definido.
 
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
