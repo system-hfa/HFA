@@ -89,6 +89,25 @@ Pendências remanescentes:
 - decisão explícita sobre evidence categories runtime (ou formalização de manutenção em design-only);
 - plano de integração final preservando locks metodológicos.
 
+## A4+R-52 — Reference Case Materialization Prep + Evidence Category Passive Decision
+
+Esta fase adicionou governança operacional para saída do estado puramente skeleton:
+- [Reference Case Materialization Guide](./SERA_ENGINE_VNEXT_REFERENCE_CASE_MATERIALIZATION_GUIDE_v0.2.0.md) criado.
+- [Evidence Category Passive Decision](./SERA_ENGINE_VNEXT_EVIDENCE_CATEGORY_PASSIVE_DECISION_v0.2.0.md) criado com recomendação `PASSIVE_OPTIONAL_METADATA`.
+- Primeiro draft materializado sem consenso criado:
+  - [CRC-ADVERSARIAL-DRAFT-001](./reference-cases/CRC-ADVERSARIAL-DRAFT-001.md)
+
+Estado após A4+R-52:
+- Nenhum caso foi promovido para `CONSENSUS_VALIDATED`.
+- Evidence categories seguem sem obrigatoriedade e sem bloqueio (modo passivo recomendado).
+- Freeze final permanece não autorizado.
+
+Pendências remanescentes:
+- materializar mais drafts com cobertura de fronteiras críticas;
+- executar revisão independente 2+ avaliadores por caso candidato;
+- executar protocolo inter-rater com thresholds aceitos;
+- só depois avaliar promoção de casos para consenso e readiness de freeze final.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.
