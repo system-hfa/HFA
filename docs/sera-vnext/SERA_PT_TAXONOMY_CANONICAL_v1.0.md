@@ -52,6 +52,10 @@ Decisão canônica v1.0:
 - `A-A` = **sem falha de ação específica** (ação coerente com percepção e objetivo já estabelecidos; não há mecanismo de falha de ação mais específico).
 - `A-C` = **falha de feedback/verificação pós-ação própria** (o agente executa a ação, mas falha em verificar o resultado da própria ação).
 
+Ratificação autoral:
+- decisão formalmente ratificada em A4+R-45d:
+  - [SERA_PT_AUTHOR_DECISION_AA_CANONICALIZATION_v1.0.md](/Users/filipedaumas/SAAS/HFA/docs/sera-vnext/SERA_PT_AUTHOR_DECISION_AA_CANONICALIZATION_v1.0.md)
+
 Resolução normativa:
 - o runtime HFA/SERA segue esta definição canônica v1.0;
 - trechos ambíguos extraídos da dissertação (incluindo mapeamentos textuais conflitantes entre A-A e A-C) são tratados como **ambiguidade de fonte secundária**, não como fonte normativa operacional.
@@ -147,4 +151,3 @@ Com esta canonização, o bloqueio taxonômico de definição foi reduzido para 
 
 Decisão desta fase:
 - após alinhar `O-E` para `RESERVED` no semantic guard e validar suite vNext, **A4+R-46 pode prosseguir**.
-

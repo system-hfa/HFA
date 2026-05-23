@@ -15,6 +15,11 @@ Principais motivos bloqueantes:
 
 Decisão recomendada: executar **A4+R-45c — Taxonomy Canonicalization/Errata** antes de A4+R-46.
 
+Nota de governança posterior:
+- os bloqueios desta auditoria foram tratados em A4+R-45c;
+- a decisão autoral de A-A/A-C foi formalizada em A4+R-45d:
+  - [SERA_PT_AUTHOR_DECISION_AA_CANONICALIZATION_v1.0.md](/Users/filipedaumas/SAAS/HFA/docs/sera-vnext/SERA_PT_AUTHOR_DECISION_AA_CANONICALIZATION_v1.0.md)
+
 ## 2. Fontes Analisadas
 ### 2.1 Hendy / SERA original
 - [docs/reference/hendy-sera-2003.txt](/Users/filipedaumas/SAAS/HFA/docs/reference/hendy-sera-2003.txt)
