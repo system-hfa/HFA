@@ -15,6 +15,10 @@ export interface SeraFixture {
   discriminators: string[]
 }
 
+export type LegacyScore = 'PASS' | 'PARTIAL' | 'FAIL'
+export type RiskLayerRunStatus = 'MATCH' | 'MISMATCH' | 'HOLD'
+export type RiskLayerFixtureStatus = 'RISK_PASS' | 'RISK_HOLD'
+
 export interface TestResult {
   fixture_id: string
   title: string
@@ -34,7 +38,10 @@ export interface TestResult {
     action: 'PASS' | 'FAIL'
     erc_level: 'PASS' | 'FAIL'
     preconditions: 'PASS' | 'PARTIAL' | 'FAIL'
-    overall: 'PASS' | 'PARTIAL' | 'FAIL'
+    overall: LegacyScore
+    legacy_overall: LegacyScore
+    causal_overall: LegacyScore
+    risk_layer_status: RiskLayerRunStatus
   }
   duration_ms: number
   error?: string
@@ -59,6 +66,14 @@ export interface FixtureReport {
     erc_accuracy: number
     precondition_recall: number
     overall_accuracy: number
+    legacy_overall_accuracy: number
+    causal_overall_accuracy: number
+    risk_layer_match_rate: number
+  }
+  views: {
+    legacy_overall: LegacyScore
+    causal_overall: LegacyScore
+    risk_layer_status: RiskLayerFixtureStatus
   }
 }
 
@@ -76,6 +91,24 @@ export interface RunReport {
     error: number
     pass_rate: number
     determinism_rate: number
+  }
+  causal_summary?: {
+    total_runs: number
+    pass: number
+    partial: number
+    fail: number
+    error: number
+    pass_rate: number
+    determinism_rate: number
+  }
+  risk_layer_summary?: {
+    total_runs: number
+    match: number
+    mismatch: number
+    hold: number
+    match_rate: number
+    determinism_rate: number
+    mismatch_fixture_count: number
   }
   by_fixture: FixtureReport[]
   confusion_matrix: Record<string, Record<string, number>>

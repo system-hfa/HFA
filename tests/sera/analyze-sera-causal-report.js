@@ -17,6 +17,7 @@ function getCausalStatus(run) {
   if (run.error) return 'ERROR'
 
   const s = run.scores || {}
+  if (s.causal_overall) return s.causal_overall
   const poaPass = s.perception === 'PASS' && s.objective === 'PASS' && s.action === 'PASS'
 
   if (poaPass && s.preconditions === 'PASS') return 'PASS'
@@ -34,6 +35,9 @@ function analyze(report) {
   let deterministicFixtures = 0
   const perFixture = []
   const riskLayerDiff = []
+  let legacyPass = 0
+  let legacyPartial = 0
+  let legacyFail = 0
 
   for (const fixture of fixtures) {
     const runs = Array.isArray(fixture.runs) ? fixture.runs : []
@@ -55,12 +59,20 @@ function analyze(report) {
       else if (status === 'FAIL') causalFail += 1
       else causalError += 1
 
-      if (s.erc_level === 'FAIL') {
+      const legacy = s.legacy_overall || s.overall
+      if (legacy === 'PASS') legacyPass += 1
+      else if (legacy === 'PARTIAL') legacyPartial += 1
+      else if (legacy === 'FAIL') legacyFail += 1
+
+      const riskLayerStatus =
+        s.risk_layer_status || (run.error ? 'HOLD' : (s.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH'))
+
+      if (riskLayerStatus === 'MISMATCH') {
         ercMismatches.push({
           run_index: run.run_index,
           expected_erc_level: run.expected?.erc_level ?? null,
           actual_erc_level: run.actual?.erc_level ?? null,
-          overall: s.overall ?? null,
+          overall: legacy ?? null,
         })
       }
     }
@@ -80,7 +92,9 @@ function analyze(report) {
       poa_pass_runs: poaPassRuns,
       preconditions_pass_runs: preconditionsPassRuns,
       causal_status: poaPassRuns === runs.length && preconditionsPassRuns === runs.length ? 'CAUSAL_PASS' : 'CAUSAL_HOLD',
-      risk_layer_status: ercMismatches.length > 0 ? 'RISK_HOLD' : 'RISK_PASS',
+      risk_layer_status: (fixture.views && fixture.views.risk_layer_status)
+        ? fixture.views.risk_layer_status
+        : ercMismatches.length > 0 ? 'RISK_HOLD' : 'RISK_PASS',
     })
   }
 
@@ -90,6 +104,11 @@ function analyze(report) {
     report_run_id: report.run_id ?? null,
     fixtures_tested: fixtures.length,
     n_runs_per_fixture: report.n_runs_per_fixture ?? null,
+    legacy_total_runs: report.summary?.total_runs ?? null,
+    legacy_pass: report.summary?.pass ?? legacyPass,
+    legacy_partial: report.summary?.partial ?? legacyPartial,
+    legacy_fail: report.summary?.fail ?? legacyFail,
+    legacy_error: report.summary?.error ?? causalError,
     causal_total_runs: causalTotalRuns,
     causal_pass: causalPass,
     causal_partial: causalPartial,

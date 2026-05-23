@@ -37,7 +37,17 @@ export async function runSingleFixture(fixture: SeraFixture, runIndex: number): 
       timestamp: new Date().toISOString(),
       actual: { perception_code: '', objective_code: '', action_code: '', erc_level: 0, preconditions: [] },
       expected: fixture.expected,
-      scores: { perception:'FAIL', objective:'FAIL', action:'FAIL', erc_level:'FAIL', preconditions:'FAIL', overall:'FAIL' },
+      scores: {
+        perception:'FAIL',
+        objective:'FAIL',
+        action:'FAIL',
+        erc_level:'FAIL',
+        preconditions:'FAIL',
+        overall:'FAIL',
+        legacy_overall:'FAIL',
+        causal_overall:'FAIL',
+        risk_layer_status:'HOLD',
+      },
       duration_ms: Date.now() - start,
       error: err.message,
     }
@@ -96,6 +106,25 @@ export async function runAllFixtures(
   const fail    = all.filter(r => r.scores.overall === 'FAIL').length
   const errors  = all.filter(r => r.error).length
   const detCount = byFixture.filter(f => f.consistency.fully_deterministic).length
+  const causalPass = all.filter(r => (r.scores.causal_overall ?? r.scores.overall) === 'PASS').length
+  const causalPartial = all.filter(r => (r.scores.causal_overall ?? r.scores.overall) === 'PARTIAL').length
+  const causalFail = all.filter(r => (r.scores.causal_overall ?? r.scores.overall) === 'FAIL' && !r.error).length
+  const causalError = all.filter(r => r.error).length
+  const causalDetCount = byFixture.filter(f =>
+    f.runs.every(r => (r.scores.causal_overall ?? r.scores.overall) === (f.runs[0].scores.causal_overall ?? f.runs[0].scores.overall))
+  ).length
+  const riskMatch = all.filter(r => (r.scores.risk_layer_status ?? (r.scores.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH')) === 'MATCH').length
+  const riskMismatch = all.filter(r => (r.scores.risk_layer_status ?? (r.scores.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH')) === 'MISMATCH').length
+  const riskHold = all.filter(r => (r.scores.risk_layer_status ?? (r.error ? 'HOLD' : 'MISMATCH')) === 'HOLD').length
+  const riskDetCount = byFixture.filter(f =>
+    f.runs.every(r =>
+      (r.scores.risk_layer_status ?? (r.scores.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH')) ===
+      (f.runs[0].scores.risk_layer_status ?? (f.runs[0].scores.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH'))
+    )
+  ).length
+  const mismatchFixtureCount = byFixture.filter(f =>
+    f.runs.some(r => (r.scores.risk_layer_status ?? (r.scores.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH')) === 'MISMATCH')
+  ).length
 
   return {
     run_id: runId,
@@ -106,6 +135,24 @@ export async function runAllFixtures(
     summary: { total_runs: all.length, pass, partial, fail, error: errors,
       pass_rate: all.length > 0 ? pass / all.length : 0,
       determinism_rate: byFixture.length > 0 ? detCount / byFixture.length : 0 },
+    causal_summary: {
+      total_runs: all.length,
+      pass: causalPass,
+      partial: causalPartial,
+      fail: causalFail,
+      error: causalError,
+      pass_rate: all.length > 0 ? causalPass / all.length : 0,
+      determinism_rate: byFixture.length > 0 ? causalDetCount / byFixture.length : 0,
+    },
+    risk_layer_summary: {
+      total_runs: all.length,
+      match: riskMatch,
+      mismatch: riskMismatch,
+      hold: riskHold,
+      match_rate: all.length > 0 ? riskMatch / all.length : 0,
+      determinism_rate: byFixture.length > 0 ? riskDetCount / byFixture.length : 0,
+      mismatch_fixture_count: mismatchFixtureCount,
+    },
     by_fixture: byFixture,
     confusion_matrix: matrix,
     weakest_fixtures: [...byFixture]

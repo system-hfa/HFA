@@ -14,6 +14,8 @@ export function saveReport(report: RunReport): string {
 
 export function printSummary(report: RunReport): void {
   const s = report.summary
+  const causal = report.causal_summary
+  const risk = report.risk_layer_summary
   const pct = (n: number) => `${(n * 100).toFixed(1)}%`
   const fx = report.by_fixture
   const avg = (key: keyof typeof fx[0]['accuracy']) =>
@@ -30,12 +32,23 @@ export function printSummary(report: RunReport): void {
   console.log(`  FAIL      : ${s.fail}`)
   console.log(`  ERRORS    : ${s.error}`)
   console.log(`\n  DETERMINISMO : ${pct(s.determinism_rate)}`)
+  if (causal) {
+    console.log(`\n  CAUSAL       : PASS ${causal.pass} | PARTIAL ${causal.partial} | FAIL ${causal.fail} | ERROR ${causal.error} | rate ${pct(causal.pass_rate)} | det ${pct(causal.determinism_rate)}`)
+  }
+  if (risk) {
+    console.log(`  RISK LAYER   : MATCH ${risk.match} | MISMATCH ${risk.mismatch} | HOLD ${risk.hold} | rate ${pct(risk.match_rate)} | det ${pct(risk.determinism_rate)} | mismatch fixtures ${risk.mismatch_fixture_count}`)
+  }
   console.log('\n  PRECISÃO POR ETAPA:')
   console.log(`    Percepção    : ${avg('perception_accuracy')}`)
   console.log(`    Objetivo     : ${avg('objective_accuracy')}`)
   console.log(`    Ação         : ${avg('action_accuracy')}`)
   console.log(`    ERC Level    : ${avg('erc_accuracy')}`)
   console.log(`    Pré-cond.    : ${avg('precondition_recall')} (recall)`)
+  if (fx[0]?.accuracy?.causal_overall_accuracy !== undefined) {
+    console.log(`    Overall leg. : ${avg('legacy_overall_accuracy')}`)
+    console.log(`    Overall causal: ${avg('causal_overall_accuracy')}`)
+    console.log(`    Risk match   : ${avg('risk_layer_match_rate')}`)
+  }
   console.log('\n  FIXTURES MAIS FRACOS:')
   report.weakest_fixtures.forEach((id, i) => {
     const f = fx.find(x => x.fixture_id === id)!
@@ -46,6 +59,8 @@ export function printSummary(report: RunReport): void {
 
 export function printCompact(report: RunReport): void {
   const s = report.summary
+  const causal = report.causal_summary
+  const risk = report.risk_layer_summary
   const pct = (n: number) => `${(n * 100).toFixed(1)}%`
 
   const nonPass = report.by_fixture.filter(f => f.accuracy.overall_accuracy < 1)
@@ -54,6 +69,12 @@ export function printCompact(report: RunReport): void {
   )
 
   console.log(`[SERA] ${report.fixtures_tested}f × ${report.n_runs_per_fixture}r | PASS ${s.pass} | PARTIAL ${s.partial} | FAIL ${s.fail} | ERROR ${s.error} | rate ${pct(s.pass_rate)} | det ${pct(s.determinism_rate)}`)
+  if (causal) {
+    console.log(`[SERA] causal | PASS ${causal.pass} | PARTIAL ${causal.partial} | FAIL ${causal.fail} | ERROR ${causal.error} | rate ${pct(causal.pass_rate)} | det ${pct(causal.determinism_rate)}`)
+  }
+  if (risk) {
+    console.log(`[SERA] risk   | MATCH ${risk.match} | MISMATCH ${risk.mismatch} | HOLD ${risk.hold} | rate ${pct(risk.match_rate)} | det ${pct(risk.determinism_rate)} | mismatch fixtures ${risk.mismatch_fixture_count}`)
+  }
   if (report.aborted) console.log('[SERA] ⚠ interrompido por fail-fast')
   if (nonPassIds.length) {
     console.log(`[SERA] não-PASS: ${nonPassIds.join(', ')}`)

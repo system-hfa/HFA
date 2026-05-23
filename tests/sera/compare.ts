@@ -1,7 +1,5 @@
 // tests/sera/compare.ts
-import fs from 'fs'
-import path from 'path'
-import type { SeraFixture, TestResult, FixtureReport } from './fixtures/schema'
+import type { SeraFixture, TestResult, FixtureReport, LegacyScore } from './fixtures/schema'
 
 export function scoreResult(
   fixture: SeraFixture,
@@ -23,8 +21,12 @@ export function scoreResult(
   }
 
   const criticalPass = perceptionPass && objectivePass && actionPass
-  const overall: 'PASS' | 'PARTIAL' | 'FAIL' =
+  const overall: LegacyScore =
     criticalPass && ercPass ? 'PASS' :
+    criticalPass ? 'PARTIAL' :
+    (perceptionPass || objectivePass || actionPass) ? 'PARTIAL' : 'FAIL'
+  const causalOverall: LegacyScore =
+    criticalPass && preconditionScore === 'PASS' ? 'PASS' :
     criticalPass ? 'PARTIAL' :
     (perceptionPass || objectivePass || actionPass) ? 'PARTIAL' : 'FAIL'
 
@@ -42,6 +44,9 @@ export function scoreResult(
       erc_level:  ercPass        ? 'PASS' : 'FAIL',
       preconditions: preconditionScore,
       overall,
+      legacy_overall: overall,
+      causal_overall: causalOverall,
+      risk_layer_status: ercPass ? 'MATCH' : 'MISMATCH',
     },
     duration_ms: durationMs,
   }
@@ -70,6 +75,18 @@ export function buildFixtureReport(fixture: SeraFixture, results: TestResult[]):
       erc_accuracy:        results.filter(r => r.scores.erc_level  === 'PASS').length / results.length,
       precondition_recall: results.filter(r => r.scores.preconditions !== 'FAIL').length / results.length,
       overall_accuracy:    results.filter(r => r.scores.overall === 'PASS').length / results.length,
+      legacy_overall_accuracy: results.filter(r => (r.scores.legacy_overall ?? r.scores.overall) === 'PASS').length / results.length,
+      causal_overall_accuracy: results.filter(r => (r.scores.causal_overall ?? r.scores.overall) === 'PASS').length / results.length,
+      risk_layer_match_rate: results.filter(r => (r.scores.risk_layer_status ?? (r.scores.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH')) === 'MATCH').length / results.length,
+    },
+    views: {
+      legacy_overall: results.some(r => (r.scores.legacy_overall ?? r.scores.overall) === 'FAIL') ? 'FAIL'
+        : results.some(r => (r.scores.legacy_overall ?? r.scores.overall) === 'PARTIAL') ? 'PARTIAL' : 'PASS',
+      causal_overall: results.some(r => (r.scores.causal_overall ?? r.scores.overall) === 'FAIL') ? 'FAIL'
+        : results.some(r => (r.scores.causal_overall ?? r.scores.overall) === 'PARTIAL') ? 'PARTIAL' : 'PASS',
+      risk_layer_status: results.every(r => (r.scores.risk_layer_status ?? (r.scores.erc_level === 'PASS' ? 'MATCH' : 'MISMATCH')) === 'MATCH')
+        ? 'RISK_PASS'
+        : 'RISK_HOLD',
     },
   }
 }
