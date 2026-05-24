@@ -47,3 +47,15 @@ Phase: A4+R-66 — Real Event Adjudication Coverage Metrics
   - TRIAGE_ONLY: 1
   - strict EVIDENCE_ENRICHMENT_REQUIRED backlog: 1 (`005`)
 - released code: 0 (unchanged)
+
+## A4+R-69 guarded narrative draft update
+- guardedNarrativesCreated: 2
+  - `REAL-EVENT-ADJUDICATION-001`
+  - `REAL-EVENT-ADJUDICATION-004`
+- excludedFromGuardedNarrative:
+  - `REAL-EVENT-ADJUDICATION-002` (`HOLD_UNRESOLVED`, P/A ambíguos)
+  - `REAL-EVENT-ADJUDICATION-003` (`HOLD_UNRESOLVED`, P/A ambíguos)
+  - `REAL-EVENT-TRIAGE-005` (`TRIAGE_ONLY`, `SOURCE_PARTIAL`)
+- noFinalConclusionGenerated: true
+- noDownstreamOpened: true
+- releasedCodeCount: 0 (unchanged)

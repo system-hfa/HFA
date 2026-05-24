@@ -424,3 +424,22 @@ Estado após A4+R-68:
 2. Executar intake de adjudicações AI/Author com registro de decisões e correções controladas.
 3. Manter trilha opcional de validação externa (inter-rater/kappa) para uso futuro.
 4. Só então avaliar freeze candidate conforme objetivo (operacional interno vs científico/externo).
+
+## A4+R-69 — Guarded Narrative Draft Pack for Eligible Real Events
+
+Esta fase consolidou narrativa guardada para casos elegíveis sem alterar estado causal de release:
+
+- [Guarded Narrative Draft Contract](./SERA_ENGINE_VNEXT_GUARDED_NARRATIVE_DRAFT_CONTRACT_v0.2.0.md)
+- [Guarded Narrative Real Event 001](./real-event-narratives/GUARDED-NARRATIVE-REAL-EVENT-001.md)
+- [Guarded Narrative Real Event 004](./real-event-narratives/GUARDED-NARRATIVE-REAL-EVENT-004.md)
+- [Guarded Narrative Draft Pack A4R69](./SERA_ENGINE_VNEXT_GUARDED_NARRATIVE_DRAFT_PACK_A4R69_v0.2.0.md)
+
+Estado após A4+R-69:
+- narrativas guardadas criadas para `001` e `004`;
+- `002` e `003` mantidos fora por `HOLD_UNRESOLVED` com P/A ambíguos;
+- `005` mantido fora por `TRIAGE_ONLY` + `SOURCE_PARTIAL`;
+- nenhum `finalConclusion` foi produzido;
+- nenhum downstream foi aberto;
+- nenhum `proposedCode` foi promovido;
+- `releasedCodeCount` permanece `0`;
+- freeze final continua não autorizado.

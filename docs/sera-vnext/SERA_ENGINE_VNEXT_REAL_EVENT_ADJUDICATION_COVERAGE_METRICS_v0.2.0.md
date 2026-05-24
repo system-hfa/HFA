@@ -129,3 +129,20 @@ Métricas consolidadas pós-A4+R-68:
 - `proposedOAxes=4`
 - `proposedAAxes=0`
 - `releasedCodeCount=0`
+
+## A4+R-69 guarded narrative draft update
+- `guardedNarrativesCreated`: 2 (`001`, `004`)
+- `excludedFromGuardedNarratives`: 3 (`002`, `003`, `005`)
+- `excludedReasons`:
+  - `002`: `HOLD_UNRESOLVED` com P/A ambíguos
+  - `003`: `HOLD_UNRESOLVED` com P/A ambíguos
+  - `005`: `TRIAGE_ONLY` + `SOURCE_PARTIAL`
+- `finalConclusionCount`: 0
+- `downstreamOpenedCount`: 0
+- `releasedCodeCount`: 0 (unchanged)
+
+Leitura pós-A4+R-69:
+- o pack de narrativas guardadas adiciona documentação interpretativa controlada para casos elegíveis sem alterar distribuição de códigos draft;
+- `proposedCode` permanece draft/candidate;
+- nenhum `selectedCode=CLASSIFIED` foi criado;
+- nenhum HFACS/Risk/ERC/recommendation foi gerado.
