@@ -116,3 +116,21 @@ Classificar como `ENRICHMENT_NEEDED` e não incluir em adjudicação causal deta
 - sourceEnrichmentNeeded:
   - true (crítico)
 - noReleasedCode: true
+
+## A4+R-67 source enrichment status
+- enrichmentExecuted: true
+- localSearchStatus: COMPLETED_BUT_STILL_INDEX_LEVEL
+- externalSearchStatus: COMPLETED_WITH_OFFICIAL_LISTING_METADATA_AND_PARTIAL_ACCESS_LIMITATIONS
+- sourceQualityAfter: IMPROVED_LOW
+- newFactsSummary:
+  - Registro `HL9661` confirmado em listagem oficial ARAIB com ocorrência/publicação.
+  - Contexto de `tail rotor strike on fuel bowser` corroborado em fonte técnica secundária.
+  - Sem acesso consistente ao relatório oficial detalhado no ambiente atual.
+- stillMissing:
+  - Relatório oficial completo acessível com locator detalhado.
+  - Cronologia operacional detalhada da aproximação/pouso.
+  - Decomposição factual de coordenação solo-ar e posicionamento de obstáculos.
+  - Separação robusta de atores (voo vs solo) com evidência primária.
+- canExitEnrichment: no
+- canProceedToAdjudication: no
+- noReleasedCode: true

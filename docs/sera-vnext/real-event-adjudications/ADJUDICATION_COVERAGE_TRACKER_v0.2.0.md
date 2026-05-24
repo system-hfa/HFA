@@ -18,3 +18,17 @@ Phase: A4+R-66 — Real Event Adjudication Coverage Metrics
 - draft proposed codes: 5
 - enrichment-required cases: 2 (004, 005)
 - released code: 0
+
+## A4+R-67 enrichment update
+- REAL-EVENT-ADJUDICATION-004:
+  - enrichmentExecuted: true
+  - sourceQualityAfter: IMPROVED_MEDIUM
+  - canExitEnrichment: yes
+  - canProceedToAdjudication: yes
+- REAL-EVENT-TRIAGE-005:
+  - enrichmentExecuted: true
+  - sourceQualityAfter: IMPROVED_LOW
+  - canExitEnrichment: no
+  - canProceedToAdjudication: no
+- remaining enrichment-required cases: 1 strict (`REAL-EVENT-TRIAGE-005`)
+- released code: 0 (unchanged)

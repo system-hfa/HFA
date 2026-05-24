@@ -384,6 +384,21 @@ Estado após A4+R-66:
 - nenhum downstream habilitado;
 - freeze final continua não autorizado.
 
+## A4+R-67 — Source Enrichment Execution for 004/005
+
+Esta fase executou enrichment de fonte para os casos bloqueados em A4+R-66:
+
+- [Real Event Source Enrichment Execution](./SERA_ENGINE_VNEXT_REAL_EVENT_SOURCE_ENRICHMENT_EXECUTION_v0.2.0.md)
+
+Estado após A4+R-67:
+- enrichment executado para 004 e 005;
+- 004 recebeu melhora de anchor para `IMPROVED_MEDIUM` e pode seguir para nova adjudicação controlada;
+- 005 recebeu melhora limitada (`IMPROVED_LOW`) e permanece `TRIAGE_ONLY`/`ENRICHMENT_REQUIRED`;
+- nenhum `proposedCode` foi alterado;
+- nenhum `releasedCode` foi criado;
+- nenhum downstream habilitado;
+- freeze final continua não autorizado.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.

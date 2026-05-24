@@ -92,3 +92,19 @@ Distribuição por eixo `UNRESOLVED` (10 eixos), usando razão dominante por eix
 
 ## Próxima recomendação
 A4+R-67 — Source Enrichment Execution for 004/005.
+
+## A4+R-67 post-enrichment update
+Enrichment foi executado para os dois casos bloqueados em A4+R-66, sem alterar `proposedCode`:
+
+- `enrichmentExecutedCases`: 2 (`004`, `005`)
+- `sourceQualityAfter`:
+  - `004`: `IMPROVED_MEDIUM`
+  - `005`: `IMPROVED_LOW`
+- `canExitEnrichment`:
+  - `004`: `yes`
+  - `005`: `no`
+- `canProceedToAdjudication`:
+  - `004`: `yes` (rodada controlada com locks)
+  - `005`: `no` (permanece triage/source-partial)
+- `remainingStrictEnrichmentRequiredCases`: 1 (`005`)
+- `releasedCodeCount`: 0 (inalterado)

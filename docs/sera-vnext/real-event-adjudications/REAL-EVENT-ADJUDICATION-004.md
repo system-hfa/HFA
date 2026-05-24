@@ -123,3 +123,21 @@ Manter caso como referência adversarial de disciplina metodológica (não forç
 - sourceEnrichmentNeeded:
   - true (alto)
 - noReleasedCode: true
+
+## A4+R-67 source enrichment status
+- enrichmentExecuted: true
+- localSearchStatus: COMPLETED_WITH_ADDITIONAL_INTERNAL_ANCHORS
+- externalSearchStatus: COMPLETED_WITH_OFFICIAL_METADATA_AND_PARTIAL_ACCESS_LIMITATIONS
+- sourceQualityAfter: IMPROVED_MEDIUM
+- newFactsSummary:
+  - Confirmação oficial de final report `BHNL/2016/02/03/F` (AIB/NSIB).
+  - Confirmação de `Date Released: April 25, 2019` no registro oficial.
+  - Reforço factual de `2 crew + 9 passengers`, FO=PF e Captain=PM no interim statement.
+  - Corroboração de ditching controlado offshore (~78 NM Lagos) em notificação BEA.
+- stillMissing:
+  - Texto integral extraído do PDF final oficial no ambiente atual.
+  - Granularidade de sequência checklist/resets por timestamp.
+  - Evidência decisiva para discriminar `selected vs unavoidable ditching`.
+- canExitEnrichment: yes
+- canProceedToAdjudication: yes
+- noReleasedCode: true
