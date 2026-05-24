@@ -547,3 +547,22 @@ Estado após A4+R-73:
 - nenhum `releasedCode` criado;
 - nenhum downstream aberto;
 - freeze final continua não autorizado.
+
+## A4+R-74 — Consolidated Metrics and Pattern Review for 15 Real Events
+
+Esta fase consolidou os 15 eventos reais (5 iniciais + 10 Batch 2) em métricas globais e revisão de padrões metodológicos:
+
+- [15 Real Events Consolidated Metrics A4R74](./SERA_ENGINE_VNEXT_15_REAL_EVENTS_CONSOLIDATED_METRICS_A4R74_v0.2.0.md)
+- [15 Real Events Pattern Review A4R74](./SERA_ENGINE_VNEXT_15_REAL_EVENTS_PATTERN_REVIEW_A4R74_v0.2.0.md)
+- [Consolidated 15 Real Events Tracker A4R74](./real-event-adjudications/CONSOLIDATED_15_REAL_EVENTS_TRACKER_A4R74_v0.2.0.md)
+
+Estado após A4+R-74:
+- 15 real events consolidados;
+- métricas globais consolidadas (`totalCases=15`, `totalAxes=45`, `totalUnresolvedAxes=28`);
+- padrões metodológicos principais consolidados (condition-dominant, perception/action boundary, PF/PM ambiguity, automation/mode awareness, source mismatch/source partial);
+- `releasedCodeCount` permanece `0`;
+- nenhum downstream aberto;
+- freeze final continua não autorizado.
+
+Próxima fase ampla recomendada:
+- **A4+R-75 — Select Batch 3 to reach 30 events** (ampliar amostra para validar estabilidade metodológica com maior diversidade factual antes de qualquer trilha de release).
