@@ -43,3 +43,5 @@ Record completion of the first reference case calibration trace pack (RC-1 start
 ## Next Recommended Reference Packs
 - canonical O/P/A tree source is now confirmed (`FOUND_COMPLETE` in A4+R-96 inventory).
 - next phase: rebuild REAL-EVENT-0003 reference trace using exact canonical tree questions.
+- full-scope queue prioritization is now recorded in A4+R-97 sweep:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_REAUDIT_SWEEP_ALL_EVENTS_A4R97_v0.2.0.md`

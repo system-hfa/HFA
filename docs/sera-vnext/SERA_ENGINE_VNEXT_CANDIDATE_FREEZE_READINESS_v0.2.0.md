@@ -1206,3 +1206,22 @@ Estado apos A4+R-96:
 - nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado;
 - arvore canonica O/P/A confirmada (`FOUND_COMPLETE`) nas fontes Hendy/Daumas;
 - proxima fase: rebuild canônico de REAL-EVENT-0003 com perguntas exatas da arvore.
+
+## A4+R-97 - Canonical Reaudit Sweep Across All Events
+
+Esta fase executou varredura canônica documental de todo o conjunto atualmente rastreado:
+
+- [Canonical Reaudit Sweep All Events A4R97](./SERA_ENGINE_VNEXT_CANONICAL_REAUDIT_SWEEP_ALL_EVENTS_A4R97_v0.2.0.md)
+
+Cobertura registrada:
+- 30 real events (tracker consolidado A4R78);
+- 7 candidatos externos (tracker A4R90);
+- total 37 casos revisados sob guardrails canônicos A4R96.
+
+Estado após A4+R-97:
+- nenhuma mudança em release/runtime/downstream;
+- REAL-EVENT-0003 mantido como prioridade de rebuild canônico;
+- casos withdrawn A4R92 mantidos (REAL-EVENT-0015, N109W, N11NM);
+- novos high-potential candidates identificados para trilha de referência canônica após rebuild principal.
+
+O candidate freeze final continua não autorizado.

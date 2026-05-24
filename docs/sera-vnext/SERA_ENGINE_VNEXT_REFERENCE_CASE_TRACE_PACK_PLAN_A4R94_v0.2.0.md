@@ -62,3 +62,19 @@ Each trace pack must be:
 - Canonical O/P/A tree sources were confirmed in A4+R-96 inventory (`FOUND_COMPLETE`).
 - Next phase is enabled:
   - rebuild REAL-EVENT-0003 trace from exact canonical tree questions and branches.
+
+## A4+R-97 Canonical Reaudit Sweep Update
+- Full-scope review executed for 37 events (30 real + 7 external):
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_REAUDIT_SWEEP_ALL_EVENTS_A4R97_v0.2.0.md`
+- Confirmed sequencing after sweep:
+  1. REAL-EVENT-0003 canonical rebuild (priority 1).
+  2. withdrawn trio (REAL-EVENT-0015, N109W, N11NM) canonical negative/boundary pack finalization (priority 2).
+  3. new high-potential candidate traces after canonical rebuild:
+     - BS211-Q400
+     - EXT-001
+     - EXT-002
+     - EXT-006 / EXT-008 / EXT-012 (boundary-first strategy).
+- Guardrails unchanged:
+  - no release impact;
+  - no runtime impact;
+  - no downstream impact.
