@@ -662,3 +662,33 @@ Estado após A4+R-78:
 
 Próxima fase ampla escolhida:
 - **A4+R-79 — QuestionPath Template and Backfill Plan**.
+
+## A4+R-79 — QuestionPath Template and Backfill Plan
+
+Esta fase padronizou a camada documental de rastreabilidade `questionPath` e preparou o backfill dos 15 primeiros eventos sem alterar adjudicações existentes:
+
+- [QuestionPath Canonical Template](./SERA_ENGINE_VNEXT_QUESTION_PATH_CANONICAL_TEMPLATE_v0.2.0.md)
+- [QuestionPath Backfill Plan A4R79](./SERA_ENGINE_VNEXT_QUESTION_PATH_BACKFILL_PLAN_A4R79_v0.2.0.md)
+- [QuestionPath Coverage Matrix A4R79](./SERA_ENGINE_VNEXT_QUESTION_PATH_COVERAGE_MATRIX_A4R79_v0.2.0.md)
+- [QuestionPath Method Decision A4R79](./SERA_ENGINE_VNEXT_QUESTION_PATH_METHOD_DECISION_A4R79_v0.2.0.md)
+
+Estado após A4+R-79:
+- template canônico criado para `P_axis_questionPath`, `O_axis_questionPath` e `A_axis_questionPath`;
+- plano de backfill criado para os 5 eventos iniciais e os 10 eventos Batch 2;
+- matriz de cobertura criada para os 30 casos;
+- method decision draft criado;
+- cobertura atual de `questionPath`: `15/30`;
+- alvo antes de release criteria: `30/30`;
+- `releasedCodeCount=0`;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/código alterado.
+
+Decisão mantida:
+- `questionPath` passa a ser obrigatório para novas adjudicações AI/Author;
+- `questionPath` é pré-requisito documental para comparação e futura discussão de release, mas não é release gate automático;
+- `O-E` permanece `NON_EXISTENT_IN_SERA_PT_V1` e não é código ativo nem reservado futuro.
+
+Próxima fase recomendada:
+- **A4+R-80 — QuestionPath Backfill for First 15 Events**.
+
+O candidate freeze final permanece não autorizado.

@@ -35,8 +35,26 @@ Justificativa:
 
 ## Sequência recomendada
 1. **A4+R-79 — QuestionPath Template and Backfill Plan**.
-2. **A4+R-80 — Release Criteria Design** (docs-only, sem runtime/release automático).
-3. **A4+R-81 — External Investigation Report Harvest**, se lacunas de fonte ainda bloquearem casos críticos.
+2. **A4+R-80 — QuestionPath Backfill for First 15 Events**.
+3. **Release Criteria Design** somente depois de `questionPath` coverage atingir `30/30` (docs-only, sem runtime/release automático).
+4. **External Investigation Report Harvest**, se lacunas de fonte ainda bloquearem casos críticos.
+
+## A4+R-79 update — QuestionPath Template and Backfill Plan
+A4+R-79 defines a canonical P/O/A `questionPath` template and a documentary backfill plan for the first 15 real-event adjudications.
+
+Created/expected A4+R-79 artifacts:
+- `SERA_ENGINE_VNEXT_QUESTION_PATH_CANONICAL_TEMPLATE_v0.2.0.md`
+- `SERA_ENGINE_VNEXT_QUESTION_PATH_BACKFILL_PLAN_A4R79_v0.2.0.md`
+- `SERA_ENGINE_VNEXT_QUESTION_PATH_COVERAGE_MATRIX_A4R79_v0.2.0.md`
+- `SERA_ENGINE_VNEXT_QUESTION_PATH_METHOD_DECISION_A4R79_v0.2.0.md`
+
+Decision refinement:
+- current `questionPath` coverage remains `15/30`;
+- target coverage after backfill is `30/30`;
+- release criteria design is deferred until questionPath coverage reaches `30/30`;
+- next phase becomes **A4+R-80 — QuestionPath Backfill for First 15 Events**.
+
+A4+R-79 remains docs-only and does not alter draft adjudications, codes, fixtures, baselines, downstream contracts, UI/API/DB, or runtime.
 
 ## Confirmações
 - esta decisão não cria `releasedCode`;
