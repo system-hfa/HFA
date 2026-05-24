@@ -61,5 +61,17 @@ Escalonar para o usuário/adjudicador durante a execução quando houver:
 - Sem alteração de código/motor.
 - Sem promoção para consensus reference.
 
+## A4+R-62 — Execução realizada
+- Extração estruturada inicial executada com subamostra de 5 casos:
+  - REAL-EVENT-0001
+  - REAL-EVENT-0002
+  - REAL-EVENT-0004
+  - REAL-EVENT-0006
+  - REAL-EVENT-0028
+- Limitações encontradas:
+  - referências `pdf24_merged*.pdf` ainda sem arquivo físico local;
+  - heterogeneidade de qualidade de fonte entre os casos;
+  - um caso mantido com `SOURCE_PARTIAL` (extração de baixa confiança) para trilha de ambiguidade.
+
 ## Próxima fase sugerida
-A4+R-62 — Real Event Structured Extraction Sample.
+A4+R-63 — AI/Author SERA Adjudication Pilot.

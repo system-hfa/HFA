@@ -295,6 +295,26 @@ Pendências remanescentes:
 - manter separação estrita entre fato extraído e hipótese metodológica futura;
 - só depois avançar para fase de classificação AI/Author controlada.
 
+## A4+R-62 — Real Event Structured Extraction Sample
+
+Esta fase executou a primeira extração factual estruturada sobre subamostra do corpus real:
+
+- [Real Event Structured Extraction Sample](./SERA_ENGINE_VNEXT_REAL_EVENT_STRUCTURED_EXTRACTION_SAMPLE_v0.2.0.md)
+- extrações por caso em:
+  - `docs/sera-vnext/real-event-extractions/REAL-EVENT-EXTRACTION-001.md`
+  - `docs/sera-vnext/real-event-extractions/REAL-EVENT-EXTRACTION-002.md`
+  - `docs/sera-vnext/real-event-extractions/REAL-EVENT-EXTRACTION-003.md`
+  - `docs/sera-vnext/real-event-extractions/REAL-EVENT-EXTRACTION-004.md`
+  - `docs/sera-vnext/real-event-extractions/REAL-EVENT-EXTRACTION-005.md`
+
+Estado após A4+R-62:
+- sample estruturado criado;
+- classificação SERA ainda não executada;
+- nenhum fixture oficial criado;
+- nenhum baseline alterado;
+- nenhum downstream habilitado;
+- próxima fase planejada: adjudicação AI/Author controlada (se autorizada).
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.
