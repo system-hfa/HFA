@@ -1553,3 +1553,25 @@ A4R112 controls:
 - no release created;
 - no downstream opened;
 - no baseline/front-end promotion.
+
+## A4+R-114 — Reconcile A4R112/A4R113 History and Prepare Full-Axis Trace Batch
+
+This phase reconciled history and governance alignment between A4R113 cleanup/hygiene and A4R112 corpus mining outputs:
+- [A4R112/A4R113 Reconciliation A4R114](./SERA_ENGINE_VNEXT_A4R112_A4R113_RECONCILIATION_A4R114_v0.2.0.md)
+
+Readiness impact:
+- A4R113 commit and A4R112 commit are both contained in `HEAD` with linear sequence (`b3ad94c` -> `702e8c0`);
+- active source index now explicitly includes A4R112 mining outputs;
+- next macro action remains full-axis trace batch from A4R112 selection:
+  - `UC-003` UPS-1354
+  - `UC-004` AMERICAN-1420
+  - `UC-002` ASIANA-214
+  - `UC-001` COLGAN-3407
+  - `UC-039` US AIRWAYS 1549
+- COMAIR-5191 and KOREAN-801 remain P-only internal/boundary drafts, not complete reference cases.
+
+A4R114 controls:
+- no P/O/A closure;
+- no release created;
+- no downstream opened;
+- no baseline/front-end promotion.

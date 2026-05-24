@@ -176,3 +176,17 @@ NO_DOWNSTREAM
 | P1 | Focused source-slice expansion during trace build | weak O/A branches in selected A4R112 events | Reduces overclassification risk and prevents axis omission in full-axis traces. | Codex | 1 focused round | Weak O/A nodes are either evidentially reinforced or marked SOURCE_SLICE_REQUIRED/UNRESOLVED. |
 | P1 | Maintain P-only internal boundary status | COMAIR-5191 and KOREAN-801 | Prior P approvals remain valid but do not satisfy full-axis completeness. | Codex | 1 status cycle | Both remain explicitly scoped as P-only internal drafts. |
 | P1 | Source recheck queue (conditional) | candidates tagged SOURCE_RECHECK_REQUIRED in A4R112 audit/index | Some corpus entries still depend on blocked/non-ideal links and need official-source recheck before reuse. | Codex | 1 recheck cycle | Recheck list is triaged without internet expansion unless official link recovery is required. |
+
+## A4+R-114 queue update
+- Completed in A4R114:
+  - history reconciliation for A4R113 and A4R112 commit lineage;
+  - active source index alignment with A4R112 corpus-mining outputs;
+  - governance confirmation that next execution step is the A4R112 full-axis batch.
+- Execution remained docs/governance/reconciliation only.
+
+## Immediate queue after A4R114
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Build full-axis trace draft batch | UC-003 UPS-1354, UC-004 AMERICAN-1420, UC-002 ASIANA-214, UC-001 COLGAN-3407, UC-039 US AIRWAYS 1549 | Reconciled corpus-mining outputs now provide one aligned next batch across P/O/A. | Codex | 5 events | Every event includes explicit P/O/A sections with canonical closure or unresolved/source-slice markers per axis. |
+| P1 | Keep P-only boundary governance explicit | COMAIR-5191 and KOREAN-801 | Prior P approvals remain valid but not full-axis complete. | Codex | 1 status cycle | Both remain tagged as P-only internal/boundary drafts in active planning docs. |
+| P1 | Deferred corpus handling (separate phase) | `a4r111-recovered-pool-txt/` untracked set | Corpus policy allows deferred ingestion; this phase avoids scope mixing. | Codex | 1 deferred governance cycle | Deferred set disposition recorded without polluting full-axis trace batch scope. |

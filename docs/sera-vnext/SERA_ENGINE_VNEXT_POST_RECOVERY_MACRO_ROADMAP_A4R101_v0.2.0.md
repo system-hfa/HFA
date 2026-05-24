@@ -324,3 +324,24 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Build full-axis trace drafts for the A4R112 selected balanced batch (`UPS-1354`, `AMERICAN-1420`, `ASIANA-214`, `COLGAN-3407`, `US AIRWAYS 1549`).
 2. Enforce explicit P/O/A documentation for every selected event, including nominal/no-failure or unresolved handling where canonical closure is not supportable.
 3. Keep COMAIR-5191 and KOREAN-801 as P-only internal drafts unless dedicated O/A expansion is separately executed.
+
+## A4+R-114 Execution Update (A4R112/A4R113 Reconciliation)
+- Reconciliation artifact created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R112_A4R113_RECONCILIATION_A4R114_v0.2.0.md`
+- Commit-lineage outcome:
+  - A4R113 (`b3ad94c`) is contained in `HEAD`;
+  - A4R112 (`702e8c0`) is contained in `HEAD`;
+  - sequence is linear for this segment (`aa7a413` -> `b3ad94c` -> `702e8c0`).
+- Active-source alignment:
+  - A4R113 active source index now explicitly lists A4R112 mining outputs.
+- Governance continuity:
+  - COMAIR-5191 and KOREAN-801 remain P-only internal/boundary drafts;
+  - no full-axis promotion from those P-only approvals.
+- P/O/A closure in A4R114: no
+- release created in A4R114: no
+- downstream opened in A4R114: no
+
+## Updated Immediate Sequence After A4R114
+1. Execute full-axis trace batch from A4R112: `UC-003` UPS-1354, `UC-004` AMERICAN-1420, `UC-002` ASIANA-214, `UC-001` COLGAN-3407, `UC-039` US AIRWAYS 1549.
+2. Enforce explicit P/O/A sections for each event, with canonical closure only when evidence supports it, otherwise `UNRESOLVED` or `SOURCE_SLICE_REQUIRED`.
+3. Keep `a4r111-recovered-pool-txt/` deferred to a separate corpus-governance phase to preserve scope control.

@@ -32,6 +32,14 @@ Purpose: identify active methodology sources and separate archive-only material.
 - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_AXIS_REFERENCE_SCOPE_CORRECTION_A4R111_v0.2.0.md`
 - `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R111_v0.2.0.md`
 
+## Active corpus mining outputs (A4R112)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_OFFICIAL_REPORT_CORPUS_AUDIT_A4R112_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_CORPUS_UNIFIED_CANDIDATE_INDEX_A4R112_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_CORPUS_POA_SIGNAL_MINING_A4R112_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_CORPUS_POA_CANDIDATE_MATRIX_A4R112_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_AXIS_BALANCED_SHORTLIST_A4R112_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R112_v0.2.0.md`
+
 ## Archive-only (not active methodology source)
 - `docs/sera-vnext/archive/README.md`
 - `docs/sera-vnext/archive/invalid-methodology/pre-canonical/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md`
