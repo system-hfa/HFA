@@ -769,3 +769,37 @@ O candidate freeze final continua nao autorizado.
 Proxima fase recomendada:
 - **A4+R-82 - Author Review of Release Eligibility Matrix**.
 - Alternativa se o autor priorizar reforco factual antes da revisao: **A4+R-82 - Source Enrichment Sprint for release-eligible candidates**.
+
+## A4+R-82 - Author Review of Release Eligibility Matrix
+
+Esta fase revisou documentalmente os 21 eixos marcados como `ELIGIBLE_FOR_AUTHOR_REVIEW` na matriz A4+R-81, sem criar release real:
+
+- [Release Eligibility Author Review A4R82](./SERA_ENGINE_VNEXT_RELEASE_ELIGIBILITY_AUTHOR_REVIEW_A4R82_v0.2.0.md)
+- [Release Pilot Shortlist A4R82](./SERA_ENGINE_VNEXT_RELEASE_PILOT_SHORTLIST_A4R82_v0.2.0.md)
+- [Pre-Release Gap Review A4R82](./SERA_ENGINE_VNEXT_PRE_RELEASE_GAP_REVIEW_A4R82_v0.2.0.md)
+- [Release Pilot Plan A4R82](./SERA_ENGINE_VNEXT_RELEASE_PILOT_PLAN_A4R82_v0.2.0.md)
+
+Estado apos A4+R-82:
+- author review matrix criada;
+- shortlist criada;
+- pre-release gap review criado;
+- release pilot plan criado;
+- releasedCodeCount permanece 0;
+- proposedCodeChanges=0;
+- unresolvedReduced=0;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/codigo alterado.
+
+Resultado da revisao A4+R-82:
+- STRONG_RELEASE_PILOT_CANDIDATE: 4 eixos;
+- WEAK_RELEASE_PILOT_CANDIDATE: 6 eixos;
+- HOLD_FOR_ENRICHMENT: 1 eixo;
+- HOLD_FOR_AUTHOR_CLARIFICATION: 5 eixos;
+- HOLD_FOR_METHOD_REFINEMENT: 5 eixos;
+- REJECT_FOR_RELEASE_PILOT: 0 eixos.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-83 - Author Approval Packet for P-Axis Micro-Pilot** (docs-only).
+- Alternativa se a prioridade for evidência: **A4+R-83 - Source Enrichment Sprint for Held Release Candidates**.

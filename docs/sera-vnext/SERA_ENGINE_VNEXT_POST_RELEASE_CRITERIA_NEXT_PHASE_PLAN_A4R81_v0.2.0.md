@@ -76,3 +76,27 @@ Secondary option:
 - If the author judges that too many eligible axes remain evidentially weak, move next to Option C, a focused Source Enrichment Sprint.
 
 Do not recommend runtime, UI/API, fixture, baseline, or downstream work yet.
+
+## A4+R-82 Update — Author Review of Release Eligibility Matrix
+
+A4+R-82 executed the recommended author-review path as a documentary review only:
+- author review of the A4+R-81 eligibility matrix created;
+- future release pilot shortlist created;
+- pre-release gap review created;
+- release pilot plan created;
+- no release executed;
+- releasedCodeCount remains 0;
+- no downstream opened;
+- no fixture, baseline, code, UI/API/DB, migration, or runtime change introduced.
+
+Review outcome:
+- STRONG_RELEASE_PILOT_CANDIDATE: 4 axes;
+- WEAK_RELEASE_PILOT_CANDIDATE: 6 axes;
+- HOLD_FOR_ENRICHMENT: 1 axis;
+- HOLD_FOR_AUTHOR_CLARIFICATION: 5 axes;
+- HOLD_FOR_METHOD_REFINEMENT: 5 axes;
+- REJECT_FOR_RELEASE_PILOT: 0 axes.
+
+Next recommendation:
+- **A4+R-83 — Author Approval Packet for P-Axis Micro-Pilot**, docs-only, if the author wants to prepare a first narrow pilot.
+- Alternative: **A4+R-83 — Source Enrichment Sprint for Held Release Candidates**, if the priority is strengthening weak/held axes before any pilot packet.
