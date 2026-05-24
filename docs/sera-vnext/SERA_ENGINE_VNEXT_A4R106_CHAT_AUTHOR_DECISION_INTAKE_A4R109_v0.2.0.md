@@ -33,3 +33,14 @@ NO_DOWNSTREAM
 - no finalConclusion/HFACS/Risk/ERC/recommendations
 - not front-end-ready
 - not official baseline
+
+## A4R110 objective/action feasibility linkage
+- A4R110 feasibility assessment completed:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_FEASIBILITY_A4R110_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_SOURCE_GAPS_A4R110_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_P_O_A_BOUNDARY_REVIEW_A4R110_v0.2.0.md`
+- Result summary after A4R110:
+  - COMAIR-5191: `O_SOURCE_SLICE_REQUIRED`, `A_SOURCE_SLICE_REQUIRED`
+  - KOREAN-801: `O_UNRESOLVED`, `A_UNRESOLVED`
+  - ASIANA-214: unchanged (`REVIEW_REQUIRED`, not part of A4R110 feasibility scope)
+- A4R110 did not alter A4R109 decisions and did not close O/A.

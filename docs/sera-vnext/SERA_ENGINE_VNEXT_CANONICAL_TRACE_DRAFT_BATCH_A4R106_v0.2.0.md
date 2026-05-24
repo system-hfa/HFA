@@ -51,3 +51,15 @@ NO_DOWNSTREAM
   - `ASIANA-214`: NOT_REVIEWED_IN_A4R109 / REVIEW_REQUIRED
 - release created: no
 - downstream opened: no
+
+## A4+R-110 objective/action feasibility update
+- A4R110 feasibility package created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_FEASIBILITY_A4R110_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_SOURCE_GAPS_A4R110_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_P_O_A_BOUNDARY_REVIEW_A4R110_v0.2.0.md`
+- Feasibility outcomes (no O/A closure):
+  - `COMAIR-5191`: objective `O_SOURCE_SLICE_REQUIRED`; action `A_SOURCE_SLICE_REQUIRED`
+  - `KOREAN-801`: objective `O_UNRESOLVED`; action `A_UNRESOLVED`
+  - `ASIANA-214`: out of A4R110 scope and remains `REVIEW_REQUIRED`
+- release created in A4R110: no
+- downstream opened in A4R110: no

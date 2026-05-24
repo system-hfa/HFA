@@ -78,3 +78,16 @@ Official-report factual sequence shows nonprecision-approach constraints with gl
 - frontendPromotionStatus: NOT_READY_FOR_PROMOTION
 - O_axis_status: UNRESOLVED
 - A_axis_status: UNRESOLVED
+
+## 13. A4R110 objective/action feasibility status
+- phaseReference: `A4+R-110`
+- scope: `O_A_FEASIBILITY_ONLY`
+- objectiveCanonicalPathPossible: partial
+- actionCanonicalPathPossible: partial
+- objectiveEvidenceStrength: WEAK
+- actionEvidenceStrength: WEAK
+- objectiveRecommendation: O_UNRESOLVED
+- actionRecommendation: A_UNRESOLVED
+- O_axis_status_after_A4R110: UNRESOLVED
+- A_axis_status_after_A4R110: UNRESOLVED
+- closurePerformed: no

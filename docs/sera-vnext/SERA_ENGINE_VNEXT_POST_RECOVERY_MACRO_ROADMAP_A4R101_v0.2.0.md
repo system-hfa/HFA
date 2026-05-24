@@ -241,3 +241,21 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Prepare controlled internal-reference package for COMAIR-5191 and KOREAN-801 with explicit limitations retained.
 2. Keep ASIANA-214 in `REVIEW_REQUIRED` pathway until additional source-slice/method review is completed.
 3. If a cleaner positive reference is required, activate reserve candidate pathway without release/downstream opening.
+
+## A4+R-110 Execution Update (Objective/Action Feasibility Only)
+- O/A feasibility package built for approved P internal references:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_FEASIBILITY_A4R110_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_SOURCE_GAPS_A4R110_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_P_O_A_BOUNDARY_REVIEW_A4R110_v0.2.0.md`
+- Feasibility outcomes:
+  - COMAIR-5191: `O_SOURCE_SLICE_REQUIRED` and `A_SOURCE_SLICE_REQUIRED`
+  - KOREAN-801: `O_UNRESOLVED` and `A_UNRESOLVED`
+  - ASIANA-214: unchanged (`REVIEW_REQUIRED`, excluded from expansion scope)
+- O/A closure in A4R110: no
+- release created in A4R110: no
+- downstream opened in A4R110: no
+
+## Updated Immediate Sequence After A4R110
+1. Keep COMAIR-5191 and KOREAN-801 as P-only internal references while O/A remains unresolved or source-slice dependent.
+2. If objective/action expansion is still desired, run focused source-slice expansion for COMAIR-5191 first, then reassess readiness for one O/A author-review bundle.
+3. Keep ASIANA-214 on review-required pathway; use reserve pathway if cleaner multi-axis references are needed sooner.

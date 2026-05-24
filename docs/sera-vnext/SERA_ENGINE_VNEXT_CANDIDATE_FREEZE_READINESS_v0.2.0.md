@@ -1469,3 +1469,25 @@ A4R109 controls:
 - downstream opened: none;
 - O/A closure: none;
 - baseline/front-end promotion: none.
+
+## A4+R-110 — Objective and Action Expansion Feasibility for Approved P References
+
+This phase evaluated only O/A feasibility for approved P internal references, without O/A closure:
+- [Objective Action Feasibility A4R110](./SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_FEASIBILITY_A4R110_v0.2.0.md)
+- [Objective Action Source Gaps A4R110](./SERA_ENGINE_VNEXT_OBJECTIVE_ACTION_SOURCE_GAPS_A4R110_v0.2.0.md)
+- [P O A Boundary Review A4R110](./SERA_ENGINE_VNEXT_P_O_A_BOUNDARY_REVIEW_A4R110_v0.2.0.md)
+
+Readiness impact:
+- COMAIR-5191:
+  - objective: `O_SOURCE_SLICE_REQUIRED`
+  - action: `A_SOURCE_SLICE_REQUIRED`
+- KOREAN-801:
+  - objective: `O_UNRESOLVED`
+  - action: `A_UNRESOLVED`
+- ASIANA-214: unchanged `REVIEW_REQUIRED` (outside A4R110 expansion scope)
+
+A4R110 controls:
+- no O/A axis closure;
+- no release created;
+- no downstream opened;
+- no baseline/front-end promotion.

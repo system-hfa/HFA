@@ -116,3 +116,18 @@ NO_DOWNSTREAM
 | P0 | Prepare controlled internal-reference package | COMAIR-5191 and KOREAN-801 | Two cases are approved with limitations as internal drafts. | Codex | 1 package | Internal package drafted without release/downstream/front-end promotion. |
 | P1 | Resolve non-eligible case | ASIANA-214 | Case remains `REVIEW_REQUIRED` and needs additional slice/method handling. | Codex | 1 targeted round | Clear next-state path documented before re-review. |
 | P1 | Reserve activation (conditional) | A4R105 reserve list | Needed if a clean positive reference (lower boundary risk) is required. | Codex | 1 reserve batch | Reserve candidate selected with no release/downstream action. |
+
+## A4+R-110 queue update
+- Completed in A4R110:
+  - objective/action feasibility package for approved P references;
+  - source-gap map for O/A evidence expansion;
+  - P/O/A boundary control note for non-automatic expansion.
+- Execution remained docs-only and O_A_FEASIBILITY_ONLY.
+
+## Immediate queue after A4R110
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | O/A author-review bundle preparation (conditional) | COMAIR-5191 objective/action only | Feasibility is partial and requires focused source-slice before any O/A review attempt. | Codex | 1 focused package | Objective/action path evidence reaches reviewable threshold without O/A closure. |
+| P0 | Keep P-only internal reference status | COMAIR-5191 and KOREAN-801 | Current evidence does not justify automatic O/A expansion across both cases. | Codex | 1 status cycle | P-only status retained with explicit O/A unresolved markers. |
+| P1 | Resolve ASIANA review-required path | ASIANA-214 | Remains excluded from O/A expansion and needs separate method/source handling. | Codex | 1 targeted round | Clear re-entry conditions documented before any new review bundle. |
+| P1 | Reserve activation (conditional) | A4R105 reserve list | Needed if clean multi-axis references are required sooner than O/A expansion can support. | Codex | 1 reserve batch | Reserve candidate selected with release/downstream still closed. |

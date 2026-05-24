@@ -78,3 +78,16 @@ Official-report factual sequence shows runway-22 assignment repeatedly present i
 - frontendPromotionStatus: NOT_READY_FOR_PROMOTION
 - O_axis_status: UNRESOLVED
 - A_axis_status: UNRESOLVED
+
+## 13. A4R110 objective/action feasibility status
+- phaseReference: `A4+R-110`
+- scope: `O_A_FEASIBILITY_ONLY`
+- objectiveCanonicalPathPossible: partial
+- actionCanonicalPathPossible: partial
+- objectiveEvidenceStrength: MEDIUM
+- actionEvidenceStrength: MEDIUM
+- objectiveRecommendation: O_SOURCE_SLICE_REQUIRED
+- actionRecommendation: A_SOURCE_SLICE_REQUIRED
+- O_axis_status_after_A4R110: UNRESOLVED
+- A_axis_status_after_A4R110: UNRESOLVED
+- closurePerformed: no
