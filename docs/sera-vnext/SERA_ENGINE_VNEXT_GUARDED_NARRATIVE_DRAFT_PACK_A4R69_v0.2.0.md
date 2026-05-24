@@ -46,3 +46,10 @@ Criar narrativas guardadas, não conclusivas, para casos reais elegíveis após 
 
 ## Próxima fase recomendada
 - A4+R-70 focada em redução controlada de incerteza factual/metodológica (especialmente timeline mecanística para 004 e decomposição PF/PM para 001), mantendo `NO_RELEASED_CODE` até decisão autoral explícita.
+
+## A4+R-70 controlled uncertainty reduction update
+- As narrativas guardadas de `001` e `004` continuam válidas como `GUARDED_NARRATIVE_DRAFT`.
+- As incertezas remanescentes de `001` (A-axis) e `004` (P/A com dominância técnica) foram mapeadas na matriz A4+R-70.
+- Nenhuma narrativa foi convertida em `finalConclusion`.
+- Nenhum `proposedCode` foi promovido para `releasedCode`.
+- Nenhum release/downstream foi aberto.

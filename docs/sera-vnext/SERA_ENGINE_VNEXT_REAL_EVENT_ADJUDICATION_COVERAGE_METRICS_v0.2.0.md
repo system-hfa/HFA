@@ -146,3 +146,17 @@ Leitura pós-A4+R-69:
 - `proposedCode` permanece draft/candidate;
 - nenhum `selectedCode=CLASSIFIED` foi criado;
 - nenhum HFACS/Risk/ERC/recommendation foi gerado.
+
+## A4+R-70 controlled uncertainty reduction update
+- `uncertaintyMatrixCreated`: true
+- `uncertaintyReductionPlanCreated`: true
+- `autoReductionOfUnresolved`: false
+- `proposedCodePromotionCount`: 0
+- `releasedCodeCount`: 0 (unchanged)
+- `downstreamOpenedCount`: 0 (unchanged)
+
+Leitura pós-A4+R-70:
+- a fase adiciona instrumentação documental de incerteza por caso/eixo sem alterar distribuição de drafts;
+- casos `001` e `004` mantêm guarded narratives válidas;
+- casos `002` e `003` permanecem `HOLD_UNRESOLVED` com caminhos de redução mapeados;
+- caso `005` permanece `TRIAGE_ONLY` por `SOURCE_PARTIAL`.

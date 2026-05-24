@@ -59,3 +59,11 @@ Phase: A4+R-66 — Real Event Adjudication Coverage Metrics
 - noFinalConclusionGenerated: true
 - noDownstreamOpened: true
 - releasedCodeCount: 0 (unchanged)
+
+## A4+R-70 controlled uncertainty reduction update
+- uncertaintyMatrixCreated: true (`SERA_ENGINE_VNEXT_REAL_EVENT_UNCERTAINTY_REDUCTION_MATRIX_A4R70_v0.2.0.md`)
+- uncertaintyReductionPlanCreated: true (`SERA_ENGINE_VNEXT_REAL_EVENT_UNCERTAINTY_REDUCTION_PLAN_A4R70_v0.2.0.md`)
+- unresolvedReducedAutomatically: false
+- proposedCodeChangedAutomatically: false
+- releasedCodeCount: 0 (unchanged)
+- downstreamOpenedCount: 0 (unchanged)

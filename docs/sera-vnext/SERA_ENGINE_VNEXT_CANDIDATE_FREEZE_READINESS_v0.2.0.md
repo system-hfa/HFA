@@ -443,3 +443,21 @@ Estado após A4+R-69:
 - nenhum `proposedCode` foi promovido;
 - `releasedCodeCount` permanece `0`;
 - freeze final continua não autorizado.
+
+## A4+R-70 — Controlled Uncertainty Reduction Pack
+
+Esta fase consolidou matriz e plano de redução de incerteza para os 5 casos reais sem alterar estado causal de release:
+
+- [Real Event Uncertainty Reduction Matrix A4R70](./SERA_ENGINE_VNEXT_REAL_EVENT_UNCERTAINTY_REDUCTION_MATRIX_A4R70_v0.2.0.md)
+- [Real Event Uncertainty Reduction Plan A4R70](./SERA_ENGINE_VNEXT_REAL_EVENT_UNCERTAINTY_REDUCTION_PLAN_A4R70_v0.2.0.md)
+
+Estado após A4+R-70:
+- incertezas por caso/eixo consolidadas com trilhas de evidência necessárias;
+- nenhuma redução automática de `UNRESOLVED`;
+- nenhum `proposedCode` promovido;
+- `releasedCodeCount` permanece `0`;
+- nenhum downstream aberto;
+- freeze final continua não autorizado.
+
+Trilha recomendada para A4+R-71:
+- opção principal: **D — Evidence Coverage Metrics on Real Events**, seguida de sprint focal de enrichment mecanístico se lacunas críticas persistirem.
