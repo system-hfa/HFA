@@ -36,3 +36,8 @@ NO_DOWNSTREAM
 - author review request in repository: not requested
 - release/downstream/front-end promotion: unchanged and closed
 - next macro step: execute one author review in chat if gate remains >=2 eligible cases.
+
+## A4+R-108 status note
+- Chat author review bundle prepared with eligible cases only (`COMAIR-5191`, `KOREAN-801`).
+- `ASIANA-214` remains outside approval bundle in A4R108.
+- Author review not yet performed and no decision recorded in repository.

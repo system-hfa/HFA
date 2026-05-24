@@ -89,3 +89,16 @@ NO_DOWNSTREAM
 | P0 | Run one author review in chat for A4R106 bundle | ASIANA-214, COMAIR-5191, KOREAN-801 | Audit left at least two cases still eligible for draft retention. | Codex + user | 1 bundle | Author records keep/downgrade decisions without release action. |
 | P1 | Targeted source-slice expansion fallback | weak nodes flagged by author | Prevents overclassification if review rejects key branches. | Codex | 1 focused round | Updated slices reduce weak-node uncertainty in at least two cases. |
 | P1 | Reserve activation (conditional) | A4R105 reserve list | Backup if eligibility falls below threshold after review. | Codex | 1 reserve batch | Next draft batch selected with release/downstream still closed. |
+
+## A4+R-108 queue update
+- Completed in A4R108:
+  - chat author-review bundle prepared for eligible A4R106 cases;
+  - decision intake placeholder created with no recorded decisions.
+- Execution remained docs-only and review-bundle-prep-only.
+
+## Immediate queue after A4R108
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Conduct one chat-based author review | COMAIR-5191 and KOREAN-801 | A4R108 package is self-contained and ready for decision intake. | Codex + user | 1 bundle session | Author decisions captured outside this prep phase. |
+| P1 | Resolve excluded case pathway | ASIANA-214 | Case remains non-eligible for approval bundle after A4R107 audit outcome. | Codex | 1 targeted round | Clear downgrade/hold path confirmed before reuse. |
+| P1 | Reserve activation (conditional) | A4R105 reserve candidates | Needed if chat review yields insufficient eligible outcomes. | Codex | 1 reserve batch | Next candidate set selected without release/downstream actions. |

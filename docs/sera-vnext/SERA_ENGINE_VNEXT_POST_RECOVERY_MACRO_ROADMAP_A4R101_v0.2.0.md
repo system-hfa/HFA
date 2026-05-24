@@ -209,3 +209,19 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Execute one author review in chat using the A4R107 bundle.
 2. If fewer than two cases remain eligible after review, activate reserve candidates from A4R105.
 3. Keep release/downstream/front-end promotion closed until explicit post-review decision.
+
+## A4+R-108 Execution Update (Chat Review Bundle Prep)
+- Chat-review bundle prepared for eligible A4R106 cases:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_CHAT_AUTHOR_REVIEW_BUNDLE_A4R108_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_AUTHOR_DECISION_INTAKE_PLACEHOLDER_A4R108_v0.2.0.md`
+- Included for review bundle: `COMAIR-5191`, `KOREAN-801`.
+- Excluded from approval bundle in this phase: `ASIANA-214`.
+- Author review performed in A4R108: no.
+- Author decision recorded in A4R108: no.
+- Release created in A4R108: no.
+- Downstream opened in A4R108: no.
+
+## Updated Immediate Sequence After A4R108
+1. Conduct one chat-based author review for COMAIR-5191 and KOREAN-801.
+2. Route ASIANA-214 to the pending review/source-slice refinement path before any new approval attempt.
+3. Keep release/downstream/front-end promotion closed until explicit post-review decisions.

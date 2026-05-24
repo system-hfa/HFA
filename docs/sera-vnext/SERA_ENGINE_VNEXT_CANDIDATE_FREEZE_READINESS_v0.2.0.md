@@ -1439,3 +1439,20 @@ A4R107 controls:
 - release created: no;
 - downstream opened: no;
 - front-end promotion: no.
+
+## A4+R-108 — Chat Author Review Bundle Prep
+
+This phase prepared the chat review package and intake placeholder for eligible A4R106 cases.
+
+A4R108 controls:
+- author review performed: no;
+- author decision recorded: no;
+- release created: no;
+- downstream opened: no.
+
+Included in bundle:
+- COMAIR-5191
+- KOREAN-801
+
+Excluded from approval bundle:
+- ASIANA-214 (pending review/source-slice refinement pathway)

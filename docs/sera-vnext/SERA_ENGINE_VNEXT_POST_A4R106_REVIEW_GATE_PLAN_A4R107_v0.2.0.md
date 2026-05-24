@@ -20,3 +20,12 @@ NO_DOWNSTREAM
 ## Current A4R107 gate signal
 - audit recommendations currently leave 2 cases at `KEEP_PASS_WITH_LIMITATIONS` and 1 at `REVIEW_REQUIRED`.
 - therefore, author review in chat is eligible as the immediate macro gate.
+
+## A4+R-108 bundle-prep update
+- A4R108 prepared the chat author review bundle:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_CHAT_AUTHOR_REVIEW_BUNDLE_A4R108_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_AUTHOR_DECISION_INTAKE_PLACEHOLDER_A4R108_v0.2.0.md`
+- author review has not been performed yet.
+- no decision has been recorded in repository artifacts.
+- included cases for chat review: `COMAIR-5191`, `KOREAN-801`.
+- excluded from approval bundle: `ASIANA-214` pending additional review/source-slice work.
