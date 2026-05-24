@@ -10,10 +10,10 @@ NO_DOWNSTREAM
 ## Queue Table
 | priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
 |---|---|---|---|---|---:|---|
-| P0 | Combined author review of A4R100 + A4R102 | REAL-EVENT-0003 plus withdrawn trio pack decision gate | A4R100 is `PASS_WITH_LIMITATIONS` and A4R102 is `REVIEW_REQUIRED`; both need explicit author decision before front-end use. | Chat + Codex | 2 artifacts | Author decision recorded for both artifacts (accepted with boundaries or correction requested). |
-| P0 | Register Block 1 gate outcome | Governance docs and readiness sync | Block 1 is technically complete but remains gated by author review outcome. | Codex | 1 batch | Matrix/roadmap/readiness reflect final Block 1 review gate state. |
-| P1 | Canonical reclassification sweep of tracked corpus | 37 tracked events in one pass | Consolidates method recovery and defines stable shortlist without microphase drift. | DeepSeek + Codex | 37 events | Matrix updated with canonical statuses, parked list finalized, and 5-8 solid candidates selected. |
-| P1 | Candidate shortlist hardening | Best 5-8 from sweep | Moves from broad corpus to manageable high-quality reference pipeline. | DeepSeek | 5-8 events | Each shortlisted event has canonical eligibility rationale and next-action dossier target. |
+| P0 | Select first canonical trace build batch | 3-5 events from A4R103 shortlist | Screening is complete; next work is trace construction for strongest candidates. | Codex | 3-5 events | Batch chosen without treating selection as author approval. |
+| P0 | Build canonical trace candidates | Selected strong candidates | Trace candidates are needed before author review is meaningful. | Codex | 3-5 traces | Each trace uses A4R99 asset and checklist, with no release or front-end promotion. |
+| P1 | Candidate shortlist hardening | Remaining strong/good candidates | Moves from broad corpus to manageable high-quality reference pipeline. | Codex | 5-8 events | Each shortlisted event has canonical eligibility rationale and next-action dossier target. |
+| P1 | Boundary/adversarial package planning | A4R103 parked/boundary list | Boundary cases are useful after positive trace candidates are stable. | Codex | 1 batch | Boundary candidates are separated from positive reference candidates. |
 | P2 | External solid-event expansion | New external sources/events | Increases diversity only after canonical recovery stabilizes internally. | ChatGPT (search/curation) + Codex (versioning) | 1 batch | New candidate batch documented with quarantine and source-quality fields completed. |
 | P2 | Front-end data contract preparation | Canonical reference data model | Front-end should only consume approved canonical reference artifacts. | Codex | 1 contract package | Contract draft explicitly bound to canonical fields and excludes invalid artifacts. |
 
@@ -21,3 +21,4 @@ NO_DOWNSTREAM
 - No work item in this queue authorizes new release creation.
 - No work item in this queue authorizes downstream opening.
 - Any missing canonical node/question path must stop trace work (`CANONICAL_NODE_MISSING`).
+- A4R103 screening is complete and did not require author approval.

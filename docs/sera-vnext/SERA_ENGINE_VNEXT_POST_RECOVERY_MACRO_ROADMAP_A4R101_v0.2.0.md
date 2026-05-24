@@ -120,7 +120,17 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
   - `BLOCK1_TECHNICAL_DOCS_COMPLETE_AUTHOR_REVIEW_PENDING`
 - No release creation, no release restoration, and no downstream opening occurred.
 
+## A4+R-103 Execution Update (Block 2)
+- Canonical screening completed without author approval gate:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_BLOCK2_CANONICAL_EVENT_SCREENING_A4R103_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_ALL_EVENTS_SCREENING_MATRIX_A4R103_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_SOLID_REFERENCE_CANDIDATE_SHORTLIST_A4R103_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_PARKED_BOUNDARY_AND_AMBIGUOUS_EVENTS_A4R103_v0.2.0.md`
+- Author approval is not required for screening.
+- No reference case, front-end material, calibration proof, or release was promoted in A4R103.
+- No release creation and no downstream opening occurred.
+
 ## Updated Immediate Sequence
-1. Run combined author review for A4R100 + A4R102.
-2. Record author decision and front-end readiness gate.
-3. Move to BLOCK 2 only after this combined review record.
+1. Choose 3-5 strongest events from the A4R103 shortlist for canonical trace builds.
+2. Build trace candidates from the A4R99 asset only.
+3. Ask for author review only after trace candidates are ready for promotion decisions.

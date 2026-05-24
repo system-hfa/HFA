@@ -1322,5 +1322,25 @@ Block 1 outcome:
 - `BLOCK1_TECHNICAL_DOCS_COMPLETE_AUTHOR_REVIEW_PENDING`
 
 Próxima ação macro:
-- review autoral conjunto de A4R100 + A4R102 em chat;
-- após registro da decisão autoral, avançar para Block 2 (canonical reclassification sweep).
+- avançar para Block 2 screening em lote sem gate autoral;
+- usar review autoral somente depois que trace candidates forem construídos e propostos para promoção.
+
+## A4+R-103 — Block 2 Canonical Event Screening
+
+Esta fase executou screening canônico em lote, sem aprovação autoral e sem promoção de artifacts:
+- [Block 2 Canonical Event Screening A4R103](./SERA_ENGINE_VNEXT_BLOCK2_CANONICAL_EVENT_SCREENING_A4R103_v0.2.0.md)
+- [All Events Screening Matrix A4R103](./SERA_ENGINE_VNEXT_ALL_EVENTS_SCREENING_MATRIX_A4R103_v0.2.0.md)
+- [Solid Reference Candidate Shortlist A4R103](./SERA_ENGINE_VNEXT_SOLID_REFERENCE_CANDIDATE_SHORTLIST_A4R103_v0.2.0.md)
+- [Parked Boundary and Ambiguous Events A4R103](./SERA_ENGINE_VNEXT_PARKED_BOUNDARY_AND_AMBIGUOUS_EVENTS_A4R103_v0.2.0.md)
+
+Registro de estado A4+R-103:
+- corpus screened: 46 rows;
+- strong reference candidates: 8;
+- author approval required for screening: no;
+- new release created: no;
+- downstream opened: no;
+- freeze final authorized: no.
+
+Próxima ação macro:
+- escolher 3-5 candidatos fortes para canonical trace build;
+- review autoral somente depois dos trace candidates, se houver proposta de promoção para reference/front-end/proof/release.

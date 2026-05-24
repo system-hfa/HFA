@@ -78,3 +78,19 @@ NO_DOWNSTREAM
   - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-CANONICAL-A4R102.md`
 - A4R102 boundary pack and A4R100 positive pack both require author review before front-end use.
 - No row in this matrix creates release, changes release, or reduces unresolved status.
+
+## A4+R-103 Screening Overlay
+- Block 2 screening completed:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_ALL_EVENTS_SCREENING_MATRIX_A4R103_v0.2.0.md`
+- Screening does not require author approval.
+- Strong screening shortlist:
+  - REAL-EVENT-0003
+  - REAL-EVENT-0016
+  - D-HHNH
+  - HL9294
+  - BS211-Q400
+  - EXT-001
+  - EXT-002
+  - EXT-006
+- Next action: choose 3-5 for canonical trace candidate builds.
+- No release/downstream/status change was made by the screening overlay.
