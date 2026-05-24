@@ -31,3 +31,11 @@ This tracker records only documentary P-axis pilot releases. It does not alter p
 - downstreamIsolationStatus: PASS
 - traceabilityStatus: COMPLETE_FOR_ALL_4_RELEASES
 - nextStep: A4+R-86 complete; move to A4+R-87 only with explicit scope authorization.
+
+## A4+R-92 Retrospective Author Review Status
+| releasePilotDoc | caseId | authorReviewDecision | releaseStatusAfterA4R92 | effectiveReleasedAfterA4R92 | withdrawalRef | notes |
+|---|---|---|---|---|---|---|
+| P-AXIS-RELEASE-PILOT-REAL-EVENT-0003-PG-A4R85.md | REAL-EVENT-0003 | MAINTAIN_APPROVAL | RELEASE_MAINTAINED | yes | SERA_ENGINE_VNEXT_P_AXIS_RELEASE_RETROSPECTIVE_AUTHOR_REVIEW_A4R92_v0.2.0.md | Maintained after retrospective review. |
+| P-AXIS-RELEASE-PILOT-REAL-EVENT-0015-PG-A4R85.md | REAL-EVENT-0015 | WITHDRAW_APPROVAL | WITHDRAWN_BY_AUTHOR_REVIEW | no | SERA_ENGINE_VNEXT_P_AXIS_RELEASE_WITHDRAWAL_A4R92_v0.2.0.md | Reverted to recommended `P_UNRESOLVED` in documentary status. |
+| P-AXIS-RELEASE-PILOT-N109W-PG-A4R85.md | N109W | WITHDRAW_APPROVAL | WITHDRAWN_BY_AUTHOR_REVIEW | no | SERA_ENGINE_VNEXT_P_AXIS_RELEASE_WITHDRAWAL_A4R92_v0.2.0.md | Reverted to recommended `P_UNRESOLVED` in documentary status. |
+| P-AXIS-RELEASE-PILOT-N11NM-PC-A4R85.md | N11NM | WITHDRAW_APPROVAL | WITHDRAWN_BY_AUTHOR_REVIEW | no | SERA_ENGINE_VNEXT_P_AXIS_RELEASE_WITHDRAWAL_A4R92_v0.2.0.md | Reverted to recommended `P_UNRESOLVED` in documentary status. |

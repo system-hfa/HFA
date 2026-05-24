@@ -1080,3 +1080,32 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-92 - Source-Slicing Sprint for External Unresolved Axes**, com shortlist pequeno de author review em paralelo para casos prontos.
+
+## A4+R-92 - Register Retrospective Author Review Decisions for P-Axis Releases
+
+Esta fase registrou revisao autoral retroativa dos 4 releases documentais/piloto do eixo P e aplicou withdrawal documental controlado para 3 deles:
+
+- [P-Axis Release Retrospective Author Review A4R92](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_RETROSPECTIVE_AUTHOR_REVIEW_A4R92_v0.2.0.md)
+- [P-Axis Release Withdrawal A4R92](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_WITHDRAWAL_A4R92_v0.2.0.md)
+- [P-Axis Release Post-Review Status A4R92](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_POST_REVIEW_STATUS_A4R92_v0.2.0.md)
+- [Post Retrospective Review Next Phase A4R92](./SERA_ENGINE_VNEXT_POST_RETROSPECTIVE_REVIEW_NEXT_PHASE_A4R92_v0.2.0.md)
+- [P-Axis Release Pilot Tracker A4R85](./release-pilot/P_AXIS_RELEASE_PILOT_TRACKER_A4R85_v0.2.0.md) atualizado com status efetivo apos revisao.
+
+Estado apos A4+R-92:
+- retrospective author review recorded;
+- maintainedAfterReview = 1;
+- withdrawnAfterReview = 3;
+- effectivePReleasedAfterA4R92 = 1;
+- oAxisReleased = 0;
+- aAxisReleased = 0;
+- downstreamOpenedCount = 0;
+- runtimeChanges = 0;
+- fixtureChanges = 0;
+- baselineChanges = 0;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-93 - Author Approval Dossier Format Standardization**, para endurecer gate de aprovacao antes de qualquer novo release pilot.
