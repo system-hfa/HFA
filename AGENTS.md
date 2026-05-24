@@ -279,3 +279,20 @@ commit/push status
 Be explicit about uncertainty and scope limits.
 
 Do not claim work was done if it was not validated.
+
+---
+
+## 13. Canonical SERA/CERA Tree Rule
+
+Never invent, approximate, summarize, freely translate, reorder, or reconstruct SERA/CERA decision-tree questions.
+
+For any reference case, calibration trace, questionPath, adjudication proof, author-approval evidence, or front-end calibration artifact:
+
+- use exact canonical tree questions only;
+- record `canonicalTreeSource`, `nodeId` (when available), `exactQuestionTextPT`, `exactQuestionTextENAnchor`, selected answer, and next node/leaf;
+- if exact canonical question or node is missing, stop and mark:
+  - `REAL_TREE_MISSING` or `CANONICAL_NODE_MISSING`
+  - `BLOCKED_BY_MISSING_CANONICAL_TREE`
+  - `DO_NOT_BUILD_REFERENCE_TRACE`
+
+Generic or reconstructed question flows are invalid for reference/front-end/methodology-proof use.

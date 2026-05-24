@@ -1,5 +1,11 @@
 # Withdrawn / Boundary Reference Pack — P-Axis A4+R-96
 
+> A4+R-98 STATUS: INVALID_FOR_REFERENCE_USE / NONCANONICAL_TRACE  
+> Reason: this document contains or depends on reconstructed/generic question flow rather than exact canonical SERA/CERA tree questions.  
+> Do not use for front-end calibration, reference case proof, author approval, release decision, or methodology demonstration.  
+> Preserved for audit history only.  
+> Rebuild required using exact canonical SERA/CERA questions.
+
 > A4+R-97 STATUS: PRE_CANONICAL_DRAFT / NOT_FOR_CANONICAL_REFERENCE_USE_YET  
 > Reason: this document is a boundary-learning pack and does not yet register exact canonical question-by-question Step-2/3/4/5 traversal.  
 > Preserve for audit/governance history only until canonical rebuild format is applied.  

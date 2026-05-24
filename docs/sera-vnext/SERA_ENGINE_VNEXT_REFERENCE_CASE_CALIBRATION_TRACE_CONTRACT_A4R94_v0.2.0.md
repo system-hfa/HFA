@@ -81,7 +81,18 @@ The trace must state:
 - `UNRESOLVED` is valid when evidence threshold is not met.
 - Every step must preserve exact canonical question text from approved SERA/CERA sources.
 - Every step must register Hendy step reference (`STEP_2/3/4/5`) for auditability.
+- Every step must register at least:
+  - `canonicalTreeSource`
+  - `nodeId` (or deterministic derived ID when source has no explicit ID)
+  - `exactQuestionTextPT`
+  - `exactQuestionTextENAnchor`
+  - `answerOptionSelected`
+  - `nextNodeId` or leaf
+  - `evidenceRef`
+  - `answerRationale`
+  - `rejectedAnswerOptions`
 - Generic placeholders (`P1`, `P2`, `O1`, `A1`) cannot be used as methodological question substitutes.
+- If exact canonical question/node is missing, trace must stop with `REAL_TREE_MISSING` or `CANONICAL_NODE_MISSING`.
 - Language calibration must preserve:
   - Hendy English canonical anchor wording;
   - Daumas Portuguese operational wording;
@@ -116,6 +127,7 @@ Reference traces are designed as future front-end teaching/audit content with ex
 - Do not hide uncertainty.
 - Do not treat withdrawn/boundary cases as implementation errors.
 - Do not reconstruct or paraphrase canonical tree questions when exact wording is available.
+- Do not use "minimum questions", "didactic equivalent", or "didático e fiel" as substitutes for canonical tree traversal.
 
 ## Taxonomy Guardrail
 - `O-E = NON_EXISTENT_IN_SERA_PT_V1`.

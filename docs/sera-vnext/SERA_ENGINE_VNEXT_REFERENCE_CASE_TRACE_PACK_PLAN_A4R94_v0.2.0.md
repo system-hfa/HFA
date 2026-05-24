@@ -78,3 +78,15 @@ Each trace pack must be:
   - no release impact;
   - no runtime impact;
   - no downstream impact.
+
+## A4+R-98 Canonical Contamination Cleanup Update
+- Canonical contamination cleanup and governance lock executed:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_CONTAMINATION_AUDIT_A4R98_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_INVALID_REFERENCE_ARTIFACT_REGISTER_A4R98_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_CONTAMINATION_CLEANUP_REBUILD_PLAN_A4R98_v0.2.0.md`
+- A4R95 remains invalid for reference/front-end use.
+- A4R97 sweep remains triage/candidate-review input only (not a canonical reference trace).
+- No reference case is valid for front-end calibration display until canonical rebuild format is completed from exact tree questions.
+- New sequencing lock:
+  1. A4+R-99 — build canonical question tree asset pack.
+  2. A4+R-100 — rebuild REAL-EVENT-0003 from canonical tree only.

@@ -1,3 +1,9 @@
+> A4+R-98 STATUS: INVALID_FOR_REFERENCE_USE / NONCANONICAL_TRACE  
+> Reason: this document contains or depends on reconstructed/generic question flow rather than exact canonical SERA/CERA tree questions.  
+> Do not use for front-end calibration, reference case proof, author approval, release decision, or methodology demonstration.  
+> Preserved for audit history only.  
+> Rebuild required using exact canonical SERA/CERA questions.
+
 > A4+R-96 STATUS: SUPERSEDED / INVALID_FOR_REFERENCE_USE  
 > Reason: this document used reconstructed/generic P/O/A questions rather than the canonical SERA/CERA decision-tree questions.  
 > Author feedback: “Essas não são as perguntas do SERA.”  

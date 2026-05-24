@@ -75,6 +75,16 @@ Approval recording is not valid if:
 - Dossier standardization does not reduce unresolved.
 - Dossier standardization does not open downstream.
 
+## Canonical Trace Dependency Rule
+If the dossier is used as evidence for reference-case validity, front-end calibration display, methodology proof, or any code/release recommendation:
+- it must declare `canonicalTraceDependency=REQUIRED`;
+- it must reference a canonical trace containing exact SERA/CERA question traversal (`canonicalTreeSource`, `nodeId`, `exactQuestionTextPT`, `exactQuestionTextENAnchor`, answers, evidence);
+- if canonical trace is missing/incomplete, mark `BLOCKED_BY_MISSING_CANONICAL_TREE` and do not treat the dossier as approval proof.
+
+If the dossier is only a human textual review artifact (no canonical proof claim):
+- declare `canonicalTraceDependency=NOT_REQUIRED_TEXTUAL_REVIEW_ONLY`;
+- do not use it for reference-case/front-end/methodology proof claims.
+
 ## Taxonomy Guardrail
 - `O-E = NON_EXISTENT_IN_SERA_PT_V1`.
 - `O-E` cannot be used as active objective code in dossiers.

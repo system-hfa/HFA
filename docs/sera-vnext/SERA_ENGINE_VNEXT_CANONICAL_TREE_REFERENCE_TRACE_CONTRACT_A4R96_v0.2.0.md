@@ -7,7 +7,7 @@ GOVERNANCE_CORRECTION
 
 ## Absolute Rules
 1. Reference trace must use real/canonical SERA/CERA questions.
-2. Reconstructed, generic, adapted, or "equivalent" questions are prohibited.
+2. Reconstructed, generic, adapted, translated-freely, reordered, summarized, or "equivalent" questions are prohibited.
 3. Each trace step must register:
    - `canonicalTreeSource`
    - `nodeId` (if available in source)
@@ -22,6 +22,11 @@ GOVERNANCE_CORRECTION
    - `resultingLeafCode` (if leaf)
 4. If any exact canonical question is missing:
    - mark `REAL_TREE_MISSING`
+   - stop trace construction
+   - `BLOCKED_BY_MISSING_CANONICAL_TREE`
+   - `DO_NOT_BUILD_REFERENCE_TRACE`
+4.1 If a canonical node is required but unresolved/missing:
+   - mark `CANONICAL_NODE_MISSING`
    - stop trace construction
    - `BLOCKED_BY_MISSING_CANONICAL_TREE`
    - `DO_NOT_BUILD_REFERENCE_TRACE`

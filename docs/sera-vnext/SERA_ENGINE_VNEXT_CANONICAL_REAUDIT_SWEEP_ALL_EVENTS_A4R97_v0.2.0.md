@@ -22,6 +22,7 @@ Record the first full-scope canonical sweep over all currently tracked events af
 - Step-2 three-question block is required before axis ladders.
 - Existing historical adjudications are not treated as canonical reference traces unless rebuilt with exact canonical question text.
 - Withdrawn decisions from A4R92 remain in force unless new canonical evidence disproves them.
+- This sweep is triage/governance only and is not a canonical reference trace by itself.
 
 ## Case-by-Case Reaudit Queue
 | caseId | sourceGroup | currentStatusAnchor | canonicalReauditOutcome | referencePotentialAfterSweep | nextAction |

@@ -1225,3 +1225,19 @@ Estado após A4+R-97:
 - novos high-potential candidates identificados para trilha de referência canônica após rebuild principal.
 
 O candidate freeze final continua não autorizado.
+
+## A4+R-98 - Canonical Contamination Cleanup and Governance Lock
+
+Esta fase executou limpeza ampla de contaminação canônica em artefatos vNext de referência/calibração:
+
+- [Canonical Contamination Audit A4R98](./SERA_ENGINE_VNEXT_CANONICAL_CONTAMINATION_AUDIT_A4R98_v0.2.0.md)
+- [Invalid Reference Artifact Register A4R98](./SERA_ENGINE_VNEXT_INVALID_REFERENCE_ARTIFACT_REGISTER_A4R98_v0.2.0.md)
+- [Post Cleanup Rebuild Plan A4R98](./SERA_ENGINE_VNEXT_POST_CONTAMINATION_CLEANUP_REBUILD_PLAN_A4R98_v0.2.0.md)
+
+Estado após A4+R-98:
+- A4R95 permanece invalidado para uso de referência/front-end;
+- A4R97 permanece como triagem/candidate review, não como trace canônico;
+- nenhum reference case é considerado válido para front-end calibration até rebuild canônico completo;
+- nova trava de sequência: A4+R-99 (asset pack canônico) é pré-condição para rebuild de eventos.
+
+O candidate freeze final continua não autorizado.

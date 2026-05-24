@@ -19,6 +19,9 @@ Use this template as a copyable, self-contained author decision dossier.
 - currentStatus:
 - sourceQuality:
 - technicalRecommendation: `MAINTAIN | APPROVE | HOLD | WITHDRAW | SOURCE_RECHECK`
+- canonicalTraceDependency: `REQUIRED | NOT_REQUIRED_TEXTUAL_REVIEW_ONLY`
+- canonicalTraceRef: `<trace-doc-path-or-id | n/a>`
+- canonicalTraceStatus: `CANONICAL_VERIFIED | REAL_TREE_MISSING | CANONICAL_NODE_MISSING | NOT_APPLICABLE_TEXTUAL_REVIEW`
 
 ## Event in Plain Language
 5-10 lines:
@@ -84,3 +87,4 @@ Use this template as a copyable, self-contained author decision dossier.
 ## Notes
 - This dossier is decision-facing and must be understandable without opening long technical files.
 - External report conclusions remain quarantined and cannot be used as automatic SERA truth.
+- If `canonicalTraceDependency=REQUIRED`, this dossier is invalid as approval proof unless the canonical trace is present and exact-question compliant.
