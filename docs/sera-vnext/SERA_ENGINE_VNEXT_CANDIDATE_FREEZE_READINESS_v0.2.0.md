@@ -254,6 +254,24 @@ Pendências remanescentes:
 - decidir critérios objetivos de transição para modo `warning` futuro sem gate bloqueante imediato;
 - manter validação externa opcional para claims científicos/externos.
 
+## A4+R-60 — Evidence Category Coverage Quality Thresholds
+
+Esta fase definiu critérios de qualidade para cobertura passiva antes de qualquer transição para warning:
+
+- [Evidence Category Coverage Thresholds](./SERA_ENGINE_VNEXT_EVIDENCE_CATEGORY_COVERAGE_THRESHOLDS_v0.2.0.md)
+
+Estado após A4+R-60:
+- thresholds iniciais definidos para avaliar prontidão de cobertura passiva;
+- warning runtime ainda não ativo;
+- hard gate não autorizado;
+- classificação e gates existentes permanecem inalterados.
+
+Pendências remanescentes:
+- coletar amostra mínima para medir métricas propostas com estabilidade;
+- validar taxa de falso gap e taxa de `UNKNOWN_OR_UNCATEGORIZED` em revisão qualitativa;
+- reavaliar eventual piloto de `NON_BLOCKING_WARNING` em fase posterior dedicada;
+- freeze final continua não autorizado.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.

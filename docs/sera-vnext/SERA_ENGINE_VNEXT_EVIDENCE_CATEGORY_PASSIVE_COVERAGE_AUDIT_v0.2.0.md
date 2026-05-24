@@ -73,5 +73,11 @@ A auditoria não altera:
 - revisão metodológica humana/adjudicação AI/Author consolidada;
 - ausência de regressão em locks e em comportamento de classificação.
 
+## Transition to Warning: not active yet
+- Transição para warning **não está ativa** nesta fase.
+- Qualquer avanço para warning depende de critérios de qualidade definidos em:
+  - [SERA_ENGINE_VNEXT_EVIDENCE_CATEGORY_COVERAGE_THRESHOLDS_v0.2.0.md](./SERA_ENGINE_VNEXT_EVIDENCE_CATEGORY_COVERAGE_THRESHOLDS_v0.2.0.md)
+- Enquanto isso, `PASSIVE_GAP` permanece exclusivamente diagnóstico e não bloqueante.
+
 ## Próxima fase recomendada
 Calibração de thresholds diagnósticos (ainda passivos) e definição de critérios objetivos para eventual modo `WARNING` sem bloqueio automático inicial.
