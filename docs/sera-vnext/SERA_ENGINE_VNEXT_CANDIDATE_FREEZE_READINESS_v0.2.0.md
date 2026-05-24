@@ -1491,3 +1491,23 @@ A4R110 controls:
 - no release created;
 - no downstream opened;
 - no baseline/front-end promotion.
+
+## A4+R-111 — Full-Axis Reference Candidate Rebalancing
+
+This phase corrected reference-governance scope from P-focused internal drafts to explicit P/O/A requirement:
+- [Full Axis Scope Correction A4R111](./SERA_ENGINE_VNEXT_FULL_AXIS_REFERENCE_SCOPE_CORRECTION_A4R111_v0.2.0.md)
+- [A4R105 Shortlist Full-Axis Coverage A4R111](./SERA_ENGINE_VNEXT_A4R105_SHORTLIST_FULL_AXIS_COVERAGE_A4R111_v0.2.0.md)
+- [Axis-Balanced Candidate Matrix A4R111](./SERA_ENGINE_VNEXT_AXIS_BALANCED_REFERENCE_CANDIDATE_MATRIX_A4R111_v0.2.0.md)
+- [Official Reserve O/A Screening A4R111](./SERA_ENGINE_VNEXT_OFFICIAL_RESERVE_O_A_SCREENING_A4R111_v0.2.0.md)
+- [Next Full-Axis Trace Batch Plan A4R111](./SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R111_v0.2.0.md)
+
+Readiness impact:
+- COMAIR-5191 and KOREAN-801 remain approved as P-only internal drafts;
+- these approvals are not invalidated, but they do not satisfy full-reference P/O/A completeness;
+- next draft batch must be selected for balanced P/O/A documentation from the start.
+
+A4R111 controls:
+- no P/O/A closure;
+- no release created;
+- no downstream opened;
+- no baseline/front-end promotion.

@@ -131,3 +131,18 @@ NO_DOWNSTREAM
 | P0 | Keep P-only internal reference status | COMAIR-5191 and KOREAN-801 | Current evidence does not justify automatic O/A expansion across both cases. | Codex | 1 status cycle | P-only status retained with explicit O/A unresolved markers. |
 | P1 | Resolve ASIANA review-required path | ASIANA-214 | Remains excluded from O/A expansion and needs separate method/source handling. | Codex | 1 targeted round | Clear re-entry conditions documented before any new review bundle. |
 | P1 | Reserve activation (conditional) | A4R105 reserve list | Needed if clean multi-axis references are required sooner than O/A expansion can support. | Codex | 1 reserve batch | Reserve candidate selected with release/downstream still closed. |
+
+## A4+R-111 queue update
+- Completed in A4R111:
+  - full-axis scope correction for reference governance;
+  - A4R105 top-10 re-evaluation with explicit P/O/A potential matrix;
+  - balanced 3-5 candidate planning for a full-axis next batch.
+- Execution remained docs-only and FULL_AXIS_REBALANCING_ONLY.
+
+## Immediate queue after A4R111
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Build full-axis trace draft batch | UPS-1354, AMERICAN-1420, ASIANA-214, AIR-CANADA-624 | Rebalanced set gives stronger O/A coverage while preserving P documentation. | Codex | 4 events | Each event has explicit P/O/A sections with canonical or unresolved state per axis. |
+| P1 | Targeted source-slice expansion before or during batch | selected A4R112 events | Prevents axis omission and reduces overclassification risk in O/A branches. | Codex | 1 focused round | Missing evidence for weak O/A nodes is documented and reduced. |
+| P1 | Maintain P-only draft boundary state | COMAIR-5191 and KOREAN-801 | Keeps prior approvals valid without overstating full-reference completeness. | Codex | 1 status cycle | Both cases remain tagged as P-only internal drafts. |
+| P1 | Conditional reserve activation | AMERICAN-965, FIRST-AIR-6560, KEGWORTH-GOBME, G-BLUN-OFFSHORE | Fallback if one primary batch candidate fails readiness. | Codex | 1 reserve swap round | Replacement candidate chosen with explicit P/O/A feasibility rationale. |

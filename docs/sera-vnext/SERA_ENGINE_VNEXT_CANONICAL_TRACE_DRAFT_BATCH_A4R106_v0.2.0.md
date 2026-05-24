@@ -63,3 +63,15 @@ NO_DOWNSTREAM
   - `ASIANA-214`: out of A4R110 scope and remains `REVIEW_REQUIRED`
 - release created in A4R110: no
 - downstream opened in A4R110: no
+
+## A4+R-111 full-axis rebalancing update
+- A4R111 corrected scope from P-focused internal outcomes to full-axis reference governance:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_AXIS_REFERENCE_SCOPE_CORRECTION_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R105_SHORTLIST_FULL_AXIS_COVERAGE_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_AXIS_BALANCED_REFERENCE_CANDIDATE_MATRIX_A4R111_v0.2.0.md`
+- Re-scoping effect:
+  - `COMAIR-5191` and `KOREAN-801` remain valid as P-only internal drafts.
+  - A4R106 top-3 set is not treated as complete P/O/A reference set.
+- Next macro input:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R111_v0.2.0.md`
+  - future trace drafts must document P/O/A for every selected event.

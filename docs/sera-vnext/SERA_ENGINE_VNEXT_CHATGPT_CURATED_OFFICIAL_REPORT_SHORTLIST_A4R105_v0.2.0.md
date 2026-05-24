@@ -58,3 +58,12 @@ Notes:
 Notes:
 - This was source-archive and extraction-prep only.
 - No SERA classification was performed in A4R105b.
+
+## A4+R-111 full-axis rebalance note
+- A4R111 re-evaluated this shortlist under mandatory P/O/A coverage:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R105_SHORTLIST_FULL_AXIS_COVERAGE_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_AXIS_BALANCED_REFERENCE_CANDIDATE_MATRIX_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OFFICIAL_RESERVE_O_A_SCREENING_A4R111_v0.2.0.md`
+- Scope correction from A4R111:
+  - COMAIR-5191 and KOREAN-801 remain P-only internal drafts, not complete references.
+  - Future reference batches must document P/O/A for every selected event.

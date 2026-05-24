@@ -44,3 +44,15 @@ NO_DOWNSTREAM
   - KOREAN-801: `O_UNRESOLVED`, `A_UNRESOLVED`
   - ASIANA-214: unchanged (`REVIEW_REQUIRED`, not part of A4R110 feasibility scope)
 - A4R110 did not alter A4R109 decisions and did not close O/A.
+
+## A4R111 scope correction linkage
+- A4R111 full-axis rebalancing completed:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_AXIS_REFERENCE_SCOPE_CORRECTION_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R105_SHORTLIST_FULL_AXIS_COVERAGE_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_AXIS_BALANCED_REFERENCE_CANDIDATE_MATRIX_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R111_v0.2.0.md`
+- Scope note after A4R111:
+  - COMAIR-5191 approval remains valid as `P-only internal draft`.
+  - KOREAN-801 approval remains valid as `P-only internal boundary draft`.
+  - ASIANA-214 remains `REVIEW_REQUIRED`.
+- A4R111 does not invalidate A4R109 decisions; it re-scopes their use to full-axis governance requirements.

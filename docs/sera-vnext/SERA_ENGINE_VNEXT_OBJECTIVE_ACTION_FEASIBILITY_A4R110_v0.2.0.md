@@ -18,3 +18,9 @@ NO_DOWNSTREAM
 - No case reached A_READY_FOR_AUTHOR_REVIEW.
 - Both cases remain P-only internal references at this stage.
 - A4R110 does not close O/A and does not create release/downstream outcomes.
+
+## A4R111 follow-on scope note
+- A4R111 confirms the A4R110 interpretation as governance baseline:
+  - COMAIR-5191 and KOREAN-801 remain P-only internal drafts.
+  - They are not full SERA reference cases until P/O/A are all documented with canonical paths or explicit unresolved states.
+- A4R110 outputs remain feasibility-only inputs to the next full-axis batch plan.

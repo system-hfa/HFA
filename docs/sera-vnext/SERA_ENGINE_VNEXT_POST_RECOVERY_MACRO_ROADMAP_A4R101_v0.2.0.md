@@ -259,3 +259,23 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Keep COMAIR-5191 and KOREAN-801 as P-only internal references while O/A remains unresolved or source-slice dependent.
 2. If objective/action expansion is still desired, run focused source-slice expansion for COMAIR-5191 first, then reassess readiness for one O/A author-review bundle.
 3. Keep ASIANA-214 on review-required pathway; use reserve pathway if cleaner multi-axis references are needed sooner.
+
+## A4+R-111 Execution Update (Full-Axis Reference Candidate Rebalancing)
+- Full-axis scope correction package created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_AXIS_REFERENCE_SCOPE_CORRECTION_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R105_SHORTLIST_FULL_AXIS_COVERAGE_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_AXIS_BALANCED_REFERENCE_CANDIDATE_MATRIX_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OFFICIAL_RESERVE_O_A_SCREENING_A4R111_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R111_v0.2.0.md`
+- A4R111 re-scope decision:
+  - COMAIR-5191 and KOREAN-801 approvals remain valid as P-only internal drafts.
+  - They are not promoted as complete full-axis references.
+  - Future reference traces must document P/O/A for every event.
+- P/O/A closure in A4R111: no
+- release created in A4R111: no
+- downstream opened in A4R111: no
+
+## Updated Immediate Sequence After A4R111
+1. Build the next full-axis trace draft batch with balanced P/O/A candidates (`UPS-1354`, `AMERICAN-1420`, `ASIANA-214`, `AIR-CANADA-624`).
+2. Require explicit P/O/A axis sections for each event, including nominal/no-failure or unresolved handling where needed.
+3. Keep COMAIR-5191 and KOREAN-801 as P-only internal drafts unless dedicated O/A source-slice expansion is executed.
