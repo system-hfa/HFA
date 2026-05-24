@@ -77,3 +77,10 @@ Transformar os 15 casos selecionados em uma rodada única de extração estrutur
 ## Confirmação metodológica
 - `O-E = NON_EXISTENT_IN_SERA_PT_V1` permanece guardrail negativo/adversarial e não é código ativo.
 - Esta fase e a próxima (`A4+R-76`) não executam classificação causal.
+
+## A4+R-76 Update
+- Batch 3 extraído em lote único com 15 arquivos em `docs/sera-vnext/real-event-extractions-batch-3/`.
+- Nenhuma classificação SERA executada durante a extração.
+- Nenhum `proposedCode` ou `releasedCode` criado.
+- Nenhum downstream aberto.
+- Próxima fase recomendada: **A4+R-77 — Batch 3 AI/Author Adjudication for 15 extracted cases**.

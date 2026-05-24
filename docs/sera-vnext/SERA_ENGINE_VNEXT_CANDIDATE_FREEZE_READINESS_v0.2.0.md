@@ -585,3 +585,38 @@ Estado após A4+R-75:
 
 Próxima fase ampla recomendada:
 - **A4+R-76 — Structured Extraction Batch 3 from Selected 15 Events**.
+
+## A4+R-76 — Structured Extraction Batch 3 from Selected 15 Events
+
+Esta fase executou extração factual estruturada em lote para os 15 casos selecionados no Batch 3:
+
+- [Structured Extraction Batch 3 A4R76](./SERA_ENGINE_VNEXT_STRUCTURED_EXTRACTION_BATCH_3_A4R76_v0.2.0.md)
+- extrações por caso em:
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-001.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-002.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-003.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-004.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-005.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-006.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-007.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-008.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-009.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-010.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-011.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-012.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-013.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-014.md`
+  - `docs/sera-vnext/real-event-extractions-batch-3/REAL-EVENT-BATCH3-EXTRACTION-015.md`
+
+Estado após A4+R-76:
+- 15 casos Batch 3 extraídos;
+- total real-event extractions agora em 30;
+- classificação ainda pendente para os casos do Batch 3;
+- nenhuma classificação SERA executada nesta fase de extração;
+- nenhum `proposedCode` criado;
+- nenhum `releasedCode` criado;
+- nenhum downstream aberto;
+- freeze final continua não autorizado.
+
+Próxima fase ampla recomendada:
+- **A4+R-77 — Batch 3 AI/Author Adjudication for 15 extracted cases**.
