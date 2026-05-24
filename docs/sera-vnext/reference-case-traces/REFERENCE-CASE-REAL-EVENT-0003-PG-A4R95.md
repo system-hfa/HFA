@@ -1,3 +1,11 @@
+> A4+R-96 STATUS: SUPERSEDED / INVALID_FOR_REFERENCE_USE  
+> Reason: this document used reconstructed/generic P/O/A questions rather than the canonical SERA/CERA decision-tree questions.  
+> Author feedback: “Essas não são as perguntas do SERA.”  
+> Preserved for audit history only.  
+> Do not use for front-end calibration display, methodological proof, or reference-case demonstration.  
+> A corrected trace must be rebuilt only from the canonical SERA/CERA question tree.  
+> If the canonical tree is unavailable, the rebuild is BLOCKED.
+
 # Reference Case Trace — REAL-EVENT-0003 — P-G
 
 ## 1. Header

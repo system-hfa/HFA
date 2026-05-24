@@ -48,3 +48,18 @@ Each trace pack must be:
 - Next RC-1 priority:
   - build withdrawn/boundary reference pack for REAL-EVENT-0015; or
   - build combined withdrawn trio pack (REAL-EVENT-0015, N109W, N11NM).
+
+## A4+R-96 Execution Update
+- A4+R-95 trace pack for REAL-EVENT-0003 was superseded:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md`
+- Supersede reason:
+  - noncanonical/generic P/O/A question flow (not canonical SERA/CERA tree questions).
+- Impact guardrails:
+  - no release impact;
+  - no runtime impact;
+  - no downstream impact;
+  - only reference trace validity impacted.
+- Reference-case work is now blocked until canonical SERA/CERA tree sources are used step-by-step.
+- Next phase depends on `canonicalTreeStatus` from A4+R-96 inventory:
+  - if complete: rebuild trace from exact canonical tree;
+  - if incomplete/absent: recover missing canonical tree assets first.

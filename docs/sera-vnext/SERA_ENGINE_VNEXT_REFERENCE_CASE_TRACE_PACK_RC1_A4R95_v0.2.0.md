@@ -10,6 +10,13 @@ NO_DOWNSTREAM
 ## Objective
 Record completion of the first reference case calibration trace pack (RC-1 starter) for REAL-EVENT-0003 as positive internal calibration artifact.
 
+## A4+R-96 Correction Status
+- A4+R-95 trace is now `SUPERSEDED / INVALID_FOR_REFERENCE_USE`.
+- supersede reason: noncanonical/generic P/O/A questions were used instead of canonical SERA/CERA tree questions.
+- author feedback recorded: “Essas não são as perguntas do SERA.”
+- preserved for audit history only.
+- do not use this RC1 artifact for front-end calibration, methodological proof, or reference-case demonstration.
+
 ## Case Built
 - caseId: REAL-EVENT-0003
 - referenceTraceFile: `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md`
@@ -31,8 +38,8 @@ Record completion of the first reference case calibration trace pack (RC-1 start
 - O-axis and A-axis remain not released in this reference trace.
 - PF/PM/callout micro-timeline is still not fully decomposed for action-axis closure.
 - This pack is methodological calibration content, not full accident conclusion.
+- canonical-tree nonconformance identified in A4+R-96 invalidates this pack for active reference use.
 
 ## Next Recommended Reference Packs
-- REAL-EVENT-0015 as first withdrawn/boundary reference trace.
-- N109W as second withdrawn/boundary reference trace.
-- N11NM as third withdrawn/boundary reference trace.
+- blocked until canonical SERA/CERA tree question source is complete/sufficient.
+- next phase depends on A4+R-96 canonical tree inventory status.

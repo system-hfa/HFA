@@ -1184,4 +1184,25 @@ Estado apos A4+R-95:
 O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
-- **A4+R-96 - Build Withdrawn/Boundary Reference Trace Pack** para REAL-EVENT-0015, N109W e N11NM.
+- **A4+R-96 - Supersede Noncanonical Reference Trace and Recover Canonical SERA/CERA Tree**.
+
+## A4+R-96 - Supersede Noncanonical Reference Trace and Recover Canonical SERA/CERA Tree
+
+Esta fase corrigiu governanca metodologica de reference trace apos feedback autoral direto de nao conformidade:
+
+- [A4R95 Noncanonical Trace Error Audit A4R96](./SERA_ENGINE_VNEXT_A4R95_NONCANONICAL_TRACE_ERROR_AUDIT_A4R96_v0.2.0.md)
+- [Canonical SERA Tree Source Inventory A4R96](./SERA_ENGINE_VNEXT_CANONICAL_SERA_TREE_SOURCE_INVENTORY_A4R96_v0.2.0.md)
+- [Canonical Tree Reference Trace Contract A4R96](./SERA_ENGINE_VNEXT_CANONICAL_TREE_REFERENCE_TRACE_CONTRACT_A4R96_v0.2.0.md)
+- [Rebuild Plan REAL-EVENT-0003 Canonical Trace A4R96](./SERA_ENGINE_VNEXT_REBUILD_REAL_EVENT_0003_CANONICAL_TRACE_PLAN_A4R96_v0.2.0.md)
+- [Reference Case Trace REAL-EVENT-0003 P-G A4R95](./reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md) marcado como `SUPERSEDED / INVALID_FOR_REFERENCE_USE`.
+
+Estado apos A4+R-96:
+- erro metodologico registrado: `NONCANONICAL_QUESTION_FLOW`;
+- A4R95 invalidado para uso de referencia/calibracao/front-end;
+- release REAL-EVENT-0003 P-G mantido sem alteracao;
+- nenhum release novo;
+- nenhum downstream aberto;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado;
+- trabalho de reference case bloqueado ate uso de arvore canonica SERA/CERA com perguntas exatas;
+- proxima fase condicionada a `canonicalTreeStatus`.
