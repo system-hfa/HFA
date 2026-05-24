@@ -1136,3 +1136,30 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-94 - ChatGPT Solid Event Discovery Batch 2**, com apoio opcional do Perplexity Pro apenas para localizar fontes oficiais quando necessario.
+
+## A4+R-94 - Reference Case Calibration Trace Design
+
+Esta fase definiu o desenho documental e o contrato metodologico para futuros reference case calibration traces:
+
+- [Reference Case Calibration Trace Contract A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_CALIBRATION_TRACE_CONTRACT_A4R94_v0.2.0.md)
+- [Reference Case Calibration Trace Template A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_CALIBRATION_TRACE_TEMPLATE_A4R94_v0.2.0.md)
+- [Reference Case Candidate Shortlist A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_CANDIDATE_SHORTLIST_A4R94_v0.2.0.md)
+- [Reference Case Trace Pack Plan A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_TRACE_PACK_PLAN_A4R94_v0.2.0.md)
+- [Reference Case Frontend Display Notes A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_FRONTEND_DISPLAY_NOTES_A4R94_v0.2.0.md)
+- [Post Reference Trace Design Next Phase A4R94](./SERA_ENGINE_VNEXT_POST_REFERENCE_TRACE_DESIGN_NEXT_PHASE_A4R94_v0.2.0.md)
+
+Estado apos A4+R-94:
+- reference case trace contract criado;
+- reference case trace template criado;
+- reference case candidate shortlist criada;
+- reference case trace pack plan criado;
+- reference case frontend display notes criadas;
+- nenhum release novo;
+- nenhum downstream aberto;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-95 - Build First Reference Case Trace Pack for REAL-EVENT-0003**.
