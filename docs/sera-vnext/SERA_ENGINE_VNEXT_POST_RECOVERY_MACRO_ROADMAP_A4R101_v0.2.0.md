@@ -193,3 +193,19 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Prepare one author-review bundle for the three A4R106 drafts without release/front-end promotion.
 2. If author review finds major weak-node gaps, execute targeted source-slice expansion before any O/A closure attempt.
 3. Keep release/downstream/front-end promotion closed until post-review promotion decisions.
+
+## A4+R-107 Execution Update (Quality Audit + Review Bundle)
+- A4R106 draft quality audit completed:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_CANONICAL_TRACE_QUALITY_AUDIT_A4R107_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_NODE_EVIDENCE_MATRIX_A4R107_v0.2.0.md`
+- Author-review package prepared:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_AUTHOR_REVIEW_BUNDLE_A4R107_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_A4R106_REVIEW_GATE_PLAN_A4R107_v0.2.0.md`
+- Author approval requested in A4R107 repo docs: no
+- Release created in A4R107: no
+- Downstream opened in A4R107: no
+
+## Updated Immediate Sequence After A4R107
+1. Execute one author review in chat using the A4R107 bundle.
+2. If fewer than two cases remain eligible after review, activate reserve candidates from A4R105.
+3. Keep release/downstream/front-end promotion closed until explicit post-review decision.

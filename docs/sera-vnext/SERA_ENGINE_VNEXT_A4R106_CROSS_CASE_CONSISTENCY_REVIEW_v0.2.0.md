@@ -25,3 +25,9 @@ TRACE_DRAFT_BATCH_ONLY
 - keyLimitation: all three cases still benefit from one additional targeted source slice before any O/A closure attempt.
 - noRelease: true
 - noDownstream: true
+
+## A4+R-107 consistency re-audit note
+- Canonical node/question/answer integrity against A4R99 remained intact for all three cases.
+- No forced O/A closure was detected.
+- Author review was not requested in repository artifacts.
+- No release/downstream/front-end promotion was performed.

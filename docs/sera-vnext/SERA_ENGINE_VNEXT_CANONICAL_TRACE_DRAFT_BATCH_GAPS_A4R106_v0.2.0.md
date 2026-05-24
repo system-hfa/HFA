@@ -11,3 +11,9 @@ TRACE_DRAFT_BATCH_ONLY
 | ASIANA-214 | finer-grain CVR/FDR synchronization for mode awareness vs callouts | P_CAPABILITY vs P_INFORMATION_AVAILABLE boundary | MEDIUM | targeted timeline slice around final 1000-200 ft | is P-G sufficiently stable without A draft? | keep P draft; run one focused source slice before any A-axis attempt |
 | COMAIR-5191 | tighter mapping of runway-signage/cockpit visual scan at runway entry | P_TIME_PRESSURE branch confidence | LOW/MEDIUM | narrow source slice at hold-short crossing + lineup checklist | should escape point be fixed at hold-short or lineup completion? | keep P-G draft and defer O/A until additional cross-check evidence |
 | KOREAN-801 | higher-fidelity linkage between ambiguity moments and control strategy updates | P_INFORMATION_AMBIGUOUS confidence versus P-G alternative | MEDIUM | targeted source slice around 0139:44-0142:22 CVR/FDR chain | is ambiguity branch stronger than available-information branch after deeper slicing? | keep P-F draft and schedule one additional ambiguity-focused slice |
+
+## A4+R-107 gap handling update
+- Gap severity and weak-node concerns were re-audited in A4R107.
+- ASIANA-214 remains the most boundary-sensitive draft in this batch.
+- COMAIR-5191 remains the most stable perception-side draft.
+- KOREAN-801 remains viable with explicit `P-F` versus `P-G` reviewer concern retained.

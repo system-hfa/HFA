@@ -1425,3 +1425,17 @@ Status controls for A4R105b:
 - no author approval requested;
 - no release created;
 - no downstream opened.
+
+## A4+R-107 — Canonical Trace Quality Audit and Review Bundle
+
+This phase prepared quality-audit and author-review artifacts for the A4R106 top-3 drafts:
+- canonical quality audit;
+- node-level evidence matrix;
+- self-contained author review bundle;
+- post-review gate plan.
+
+A4R107 controls:
+- author approval requested in repository: no;
+- release created: no;
+- downstream opened: no;
+- front-end promotion: no.

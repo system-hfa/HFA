@@ -75,3 +75,17 @@ NO_DOWNSTREAM
 |---|---|---|---|---|---:|---|
 | P0 | Use local corpus first for A4R106 inputs | ASIANA-214, COMAIR-5191, KOREAN-801 | Reduces source drift and keeps trace build reproducible. | Codex | 3 reports | Source slices built from local PDFs/TXTs with quarantine discipline. |
 | P1 | Reserve-source deep extraction (conditional) | remaining curated reserve | Enables next batch readiness if top-3 weakens. | Codex | 1 prep batch | Reserve reports receive extraction indices and search slices. |
+
+## A4+R-107 queue update
+- Completed in A4R107:
+  - quality audit for A4R106 top-3 drafts;
+  - node-evidence matrix and author-review bundle build;
+  - post-A4R106 gate plan.
+- Execution remained docs-only, quality-audit-only, review-bundle-only.
+
+## Immediate queue after A4R107
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Run one author review in chat for A4R106 bundle | ASIANA-214, COMAIR-5191, KOREAN-801 | Audit left at least two cases still eligible for draft retention. | Codex + user | 1 bundle | Author records keep/downgrade decisions without release action. |
+| P1 | Targeted source-slice expansion fallback | weak nodes flagged by author | Prevents overclassification if review rejects key branches. | Codex | 1 focused round | Updated slices reduce weak-node uncertainty in at least two cases. |
+| P1 | Reserve activation (conditional) | A4R105 reserve list | Backup if eligibility falls below threshold after review. | Codex | 1 reserve batch | Next draft batch selected with release/downstream still closed. |
