@@ -59,3 +59,24 @@ A4+R-65 — Author Decision Intake for Open Adjudication Questions + Source Enri
 - `proposedCode` permanece apenas draft documental.
 - Nenhum `releasedCode` foi criado.
 - Nenhum downstream foi aberto.
+
+## A4+R-66 — Coverage metrics de adjudicação
+- Relatório de métricas criado:
+  - `SERA_ENGINE_VNEXT_REAL_EVENT_ADJUDICATION_COVERAGE_METRICS_v0.2.0.md`
+- Tracker resumido criado:
+  - `real-event-adjudications/ADJUDICATION_COVERAGE_TRACKER_v0.2.0.md`
+
+Principais métricas:
+- `totalCases=5`, `totalAxes=15`
+- `totalDraftProposedCodes=5`
+- `totalUnresolvedAxes=10` (`66.7%`)
+- eixo A permanece `5/5` em `UNRESOLVED`
+- `enrichmentRequiredCases=2` (004 e 005)
+
+Padrões observados:
+- comportamento conservador foi mantido (sem fechamento forçado de eixo);
+- overclassification evitada em cenário de ambiguidade/multi-ator/fonte parcial;
+- principal gargalo está em decomposição de atores e em qualidade de source anchor.
+
+Próxima fase recomendada:
+- A4+R-67 — Source Enrichment Execution for 004/005.

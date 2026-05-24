@@ -368,6 +368,22 @@ Estado após A4+R-65:
 - nenhum downstream habilitado;
 - freeze final continua não autorizado.
 
+## A4+R-66 — Real Event Adjudication Coverage Metrics
+
+Esta fase mediu cobertura metodológica da adjudicação real-event sem alterar decisões de código:
+
+- [Real Event Adjudication Coverage Metrics](./SERA_ENGINE_VNEXT_REAL_EVENT_ADJUDICATION_COVERAGE_METRICS_v0.2.0.md)
+- [Adjudication Coverage Tracker](./real-event-adjudications/ADJUDICATION_COVERAGE_TRACKER_v0.2.0.md)
+
+Estado após A4+R-66:
+- `totalCases=5`, `totalAxes=15`;
+- `totalDraftProposedCodes=5`;
+- `totalUnresolvedAxes=10` (`66.7%`), com concentração em eixo A (`5/5 unresolved`);
+- gaps de enrichment claramente delimitados para 004/005;
+- nenhum `releasedCode`;
+- nenhum downstream habilitado;
+- freeze final continua não autorizado.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.
