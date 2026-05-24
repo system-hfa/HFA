@@ -24,3 +24,10 @@ DOWNSTREAM_LOCKED
 
 ## Confirmation
 This tracker records only documentary P-axis pilot releases. It does not alter proposedCode, selectedCode, unresolved axes, fixtures, baselines, runtime, UI/API/DB, or downstream outputs.
+
+## A4+R-86 Audit and Rollback Readiness
+- auditStatus: PASS_WITH_WARNINGS
+- rollbackReady: true
+- downstreamIsolationStatus: PASS
+- traceabilityStatus: COMPLETE_FOR_ALL_4_RELEASES
+- nextStep: A4+R-86 complete; move to A4+R-87 only with explicit scope authorization.

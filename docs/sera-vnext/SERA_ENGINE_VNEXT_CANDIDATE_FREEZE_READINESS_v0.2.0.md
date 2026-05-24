@@ -910,3 +910,34 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-86 - P-Axis Release Pilot Audit and Rollback Readiness**.
+
+## A4+R-86 - P-Axis Release Pilot Audit and Rollback Readiness
+
+Esta fase auditou o micro-pilot documental A4+R-85 e preparou a prontidao de rollback/withdrawal sem alterar runtime:
+
+- [P-Axis Release Pilot Audit A4R86](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_PILOT_AUDIT_A4R86_v0.2.0.md)
+- [P-Axis Release Pilot Rollback Readiness A4R86](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_PILOT_ROLLBACK_READINESS_A4R86_v0.2.0.md)
+- [P-Axis Release Traceability Matrix A4R86](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_TRACEABILITY_MATRIX_A4R86_v0.2.0.md)
+- [P-Axis Release Downstream Isolation Check A4R86](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_DOWNSTREAM_ISOLATION_CHECK_A4R86_v0.2.0.md)
+- [P-Axis Release Pilot Tracker A4R85](./release-pilot/P_AXIS_RELEASE_PILOT_TRACKER_A4R85_v0.2.0.md)
+
+Estado apos A4+R-86:
+- audit report criado;
+- rollback readiness criado;
+- traceability matrix criada;
+- downstream isolation check criado;
+- pAxisReleased permanece 4;
+- oAxisReleased = 0;
+- aAxisReleased = 0;
+- downstreamOpenedCount = 0;
+- runtime unchanged;
+- proposedCodeChanges = 0;
+- unresolvedReduced = 0;
+- no selectedCode CLASSIFIED;
+- nenhum fixture/baseline/codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-87 - External Source Enrichment Strategy for Released P-Axis Trace Stability**; ou
+- **A4+R-87 - Product/Runtime Contract for Released Axis Separation** (docs-only, sem implementacao).
