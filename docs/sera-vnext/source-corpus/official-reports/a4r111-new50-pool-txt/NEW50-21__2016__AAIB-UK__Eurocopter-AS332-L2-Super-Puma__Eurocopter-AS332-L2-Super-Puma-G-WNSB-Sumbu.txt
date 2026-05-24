@@ -1,0 +1,184 @@
+Aircraft Accident Report AAR 1/2016 - G-WNSB, 23 August 2013 - GOV.UK 
+
+Cookies on GOV.UK 
+
+We use some essential cookies to make this website work. 
+We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. 
+We also use cookies set by other sites to help us deliver content from their services. 
+You have accepted additional cookies. You can change your cookie settings at any time. 
+You have rejected additional cookies. You can change your cookie settings at any time. 
+Accept additional cookies Reject additional cookies View cookies 
+Hide cookie message Skip to main content 
+
+GOV.UK 
+Navigation menu 
+Menu Menu 
+
+Services and information 
+Benefits 
+Births, death, marriages and care 
+Business and self-employed 
+Childcare and parenting 
+Citizenship and living in the UK 
+Crime, justice and the law 
+Disabled people 
+Driving and transport 
+Education and learning 
+Employing people 
+Environment and countryside 
+Housing and local services 
+Money and tax 
+Passports, travel and living abroad 
+Visas and immigration 
+Working, jobs and pensions 
+
+Government activity 
+Departments 
+Departments, agencies and public bodies 
+News 
+News stories, speeches, letters and notices 
+Guidance and regulation 
+Detailed guidance, regulations and rules 
+Research and statistics 
+Reports, analysis and official statistics 
+Policy papers and consultations 
+Consultations and strategy 
+Transparency 
+Data, Freedom of Information releases and corporate reports 
+Search GOV.UK × Search GOV.UK 
+
+Search 
+
+Search GOV.UK 
+
+Search 
+
+Home 
+Air Accidents Investigation Branch reports 
+
+Aircraft Accident Report AAR 1/2016 - G-WNSB, 23 August 2013 
+
+Report on the accident to Eurocopter AS332 L2 Super Puma, G-WNSB on approach to Sumburgh Airport in the Shetland Islands, 23 August 2013. 
+
+From: Air Accidents Investigation Branch Published 15 March 2016 
+
+Category: Commercial - rotorcraft Report type: Formal report Date of occurrence: 23 August 2013 Aircraft type: Eurocopter AS332 L2 Super Puma Location: Approximately 1.7 nm west of Sumburgh Airport, Shetland Islands Registration: G-WNSB 
+
+Contents 
+Introduction 
+Summary 
+Addendum 
+Download addendum 
+Download amended report 
+Download amended bulletin summary 
+Special Bulletins connected with this investigation 
+Safety Recommendation Document 
+
+Introduction 
+The accident was reported by the helicopter operator at approximately 1756 hrs on the day of the accident. 
+In exercise of his powers, the Chief Inspector of Air Accidents ordered an investigation into the accident be carried out in accordance with the Civil Aviation (Investigation of Air Accidents and Incidents) Regulations 1996. The sole objective of the investigation of an accident or incident under these Regulations is the prevention of accidents and incidents. It shall not be the purpose of such an investigation to apportion blame or liability. 
+The AAIB despatched teams of investigators and support staff to Aberdeen and the Shetland Islands early the following morning, to commence the investigation. 
+In accordance with the provisions of ICAO Annex 13, France (the State of aircraft design and manufacture) appointed an Accredited Representative from the BEA , assisted by Advisers from the helicopter and engine manufacturers. Advisers from the European Aviation Safety Agency (EASA) and the UK Civil Aviation Authority (CAA) also participated in the investigation. 
+Summary 
+At 1717 hrs UTC on 23 August 2013, an AS332 L2 Super Puma helicopter with sixteen passengers and two crew on board crashed in the sea during the approach to land at Sumburgh Airport. Four of the passengers did not survive. 
+The purpose of the flight was to transport the passengers, who were employees of the UK offshore oil and gas industry, to Aberdeen. On the accident flight, the helicopter had departed the Borgsten Dolphin semi-submersible drilling platform in the North Sea, to route to Sumburgh Airport for a refuelling stop. It then planned to continue to Aberdeen Airport. 
+The commander was the Pilot Flying (PF) on the accident sector. The weather conditions were such that the final approach to Runway 09 at Sumburgh Airport was flown in cloud, requiring the approach to be made by sole reference to the helicopter’s instruments, in accordance with the Standard Operating Procedure (SOP) set out in the operator’s Operating Manual (OM). The approach was flown with the autopilot in 3-axes with Vertical Speed (V/S) mode, which required the commander to operate the collective pitch control manually to control the helicopter’s airspeed. The co-pilot was responsible for monitoring the helicopter’s vertical flightpath against the published approach vertical profile and for seeking the external visual references necessary to continue with the approach and landing. The procedures permitted the helicopter to descend to a height of 300 ft, the Minimum Descent Altitude (MDA) for the approach, at which point a level-off was required if visual references had not yet been acquired. 
+Although the approach vertical profile was maintained initially, insufficient collective pitch control input was applied by the commander to maintain the approach profile and the target approach airspeed of 80 kt. This resulted in insufficient engine power being provided and the helicopter’s airspeed reduced continuously during the final approach. Control of the flightpath was lost and the helicopter continued to descend below the MDA. During the latter stages of the approach the helicopter’s airspeed had decreased below 35 kt and a high rate of descent had developed. 
+The decreasing airspeed went unnoticed by the pilots until a very late stage, when the helicopter was in a critically low energy state. The commander’s attempt to recover the situation was unsuccessful and the helicopter struck the surface of the sea approximately 1.7 nm west of Sumburgh Airport. It rapidly filled with water and rolled inverted, but was kept afloat by the flotation bags which had deployed. 
+Search and Rescue (SAR) assets were dispatched to assist and the survivors were rescued by the Sumburgh-based SAR helicopters that attended the scene. 
+The investigation identified the following causal factors in the accident: 
+
+The helicopter’s flight instruments were not monitored effectively during the latter stages of the non-precision instrument approach. This allowed the helicopter to enter a critically low energy state, from which recovery was not possible. 
+
+Visual references had not been acquired by the Minimum Descent Altitude (MDA) and no effective action was taken to level the helicopter, as required by the operator’s procedure for an instrument approach. 
+The following contributory factors were identified: 
+
+The operator’s SOP for this type of approach was not clearly defined and the pilots had not developed a shared, unambiguous understanding of how the approach was to be flown. 
+
+The operator’s SOPs at the time did not optimise the use of the helicopter’s automated systems during a Non-Precision Approach. 
+
+The decision to fly a 3-axes with V/S mode, decelerating approach in marginal weather conditions did not make optimum use of the helicopter’s automated systems and required closer monitoring of the instruments by the crew. 
+
+Despite the poorer than forecast weather conditions at Sumburgh Airport, the commander had not altered his expectation of being able to land from a Non-Precision Approach. 
+AAIB Special Bulletins S6/2013 and S7/2013 , published on 5 September 2013 and 18 October 2013 respectively, provided initial information on the circumstances of the accident. Special Bulletin S1/2014 , published on 23 January 2014, highlighted a safety concern relating to pre-flight safety briefings given to passengers, on the functionality of emergency equipment provided to them for UK North Sea offshore helicopter flights. 
+The AAIB investigation found similarities between this accident and previous accidents resulting from ineffective monitoring of the flight instruments by the flight crew. 
+Following this accident, the operator of G-WNSB and the Civil Aviation Authority (CAA) took safety actions intended to prevent similar accidents in future and to increase the level of safety of UK offshore helicopter operations in the North Sea. 
+During the investigation a number of additional safety concerns were identified. In addition to the Safety Recommendations issued in the aforementioned Special Bulletins, this final report contains further Safety Recommendations concerned with the certification of rotorcraft, Helicopter Flight Data Monitoring and offshore helicopter survivability. 
+Addendum 
+An addendum was issued concerning this report on 13 August 2020. 
+Download addendum: 
+Addendum: AAR 1/2016 Eurocopter AS332 L2 Super Puma, G-WNSB 09-20 
+Download amended report: 
+AAR 1/2016 - Eurocopter AS332 L2 Super Puma, G-WNSB 
+Download amended bulletin summary: 
+Eurocopter AS332 L2 Super Puma, G-WNSB 04-16 
+Special Bulletins connected with this investigation: 
+Special Bulletin S6/2013 
+Special Bulletin S7/2013 
+Special Bulletin S1/2014 
+Safety Recommendation Document: 
+G-WNSB Safety Recommendation Document 
+
+Updates to this page 
+Published 15 March 2016 
+
+Contents 
+
+Explore the topic 
+Air accidents and serious incidents 
+
+Is this page useful? 
+Maybe 
+Yes this page is useful 
+No this page is not useful 
+Thank you for your feedback 
+Report a problem with this page 
+
+Help us improve GOV.UK 
+Do not include personal or financial information like your National Insurance number or credit card details. 
+This field is for robots only. Please leave blank 
+What were you doing? 
+What went wrong? 
+Send Cancel 
+
+Help us improve GOV.UK 
+To help us improve GOV.UK, we’d like to know more about your visit today. Please fill in this survey (opens in a new tab ) . Cancel 
+
+Services and information 
+Benefits 
+Births, death, marriages and care 
+Business and self-employed 
+Childcare and parenting 
+Citizenship and living in the UK 
+Crime, justice and the law 
+Disabled people 
+Driving and transport 
+Education and learning 
+Employing people 
+Environment and countryside 
+Housing and local services 
+Money and tax 
+Passports, travel and living abroad 
+Visas and immigration 
+Working, jobs and pensions 
+
+Government activity 
+Departments 
+News 
+Guidance and regulation 
+Research and statistics 
+Policy papers and consultations 
+Transparency 
+How government works 
+Get involved 
+
+Support links 
+Help 
+Privacy 
+Cookies 
+Accessibility statement 
+Contact 
+Terms and conditions 
+Rhestr o Wasanaethau Cymraeg 
+Government Digital Service All content is available under the Open Government Licence v3.0 , except where otherwise stated 
+© Crown copyright

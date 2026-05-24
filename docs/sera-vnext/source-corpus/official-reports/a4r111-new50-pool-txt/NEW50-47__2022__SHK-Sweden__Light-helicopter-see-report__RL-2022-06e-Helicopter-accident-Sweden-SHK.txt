@@ -1,0 +1,1607 @@
+Final report RL 2022:06e
+Accident at Åsäng, Västernorrland
+County on 16 November 2021 involving
+the helicopter LN-OYH of the model AS
+350 B3, operated by Heliscan
+File no. L-84/21
+
+7 November 2022
+                                                                                                           RL 2022:06e
+
+
+
+
+          SHK investigates accidents and incidents from a safety perspective. Its
+          investigations are aimed at preventing a similar event from occurring in the
+          future, or limiting the effects of such an event. The investigations do not deal
+          with issues of guilt, blame or liability for damages.
+
+
+
+          The report is also available on SHK´s web site: www.havkom.se
+
+          ISSN 1400-5719
+
+          This document is a translation of the original Swedish report. In case of
+          discrepancies between this translation and the Swedish original text, the
+          Swedish text shall prevail in the interpretation of the report.
+
+
+
+
+          Photos and graphics in this report are protected by copyright. Unless other-
+          wise noted, SHK is the owner of the intellectual property rights.
+
+          With the exception of the SHK logo, and photos and graphics to which a third
+          party holds copyright, this publication is licensed under a Creative Commons
+          Attribution 2.5 Sweden license. This means that it is allowed to copy, distri-
+          bute and adapt this publication provided that you attribute the work.
+
+          The SHK preference is that you attribute this publication using the following
+          wording: “Source: Swedish Accident Investigation Authority”.
+
+
+
+
+          Where it is noted in the report that a third party holds copyright to photos,
+          graphics or other material, that party’s consent is needed for reuse of the
+          material.
+
+          Cover photo no. 3 – © Anders Sjödén/Swedish Armed Forces.
+
+
+
+
+Postadress/Postal address   Besöksadress/Visitors   Telefon/Phone      Fax/Facsimile      E-post/E-mail    Internet
+P.O. Box 6014               Sveavägen 151           +46 8 508 862 00   +46 8 508 862 90   info@havkom.se   www.havkom.se
+SE-102 31 Stockholm         Stockholm
+Sweden
+RL 2022:06e
+
+
+     Content
+
+     General observations ...................................................................................................... 5
+     The investigation ............................................................................................................ 5
+     SUMMARY ....................................................................................................... 8
+     FACTUAL INFORMATION ........................................................................................ 9
+     1.1        History of the flight............................................................................................ 9
+                1.1.1 Circumstances........................................................................................ 9
+                1.1.2 Sequence of events .............................................................................. 10
+                1.1.3 Additional information ........................................................................ 11
+     1.2        Injuries to persons ............................................................................................ 11
+     1.3        Damage to the aircraft ...................................................................................... 11
+     1.4        Other damage ................................................................................................... 11
+                1.4.1 Environmental impact.......................................................................... 11
+     1.5        Personnel information ...................................................................................... 12
+                1.5.1 Qualifications and duty time of the pilot ............................................. 12
+                1.5.2 Other affected personnel ...................................................................... 12
+     1.6        Aircraft information ......................................................................................... 12
+                1.6.1 Helicopter ............................................................................................ 13
+                1.6.2 Description of parts or systems related to the occurrence ................... 14
+     1.7        Meteorological information ............................................................................. 18
+     1.8        Aids to navigation ............................................................................................ 18
+     1.9        Communications .............................................................................................. 18
+     1.10       Aerodrome information ................................................................................... 18
+     1.11       Flight recorders ................................................................................................ 19
+     1.12       Site of occurrence ............................................................................................ 19
+                1.12.1 Accident site ........................................................................................ 19
+                1.12.2 Location of the load ............................................................................. 20
+     1.13       Medical and pathological information ............................................................. 21
+     1.14       Fire ................................................................................................................... 22
+     1.15       Survival aspects ............................................................................................... 22
+                1.15.1 Rescue operation ................................................................................. 22
+                1.15.2 Injuries sustained ................................................................................. 22
+     1.16       Tests and research ............................................................................................ 22
+                1.16.1 Reconstruction of the occurrence on the ground ................................. 22
+     1.17       Organisational and management information .................................................. 23
+                1.17.1 Västernorrland County Administrative Board (Länsstyrelsen) ........... 23
+                1.17.2 Heliscan ............................................................................................... 23
+                1.17.3 Risk management high-risk operations ............................................... 26
+                1.17.4 Allocation of roles according to the Heliscan OM .............................. 27
+                1.17.5 Work environment ............................................................................... 27
+                1.17.6 Actions taken ....................................................................................... 28
+     1.18       Additional information..................................................................................... 28
+                1.18.1 Working hours ..................................................................................... 28
+                1.18.2 Crew resource management................................................................. 29
+                1.18.3 The refueller’s background .................................................................. 29
+                1.18.4 The interaction between the parties at the loading site ........................ 30
+     1.19       Special methods of investigation ..................................................................... 31
+     2.         ANALYSIS ...................................................................................................... 32
+     2.1        Preparations ..................................................................................................... 32
+                                                                                                                  RL 2022:06e
+
+      2.1.1 Composition of the working party ...................................................... 32
+      2.1.2 Risk management ahead of the cargo operation.................................. 33
+2.2   Sequence of events .......................................................................................... 33
+      2.2.1 Group dynamics and management of specialists ................................ 35
+2.3   Risks when working with cargo straps ............................................................ 35
+2.4   Rescue services ................................................................................................ 36
+2.5   Final comments ............................................................................................... 36
+3.    CONCLUSIONS ............................................................................................. 37
+3.1   Findings ........................................................................................................... 37
+3.2   Causes/contributing factors ............................................................................. 37
+4.    SAFETY RECOMMENDATIONS ................................................................ 37
+
+
+
+
+                                               4 (37)
+RL 2022:06e
+
+
+     General observations
+     The Swedish Accident Investigation Authority (Statens haverikommission –
+     SHK) is a state authority with the task of investigating accidents and incidents
+     with the aim of improving safety. SHK accident investigations are intended to
+     clarify, as far as possible, the sequence of events and their causes, as well as
+     damages and other consequences. The results of an investigation shall provide
+     the basis for decisions aiming at preventing a similar event from occurring in the
+     future, or limiting the effects of such an event. The investigation shall also pro-
+     vide a basis for assessment of the performance of rescue services and, when
+     appropriate, for improvements to these rescue services.
+
+     SHK accident investigations thus aim at answering three questions: What
+     happened? Why did it happen? How can a similar event be avoided in the future?
+
+     SHK does not have any supervisory role and its investigations do not deal with
+     issues of guilt, blame or liability for damages. Therefore, accidents and incidents
+     are neither investigated nor described in the report from any such perspective.
+     These issues are, when appropriate, dealt with by judicial authorities or e.g. by
+     insurance companies.
+
+     The task of SHK also does not include investigating how persons affected by an
+     accident or incident have been cared for by hospital services, once an emergency
+     operation has been concluded. Measures in support of such individuals by the
+     social services, for example in the form of post crisis management, also are not
+     the subject of the investigation.
+
+     Investigations of aviation incidents are governed mainly by Regulation (EU)
+     No 996/2010 on the investigation and prevention of accidents and incidents in
+     civil aviation and by the Accident Investigation Act (1990:712). The investiga-
+     tion is carried out in accordance with Annex 13 of the Chicago Convention.
+
+     The investigation
+     SHK was informed on 16 November 2021 that an accident involving a helicopter
+     with the registration LN-OYH had occurred in Åsäng, Västernorrland County,
+     the same day at 14:55 hrs.
+
+     The accident has been investigated by SHK, represented by Jenny Ferm, Chair-
+     person, Håkan Josefsson, Investigator in Charge, Stefan Carneros, Operations
+     Investigator and Alexander Hurtig, Investigator Behavioural Science.
+
+     SHK has been assisted by Liselotte Yregård, medical expert.
+
+     Magnus Axelsson has participated as an adviser for the Swedish Transport
+     Agency.
+
+     Jon Sneltvedt has participated as an accredited representative of the Norwegian
+     Safety Investigation Authority (NSIA) and Stéphane Veillon has participated as
+     an accredited representative of the French air accident investigation authority
+     Bureau d'Enquêtes et d'Analyses pour la Sécurité de l'Aviation Civile (BEA).
+
+
+
+                                               5 (37)
+                                                                          RL 2022:06e
+
+
+Michel Martin has participated as an adviser for Airbus Helicopters.
+
+The following organisations have been notified: The European Union Aviation
+Safety Agency (EASA), the European Commission, the Swedish Transport
+Agency, the BEA and the NSIA.
+
+Investigation material
+Interviews have been conducted with the pilot, the loadmaster from Heliscan and
+a person from the Västernorrland County Administrative Board (Länsstyrelsen).
+Interviews have also been conducted with people from Heliscan and Jämtlands-
+flyg.
+
+The accident site and the helicopter have been examined. Photographs and films
+that have been taken by staff from Länsstyrelsen have been scrutinised.
+
+Two fact finding presentation meetings with interested parties have been held,
+one on 28 April and one on 2 May 2022. At these meetings, SHK presented the
+facts discovered during the investigation, available at the time of the meetings.
+
+
+
+
+                                6 (37)
+RL 2022:06e
+
+
+     Final report RL 2022:06e
+
+     Aircraft:
+        Registration, type                LN-OYH, AS 350
+        Model                             AS 350 B3
+        Class, airworthiness              Normal, Certificate of Airworthiness and
+                                          valid Airworthiness Review Certificate
+                                          (ARC)1
+        Serial number                     4461
+     Operator                             Heliscan
+     Time of occurrence                   2021-11-16 at 14:55 in daylight
+                                          Note: All times are given in Swedish day-
+                                          light saving time (UTC2 + 1 hour)
+     Location                             Åsäng, Västernorrland County,
+                                          (position 62 43N 017 25 E, 54 metres
+                                          above mean sea level)
+     Type of flight                       Specialised operations
+     Weather                              According to SMHI’s analysis: wind
+                                          variable 2 knots, visibility over 10 km,
+                                          cloud 8/8 with a base of
+                                          6,000–14,000 feet, temperature/dew-
+                                          point -2°C/-3°C, QNH3 1,014 hPa
+     Persons on board:                    1
+        Crew members including cabin crew 1
+        Passengers                        0
+     Injuries to persons                  One person died in conjunction with the
+                                          flight
+     Damage to the aircraft               None
+     Other damage                         None
+     The pilot in command:
+        Age, licence                      33 years, CPL(H)4
+        Total flying hours                987 hours, of which 804 hours on type
+        Flying hours previous 90 days     100 hours, of which 43 hours on type
+        Number of landings previous       202
+        90 days
+
+
+
+
+     1 ARC – Airworthiness Review Certificate.
+     2 UTC – Coordinated Universal Time.
+     3 QNH – barometric pressure at mean sea level.
+     4 CPL(H) – Commercial Pilot Licence Helicopter.
+
+
+
+                                                       7 (37)
+                                                                           RL 2022:06e
+
+
+SUMMARY
+The company Heliscan was transporting timber in sling loads on behalf of the
+Västernorrland County Administrative Board. Heliscan had three people assig-
+ned to this job: a pilot, a loadmaster and a refueller5. In conjunction with the
+helicopter preparing to land, the refueller grabbed the cargo hook on the helicop-
+ter and attached a load. The pilot, who was not aware that the refueller had
+attached a load, adjusted the height prior to landing. The refueller got caught in
+the cargo strap and was lifted up several metres before falling to the ground. The
+refueller was severely injured by the impact and later died.
+
+Earlier in the day, the refueller had stepped in and attached loads, despite this
+not being his task. This did not lead to the operation being halted.
+
+The cause of the accident was that the refueller, on his own initiative, took hold
+of the cargo hook on the helicopter and attached a load without the pilot and the
+loadmaster being aware of this. The pilot’s adjustment of the height prior to the
+landing led to the refueller getting caught in the cargo strap and being lifted up
+into the air. The actions taken by the pilot and the loadmaster during the work in
+order to ensure that the refueller acted within the scope of his own duties and
+that the work could be conducted in a safe manner, have not been sufficient.
+
+An underlying cause of the accident was that the employer did not to a sufficient
+extent take action to achieve a functioning group dynamic.
+
+Safety recommendations
+None.
+
+
+
+
+5 The terms are explained in more detail in section 1.1.1.
+
+
+
+                                            8 (37)
+RL 2022:06e
+
+
+     FACTUAL INFORMATION
+
+     1.1         History of the flight
+
+     1.1.1       Circumstances
+                 The company Heliscan was conducting helicopter operations using an
+                 Airbus AS 350 B3 on behalf of Västernorrland County Administrative
+                 Board (Länsstyrelsen). The work involved using a helicopter to move
+                 30 loads of timber from a forest road to sites in the nearby countryside.
+                 The helicopter was equipped for flying with external sling loads. The
+                 cargo was attached to a sling using a hook under the helicopter that was
+                 manoeuvred by the pilot. The loads of timber had been prepared by staff
+                 from Länsstyrelsen, who also received the loads when they had been
+                 flown out to their respective location. Heliscan had assigned three
+                 people to the job: a pilot who was flying the helicopter, a loadmaster
+                 who was responsible for preparing and leading the work on the ground
+                 before each flight, and also a person whose task was only to refuel the
+                 helicopter, referred to subsequently as the ‘refueller’. On the day before
+                 the occurrence, final preparations were made at Heliscan in Östersund.
+                 At this time, the staff involved went through the job and prepared the
+                 equipment. The refueller was not present during these preparations but
+                 was informed about the operation in the evening prior to departure.
+
+                 The pilot, together with the loadmaster, went by helicopter from
+                 Östersund to the location in questions in the morning and met up with
+                 the staff from Länsstyrelsen. The refueller drove to the location with a
+                 vehicle containing fuel for the helicopter and joined the others after the
+                 helicopter had arrived on site.
+
+                 Upon arrival at the loading site, the pilot, together with the loadmaster,
+                 conducted an inspection of the loads and the equipment around the load-
+                 ing site. This resulted in some adjustments being made to the loads and
+                 some equipment on the ground being removed for safety reasons.
+
+                 As a result of high surrounding terrain and tall trees, the pilot made the
+                 decision to use a 10-metre-long extension to the sling6, which meant
+                 that the total length was 25 metres. In addition, some loads that had to
+                 be transported to places that were difficult to access were extended with
+                 an extra cargo strap7 that was six metres long. These extra straps were
+                 attached to the prepared loads of timber using a shackle8.
+
+                 After a while transportation of the loads of timber began and the load-
+                 master had an assistant from Länsstyrelsen, who helped to attach the
+                 loads to the hook on the helicopter. Both the loadmaster and the assis-
+                 tant were in radio contact with the pilot and these two were the only
+                 people who were to be present in the loading area when the helicopter
+                 arrived to pick up a new load. The refueller refuelled the helicopter at
+
+     6 Sling – the cargo line that is attached to the helicopter and has a hook at the bottom. See section 1.6.2.
+     7 Cargo strap – the arrangement used to attach the cargo. See section 1.6.2.
+     8 Shackle – a U-shaped piece of metal secured with a clevis pin or bolt across the opening.
+
+
+
+                                                              9 (37)
+                                                                               RL 2022:06e
+
+
+            regular intervals when the helicopter came down to land at the loading
+            site. Refuelling was performed as both hot refuelling9 and with the
+            helicopter shut off when the pilot was taking a break from work.
+
+            The original plan was to complete the work in one day.
+
+1.1.2       Sequence of events
+            When the time had passed twenty to three in the afternoon, the pilot
+            made the assessment that the light conditions had deteriorated and made
+            the decision that it was time to stop work for the day. At this point, 23
+            of the 30 loads had been transported from the loading site. The pilot
+            informed the loadmaster by radio of the decision to stop work and the
+            loadmaster passed on this message to the assistant and the refueller. The
+            pilot tasked the loadmaster with booking a hotel so they would be able
+            to continue and finish the work the next day. When the helicopter retur-
+            ned to the loading site, the loadmaster requested confirmation from the
+            pilot that it was a landing that would take place and consequently not
+            the loading of a new load of timber. The pilot confirmed landing and
+            the loadmaster went to the place at the loading site designated for land-
+            ing, in front of the helicopter, in order to receive the hook and take the
+            sling as the helicopter descended.
+
+            When the helicopter came in for landing, it was not possible for the pilot
+            to see the sling and the hook. When the helicopter came to a stop, and
+            the pilot was still unable to see the hook, he assumed that it might be
+            dragging along the ground. Consequently, the pilot chose to increase
+            the height with the aim of getting the hook to swing forward so that the
+            loadmaster would be able to catch it. Without the pilot being aware of
+            it, the refueller took hold of the hook hanging from the helicopter and
+            attached a new load to the extra strap that was prepared for the load.
+            The loadmaster saw that the refueller was doing something with the
+            hook but did not realise that he was attaching a new load, and only had
+            time to scream ‘no’ before the load had been attached. The pilot, who
+            was unaware of the fact that the hook was now attached to a load, initi-
+            ated a climb in order to get the hook in front of himself and climbed a
+            few metres or so but, in conjunction with this, felt resistance during the
+            climb. The loadmaster and the assistant saw the refueller being lifted up
+            into the air and swung round horizontally in the air about five metres
+            above the ground. He then fell to the ground a few metres in front and
+            to the left of the helicopter. The refueller was severely injured upon
+            impact and the loadmaster and assistant began performing cardiopul-
+            monary resuscitation and called SOS Alarm. The pilot joined them once
+            he had landed and shut down the helicopter. The rescue service and an
+            ambulance arrived after approximately 25 minutes. The refueller later
+            died in hospital.
+            The accident occurred at position 62 43N 017 25E, 54 metres above
+            mean sea level.
+
+9 Hot refuelling – refuelling with the engine and rotor running.
+
+
+
+                                           10 (37)
+RL 2022:06e
+
+
+     1.1.3    Additional information
+              The pilot has stated that he had the electric heating on the rear-view
+              mirror turned on while flying the whole day but that the electric heating
+              did not have the capacity to provide a clear view when the pilot was
+              moving forward due to the prevailing weather conditions.
+
+              In the film sequences that were recorded earlier in the day, before the
+              accident took place, the refueller can be seen taking part in the work of
+              attaching loads to the lower hook on the helicopter. They also show the
+              refueller giving the sign to lift off to the helicopter after he had attached
+              the load. This has also been confirmed by both the pilot and the load-
+              master.
+
+              The loadmaster and the assistant were equipped with high-visibility
+              clothing and protective equipment in the form of safety shoes, helmets
+              and ear defenders. In the film sequences, the refueller appears not to be
+              wearing high-visibility clothing or protective equipment when he was
+              active on site. According to interviews there was protective equipment
+              and high-visibility clothing available on site for the refueller. During
+              the day, the loadmaster had requested the refueller to put on a helmet
+              and high-visibility vest.
+
+     1.2      Injuries to persons
+                                        Crew       Passengers       Total on          Others
+                                      members                         board
+              Fatal                         0                0             0                  1
+              Serious                       0                0             0                  0
+              Minor                         0                0             0                  0
+              None                          1                0             1                  2
+              Total                         1                0             1                  3
+
+     1.3      Damage to the aircraft
+              None.
+
+     1.4      Other damage
+              None.
+
+     1.4.1    Environmental impact
+              None.
+
+
+
+
+                                                11 (37)
+                                                                           RL 2022:06e
+
+
+1.5        Personnel information
+
+1.5.1      Qualifications and duty time of the pilot
+
+           The pilot in command
+           The pilot in command, was 33 years old and had a valid CPL(H) with
+           flight operational and medical eligibility.
+
+            Flying hours
+            Latest                24 hours       7 days       90 days          Total
+            All types                    5           28           100           987
+            Actual type                  5            8            43           804
+
+           Number of landings actual type previous 90 days: 202.
+           Type rating conducted on 2 September 2016.
+           Latest PC10 conducted on 10 September 2021 on type.
+
+1.5.2      Other affected personnel
+
+           The loadmaster
+           The loadmaster was 37 years old, had a CPL(H) and had been employed
+           by Heliscan since 1 June 2020.
+
+           The refueller
+           The refueller was 58 years old and had been employed by Heliscan
+           since 2019. He was previously employed by Jämtlandsflyg where he
+           had worked as a loadmaster for more than 30 years.
+
+1.6        Aircraft information
+
+           General
+           The Airbus Helicopters AS 350 B3 is a single-engine gas turbine-
+           powered helicopter with a three-bladed main rotor and a tail rotor with
+           two blades. The helicopter is just under 13 metres long and just over
+           three metres high. The three-bladed main rotor has a diameter of almost
+           11 metres. The landing gear consists of fixed skids. The helicopter has
+           a capacity of five passengers and one pilot.
+
+
+
+
+10 PC – Proficiency Check.
+
+
+
+                                  12 (37)
+RL 2022:06e
+
+
+
+
+              Figure 1. Airbus Helicopters AS 350 B3. Source: Airbus Helicopters.
+
+
+     1.6.1    Helicopter
+              TC-holder                             Airbus Helicopters
+              Model                                 AS 350 B3
+              Serial number                         4461
+              Year of manufacture                   2008
+              Gross mass (kg)                       Max. take-off/landing mass 2,250/2,250
+                                                    actual 1,650
+              Centre of gravity                     Within limits 3.51 metres
+              Total flying time, hours              6,814
+              Flying time since latest              5
+              periodic inspection, hours
+              Number of cycles                      43,127
+              Type of fuel uplifted before          Jet A-1
+              the occurrence
+              Engine
+              TC-holder                             Safran Helicopter Engines
+              Type                                  Safran HE Arriel 2B1
+              Number of engines                     1
+
+              Serial number                         46250
+              Total flying time, hours              6747
+              Operating time since latest           507
+              periodic inspection, hours
+              Operating time since latest           3,317
+              overhaul, hours
+              Deferred remarks                      None
+
+              The aircraft had a Certificate of Airworthiness and a valid ARC.
+
+                                                      13 (37)
+                                                                          RL 2022:06e
+
+
+1.6.2   Description of parts or systems related to the occurrence
+
+        Sling load equipment
+        The helicopter was equipped with sling load equipment, with a cargo
+        hook under the helicopter that had been installed by Airbus. The cargo
+        hook can be opened in two ways, electrically or mechanically. Electric
+        opening is done by pressing the upper button on the cyclic control.
+        Mechanical opening is done by pressing a handle on the underside of
+        the collective control that is linked to a release wire. According to the
+        aircraft flight manual, the cargo hook has to be inspected with regard to
+        electrical and mechanical opening before each flight with a sling load.
+        Such an inspection was conducted in the morning before the first take-
+        off with a sling load.
+
+
+
+
+        Figure 2. Sling load equipment with a cargo hook.
+
+
+        The sling with a lower hook
+        A sling with a lower hook was attached to the cargo hook on the
+        helicopter. The load that was to be transported was attached to the lower
+        hook. The sling contained an electrical connection to the lower hook,
+        which meant that the pilot was able to open it in order to release the
+        cargo. During the flight in question, a sling that was 15 metres long was
+        being used, to which was also attached a 10-metre-long extension sling.
+        These slings had the same construction.
+
+
+
+
+                                     14 (37)
+RL 2022:06e
+
+
+
+
+              Figure 3. The sling with a lower hook (on the right) and the 10-metre-long extension sling.
+
+
+
+
+              Figure 4. Close-up image of the lower hook.
+
+
+              The straps
+              Each load of timber was lashed down with cargo straps that were
+              attached to the lower hook on the sling. Some loads were equipped with
+              an extra strap that also formed an extra extension to the entire line under
+              the helicopter. This extra strap was six metres long and was attached to
+              the other straps by a shackle.
+
+
+
+                                                        15 (37)
+                                                                                         RL 2022:06e
+
+
+
+
+Figure 5. The cargo straps in yellow and the extension strap, which is coloured green.
+
+
+
+
+Figure 6. Picture showing the sling load and clearly indicating the constituent parts of the sling
+and straps. Markings made by SHK. Photo: Erik Engelro, Västernorrland County Administra-
+tive Board.
+
+
+                               16 (37)
+RL 2022:06e
+
+
+              The cockpit
+              The cockpit is designed such that the pilot is able to see the cargo
+              through a window in the floor just to the right of the pilot’s position. In
+              addition, there is a rear-view mirror mounted outside and in front of the
+              cabin that allows the pilot to see behind and below towards the cargo.
+              The rear-view mirror outside of the cabin has electric heating. In order
+              to perform an emergency release of the cargo hook and thus release the
+              entire sling, the pilot can push an emergency release button on the cyclic
+              control that opens the cargo hook electrically. In addition, there is an
+              emergency release handle on the collective that can open the cargo hook
+              mechanically. An electronic release button that sits on the cyclic control
+              is used to release the cargo. However, the release button is separate
+              from the emergency release button for the cargo hook.
+
+
+
+
+              Figure 7. Electrically heated rear-view mirror.
+
+
+              The refuelling vehicle
+              The refueller drove and was responsible for the refuelling vehicle that
+              Heliscan had on site. The refuelling vehicle was a van and the cargo
+              space contained a tank of fuel for the helicopter. While the work was
+              taking place, the refuelling vehicle was parked close to the loading site
+              (see Figure 10) in order to be as close as possible to the helicopter
+              during refuelling.
+
+
+
+
+                                                         17 (37)
+                                                                       RL 2022:06e
+
+
+
+
+       Figure 8. The refuelling vehicle.
+
+
+1.7    Meteorological information
+       According to SMHI’s analysis: Wind variable 2 knots, visibility over
+       10 km, cloud 8/8 with a base of 6,000–14,000 feet, temperature/dew-
+       point -2°C/-3°C, QNH 1,014 hPa.
+
+       A weak ridge of high pressure was located over the middle of Norrland
+       at the time of the accident. There was fair weather at the time. The
+       temperature was below freezing and there was a minor risk of icing.
+       The freezing level was at around 5,000 feet in the area.
+
+       Civil twilight begins when the sun drops below the horizon and ends
+       when the sun is six degrees below the horizon.
+
+       At the accident site, the sun dropped below the horizon at 13:59 UTC
+       and was six degrees below the horizon at 14:58 UTC.
+
+1.8    Aids to navigation
+       Not pertinent.
+
+1.9    Communications
+       Radio communication took place between the pilot and the loadmaster
+       on the ground. The assistant from Länsstyrelsen was also equipped with
+       a radio. The refueller did not have a radio. The refueller communicated
+       with the loadmaster using signals and conversations during the work.
+
+       No radio chatter between the pilot and the ground staff have been
+       recorded.
+
+1.10   Aerodrome information
+       Not pertinent.
+
+
+
+                                      18 (37)
+RL 2022:06e
+
+
+     1.11     Flight recorders
+              Not pertinent.
+
+     1.12     Site of occurrence
+              The accident took place twelve kilometres north of Åsäng at a turning
+              area at the end of a forest road. The turning area was being used as a
+              loading site with prepared loads of timber. The forest road is 720 metres
+              long and goes from county road 331 in a south-westerly direction
+              towards the valley of the river Mjällån.
+
+
+
+
+              Figure 9. The accident site is marked in red by SHK. Source: © Lantmäteriet.
+
+
+     1.12.1   Accident site
+              The ground in the turning area consisted of a mixture of hard snow and
+              ice.
+
+              At the time of the accident, the people on site were located as shown in
+              Figure 10.
+
+
+
+
+                                                       19 (37)
+                                                                                             RL 2022:06e
+
+
+
+
+         Figure 10. The accident site with the positions of the people involved drawn in by SHK.
+
+
+1.12.2   Location of the load
+         SHK has obtained photographs and videos from Länsstyrelsen. One
+         photo has been taken from above the loading site with a drone before
+         the work started and shows where the loads were located at the loading
+         site. SHK has taken a photo from a similar vantage point that show the
+         site after the occurrence; the photo shows where the load that was
+         attached to the helicopter at the time of the occurrence was located
+         afterwards. This photo indicates that the load was moved a few metres
+         in conjunction with the accident (see Figures 11 and 12). The load in
+         question is estimated to have a weight of around 1,000 kg.
+
+
+
+
+                                       20 (37)
+RL 2022:06e
+
+
+
+
+              Figure 11. Photo of the loading site before work started. The location of the load that was
+              attached to the helicopter at the time of the occurrence has been circled in red by SHK.
+              Photo: Erik Engelro Västernorrland County Administrative Board.
+
+
+
+
+              Figure 12. Photo of the loading site after the occurrence. The location of the load that was
+              attached to the helicopter at the time of the occurrence has been circled in red by SHK.
+
+
+     1.13     Medical and pathological information
+              There is nothing to indicate that the mental or physical condition of any
+              of the people involved was impaired before or at the time of the occur-
+              rence.
+
+                                                       21 (37)
+                                                                            RL 2022:06e
+
+
+1.14     Fire
+         Not pertinent.
+
+1.15     Survival aspects
+
+1.15.1   Rescue operation
+         The pilot and loadmaster began cardiopulmonary resuscitation prompt-
+         ly and continued until an ambulance arrived and the ambulance person-
+         nel took over.
+
+         The assistant from Länsstyrelsen called 112 immediately after the acci-
+         dent. The alarm call was received by SOS Alarm at 14:56 o’clock. SOS
+         Alarm sent one ambulance from Härnösand at 14:58 o’clock and one
+         from Kramfors at 14:59 o’clock. The rescue service from Viksjö was
+         sent at 15:04 o’clock and was the first unit on site at 15:19 o’clock. The
+         first ambulance, the one from Härnösand, arrived at the accident site at
+         15:23 o’clock. The second ambulance waited at the entrance of the road
+         that led to the accident site. When the rescue service arrived at the site,
+         they took over the cardiopulmonary resuscitation and were, at that time,
+         able to detect a pulse but limited breathing, and the rescue service per-
+         sonnel then focussed on creating unobstructed airways. When the first
+         ambulance arrived at the accident site, the ambulance staff took over
+         the care. The contribution by the rescue service then consisted of
+         supporting the ambulance personnel by driving the ambulance away
+         from the accident site. The ambulance from Härnösand left the accident
+         site at 15:54 o’clock with the injured and unconscious refueller and
+         arrived at Sundsvall Hospital 30 minutes later.
+
+1.15.2   Injuries sustained
+         The refueller sustained head injuries as a result of the fall and those
+         injuries were deemed to be the cause of death. There were injuries to
+         the index finger and middle finger on the left hand. According to the
+         investigation’s medical expert, these injuries may have been caused by
+         the hand getting caught in something.
+
+1.16     Tests and research
+
+1.16.1   Reconstruction of the occurrence on the ground
+         SHK has conducted comparative tests with equivalent equipment for
+         the purpose of reconstructing the sequence of events and gaining a
+         better understanding of the occurrence. These tests involved the use of
+         a cargo strap, a weight that weighed 500 kg in order to symbolise the
+         loads of timber and a mannequin. A crane with variable length and
+         speed was used to simulate the lift.
+         The outcome of the tests was that when the crane was raised and the
+         straps that were wrapped around the mannequin were stretched, the
+         sequence of events was almost identical to that described by witnesses
+         to the accident.
+
+                                 22 (37)
+RL 2022:06e
+
+
+     1.17       Organisational and management information
+
+     1.17.1     Västernorrland County Administrative Board (Länsstyrelsen)
+                Länsstyrelsen had procured the helicopter services from Heliscan for
+                work preparing Västanåfallet Nature Reserve in the valley of the river
+                Mjällån. It was the unit Protected Nature within Länsstyrelsen that was
+                responsible for the works at the nature reserve. This unit operates
+                throughout the entire county and is tasked to create reserves, mainten-
+                ance and management of the county’s nature reserves. Länsstyrelsen
+                had procured the helicopter services from Heliscan following a tender-
+                ing procedure in 2021 and a contract was signed in May 2021. At the
+                time of the occurrence, Länsstyrelsen had staff on site to load and
+                unload the shipments in the nature reserve together with Heliscan.
+
+     1.17.2     Heliscan
+                Heliscan is a Norwegian helicopter operator that has its registered office
+                in Frosta in Norway. The company has had an operating licence since
+                2010. Heliscan’s organisational structure and nominated responsible
+                persons are shown in Figure 13.
+
+
+
+
+                Figure 13. Organisational structure Heliscan. Source: Heliscan operations manual.
+
+                In addition to its base in Norway, Heliscan also has two bases in
+                Sweden, in Östersund and in Handöl. The company has operating licen-
+                ces in both Norway and Sweden. Heliscan’s operations consist of
+                conducting various types of helicopter operations for customers, a large
+                proportion of which take the form of HELSO11.
+
+                Operations at the base in Östersund are run by a base manager. The
+                remit of the base manager consists primarily of managing administra-
+                tive duties, leading staff, managing tenders and generally taking respon-
+                sibility for ensuring that the work at the base proceeds according to plan
+
+
+     11 HESLO – Helicopter External Sling Load Operations.
+
+
+
+                                                         23 (37)
+                                                                                               RL 2022:06e
+
+
+           and that they are working as a team. With regard to flight operations,
+           the base manager is the contact point for the flight operations manager
+           and the manager who is responsible for the loadmaster’s function – the
+           ground operations manager.
+
+           For complex jobs, the base manager plans the work together with the
+           affected responsible persons and the relevant operations team. For
+           simple jobs, planning is delegated to a pilot who takes over this duty
+           and plans the job. The base manager has a computerised support tool
+           for planning and follow-up. The tools lets the base manger choose
+           which part of the company’s SOP12 is to be linked to which pilots and
+           their current status at the time. The pilots can be assigned to each job
+           on the basis of this. The job in Åsäng was managed as a complex job.
+           An extensive logistics planning procedure together with the client
+           began as early as three weeks before implementation.
+
+           Operations manual
+           Heliscan’s operations are governed by an operation manual (OM).
+
+           According to 8.2 of Annex V to Regulation (EU) 2018/113913 opera-
+           tions must only be undertaken in accordance with an aircraft operator’s
+           operations manual. This manual must contain all necessary instructions,
+           information and procedures for all aircraft operated and for operations
+           personnel to perform their duties. The operations manual and its revi-
+           sions must be compliant with the approved flight manual and be
+           amended as necessary.
+
+           Heliscan has produced an operations manual14: Heliscan Operations
+           Manual (Heliscan OM). This manual contains information and instruc-
+           tions for the operation of helicopters that are operated by Heliscan. This
+           has been produced on the basis of laws, regulations, the terms of
+           Heliscan’s air operator certificate (AOC) and the procedures for the
+           state where the operations are conducted. All staff employed by
+           Heliscan have to adhere to this manual.
+
+           The sections of the Heliscan OM that are relevant to the case now in
+           question are:
+
+                •    Part A General/Basic, which covers all non-type-related opera-
+                     tional policies, instructions and procedures
+                •    Part E, which covers standard operating procedures (SOP).
+
+
+
+
+12 SOP – Standard Operating Procedure.
+13 Regulation (EU) 2018/1139 of the European Parliament and of the Council on common rules in the field
+
+  of civil aviation and establishing a European Union Aviation Safety Agency.
+14 In its OM, Heliscan has referred to Regulation (EC) 216/2008, which has been repealed and replaced by
+
+  Regulation (EU) 2018/1139.
+
+                                         24 (37)
+RL 2022:06e
+
+
+                Part A General/Basic
+                Part A General/Basic contains a description of tasks and responsibilities
+                for the commander of the helicopter. A selection of these is provided
+                below:
+
+                     •    The PIC/Commander is while flying, responsible for the safety
+                          of the aircraft, all passengers, task specialist and cargo on
+                          board
+                     •    The PIC/Commander has full command over all operations per-
+                          sonnel in the duty time
+                     •    The PIC/Commander is responsible that standard operating
+                          procedures and emergency procedures are followed at all times
+                     •    The PIC’s responsibility for the external load.
+
+                In addition, there is the following description of tasks and responsibili-
+                ties for a task specialist15.
+
+                Task specialist is a person assigned by Heliscan or a third party, or
+                acting as an undertaking, who:
+
+                     •    Performs tasks on the ground directly associated with a special-
+                          ised task; or
+                     •    Performs specialised tasks on board or from the aircraft.
+
+                Company Task Specialists
+                Company Task Specialists are personnel employed by Heliscan to assist
+                the PIC in order to maintain a safe and efficient operation.
+
+                The Task Specialist is obliged to, without delay, to inform the PIC of
+                factors which he/she believes pose a danger to the safety of the crew,
+                passengers, other personnel, helicopter etc.
+
+                The document also contains a description of the tasks and responsibili-
+                ties of a task specialist who is not employed by Heliscan. A selection of
+                these is provided below:
+
+                Persons other than company employees, such as a customer, may be
+                assigned tasks directly related to an operation. Such person should be
+                well briefed on his/her duties, operational and safety aspects as appro-
+                priate. The content of the safety brief may vary depending on the type
+                of task to be performed. Before starting the operation, he/she should
+                demonstrate or confirm the understanding of the safety brief to the PIC
+                or a company task specialist. If more than one task specialist is required
+                for a task, one should be nominated to lead the ground operation.
+
+
+
+     15 The description is based on the EASA requirements for special operations and these are regulated in
+
+       SPO.GEN.106, which regulates the tasks and responsibilities of a task specialist.
+
+                                                           25 (37)
+                                                                              RL 2022:06e
+
+
+           There is also a description of the tasks and responsibilities of a task
+           specialist who is operating on the ground. A selection of these is pro-
+           vided below:
+
+           Task Specialist operating on the ground is responsible for the safe
+           organisation of the ground operation:
+
+                •    Ensure that no unauthorized personnel are close to the helicop-
+                     ter when the rotor is running
+                •    Preparing and securing of the pick-up/drop-off sites
+                •    Preparing and securing of loads/cargo
+                •    Refuelling the helicopter
+                •    Appropriate communication and assistance to the PIC and
+                     other task specialists.
+
+           Part E SOP
+           Vertical Reference – Long-line Operations (sling load) is regulated in
+           Part E – SOP Appendix 8. Amongst other things, this document con-
+           tains a description of what responsibility a task specialist operating on
+           the ground has and what equipment requirements apply.
+           Task Specialist operating on the ground is responsible for the safe
+           organisation of the ground operation … and assisting the pilot via
+           radio.
+
+           Ground crew shall use protective equipment, such as;
+
+           • Protective helmet with integrated ear protection
+           • Work gloves
+           • Safety footwear
+           • The ground crew who directs the helicopter shall use clothing of a
+           contrasting colour. It is an advantage that the work gloves are of a good
+           contrasting colour so that the hand signals are clear.
+           • Ground crew shall give the appropriate ready signal when the load,
+           and any control rope / tagline /wire is clear of the ground, and the cargo
+           can be flown away.
+           • Ground crews must stay clear of the designated emergency landing
+           and take-off areas.
+
+1.17.3     Risk management high-risk operations
+           A sling load operation16 is classified as a high-risk operation according
+           to the Heliscan OM Part E – SOP Appendix 8. This is associated with
+           specific requirements in terms of risk management and how risks are
+           dealt with. Heliscan uses ICAO SMS risk matrix v. 3 2014 rev. 1 as a
+
+16 Sling load operation – job with a suspended load.
+
+
+
+                                          26 (37)
+RL 2022:06e
+
+
+              support tool. Ahead of the job, the commander conducted a final risk
+              assessment on site in accordance with the company’s document Safe
+              Job Analysis. This document states that staff involved were informed
+              by the pilot of their respective tasks and limitations on their roles and
+              that a safety review was conducted. Participants in the safety review
+              were the pilot, the loadmaster, the assistant and colleagues of the assis-
+              tant. The risk assessment did not include the option for anyone to act
+              outside of their duties. There is consistent information that corroborate
+              the fact that the refueller was not present during the joint safety briefing.
+              However, the pilot conducted a separate briefing with the refueller
+              about his task and how the mission would be carried out.
+
+     1.17.4   Allocation of roles according to the Heliscan OM
+
+              The pilot
+              The pilot was commander and the person who was ultimately responsi-
+              ble on site for implementation of the job.
+
+              The loadmaster
+              The loadmaster was a task specialist and had the responsibility for the
+              ground operations during the implementation of the job. It is standard
+              practice at Heliscan for a pilot to act as task specialist in the role of
+              loadmaster in order to be introduced to operations before they begin
+              flying as pilot on missions.
+
+              The assistant
+              The assistant who represented Länsstyrelsen was a task specialist who
+              was not employed by Heliscan.
+
+              The refueller
+              At Heliscan, the refueller’s responsibilities included maintenance of
+              equipment and was otherwise a ‘jack of all trades’. During the job in
+              question, he acted as a task specialist with a limitation on his role to
+              supplying fuel and refuelling the helicopter.
+
+     1.17.5   Work environment
+              According to the Work Environment Act (1977:1160), the work envi-
+              ronment shall be satisfactory, taking into account the nature of the work
+              and the social and technical development in society. Furthermore, the
+              work shall be planned in such a way that it can be conducted in a sound
+              and safe environment (Chapter 2, Sections 1–2).
+              Machinery, tools and other technical facilities shall be construed and
+              located and used in such a way that satisfactory protection against ill
+              health and accidents is provided (Chapter 2, Section 3). If satisfactory
+              protection against ill health or accidents cannot be achieved in another
+              way, personal protective equipment shall be used (Chapter 2,
+              Section 7).
+
+                                                27 (37)
+                                                                            RL 2022:06e
+
+
+         The employer shall implement all measures required in order to prevent
+         the employee from being subjected to ill health or accidents and shall
+         systematically plan, lead and inspect operations in a way that leads to
+         the work environment complying with the stipulated requirements of a
+         good work environment (Chapter 3, Sections 2–2a).
+
+         The Swedish Work Environment Authority’s regulations on systematic
+         work environment management (AFS 2001:1) define systematic work
+         environment management as the employer’s work to investigate, imple-
+         ment and follow up its operations in order to prevent accidents and ill
+         health (Section 2). The systematic work environment management shall
+         encompass all physical, psychosocial and social conditions that are of
+         significance to the work environment (Section 3) and there shall be pro-
+         cedures in place that describe how the systematic work environment
+         management is to be conducted (Section 5).
+
+         The employer shall regularly investigate the working conditions and
+         assess the risks of anyone suffering from ill health or accidents at work
+         (Section 8). This can be done through, for example, risk inventories or
+         through experiences obtained from members of staff, e.g. exception
+         reports and suggested improvements.
+
+1.17.6   Actions taken
+         Following the occurrence, Heliscan has, in partnership with Läns-
+         styrelsen, conducted a training programme in two stages with relevant
+         staff from Länsstyrelsen in order to review sling load operations using
+         helicopters. This training programme encompassed both theory and
+         practical exercises with sling loads.
+
+1.18     Additional information
+
+1.18.1   Working hours
+         The pilot was working on a schedule that ran over 18 days. The day in
+         question was day 15 of this schedule. The pilot had had three full rest
+         days during the period. Two days prior to the accident, the pilot had had
+         a weekly rest period of a total of 48 hours.
+
+         The loadmaster was working on a normal 5/2 schedule with work pre-
+         dominantly on weekdays and time off on weekends. The day in question
+         was a Tuesday and day two after the weekend off.
+
+         The refueller was also working on a normal 5/2 schedule. Aside from
+         the job at Heliscan, the refueller also had a second job driving buses for
+         a bus company whose business included arranging day trips. On the
+         Monday prior to the accident, the refueller had driven a bus on a full-
+         day job for the bus company. This second job was only partly known of
+         within Heliscan. As far as SHK understands it, the refueller was off
+         work on the weekend prior to the accident. According to his timetable,
+         the refueller was not scheduled to drive a bus again during the week in
+         question.
+
+                                28 (37)
+RL 2022:06e
+
+
+     1.18.2   Crew resource management
+              Crew resource management (CRM) is used in various fields including
+              aviation to describe a system of effective and safe methods for a group
+              of people that work together. CRM encompasses a broad foundational
+              knowledge of skills that are essential to achieving a good result and an
+              understanding of how different attitudes affect cooperation within a
+              group. For example, this can relate to how people communicate, deci-
+              sion-making, situational awareness and problem-solving. CRM is based
+              on duties and procedures being well-defined and roles and functions
+              being clearly allocated. It is also important within the scope of CRM
+              that there is an ability to deal with various disruptive elements and
+              maintain an orderly work situation in a consistent manner.
+
+              One concrete example of CRM in the present case is the use of hand
+              signals during various stages of the operation. For example, the load-
+              master used hand signals in order to guide the pilot during landing and
+              take-off. Hand signals were used because it was not possible to use the
+              radio due to the noise caused by the helicopter. The hand signals were
+              defined in advance and the loadmaster and the pilot were well-practised
+              in the use of these signals.
+
+              From the perspective of CRM, it can be established in the present case
+              that there were four different functions that were manned on the work
+              site. The pilot flew the helicopter and had the overall decision-making
+              mandate, the loadmaster directed the work from the ground, the repre-
+              sentative from Länsstyrelsen assisted the loadmaster on the ground and
+              the refueller conducted refuelling when necessary. When implementing
+              measures related to preparing, securing and lifting cargo, it was the
+              pilot, the loadmaster and the assistant who had defined functions within
+              the scope of the job in question.
+
+              It has also been stated that, as part of the preparations for the job, a
+              decision was made that the refueller would not have a communication
+              radio. The reason for this was that it was not deemed necessary and
+              because the pilot believed this to be associated with a risk of disruptive
+              elements over the radio if more people than the loadmaster and the
+              assistant had radios.
+
+     1.18.3   The refueller’s background
+              The refueller had extensive experience working within the helicopter
+              industry. He was previously employed by Jämtlandsflyg and had
+              worked there as a loadmaster for more than 30 years.
+
+              In 2019, Heliscan took over the base where Jämtlandsflyg had previ-
+              ously been operating. In conjunction with this, the refueller was trans-
+              ferred to Heliscan. At Heliscan, the refueller’s responsibilities included
+              maintenance of equipment and was otherwise a “jack of all trades”. On
+              jobs, he was responsible for refuelling the helicopters.
+
+
+
+                                               29 (37)
+                                                                             RL 2022:06e
+
+
+         He was not tasked with being a loadmaster at Heliscan because Heliscan
+         had a policy that a loadmaster should be pilot trained.
+
+         It has been stated during interviews that, while working for Jämtlands-
+         flyg, the refueller was regarded as a competent loadmaster but that
+         discussions had taken place between the refueller and other pilots in the
+         company about how various tasks could be performed in a more
+         efficient way. The company’s senior management had become aware
+         of these discussions and this resulted in meetings at the company.
+
+         SHK has also established that, on one occasion following Heliscan’s
+         takeover, there had been situations in which the refueller had opinions
+         about how a pilot was performing their duties and that this was com-
+         municated to the base manager in Östersund. It is unclear whether this
+         was passed on to the company’s senior management.
+
+1.18.4   The interaction between the parties at the loading site
+         It has been made clear that the team from Heliscan had worked together
+         previously, but in different constellations. The loadmaster and the
+         refueller knew each other well and, prior to the day in question, had
+         spoken several times about how the work would be conducted on site.
+         The loadmaster was concerned that the refueller would not stick to his
+         specific task and would instead step in and work in the high-risk area
+         as well. The loadmaster had repeatedly asked the refueller to simply
+         stick to the refuelling, most recently on the evening before the accident.
+
+         The pilot and the loadmaster arrived at the work site on the morning of
+         16 November and met the assistant there. The refueller joined them at
+         the work site after the pilot and loadmaster had arrived.
+
+         The pilot initially had opinions about the appearance of the loading site
+         with regard to safety. Consequently, before the work of transporting the
+         loads began, loose parts were tidied away and there was an inspection
+         of how the loads were fixed together.
+
+         The pilot, the loadmaster and the assistant then conducted a reconnais-
+         sance round with the helicopter in order to point out the unloading site
+         out in the countryside.
+
+         After these steps had been completed, the refueller told the pilot that the
+         preparations had taken too long and that they need to get started on the
+         job. The pilot pointed out that he had full responsibility for the operation
+         and that the refueller’s only task was to refuel the helicopter.
+
+         Once the work got under way, the refueller remained close to the
+         refuelling vehicle and refuelled the helicopter at regular intervals when
+         it came in for landing. The majority of the refuellings were performed
+         as hot refuellings, but there was also one full-stop landing in order to
+         allow the pilot to take a break and eat and drink. During this stop, the
+         refueller again expressed to the pilot that the job was taking too long.
+
+
+                                 30 (37)
+RL 2022:06e
+
+
+              During the afternoon, the refueller, on his own initiative, intervened
+              more and more in the work of attaching the loads to the helicopter. It is
+              documented that on at least one occasion the refueller attached a load
+              and gave the signal to the pilot that it was ready to be lifted. According
+              to the witnesses, this may have occurred one more time during the latter
+              part of the day. The loadmaster did not give the refueller any clear
+              instruction or reprimand not to stay in the loading site when the
+              helicopter was operating within that area, but suggested that that he
+              would have a cup of coffee in the refuelling vehicle in order to get him
+              to stay out of the loading site.
+
+              Later in the afternoon, there was again a discussion, this time about the
+              uncertainty that it would be possible to complete the job that day. At
+              this time, the pilot asked the loadmaster to investigate whether there
+              were any available hotel rooms. The loadmaster answered that they
+              would do this after the pilot had landed the helicopter. The refueller
+              demonstrated his irritation that the work would not be completed that
+              day and he said that he had to go home. The loadmaster has stated that
+              this was not a problem and that the refueller could go home and then
+              come back the next day. According to Heliscan, the client and those
+              involved on site, there was nothing that prevented the job from being
+              continued the following day.
+
+              When the pilot decided to stop the operation with the intention to con-
+              tinue the next day, he announced this to the loadmaster over the radio,
+              which was also heard by the assistant. The loadmaster conveyed this
+              decision to the refueller. The refueller then questioned this and insisted
+              that the pilot must continue because people were standing out on the
+              drop sites waiting.
+
+              Just after this, the loadmaster asked the pilot whether he was landing,
+              which was confirmed by the pilot. When this was confirmed, the refuel-
+              ler was no longer standing in the same place as the loadmaster and the
+              assistant. It is therefore not certain that the refueller heard the confir-
+              mation stating the intention to land the helicopter for the day.
+
+              The loadmaster and the assistant positioned themselves in the agreed
+              way for landing. When the helicopter approached the loading site, the
+              refueller, on his own initiative, took hold of the hook and attached it to
+              the cargo.
+
+     1.19     Special methods of investigation
+              None.
+
+
+
+
+                                               31 (37)
+                                                                             RL 2022:06e
+
+
+2.      ANALYSIS
+
+2.1     Preparations
+
+2.1.1   Composition of the working party
+        In an aviation company’s organisation, the nominated responsible per-
+        sons’ duties and responsibility for aviation safety are clearly defined.
+        However, certain corporate structures may involve duties being allo-
+        cated in such a way that members of staff who are not involved in flight
+        operations have a function that has a direct impact on operations and
+        thus also a function that has an indirect impact on aviation safety. One
+        of those who has a function that has an impact on operations at Heliscan
+        is the base manager, who is responsible for finances and staff at the
+        base. The base manager has no direct operational control over the
+        management of flight operations and has no function within flight
+        operations. It is the flight operations manager that is responsible for
+        flight operations. As the local head of operations, however, the base
+        manager is the recipient of tasks and jobs. The base manager imple-
+        ments these jobs and puts together the teams that will be working on the
+        jobs. It is in this respect that the base manager can also be said to have
+        an indirect impact on flight operations. Nonetheless, the base manager
+        has no responsibility for aviation safety.
+
+        It has been clearly identified that the present working team from
+        Heliscan had in fact worked together previously and that the loadmaster
+        was concerned that the refueller would not keep to his specific duties.
+        The loadmaster had repeatedly asked the refueller to keep to refuelling,
+        most recently on the evening before the accident.
+
+        The fact that the refueller could, on occasions, exceed his assigned
+        duties had been conveyed to management at the base in Östersund and
+        management had also informed the refueller that he was to only conduct
+        refuelling during the job in question. It has been made clear that the
+        refueller, who had previously worked as a loadmaster, and who was
+        regarded as competent in this function, could make comments about
+        and get involved in situations that were outside of his job description.
+        It has also been made clear that there have in the past been differences
+        of opinion between the refueller and other pilots. These situations have
+        involved such matters as how pilots have acted at a loading site. It is
+        possible to conclude that the misgivings that had been voiced prior to
+        the day in question materialised.
+
+        It is important in a team effort involving various individuals that every-
+        one knows what is to be done and that there is clear communication
+        between those involved. The composition of a working team is of great
+        importance to the effectiveness of the work. It is not just the knowledge
+        and abilities of specific individuals that are important to successful
+        cooperation, other values such as personality, attitude, attentiveness,
+        ability to work in a team and ability to communicate are also important.
+        In the present case, it has been clear that the refueller, despite his exten-
+
+                                32 (37)
+RL 2022:06e
+
+
+              sive experience, did not comply with the instructions and requests he
+              had been given. It is also possible to question whether sufficient action
+              had been taken to prevent the situation that arose. It ultimately always
+              falls on the employer to ensure there is a safe work environment by
+              identifying such situations and taking action in order to achieve a func-
+              tioning group dynamic.
+
+     2.1.2    Risk management ahead of the cargo operation
+              The risk management began as early as during the planning of the job
+              in the week prior to its implementation, and the final preparations were
+              made on the day before the work was done. At this time, the staff
+              involved went over the job and the equipment that would be taken
+              along. The refueller was not present during the preparations on Monday
+              as he had been working for another employer on that day.
+
+              After the pilot and the loadmaster had arrived on site and some adjust-
+              ments had been made, the pilot conducted a risk assessment and a
+              document – Safe job analysis – was drawn up. The risk assessment did
+              not include the option for anyone to act outside of their duties. A safety
+              review was then conducted with those who were to be at the loading
+              site. The refueller was not present during the safety review. However,
+              the pilot had made it clear to the refueller that his only job was to refuel
+              the helicopter.
+
+              According to SHK’s assessment, it would have been appropriate for all
+              those who were to be present at the loading site to have attended a joint
+              safety briefing so that they all had the same understanding of how the
+              work was to be conducted.
+
+              A further assessment is that it is not entirely consistent to assume that
+              the refueller would not be present at the loading site during loading
+              given the fact that he was tasked with refuelling the helicopter, espe-
+              cially when refuelling with the engine running, but also during full-stop
+              landings.
+
+     2.2      Sequence of events
+              When the pilot informed the loadmaster that he intended to land for the
+              day, this message was passed on by the loadmaster to the others who
+              were at the loading site. The pilot’s decision was questioned by the
+              refueller who had a different view on how the job should proceed. The
+              loadmaster chose to ask the pilot again, after which the pilot confirmed
+              the decision to the loadmaster. It is not entirely clear if this confirma-
+              tion, that the intention was to land, reached the refueller. The fact that
+              the loadmaster and the assistant positioned themselves for landing
+              should however have indicated that a landing was to take place.
+
+
+
+
+                                                33 (37)
+                                                                   RL 2022:06e
+
+
+It has not been possible to establish the reason why the refueller, at this
+stage, took hold of the hook and attached a new load. One possible
+scenario may be that the refueller was doing so in order to forcibly per-
+suade the pilot to continue the day’s work by also flying out this load.
+One other possible scenario is that the refueller did not perceive the
+pilot’s final confirmation of his intention to land and also did not per-
+ceive that the loadmaster and assistant had positioned themselves for
+landing and was therefore mentally prepared for the operation to con-
+tinue; as he had questioned the pilot’s intention to stop for the day.
+Irrespective of the scenario, the refueller may have been so prepared to
+attach a new load that he consequently underestimated the risk and
+made an incorrect assessment of the risk of getting hold of the hook and
+attaching a new load.
+
+The fact that the refueller attached a new load despite this not being his
+assignment was not immediately noticed by the loadmaster or the assis-
+tant because they did not realise what the refueller intended to do. In
+light of this, it is understandable that neither the loadmaster nor the
+assistant intervened at this stage. The fact that the refueller was able to
+go forward and get hold of the hook may be due to the fact that the
+refueller had also been attaching loads earlier that day and the others
+did not intervene on these occasions either.
+
+When coming in for landing, the pilot did not see the hook and therefore
+assumed that it was dragging along the ground. The fogged up rear-
+view mirror may at this point have resulted in the pilot’s view of the
+hook being restricted. The pilot initiated a climb in order to get the hook
+in front of himself. The pilot did not see any risk associated with this
+manoeuvre as he was in contact with the loadmaster and the assistant
+who were positioned in front of the helicopter. In addition, the loadmas-
+ter and the pilot had been in radio communication with each other and
+the pilot understood from this communication that everyone realised
+that the helicopter was going to land. The pilot was not aware at this
+stage that someone had questioned the decision to stop for the day.
+
+It has not been possible to establish any detail about the way in which
+the refueller became caught and was lifted up into the air. However, the
+injuries to the fingers of his left hand suggest that his hand got stuck in
+the hook. The film material and the investigations conducted by SHK
+also suggest that the refueller was standing in a loop in the strap while
+attaching the load. When the pilot initiated a climb, the refueller was
+lifted up into the air as the loop was tightened. As the loop straightened
+out, the body rotated. Once the strap had straightened out, the refueller
+was released and he fell to the ground.
+
+
+
+
+                        34 (37)
+RL 2022:06e
+
+
+     2.2.1    Group dynamics and management of specialists
+              In the present case, it was explicit stated that the loadmaster and refuel-
+              ler were to act as task specialists in accordance with the company’s OM.
+              However, the refueller’s role as task specialist was limited to only
+              include refuelling of the helicopter. In addition to this, the pilot had
+              decided that the refueller would not be equipped with radio in order to
+              minimise any disruptions while the operation was taking place. Despite
+              the refueller being at the loading site, he did not wear protective equip-
+              ment in accordance with the company’s manual. The loadmaster had
+              encouraged the refueller to put on protective equipment on at least one
+              occasion. The equipment was available on site but the refueller chose
+              not to use it.
+
+              The refueller went in and attached loads, despite this not being his task.
+              None of the others made any real attempts to prevent this. It is in this
+              context that the refueller’s previous experience of cargo operations
+              within the helicopter industry may have contributed to the other people
+              from Heliscan who were on site accepting the refueller’s involvement
+              in the loading. However, on one occasion during the day, the loadmaster
+              urged the refueller to sit in the refuelling vehicle so as not to be involved
+              in the loading. The loadmaster and the refueller had past experience of
+              working together and this meant that the loadmaster was aware that he
+              might have opinions about how the work was to be conducted.
+
+              It is easy in retrospect to see that the obvious action of stopping all
+              work, at least temporarily, should have been taken because the rules of
+              procedure were departed from on several occasions during the day. In
+              summary, it can be concluded that it may be difficult to manage others
+              who have, in comparison, much more extensive experience.
+
+     2.3      Risks when working with cargo straps
+              Working with long and light cargo straps in conjunction with lifting
+              loads with a helicopter is always associated with some risk. The straps
+              can be affected by the rotor downwash from the helicopter, which can
+              be strong in certain cases.
+
+              Using a six-meter-long extra strap as an extension on certain loads
+              meant that the safe distance to obstructions in certain places was
+              improved. However, the fact that the extension was attached to the load
+              that was on the ground entailed an increased risk of these straps lying
+              free on the ground, which thus increased the risk of becoming caught in
+              them. It has been established that no specific risk analysis was con-
+              ducted in respect of attaching an extra strap to the loads. The film
+              material depicting the work before the occurrence showed that people
+              and also the refueller have been moving around and have been standing
+              inside the cargo straps that were lying on the ground before the helicop-
+              ter lifted the load.
+
+
+
+
+                                                35 (37)
+                                                                         RL 2022:06e
+
+
+      Consequently, it is worth noting that there is room for improvement
+      with regard to how risks are identified and managed within the scope of
+      the risk analyses conducted ahead of loading operations.
+
+2.4   Rescue services
+      The team involved in the operation alerted SOS Alarm and began
+      cardiopulmonary resuscitation immediately. The rescue service was the
+      first to arrive on site as they had the shortest distance to drive. When
+      the rescue service arrived, followed by the ambulance, they took over
+      the life-saving efforts. SHK has not had any reason to investigate the
+      rescue operation further.
+
+2.5   Final comments
+      It is possible to establish that the refueller did not adhere to applicable
+      regulations and instructions. It is a challenge in terms of leadership for
+      a small company or autonomous units to manage members of staff with
+      varied ambitions and experience, and to deal with staff who do not
+      adhere to the rules provided. This issue is by no means unique to this
+      type of operation. It is also present in other industries and fields with
+      high demands on safety.
+
+      In the present case, the pilot and the loadmaster had to balance between
+      the company’s safety requirements and alleviating the effect of differ-
+      ing levels of ambition among the individuals on site. Essentially, this
+      appears to be a question of the composition of the team and how to
+      achieve a functioning group dynamic, which there is reason for the
+      operator to study further. The findings of the investigation do not how-
+      ever suggest that there were any underlying systemic shortcomings.
+      Therefore, SHK chooses not to issue any safety recommendations.
+
+
+
+
+                              36 (37)
+RL 2022:06e
+
+
+     3.       CONCLUSIONS
+     3.1      Findings
+                  a. The pilot was qualified to perform the flight.
+                  b. The helicopter had a valid Certificate of Airworthiness and a
+                     valid ARC.
+                  c. A risk analysis in the form of a Safe Job Analysis had been con-
+                     ducted prior to the start of the job.
+                  d. The risk analysis resulted in action being taken on site before
+                     the work commenced.
+                  e. The cargo straps that were used had been extended by six met-
+                     res.
+                  f. The refueller was a task specialist whose duties were limited to
+                     only refuelling the helicopter.
+                  g. The pilot, the loadmaster and the assistant from Länsstyrelsen
+                     were equipped with radio communication and protective equip-
+                     ment.
+                  h. The refueller was not equipped with protective equipment.
+                  i. The refueller became caught in an extension strap, was lifted up
+                     into the air and then fell to the ground.
+                  j. The refueller died as a result of the injuries he sustained when
+                     he fell to the ground.
+
+     3.2      Causes/contributing factors
+              The cause of the accident was that the refueller, on his own initiative,
+              took hold of the cargo hook on the helicopter and attached a load with-
+              out the pilot and the loadmaster being aware of this. The pilot’s adjust-
+              ment of the height prior to the landing led to the refueller getting caught
+              in the cargo strap and being lifted up into the air. The actions taken by
+              the pilot and the loadmaster during the operation, in order to ensure that
+              the refueller acted within the scope of his own duties and that the work
+              could be conducted in a safe manner, have not been sufficient.
+              An underlying cause of the accident was that the employer did not to a
+              sufficient extent take action to achieve a functioning group dynamic.
+
+
+
+
+     4.       SAFETY RECOMMENDATIONS
+              None.
+
+     On behalf of the Swedish Accident Investigation Authority
+
+
+     Jenny Ferm                                       Håkan Josefsson
+
+                                               37 (37)
+

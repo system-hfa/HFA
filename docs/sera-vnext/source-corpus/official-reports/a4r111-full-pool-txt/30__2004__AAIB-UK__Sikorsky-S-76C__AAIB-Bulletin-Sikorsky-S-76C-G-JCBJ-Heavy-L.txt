@@ -1,0 +1,90 @@
+Follow-up Action on Occurrence Report
+
+
+ACCIDENT TO SIKORSKY S76C, G-JCBJ, AT CRANFIELD AIRFIELD ON 11 OCTOBER 2003
+                       (HELICOPTER LANDED HEAVILY DURING PILOT TRAINING EXERCISE)
+
+CAA FACTOR NUMBER                            :   F27/2004
+
+FACTOR PUBLICATION DATE                      :   13 July 2004
+
+OPERATOR                                     :   JCB
+
+CAA OCCURRENCE NUMBER                        :   2003/07120
+
+AAIB REPORT                                  :   Bulletin 5/2004
+
+SYNOPSIS
+
+(From AAIB Report)
+
+The helicopter landed heavily from a practice rejected takeoff, following a simulated engine failure, during a short
+field or semi-oblique take-off profile. The helicopter was not fitted with a Flight Data Recorder (FDR), but data
+retrieved from the Cockpit Voice Recorder (CVR) was compared with flight test data and this showed a shorter
+than normal time spent in descent. In addition, both pilots recalled a higher than normal rate of descent and the
+absence of translational lift. The investigation concluded that the most probable cause of the heavy landing was the
+high rate of descent, which was in turn due to the absence of translational lift, possibly as a result of the
+manoeuvre being flown in a slight tailwind.
+
+FOLLOW UP ACTION
+
+The three Safety Recommendations, made by the AAIB following their investigation, are reproduced below,
+together with the CAA’s responses.
+
+Recommendation 2004-04
+
+The Civil Aviation Authority require operators of the S76 to carry out an analysis of the risks associated with flying
+vertical and short field rejected takeoff manoeuvres with a view to mitigating the risks as much as possible.
+
+CAA Response
+
+The CAA partially accepts this Recommendation.
+
+In the view of the CAA this Recommendation should have been directed at operators of the S76 who fly vertical
+and short field rejected takeoff manoeuvres. It is the operators who have the responsibility for analysing the risks
+associated with their operation, and of mitigating these risks as much as possible.
+
+However the CAA will, through a FODCOM to be published by 31 August 2004, recommend that operators of the
+S76 conducting vertical and short field rejected takeoff manoeuvres carry out an analysis of the risks associated
+with these manoeuvres with a view to mitigating the risks as much as possible. The FODCOM will be forwarded to
+relevant corporate operators of the type.
+                                                                                             CAA Status - Open
+Recommendation 2004-05
+
+The Civil Aviation Authority require Sikorsky to rewrite the S76C+ Rotorcraft Flight Manual to emphasise the
+potential hazards when flying vertical and short field rejected takeoff in light winds or winds close to the beam.
+
+CAA Response
+
+Since 28 September 2003, responsibility for the matters addressed in this Recommendation has passed to EASA
+under Regulation (EC) 1592/2002 and the recommendation should be addressed to that Agency.
+
+Under the EASA transition arrangements and as the lead authority for the S76C+ type, the CAA accepts this
+recommendation on behalf of EASA.
+
+The CAA has written to the manufacturer requiring them to amend Part 2 (Pilot Training Provisions) of the S76C+
+Rotorcraft Flight Manual to emphasise the potential hazards when flying vertical and short field rejected takeoff in
+light or variable winds or winds close to the beam.
+
+                                                                                             CAA Status - Closed
+
+
+
+Recommendation 2004-06
+
+The Civil Aviation Authority require Sikorsky to rewrite the S76C+ Rotorcraft Flight Manual to make the required
+handling techniques for the rejected takeoff from the short field or semi-oblique take-off profile clearer.
+
+CAA Response
+
+Since 28 September 2003, responsibility for the matters addressed in this Recommendation has passed to EASA
+under Regulation (EC) 1592/2002 and the recommendation should be addressed to that Agency.
+
+Under the EASA transition arrangements and as the lead authority for the S76C+ type, the CAA accepts this
+recommendation on behalf of EASA.
+
+The CAA has written to the manufacturer requiring them to rewrite the S-76C+ Rotorcraft Flight Manual to make
+the required handling techniques for the rejected takeoff from the short field or semi-oblique profile clearer.
+
+                                                                                             CAA Status - Closed
+

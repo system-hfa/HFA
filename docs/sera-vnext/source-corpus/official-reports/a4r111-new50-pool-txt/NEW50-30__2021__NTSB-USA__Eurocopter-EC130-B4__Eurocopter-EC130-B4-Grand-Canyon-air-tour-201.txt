@@ -1,0 +1,977 @@
+                   Aviation Investigation Final Report
+
+ Location:                  Peach Springs, Arizona               Accident Number:         WPR18MA087
+
+ Date & Time:               February 10, 2018, 17:19 Local       Registration:            N155GC
+
+ Aircraft:                  Eurocopter EC130                     Aircraft Damage:         Destroyed
+
+ Defining Event:            Loss of control in flight            Injuries:                5 Fatal, 2 Serious
+
+ Flight Conducted Under:    Part 135: Air taxi & commuter - Non-scheduled - Sightseeing
+
+
+
+Analysis
+
+The pilot of the helicopter was conducting his third air tour flight of the day, transporting six passengers
+to the operator's plateau landing site, known as Quartermaster, on the south bank of the Colorado River
+within the Grand Canyon. He was appropriately rated for this flight and was experienced executing
+approaches and landings at Quartermaster. Following an uneventful flight to the area, the pilot began a
+descent and approach from across the river to a ravine on the west side of the landing site. The accident
+helicopter was the ninth of ten helicopters scheduled to land at the site that afternoon, and because all of
+the pads on the east side of the site were occupied, the pilot initiated a descending left turn toward a
+landing pad located on the west side of the site, aligning the helicopter on an east-northeasterly heading.
+Photographs of the landing site windsock near the time of the accident indicated winds at magnitudes of
+15 kts or greater from the north-northwest, resulting in tailwind conditions during approaches to the west
+pads. A pilot on the ground at the landing site reported that the accident helicopter began to decelerate as
+it approached the landing pads and entered a nose-up attitude, then turned left toward the landing pads,
+transitioned through several pitch oscillations, and drifted aft. The left turn continued through 720° of
+rotation before the helicopter descended into a canyon just west of the landing pads and impacted
+terrain. Photos indicated that the helicopter’s final impact in the canyon was immediately followed by a
+postcrash fire. Postaccident examination of the helicopter and engine revealed no evidence of
+mechanical anomalies that would have precluded normal operation.
+
+Two pilots who landed just before the accident conducted their approaches in a similar direction as the
+accident pilot and both later reported that they encountered adverse wind. The pilot who landed just
+before the accident reported that he encountered wind conditions that necessitated full right pedal and
+nearly resulted in a loss of yaw control. The accident helicopter’s flight characteristics at the time of the
+accident would have included slowing airspeed, a high power setting, and a relative wind position that
+were all conducive to a loss of tail rotor effectiveness (LTE), thus it is likely that the loss of control was
+the direct result of LTE.
+
+
+
+
+Page 1 of 24
+The landing site was located on a plateau and provided limited approach options due to its local
+topography. At the time of the accident, potential demarcation lines (boundaries of updrafts and
+downdrafts) would have been on the pinnacles of ridges located along the approach to the Quartermaster
+west pads. Figure 8 shows a conceptual illustration of potential demarcation lines and wind directions
+based on the terrain and wind environment present around the accident site at the accident time, and
+suggests areas where downdrafts, updrafts and turbulence could have impacted the accident flight’s
+approach to the landing site.
+
+
+
+
+Figure 8. Conceptual display of demarcation lines at accident site
+The proximity of other pilots and passengers who witnessed the accident resulted in an immediate
+response to aid the occupants of the helicopter; however, the remote location of the accident site and
+communication difficulties between on-scene and outside resources made rescue coordination
+challenging and victim transport by helicopter to the hospital did not begin until about 6 hours after the
+accident. Although all seven occupants survived the impact, they all sustained significant burn injuries,
+and three of the occupants were likely unable to egress the helicopter. The most significant factor
+affecting occupant survival was the immediate postcrash fire. The accident helicopter was not equipped,
+nor was it required to be equipped, with a crash-resistant fuel system. Due to a lack of data regarding the
+crash dynamics and impact forces, the effectiveness of such a system, if installed, in delaying the onset
+of a postcrash fire could not be determined.
+
+The only source of local wind information at Quartermaster at the time of the accident was a windsock,
+which can only display wind speeds up to 15 kts. Further, windsocks cannot indicate the presence of
+downdrafts, turbulence, or any other local environmental conditions that may affect flight safety,
+particularly when landing in a confined area.
+
+The operator provided its pilots with a morning weather briefing on the day of the accident, which
+advised of gusty wind conditions in the area of the accident site forecast to increase throughout the
+afternoon. Weather advisories issued after the morning weather briefing, several hours before the
+accident, indicated a cold front proceeding through the area of the accident site with associated wind
+gusts and turbulence. This information was likely not captured by the operator and distributed to its
+pilots even though some of the forecasts included wind conditions above the maximum wind outlined in
+
+
+Page 2 of 24                                                                                 WPR18MA087
+the company's general operations manual (GOM). Because there was no additional wind information at
+the landing site beyond the windsock, it could not be determined the actual wind conditions at the
+landing site at the time of the accident; however, pilots who landed before the accident pilot estimated
+the wind to be 15 to 20 knots, which is below that specified in the GOM. Although the morning briefing
+was not intended to be the pilots' sole source of weather information, it was likely the primary weather
+information the accident pilot received before the accident, as he had recently flown to Quartermaster
+and is not likely to have rechecked the weather.
+
+
+
+
+Probable Cause and Findings
+The National Transportation Safety Board determines the probable cause(s) of this accident to be:
+
+A loss of tail rotor effectiveness, the pilot’s subsequent loss of helicopter control, and collision with
+terrain during an approach to land in gusting, tailwind conditions in an area of potential downdrafts and
+turbulence.
+
+
+
+
+ Findings
+ Aircraft                     Prop/rotor parameters - Capability exceeded
+ Aircraft                     Yaw control - Not attained/maintained
+ Environmental issues         Tailwind - Effect on operation
+ Personnel issues             Aircraft control - Pilot
+
+
+
+
+Page 3 of 24                                                                                WPR18MA087
+Factual Information
+
+
+ History of Flight
+ Approach                     Other weather encounter
+ Approach                     Loss of control in flight (Defining event)
+ Uncontrolled descent         Collision with terr/obj (non-CFIT)
+ Post-impact                  Fire/smoke (post-impact)
+
+
+
+
+HISTORY OF FLIGHT
+
+On February 10, 2018, about 1719 mountain standard time (mst), an Airbus Helicopters EC130 B4
+helicopter, N155GC, was destroyed when it was involved in an accident near Peach Springs, Arizona.
+The pilot and one passenger sustained serious injuries, and five passengers were fatally injured. The
+helicopter was operated as a Title 14 Code of Federal Regulations (CFR) Part 136 air tour flight.
+
+On the day of the accident, the pilot performed a canyon landing, and an air tour flight before the
+accident flight. All of the day's flights departed Boulder City Municipal Airport (BVU), Boulder City,
+Nevada. Both the second flight and the accident flight had a destination of Quartermaster, an
+unimproved landing site regularly used by the operator within the Grand Canyon's Quartermaster
+Canyon. The pilot's second flight of the day took place in the early afternoon and returned at 1455. The
+accident flight departed at 1642.
+
+The accident helicopter reached the Hoover Dam about 1652 and entered the Grand Canyon West
+Special Flight Rules Area 50-2 about 1713, where the pilot flew the standard helicopter route known as
+the “Green 4 route.” The last radar return was captured at 1717 and depicted the helicopter about 3.5
+nautical miles (nm) west of the accident site, consistent with a descent into the canyon to Quartermaster.
+
+The accident helicopter was one of ten helicopters scheduled to land at the site on the afternoon of the
+accident. The tour operation intended for the ten helicopters to sequentially land at Quartermaster and
+allowed for them all to be present at the landing site at the same time. The accident pilot stated that,
+during the approach to Quartermaster, he noted that the eight helicopters that had already landed were
+facing in different directions, indicating variable wind conditions. The combination of the windsock
+direction, orientations of the parked helicopters, and unoccupied landing pads on the west side of the
+landing area prompted the pilot to conduct an approach from the west and touch down on one of the
+west landing pads. He recalled that the two helicopters that landed immediately before him were on the
+west landing pads facing east, the same as his chosen approach direction, and noted that the windsock
+indicated wind from the north/northeast.
+
+The pilot stated that he normally remained on the north side of the Colorado River, crossing the river
+between 200 and 300 ft above ground level (agl) while approaching Quartermaster for landing. After
+crossing the river, he entered a left turning descent toward the landing area. (See figure 1.) He stated
+
+
+
+Page 4 of 24                                                                                  WPR18MA087
+that, as he made the left turn, the helicopter encountered what he described as a “violent gust of wind”
+and began to spin, and as a result he was unable to maintain directional control.
+
+
+
+
+Figure 1. Graphical representation of typical approach to west pads
+
+A Papillon pilot on the ground at Quartermaster watched the accident helicopter as it approached from
+across the river and assumed that the pilot planned to land on the west pads based on his approach path.
+He reported that the helicopter decelerated and then entered an approximate 15° nose-up pitch attitude.
+While maintaining altitude, the helicopter began a left turn toward the landing site. According to the
+witness, during the turn, the helicopter transitioned into a level attitude, followed by a nose-low attitude.
+He further reported that the helicopter began to drift aft as the left turn continued and returned to a level
+attitude before it rotated 360° and began a descent. After a second 360° rotation, the helicopter collided
+with terrain. A postimpact fire ensued.
+
+Previous Approach and Landings at Quartermaster
+
+The first five helicopters to land at Quartermaster on the afternoon of the accident approached from the
+east and landed on the east pads, facing west. The next three helicopters landed on the west pads and
+used a similar approach as the accident helicopter. The tenth helicopter did not land due to the accident.
+
+PERSONNEL INFORMATION
+
+The pilot began his employment as a full-time pilot with Papillon Airways on June 3, 2013 and was
+trained by Papillon in the accident helicopter make and model. In 2014, the pilot transitioned into a role
+as a part-time pilot to pursue another career opportunity. At the time of the accident, the pilot’s primary
+occupation was in a different field (not as a pilot), but he continued flying for Papillon in a part-time
+capacity.
+
+Company training records revealed that the pilot’s most recent line check in accordance with 14 CFR
+Part 135 was accomplished in December 2017 and showed satisfactory grades for all areas of the
+
+
+
+Page 5 of 24                                                                                   WPR18MA087
+examination; however, the lead pilot who conducted a portion of the pilot’s training in preparation for
+this line check reported that he had marked the pilot’s performance “unsatisfactory.” Specifically, he
+noted that the pilot had experienced difficulty maneuvering the helicopter during high wind conditions
+and did not have enough altitude as he turned during 180° autorotations. The pilot passed his check ride
+with another lead pilot 1-2 days later.
+
+According to the operator, at the time of the accident, the pilot had flown passengers into the Grand
+Canyon for them a total of 836 times, with 581 landings at Quartermaster. The pilot stated that he felt
+comfortable flying the Airbus Helicopters (formerly Eurocopter) EC130 B4 helicopter and landing at
+Quartermaster.
+
+Prior to becoming an air tour pilot for Papillon, the pilot flew air tours in non-turbine powered
+helicopters in the Midwestern United States.
+
+HELICOPTER INFORMATION
+
+Fuel System Crash Resistance
+
+On October 3, 1994, the FAA introduced improved fuel system crash resistance standards for newly-
+certified normal category helicopters. These standards, outlined in 14 CFR 27.952, are intended to
+minimize fuel spillage near ignition sources to improve the evacuation time needed for crew and
+passengers to escape a postcrash fire; however, they were not retroactively applicable to either existing
+helicopters or newly-manufactured helicopters whose certification and approval predated the revised
+standards.
+
+The accident helicopter, manufactured in 2010, was not equipped, nor was it required to be equipped,
+with a fuel system meeting the contemporary fuel system crash resistance standards. An option to
+retrofit the EC130 B4 with a crash-resistant fuel system was approved by the FAA in December 2017.
+According to the operator, the retrofit kits were not available to them until April 2018, after which they
+completed a retrofit of their existing fleet of EC130 B4 and AS350-series helicopters by August 2018.
+Airbus Helicopters issued Safety Information Notice 3281-S-28 on November 5, 2018, which
+recommended that operators of the EC-130 and AS350 helicopters retrofit them with 14 CFR 27.852
+compliant crash resistance fuel systems.
+
+In July 2015, the NTSB issued Safety Recommendation A-15-12, which recommended that the Federal
+Aviation Administration (FAA) require the implementation of crash-resistant fuel system airworthiness
+standards for all newly manufactured rotorcraft, regardless of the original certification date, to reduce
+the risk of a postcrash fire in survivable accidents involving these rotorcraft. Section 317 of the FAA
+Reauthorization Act of 2018 prohibits helicopters manufactured after April 5, 2020, from flying in US
+airspace unless certified with a crash-resistant fuel system. Pending further information on the FAA’s
+efforts to address this issue with rulemaking, the NTSB had classified A-15-12 as “Open – Acceptable
+Response.”
+
+METEOROLOGICAL INFORMATION
+
+Surface Observations
+
+
+
+Page 6 of 24                                                                                  WPR18MA087
+The automated observation at Grand Canyon West Airport (1G4), located at an elevation of 4,816 ft
+mean sea level (msl) about 2.6 nm northwest of the accident site, recorded wind from 330° at 15 knots
+(kts) with gusts to 19 kts at 1705. At 1725, the station recorded wind from 330° at 16 kts with gusts to
+22 kts.
+
+Papillon and another helicopter operator each owned a weather station about 2 miles north-northwest of
+the accident site, at elevations about 1,200 ft msl. At 1700, the Papillon station reported wind from the
+north-northwest at 11 kts; at 1710, the wind was from the north-northwest at 11 kts gusting to 19 kts. At
+1720, the wind was from the north at 11 kts, and at 1730, the wind was from the north-northwest at 12
+kts, gusting to 24 kts. (The wind was recorded in miles per hour; the data has been converted to kts in
+this report.)
+
+The other station recorded a north-northwest wind at 10 kts gusting to 19 kts at 1700. The following
+three observations, recorded at 10-minute intervals, indicated northwest/north-northwest wind at 10 to
+11 kts.
+
+Quartermaster was equipped with a windsock that was located near the landing pads. A photo of the
+windsock taken about 1713 showed the windsock in its fully extended position, consistent with a wind
+velocity of 15 kts or greater. (See figure 2.)
+
+
+
+
+Figure 2. Photograph taken at 1713 MST of windsock at Quartermaster
+
+
+
+Papillion Pilots’ Recollections of Wind Conditions at Quartermaster
+
+One pilot, who entered the canyon about 1646 and landed second in the sequence, encountered what he
+estimated to be a 20-kt headwind from the west while approaching an east pad. Another pilot, who
+
+
+
+Page 7 of 24                                                                                WPR18MA087
+entered the canyon about 1704 and landed fifth in the sequence, reported a northwest wind while landing
+on an east pad. He reported that he warned other pilots over the company radio frequency of a tailwind
+during the approach; however, only the sixth pilot to land recalled hearing this transmission.
+
+The pilot of the sixth helicopter to land, who entered the canyon about 1708, estimated variable winds
+between 15 and 20 kts.
+
+The seventh pilot to land entered the canyon at 1709. During his approach to the west pads, his intended
+destination, he recalled that the helicopter's tail swung rapidly due to strong winds and he applied
+significant right pedal and crabbed the helicopter to maintain the approach.
+
+The last helicopter to land before the accident entered the canyon at 1710 and touched down about 2
+minutes before the accident occurred. The pilot had experience flying in mountainous terrain, knew of
+the presence of 15-20 kt winds from the east, and thus anticipated windshear during the approach. While
+turning toward the west pads, he experienced a strong wind that swung the nose of the helicopter about
+90° to the left. The airspeed rapidly decayed and it required all of his effort to maintain control of the
+helicopter. As the helicopter began to descend, he increased collective to arrest the descent and was able
+to maintain control by pushing the cyclic forward and right to increase airspeed while applying full right
+pedal to keep the nose straight. He successfully landed the helicopter on one of the west pads.
+
+The accident pilot reported that he tried to be conscious of the wind during previous flights into
+Quartermaster and added that he had never experienced a violent wind shift like the one he encountered
+on the day of the accident. When discussing making the final turn to approach into Quartermaster, the
+accident pilot stated that “ninety percent of days are…it’s calm and you don’t think twice.”
+
+Weather Synopsis
+
+A National Weather Service (NWS) Surface Analysis Chart for 1400 showed a low-pressure center
+along the Utah/New Mexico Border. A cold front extended west from this low-pressure center, and the
+accident site was located just ahead of the front. In a subsequent Surface Analysis Chart issued at 1700,
+the cold front had moved south of the accident site into north-central Arizona. Clear skies were reported
+across the region except in far northern Arizona and southern Utah, which indicated overcast sky
+conditions.
+
+The NWS sustained wind speeds for the accident region showed forecasts for increasing wind speeds
+throughout the day.
+
+Upper Air Data
+
+A high-resolution rapid refresh model sounding valid for the accident location at 1700 was retrieved
+from the National Oceanic and Atmospheric Administration (NOAA) Air Resources Laboratory. The
+surface elevation of this model was run at 1,863 ft, about 400 ft higher than the terrain elevation of
+Quartermaster. The model showed wind from the north-northwest at speeds between 10 kts near the
+surface to about 20 kts near about 5,000 ft. Sounding calculations showed low-level wind shear near the
+surface.
+
+
+
+
+Page 8 of 24                                                                                WPR18MA087
+Weather Forecasts
+
+An Area Forecast Discussion (AFD) issued at 1637 reported a strong cold front and widespread wind
+gusts during the evening on the day of the accident. A previous AFD forecast a strong cold front to
+move through the region that afternoon and evening, with winds from the north to northeast at sustained
+magnitudes from 20-30 kts and gusts between 40-50 kts.
+
+An urgent Weather Message was issued by the NWS at 1008 effective for the accident site at 1800. The
+Weather Message referenced an NWS wind advisory, which indicated that wind would increase in the
+late afternoon, peak overnight, and decrease through the following morning. The wind was forecast to be
+20-30 mph sustained with gusts of 30-45 mph and possible isolated gusts to 55 mph.
+
+A Graphical Forecast for Aviation was issued about 1500 and valid for 1700 that depicted clear sky
+conditions, a surface visibility of greater than 5 statute miles, and northwesterly surface wind gusts
+between 20 and 35 kts in the accident region.
+
+The closest Center Weather Service Unit issued a Meteorological Impact Statement at 1545 to expect
+gusty westerly wind of 25 to 35 kts gusting to 40 to 45 kts over the mountains and deserts on the
+afternoon and evening of the accident in the area of the accident site.
+
+Operator’s Weather Procedures
+
+According to Papillon’s General Operations Manual (GOM), “For flights conducted within the Local
+Tour Area, the Director of Operations (DO), Chief Pilot, Director of Utility Operations, or a
+Management Designee will determine the weather based on information obtained from an approved
+source.” Further, the GOM stated that pilot weather briefings are conducted as part of a daily morning
+safety briefing and the weather information would be posted on the bulletin board of the pilot break
+room. These briefings must include adverse weather advisories (SIGMET/AIRMET), current weather
+(METARs), terminal forecasts (TAF), area forecast, winds and temperatures, pilot reports and
+NOTAMS, if applicable. According to the DO, the morning briefings were conducted by a lead pilot and
+occurred about 0545. The accident pilot’s shift started about 4 hours after the morning weather briefing;
+however, he initialed the briefing sheet to indicate that he had reviewed the provided weather
+information.
+
+The operator’s daily weather briefing was a company-produced document that included current weather
+conditions, TAFs, area forecasts, NOTAMs, and AIRMETS/SIGMETS/PIREPS/TFRs. The briefing
+sheet for the day of the accident showed wind at 7 knots at 1G4. The area forecast portion of the briefing
+sheet included a synopsis that gusty winds from the north would spread southward and would be
+accompanied by a cold front but did not offer any further wind information. The briefing sheet also
+presented three NOTAMs, two AIRMETs, and the TAF for McCarran International Airport (LAS), Las
+Vegas, Nevada, which did not show any forecast weather events or wind conditions for Quartermaster.
+
+In addition to the weather briefing, the operator had a pilot’s station in the passenger building where
+pilots could access additional weather information, and their lead pilot monitored PIREPs and aviation
+weather data throughout the day. The company’s control tower staff could also relay weather
+information to the lead pilot, although this was not a required part of their duties. Interviews with several
+
+
+
+Page 9 of 24                                                                                   WPR18MA087
+Papillon pilots revealed that the primary means of assessing the weather conditions before a flight
+included reports from pilots returning from the Grand Canyon and wind indicators near Quartermaster,
+the windsock at Quartermaster, and a weather station about 2 nm away. Several pilots stated that they
+would talk to other pilots at the terminal after returning from Quartermaster to advise them about the
+current wind conditions. The more senior pilots stated that they would make radio transmissions
+regarding the wind if they found it particularly surprising or challenging. One pilot stated they were
+cautious of making more radio transmissions than necessary to avoid frequency congestion given that
+other companies also operated in the area. The operator did not require its pilots to communicate wind
+information over the radio, but did discourage unnecessary radio communication and encouraged pilots
+to report “safety of flight” matters such as pilot reports on the company radio frequency. Multiple
+Papillon pilots stated that the winds at Quartermaster were unpredictable and that the wind direction
+could drastically change during an approach into the landing site.
+
+The accident pilot was unable to recount how he assessed the weather conditions on the day of the
+accident, but described how he normally obtained weather information before a flight. He stated that he
+would not recheck the weather between tour flights into the Grand Canyon because there was only a
+short turnover between flights and because he had recently been to the destination. He stated that pilots
+returning from Quartermaster would relay wind information when they arrived back at the terminal.
+Upon arriving at Quartermaster, the pilot would typically use a nearby windsock, Quartermaster’s
+windsock, and the directions of parked helicopters to discern the direction of the wind.
+
+APPROACH AND LANDING SITE INFORMATION
+
+Quartermaster Elevation and Topography
+
+Quartermaster was a landing site located on the south side of the Colorado River in the Grand Canyon,
+about 53 nm east of BVU. The site was in an arid region on a plateau approximately 3,300 ft below the
+rim of the Grand Canyon at an elevation of 1,450 ft msl. Quartermaster’s 600-ft-long by 150-ft-wide
+landing area comprised packed dirt/rock and loose rock, with sparse, low vegetation. A March 2017
+written agreement between the Hualapai Sovereign Nation and Papillon authorized Papillon to use the
+10 available landing pads and defined the number of landings allotted per year.
+
+Title 14 CFR Part 95.15 used the geographic coordinated system to define sections of the Western
+United States as “mountainous areas.” The coordinates referenced in the regulation included the Grand
+Canyon under this definition.
+
+According to Papillon, the number of passengers the company flew into Quartermaster increased
+annually from 11,305 in 1999 (2 years after they started offering air tours to Quartermaster) to 77,742
+total passengers the year before the accident. From the start of the operator’s service into Quartermaster
+to 2017, they had flown 1,028,623 passengers into Quartermaster, landing 179.661 times without any
+accidents.
+
+The operator did not issue any written guidance to its pilots regarding specific approaches, approach
+profiles, or landing pads to use under certain conditions. According to the operator’s chief pilot, they
+were unable to predict which pad/approach would be favorable. He noted that their pilots were trained to
+
+
+
+
+Page 10 of 24                                                                                WPR18MA087
+conduct approaches into the wind, but were also professional pilots who, under 14 CFR 91.3, are
+directly responsible for and are the final authority as to the conduct of the flight.
+
+Papillon pilots typically used two main approaches into Quartermaster; the "downriver landing" (used
+when landing on the east pads) and the "upriver landing" (used when landing on the west pads).
+According to the operator, these approaches were established by pilots and management when they
+began service into Quartermaster in 1997. Both approaches began from the north side of the Colorado
+River. The downriver landing required the pilot to cross the river west of Quartermaster and overfly a
+saddle-shaped landmark referred to as the “notch,” located south of the landing site. The pilot then
+performed a descending left turn to the east side of Quartermaster, touching down facing west-
+northwest.
+
+Quartermaster is part of the Hualapai Sovereign Nation and its use is controlled through an agreement
+with the operator. The agreement prohibits the fixed marking of any touchdown and lift off zones, or
+any fixed means for delineating preferred landing pads or maneuvering areas. Landing pads were
+selected by each pilot upon arrival based on availability and wind direction. The first pilots to arrive in a
+group typically landed on the pads closest to the center of the landing area.
+
+WRECKAGE AND IMPACT INFORMATION
+
+The helicopter came to rest upright in rocky terrain about 300 ft below the landing site on a heading of
+222° magnetic. Most of the wreckage was consumed by the postcrash fire except for the tail boom and
+fenestron, which had separated from but were collocated with the fuselage. (See figure 3.) The engine,
+still attached to the engine deck, was found in the main wreckage and sustained fire damage. All three
+main rotor blades remained attached to the main rotor hub and exhibited damage consistent with high
+rotational energy. The tail stinger, fenestron hub cover, a toe from a skid step, and small pieces of
+transparent windshield were found on a canyon slope east of the main wreckage.
+
+
+
+
+Page 11 of 24                                                                                  WPR18MA087
+Figure 3. Photograph of accident site
+
+Airframe Examination
+
+Continuity of the flight control system and main rotor drive system could not be determined due to
+postimpact fire damage.
+
+The fenestron remained attached to the tail boom, which was found adjacent to the cockpit. Circular
+impact signatures were observed on the tail rotor drive shaft cover, consistent with the tail rotor drive
+shaft rotating at impact.
+
+All three main rotor blades were found at the main wreckage site and remained attached to their root
+ends at their respective main rotor blade sleeves, which were attached to the Starflex. All three pitch
+horns remained attached to their respective sleeves and all three Starflex arms were fractured.
+
+All three main rotor servo controls remained installed. Two of the three pitch change links were found in
+their normal positions attached to their respective pitch horns and rotating swashplate attachment points,
+but their link body was fractured. A portion of the third pitch change link body was found near its
+normally-installed location.
+
+The fenestron control cable was fractured near the tail boom separation. Continuity of the control cable
+was traced from a fracture at its forward end to the fenestron blades. The fracture surface exhibited
+signatures consistent with overstress failure. A forward portion of the fenestron control cable was
+
+
+
+Page 12 of 24                                                                                 WPR18MA087
+observed in the main wreckage; however, control continuity could not be established due to thermal
+damage.
+
+Most of the fenestron blades remained attached to the hub, with the exception of one blade, which was
+fractured at its root; the blade was found on the ground immediately below the fenestron. The fenestron
+drive shaft did not exhibit anomalous damage and the external splines on the forward end of the drive
+shaft did not exhibit any anomalous wear.
+
+Engine Examination
+
+Examination of the reduction gearbox revealed signatures consistent with engine operation at the time of
+impact. The power turbine blades did not display evidence of blade shedding and the magnetic plugs
+showed no evidence of debris.
+
+MEDICAL AND PATHOLOGICAL INFORMATION
+
+Toxicology tests performed by the FAA's Forensic Sciences Laboratory on specimens from the pilot
+were negative for all tested-for drugs except those used during medical treatment following the accident.
+
+SURVIVAL ASPECTS
+
+Seats
+
+The helicopter was equipped with 8 single-occupant energy attenuating seats manufactured by Zodiac
+Seats, designed and certified to the standards contained in EASA ETSO C127a. (See figure 4.) All of the
+seats were destroyed by postcrash fire. Each of the eight seats was equipped with a 4-point rotary buckle
+restraint, all of which were recovered from the accident site.
+
+
+
+
+Figure 4: Accident Helicopter Seat Configuration
+
+The fire extinguisher was normally stowed in a bracket on the floor between the pilot seat and passenger
+seat No. 1. The fire extinguisher was charred and found in the wreckage. Seat no. 1 was unoccupied.
+
+
+
+Page 13 of 24                                                                              WPR18MA087
+Injuries
+
+Passengers in seat Nos. 2, 6, and 7 did not have either the ability or opportunity to evacuate and died due
+to burns and smoke inhalation injuries; no blunt force traumatic injuries were noted by the medical
+examiner.
+
+The pilot and passengers in seat Nos. 3, 4, and 5 sustained serious thermal injuries. Passengers in seat
+Nos. 3 and 4 succumbed to their burn injuries several days after the accident. In addition to their thermal
+injuries, the passenger in seat No. 5 sustained a spinal fracture. The pilot sustained an open left leg
+fracture.
+
+Emergency Response
+
+A photograph of the accident site taken at 1718:49 (after the accident) by a witness in an inbound
+helicopter showed white smoke and/or dust in the area of the accident site, while a second photograph
+taken about 7 seconds later showed flames and black smoke.
+
+Numerous individuals, including pilots and passengers from other helicopters, were at Quartermaster at
+the time of the accident. Several Papillon pilots and members of the Royal Australian Air Force (RAAF)
+retrieved first aid kits from other helicopters and responded to the accident site, arriving about 20
+minutes after the accident. They observed the burning helicopter and the pilot and three seriously injured
+passengers who were outside the helicopter. (See figure 5.)
+
+
+
+
+Figure 5. Quartermaster landing zone, accident site, and extraction location
+
+The helicopter was equipped with an Artex C406-N HM emergency locator transmitter (ELT), which
+transmitted an alert notification and location information to the Air Force Rescue Coordination Center
+(AFRCC) at 1719:42.
+
+
+
+Page 14 of 24                                                                                WPR18MA087
+The location of the accident site posed significant challenges and extended the response time for
+emergency personnel, who had to be flown in by helicopter. (See figure 6.) These first responders
+reached the accident site about 45 minutes after the accident.
+
+
+
+
+Figure 6. The location and terrain elevation difference between first responders at Grand Canyon West Airport and Quartermaster
+
+The seriously injured occupants were eventually extracted from the accident site via helicopter between
+2315 and 0105 arriving at University Medical Center in Las Vegas between 0055 and 0128.
+
+Some Papillon pilots noted that the use of satellite phones stored at Quartermaster was hindered due to
+dead batteries, poor coverage, and a lack of training in their operation. Papillon provided a laminated
+instruction card about use of the phones in their cases and stated that the phones were regularly tested.
+Additionally, Papillon stated there were spare batteries in the cases and the batteries were regularly
+replaced. Billing records confirmed the Quartermaster satellite phone was used in April, May, July and
+December 2017, and on the night of the accident.
+
+At the time of the accident, the operator did not have a program in place to ensure that the satellite
+phones were regularly maintained, and staff were trained on their use. After the accident, the operator
+purchased new satellite phones with improved coverage, easier operability, and spare batteries. Papillon
+pilots were trained in their use and asked to demonstrate their proficiency in using the satellite phones.
+Additionally, Papillon purchased trauma kits and a collapsible stretcher that are now located in unlocked
+metal containers, readily available for emergency crews. Finally, Papillon provided its pilots with first
+aid training and developed procedures to inspect the emergency medical equipment quarterly.
+
+ADDITIONAL INFORMATION
+
+Loss of Tail Rotor Effectiveness (LTE)
+
+According to FAA Advisory Circular 90-95,
+
+
+
+Page 15 of 24                                                                                                        WPR18MA087
+“LTE is a critical, low-speed aerodynamic flight characteristic which can result in an uncommanded
+rapid yaw rate, which does not subside of its own accord and, if not corrected, can result in a loss of
+aircraft control.”
+
+Information on this subject has been published by many organizations including the FAA and helicopter
+manufacturers.
+
+The FAA Helicopter Flying Handbook (FAA-H-8083-21B) contains an in-depth discussion on LTE.
+Chapter 7, Helicopter Performance, addresses helicopters with main rotors that rotate counter-clockwise,
+and states:
+
+“The wind direction is also an important consideration. Headwinds are the most desirable as they
+contribute to the greatest increase in performance. Strong crosswinds and tailwind may require the use
+of more tail rotor thrust to maintain directional control. This increased tail rotor thrust absorbs power
+from the engine, which means there is less power available to the main rotor for the production of lift.
+Some helicopters even have a critical wind azimuth or maximum safe relative wind chart. Operating the
+helicopter beyond these limits could cause a loss of tail rotor effectiveness.”
+
+Chapter 11, Helicopter Emergencies and Hazards, defines LTE as a condition that occurs when the flow
+of air through a tail rotor is altered in some way, by altering the angle or speed at which the air passes
+through the rotating blades of the tail rotor disk. It further states…
+
+The main factors contributing to LTE are:
+
+   1. Airflow and downdraft generated by the main rotor blades interfering with the airflow entering
+      the tail rotor assembly.
+   2. Main blade vortices developed at the main blade tips entering the tail rotor disk.
+   3. Turbulence and other natural phenomena affecting the airflow surrounding the tail rotor.
+   4. A high-power setting, hence large main rotor blade pitch angle, induces considerable main rotor
+      downwash and hence more turbulence than when the helicopter is in a low power condition
+   5. A slow forward airspeed, typically at speeds where translational lift and translational thrust are
+      in the process of change and airflow around the tail rotor will vary in direction and speed.
+   6. The airflow relative to the helicopter;
+          a. Worst case – relative wind within ± 15° of the 10 o'clock position, generating vortices
+               that can blow directly into the tail rotor. This is dictated by the characteristics of the
+               helicopter's aerodynamics of tailboom position, tail rotor size and position relative to the
+               main rotor and vertical stabilizer size and shape.
+          b. Weathercock stability – tailwinds from 120° to 240°, such as left crosswinds, causing
+               high pilot workload.
+          c. Tail rotor vortex ring state (210° to 330°). Winds within this region will result in the
+               development of the vortex ring state of the tail rotor.
+   7. Combinations of (a, b, c) of these factors in a particular situation can easily require more
+      antitorque than the helicopter can generate and in a particular environment LTE can be the
+      result.
+
+
+
+
+Page 16 of 24                                                                                WPR18MA087
+…There are a number of contributing factors, but what is more important in preventing LTE is to note
+them, and then to associate them with situations that should be avoided. Whenever possible, pilots
+should learn to avoid the following combinations:
+
+   1. Low and slow out of ground effect.
+   2. Winds from ±15° of the 10 o'clock position and probably on around to 5 o'clock position
+   3. Tailwinds that may alter the onset of translational lift and translational thrust, and hence induce
+      high power demands and demand more antitorque than the tail rotor can produce.
+   4. Low speed downwind turns.
+   5. Large changes of power at low airspeeds.
+   6. Low speed flight in the proximity of physical obstructions that may alter a smooth airflow to both
+      the main rotor and tail rotor.
+
+According to Eurocopter service letter no. 1673-67-04, published on February 4, 2005, several instances
+of a loss of yaw axis control occurred when “the [pilot’s] action applied to the [right] yaw pedal was not
+enough (amplitude/duration) to stop [left] rotation as quickly as the pilot wished.” In this situation, as
+the aircraft continues to rotate, the pilot may suspect a tail rotor failure and either climb or descend,
+which, respectively, can increase the leftward rotation, or cause the aircraft to tilt while rotating and
+subsequently contact the ground. In the cases mentioned, “given their altitude and weight conditions the
+tail rotors were far from their maximum performance limits.”
+
+The Eurocopter service letter addresses helicopters with main rotors that rotate clockwise, though loss of
+yaw control can occur with any helicopter with a tail rotor. A loss of yaw axis control can also occur
+when the helicopter is in fact operated beyond its performance limits (due to loading or environmental
+conditions or extreme maneuvers), and in this case even the prompt application full right pedal might
+not be sufficient to counter a left rotation.
+
+Eurocopter service letter no. 1673-67-04 was superseded by Safety Information Notice 3297-S-00,
+issued by the manufacturer on July 3, 2019, that discussed the detection and recommended response to
+unanticipated yaw, emphasizing a prompt reaction with large amplitude of opposite pedal input.
+
+Engineering Simulations of Accident Flight
+
+As there was no recorded data available from the accident flight, the helicopter manufacturer performed
+engineering simulations with parametric data from an exemplar flight to compute the control authority
+required to match a route similar to the accident flight in various wind conditions. The results of these
+simulations are included in the public docket for this accident.
+
+Landing Site Research
+
+Title 14 CFR 136.1, National Air Tour Safety Standards, Applicability and Definitions, defined "suitable
+landing area" as:
+
+an area that provides the operator reasonable capability to land without damage to equipment or injury
+to persons. Suitable landing areas must be site-specific, designated by the operator, and accepted by the
+FAA. These site-specific areas would provide an emergency landing area for a single-engine helicopter
+
+
+
+Page 17 of 24                                                                               WPR18MA087
+or a multi-engine helicopter that does not have the capability to reach a safe landing area after an
+engine power loss.
+
+A certificate of authorization (COA) dated March 28, 1997, from the FAA to Papillon showed that
+Quartermaster was recognized as a landing site for Papillon’s air tour service with the provision that
+Papillon obtain permission from the land owner for any non-emergency landings. At the time of the
+accident, Papillon had an active agreement with the Hualapai Nation to land air tours at the site.
+
+Demarcation Line
+
+According to the United States Army Flight Manual “Fundamentals of Flight,”
+
+The demarcation line is the point separating upflow air from downflow air. It forms at the mountain’s
+highest point and extends diagonally upward. The velocity of the wind and steepness of the uplift slope
+determines the position of the demarcation line. Generally, the higher the wind speed and steeper the
+terrain, the steeper the demarcation line…As wind increases above 20 kts, the demarcation line moves
+forward to the crest’s leading edge. It then matches the slope’s steepness. The severity of updrafts,
+downdrafts, and turbulence also increase. Under these conditions, the best landing spot is close to the
+forward edge (windward side) of the terrain feature. (See figure 7.)
+
+
+
+
+Figure 7: Excerpt showing demarcation line in strong wind from United States Army Helicopter Manual
+
+A training document authored by The European Helicopter Safety Team entitled, “Techniques for
+Helicopter Operations in Hilly and Mountainous Terrain” stated:
+
+
+
+
+Page 18 of 24                                                                                         WPR18MA087
+…if the ground rises, the wind flows upward on a slope and it is referred to as the ‘windward’ side. If
+the ground slopes away from the wind direction, the wind flows downward and is referred to as the
+"leeward" side…When it flows over a cliff it tends to tumble over the edge in a turbulent manner.
+
+The document further stated that,
+
+On the leeward slope there is generally turbulence and downdrafts that can make flight hazardous and
+should be avoided. The area where the updraft turns to a downdraft is referred to the as "demarcation
+line." The demarcation line between updrafting and downdrafting air will, typically, become steeper and
+move towards the windward edge of the feature as wind speed increases.
+
+Mechanical Turbulence
+
+Papillon pilots remarked that the terrain features in the canyon adjacent to Quartermaster created
+mechanical turbulence, a weather phenomenon defined as the disturbance and transformation from
+horizontal wind to a complicated pattern of eddies and irregular air movements due to obstructions such
+as bluffs, hills, mountains or buildings.
+
+Pinnacle and Ridgeline Operations
+
+According to the FAA Helicopter Flying Handbook (FAA-H-8083-21B),
+
+A pinnacle is an area from which the surface drops away steeply on all sides. A ridgeline is a long area
+from which the surface drops away steeply on one or two sides, such as a bluff or precipice. The
+absence of obstacles does not necessarily decrease the difficulty of pinnacle or ridgeline operations.
+Updrafts, downdrafts, and turbulence together with unsuitable terrain in which to make a forced landing
+may still present extreme hazards.
+
+Papillon Terrain Flight Training and Guidance
+
+When asked how they trained their pilots in mountainous flight operations, the company’s Director of
+Operations stated that “all of our pilots come to us as commercially rated pilots proficient in these
+maneuvers and certified to competency by the FAA in rotorcraft.” In addition, the operator required a
+minimum of 1,000 hours of pilot-in-command helicopter time before their employment. Each pilot was
+trained and evaluated in specific areas that aligned with concepts covered in the Helicopter Flying
+Handbook to prepare them for passenger flights in the Grand Canyon, including approaches,
+pinnacle/rooftop operations, confined area/steep approaches, crosswind operations, and loss of lift at
+altitude (settling with power).
+
+The company used a “Flight Training Flow” as a guide for initial training in the EC130 B4 helicopter.
+According to this document, pinnacle and confined space operations are two of eight topics covered as
+part of a 1.3-hour instructional flight.
+
+The “Pinnacle/Rooftop Operations” section of the company’s training program stated that “the trainee
+shall accomplish a proper high and low reconnaissance.”
+
+
+
+
+Page 19 of 24                                                                               WPR18MA087
+Company guidance regarding approach and landing near pinnacles and ridgelines included excerpts
+from the FAA Helicopter Flying Handbook:
+
+If there is a need to climb to a pinnacle or ridgeline, do it on the upwind side, when practicable, to take
+advantage of any updrafts. The approach flightpath should be parallel to the ridgeline and into the wind
+as much as possible.
+
+Load, altitude, wind conditions, and terrain features determine the angle to use in the final part of the
+approach. As a general rule, the greater the winds are, the steeper the approach needs to be to avoid
+turbulent air and downdrafts…if a crosswind exists, remain clear of down-drafts on the leeward or
+downwind side of the ridgeline…When making an approach to a pinnacle, avoid leeward turbulence and
+keep the helicopter within reach of a forced landing area as long as possible.
+
+Confined Area/Steep Approaches
+
+According to the “Confined Area Operations” section of the company’s training program, a high angle
+of descent should be used to complete a steep approach into the wind. Among the expectations listed
+under “Acceptable Performance Guidelines,” the company expected the trainee to consider wind
+conditions, landing surface, obstacles, and to remain aware of the possibility of wind shear and/or wake
+turbulence.
+
+Normal Approach to a Hover
+
+The company’s training program described a normal approach to a hover as its “accepted way to
+transition from cruising flight to a hover.” The maneuver required a descent from 300 to 500 ft agl on a
+constant angle descent and constant airspeed until the helicopter is about 75 ft agl. The section continued
+by describing the maneuver in detail and incorporated the pilot’s control movements.
+
+Among the expectations listed under “Acceptable Performance Guidelines,” the company expected the
+trainee to consider wind conditions, landing surface, obstacles, and to remain aware of the possibility of
+wind shear and/or wake turbulence.
+
+Crosswind Operations
+
+The company training on crosswind operations was meant to establish proficiency in approaches and
+landings when operations into the wind were not feasible. Most of the section discussed crosswind take-
+offs, as the section description makes only two references to a crosswind approach. The first reference
+stated that a “crosswind departure and approach in helicopter are similar to the operation in fixed wing.”
+The second reference was captured in the “Acceptable Performance Guidelines” section, which stated
+“in addition to guidelines established for no wind approaches, all crosswind work will be evaluated on
+the basis of maintaining proper ground track.”
+
+The company operations manual imposed maximum wind limitations of 30-35 kts steady wind and a
+gust spread of 20 kts or greater; these limitations applied to both on- and off- airport operations.
+
+Postaccident Safety Actions
+
+
+
+Page 20 of 24                                                                                WPR18MA087
+Following the accident, Papillon took the following safety actions.
+     Completed a crash resistant fuel system retrofit of its entire fleet of Airbus EC130 B4 and
+       AS350B3e helicopters in August 2019
+     Purchased survival equipment and trauma kits for each of its remote landing sites, including
+       Quartermaster
+     Installed an additional windsock near the accident site along with a weather station that transmits
+       real-time wind information to Papillon’s base of operations
+     New satellite phones were placed at Quartermaster and other landing sites that include spare
+       batteries. Pilots were trained on their usage.
+     Upgraded their Spidetracks program, a GPS tracking platform, from a sampling rate of 15 minute
+       intervals to 15 second intervals.
+     Trained 12 employees as emergency response instructors to develop a module for employee
+       training.
+     Expanded the existing LTE training module in pilot training syllabus.
+    
+Following the accident, Airbus took the following safety action.
+     The company’s existing safety information notice on unanticipated left yaw (LTE) was revised
+       on July 3, 2019.
+     Safety information notice 3539-I-00 was released on September 4, 2020), which addresses the
+       controllability differences between a conventional tail rotor and a Fenestron, which the accident
+       helicopter was equipped with.
+
+
+
+ Pilot Information
+ Certificate:                Commercial; Flight instructor         Age:                                   41,Male
+ Airplane Rating(s):         None                                  Seat Occupied:                         Front
+ Other Aircraft Rating(s):   Helicopter                            Restraint Used:                        4-point
+ Instrument Rating(s):       Helicopter                            Second Pilot Present:                  No
+ Instructor Rating(s):       Helicopter; Instrument helicopter     Toxicology Performed:                  Yes
+ Medical Certification:      Class 2 Without                       Last FAA Medical Exam:                 November 13, 2017
+                             waivers/limitations
+ Occupational Pilot:         Yes                                   Last Flight Review or Equivalent:      December 21, 2017
+ Flight Time:                2423.1 hours (Total, all aircraft), 1078.6 hours (Total, this make and model), 2396.6 hours (Pilot
+                             In Command, all aircraft), 13.6 hours (Last 90 days, all aircraft), 2 hours (Last 30 days, all
+                             aircraft)
+
+
+
+
+Page 21 of 24                                                                                                     WPR18MA087
+ Aircraft and Owner/Operator Information
+ Aircraft Make:                     Eurocopter                       Registration:                    N155GC
+ Model/Series:                      EC130 B4                         Aircraft Category:               Helicopter
+ Year of Manufacture:               2010                             Amateur Built:
+ Airworthiness Certificate:         Normal                           Serial Number:                   7091
+ Landing Gear Type:                 Skid                             Seats:                           8
+ Date/Type of Last Inspection:      January 25, 2018 100 hour        Certified Max Gross Wt.:         5350 lbs
+ Time Since Last Inspection:        168 Hrs                          Engines:                         1 Turbo shaft
+ Airframe Total Time:               9629.1 Hrs as of last            Engine Manufacturer:             Turbomeca (Safran)
+                                    inspection
+ ELT:                               C126 installed, activated, did   Engine Model/Series:             Arriel 2B1
+                                    not aid in locating accident
+ Registered Owner:                  XEBEC LLC                        Rated Power:                     847 Horsepower
+ Operator:                          Papillon Airways, Inc.           Operating Certificate(s)         Rotorcraft external load
+                                                                     Held:                            (133), On-demand air taxi
+                                                                                                      (135), Commercial air tour
+                                                                                                      (136), Agricultural aircraft
+                                                                                                      (137)
+
+
+
+
+ Meteorological Information and Flight Plan
+ Conditions at Accident Site:          Visual (VMC)                   Condition of Light:                  Day
+ Observation Facility, Elevation:      PRIV,4815 ft msl               Distance from Accident Site:         3 Nautical Miles
+ Observation Time:                     17:45 Local                    Direction from Accident Site:        337°
+ Lowest Cloud Condition:               Scattered / 12000 ft AGL       Visibility
+ Lowest Ceiling:                                                      Visibility (RVR):
+ Wind Speed/Gusts:                     17 knots / 22 knots            Turbulence Type                      /
+                                                                      Forecast/Actual:
+ Wind Direction:                       340°                           Turbulence Severity                  /
+                                                                      Forecast/Actual:
+ Altimeter Setting:                    29.86 inches Hg                Temperature/Dew Point:               12°C / -6°C
+ Precipitation and Obscuration:        No Obscuration; No Precipitation
+ Departure Point:                      BOULDER CITY, NV (BVU )        Type of Flight Plan Filed:          Company VFR
+ Destination:                          Peach Springs, AZ (QMB )       Type of Clearance:                  None
+ Departure Time:                       16:42 Local                    Type of Airspace:                   Class G
+
+
+
+
+Page 22 of 24                                                                                                       WPR18MA087
+ Airport Information
+ Airport:                 PRIV QMB           Runway Surface Type:         Dirt
+ Airport Elevation:       1451 ft msl        Runway Surface Condition:    Dry
+ Runway Used:                                IFR Approach:                None
+ Runway Length/Width:                        VFR Approach/Landing:        Full stop
+
+
+
+
+ Wreckage and Impact Information
+ Crew Injuries:         1 Serious            Aircraft Damage:        Destroyed
+ Passenger Injuries:    5 Fatal, 1 Serious   Aircraft Fire:          On-ground
+ Ground Injuries:                            Aircraft Explosion:     Unknown
+ Total Injuries:        5 Fatal, 2 Serious   Latitude, Longitude:    35.967224,-113.76889(est)
+
+
+
+
+Page 23 of 24                                                                         WPR18MA087
+ Administrative Information
+ Investigator In Charge (IIC):     Stein, Stephen
+ Additional Participating          Patrick Hempen; Federal Aviation Administration; DC
+ Persons:                          John Waugh; Federal Aviation Administration; Las Vegas, NV
+                                   Yann Torres; Bureau d'Enquêtes et d'Analyses ; Toulouse
+                                   John Becker; Papillon Airways, Inc.; Boulder City, NV
+                                   Seth Buttner; Airbus Helicopters; Grand Prairie, TX
+                                   Bryan Larimore; Safran Helicopter Engines; Grand Prairie, TX
+                                   Michael Heeman; Federal Aviation Administration; Forth Worth, TX
+ Original Publish Date:            January 14, 2021
+ Last Revision Date:
+ Investigation Class:              Class 3
+ Note:                             The NTSB traveled to the scene of this accident.
+ Investigation Docket:             https://data.ntsb.gov/Docket?ProjectID=96722
+
+
+
+             The National Transportation Safety Board (NTSB) is an independent federal agency charged by Congress with
+  investigating every civil aviation accident in the United States and significant events in other modes of transportation—
+  railroad, transit, highway, marine, pipeline, and commercial space. We determine the probable causes of the accidents
+  and events we investigate, and issue safety recommendations aimed at preventing future occurrences. In addition, we
+  conduct transportation safety research studies and offer information and other assistance to family members and
+  survivors for each accident or event we investigate. We also serve as the appellate authority for enforcement actions
+  involving aviation and mariner certificates issued by the Federal Aviation Administration (FAA) and US Coast Guard, and
+  we adjudicate appeals of civil penalty actions taken by the FAA.
+
+             The NTSB does not assign fault or blame for an accident or incident; rather, as specified by NTSB regulation,
+  “accident/incident investigations are fact-finding proceedings with no formal issues and no adverse parties … and are
+  not conducted for the purpose of determining the rights or liabilities of any person” (Title 49 Code of Federal Regulations
+  section 831.4). Assignment of fault or legal liability is not relevant to the NTSB’s statutory mission to improve
+  transportation safety by investigating accidents and incidents and issuing safety recommendations. In addition,
+  statutory language prohibits the admission into evidence or use of any part of an NTSB report related to an accident in a
+  civil action for damages resulting from a matter mentioned in the report (Title 49 United States Code section 1154(b)). A
+  factual report that may be admissible under 49 United States Code section 1154(b) is available here.
+
+
+
+
+Page 24 of 24                                                                                                   WPR18MA087
+

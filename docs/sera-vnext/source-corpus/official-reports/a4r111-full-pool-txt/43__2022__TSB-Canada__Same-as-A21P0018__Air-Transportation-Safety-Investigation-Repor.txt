@@ -1,0 +1,1492 @@
+AIR TRANSPORTATION SAFETY
+INVESTIGATION REPORT A21P0018
+
+LOSS OF CONTROL AND COLLISION WITH TERRAIN
+
+
+Airspan Helicopters Ltd.
+Bell 212, C-GNYI
+Bowen Island, British Columbia
+05 March 2021
+                                                                            TRANSPORTATION SAFETY BOARD OF CANADA ■ 2
+
+
+
+ABOUT THIS INVESTIGATION REPORT
+This report is the result of an investigation into a class 3 occurrence. For more information, see the Policy on
+Occurrence Classification at www.tsb.gc.ca
+The Transportation Safety Board of Canada (TSB) investigated this occurrence for the purpose of advancing
+transportation safety. It is not the function of the Board to assign fault or determine civil or criminal liability.
+
+TERMS OF USE
+Use in legal, disciplinary or other proceedings
+
+The Canadian Transportation Accident Investigation and Safety Board Act states the following:
+• 7(3) No finding of the Board shall be construed as assigning fault or determining civil or criminal liability.
+• 7(4) The findings of the Board are not binding on the parties to any legal, disciplinary or other proceedings.
+
+Therefore, the TSB’s investigations and the resulting reports are not created for use in the context of legal, disciplinary
+or other proceedings.
+
+Notify the TSB in writing if this report is being used or might be used in such proceedings.
+Non-commercial reproduction
+
+Unless otherwise specified, you may reproduce this investigation report in whole or in part for non-commercial
+purposes, and in any format, without charge or further permission, provided you do the following:
+• Exercise due diligence in ensuring the accuracy of the materials reproduced.
+• Indicate the complete title of the materials reproduced and name the Transportation Safety Board of Canada as the
+  author.
+• Indicate that the reproduction is a copy of the version available at [URL where original document is available].
+
+Commercial reproduction
+Unless otherwise specified, you may not reproduce this investigation report, in whole or in part, for the purposes of
+commercial redistribution without prior written permission from the TSB.
+
+Materials under the copyright of another party
+
+Some of the content in this investigation report (notably images on which a source other than the TSB is named) is
+subject to the copyright of another party and is protected under the Copyright Act and international agreements. For
+information concerning copyright ownership and restrictions, please contact the TSB.
+
+Citation
+
+Transportation Safety Board of Canada, Air Transportation Safety Investigation Report A21P0018 (released
+28 July 2022).
+Transportation Safety Board of Canada
+200 Promenade du Portage, 4th floor
+Gatineau QC K1A 1K8
+819-994-3741; 1-800-387-3557
+www.tsb.gc.ca
+communications@tsb.gc.ca
+
+© Her Majesty the Queen in Right of Canada, as represented by the Transportation Safety Board of Canada, 2022
+
+Air transportation safety investigation report A21P0018
+Cat. No. TU3-10/21-0018E-PDF
+ISBN: 978-0-660-44600-4
+
+This report is available on the website of the Transportation Safety Board of Canada at www.tsb.gc.ca
+
+Le présent rapport est également disponible en français.
+                                                                       AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 3
+
+
+
+Table of contents
+
+1.0   Factual information ................................................................................................. 6
+      1.1        History of the flight.................................................................................................................................... 6
+      1.2        Injuries to persons ...................................................................................................................................... 9
+      1.3        Damage to aircraft ..................................................................................................................................... 9
+      1.4        Other damage .............................................................................................................................................. 9
+      1.5        Personnel information .............................................................................................................................. 9
+      1.6        Aircraft information .................................................................................................................................10
+      1.7        Meteorological information .................................................................................................................11
+                                Forecasted weather .................................................................................................................11
+                                Actual weather ..........................................................................................................................12
+                                Environment and Climate Change Canada analysis ...................................................13
+                                Wind effects ...............................................................................................................................14
+      1.8        Aids to navigation ....................................................................................................................................16
+      1.9        Communications .......................................................................................................................................16
+      1.10 Aerodrome information .........................................................................................................................16
+      1.11 Flight recorders .........................................................................................................................................16
+                                General .........................................................................................................................................16
+                                Latitude Technologies flight tracking ..............................................................................17
+                                Garmin Aera 660 global positioning system .................................................................17
+      1.12 Wreckage and impact information....................................................................................................17
+                                Accident site ...............................................................................................................................17
+                                Wreckage examination ..........................................................................................................19
+      1.13 Medical and pathological information.............................................................................................21
+      1.14 Fire ..................................................................................................................................................................21
+      1.15 Survival aspects .........................................................................................................................................22
+                                Cargo restraint ..........................................................................................................................22
+                                Flight helmets ............................................................................................................................22
+                                Seats and safety belts .............................................................................................................22
+                                Emergency locator transmitter ...........................................................................................23
+      1.16 Tests and research ...................................................................................................................................23
+                                Comprehensive Program for the Theoretical Evaluation of Rotorcraft
+                                simulator ......................................................................................................................................23
+                                TSB laboratory reports ...........................................................................................................23
+      1.17 Organizational and management information .............................................................................24
+                                Single-pilot helicopter operations ....................................................................................24
+                                Airspan Helicopters mountain flying training ...............................................................25
+      1.18 Additional information ...........................................................................................................................25
+                                Mountain flying.........................................................................................................................25
+                                Low-G conditions .....................................................................................................................26
+                                Human factors issues..............................................................................................................27
+
+2.0   Analysis ................................................................................................................... 29
+      2.1        Weather ........................................................................................................................................................29
+                                                                                             TRANSPORTATION SAFETY BOARD OF CANADA ■ 4
+
+
+                            Turbulence and wind shear ..................................................................................................29
+                            Decision to depart ...................................................................................................................29
+                            Active weather en route ........................................................................................................30
+      2.2     Low-G condition .......................................................................................................................................30
+      2.3     Unsecured objects....................................................................................................................................31
+      2.4     Emergency handling................................................................................................................................31
+                            Hydraulic and engine malfunctions ..................................................................................31
+                            Loss of tail rotor driveshaft thrust .....................................................................................32
+                            Reaction to in-flight emergency ........................................................................................32
+
+3.0   Findings ................................................................................................................... 34
+      3.1     Finding as to causes and contributing factors ..............................................................................34
+      3.2     Findings as to risk .....................................................................................................................................34
+      3.3     Other findings ............................................................................................................................................35
+
+4.0   Safety action ........................................................................................................... 36
+      4.1     Safety action taken ..................................................................................................................................36
+                            Airspan Helicopters Ltd. ........................................................................................................36
+                                           AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 5
+
+
+
+
+AIR TRANSPORTATION SAFETY
+INVESTIGATION REPORT A21P0018
+
+LOSS OF CONTROL AND COLLISION WITH TERRAIN
+
+Airspan Helicopters Ltd.
+Bell 212, C-GNYI
+Bowen Island, British Columbia
+05 March 2021
+
+
+The Transportation Safety Board of Canada (TSB) investigated this occurrence for the purpose of
+advancing transportation safety. It is not the function of the Board to assign fault or determine
+civil or criminal liability. This report is not created for use in the context of legal, disciplinary or
+other proceedings. See the Terms of use on page 2.
+
+
+Summary
+On 05 March 2021, the Airspan Helicopters Ltd. Bell 212 helicopter (registration C-GNYI,
+serial number 30569) with 2 pilots on board was travelling from Sechelt Aerodrome
+(CAP3), British Columbia, to Cypress Provincial Park, located in West Vancouver, British
+Columbia, to support a BC Hydro project.
+At 0946 Pacific Standard Time, while in the cruise portion of the flight, the helicopter
+entered wind shear and experienced a sudden, dramatic right roll with nose-down pitch.
+After regaining control, the number 2 engine experienced an uncommanded in-flight
+shutdown and the flight controls became very hard to manipulate.
+A location on nearby Bowen Island, British Columbia, was selected for an emergency
+landing; however, the helicopter was still difficult to control and the pilots were unable to
+manoeuvre it to the desired location. During the descent, the helicopter began a rapid
+rotation to the right, which the pilots were unable to arrest. After several rotations, the
+helicopter collided with trees and came to rest on a rocky ridge approximately 270 feet
+above sea level on the northwest corner of Bowen Island.
+Both occupants received serious injuries. The helicopter was substantially damaged, but
+there was no post-impact fire. The emergency locator transmitter activated and a signal was
+received by the Canadian Mission Control Centre, in Trenton, Ontario.
+                                                                       TRANSPORTATION SAFETY BOARD OF CANADA ■ 6
+
+
+
+1.0       FACTUAL INFORMATION
+
+1.1       History of the flight
+          On 05 March 2021, the Airspan Helicopters Ltd. (Airspan Helicopters) Bell 212 helicopter
+          (registration C-GNYI, serial number 30569) was scheduled to depart Sechelt Aerodrome
+          (CAP3), British Columbia (BC), with 2 pilots on board for a visual flight rules (VFR) flight.
+          The helicopter would be heading to a staging area about 21 nautical miles (NM) east in
+          Cypress Provincial Park, BC, to complete a multi-day longline project in collaboration with
+          BC Hydro. The plan, once the aircraft arrived at the staging area, was for the second pilot to
+          do the longline work and the pilot-in command (PIC) to monitor him as part of a
+          performance evaluation by BC Hydro for the installation of 230 kV high-voltage
+          transmission line structures.
+          Before preparing the helicopter for departure, the pilots checked the available weather
+          resources, which included graphic area forecasts (GFAs), aerodrome forecasts (TAFs),
+          aerodrome routine meteorological reports (METARs), and the marine forecast issued by
+          Environment and Climate Change Canada. According to the forecasts, moderate, with
+          localized severe, mechanical turbulence and low-level wind shear were expected in the area
+          in which the pilots would be operating. Though the strong winds were a concern, the flight
+          was dispatched with the knowledge that it would be a turbulent flight. The PIC made the
+          decision to depart based on an improving forecast later in the day, the desire to complete
+          the operational flight, and the observation that other aircraft were operating in and out of
+          Sechelt Aerodrome. The second pilot then began to prepare the helicopter for the flight.
+          At approximately 0900, 1 the PIC contacted BC Hydro crews, who had just arrived at the
+          work site in Cyprus Mountain Provincial Park, for additional wind information. At 0927, the
+          helicopter was started, and an engine power assurance check was completed. The
+          helicopter then lifted off and headed east towards Cypress Provincial Park at approximately
+          0935. The PIC was seated in the right seat and the second pilot, who was the pilot flying,
+          was seated in the left seat.
+          The helicopter climbed and established a cruise between 2300 feet and 2600 feet above sea
+          level (ASL) for the next several minutes, encountering light turbulence and variable winds
+          from the east and southeast.
+          As the helicopter flew towards Keats Island, BC (Figure 1), the pilots observed localized
+          surface waves (or “cat’s paws” 2) indicating downdrafts in the area. They discussed the
+          likelihood of increasing turbulence based on those observations. Above the northern tip of
+          Keats Island, the second pilot slowed the helicopter to 75 knots indicated airspeed (66
+
+
+      1
+          All times are Pacific Standard Time (Coordinated Universal Time minus 8 hours).
+      2
+          A cat’s paw is a “ripple signature on water given by strong downdrafts or outflow winds” and is a good
+          indication of turbulence and wind shear (Source: NAV CANADA, The Weather of British Columbia: Graphic
+          Area Forecast 31 (2001), p 201.
+                                                 AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 7
+
+
+
+    knots ground speed) 3 and changed its track slightly to the north at approximately 2600 feet
+    ASL. The pilots were expecting mechanical turbulence coming from Bowen Island, which
+    has a peak elevation of 2388 feet ASL.
+
+    Figure 1. The occurrence helicopter's flight path, derived from its global positioning system (Source:
+    Google Earth, with TSB annotations)
+
+
+
+
+    The helicopter’s speed increased as it began crossing Collingwood Channel, reaching a
+    speed of 78 knots ground speed at an altitude of approximately 2560 feet ASL. As it flew
+    above the channel, the helicopter passed through an area of moderate turbulence. Soon
+    after, at 0945:24, the helicopter was roughly 2 NM west of Bowen Island, on the lee side at
+    an altitude of approximately 2430 feet ASL, when it entered another area of turbulence with
+    a severe downward force.
+    While travelling at a ground speed of 73 knots on a track of approximately 110°, the
+    helicopter violently pitched nose down and began a rapid right roll. The cyclic was
+    momentarily pulled from the second pilot’s hand due to the aircraft’s violent, rapid
+    movement. The helicopter rolled inverted, or close to inverted, during this loss of control,
+    and the PIC joined the second pilot on the controls to attempt a recovery. The second pilot
+    applied maximum aft cyclic in the recovery attempt. During this period, the helicopter fell
+    approximately 1400 feet to an altitude of approximately 1040 feet ASL; a descent rate of
+    8220 fpm.
+    Several items, such as a spare headset, handheld radio, flight manual, and lunchbox, were
+    launched forward from the rear cabin and struck the pilots on their helmets. The visor cover
+    and yellow visor on the second pilot’s helmet were knocked down over his face, blocking his
+
+
+3
+    Ground speed information was collected from the GPS (global positioning system) on board the helicopter.
+                                                      TRANSPORTATION SAFETY BOARD OF CANADA ■ 8
+
+
+
+vision momentarily. With the PIC also on the controls, the second pilot was able to let go of
+the flight controls momentarily in order to force the visor cover up off his face and out of his
+vision. The yellow visor remained down for the remainder of the flight.
+Several gauges broke from their mounts during the violent descent. These gauges slid from
+their seated position within the instrument panel.
+The pilots were able to regain some control of the helicopter 0.6 NM east of Bowen Island
+and 1 NM from Keats Island, maintaining the helicopter on an easterly heading. Observers
+on the ground saw a puff of grey smoke come from the helicopter as it levelled off.
+Moments after the helicopter had levelled off, both pilots were still struggling to use the
+controls, and they noticed that the anti-torque pedals had become very difficult to move and
+the cyclic was slow to respond to inputs. At that time, the pilots observed a hydraulic
+caution light indicating a drop in hydraulic pressure below an acceptable threshold for
+operations. Due to the high workload of trying to control the helicopter, neither pilot had
+the opportunity to look at the instruments to determine whether the No. 1 or No. 2
+hydraulic system had failed. The pilots selected a large field on the northwest corner of
+Bowen Island as an emergency landing site.
+The PIC then observed the No. 2 engine out indication light illuminate when the helicopter
+was at an altitude of approximately 900 feet ASL and 1.2 NM from the proposed landing site.
+He communicated an engine out indication to the second pilot, but did not specify which
+engine had the indication, causing some uncertainty as to which engine was working. The
+second pilot glanced at the caution lights but was unable to ascertain which engine light was
+on while he was maintaining control of the helicopter. He then confirmed that both throttles
+were at maximum power. The controllability of the helicopter, along with a loss of engine
+power, caused the pilots to revise their choice of landing site to a closer field.
+On final for the field, the PIC turned on the emergency locator transmitter (ELT), prompting
+the second pilot to broadcast a mayday call over the radio on frequency 123.20 MHz. The
+mayday call was heard by other aircraft in the area, but not by air traffic control.
+As they descended and decelerated, the helicopter began to yaw to the right, resulting in
+another loss of control. The PIC communicated to the second pilot that they had a tail rotor
+failure.
+
+At approximately 150 feet above the landing site, the second pilot reduced both throttles to
+the idle position in an attempt to slow the rotation. Moments later, the helicopter began
+contacting the trees at approximately 310 feet ASL. As tree contact was made, the second
+pilot pulled up on the collective to slow the descent and cushion the impact. The helicopter
+dropped and came to rest inverted on a rocky ledge at approximately 270 feet ASL.
+Fuel lines under the cabin floor panel were compromised during the impact and began
+leaking fuel onto the pilots, who were still seated in the inverted fuselage, restrained by
+                                                          AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 9
+
+
+
+          their safety harnesses. 4 The PIC assisted the second pilot, whose foot was pinned in the
+          footwell, and they both egressed successfully. The pilots were located by locals who had
+          witnessed the accident and rushed to the area to assist. Both pilots were transported to
+          hospital for evaluation.
+
+1.2       Injuries to persons
+          Both pilots received serious injuries.
+
+          Table 1. Injuries to persons
+
+             Degree of           Crew        Passengers    Persons not        Total by
+              injury                                        on board           injury
+                                                           the aircraft
+           Fatal                         0            -                -                 0
+           Serious                       2            -                -                 2
+           Minor                         0            -                -                 0
+           Total injured                 2            -                -                 2
+
+
+1.3       Damage to aircraft
+          The helicopter was substantially damaged as a result of impact forces.
+
+1.4       Other damage
+          The helicopter came to rest on a vacant piece of private property. Several trees were
+          knocked down, cut, or dislodged from the hillside.
+          An unknown amount of jet fuel leaked onto the rocks and soil surrounding the wreckage.
+
+1.5       Personnel information
+          Table 2. Personnel information
+
+                                                                            Pilot-in-command              Second pilot
+           Pilot licence                                                   Commercial pilot           Commercial pilot
+                                                                           licence – helicopter       licence – helicopter
+           Medical expiry date                                             01 April 2021              01 January 2022
+           Total flying hours                                                                9125.5                  5756.5
+           Flight hours on type                                                               1247                    479.5
+           Flight hours in the 7 days before the occurrence                                     0.2                      2.2
+           Flight hours in the 30 days before the occurrence                                    1.5                      9.5
+           Flight hours in the 90 days before the occurrence                                    5.7                     24.7
+           Flight hours on type in the 90 days before the occurrence                            0.2                     12.9
+           Hours on duty before the occurrence                                                    1                      1.5
+
+
+
+
+      4
+          Both pilots were wearing their lap belts and shoulder harnesses for the duration of the flight.
+                                                                      TRANSPORTATION SAFETY BOARD OF CANADA ■ 10
+
+
+
+           Hours off duty before the work period                                          15                      15
+
+          The PIC held a commercial pilot licence – helicopter and had worked at Airspan Helicopters
+          for more than 20 years. He was the company’s President and Operations Manager. He had
+          completed recurrent training in the Bell 212 on 05 March 2020 and his initial mountain
+          flying training in 2001. He had also completed an Airspan Helicopters mountain flying
+          refresher course on 09 January 2020 and a pilot proficiency check on 06 March 2020, which
+          tested the following abnormal and emergency procedures: engine inoperative, autorotation
+          from hover and 180°, hydraulic failure, governor failure, engine fire, and tail rotor failure.
+          The PIC was also qualified as a Transport Canada approved check pilot. He had completed
+          the recurrent ground training from 20 to 22 February 2021 and the Transport Canada-
+          monitored flight test on 24 February 2021.
+          The second pilot held a commercial pilot licence – helicopter and had worked at Airspan
+          Helicopters for approximately 6.5 years. He had completed his recurrent training on
+          19 February 2021, his initial mountain flying training in 2010, an Airspan Helicopters
+          mountain flying refresher course on 22 January 2021, and a pilot proficiency check on
+          24 February 2021, which tested the following abnormal and emergency procedures: engine
+          inoperative, tail rotor jam, in-flight fire, governor failure, and hydraulic failure.
+          Both pilots had completed the company crew resource management course on
+          26 October 2020. The course covered several topics, including threat and error
+          management, communications, decision making, pressure, and stress.
+          The investigation determined that the pilots held the appropriate licences and met the
+          recency requirements for the flight in accordance with existing regulations. Based on a
+          review of the pilots’ work-rest schedules, fatigue was not considered a factor in the
+          occurrence.
+
+1.6       Aircraft information
+          The Bell 212 is a twin-engine, single-main-rotor helicopter that can carry up to
+          14 passengers with 1 pilot. On the day of the occurrence, however, only the pilot seats were
+          installed. All the others had been removed to reduce weight for longlining.
+          The occurrence helicopter had been modified to have an increased horsepower rating, a
+          configuration incorporated in Bell Textron Inc. Technical Bulletin 212-91-138. 5 A helicopter
+          with this modification is commonly referred to as a Bell 212 HP.
+          The main rotor assembly is a 2-bladed, teetering, semi-rigid type. The design of the rotor
+          allows for blade flapping and pitch change of individual blades. Blade flapping is necessary
+          to compensate for dissymmetry of lift. The blades are free to flap vertically to compensate
+
+
+
+      5
+          Bell Textron Inc., Technical Bulletin 212-91-138, Revision C: Increased 5 Minute Takeoff Horsepower Rating
+          (15 May 2003).
+                                                        AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 11
+
+
+
+          for various in-flight aerodynamic forces. They are rigidly connected to the hub, allowing
+          them to flap as a unit, and the hub is free to teeter with respect to the rotor mast.
+          In April 2013, the helicopter had been modified to include a Boundary Layer Research
+          Aerospace FastFin system. The FastFin system modifies the tail boom with 2 parallel stall
+          strips (tail boom strakes) and a re-shaped vertical fin. The results of this modification are a
+          performance enhancement during hover operations and a tail rotor made more efficient by
+          having less thrust blocked than with the original vertical fin. The newly shaped vertical fin
+          also assists with pilot workload because fewer anti-torque pedal inputs are required during
+          flight.
+          A technical records review did not reveal any conditions related to aircraft maintenance
+          that would have contributed to the occurrence. The helicopter had no known deficiencies
+          before the occurrence flight. Its weight and centre of gravity were within the prescribed
+          limits, and there was sufficient fuel on board to complete the flight.
+          Table 3. Aircraft information
+
+           Manufacturer                                              Bell Textron Inc.
+           Type, model and registration                              Bell 212, C-GNYI
+           Year of manufacture                                       1973
+           Serial number                                             30569
+           Certificate of airworthiness / flight permit issue date   13 March 2012
+           Total airframe time                                       29 220.0 hours
+           Engine type (number of engines)                           Pratt & Whitney Canada PT6T-3B (2)
+           Rotor type (number of blades)                             Semi-rigid (2)
+           Maximum allowable take-off weight                         5080 kg
+           Recommended fuel type(s)                                  Jet A, Jet A-1, Jet B
+           Fuel type used                                            Jet A
+
+          The Bell Model 212 Rotorcraft Flight Manual (RFM) outlines procedures for engine failure,
+          hydraulic system failure, and complete loss of tail rotor thrust. There are currently no
+          procedures that apply to the scenario faced by the occurrence pilots. The RFM states that
+          “[i]ntentional manoeuvring resulting in roll attitudes in excess of 50° angle of bank […] are
+          prohibited.” 6 While not intentional, during the first loss of control, the aircraft exceeded this
+          limit.
+
+1.7       Meteorological information
+
+          Forecasted weather
+          The pilots departed Sechelt (CAP3) at approximately 0930. The most recent GFAs issued for
+          the area were issued at 0330. Those reports forecast that at 1000 a cold front would be
+
+
+      6
+          Bell Textron Inc., BHT-212VFR-FM-1, Bell Model 212 Rotorcraft Flight Manual, Revision 8 (21 March 2019),
+          section 1: Limitations, subsection 1.9.
+                                                           TRANSPORTATION SAFETY BOARD OF CANADA ■ 12
+
+
+
+moving through the vicinity of Bowen Island. The forecast included moderate mechanical
+turbulence and low-level wind shear from the surface to 3000 feet above ground level
+(AGL) as well as localized severe mechanical turbulence and low-level wind shear at the
+same altitudes. Frequent towering cumulus clouds with tops at 16 000 feet ASL were also
+forecasted. The surface winds in the area were forecasted to be 25 knots with gusts to 35
+knots.
+Vancouver International Airport (CYVR), BC, is the closest weather reporting station for
+which a TAF is produced. The TAF for CYVR was issued at 0639 on 05 March 2021 and was
+valid for a 27-hour period starting at 0700. The TAF indicated the following conditions
+between 0700 and 1100:
+    •   winds from 110° true (T) at 18 knots, gusting to 28 knots
+    •   visibility more than 6 statute miles (SM)
+    •   scattered cloud at 6000 feet AGL
+    •   overcast ceiling at 10 000 feet AGL
+Between 0700 and 1100, there would be the following temporary change to the prevailing
+conditions:
+    •   light rain showers
+    •   overcast ceiling at 6000 feet AGL
+After 1100, the weather was forecasted to be:
+    •   winds from 130°T at 15 knots
+    •   visibility more than 6 SM
+    •   light rain
+    •   scattered cloud at 2000 feet AGL
+    •   overcast ceiling at 5000 feet AGL
+
+Actual weather
+The 0800 and 0900 METARs issued for CYVR, both showed a visibility of 20 SM, few clouds
+below 2000 feet ASL, and ceilings at 7400 feet ASL or higher. Table 4 lists other reported
+observations.
+
+Table 4. Aerodrome routine meteorological report observations for 0800 and 0900 at Vancouver
+International Airport
+
+          Observation                           0800                                0900
+ Wind direction                  100°T                               120°T
+ Wind speed                      16 knots with gusts to 25 knots     19 knots with gusts to 26 knots
+ Temperature / dew point         10° C / 5° C                        11° C / 5° C
+ Altimeter setting               29.74 inches of mercury             29.78 inches of mercury
+
+In addition to the information available from the weather observations at CYVR, there are a
+number of other stations in the vicinity of the accident that also report weather (Figure 2).
+                                           AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 13
+
+
+Figure 2. Map showing weather reporting stations relative to the aircraft’s flight path and the accident
+location (Source: Google Earth, with TSB annotations)
+
+
+
+
+The wind direction and speed from weather observations taken at 0900 and 1000 at these
+weather reporting stations are listed in Table 5.
+
+Table 5. Wind direction and speed information from weather reporting stations in the vicinity of the
+accident location at 0900 and 1000
+
+      Station            Wind direction and speed at 0900             Wind direction and speed at 1000
+ Sechelt (CAP3)*     130°T at 15 knots                            130°T at 15 knots
+ Pam Rocks           130°T at 32 knots, with gusts to 45 knots    120°T at 36 knots, with gusts to 52 knots
+ Point Atkinson*     110°T at 30 knots                            110°T at 30 knots
+ Vancouver
+                     120°T at 19 knots with gusts to 26 knots     140°T 26 knots, with gusts to 38 knots
+ (CYVR)
+* These automated weather stations only collect sustained winds and not wind gusts.
+
+
+
+In addition to the recorded weather observations, local observers reported similar
+conditions. On the day of the accident, a floatplane pilot heard the occurrence helicopter’s
+mayday call and attempted to overfly the accident site at 1000 feet ASL to gain more
+information. The floatplane encountered severe turbulence as it flew into the Collingwood
+Channel (Figure 1), causing the airplane to bank steeply (in excess of 70°) and items to be
+thrown from the seat pockets. The pilot of the floatplane left the area.
+
+Environment and Climate Change Canada analysis
+After the accident and at the request of the TSB, Environment and Climate Change Canada
+performed an in-depth analysis of the weather conditions affecting the Howe Sound area at
+the time of the occurrence.
+                                                              TRANSPORTATION SAFETY BOARD OF CANADA ■ 14
+
+
+
+    The meteorological assessment 7 determined that on the morning of the occurrence, a low-
+    pressure centre just north of Vancouver Island was moving inland with associated warm
+    and cold fronts, and there were relatively higher surface pressures in the interior of BC. This
+    pressure gradient, with high pressure inland and lower pressure over the coast, often leads
+    to strong outflow winds draining from the interior through any inlets and channels. These
+    strong outflow winds were observed over Howe Sound.
+
+    Radar images from the Aldergrove radar, located approximately 48.6 NM from the accident
+    site, indicated localized heavier precipitation that may have been a result of convection
+    embedded within the precipitation band. Convection is known to produce turbulence, wind
+    shear, and icing.
+    The assessment further explained that Howe Sound, like all inlets along the BC coast is
+    prone to strong and sometimes gusty outflow winds. In addition, the complex terrain within
+    the inlet would lead to varying wind directions and speeds as one considers airflow being
+    diverted around and over the various islands within the Sound.
+
+    Wind effects
+    On the morning of the occurrence, strong southeasterly winds were blowing in the vicinity
+    of the accident site. The west side of Bowen Island is dominated by a long ridge which is
+    anchored at the south end by Mount Gardner with an elevation of 2388 feet ASL. The flight’s
+    intended destination, Cypress Provincial Park, is approximately 6 NM east of Bowen Island.
+    Within the park are Mount Strachan with an elevation of 4714 feet ASL and Black Mountain
+    with an elevation of 4016 feet ASL (Figure 3).
+
+
+
+
+7
+    Environment and Climate Change Canada, Meteorological Assessment March 5, 2021, Bowen Island, British
+    Columbia (28 April 2021).
+                                               AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 15
+
+
+    Figure 3. Map showing the helicopter’s flight path (blue line) and the prevailing wind direction (white
+    arrows) (Source: Google Earth, with TSB annotations)
+
+
+
+
+    The final minutes of the occurrence flight would have been flown on the downwind, or lee
+    side, of this terrain. NAV CANADA’s The Weather of British Columbia Graphic Area Forecast
+    31 explains that, “[w]hen air flows across a mountain or hill, it is disturbed the same way as
+    water flowing over a rock.” 8 Wind on the lee side of a hill or mountain is affected by its
+    passage over the terrain and lee effects of wind in mountainous areas are known to create
+    severe turbulence. A large eddy called a “rotor” may form below each wave crest once a lee
+    wave pattern has been established (Figure 4). Lee effects are described in The Weather of
+    British Columbia as follows:
+             When the winds blow against a steep cliff or over rugged terrain, gusty turbulent
+             winds result. Eddies often form downwind of the hills, which create stationary zones
+             of stronger and lighter winds. These zones of strong winds are fairly predictable and
+             usually persist as long as the wind direction and stability of the air stream do not
+             change. The lighter winds, which occur in areas called wind shadows can vary in
+             speed and direction, particularly downwind of higher hills. In the lee of the hills, the
+             wind is usually gusty and the wind direction is often completely opposite to the
+             wind blowing over the top of the hills. Smaller reverse eddies may also be
+             encountered close to the hills. 9
+
+
+
+
+8
+    NAV CANADA, The Weather of British Columbia: Graphic Area Forecast 31 (2001), p. 28.
+9
+    Ibid., pp. 22–23.
+                                                                TRANSPORTATION SAFETY BOARD OF CANADA ■ 16
+
+
+       Figure 4. Lee effects (Source: NAV CANADA, The Weather of British Columbia:
+       Graphic Area Forecast 31 [2001], Figure 2-10.)
+
+
+
+
+1.8    Aids to navigation
+       Not applicable.
+
+1.9    Communications
+       Not applicable.
+
+1.10   Aerodrome information
+       Not applicable.
+
+1.11   Flight recorders
+
+       General
+       The occurrence helicopter was not equipped with a cockpit voice recorder or a flight data
+       recorder, nor was it required to be by the Canadian Aviation Regulations (CARs). The
+       helicopter was, however, equipped with 2 systems that had the capability of recording flight
+       data pertaining to the occurrence flight. These 2 systems are described in the following
+       subsections.
+                                                       AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 17
+
+
+
+            Latitude Technologies flight tracking
+            A Latitude Technologies SkyNode S200 flight-tracking unit was installed in the occurrence
+            helicopter in April 2013, in accordance with Supplemental Type Certificate SH06-4. 10 The
+            S200 is a small aircraft-mounted system that records 5 flight-data parameters 11 at 1-second
+            intervals for 2 minutes. At the end of the 2 minutes, the unit begins recording over the
+            previous data. This occurs on a continuous loop so long as electrical power and the GPS
+            (global positioning system) signal are supplied to the unit.
+
+            The S200 was recovered and flight data was retrieved from the unit.
+
+            Garmin Aera 660 global positioning system
+            The occurrence helicopter was also equipped with a Garmin Aera 660 GPS. This system
+            presents flight instrumentation, position, navigation, and hazard avoidance information to
+            the pilot on a 5-inch display. The GPS was not permanently mounted in the helicopter but
+            was secured in the cockpit on a GPS mount.
+            The GPS was shipped to the TSB Engineering Laboratory in Ottawa, Ontario, where the data
+            for the occurrence flight was extracted. Data points at variable intervals were recovered for
+            the flight.
+
+1.12        Wreckage and impact information
+
+            Accident site
+            The wreckage was located on a rocky outcropping surrounded by a forest of Douglas fir and
+            red cedar trees. The trees adjacent to the site showed some minor damage related to the
+            helicopter’s descent and impact. Two trees had been topped and one large fir tree had been
+            uprooted completely, coming to rest on top of the tail boom and the underside of the
+            fuselage (Figure 5).
+
+
+
+
+       10
+            Transport Canada, Supplemental Type Certificate No. SH06-4: Skynode S200-xxx Satellite Communication
+            Equipment Installation (approval date: 16 February 2006), at https://wwwapps.tc.gc.ca/saf-sec-sur/2/nico-
+            celn/c_d.aspx?lang=eng&aprv_num=SH06-4&ISU_NUM=4&START_DATE=2019-10-
+            23&AUTH_DESC=TC&DESC=Skynode+S200
+            xxx+Satellite+Communication+Equipment+Installation&FRGN_NUM=&aprv_type=STA&PARTS_NUM=&id_
+            num=29218 (last accessed 20 December 2021).
+       11
+            Time, GPS position, ground speed, heading, and altitude.
+                                                                 TRANSPORTATION SAFETY BOARD OF CANADA ■ 18
+
+
+     Figure 5. The occurrence helicopter at the accident site (Source: TSB)
+
+
+
+
+     All of the helicopter debris was located within an 80-foot radius of the fuselage. The
+     fuselage came to rest on its upper left side, ¾ inverted on the roof and with a nose-down
+     attitude. The tail boom was severed at the mounts and sitting uphill from the fuselage,
+     facing the opposite direction. The nose of the helicopter had sustained substantial impact
+     damage, and the left cockpit area was partially crushed. The right horizontal stabilizer was
+     crushed while the left stabilizer had minor damage. The remainder of the fuselage and tail
+     boom remained largely intact with the major components (engines, main transmission,
+     main rotor, and tail rotor) still installed in their normal positions. The skid gear had been
+     partially torn from the fuselage after becoming hooked on a tree during the initial impact.
+     The main rotor hub was found intact with the 2 main rotor blades still attached. One main
+     rotor blade was missing the outer 2/3 with 92 inches of the blade tip embedded in the
+     ground approximately 35 feet northeast of the main rotor mast. The second main rotor
+     blade was largely intact with the leading edge spar in one piece from the blade root to the
+     blade tip.
+
+     A deformation on one side of the mast was measured at 0.055 inches deep where the mast
+     had made significant contact with the static stop. The opposite side showed that contact had
+     been made with the other static stop. The mast deformation observed is consistent with a
+     mast bump, 12 which is the result of blade flapping in a low-G condition.
+
+
+
+
+12
+     Mast bumping is contact between an inner part of a main rotor blade or a rotor hub and the main rotor
+     driveshaft (or mast).
+                                                   AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 19
+
+
+
+           The No. 1 fuel valve switch was found to be broken and in the OFF position. The
+           investigation was unable to determine the cause of the broken switch or the point at which
+           the switch had been moved to the OFF position.
+           The tail rotor was attached to the tail boom and found intact (Figure 6). It was suspended
+           over a cliff without any surrounding obstructions. Investigators observed the following
+           damage indicating that the tail rotor was free-spinning during the flight:
+               •   Both tail rotor blades had damage on the trailing edges near the blade tips.
+               •   The vertical fin had 2 impact marks that were consistent with the impact of the tail
+                   rotor blade trailing edges.
+               •   The tail rotor driveshaft cover was severed 15 inches from the aft end and the tail
+                   rotor aft driveshaft was severed 15 inches from the aft end. This is consistent with
+                   the main rotor blade striking the tail rotor driveshaft.
+
+           Figure 6. Damaged tail boom (Source: TSB)
+
+
+
+
+           Continuity among the engine, transmission, and tail rotor assembly was verified (with the
+           exception of the missing section of the tail rotor driveshaft).
+
+           Wreckage examination
+
+1.12.2.1   Engines
+
+           The helicopter was equipped with 2 identical Pratt & Whitney Canada PT6T-3B turboshaft
+           engines that were mounted side-by-side in the aircraft and connected to 1 common
+           reduction gearbox that had a single output driveshaft to the main transmission.
+           After the accident, both engines (including engine accessories and the combining gearbox)
+           were shipped to the Pratt & Whitney Canada facility in Saint-Hubert, Quebec, for further
+           evaluation. This evaluation was supervised by the TSB. The engines were inspected and run
+                                                                        TRANSPORTATION SAFETY BOARD OF CANADA ■ 20
+
+
+
+            individually and in dual mode. There were no findings from the engine examination that
+            indicated an in-flight engine problem or anomaly had occurred.
+            The disassembly of the No. 2 engine indicated that it was not running when the aircraft
+            impacted the terrain.
+            According to Pratt & Whitney Canada representatives who reviewed the accident details, if
+            a helicopter rolls beyond 90° from vertical towards being fully inverted and the main rotor
+            experiences a sudden load reduction that results in a main rotor overspeed, the engine
+            governors will limit or reduce fuel flow to stop this overspeed and bring the main rotor
+            back within limits.
+
+1.12.2.2    Hydraulic system
+
+            The helicopter has 2 separate and independent hydraulic systems that provide hydraulic
+            boost to the main rotor and tail rotor flight controls. Each hydraulic system is controlled by
+            a switch located on the centre console. According to the RFM, “both hydraulic systems shall
+            be operational prior to takeoff” 13 due to the excessive force required to move unboosted
+            main rotor flight controls. The hydraulic system has 2 hydraulic pressure indicators (1 for
+            each system). There is 1 warning light that illuminates on the caution panel if hydraulic
+            pressure drops below the normal operating range in either hydraulic system.
+            Each system has an unpressurized reservoir mounted on the upper deck of the fuselage that
+            uses gravity to provide hydraulic fluid to a variable delivery pump mounted on the main
+            transmission. The No. 1 and No. 2 hydraulic pumps then deliver high-pressure fluid to the
+            3 main-rotor dual servoactuators and, in the case of the No. 1 pump, to the single tail rotor
+            servoactuator. As a result, following a No. 1 hydraulic system failure, hydraulic boost to the
+            tail rotor controls will be lost. Following a No. 2 hydraulic system failure, the main and tail
+            rotor flight controls will continue to be hydraulically boosted by the No. 1 hydraulic system.
+            If both hydraulic systems fail, all hydraulic boost to the flight controls will be lost. In the
+            event that the helicopter is subjected to extreme flight attitudes, e.g. inverted or near -
+            inverted, air could enter the system through the gravity-fed hydraulic pumps from their
+            unpressurized reservoirs.
+
+            During the examination of the wreckage, both hydraulic system switches were found in the
+            ON position. An inspection of the hydraulic pumps, filters, and hydraulic system fluid did
+            not reveal any abnormalities.
+            The main rotor and tail rotor servoactuators were removed from the helicopter for
+            inspection and bench testing. Due to excessive bending caused by the impact, the bench test
+            was limited to 1 main rotor servoactuator and the tail rotor servoactuator, in which no
+            significant anomalies were observed. The remaining 2 main rotor servoactuators were
+            disassembled and visually inspected with no internal damage found. No anomalies were
+            found during the testing.
+
+
+       13
+            Bell Textron Inc., BHT-212VFR-FM-1, Bell Model 212 Rotorcraft Flight Manual, Revision 8 (21 March 2019),
+            section 2-6H: Hydraulic Systems Check.
+                                                  AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 21
+
+
+1.12.2.3   Transmission
+
+           The main transmission uses the engine power to drive the main rotor and the tail rotor
+           drive system. The transmission remained mostly in place throughout the accident sequence,
+           but the right rear elastomeric vibration isolator mount and the 5th mount were found
+           broken away from the fuselage.
+           The 5th mount damage was determined to be a result of impact with the ground.
+           The cracked portions of the right rear mount were forwarded to the TSB Engineering
+           Laboratory for analysis. It was determined that this mount failure was most likely the result
+           of impact forces and not likely to have been caused by an overstress condition while the
+           helicopter was in flight.
+
+1.12.2.4   Tail rotor drive system
+
+           The tail rotor drive system consists of 6 driveshaft sections, 4 hanger bearings, the
+           intermediate gearbox (42°), and the tail rotor gearbox (90°). Flexible couplings located at
+           each hanger bearing and gearbox compensate for tail boom flexing due to dynamic loads.
+           The tail rotor provides 2 essential functions: it produces a force that counteracts the torque
+           generated by the main rotor, and it allows the pilot to steer the helicopter around the
+           vertical axis. On a helicopter with a counter-clockwise rotating main rotor, like the Bell 212,
+           a complete loss of tail rotor thrust will cause an uncommanded yaw to the right.
+
+           In this occurrence, the main rotor blades made contact with the tail rotor drive system,
+           disabling the tail rotor driveshaft ahead of the intermediate gearbox and leaving the
+           helicopter with a loss of tail rotor thrust. The missing pieces of the tail rotor driveshaft
+           cover and driveshaft were not recovered.
+           As the pilots regained control of the helicopter following the initial loss of control, neither
+           pilot was aware that the main rotor had disabled the tail rotor driveshaft. With the
+           helicopter moving at high speed after the upset, very little yaw control was required
+           because the vertical fin was doing much of the work to keep the helicopter from yawing. As
+           the speed decreased, there was a greater demand for tail rotor thrust to maintain
+           directional control.
+
+1.13       Medical and pathological information
+           There was no indication that the performance of the pilots was degraded by fatigue or any
+           other physiological or pathological factors.
+
+1.14       Fire
+           There was no post-impact fire.
+                                                                       TRANSPORTATION SAFETY BOARD OF CANADA ■ 22
+
+
+
+1.15        Survival aspects
+
+            Cargo restraint
+            A remote hook, longline, and several cargo nets were being carried inside the helicopter and
+            were restrained before the flight. Several smaller items were placed in a milk crate secured
+            to the floor in the back of the helicopter. Airspan Helicopters had installed the milk crate,
+            which was commonly used by pilots to help contain smaller items in the cabin. The crate did
+            not have a cover over it. During the occurrence, the loose items were thrown around the
+            cabin; some entered the cockpit.
+            CARs paragraph 602.86(2)(b) states:
+                    (2) No person shall operate an aircraft with carry-on baggage, equipment or cargo
+                    on board unless
+                    […]
+                    (b) all of the equipment and cargo that are stowed in a passenger compartment are
+                    packaged or covered to avoid possible injury to persons on board;14
+
+            Flight helmets
+            Both pilots were wearing flight helmets that had been manufactured within the last few
+            years and had no pre-existing damage. Both helmets were significantly damaged in the
+            occurrence.
+            These flight helmets effectively protected the pilots from head injury, which could have
+            resulted from the items that were thrown around the cabin during the first loss of control or
+            from the trees through which the helicopter descended during the accident sequence. The
+            TSB has previously stressed the importance of wearing a helmet to prevent fatal injuries or
+            to reduce the effects of non-fatal injuries to the head in an accident. 15 These effects may vary
+            from confusion to complete loss of consciousness.
+
+            Seats and safety belts
+            The left seat was an original Bell 212 cockpit seat. It remained intact with no visible signs of
+            damage, compression, or twisting. The right seat was a DART Aerospace Comfort Seat
+            installed in accordance with Supplemental Type Certificate SH08-37. 16 The front of this seat
+            was deformed downward, revealing that it had absorbed some of the compression forces as
+
+
+       14
+            Transport Canada, SOR 96-433, Canadian Aviation Regulations, paragraph 602.86(2)(b).
+       15
+            TSB air transportation safety investigation reports A20Q0015, A18W0025, A16W0126, A16P0161, A16P0069,
+            A14Q0060, A13H0001, A12C0084, A11W0070, A09A0016, A05P0103, and A02P0320.
+       16
+            Transport Canada, Supplemental Type Certificate No. SH08-37: Comfort Seat Kit (approval date: 09 October
+            2008), at https://wwwapps.tc.gc.ca/Saf-Sec-Sur/2/nico-celn/c_d.aspx?lang=eng&amp;aprv_num=SH08-
+            37&amp;ISU_NUM=1&amp;START_DATE=2008-10-
+            09&amp;AUTH_DESC=TC&amp;DESC=Comfort+Seat+Kit&amp;FRGN_NUM=&amp;aprv_type=STA&amp;P
+            ARTS_NUM=&amp;id_num=34931 (last accessed 21 December 2021).
+                                                         AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 23
+
+
+
+            the aircraft settled in the trees. There were no visible signs of twisting or breakage of the
+            seat frame.
+            The investigation determined that the pilots were wearing a 4-point safety belt. 17
+            Finding: Other
+            Wearing flight helmets and a 4-point safety belt reduced the severity of injuries to the
+            pilots, who were able to egress unassisted from the aircraft quickly.
+
+            Emergency locator transmitter
+            The aircraft was equipped with a Kannad ELT model 406 AF-Compact that transmitted on
+            frequencies 121.5 MHz and 406 MHz. The PIC, who was in the right seat, manually activated
+            the ELT by turning the remote switch to the ON position before impact with the trees. The
+            ELT transmission was received by the Canadian Mission Control Centre in Trenton, Ontario.
+
+1.16        Tests and research
+
+            Comprehensive Program for the Theoretical Evaluation of Rotorcraft
+            simulator
+            Bell Textron Inc. assisted in the investigation of this occurrence by using its Comprehensive
+            Program for the Theoretical Evaluation of Rotorcraft (COPTER) simulator. The simulator is
+            a physics-based computer model that captures numerous parameters for each simulation.
+            The Bell Textron Inc. team completed several computer-based flight simulations based on
+            occurrence GPS data, weight and balance information, and forecast weather data. These
+            simulations included several assumptions where the data, such as pilot inputs, were
+            unknown.
+
+            The simulations were run from the point of the first loss of control, when lee effects caused
+            the helicopter to pitch nose down and begin a rapid right roll. They demonstrated the
+            following:
+                •    a loss of tail rotor thrust increased the rolling of the fuselage along with a nose-
+                     down pitch
+                •    the descent profile during the loss of control was achievable in the occurrence
+                     helicopter’s configuration
+                •    the flight profile resulted in a low-G condition on at least 2 occasions
+                •    the flight profile resulted in substantial blade flapping
+
+            TSB laboratory reports
+            The TSB completed the following laboratory reports in support of this investigation:
+                •    LP038/2021 – NVM Data Recovery
+
+
+       17
+            The 4-point safety belt consists of a lap belt and dual shoulder harness straps.
+                                                                         TRANSPORTATION SAFETY BOARD OF CANADA ■ 24
+
+
+
+                •    LP056/2021 – Transmission Mount Analysis
+                •    LP098/2021 – Warning and Caution Lamps Analysis
+                •    LP111/2021 – Witness Video Acoustic Analysis
+
+1.17        Organizational and management information
+            Airspan Helicopters is a privately owned company providing commercial helicopter air
+            services to the public. The fleet at the time of the accident consisted of 6 helicopters,
+            including AS350, Bell 206, and Bell 212 helicopters.
+            The company employs approximately 15 people and operates helicopters from a main base
+            located at CAP3. The primary area served by the company is western Canada, and the air
+            services it provides are VFR air taxi and longline operations in accordance with CARs
+            subparts 702 and 703.
+            The company uses a Type D operational control system. 18 The occurrence flight had an
+            operational flight plan that was filed with a company flight follower.
+            The company also has a Transport Canada–approved maintenance organization with
+            ratings for all non-specialized work for the types of aircraft operated.
+
+            Single-pilot helicopter operations
+            Operational flights conducted by the company are typically single pilot. Except for training,
+            there are no company operating procedures for situations where 2 pilots are in the cockpit
+            at the same time during a flight and where dual flight controls are installed. As stated in
+            Transport Canada’s Approved Check Pilot Manual (TP 6533) “[n]otwithstanding an
+            operator’s SOPs [standard operating procedures], the method of transferring control from
+            one pilot to the other must be established.” 19, 20
+
+            A Notice of Proposed Amendment is under development by Transport Canada to mandate
+            the use of SOPs in all single-pilot and two-pilot aircraft operated under Part VII of the CARs.
+
+
+
+
+       18
+            A Type D operational control system delegates operational control from the Operations Manager to the PIC.
+            The PIC is therefore responsible for all pre-flight duties, including weather assessments and risk analysis.
+            There is no requirement for operators using this system to have a certified dispatcher.
+       19
+            Transport Canada, TP 6533, Approved Check Pilot Manual, Tenth Edition (June 2017), section 6.27(4)(p)(i), p.
+            72.
+       20
+            This statement from the Approved Check Pilot Manual (section 6.27 (4)(p)(i), p. 72) is for the purpose of
+            creating an observable environment during a pilot proficiency check only. This is not a substitute for
+            guidance found in an air operator’s SOP, in which the roles and tasks associated with a multi-crew flying
+            environment (e.g., PIC/second-in-command and pilot flying/pilot monitoring) are best established.
+                                                        AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 25
+
+
+
+            Airspan Helicopters mountain flying training
+            The Airspan Helicopters initial and recurrent training form in its company operations
+            manual lists the following 3 items for mountain flying review: recce [reconnaissance],
+            approach, and pads. 21
+
+            Airspan Helicopters also has a mountain flying training form, which is not included in the
+            company operations manual. The form is part of its recurrent training program. The
+            associated test flight has been intertwined with heli-ski recurrent training and focuses
+            primarily on the skills required for heli-ski operations.
+
+1.18        Additional information
+
+            Mountain flying
+            Mount Gardner on Bowen Island has a northeast/southwest orientation, creating a
+            mountain ridge at 2388 feet ASL. With the winds blowing from the east/southeast at the
+            time of the occurrence, this ridge formed an approximate 90° angle with the wind, creating
+            eddies on the lee side of the mountain.
+
+            Transport Canada recommends the following prior to flying VFR in the mountains:
+                     •     Delay your flight when the winds at mountain-top level are greater than 30
+                           knots
+                     […]
+                     •     Don’t try to out-climb downdrafts—your aircraft may not be able to. Turn out of
+                           the sinking air as soon as you can and locate the rising air (usually by turning
+                           upwind or downwind), which will be nearby
+                     •     Cross ridges at a 45-degree angle
+                     •     Stay away from violent turbulence from mountain waves and rotors; know what
+                           warning clouds look like 22
+
+            In addition, the U.S. Federal Aviation Administration (FAA) makes the following
+            recommendations for mountain flying:
+                •    “It is suggested that you cross mountain passes at an altitude at least 1,000 feet
+                     above the pass elevation.” 23
+                •    “Plan to be at that altitude at least three miles before reaching the ridge and stay at
+                     that altitude until at least three miles past it. This clearance zone will give you a
+
+
+
+
+       21
+            Airspan Helicopters Ltd., Operations Manual, Amendment 33 (10 July 2019), Initial/Recurrent Training Single
+            & Multi Engine form, Chapter 6: Training Program, Annex A, p. 6A-3.
+       22
+            Transport Canada, TP 2228-32E, Take five… for safety: Flying VFR in the Mountains (28 June 2018).
+       23
+            Federal Aviation Administration, FAA-P-8740-60, Tips on Mountain Flying (1989), p. 4.
+                                                                TRANSPORTATION SAFETY BOARD OF CANADA ■ 26
+
+
+
+                reasonable safety zone to avoid the most severe turbulence and down drafts in
+                windy conditions.” 24
+          •     “To minimize the chance of encountering dangerous turbulence, mountain flying
+                should not be attempted if the winds aloft forecast at mountain top levels are
+                greater than 25 knots.” 25
+
+     Low-G conditions
+     A low-G condition is an undesired phase of aerodynamic flight in which the airframe is
+     temporarily unloaded. The helicopter and occupants inside it may experience a temporary
+     feeling of weightlessness. For 2-bladed teetering rotor systems, which rely on the tilting of
+     the rotor disc for control, low-G conditions can be catastrophic.
+     The FAA Helicopter Flying Handbook 26 contains the following:
+                Helicopters rely on positive G to provide much or all of their response to pilot
+                control inputs. The pilot uses the cyclic to tilt the rotor disk, and, at one G, the rotor
+                is producing thrust equal to aircraft weight. The tilting of the thrust vector provides
+                a moment about the center of gravity to pitch or roll the fuselage. In a low-G
+                condition, the thrust and consequently the control authority are greatly reduced. […]
+                [H]elicopters with two-bladed teetering rotors rely entirely on the tilt of the thrust
+                vector for control. Therefore, low-G conditions can be catastrophic for two-bladed
+                helicopters. […]
+                [A]n abrupt forward cyclic input or pushover in a two-bladed helicopter can be
+                dangerous and must be avoided, particularly at higher speeds. During a pushover
+                from moderate or high airspeed, as the helicopter noses over, it enters a low-G
+                condition. Thrust is reduced, and the pilot has lost control of fuselage attitude but
+                may not immediately realize it. Tail rotor thrust or other aerodynamic factors will
+                often induce a roll. The pilot still has control of the rotor disk, and may instinctively
+                try to correct the roll, but the fuselage does not respond due to the lack of thrust. If
+                the fuselage is rolling right, and the pilot puts in left cyclic to correct, the
+                combination of fuselage angle to the right and rotor disk angle to the left becomes
+                quite large and may exceed the clearances built into the rotor hub. This results in
+                the hub contacting the rotor mast, which is known as mast bumping. […] Low-G
+                mast bumping has been the cause of numerous military and civilian fatal accidents.
+                It was initially encountered during nap-of-the-earth flying, a very low-altitude
+                tactical flight technique used by the military where the aircraft flies following the
+                contours of the geographical terrain. The accident sequence may be extremely rapid,
+                and the energy and inertia in the rotor system can sever the mast or allow rotor
+                blades to strike the tail or other portions of the helicopter.
+                Turbulence, especially severe downdrafts, can also cause a low-G condition and,
+                when combined with high airspeed, may lead to mast bumping. […] During flight in
+                turbulence, momentary excursions in airspeed, altitude, and attitude are to be
+                expected. Pilots should respond with smooth, gentle control inputs and avoid
+
+
+24
+     Ibid., p. 11.
+25
+     Ibid., p. 5.
+26
+     Federal Aviation Administration, FAA-H-8083-21B, Helicopter Flying Handbook (2019), Chapter 11: Helicopter
+     Emergencies and Hazards, pp. 11-14 and 11-15.
+                                                          AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 27
+
+
+                     overcontrolling. Most importantly, pilots should slow down, as mast bumping is less
+                     likely at lower airspeeds.
+
+            Human factors issues
+            Emergencies are stressful, high-workload situations in which people have limited time to
+            process various types of critical information, make decisions, and adjust actions
+            accordingly. 27 These increased stress levels and high workloads, can adversely affect a
+            pilot’s ability to perceive and evaluate cues from the environment. 28 Having both a good
+            situation assessment and situational awareness are critical for good decision making.
+            Situational awareness is a construct that describes how humans perceive information,
+            understand it, and make predictions about it, creating an awareness of the present situation
+            about themselves.
+
+1.18.3.1    Decision making
+
+            Information processing becomes part of decision making as decisions grow more complex.
+            Classical or normative decision-making models are focused on making rational, optimal
+            decisions, such as buying a house, and are often characterized by slow, analytical evaluation
+            of options and selection of the optimal choice. In comparison, behavioural and naturalistic
+            decision-making models are focused on how decisions are made in time-sensitive, dynamic,
+            real-world settings. These models account for human cognitive limitations and are
+            characterized by making decisions in routine, nonanalytical ways, comparing actions in
+            terms of expected value or utility. Research shows that professionals in real-world settings
+            use naturalistic decision making depending on their experience, the task, and the
+            operational context. 29
+
+            Decision making, in this way, “fuses two processes: the way decision makers size up the
+            situation to recognize which course of action makes sense, and the way they evaluate that
+            course of action by imagining it.” 30 In these types of situations, decision makers recognize
+            situations as typical and familiar and proceed to take action. They understand what types of
+            goals make sense, what priorities to set, which cues are important, and what to expect next,
+            as well as typical ways to respond in given situations. By recognizing a situation as typical,
+            they also recognize a course of action likely to succeed. This strategy of decision making is
+            extremely efficient and performed very quickly. However, a pilot may face a situation that is
+
+
+
+
+       27
+            M. Yu, T. Zhu, and S. Donaldson, “Effects of time pressure on behavioural decision making in natural
+            disasters: based on an online experimental system,” Journal of Geography & Natural Disasters, Vol. 8, No. 1
+            (2018).
+       28
+            M. A. Staal, A. E. Bolton, R.A. Yaroush, and L.E. Bourne, “Cognitive performance and resilience to stress,” in:
+            Brian J. Lukey and Victoria Tepe (Eds.), Biobehavioural Resilience to Stress (CRC Press, 19 March 2008),
+            pp. 259-299.
+       29
+            M.R. Lehto, F.F. Nah, and J.S. Yi, “Decision-making models, decision support, and problem solving,” in: G.
+            Salvendy (Ed.), Handbook of Human Factors and Ergonomics, 4th edition (John Wiley & Sons, 2012), p. 211.
+       30
+            G. Klein, Sources of Power: How People Make Decisions (MIT Press, 1998), p. 24.
+                                                                         TRANSPORTATION SAFETY BOARD OF CANADA ■ 28
+
+
+
+            neither typical nor included in any procedures, standard operating procedures, or training
+            they may have received.
+            The surprise and startle effect can also affect human performance and result in reactions
+            ranging from being distracted to taking inappropriate action or making panicked decisions.
+            The surprise and startle effect can be defined as a cognitive and emotional response to an
+            unexpected situation arising from a disparity between what is expected and what is
+            perceived. The effect tends to interrupt an action and focus a person’s attention on certain
+            elements to the detriment of the overall situation, and may lead to inappropriate actions
+            being taken.
+
+            Training is therefore important for pilots because it allows them to acquire the knowledge
+            and skills necessary to fly an aircraft safely and effectively, especially under challenging
+            conditions. Ongoing experience and regular practice also improve proficiency by reinforcing
+            lessons learned.
+
+1.18.3.2    Single-pilot crew resource management in helicopter operations
+
+            Humans are only able to process information from the environment and use it to make
+            decisions if they detect that information and perceive it to be relevant. Effective
+            communications are an important element in the decision-making process. One of the
+            primary goals of crew resource management (CRM) training is to “enhance communication,
+            interaction, human factors, and management skills of the crew members concerned”. 31
+
+            In 2020, to help pilots understand, prepare for, and manage potential degradation of a
+            known or unknown situation, Transport Canada recommended that aerial work and air taxi
+            operators conduct single-pilot resource management (SRM) training.
+            As described in Transport Canada’s Advisory Circular 700-042, Crew Resource Management,
+                      SRM adapts concepts from CRM to the single-pilot environment. […] Current CRM
+                      training concepts include threat and error Management (TEM), which speaks to the
+                      identification and analysis of potential hazards; the implementation of appropriate
+                      strategies to handle threats; and the implementation of steps to avoid, trap, or
+                      mitigate errors before they lead to undesired consequences such as an undesired
+                      aircraft state. 32
+
+            The Advisory Circular also states that single-pilot CRM should be focused on areas relevant
+            to the single-pilot and to the operation. It recommends that, among other topics, training
+            should include situational awareness, workload management, decision making, and
+            surprise and startle effect. 33
+
+
+
+
+       31
+            Transport Canada, Advisory Circular (AC) 700-042: Crew Resource Management (CRM) (Issue 02: 14 March
+            2020), at https://tc.canada.ca/en/aviation/reference-centre/advisory-circulars/advisory-circular-ac-no-700-
+            042 (last accessed 06 June 2022).
+       32
+            Ibid., section 4.0: History.
+       33
+            Ibid., section 7.0: Crew Resource Management Training Course Methodology.
+                                            AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 29
+
+
+
+2.0   ANALYSIS
+      In this investigation, there was no indication that any pre-existing helicopter system
+      malfunctions or physiological conditions played a role in the occurrence. As a result, the
+      analysis will focus on the environmental conditions at the time, the decision to depart and
+      continue in those conditions, helicopter system limitations, unsecured objects, and
+      emergency handling.
+
+2.1   Weather
+
+      Turbulence and wind shear
+      Before departure, both pilots had checked the weather forecasts, which called for strong
+      winds from the southeast, localized severe mechanical turbulence, and the potential for
+      low-level wind shear. The visibility was good, and the only significant conditions were the
+      turbulence and strong winds.
+      A low-pressure centre just north of Vancouver Island moving inland with associated warm
+      and cold fronts produced strong outflow winds over Howe Sound. Winds in the area of the
+      occurrence were variable both in speed and in direction because the air was forced around
+      the islands in Howe Sound. In addition, the complex terrain surrounding Howe Sound and
+      the wind direction were conducive to the production of lee effects.
+
+      Conditions at 2000 to 2500 feet above sea level (ASL) were very likely turbulent, with the
+      potential for severe mechanical turbulence and low-level wind shear. These conditions may
+      have been further complicated by the presence of convective clouds in the area, which may
+      have provided an additional source of turbulence.
+      Finding as to causes and contributing factors
+      The combination of a low-pressure system, the associated cold front, and the geography of
+      Howe Sound created conditions conducive to severe mechanical turbulence, lee waves, and
+      low-level wind shear along the helicopter’s flight path in the vicinity of Bowen Island.
+
+      Decision to depart
+      At the time of departure, the winds at the Sechelt Aerodrome were around 15 knots and
+      typical for the time of year. The graphic area forecast (GFA) showed a cold front passing
+      through the Bowen Island area around 1000 and the potential for active weather en route.
+      The Vancouver International Airport terminal area forecast called for diminishing winds
+      later in the day. The pilots were aware of the forecast and prepared for a turbulent flight.
+
+      The planned longline work for the day would complete a multi-day project. The pilots’
+      consideration of the weather was focused on the longline work ahead. The flight from
+      Sechelt Aerodrome to the work site was considered routine. The day before the accident,
+      the second pilot had flown a similar route to the longline site without issue. The pilots
+      decided that if they arrived on site and the weather was not suitable for longlining, they
+      could wait for the better weather called for in the forecast.
+                                                             TRANSPORTATION SAFETY BOARD OF CANADA ■ 30
+
+
+
+      Other aircraft were operating in and out of the Sechelt Aerodrome around the time that the
+      pilots were preparing for their departure. This reinforced the pilots’ decision to depart
+      because it was consistent with decisions made by other pilots.
+      Finding as to causes and contributing factors
+      The pilots were aware of the forecasted weather, low-level wind shear, and mechanical
+      turbulence, but decided to continue with the day’s planned flights based on improving
+      weather forecast later in the day, the desire to complete the operational flight, and the
+      observation that other aircraft were operating around the Sechelt Aerodrome.
+
+      Active weather en route
+      As the flight progressed towards the destination, localized surface waves (“cat’s paws”)
+      could be seen on the water indicating downdrafts near the Collingwood Channel. The
+      helicopter had been travelling at an altitude of approximately 2600 feet ASL 2 minutes
+      before the initial upset. As it moved across Howe Sound, it gradually, and likely
+      unintentionally, descended. By descending to a height close to that of the peak of Mount
+      Gardner (2388 feet ASL), the helicopter entered an area of hazardous wind and turbulence.
+      The aircraft was on Mount Gardner’s lee side, and, approximately 2 NM from the mountain
+      ridge, it was at an altitude of approximately 2430 feet ASL. This ridge created dangerous
+      eddies on its lee side. A large eddy called a “rotor” likely formed below the lee wave crests;
+      however, the pilots were unaware of the severity of these lee effects.
+      Finding as to causes and contributing factors
+      After observing visual cues of strong downdrafts and low-level wind shear when
+      approaching Collingwood Channel, the pilots modified their heading, altitude, and airspeed;
+      however, they continued toward Bowen Island unaware of the severity of the lee effects
+      there.
+
+2.2   Low-G condition
+      The strong winds on the day of the occurrence, mixed with the complex terrain within the
+      inlet, produced severe turbulence that resulted in low-G conditions and a loss of control.
+      During the loss of control, the helicopter experienced extreme attitudes that exceeded the
+      manoeuvring limitations outlined in the Bell Model 212 Rotorcraft Flight Manual (RFM).
+
+      A low-G condition occurs when the main rotor is temporarily unloaded from the forces that
+      are applied during the flight. During this low-G condition, the lateral cyclic has little, if any,
+      effect because the rotor thrust has been reduced. Pilots should respond with smooth, gentle
+      control inputs and avoid overcontrolling. The investigation was unable to determine which
+      control inputs were applied by the pilots during the low-G condition; however, aft cyclic
+      was heavily applied at some point during the recovery attempt.
+
+      The examination of the wreckage found marks on the upper section of the rotor mast, which
+      indicate that a mast bump occurred. This happens in flight when excessive blade flapping
+      occurs and leads to contact between the main rotor hub and the rotor mast. Also, it was
+                                             AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 31
+
+
+
+      determined that the tail rotor drive system was cut by the main rotor blades at some point
+      during the loss of control, leaving the helicopter with a loss of tail rotor thrust.
+      Severe turbulence and a low-G condition are 2 situations that can cause blades to flap
+      enough to strike the tail boom. According to the Bell Textron Inc. Comprehensive Program
+      for the Theoretical Evaluation of Rotorcraft (COPTER) simulator’s computer simulations for
+      the flight, the helicopter entered a low-G condition at least twice during the first loss of
+      control.
+      Finding as to causes and contributing factors
+      The helicopter entered an area of severe turbulence that led to low-G conditions and a loss
+      of control that included extreme attitudes, that resulted in excessive flapping of the main
+      rotor blades. As a result, the main rotor blades contacted and severed the tail rotor
+      driveshaft, causing a loss of tail rotor thrust and yaw control.
+
+2.3   Unsecured objects
+      Before departure, several small items had been placed in a milk crate without a cover. The
+      milk crate was secured to the floor behind the right pilot seat, which was common practice
+      at Airspan Helicopters.
+      During the first loss of control, the items from the milk crate were launched forward from
+      the rear cabin and struck the pilots on their helmets. The visor cover and yellow visor on
+      the helmet of the second pilot (the pilot flying, who occupied the left seat) was knocked
+      down over his face, blocking his vision. With the pilot-in-command (PIC) also on the
+      controls, the second pilot was able to let go of the flight controls momentarily to force the
+      visor cover up off his face and out of his vision. The yellow visor remained down for the
+      remainder of the flight.
+
+      A visor cover may create a serious hazard if it blocks a pilot’s vision in flight, particularly
+      during an attempt to recover control of an aircraft. In this occurrence, having a second pilot
+      likely played a role in the recovery.
+      Finding as to risk
+      If loose items are stowed, but not adequately secured, there is a risk that, in the event of an
+      in-flight upset, the items will be thrown around the cabin or into the cockpit, possibly
+      distracting the flight crew or injuring aircraft occupants.
+
+2.4   Emergency handling
+
+      Hydraulic and engine malfunctions
+      During the first loss of control, the helicopter exceeded the manoeuvring limitations as
+      outlined in the RFM. Once the control of the helicopter had been regained and the helicopter
+      had returned to level flight, the pilots, who were both still on the controls, noticed that the
+      anti-torque pedals had become stiff, the cyclic was slow to respond, and the hydraulic
+      caution light was on.
+                                                     TRANSPORTATION SAFETY BOARD OF CANADA ■ 32
+
+
+
+The hydraulic system uses gravity to deliver hydraulic fluid to the hydraulic pumps. In this
+occurrence, it is likely that air was introduced into both of the hydraulic systems via the
+unpressurized hydraulic reservoir when the helicopter experienced extreme attitudes
+during the loss of control. As a result, the performance of the hydraulic system for all flight
+controls was likely degraded, leading to a lag in servoactuator response, increased feedback
+load on the controls from aerodynamic forces, and greater pilot inputs to achieve normal
+main rotor and tail rotor response.
+At around the same time, the PIC observed the No. 2 engine out indication light illuminate
+and the engine shut down. Although the uncommanded engine shutdown was likely a result
+of the extreme attitude, the exact reason for it could not be determined.
+It is likely that after the helicopter had experienced a sudden reduction in main rotor load
+that resulted in a main rotor overspeed, the fuel governors limited or reduced fuel flow in
+order to bring the main rotor speed back within limits, which resulted in a reduction of
+available engine power from the No. 1 engine.
+Finding as to causes and contributing factors
+The helicopter’s extreme attitude during the initial loss of control likely caused the
+hydraulic system to malfunction, the No. 2 engine to shut down in flight, and the No. 1
+engine to reduce fuel flow (resulting in less power), which subsequently reduced the main
+rotor speed.
+
+Loss of tail rotor driveshaft thrust
+The tail boom was struck by the main rotor blades, causing the tail rotor drive shaft to be
+severed. Given the forward speed of the helicopter, the airflow over the vertical fin would
+have been sufficient to keep the helicopter aligned with the direction of travel. As the speed
+decreased, tail rotor thrust would have been required to maintain directional control. Since
+there was no tail rotor thrust being generated to counter the torque created from the main
+rotor system, the helicopter began to rotate, initiating a second loss of control.
+The pilots initiated an emergency landing without knowing that they had no tail rotor
+thrust. The PIC communicated the tail rotor failure to the second pilot (pilot flying), who
+quickly reduced both throttles to idle and reduced the collective to slow the rotation. As
+tree contact was made, the second pilot pulled up on the collective in order to slow the
+descent and cushion the impact.
+Finding as to causes and contributing factors
+As the helicopter slowed for the emergency landing, yaw control was lost due to the
+absence of tail rotor thrust, and the helicopter collided with terrain.
+
+Reaction to in-flight emergency
+The aircraft system indications and flight control forces experienced by the pilots did not
+match any training scenario they had completed in the past. They encountered a novel
+                                      AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 33
+
+
+
+situation, were therefore unprepared, and had very limited time to troubleshoot the
+situation as it unfolded.
+Given the sudden forces and extreme attitude and altitude changes experienced by the
+helicopter, it is likely that the pilots experienced the effects of surprise and startle. The
+surprise and startle effect is a cognitive and emotional response to an unexpected situation
+arising from a disparity between what is expected and what is perceived.
+
+The company operates only single-pilot helicopters and does not have any established
+procedures for 2-pilot operations. Normally, multi-crew operations have defined
+procedures in place to establish roles and responsibilities during normal and emergency
+operations, such as the transfer of aircraft control. The roles and responsibilities of pilots
+who have access to aircraft controls needs to be clear. Such procedures are not required by
+regulation for single-pilot operations, but from a crew resource management perspective,
+they reduce ambiguity created in decision making and command by defining roles and
+responsibilities.
+In this occurrence, the 2 pilots each made inputs on the flight controls in an attempt to
+regain control of the helicopter; the investigation was unable to determine which inputs
+were effective and which were not.
+Finding as to risk
+When 2 qualified pilots fly a single-pilot helicopter with dual controls installed, ambiguity
+can arise in decision making and command if roles and responsibilities are not clearly
+articulated. In the event of an in-flight emergency or critical situation, there is an elevated
+risk of discoordination in the cockpit, resulting in a delayed response or the exacerbation of
+the in-flight emergency or critical situation.
+                                                              TRANSPORTATION SAFETY BOARD OF CANADA ■ 34
+
+
+
+3.0   FINDINGS
+
+3.1   Finding as to causes and contributing factors
+      These are conditions, acts or safety deficiencies that were found to have caused or contributed to
+      this occurrence.
+
+          1. The combination of a low-pressure system, the associated cold front, and the
+             geography of Howe Sound created conditions conducive to severe mechanical
+             turbulence, lee waves, and low-level wind shear along the helicopter’s flight path in
+             the vicinity of Bowen Island.
+
+          2. The pilots were aware of the forecasted weather, low-level wind shear, and
+             mechanical turbulence, but decided to continue with the day’s planned flights based
+             on improving weather forecast later in the day, the desire to complete the
+             operational flight, and the observation that other aircraft were operating around the
+             Sechelt Aerodrome.
+
+          3. After observing visual cues of strong downdrafts and low-level wind shear when
+             approaching Collingwood Channel, the pilots modified their heading, altitude, and
+             airspeed; however, they continued toward Bowen Island unaware of the severity of
+             the lee effects there.
+
+          4. The helicopter entered an area of severe turbulence that led to low-G conditions and
+             a loss of control that included extreme attitudes, that resulted in excessive flapping
+             of the main rotor blades. As a result, the main rotor blades contacted and severed
+             the tail rotor driveshaft, causing a loss of tail rotor thrust and yaw control.
+
+          5. The helicopter’s extreme attitude during the initial loss of control likely caused the
+             hydraulic system to malfunction, the No. 2 engine to shut down in flight, and the No.
+             1 engine to reduce fuel flow (resulting in less power), which subsequently reduced
+             the main rotor speed.
+
+          6. As the helicopter slowed for the emergency landing, yaw control was lost due to the
+             absence of tail rotor thrust, and the helicopter collided with terrain.
+
+3.2   Findings as to risk
+      These are conditions, unsafe acts or safety deficiencies that were found not to be a factor in this
+      occurrence but could have adverse consequences in future occurrences.
+
+          1. If loose items are stowed, but not adequately secured, there is a risk that, in the
+             event of an in-flight upset, the items will be thrown around the cabin or into the
+             cockpit, possibly distracting the flight crew or injuring aircraft occupants.
+          2. When 2 qualified pilots fly a single-pilot helicopter with dual controls installed,
+             ambiguity can arise in decision making and command if roles and responsibilities
+                                              AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A21P0018 ■ 35
+
+
+
+              are not clearly articulated. In the event of an in-flight emergency or critical situation,
+              there is an elevated risk of discoordination in the cockpit, resulting in a delayed
+              response or the exacerbation of the in-flight emergency or critical situation.
+
+3.3   Other findings
+      These items could enhance safety, resolve an issue of controversy, or provide a data point for
+      future safety studies.
+
+          1. Wearing flight helmets and a 4-point safety belt reduced the severity of injuries to
+             the pilots, who were able to egress unassisted from the aircraft quickly.
+                                                                     TRANSPORTATION SAFETY BOARD OF CANADA ■ 36
+
+
+
+4.0   SAFETY ACTION
+
+4.1   Safety action taken
+
+      Airspan Helicopters Ltd.
+      As a result of the accident, Airspan Helicopters Ltd. took the following actions:
+          •    suspended operations and maintenance until it completed an all-staff debrief to
+               discuss details and initial lessons learned;
+          •    suspended Bell 212 operations until it completed a maintenance review;
+          •    held a formal critical incident stress management session for personnel;
+          •    developed a pre-flight risk assessment that includes specific thresholds for severe
+               turbulence;
+          •    completed an internal safety investigation in accordance with its safety
+               management system policy;
+          •    implemented new procedures for securing smaller items to ensure they are secure
+               in flight; and
+          •    created and distributed a safety memo to company pilots detailing:
+               •    pre-flight turbulence analysis
+               •    en route turbulence awareness/avoidance
+               •    mitigating actions for turbulence.
+
+
+
+
+      This report concludes the Transportation Safety Board of Canada’s investigation into this
+      occurrence. The Board authorized the release of this report on 20 July 2022. It was officially
+      released on 28 July 2022.
+
+      Visit the Transportation Safety Board of Canada’s website (www.tsb.gc.ca) for information
+      about the TSB and its products and services. You will also find the Watchlist, which
+      identifies the key safety issues that need to be addressed to make Canada’s transportation
+      system even safer. In each case, the TSB has found that actions taken to date are
+      inadequate, and that industry and regulators need to take additional concrete measures to
+      eliminate the risks.
+

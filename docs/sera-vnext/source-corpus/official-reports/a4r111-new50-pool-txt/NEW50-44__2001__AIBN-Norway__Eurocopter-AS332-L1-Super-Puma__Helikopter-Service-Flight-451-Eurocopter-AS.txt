@@ -1,0 +1,1851 @@
+                                  REP 19/2003
+
+
+
+
+                 REPORT ON
+AIRCRAFT ACCIDENT AT LÅGHELLERNUTEN ON THE
+   HARDANGER PLAIN IN THE MUNICIPALITY OF
+ ULLENSVANG, HORDALAND ON NOVEMBER 6 1999,
+    INVOLVING EUROCOPTER AS 350-B2, LN-OCF
+           OPERATED BY AIRLIFT AS
+
+
+
+
+              ISSUED MARCH 2003
+                                                                                     3
+
+
+
+
+REPORT ON AIRCRAFT ACCIDENT AT LÅGHELLERNUTEN ON THE
+HARDANGER PLAIN IN THE MUNICIPALITY OF ULLENSVANG,
+HORDALAND ON NOVEMBER 6 1999, INVOLVING EUROCOPTER
+AS 350-B2 LN-OCF, OPERATED BY AIRLIFT AS
+
+
+Type:                         Eurocopter AS 350-B2, Ecureuil
+
+Registration:                 LN-OCF
+
+Owner:                        Airlift AS
+                              Førde Airport
+                              NO-6815 Bringeland
+
+User:                         Airlift AS
+
+Crew:                         1, seriously injured
+
+Passengers:                   3, 2 killed and 1 seriously injured
+
+Accident location:            At a height of approx. 1,460 m above sea level on
+                              the north-east slope of Låghellernuten on the
+                              Hardanger plain,
+                              bearings 60o 16’ N, 007o 17,5’ E
+
+Time and date of accident:    November 6 1999, at time 1305.
+
+All time details in this report are in local time (UTC + 1 hour), unless otherwise
+stated.
+
+ACCIDENT REPORT
+
+At time 1540 on November 6 1999, the Aircraft Accident Investigation Board/
+Norway (AAIB/N) was notified by the Oslo Police District Operations Centre that
+helicopter LN-OCF had been the subject of an accident on the north-west side of the
+Hardanger plain. Rescue action was put into operation. This was made difficult by
+the weather conditions. AAIB/N despatched three inspectors the following morning
+and they arrived at the county’s administrative office in Kinsarvik at time 1330.
+After a short briefing by the police, the group was flown to the scene of the accident
+where investigations were initiated.
+
+In accordance with “Annex 13 to the Convention on International Civil Aviation ”
+the French commission Bureau Enquêtes - Accidents (BEA) appointed an
+
+
+
+                                                                                     3
+                                                                                                   4
+
+
+        investigator as an authorised representative. He used the Accident Investigator
+        Manager from Eurocopter (the helicopter manufacturer) and an expert from
+        Turbomeca (the engine manufacturer) as technical advisers.
+
+
+        SUMMARY
+
+        A single-engine Eurocopter AS 350-B2 helicopter, Ecureuil, from the company
+        Airlift had been carrying out an assignment in the area of Låghellernuten on the
+        Hardanger plain. On completion of the assignment, while climbing parallel to
+        rising terrain, the helicopter’s engine lost power. The height above ground was then
+        so low that the commander’s attempt to implement a controlled landing in
+        autorotation was unsuccessful. The helicopter lost height and hit the snow-covered
+        ground at forward speed and with a high rate of descent. After the heavy impact,
+        the helicopter was thrown down the sloping terrain. The front part of the helicopter
+        was completely destroyed and two of the four onboard were killed. The two others,
+        one of them the commander, were seriously injured.
+
+        Despite numerous thorough examinations of the fuel control unit, engine and other
+        components, both in Norway and France, it has not been possible for AAIB/N to
+        ascertain the cause of the engine’s loss of power.
+
+        Airlift has been most cooperative and both theirs and Lufttransports knowledge has
+        been contributing.
+
+        There are two main contributing causes of this accident. One is that the engine
+        failed in a critical phase of the flight. The other is the selection of the flight path.
+
+        On the basis of this aviation accident, AAIB/N has issued seven recommendations,
+        which can be found in section 4.
+
+
+1       FACTUAL INFORMATION
+
+
+1.1     History of the flight
+
+1.1.1   The helicopter was on an assignment in which the passengers were to inspect the
+        damage following a break-in at a cabin, which one of them used at Lægreidsoksla
+        on the Hardanger plain. When the order was placed with Airlift, it was specified
+        that there would be two passengers.
+
+1.1.2   The Commander made preparations for the flight as he waited for the passengers to
+        arrive at the helicopter base. The plan was to use an AS 315 “Lama”, LN-OMU, for
+
+
+
+
+                                                                                                   4
+                                                                                               5
+
+
+        the assignment, and the Commander prepared the helicopter for the flight. The
+        passengers arrived in Kinsarvik by ferry from Utne at approx. time 1200. Once at
+        the base, the passengers, two brothers-in-law who were in their forties and the
+        seven-year old son of one of them, were seated in the helicopter. The Commander
+        gave the standard safety briefing and seat belts were fastened. Some thin plywood
+        boards to bolt the cabin windows were also loaded and placed on the floor. A bag
+        of tools and a video camera were also taken onboard. It was agreed to make a full
+        shutdown of the helicopter’s engine on arrival at the cabin, which meant there was
+        no need for a second crewmember to accompany the flight.
+
+1.1.3   As there were starting problems with LN-OMU, it was decided to change to another
+        helicopter to save time and an “Ecureuil” LN-OCF, was prepared. The passengers
+        and cargo were moved to this helicopter. The seatbelts were fastened again (the
+        commander also used shoulder belts) and the Commander, assisted by a technician,
+        gave a new safety briefing. The technician observed that the older brother-in-law
+        (the client) was sitting at the front on the left of the pilot, while father and son sat
+        behind in the middle seats.
+
+1.1.4   The passengers were appropriately dressed for a flight to the mountains, while the
+        Commander was wearing his normal flying suit with “synfiber” thermo winter
+        jacket and helmet. He usually brought a bag containing warm survival equipment.
+        However, he did not do so on this flight.
+
+1.1.5   LN-OCF was fuelled to half capacity, which was sufficient for the planned flight.
+        The helicopter has a fuel capacity of 540 litres and a normal consumption of approx.
+        170 litres/hour.
+
+1.1.6   The start-up at approx. time 1215 at the Kinsarvik base was completely normal.
+        The same applied to the take-off and the flight towards the mountains. They
+        followed the following route: Up Husedalen to Stavali, then Veigdalen –
+        Smågrananutane directly towards Lægreidsoksla. The client had a few problems
+        locating the cabin from the air, but after about 20 minutes flying time from
+        Kinsarvik, they made a normal landing next to the cabin at approx. time 1235. The
+        landing caused little snow drifting. The engine was stopped and the passengers
+        remained in their seats until the rotor had come to a standstill.
+
+1.1.7   Weather conditions during the flight had been good, with a cloud height of about
+        1.000 feet, good visibility, no precipitation and almost dead calm. Conditions
+        during the stay at the cabin were the same. There had been no snowfalls, which
+        meant that no snow or other precipitation could be seen on any of the helicopter’s
+        surfaces. The pilot was aware of the Lettre Service 1270-00-9 concerning
+        operations in snowy conditions and had that in mind when he inspected the
+        helicopter.
+
+
+
+
+                                                                                               5
+                                                                                             6
+
+
+1.1.8   The work at the cabin took 20-25 minutes and the pilot also helped with the work.
+        The window that had been smashed during the break-in was filmed with the video
+        camera and the plywood boards were nailed to the window. The pilot was asked to
+        take a petrol-powered generator back to Kinsarvik. He agreed and it was placed in
+        the basket (cargo hold) on the outside of the helicopter. The power generator had
+        an estimated weight of 10 kg and the basket had a max weight limitation of 200 lb
+        (91 kg).
+
+1.1.9   Once the work was completed, the passengers were taken onboard again. The client
+        was seated at the front and the father and son behind, with the seven-year old son on
+        the right side of the middle with the father seated outside of him to the right. It was
+        agreed that the helicopter would circle the area around the cabin before setting a
+        course back to the base.
+
+1.1.10 LN-OCF was parked next to the cabin with its nose facing north. The present fuel
+       level was approx. 40% of a full tank. After a normal start-up, the Commander lifted
+       the helicopter and made a 360o climbing turn in hover before he turned
+       southeastwards in a 270o climbing turn (see map with staked-out flight path,
+       Appendix no. 3). A course was then set to Låghellernuten and as they neared the
+       top, he had planned to turn the helicopter on a southeasterly heading to fly round the
+       top of the peak. The plan was to set a direct course to Kinsarvik when LN-OCF
+       was on the south side of the peak.
+
+1.1.11 The helicopter was climbing on a southeasterly heading, parallel to raising terrain of
+       Låghellernuten at approx. 85% Tq (torque) power output and, according to the
+       Commander, at a speed of 70-80 kt when the engine suddenly lost power. The
+       Commander estimated the height above the mountainside to approx. 30 – 50 m. He
+       noticed first a reduction in engine noise and then a warning light (HORN) to
+       indicate low rotor revolutions per minute registered on the warning panel, at the
+       same time as the warning horn sounded. He also saw that the low generator power
+       alarm (GEN) was lit and noticed a “yaw” – a tendency to the left. He tried to put
+       the helicopter into autorotation, but it was at too low a height above the ground for
+       this to have any particular effect. The Commander is well trained in autorotation.
+
+1.1.12 At time 1305, approx. 3,5 km after departure and 80 m higher than point of
+       departure, the helicopter hit the snow-covered slope at a heading of 90o. It hit with
+       forward speed and a high rate of vertical descent. The helicopter stuck the snow
+       covered mountain with a slightly nose up or flat attitude. It continued “airborn”
+       14 m and made the second impact, turned left, fell 4 m vertically and continued
+       23 m down the steep mountain slope. It came to rest on its side, almost upside
+       down (see Appendix 2). The cockpit and cabin area were completely destroyed and
+       the two front seats came loose (ref. 1.12.2). The Commander and the two adult
+       passengers were thrown out from the cockpit and cabin. The boy remained
+       strapped-in inside the helicopter. The adults were killed, while the Commander and
+       the boy were seriously injured.
+
+
+
+
+                                                                                             6
+                                                                                            7
+
+
+1.1.13 The emergency location transmitter (ELT) was activated after the collision and the
+       signals were picked up by two scheduled flights that were passing over the area.
+       The aircraft crews informed Stavanger ATCC, who alerted the main rescue co-
+       ordination centre in Sola. The rescue operation was then put into action.
+
+1.1.14 When he regained consciousness after the accident, the Commander found himself
+       lying in the snow outside the helicopter. He was the worse for wear, but after a
+       while managed to pull the boy out of the wreckage where he was still strapped in.
+       He examined the other passengers who were lying on the snow at the side of the
+       wreckage and realised there was nothing he could do for them. He wrapped himself
+       and the boy in a freight bag (“big bag”) approx. 20 metres below and a little in front
+       of the helicopter. The bag, which is made of roughly woven nylon, is un-insulated,
+       but still gave some protection against the cold and wind. At time 1412 the
+       Commander managed to get through to the Airlift base at Kinsarvik by mobile
+       telephone (he made two calls), and was able to report the accident. Mobile phone
+       (GSM) coverage was poor in the area and the message was a little sketchy. At time
+       1616 he tried to contact the base again, but the conditions for using a mobile
+       telephone, plus the fact that the Commander had serious injuries including facial
+       injuries, made it difficult to understand the information he was giving.
+
+1.1.15 Because the weather conditions had deteriorated shortly after the accident, it was
+       not possible to access the accident site with a rescue helicopter. There was
+       thickening fog and cold snow. It was not until approx. time 2200 that a rescue
+       patrol arrived at the accident site. They had been flown to the area and arrived at
+       the accident site on foot. The two survivors were taken to a small cabin (Huldrabu)
+       in the area where they were treated. Next morning the weather conditions had
+       improved enough for them to be transferred by rescue helicopter to Haukeland
+       hospital in Bergen.
+
+
+1.2     Injuries to persons
+
+
+        INJURIES                 CREW            PASSENGERS             OTHER
+        FATALITIES                                    2
+        INJURED                     1                 1
+        MINOR/NONE
+
+
+1.3     Damage to the aircraft
+
+
+        The helicopter was completely destroyed. In the first impact with the ground, the
+        underside of the helicopter smashed and the skid (landing gear) on the right side
+        broke off. A least one of the rotor blades stuck the ground. The next impact caused
+
+
+
+
+                                                                                            7
+                                                                                             8
+
+
+        the doors, glare shield and windows to become separated from the helicopter. The
+        helicopter continued down a small precipice, where also the left skid broke off,
+        before it came to rest upside down. When it came to a rest, both front seats and the
+        engine were detached. The tail boom was torn off, the transmission was pushed
+        forward and the fuel tank ripped. The whole structure above the cabin floor to the
+        back bulkhead of the cabin was ripped off.
+
+
+1.4     Other damage
+
+
+        None.
+
+
+1.5     Personnel information
+
+1.5.1   The Commander, male, 33 years of age, completed his flying training in 1985-1986
+        at Omega Helicopters in the USA. He converted his American licences to
+        Norwegian ones in 1988 and joined Airlift A/S as an air-cargo worker from 1989 to
+        1991. The Commander holds CPL-H, which is valid until on August 18 2006. He
+        had his last PFT on August 13 1999. His last medical examination was carried out
+        on April 17 1999.
+
+1.5.2   The Commander was employed as an air-cargo worker and a pilot with
+        Helikopterteneste A/S between 1991 and 1993. He was employed as a pilot with
+        Lufttransport A/S in 1994. Since 1996, he has been employed by Helikopterteneste
+        A/S. This company became part of Airlift A/S, where he is currently employed
+        based in Kinsarvik. At the time of the accident the Commander acted as chief pilot
+        at this base.
+
+1.5.3   The Commander has extensive experience flying in mountainous terrain. He had a
+        total of 2.505 flying hours, 135 of which are on aeroplanes.
+
+        FLYING TIME                         TOTAL                    THIS TYPE
+        LAST 24 HOURS                        2:00                       0:25
+        LAST 3 DAYS                          9:00                       0:25
+        LAST 30 DAYS                         20:10                      1:20
+        LAST 90 DAYS                        134:05                     46:10
+
+
+1.5.4   At an enquiry the Commander has stated that he felt healthy and in good spirits at
+        the start of the flight. He was rested after a normal night’s sleep.
+
+
+
+
+                                                                                             8
+                                                                                            9
+
+
+1.6     The aircraft
+
+1.6.1   The aircraft, general
+
+1.6.1.1 The aircraft was a six-seater, single-engine Eurocopter AS 350 B2,
+        serial number 2478. The helicopter was type-approved for the Norwegian aircraft
+        register on type certificate no. 04A/86.
+
+1.6.1.2 It was built in 1991, and was placed on the Norwegian register on May 16 in the
+        same year. The helicopter was operated by Helikopterteneste A/S until August 9
+        1999 when the company merged with Airlift AS (Helikopterteneste had been a part
+        of Airlift since of April 9 1996). At the time of the accident the helicopter had a
+        total flying time of 5,292:09 hours and had made 11,087 landings. The engine’s
+        flying time was 5,302:00 hours. The last 500-hour inspection of the helicopter and
+        engine was performed October 11 1999, at a total helicopter flying time of 5,254:
+        36 hours, 26 days before the accident.
+
+1.6.1.3 The 500-hour inspection also includes a fuel control unit (FCU) characteristics
+        check (NR versus NG%, MM 73-20-01). The result from the check was within the
+        limits defined by the manufacturer.
+
+1.6.1.4 AAIB/N did not find any lifetime components that exceeded the lifetime. The
+        “Hold Item List” (HIL) contains only one open point, which relates to the changing
+        of bolts in the main rotor head.
+
+1.6.1.5 Shortly before this flight, work on the fuel system was carried out. The result of an
+        in-house check (Airlift AS) of this work (Maintenance Manual 73-20-01) was
+        within the manufacturer’s specifications and tests performed by AAIB and
+        Turbomeca carried out after the accident confirmed the result. The G check (a main
+        inspection) was performed on February 19 1999 at a total of 4,704:36 hours.
+        Because of a bird strike, the engine’s modules nos. M2, M3 and M4 were changed
+        on September 29 1997. At that time the engine time was 3,983:00 hours. The FCU
+        was also replaced at the same time.
+
+1.6.1.6 The Norwegian Civil Aviation Authority renewed the helicopter’s airworthiness
+        certificate on May 20 1999 and made no notes in its inspection report.
+
+1.6.2   The engine
+
+1.6.2.1 The engine was a Turbomeca Arriel 1D1 engine with the serial number 9407. This
+        engine is a free turbine turboshaft engine made up of five modules.
+
+        Module M1, consists of a drive shaft, accessory gearbox and freewheel. The FCU
+        S/N C 508B is installed on the left front face of the accessory gearbox.
+        Module M2, axial compressor module.
+
+
+
+                                                                                            9
+                                                                                   10
+
+
+Module M3, gas generator (high pressure) including centrifugal compressor,
+combustion chamber and turbine.
+Module M4, power turbine.
+Module M5, reduction gearbox.
+
+The gas generator consists of a single stage axial compressor, a centrifugal
+compressor, the annular combustion chamber with centrifugal fuel injection and a
+two stage axial turbine (M2 and M3). The accessory gearbox is connected to the
+gas generator (M2) and is part of M1.
+
+The power turbine (M4) is a single stage axial turbine connected with the reduction
+gearbox (M5). The reduction gearbox (M5) is connected with the transmission
+shaft M1. The gas turbine’s revolutions per minute, N1, at 100% correspond to
+51,8 00 RPM. The power turbine (free turbine) transfers power via the reduction
+transmission, drive shaft and freewheel to the main rotor gearbox. The power
+turbine’s revolutions per minute, N2, at 100% correspond to 41,586 RPM.
+
+
+
+
+                                                                                   10
+                                                                                           11
+
+
+
+
+1.6.3   Fuel system/Control system
+
+1.6.3.1 The fuel system consists mainly of a fuel tank, fuel pumps, fuel filter (with bypass),
+        a hydro-mechanical fuel control unit (FCU), which uses fuel as a hydraulic medium,
+        start injector valve, start injectors, overspeed and drain valve and injector wheel.
+        The fuel flow to the engine is regulated by the FCU, with the aim of maintaining a
+        virtually constant N2 and rotor revolutions per minute. The FCU detects changes
+        and acts to compensate for these, on the basis of the revolutions per minute
+        information (N1 / N2). The changes will take place in such a way that no limits are
+        exceeded, such as overspeed/underspeed of N1, T4, torque etc. The FCU is
+        dependent on P2 air to function.
+        The Commander has two methods of controlling the fuel supply. One is by using
+        the fuel control lever in the cockpit. This actually has three positions: shutdown,
+        open and emergency position. The emergency position is used if the automatic part
+        of the FCU fails. In this position the Commander must monitor all engine
+        parameters manually and try to compensate for deviations. The other method by
+        which the Commander controls the fuel is by using the collective. The collective is
+        connected to the FCU, which advances the phase of detection of changes in order to
+        reduce the response time (anticipator) and to compensate the static drop. There is
+        also a handle, which controls a separate fuel shut off valve.
+
+
+
+
+                                                                                           11
+                                                                                        12
+
+
+
+
+1.6.4   Flame out
+        The engine is sensitive to snow and small amounts of snow in the air intake can
+        result in a flame out. The engine is not equipped for an automatic restart after a
+        flame out. Lettre-Service No 1270-00-9 describes measures to be taken before and
+        during flying in snow.
+
+1.6.5   Indications of deviating engine speed
+        P2 bleed valve (compressor bleed valve) is open at start-up and closes when N1
+        exceeds 93% and opens when N1 drops below 92%. Inside the helicopter a green
+        and yellow flag in the specific ∆Ng indicator indicates that the P2 valve is open.
+        When the rotor speed (Nr) fall below 362 RPM an audio alarm will be triggered
+        (continuous sound) and an amber light marked HORN will flash (controlled by the
+        “horn” pushbutton). The horn will sound until the speed falls below 250 RPM. In
+        the “off-horn” position, the light will continue steady until RPM drop below 170.
+        The same audio alarm will also indicate a hydraulic fault (when the pressure falls
+        below 30 bar), but the red HYD light will also come on. In the case of excessive
+        rotor speed (over 410 RPM), the light will come on, or an intermittent sound alarm
+        will be triggered (depending on “horn” pushbutton position, ON or OFF). When the
+        generator is not providing sufficient voltage the GEN light comes on.
+
+
+
+
+                                                                                        12
+                                                                                             13
+
+
+1.6.6   Control of the helicopter
+        The helicopter is controlled by use of hydraulic servo-actuators. In the case of a
+        drop in hydraulic pressure, there is a pressure accumulator in the main rotor
+        actuator, which allows short-term corrections. The hydraulic pump is driven by a
+        drive belt (green) from a drive on the transmission. Airlift always had, and still has,
+        an extra belt in its helicopters in case a change is needed in the field.
+
+1.6.7   Additional equipment on the accident helicopter
+        The helicopter had fuel pre-warming (heat exchange with the oil in the oil cooler).
+        It had double control units and in addition to the standard navigation equipment it
+        was fitted with a GPS mounted in a holder at the front of the glare shield. In the
+        helicopter there were installed two batteries. The helicopter had extra fuel filters,
+        which were used for filling from barrels.
+
+1.6.8   Front seats
+        The front seats are made of thin fibreglass composite shell. They are glued together
+        into one piece and are bolted to the floor structure. The seat belts are integrated into
+        the seats by bolting the reel down on the seat back and feeding the harnesses from
+        the reel at the seatback up the seatback through openings on the upper part of the
+        seatback.
+
+1.6.9   Seat belts
+        The front seats were fitted with both lap and shoulder belts, while the 4 seats behind
+        were only fitted with lap belts. The front-seat belts were sewn with 6 seams at the
+        buckle attachment, while the back ones were sewn with 4 or 5 seams. The seatbelts
+        were of an approved make (Autoflug BAGU FAG 7B-27 / 09/90 in the front and
+        Anjou Aeronautique SA type 343 1 / 47/90 in the back). The belts had a limited life
+        (10 years) and were scheduled to be changed on September 1 2000.
+        The top part of the lap belts on the front seats had no individual identification. Only
+        the part of the belt secured to the helicopter structure was marked. The lap belt is
+        installed by using carabin hooks.
+
+
+
+
+                                                                                             13
+                                                                                        14
+
+
+
+
+             Seatbelts, details
+
+
+
+1.6.10 Materials
+       To obtain the lowest possible weight, a lot of composite and thermoplastic material
+       is used in this type of helicopter. The canopy and window frames in the
+       cockpit/cabin section are made of thermoplastic.
+
+
+
+
+                                                                                        14
+                                                                                             15
+
+
+
+
+1.6.11 Rotor
+       The rotor hub is a “Starflex” and each of the three arms is made of glass resin
+       laminate. Each of the 3 rotor blades is attached to its arm by means of glass resin
+       sleeves and flexible connections without the use of bearings.
+
+1.6.12 Mass and balance
+       The mass and balance were within the permitted limits (3 adults, one child and a
+       limited amount of luggage). Maximum take-off mass is 2,250 kg.
+
+1.6.13 Fuel
+       The helicopter was filled with approx. 270 litres of JET A1 fuel.
+
+
+
+
+                                                                                             15
+                                                                                             16
+
+
+1.7     The weather
+
+1.7.1   AAIB/N has received the following report from the Meteorological Institute for
+        West Norway
+
+        The weather for the Dyranut/Hårteigen area, Saturday November 6 1999.
+
+            “General situation: Low pressure in the North Sea, with an associated cold
+            front south of Sauda, slowly moved north. (Appendix 1). Some precipitation on
+            the west side of Langfjella. However, Sauda reported heavy rainfall, but
+            relatively high cloud base/ceiling (approx. 3,000 ft). On the east side many
+            stations reported precipitation, poor visibility and a low cloud base, e.g. Geilo
+            with 400 metres visibility, rain and +1oC. By 12 UTC (Appendix 2) the cold
+            front had moved to Sogne fjord, but with a trough behind, which was fairly
+            close to the site of the accident. The following observations can be seen on
+            detailed map (Appendix 3) from 12 UTC: Eidfjord cabin: 09010kt 9999 bkn
+            070, Mjølfjell: 14010kt 9999 radz few 010 bkn 070, Finse 14010kt, temp –1,
+            Geilo: 00000kt 0900 fg vvv// +1 and Haukeliseter: 12025kt temp +1. The IGA
+            forecast 0918 (Appendix 4) applies to coastal and fjord areas and is typical of
+            an east- southeast situation, so the lowest visibility and cloud height is given for
+            the Lista – Stavanger coastal stretch. It is also usual for precipitation, reduced
+            visibility and low cloud to be observed up in the mountains right up to the
+            Kinsarvik/Odda area. The sonde diagram for Sola gives SE / 15-25kt around
+            4 000 – 5 000ft (FL050), and 0 isotherm was also at a height of around 4,000 ft,
+            which is confirmed by Finse with –1 oC. The sonde diagram also shows massive
+            cloud coverage from 4,000 ft to FL 150 (cold front).
+
+            As can be seen on the map (Appendix 3) there are no observations from the
+            actual area. The weather reported tally with the observations from Finse,
+            Mjølfjell and Geilo,
+            i.e. ESE/ 10-20kt, snow showers over 1,200 – 1,300 metres and above, ceiling
+            1,000 – 1,500ft, lower in precipitation, (0300-0600ft), and periods in which the
+            cloud was down (fog). In the lowland west of the mountains there was some
+            precipitation, good visibility and high cloud coverage all day.”
+
+        The meteorologist’s report is included in Appendix 4.
+
+
+1.7.2   The Commander reported the following weather conditions at the time of the
+        accident:
+
+            “There was daylight with a gentle southeasterly wind (0 – 5 kt), visibility above
+            10 km, cloud height of about 1,000 ft (approx. 7/8), temperature approx. 0 oC
+            and no precipitation.”
+
+
+
+
+                                                                                             16
+                                                                                          17
+
+
+1.8      Navigational aids
+
+
+         Not applicable.
+
+
+1.9      Communication
+
+1.9.1    There was no communication between LN-OCF and other communication units
+         during the flight.
+
+1.9.2    At time 1412, the badly injured Commander managed to get a message to the base
+         in Kinsarvik on his mobile telephone (GSM). He made two calls. He also tried to
+         make contact later (at time 1616), but was unsuccessful that time.
+
+1.9.3    At time 1205Z on Saturday November 6, the duty flight control officer for the North
+         sector at Stavanger ATCC received messages from two aircraft flying in the area,
+         BRA 65 (Oslo – Bergen) and NO 004 (Trondheim – Stavanger) to say that they had
+         received ELT (emergency location transmitter) signals. The rescue co-ordination
+         centre (HRSS) was alerted at time 1206Z.
+
+1.9.4    GSM mobile telephone communication in the area at the site of the accident was
+         poor during the rescue work and subsequent investigation work.
+
+
+1.10     Airports and aids
+
+
+         Not applicable.
+
+
+1.11     Flight data recorders
+
+
+         Not mandatory and not installed.
+
+
+1.12     The accident site and helicopter wreckage
+
+1.12.1    The accident site
+
+1.12.1.1 The accident site is situated on the north-east slope of Låghellernuten on the
+         Hardanger plain, approx. 1,460 m above sea level on a steep mountain incline
+         ( 35°) some 80 m above the floor of the valley (approx. 60.16 N, 7. 17,5 E).
+
+
+
+
+                                                                                          17
+                                                                                          18
+
+
+         The mountainside was covered in snow, varying between crusted snow and
+         drifting snow, of varying depths. Large stones were sticking up out of the snow in
+         the area, which meant that there was good reference to ground contours (it was not
+         a “white out” condition). The helicopter touched the ground twice up on a slightly
+         flatter part of the mountainside before descending a vertical drop of approx. 4 m.
+         First impact was with a heading of 90o it bounced 14 m and impacted again, fell 4
+         m vertically before it continued 23 m downhill and came to a rest upside down.
+
+1.12.1.2 The tracks in the snow up on the flatter part showed that the helicopter was on an
+         easterly course when it first made contact with the ground. First contact was
+         probably flat or with a slight nose up configuration (based on position to right
+         hand landing skid remaining at the impact crater and the crater itself) After this
+         contact, the helicopter was catapulted forward to the edge of the precipice and then
+         went over it. It finally came to rest with its nose pointing in a direction of
+         approx. 110°. Due to the winter condition with falling and drifting snow between
+         the time of the accident and the AAIB/N arrival to the scene many details were
+         gone.
+
+1.12.1.3 Parts of the rotor blades and some of the right landing gear were found at the site
+         of the first contact with the ground. The right-hand front door, some glass from
+         the windshield and pieces of the glare shield were found at the second point of
+         impact. The GPS was a little to the right, between these two points. The other
+         detached parts were found between the helicopter wreckage and the vertical drop.
+
+
+
+
+        The accident site
+        1: First impact / 2: Second impact / 3: precipice
+
+
+
+
+                                                                                          18
+                                                                                             19
+
+
+
+
+         Helicopter wreckage
+
+1.12.2    Helicopter wreckage
+          The helicopter was lying upside down on a snow-covered slope approx. 35o steep,
+          which made it necessary to secure it before work on the wreck could progress.
+
+1.12.3    Seats
+
+1.12.3.1 Both front seats had become detached because their glass fibre shell gave way.
+         The pilot’s seat (on the right) had virtually no damage to the sitting part of the seat
+         shell, but the attachments had come apart on both sides, causing the seat to
+         become detached from the helicopter floor. The seat back had also given way at
+         the shoulder belt feed-through.
+
+1.12.3.2 The left seat was more damaged in its sitting part. It had also become detached
+         from the helicopter floor although bolts, attachment plates and parts of the seat
+         shell were left on the floor. This seat was not damaged up on the seat back
+
+1.12.3.3 The rear seating accommodation is two double seats able to seat a total of four
+         passengers. Each of these seats are mounted by “hinges” to the rear cabin
+         bulkhead and got two front supports fitted to the floor structure by quick release
+         pins. Forces on the right seat hinges had created a rupture in the bulkhead above
+         the hinges. The hinges (with the seat) and lower side of the bulkhead were forced
+         down. The floor structure had been pushed up and contacted the bottom of the
+         seat.
+
+
+
+
+                                                                                             19
+                                                                                           20
+
+
+         The seat and front support of the seat were nearly undamaged.
+
+1.12.4   Seat belts
+         The stitching on the lap belts on both front seats had given way. The stitching on
+         the pilot’s belt had given way up near the buckle, while the stitching on the belt on
+         the left seat had given way down near the snap hook. The lap belt used by the
+         adult in the far right seat had come away at the webbing to the buckle.
+
+
+
+
+         Right chairs anchorage and thorn lap belt
+
+
+
+
+                                                                                           20
+                                                                                          21
+
+
+
+
+        Left chair and details of the anchorage
+
+
+1.12.5 Cabin structure/Cabin
+       The whole structure from the cabin floor to the back wall was ripped off. The
+       instrument console was hanging by its wires. The instrument panel and throttle
+       quadrant had minor damage.
+       The position of the manual fuel control lever was normal and not in the emergency
+       or shutdown position. Fuel shut off valve was open.
+
+1.12.6 Engine/FCU
+       The engine mounts had broken and the engine had come away from the chassis.
+       The engine was complete and had minor damage. The manual fuel control indicator
+       on the engine’s fuel control unit (FCU) showed 42º, slightly lower than could be
+       expected based on the lever’s position in the cockpit. The collective indicator on
+       the FCU (Anticipator) showed approx. 70o. The fuel supply to the engine had been
+       cut off because the fuel pipe had broken at the fuel filter. The airframes fuel filter
+       by-pass indicator had popped. Fuel shut off valve was open. P2 bleed valve
+       (compressor bleed valve) was open. P2 valve opens at 92% RPM (N1).
+
+1.12.7 Airframe/drive train
+       The tail boom was torn off, 3 of the 4 struts supporting the main gearbox were
+       broken in bending (fwd right was undamaged), the fuel tank was ripped and the left
+       and right landing skid was broken off. The cargo holds fitted above the landing
+       skids had become separated from the skids and the airframe. The tail rotor gearbox
+       could be rotated and had minor external damage. The tail boom had become
+
+
+
+
+                                                                                          21
+                                                                                             22
+
+
+        separated from the airframe in the mounting flange and the boom itself had minor
+        damage. The flexible couplings on the tail rotor drive shaft had fractured and one
+        flexible coupling flange had rotated and caused minor damage to the forward
+        portion of the drive shaft tunnel. The flexible couplings were broken with clean
+        fractures and did not have a “broom” appearance. Main gearbox drive shaft was
+        broken in bending at gearbox side.
+
+1.12.8 Main and tail rotor
+       The main rotor blades were all damaged, but only the red blade had the outer part
+       missing. The blue and the white blade remained in one piece, and all tree (2,5)
+       remained attached to the rotor head. All 3 arms of the Starflex fractured. Blue and
+       yellow had a clear 45o fracture with the longest remaining part in direction of
+       rotation. The red where more damaged, but also with a 45o fracture. This 45o
+       fracture where in opposite direction, i.e. with the shortest remaining part in direction
+       of rotation. The tail rotor blades were virtually undamaged.
+
+
+
+
+        The rotor head
+
+1.12.9 Decent rate
+       Instrument readings at accident site indicated a decent rate of 850ft/min.
+
+
+
+
+                                                                                             22
+                                                                                               23
+
+
+1.13     Medical and pathological conditions
+
+1.13.1 The post-mortem carried out on the deceased passengers showed injuries consistent
+       with the high deceleration forces the helicopter was subjected to at the impact.
+
+1.13.2 The Commander was treated and examined at the surgical department of
+       Haukeland hospital. No traces of alcohol or drugs were found.
+
+
+1.14     Fire
+
+         There was no fire.
+
+
+1.15     Survival aspects
+
+1.15.1    The search and rescue phase
+
+1.15.1.1 At time 1305 on November 6 1999, Stavanger ATCC received messages saying
+         that ELT signals had been detected by an aircraft flying over the Hardanger plain.
+         At time 1306, the main South-Norway rescue co-ordination centre was alerted by
+         the ATCC. They in turn notified the Hardanger police district in Odda. Following
+         confirmation with Airlift’s Kinsarvik base, it became clear that one of their
+         helicopters was missing in the area in question. There were four people onboard.
+         At time 1407, a helicopter from Lufttransport, contracted by Airlift, took off from
+         the Kinsarvik base and the crew attempted to fly into the Hardanger plain, but the
+         fact that the weather conditions had changed to snow showers and low cloud
+         coverage made this impossible. The helicopter was close enough to detect signals
+         from the ELT. At approx. time 1412 the badly injured Commander called the base
+         on his mobile telephone. The display showed that it was the Commander calling,
+         but there was no other contact. A few minutes later he called again and this time
+         was able to report:
+
+             “We have crashed, there are fatalities, serious injury, position Lægereidoksli,
+             but I am in shock”.
+
+          The call was cut off. At time 1616 the commander tried again to make contact
+          with the base, but GSM mobile telephone conditions were so poor that it was not
+          possible to exchange information.
+
+1.15.1.2 A huge rescue operation was put into action led by the Hardanger police district,
+         Odda. The local county administrator’s office in Kinsarvik made preparations for
+         the rescue operation with caterpillar vehicles and snowmobiles from different
+
+
+
+
+                                                                                               23
+                                                                                         24
+
+
+         locations on the roads around the Hardanger plain. The snowmobile patrols
+         gradually set off to the presumed accident site.
+
+1.15.1.3 A rescue helicopter from 330 squadron took off from Sola at time 1445. Based on
+         the ELT signals, the commander estimated that he came very close to the accident
+         site at (2-3 km), but weather conditions made it impossible to land. The rescue
+         helicopter continued to Eidsfjord where it touched down at time 1655. A team
+         consisting of a local guide, two doctors and a nurse was taken onboard and at time
+         1707 a new attempt was made to fly to the mountains. The weather had improved
+         and at time 1720 a landing was made at the accident site close to a cabin,
+         Huldrebu, after which the rescue helicopter continued to Kinsarvik and further on
+         to Bergen.
+
+1.15.1.4 The rescue team got installed in the cabin and started the search on foot. Thanks
+         to great efforts on the part of the rescue patrol in poor weather conditions and
+         darkness, the accident site was found approx. time 2200 (9 hours after the
+         accident) and the two seriously injured survivors were attended to. They were
+         slowly carried down to Huldrebu. Next morning the rescue helicopter returned in
+         better weather conditions and took the boy and the Commander to Haukeland
+         hospital in Bergen.
+
+
+1.15.2   Inadequate personal protection in the helicopter
+
+1.15.2.1 In the accident the Commander and two adult passengers were thrown out of the
+         helicopter into the snow. The Commander was wearing a helmet, which most
+         probably saved him from more serious injury. All those onboard suffered serious
+         physical injuries, due to the high rate of descent and the forward speed on impact
+         with the mountainside. The selection of materials and chosen design is not
+         providing desired passive safety and offer poor personal protection in the event of
+         an accident (the helicopter is approved according to JAR (FAR) 27 regulations at
+         time of design). The cockpit and cabin area were completely destroyed. The front
+         seats became detached, the stitching of several seat belts gave way and any
+         possible protection that the superstructure of the cockpit and cabin area should
+         have given did not function, because it was all ripped off. The commander used
+         4-point harnesses without this helping him particularly, as the attachment for the
+         shoulder harnesses is on the back of the seat and the whole seat became detached.
+         The passenger sitting in the front was not using shoulder harnesses. His seat also
+         became detached.
+
+1.15.2.2 In AAIB Bulletin No. 1/2001 AAIB/N has registered the following: Accident
+         involving Aerospatiale (Eurocopter) AS355F2, G-SAEW, April 21 2000 in
+         Cardiff, Wales. The following is an excerpt from the report:
+
+
+
+
+                                                                                         24
+                                                                                            25
+
+
+              ”In consideration of the relatively benign nature of this impact, concern was
+              raised over a failure which had occurred to the front left seat. Although this
+              seat remained attached to the floor, the inboard seat rail had sheared though
+              the glassfibre moulding over most of its length, as shown in the photograph
+              at figure 10. This was one of the modes of failure found on the same type of
+              seat in a fatal accident to an AS350 helicopter which occurred in 1995, and
+              which was reported upon in AAIB Formal Report 4/96. In the latter report a
+              related Safety Recommendation (No 96-58) was made to the CAA,
+              recommending that the CAA in conjunction with DGAC should require,
+              amongst other considerations, reassessment of the crashworthiness of the
+              AS350 and AS355 forward seat design. As a result of this, two identical
+              recommended Service Bulletins (25.00.63 for the AS350 and 25.00.43 for
+              the AS355) were issued by the manufacturer in December 1999, which
+              related to strengthening of the front seats and floor structure in order to
+              improve the anchoring of these seats. At present, the CAA have stated that
+              the ‘Recommended’ status of these SBs is being reviewed with regard to
+              possible change to ‘Mandatory’ status for UK registered aircraft.”
+
+         On the October 11 2002 AAIB/N received information from AAIB saying that
+         CAA UK has decided that the retrofit shall not be compulsory.
+
+1.15.2.3 AAIB/N quotes from the Aircraft Accident Investigation Board’s report on the
+         accident at Åsgårdfonna, Svalbard on August 22 1987 involving LN-OMQ, AS
+         350 B1, (issued in September 1989), the same type of helicopter:
+
+              “Both seats in the cockpit were ripped away from their brackets in the deck
+              in almost the same/an identical way. The right seat rail, which is an integral
+              part of the seat, was ripped away leaving it lying on the deck, while the left
+              rails of both seats were torn out from the attachment to the door rail. ……”
+
+              The report continues with details that are identical to the damage found on
+              LN-OCF. The section finishes as follows:
+
+              “The deceleration forces were not great enough to overload/damage the belts
+              sufficiently to indicate this. Corresponding and almost identical damage to
+              the two seats indicates that both persons were using seat belts, both lap belts
+              and shoulder belts. ……”
+
+
+1.15.2.4 AAIB/N also refers to the Swedish report: RL 2001:31 involving helicopter
+         SE-JCA, an AS 350-B2, in which similar damage occurred to the Commander’s
+         seat.
+
+1.15.2.5 AAIB/N also refers to our report on the accident at Tyin April 24 1998 with AS
+         350 B2, LN-OPX (operated with original constructed seats). In this report the
+         following recommendation, no. 11/2000, was given:
+
+
+
+                                                                                            25
+                                                                                            26
+
+
+               “AAIB/N recommend the Norwegian CAA in cooperation with CAA in
+               France to reconsider the approval of the construction and fastening of the
+               front seats with regard to the forces the seats are exposed to when the
+               helicopter tilts.”
+
+1.15.3 Clothing in the mountains
+
+1.15.3.1 The passengers were appropriately dressed for a stay in the mountains. However,
+         the Commander was wearing a flying suit with a “synfiber” thermo winter jacket
+         and helmet, equipment suitable for operating the helicopter. He usually took an
+         extra bag containing equipment for being out in mountain terrain, but did not have
+         the bag with him on this trip.
+
+1.15.3.2 Regulations for Civil Aviation BSL D 1-8 pt. 4, Regulations for flying single
+         engine aircraft over mountains and at Svalbard
+         Personal equipment.
+         In order to be prepared for an emergency both crew and passengers shall furnish
+         themselves with adequate clothing and equipment with regard to the present and
+         expected weather- and temperature condition. Crewmembers should bring
+         clothing giving good contrast to the terrain.
+
+
+1.15.4 The Commander and boy’s situation after the accident
+
+        When the Commander regained consciousness out in the snow, seriously injured as
+        he was, he managed to release the boy from his safety harness. He took him
+        approx. 20 m down the slope below the helicopter wreckage. He did not use any of
+        the survival equipment that was in the cargo hold. This equipment did not contain
+        warm clothing either. The Commander took a freight bag (big bag) with him,
+        which he had found outside the helicopter. This is made of coarsely woven nylon.
+        He placed himself and the boy inside this bag. The bag was not insulated, but still
+        gave sufficient protection against the wind and snow. It is likely that the
+        Commander saved his own and the boy’s life by this action. Many long hours
+        passed before they were found by the rescue patrol.
+
+
+1.16    Special investigations
+
+1.16.1 Engine
+       It was of great interest to establish whether the engine was running at the time of
+       impact and, if that was the case, to try and ascertain the power. The engine was first
+       examined at AAIB/N’s Kjeller premises with AAIB/N and a representative of
+       Turbomeca present. The following results emerged:
+
+
+
+
+                                                                                            26
+                                                                                 27
+
+
+       -The P2 system was apparently in order.
+       -The cables and ignition plugs were correctly connected, but a slightly
+        damaged in the accident.
+       -The gears in the Accessory transmission were intact.
+       -The fuel pump gears were intact.
+       -The setting on the fuel control unit was normal, which could be expected
+        provided the emergency position was not selected.
+       -There were no particles on the magnetic plugs.
+       -The fuel filter was clean.
+       -The free turbine rotated without resistance.
+       -Remnants of the green drive belt were observed in P2 bleed valve and in the
+        compressor.
+       -Minor contact damage to the centre cone of the first-level compressor after
+        contact with the air intake duct.
+       -All locking wires were intact.
+
+The engine and fuel control unit (FCU) appeared to be in such good condition that it
+was decided to take them to Turbomeca for performance testing.
+In addition to AAIB/N, representatives from Airlift, the French Aircraft Accident
+investigation board (BEA) and Eurocopter were present at Turbomeca’s premises.
+
+Before testing could take place, the FCU was dismantled for separate testing before
+being re-mounted on the engine so that the engine could be tested with the original
+FCU. The magneto plugs were inspected without any findings. The engine was
+inspected by borescope and foreign bodies removed. Foreign bodies were found in
+P2 bleed valve (compressor bleed valve), inside the compressor and on the outside
+of the combustion chamber. The foreign bodies consisted of fragments from the
+engine air intake and from the drive belt to the hydraulic pump (green drive belt).
+The fragments showed no heat damage.
+The fuel pump gears were undamaged.
+The engine was dismantled for further inspection.
+
+The following observations were made:
+
+       -There was only minor contact damage inside the engine.
+       -There was no geometric fault after contact between blades and stators inside
+        the engine.
+       -The drive gear nut (over torque nut) had not moved.
+       -The centre cone of the axial compressor showed contact marks after having
+        rotated to the damaged air intake duct.
+       -There was no damage to the freewheel unit (another unit where fitted before
+        testing in the test cell).
+
+Conclusion: No fault or abnormal wear and tear was found in the engine and it
+appeared to be very well maintained.
+
+
+
+
+                                                                                 27
+                                                                                              28
+
+
+        Before installing the engine in the test cell new cables were fitted to the ignition
+        plugs, new power point axles (the original had suffered crushing damage) and a new
+        exhaust duct were mounted.
+
+        Testing was carried out in accordance with the specifications used for the testing of
+        new engines and testing during inspections. The testing revealed the following:
+
+               -The P2 system was functioning normally and the bleed valve opened and
+                closed correctly.
+               -The engine’s performance was within the specification (topping and
+                cycling).
+               -The spool down time was as specified.
+               -The time responses were as specified.
+
+        Conclusion: the engine appeared to be in good condition.
+
+
+1.16.2 The fuel system
+
+1.16.2.1 Fuel valves and fuel control unit were tested separately in accordance with the
+         manufacturer’s specifications. All the valves operated in the prescribed way (start
+         valve did open late (218 vs. 180 + 20) and would delay fuel supply during start
+         up).
+
+1.16.2.2 FCU was fitted on the testing bench and a full test run was performed. The test
+         was identical to the one that is carried out before delivery of a new FCU and after
+         inspection or modification of an FCU.
+
+1.16.2.3 While checking N1 and N2 regulation a discordant sound was heard in the N1
+         regulation, causing the test to be stopped and the FCU was dismantled for
+         checking. No mechanical deviations were found (this includes the temperature
+         compensator). However, it was noted that there was an abnormally low amount of
+         fuel in the FCU. The FCU was then assembled with the same components and the
+         test was completed on the testing bench.
+
+1.16.2.4 All parameters were within those specified.
+
+1.16.2.5 After this test the FCU was fitted on the engine again for testing of the complete
+         engine.
+
+
+
+
+                                                                                              28
+                                                                                       29
+
+
+1.16.3 Investigations of fuel controls from other helicopters
+
+        About six months after this accident, the company Lufttransport had an engine
+        failure, which appeared to be similar to what was experienced by the Commander of
+        the accident helicopter. This fuel control unit (S/N B054B) was sent to AAIB/N
+        who sealed it and forwarded it to the manufacturer, Turbomeca in order to undergo
+        the same testing as the FCU from the accident helicopters representative from BEA
+        supervised the test. The FCU first underwent a performance check against the new
+        manufacturing specifications, without any deviations being noted. The temperature
+        compensator on this FCU was a different type from the one fitted in LN-OCF.
+        There have been occasions where this type of compensators has collapsed and all
+        FCUs with this type of compensator are now converted during the first major
+        inspection or earlier (TU-183). The FCU was therefore dismantled on request and
+        inspected for faults without any deviations noted.
+
+        In May 2001 a third fuel control unit with the same symptoms was taken to
+        Turbomeca for examination. This was also from Lufttransport AS. The FCU, S/N
+        819B, was brought by an AAIB/N representative to Turbomeca for full examination
+        with performance bench testing and complete dismantling. No faults or deviations
+        from specifications were found here either.
+
+        AAIB/N had brought three above mentioned FCU’s to Turbomeca for investigation
+        and the performance of all three FCUs was equivalent of new/reconditioned FCUs.
+        Results from testing were compared with results from previous testing at
+        Turbomeca without any major deviation between this historical data and that
+        achieved in these tests.
+
+
+1.16.4 Other investigations:
+
+           • Fuel samples both from the helicopter and the tank installation were analysed
+             at LFK (Royal Norwegian Air Force laboratories). All tests were normal.
+
+           • Oil samples from the engine were analysed at LFK laboratories). No
+             abnormal values were detected.
+
+           • The starter generator was examined. It was running freely and supplying
+             power as required.
+
+           • The oil cooler was checked for free flow.
+
+           • NG and NR (power turbine and rotor speed) indicator was examined at
+             KRIPOS (National Criminal Investigation Service). The white pointer for
+             rotor speed had made imprints on the instrument face indicating between 285
+
+
+
+
+                                                                                       29
+                                                                                          30
+
+
+              and 300 RPM. Rotor speed is normally virtually constant and in the area 390
+              +4/-5 RPM.
+
+           • The light bulbs for HYD and HORN on the warning light panel were
+             examined at DNV (Det Norske Veritas). There are major unreliability
+             concerns relating to the examination of light bulbs and their filaments
+             following accidents. If the filaments are obviously deformed, this is a clear
+             indication of the presence of heat, which means the lamp lit up. However,
+             the opposite conclusion is not always unequivocal. All the same, AAIB/N
+             elected to send the panel with the warning lights to DNV for examination.
+             The report concludes that the lights did not light up at the collision.
+
+           • The fuel pipe fracture was examined at LFK. The report concludes by
+             stating that there was an overloading rupture, and thereby a consequential
+             damage.
+
+
+1.17   Organisations and management
+
+       The helicopter belonged to the company Airlift AS. Airlift’s main base is at Førde
+       airport, Bringeland, where it has modern offices and workshops. The company also
+       has several other bases, including Kinsarvik, Fornebu (now Gardermoen), Dombås,
+       Svalbard and Bergen.
+       The accident helicopter was stationed at the Airlift base in Kinsarvik. The
+       Kinsarvik base was previously Helikopterteneste A/S which was taken over and
+       incorporated into Airlift AS April 9 1996.
+       The company’s main operations have been cargo flights with single-engine
+       helicopters, but this has been expanded considerably in recent years to include
+       larger helicopters and also other assignments such as ambulance flying and flying
+       for the District Governor of Svalbard.
+
+       The company was JAR-OPS 3 approved August 9 1999.
+
+       Airlift’s organisation was closely examined in the report describing the accident
+       involving the helicopter LN-OPR in Førdefjorden October 14 1996. Please refer to
+       AAIB/N report 17/2000 for further information. The company has been reorganised
+       since.
+
+
+1.18   Other information
+
+1.18.1 The company’s Operations Manual (OM)
+       Chapter 8, Operating Procedures, Flight Preparation Instructions, Minimum Flight
+       Altitudes, pt. 8.1.1.1, General:
+
+
+
+
+                                                                                          30
+                                                                                          31
+
+
+       JAR-OPS 3.250
+       When an aircraft is operated for the purpose of commercial air transport, the
+       minimum altitude/flight level at which it is permitted to fly may be governed by
+       one, all or a combination of the following:
+
+      a.      National regulations (BSL F, AIP)
+      b.      ATC requirements
+      c.      ------
+      d.      ------
+      e.      by the need to maintain a safe height margin above any significant terrain or
+              obstacle en route.
+
+      Pk. 8.1.1.5.3, Performance Class 3
+      JAR-OPS SUBPART H
+      A helicopter with performance such that, in the event of power-unit failure at any
+      time during the flight, a forced landing may be required in a multi-engined
+      helicopter but will be required in a single engine helicopter.
+      The helicopter has a single-engine and is therefore in Performance Class 3/Category
+      B.
+
+      Pk. 8.1.1.8, Performance Class 3 Helicopters
+      JAR-OPS 3.550
+      With all power units operating, the helicopter shall have the performance to continue
+      along its intended route or to a planned diversion without flying at any point below
+      the appropriate MOCA.
+
+
+1.18.2 The company’s Flight Manual, Autorotation
+
+       Autorotation Landing Procedure following Engine Failure:
+
+       -Set low collective pitch
+       -Monitor and control rotor rpm.
+       -Establish approximately 65 kts (120 km/h) airspeed.
+       -Move fuel flow control to the shutdown position.
+       -According to the cause of loss of the engine:
+              Re-light the engine
+              Otherwise:      Close the fuel- shut off valve
+                              Switch off:     the booster pump
+                                              generator
+                                              alternator (if installed)
+                                              electrical power master “All-off” switch
+                                              (if smell of burning)
+       -Manoeuvre to head the helicopter into the wind in final approach.
+
+
+
+
+                                                                                          31
+                                                                                           32
+
+
+       -At height of approximately 65 ft (20 m) above the ground, flare to a nose-up
+        attitude.
+       -At height 20-25 ft (6-8 m) and at constant attitude, gradually apply collective pitch
+        to reduce the sink rate.
+       -Resume level attitude before touch-down, and cancel any side-slip tendency.
+       -Gently reduce collective pitch after touch-down.
+
+
+1.18.3 Regulations for Civil Aviation (BSL)
+
+       Operational flight plan
+
+       According to BSL D 2-1-7 pt. 4.3.3.1, an operational flight plan must be produced
+       for non-regular air-transport flying. A copy must also be retained so that the
+       planning can be reconstructed as needed. The company’s OM 8.1 also confirms,
+       with reference to JAR-OPS 3.24/3.630: “An Operational Flight Plan must be
+       completed for each intended flight except as shown in Para. 8.1.10 below”.
+
+       One of the exceptions applies to this flight: “Operations with helicopters with a
+       maximum certificated take-off mass of 2,730 kg or less (this helicopter has a
+       maximum take-off mass of 2,250 kg), with a maximum approved seating
+       configuration of 9 or less; by day; and over routes navigated by reference to visual
+       landmarks.”
+       This type of flight plan was not prepared for the accident flight, nor was such a plan
+       required in the regulations.
+       However, there was a requirement to fill in a Navigation Log with a flight plan.
+       This is part of the Mission Form (appendix A-16-5 in the company’s OM). In
+       accordance with JAR-OPS 3.140 and OM 8.1.12.5, this is not required to be left
+       behind on the ground.
+
+
+1.19   Useful or effective methods of investigation
+
+       In this investigation no methods have been used that qualify for special mention.
+
+
+2      ANALYSIS
+
+2.1    Technical investigations
+
+       At the time of the accident, the engine was running, but was not providing power in
+       accordance with a “normal situation”.
+
+
+
+
+                                                                                           32
+                                                                                     33
+
+
+Evidence that the engine was running, but with reduced power, may be supported
+by:
+
+   • The minor damage to the engine.
+   • The fact that the hydraulic pump belt had gone into the engine without going
+     through and went out in the P2 valve indicates that this valve was open. The
+     P2 valve does not open in normal operation, only when the speed is below
+     92% RPM. The drive belt entered the engine after first impact. If the engine
+     had rotated without power, the belt would have stopped the engine and not
+     gone into the engine, which it didn’t. If it had produced full power the belt
+     would not have stopped in P2 valve and fragments would have bee burned.
+     On the other side, if Commander attempted to enter autorotation and had low
+     collective pitch, this could also make the P2 valve to open.
+   • If the engine had produced normal power, the overtorque nut would most
+     probably have moved.
+   • Examination of the RPM indicator also supports the fact that the rotor speed
+     was low, as indicated by the Commander.
+   • The airframe fuel filter bypass had popped. It is reason to believe that this is
+     a result from rupture of the fuel line during impact. When the booster pump
+     is working, a rupture will create a differential in pressure over the filter and it
+     will pop.
+   • The Starflex and main rotor blades indicates that only one blade had serious
+     impact with the ground. The red blade and Starflex are seriously damaged
+     and with fracture pattern on Starflex indicating “contact”. The yellow and
+     the blue blade are less damaged and the yellow and blue Starflex has similar
+     fracture pattern indicating that the blades continued while mast had
+     stopped/lost rotational energy. This indicates that energy in the system was
+     low at impact.
+   • Unlike other similar accidents with same type of helicopter in Norway,
+     energy in the main gearbox did not shear the 4 struts. This also indicates low
+     energy in the system.
+   • Drive shaft flexible couplings had fractures indicating low energy, but this
+     indicates that there had been rotation during impact.
+   • Main gearbox drive shaft fractured due to bending and not torsion.
+
+Examination of the free wheel unit gives no indication of slip.
+
+The technical investigations did not reveal any substantial fault or defect to explain
+the accident. The engine setting selected by the Commander was correct for a
+normal situation.
+
+
+
+
+                                                                                     33
+                                                                                                   34
+
+
+2.2     Possible causes
+
+2.2.1   There are two main contributing causes of this accident. One is that the engine
+        failed in a critical phase of the flight. The other is the selection of the flight path.
+
+2.2.2   It may be expected that an engine cease to provide the desired power. If this
+        happens, safety requirements demand that flying is carried out in such a way as to
+        get into a position that allows an emergency landing as quickly as possible and that
+        accessibility of emergency landing areas is considered. In practical terms, this is
+        not always achievable for single engine helicopters during take off and landings, but
+        must be striven for. JAR-OPS and OM gives instructions for the operation of
+        single-engine helicopters (ref. OM and JAR-OPS 3, see pt. 1.18).
+
+2.2.3   The Commander’s statement and findings at the accident site tally and it is clear
+        that the engine was running, but not providing the expected power. As explained in
+        section 1.16, despite many attempts, AAIB/N has been unable to find reasons why
+        the engine ceased providing adequate power. Many conditions could cause an
+        engine to stop giving the desired power, such as intake of snow/water in the engine,
+        slipping of the freewheel, contaminated fuel, problems with the fuel pump, clogged-
+        up filters, gear faults, faulty use of the helicopter etc. Despite major efforts,
+        AAIB/N has not succeeded in finding technical failures or other deviations that can
+        lead to a clear cause.
+
+        Intake of snow or water will cause the engine to flame out and completely. Such
+        conditions were not present and the engine did not stop completely.
+
+        There was no damage inside the engine to indicate a gear, freewheel failure etc. No
+        clogged-up filters were found (nor oil/fuel heat exchangers).
+        Fuel and oil checks do not give any indication that they were outside the
+        specifications.
+
+        There are no indications to suggest that the operating conditions (snow, wind icing
+        etc.) could have affected the revolutions per minute/engine power in such a way as
+        to cause an accident.
+
+        AAIB/N is left with a question about the fuel control unit (FCU). It is known that
+        there have been several similar cases of engine failure with this engine type, in
+        which faults in the fuel control unit have been stated to be the most likely cause.
+        Changing the fuel control unit with another and similar FCU has removed the fault
+        symptom, but examination of the dismantled FCU has, as far as AAIB/N is aware
+        of, not revealed any faults in this case.
+
+2.2.4   The fuel supply handle (Control lever) in the cockpit was in the expected position
+        for normal operation. In an accident such as this, there are huge forces at work.
+        This explains a deviation between the position in the cockpit and the indicated
+
+
+
+
+                                                                                                   34
+                                                                                          35
+
+
+        position on the FCU. In accordance with normal procedure for autorotation (ref
+        1.18), the fuel control handle should be pulled forward to the shutdown position and
+        the shut-off valve closed. But normal autorotation procedure requires sufficient
+        height and time in which to implement the procedure. In view of this, it is not
+        surprising that some of the “normal” points were omitted in this accident. Nor is it
+        inconceivable that the handle’s positions should have changed in the accident or
+        during evacuation of the helicopter.
+        First impact indicates a flat or nose up attitude, which may support an attempt of
+        entering autorotation.
+
+        Rate of descent and speed is hard to determine. Impacting the snow-covered
+        mountain reduces the energy. The remaining energy made it possible to rip off the
+        landing gear and continue another 14 m before it continued downhill. This
+        indicates a reasonable forward speed, but does not indicate anything about rate of
+        retardation other than stating that it was not “sudden” (Helicopter stopped
+        completely 41 m after first impact). Instrument reading indicates a decent rate of
+        850 ft/min, i.e. within JAR design requirements.
+
+2.2.5   At the client’s request, the Commander was following a path that brought the
+        helicopter close to the mountainside and prolonged the take off phase. The reason
+        that the helicopter was at a low altitude above the ground when the engine problem
+        occurred is because it was in the take-off phase and was climbing parallel to rising
+        terrain. However, the terrain around the take-off point allowed alternative flight
+        paths to be selected. This could have brought the helicopter out above flatter/lower
+        terrain and the commander would have obtained greater effect when he attempted to
+        apply autorotation. This would also have been more in line with the instructions in
+        the OM and JAR-OPS (see pt. 1.18).
+
+
+2.3     Relationship to the Operations Manual (OM) and Regulations for Civil
+        Aviation (BSL)
+
+2.3.1   OM
+
+2.3.1.1 It can be said that this engine failure happened during the start and climbing phase
+        and that the Commander was proceeding for his cruising height. In its OM
+        instructions, the company specifies that a Commander shall not fly at or below a
+        specified minimum height apart from when necessary during take-off and landing.
+        This instruction also means that it should always be possible to reach an emergency
+        landing location. AAIB/N considers that the selected flight path gave reduced
+        safety margins.
+
+2.3.1.2 A passenger list (manifest) was not completed for this assignment. The company
+        has not been able to explain to AAIB/N how this manifest should have been
+
+
+
+
+                                                                                          35
+                                                                                             36
+
+
+        produced.
+
+
+2.3.1.3 Previous instructions state that a copy of the manifest should be provided at the
+        place of departure. In this accident the not existing manifest, for a while in the
+        search and rescue phase, created uncertainty about who was onboard.
+
+        AAIB/N questions whether the current practice is satisfactory.
+
+
+2.4     Commander
+
+2.4.1   The Commander was well qualified to carry out this assignment. He was very
+        experienced in flying over mountain terrain. AAIB/N has no reason to doubt that
+        the Commander did everything he could to avoid an accident when the engine
+        stopped producing power. The Commander deserves credit for his initiative and
+        efforts, badly injured as he was, to save the boy and himself after the impact with
+        the ground. However, there is reason to point out that the choice of flight path
+        towards rising terrain, which reduced the possibility of a safe landing in the case of
+        an engine failure, was unfortunate. The helicopter was flying parallel to the raising
+        terrain in a steady climb and was not subject to any abrupt manoeuvres (e.g. sudden
+        turns or climb), which may have contributed to the accident.
+
+2.4.2   AAIB/N is aware that the Commander’s statement regarding warning light
+        simultaneously with sound (horn) and yaw to the left is not coherent with normal
+        behaviour of this helicopter. The Commander states that this is what he
+        felt/remember. AAIB/ find it convincing that a Commander will inform about what
+        he remember instead of making a story with “correct” information based on what is
+        expected to happen.
+
+2.4.3   When AAIB/N interviewed the Commander some time after the accident he
+        apologized for not remembering more from the accident situation. It is common
+        knowledge that memories are easier to retrieve when the person is brought back to
+        the same context in which the memory was encoded. We therefore asked the
+        Commander to enter a cockpit of a similar helicopter and turn on the engine. In that
+        situation, the Commander was surprised how things came back to him and how he
+        could retrieve the situation just before the accident. These memories were also
+        enforced in that they happened in a very emotional laden situation in which things
+        are more strongly imprinted than in commonplace situations. The AAIB/N
+        therefore feels that the information given by the Commander about the situation is
+        credible and describes the actual succession of events as he recalled them.
+
+
+
+
+                                                                                             36
+                                                                                            37
+
+
+2.5     Whiteout
+
+        There was not total snow cover on the Hardanger Mountains at the time of the
+        accident. Individual parts of the mountainside at Låghellernuten were not covered
+        with snow, while in other areas there were snowdrifts. Large stones were easily
+        visible. Because of these conditions, AAIB/N considers that white-out was not a
+        feature of this accident.
+
+
+2.6     Survival aspects
+
+2.6.1   Clothing/survival kit
+
+        The helicopter was fitted with various types of survival equipment for a stay in the
+        mountains. For various reasons, these materials were not used. The Commander
+        was seriously injured and the mountainside had an inclination of 35o. The survival
+        kit was inside the luggage compartment and both hard and dangerous to find.
+        AAIB/N find it sensible that the kit was not used. The survival equipment did not
+        include warm clothing. The individual pilot and passengers are expected to supply
+        themselves with warm clothing, so that they are equipped for an unintentional stay
+        in the mountains (ref BSL D1-8 pt. 4, requirement for clothing when flying single
+        engine aircrafts above mountains or at Svalbard). All passengers were
+        appropriately dressed for a mountain trip. This turned out to be of great benefit to
+        the boy. AAIB/N believes that it is sensible insurance for everyone to be equipped
+        to withstand a period out in the open when flying. The Commander was primarily
+        dressed for his function as pilot. He usually protected himself when flying over
+        mountain terrain by bringing a bag containing clothing for a longer stay in the
+        mountains. The bag was not brought on this flight, reason unknown both for
+        commander and AAIB/N. The pilot did wear a helmet while the passengers did not.
+        In this accident a helmet would not have altered the outcome for the passengers.
+
+
+2.6.2   Personal protection – Seat belts/seats
+
+2.6.2.1 All those onboard received serious injuries from the impact with the mountainside
+        and the subsequent plummeting downwards. The injuries resulted in the deaths of
+        two of the passengers. The helicopter is constructed with optimum strength/weight
+        in mind, which explains the extensive use of plastics and composite materials. The
+        seats, parts of the floor and large areas of the superstructure (cockpit) are among the
+        objects made of composite materials. The front seats cracked and became detached
+        and the superstructure was completely destroyed. AAIB/N considers that it should
+        have been possible to improve personal protection on this helicopter without great
+        weight increases. With reference to this accident and others mentioned in para
+        1.15.2.1 about inadequate personal protection, AAIB/N proposes a recommendation
+        for changes in the construction in the cockpit and passenger area, to allow greater
+
+
+
+
+                                                                                            37
+                                                                                           38
+
+
+        personal protection in the case of collisions. We do also refer to the Aviation
+        Accident Commission’s report issued in September 1989 about the aviation
+        accident at Svalbard on August 22 1987 involving an AS 350-B1.
+
+2.6.2.2 Seat belts
+        All the belts were of an approved make and were not out of date. (Hard time)
+        The stitching on the lap belts on both front seats had given way, while the webbing
+        had come away on one of the back seats (on which one of the adults sat). The
+        number of seams at the attachments to the back seat belts varied, which also
+        resulted in varying strength on these harnesses. The top part of the lap belts on the
+        two front seats had no identifications and could have been replaced. This meant
+        that they could easily be exchanged for another belt, also of inferior quality, but
+        retained the original marking. This does not appear to have been the case on this
+        occasion. It is AAIB/N’s opinion that it should not be possible to change harnesses
+        without changing the identification. The shoulder harnesses had reduced effect, as
+        the reel was mounted on the seat, which became detached. AAIB/N recommend
+        redesigning the attachment by having the reel mounted to the helicopter structure
+        and not to the seat.
+
+2.6.2.3 Seats
+        In this accident it is evident that shoulder harnesses were used by the Commander,
+        but not by the person in the front left-hand seat. This is underlined by the damage
+        pattern to the two seats. The seat in which shoulder harnesses were used had
+        broken on the upper part of seat back, due to forces from the shoulder harnesses.
+        The sitting part of the seat had not otherwise suffered much damage. In the seat in
+        which shoulder harnesses were not used, the upper part of the back was intact, while
+        the sitting part was more damaged. The sitting part will suffer more damage when
+        the person in the seat has greater freedom of movement. The seat attachments to
+        the floor structure on both seats were broken. However, the floor structure was
+        undamaged. It is AAIB/N’s opinion that shoulder harnesses must be used if
+        available (the latest JAR 27.785 requires an upper torso restraint for all occupants).
+        The Commission is aware that there is a modified version of the seats and floor
+        structure, which is installed in new helicopters (Service Bulletin No 25.00.63). This
+        modification is also available for retrofit in older helicopters. The modification
+        gives improved anchorage and a stronger seat. The modification was not made
+        mandatory by the certifying authorities in France, and both the British and
+        Norwegian authorities chose to follow the same path. An improvement to the seats
+        and anchorage to ensure that both seats and shoulder harness remain in place will be
+        a big boost to personal safety in this type of helicopter.
+
+
+2.7     The search and rescue phase
+
+        After the ELT was activated and the signals detected by an aircraft flying over the
+        area, a rescue operation was put into action. An operational flight plan had not been
+
+
+
+
+                                                                                           38
+                                                                                           39
+
+
+        produced for the trip into the Hardanger plain. Nor had a passenger manifest been
+        drawn up. This meant that there was some uncertainty for a time during the start
+        phase, both about who was onboard and how the flight was scheduled to progress.
+        Only when the Commander managed to get an incomplete message through to his
+        base at time 1412, did the full gravity of the accident become realised and the
+        accident site identified. Then every effort was put into rescuing the injured. The
+        difficult weather conditions meant it was not possible to get to the accident site
+        before approx. time 2200 hours when a foot rescue patrol reached the area.
+        AAIB/N considers that the rescue action was planned and implemented in a
+        professional way. The rescue squadron (330 sqa.) and local resources was major
+        contributors.
+
+
+2.8     Mobile telephone communication
+
+        The experiences rendered during the accident, and the later rescue- and
+        investigation work, indicated that the conditions for GSM mobile telephone
+        communication were not satisfactory. Both the rescue personnel and the police at
+        the accident site stated this is the case on large areas of the Hardanger plain.
+        AAIB/N therefore recommends this condition to be improved.
+
+
+3       CONCLUSION
+
+3.1     Findings
+
+3.1.1   Commander
+
+        a.     The Commander held valid licences.
+
+        b.     The Commander was an experienced helicopter pilot and had completed the
+               training prescribed by the authorities. He was very experienced in flying
+               over mountain terrain.
+
+        c.     The Commander was well rested at the start of the assignment. He had a
+               short service period and flying time before the accident.
+
+        d.     The Commander also had the role of chief pilot at the company’s Kinsarvik
+               base.
+
+
+
+
+                                                                                           39
+                                                                                              40
+
+
+3.1.2   Aircraft information
+
+        a.     The aircraft was registered according to regulations and had valid
+               environmental and airworthiness certificates.
+
+        b.     In this investigation, AAIB/N has not discovered any irregularities in the
+               maintenance of the aircraft, which may have had an effect on the course of
+               events.
+
+        c.     No irregularities, faults or defects were discovered, which might refer to the
+               aircraft’s condition before the accident. It was pointed out by Turbomeca
+               that the engine appeared to be particularly well maintained.
+
+        d.     The aircraft’s mass and centre of gravity was within the permitted limits at
+               the time of the accident.
+
+        e.     At the time of the accident the engine was running, but without providing
+               power in accordance with a normal situation.
+
+
+3.1.3   The company
+
+        The company had a valid licence and operating permit for this type of flying. The
+        Norwegian Civil Aviation Authority had approved the routines and procedures.
+
+
+3.1.4   Survival aspects
+
+        a.     Despite great efforts, it took a long time to rescue the survivors.
+
+        b.     The seats were made of composite materials, which cracked and became
+               detached in the accident.
+
+        c.     The stitching of the front seat belts gave way. The shoulder harnesses are
+               anchored to the back of the seats and give little protection when the seats
+               become detached from the floor.
+
+        d.     Only the Commander used shoulder harness.
+
+        e.     The cabin’s superstructure did not provide the necessary protection in the
+               accident.
+
+        e.     The Commander was not equipped for a stay in the mountains.
+
+
+
+
+                                                                                              40
+                                                                                              41
+
+
+      f.     The weather was fine at the time of accident, but deteriorated quickly after.
+             This hampered the rescue operation.
+
+      g.     The helicopter’s survival equipment was not used.
+
+
+3.2   Significant investigation results important to safety
+
+
+      AAIB/N believes that the following investigation results had a decisive influence on
+      the course of events or were particularly important from a safety perspective:
+
+      a.     The engine ceased to provide power during the flight.
+
+      b.     The flight was made parallel to raising terrain and the possibility for a safe
+             emergency landing was therefore reduced. When the engine problem arose,
+             the helicopter was at a too low height for entering autorotation.
+
+      c.     Great efforts were needed and were provided on the part of the rescuers.
+
+      d.     In this area of the Hardanger plain the GSM mobile telephone system
+             functioned poorly.
+
+
+4     RECOMMENDATIONS
+
+           AAIB/N recommends that:
+
+           The Norwegian Civil Aviation Authority considers the requirement of
+           clarification to the operators of one-engine helicopters of the need to plan the
+           departure- and approach paths over the area giving the best safety margins in
+           case of an engine failure. (Recommendation no. 13/2003)
+
+           The Norwegian Civil Aviation Authority considers the certification of
+           helicopters in the Norwegian aircraft register that is still operates with the
+           original seat construction. A revised design is available as a “retrofit”, but this
+           is not made compulsory. (Recommendation no. 14/2003)
+
+           The Norwegian Civil Aviation Authority considers the durability, strength and
+           labelling of the seatbelts used in this type of helicopter. (Recommendation no.
+           15/2003)
+
+           The Norwegian Civil Aviation Authority considers making shoulder harness
+           mandatory for all occupants in helicopters, like stated in the latest JAR 27.785
+           (Recommendation no. 16/2003)
+
+
+
+
+                                                                                              41
+                                                                                       42
+
+
+         The manufacturer of this helicopter type considers redesigning the cabin
+         construction in order to improve personal protection in the case of an accident
+         like this. (Recommendation no. 17/2003)
+
+         The manufacturer of the engine and fuel control unit follows up the FCU with a
+         view to eliminating future engine failures and that the manufacturer informs all
+         operators of the progress. (Recommendation no. 18/2003)
+
+         The Norwegian Post- and Telecommunication Authority should consider
+         arranging an installation of a mobile telephone relay station (GSM) at one site,
+         e.g. at Hårteigen, in order to ensure secure communication during rescue action
+         over large areas of the Hardanger plain. (Recommendation no. 19/2003)
+
+
+5   APPENDICES
+
+    1.     The helicopter
+    2.     Diagram of the accident area
+    3.     Map with staked-out flight path
+    4.     Detailed weather data
+    5.     Abbreviations
+
+         AIRCRAFT ACCIDENT INVESTIGATION BOARD, NORWAY (AAIB/N)
+
+                                   Lillestrøm, March 2003
+
+
+
+
+                                                                                       42
+                                                                              43
+
+
+
+
+1.     FACTUAL INFORMATION                                                     4
+1.1    History of the flight                                                   4
+1.2    Injuries to persons                                                     7
+1.3    Damage to aircraft                                                      7
+1.4    Other damage                                                            8
+1.5    Personnel information                                                   8
+1.6    Aircraft information                                                    9
+1.7    The weather                                                            16
+1.8    Navigational aids                                                      17
+1.9    Communication                                                          17
+1.10   Airports and aids                                                      17
+1.11   Flight data recorders                                                  17
+1.12   The accident site and aircraft wreckage                                17
+1.13   Medical and pathological conditions                                    23
+1.14   Fire                                                                   23
+1.15   Survival aspects                                                       23
+1.16   Special investigations                                                 26
+1.17   Organisations and management                                           30
+1.18   Other information                                                      30
+1.19   Useful or effective methods of investigation                           32
+2.     ANALYSIS                                                               32
+2.1    Technical investigations -results                                      32
+2.2    Possible causes                                                        34
+2.3    Relationship to the Operations Manual (OM) and Regulations for Civil
+       Aviation (BSL)                                                         35
+2.4    Commander                                                              36
+2.5    Whiteout                                                               37
+2.6    Survival aspects                                                       37
+2.7    The search and rescue phase                                            38
+3.     CONCLUSION                                                             39
+3.2    Significant investigation results important to safety                  41
+4.     RECOMMENDATIONS                                                        41
+5.     APPENDICES                                                             42
+
+
+
+
+                                                                              43
+

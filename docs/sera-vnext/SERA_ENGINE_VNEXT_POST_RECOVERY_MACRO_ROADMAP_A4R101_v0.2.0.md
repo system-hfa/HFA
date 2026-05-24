@@ -279,3 +279,24 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Build the next full-axis trace draft batch with balanced P/O/A candidates (`UPS-1354`, `AMERICAN-1420`, `ASIANA-214`, `AIR-CANADA-624`).
 2. Require explicit P/O/A axis sections for each event, including nominal/no-failure or unresolved handling where needed.
 3. Keep COMAIR-5191 and KOREAN-801 as P-only internal drafts unless dedicated O/A source-slice expansion is executed.
+
+## A4+R-113 Execution Update (Repository Methodology Cleanup and Corpus Hygiene)
+- New governance outputs:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_REPOSITORY_METHODOLOGY_CLEANUP_AUDIT_A4R113_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CORPUS_VERSIONING_POLICY_A4R113_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_ACTIVE_SOURCE_INDEX_A4R113_v0.2.0.md`
+  - `docs/sera-vnext/archive/README.md`
+- Invalid/pre-canonical artifacts moved to archive:
+  - `REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md`
+  - `SERA_ENGINE_VNEXT_WITHDRAWN_BOUNDARY_REFERENCE_PACK_A4R96_v0.2.0.md`
+  - `REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-PACK-A4R96.md`
+- A4R113 controls:
+  - no P/O/A closure;
+  - no release created;
+  - no downstream opened;
+  - no runtime/UI/API/DB/fixture/baseline changes.
+
+## Updated Immediate Sequence After A4R113
+1. Keep canonical source-of-truth anchored on A4R99 asset/checklist and active-source index.
+2. Start A4R112 mining from full corpus using versioned TXT/CSV/manifests and quarantine protocol.
+3. Keep archived/pre-canonical artifacts outside active reference-proof flow; decide questionpath-backfill disposition in dedicated governance pass.

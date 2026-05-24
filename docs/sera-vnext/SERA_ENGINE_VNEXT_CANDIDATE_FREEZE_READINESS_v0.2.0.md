@@ -1168,7 +1168,7 @@ Proxima fase recomendada:
 
 Esta fase materializou o primeiro reference case calibration trace pack completo:
 
-- [Reference Case Trace REAL-EVENT-0003 P-G A4R95](./reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md)
+- [Reference Case Trace REAL-EVENT-0003 P-G A4R95 (archived)](./archive/invalid-methodology/pre-canonical/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md)
 - [Reference Case Trace Pack RC1 Summary A4R95](./SERA_ENGINE_VNEXT_REFERENCE_CASE_TRACE_PACK_RC1_A4R95_v0.2.0.md)
 - [Reference Case Candidate Shortlist A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_CANDIDATE_SHORTLIST_A4R94_v0.2.0.md) atualizado com status de pack criado.
 - [Reference Case Trace Pack Plan A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_TRACE_PACK_PLAN_A4R94_v0.2.0.md) atualizado com execucao A4+R-95.
@@ -1194,7 +1194,7 @@ Esta fase corrigiu governanca metodologica de reference trace apos feedback auto
 - [Canonical SERA Tree Source Inventory A4R96](./SERA_ENGINE_VNEXT_CANONICAL_SERA_TREE_SOURCE_INVENTORY_A4R96_v0.2.0.md)
 - [Canonical Tree Reference Trace Contract A4R96](./SERA_ENGINE_VNEXT_CANONICAL_TREE_REFERENCE_TRACE_CONTRACT_A4R96_v0.2.0.md)
 - [Rebuild Plan REAL-EVENT-0003 Canonical Trace A4R96](./SERA_ENGINE_VNEXT_REBUILD_REAL_EVENT_0003_CANONICAL_TRACE_PLAN_A4R96_v0.2.0.md)
-- [Reference Case Trace REAL-EVENT-0003 P-G A4R95](./reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md) marcado como `SUPERSEDED / INVALID_FOR_REFERENCE_USE`.
+- [Reference Case Trace REAL-EVENT-0003 P-G A4R95 (archived)](./archive/invalid-methodology/pre-canonical/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md) marcado como `SUPERSEDED / INVALID_FOR_REFERENCE_USE`.
 
 Estado apos A4+R-96:
 - erro metodologico registrado: `NONCANONICAL_QUESTION_FLOW`;
@@ -1507,6 +1507,25 @@ Readiness impact:
 - next draft batch must be selected for balanced P/O/A documentation from the start.
 
 A4R111 controls:
+- no P/O/A closure;
+- no release created;
+- no downstream opened;
+- no baseline/front-end promotion.
+
+## A4+R-113 — Repository Methodology Cleanup and Corpus Hygiene
+
+This phase executed repository-level methodology cleanup and corpus hygiene without changing engine/runtime/UI/API/DB scope:
+- [Repository Methodology Cleanup Audit A4R113](./SERA_ENGINE_VNEXT_REPOSITORY_METHODOLOGY_CLEANUP_AUDIT_A4R113_v0.2.0.md)
+- [Corpus Versioning Policy A4R113](./SERA_ENGINE_VNEXT_CORPUS_VERSIONING_POLICY_A4R113_v0.2.0.md)
+- [Active Source Index A4R113](./SERA_ENGINE_VNEXT_ACTIVE_SOURCE_INDEX_A4R113_v0.2.0.md)
+
+Readiness impact:
+- active canonical sources are explicitly indexed and locked;
+- invalid/pre-canonical artifacts moved to archive with non-active header;
+- corpus versioning boundary defined (TXT/CSV/manifests versioned; PDF/HTML local-only);
+- next macro step remains A4R112 full-corpus mining.
+
+A4R113 controls:
 - no P/O/A closure;
 - no release created;
 - no downstream opened;

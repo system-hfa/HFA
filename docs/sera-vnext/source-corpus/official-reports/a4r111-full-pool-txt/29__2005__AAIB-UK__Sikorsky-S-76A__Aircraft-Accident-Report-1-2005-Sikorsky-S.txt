@@ -1,0 +1,162 @@
+Aircraft Accident Report 1/2005 - Sikorsky S-76A+, G-BJVX, 16 July 2002 - GOV.UK 
+
+Cookies on GOV.UK 
+
+We use some essential cookies to make this website work. 
+We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. 
+We also use cookies set by other sites to help us deliver content from their services. 
+You have accepted additional cookies. You can change your cookie settings at any time. 
+You have rejected additional cookies. You can change your cookie settings at any time. 
+Accept additional cookies Reject additional cookies View cookies 
+Hide cookie message Skip to main content 
+
+GOV.UK 
+Navigation menu 
+Menu Menu 
+
+Services and information 
+Benefits 
+Births, death, marriages and care 
+Business and self-employed 
+Childcare and parenting 
+Citizenship and living in the UK 
+Crime, justice and the law 
+Disabled people 
+Driving and transport 
+Education and learning 
+Employing people 
+Environment and countryside 
+Housing and local services 
+Money and tax 
+Passports, travel and living abroad 
+Visas and immigration 
+Working, jobs and pensions 
+
+Government activity 
+Departments 
+Departments, agencies and public bodies 
+News 
+News stories, speeches, letters and notices 
+Guidance and regulation 
+Detailed guidance, regulations and rules 
+Research and statistics 
+Reports, analysis and official statistics 
+Policy papers and consultations 
+Consultations and strategy 
+Transparency 
+Data, Freedom of Information releases and corporate reports 
+Search GOV.UK × Search GOV.UK 
+
+Search 
+
+Search GOV.UK 
+
+Search 
+
+Home 
+Air Accidents Investigation Branch reports 
+
+Aircraft Accident Report 1/2005 - Sikorsky S-76A+, G-BJVX, 16 July 2002 
+
+Formal Report AAR 1/2005. Report on the accident to Sikorsky S-76A+, G-BJVX near the Leman 49/26 Foxtrot platform in the North Sea on 16 July 2002. 
+
+From: Air Accidents Investigation Branch Published 10 December 2014 
+
+Category: Commercial - rotorcraft Report type: Formal report Date of occurrence: 16 July 2002 Aircraft type: Sikorsky S-76A+ Location: Near the Leman 49/26 Foxtrot platform in the North Sea Registration: G-BJVX 
+
+Contents 
+Summary 
+Download full report 
+
+Summary: 
+Lowestoft Coastguard notified the accident to the Air Accidents Investigation Branch (AAIB) at 2000 hrs on 16 July 2002 and the investigation began that same day. The following Inspectors participated in the investigation: 
+Mr J Barnett - Investigator-in-Charge 
+Mr N Dann - Operations 
+Mr K Conradi - Operations 
+Mr R Parkinson - Engineering 
+Mr S Moss - Engineering 
+Mr R Vance - Flight Data Recorders 
+Mr A Foot - Flight Data Recorders 
+The aircraft operator’s base at Norwich operates S-76 helicopters in support of offshore oil and gas operations in the southern North Sea. On the evening of the accident the aircraft departed Norwich to complete a scheduled flight consisting of six sectors in the southern North Sea offshore gas fields. The first four sectors were completed without incident but whilst en-route between the Clipper, an offshore production platform, and the Global Santa Fe Monarch, a drilling rig, the aircraft suffered a catastrophic structural failure. The helicopter’s main rotor assembly separated almost immediately and the fuselage fell to the surface about 0.8 nm north-west of the Global Santa Fe Monarch which at the time was attached to the Leman 49/26 Foxtrot platform, a normally unmanned installation. Witnesses reported hearing a single or double muffled bang or boom, and seeing the aircraft fall into the sea. The fuselage disintegrated on impact and the majority of the structure sank. Fast rescue craft launched from the Putford Achilles, a multipurpose standby vessel, arrived at the scene of the accident within a few minutes. There were no survivors amongst the nine passengers and two crew. 
+The investigation identified the following causal factors: 
+
+i). A manufacturing anomaly created an area of reduced insulation between a main rotor blade’s spar and one section of its two-piece leading edge erosion cover. 
+
+ii). The affected blade had been struck by lightning. 
+
+iii). Electrical energy from the lightning strike exploited the manufacturing anomaly and caused microstructural damage that was not detectable when the blade was returned to its manufacturer for assessment. 
+
+iv). The blade was repaired before being returned to service and a fatigue crack in the spar originated from the microstructural damage. 
+
+v). An opaque protective patch applied to the erosion cover’s scarf joint hid exterior symptoms of the developing spar crack that appeared before the accident. 
+
+vi). The helicopter’s proprietary onboard Health and Usage Monitoring System (IHUMS) did not provide sufficient warning of impending blade failure in time to avert the accident. 
+
+vii). There were no in-flight symptoms of impending blade failure that the pilots should have recognised. 
+Six safety recommendations have been made. 
+Download full report: 
+AAR 1/2005 - G-BJVX Pub version.pdf 
+
+Updates to this page 
+Published 10 December 2014 
+
+Contents 
+
+Explore the topic 
+Air accidents and serious incidents 
+
+Is this page useful? 
+Maybe 
+Yes this page is useful 
+No this page is not useful 
+Thank you for your feedback 
+Report a problem with this page 
+
+Help us improve GOV.UK 
+Do not include personal or financial information like your National Insurance number or credit card details. 
+This field is for robots only. Please leave blank 
+What were you doing? 
+What went wrong? 
+Send Cancel 
+
+Help us improve GOV.UK 
+To help us improve GOV.UK, we’d like to know more about your visit today. Please fill in this survey (opens in a new tab ) . Cancel 
+
+Services and information 
+Benefits 
+Births, death, marriages and care 
+Business and self-employed 
+Childcare and parenting 
+Citizenship and living in the UK 
+Crime, justice and the law 
+Disabled people 
+Driving and transport 
+Education and learning 
+Employing people 
+Environment and countryside 
+Housing and local services 
+Money and tax 
+Passports, travel and living abroad 
+Visas and immigration 
+Working, jobs and pensions 
+
+Government activity 
+Departments 
+News 
+Guidance and regulation 
+Research and statistics 
+Policy papers and consultations 
+Transparency 
+How government works 
+Get involved 
+
+Support links 
+Help 
+Privacy 
+Cookies 
+Accessibility statement 
+Contact 
+Terms and conditions 
+Rhestr o Wasanaethau Cymraeg 
+Government Digital Service All content is available under the Open Government Licence v3.0 , except where otherwise stated 
+© Crown copyright

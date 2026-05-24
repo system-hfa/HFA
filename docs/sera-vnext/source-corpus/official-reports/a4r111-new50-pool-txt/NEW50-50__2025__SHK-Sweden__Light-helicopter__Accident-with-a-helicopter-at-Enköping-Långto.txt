@@ -1,0 +1,1029 @@
+Accident with a helicopter
+at Enköping/Långtora Air-
+port
+The Swedish Accident Investigation Authority has investi-
+gated an accident with a helicopter of the model 369E
+with registration SE-JVM at Enköping/Långtora Airport,
+Uppsala County, on November 18, 2024.
+
+
+13 November 2025
+
+
+
+
+         Final report
+         SHK 2025:18e
+About the Swedish Accident Investigation Authority
+The Swedish Accident Investigation Authority (SHK) investigates accidents and incidents
+from a safety perspective regardless of whether they occurred on land, at sea or in the air.
+The authority's accident investigations are intended to disseminate knowledge and provide a
+basis for actions by authorities, companies, organizations, and individuals that improve
+safety and reduce the risk of accidents. The activities should also contribute to people feeling
+secure and having trust in society's institutions and the confidence in transportation
+systems. The mission also includes assessing the efforts made by the rescue services in
+connection with an accident. However, the investigations should not assign blame or
+liability, whether criminally, civilly, or administratively.
+
+The investigations by SHK aim to answer three questions:
+
+    •   What happened?
+    •   Why did it happen?
+    •   How can a similar accident/incident be avoided in the future?
+
+Investigations of aviation accidents and incidents are primarily regulated by Regulation (EU)
+No 996/2010 on the investigation and prevention of accidents and incidents in civil aviation
+and the Act (1990:712) on the investigation of accidents. The investigations are conducted in
+accordance with Annex 13 of the Chicago Convention.
+
+The report is also available on the Swedish Accident Investigation Authority's website:
+www.shk.se.
+
+
+
+
+The report is covered by the Creative Commons Attribution 2.5 Sweden (CCBY 2.5 SE)
+license. This means that you are allowed to copy, distribute, and modify the text as long as
+you attribute SHK as the copyright holder. If you use material from this report, you should
+cite the Swedish Accident Investigation Authority and the report number.
+
+The illustrations in SHK's reports are protected by copyright. Unless otherwise stated in the
+report, SHK is the copyright holder. If someone other than SHK is the copyright holder, you
+need their permission to use the material.
+
+
+
+ISSN 1400–5719
+
+File number: L-126/24
+
+
+
+                                             2 (23)
+Content
+
+About the Swedish Accident Investigation Authority ...................................................... 2
+
+Summary ............................................................................................................................................ 5
+Causes of the accident ............................................................................................. 5
+
+Safety recommendations............................................................................................................. 5
+
+The investigation ............................................................................................................................ 6
+Investigation material ............................................................................................... 6
+
+1.        Factual information ............................................................................................................ 8
+1.1       History of the flight ......................................................................................... 8
+          1.1.1      Preconditions .......................................................................................................................... 8
+
+          1.1.2      History of the flight ................................................................................................................. 8
+
+          1.1.3      Additional information ............................................................................................................ 9
+
+1.2       Injuries to persons .......................................................................................... 9
+1.3       Damage to aircraft .......................................................................................... 9
+1.4       Other damage ................................................................................................. 9
+          1.4.1      Environmental impact.............................................................................................................. 9
+
+1.5       Personnel information ..................................................................................... 9
+          1.5.1      -The Pilot ................................................................................................................................ 9
+
+          1.5.2      System operator .................................................................................................................... 10
+
+1.6       Aircraft information ....................................................................................... 10
+          1.6.1      Helicopter ............................................................................................................................. 10
+
+          1.6.2      Rotor system......................................................................................................................... 10
+
+          1.6.3      Low speed maneuvering ........................................................................................................ 11
+
+1.7       Meteorological information ........................................................................... 11
+1.8       Aids to navigation ......................................................................................... 11
+1.9       Communications ........................................................................................... 12
+1.10 Aerodrome information ................................................................................. 12
+1.11 Flight recorders ............................................................................................. 12
+          1.11.1     Flight recorders..................................................................................................................... 12
+
+1.12 Accident site and aircraft wreckage ............................................................... 13
+          1.12.1     Accident site ......................................................................................................................... 13
+
+          1.12.2     Aircraft wreckage .................................................................................................................. 14
+
+1.13 Medical and pathological information ........................................................... 15
+1.14 Fire 15
+1.15 Survival aspects ............................................................................................. 15
+          1.15.1     Rescue operation .................................................................................................................. 15
+
+
+
+                                                                          3 (23)
+The Swedish Accident Investigation Authority                                                                                       SHK 2025:18e
+                                                                                                                                   Final report
+
+
+
+
+       1.15.2     Position of crew and passengers and the use of seat belts ..................................................... 16
+
+1.16 Tests and research ........................................................................................ 16
+       1.16.1     Technical examination of the helicopter ................................................................................ 16
+
+       1.16.2     Fractographic examination of parts from the helicopter ......................................................... 16
+
+       1.16.3     Engine examination at an authorized maintenance organization ............................................ 18
+
+1.17 Organisational and management information ............................................... 18
+       1.17.1     Specialised operations........................................................................................................... 18
+
+       1.17.2     The operator ......................................................................................................................... 19
+
+       1.17.3     Operator's safety management system .................................................................................. 19
+
+1.18 Additional information .................................................................................. 19
+       1.18.1     Loss of tail rotor effectiveness – unanticipated yaw ................................................................ 19
+
+       1.18.2     Flight conditions with a risk of unanticipated yaw .................................................................. 19
+
+       1.18.3     Documents containing information about unanticipated yaw ................................................. 20
+
+       1.18.4     Similar accidents ................................................................................................................... 20
+
+       1.18.5     Actions taken ........................................................................................................................ 21
+
+1.19 Special methods of investigations ................................................................. 21
+
+2.     Analysis ................................................................................................................................ 21
+2.1    Preconditions ................................................................................................ 21
+2.2    Why was control of the helicopter lost? ......................................................... 21
+2.3    Survival aspects ............................................................................................. 22
+       2.3.1      Rescue operation .................................................................................................................. 22
+
+       2.3.2      Position of crew and passengers and the use of seat belts ..................................................... 22
+
+2.4    Technical examination of the helicopter ........................................................ 22
+
+3.     Conclusions ........................................................................................................................ 23
+3.1    Findings ........................................................................................................ 23
+3.2    Causes and Contributing Factors ................................................................... 23
+
+4.     Safety recommendations ............................................................................................... 23
+
+
+
+
+                                                                      4 (23)
+The Swedish Accident Investigation Authority                                     SHK 2025:18e
+                                                                                 Final report
+
+
+
+
+Summary
+The purpose of the flight was to carry out an inspection of power lines. The flight was the
+second of the day and it was preceded by a refuelling stop at Enköping/Långtora Airport.
+The crew consisted of a pilot and a system operator. The helicopter was parked on a grassy
+area outside a hangar with its nose towards the east. The take-off weight was 2,811 lbs. The
+weather at the location was clear and sunny, with a south-westerly wind.
+
+After the engine was started, the helicopter hovered up to just above ground level. In connec-
+tion with the hover, the helicopter began to rotate clockwise. The pilot was unable to stop the
+rotation despite using full pedal travel. The helicopter rotated while rising to a height of
+approximately 15 metres before descending during rotation and hitting the ground. The crew
+got out of the helicopter with the help of witnesses who were at the scene. Those on board
+suffered minor injuries.
+
+Rescue services, police, ambulance and an ambulance helicopter were called to the scene.
+Both crew members were taken to hospital for examination and treatment.
+
+No unusual sounds, warnings or malfunctions were perceived by the crew before the rotation
+began. The pilot has also stated that he perceived the wind to be coming from the front
+during take-off and hover.
+
+The technical investigations conducted have not identified any faults that could have
+contributed to the accident.
+
+Causes of the accident
+During take-off, the helicopter operated at high power output and a relatively high take-off
+weight. The relative wind was coming from the rear on the right side, which contributed to
+the helicopter's fin acting like a weather vane. These conditions likely exceeded the tail
+rotor's thrust capacity, resulting in an unanticipated right yaw that developed into an uncon-
+trolled rotation.
+
+Contributing factors:
+
+The pilot's perception that the wind was coming from the front likely contributed to the yaw
+being unexpected.
+
+
+Safety recommendations
+None.
+
+
+
+
+                                               5 (23)
+The Swedish Accident Investigation Authority                                   SHK 2025:18e
+                                                                               Final report
+
+
+
+
+The investigation
+SHK was informed on 18 November 2024 that an accident involving a helicopter with the
+registration SE-JVM had occurred at Enköping/Långtora Airport, Uppsala County,
+at 10.52 hrs on the same day.
+
+The accident has been investigated by SHK represented by Mr Jonas Bäckstrand, Chair-
+person, Mr Stefan Carneros, Investigator in Charge and Operations Investigator until
+30 April 2025, Mr Tony Arvidsson, Technical Investigator until 30 April 2025 and then also
+Investigator in Charge, and Mr Ola Olsson, Operations Investigator from 30 April 2025.
+
+Mr Mieczysław Wyszogrodzki has participated as accredited representative on behalf of
+Poland.
+
+Mr David Bowling has participated as accredited representative on behalf of the United
+States.
+
+Mr Karl-Axel Eden has participated as an adviser on behalf of the Swedish Transport Agency
+and Dr. Matthew Hilscher has participated as an adviser on behalf of the European Union
+Aviation Safety Agency (EASA).
+
+The following organisations have been notified: EASA, the European Commission and the
+Swedish Transport Agency (Transportstyrelsen).
+
+Investigation material
+Interviews have been conducted with the pilot, the system operator, flight operator execu-
+tives and witnesses of the accident. The accident site and the helicopter have been examined.
+Special technical examinations have been carried out on the engine, fuel, oil and compo-
+nents. Data from the Visimind measurement system and a navigation application have been
+obtained and analysed.
+
+A meeting with the interested parties was held on 23 September 2025. At the meeting, SHK
+presented the facts established during the investigation, available at the time.
+
+
+
+
+                                               6 (23)
+The Swedish Accident Investigation Authority                                            SHK 2025:18e
+                                                                                        Final report
+
+
+
+
+Final report SHK 2025:18e
+    Data
+    Aircraft                       Registration, type: SE-JVM
+                                   Model: 369E
+                                   Class, Airworthiness: Normal, Certificate of Airworthiness and
+                                   Valid Airworthiness Review Certificate (ARC)1
+                                   Operator: First European Aviation Company Sp. z o.o.
+    Time of occurrence:            18 November 2024, 10.52 hrs in daylight
+                                   Note: All times are given in Swedish standard time (UTC 2 +
+                                   1 hour)
+    Place                          Enköping/Långtora Airport, Uppsala County,
+                                   (position 59˚44’45N 17˚08’ 42 E, 12 metres above mean sea
+                                   level)
+    Type of flight                 Specialised operations (SPO)
+    Weather                        According to SMHI's analysis: wind 240º/7 knots, visibility
+                                   >10 kilometres, no clouds, temperature/dewpoint +1/-5 °C,
+                                   QNH3 991 hPa
+    Persons on board               In total: 2
+                                   Crew members including cabin crew: 2
+    Injuries                       To persons: 2
+                                   Damage to aircraft: Substantially damaged
+                                   Other damage: Fuel leakage at accident site
+    The pilot:                     Age: 51 years
+                                   Licence: CPL(H)4
+                                   Total flying hours: 5 974 hours, of which 405 hours on type
+                                   Flying hours previous 90 days: 112 hours, of which 48 hours on
+                                   type
+                                   Number of landings previous 90 days: 64 hours, of which
+                                   29 hours on type
+    The System Operator            No flight operational tasks
+
+
+
+
+1
+    ARC (Airworthiness Review Certificate).
+2
+    UTC (Coordinated Universal Time).
+3
+    QNH (The atmospheric pressure adjusted to the mean sea level).
+4
+    CPL (Commercial Pilot License).
+
+
+
+
+                                                      7 (23)
+The Swedish Accident Investigation Authority                                                  SHK 2025:18e
+                                                                                              Final report
+
+
+
+
+1. Factual information
+1.1        History of the flight
+1.1.1      Preconditions
+The purpose of the flight was to carry out an inspection of power lines. The flight was the
+second of the day and it was preceded by a refuelling stop at Enköping/Långtora Airport.
+The helicopter was equipped with a system that diagnoses the power lines, see Figure 1. The
+crew consisted of a pilot and a system operator. The pilot operated the helicopter from the
+seat on the left side, and the system operator was seated on the right side. The controls on
+the right side, where the system operator was seated, had been removed. The helicopter was
+parked on a grassy area outside a hangar with its nose towards the east. Before the flight, a
+pre-flight inspection was carried out without any remarks. The take-off weight was 2,811 lbs,
+according to the load chart. The weather at the location was clear and sunny, with a south-
+westerly wind.
+
+
+
+
+Figure 1. The helicopter just before take-off. The measuring equipment is marked with a dashed rectangle.
+Person masked and marking added by SHK. Photo: Private person.
+
+
+1.1.2      History of the flight
+After the engine was started, the helicopter hovered up to just above ground level. In connec-
+tion with the hover, the helicopter began to rotate clockwise. The rotation speed gradually
+increased and the pilot was unable to stop the rotation despite using full pedal travel, as he
+has later stated. The helicopter rotated while rising to a height of approximately 15 metres
+before descending during rotation. The helicopter struck the ground with its main rotor
+blades and the left main landing gear. The helicopter rotated a total of six times before
+coming to rest on its left side. The windows were shattered upon impact, and the crew exited
+through the openings on the left side.
+
+
+
+
+                                                   8 (23)
+The Swedish Accident Investigation Authority                                    SHK 2025:18e
+                                                                                Final report
+
+
+
+
+According to the pilot and the system operator, no unusual sounds, warnings or malfunc-
+tions were perceived before the rotation began. The pilot has also stated that he perceived
+the wind to be coming from the front during take-off and hover.
+
+The accident occurred at position 59˚44’45N 17˚08’ 42E, 12 metres above mean sea level.
+
+1.1.3         Additional information
+One of the witnesses of the accident has been interviewed and has stated the following.
+
+The witness, who observed the accident, was standing in front of the hangar and saw the
+helicopter hovering low above the ground with the nose of the helicopter pointing east.
+Shortly afterwards, the helicopter began to rotate clockwise as it gained altitude. The rota-
+tion increased as the helicopter gained altitude. After a number of revolutions, the nose
+began to point downward and the helicopter descended while rotating until it hit the ground.
+Several witnesses to the accident went to the helicopter to check the status of the crew.
+
+1.2           Injuries to persons
+Those on board suffered minor injuries.
+
+1.3           Damage to aircraft
+Substantially damaged.
+
+1.4           Other damage
+1.4.1         Environmental impact
+Approximately 160 litres of Jet A-1 aviation fuel leaked in connection with the accident. The
+ground was cleaned up following consultation with the municipality's environmental officer.
+
+1.5           Personnel information
+1.5.1         -The Pilot
+
+Commander
+The commander, was 51 years old and had a valid CPL(H) license, including flight opera-
+tional and medical eligibility.
+
+    Flying hours - latest      24 hours         7 days         90 days            Total
+    All types                       4             10             112              5 974
+    Actual type                     4             10             48                405
+
+Number of landings actual type previous 90 days: 29.
+Type rating concluded on 18 April 2023.
+Latest PC5 (proficiency check) conducted on 10 April 2024 on type.
+
+
+
+
+5
+    PC (Proficiency Check).
+
+
+
+
+                                               9 (23)
+The Swedish Accident Investigation Authority                                      SHK 2025:18e
+                                                                                  Final report
+
+
+
+
+1.5.2      System operator
+The system operator was not tasked with operating the helicopter, but has stated that he had
+approximately 1,500 hours of total flight time as a system operator.
+
+1.6        Aircraft information
+The helicopter is 9.4 metres long and 2.7 metres high up to the main rotor. Its width
+corresponds to the diameter of the main rotor, which is just over 8 metres.
+
+The helicopter was equipped with measuring equipment installed in the back seat.
+Additional equipment was mounted on a beam attached to the underside of the helicopter.
+
+1.6.1      Helicopter
+
+ Helicopter
+ TC-holder                                         MD HELICOPTERS, LLC
+ Model                                             369E
+ Serial number                                     0562E
+ Year of manufacture                               2001
+ Gross mass, lbs                                   Max start/landing mass suspended load
+                                                   3 000, current 2 811
+ Centre of gravity                                 Within limits.
+ Total flying time, hours                          6 668
+ Flying time since latest inspection               24
+ Type of fuel uplifted before the occurrence       Jet A-1
+
+
+ Engine
+ TC-holder                                         ROLLS-ROYCE CORPORATION
+ Type                                              250-C20B
+ Number of engines                                 1
+ Serial number                                     834285
+ Total operating time, hours                       6 155
+ Operating time since overhaul, hours              324
+
+
+ Deferred remarks
+ None relevant to the event.
+
+The helicopter had a Certificate of Airworthiness and a valid ARC.
+
+1.6.2      Rotor system
+The main rotor of this type of helicopter rotates counterclockwise when viewed from above.
+The rotation generates torque in the opposite direction, which in this case is to the right. The
+torque effect is most noticeable during high power output combined with low airspeed. To
+counteract the torque produced by the main rotor, the tail rotor generates thrust in the oppo-
+
+
+
+
+                                               10 (23)
+The Swedish Accident Investigation Authority                                                     SHK 2025:18e
+                                                                                                 Final report
+
+
+
+
+site direction, see Figure 2. The thrust of the tail rotor is adjusted by pedal movements,
+which change the angle of the rotor blades.
+
+
+
+
+Figure 2. Schematic image showing the direction of rotation of the main rotor blades and the
+torque generated, as well as the opposing thrust from the tail rotor. Source: Federal Aviation
+Administration (FAA).
+
+
+1.6.3      Low speed maneuvering
+The helicopter's flight manual states that maneuvers that exceed the tail rotor's thrust
+capacity should be avoided.
+
+Conditions that can approach or exceed the tail rotor’s thrust limits include high density alti-
+tude, high gross weight, rapid pedal turns, and operating the helicopter in a downwind
+condition. These factors may cause the required thrust to surpass the tail rotor’s capacity.
+
+1.7        Meteorological information
+According to SMHI's analysis of the conditions at Långtora/Enköping Airport: Wind
+240º/7 knots, visability >10 kilometres, no clouds, temperature/dewpoint +1/-5 °C, QNH
+991 hPa.
+
+1.8        Aids to navigation
+Not relevant.
+
+
+
+
+                                                    11 (23)
+The Swedish Accident Investigation Authority                                                  SHK 2025:18e
+                                                                                              Final report
+
+
+
+
+1.9        Communications
+Not relevant.
+
+1.10       Aerodrome information
+Enköping/Långtora Airport is intended for gliders and has two grass runways designated
+07/25 and 12/30. Prior permission is required for single landing permits. There are two
+wind socks at the airport and at the southern end of the airport there are hangars and park-
+ing lots, see Figures 3 and 4.
+
+
+
+
+Figure 3. The airport. Hangars marked with a dashed circle by SHK. Source: KSAB Swedish Airports.
+
+
+
+
+Figure 4. The hangars at the southern end of the airport, marked
+with a dashed circle by SHK. Source: KSAB Swedish Airports.
+
+1.11       Flight recorders
+1.11.1     Flight recorders
+There were no requirements for flight or sound recorders. However, a tablet on board
+contained a navigation application which recorded data from the flight. The Visimind
+measurement system, which was installed on board to document the status of power lines,
+
+
+
+
+                                                   12 (23)
+The Swedish Accident Investigation Authority                                                  SHK 2025:18e
+                                                                                              Final report
+
+
+
+
+recorded data including longitudinal and angular accelerations as well as GNSS6-data. SHK
+has analysed the available data.
+
+The Visimind system, used for the inspection of power lines, employs several sensors. Data
+from these sensors have been analysed by SHK to assess movements and accelerations. This
+analysis determined, among other findings, that the helicopter completed six full rotations
+after take-off, with the angular velocity gradually increasing and the rotation occurring in the
+same direction throughout, see Figure 5.
+
+
+
+
+Figure 5. Number of rotations of the helicopter as a function of time.
+
+
+1.12          Accident site and aircraft wreckage
+1.12.1        Accident site
+The accident occurred on a grassy area directly adjacent to an asphalt surface outside an air-
+craft hangar, see Figure 6.
+
+
+
+
+Figure 6. Accident site marked with yellow icon. Image: Google Earth. Marking added by SHK.
+
+6
+    GNNS (Global Navigation Satellite System).
+
+
+
+
+                                                     13 (23)
+The Swedish Accident Investigation Authority                                                        SHK 2025:18e
+                                                                                                    Final report
+
+
+
+
+Figure 7 shows the accident site from a closer distance, with the helicopter's position and
+direction at take-off indicated by a helicopter icon. The impact site is marked with a triangle.
+
+
+
+
+Figure 7. Principal sketch of the accident site. The helicopter's final position is marked with a red triangle.
+Image: Google Earth. Markings added by SHK.
+
+
+1.12.2      Aircraft wreckage
+The wreckage was found within an area of 40 times 40 metres.
+
+The marks in the ground indicated where the main rotor blades, left main landing gear and
+stabiliser struck the ground. Sequential impacts with the ground brought the rotation of the
+main rotor to a stop. The tail boom sustained significant damage. The damage to the helicop-
+ter is shown in Figure 8.
+
+
+
+
+                                                      14 (23)
+The Swedish Accident Investigation Authority                                                    SHK 2025:18e
+                                                                                                Final report
+
+
+
+
+Figure 8. The aircraft wreckage, the damage to the tail boom marked with a circle.
+
+The tail rotor was found five metres northeast of the helicopter, see Figure 9. A pitch arm
+was found five metres southwest of the helicopter, see Figure 9. Other parts scattered in
+connection with the accident consisted mainly of parts from the helicopter's window panes.
+The fuel tank had been damaged in several places and fuel had leaked onto the ground
+underneath the helicopter. No oil leaks were observed.
+
+
+
+
+Figure 9. The left image shows the tail rotor where it was found. The right image shows one of the tail rotors
+blades pitch arms, along with a section of a pitch link.
+
+
+1.13       Medical and pathological information
+Nothing has emerged to indicate that the pilot's mental or physical fitness was impaired
+before or during the flight.
+
+1.14       Fire
+There was no fire.
+
+1.15       Survival aspects
+1.15.1     Rescue operation
+At 10.52, SOS Alarm received a call from a private individual at the scene who had witnessed
+the helicopter crash. Rescue services, police, ambulance and an ambulance helicopter were
+
+
+
+                                                    15 (23)
+The Swedish Accident Investigation Authority                                       SHK 2025:18e
+                                                                                   Final report
+
+
+
+
+called to the scene. At 11.11, the rescue services arrived at the scene, and a few minutes later
+an ambulance arrived.
+
+When rescue services arrived on the scene, the crew had exited the helicopter with assistance
+from witnesses. Both crew members had back pain and minor cuts, and were taken to hospi-
+tal for examination and treatment.
+
+The ELT7 manufactured by KANNAD was not activated during the accident.
+
+1.15.2       Position of crew and passengers and the use of seat belts
+The pilot was seated on the left side, and the system operator was sitting on the right. Both
+were wearing four-point seat belts and helmets. Both helmets sustained damage, including
+cracks.
+
+Both crew members sustained minor rib fractures. Neither required hospitalisation for more
+than a day.
+
+1.16         Tests and research
+1.16.1       Technical examination of the helicopter
+A technical examination of the helicopter was conducted, revealing the following findings,
+among others:
+
+       •    The drive shaft between the main rotor gearbox and the tail rotor gearbox had
+            broken at the point of damage to the tail boom. The rest of the drive system was
+            inspected, and no other abnormalities were detected.
+       •    The main rotor and tail rotor rotated smoothly and without any abnormal noise
+            from the gearboxes. The oil in the gearboxes was without any remarks.
+       •    There was a connection between the pedals and the tail rotor pitch control assembly.
+            A pushrod in the yaw control system was bent at the point of damage to the tail
+            boom, which is believed to have occurred upon impact.
+       •    The fuel was examined and there were no abnormalities.
+       •    The engine and its components were inspected without remarks.
+       •    The engine controls in the cabin were connected to the power turbine governor and
+            the fuel control on the engine.
+       •    Fuel control system pneumatic leak check was performed without any remarks.
+
+Fractographic examination was performed on the damaged drive shaft and other damaged
+parts of the yaw control system, see further information about these investigations in section
+1.16.2.
+
+1.16.2       Fractographic examination of parts from the helicopter
+SHK has commissioned Element Technology AB to perform a fractographic examination of
+parts from the helicopter. The purpose of the examination was to determine, if possible, the
+failure mode (e.g. overload, fatigue) for the respective damage. Additionally, the examination
+
+
+
+
+7
+    ELT (Emergency Locator Transmitter).
+
+
+
+
+                                               16 (23)
+The Swedish Accident Investigation Authority                                                     SHK 2025:18e
+                                                                                                 Final report
+
+
+
+
+aimed to establish whether the tail rotor drive shaft had failed due to torsion or bending
+force.
+
+The following parts were examined:
+
+     •   Tail rotor gearbox, see Figure 10.
+     •   Pitch links for the tail rotor blade pitch control, see Figures 10 and 11.
+     •   Rivets that lock the link arm's attachment to the swash plate, see Figures 10 and 11.
+     •   Tail rotor (including the blade pitch arm, the blade at the blade pitch attachment
+         and the hub), see Figure 12.
+    •    Tail rotor drive shaft, see Figures 10 and 12.
+
+
+
+
+Figure 10. Tail rotor gearbox with damaged parts marked.
+
+
+
+
+Figure 11. The picture on the left shows the damaged pitch links. The pictures on the right shows the damaged
+rivets. The rivet heads are coming from the inside of the housing.
+
+
+
+
+Figure 12. The picture on the left shows the tail rotor, with the marked area indicating the focus of the exami-
+nation. The picture on the right shows the broken pitch arm along with a section of the pitch link.
+
+
+
+
+                                                     17 (23)
+The Swedish Accident Investigation Authority                                                      SHK 2025:18e
+                                                                                                  Final report
+
+
+
+
+Figure 13. The picture on the left shows the fracture on the section of the drive shaft leading towards the
+engine. The picture on the right shows the fracture on the section of the drive shaft leading towards the tail
+rotor gearbox.
+
+The following conclusions can be drawn based on the fractographic examination:
+
+The drive fork, pitch links, rivets and tail rotor (including the pitch arm, the blade at the
+blade pitch attachment and the hub) have failed as a result of instantaneous ductile overload
+fracture.
+
+It is not possible to determine failure mode for the tail rotor drive shaft due to damaged frac-
+ture surfaces. As the drive shaft has not deformed along its long axis, it is assessed that the
+tail rotor drive shaft has not failed due to torsion, but to due to bending or buckling.
+
+1.16.3     Engine examination at an authorized maintenance organization
+Under the supervision of SHK, an extensive examination and test run of the helicopter’s
+engine were conducted at an authorised aero engine workshop, in collaboration with a repre-
+sentative of the engine’s type certificate holder.
+
+The examination of the engine revealed no obvious damage or condition that would prevent
+it from producing nominal power. The engine started and operated normally, meeting all
+operational specifications. It produced normal power and responded appropriately to all
+power demands, including sudden throttle and load changes.
+
+1.17       Organisational and management information
+1.17.1     Specialised operations
+Specialised operations (SPO) refer to any operation where the aircraft is used for specialised
+activities such as photography. SPO is regulated by Commission Regulation (EU) No
+965/2012 on aviation operations, Annex VIII8.
+
+
+
+
+8
+ Commission Regulation (EU) No 965/2012 of 5 October 2012 laying down technical requirements and
+administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European
+Parliament and of the Council.
+
+
+
+
+                                                     18 (23)
+The Swedish Accident Investigation Authority                                               SHK 2025:18e
+                                                                                           Final report
+
+
+
+
+1.17.2     The operator
+The operator had an SPO permit issued by the Polish Civil Aviation Authority and was classi-
+fied as a high-risk commercial operator. The permit covered 16 helicopters of three different
+types. The operator had six MD369 helicopters, three of which were model 369E. The
+approval included inspection of power lines.
+
+1.17.3     Operator's safety management system
+The operator had a safety management system that was described in a manual called the
+Management Safety Manual (MSM). The manual also contained a safety policy and informa-
+tion about who was responsible for the safety management system (Safety manager). The
+safety management system process was described in a diagram, see Figure 14. According to
+the manual, identified risks were to be risk assessed and documented in a risk register. The
+operator had identified a specific risk of unanticipated yaw.
+
+
+
+
+Figure 14. The operator's safety management system process. The diagram is taken from the operators MSM.
+
+
+1.18       Additional information
+1.18.1     Loss of tail rotor effectiveness – unanticipated yaw
+Loss of tail rotor effectiveness (LTE) or unanticipated yaw is a known risk in connection with
+flight at low speed and high-power output.
+
+Unanticipated yaw can be described as a rapid yaw in the opposite direction to the rotation
+of the main rotor that takes place without any control input by the pilot. The phenomenon is
+aerodynamic and is not caused by any technical failure, and is instead the result of the tail
+rotor not being able to provide sufficient thrust to maintain directional control. The
+phenomenon occurs when the airflow through the tail rotor is disturbed and can happen at
+airspeeds under 30 knots.
+
+An unanticipated yaw can, if it is not corrected promptly, rapidly turn into uncontrolled
+rotation that can lead to an accident. Data from flight tests has shown that the tail rotor
+blades do not stall during an unanticipated yaw. Avoiding unanticipated yaw requires
+knowledge about the flight conditions that can lead to this phenomenon.
+
+1.18.2     Flight conditions with a risk of unanticipated yaw
+For helicopters, there is a risk of unanticipated yaw when flying at low speed in certain
+conditions, e.g. in connection with relative wind from the tail region.
+
+
+
+
+                                                 19 (23)
+The Swedish Accident Investigation Authority                                     SHK 2025:18e
+                                                                                 Final report
+
+
+
+
+With wind from the tail region, between 120° and 240°, the helicopter’s tail section and tail
+fin act as a weather vane, causing the helicopter to turn into the wind (weathercock stability)
+(see Figure 15). This can result in an unanticipated yaw or an increase of yaw rate.
+
+
+
+
+Figure 15. Weathercock stability, wind from the tail region, 120° to
+240°. Source FAA.
+
+
+1.18.3     Documents containing information about unanticipated yaw
+Unanticipated yaw has been highlighted by both regulators and helicopter manufacturers,
+with information about the phenomenon and how to address it being published. For
+example, the FAA has published information on unanticipated yaw in the Helicopter Flying
+Handbook. Additionally, due to a large number of accidents where unanticipated yaw has
+been a contributing factor, the FAA has issued Advisory Circular FAA AC 90-95.
+
+The EASA has identified unanticipated yaw as a safety issue in the risk register for helicopter
+operations within the European Plan for Aviation Safety for (EPAS) 2023. The safety issue is
+described as related to the inability to detect, control and recover from unanticipated yaw or
+loss of tail rotor effectiveness (LTE) during low-speed flight phases, leading to a loss of
+helicopter control.
+
+In 2010, the EASA published a safety document regarding the risk of unanticipated yaw, SIB
+2010-12R1.
+
+1.18.4     Similar accidents
+Several similar accidents have been investigated by SHK, see final reports SHK 2023:10,
+RL 2022:02, RL 2005:05, RL 2001:31 and RL 2001:19.
+
+
+
+
+                                                     20 (23)
+The Swedish Accident Investigation Authority                                     SHK 2025:18e
+                                                                                 Final report
+
+
+
+
+1.18.5     Actions taken
+None.
+
+1.19       Special methods of investigations
+Not relevant.
+
+
+2. Analysis
+2.1        Preconditions
+The flight was the second of the day and was preceded by a refueling stop at Enköping/-
+Långtora Airport. The helicopter was parked on a grassy area outside a hangar with its nose
+pointing east. According to the load diagram, the take-off weight was 2,811 lbs, which is just
+below the maximum take-off weight of 3,000 lbs. According to SMHI's forecast and analysis,
+the wind was 240º/7 knots. This means that the wind was coming diagonally from behind on
+the right side, although the pilot perceived it as coming from the front.
+
+2.2        Why was control of the helicopter lost?
+After starting the engine, the helicopter hovered up to just above ground level. In connection
+with the hovering, the helicopter began to rotate clockwise. The rotation speed gradually
+increased, and the pilot was unable to stop the rotation. The helicopter rotated while rising
+to a height of approximately 15 metres before descending during rotation. In total, the
+helicopter rotated six times before hitting the ground.
+
+The wind, coming obliquely from behind on the right side, within the range and wind
+strength capable of causing an unanticipated yaw, likely caused the helicopter to yaw
+unexpectedly to the right, turning up to the wind due to weathercock stability, see Figure 16.
+The helicopter's relatively high take-off mass, combined with high power output during the
+hover, may also have contributed to the tail rotor's insufficient thrust capacity.
+
+The pilot's perception that the wind was coming from the front during take-off and hover
+likely contributed to the yaw being unexpected and to a delayed corrective response. As the
+rotation continued, full pedal movements may have been insufficient to counteract the yaw
+moment and stop the rotation. This likely explains why the pilot felt that the rudder inputs
+were ineffective.
+
+
+
+
+                                               21 (23)
+The Swedish Accident Investigation Authority                                     SHK 2025:18e
+                                                                                 Final report
+
+
+
+
+Figure 16. Weathercock stability, wind from behind,
+120° to 240°. Prevailing wind at the time was
+240º/7 knots. The blue wind arrow shows the
+approximate wind direction relative to the helicopter.
+Markings added by SHK.
+
+
+2.3        Survival aspects
+2.3.1      Rescue operation
+The fact that a private individual saw the accident and immediately raised the alarm entailed
+that the rescue operation was initiated without delay. The measures taken appear to have
+been adapted to the needs that arose in connection with the accident. Therefore, SHK has
+not found any reason to examine the rescue operation in more detail.
+
+2.3.2      Position of crew and passengers and the use of seat belts
+The pilot was seated on the left side and the system operator was seated on the right. Both
+crew members were wearing four-point seat belts and helmets. Both helmets sustained
+damage including cracks.
+
+The fact that both were wearing four-point seat belts and helmets likely limited their inju-
+ries.
+
+2.4        Technical examination of the helicopter
+According to the pilot and system operator, no abnormal sounds, warnings or malfunctions
+were perceived before the rotation began.
+
+The technical investigations conducted have not identified any faults that could have
+contributed to the accident. The damage to the helicopter, including the broken drive shaft
+and other damaged components of the yaw control system, is assessed to have occurred
+upon impact.
+
+
+
+
+                                                    22 (23)
+The Swedish Accident Investigation Authority                                    SHK 2025:18e
+                                                                                Final report
+
+
+
+
+3. Conclusions
+3.1        Findings
+    a) The pilot was qualified to perform the flight.
+    b) The helicopter had a Certificate of Airworthiness and a valid ARC.
+    c) At take-off and hover, the relative wind was obliquely from behind, from the right
+       side.
+    d) The helicopter began to rotate and the pilot was unable to stop the rotation.
+    e) Analysis of sensor data from the helicopter's measurement system showed that the
+       helicopter rotated six times.
+    f) The crew wore helmets and had four-point seat belts which contributed to reduce
+       their injuries.
+    g) The operator had identified a specific risk of unanticipated yaw.
+    h) The measures taken by the emergency services appear to have been adapted to the
+       needs that arose in connection with the accident.
+    i) No technical fault has been identified that could have contributed to the accident.
+    j) The damage to the helicopter, including the broken drive shaft and other damaged
+       components of the yaw control system, is assessed to have occurred upon impact.
+
+3.2        Causes and Contributing Factors
+During take-off, the helicopter operated at high power output and a relatively high take-off
+weight. The relative wind was coming from the rear on the right side, which contributed to
+the helicopter's fin acting like a weather vane. These conditions likely exceeded the tail
+rotor's thrust capacity, resulting in an unanticipated right yaw that developed into an uncon-
+trolled rotation.
+
+Contributing factors:
+
+The pilot's perception that the wind was coming from the front likely contributed to the yaw
+being unexpected.
+
+
+4. Safety recommendations
+None.
+
+
+On behalf of the Swedish Accident Investigation Authority,
+
+
+
+
+Jonas Bäckstrand                               Tony Arvidsson
+
+
+
+
+                                               23 (23)
+

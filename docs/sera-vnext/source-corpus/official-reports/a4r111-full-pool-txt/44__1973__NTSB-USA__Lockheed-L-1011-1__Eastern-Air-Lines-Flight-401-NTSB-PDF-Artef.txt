@@ -1,0 +1,396 @@
+                                                                                     Coordinates: 25°51′53″N 80°35′43″W
+
+
+Eastern Air Lines Flight 401
+Eastern Air Lines Flight 401 was a scheduled flight
+from New York JFK to Miami. Shortly before midnight                    Eastern Air Lines Flight 401
+on December 29, 1972, the Lockheed L-1011-1 TriStar
+crashed into the Florida Everglades,[1][2][3] causing 101
+total fatalities. Three of the four cockpit crew members,
+two of the 10 flight attendants, and 96 of the 163
+passengers were killed; 75 people survived.
+
+The crash occurred while the entire flight crew were
+preoccupied with a burnt-out landing gear indicator
+light. They failed to notice that the autopilot had been
+disconnected inadvertently and, subsequently, the
+aircraft gradually lost altitude and crashed. This was the       N310EA, the aircraft involved in the accident.
+first fatal crash of a wide-body aircraft.[4] It was also the
+                                                                                   Accident
+first hull loss and fatal crash of a Lockheed L-1011
+TriStar.[4]                                                     Date              December 29, 1972
+                                                                Summary           Controlled flight into terrain
+                                                                                  due to pilot error and loss of
+Aircraft                                                                          situational awareness
+                                                                Site              Florida Everglades
+Eastern Air Lines Flight 401 was a regularly scheduled                            near Miami International
+flight from John F. Kennedy International Airport in                              Airport
+Queens, New York, to Miami International Airport in                               Miami-Dade County, Florida,
+Miami, Florida. On the day of the crash, Flight 401 was                           U.S.
+operated using a Lockheed L-1011-1 TriStar                                        25°51′53″N 80°35′43″W
+(registration N310EA), which had been delivered to the
+                                                                                   Aircraft
+airline on August 18, 1972.[5]: 30 [6]: 99 The aircraft was
+fleet number 310, and the 10th TriStar delivered to the         Aircraft type     Lockheed L-1011-385-1
+carrier.[6]                                                                       TriStar
+                                                                Operator          Eastern Air Lines
+
+Flight crew                                                     IATA flight No.   EA401
+                                                                ICAO flight No.   EAL401
+The flight was commanded by Captain Robert Albin                Call sign         EASTERN 401
+(Bob) Loft, age 55, a veteran pilot ranked 50th in              Registration      N310EA
+seniority at Eastern Air Lines. Captain Loft had been           Flight origin     John F. Kennedy Int'l Airport
+with the airline for 32 years and had accumulated a
+                                                                Destination       Miami International Airport
+total of 29,700 flight hours throughout his flying career.
+He had logged 280 hours in the L-1011. His flight crew          Occupants         176
+included First Officer Albert John "Bert" Stockstill, 39,       Passengers        163
+who had 5,800 hours of flying experience (with 306 of           Crew              13
+them in the L-1011), and Flight Engineer Donald Louis           Fatalities        101 (initially 99)
+"Don" Repo, 51, who had 15,700 hours of flying
+                                                                Injuries          75
+experience, with 53 of them in the L-1011.[5]: 27–29
+                                                                Survivors         75 (initially 77)
+A company employee—technical officer Angelo Donadeo, 47, returning to Miami from an assignment
+in New York—accompanied the flight crew for the journey, but was officially an off-duty, "nonrevenue
+passenger".[5]: 6 [6]: 98
+
+Flight and crash
+                                   Flight 401 departed JFK Airport in New York on Friday, December
+                                   29, 1972, at 21:20 EST, with 163 passengers and 13 crew members
+                                   aboard.[5]: 3
+
+                                   The flight was routine until 23:32, when the airplane began its
+                                   approach into Miami International Airport. After lowering the gear,
+                                   First Officer Stockstill noticed that the landing gear indicator, a green
+                                   light identifying that the nose gear is properly locked in the "down"
+The aircraft flightpath summary,   position, had not illuminated.[5]: 3 This was later discovered to be due
+as shown in the NTSB report.
+                                   to a burned-out light bulb.[5]: 9 The landing gear could have been
+                                   manually lowered, nonetheless.[6]: 101 The pilots cycled the landing
+                                   gear, but still failed to get the confirmation light.[5]: 3
+
+Loft, who was working the radio during this leg of the flight, told the tower that they would
+discontinue their approach to their airport and requested to enter a holding pattern. The approach
+controller cleared the flight to climb to 2,000 ft (610 m), and then hold west over the Everglades.[5]: 3
+
+The cockpit crew removed the light assembly,[6]: 102 and Second Officer Repo was dispatched to the
+avionics bay beneath the flight deck to check via a small porthole whether the landing gear was indeed
+down.[5]: 4 Fifty seconds after reaching their assigned altitude, Captain Loft instructed First Officer
+Stockstill to put the L-1011 on autopilot.[5]: 4 For the next 80 seconds, the airplane maintained level
+flight. Then, it dropped 100 ft (30 m), and then again flew level for two more minutes, after which it
+began a descent so gradual it could not be perceived by the crew.[5]: 4 In the next 70 seconds, the
+airplane lost only 250 ft (76 m), but this was enough to trigger the altitude warning C-chord chime
+located under the engineer's workstation.[5]: 4 The engineer (Repo) had gone below, and no indication
+was heard of the pilots' voices recorded on the CVR that they heard the chime. In another 50 seconds,
+the plane was at half its assigned altitude.[5]: 5
+
+As Stockstill started another turn, onto 180°, he noticed the discrepancy. The following conversation
+was recovered from the flight voice recorder later:
+
+            Stockstill: We did something to the altitude.
+            Loft: What?
+            Stockstill: We're still at 2,000 feet, right?
+            Loft: Hey—what's happening here?[5]: 5
+
+Less than 10 seconds after this exchange, the jetliner crashed:
+
+     Cockpit area microphone (CAM): [Sound of click]
+     CAM: [Sound of six beeps similar to radio altimeter increasing in rate]
+     CAM: [Sound of initial impact][5]: 5
+
+The location was west-northwest of Miami, 18.7 mi (30.1 km) from the end of runway 9L.[5]: 5 The
+airplane was traveling at 227 miles per hour (197 kn; 365 km/h) when it hit the ground. With the
+aircraft in mid-turn, the left wingtip hit the surface first, then the left engine and the left landing
+gear,[5]: 8 making three trails through the sawgrass, each 5 ft (1.5 m) wide and more than 100 ft (30 m)
+long. When the main part of the fuselage hit the ground, it continued to move through the grass and
+water, breaking up as it went.
+
+
+Crash sequence
+
+The TriStar's port outer wing structure struck the ground first, followed by the number 1 engine and
+the port main undercarriage. The disintegration of the aircraft that followed scattered wreckage over
+an area 1,600 ft (500 m) long and 330 ft (100 m) wide in a southwesterly direction. Only small
+fragments of metal marked the wingtip's first contact, followed 49 ft (15 m) further on by three
+massive 115 ft (35 m) swaths cut through the mud and sawgrass by the aircraft's extended
+undercarriage before two of the legs were sheared off. Then came scattered parts from the number 1
+(port) engine, and fragments from the port wing itself and the port tailplane. About 490 feet (150 m)
+from the wingtip's initial contact with the ground, the massive fuselage had begun to break up,
+scattering components from the underfloor galley, the cargo compartments, and the cabin interior. At
+820 ft (250 m) along the wreckage trail, the outer section of the starboard wing tore off, gouging a 59-
+foot-long (18 m) crater in the soft ground as it did so. From this point on, the breakup of the fuselage
+became more extensive, scattering metal fragments, cabin fittings, and passenger seats widely.
+
+The three major sections of the fuselage—the most intact of which was the tail assembly—lay in the
+mud towards the end of the wreckage trail. The fact that the tail assembly—rear fuselage, number 2
+tail-mounted engine, and remains of the empennage—finally came to rest substantially further
+forward than other major sections, was probably the result of the number 2 engine continuing to
+deliver thrust during the actual breakup of the aircraft. No complete cross-section of the passenger
+cabin remained, and both the port wing and tailplane were demolished to fragments. Incongruously,
+not far from the roofless fuselage center section with the inner portion of the starboard wing still
+attached, lay a large, undamaged and fully inflated rubber dinghy, one of a number carried on the
+TriStar in the event of an emergency water landing. The breakup of the fuselage had freed it from its
+stowage and activated its inflation mechanism.[6]: 107–109
+
+
+Rescue and aftermath
+Robert "Bud" Marquis (1929–2008),[7] an airboat pilot, was out frog gigging with Ray Dickinsin
+(1929–1988) when they witnessed the crash. They rushed to rescue survivors. Marquis received burns
+to his face, arms, and legs—a result of spilled jet fuel from the crashed TriStar—but continued
+shuttling people in and out of the crash site that night and the next day. For his efforts, he received the
+Humanitarian Award from the National Air Disaster Alliance/Foundation and the "Alumitech –
+Airboat Hero Award", from the American Airboat Search and Rescue Association.[8]
+
+In all, 75 survived the crash—67 of the 163 passengers and eight of the 10 flight attendants.[4] Despite
+their own injuries, the surviving flight attendants were credited with helping other survivors and
+several quick-thinking actions such as warning survivors of the danger of striking matches due to jet
+fuel in the swamp water[9] and singing Christmas carols to keep up hope and draw the rescue teams'
+attention, as flashlights were not part of the standard equipment on commercial airliners at the time.
+Of the cockpit crew, only flight engineer Repo survived the initial crash, along with technical officer
+Donadeo, who was down in the nose electronics bay with Repo at the moment of impact.[6]: 102, 108
+Stockstill was killed on impact, while Captain Loft died in the wreckage of the flight deck before he
+could be transported to a hospital. Repo was evacuated to a hospital, but later died from his
+injuries.[6]: 107–108 Donadeo, the lone survivor of the four flight-deck occupants, recovered from his
+injuries. Frank Borman, a former NASA astronaut and Eastern's senior vice president of operations,
+was awoken at home by a telephone call explaining of a probable crash. He immediately drove to
+Eastern's Miami offices and decided to charter a helicopter to the crash site, as the swampy terrain
+made rescue difficult, and Eastern Airlines had not heard any news of progress in rescue efforts. There
+he was able to land in a swampy patch of grass and coordinate rescue efforts. He accompanied 3
+survivors on the helicopter to a hospital including a flight attendant and passenger who lost her baby
+in the crash. James Hall, Flight Operations and Safety, Miami office, had the task of notifying all the
+families of the crash victims.[10]
+
+Most of the dead were passengers in the aircraft's midsection.[11] The swamp absorbed much of the
+energy of the crash, lessening the impact on the aircraft. The mud of the Everglades may have blocked
+wounds sustained by survivors, preventing them from bleeding to death. However, it also complicated
+the survivors' recuperation, as organisms in the swamp caused infection, with the potential for gas
+gangrene. Eight passengers became infected; doctors used hyperbaric chambers to treat the
+infections.[9] All the survivors were injured; 60 received serious injuries and 17 suffered minor injuries
+that did not require hospitalization.[6]: 108 The most common injuries were fractures of ribs, spines,
+pelvises, and lower extremities. Fourteen survivors had various degrees of burns.[5]: 6 [a]
+
+
+Investigation
+The National Transportation Safety Board (NTSB) investigation discovered that the autopilot had
+been inadvertently switched from altitude hold to control wheel steering (CWS) mode in pitch.[5]: 23 In
+this mode, once the pilot releases pressure on the yoke (control column or wheel), the autopilot
+maintains the pitch attitude of the aircraft until the yoke is again moved. Investigators believe the
+autopilot switched modes when the captain accidentally leaned against the yoke while turning to
+speak to the flight engineer, who was sitting behind and to the right of him. The slight forward
+pressure on the stick would have caused the aircraft to enter a slow descent, maintained by the CWS
+system.[6]: 110
+
+Investigation into the aircraft's autopilot showed that the force required to switch to CWS mode was
+different between the A and B channels (15 and 20 lbf or 65 and 90 N, respectively). Thus, the
+switching to CWS in channel A possibly did not occur in channel B, thus depriving the first officer of
+any indication the mode had changed (channel A provides the captain's instruments with data, while
+channel B provides the first officer's).[5]: 13
+
+After the aircraft had descended 250 feet (76 m) from the selected altitude of 2,000 feet (610 m), a C-
+chord sounded from the rear speaker.[5]: 4 This altitude alert, designed to warn the pilots of an
+inadvertent deviation from the selected altitude, went unnoticed by the crew.[5]: 23 Investigators
+believe this was due to the crew being distracted by the nose gear light, and because the flight engineer
+was not in his seat when it sounded, so would not have been able to hear it.[6]: 110 Visually, since it was
+nighttime and the aircraft was flying over the darkened terrain of the Everglades, no ground lights or
+other visual signs indicated the TriStar was slowly descending.
+
+Captain Loft was found during the autopsy to have an undetected brain tumor in an area that controls
+vision.[5]: 6, 16 [9] However, the NTSB concluded that the captain's tumor did not contribute to the
+accident.[5]: 22 [6]: 109
+
+Cause
+The final NTSB report cited the cause of the crash as pilot error, specifically: "the failure of the flight
+crew to monitor the flight instruments during the final four minutes of flight, and to detect an
+unexpected descent soon enough to prevent impact with the ground. Preoccupation with a
+malfunction of the nose landing gear position indicating system distracted the crew's attention from
+the instruments and allowed the descent to go unnoticed."[5]: 23–24
+
+In response to this and other accidents during the 1970s, many airlines started crew resource
+management training for their pilots.[12][13] The training is designed to make problem solving in a
+cockpit much more efficient, thus causing less distraction for the crew. Flashlights are now standard
+equipment near jumpseats, and all jumpseats are outfitted with shoulder harnesses.[14]
+
+
+Reported ghost sightings
+During the following months and years, stories began circulating that employees of Eastern Air Lines,
+and numerous passengers, had reported sightings of the dead crew members, captain Robert Loft and
+second officer (flight engineer) Donald Repo, sitting aboard other L-1011s (including, in particular,
+N318EA).[15][16][17]
+
+These stories speculated that parts of the crashed aircraft were salvaged after the investigation and
+refitted into other L-1011s.[15][18] The reported hauntings were said to be seen only on the planes that
+used the spare parts.[15][16] Gossip regarding the sighting of the spirits of Don Repo and Bob Loft
+spread throughout Eastern Air Lines to the extent that Eastern's management warned employees that
+they could be dismissed if caught spreading ghost stories.[16]
+
+While Eastern Air Lines publicly denied their planes were haunted, they reportedly removed all the
+salvaged parts from their L-1011 fleet.[17] Over time, the reporting of ghost sightings stopped. An
+original floor board from Flight 401 remains in the archives at History Miami in South Florida.[19]
+Pieces of Flight 401's wreckage can also be found in Ed and Lorraine Warren's Occult Museum in
+Monroe, Connecticut.[20]
+
+The story of the crash and its aftermath were documented in John G. Fuller's 1976 book The Ghost of
+Flight 401. Fuller recounts stories of paranormal events aboard other Eastern aircraft and the belief
+that these were caused by equipment salvaged from the wreckage of Flight 401.[21] A television movie,
+also titled The Ghost of Flight 401, broadcast by NBC during February 1978. Based on Fuller's book, it
+emphasized the ghost sightings. On his 1979 album Three Hearts, musician Bob Welch also recorded
+a song titled "The Ghost of Flight 401".
+
+Eastern Air Lines CEO (and former Apollo astronaut) Frank Borman termed the ghost stories about
+the crash "garbage".[22] Eastern considered suing for libel, based on assertions of a cover-up by
+Eastern executives, but Borman opted not to, feeling a lawsuit would merely provide more publicity
+for the book.[22] Loft's widow and children did sue Fuller, for infringement of Loft's right of publicity,
+for invasion of privacy, and for intentional infliction of emotional distress, but the lawsuit was
+dismissed and the dismissal upheld by the Florida Fourth District Court of Appeal.[23]
+
+According to Robert J. Serling's 1980 book From the Captain to the Colonel: An Informal History of
+Eastern Airlines, the claim that wreckage from Flight 401 was installed and later removed from other
+Eastern aircraft was false, and no Eastern employees had ever claimed to have seen or believed in the
+alleged ghost sightings. Skeptic Brian Dunning claims that the origin for the ghost sightings was a joke
+made by an Eastern Air Lines captain after an emergency landing in which he quipped that he
+"thought [Don] Repo's ghost was on the plane."[22][24]
+
+
+In popular culture
+The crash was documented in Rob and Sarah Elder's 1977 book Crash.[25] A television movie of the
+same name was broadcast in October 1978. Based on the book, it dramatized the crash, rescue efforts,
+and NTSB investigation. Eddie Albert featured as "Dunn", a fictionalized version of Captain Robert
+Loft.
+
+The television movie The Ghost of Flight 401, which was broadcast on NBC during February 1978,
+offers a fictionalized depiction of the crash and alleged ghost sightings.
+
+The flight is referenced as part of the Bob Welch song "The Ghost of Flight 401" on his 1979 album
+Three Hearts.
+
+Footage of the incident appeared in the movie Days of Fury (1980), directed by Fred Warshofsky and
+hosted by Vincent Price.
+
+The accident and the subsequent ghost story were mentioned by Dan Aykroyd during his appearance
+on The Tonight Show Starring Johnny Carson on June 6, 1984.
+
+The crash was featured in season five of the Discovery Channel Canada / National Geographic TV
+series Mayday, in a 2009 episode called "Fatal Distraction".[9]
+
+It is featured in season 1, episode 3, of the TV show Why Planes Crash, in an episode called "Human
+Error" (2010).
+
+A similar situation appeared in the Thai movie Dark Flight, directed by Kongkiat Khomsiri, produced
+in 2012.
+
+The Ghosts of Flight 401, part of the Discovery+ series Shock Docs, emphasizes the supernatural
+legacy of the crash.[26]
+
+Flight 401 is mentioned in the TV show Supernatural Season 1 Episode 4 named Phantom Traveler's.
+[27]
+
+
+
+See also
+         Aviation portal
+
+         Florida portal
+         United States
+         portal
+
+       Eastern Air Lines Flight 212, a 1974 Eastern Airlines CFIT accident caused by pilot distraction
+       Lady Be Good, a B-24 which was similarly reputed to be cursed after salvaged parts from it were
+       reused in other aircraft
+       Scandinavian Airlines System Flight 933, a 1969 accident in which the crew were distracted by
+       possible landing gear problems
+   Third man factor, an apparent sense that another person is present
+   United Airlines Flight 173, a 1978 accident in which the crew were distracted by possible landing
+   gear problems
+   ValuJet Airlines Flight 592, a 1996 accident in which an aircraft crashed into the Florida
+   Everglades not far from where Flight 401 crashed
+
+
+Notes
+ a. The NTSB classified the injuries of one nonrevenue passenger and one other passenger as
+    nonfatal, as their deaths occurred more than seven days after the accident. The death toll per the
+    final accident report was 99.
+
+
+References
+ 1. "Airliner carrying 167 crashes in Everglades" (https://news.google.com/newspapers?id=PKlVAAAA
+    IBAJ&pg=5371%2C7839479). Eugene Register-Guard. (Oregon). wire service reports. December
+    30, 1972. p. 1A.
+ 2. "Giant jetliner goes down in 'gator infested swamp" (https://news.google.com/newspapers?id=nTo
+    TAAAAIBAJ&pg=6073%2C1518539). The Bulletin. (Bend, Oregon). UPI. December 30, 1972.
+    p. 1.
+ 3. "Jet's fall cushioned by swamp" (https://news.google.com/newspapers?id=2I0jAAAAIBAJ&pg=651
+    4%2C5011882). Reading Eagle. (Pennsylvania). Associated Press. December 31, 1972. p. 1.
+ 4. Accident description (https://aviation-safety.net/database/record.php?id=19721229-0) at the
+    Aviation Safety Network
+ 5. "Eastern Airlines, Inc. L-1011, N310EA, Miami, Florida, December 29, 1972" (https://www.ntsb.go
+    v/investigations/AccidentReports/Reports/AAR7314.pdf) (PDF). Aircraft Accident Report. National
+    Transportation Safety Board. June 14, 1973. NTSB/AAR-73/14. Retrieved February 8, 2016.
+ 6. Job, Macarthur (1994). "Chapter 12: Hey - what's happening here?". Air Disaster Volume 1.
+    Aerospace Publications Pty Ltd. pp. 98–111. ISBN 1-875671-11-0.
+ 7. "Robert "Bud" Marquis's Obituary on San Francisco Chronicle" (http://www.legacy.com/obituaries/s
+    fgate/obituary.aspx?pid=120589444). San Francisco Chronicle. Retrieved December 10, 2017.
+ 8. "Crash Survivors Honor Everglades Hero" (http://www.prweb.com/releases/2007/12/prweb574587.
+    htm). PRWeb. December 7, 2007. Retrieved December 10, 2017.
+ 9. "Fatal Distraction". Mayday. Season 5. 2007. Discovery Channel Canada / National Geographic
+    Channel.
+10. "Borman Praises Survivors' Calm" (https://www.newspapers.com/clip/33369414/borman_praises_
+    survivors_calm/). Fort Lauderdale News. December 31, 1972. p. 18. Retrieved December 27,
+    2019.
+11. Yanez, Luisa (October 12, 2012). "PART TWO: THE CRASH "It felt like a wild rollercoaster ride..."
+    (https://web.archive.org/web/20121012045633/http://www.miamiherald.com/multimedia/news/flight
+    401/crash.html) The Miami Herald. Archived from the original (http://www.miamiherald.com/multim
+    edia/news/flight401/crash.html) on October 12, 2012. Retrieved December 30, 2012.
+12. "Lessons Learned" (https://lessonslearned.faa.gov/ll_main.cfm?TabID=3&LLID=8).
+    lessonslearned.faa.gov. Federal Aviation Administration.
+13. "A Lesson on the Importance of Crew Resource Management" (https://airlinegeeks.com/2017/01/0
+    8/a-lesson-on-the-importance-of-crew-resource-management/). AirlineGeeks.com. January 8,
+    2017.
+14. "Lessons Learnt from the Crash of Eastern 401" (http://www.frequentbusinesstraveler.com/2013/1
+    2/lessons-learnt-from-the-crash-of-eastern-401/). Retrieved December 31, 2013.
+15. Jenkins, Greg. (2005) Florida's Ghostly Legends and Haunted Folklore, Vol 1 pp 35-40 Sarasota,
+    FL: Pineapple Press, Inc.
+16. Floyd, E. Randall. (2002) In the Realm of Ghosts and Hauntings pp 64-67 Boyne City, Michigan:
+    Harbor House
+17. Hauck, Dennis William. (2002) Haunted Places" London: Penguin
+18. Floyd, E. Randall. (2002) In the Realm of Ghosts and Hauntings pp 64-70 Boyne City, Michigan:
+    Harbor House
+19. "Lotto Scam, Somali Pirates, Haunted Plane". Mysteries at the Museum. October 4, 2010. Travel
+    Channel.
+20. "Archived copy" (https://web.archive.org/web/20220424213048/https://www.facebook.com/pages/
+    The-Warrens-Occult-Museum/126070474135029?sk=photos_albums). Facebook. Archived from
+    the original (https://www.facebook.com/pages/The-Warrens-Occult-Museum/126070474135029?s
+    k=photos_albums) on April 24, 2022. Retrieved December 24, 2019.
+21. "The Ghost of Flight 401" (http://www.goodreads.com/book/show/1542032.The_Ghost_of_Flight_4
+    01). Goodreads. Retrieved July 22, 2017.
+22. Serling, Robert J. (1980). From the Captain to the Colonel: An Informal History of Eastern Airlines.
+    Doubleday. pp. 490–491. ISBN 0-385-27047-X. OCLC 5447734 (https://www.worldcat.org/oclc/54
+    47734).
+23. Loft v. Fuller, 408 So. 2nd 619 (http://www.leagle.com/xmlResult.aspx?xmldoc=19811027408So2d
+    619_2982.xml&docbase=CSLWAR1-1950-1985) (Fla. App. December 16, 1981).
+24. Dunning, Brian (March 21, 2017). "Grounding the Ghost of Flight 401" (https://skeptoid.com/episo
+    des/4563). Skeptoid Podcast (Podcast). Skeptoid Media. Retrieved July 30, 2020.
+25. Elder, Rob; Elder, Sarah (1977). Crash (https://archive.org/details/crash0000elde). Atheneum,
+    New York. ISBN 0-689-10758-7.
+26. " 'Ghostober' Delivers More Than 55 Hours of Must-See Programming from Travel Channel, Food
+    Network and Discovery+" (https://www.travelchannel.com/ghostober/articles/ghostober-2022-lineu
+    p).
+27. "1.04 Phantom Traveler - Super-wiki" (http://www.supernaturalwiki.com/1.04_Phantom_Traveler).
+
+
+External links
+   NTSB Summary (https://www.ntsb.gov/_layouts/ntsb.aviation/brief.aspx?ev_id=66756&key=0)
+   Flight 401 Survivors (http://eastern401.googlepages.com/)
+   Flight 401 Survivors Tribute Fund (http://www.flight401.com)
+   CVR transcript (http://aviation-safety.net/investigation/cvr/transcripts/cvr_ea401.php)
+   The Crash of Eastern Airlines Flight 401 (http://eastern401.googlepages.com/home)
+   "Eastern Flight 401 The Story of the Crash (http://www.miamiherald.com/multimedia/news/flight40
+   1/)." The Miami Herald. Multimedia presentation on flight 401.
+   The Crash of Eastern Air Lines Flight 401-Epilogue (https://sites.google.com/site/eastern401/epilo
+   gue)
+   Crash (https://www.imdb.com/title/tt0077377/) at IMDb
+   The Ghost of Flight 401 (https://www.imdb.com/title/tt0077610/) at IMDb
+   ASN Aircraft accident Lockheed L-1011-385-1 TriStar 1 N310EA Everglades, FL (http://aviation-saf
+   ety.net/database/record.php?id=19721229-0)
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Eastern_Air_Lines_Flight_401&oldid=1142572336"
+

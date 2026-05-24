@@ -1,3 +1,13 @@
+> ARCHIVED / NOT ACTIVE  
+> Reason:  
+> - INVALID_METHOD_CONTAMINATION  
+> - SUPERSEDED  
+> Usage:  
+> - Do not use for SERA reference cases.  
+> - Do not use for front-end calibration proof.  
+> - Do not use for author approval.  
+> - Historical record only.  
+
 > A4+R-98 STATUS: INVALID_FOR_REFERENCE_USE / NONCANONICAL_TRACE  
 > Reason: this document contains or depends on reconstructed/generic question flow rather than exact canonical SERA tree questions.  
 > Do not use for front-end calibration, reference case proof, author approval, release decision, or methodology demonstration.  

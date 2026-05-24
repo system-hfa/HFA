@@ -1,3 +1,13 @@
+> ARCHIVED / NOT ACTIVE  
+> Reason:  
+> - INVALID_METHOD_CONTAMINATION  
+> - PRE_CANONICAL  
+> Usage:  
+> - Do not use for SERA reference cases.  
+> - Do not use for front-end calibration proof.  
+> - Do not use for author approval.  
+> - Historical record only.  
+
 # SERA Engine vNext Withdrawn Boundary Reference Pack A4R96 v0.2.0
 
 > A4+R-98 STATUS: INVALID_FOR_REFERENCE_USE / NONCANONICAL_TRACE  
@@ -22,7 +32,7 @@ NO_DOWNSTREAM
 Register completion of the first withdrawn/boundary reference trace pack for the three P-axis pilot releases withdrawn in A4+R-92.
 
 ## Pack File
-- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-PACK-A4R96.md`
+- `docs/sera-vnext/archive/invalid-methodology/pre-canonical/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-PACK-A4R96.md`
 
 ## Cases Included
 - REAL-EVENT-0015 (previous P-G, withdrawn)

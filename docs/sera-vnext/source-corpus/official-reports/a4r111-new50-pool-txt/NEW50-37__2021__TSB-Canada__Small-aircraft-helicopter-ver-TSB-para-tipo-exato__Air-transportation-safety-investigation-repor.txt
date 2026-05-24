@@ -1,0 +1,1670 @@
+AIR TRANSPORTATION SAFETY
+INVESTIGATION REPORT A20Q0015
+
+CONTROLLED FLIGHT INTO TERRAIN
+
+
+Service aérien gouvernemental of Quebec
+Bell 206L-4 (helicopter), C-GSQA
+Lac Saint-Jean, Quebec
+22 January 2020
+                                                                              TRANSPORTATION SAFETY BOARD OF CANADA | 2
+
+
+
+ABOUT THIS INVESTIGATION REPORT
+This report is the result of an investigation into a class 3 occurrence. For more information, see the Policy on
+Occurrence Classification at www.tsb.gc.ca
+The Transportation Safety Board of Canada (TSB) investigated this occurrence for the purpose of advancing
+transportation safety. It is not the function of the Board to assign fault or determine civil or criminal liability.
+
+TERMS OF USE
+Use in legal, disciplinary or other proceedings
+
+The Canadian Transportation Accident Investigation and Safety Board Act states the following:
+• 7(3) No finding of the Board shall be construed as assigning fault or determining civil or criminal liability.
+• 7(4) The findings of the Board are not binding on the parties to any legal, disciplinary or other proceedings.
+
+Therefore, the TSB’s investigations and the resulting reports are not created for use in the context of legal, disciplinary
+or other proceedings.
+
+Notify the TSB in writing if this investigation report is being used or might be used in such proceedings.
+Non-commercial reproduction
+
+Unless otherwise specified, you may reproduce this investigation report in whole or in part for non-commercial
+purposes, and in any format, without charge or further permission, provided you do the following:
+• Exercise due diligence in ensuring the accuracy of the materials reproduced.
+• Indicate the complete title of the materials reproduced and name the Transportation Safety Board of Canada as the
+  author.
+• Indicate that the reproduction is a copy of the version available at [URL where original document is available].
+
+Commercial reproduction
+Unless otherwise specified, you may not reproduce this investigation report, in whole or in part, for the purposes of
+commercial redistribution without prior written permission from the TSB.
+
+Materials under the copyright of another party
+
+Some of the content in this investigation report (notably images on which a source other than the TSB is named) is
+subject to the copyright of another party and is protected under the Copyright Act and international agreements. For
+information concerning copyright ownership and restrictions, please contact the TSB.
+
+Citation
+
+Transportation Safety Board of Canada, Air Transportation Safety Investigation Report A20Q0015 (released
+01 December 2021).
+Transportation Safety Board of Canada
+200 Promenade du Portage, 4th floor
+Gatineau QC K1A 1K8
+819-994-3741; 1-800-387-3557
+www.tsb.gc.ca
+communications@tsb.gc.ca
+
+© Her Majesty the Queen in Right of Canada, as represented by the Transportation Safety Board of Canada, 2021
+
+Air transportation safety investigation report A20Q0015
+Cat. No. TU3-10/20-0015E-PDF
+ISBN: 978-0-660-41048-7
+
+This report is available on the website of the Transportation Safety Board of Canada at www.tsb.gc.ca
+
+Le présent rapport est également disponible en français.
+                                                                        AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 3
+
+
+
+Table of contents
+
+1.0   Factual information ................................................................................................. 6
+      1.1        History of the flight.................................................................................................................................... 6
+      1.2        Injuries to persons ...................................................................................................................................... 7
+      1.3        Damage to aircraft ..................................................................................................................................... 7
+      1.4        Other damage .............................................................................................................................................. 7
+      1.5        Personnel information .............................................................................................................................. 8
+      1.6        Aircraft information ................................................................................................................................... 8
+                 1.6.1          Altimeters ...................................................................................................................................... 9
+      1.7        Meteorological information .................................................................................................................10
+                 1.7.1          Lighting conditions..................................................................................................................11
+      1.8        Aids to navigation ....................................................................................................................................15
+                 1.8.1          Visual flight rules navigation charts ..................................................................................15
+      1.9        Communications .......................................................................................................................................15
+      1.10 Aerodrome information .........................................................................................................................15
+      1.11 Flight recorders .........................................................................................................................................15
+      1.12 Wreckage and impact information....................................................................................................17
+                 1.12.1         General .........................................................................................................................................17
+                 1.12.2         Accident site ...............................................................................................................................17
+                 1.12.3         Laboratory examination of the wreckage .......................................................................18
+      1.13 Medical and pathological information.............................................................................................19
+      1.14 Fire ..................................................................................................................................................................19
+      1.15 Survival aspects .........................................................................................................................................19
+      1.16 Tests and research ...................................................................................................................................20
+                 1.16.1         TSB laboratory reports ...........................................................................................................20
+      1.17 Organizational and management information .............................................................................21
+                 1.17.1         Service aérien gouvernemental of Quebec company operations manual ........21
+                 1.17.2         Training ........................................................................................................................................23
+      1.18 Additional information ...........................................................................................................................23
+                 1.18.1         Spatial awareness .....................................................................................................................23
+                 1.18.2         Visibility, visual references, and visual cues ...................................................................24
+                 1.18.3         Risk management ....................................................................................................................25
+                 1.18.4         TSB investigation reports ......................................................................................................26
+      1.19 Useful or effective investigation techniques .................................................................................28
+
+2.0   Analysis ................................................................................................................... 29
+      2.1        Flat light .......................................................................................................................................................29
+      2.2        Training.........................................................................................................................................................29
+      2.3        Management of operational hazards ...............................................................................................30
+      2.4        Flight progression ....................................................................................................................................31
+                 2.4.1          Pre-flight preparation .............................................................................................................31
+                                                                                                     TRANSPORTATION SAFETY BOARD OF CANADA | 4
+
+
+                  2.4.2          The flight......................................................................................................................................32
+                  2.4.3          Collision with the surface of the lake ...............................................................................33
+
+3.0     Findings ................................................................................................................... 36
+        3.1       Findings as to causes and contributing factors ............................................................................36
+        3.2       Findings as to risk .....................................................................................................................................36
+        3.3       Other findings ............................................................................................................................................37
+
+4.0     Safety action ........................................................................................................... 38
+        4.1       Safety action taken ..................................................................................................................................38
+
+Appendices....................................................................................................................... 39
+        Appendix A – TSB investigations in which conditions known to affect pilot spatial awareness
+             were identified ...........................................................................................................................................39
+                                            AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 5
+
+
+
+
+AIR TRANSPORTATION SAFETY
+INVESTIGATION REPORT A20Q0015
+
+CONTROLLED FLIGHT INTO TERRAIN
+
+Service aérien gouvernemental of Quebec
+Bell 206L-4 (helicopter), C-GSQA
+Lac Saint-Jean, Quebec
+22 January 2020
+
+
+The Transportation Safety Board of Canada (TSB) investigated this occurrence for the purpose of
+advancing transportation safety. It is not the function of the Board to assign fault or determine
+civil or criminal liability. This report is not created for use in the context of legal, disciplinary or
+other proceedings. See the Terms of use on page ii.
+
+
+Summary
+On the morning of 22 January 2020, 2 helicopters operated by Quebec’s Service aérien
+gouvernemental took off from the Montréal/St-Hubert Airport (CYHU), Quebec, at 0750
+Eastern Standard Time, bound for Saint-Henri-de-Taillon, Quebec, to provide air support to
+a search for snowmobilers who had been reported missing the day before.
+Early in the afternoon, one of the 2 helicopters, the Bell 206L-4 (registration C-GSQA, serial
+number 52060), was released from this assignment, and the pilot, alone on board, took off
+from Saint-Henri-de-Taillon at 1402, bound for the La Tuque Aerodrome (CYLQ), Quebec.
+Approximately 7 minutes after takeoff, the helicopter struck the frozen, snow-covered
+surface of Lac Saint-Jean. The aircraft was destroyed but there was no post-impact fire.
+Despite serious injuries, the pilot was able to egress from the aircraft and call the Service
+aérien gouvernemental dispatcher to report the accident.
+The dispatcher notified the pilot of the 2nd helicopter involved in the search. That pilot
+went to the scene of the accident accompanied by 2 first responders. The helicopter landed
+at approximately 1445, then took off again to evacuate the injured pilot to the hospital in
+Roberval, Quebec.
+
+The emergency locator transmitter in the occurrence helicopter activated. The signal was
+detected by the Canadian Mission Control Centre in Trenton, Ontario, at 1410:34.
+                                                                        TRANSPORTATION SAFETY BOARD OF CANADA | 6
+
+
+
+1.0       FACTUAL INFORMATION
+
+1.1       History of the flight
+          At approximately 0600 1 on the morning of 22 January 2020, Quebec’s Service aérien
+          gouvernemental (SAG) dispatcher contacted the occurrence helicopter pilot to tell him that
+          he needed to fly to Saint-Henri-de-Taillon, Quebec, with another helicopter to provide air
+          support to a search for snowmobilers who had been reported missing the day before. The
+          pilot completed the pre-flight planning and loaded the necessary rescue equipment into the
+          Bell 206L-4 helicopter (registration C-GSQA, serial number 52060).
+          The 2 SAG helicopters took off from the Montréal/St-Hubert Airport (CYHU), Quebec, at
+          0750, each with the pilot and 1 passenger on board. They stopped at the La Tuque
+          Aerodrome (CYLQ), Quebec, to refuel, and arrived at their destination at 1025.
+          From 1130 until 1219, the occurrence pilot conducted searches at very low altitude, less
+          than 100 feet above the frozen surface of Lac Saint-Jean, in the vicinity of the islands near La
+          Grande Décharge Lake (Figure 1).
+          Figure 1. Map of the general area of the occurrence, with magnification in box (Source:
+          Google Earth, with TSB annotations)
+
+
+
+
+          Once the searches were done, the pilot went to refuel at the Alma Airport (CYTF), Quebec,
+          where he landed at 1230, before returning to Saint-Henri-de-Taillon and touching down at
+          1325.
+
+
+
+      1
+          All times are Eastern Standard Time (Coordinated Universal Time minus 5 hours).
+                                                      AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 7
+
+
+
+      Early in the afternoon, given that only one aircraft was required to continue the search, and
+      given that the rear sliding door of the occurrence helicopter was difficult to close, it was
+      decided to send the aircraft back to CYHU.
+      The pilot, the sole occupant of the aircraft, took off at 1402 bound for CYLQ, intentionally
+      keeping a low speed to stay under the maximum speed allowed for an open sliding door
+      (90 knots) in case the door accidentally opened in flight. Approximately 7 minutes after
+      takeoff, the helicopter struck the frozen, snow-covered surface of the lake and came to rest
+      on its left side. The aircraft was destroyed but there was no post-impact fire.
+      At the time of the impact, the pilot believed that he was in cruise flight at approximately
+      500 feet above ground level (AGL) when he suddenly felt a rapid longitudinal deceleration,
+      heard the engines surge, and became disoriented by a perceived rotation to the left.
+      Although he was seriously injured, the pilot was able to egress from the aircraft and call the
+      dispatcher to report the accident. At 1412, the dispatcher called the pilot of the 2nd
+      helicopter, who had remained at Saint-Henri-de-Taillon, and asked him to rescue the
+      injured pilot. Two Sûreté du Québec (SQ) first responders were notified and accompanied
+      the rescue pilot. The aircraft touched down at the accident site at 1445. It then took off
+      again at 1500 with the injured pilot on board and headed to the Roberval Airport (CYRJ),
+      Quebec, where an ambulance was waiting to take the injured pilot to the city’s hospital.
+      The Canadian Mission Control Centre in Trenton, Ontario, received a distress signal from
+      the emergency locator transmitter (ELT) at 1410:34 and notified the Joint Rescue
+      Coordination Centre (also in Trenton), which sent a Griffon helicopter to the accident site.
+      The helicopter landed at 1504 and waited for police to arrive.
+
+1.2   Injuries to persons
+      The pilot was the sole occupant of the helicopter.
+
+      Table 1. Injuries to persons
+
+         Degree of         Crew          Passengers    Persons not     Total by
+          injury                                        on board      severity of
+                                                       the aircraft     injury
+       Fatal                         0            –               –             0
+       Serious                       1            –               –             1
+       Minor                         0            –               –             0
+       Total injured                 1            –               –             1
+
+
+1.3   Damage to aircraft
+      The aircraft was destroyed by the impact with the frozen surface of Lac Saint-Jean.
+
+1.4   Other damage
+      Not applicable.
+                                                                      TRANSPORTATION SAFETY BOARD OF CANADA | 8
+
+
+
+1.5   Personnel information
+      Table 2. Personnel information
+
+                                                                   Pilot-in-command
+       Pilot licence                                          Airline transport pilot licence —
+                                                                             helicopter (ATPL)
+       Medical expiry date                                                        01 March 2020
+       Total flying hours                                                                  7291
+       Flight hours on BH06 (BH06T)*                                                1050 (158.3)
+       Flight hours in the 7 days before the occurrence                                       0
+       Hours on duty before the occurrence                                                   8.3
+       Hours off duty before the work period                                                 17
+
+      *A BH06 rating applies to all Bell 206 single-engine models, while the BH06T rating applies to the Bell 206
+        twin-engine models.
+
+      The pilot held an airline transport pilot licence — helicopter, endorsed with night flying and
+      Group 4 instrument ratings, for which he had received initial training and renewal training
+      in 2019. He had been working for the SAG since 2005. He had received flight training on the
+      occurrence aircraft on 25 September 2019 as part of the annual pilot training given by the
+      SAG. The pilot held the licence and qualifications required for the flight in accordance with
+      existing regulations.
+
+1.6   Aircraft information
+      Table 3. Aircraft information
+
+       Manufacturer                                               Bell Textron Canada Ltd.
+       Type, model and registration                               Bell 206L-4 (twin-engine conversion), C-GSQA
+       Year of manufacture                                        1994
+       Serial number                                              52060
+       Certificate of airworthiness issue date                    25 April 1994
+       Total airframe time                                        5883.25
+       Engine type (number of engines)                            Turbine Rolls-Royce 250-C20R (2)
+       Rotor type (number of blades)                              Semi-rigid rotor (2)
+       Maximum allowable take-off weight                          4550 lbs (2064 kg)
+       Recommended fuel type(s)                                   Jet A, A-1, B
+       Fuel type used                                             Jet A-1
+
+      The SAG had purchased this aircraft in 1994. It was new and had been modified in
+      accordance with Supplemental Type Certificate (STC) SH01-30 approved by
+      Transport Canada (TC). This STC includes the installation of 2 Rolls-Royce 250-C20R
+      engines and a combining gearbox.
+      Technical records indicate that in December 2019, the main transmission gearbox and the
+      combining gearbox were removed as part of a scheduled overhaul at an approved
+      workshop. The SAG took advantage of this overhaul to inspect the main rotor mast, the
+                                                          AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 9
+
+
+
+            2 engines, and several other components. At the time of the accident, the aircraft had
+            completed 8.5 flight hours since being returned to service on 20 December 2019, with no
+            deficiencies having been identified.
+            Technical records indicate that the aircraft was certified, equipped, and maintained in
+            accordance with existing regulations.
+
+1.6.1       Altimeters
+            The aircraft was equipped with a radio altimeter and a conventional altimeter.
+
+            The radio altimeter transmits a radio signal to the ground and receives the return from the
+            same signal after it is reflected off the ground. It measures the time elapsed between the
+            transmission and reception of the radio signal to calculate the aircraft’s height AGL, 2 which
+            is then indicated on the dial.
+            A decision height selector bug allows the    Figure 2. Radio altimeter on the occurrence
+            pilot to choose a minimum height (Figure 2). aircraft (Sources: TSB [main image] and
+                                                         manufacturer’s brochure [inset image])
+            If the aircraft descends below the selected
+            minimum height, a light illuminates and an
+            alarm sounds to notify the pilot. The
+            decision height selector bug on the radio
+            altimeter found at the accident site was set
+            to 0 feet.
+            Unlike the radio altimeter, the conventional
+            altimeter uses the current atmospheric
+            pressure to obtain an altitude indication
+            above sea level (ASL) rather than AGL. Given
+            that atmospheric pressure constantly
+            changes, for the altitude indication to be
+            accurate, the altimeter must be manually
+            calibrated on a regular basis using the
+            current local atmospheric pressure. If the
+            atmospheric pressure value used to set the
+            altimeter (altimeter setting) is higher than
+            the actual atmospheric pressure, the indicated altitude will be overestimated, 3 and vice
+            versa.
+
+
+
+
+        2
+            Precision is ±5 feet from 50 to 100 feet and ±5% from 100 to 500 feet.
+        3
+            A value of 0.01 inches of mercury (inHg) corresponds to 10 feet.
+                                                                      TRANSPORTATION SAFETY BOARD OF CANADA | 10
+
+
+
+          The altimeter setting on the occurrence         Figure 3. Conventional altimeter on the
+                                                          occurrence aircraft (Source: TSB)
+          aircraft’s conventional altimeter read
+          30.13 inches of mercury (inHg) (Figure 3). The
+          atmospheric pressure at CYTF at the time of the
+          accident was 30.08 inHg, which represents a
+          50-foot overestimation of the indicated
+          altitude.
+          Tests performed on the conventional altimeter
+          at the TSB Engineering Laboratory in Ottawa,
+          Ontario, showed that the margin of error for
+          the altitude indication was 20 feet or less for
+          simulated altitudes below 500 feet, which is
+          within the allowable margin of error for the
+          instrument according to Canadian Aviation
+          Regulations (CARs) Standard 571. 4
+
+1.7       Meteorological information
+          The “Clouds and Weather” graphic area forecast issued at 1231 was valid as of 1300 and
+          forecast the following weather conditions for Lac Saint-Jean:
+              •   visibility greater than 6 statute miles (SM);
+              •   broken clouds at 3000 feet, with tops at 5000 feet ASL; and
+              •   surface winds from the southwest at 15 knots, gusting to 25 knots.
+
+          The “Icing, Turbulence and Freezing level” graphic area forecast for the same period was
+          forecasting a 60-knot low-level jet stream causing moderate turbulence, and the possibility
+          of moderate mixed icing due to local freezing drizzle from the surface to 3000 feet ASL.
+          The aerodrome routine meteorological reports (METARs) from the weather stations at CYRJ
+          and Bagotville Airport (CYBG), Quebec, were the available reports closest to the accident
+          site, 16 nautical miles (NM) to the west and 36 NM to the east, respectively. The weather
+          conditions reported at these 2 stations at 1400 are listed in Table 4.
+
+
+
+
+      4
+          Transport Canada, SOR/96-433, Canadian Aviation Regulations, Part V, Standard 571, Appendix B – Altimeter
+          System Test and Inspection.
+                                                         AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 11
+
+
+            Table 1. Weather conditions reported at the Roberval (CYRJ) and Bagotville (CYBG) airports at 1400
+
+               Airport                                         Weather conditions
+             CYRJ          • visibility 25 SM
+                           • overcast ceiling at 1700 feet AGL
+                           • surface winds from 170° true (T) at 11 knots, gusting to 18 knots, direction variable
+                             between 160°T and 220°T
+                           • temperature −3 °C, dew point −7 °C
+                           • altimeter setting 30.00 inHg
+             CYBG          • visibility 25 SM
+                           • broken ceiling at 3000 feet AGL, with an additional layer of broken clouds at 22 000 feet
+                             AGL
+                           • surface winds from 110°T at 6 knots
+                           • temperature −6° C, dew point −9° C
+                           • altimeter setting 30.09 inHg
+
+            No snowfall was reported by these 2 stations after 0900 and, based on information
+            gathered, the investigation determined that there was no precipitation or icing during the
+            occurrence flight. Weather conditions were suitable for a visual flight rules (VFR) flight.
+            The CYTF automated weather observation system (AWOS), located approximately 8 NM
+            east of the accident site, did not record any data. However, based on information gathered
+            at the airport, it was determined that the altimeter setting indicated by the AWOS at 1419
+            on the day of the accident was 30.08 inHg.
+
+1.7.1       Lighting conditions
+            The diffused light on the day of the accident reduced shadows and contrast on the lake’s
+            snow-covered surface (Figure 4). In addition, given that the accident occurred at around
+            1400, a little more than 2 hours before sunset, 5 the light had already begun to fade, making
+            it more difficult to perceive details.
+
+
+
+
+        5
+            On the day of the accident, the sun set at 1629 in Alma. (Source: National Research Council sunrise/sunset
+            calculator, at https://cnrc.canada.ca/en/research-development/products-services/software-applications/sun-
+            calculator/ [last accessed on 08 November 2021]).
+                                                                             TRANSPORTATION SAFETY BOARD OF CANADA | 12
+
+
+              Figure 4. Photos of the accident site taken on the day of the accident and the next day (Sources: Sûreté
+              du Québec [22 January] and TSB [23 January])
+
+
+
+
+1.7.1.1       Flat light and whiteout
+              Flat light can be defined as
+                       the condition in which diffused lighting occurs due to cloudy skies, especially when
+                       there is snow covered ground below, reducing or eliminating contrast and
+                       shadows. 6
+
+              The U.S. Federal Aviation Administration’s (FAA’s) Aeronautical Information Manual (AIM)
+              defines flat light as
+                       an optical illusion, also known as “sector or partial white out.”[emphasis in
+                       original] It is not as severe as “white out” but the condition causes pilots to lose
+                       their depth-of-field and contrast in vision. Flat light conditions are usually
+                       accompanied by overcast skies inhibiting any visual clues. […] Flat light can
+                       completely obscure features of the terrain, creating an inability to distinguish
+                       distances and closure rates. 7
+
+              Also in the AIM, the FAA provides a definition for a related phenomenon, white out, for
+              which it distinguishes 2 types:
+                       White Out. As defined in meteorological terms, white out occurs when a person
+                       becomes engulfed in a uniformly white glow. The glow is a result of being
+
+
+          6
+              Computer Training Systems, Arctic Flying: Part 2, at https://www.ctsys.com/arctic-flying-part-2/ (last accessed
+              on 08 November 2021).
+          7
+              Federal Aviation Administration, Aeronautical Information Manual (31 December 2020), paragraph 7-6-13.
+                                                AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 13
+
+
+             surrounded by blowing snow, dust, sand, mud or water. There are no shadows, no
+             horizon or clouds and all depth-of-field and orientation are lost. A white out
+             situation is severe in that there are no visual references. […]
+             Self Induced [sic] White Out. This effect typically occurs when a helicopter takes
+             off or lands on a snow-covered area. The rotor down wash picks up particles and re-
+             circulates them through the rotor down wash. The effect can vary in intensity
+             depending upon the amount of light on the surface. This can happen on the
+             sunniest, brightest day with good contrast everywhere. However, when it happens,
+             there can be a complete loss of visual clues. 8
+
+     In material designed to supplement pilot training on flying in flat light and whiteout
+     conditions, the FAA notes that the definitions it provides for flat light and white out are not
+     “intended to be official scientific explanations, but merely to serve as operational definitions
+     suitable to the aviation community for the purpose of this training.” It also states that
+     “[t]hese terms should not be used interchangeably.” 9
+
+     Furthermore, the FAA warns pilots that even when visual references are good, it does not
+     mean that it is safe to continue the flight:
+             When flying alongside lakeshores, use them as a reference point. Even if you can see
+             the other side, realize that your depth perception may be poor and it is easy to fly
+             into the surface. If you must cross the lake, check the altimeter frequently and
+             maintain a safe altitude while you still have a good reference. Don’t descend below
+             that altitude. 10
+
+     In Canada, the Transport Canada Aeronautical Information Manual (TC AIM) makes no
+     mention of the term flat light, referring only to the term whiteout. The TC AIM describes the
+     term whiteout as follows in the section on flight operations in winter:
+             Whiteout (also called milky weather) is defined in the Glossary of Meteorology
+             (published by the American Meteorological Society) as:
+                        “An atmospheric optical phenomenon of the polar regions in which the
+                        observer appears to be engulfed in a uniformly white glow. Neither shadows,
+                        horizon, nor clouds are discernible; sense of depth and orientation is lost;
+                        only very dark, nearby objects can be seen. Whiteout occurs over an
+                        unbroken snow cover and beneath a uniformly overcast sky, when with the
+                        aid of the snowblink effect, the light from the sky is about equal to that from
+                        the snow surface. Blowing snow may be an additional cause.”
+             Light carries depth perception messages to the brain in the form of colour, glare,
+             shadows, and so on. These elements have one thing in common, namely, they are all
+             modified by the direction of the light and changes in light intensity. For example,
+             when shadows occur on one side of objects, we subconsciously become aware that
+             the light is coming from the other. Thus, nature provides many visual clues to assist
+             us in discerning objects and judging distances. What happens if these clues are
+
+8
+     Ibid.
+9
+     Federal Aviation Administration, Flying in Flat Light and White Out Conditions (2001), at
+     https://www.faasafety.gov/gslac/alc/libview_normal.aspx?id=6844 (last accessed on 08 November 2021).
+10
+     Ibid.
+                                                                  TRANSPORTATION SAFETY BOARD OF CANADA | 14
+
+
+             removed? Let’s suppose that these objects on the ground and the ground itself are
+             all white. Add to that, a diffused light source through an overcast layer which is
+             reflected back in all directions by the white surface so that shadows disappear. The
+             terrain is now virtually devoid of visual clues and the eye no longer discerns the
+             surface or terrain features.
+             Since the light is so diffused, it is likely that the sky and terrain will blend
+             imperceptibly into each other, obliterating the horizon. The real hazard in whiteout
+             is the pilot not suspecting the phenomenon because the pilot is in clear air. In
+             numerous whiteout accidents, pilots have flown into snow-covered surfaces
+             unaware that they have been descending and confident that they could “see” the
+             ground.
+             Consequently, whenever a pilot encounters the whiteout conditions described
+             above, or even a suspicion of them, the pilot should immediately climb if at low
+             level, or level off and turn towards an area where sharp terrain features exist. The
+             flight should not proceed unless the pilot is prepared and competent to traverse the
+             whiteout area on instruments.
+             In addition, the following phenomena are known to cause whiteout and should be
+             avoided if at all possible:
+             a) water-fog whiteout resulting from thin clouds of super-cooled water droplets in
+                contact with the cold snow surface. Depending on the size and distribution of
+                the water droplets, visibility may be minimal or nil in such conditions.
+             b) blowing snow whiteout resulting from fine snow being plucked from the surface
+                by winds of 20 kt or more. Sunlight is reflected and diffused resulting in a nil
+                visibility whiteout condition.
+             c) precipitation whiteout resulting from small wind-driven snow crystals falling
+                from low clouds above which the sun is shining. Light reflection complicated by
+                spectral reflection from the snow flakes and obscuration of land marks by falling
+                snow can reduce visibility and depth perception to nil in such conditions.
+             If at all possible, pilots should avoid such conditions unless they have the suitable
+             instruments in the aircraft and are sufficiently experienced to use a low-speed and
+             minima rate of descent technique to land the aircraft safely. 11
+
+     TC AIM’s description of a whiteout includes the flat light phenomenon, making it difficult to
+     distinguish between the 2 phenomena. 12 Both flat light and whiteout can occur when
+     visibility is good; however, the conditions under which each of these phenomena can occur
+     and the risk that they represent differ.
+     For clarity and precision, the term flat light, as defined by the FAA, will be used in this
+     report to describe the lighting conditions that prevailed on the day of the occurrence.
+
+
+
+
+11
+     Transport Canada, TP 14371, Transport Canada Aeronautical Information Manual (TC AIM), AIR – Airmanship
+     (08 October 2020), section 2.12.7: Whiteout.
+12
+     TC has informed the TSB that it recognizes the benefit of improving its documentation and will work with
+     appropriate experts to update the TC AIM to clarify the definitions and explanations of these 2 phenomena.
+                                                         AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 15
+
+
+
+1.8          Aids to navigation
+             The aircraft was equipped with a GPS (global positioning system) built into the instrument
+             panel for navigation. No flight data could be retrieved because the type of GPS in question
+             does not allow data to be saved.
+
+1.8.1        Visual flight rules navigation charts
+             In general, the main navigation tool used by pilots conducting VFR flights is the VFR
+             navigation chart (VNC). It is available in paper format or digitally (with the ForeFlight
+             application, for example) and includes a topographical representation of the surface, with
+             the terrain elevation indicated. However, the elevation is not indicated for larger lakes such
+             as Lac Saint-Jean. The elevation of Lac Saint-Jean is approximately 322 feet, not 0 feet, as is
+             the case with other large bodies of water, such as oceans and seas.
+             The terrain elevation indicated on VNCs is mainly used for pre-flight planning and is not
+             used to determine a pilot’s altitude AGL during flight. However, a pilot in flight may
+             unconsciously associate an elevation of 0 feet with any large body of water and interpret the
+             altitude indicated on a conventional altimeter as an altitude AGL when the aircraft is flying
+             over water.
+             In contrast, helicopter pilots flying at altitudes of 500 AGL or less estimate and maintain
+             their altitude visually by following the terrain rather than maintaining a specific altitude
+             indicated on a conventional altimeter.
+             In this occurrence, the pilot had the relevant VNCs for the flights, as required by the SAG, 13
+             but he did not use them on the return flight. Throughout the day, the pilot estimated his
+             altitude AGL visually, without using the altitude indicator on the radio altimeter.
+
+1.9          Communications
+             Not applicable.
+
+1.10         Aerodrome information
+             Not applicable.
+
+1.11         Flight recorders
+             The aircraft was not equipped with a flight data recorder (FDR) or a cockpit voice
+             recorder (CVR), and neither was required by regulation. Without an FDR, it was impossible
+
+
+
+        13
+             Ministère des Transports du Québec, Service aérien gouvernemental, Manuel d’exploitation, Modification
+             no. 1 (01 September 2016), Chapter 2: Exploitation, section 2.10.1: Documents minimums requis à bord, p. 2-
+             5.
+                                                              TRANSPORTATION SAFETY BOARD OF CANADA | 16
+
+
+
+to accurately determine exactly when the descent began, or what the aircraft’s descent
+profile was as it struck the surface of the lake.
+However, the aircraft was equipped with a satellite flight tracking system, and data were
+retrieved from the SAG’s aircraft tracking and management website. This system recorded
+the aircraft’s GPS position, altitude, and ground speed every 2 minutes (Figure 5).
+Figure 5. Representation of the morning flight (dashed line) and occurrence flight (solid line)
+(Source: Google Earth, with TSB annotations based on data from the flight tracking system)
+
+
+
+
+For the flight out in the morning, the pilots of the 2 helicopters, including the occurrence
+one, decided to fly along the eastern shore of Lac Saint-Jean as they headed to Saint-Henri-
+de-Taillon because of the low contrast over the lake.
+For the return flight in the afternoon, the occurrence pilot had planned to fly at a low
+altitude (approximately 500 feet AGL) because there was a headwind. The aircraft took off
+from Saint-Henri-de-Taillon at 1402 and flew a track that was almost parallel to the eastern
+shore of the lake. At 1406, at an altitude of 305 feet AGL and 1 NM laterally from the shore,
+the aircraft was approaching a group of islands 1.3 NM ahead. The pilot veered right, flying
+west of the islands. At 1408, the aircraft was 2.4 NM laterally from the shore at an altitude of
+330 feet AGL. The aircraft struck the surface of the lake about 1 minute later, approximately
+1.34 NM further. The angle between the height of the last recorded position at 1408 and the
+point of impact was approximately 2.3°.
+                                                             AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 17
+
+
+
+1.12          Wreckage and impact information
+
+1.12.1        General
+              The wreckage was examined at the accident site, and again at the TSB Engineering
+              Laboratory, with representatives of the aircraft manufacturer, the engine manufacturer, and
+              the aircraft’s owner in attendance.
+
+1.12.2        Accident site
+              The main debris at the accident site was scattered over a distance of approximately
+              260 feet, along a straight line that matched the direction of flight indicated in the flight
+              tracking system, i.e., south-southwest. The extent of the debris indicates that the horizontal
+              speed at the time of impact was likely high, and that the angle at which the aircraft hit the
+              frozen surface of the lake must have been shallow, which is characteristic of a controlled-
+              flight-into-terrain (CFIT) accident rather than a loss-of-control accident (which is generally
+              associated with a lower horizontal speed due to a steeper vertical descent). 14
+
+              Only the tip of the tail and its rotor, along with the mast and main rotor, were found far
+              from the wreckage trail (Figure 6). On impact, a helicopter’s main rotor blades may be
+              projected over a great distance in all directions 15 due, in part, to the kinetic energy and
+              gyroscopic inertia produced by the rotation of the blades.
+
+
+
+
+         14
+              This steep vertical component associated with a loss of control in flight is related to the fact that helicopters
+              are dynamically unstable on the pitch and roll axes and react quite quickly to the slightest movement of the
+              flight controls. (Source: Australian Government Civil Aviation Safety Authority, “Every which way but loose”,
+              in Flight Safety Australia, at https://www.flightsafetyaustralia.com/2020/05/every-which-way-but-loose/ [last
+              accessed on 09 November 2021]).
+         15
+              R. H. Wood and R. W. Sweginnis, AAI Aircraft Accident Investigation, Part II: Investigation Techniques,
+              Chapter 25: Helicopter Accident Investigation (2003).
+                                                                            TRANSPORTATION SAFETY BOARD OF CANADA | 18
+
+
+              Figure 6. Aerial view of the accident site showing the distribution of debris and distance from the
+              fuselage (Source: Sûreté du Québec, with TSB annotations)
+
+
+
+
+              No trace of the impact on the ground was visible when investigators arrived at the site the
+              next day, the wind having swept the snow-covered surface. However, information gathered
+              indicated that a clear skid mark had been observed along the wreckage trail, approximately
+              230 feet from the fuselage, when the first responders arrived. The observed orientation of
+              the skid mark indicated that the nose of the aircraft was pointing left in relation to the
+              wreckage trail. However, because the skid mark was no longer visible when investigators
+              arrived at the site, measurements could not be taken to confirm its exact orientation or to
+              check if there were any other skid marks in the snow. The right skid’s bear paw 16 was found
+              195 feet from the fuselage, near debris from one of the main rotor blades and the tail
+              boom’s left horizontal stabilizer.
+              The aircraft was lying on its left side and the front part was substantially damaged. The nose
+              and instrument panel were almost completely detached from the fuselage at the cockpit
+              floor. The cockpit doors and roof were torn off. The pilot seat attachments had failed. The
+              rear sliding door was still solidly attached to its track and the integrity of the rear cabin was
+              not compromised. The fuselage showed several signs of buckling and, on the ceiling,
+              structural deformation. The upper part of the fuselage, where the hydraulic components
+              and flight control systems were located, was crushed. There was no indication of a fuel leak.
+
+1.12.3        Laboratory examination of the wreckage
+              The wreckage was transported to the TSB Engineering Laboratory for a more detailed
+              examination.
+
+
+
+         16
+              The term “bear paw” refers to an attachment to the rear of the skid designed to increase the surface area for
+              landings on soft terrain.
+                                                       AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 19
+
+
+
+            There was no damage to the right side of the fuselage, indicating that it did not come into
+            contact with the frozen surface of the lake during the accident sequence. The flight controls
+            showed signs of multiple overload failures related to the impact; however, continuity of the
+            power plant components 17 and flight controls could be confirmed. There were no signs of
+            pre-existing deficiencies in any of the components. The examination of the warning panel
+            lights did not reveal any significant information. The 2 engines were sent for testing at a
+            Rolls-Royce authorized maintenance repair and overhaul center in the United States. The
+            tests did not find any mechanical or other deficiencies that could have contributed to the
+            accident.
+            The damage and deformations observed on the fuselage and landing gear were analyzed.
+            From a structural standpoint, this analysis found that the damage and deformations had
+            occurred when the aircraft struck the frozen surface of the lake hard and that it had been
+            upright, the left skid hitting the surface before the right skid. The scratches, dents and crack
+            found on the lower part of the fuselage indicate that the aircraft was moving laterally to the
+            left when it struck the surface of the lake. There was no indication of a yawing motion at the
+            time of impact. The fittings that attach the cross tubes to the fuselage broke and the landing
+            gear detached from the fuselage.
+            One of the main rotor blades severed the tail boom at the horizontal stabilizer at an angle of
+            approximately 7.5°, which indicates that the rotor disc was likely angled to the left at the
+            time. This contact caused the rotor mast to separate at the main transmission gearbox.
+            The examination determined that the damage and deformations were caused by the impact
+            when the aircraft struck the frozen surface of the lake during the initial phase of the
+            accident. However, it is possible that another impact occurred shortly before the main
+            impact, but did not cause any damage.
+
+1.13        Medical and pathological information
+            There was no indication that the pilot’s performance was affected by medical, pathological,
+            or physiological factors.
+
+1.14        Fire
+            There was no post-impact fire.
+
+1.15        Survival aspects
+            The aircraft had an ELT that was working properly, transmitting the distress signal and the
+            aircraft’s last recorded GPS position.
+
+
+
+
+       17
+            Engines, combining gearbox, power shaft, and main transmission gearbox.
+                                                                           TRANSPORTATION SAFETY BOARD OF CANADA | 20
+
+
+
+              The pilot was wearing a flight helmet even though
+                                                                              Figure 7. Impact marks on top of the
+              the SAG does not require pilots to wear one when                pilot’s helmet (Source: SAG, with TSB
+              conducting flights on a Bell 206. Some SAG pilots               annotations)
+              choose instead to wear a flight headset when they
+              are flying a Bell 206 given the low headroom when
+              wearing a helmet and the tight space in the cockpit.
+              Marks found on the top of the helmet shell indicate
+              that a major shock occurred in that area (Figure 7).
+              The TSB has previously highlighted the importance
+              of wearing a helmet to prevent fatal injuries or to
+              reduce the effects of non-fatal head injuries received
+              in an accident. 18 These effects may vary from
+              confusion to complete loss of consciousness.
+              In addition to wearing a helmet, the pilot had
+              fastened the 4-point shoulder harness. During the
+              lateral impact, the pilot’s seat attachments failed.
+              One of the most critical factors in being able to
+              physically withstand impact forces is the way in which occupants are restrained and
+              supported by their seat and restraint system. A more even distribution of the forces of
+              deceleration over the body surface increases the chances of survival. 19
+              Finding: Other
+              Wearing a flight helmet and fastening the 4-point shoulder harness helped to reduce the
+              severity of the injuries to the pilot, who was able to egress from the aircraft and contact the
+              dispatcher to get help quickly.
+
+1.16          Tests and research
+
+1.16.1        TSB laboratory reports
+              The TSB completed the following laboratory reports in support of this investigation:
+                  •   LP019/2020 – Engine Data Recovery
+                  •   LP020/2020 – Engine Analysis
+                  •   LP022/2020 – Warning Panel Lamps Analysis
+                  •   LP023/2020 – Instruments Analysis
+                  •   LP036/2020 – Impact Analysis
+
+
+         18
+              TSB air transportation safety investigation reports A18W0025, A16W0126, A16P0161, A16P0069, A14Q0060,
+              A13H0001, A12C0084, A11W0070, A09A0016, A05P0103, and A02P0320.
+         19
+              North Atlantic Treaty Organization (NATO), “Human Tolerance and Crash Survivability” in Pathological
+              Aspects and Associated Biodynamics in Aircraft Accident Investigation, RTO-EN-HFM-113, (August 2005), p. 6-
+              5.
+                                                          AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 21
+
+
+
+1.17          Organizational and management information
+              Through the SAG, the Ministère des Transports of Quebec operates a fleet of airplanes and
+              helicopters and works with its partners to ensure an appropriate response to emergency
+              situations or situations requiring a specialty air service. 20 The SQ is the operating partner
+              for the fleet of helicopters, which at the time of the occurrence included a medium-lift
+              helicopter (a Bell 412) and 2 light helicopters (a Bell 206B and the occurrence Bell 206L-4).
+              Unlike its fleet of airplanes, which it operates pursuant to a private operator registration
+              document and an air operator certificate, at the time of the occurrence, the SAG operated its
+              fleet of helicopters under the general rules of Part VI of the CARs. Therefore, even though
+              pilots were required to keep their knowledge up to date pursuant to section 401.05 of the
+              CARs, the SAG was not required to provide any specific training to its helicopter pilots or to
+              establish operating procedures. However, the SAG did produce a company operations
+              manual (COM) and a training program based on CARs requirements.
+
+1.17.1        Service aérien gouvernemental of Quebec company operations manual
+              In its COM, the SAG states the procedures to be followed for helicopter operations to ensure
+              the safety of flights and missions. 21
+
+              Missions flown on the Bell 412 with 2 pilots may be conducted under either VFR or
+              instrument flight rules (IFR), while missions on the Bell 206B and 206L-4 (helicopters
+              always flown by a single pilot) are conducted under day VFR only. Given the operational
+              differences, some of the procedures in the COM may apply only to the Bell 412 or only to the
+              Bell 206.
+
+1.17.1.1      Radio altimeter procedures
+
+              The very nature of single-pilot VFR operations in light helicopters like the Bell 206 is such
+              that manoeuvres are regularly conducted at low altitude or close to the ground.
+              Consequently, depending on the circumstances, it is not always advisable for pilots to divert
+              their attention from their primary task (which is to visually fly the helicopter close to the
+              ground and obstacles) and focus inside the cockpit to monitor the height AGL indicated on
+              the radio altimeter. Therefore, in general, air operators do not recommend the use of a radio
+              altimeter for these types of operations and do not equip their fleet of helicopters with the
+              instrument.
+              The SAG uses its Bell 206 helicopters primarily for low-altitude search and rescue flights in
+              which a trained observer is seated in the front passenger seat.
+
+
+         20
+              Ministère des Transports of Quebec, Service aérien gouvernemental, at
+              https://www.transports.gouv.qc.ca/fr/services/sag/pages/service-aerien-gouvernemental.aspx (last accessed
+              on 09 November 2021).
+         21
+              Ministère des Transports of Quebec, Service aérien gouvernemental, Manuel d’exploitation, Modification
+              no. 1 (01 September 2016), Préambule.
+                                                                              TRANSPORTATION SAFETY BOARD OF CANADA | 22
+
+
+
+            The COM states that [translation]:
+                     To reduce the risk of inadvertent collision with terrain, follow these procedures:
+                     Set the highest value on the EFIS [electronic flight instrument system] altimeter and
+                     the lowest value on the instrument panel altimeter.
+                     Note: only the higher value will activate the audible alarm.
+                          •    VFR en route: one radio altimeter at 400 feet and the other at 100 feet;
+                          •    VFR over water: one radio altimeter at 400 feet and the other at 50 feet;
+                          •    IFR at takeoff: two radio altimeters at 400 feet;
+                          •    IFR en route: one radio altimeter at 1000 feet or 1500 feet in designated
+                               mountainous areas and the other at 100 feet;
+                          •    IFR on approach: one radio altimeter at the DA [decision altitude] or MDA
+                               [minimum descent altitude] and the other at 100 feet.
+                     The radio altimeter altitude warning must be set to the same altitude on both pilots’
+                     indicators.
+                     This procedure can be deviated from in a particular situation or to comply with a
+                     standard operating procedure. However, before any deviation, the other crew
+                     member must be notified. 22
+
+            The Bell 412 is the SAG’s only aircraft with 2 radio altimeters. The Bell 206L-4 had only one
+            and the Bell 206B has none. However, no other procedures are given to reduce the risk of
+            inadvertent collision with terrain if the aircraft is not equipped with 2 radio altimeters.
+            The investigation determined that it was not common practice for SAG pilots to use the
+            radio altimeter decision height selector bug in the occurrence aircraft, and that use of this
+            selector bug was left to the pilots’ discretion. The radio altimeter triggers an audible alarm
+            when the pilot intentionally flies below the minimum altitude setting on the decision height
+            selector bug. This alarm was considered a possible distraction that could negatively impact
+            flight safety.
+
+1.17.1.2    Unsafe conditions
+
+            The whiteout phenomenon is discussed in the “Vol dans des conditions dangereuses” [flight
+            operations in unsafe conditions] section of the COM, which states [translation]:
+                     When whiteout conditions are known or expected during takeoff or landing,
+                     the PIC [pilot-in-command] must: [emphasis in original]
+                     Ensure that there is enough reserve power to hover out of ground effect before
+                     landing or takeoff.
+                     Before landing, stabilize the hover at an altitude that allows the snow to disperse. 23
+
+            However, the COM does not address the specific phenomenon of flat light.
+
+
+
+
+       22
+            Ibid., Chapter 2: Exploitation, section 2.48: Procédures relatives au radioaltimètre, p. 2-38.
+       23
+            Ibid., Chapter 2: Exploitation, section 2.61.6: Condition de voile blanc, p. 2-47.
+                                                           AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 23
+
+
+
+1.17.2        Training
+              Pilot training is intended to enhance the knowledge and skills needed to effectively manage
+              various flight-related risks. To that end, the SAG has developed a training program based on
+              CARs requirements, even though the regulations do not require this training for the SAG’s
+              type of helicopter operations.
+              The program takes into account the types of aircraft it uses and its area of operation. Annual
+              training on the occurrence aircraft included a minimum of 3 hours of theory and 1 hour of
+              practice in flight.
+              According to the training program, whiteout is addressed during landing and takeoff flight
+              exercises only. The SAG’s training program does not specifically cover the phenomenon of
+              flat light.
+
+1.17.2.1      Flight tests
+
+              Over the course of their career, commercial pilots must undergo various flight tests or
+              annual in-flight assessments to check their knowledge and skills in executing various
+              manoeuvres.
+              For that purpose, TC has published a flight test guide for helicopters, which contains
+              “guidelines on the conduct of Pilot Proficiency Checks (PPCs).” 24 It describes in detail the
+              practical exercises assessed by approved check pilots and the elements they must take into
+              account during their exercise assessment.
+              According to this guide, whiteout is one of the execution criteria that must be taken into
+              account by the check pilot in assessing the candidate during the landing exercise only. 25
+              However, flat light is not a criterion that is specifically addressed in the guide. The
+              occurrence pilot had regularly put into practice his knowledge of whiteout risks during
+              takeoffs and landings as part of flight tests before the occurrence.
+
+1.18          Additional information
+
+1.18.1        Spatial awareness
+              Spatial awareness is a person’s ability to be aware of the relationship between them and the
+              environment around them. When a person moves on the ground, their brain uses and
+              processes the information provided by their senses, e.g., vision, the musculoskeletal system
+              (proprioception) and the inner ear (vestibular apparatus), to establish an accurate spatial
+              awareness.
+
+
+
+
+         24
+              Transport Canada, TP 14728, Proficiency Checks and Aircraft Type Ratings – Flight Test Guide (Helicopters),
+              Second Edition (December 2019).
+         25
+              Ibid., p. 31.
+                                                                               TRANSPORTATION SAFETY BOARD OF CANADA | 24
+
+
+
+              During a flight, interpretation of information received by the senses other than vision can
+              mislead pilots if they cannot orient themselves visually. For example, acceleration may be
+              perceived as a nose-up pitch. In the context of a flight, vision becomes the main source of
+              reliable information to maintain good spatial awareness. The more visual information the
+              brain receives to process, the more accurate the representation of movement in space.
+              Insufficient visual information, such as reference points outside the aircraft, may lead to
+              illusions that affect spatial awareness. For example, during a night flight, which normally
+              provides less visual information than a day flight, lights look closer than they actually are. A
+              complete loss of visual information leads to spatial disorientation. In that case, the pilot will
+              maintain control of the aircraft only by referring to the appropriate flight instruments,
+              provided that the pilot has the skill level needed for IFR flight.
+              From 2010 to 2019, the TSB investigated 48 occurrences which involved conditions that
+              were known to affect a pilot’s spatial awareness (Appendix A).
+
+1.18.2        Visibility, visual references, and visual cues
+              During a VFR flight, pilots must ensure that they maintain visual contact with the surface at
+              all times. 26 To do so, visibility and visual references are needed. Daytime visibility refers to
+              the distance at which unlit prominent features, such as terrain or buildings, can be
+              identified.
+              Visual references are one or more elements that are visible on the terrain (or to the terrain
+              itself). These elements help pilots to determine their position and their movement in space,
+              as well as to identify the horizon. In the occurrence flight, there was a sharp contrast
+              between the shoreline and the overcast sky and snow-covered lake surface, making the
+              horizon clearly visible.
+              Visual cues are all elements that provide visual information (shadows, textural gradient 27
+              and the size of familiar objects 28), which is processed by the brain unconsciously to
+              determine both position and movement in space. Visual cues are essential for depth
+              perception, which is characteristic of 3-dimensional (3D) vision. During the occurrence
+              flight, several fishing huts were on the lake; however, the investigation was unable to
+              determine how many there were, where they were located, or their proximity to the flight
+              path.
+              For VFR flights, it is important that visibility allows the pilot to see visual references which,
+              in turn, must provide enough visual cues to maintain proper spatial awareness. The quality
+              and number of visual cues provided by the visual references may be insufficient to maintain
+              3D vision, as is the case when flying over a surface with no contrast in flat light. When visual
+
+
+
+         26
+              Transport Canada, SOR/96-433, Canadian Aviation Regulations, paragraph 602.115(a).
+         27
+              Details of the texture of an object, such as the leaves or branches of a tree, disappear as altitude increases.
+         28
+              An object, such as a house, will appear smaller as altitude increases, but the object may also provide an
+              indication of height through its surroundings (people, cars, etc.).
+                                                     AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 25
+
+
+
+         cues are insufficient, 3D vision deteriorates and becomes 2 dimensional (2D). This
+         deterioration may, however, go unnoticed, which makes flat light an insidious risk and
+         dangerous to pilots. In general, pilots see well because visibility is good, but they may not
+         notice when their depth perception is reduced, or gone completely.
+         Figure 8 illustrates a simulated view of the shoreline from the cockpit at 2 different
+         altitudes—330 feet AGL and 50 feet AGL—when there is no contrast at the surface. The top
+         2 images represent the view from the accident location (2.4 NM from the shoreline), and the
+         bottom 2 images represent the view from a distance closer to the shoreline (0.3 NM), for
+         comparison purposes.
+
+         Figure 8. Simulated view of the shoreline from the cockpit at 330 feet above ground level and
+         50 feet above ground level when the aircraft is 2.4 nautical miles and 0.3 nautical miles from
+         the shoreline (Source: TSB)
+
+
+
+
+         When the aircraft is 2.4 NM from the shoreline, the shoreline has the same profile at
+         both altitudes, which shows that, at these 2 altitudes, a lateral distance of 2.4 NM is too
+         great to be able to notice a loss of altitude if the shoreline is the sole visual reference being
+         used. However, when the aircraft is at a lateral distance of 0.3 NM, the amount of shoreline
+         that can be seen decreases with a loss of altitude.
+
+1.18.3   Risk management
+         In aviation, a risk can be described as the possible consequence of a hazard that is not
+         controlled or eliminated. To make safe decisions, pilots must first identify hazards in order
+         to assess their risk level and then determine the appropriate actions to take. To this end,
+         pilots use the experience and knowledge they have gained, mainly through various types of
+         training, to identify hazards and ensure that they establish and maintain accurate
+         situational awareness before and during a flight.
+         For the return flight, the occurrence pilot had noted that winds were from the south-
+         southwest, and that the headwinds would slow his speed and increase the flight time
+         needed to arrive at his destination. Given that the aircraft’s twin engines reduced the risks
+                                                                               TRANSPORTATION SAFETY BOARD OF CANADA | 26
+
+
+
+              associated with losing power at low altitude by helping to maintain altitude or by reducing
+              the descent rate, the pilot had planned to conduct the flight at approximately 500 feet AGL,
+              which would enable him to fly safely at an altitude where the strength of the wind is
+              generally weaker.
+              The flight had to be conducted during daylight. However, civil twilight at CYHU was
+              expected to end at 1718. The overcast sky at the time of takeoff meant that light was low
+              and was fading faster than if the sky had been partially overcast. The aircraft’s twin engines
+              made it possible to plan a more direct flight path to gain time, which enabled the pilot to fly
+              further from the shoreline than the glide distance, 29 with no additional risk if one of the
+              engines lost power. The pilot took these operational constraints into consideration when
+              making decisions before and during the flight.
+              The pilot had considered the low contrast over the surface of the lake as a potential risk to
+              the search operations being conducted near the ground and during takeoffs and landings
+              throughout the day. Based on his knowledge, he associated low contrast due to whiteout
+              primarily with a risk to low-level flights, including landings and takeoffs, while he
+              associated the loss of visual references and/or horizon with poor visibility that could occur
+              at any phase of flight. Given that visibility was good and the shoreline and several fishing
+              huts were clearly visible, the pilot did not consider flying over the lake during the return
+              flight to CYHU to be risky at the planned altitude.
+              Knowledge of the distinct and insidious nature of flat light is an important element of
+              situational awareness and a pilot’s decision-making process. Therefore, the main defence to
+              mitigate the risk of CFIT in a situation similar to that of the occurrence flight is to be aware
+              of the effects of flat light in order to be aware of the associated flight-related risks,
+              regardless of the phase of flight.
+
+1.18.4        TSB investigation reports
+              In 1990, the TSB published Aviation Safety Study 90-SP002: Report of a Safety Study on VFR
+              Flight into Adverse Weather. 30 This report found that 27 of the 33 helicopter accidents from
+              1976 to 1986 31 had occurred in whiteout conditions, and many accidents had occurred as a
+              result of an inadvertent descent that was not detected by the pilot.
+              In 2019, the TSB published Air Transportation Safety Issue Investigation (SII) A15H0001. 32
+              The objective was to improve safety by reducing the risks in air-taxi operations across
+              Canada. The air-taxi sector continues to experience more accidents that any other in the
+              commercial aviation industry. An operator that conducts aerial work or air-taxi operations
+              (transporting passengers) must hold an air operator certificate issued by TC. Because the
+
+
+
+         29
+              Glide distance is the distance that can be travelled in the event of engine failure.
+         30
+              Available at http://www.tsb.gc.ca/eng/rapports-reports/aviation/etudes-studies/90SP002/90SP002.html.
+         31
+              Accidents involving Canadian-registered aircraft in Canadian territory, over the period from 1976 to 1985.
+         32
+              Available at http://www.tsb.gc.ca/eng/rapports-reports/aviation/etudes-studies/a15h0001/a15h0001.html.
+                                                AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 27
+
+
+
+     SAG is a State operator, it is not required to hold an operator certificate issued in
+     accordance with Part VII of the CARs. The procedures described in its operations manual
+     are based on the requirements stipulated in CARs Subpart 703, which applies to air-taxi
+     operations. Given that the operating context of SAG Bell 206 helicopters is similar to
+     helicopter air-taxi operations, it is worthwhile to consider the discussions and conclusions
+     of that investigation.
+     Phase 1 of the SII, which included an examination of the TSB investigation reports for
+     167 occurrences, revealed that most fatalities resulting from accidents involved flights that
+     had begun in visual meteorological conditions, continued through the loss of visual
+     references, and ended in either CFIT or a loss of control. An analysis of accident data found
+     that contributing factors fell into 2 broad areas:
+             •    acceptance of unsafe practices; and
+             •    inadequate management of operational hazards.
+     In phase 2, investigators conducted interviews with industry stakeholders to better
+     understand the pressures faced by the industry, as well as the issues encountered in daily
+     activities. The information gathered was organized into 19 safety themes which, after
+     further analysis using additional data, yielded various conclusions. Of the 19 themes, the
+     following 2 and their respective conclusions are relevant to this report:
+         •   On-board technology, 33 if incorporated into an operation, has significant potential to
+             enhance safety in air-taxi operations.
+         •   Training of pilots and other flight operations personnel is essential for them to
+             develop the skills and knowledge they need to effectively manage the diverse risks
+             associated with air-taxi operations.
+     The varied and complex nature of the air-taxi sector and the extent of the competing
+     pressures introduce hazards and risk factors that are different from those in other aviation
+     sectors, including those faced by airlines. The way in which operators manage hazards or
+     risks determines the level of safety of their operations. The fewer or weaker the defences in
+     place, the thinner the safety margin.
+     Many operators are taking a proactive approach to safety, identifying and mitigating risks
+     associated with their activities, and a number of them are taking measures that exceed
+     regulatory requirements.
+     Risks affecting the air-taxi sector have persisted for decades and are resistant to more
+     traditional safety mitigations.
+     The traditional approach to safety management is based on compliance with regulations
+     and a reactive response to incidents and accidents. Modern safety management principles
+
+
+
+33
+     On-board technology, also known as growth technology, refers to terrain avoidance instrumentation, ground
+     proximity warning systems, GPSs, etc.
+                                                            TRANSPORTATION SAFETY BOARD OF CANADA | 28
+
+
+
+       promote a proactive search for hazards, identifying risks, and instituting better defences to
+       reduce risk to an acceptable level.
+       Further analysis of the accident data identified weak or missing defences that, if improved
+       or added, have the potential to enhance safety. Many operators use on-board technology
+       and training to enhance the safety of their operations. They may go above and beyond
+       existing regulations and implement active TSB recommendations, without waiting for
+       regulatory amendments by TC to enhance safety. Although compliance with safety
+       regulations is fundamental, operators that simply comply with the standards set by the
+       regulations are not well situated to identify emerging safety problems.
+
+1.19   Useful or effective investigation techniques
+       Not applicable.
+                                              AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 29
+
+
+
+2.0   ANALYSIS
+      The pilot held the licence and qualifications required for the flight. There was no indication
+      that the pilot’s performance was affected by medical, pathological or physiological factors.
+      Weather conditions at the time of the occurrence were suitable for a visual flight rules
+      (VFR) flight.
+      Given the fact that no pre-existing mechanical deficiencies were found during the thorough
+      examination of the wreckage (which included examining the flight controls, engine controls,
+      hydraulic system, combining gearbox, main rotor and tail rotor with their respective
+      transmissions) and given the results of the tests performed on the 2 engines, it is unlikely
+      that a mechanical issue or failure in flight contributed to the accident.
+
+      Consequently, the analysis will focus on the following points:
+          •   flat light
+          •   training
+          •   management of operational hazards
+          •   flight progression
+
+2.1   Flat light
+      There was no precipitation during the occurrence flight and visibility was approximately
+      25 statute miles (SM). The shoreline was visible from a distance and the sky was overcast,
+      producing diffused light. The less-pronounced shadows and lower contrast on the snow-
+      covered surface of the lake created flat light conditions (Figure 4). Given the time of day, the
+      light was fading, further decreasing the perception of details. The absence of textural details
+      at the surface of the lake caused a significant reduction in visual cues over the lake. These
+      cues were essential for depth perception and 3-dimensional (3D) vision.
+      Finding as to causes and contributing factors
+      Even though visibility was 25 SM, flat light was obscuring the shadows and contrast at the
+      snow-covered surface of the lake, reducing the visual cues needed for depth perception and
+      3D vision.
+      The hazard of flat light is its insidious nature. Even when visibility is good and the horizon is
+      visible, a loss of depth perception may go undetected by the pilot. Given that flat light is an
+      optical illusion, neither flight experience nor an instrument rating can help to better identify
+      the loss of 3D vision. This illusion adversely affects spatial awareness and increases the risk
+      of controlled flight into terrain (CFIT) if it is not recognized.
+
+2.2   Training
+      Training is recognized as a means of providing pilots with the knowledge and skills they
+      need to effectively manage the various risks associated with their operations. Although it
+                                                             TRANSPORTATION SAFETY BOARD OF CANADA | 30
+
+
+
+      was not required by regulations, the Service aérien gouvernemental (SAG) of Quebec had
+      implemented a training program based on requirements for air operators.
+      Through various training courses and flight tests taken over the course of his career, the
+      occurrence pilot had had an opportunity to put into practice, during takeoffs and landings,
+      the knowledge he had gained about the risks associated with whiteout, i.e., loss of visual
+      references and low contrast. Practising these techniques close to the ground tends to
+      reinforce the notion that low contrast is only a risk during takeoff and landing. This notion
+      is further reinforced by the fact that the Transport Canada Aeronautical Information Manual
+      (TC AIM) does not distinguish flat light from whiteout, for which the risks of flying in
+      reduced visibility conditions are well known. The terms flat light and whiteout should not
+      be used interchangeably because, even if the 2 phenomena can occur in reduced visibility
+      conditions at takeoff, landing, and in cruise flight, flat light can also occur in cruise flight
+      when visibility is good and visual references allow the pilot to identify the horizon, making
+      it particularly insidious.
+      Finding as to risk
+      If the reference documents provided by TC do not make a clear distinction between the
+      phenomenon of flat light and that of whiteout, there is a risk that pilots will not differentiate
+      between the specific risks associated with each hazard.
+      During the occurrence flight, the pilot recognized the low contrast, but did not associate it
+      with flat light or recognize it as a potential risk to his flight.
+      Finding as to causes and contributing factors
+      The pilot’s knowledge and training did not provide him with the skills to recognize the risks
+      associated with low contrast resulting from flat light during cruise flight and when good
+      visibility made it possible to see the shoreline in the distance.
+
+2.3   Management of operational hazards
+      The SAG took the initiative to implement measures to mitigate the risks associated with its
+      operations, even though the regulations in effect did not require it to do so. It included
+      procedures for using a radio altimeter in its company operations manual to reduce the risk
+      of CFIT. However, these procedures only applied to operations on the Bell 412 when it was
+      flown by 2 pilots, and required the use of 2 radio altimeters. Furthermore, the radio
+      altimeter was rarely used by SAG pilots when they were flying the occurrence aircraft and it
+      was not installed on the other Bell 206 because the nature of SAG operations did not always
+      lend itself to its use.
+      In addition, the company operations manual did not include any CFIT risk mitigation
+      measures for operations on a Bell 206 in flat light or whiteout conditions.
+
+      TSB Aviation Safety Study 90-SP002, published in 1990, found that the majority of the
+      helicopter accidents analyzed had occurred in whiteout conditions, and that many of the
+      accidents had occurred as a result of an inadvertent descent that was not detected by the
+      pilot. In addition, TSB Air Transportation Safety Issue Investigation A15H0001, published in
+                                               AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 31
+
+
+
+        2019, revealed that most fatalities resulting from airplane and helicopter accidents involved
+        flights that had begun in visual meteorological conditions, continued in conditions leading
+        to the loss of visual references, and ended in either CFIT or a loss of control.
+        That investigation also revealed that weak or missing defences had contributed to those
+        accidents. For several years, the inadequacy of the defences identified in many accident
+        investigations confirms the persistence of these hazards and risk factors. Given the similar
+        context of SAG Bell 206 operations and those of helicopter air-taxi operations, it is
+        worthwhile to consider the discussions and conclusions of that investigation, which pointed
+        to the varied and complex nature of the air-taxi sector. According to the investigation, the
+        factors contributing to air-taxi accidents from 2000 to 2014 fell into 2 broad areas, one of
+        which was inadequate management of operational hazards.
+        In the context of managing operational hazards, the traditional approach to safety
+        management is based on regulatory compliance and a reactive response to incidents and
+        accidents. Modern safety management principles promote a proactive search for hazards,
+        identifying risks, and instituting better defences to reduce risks to an acceptable level. Many
+        operators are taking a proactive approach to safety management to identify hazards and
+        mitigate the risks associated with their activities. They are using on-board technology and
+        training to enhance the safety of their operations. Consequently, the way operators manage
+        hazards and risks determines the level of safety of their operations.
+        As we have seen above, flat light is particularly insidious and may also occur in cruise flight
+        when visibility is good. Although regulations require that training and flight tests cover the
+        phenomenon of whiteout, they do not specifically address flat light, which should not be
+        confused with whiteout. Therefore, even though compliance with safety regulations is
+        fundamental, operators that simply comply with the regulations are not well situated to
+        identify all safety issues associated with their operations and to adequately manage
+        operational hazards.
+        Finding as to risk
+        If air operators that operate aircraft in accordance with visual flight rules do not take
+        proactive measures to provide specific training on flat light or the use of on-board
+        technology to enhance situational awareness, pilots could find themselves in flat light
+        conditions without being aware of it, increasing the risk of CFIT.
+
+2.4     Flight progression
+
+2.4.1   Pre-flight preparation
+        Early in the afternoon, only 1 aircraft was needed to continue the search, and given that the
+        rear sliding door of the occurrence aircraft was difficult to close, it was decided to send the
+        aircraft back to Montréal/Saint-Hubert Airport (CYHU), Quebec.
+                                                                TRANSPORTATION SAFETY BOARD OF CANADA | 32
+
+
+
+        For the return flight, the pilot intentionally kept his cruise speed at 90 knots to stay under
+        the maximum speed allowed for an open sliding door, in case the door accidentally opened
+        during the flight.
+        Refuelling was planned at the La Tuque Aerodrome (CYLQ), Quebec. The pilot had noted
+        that winds were from the south-southwest and that these headwinds would slow his speed
+        and increase the flight time needed to arrive at his destination. The flight had to be
+        conducted during daylight, which meant landing at CYHU by 1718, knowing that the light
+        would be fading rapidly as sunset approached due to the overcast sky. The pilot therefore
+        planned to conduct the return flight at approximately 500 feet above ground level (AGL),
+        given that the aircraft’s twin engines reduced the risks associated with losing power at low
+        altitude. This allowed him to fly safely at an altitude where the strength of the wind is
+        generally weaker.
+
+2.4.2   The flight
+        At 1402, the aircraft took off from Saint-Henri-de-Taillon, Quebec, and flew a path that was
+        almost parallel to the lake’s shoreline. He stayed on this flight path for the first 4 minutes of
+        flight, as he continued to climb. The pilot assessed his height visually using the shoreline
+        and some islands ahead of him.
+        At 1406, the aircraft was at an altitude of 305 feet AGL and was approaching the group of
+        islands. A pilot flying an aircraft with 2 engines does not need to be as concerned about the
+        glide distance from the shoreline. If an engine loses power, the second engine enables the
+        pilot to maintain altitude or reduce the descent rate. Given that the visibility enabled the
+        pilot to see the shoreline to his left and ahead of him, he believed that there was no
+        additional risk in flying further from the shore than the glide distance.
+        Finding as to causes and contributing factors
+        Given the operational constraints related to speed and remaining daylight, and the fact that
+        the aircraft had twin engines, the pilot, who was able to distinguish the shoreline in the
+        distance, veered to the right to fly a more direct path to his destination, moving laterally
+        away from the shoreline.
+        The flat light was obscuring the shadows and contrast at the snow-covered surface of the
+        lake, reducing the visual cues needed for the pilot to perceive depth, which is characteristic
+        of 3D vision. Seeing the visual references, and based on his knowledge and training on
+        whiteout, the pilot felt confident that he could maintain his height visually over the snow-
+        covered surface of the lake without the need for flight instruments such as a radio altimeter.
+        As long as he kept a close lateral distance to the shoreline and could see the islands ahead of
+        him, the pilot had enough visual cues, including the size of familiar objects, to maintain his
+        3D vision. However, once he had passed the islands, he did not notice that as he moved
+        away from the shoreline, there were fewer cues.
+                                                    AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 33
+
+
+
+        Finding as to causes and contributing factors
+        Even though the shoreline was visible in the distance, once the pilot moved laterally away
+        from the shoreline and passed the islands, there was a significant reduction in reliable
+        visual cues on the ground to help the pilot establish and maintain his height visually over
+        the snow-covered surface of a lake; this situation went unnoticed by the pilot.
+
+2.4.3   Collision with the surface of the lake
+        At 1408, approximately 1 minute after passing the islands, the helicopter was at an altitude
+        of 330 feet AGL. Approximately 1 minute later and 1.34 NM further, the aircraft struck the
+        snow-covered surface of the lake. The angle between the height of the last recorded position
+        at 1408 and the point of impact was approximately 2.3°. For comparison purposes, an
+        approach at this angle would be considered a shallow rate of descent. However, without a
+        flight data recorder, it was impossible to determine exactly when the descent began, or
+        what the aircraft’s descent profile was when it struck the surface of the lake. The pilot did
+        not feel any change in flight profile between the time the aircraft was at 330 feet and when
+        it struck the frozen surface of the lake. It is therefore reasonable to conclude that the
+        transition was gradual.
+        According to the simulated view of the shoreline from the cockpit at 330 and 50 feet AGL
+        (Figure 9), without any contrast at the frozen surface of the lake, and once the islands had
+        been passed, the appearance of the shoreline would change very little because the lateral
+        distance would be too great to notice a loss of altitude at these heights if the shoreline was
+        the only visual reference used.
+
+        Figure 9. Simulated view of the shoreline from the cockpit at 330 feet above ground level and
+        50 feet above ground level when the aircraft is 2.4 nautical miles from the shoreline (Source: TSB)
+
+
+
+
+        The insidious nature of flat light could explain why the pilot held onto the strong impression
+        that he was in cruise flight at approximately 500 feet AGL when he suddenly felt a sharp
+        longitudinal deceleration, heard the engines surge, and became disoriented by a perceived
+        rotation to the left. This disorientation continued until the aircraft came to rest on its left
+        side.
+                                                       TRANSPORTATION SAFETY BOARD OF CANADA | 34
+
+
+
+The main debris at the accident site was scattered over a distance of approximately
+260 feet, along a straight line that matched the direction of flight indicated by the flight
+tracking system. Only the rotors had been projected away from the line of debris, after a
+main rotor blade severed the tail boom and caused the main rotor mast to separate from the
+transmission. This scattering of debris is consistent with that which would have resulted
+from the effect of kinetic energy and gyroscopic inertia of the rotors at the time of an
+accident. The separation of the 2 rotors would have caused the engines to surge when they
+became free of their constraints. This engine surge matches the noise heard by the pilot. The
+linear scattering of the debris appears to indicate a high speed and horizontal component at
+the time of impact.
+A clear skid mark observed approximately 230 feet from the wreckage when the first
+responders arrived corresponds to the point of impact near the first debris on the ground.
+However, this skid mark was no longer visible when TSB investigators arrived, and precise
+measurements could not be taken to confirm the orientation of the skid mark, which was
+reported to be further to the left than the orientation of the line of debris.
+According to the TSB Engineering Laboratory impact analysis report, from a structural
+standpoint, the severing of the tail boom by a main rotor blade at the horizontal stabilizer,
+and the deformations of the fuselage and landing gear had occurred when the aircraft struck
+the frozen surface of the lake hard in an upright attitude, with the left skid striking the
+surface before the right skid in the crash sequence. Furthermore, the failure of the landing
+gear attachments and the scratches, dents, and the crack found on the lower part of the
+fuselage indicate that the aircraft was moving laterally to the left when it struck the surface
+of the lake. There was no indication of a strong spin at the time of impact.
+Although the impact analysis concluded that the damage occurred during lateral movement,
+it is possible that another impact had already occurred, without causing any damage.
+The pilot initially felt a strong longitudinal deceleration, which did not match what he would
+have felt when the helicopter struck the frozen surface of the lake forcefully as it was
+moving laterally to the left. It is therefore possible that a lighter impact occurred before the
+one that caused the damage. However, because there was no visible trace of a collision with
+terrain when the TSB investigators examined the site, it was impossible to determine
+precisely when the helicopter struck the frozen surface of the lake.
+Looking at the occurrence as a whole, many pieces of information gathered have a high
+degree of certainty, such as the presence of flat light, the extent and linear scattering of the
+debris, and the pilot’s strong impression that he was in cruise flight when a strong
+longitudinal deceleration occurred. Furthermore, there was no indication of a pre-existing
+mechanical deficiency. Consequently, it was determined that the most likely scenario was
+that an unexpected descent occurred, without the pilot noticing it, as the helicopter flew
+over the lake, and that this unexpected descent ended in a CFIT accident.
+                                      AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 35
+
+
+
+Finding as to causes and contributing factors
+Given the significant decrease in reliable visual cues on the ground, an unexpected descent
+went unnoticed by the pilot and the helicopter struck the frozen surface of the lake. It is
+highly likely that the helicopter was under control at that point.
+                                                               TRANSPORTATION SAFETY BOARD OF CANADA | 36
+
+
+
+3.0   FINDINGS
+
+3.1   Findings as to causes and contributing factors
+      These are conditions, acts or safety deficiencies that were found to have caused or contributed to
+      this occurrence.
+
+      1. Even though visibility was 25 statute miles, flat light was obscuring the shadows and
+         contrast at the snow-covered surface of the lake, reducing the visual cues needed for
+         depth perception and 3-dimensional vision.
+
+      2. The pilot’s knowledge and training did not provide him with the skills to recognize the
+         risks associated with low contrast resulting from flat light during cruise flight and when
+         good visibility made it possible to see the shoreline in the distance.
+
+      3. Given the operational constraints related to speed and remaining daylight, and the fact
+         that the aircraft had twin engines, the pilot, who was able to distinguish the shoreline in
+         the distance, veered to the right to fly a more direct path to his destination, moving
+         laterally away from the shoreline.
+
+      4. Even though the shoreline was visible in the distance, once the pilot moved laterally
+         away from the shoreline and passed the islands, there was a significant reduction in
+         reliable visual cues on the ground to help the pilot establish and maintain his height
+         visually over the snow-covered surface of a lake; this situation went unnoticed by the
+         pilot.
+
+      5. Given the significant decrease in reliable visual cues on the ground, an unexpected
+         descent went unnoticed by the pilot and the helicopter struck the frozen surface of the
+         lake. It is highly likely that the helicopter was under control at that point.
+
+3.2   Findings as to risk
+      These are conditions, unsafe acts or safety deficiencies that were found not to be a factor in this
+      occurrence but could have adverse consequences in future occurrences.
+
+      1. If the reference documents provided by Transport Canada do not make a clear
+         distinction between the phenomenon of flat light and that of whiteout, there is a risk
+         that pilots will not differentiate between the specific threats associated with each
+         hazard.
+
+      2. If air operators that operate aircraft in accordance with visual flight rules do not take
+         proactive measures to provide specific training on flat light or the use of on-board
+         technology to enhance situational awareness, pilots could find themselves in flat light
+         conditions without being aware of it, increasing the risk of controlled flight into terrain.
+                                              AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 37
+
+
+
+3.3   Other findings
+      These items could enhance safety, resolve an issue of controversy, or provide a data point for
+      future safety studies.
+
+      1. Wearing a flight helmet and fastening the 4-point shoulder harness helped to reduce the
+         severity of the injuries to the pilot, who was able to egress from the aircraft and contact
+         the dispatcher to get help quickly.
+                                                                    TRANSPORTATION SAFETY BOARD OF CANADA | 38
+
+
+
+4.0   SAFETY ACTION
+
+4.1   Safety action taken
+      The Board is not aware of any safety action taken following this occurrence.
+
+
+
+
+      This report concludes the Transportation Safety Board of Canada’s investigation into this
+      occurrence. The Board authorized the release of this report on 17 November 2021. It was
+      officially released on 01 December 2021.
+
+      Visit the Transportation Safety Board of Canada’s website (www.tsb.gc.ca) for information
+      about the TSB and its products and services. You will also find the Watchlist, which
+      identifies the key safety issues that need to be addressed to make Canada’s transportation
+      system even safer. In each case, the TSB has found that actions taken to date are
+      inadequate, and that industry and regulators need to take additional concrete measures to
+      eliminate the risks.
+                                   AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 39
+
+
+
+APPENDICES
+
+Appendix A – TSB investigations in which conditions known to affect pilot
+spatial awareness were identified
+  Occurrence       Date     Factual information about the occurrence             Location
+   number
+A19P0176       2019-12-10   Loss of control and collision with terrain   Gabriola Island, British
+                            Piper Aerostar PA-60-602P, C-FQYW            Columbia
+A19O0178       2019-11-27   Loss of control and collision with terrain   Kingston Airport,
+                            Piper PA-32-260, N50DK                       Ontario, 3.5 NM N
+A19Q0153       2019-09-04   Loss of control and collision with terrain   Racine, Quebec
+                            at night
+                            Cargair Ltd.
+                            Cessna 172M, C-GSEN
+A19W0105       2019-08-06   Controlled flight into terrain               Mayo, Yukon,
+                            Alkan Air Ltd.                               25 NM ENE
+                            Cessna 208B Grand Caravan, C-FSKF
+A19Q0128       2019-07-29   Loss of control and collision with terrain   Senneterre, Quebec,
+                            Beechcraft Bonanza V35B, N3804X              7 NM NE
+A19P0112       2019-07-26   Controlled flight into terrain               Addenbroke Island,
+                            Seair Seaplanes                              British Columbia
+                            Cessna 208 Caravan, C-GURL
+A19Q0091       2019-06-18   Loss of control on takeoff and collision     Trois-Rivières Airport,
+                            with ground                                  Quebec
+                            Cargair Ltd.
+                            Piper PA-23-250 Aztec, C-GDUL
+A19A0025       2019-05-01   Controlled flight into terrain               Makkovik Airport,
+                            Piper PA-46-350P, N757NY                     Newfoundland and
+                                                                         Labrador, 35 NM SE
+A19O0026       2019-03-04   Collision with terrain                       Timmins (Victor M.
+                            Robinson Helicopter Company R66              Power) Airport, Ontario,
+                            (helicopter), C-GAUA                         18 NM WNW
+A19C0016       2019-03-04   Controlled flight into terrain               Little Grand Rapids
+                            Amik Aviation Ltd.                           Airport, Manitoba,
+                            Cessna 208B Caravan, C-FAFV                  0.75 NM S
+A18Q0186       2018-11-19   Collision with terrain                       Sainte-Agathe-des-
+                            Eurocopter EC120B (helicopter), C-FSII       Monts, Quebec,
+                                                                         5 NM W
+A18O0134       2018-09-25   Controlled flight into terrain               Toronto/Buttonville
+                            Essential Helicopters                        Municipal Airport,
+                            Robinson R44 Raven II (helicopter),          Ontario, 9 NM N
+                            C-GMCT
+A18P0090       2018-06-28   Visual flight rules flight into              Hope, British Columbia,
+                            deteriorating weather and collision with     19 NM NE
+                            terrain
+                            Cessna 182P, C-GKKU
+                                                 TRANSPORTATION SAFETY BOARD OF CANADA | 40
+
+
+
+A18Q0016   2018-02-02   Collision with terrain at night              Saint-Joachim-de-
+                        Robinson R44 Raven I (helicopter),           Courval, Quebec
+                        C-GYMG
+A17C0147   2017-12-16   Collision with terrain                       Baldur, Manitoba,
+                        Piper PA-23-250 Aztec, C-FIPK                5 NM E
+A17P0170   2017-11-26   Visual flight rules flight into              Revelstoke, British
+                        deteriorating weather and collision with     Columbia, 26 NM NE
+                        terrain
+                        Mooney M20D, C-FESN
+A17O0209   2017-09-21   Collision with water                         Goderich, Ontario
+                        Cessna 150J, C-FHPU
+A16P0186   2016-10-13   Loss of control and collision with terrain   Kelowna Airport, British
+                        Norjet Inc.                                  Columbia, 4.5 NM NE
+                        Cessna Citation 500, C-GTNG
+A16P0180   2016-10-10   Loss of control and collision with terrain   Laidman Lake,
+                        de Havilland DHC-2 (Beaver), C-GEWG          British Columbia,
+                                                                     11 NM E
+A15O0188   2015-11-09   Collision with terrain                       Parry Sound Area
+                        Cessna 182H, C-GKNZ                          Municipal Airport,
+                                                                     Ontario
+A15C0130   2015-09-08   Collision with terrain                       Foleyet, Ontario,
+                        Apex Helicopters Inc.                        17 NM S
+                        Robinson R44, C-GZFX
+A14O0217   2014-11-11   Collision with terrain                       Whitney, Ontario,
+                        Flyblocktime Incorporated                    8 NM S
+                        Cessna 150M, C-GJAO
+A14A0067   2014-08-16   Collision with terrain                       Grand Manan, New
+                        Manan Air Services (dba Atlantic Charters)   Brunswick
+                        Piper PA-31 Navajo, C-GKWE
+A13H0002   2013-09-09   Collision with water                         M’Clure Strait,
+                        Government of Canada, Department of          Northwest Territories
+                        Transport
+                        MBB BO 105 S CDN-BS-4 (helicopter),
+                        C-GCFU
+A13P0166   2013-08-16   Controlled flight into terrain               Hesquiat Lake, British
+                        Air Nootka Ltd.                              Columbia, 3NM W
+                        de Havilland DHC-2 (floatplane), C-GPVB
+A13C0073   2013-07-01   Collision with water                         Gull Lake, Manitoba
+                        Custom Helicopters Ltd.
+                        Bell 206B (helicopter), C GQQT
+A13H0001   2013-05-31   Controlled flight into terrain               Moosonee, Ontario
+                        7506406 Canada Inc.
+                        Sikorsky S-76A (helicopter), C-GIMY
+A13C0014   2013-02-10   Continued visual flight into instrument      Waskada, Manitoba,
+                        meteorological conditions - Collision        3 NM N
+                        with terrain
+                        Cessna 210C, C-FWUX
+A13F0011   2013-01-23   Controlled flight into terrain               Mount Elizabeth,
+                        Kenn Borek Air Ltd.                          Antarctica
+                        de Havilland DHC-6-300 Twin Otter, C-
+                        GKBC
+                               AIR TRANSPORTATION SAFETY INVESTIGATION REPORT A20Q0015 | 41
+
+
+
+A12C0141   2012-10-16   Collision with terrain                       Pickle Lake, Ontario
+                        Aerofab Inc.
+                        Lake 250, C-GZLC
+A12C0084   2012-07-04   Controlled flight into terrain               Angusville, Manitoba,
+                        Sunrise Helicopters Incorporated             6 NM SW
+                        Bell 206B (helicopter), C-GUIK
+A12P0079   2012-06-01   Loss of visual reference and collision       Terrace, British
+                        with terrain                                 Columbia, 14 NM W
+                        Bailey Helicopters Limited
+                        Eurocopter AS350-B2 (helicopter),
+                        C-FBHN
+A12P0070   2012-05-13   Controlled flight into terrain               Peachland, British
+                        de Havilland DHC-2 MK 1 (Beaver)             Columbia, 10 NM W
+                        (floatplane), C-GCZA
+A12W0031   2012-03-30   Loss of control and collision with terrain   Loder Peak, Alberta,
+                        Kananaskis Mountain Helicopters Ltd.         0.4 NM NW
+                        Bell 206B JetRanger (helicopter), C-GLQI
+A11W0180   2011-11-30   Controlled flight into terrain               Fort St. John, British
+                        Trek Aerial Surveys                          Columbia, 12 NM E
+                        Cessna 185E, C–FXJN
+A11W0152   2011-10-05   Continued visual flight into instrument      Drayton Valley
+                        meteorological conditions - Collision        Industrial Airport,
+                        with terrain                                 Alberta, 1 NM S
+                        Rotorworks Inc.
+                        Bell 206B (helicopter), C-FHTT
+A11W0151   2011-10-04   Controlled flight into terrain               Lutsel K'e, Northwest
+                        Air Tindi Ltd.                               Territories, 26 NM W
+                        Cessna 208B Caravan, C-GATV
+A11Q0168   2011-08-27   Collision with terrain following night-      Saint-Ferdinand,
+                        time takeoff                                 Quebec
+                        Robinson R44 Raven II (helicopter),
+                        C-GEBY
+A11C0100   2011-06-30   Collision with terrain                       Buss Lakes,
+                        Lawrence Bay Airways Ltd.                    Saskatchewan, 2 NM SE
+                        de Havilland DHC-2, C-GUJX
+A11W0070   2011-05-20   Loss of control – Collision with water       Slave Lake, Alberta,
+                        Campbell Helicopters Ltd.                    12 NM W
+                        Bell 212 (helicopter), C–FJUR
+A10A0122   2010-12-14   Controlled flight into terrain               Pokemouche, New
+                        Aero Peninsule Ltee (doing business as Air   Brunswick,
+                        Optima)                                      5.5 NM WNW
+                        Cessna 310R, C-GABL
+A10Q0148   2010-09-01   Loss of visual reference - Collision with    Chibougamau, Quebec,
+                        trees                                        12 NM NW
+                        Canadian Helicopters Limited
+                        Eurocopter AS350 B-2 (helicopter),
+                        C-GHVD
+A10Q0132   2010-08-17   Loss of visual reference with the            Sept-Îles, Quebec,
+                        ground, loss of control, collision with      22 NM N
+                        terrain
+                                                 TRANSPORTATION SAFETY BOARD OF CANADA | 42
+
+
+                        Héli-Excel Inc.
+                        Eurocopter AS350-BA (helicopter), C-GIYR
+A10Q0133   2010-08-16   Collision with sea                           Clyde River, Nunavut,
+                        Universal Helicopters Newfoundland           40 NM NW
+                        Limited Bell 206L (helicopter), C-GVYM
+A10A0085   2010-08-05   Collision with water                         Sydney, Nova Scotia,
+                        Cessna 414A, C-GENG                          13 NM ENE
+A10P0244   2010-07-31   Collision with terrain                       Lytton, British Columbia,
+                        Conair Group Inc.                            9 NM SE
+                        Convair 580, C–FKFY
+A10Q0111   2010-07-16   Controlled flight into terrain at cruising   Lake Péribonka,
+                        altitude                                     Quebec, 12 NM WSW
+                        Air Saguenay (1980) Inc.
+                        de Havilland DHC-2, C-GAXL
+A10A0056   2010-05-26   Controlled flight into terrain               Cartwright,
+                        North Wind Aviation Ltd.                     Newfoundland and
+                        Piper Navajo PA31-350, C-FZSD                Labrador, 60 NM W
+

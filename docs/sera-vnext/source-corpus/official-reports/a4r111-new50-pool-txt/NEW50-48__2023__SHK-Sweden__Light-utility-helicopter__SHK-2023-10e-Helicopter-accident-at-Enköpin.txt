@@ -1,0 +1,1287 @@
+Final report
+SHK 2023:10e
+Unanticipated yaw – Accident near
+Härnösand, Västernorrland County on
+26 June 2022 involving the helicopter
+SE-JER of the model Bell 206B.
+File no. L-58/22
+
+25 August 2023
+                                                                                                           SHK 2023:10e
+
+
+
+
+          SHK investigates accidents and incidents from a safety perspective. Its
+          investigations are aimed at preventing a similar event from occurring in the
+          future, or limiting the effects of such an event. The investigations do not deal
+          with issues of guilt, blame or liability for damages.
+
+
+
+          The report is also available on SHK´s web site: www.havkom.se
+
+          ISSN 1400-5719
+
+          This document is a translation of the original Swedish report. In case of
+          discrepancies between this translation and the Swedish original text, the
+          Swedish text shall prevail in the interpretation of the report.
+
+
+
+
+          Photos and graphics in this report are protected by copyright. Unless other-
+          wise noted, SHK is the owner of the intellectual property rights.
+
+          With the exception of the SHK logo, and photos and graphics to which a third
+          party holds copyright, this publication is licensed under a Creative Commons
+          Attribution 2.5 Sweden license. This means that it is allowed to copy, distri-
+          bute and adapt this publication provided that you attribute the work.
+
+          The SHK preference is that you attribute this publication using the following
+          wording: “Source: Swedish Accident Investigation Authority”.
+
+
+
+
+          Where it is noted in the report that a third party holds copyright to photos,
+          graphics or other material, that party’s consent is needed for reuse of the
+          material.
+
+          Cover photo no. 3 – © Anders Sjödén/Swedish Armed Forces.
+
+
+
+
+Postadress/Postal address   Besöksadress/Visitors   Telefon/Phone      Fax/Facsimile      E-post/E-mail     Internet
+P.O. Box 6014               Sveavägen 151           +46 8 508 862 00   +46 8 508 862 90   info@havkom.se    www.havkom.se
+SE-102 31 Stockholm         Stockholm
+Sweden
+SHK 2023:10e
+
+
+     Content
+
+     General observations ...................................................................................................... 5
+     The investigation ............................................................................................................ 5
+     SUMMARY ....................................................................................................... 8
+     1.         FACTUAL INFORMATION ............................................................................ 9
+     1.1        History of the flight............................................................................................ 9
+                1.1.1 Circumstances........................................................................................ 9
+                1.1.2 Sequence of events ................................................................................ 9
+     1.2        Injuries to persons ............................................................................................ 12
+     1.3        Damage to the aircraft ...................................................................................... 12
+     1.4        Environmental impact and other damage......................................................... 12
+     1.5        Qualifications of the pilot ................................................................................ 13
+     1.6        Aircraft information ......................................................................................... 13
+                1.6.1 Helicopter ............................................................................................ 14
+                1.6.2 Rotor system ........................................................................................ 14
+                1.6.3 Engine instruments .............................................................................. 15
+                1.6.4 Performance ......................................................................................... 16
+     1.7        Meteorological information ............................................................................. 16
+     1.8        Aids to navigation ............................................................................................ 16
+     1.9        Communications .............................................................................................. 17
+     1.10       Aerodrome data................................................................................................ 17
+     1.11       Flight recorders ................................................................................................ 17
+     1.12       Accident site and aircraft wreckage ................................................................. 17
+                1.12.1 Accident site ........................................................................................ 17
+                1.12.2 Aircraft wreckage ................................................................................ 18
+     1.13       Medical and pathological information ............................................................. 18
+     1.14       Fire ................................................................................................................... 18
+     1.15       Survival aspects ............................................................................................... 19
+                1.15.1 Rescue operation ................................................................................. 19
+                1.15.2 Position of crew and passengers and the use of seat belts ................... 20
+     1.16       Tests and research ............................................................................................ 20
+                1.16.1 Technical examination of the helicopter.............................................. 20
+                1.16.2 Calculation of main rotor speed........................................................... 21
+                1.16.3 Affect on yaw control at an RPM lower than 100 % ........................... 22
+     1.17       Organisational and management information .................................................. 22
+     1.18       Additional information..................................................................................... 22
+                1.18.1 Loss of tail rotor effectiveness – Unanticipated yaw........................... 22
+                1.18.2 Flight conditions with a risk of unanticipated yaw .............................. 22
+                1.18.3 Documents containing information about unanticipated yaw ............. 24
+                1.18.4 Regulations relating to flight training for PPL(H) ............................... 24
+                1.18.5 Practical training – unanticipated yaw................................................. 25
+                1.18.6 The pilot’s flight training..................................................................... 25
+                1.18.7 Similar accidents ................................................................................. 25
+     1.19       Special methods of investigation ..................................................................... 25
+     2.         ANALYSIS ...................................................................................................... 26
+     2.1        Technical examinations ................................................................................... 26
+     2.2        Wind conditions ............................................................................................... 26
+     2.3        The first attempt to land ................................................................................... 26
+     2.4        The chosen landing site.................................................................................... 27
+                                                                                                               SHK 2023:10e
+
+
+2.5   Why was control lost? ..................................................................................... 27
+      2.5.1 The pilot’s experience of inadequate yaw control............................... 27
+2.6   Survival Aspects .............................................................................................. 27
+2.7   Knowledge of unanticipated yaw should be increased .................................... 28
+2.8   Rescue operation ............................................................................................. 28
+3.    CONCLUSIONS ............................................................................................. 29
+3.1   Findings ........................................................................................................... 29
+3.2   Causes/contributing factors ............................................................................. 29
+4.    SAFETY RECOMMENDATIONS ................................................................ 30
+
+
+
+
+                                               4 (30)
+SHK 2023:10e
+
+
+     General observations
+     The Swedish Accident Investigation Authority (Statens haverikommission –
+     SHK) is a state authority with the task of investigating accidents and incidents
+     with the aim of improving safety. SHK accident investigations are intended to
+     clarify, as far as possible, the sequence of events and their causes, as well as
+     damages and other consequences. The results of an investigation shall provide
+     the basis for decisions aiming at preventing a similar event from occurring in the
+     future, or limiting the effects of such an event. The investigation shall also
+     provide a basis for assessment of the performance of rescue services and, when
+     appropriate, for improvements to these rescue services.
+
+     SHK accident investigations thus aim at answering three questions: What
+     happened? Why did it happen? How can a similar event be avoided in the future?
+
+     SHK does not have any supervisory role and its investigations do not deal with
+     issues of guilt, blame or liability for damages. Therefore, accidents and incidents
+     are neither investigated nor described in the report from any such perspective.
+     These issues are, when appropriate, dealt with by judicial authorities or e.g. by
+     insurance companies.
+
+     The task of SHK also does not include investigating how persons affected by an
+     accident or incident have been cared for by hospital services, once an emergency
+     operation has been concluded. Measures in support of such individuals by the
+     social services, for example in the form of post crisis management, also are not
+     the subject of the investigation.
+
+     Investigations of aviation incidents are governed mainly by Regulation (EU)
+     No 996/2010 on the investigation and prevention of accidents and incidents in
+     civil aviation and by the Accident Investigation Act (1990:712). The investi-
+     gation is carried out in accordance with Annex 13 of the Chicago Convention.
+
+     The investigation
+     SHK was informed on 26 June 2022 that an accident involving a helicopter with
+     the registration SE-JER had occurred at Skogsfånget, Härnösand Municipality,
+     Västernorrland County, the same day at 20:10 hrs.
+
+     The accident has been investigated by SHK represented by Kristina Börjevik
+     Kovaniemi, Chairperson, Ola Olsson, Investigator in Charge, and Stefan
+     Carneros, Operations Investigator.
+
+     SHK has been assisted by Magnic AB as an expert in audiovisual analysis,
+     Element Materials Technology AB as an expert in fuel and oil analysis and
+     Roslagens Helikopterflyg AB as an expert in aeronautical engineering.
+
+     Nora Vallée from the Transportation Safety Board of Canada (TSB Canada) has
+     participated as an accredited representative of Canada. She has been assisted by
+     advisers from Bell Textron Canada Ltd.
+
+     Gabriel Ivan has participated as an adviser for the European Union Aviation
+     Safety Agency (EASA).
+
+
+                                               5 (30)
+                                                                    SHK 2023:10e
+
+
+Magnus Axelsson has participated as an adviser for the Swedish Transport
+Agency.
+
+The following organisations have been notified: The EASA, the European
+Commission, the Swedish Transport Agency and the accident investigation
+authorities in the USA (NTSB) and Canada (TSB Canada), respectively.
+
+Investigation material
+Interviews have been conducted with the pilot, the passengers and a number of
+witnesses who saw the accident.
+
+The accident site and the helicopter have been examined.
+
+Flight data from a tablet with a navigation program has been obtained and
+analysed.
+
+Images and audio from a video from a mobile phone that captured the accident
+have been analysed.
+
+Wind data from nearby wind turbines have been obtained.
+
+A fact finding presentation meeting with the interested parties was held on
+25 January 2023 in Härnösand and a digital meeting was held in English on
+1 February 2023. At these meetings, SHK presented the facts discovered during
+the investigation, available at the time.
+
+
+
+
+                               6 (30)
+SHK 2023:10e
+
+
+     Final report SHK 2023:10e
+
+     Aircraft:
+        Registration, type                            SE-JER, Bell 206
+        Model                                         206B
+        Airworthiness                                 Certificate of Airworthiness and valid
+                                                      Airworthiness Review Certificate (ARC)1
+       Serial number                                  2491
+       Operator                                       Private
+     Time of occurrence                               2022-06-26, at 20:10 hrs in daylight
+                                                      Note: All times are given in Swedish day-
+                                                      light saving time (UTC2 + 2 hours)
+     Location                                         Skogsfånget, Härnösand Municipality,
+                                                      Västernorrland County,
+                                                      (position 62°36'3 N 017°46'4 E,
+                                                      84 metres above mean sea level)
+     Type of flight                                   Private
+     Weather                                          According to SMHI’s analysis: Wind,
+                                                      south to south-east 7–9 knots, visibility
+                                                      more than 10 km, sky clear, tempera-
+                                                      ture/dew point 21–23/13–15°C, QNH3
+                                                      1017 hPa.
+     Persons on board:                                5
+        Crew members                                  1
+        Passengers                                    4
+     Injuries to persons                              None
+     Damage to the aircraft                           Substantially damaged
+     Other damage                                     Leakage of fuel and oil. Minor damage to
+                                                      vegetation and a fence.
+     The pilot:
+       Age, licence                                   44 years, PPL(H)4
+       Total flying hours                             179 hours, of which 32 hours on type
+       Flying hours previous 90 days                  72 hours, of which 32 hours on type
+       Number of landings previous                    112
+       90 days
+
+
+
+
+     1 ARC – Airworthiness Review Certificate.
+     2 UTC – Coordinated Universal Time.
+     3 QNH – Barometric pressure at mean sea level.
+     4 PPL(H) – Private Pilot Licence Helicopter.
+
+
+
+                                                       7 (30)
+                                                                           SHK 2023:10e
+
+
+SUMMARY
+The pilot had earlier during the day made a number of flights in the local area.
+During the evening, the pilot was to perform cost-shared flights with other
+private individuals. These flights started from a cultivated field at Skogsfånget
+near Härnösand. The accident occurred during the second flight from the
+location.
+
+After about 15 minutes of flight, an approach was made towards the take-off and
+landing site. After a landing attempt in which the pilot experienced disturbances
+from the wind, the pilot performed a go-around in order to land in a different
+direction on a plot next to a house. This location had limited obstacle clearance,
+which meant that the pilot had to do a final with a steep descent. During the end
+of the final, the helicopter had low speed and high power output. The relative
+wind came from the front left. The helicopter unanticipatedly began to yaw to
+the right and the pilot experienced that the control actions were not sufficient to
+counteract the yaw, which turned into an uncontrolled rotation to the right. The
+pilot turned the throttle to idle, which stopped the rotation, but it also caused the
+helicopter to descend. The helicopter collided with trees and hit the ground hard.
+
+No serious injuries occurred, but the damage to the helicopter was substantial.
+
+No technical fault that could have contributed to the occurrence has been found.
+
+The investigation has shown that a factor in the occurrence was a phenomenon
+known as unanticipated yaw, also known as loss of tail rotor effectiveness (LTE).
+
+Causes/Contributing factors
+During the approach, the helicopter was flown at low airspeed, high power out-
+put, without ground effect and with the relative wind from the left side. This
+contributed to a reduction in tail rotor effectiveness resulting in an unanticipated
+right yaw that transitioned into an uncontrolled rotation.
+
+Contributing factors have been that:
+   •   the pilot had insufficient knowledge of the risk of unanticipated yaw,
+   •   the intended landing site had limited obstacle clearance and a high degree
+       of difficulty.
+
+Safety recommendations
+
+The Swedish Transport Agency is recommended to:
+   •   inform concerned parties about the risks of unanticipated yaw in an
+       appropriate way. (SHK 2023:10e R1)
+
+The EASA is recommended to:
+   •   inform concerned parties about the risks of unanticipated yaw in an
+       appropriate way. (SHK 2023:10e R2)
+
+
+
+                                  8 (30)
+SHK 2023:10e
+
+
+     1.        FACTUAL INFORMATION
+
+     1.1       History of the flight
+
+     1.1.1     Circumstances
+               The pilot had performed a number of flights in the local area earlier in
+               the day. In the evening, the pilot was to perform further flights with
+               other individuals on a cost-share basis. These flights departed from a
+               cultivated field at Skogsfånget close to Härnösand. The accident
+               occurred during the second flight from the location.
+
+               When the pilot was to land after the first flight, the pilot felt a yaw
+               disturbance to the right, but was able to land on the field. When the
+               passengers from the first flight had disembarked, four new passengers
+               boarded the helicopter. One person on the ground assisted the passen-
+               gers with safety belts and handling of the doors.
+
+               According to information the flights were paid for on what is known as
+               a cost-share basis, which means that the pilot and the passengers share
+               the direct costs incurred in connection with a flight.
+
+     1.1.2     Sequence of events
+               The flight was performed locally, including over the town of Härnösand
+               (see Figure 1). After flying for just over 15 minutes, an approach to the
+               take-off and landing site was made from the north.
+
+
+
+
+               Figure 1. Image with flight data that shows the entire flight. Markings inserted by SHK. Map
+               image: Google Earth. © Lantmäteriet File no. R61749_190001.
+
+
+
+
+                                                         9 (30)
+                                                                                   SHK 2023:10e
+
+
+The pilot made an attempt to land in an east-north-easterly direction on
+the cultivated field. Due to an indication that the engine’s torque was
+too high, the pilot was not able to manoeuvre the helicopter in yaw to
+the desired heading. Consequently, the pilot performed a go-around by
+turning left in order to land in a different direction on a plot at a nearby
+house. This was a site the pilot had used before. The plot was confined
+and a small tree had been removed to increase obstacle clearance.
+
+Figure 2 shows the outbound direction at take-off, the approach direc-
+tion, the take-off and landing site in the cultivated field, the go-around
+with a left turn and the accident site.
+
+
+
+
+Figure 2. Image with flight data that, among other things, shows the area of the take-off and
+landing site, the go-around and the final approach towards the accident site. Markings inserted
+by SHK. Map image: Google Earth. © Lantmäteriet File no. R6174919_0001.
+
+
+
+
+                              10 (30)
+SHK 2023:10e
+
+
+               A final approach was made on a south-westerly heading in order to
+               make a steep descent towards the new landing site. At the end of the
+               final approach, the helicopter passed over a residential building in
+               which there were a number of people. The helicopter’s ground speed at
+               that time was approximately 5 knots and decreasing, both the track and
+               heading was around 220° and the height above the ground was approx-
+               imately 30 metres (see Figure 3).
+
+
+
+
+               Figure 3. Image with flight data that shows the flightpath during the final approach. The ground
+               speed and track in the last three seconds before the helicopter began to yaw to the right are
+               marked, as is the intended landing site on the house plot and the site of the accident. Please note
+               that the satellite image from Google Earth does not show the actual conditions at the time of
+               the accident. Markings inserted by SHK. Map image: Google Earth. © Lantmäteriet File no.
+               R6174919_0001.
+
+               Shortly after this, the helicopter began to yaw to the right. The pilot
+               gradually increased left pedal displacement but felt that this was not
+               sufficient to counteract the yaw.
+               To manage the yaw, the pilot lowered the collective and pushed the
+               cyclic forward, but the yaw continued and developed into an uncon-
+               trolled rotation to the right (see Figure 4).
+
+
+
+
+               Figure 4. Series of images showing the helicopter in the uncontrolled rotation to the right. Mark-
+               ings by SHK that show frame rate and time code. Photo: Private.
+
+                                                           11 (30)
+                                                                                          SHK 2023:10e
+
+
+      The pilot turned the throttle handle to idle in order to reduce the rota-
+      tion. The rotation stopped, but the reduction in engine power simul-
+      taneously caused the helicopter to descend towards the ground. The
+      helicopter collided with a number of trees and hit the ground hard (see
+      Figure 5).
+
+
+
+
+      Figure 5. Position of the helicopter immediately prior to the impact. Photo: Private.
+
+      After the impact, the pilot shut down the engine.
+
+      A witness on the ground ran towards the helicopter, opened the passen-
+      ger door on the right side and helped with the evacuation.
+
+1.2   Injuries to persons
+      No serious injuries. However, two of the passengers experienced neck
+      and back pain.
+
+1.3   Damage to the aircraft
+      Substantially damaged.
+
+1.4   Environmental impact and other damage
+      A leak of an estimated 170 litres of fuel and a smaller quantity of
+      hydraulic fluid occurred at the accident. This resulted in an environ-
+      mental decontamination by removal of 16 tonnes of soil from the acci-
+      dent site. Otherwise, there was minor damage to trees, bushes and a
+      fence at the crash site.
+
+
+
+                                     12 (30)
+SHK 2023:10e
+
+
+     1.5       Qualifications of the pilot
+               The pilot was 44 years old, had a PPL(H) with a valid rating on type
+               and a valid medical certificate. The licence was issued on 21 December
+               2021 on the helicopter type Robinson R44.
+
+               Latest                        24 hours           90 days               Total
+               All types                            4                72                179
+               Actual type                          4                32                 32
+
+               Number of landings actual type previous 90 days: 112.
+               Type rating concluded on 31 May 2022.
+
+     1.6       Aircraft information
+               The Bell 206B is a single-engined, gas turbine-powered helicopter with
+               a two-bladed main rotor that has a diameter of 10 metres. The helicopter
+               is approved for one pilot and four passengers.
+
+
+
+
+               Figure 6. The helicopter SE-JER earlier the same day. Photo: Private
+
+
+
+
+                                                        13 (30)
+                                                                         SHK 2023:10e
+
+
+1.6.1   Helicopter
+        TC-holder                        Bell Textron Canada Ltd, Canada
+        Model                            Bell 206B
+        Serial number                    2491
+        Year of manufacture              1978
+        Gross mass (kg)                  Max. take-off/landing mass 1,451 Actual
+                                         1,332
+        Centre of gravity                Within limits
+        Total operating time, hours      10,468
+        Operating time since latest      19
+        periodic inspection, hours
+        Number of cycles                 14,208
+        Type of fuel uplifted before     Jet A-1
+        the occurrence
+
+        Engine
+        TC-holder                        Rolls-Royce Corporation
+        Type                             250-C20B
+        Number of engines                1
+        Serial number                    CAE-
+                                         840563
+        Total operating time, hours      4,578
+        Operating time since latest      19
+        inspection, hours
+
+
+        The helicopter had a Certificate of Airworthiness and a valid Airworthi-
+        ness Review Certificate (ARC). There were no deferred remarks. There
+        were also no remarks during the last three-month period.
+
+        The latest inspection was performed on 14 June 2022 at an operating
+        time of 10,449 flight hours and was a combined annual/100-hours
+        inspection. During the inspection, i.a. a routine power check of the
+        engine was performed without remark.
+
+1.6.2   Rotor system
+        The main rotor has a speed of 395 RPM at the indication of 100 %. The
+        approved operating range is 97–100 %. If the RPM falls below 90 %, a
+        warning light illuminates on the instrument panel accompanied by an
+        audible warning.
+
+        The main rotor on this type of helicopter rotates anticlockwise when
+        viewed from above. Due to this rotation, the helicopter experiences a
+        torque reaction in the opposite direction, which is to the right with this
+        helicopter type. The torque reaction is most significant at high power in
+        combination with low airspeed.
+
+
+
+
+                               14 (30)
+SHK 2023:10e
+
+
+               The purpose of the tail rotor is to provide opposing thrust that compen-
+               sates for the torque generated by the main rotor (see Figure 7). The
+               thrust from the tail rotor is controlled through pedal displacement,
+               which changes the angles of the rotor blades. The tail rotor has a gear
+               ratio of 6.472:1 to the main rotor. The speed of the tail rotor is
+               2,556 RPM at an indication of 100 %.
+
+
+
+
+               Figure 7. Schematic showing the direction of rotation of the main rotor blades and the torque
+               generated, as well as the opposing thrust from the tail rotor. Source: Federal Aviation
+               Administration (FAA).
+
+
+     1.6.3     Engine instruments
+               The helicopter was equipped with digital engine instrument that
+               displays the turbine outlet temperature (ToT). This temperature is an
+               important parameter of gas turbine engines and is an indication of the
+               function of the engine. The instrument had a memory function that
+               registers the temperature values during engine start and flight. A read-
+               out off the instrument showed that no values had been exceeded.
+
+
+
+
+                                                        15 (30)
+                                                                        SHK 2023:10e
+
+
+1.6.4   Performance
+        Calculations made from the flight manual shows that the helicopter's
+        performance was not limited by the actual conditions prevailing at the
+        time.
+
+        However, the flight manual states that the tail rotor control margin
+        and/or engine parameters (ToT and torque) may preclude operation if
+        hovering with a relative wind coming from a sector of 050–210°.
+
+1.7     Meteorological information
+
+        According to SMHI’s analysis:
+        At the accident site 20:10 local time: Wind south to south-east
+        7–9 knots, visibility more than 10 km, sky clear, temperature/dew point
+        21–23/13–15°C, QNH 1017 hPa.
+
+        About the wind conditions
+        The accident site is 84 metres above mean sea level (MSL) and the
+        nearest topographic landmarks are Hällenylandsberget 119 metres
+        above MSL, located 1 km east of the site, Spjutåsberget 196 metres
+        above MSL, located 3.7 km to the southeast and Lilltjärnsberget
+        143 metres above MSL, 3 km southwest of the accident site.
+
+        In the low level forecast for the area, the expected wind speed at the
+        time was 1–10 knots, with gusts of up to 16 knots. This is deemed to be
+        relatively light winds and should not have caused any mechanical
+        turbulence and no moderate turbulence was forecast in the area either.
+        However, it is not possible to rule out the terrain having caused varia-
+        tions in wind direction and speed, but it has not been possible to verify
+        this through observations.
+
+        Information from nearby wind turbines
+        There are two wind turbines 3.6 km south-west of the accident site at
+        Spjutåsberget. The location of the wind turbines is at approximately
+        170 metres above MSL and the tower height is 114 metres AGL. The
+        towers are equipped with anemometers that record the wind direction
+        and wind speed with min., max. and average wind speed over a ten-
+        minute period.
+
+        According to data from the anemometers, the wind was southerly,
+        between 169–188 degrees, with a speed of 7.4 m/s (max. 9.6 and min.
+        4.1 m/s) at the time of the accident.
+
+1.8     Aids to navigation
+        Not pertinent.
+
+
+
+
+                               16 (30)
+SHK 2023:10e
+
+
+     1.9       Communications
+               Not pertinent.
+
+     1.10      Aerodrome data
+               Not pertinent.
+
+     1.11      Flight recorders
+               No flight data recorder or cockpit voice recorder was installed. Nor was
+               such equipment required for this type of aircraft.
+
+               The pilot was using a tablet with the navigation application SkyDemon
+               during the flight. SHK has gained access to the recorded flight data from
+               the application. This data has been presented in section 1.1.2.
+
+               A witness on the ground filmed the accident using a mobile phone. SHK
+               has analysed the video (see section 1.16.2).
+
+     1.12      Accident site and aircraft wreckage
+
+     1.12.1    Accident site
+               The helicopter hit the ground vertically by a group of trees in a garden.
+               The crash site was about 10 metres from the closest residential building
+               and just over 70 metres north of the take-off site (see Figure 8).
+
+
+
+
+               Figure 8. Picture of the accident area seen from the direction of the final approach. The take-
+               off site in the field, the intended landing site on the house plot and the crash site are marked.
+
+
+
+
+                                                          17 (30)
+                                                                                           SHK 2023:10e
+
+
+         Parts of trunks and branches from birch and pine trees were cut off by
+         the rotor blades. The aft portion of the tail boom had hit a fence that
+         formed the boundary of the house plot and that of a nearby residential
+         building (see Figure 9).
+
+
+
+
+         Figure 9. The helicopter at the crash site. Photo: Medelpads Rescue Service Association.
+
+
+1.12.2   Aircraft wreckage
+         The left landing skid was broken and had ruptured the fuel tank. The aft
+         portion of the tail boom suffered damage that was caused, among other
+         things, by the tail rotor blades and the collision.
+
+         The outer part of one of the main rotor blades was broken off during the
+         collision with the trees. It was found 185 metres from the accident site.
+
+1.13     Medical and pathological information
+         There is nothing to indicate that the mental and physical condition of
+         the pilot was impaired before or during the flight.
+
+1.14     Fire
+         No fire broke out.
+
+
+
+
+                                       18 (30)
+SHK 2023:10e
+
+
+     1.15       Survival aspects
+
+     1.15.1     Rescue operation
+                The ELT5 of the type Kannad 406 AF- H was activated during the
+                accident.
+
+                The signal from the ELT was received by the JRCC6 at 20:11 hrs, at
+                which point the rescue coordinator there began searching for infor-
+                mation about the accident. The Swedish Maritime Administration
+                search and rescue helicopter was also called out in order to begin a
+                search for a potential accident site. It became clear at 20:26 hrs, after
+                having made contact with the owner of the helicopter, that an accident
+                had taken place but that no one was seriously injured. The owner had
+                talked to the helicopter pilot and was able to pass on information about
+                the occurrence, the position and that people on site had called 112 to
+                raise the alarm.
+
+                The rescue coordinator called SOS Alarm at 20:29 using a special
+                number in order to raise the alarm about the accident but hung up after
+                two minutes and 40 seconds without anyone having answered. The pub-
+                lic number 112 was also tried without getting an answer. At the same
+                time, the JRCC also called the helicopter pilot who told what had
+                happened, where they were and that all five people on board had
+                escaped without serious injuries. The pilot also announced that he had
+                tried to call 112 but that no one had answered.
+
+                At 20:33 hrs, the JRCC called SOS Alarm again and the call was
+                answered after 17 seconds. After asking about the previous failure to
+                answer, the emergency operator at SOS Alarm said that there was an
+                unbelievably high volume of calls at the moment with a response time
+                of up to four minutes. At close to 20:35 hrs, alarm calls from people at
+                the accident site were also answered, the waiting time then was approx-
+                imately three and a half minutes.
+
+                At 20:36, SOS Alarm called out the Höga Kusten-Ådalen Fire and
+                Rescue Service and two ambulances and informed the police. The first
+                ambulance arrived and the first fire and rescue service unit arrived
+                around ten minutes later. The police did not send any resources to the
+                site. The people who had been on board the helicopter were taken care
+                of. Two of the passengers felt pain and were taken to hospital by ambu-
+                lance to be checked over. The others who were on board later went to
+                hospital themselves in order to be checked over.
+
+
+
+
+     5 ELT – Emergency Locator Transmitter.
+     6 JRCC – Joint Rescue Coordination Centre.
+
+
+
+                                                  19 (30)
+                                                                           SHK 2023:10e
+
+
+         A large amount of fuel had leaked out of the helicopter. The majority
+         had drained into the soil and the fire and rescue service was only able
+         to collect a small quantity of fuel. Work to decontaminate the soil began
+         shortly after the fire and rescue service operation was concluded at
+         22:13 hrs.
+
+         Response time for the emergency number 112
+         The alarm company SOS Alarm Sverige AB’s responsibilities include
+         the emergency number 112 and calling out fire and rescue services and
+         prehospital healthcare. SOS Alarm is owned by the Swedish central
+         government and Sweden’s municipalities and regions. Its assignment is
+         governed by an agreement (the alarm agreement) with the Swedish
+         central government. The alarm agreement governs, among other things,
+         response times when someone calls 112. Under this agreement, the
+         average response time for emergency calls shall be no more than eight
+         seconds and no one who calls 112 shall normally need to wait more than
+         30 seconds.
+
+1.15.2   Position of crew and passengers and the use of seat belts
+         The pilot was sitting in the right pilot’s seat. One passenger was sitting
+         in the left front seat. The other three passengers were sitting in the rear
+         passenger seat. All were using the installed seat belts.
+
+         The evacuation was conducted through the doors on the right side of
+         the helicopter because the broken landing skid was blocking both of the
+         doors on the left side.
+
+1.16     Tests and research
+
+1.16.1   Technical examination of the helicopter
+         A technical examination showed that the main rotor gearbox was
+         broken in its attachments at the top of the fuselage. The chip detector in
+         the bottom of the gearbox had broken loose, which meant that oil had
+         leaked out of the gearbox.
+
+         The main drive shaft coupling between the engine and the main rotor
+         gearbox was broken and the gear teeth of the inner spherical coupling
+         had under rotation made contact with the surrounding structure, which
+         had caused a large quantity of metal chips in the area for the engine and
+         the gearbox.
+
+         A fuel sample was taken from the engine’s fuel filter. This was within
+         the required limits for Jet A-1 and no water or other contaminants were
+         visible in the sample.
+
+         Other results from the examination:
+            •   The tail rotor flight control system has been checked with
+                respect to function, rigging and the installation of the correct
+                components. No discrepancies were found.
+
+                                 20 (30)
+SHK 2023:10e
+
+
+                  •   The oil in the tail rotor gearbox was within the approved level
+                      and analysis of the oil showed no abnormalities.
+                  •   The tail rotor drive shaft was broken at the aft portion of the tail
+                      boom. It was possible to turn both the forward and aft parts of
+                      the drive shaft without abnormal sounds or resistance.
+                  •   It was possible to turn the tail rotor without abnormal sounds or
+                      resistance.
+                  •   The leading edges of the tail rotor blades were clean and were
+                      not contaminated by insects. However, the surfaces of the blades
+                      were coated to some extent by soot from the engine exhaust.
+                      According to information from Bell Textron, the soot coating
+                      that was on the surfaces of the rotor blades has no performance
+                      degradation on their function.
+                  •   An analysis of the engine oil was without remarks.
+                  •   The collective and cyclic controls showed full ranges of move-
+                      ment.
+                  •   The magnetic chip detectors for the main rotor gearbox and tail
+                      rotor gearbox did not showed any notable quantities of chips or
+                      particles.
+                  •   The hydraulic filter for the servo control had no contaminants.
+
+               A technical examination of the engine including the turbine, compres-
+               sor and gearbox did not reveal any technical faults that could have
+               affected the event. There was no damage to fuel or air tubes. The power
+               turbine fuel governor, fuel pump, fuel nozzles and air bleed valve have
+               been functionally tested on another engine with no remarks.
+
+     1.16.2    Calculation of main rotor speed
+               The video that captured the sequence of events has been analysed in
+               order to calculate the speed of the helicopter’s main rotor. The analysis
+               has involved the following steps:
+
+                  •   calculation of the number of rotations of the main rotor blades
+                      per unit time in the video,
+                  •   calculation of the number of audio impulses from the main rotor
+                      per unit time in the graphic wave form of the sound file,
+                  •   spectrum analysis of the sound from the tail rotor. As the main
+                      rotor and tail rotor are linked mechanically with one another, it
+                      has been possible to calculate the speed of the main rotor from
+                      the speed of the tail rotor.
+
+               The main rotor speed was relatively constant (app. 98 %) up until the
+               right yaw occurred. The RPM then fell by a few percentage points
+               during the sequence involving the uncontrolled rotation about the yaw
+               axis. Upon making contact with the trees, the main rotor RPM was
+               approximately 83 %, after which it fell rapidly.
+
+                                                21 (30)
+                                                                                          SHK 2023:10e
+
+
+1.16.3     Affect on yaw control at an RPM lower than 100 %
+           SHK has investigated whether the RPM of 98 % may have affected the
+           sequence of events. Because the tail rotor has thrust margins for hand-
+           ling RPM changes within the permitted operating range (97–100 %),
+           the reduction in the RPM is not deemed to have resulted in a noticable
+           difference in performance.
+
+1.17       Organisational and management information
+           Not pertinent.
+
+1.18       Additional information
+
+1.18.1     Loss of tail rotor effectiveness – Unanticipated yaw
+           Loss of tail rotor effectiveness (LTE) or unanticipated yaw is a known
+           risk in connection with flight at low speed and high-power output.
+
+           Unanticipated yaw can be described as a rapid yaw in the opposite
+           direction to the rotation of the main rotor that takes place without any
+           control input by the pilot. The phenomenon is aerodynamic and is not
+           caused by any technical failure, and is instead the result of the tail rotor
+           not being able to provide sufficient thrust to maintain directional
+           control. The phenomenon occurs when the airflow through the tail rotor
+           is disturbed and only happens at airspeeds under 30 knots.
+
+           An unanticipated yaw can, if it is not corrected promptly, rapidly turn
+           into uncontrolled rotation that can lead to an accident. Data from flight
+           tests has shown that the tail rotor blades do not stall during an unan-
+           ticipated yaw. Avoiding unanticipated yaw requires knowledge about
+           the flight conditions that can lead to this phenomenon.
+
+1.18.2     Flight conditions with a risk of unanticipated yaw
+           For helicopters with a main rotor that rotates anticlockwise (viewed
+           from above)7 there is a risk of unanticipated yaw when flying at low
+           speed in connection with, i.a., relative wind from the following regions:
+
+                •    With the wind from the left front, 285° to 315°, relative to the
+                     helicopter, the downward airflow and tip vortices from the main
+                     rotor can be blown into the tail rotor and cause so-called Main
+                     Rotor Disc Vortex Interference, which reduces the effectiveness
+                     of the tail rotor and an unexpected yaw can occur (see Figure
+                     10).
+
+
+
+
+7 For helicopters with a main rotor that rotates clockwise (viewed from above), e.g. some helicopters
+
+  manufactured in Europe, the conditions are the opposite.
+
+                                         22 (30)
+SHK 2023:10e
+
+
+
+
+                   Figure 10. Region of Main rotor disc vortex
+                   interference. Source: FAA.
+
+               •   With wind from the side, 210° to 330°, the airflow through the
+                   tail rotor can be pushed back and cause recirculation of the air
+                   through the tail rotor, known as Tail rotor vortex ring state,
+                   which reduces the effectiveness of the tail (see Figure 11).
+
+
+
+
+                   Figure 11. Region of tail rotor vortex ring
+                   state. Source: FAA.
+
+               •   With wind from the tail region, 120° to 240, the helicopter’s tail
+                   section and tail fin acts as a weathercock and tries to turn the
+                   helicopter into the wind (weathercock stability) (see Figure 12).
+                   An unanticipated yaw or increase of yaw rate can then occur.
+
+
+
+
+                   Figure 12. Weathercock stability. Source: FAA.
+
+                                                   23 (30)
+                                                                                             SHK 2023:10e
+
+
+            Although specific wind directions are identified for each region, a pilot
+            should be aware that the regions may shift depending on the ambient
+            conditions. The regions do overlap. The greatest losses of tail rotor
+            effectiveness can occur in these overlapping regions.
+
+            Loss of lift can also result in unanticipated yaw. If the airspeed
+            decreases, the translational lift8 caused by the incoming airflow also
+            decreases (loss of translational lift). An increase in power output in
+            order to compensate for the loss of translational lift can result in unex-
+            pected yaw.
+
+1.18.3      Documents containing information about unanticipated yaw
+            Unanticipated yaw has been drawn to attention by both regulators and
+            helicopter manufacturers. Information about the phenomenon and how
+            it should be dealt with has been published. For example, FAA has
+            published information about unanticipated yaw in the Helicopter Flying
+            Handbook. Due to a large number of accidents were unanticipated yaw
+            has been a cause, the FAA has also published Advisory Circular FAA
+            AC 90-95.
+
+            Bell Textron has published Information Letter 206-84-41, 206L-84-27,
+            Low speed flight characteristics which can result in unanticipated right
+            yaw.
+
+            The EASA has identified unanticipated yaw as a safety issue in the risk
+            register for helicopter flying in the European Plan for Aviation Safety
+            for 2023 (EPAS). The safety issue is described as being related to the
+            inability to detect, control and recover from an unanticipated yaw or
+            loss of tail rotor effectiveness (LTE) during low-speed phases of flight,
+            leading to the helicopter loss of control.
+
+            In 2010 the EASA published a safety document regarding the risk of
+            unanticipated yaw, SIB 2010-12R1.
+
+1.18.4      Regulations relating to flight training for PPL(H)
+            Commission Regulation (EU) No 1178/20119 contains regulations
+            concerning the training required for a PPL(H).
+            The syllabus for the theoretical training is set out in AMC1 FCL.210;
+            FCL.215. Aerodynamics regarding tail rotors is included in part 5.2,
+            which describes the basic principles of flying helicopters. There is no
+            direct description of the unanticipated yaw phenomenon. The parts that
+            can be deemed relevant are the points:
+            (a) Induced airflow and tail rotor thrust.
+            (c) Effect of tail rotor failure and vortex ring.
+
+8 Translational lift – an increase in lift from the rotor disc caused by horizontal speed.
+9 Commission Regulation (EU) No 1178/2011 of 3 November 2011 laying down technical requirements
+
+  and administrative procedures related to civil aviation aircrew pursuant to Regulation (EC) No 216/2008
+  of the European Parliament and of the Council.
+
+                                            24 (30)
+SHK 2023:10e
+
+
+                 The practical part of the training is described in AMC2 FCL.210
+                 PPL(H). The syllabus specifies several exercises in which the effect of
+                 the influence of the wind shall be included in flying exercises. Exer-
+                 cise 18 includes hovering out of ground effect10 (OGE) and loss of tail
+                 rotor effectiveness.
+
+     1.18.5      Practical training – unanticipated yaw
+                 The practical flight training includes the student having to learn the
+                 influence of the wind from different directions when hovering. For
+                 safety reasons, this part is practiced when hovering in ground effect. A
+                 practical exercise in which the student gets to practise this at a higher
+                 altitude, out of ground effect, is associated with a high risk and is there-
+                 fore not conducted.
+
+                 The phenomenon can be simulated in certain flight simulators. These
+                 simulators are available for larger helicopters but are largely lacking for
+                 smaller helicopters that are affected by accidents involving unantici-
+                 pated yaw.
+
+     1.18.6      The pilot’s flight training
+                 The pilot’s training adhered to the syllabus during the practical portion
+                 of the flight training. This included demonstration of and flying in
+                 conditions with vortex (recirculation of the air in the main rotor) and
+                 with recovery from this situation at high altitude. The influence of the
+                 wind when hovering in various directions and at various speeds was
+                 also demonstrated and practised.
+
+                 The pilot has stated that information about the risk of unanticipated yaw
+                 was not included in the theoretical training for the private pilot licence.
+                 The pilot has also stated that the risk of unanticipated yaw was also not
+                 covered during type rating on the helicopter type in question.
+
+     1.18.7      Similar accidents
+                 Several similar accidents have been investigated by SHK, see
+                 RL 2022:02, RL 2005:05, RL 2001:31 and RL 2001:19.
+
+                 A number of similar accidents have also occurred abroad. Among
+                 others, TSB Canada has published the following reports: A13W0070,
+                 A16P0069, A20A0027 and A22W0005.
+
+     1.19        Special methods of investigation
+                 Wind data have been obtained from nearby wind turbines (see section
+                 1.7).
+
+
+
+
+     10 Ground effect – an increase in lift that takes place when a helicopter flies close to the ground and occurs
+
+       at a height corresponding to about one rotor diameter from the ground and below. Hovering without
+       ground effect requires more lift than hovering with ground effect.
+
+                                                             25 (30)
+                                                                      SHK 2023:10e
+
+
+2.    ANALYSIS
+
+2.1   Technical examinations
+      No technical fault that could have contributed to the occurrence has
+      been found. The damage to the helicopter is deemed to have occurred
+      during the impact.
+
+      An analysis of the audiovisual recording shows that the main rotor RPM
+      was within the permitted range (97–100 %) up until the point at which
+      the pilot reduced the throttle with the aim to stop the uncontrolled yaw.
+
+2.2   Wind conditions
+      According to data from the anemometers installed on the nearby wind
+      turbines at Spjutåsberget, the wind was southerly, 169–188°, and had
+      an average speed of 7.4 m/s at the time of the accident.
+
+      The wind is affected by friction forces from the ground surface.
+      According to a meteorological rule of thumb, the wind turns 30° tow-
+      ards a higher gradient, at the same time as its speed increases by 50 %
+      from ground level up to an altitude of 300 metres.
+
+      The difference in altitude from ground level at the accident site to the
+      anemometers is around 230 metres. If local phenomena such as land
+      and sea breeze changes are ignored, this means that the wind direction
+      at the accident site was around 20° lower than that registered by the
+      anemometers, i.e. somewhere around 149–168°, and the wind speed
+      was around 5 m/s (10 knots).
+
+      Data from the anemometers therefore supports SMHI’s analysis in
+      which the wind was assessed to be south-easterly with a speed of
+      7 to 9 knots at the accident site.
+
+2.3   The first attempt to land
+      During the landing attempt on the cultivated field, the pilot was unable
+      to correct the heading as a result of the torque indication was approach-
+      ing the maximum permitted value.
+
+      The high power requirement was probably due to the relative wind was
+      acting from the sector where the tail rotor control margins and engine
+      parameters can limit flight (see 1.6.4), and that the maneuver was per-
+      formed without the helicopter being stabilized in hover.
+
+      A go-around was therefore made towards another site on a plot at a
+      nearby house.
+
+
+
+
+                             26 (30)
+SHK 2023:10e
+
+
+     2.4       The chosen landing site
+               The landing site on the house plot was an area that the pilot had landed
+               on before which may have contributed to the decision to land there. It
+               was surrounded by buildings and vegetation and had limited obstacle
+               clearance. It may be regarded as a confined area for a landing, compared
+               with the surrounding field. The limited obstacle clearance meant that
+               the pilot had to reduce the speed in order to initiate a steep descent
+               towards the planned landing site. The reduction in speed resulted in the
+               helicopter ending up in a hover out of ground effect. The degree of
+               difficulty of the planned landing may be regarded as high for a private
+               pilot with limited flying experience.
+
+     2.5       Why was control lost?
+               During the end of the final approach, the helicopter was hovering with
+               high-power output and out of ground effect. The height above the
+               ground was about 30 metres and the ground speed about 5 knots. Based
+               on the prevailing wind speed of 7–9 knots, the flight speed has been
+               calculated at just over 10 knots. GPS data and information from the
+               video footage analysed show that both the track and heading was about
+               220° and that the relative wind hit the left sector of the main rotor.
+
+               The low speed of the helicopter, together with the prevailing wind
+               conditions, has likely led to the tail rotor’s effectiveness being initially
+               affected by main rotor disk vortex interference. This resulted in an
+               unanticipated yaw to the right. The helicopter then received the wind
+               from the tail which increased the yaw rate. Once the yaw developed into
+               a rotation, the tail rotor was struck by the airstream from the side,
+               further reducing its effectiveness. The pilot’s action to reduce engine
+               power caused the rotation to cease, but simultaneously caused the
+               helicopter to descend towards the ground since the rotor RPM
+               decreased.
+
+     2.5.1     The pilot’s experience of inadequate yaw control
+               Hovering without ground effect requires a high-power output. If the
+               effectiveness of the tail rotor is disturbed under such conditions, the
+               yaw control is affected. Full pedal travel may then be insufficient to
+               counter the yaw moment that arises. This is likely the reason why the
+               pilot felt that the steering inputs had no effect at this stage.
+
+     2.6       Survival Aspects
+               On impact, the helicopter struck the ground in a horizontal position.
+               Thus, a large part of the impact energy was absorbed by the landing
+               skids and the structure of the cabin remained almost intact. This
+               contributed to the fact that those on board could escape without injuries.
+
+
+
+
+                                                 27 (30)
+                                                                      SHK 2023:10e
+
+
+2.7   Knowledge of unanticipated yaw should be increased
+      The pilot had insufficient knowledge about the phenomenon of
+      unanticipated yaw and which flight conditions entail a risk of this.
+      Consequently, the pilot was probably not able to identify the initial
+      signs that the helicopter was entering an unanticipated yaw and to take
+      sufficient action in time to prevent the sequence of events from
+      developing.
+
+      Information about unanticipated yaw is included only to a limited extent
+      in the basic helicopter training for a PPL(H). It is also included in the
+      documents for flight training on single-rotor helicopter types. In spite
+      of this, there have been several accidents where the pilots have not had
+      sufficient knowledge of the phenomenon (see section 1.18.7).
+
+      Increased knowledge among pilots about unanticipated yaw and which
+      flight conditions lead to this phenomenon is considered to be able to
+      reduce the risk of similar accidents. Actions should therefore be taken
+      by EASA and the Swedish Transport Agency to, in an appropriate way
+      inform pilots and other concerned parties such as training organizations.
+
+2.8   Rescue operation
+      According to information from witnesses and SOS Alarm, people at the
+      accident site began calling 112 at around 20:15 hrs, just under five
+      minutes after the crash. Those who called reached an answering service,
+      waited approximately half a minute then hung up when there was no
+      answer. One person who called at 20:31 hrs got through after waiting
+      just over three minutes. The response time was therefore longer than
+      the average response time of 8 seconds and the longest waiting time of
+      30 seconds specified under the Swedish state’s agreement with SOS
+      Alarm.
+
+      Not being able to make contact via the emergency number 112 is of
+      course very serious in an emergency situation. In the occurrence in
+      question, no one was seriously injured but seconds can be decisive in a
+      life-threatening situation. According to SOS Alarm, there had been
+      problems during the summer of 2022 with maintaining the response
+      times and there were more healthcare and rescue cases than normal at
+      the time of the occurrence in question. Nevertheless, SOS Alarm has
+      implemented and is implementing several measures to reduce response
+      times. These include recruiting more operators and measures to
+      improve the working environment.
+
+      The actions of the rescue resources on site were conducted without
+      delays or other problems.
+
+      Consequently, SHK is not issuing any recommendations for safety
+      actions with respect to the rescue operation.
+
+
+
+
+                             28 (30)
+SHK 2023:10e
+
+
+     3.        CONCLUSIONS
+
+     3.1       Findings
+               a) The pilot was qualified to perform the flight but had limited flying
+                  experience.
+               b) The helicopter had a valid Certificate of Airworthiness and a valid
+                  ARC.
+               c) No technical faults that could have contributed to the occurrence
+                  have been identified during the technical examinations.
+               d) The flight was the second of the planned flights in which passen-
+                  gers were able to follow on a local flight.
+               e) It is stated that the flights were performed on a cost-share basis,
+                  with the pilot and the passengers sharing the direct costs.
+               f) The flights departed from a temporary take-off and landing site on
+                  a cultivated field.
+               g) After one attempt to land in the cultivated field, the landing site
+                  was changed to a plot by a house that had limited obstacle clear-
+                  ance.
+               h) The approach to the intended landing on the house plot had a high
+                  degree of difficulty.
+               i) During the final approach, the helicopter had a low speed and was
+                  out of ground effect. The power output was high and the relative
+                  wind was from the front left in relation to the helicopter.
+               j) The helicopter made an unanticipated yaw to the right.
+               k) The helicopter entered into an uncontrolled rotation about the yaw
+                  axis.
+               l) The pilot reduced the throttle in order to stop the rotation and the
+                  helicopter descended towards the ground.
+               m) The helicopter collided with trees and hit the ground hard.
+               n) There were no personal injuries.
+               o) There was a delay in the alarm process with SOS Alarm due to
+                  long response times.
+
+     3.2       Causes/contributing factors
+               During the approach, the helicopter was flown at low speed, high power
+               output, without ground effect and with the relative wind from the left
+               side. This contributed to a reduction in tail rotor effectiveness resulting
+               in an unanticipated right yaw that transitioned into an uncontrolled
+               rotation.
+               Contributing factors have been that:
+                    •   the pilot had insufficient knowledge of the risk of unanticipated
+                        yaw,
+                    •   the intended landing site had limited obstacle clearance and a
+                        high degree of difficulty.
+
+                                                29 (30)
+                                                                    SHK 2023:10e
+
+
+4.      SAFETY RECOMMENDATIONS
+
+        The Swedish Transport Agency is recommended to:
+            •   inform concerned parties about the risks of unanticipated yaw
+                in an appropriate way. (SHK 2023:10e R1)
+
+        The EASA is recommended to:
+            •   inform concerned parties about the risks of unanticipated yaw
+                in an appropriate way. (SHK 2023:10e R2)
+
+
+
+The Swedish Accident Investigation Authority respectfully requests to
+receive, by 27 November 2023 at the latest, information regarding measures
+taken in response to the safety recommendations included in this report.
+
+
+
+On behalf of the Swedish Accident Investigation Authority,
+
+
+
+Kristina Börjevik Kovaniemi          Ola Olsson
+
+
+
+
+                              30 (30)
+

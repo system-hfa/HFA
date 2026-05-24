@@ -1,0 +1,112 @@
+FINAL REPORT
+
+Accident on 1st June 2009
+to the Airbus A330-203
+operated by Air France
+flight AF 447 - Rio de Janeiro - Paris
+
+
+
+                                         1
+2
+3
+Sequence of events leading to the accident
+
+
+
+
+                                             4
+1. The temporary inconsistency between the measured
+  speeds, following the obstruction of the Pitot probes by ice
+  crystals
+
+
+
+
+                                                        5
+   1. The temporary inconsistency between the measured
+      speeds, following the obstruction of the Pitot probes by ice
+      crystals
+
+
+Ice Crystals
+
+                                                                 Measured
+                                                                 Pressure
+
+
+
+
+⇒ autopilot disconnection and reconfiguration to alternate law
+
+                                                                 6
+2. control inputs destabilizing the flight path
+
+
+
+
+                                                  7
+3. The lack of any link, by the crew, between the loss of
+   displayed airspeed information and the appropriate
+   procedure
+
+
+
+
+                                                            8
+4. The late identification of the deviation from the flight path by
+   the PNF and insufficient correction applied by the PF
+
+
+
+
+                                                           9
+5. The crew not identifying the approach to stall, their lack of
+   immediate response and the exit from the flight envelope
+
+6. The crew’s failure to diagnose the stall situation and
+   consequently a lack of inputs that would have made
+   recovery possible
+
+
+
+
+                                                            10
+These events can be explained by the combination of these
+  associated factors:
+
+ The feedback mechanisms of all of those invloved
+ An absence of training, at high altitude, in manual aeroplane
+
+  handling and the procedure relating to speed indication
+  anomalies
+ Task-sharing weakened by the startle effect and by
+
+  incomprehension of the situation
+ Lack of a clear display in the cockpit of the airspeed
+
+  inconsistencies identified by the computers
+ The crew not taking into account the stall warning
+
+                                                        11
+                  New Safety Recommendations
+
+
+
+ Initial and recurrent training for pilots
+
+ Aeroplane systems
+
+ The feedback process
+
+ Surveillance of the operator
+
+ Launching SAR operations       and wreckage localisation
+ ATC
+
+
+
+
+                                                             12
+13
+

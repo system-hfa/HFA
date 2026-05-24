@@ -1,3 +1,13 @@
+> ARCHIVED / NOT ACTIVE  
+> Reason:  
+> - INVALID_METHOD_CONTAMINATION  
+> - PRE_CANONICAL  
+> Usage:  
+> - Do not use for SERA reference cases.  
+> - Do not use for front-end calibration proof.  
+> - Do not use for author approval.  
+> - Historical record only.  
+
 # Withdrawn / Boundary Reference Pack — P-Axis A4+R-96
 
 > A4+R-98 STATUS: INVALID_FOR_REFERENCE_USE / NONCANONICAL_TRACE  

@@ -1,0 +1,220 @@
+                   Aviation Investigation Final Report
+
+ Location:                 Islip, New York                        Accident Number:   NYC02LA086
+
+ Date & Time:              April 20, 2002, 14:44 Local            Registration:      N8414H
+
+ Aircraft:                 Robinson R-22                          Aircraft Damage:   Substantial
+
+ Defining Event:                                                  Injuries:          1 Serious, 1 None
+
+ Flight Conducted Under:   Part 91: General aviation - Instructional
+
+
+
+Analysis
+While hovering into the wind at 5 to 10 feet agl, the instructor felt a gust of wind push the
+helicopter to the left and down. The helicopter impacted the ground, rolled onto its left side,
+and slid several feet before coming to a stop. The instructor was in the left seat and making
+approximately 70 percent of the control inputs at the time of the accident. The instructor
+reported he experience no preimpact failures or malfunctions with the helicopter. Examination
+of the helicopter also revealed no preimpact failures or malfunctions. A weather observation
+taken at the airport about 12 minutes after the accident recorded the weather as wind 280
+degrees at 8 knots, visibility 10 miles, light rain, and thunderstorms in the vicinity of the airport.
+
+
+
+
+Probable Cause and Findings
+The National Transportation Safety Board determines the probable cause(s) of this accident to be:
+The flight instructors failure to maintain aircraft control during a wind gust. A factor in the
+accident was a sudden gust of wind.
+
+
+
+
+ Findings
+ Occurrence #1: IN FLIGHT COLLISION WITH TERRAIN/WATER
+ Phase of Operation: HOVER - IN GROUND EFFECT
+
+ Findings
+ 1. (C) AIRCRAFT CONTROL - NOT MAINTAINED - PILOT IN COMMAND(CFI)
+
+
+
+
+Page 1 of 7
+ 2. (F) WEATHER CONDITION - GUSTS
+ 3. TERRAIN CONDITION - GRASS
+
+
+
+
+Page 2 of 7                         NYC02LA086
+Factual Information
+
+
+
+On April 20, 2002, at 1444 eastern daylight time, a Robinson R-22, N8414H, was substantially
+damaged when it impacted the ground while hovering at the Long Island Mac Arthur Airport
+(ISP), Islip, New York. The certificated flight instructor received serious injuries, and the
+student pilot was not injured. Visual meteorological conditions prevailed for the local
+instructional flight. No flight plan was filed, and the flight was conducted under 14 CFR Part
+91.
+
+According to the instructor, he boarded the helicopter, along with the student, started the
+engine, and departed the airport area to conduct some level flight training. After approximately
+20 minutes, they returned to the airport, and began doing some hover training to the southeast
+of the approach end of runway 24. About 40 minutes later, while hovering into the wind at 5 to
+10 feet agl, the instructor felt a gust of wind push the helicopter to the left and down. The
+helicopter impacted the ground, rolled onto its left side, and then slid several feet before
+coming to a stop. The instructor secured the electrical master, and pulled the mixture control
+to the "OFF" position, (he could not remember if the engine was running). He released his and
+the student's restraint harness, opened the door on the student's side, and both egressed the
+helicopter. About 2 minutes later airport emergency vehicles arrived. It was determined the
+instructor had injured his shoulder and would require medical attention. He was taken to a
+local hospital, and diagnosed with a broken clavicle.
+
+The instructor added that when the accident happened, he was in the left seat, and making
+about 70 percent of the control inputs, and the student was making about 30 percent. The
+wind was approximately 220 degrees and 8 to 10 knots. Other than during the accident
+sequence, the instructor identified no change in the wind, either before or after the accident,
+nor did he recall any airplanes taking off or landing on runway 24 or 15. He also stated that he
+did not experience any preimpact failures or malfunctions with the helicopter. In addition, the
+student had approximately 5 hours of flight experience in helicopters.
+
+According to the student, they had just turned the helicopter into the wind, and were hovering
+approximately 15 feet agl, when he felt a gust of wind from the right. The helicopter started to
+settle and drift left. The next thing the student knew, the helicopter was on its left side, and the
+accident sequence was over. The student also did not remember any airplanes taking off or
+landing on runway 24 or 15 at the time of the accident.
+
+A weather observation taken at the airport about 12 minutes after the accident recorded the
+weather as wind 280 degrees at 8 knots, visibility 10 miles, thunderstorms in the vicinity with
+light rain, temperature 57 degrees Fahrenheit, dew point 54 degrees Fahrenheit, and an
+altimeter setting of 29.86 inches Hg.
+
+
+
+
+Page 3 of 7                                                                             NYC02LA086
+ Flight instructor Information
+ Certificate:                Commercial; Flight instructor           Age:                                    32,Male
+ Airplane Rating(s):         None                                    Seat Occupied:                          Left
+ Other Aircraft Rating(s):   Helicopter                              Restraint Used:
+ Instrument Rating(s):       Helicopter                              Second Pilot Present:                   Yes
+ Instructor Rating(s):       Helicopter                              Toxicology Performed:                   No
+ Medical Certification:      Class 2 Valid Medical--no               Last FAA Medical Exam:                  August 11, 2000
+                             waivers/lim.
+ Occupational Pilot:         Yes                                     Last Flight Review or Equivalent:       March 16, 2002
+ Flight Time:                340 hours (Total, all aircraft), 320 hours (Total, this make and model), 260 hours (Pilot In
+                             Command, all aircraft), 73 hours (Last 90 days, all aircraft), 57 hours (Last 30 days, all aircraft),
+                             3 hours (Last 24 hours, all aircraft)
+
+
+ Student pilot Information
+ Certificate:                None                                    Age:                                    Male
+ Airplane Rating(s):         None                                    Seat Occupied:                          Right
+ Other Aircraft Rating(s):   None                                    Restraint Used:
+ Instrument Rating(s):       None                                    Second Pilot Present:                   Yes
+ Instructor Rating(s):       None                                    Toxicology Performed:                   No
+ Medical Certification:      None                                    Last FAA Medical Exam:
+ Occupational Pilot:         No                                      Last Flight Review or Equivalent:
+ Flight Time:                5 hours (Total, all aircraft)
+
+
+
+
+Page 4 of 7
+ Aircraft and Owner/Operator Information
+ Aircraft Make:                     Robinson                    Registration:                    N8414H
+ Model/Series:                      R-22                        Aircraft Category:               Helicopter
+ Year of Manufacture:                                           Amateur Built:
+ Airworthiness Certificate:         Normal                      Serial Number:                   0355
+ Landing Gear Type:                 Skid                        Seats:                           2
+ Date/Type of Last Inspection:      April 3, 2002 100 hour      Certified Max Gross Wt.:         1300 lbs
+ Time Since Last Inspection:        22.7 Hrs                    Engines:                         1 Reciprocating
+ Airframe Total Time:               8084.1 Hrs at time of       Engine Manufacturer:             Lycoming
+                                    accident
+ ELT:                               Not installed               Engine Model/Series:             O-320-B2C
+ Registered Owner:                  Eastern Helicopters         Rated Power:                     160 Horsepower
+ Operator:                                                      Operating Certificate(s)         None
+                                                                Held:
+
+
+
+
+ Meteorological Information and Flight Plan
+ Conditions at Accident Site:          Visual (VMC)              Condition of Light:                  Day
+ Observation Facility, Elevation:      ISP,99 ft msl             Distance from Accident Site:
+ Observation Time:                     14:56 Local               Direction from Accident Site:
+ Lowest Cloud Condition:                                         Visibility                           10 miles
+ Lowest Ceiling:                       Overcast / 5500 ft AGL    Visibility (RVR):
+ Wind Speed/Gusts:                     8 knots / None            Turbulence Type                      /
+                                                                 Forecast/Actual:
+ Wind Direction:                       280°                      Turbulence Severity                  /
+                                                                 Forecast/Actual:
+ Altimeter Setting:                    29.86 inches Hg           Temperature/Dew Point:               14°C / 12°C
+ Precipitation and Obscuration:        Light - None - Rain
+ Departure Point:                      Islip, NY (ISP )          Type of Flight Plan Filed:          None
+ Destination:                          (ISP )                    Type of Clearance:                  None
+ Departure Time:                       12:15 Local               Type of Airspace:                   Class C
+
+
+
+
+Page 5 of 7                                                                                                      NYC02LA086
+ Airport Information
+ Airport:                Long Island Mac Arthur ISP   Runway Surface Type:           Grass/turf
+ Airport Elevation:      99 ft msl                    Runway Surface Condition:      Wet
+ Runway Used:                                         IFR Approach:                  None
+ Runway Length/Width:                                 VFR Approach/Landing:          None
+
+
+
+
+ Wreckage and Impact Information
+ Crew Injuries:         1 Serious, 1 None             Aircraft Damage:        Substantial
+ Passenger Injuries:                                  Aircraft Fire:          None
+ Ground Injuries:       N/A                           Aircraft Explosion:     None
+ Total Injuries:        1 Serious, 1 None             Latitude, Longitude:    40.796112,-73.096389
+
+
+
+
+Page 6 of 7                                                                                       NYC02LA086
+ Administrative Information
+ Investigator In Charge (IIC):     Muzio, David
+ Additional Participating          John Chen; FAA/FSDO; Farmingdale, NY
+ Persons:
+ Original Publish Date:            October 24, 2002
+ Last Revision Date:
+ Investigation Class:              Class
+ Note:
+ Investigation Docket:             https://data.ntsb.gov/Docket?ProjectID=54559
+
+
+
+             The National Transportation Safety Board (NTSB) is an independent federal agency charged by Congress with
+  investigating every civil aviation accident in the United States and significant events in other modes of transportation—
+  railroad, transit, highway, marine, pipeline, and commercial space. We determine the probable causes of the accidents
+  and events we investigate, and issue safety recommendations aimed at preventing future occurrences. In addition, we
+  conduct transportation safety research studies and offer information and other assistance to family members and
+  survivors for each accident or event we investigate. We also serve as the appellate authority for enforcement actions
+  involving aviation and mariner certificates issued by the Federal Aviation Administration (FAA) and US Coast Guard, and
+  we adjudicate appeals of civil penalty actions taken by the FAA.
+
+             The NTSB does not assign fault or blame for an accident or incident; rather, as specified by NTSB regulation,
+  “accident/incident investigations are fact-finding proceedings with no formal issues and no adverse parties … and are
+  not conducted for the purpose of determining the rights or liabilities of any person” (Title 49 Code of Federal Regulations
+  section 831.4). Assignment of fault or legal liability is not relevant to the NTSB’s statutory mission to improve
+  transportation safety by investigating accidents and incidents and issuing safety recommendations. In addition,
+  statutory language prohibits the admission into evidence or use of any part of an NTSB report related to an accident in a
+  civil action for damages resulting from a matter mentioned in the report (Title 49 United States Code section 1154(b)). A
+  factual report that may be admissible under 49 United States Code section 1154(b) is available here.
+
+
+
+
+Page 7 of 7                                                                                                      NYC02LA086
+

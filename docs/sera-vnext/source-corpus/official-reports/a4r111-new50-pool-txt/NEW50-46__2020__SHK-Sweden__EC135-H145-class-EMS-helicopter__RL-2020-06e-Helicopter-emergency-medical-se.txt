@@ -1,0 +1,986 @@
+Final report RL 2020:06e
+Accident at Vuoggatjålme, Norrbotten
+County, on 10 August 2019 involving the
+helicopter SE-JOA of the model Bell
+206L-1, operated by Arctic Air AB.
+File no. L-110/19
+
+16 June 2020
+                                                                                                           RL 2020:06e
+
+
+
+
+          SHK investigates accidents and incidents from a safety perspective. Its
+          investigations are aimed at preventing a similar event from occurring in the
+          future, or limiting the effects of such an event. The investigations do not deal
+          with issues of guilt, blame or liability for damages.
+
+
+
+          The report is also available on SHK´s web site: www.havkom.se
+
+          ISSN 1400-5719
+
+          This document is a translation of the original Swedish report. In case of
+          discrepancies between this translation and the Swedish original text, the
+          Swedish text shall prevail in the interpretation of the report.
+
+
+
+
+          Photos and graphics in this report are protected by copyright. Unless other-
+          wise noted, SHK is the owner of the intellectual property rights.
+
+          With the exception of the SHK logo, and photos and graphics to which a third
+          party holds copyright, this publication is licensed under a Creative Commons
+          Attribution 2.5 Sweden license. This means that it is allowed to copy, distri-
+          bute and adapt this publication provided that you attribute the work.
+
+          The SHK preference is that you attribute this publication using the following
+          wording: “Source: Swedish Accident Investigation Authority”.
+
+
+
+
+          Where it is noted in the report that a third party holds copyright to photos,
+          graphics or other material, that party’s consent is needed for reuse of the
+          material.
+
+          Cover photo no. 3 – © Anders Sjödén/Swedish Armed Forces.
+
+
+
+
+Postadress/Postal address   Besöksadress/Visitors   Telefon/Phone      Fax/Facsimile      E-post/E-mail    Internet
+P.O. Box 6014               Sveavägen 151           +46 8 508 862 00   +46 8 508 862 90   info@havkom.se   www.havkom.se
+SE-102 31 Stockholm         Stockholm
+Sweden
+RL 2020:06e
+
+
+     Content
+
+     General observations ...................................................................................................... 5
+     The investigation ............................................................................................................ 5
+     SUMMARY ....................................................................................................... 8
+     1.         FACTUAL INFORMATION ............................................................................ 9
+     1.1        History of the flight............................................................................................ 9
+                1.1.1 Circumstances........................................................................................ 9
+                1.1.2 Sequence of events ................................................................................ 9
+     1.2        Personal injuries ............................................................................................... 10
+     1.3        Damage to the aircraft ...................................................................................... 10
+     1.4        Other damage ................................................................................................... 10
+                1.4.1 Environmental impact.......................................................................... 10
+     1.5        Personnel information ...................................................................................... 10
+                1.5.1 Qualifications and duty time of the pilot ............................................. 10
+     1.6        Aircraft information ......................................................................................... 11
+                1.6.1 Helicopter ............................................................................................ 11
+                1.6.2 Description of parts or systems related to the occurrence ................... 12
+     1.7        Meteorological information ............................................................................. 15
+     1.8        Aids to navigation ............................................................................................ 15
+     1.9        Radio communications..................................................................................... 15
+     1.10       Aerodrome information ................................................................................... 15
+     1.11       Flight recorders ................................................................................................ 16
+                1.11.1 Flight recorders .................................................................................... 16
+     1.12       Accident site and aircraft wreckage ................................................................. 16
+                1.12.1 Accident site ........................................................................................ 16
+                1.12.2 Aircraft wreckage ................................................................................ 17
+                1.12.3 Technical examination of the helicopter.............................................. 18
+     1.13       Medical and pathological information ............................................................. 18
+     1.14       Fire ................................................................................................................... 18
+     1.15       Survival aspects ............................................................................................... 18
+                1.15.1 Rescue operation ................................................................................. 18
+                1.15.2 Position of crew and passengers and the use of seat belts ................... 18
+     1.16       Tests and research ............................................................................................ 19
+                1.16.1 Examination of the engine at an authorised maintenance
+                          organisation ......................................................................................... 19
+                1.16.2 Examination of the fuel ....................................................................... 19
+                1.16.3 Parameters from the memory unit in the IntelliStart+ system ............. 19
+     1.17       Organisational and management information .................................................. 20
+     1.18       Additional information..................................................................................... 21
+                1.18.1 Emergency procedures ........................................................................ 21
+     1.19       Special methods of investigation ..................................................................... 21
+     2.         ANALYSIS ...................................................................................................... 22
+     2.1        Fuel planning ................................................................................................... 22
+     2.2        Sequence of events........................................................................................... 22
+     2.3        Why did the engine loose power? .................................................................... 23
+     3.         CONCLUSIONS ............................................................................................. 24
+     3.1        Findings ........................................................................................................... 24
+     3.2        Causes .............................................................................................................. 24
+                                                                                      RL 2020:06e
+
+4.   SAFETY RECOMMENDATIONS ................................................................ 24
+
+
+
+
+                                    4 (24)
+RL 2020:06e
+
+
+     General observations
+     The Swedish Accident Investigation Authority (Statens haverikommission –
+     SHK) is a state authority with the task of investigating accidents and incidents
+     with the aim of improving safety. SHK accident investigations are intended to
+     clarify, as far as possible, the sequence of events and their causes, as well as
+     damages and other consequences. The results of an investigation shall provide
+     the basis for decisions aiming at preventing a similar event from occurring in the
+     future, or limiting the effects of such an event. The investigation shall also pro-
+     vide a basis for assessment of the performance of rescue services and, when
+     appropriate, for improvements to these rescue services.
+
+     SHK accident investigations thus aim at answering three questions: What
+     happened? Why did it happen? How can a similar event be avoided in the future?
+
+     SHK does not have any supervisory role and its investigations do not deal with
+     issues of guilt, blame or liability for damages. Therefore, accidents and incidents
+     are neither investigated nor described in the report from any such perspective.
+     These issues are, when appropriate, dealt with by judicial authorities or e.g. by
+     insurance companies.
+
+     The task of SHK also does not include investigating how persons affected by an
+     accident or incident have been cared for by hospital services, once an emergency
+     operation has been concluded. Measures in support of such individuals by the
+     social services, for example in the form of post crisis management, also are not
+     the subject of the investigation.
+
+     Investigations of aviation incidents are governed mainly by Regulation (EU)
+     No 996/2010 on the investigation and prevention of accidents and incidents in
+     civil aviation and by the Accident Investigation Act (1990:712). The investiga-
+     tion is carried out in accordance with Annex 13 of the Chicago Convention.
+
+     The investigation
+     SHK was informed on 11 August 2019 that an accident involving a helicopter
+     with the registration SE-JOA had occurred at Vuoggatjålme, Norrbotten County,
+     on 10 August 2019 at 10:55 hrs.
+
+     The accident has been investigated by SHK represented by Mikael Karanikas,
+     Chairperson, Tony Arvidsson, Investigator in Charge, and Stefan Carneros,
+     Operations Investigator.
+
+     John M. Brannen II National Transportation Safety Board (NTSB) has participa-
+     ted as an accredited representative of the USA.
+
+     Jack Johnson has participated as an adviser for Rolls-Royce.
+
+     Magnus Axelsson has participated as an adviser for the Swedish Transport
+     Agency.
+
+
+
+
+                                               5 (24)
+                                                                         RL 2020:06e
+
+
+The following organisations have been notified: The European Union Aviation
+Safety Agency (EASA), the European Commission, the NTSB, the Transporta-
+tion Safety Board of Canada (TSB) and the Swedish Transport Agency.
+
+Investigation material
+Interviews have been conducted with the pilot and one witness. The accident site
+and the helicopter have been examined. Specific technical examinations have
+been conducted on the engine, the fuel and the IntelliStart+ system.
+
+
+
+
+                                6 (24)
+RL 2020:06e
+
+
+     Final report RL 2020:06
+
+     Aircraft:
+        Registration, type                SE-JOA, Bell 206
+        Model                             206L-1
+        Class, airworthiness              Normal, Certificate of Airworthiness and
+                                          valid Airworthiness Review Certificate
+                                          (ARC)1
+        Serial number                     45548
+        Operator                          Arctic Air AB
+     Time of occurrence                   10 August 2019, 10:55 hrs in daylight
+                                          Note: All times are given in Swedish day-
+                                          light saving time (UTC2 + 2 hours)
+     Location                             Vuoggatjålme, Norrbotten County,
+                                          (position 66 34N 016 21 E, 460 metres
+                                          above mean sea level)
+     Type of flight                       Commercial
+     Weather                              According to SMHI’s analysis: wind
+                                          south-east 10 knots, visibility 10 km,
+                                          variable cloud with base at 1 000 feet,
+                                          temperature/dew point +13/+11°C, QNH3
+                                          1010 hPa
+     Persons on board:                    1
+        Crew members including cabin crew 0
+        Passengers                        0
+     Personal injuries                    None
+     Damage to the aircraft               Slightly damaged
+     Other damage                         None
+     Pilot in command:
+        Age, licence                      27 years, CPL(H)4
+        Total flying hours                619 hours, of which 301 hours on type
+        Flying hours previous 90 days     169 hours, of which 86 hours on type
+        Number of landings previous       321
+        90 days
+
+
+
+
+     1 ARC – Airworthiness Review Certificate.
+     2 UTC – Coordinated Universal Time.
+     3 QNH – barometric pressure at mean sea level.
+     4 CPL(H) – Commercial Pilot Licence Helicopter.
+
+
+
+                                                       7 (24)
+                                                                            RL 2020:06e
+
+
+SUMMARY
+The purpose of the flight was for the pilot to collect and transport six people who
+were staying around seven minutes’ flying time from the helicopter base. Prior
+to take-off, there was around 100 litres of fuel in the tank.
+
+After flying a couple hundred metres and at an altitude of around 25 metres, the
+helicopter started suffering yaw disturbances and a little later lost rotor rpm and
+lift. Because of the low altitude and speed, the pilot maintained the current
+collective pitch. Consequently, landing was performed with a little speed in the
+forward direction, which resulted in the landing gear braking against the soft
+ground and initially causing the helicopter to tip forward, before it returned to a
+level position. At the low rotor speed that remained following contact being
+made with the ground, the cyclic position, combined with the nose-down move-
+ment resulted in the downwind rotor blade coming into contact with the tail
+boom, which was then cut off by the rotor blade. The pilot has stated that he is
+uncertain about whether he shut down the engine himself or if it stalled because
+of the engine problem.
+
+The technical examinations of the helicopter and the engine did not show any-
+thing that could have caused the loss of engine power. Nor could the loss of
+power be recreated during test run.
+
+It can be established from the engine parameters that a problem in the form of
+fluctuations in the engine’s torque (TRQ) arose during the flight. The major loss
+of power occurred immediately after these fluctuations.
+
+The turbine outlet temperature (TOT) rose sharply in a later phase, which indi-
+cates that, at this stage, the engine was receiving an increased flow of fuel and
+that it was not completely shut down.
+
+The data that has been analysed does not suggest that the loss of power was
+caused by the actions of the pilot.
+
+The accident was caused by a major loss of engine power occurring in a flight
+phase in which the chances of landing safely were restricted by the low speed
+and altitude.
+
+It has not been possible to establish the cause of the loss of engine power. This
+was probably a consequence of a temporary partial blockage of the fuel supply
+to the engine.
+
+Safety recommendations
+None.
+
+
+
+
+                                 8 (24)
+RL 2020:06e
+
+
+     1.       FACTUAL INFORMATION
+
+     1.1      History of the flight
+
+     1.1.1    Circumstances
+              The purpose of the flight was for the pilot to collect and transport
+              six people who were staying around seven minutes’ flying time from
+              the helicopter base. Prior to take-off, the pilot filled up with 20 litres of
+              fuel so that there were around 100 litres of fuel in the tank at the time
+              of take-off. Visibility was good under the clouds but there was clouds
+              in the higher terrain, which meant that the pilot had to follow some
+              valleys during a previous flight that same day.
+
+     1.1.2    Sequence of events
+              The pilot hovered up and flew out over the take-off area, which con-
+              sisted of a mire. After a couple hundred metres or so, and at an altitude
+              of around 25 metres, the pilot felt that the helicopter began “wobbling”
+              and suffering yaw disturbances. The wobbles were initially interpreted
+              as mechanical turbulence, but was quickly felt to be larger than that, at
+              the same time as the sound of the engine was experienced to be abnor-
+              mal. The helicopter lost height and the engine power or rotor rpm was
+              felt to be low. Because of the low altitude and speed, the pilot main-
+              tained the current collective pitch until contact was made with the
+              ground. When ground contact was made, the helicopter still had for-
+              ward speed, although this was low. When the landing gear hit the
+              ground, it was sucked into the mire and this resulted in the helicopter
+              starting to tip forward. At this point, the pilot reacted spontaneously and
+              attempted to compensate for the nose-down movement he felt by pull-
+              ing the cyclic towards himself. The downwind rotor blade made contact
+              with the tail boom, which was cut off.
+
+              The pilot has stated that he is uncertain about whether he shut down the
+              engine himself or if it stalled because of the engine problem. There were
+              no personal injuries and the pilot was able to leave the site himself in
+              order to get help after having turned off all systems and the emergency
+              locator transmitter, which had been activated.
+
+              The accident occurred at position 66 34N 016 21E, 460 metres above
+              mean sea level.
+
+
+
+
+                                                 9 (24)
+                                                                         RL 2020:06e
+
+
+1.2        Personal injuries
+                               Crew mem-     Passengers    Total on        Others
+                                     bers                    board
+            Deceased                    -              -          0              -
+            Serious injuries            -              -          0              -
+            Minor injuries              -              -          0 Not applicable
+            No injuries                 1              -          1 Not applicable
+            Total                       1              0          1              -
+
+1.3        Damage to the aircraft
+           Slightly damaged.
+
+1.4        Other damage
+           None.
+
+1.4.1      Environmental impact
+           None.
+
+1.5        Personnel information
+
+1.5.1      Qualifications and duty time of the pilot
+
+           Pilot in command
+           Pilot in command was 27 years old and had a valid CPL (H) with flight
+           operational and medical eligibility.
+
+            Flying hours
+            Latest                24 hours       7 days     90 days          Total
+            All types                    6           26         169           619
+            On type                      6           26          86           301
+
+           Number of landings, on type last 90 days: 321.
+           Type rating concluded on 27 June 2017.
+           Latest PC5 conducted on 26 March 2019 on Bell 206L-1.
+
+
+
+
+5 PC – Proficiency Check.
+
+
+
+                                 10 (24)
+RL 2020:06e
+
+
+     1.6      Aircraft information
+              The Bell 206L is a light, two-bladed helicopter with a turbine engine
+              and approved for one pilot and six passengers.
+
+
+
+
+              Figure 1. Schematic of the helicopter with dimensions. Image: 206L-1-FM-01FRM, Bell
+              Helicopter Textron Inc.
+
+
+     1.6.1    Helicopter
+              TC-holder                    BELL HELICOPTER TEXTRON
+                                           CANADA
+              Model                        206L-1
+              Serial number                45548
+              Year of manufacture          1980
+              Gross mass (kg)              Max. take-off mass 1 882, current 1 354
+              Centre of gravity            Within limits.
+              Total operating time (hours) 9 899
+              Operating time since latest  32
+              inspection (hours)
+              Type of fuel uplifted before JET A-1
+              the occurrence
+
+              Engine
+              TC-holder                          ROLLS-ROYCE CORPORATION
+              Type                               250-C28B
+              Number of engines                  1
+              Serial number                      860344
+              Total operating time (hours)       16 564
+              Operating time since latest        32
+              inspection (hours)
+
+              Hold item list                     None.
+
+
+              The aircraft had a Certificate of Airworthiness and a valid ARC.
+
+
+
+
+                                                   11 (24)
+                                                                                                RL 2020:06e
+
+
+1.6.2       Description of parts or systems related to the occurrence
+
+            Engine
+
+
+
+
+            Figure 2. The engine, with arrows that show the airflow through it. Image: Rolls-Royce.
+
+            Rolls-Royce model 250-C28B is a turboshaft engine with a gas gene-
+            rator and a free turbine. The engine has a centrifugal compressor and a
+            combustion chamber with one fuel nozzle. The turbine part contains a
+            two-stage gas turbine (N16) permanently mounted to the centrifugal
+            compressor. The free turbine (N27) also has two stages. The accessory
+            gearbox contains a gear box function for the gas generator and the free
+            turbine, which has an outgoing shaft that is in turn connected to the rotor
+            system gear box.
+
+            The engine’s fuel system
+            The gas generator’s fuel control unit (FCU) is the key component of the
+            fuel system. This hydromechanical unit controls the flow of fuel to the
+            engine in order to achieve optimal acceleration during the engine start
+            sequence and provide the correct power during operation. Increasing or
+            decreasing the flow of fuel has a direct impact on the gas generator rpm
+            (N1). The unit is driven mechanically by the engine’s accessory gear-
+            box, the rpm of which is proportional to that of the gas generator. The
+            flow of fuel is affected by factors including the throttle in the cockpit,
+            the incoming fuel pressure, the outlet pressure from the compressor and
+            by regulated air pressure from the free turbine governor. The fuel
+            control unit supplies fuel to the fuel nozzle, which atomises the fuel into
+            the combustion chamber, where combustion takes place. When the
+            throttle is turned from closed to idle during an engine start, the fuel
+            control unit automatically controls the flow of fuel as a function of
+            compressor discharge pressure and N1 rpm. Combustion in the engine
+
+6 N1 – abbreviation for low pressure compressor or, in this case, gas generator rpm.
+7 N2 – abbreviation for high pressure compressor or, in this case, free turbine speed.
+
+
+
+                                           12 (24)
+RL 2020:06e
+
+
+              begins and this accelerates and is stabilised at idle speed
+              (c. 59–65 % N1). The fuel flow during this sequence is controlled by
+              the fuel control unit.
+
+              The free turbine governor is used when rpm is above idle in order to
+              control the flow of fuel and get the fuel control unit to maintain an
+              N2 rpm that is as constant as possible. The free turbine governor and
+              the fuel control unit are connected together with a system of tubes, so
+              that the compressor’s discharge pressure controls, via the free turbine
+              governor, the fuel control unit and thereby N2 rpm. This governor is
+              powered by the free turbine via gears. There is fine-tuning of the rpm
+              and a system that, among other things, reduces the risk of variations in
+              N2 in the event of large movements of the collective lever.
+
+              Caution/warning system
+              The helicopter’s instrumentation and monitoring system includes a
+              warning for engine failure (ENGINE OUT). This warning is activated
+              when engine speed is less than 55 % N1. Upon activation, a visual
+              indicator “ENG OUT” (see Figure 3) is shown on the caution/warning
+              panel and there is an intermittent audio signal.
+
+              The caution system for low rotor rpm (ROTOR LOW RPM) is activated
+              when main rotor rpm falls below 90 % NR and if the collective pitch is
+              of the down stop. The low rpm of the main rotor activates the “ROTOR
+              LOW RPM” light (see Figure 3) on the caution/warning panel and a
+              continuous audio signal is heard.
+
+
+
+
+              Figure 3. The indicators for engine
+              failure and low rotor rpm are located
+              furthest to the right on the caution/-
+              warning panel.
+
+
+
+
+              Figure 4. The caution/warning panel, which is located above the instrument panel.
+              Image: 206L-1-FM-S02FRM, Bell Helicopter Textron Inc.
+
+
+
+                                                       13 (24)
+                                                                         RL 2020:06e
+
+
+The helicopter’s fuel system
+The system is comprised of three interconnected fuel tanks with a total
+capacity of 374.6 litres. Two of the fuel tanks are a little smaller and are
+located forward of the larger tank. When the fuel level exceeds
+154 litres in the aft tank, the two forward tanks are filled via a standpipe.
+Two electrical fuel pumps mounted in the lowest part of the aft tank
+move pressurised fuel to two ejector pumps that are located between the
+forward tanks, which in turn move fuel from the forward tanks to the
+aft tank. The electrical fuel pumps also supply the engine with pressur-
+ised fuel via a shut-off valve and a filter. Both of the forward tanks have
+sensors that measure the fuel flow through the ejector system. The fuel
+quantity system consists of probes in the left forward tank and in the aft
+tank. The fuel quantity caution “FUEL LOW” is illuminated when there
+is a remaining fuel quantity of just under 38 litres. The quantity of
+unusable fuel is 3.78 litres.
+
+At normal engine power, the helicopter uses about 150 litres of fuel per
+hour, which corresponds to 2.5 litres per minute.
+
+
+
+
+Figure 5. Schematic of the helicopter’s fuel system. Image: 206L-MM-CH28, Bell
+Helicopter Textron Inc.
+
+
+
+
+                          14 (24)
+RL 2020:06e
+
+
+              Bulletin CASA 2018-11
+              According to a safety bulletin issued by Transport Canada on
+              31 December 2018, the type certificate holder is recommended to intro-
+              duce a caution for fuel quantity below 20 US gallons, equivalent to
+              about 75 litres, into the rotorcraft flight manual (RFM) even if a FUEL
+              LOW caution light is installed. The reason for this is that there have
+              been accidents involving the helicopter type that are linked to flying
+              with a low fuel quantity and when the fuel is distributed unevenly in the
+              tank in conjunction with sharp turns or uncoordinated flying during
+              which the fuel pumps have been starved of fuel.
+
+              This caution was known to the pilot and the operator but the type
+              certificate holder has not introduced any amendment to the RFM.
+
+              Start control
+              The IntelliStart+ system has a start control function for the engine. This
+              function is activated during the start sequence and controls and restricts
+              damaging temperature spikes in the hot section of the engine. Engine
+              data is also registered and stored for trend analysis and shows what
+              happened prior to, during and immediately after an exceedance or an
+              event. If a flight were to end unexpectedly, engine data is available
+              afterwards.
+
+              Some of the parameters that can be retrieved from the system are engine
+              torque (TRQ), turbine outlet temperature, gas generator rpm (N1), free
+              turbine rpm (N2) and the main rotor rpm (NR).
+
+              No parameter for engine fuel flow is registered in the unit in question.
+              However, this function is available on newer versions of the system.
+
+     1.7      Meteorological information
+              According to SMHI’s analysis: Wind south-east 10 knots, visibility
+              10 km, with cloud base at 1 000 feet, temperature/dew point
+              +13/+11°C, QNH 1010 hPa
+
+              The accident occurred in daylight.
+
+     1.8      Aids to navigation
+              Not pertinent.
+
+     1.9      Radio communications
+              Not pertinent.
+
+     1.10     Aerodrome information
+              Not pertinent.
+
+
+
+
+                                               15 (24)
+                                                                                                RL 2020:06e
+
+
+1.11       Flight recorders
+           The helicopter was not equipped with a flight data recorder or cockpit
+           voice recorder and nor was there any requirement for such equipment
+           for the helicopter type in question. However, there was, as mentioned
+           above, a start control system (IntelliStart+), which also register and
+           stores engine data.
+
+1.11.1     Flight recorders
+           The memory unit in the IntelliStart+ system was sent to the manu-
+           facturer for data retrieval under the supervision of a representative of
+           the FAA8. The unit was tested without remark. A total of thirty hours
+           and nineteen parameters were retrieved, selected parameters of which
+           were analysed (see section 1.16.3).
+
+1.12       Accident site and aircraft wreckage
+
+1.12.1     Accident site
+           The accident occurred on a mire, just outside of Vuoggatjålme in
+           Norrbotten County (see Figures 6 to 8).
+
+
+
+
+           Figure 6. The accident site. The red arrow, marked by SHK, indicates the approximate direction
+           of travel following the loss of engine power. Source: Google Earth.
+
+
+
+
+8 FAA – Federal Aviation Administration.
+
+
+
+                                           16 (24)
+RL 2020:06e
+
+
+
+
+              Figure 7. Part of the route. The accident site is marked with a red circle, marked by SHK.
+              Publication permission from Lantmäteriet: LM2020/009370.
+
+
+
+
+              Figure 8. The site of the emergency landing, with the cut-off tail boom in front of the helicopter.
+              Photo. The pilot.
+
+
+     1.12.2   Aircraft wreckage
+              The damage sustained on the helicopter was slightly limited. Following
+              the occurrence, the helicopter was standing on its skids and a part of the
+              tail boom with the tail rotor was lying a little way in front of the
+              helicopter. There were indications that contact had been made with the
+              mire on the mirror and the pitot tube that are mounted at the front of the
+              nose. The main rotor blades had clear signs of having been in contact
+              with the tail boom.
+
+
+
+
+                                                          17 (24)
+                                                                                    RL 2020:06e
+
+
+1.12.3     Technical examination of the helicopter
+           The technical examination of the helicopter was conducted on
+           13 August 2019 in the operator’s hangar. The fuel gauge in the helicop-
+           ter indicated that there were around 80 litres on board. The amount of
+           usable fuel on board was emptied and measured to 100 litres. Fuel
+           hoses, tubes, tube connectors and fuel filter for feeding fuel to the
+           engine were visually inspected. The function of both of the electrical
+           fuel pumps in the main tank was tested. The fuel flow from the forward
+           fuel tanks to the main tank and to the mechanical fuel pump on the
+           engine were satisfactory. A sample of fuel was taken from the tank for
+           analysis (see section 1.16.2).
+
+           The engine was visually inspected from the outside without remark.
+           Fuel tubes and tubes for reference pressure, as well as their nuts with
+           colour markings, were visually inspected without remark. The filter in
+           the fuel nozzle was inspected without remark. The engine was removed
+           from the helicopter for further examination (see section 1.16.1).
+
+1.13       Medical and pathological information
+           Nothing has emerged that the mental and physical condition of the pilot
+           was impaired before or during the flight.
+
+1.14       Fire
+           There was no fire.
+
+1.15       Survival aspects
+
+1.15.1     Rescue operation
+           The ELT9 of the type Kannad 406AF-H was activated during the occur-
+           rence.
+
+           The JRCC10 received information that an ELT had been activated and
+           began alerting rescue units. Shortly thereafter, however, the operator
+           contacted the JRCC and explained that this was not an emergency
+           situation. The rescue operation was concluded following this call.
+
+1.15.2     Position of crew and passengers and the use of seat belts
+           The pilot sat in the right seat and was using a four-point safety harness.
+
+
+
+
+9 ELT – Emergency Locator Transmitter.
+10 JRCC – the Swedish Maritime Administration’s Joint Rescue Coordination Centre.
+
+
+
+                                         18 (24)
+RL 2020:06e
+
+
+     1.16     Tests and research
+
+     1.16.1   Examination of the engine at an authorised maintenance organisa-
+              tion
+              Under the supervision of SHK, an extensive examination and test run
+              of the helicopter’s engine has been conducted at an authorised aero
+              engine workshop together with a representative of the type certificate
+              holder for the engine.
+
+              No obvious damage to the engine or condition that would prevent the
+              engine from producing nominal power was found during the examina-
+              tion of the engine. The engine started and was run normally and fulfilled
+              all operational specifications. The engine produced normal power and
+              responded to all power requirements, including sudden throttle and load
+              changes. The loss of power reported by the pilot could not be recreated
+              in the test cell.
+
+     1.16.2   Examination of the fuel
+              SHK has commissioned Element Materials Technology to conduct an
+              analysis of the aviation fuel from the helicopter’s tank. The fuel was of
+              the JET A1 type. The characteristic distillation fulfilled the require-
+              ments under the specification for the fuel type.
+
+              The characteristics water content and water tolerance showed no signs
+              of contamination and were normal for JET fuel.
+
+     1.16.3   Parameters from the memory unit in the IntelliStart+ system
+              Data from the memory unit showed that the engine’s gas generator
+              rpm (N1) at the start of the loss of power was at 91 %, the free turbine
+              rpm (N2) was 98 %, the engine torque (TRQ) indicated 71 %, the
+              turbine outlet temperature (TOT) indicated 661 degrees Celsius and the
+              main rotor rpm (NR) was 98 %.
+
+              In the seconds preceding the loss of power, the engine data show that
+              the engine torque (TRQ) has been at 71 % before dropping to around
+              60 %, only to then return to 71 % once more. The final increase from
+              60 % to 71 % occurs in a second (see Figure 9).
+
+              A sharp drop in the parameters gas generator rpm (N1), free turbine
+              rpm (N2), the engine torque (TRQ), the turbine outlet temperature
+              (TOT) and the main rotor rpm could be seen in the first second after the
+              start of the loss of power. The engine torque was the parameter that
+              dropped the fastest, followed by the turbine outlet temperature (see
+              Figure 9). The caution that was activated first was low main rotor rpm
+              (NR) because the rpm fell below 90 %, which occurred around
+              12 seconds after the first engine problems.
+
+
+
+
+                                              19 (24)
+                                                                                              RL 2020:06e
+
+
+
+
+       Figure 9. The engine data in the memory unit. The red line indicates the moment power was
+       lost. The green circle marks the time of the fluctuations in the engine’s torque, just before the
+       loss of power.
+
+       Around seventeen seconds after the start of the loss of power, a distinct
+       increase in turbine outlet temperature is seen, with a peak value of
+       929 degrees Celsius, before then falling again (see Figure 10). The
+       engine’s gas generator rpm (N1) also increases somewhat over the same
+       period.
+
+
+
+
+       Figure 10. The engine data in the memory unit. The red line indicates the moment power was
+       lost. The red circle marks the temperature peak in the turbine outlet temperature TOT.
+
+
+1.17   Organisational and management information
+       Arctic Air AB, with permit number SE.DEC.0010, runs flight opera-
+       tions with helicopters from three bases, one of which is Vuoggatjålme.
+       The business encompasses commercial specialised operations (SPO)
+       and carriage of persons.
+
+
+                                      20 (24)
+RL 2020:06e
+
+
+     1.18     Additional information
+
+     1.18.1   Emergency procedures
+
+              Engine failure and autorotation
+              The procedure for engine failure and autorotation at low altitude
+              describes how the throttle is to be closed, and flare to reduce excessive
+              airspeed.
+
+              The collective is to be used in order to increase the blade angle of attack
+              when the effect of the flare decreases in order to further reduce forward
+              speed and make the landing soft. It is recommended that the landing is
+              performed before the main rotor rpm falls below 70 %. When contact
+              is made with the ground, the collective is to be lowered softly, while the
+              cyclic is kept in a neutral or centred position.
+
+              Fault in the fuel control unit or free turbine governor
+              According to the procedure, a fault in the gas generator’s fuel control
+              unit (FCU) or the free turbine governor will be noticed at an early stage
+              through a change in either engine power or rpm. It is noted that there is
+              no manual fuel control on the engine. The power is controlled using the
+              throttle if the engine goes into overspeed.
+
+              It also states that rpm is maintained using the collective pitch if the
+              engine rpm decreases.
+
+              If the power is low or if the engine must be shut down, autorotation is
+              to be established and preparations made for a landing without engine
+              power.
+
+     1.19     Special methods of investigation
+              None.
+
+
+
+
+                                               21 (24)
+                                                                           RL 2020:06e
+
+
+2.    ANALYSIS
+
+2.1   Fuel planning
+      The quantity of fuel the pilot took off with, around 100 litres, and an
+      estimated consumption of 35 litres for the mission mean that the
+      remaining quantity of fuel at the time of landing would have been
+      around 65 litres, which is below the quantity, 75 litres, at which uncoor-
+      dinated flying constitutes a risk of the fuel pumps not getting any fuel.
+
+      There is no prohibition against flying with such fuel margins, but taking
+      into account the fact that there were to be six passengers and a certain
+      amount of equipment, then you should consider if you plan to land with
+      less than 75 litres of fuel, given the safety bulletin that was issued,
+      which stated that less than 75 litres of fuel is to be deemed to constitute
+      grounds for a caution for low fuel. Nevertheless, the low fuel margin
+      has not influenced the sequence of events and the accident.
+
+2.2   Sequence of events
+      The engine problems initially resulted in yaw disturbances and, a little
+      later, loss of rotor rpm and lift. Consequently, the caution for low rotor
+      rpm was not activated immediately. When the warning was activated,
+      the helicopter was in the “intermediate range”, which means that, on the
+      one hand, there was not enough altitude and speed to make a safe entry
+      into autorotation and completive emergency landing, and on the other,
+      the speed and altitude were too high to allow the helicopter to land
+      immediately. Because the altitude and the speed were low, there was
+      also no scope for the pilot to perform a flare (raise the nose and thus
+      reduce the speed and increase the rotor rpm in order to enable a soft
+      landing). Consequently, landing was performed with a little forward
+      speed, which resulted in landing gear braking against the soft ground
+      and initially causing the helicopter to tip forward, before it returned to
+      a level position. In a situation such as this, a natural reaction is to spon-
+      taneously attempt to counter a perceived tip forward by pulling back on
+      the cyclic.
+
+      At the low rotor speed that remained following contact being made with
+      the ground, the cyclic position, combined with the nose-down move-
+      ment resulted in the downwind rotor blade coming into contact with the
+      tail boom, which was then cut off by the rotor blade.
+
+      In the absence of recordings or information from the pilot, it has not
+      been possible to establish what made the engine finally stall. It may
+      have been a consequence of the engine problems or because the pilot
+      instinctively performed the motions required for this when the helicop-
+      ter stood still on the ground.
+
+
+
+
+                              22 (24)
+RL 2020:06e
+
+
+     2.3      Why did the engine loose power?
+              The examination of the helicopter and the engine conducted by SHK
+              did not reveal anything that could have caused the loss of engine power.
+              Nor could the loss of power reported by the pilot be recreated while
+              testing the engine at the authorised aero engine workshop.
+
+              The engine parameters that could be retrieved from the memory unit
+              (see section 1.16.3) and which SHK has analysed indicate that a disrup-
+              tion in the form of fluctuations in the engine torque (TRQ) occurred
+              during the flight. Immediately after these fluctuations, the major loss of
+              power occurred and the engine torque (TRQ) and turbine outlet tempe-
+              rature (TOT) drops rapidly. The other parameters also drop, but a little
+              more slowly. Around seven seconds after the beginning of the major
+              loss of power, the gas generator rpm drops below idle.
+
+              The fact that the engine’s torque drops at the same time as the turbine
+              outlet temperature falls rapidly has, most likely, been the result of some
+              form of blockage in the fuel supply.
+
+              The turbine outlet temperature (TOT) falls sharply in a later stage when
+              the engine’s rpm N1 and N2 are low. The turbine outlet temperature
+              peak indicates that, at this stage, the engine received an increased fuel
+              flow and that it was not completely flamed out.
+
+              The data that has been analysed does not suggest that the loss of power
+              was caused by the actions of the pilot.
+
+              A loss of engine power can have various causes. On the basis of the
+              examinations that have been conducted, SHK makes the assessment
+              that the most probable causes were a temporary partial blockage of the
+              fuel supply to the engine.
+
+
+
+
+                                               23 (24)
+                                                                          RL 2020:06e
+
+
+3.      CONCLUSIONS
+
+3.1     Findings
+            a) The pilot was qualified to perform the flight.
+            b) The helicopter had a certificate of airworthiness and valid Air-
+               worthiness Review Certificate.
+            c) The engine lost power during the flight.
+            d) The caution for low rotor rpm was activated.
+            e) The fact that the tail boom was cut off was probably due to the
+               cyclic being pulled back from a neutral position when contact
+               was made with the ground.
+            f) The examinations of the helicopter and the engine did not show
+               anything that could have caused the loss of engine power.
+            g) The loss of power reported by the pilot could not be recreated
+               during testing of the engine.
+            h) The spike in turbine outlet temperature following landing
+               suggest that the engine was not completely shut down.
+            i) It has not been possible to establish what caused the engine to
+               finally stall.
+
+3.2     Causes
+        The accident was caused by a major loss of engine power occurring in
+        a flight situation in which the chances of landing safely were restricted
+        by the low speed and altitude.
+
+        It has not been possible to establish the cause of the loss of engine
+        power. This was probably a consequence of a temporary partial block-
+        age of the fuel supply to the engine.
+
+
+
+
+4.      SAFETY RECOMMENDATIONS
+        None.
+
+
+On behalf of the Swedish Accident Investigation Authority,
+
+
+
+Mikael Karanikas                      Tony Arvidsson
+
+
+
+
+                               24 (24)
+

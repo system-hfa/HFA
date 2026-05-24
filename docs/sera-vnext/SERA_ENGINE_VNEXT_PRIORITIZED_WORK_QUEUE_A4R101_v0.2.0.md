@@ -146,3 +146,17 @@ NO_DOWNSTREAM
 | P1 | Targeted source-slice expansion before or during batch | selected A4R112 events | Prevents axis omission and reduces overclassification risk in O/A branches. | Codex | 1 focused round | Missing evidence for weak O/A nodes is documented and reduced. |
 | P1 | Maintain P-only draft boundary state | COMAIR-5191 and KOREAN-801 | Keeps prior approvals valid without overstating full-reference completeness. | Codex | 1 status cycle | Both cases remain tagged as P-only internal drafts. |
 | P1 | Conditional reserve activation | AMERICAN-965, FIRST-AIR-6560, KEGWORTH-GOBME, G-BLUN-OFFSHORE | Fallback if one primary batch candidate fails readiness. | Codex | 1 reserve swap round | Replacement candidate chosen with explicit P/O/A feasibility rationale. |
+
+## A4+R-113 queue update
+- Completed in A4R113:
+  - repository methodology cleanup audit;
+  - archive move for clearly invalid/pre-canonical artifacts;
+  - corpus versioning policy and active-source index publication.
+- Execution remained docs/governance/corpus-hygiene only.
+
+## Immediate queue after A4R113
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Execute A4R112 full-corpus mining kickoff | A4R111 full pool + new50 TXT/manifests | Hygiene baseline is now explicit; corpus is ready for controlled mining. | Codex | 1 macro cycle | Mining starts from versioned TXT/CSV/manifests with quarantine discipline. |
+| P1 | Controlled review of questionpath-backfill family | A4R79/A4R80 docs and annexes | Noncanonical backfill remains high-risk for reference-proof usage and needs dedicated disposition. | Codex + user | 1 governance cycle | Decision logged: retain with stronger labels or move to archive/invalid-methodology/questionpath-backfill. |
+| P1 | Maintain archived-status discipline | archive subtree | Prevent accidental reuse of archived pre-canonical artifacts in active workflows. | Codex | continuous | Archive headers and active index remain aligned with current methodology lock. |

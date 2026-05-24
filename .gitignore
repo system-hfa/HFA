@@ -14,3 +14,11 @@ archives/
 *.swp
 *.swo
 *.swn
+
+# Local test artifacts
+tests/reports/candidates/*.json
+tests/reports/nightly/*.log
+
+# Local-only source-report binaries (A4R113 corpus hygiene policy)
+docs/sera-vnext/source-corpus/official-reports/**/*.pdf
+docs/sera-vnext/source-corpus/official-reports/**/*.html
