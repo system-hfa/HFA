@@ -73,3 +73,24 @@ Do not include O-C, O-D, or A-F in the first pilot unless a separate author-clar
 - No proposed code is changed.
 - No `UNRESOLVED` is reduced.
 - No downstream is opened.
+
+## A4+R-83 Update — P-Axis Micro-Pilot Packet
+
+A4+R-83 prepared the recommended P-axis micro-pilot packet without executing release:
+- P-axis micro-pilot author approval packet prepared;
+- 4 strong candidates packaged individually;
+- weak candidates moved to backlog;
+- author approval checklist created;
+- method decision draft created;
+- no release executed;
+- releasedCodeCount remains 0;
+- no downstream opened.
+
+Prepared candidates:
+- REAL-EVENT-0003 — P-G;
+- REAL-EVENT-0015 — P-G;
+- N109W — P-G;
+- N11NM — P-C.
+
+Next recommendation:
+- **A4+R-84 — Author Decision Intake for P-Axis Micro-Pilot**, docs-only, with explicit author/user decision recorded for each packet before any real release is considered.

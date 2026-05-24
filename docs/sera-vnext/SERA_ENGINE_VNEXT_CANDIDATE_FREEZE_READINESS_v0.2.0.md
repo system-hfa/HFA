@@ -803,3 +803,37 @@ O candidate freeze final continua nao autorizado.
 Proxima fase recomendada:
 - **A4+R-83 - Author Approval Packet for P-Axis Micro-Pilot** (docs-only).
 - Alternativa se a prioridade for evidência: **A4+R-83 - Source Enrichment Sprint for Held Release Candidates**.
+
+## A4+R-83 - Author Approval Packet for P-Axis Micro-Pilot
+
+Esta fase preparou pacote documental de aprovacao autoral futura para um micro-pilot somente do eixo P, sem executar release real:
+
+- [P-Axis Micro-Pilot Author Approval Packet A4R83](./SERA_ENGINE_VNEXT_P_AXIS_MICRO_PILOT_AUTHOR_APPROVAL_PACKET_A4R83_v0.2.0.md)
+- [Author Approval Checklist A4R83](./SERA_ENGINE_VNEXT_AUTHOR_APPROVAL_CHECKLIST_A4R83_v0.2.0.md)
+- [Weak Candidate Backlog A4R83](./SERA_ENGINE_VNEXT_RELEASE_PILOT_WEAK_CANDIDATE_BACKLOG_A4R83_v0.2.0.md)
+- [P-Axis Micro-Pilot Method Decision A4R83](./SERA_ENGINE_VNEXT_P_AXIS_MICRO_PILOT_METHOD_DECISION_A4R83_v0.2.0.md)
+- Individual packets em `docs/sera-vnext/release-pilot-author-packets/`.
+
+Estado apos A4+R-83:
+- author approval packet criado;
+- 4 individual packets criados;
+- checklist criado;
+- weak backlog criado;
+- method decision criada;
+- releasedCodeCount permanece 0;
+- proposedCodeChanges=0;
+- unresolvedReduced=0;
+- nenhum author approval real registrado;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/codigo alterado.
+
+P-axis candidates empacotados:
+- REAL-EVENT-0003 — P-G;
+- REAL-EVENT-0015 — P-G;
+- N109W — P-G;
+- N11NM — P-C.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-84 - Author Decision Intake for P-Axis Micro-Pilot**.
