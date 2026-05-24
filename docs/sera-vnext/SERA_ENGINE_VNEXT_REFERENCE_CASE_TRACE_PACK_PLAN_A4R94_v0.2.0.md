@@ -107,3 +107,22 @@ Each trace pack must be:
   - no runtime impact.
 - Next sequencing recommendation:
   - A4+R-101 withdrawn/boundary canonical pack rebuild.
+
+## A4+R-102 Block 1 Stabilization Update
+- Canonical withdrawn/boundary replacement pack created in one batch:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-CANONICAL-A4R102.md`
+- Included cases:
+  - REAL-EVENT-0015
+  - N109W
+  - N11NM
+- Validation status of new boundary pack:
+  - `REVIEW_REQUIRED`
+- A4R95 and pre-canonical A4R96 boundary artifacts remain invalid for reference/front-end proof usage.
+- Guardrails preserved:
+  - no new release;
+  - no release restoration for withdrawn trio;
+  - no downstream;
+  - no runtime impact.
+- Updated next sequencing recommendation:
+  1. combined author review of A4R100 + A4R102;
+  2. after author decision record, proceed to Block 2 canonical reclassification sweep.

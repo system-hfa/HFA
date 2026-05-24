@@ -110,3 +110,17 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 2. Complete BLOCK 2 in one consolidated pass.
 3. Run BLOCK 3 only after BLOCK 2 shortlist stabilizes.
 4. Open BLOCK 4 only after positive+boundary canonical approvals exist.
+
+## A4+R-102 Execution Update (Block 1)
+- Canonical withdrawn/boundary pack was built:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-CANONICAL-A4R102.md`
+- REAL-EVENT-0003 canonical positive trace remains:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-CANONICAL-A4R100.md` (`PASS_WITH_LIMITATIONS`)
+- Block 1 technical documentation status:
+  - `BLOCK1_TECHNICAL_DOCS_COMPLETE_AUTHOR_REVIEW_PENDING`
+- No release creation, no release restoration, and no downstream opening occurred.
+
+## Updated Immediate Sequence
+1. Run combined author review for A4R100 + A4R102.
+2. Record author decision and front-end readiness gate.
+3. Move to BLOCK 2 only after this combined review record.
