@@ -90,3 +90,20 @@ Each trace pack must be:
 - New sequencing lock:
   1. A4+R-99 — build canonical question tree asset pack.
   2. A4+R-100 — rebuild REAL-EVENT-0003 from canonical tree only.
+
+## A4+R-100 Canonical Rebuild Update
+- Canonical replacement trace for REAL-EVENT-0003 created:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-CANONICAL-A4R100.md`
+- A4R95 remains invalid historical artifact:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md`
+- Rebuild result:
+  - validationStatus: `PASS_WITH_LIMITATIONS`
+  - maintained reference result: `P-G`
+  - O-axis: not released
+  - A-axis: not released
+- Guardrails preserved:
+  - no new release;
+  - no downstream;
+  - no runtime impact.
+- Next sequencing recommendation:
+  - A4+R-101 withdrawn/boundary canonical pack rebuild.

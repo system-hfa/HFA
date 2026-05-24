@@ -1259,3 +1259,26 @@ Estado após A4+R-99:
 - A4+R-100 pode iniciar rebuild de REAL-EVENT-0003 apenas se o caminho necessário passar no checklist canônico.
 
 O candidate freeze final continua não autorizado.
+
+## A4+R-100 - Rebuild REAL-EVENT-0003 Canonical Reference Trace
+
+Esta fase executou o rebuild canônico do reference case REAL-EVENT-0003 usando exclusivamente o asset A4R99:
+
+- [Canonical Reference Trace REAL-EVENT-0003 P-G A4R100](./reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-CANONICAL-A4R100.md)
+- [REAL-EVENT-0003 Canonical Reference Rebuild Summary A4R100](./SERA_ENGINE_VNEXT_REAL_EVENT_0003_CANONICAL_REFERENCE_REBUILD_A4R100_v0.2.0.md)
+
+Estado após A4+R-100:
+- A4R95 permanece invalidado/superseded para uso de referência;
+- A4R100 passa a replacement canônico com `validationStatus = PASS_WITH_LIMITATIONS`;
+- resultado mantido no reference: `P-G`;
+- O-axis e A-axis não liberados neste reference trace;
+- nenhum release novo criado;
+- nenhum downstream aberto;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/código/runtime/UI/API/DB alterado.
+
+Próxima fase recomendada:
+- **A4+R-101 — Canonical withdrawn/boundary pack rebuild**.
+- Como `PASS_WITH_LIMITATIONS`, revisão autoral adicional é recomendada antes de uso front-end como material de aprendizagem.
+
+O candidate freeze final continua não autorizado.

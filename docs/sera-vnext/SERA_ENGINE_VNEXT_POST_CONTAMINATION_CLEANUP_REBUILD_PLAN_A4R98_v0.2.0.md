@@ -25,6 +25,7 @@ Define mandatory next phases after canonical contamination cleanup, with a stric
 2. **A4+R-100 — Rebuild REAL-EVENT-0003 with canonical tree only**
    - Use exact canonical question traversal.
    - No reconstructed/generic question text.
+   - Result must be `PASS`, `PASS_WITH_LIMITATIONS`, or `FAIL_BLOCKED` based on checklist.
 
 3. **A4+R-101 — Build canonical withdrawn/boundary pack only after tree asset exists**
    - Rebuild withdrawn trio pack with exact canonical node traversal.
@@ -40,6 +41,18 @@ Define mandatory next phases after canonical contamination cleanup, with a stric
 - Validation checklist created:
   - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_VALIDATION_CHECKLIST_A4R99_v0.2.0.md`
 - Next actionable phase: **A4+R-100** (conditional on checklist pass for required path).
+
+## A4+R-100 Completion Record
+- Rebuild output created:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-CANONICAL-A4R100.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_0003_CANONICAL_REFERENCE_REBUILD_A4R100_v0.2.0.md`
+- Result:
+  - validationStatus: `PASS_WITH_LIMITATIONS`
+  - P-path canonical rebuild: completed to `P-G`
+  - O-axis release: none
+  - A-axis release: none
+  - no new release / no downstream
+- Next actionable phase: **A4+R-101** (canonical withdrawn/boundary rebuild), with optional author review before front-end use due to `PASS_WITH_LIMITATIONS`.
 
 ## Sequence Lock Rule
 Any attempt to skip A4+R-99 must be blocked:
