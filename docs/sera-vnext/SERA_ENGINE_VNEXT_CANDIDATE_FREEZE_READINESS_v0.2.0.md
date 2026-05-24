@@ -315,6 +315,26 @@ Estado após A4+R-62:
 - nenhum downstream habilitado;
 - próxima fase planejada: adjudicação AI/Author controlada (se autorizada).
 
+## A4+R-63 — AI/Author SERA Adjudication Pilot
+
+Esta fase executou a primeira rodada de adjudicação AI/Author controlada sobre o sample estruturado:
+
+- [Real Event AI/Author Adjudication Pilot](./SERA_ENGINE_VNEXT_REAL_EVENT_AI_AUTHOR_ADJUDICATION_PILOT_v0.2.0.md)
+- arquivos de adjudicação/triage em:
+  - `docs/sera-vnext/real-event-adjudications/REAL-EVENT-ADJUDICATION-001.md`
+  - `docs/sera-vnext/real-event-adjudications/REAL-EVENT-ADJUDICATION-002.md`
+  - `docs/sera-vnext/real-event-adjudications/REAL-EVENT-ADJUDICATION-003.md`
+  - `docs/sera-vnext/real-event-adjudications/REAL-EVENT-ADJUDICATION-004.md`
+  - `docs/sera-vnext/real-event-adjudications/REAL-EVENT-TRIAGE-005.md`
+
+Estado após A4+R-63:
+- AI/Author adjudication pilot executado;
+- drafts de proposed P/O/A existem em nível documental, mas não são `releasedCode`;
+- nenhum fixture oficial criado;
+- nenhum baseline alterado;
+- nenhum downstream habilitado;
+- freeze final continua não autorizado.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.

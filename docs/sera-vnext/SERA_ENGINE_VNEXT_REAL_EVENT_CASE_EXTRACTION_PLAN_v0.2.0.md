@@ -73,5 +73,16 @@ Escalonar para o usuário/adjudicador durante a execução quando houver:
   - heterogeneidade de qualidade de fonte entre os casos;
   - um caso mantido com `SOURCE_PARTIAL` (extração de baixa confiança) para trilha de ambiguidade.
 
+## A4+R-63 — Adjudicação piloto executada
+- Adjudicação AI/Author piloto executada em 4 casos:
+  - REAL-EVENT-0001
+  - REAL-EVENT-0002
+  - REAL-EVENT-0004
+  - REAL-EVENT-0006
+- Triage-only executado para 1 caso de baixa confiança:
+  - REAL-EVENT-0028 (`SOURCE_PARTIAL`)
+- Nenhum `releasedCode` foi gerado.
+- Nenhum downstream foi habilitado.
+
 ## Próxima fase sugerida
-A4+R-63 — AI/Author SERA Adjudication Pilot.
+A4+R-64 — AI/Author Adjudication Refinement + Evidence Enrichment Gate.
