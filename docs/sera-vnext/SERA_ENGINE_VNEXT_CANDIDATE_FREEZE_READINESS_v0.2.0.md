@@ -1282,3 +1282,22 @@ Próxima fase recomendada:
 - Como `PASS_WITH_LIMITATIONS`, revisão autoral adicional é recomendada antes de uso front-end como material de aprendizagem.
 
 O candidate freeze final continua não autorizado.
+
+## A4+R-101 — Canonical Methodology Recovery and Event Reclassification Sweep
+
+Esta fase executou consolidação macro pós-contaminação com escopo estritamente documental:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_METHOD_RECOVERY_A4R101_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_ALL_TRACKED_EVENTS_CANONICAL_STATUS_MATRIX_A4R101_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_RECOVERY_MACRO_ROADMAP_A4R101_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_PRIORITIZED_WORK_QUEUE_A4R101_v0.2.0.md`
+
+Registro de estado A4+R-101:
+- macro recovery completed: yes
+- A4R95 remains invalid/superseded: yes
+- A4R100 canonical replacement exists: yes (`PASS_WITH_LIMITATIONS`)
+- new release created: no
+- downstream opened: no
+- freeze final authorized: no
+
+Diretriz de sequência:
+- a próxima execução deve seguir macroblocos consolidados (estabilização canônica, sweep canônico em lote, expansão sólida e contrato front-end), evitando micro-revisão isolada por evento, exceto review autoral direto em chat quando necessário.
