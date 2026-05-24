@@ -55,3 +55,11 @@ Executar extração factual estruturada em lote para os 15 casos selecionados em
 
 ## Próxima fase recomendada
 - **A4+R-77 — Batch 3 AI/Author Adjudication for 15 extracted cases**.
+
+## A4+R-77 Update
+- adjudicação Batch 3 executada em lote único.
+- 15 arquivos de adjudicação criados em `docs/sera-vnext/real-event-adjudications-batch-3/`.
+- `questionPath` por eixo introduzido em todos os 15 drafts (`P_axis_questionPath`, `O_axis_questionPath`, `A_axis_questionPath`).
+- nenhum `releasedCode` criado.
+- nenhum downstream aberto.
+- próxima fase recomendada: **A4+R-78 — Consolidated Metrics and QuestionPath Review for 30 Real Events**.

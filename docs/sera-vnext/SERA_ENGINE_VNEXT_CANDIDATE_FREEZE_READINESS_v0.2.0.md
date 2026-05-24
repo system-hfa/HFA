@@ -620,3 +620,23 @@ Estado após A4+R-76:
 
 Próxima fase ampla recomendada:
 - **A4+R-77 — Batch 3 AI/Author Adjudication for 15 extracted cases**.
+
+## A4+R-77 — Batch 3 AI/Author Adjudication for 15 Extracted Cases
+
+Esta fase executou adjudicação AI/Author em lote para os 15 casos extraídos no Batch 3:
+
+- [Batch 3 AI/Author Adjudication A4R77](./SERA_ENGINE_VNEXT_BATCH_3_AI_AUTHOR_ADJUDICATION_A4R77_v0.2.0.md)
+- [Batch 3 Adjudication Tracker A4R77](./real-event-adjudications-batch-3/BATCH_3_ADJUDICATION_TRACKER_A4R77_v0.2.0.md)
+- adjudicações por caso em `docs/sera-vnext/real-event-adjudications-batch-3/REAL-EVENT-BATCH3-ADJUDICATION-001.md` até `REAL-EVENT-BATCH3-ADJUDICATION-015.md`
+
+Estado após A4+R-77:
+- 15 casos Batch 3 adjudicados em draft;
+- total real-event adjudication draft agora em 30 casos;
+- `questionPath` por eixo introduzido nos novos drafts;
+- métricas Batch 3: `proposedPAxes=8`, `proposedOAxes=12`, `proposedAAxes=1`, `totalUnresolvedAxes=24`;
+- nenhum `releasedCode` criado;
+- nenhum downstream aberto;
+- freeze final continua não autorizado.
+
+Próxima fase ampla recomendada:
+- **A4+R-78 — Consolidated Metrics and QuestionPath Review for 30 Real Events**.
