@@ -101,3 +101,16 @@ UNRESOLVED
 
 ## nextStepRecommendation
 Manter caso como referência adversarial de disciplina metodológica (não forçar eixo ativo) e priorizar enriquecimento factual técnico antes de nova rodada de adjudicação.
+
+## A4+R-64 refinement status
+- refinementStatus: EVIDENCE_ENRICHMENT_REQUIRED
+- rationale: Dominância de anomalia técnica e cadeia humana incompleta; fechamento de eixo ativo exigiria inferência não suportada.
+- unresolvedAxes:
+  - P
+  - A
+- enrichmentNeeded:
+  - Fonte técnica adicional para discriminar estado de sistema, compreensão da tripulação e sequência de resposta.
+  - Maior rastreio temporal de procedimentos e decisão de ditching.
+- authorQuestionsRemaining:
+  - Definir limiar mínimo para sair de `unsafe-condition-dominant`.
+- noReleasedCode: true

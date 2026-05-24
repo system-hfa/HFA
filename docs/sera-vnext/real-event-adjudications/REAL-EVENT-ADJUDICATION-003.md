@@ -102,3 +102,16 @@ UNRESOLVED
 
 ## nextStepRecommendation
 Levar para A4+R-64 com pedido explícito de refinamento de papéis e cadeia de monitoramento/alerta para reduzir incertezas de P/A.
+
+## A4+R-64 refinement status
+- refinementStatus: HOLD_UNRESOLVED
+- rationale: Ausência de alerta sonoro permanece melhor tratada como condição/barreira; sem separação robusta de papéis não há base para fechar P ou A.
+- unresolvedAxes:
+  - P
+  - A
+- enrichmentNeeded:
+  - Refinar decomposição PF/PM/mission crew e sequência de monitoramento vertical.
+- authorQuestionsRemaining:
+  - Confirmar manutenção de `A=UNRESOLVED`.
+  - Confirmar tratamento da ausência de alerta sonoro como condição dominante.
+- noReleasedCode: true

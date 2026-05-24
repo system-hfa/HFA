@@ -69,3 +69,11 @@ Predomínio de `UNRESOLVED` em P/A nos casos 002, 003 e 004, e em todos os eixos
 
 ## Próxima fase recomendada
 A4+R-64 — AI/Author Adjudication Refinement + Evidence Enrichment Gate.
+
+## A4+R-64 — Refinement executado
+- refinement gate operacional criado:
+  - `SERA_ENGINE_VNEXT_REAL_EVENT_ADJUDICATION_REFINEMENT_GATE_v0.2.0.md`
+- maturity status adicionados por caso em todos os arquivos de adjudicação/triage.
+- casos com evidência parcial foram explicitamente mantidos em trilha de enrichment.
+- nenhum `proposedCode` foi promovido para `releasedCode`.
+- nenhum downstream foi habilitado.

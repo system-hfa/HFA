@@ -103,3 +103,16 @@ UNRESOLVED
 
 ## nextStepRecommendation
 Priorizar em A4+R-64 coleta de evidência sobre desenho/briefing de go-around e cadeia de percepção de alertas para reduzir UNRESOLVED em P/A.
+
+## A4+R-64 refinement status
+- refinementStatus: HOLD_UNRESOLVED
+- rationale: Caso mantém ambiguidade estruturante entre barreira/planejamento e mecanismo perceptivo/ação; não há base para fechar P ou A sem inferência forte.
+- unresolvedAxes:
+  - P
+  - A
+- enrichmentNeeded:
+  - Evidência adicional sobre cadeia de percepção de warning e perfil de trajetória na transição de arremetida.
+- authorQuestionsRemaining:
+  - Confirmar manutenção de `P=UNRESOLVED`.
+  - Confirmar robustez de `O-A` draft no contexto sem rota briefada.
+- noReleasedCode: true

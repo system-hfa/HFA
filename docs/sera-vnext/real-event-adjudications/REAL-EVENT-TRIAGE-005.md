@@ -93,3 +93,17 @@ Todos os eixos mantidos em UNRESOLVED por status de fonte parcial e ausência de
 
 ## nextStepRecommendation
 Classificar como `ENRICHMENT_NEEDED` e não incluir em adjudicação causal detalhada até obtenção de fonte primária verificável.
+
+## A4+R-64 refinement status
+- refinementStatus: TRIAGE_ONLY
+- rationale: Caso permanece com `SOURCE_PARTIAL`, sem ancoragem primária mínima para adjudicação causal robusta.
+- unresolvedAxes:
+  - P
+  - O
+  - A
+- enrichmentNeeded:
+  - EVIDENCE_ENRICHMENT_REQUIRED
+  - Fonte primária identificável + source locator detalhado + cronologia mínima de atores.
+- authorQuestionsRemaining:
+  - Confirmar critérios mínimos de source anchor para saída de triage-only.
+- noReleasedCode: true

@@ -101,3 +101,15 @@ UNRESOLVED
 
 ## nextStepRecommendation
 Levar para A4+R-64 com possibilidade de refinamento PF/PM e revisão de evidência temporal para reduzir incerteza no eixo A.
+
+## A4+R-64 refinement status
+- refinementStatus: AUTHOR_REVIEW_READY
+- rationale: Base factual, escape point, unsafe state e propostas por eixo estão documentados; eixo A permanece aberto por ausência de separação PF/PM suficiente.
+- unresolvedAxes:
+  - A
+- enrichmentNeeded:
+  - Refinar evidência temporal/callouts para reduzir ambiguidade no eixo A.
+- authorQuestionsRemaining:
+  - Confirmar fronteira final `P-G` vs `P-H`.
+  - Confirmar manutenção de `A=UNRESOLVED` neste estágio.
+- noReleasedCode: true

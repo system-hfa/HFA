@@ -335,6 +335,23 @@ Estado após A4+R-63:
 - nenhum downstream habilitado;
 - freeze final continua não autorizado.
 
+## A4+R-64 — AI/Author Adjudication Refinement + Evidence Enrichment Gate
+
+Esta fase consolidou critérios operacionais de maturidade para adjudicação real-event:
+
+- [Real Event Adjudication Refinement Gate](./SERA_ENGINE_VNEXT_REAL_EVENT_ADJUDICATION_REFINEMENT_GATE_v0.2.0.md)
+- [Real Event Adjudication Refinement Summary](./SERA_ENGINE_VNEXT_REAL_EVENT_ADJUDICATION_REFINEMENT_SUMMARY_v0.2.0.md)
+
+Estado após A4+R-64:
+- refinement gate criado;
+- maturity status por caso adicionados nas adjudicações;
+- casos com `EVIDENCE_ENRICHMENT_REQUIRED` explicitados;
+- nenhum `proposedCode` promovido para `releasedCode`;
+- nenhum fixture oficial criado;
+- nenhum baseline alterado;
+- nenhum downstream habilitado;
+- freeze final continua não autorizado.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.
