@@ -1053,3 +1053,30 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-91 - External Batch 1 Author Review and Source-Slicing Plan** (docs-only, revisar os 6 eixos propostos e enriquecer o caso unresolved-only).
+
+## A4+R-91 - External Batch 1 Author Review and Source-Slicing Plan
+
+Esta fase revisou documentalmente os 7 adjudication drafts externos da A4+R-90 e preparou plano de source-slicing sem qualquer acao de release:
+
+- [External Batch 1 Author Review Matrix A4R91](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_AUTHOR_REVIEW_MATRIX_A4R91_v0.2.0.md)
+- [External Batch 1 Source-Slicing Plan A4R91](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_SOURCE_SLICING_PLAN_A4R91_v0.2.0.md)
+- [External Batch 1 Release Impact Watchlist A4R91](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_RELEASE_IMPACT_WATCHLIST_A4R91_v0.2.0.md)
+- [External Batch 1 Adjudication Metrics A4R91](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_ADJUDICATION_METRICS_A4R91_v0.2.0.md)
+- [External Batch 1 Next Phase Decision A4R91](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_NEXT_PHASE_DECISION_A4R91_v0.2.0.md)
+
+Estado apos A4+R-91:
+- author review matrix criada;
+- source-slicing plan criado;
+- release impact watchlist criado;
+- external adjudication metrics criadas;
+- next phase decision criada;
+- nenhum releasedCode criado;
+- nenhum downstream aberto;
+- quarentena de conclusoes externas preservada;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-92 - Source-Slicing Sprint for External Unresolved Axes**, com shortlist pequeno de author review em paralelo para casos prontos.
