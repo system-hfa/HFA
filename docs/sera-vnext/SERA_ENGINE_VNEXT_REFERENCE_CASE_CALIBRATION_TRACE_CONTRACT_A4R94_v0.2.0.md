@@ -74,8 +74,18 @@ The trace must state:
 
 ## 8. P/O/A QuestionPath
 - P/O/A flow must be explicit and ordered.
+- Application order is mandatory:
+  - Step 2 three-question block first (`GOAL`, `PERCEPTION`, `ACTION`);
+  - then canonical ladders (Objective Step 4, Perception Step 3, Action Step 5).
 - No axis result should appear without a corresponding question-answer-evidence chain.
 - `UNRESOLVED` is valid when evidence threshold is not met.
+- Every step must preserve exact canonical question text from approved SERA/CERA sources.
+- Every step must register Hendy step reference (`STEP_2/3/4/5`) for auditability.
+- Generic placeholders (`P1`, `P2`, `O1`, `A1`) cannot be used as methodological question substitutes.
+- Language calibration must preserve:
+  - Hendy English canonical anchor wording;
+  - Daumas Portuguese operational wording;
+  - Daumas maintained O/P/A code mapping.
 
 ## 9. Evidence Trace Contract
 - Every answer requires linked factual evidence.
@@ -105,6 +115,7 @@ Reference traces are designed as future front-end teaching/audit content with ex
 - Do not skip P/O/A question path.
 - Do not hide uncertainty.
 - Do not treat withdrawn/boundary cases as implementation errors.
+- Do not reconstruct or paraphrase canonical tree questions when exact wording is available.
 
 ## Taxonomy Guardrail
 - `O-E = NON_EXISTENT_IN_SERA_PT_V1`.

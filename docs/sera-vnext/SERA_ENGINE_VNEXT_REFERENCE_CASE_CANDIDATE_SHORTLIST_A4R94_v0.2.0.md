@@ -12,7 +12,7 @@ Define an initial shortlist of reference case candidates for calibration-trace c
 
 | caseId | referenceTypeCandidate | currentStatus | sourceStrength | traceCompleteness | whyCandidate | whyNotYetReference | tracePackCreated | tracePackFile | phaseStatus | nextAction |
 |---|---|---|---|---|---|---|---|---|---|---|
-| REAL-EVENT-0003 | POSITIVE_REFERENCE_CASE (REBUILD_REQUIRED) | effective P-axis maintained after A4+R-92; A4R95 trace superseded for reference use | HIGH | LOW | only effective P-axis maintained case after retrospective author review | A4R95 used noncanonical/generic questions and is invalid for reference/front-end use | yes (historical only) | `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md` | A4R96_SUPERSEDED_INVALID_FOR_REFERENCE_USE | rebuild from canonical tree only after canonicalTreeStatus allows |
+| REAL-EVENT-0003 | POSITIVE_REFERENCE_CASE (REBUILD_REQUIRED) | effective P-axis maintained after A4+R-92; A4R95 trace superseded for reference use | HIGH | LOW | only effective P-axis maintained case after retrospective author review | A4R95 used noncanonical/generic questions and is invalid for reference/front-end use | yes (historical only) | `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md` | A4R96_SUPERSEDED_INVALID_FOR_REFERENCE_USE | rebuild now enabled using canonical tree (`FOUND_COMPLETE`) |
 | REAL-EVENT-0015 | WITHDRAWN_REFERENCE_CASE / BOUNDARY_REFERENCE_CASE | withdrawn by author review in A4+R-92 | MEDIUM | HIGH | strong overclassification lesson (action-dominant versus prior P framing) | n/a for boundary-pack baseline | yes | `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-PACK-A4R96.md` | A4R96_WITHDRAWN_BOUNDARY_PACK_CREATED | use as withdrawn/boundary calibration case in future UI trace set |
 | N109W | WITHDRAWN_REFERENCE_CASE / BOUNDARY_REFERENCE_CASE | withdrawn by author review in A4+R-92 | MEDIUM | HIGH | degraded meteorology/perception-source boundary is highly calibrating | n/a for boundary-pack baseline | yes | `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-PACK-A4R96.md` | A4R96_WITHDRAWN_BOUNDARY_PACK_CREATED | use as weather-source boundary calibration case |
 | N11NM | WITHDRAWN_REFERENCE_CASE / BOUNDARY_REFERENCE_CASE | withdrawn by author review in A4+R-92 | MEDIUM | HIGH | IFR/disorientation context did not sustain prior P-C threshold | n/a for boundary-pack baseline | yes | `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-WITHDRAWN-P-AXIS-BOUNDARY-PACK-A4R96.md` | A4R96_WITHDRAWN_BOUNDARY_PACK_CREATED | use as P-C threshold-discipline calibration case |
@@ -24,5 +24,5 @@ Define an initial shortlist of reference case candidates for calibration-trace c
 - This shortlist is design/planning only.
 - No release/proposed/adjudication status is changed by this document.
 - A4+R-95 trace pack is superseded due to noncanonical/generic question flow.
-- Reference-case work is blocked until canonical SERA/CERA tree sources are used with exact question text.
-- Next reference-case phase selection depends on `canonicalTreeStatus` (FOUND_COMPLETE vs FOUND_PARTIAL vs NOT_FOUND).
+- Canonical O/P/A tree sources are confirmed in A4+R-96 (`FOUND_COMPLETE`).
+- Next reference-case phase is the canonical rebuild of REAL-EVENT-0003.

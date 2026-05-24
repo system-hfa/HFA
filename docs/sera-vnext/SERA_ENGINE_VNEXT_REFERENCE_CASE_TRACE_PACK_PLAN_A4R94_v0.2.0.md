@@ -59,7 +59,6 @@ Each trace pack must be:
   - no runtime impact;
   - no downstream impact;
   - only reference trace validity impacted.
-- Reference-case work is now blocked until canonical SERA/CERA tree sources are used step-by-step.
-- Next phase depends on `canonicalTreeStatus` from A4+R-96 inventory:
-  - if complete: rebuild trace from exact canonical tree;
-  - if incomplete/absent: recover missing canonical tree assets first.
+- Canonical O/P/A tree sources were confirmed in A4+R-96 inventory (`FOUND_COMPLETE`).
+- Next phase is enabled:
+  - rebuild REAL-EVENT-0003 trace from exact canonical tree questions and branches.

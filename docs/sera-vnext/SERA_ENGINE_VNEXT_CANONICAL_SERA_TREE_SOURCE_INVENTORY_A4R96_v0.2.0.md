@@ -6,23 +6,36 @@ DOCS_ONLY
 CORRECTION_ONLY
 
 ## Objective
-Inventory all repository sources that could serve as canonical SERA/CERA tree inputs for reference-trace construction.
+Inventory canonical SERA/CERA tree sources for reference-trace construction using exact question wording and canonical branch logic.
 
 ## Source Inventory
 | sourceFile | sourceType | containsExactQuestions | containsDecisionNodes | containsBranchingLogic | containsLeavesOrConclusions | containsPAxis | containsOAxis | containsAAxis | containsPreconditions | reliabilityForReferenceTrace | notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `backend/app/sera/documents/SERA.pdf` | official method document (Hendy report PDF) | yes | partial | partial | yes | yes | yes | yes | yes | HIGH | Primary canonical source artifact in repo. Contains Step 2/3/4/5 question text and flowchart-like sections, but not a repo-native machine-readable node graph with stable node IDs. |
-| `docs/reference/hendy-sera-2003.txt` | text extraction/transcription of Hendy report | yes | partial | partial | yes | yes | yes | yes | yes | HIGH | Includes exact canonical wording such as "What was the operator...", "What did the operator...", and "How was the operator..." plus step-level logic; still lacks explicit normalized node-ID contract. |
-| `docs/reference/daumas-sera-offshore.txt` | translated/adapted operational text with Annex A flow | yes | partial | partial | yes | yes | yes | yes | yes | MEDIUM | Contains translated/adapted question wording and flow descriptions; useful secondary source but includes adaptation layer and therefore cannot override Hendy canonical wording when conflicts exist. |
-| `docs/SERA_STEP1_STEP2_EXPLICIT_DESIGN_v0.1.4.md` | implementation-design document | partial | no | partial | no | partial | partial | partial | no | LOW | Design artifact describing explicit trace strategy; not canonical tree source. |
-| `docs/SERA_STEP1_STEP2_EXPLICIT_STATEMENTS_v0.1.4.md` | observational trace method note | partial | no | partial | no | partial | partial | partial | no | LOW | Defines extraction heuristics for statements, not canonical question tree. |
-| `docs/SERA_QUESTION_TRACE_STEP1_STEP2_v0.1.4.md` | question-trace implementation note | partial | partial | partial | no | partial | partial | partial | no | LOW | Contains synthetic Step1/2 question IDs for traceability; does not encode full canonical SERA/CERA tree for P/O/A ladders. |
-| `frontend/src/lib/sera/rules/` | runtime rule corpus (JSON + selectors) | no | partial | partial | yes | yes | yes | yes | partial | LOW | Encodes code-level evidence matching and exclusions for implementation; not a canonical question tree and not authoritative for exact question wording. |
-| `docs/sera-vnext/SERA_ENGINE_VNEXT_REFERENCE_CASE_CALIBRATION_TRACE_TEMPLATE_A4R94_v0.2.0.md` | reference-case template | no | no | partial | no | yes | yes | yes | partial | LOW | Uses generic placeholders (P1/P2/O1/A1), not canonical tree questions. |
-| `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md` | historical reference trace artifact | no | no | partial | partial | yes | yes | yes | partial | LOW | Contains reconstructed/generic question flow; superseded and invalid for canonical reference use. |
+| `backend/app/sera/documents/SERA.pdf` | official method document (Hendy report PDF) | yes | yes | yes | yes | yes | yes | yes | yes | HIGH | Canonical base (Hendy) with Step 2/3/4/5 exact question wording and branch logic for objective/perception/action ladders. |
+| `docs/reference/hendy-sera-2003.txt` | text extraction/transcription of Hendy report | yes | yes | yes | yes | yes | yes | yes | yes | HIGH | Canonical English wording and flow text (`What was...`, `What did...`, `How was...`) aligned to the SERA ladder structure. |
+| `docs/reference/daumas-sera-offshore.txt` | translated/adapted operational text with Annex A flow | yes | yes | yes | yes | yes | yes | yes | yes | HIGH | Canonical PT operational wording and flowcharts (Figura 11/12/13) for O/P/A axes, explicitly marked as adapted from Hendy (2003). |
+| `docs/SERA_STEP1_STEP2_EXPLICIT_DESIGN_v0.1.4.md` | implementation-design document | partial | no | partial | no | partial | partial | partial | no | LOW | Design artifact only; not canonical source. |
+| `docs/SERA_STEP1_STEP2_EXPLICIT_STATEMENTS_v0.1.4.md` | observational trace method note | partial | no | partial | no | partial | partial | partial | no | LOW | Trace extraction heuristic, not canonical source. |
+| `docs/SERA_QUESTION_TRACE_STEP1_STEP2_v0.1.4.md` | question-trace implementation note | partial | partial | partial | no | partial | partial | partial | no | LOW | Internal trace IDs; not authoritative canonical tree wording. |
+| `frontend/src/lib/sera/rules/` | runtime rule corpus (JSON + selectors) | no | partial | partial | yes | yes | yes | yes | partial | LOW | Runtime operationalization; not canonical tree text source. |
+| `docs/sera-vnext/SERA_ENGINE_VNEXT_REFERENCE_CASE_CALIBRATION_TRACE_TEMPLATE_A4R94_v0.2.0.md` | reference-case template | partial | partial | partial | partial | yes | yes | yes | partial | MEDIUM | Must be constrained to canonical wording by A4R96 contract; cannot introduce generic placeholders. |
+| `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md` | historical reference trace artifact | no | no | partial | partial | yes | yes | yes | partial | LOW | Historical-only artifact; superseded for noncanonical question usage. |
+
+## Canonical Flow Confirmation
+The canonical O/P/A ladder flow is confirmed by source-aligned figures and text in repository materials:
+- Objective flow: `docs/reference/daumas-sera-offshore.txt` (Figura 11, p. 105).
+- Perception flow: `docs/reference/daumas-sera-offshore.txt` (Figura 12, p. 110).
+- Action flow: `docs/reference/daumas-sera-offshore.txt` (Figura 13, p. 122).
+- Hendy anchor text: `docs/reference/hendy-sera-2003.txt` (Step 3/4/5 and three core questions).
+
+## Language Calibration Rule
+- English canonical phrasing is anchored to Hendy Step 3/4/5 question wording.
+- Portuguese operational phrasing follows Daumas adaptation text/figures.
+- Daumas O/P/A code set is mandatory and preserved as active classification code contract.
+- Flow application order is mandatory: run Step-2 (`GOAL`, `PERCEPTION`, `ACTION`) before axis ladders.
 
 ## Conclusion
-- canonicalTreeStatus: FOUND_PARTIAL
+- canonicalTreeStatus: FOUND_COMPLETE
 - primaryCanonicalSource: `backend/app/sera/documents/SERA.pdf` + `docs/reference/hendy-sera-2003.txt`
 - secondarySources:
   - `docs/reference/daumas-sera-offshore.txt`
@@ -31,9 +44,7 @@ Inventory all repository sources that could serve as canonical SERA/CERA tree in
   - `docs/SERA_QUESTION_TRACE_STEP1_STEP2_v0.1.4.md`
   - `frontend/src/lib/sera/rules/`
 - blockers:
-  - No single repository-native canonical tree file with normalized parent/child node graph and stable node IDs for all P/O/A branches.
-  - Canonical questions exist in source documents, but exact node-by-node reconstruction contract is incomplete in current vNext documentation set.
-  - Existing reference trace artifacts used noncanonical placeholders and must not be reused.
+  - none for canonical O/P/A trace rebuild under exact-question discipline.
 
-REFERENCE_CASE_REBUILD_BLOCKED=true
-reason=CANONICAL_TREE_INCOMPLETE_OR_MISSING
+REFERENCE_CASE_REBUILD_BLOCKED=false
+reason=CANONICAL_TREE_CONFIRMED_FOR_POA

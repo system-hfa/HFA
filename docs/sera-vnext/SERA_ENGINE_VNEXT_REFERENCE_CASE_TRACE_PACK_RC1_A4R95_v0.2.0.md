@@ -41,5 +41,5 @@ Record completion of the first reference case calibration trace pack (RC-1 start
 - canonical-tree nonconformance identified in A4+R-96 invalidates this pack for active reference use.
 
 ## Next Recommended Reference Packs
-- blocked until canonical SERA/CERA tree question source is complete/sufficient.
-- next phase depends on A4+R-96 canonical tree inventory status.
+- canonical O/P/A tree source is now confirmed (`FOUND_COMPLETE` in A4+R-96 inventory).
+- next phase: rebuild REAL-EVENT-0003 reference trace using exact canonical tree questions.

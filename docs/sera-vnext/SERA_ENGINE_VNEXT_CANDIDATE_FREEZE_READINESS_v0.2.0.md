@@ -1204,5 +1204,5 @@ Estado apos A4+R-96:
 - nenhum downstream aberto;
 - nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
 - nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado;
-- trabalho de reference case bloqueado ate uso de arvore canonica SERA/CERA com perguntas exatas;
-- proxima fase condicionada a `canonicalTreeStatus`.
+- arvore canonica O/P/A confirmada (`FOUND_COMPLETE`) nas fontes Hendy/Daumas;
+- proxima fase: rebuild canônico de REAL-EVENT-0003 com perguntas exatas da arvore.
