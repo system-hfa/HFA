@@ -35,3 +35,15 @@ A4R104 delivered useful exploratory drafts, but all three candidates still requi
 
 ## Why no author approval is needed now
 This phase is curation and batch planning only. It does not promote reference status, does not create release, and does not open front-end/downstream artifacts.
+
+## A4+R-106 execution status for top-3
+| curatedCandidateId | sourceSliceStatus | traceDraftStatus | strongestAxisDrafted | validationStatus | currentPromotionState |
+|---|---|---|---|---|---|
+| ASIANA-214 | ADEQUATE_FOR_TRACE_DRAFT | TRACE_DRAFT_CREATED | P-G (draft) | PASS_WITH_LIMITATIONS | NOT_RELEASED |
+| COMAIR-5191 | ADEQUATE_FOR_TRACE_DRAFT | TRACE_DRAFT_CREATED | P-G (draft) | PASS_WITH_LIMITATIONS | NOT_RELEASED |
+| KOREAN-801 | ADEQUATE_FOR_TRACE_DRAFT | TRACE_DRAFT_CREATED | P-F (draft) | PASS_WITH_LIMITATIONS | NOT_RELEASED |
+
+Notes:
+- A4R106 used official local reports as primary factual source.
+- No author approval was requested in A4R106.
+- No release and no downstream artifact were created.

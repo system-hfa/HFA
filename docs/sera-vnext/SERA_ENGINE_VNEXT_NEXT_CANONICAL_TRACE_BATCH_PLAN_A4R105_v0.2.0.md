@@ -37,3 +37,19 @@ Build three canonical trace drafts from official reports with cleaner factual st
 ## Exit criteria
 - at least two drafts achieve `PASS_WITH_LIMITATIONS` or better;
 - otherwise return to reserve candidates and/or targeted source-slice planning.
+
+## A4+R-106 execution result
+- executionStatus: COMPLETED
+- resultSummary:
+  - source slices created for all top-3 candidates;
+  - three canonical trace drafts created;
+  - all three drafts reached `PASS_WITH_LIMITATIONS`.
+- controls:
+  - no author approval used;
+  - no release created;
+  - no downstream opened.
+
+## Next macro step after A4R106
+- prepare one author-review bundle for the A4R106 triple-draft package;
+- if review identifies significant weak-node exposure, perform targeted source-slice expansion before any O/A closure attempt;
+- keep front-end and release promotion closed.

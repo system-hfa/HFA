@@ -170,3 +170,26 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Execute A4R106 with the curated top-3 official reports (`ASIANA-214`, `COMAIR-5191`, `KOREAN-801`) to build canonical trace drafts.
 2. Keep A4R104 as held exploratory fallback material for later source-slice rounds.
 3. Keep release/downstream/front-end promotion closed until post-A4R106 review decisions.
+
+## A4+R-106 Execution Update (Curated Official Top-3 Trace Drafts)
+- Canonical trace draft batch built for curated official top-3:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-ASIANA-214-CANONICAL-DRAFT-A4R106.md`
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-COMAIR-5191-CANONICAL-DRAFT-A4R106.md`
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-KOREAN-801-CANONICAL-DRAFT-A4R106.md`
+- Official source-slice package built:
+  - `docs/sera-vnext/official-report-source-slices/a4r106/SOURCE-SLICE-ASIANA-214-A4R106.md`
+  - `docs/sera-vnext/official-report-source-slices/a4r106/SOURCE-SLICE-COMAIR-5191-A4R106.md`
+  - `docs/sera-vnext/official-report-source-slices/a4r106/SOURCE-SLICE-KOREAN-801-A4R106.md`
+- Batch-level controls:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_A4R106_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_GAPS_A4R106_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_CROSS_CASE_CONSISTENCY_REVIEW_v0.2.0.md`
+- Author approval used in A4R106: no
+- New release created in A4R106: no
+- Downstream opened in A4R106: no
+- Frontend readiness after A4R106: `NOT_READY_AUTHOR_REVIEW_REQUIRED`
+
+## Updated Immediate Sequence After A4R106
+1. Prepare one author-review bundle for the three A4R106 drafts without release/front-end promotion.
+2. If author review finds major weak-node gaps, execute targeted source-slice expansion before any O/A closure attempt.
+3. Keep release/downstream/front-end promotion closed until post-review promotion decisions.

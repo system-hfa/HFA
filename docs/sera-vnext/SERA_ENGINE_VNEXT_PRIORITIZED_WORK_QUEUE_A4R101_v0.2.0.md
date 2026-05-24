@@ -48,3 +48,17 @@ NO_DOWNSTREAM
 | P0 | Build canonical trace drafts from curated official top-3 | ASIANA-214, COMAIR-5191, KOREAN-801 | Cleaner official-source package is expected to improve trace efficiency and reduce overclassification pressure. | Codex | 3 traces | At least two traces `PASS_WITH_LIMITATIONS` or better with release/downstream closed. |
 | P1 | Curated reserve activation | UPS-1354, FIRST-AIR-6560, AMERICAN-1420, AMERICAN-965, AIR-CANADA-624, KEGWORTH-GOBME, G-BLUN-OFFSHORE | Provides immediate fallback if top-3 produce weak canonical closure. | Codex | 1 reserve batch | Reserve batch selected without changing release/front-end status. |
 | P1 | Held A4R104 source-slice round (deferred) | REAL-EVENT-0016, BS211-Q400, EXT-002 | Preserve prior work while avoiding forced hardening before cleaner official batch. | Codex | 1 deferred round | Re-open only after A4R106 outcome review. |
+
+## A4+R-106 queue update
+- Completed in A4R106:
+  - official source slices built for `ASIANA-214`, `COMAIR-5191`, `KOREAN-801`;
+  - canonical trace drafts built for same top-3 with A4R99-only decision path;
+  - cross-case consistency review completed.
+- Execution remained docs-only, trace-draft-batch-only, no release, no downstream, no author approval.
+
+## Immediate queue after A4R106
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Prepare one author-review bundle for A4R106 | ASIANA-214, COMAIR-5191, KOREAN-801 | Three drafts are already `PASS_WITH_LIMITATIONS`; bundle review is now the next governance gate. | Codex | 1 bundle | Bundle finalized without release/front-end promotion. |
+| P1 | Targeted source-slice expansion (conditional) | weak nodes from A4R106 gaps | Reduces overclassification risk before any O/A closure attempt. | Codex | 1 focused round | Weak-node evidence is strengthened for at least two cases. |
+| P1 | Reserve activation (conditional) | UPS-1354, FIRST-AIR-6560, AMERICAN-1420, AMERICAN-965, AIR-CANADA-624, KEGWORTH-GOBME, G-BLUN-OFFSHORE | Fallback path if author review rejects majority of A4R106 path assumptions. | Codex | 1 reserve batch | Next batch selected without release/downstream changes. |

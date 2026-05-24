@@ -1390,3 +1390,25 @@ Registro de estado A4+R-105:
 Próxima ação macro:
 - executar A4R106 para construir três canonical trace drafts a partir do top-3 oficial curado;
 - manter A4R104 como fallback exploratório para rodada posterior de source-slice, sem promoção nesta etapa.
+
+## A4+R-106 — Canonical Trace Drafts from Curated Official Top-3
+
+Esta fase construiu três trace drafts canônicos a partir de relatórios oficiais locais:
+- [Batch Summary A4R106](./SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_A4R106_v0.2.0.md)
+- [Batch Gaps A4R106](./SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_GAPS_A4R106_v0.2.0.md)
+- [Cross-case Consistency A4R106](./SERA_ENGINE_VNEXT_A4R106_CROSS_CASE_CONSISTENCY_REVIEW_v0.2.0.md)
+- [Trace Draft ASIANA-214 A4R106](./reference-case-traces/REFERENCE-CASE-ASIANA-214-CANONICAL-DRAFT-A4R106.md)
+- [Trace Draft COMAIR-5191 A4R106](./reference-case-traces/REFERENCE-CASE-COMAIR-5191-CANONICAL-DRAFT-A4R106.md)
+- [Trace Draft KOREAN-801 A4R106](./reference-case-traces/REFERENCE-CASE-KOREAN-801-CANONICAL-DRAFT-A4R106.md)
+
+Registro de estado A4+R-106:
+- source slice status: 3/3 `ADEQUATE_FOR_TRACE_DRAFT`;
+- validation status: 3/3 `PASS_WITH_LIMITATIONS`;
+- author approval used in this phase: no;
+- new release created: no;
+- downstream opened: no;
+- frontend readiness: `NOT_READY_AUTHOR_REVIEW_REQUIRED`.
+
+Próxima ação macro:
+- preparar um único bundle de review autoral para o lote A4R106;
+- manter promoção/release/downstream fechados até decisão pós-review.
