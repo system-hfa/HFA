@@ -282,9 +282,9 @@ Do not claim work was done if it was not validated.
 
 ---
 
-## 13. Canonical SERA/CERA Tree Rule
+## 13. Canonical SERA Tree Rule
 
-Never invent, approximate, summarize, freely translate, reorder, or reconstruct SERA/CERA decision-tree questions.
+Never invent, approximate, summarize, freely translate, reorder, or reconstruct SERA decision-tree questions.
 
 For any reference case, calibration trace, questionPath, adjudication proof, author-approval evidence, or front-end calibration artifact:
 

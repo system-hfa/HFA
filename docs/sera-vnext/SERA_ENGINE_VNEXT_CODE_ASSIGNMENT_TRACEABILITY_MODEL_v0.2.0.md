@@ -51,7 +51,7 @@ Cada `SeraVNextCodeTraceability` contém:
 - `taxonomyVersion=SERA_PT_CANONICAL_v1.0`;
 - `authorDecisionVersion=SERA_PT_AUTHOR_DECISION_AA_CANONICALIZATION_v1.0`;
 - `traceabilityVersion=v0.2.0`;
-- `status` (`TRACEABLE | RESERVED_NOT_ACTIVE | BLOCKED`);
+- `status` (`TRACEABLE | NON_EXISTENT_IN_SERA_PT_V1 | BLOCKED`);
 - `warnings`, `blockingIssues`.
 
 ## Mapeamento Hendy adotado
@@ -94,10 +94,10 @@ O caminho mínimo de derivação registra:
 3. avaliação no-failure (`YES/NO`);
 4. mapeamento Hendy;
 5. valor de `timePressureExcessive` quando aplicável;
-6. verificação de código reservado quando `O-E`.
+6. verificação de código `NON_EXISTENT_IN_SERA_PT_V1` quando `O-E` surge como guardrail.
 
-## O-E RESERVED / NOT_ACTIVE
-`O-E` gera trace com `status=RESERVED_NOT_ACTIVE` e warning explícito; não é tratado como código objetivo ativo.
+## O-E NON_EXISTENT_IN_SERA_PT_V1
+`O-E` gera trace com `status=NON_EXISTENT_IN_SERA_PT_V1` e warning explícito; não é tratado como código objetivo ativo.
 
 ## Locks downstream
 O traceability model mantém os locks:
@@ -113,7 +113,7 @@ O traceability model mantém os locks:
 `tests/sera-vnext/code-traceability-trial-001.ts` cobre:
 - cenário A: pacote válido com P/O/A liberados;
 - cenário B: `A-A` como no-failure (`isNoFailure=true`, `hendyCategory=null`);
-- cenário C: `O-E` reservado;
+- cenário C: `O-E = NON_EXISTENT_IN_SERA_PT_V1`;
 - cenário D: pares temporais (`P-D/P-G`, `A-F/A-G`, `A-H/A-I/A-J`);
 - cenário E: `selectedCode` base permanece `UNRESOLVED` e sem `CLASSIFIED`;
 - cenário F: locks downstream preservados.

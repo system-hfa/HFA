@@ -58,7 +58,7 @@ A auditoria não altera:
 - Hints ausentes -> cobertura incompleta com gap passivo.
 - `A-D` sem `PHYSICAL_CAPABILITY` -> gap passivo.
 - `O-C` sem `INTENT_AWARENESS` -> gap passivo.
-- `O-E` permanece `RESERVED_NOT_ACTIVE`.
+- `O-E` permanece `NON_EXISTENT_IN_SERA_PT_V1`.
 - Locks downstream preservados.
 - `selectedCode` permanece `UNRESOLVED`.
 

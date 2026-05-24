@@ -1,15 +1,15 @@
 > A4+R-98 STATUS: INVALID_FOR_REFERENCE_USE / NONCANONICAL_TRACE  
-> Reason: this document contains or depends on reconstructed/generic question flow rather than exact canonical SERA/CERA tree questions.  
+> Reason: this document contains or depends on reconstructed/generic question flow rather than exact canonical SERA tree questions.  
 > Do not use for front-end calibration, reference case proof, author approval, release decision, or methodology demonstration.  
 > Preserved for audit history only.  
-> Rebuild required using exact canonical SERA/CERA questions.
+> Rebuild required using exact canonical SERA questions.
 
 > A4+R-96 STATUS: SUPERSEDED / INVALID_FOR_REFERENCE_USE  
-> Reason: this document used reconstructed/generic P/O/A questions rather than the canonical SERA/CERA decision-tree questions.  
+> Reason: this document used reconstructed/generic P/O/A questions rather than the canonical SERA decision-tree questions.  
 > Author feedback: “Essas não são as perguntas do SERA.”  
 > Preserved for audit history only.  
 > Do not use for front-end calibration display, methodological proof, or reference-case demonstration.  
-> A corrected trace must be rebuilt only from the canonical SERA/CERA question tree.  
+> A corrected trace must be rebuilt only from the canonical SERA question tree.  
 > If the canonical tree is unavailable, the rebuild is BLOCKED.
 
 # Reference Case Trace — REAL-EVENT-0003 — P-G

@@ -37,11 +37,11 @@ Quando usar A-A e quando usar UNRESOLVED/INSUFFICIENT_EVIDENCE no eixo A?
 
 4. Em contextos de controle negativo (casos construídos com baixa informação), a expectativa é que múltiplos eixos sejam marcados como INSUFFICIENT_EVIDENCE. Forçar A-A nesses casos constitui over-classification.
 
-## 4. Divergência 2 — O-E Reservado vs O-A Fallback
+## 4. Divergência 2 — O-E NON_EXISTENT_IN_SERA_PT_V1 vs O-A Fallback
 
 **Caso**: CRC-ADVERSARIAL-DRAFT-001
 **Eixo divergente**: O (Objective)
-**Reviewer-A**: O-E (flagged reserved)
+**Reviewer-A**: O-E (flagged NON_EXISTENT_IN_SERA_PT_V1)
 **Reviewer-B**: O-A
 **Tipo de divergência**: taxonomic boundary
 
@@ -51,7 +51,7 @@ Quando um código reservado aparece como proposta, o eixo deve virar O-A ou bloq
 
 ### Regra proposta
 
-1. **O-E é RESERVED / NOT_ACTIVE** conforme a taxonomia canônica SERA-PT v1.0. Nenhum revisor deve propor O-E como código ativo. Tentativas de uso devem ser bloqueadas ou sinalizadas como inválidas.
+1. **O-E é NON_EXISTENT_IN_SERA_PT_V1** conforme a taxonomia canônica SERA-PT v1.0. Nenhum revisor deve propor O-E como código ativo. Tentativas de uso devem ser bloqueadas ou sinalizadas como inválidas.
 
 2. **O-A só pode ser usado se houver evidência positiva suficiente** de que o objetivo operacional era correto (ausência de intenção desviante, ausência de violação, ausência de objetivo de eficiência).
 
@@ -109,7 +109,7 @@ Estas regras aplicam-se a qualquer revisão humana com a taxonomia SERA-PT v1.0:
 
 1. **Não usar código "sem falha" como fallback para ausência de evidência.** P-A, O-A e A-A exigem evidência negativa mínima; não são defaults automáticos quando falta informação.
 
-2. **Não usar código reservado como ativo.** O-E é RESERVED / NOT_ACTIVE. Propostas com O-E devem ser rejeitadas e o eixo reavaliado.
+2. **Não usar código inexistente na taxonomia ativa como código ativo.** O-E é NON_EXISTENT_IN_SERA_PT_V1. Propostas com O-E devem ser rejeitadas e o eixo reavaliado.
 
 3. **Não inferir intenção sem evidência.** O-B, O-C, O-D exigem evidência positiva de desvio, consciência ou objetivo de eficiência. Não assumir intenção a partir de resultado adverso.
 
@@ -129,7 +129,7 @@ Recomenda-se que o Review Package (`SERA_ENGINE_VNEXT_REFERENCE_CASE_REVIEW_PACK
 
 As três regras-síntese para o package:
 - **no-failure não é fallback para unknown**: P-A/O-A/A-A exigem evidência negativa mínima;ausência de evidência → UNRESOLVED.
-- **O-E reservado não vira O-A automático**: O-E bloqueado não empurra o eixo para O-A; reavaliar com base em evidência para códigos ativos.
+- **O-E NON_EXISTENT_IN_SERA_PT_V1 não vira O-A automático**: O-E bloqueado não empurra o eixo para O-A; reavaliar com base em evidência para códigos ativos.
 - **A-C exige falha de verificação pós-ação própria**: distinção A-A/A-C depende de evidência específica de ausência de verificação; não forçar na ausência de evidência.
 
 ## 9. Impacto no Inter-Rater Protocol

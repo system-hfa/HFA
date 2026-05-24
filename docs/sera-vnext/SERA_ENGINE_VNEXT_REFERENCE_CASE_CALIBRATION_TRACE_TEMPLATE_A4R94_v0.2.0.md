@@ -300,6 +300,6 @@ Copy and fill this template for each future reference case trace.
 - Preserve quarantine explicitly.
 - Do not hide uncertainty.
 - Do not treat this trace as external scientific proof by default.
-- Do not use generic placeholders (`Question P1/P2/O1/A1`).
+- Do not use generic placeholders (`P1/P2/O1/A1`).
 - Do not use minimum-question shortcuts, didactic-equivalent flows, or reconstructed wording.
 - Always include exact canonical question text from approved sources.

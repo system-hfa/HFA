@@ -79,7 +79,7 @@ The trace must state:
   - then canonical ladders (Objective Step 4, Perception Step 3, Action Step 5).
 - No axis result should appear without a corresponding question-answer-evidence chain.
 - `UNRESOLVED` is valid when evidence threshold is not met.
-- Every step must preserve exact canonical question text from approved SERA/CERA sources.
+- Every step must preserve exact canonical question text from approved SERA sources.
 - Every step must register Hendy step reference (`STEP_2/3/4/5`) for auditability.
 - Every step must register at least:
   - `canonicalTreeSource`
@@ -127,7 +127,7 @@ Reference traces are designed as future front-end teaching/audit content with ex
 - Do not hide uncertainty.
 - Do not treat withdrawn/boundary cases as implementation errors.
 - Do not reconstruct or paraphrase canonical tree questions when exact wording is available.
-- Do not use "minimum questions", "didactic equivalent", or "didático e fiel" as substitutes for canonical tree traversal.
+- Do not use "minimum-flow shortcuts" as substitutes for canonical tree traversal.
 
 ## Taxonomy Guardrail
 - `O-E = NON_EXISTENT_IN_SERA_PT_V1`.

@@ -14,7 +14,7 @@ Inventariar fontes textuais convertidas dos PDFs (`pdf24_merged*.txt`) e selecio
 ## Decisão O-E
 - `O-E = NON_EXISTENT_IN_SERA_PT_V1`.
 - Objective ativo: `O-A`, `O-B`, `O-C`, `O-D`.
-- Qualquer menção a `O-E` deve funcionar apenas como guardrail negativo/adversarial; não é código reservado e não pode virar fallback para `O-A`.
+- Qualquer menção a `O-E` deve funcionar apenas como guardrail negativo/adversarial; é NON_EXISTENT_IN_SERA_PT_V1 e não pode virar fallback para `O-A`.
 
 ## Fontes verificadas
 | sourceName | localPath | availableLocal | sourceKind | contentType | eventRichness | helicopterRelevant | offshoreRelevant | extractionQuality | recommendedUse | notes |

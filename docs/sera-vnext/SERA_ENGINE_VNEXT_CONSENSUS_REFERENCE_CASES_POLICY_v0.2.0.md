@@ -58,7 +58,7 @@ Cada consensus reference case deve conter:
 3. Decisão autoral/metodológica registrada para cada código liberado.
 4. Não contradizer a taxonomia canônica SERA-PT v1.0.
 5. Respeitar a decisão autoral A-A/A-C (`A-A` = sem falha de ação específica; `A-C` = falha de feedback pós-ação própria).
-6. Respeitar `O-E` como `RESERVED / NOT_ACTIVE`.
+6. Respeitar `O-E` como `NON_EXISTENT_IN_SERA_PT_V1`.
 
 ## Relação com inter-rater
 - Consensus reference cases formam a base de casos para o protocolo inter-rater.

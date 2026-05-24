@@ -5,8 +5,10 @@ Phase: A4+R-96
 DOCS_ONLY  
 GOVERNANCE_CORRECTION
 
+Terminology lock (A4+R-99): use `SERA` only.
+
 ## Absolute Rules
-1. Reference trace must use real/canonical SERA/CERA questions.
+1. Reference trace must use real/canonical SERA questions.
 2. Reconstructed, generic, adapted, translated-freely, reordered, summarized, or "equivalent" questions are prohibited.
 3. Each trace step must register:
    - `canonicalTreeSource`

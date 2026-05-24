@@ -51,7 +51,7 @@ Definir o protocolo metodológico para avaliação de confiabilidade entre revis
 - **Requisitos**:
   - Treinamento documentado na taxonomia SERA-PT v1.0.
   - Familiaridade com a decisão autoral A-A/A-C.
-  - Familiaridade com o status `RESERVED` de `O-E`.
+  - Familiaridade com o status `NON_EXISTENT_IN_SERA_PT_V1` de `O-E`.
 - **Registro**: background e treinamento de cada revisor, sem dados pessoais sensíveis.
 
 ## Métricas

@@ -30,7 +30,7 @@ Contratos implementados e executáveis:
 10. ADV-2-010 Contrato P-B vs P-C documentado por traceability (Hendy #3 vs #4).
 11. ADV-2-011 Fronteira P-H vs A-J validada via traceability/Hendy/timePressure.
 12. ADV-2-012 Evidência insuficiente bloqueia trilha semântica e preconditions.
-13. ADV-2-013 O-E permanece `RESERVED_NOT_ACTIVE` e bloqueado para candidato ativo.
+13. ADV-2-013 O-E permanece `NON_EXISTENT_IN_SERA_PT_V1` e bloqueado para candidato ativo.
 14. ADV-2-014 Contexto multi-ator tratado como fronteira: sem expansão para múltiplas classificações finais/downstream.
 
 ## O que ficou apenas documentado

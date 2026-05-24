@@ -42,8 +42,8 @@ Preparar avaliadores reais para revisão independente dos drafts materializados,
 - instrução específica de cuidado: quando faltar evidência por eixo, registrar UNRESOLVED/INSUFFICIENT_EVIDENCE explicitamente.
 
 ### CRC-ADVERSARIAL-DRAFT-001
-- propósito: testar bloqueio de O-E reservado no eixo Objective.
-- fronteira metodológica principal: O-E RESERVED/NOT_ACTIVE sem fallback automático para O-A.
+- propósito: testar bloqueio de O-E NON_EXISTENT_IN_SERA_PT_V1 no eixo Objective.
+- fronteira metodológica principal: O-E NON_EXISTENT_IN_SERA_PT_V1 sem fallback automático para O-A.
 - status atual: MATERIALIZED_DRAFT / NOT_CONSENSUS_VALIDATED / REVIEW_REQUIRED.
 - instrução específica de cuidado: se O-E surgir como proposta, bloquear e reavaliar com base em evidência para O-A..O-D ou marcar UNRESOLVED.
 
@@ -67,7 +67,7 @@ Preparar avaliadores reais para revisão independente dos drafts materializados,
 
 ## Regras obrigatórias A4+R-55
 - no-failure não é fallback para ausência de evidência.
-- O-E reservado não vira O-A automático.
+- O-E NON_EXISTENT_IN_SERA_PT_V1 não vira O-A automático.
 - A-C exige falha de verificação pós-ação própria.
 - A-A exige evidência suficiente de ausência de mecanismo específico de falha de ação.
 - O-A exige evidência positiva de objetivo operacional correto.

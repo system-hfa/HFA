@@ -62,7 +62,7 @@ Regras derivadas do dry run A4+R-54, formalizadas no guia A4+R-55, que revisores
 
 1. **no-failure não é fallback para unknown**: P-A, O-A e A-A exigem evidência negativa mínima. Ausência de evidência não é automaticamente ausência de falha. Quando a evidência disponível não permite afirmar que não houve falha, marcar UNRESOLVED / INSUFFICIENT_EVIDENCE, não forçar P-A/O-A/A-A.
 
-2. **O-E reservado não vira O-A automático**: O-E é RESERVED / NOT_ACTIVE conforme taxonomia canônica v1.0. Se O-E for proposto, deve ser bloqueado. O bloqueio de O-E não empurra automaticamente o eixo para O-A — o eixo deve ser reavaliado com base em evidência para os códigos ativos (O-A a O-D). Se não houver evidência suficiente para nenhum código ativo, marcar UNRESOLVED.
+2. **O-E NON_EXISTENT_IN_SERA_PT_V1 não vira O-A automático**: O-E é NON_EXISTENT_IN_SERA_PT_V1 conforme taxonomia canônica v1.0. Se O-E for proposto, deve ser bloqueado. O bloqueio de O-E não empurra automaticamente o eixo para O-A — o eixo deve ser reavaliado com base em evidência para os códigos ativos (O-A a O-D). Se não houver evidência suficiente para nenhum código ativo, marcar UNRESOLVED.
 
 3. **A-C exige falha de verificação pós-ação própria**: A distinção A-A/A-C depende de evidência específica. A-A = ação coerente sem mecanismo de falha identificável. A-C = ação executada com ausência de verificação do resultado da própria ação. Se há evidência de ausência de verificação, preferir A-C. Se a evidência é insuficiente para determinar se houve verificação, marcar UNRESOLVED, não forçar A-A nem A-C.
 

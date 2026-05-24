@@ -66,7 +66,7 @@ When a case matches both P1 and P2 indicators, source instability and unresolved
 - If `questionPath` exposes a strong inconsistency with the current `proposedCode`, mark `BACKFILL_CONFLICT_FOR_AUTHOR_REVIEW` and do not correct automatically.
 - Do not convert HFACS labels, probable causes, findings, or recommendations into P/O/A expected values.
 - Do not infer no-failure (`P-A`, `A-A`) merely because a mechanism is unknown.
-- Do not include `O-E` as an active or future-reserved Objective code.
+- Do not include `O-E` as an active Objective code (O-E is NON_EXISTENT_IN_SERA_PT_V1).
 
 ## Operational plan for A4+R-80
 1. Apply the canonical template to P/O/A for the 5 initial adjudications.

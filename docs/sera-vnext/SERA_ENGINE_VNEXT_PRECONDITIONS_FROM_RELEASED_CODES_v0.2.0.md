@@ -73,8 +73,8 @@ Esta fase aplica mapeamento mínimo e explícito:
 - `A-A` gera bloqueio/limitação explícita de derivação (`no action-failure precondition derived`).
 - `A-C` permanece ativo como falha de feedback/verificação pós-ação própria.
 
-## O-E RESERVED / NOT_ACTIVE
-- `O-E` é tratado como `RESERVED / NOT_ACTIVE`.
+## O-E NON_EXISTENT_IN_SERA_PT_V1
+- `O-E` é tratado como `NON_EXISTENT_IN_SERA_PT_V1`.
 - Qualquer tentativa de derivação a partir de `O-E` retorna `BLOCKED` com issue explícito.
 
 ## Backlog Opus Preservado (não implementado)
@@ -90,7 +90,7 @@ Arquivo: `tests/sera-vnext/preconditions-from-released-codes-trial-001.ts`
 
 - Cenário A: pacote válido Trial 001 -> candidatos rastreáveis com locks preservados.
 - Cenário B: semantic blocked -> eixo bloqueado para derivação.
-- Cenário C: `O-E` reservado -> bloqueio obrigatório.
+- Cenário C: `O-E = NON_EXISTENT_IN_SERA_PT_V1` -> bloqueio obrigatório.
 - Cenário D: `releasedCode.source != HUMAN_REVIEW` -> bloqueio.
 - Cenário E: tentativa downstream/final outputs -> bloqueio global.
 - Cenário F: `selectedCode` base permanece `UNRESOLVED`, sem `CLASSIFIED` automático.
@@ -108,7 +108,7 @@ A derivação bloqueia quando detecta:
 - ausência de evidência ou rationale;
 - semantic blocking;
 - `releasedCode` sem `HUMAN_REVIEW`;
-- código reservado (`O-E`).
+- código `NON_EXISTENT_IN_SERA_PT_V1` (`O-E` guardrail).
 
 ## Próxima fase recomendada
 A4+R-47 — Code Assignment Traceability Model (ou equivalente), para aprofundar rastreabilidade de derivação sem abrir downstream final.
@@ -118,5 +118,5 @@ A4+R-47 — Code Assignment Traceability Model (ou equivalente), para aprofundar
 - Quando traceability está presente, candidatos carregam referência de origem (`sourceTraceabilityRefs`) e metadados (`sourceHendyCategory`, `sourceIsNoFailure`, `sourceTimePressureExcessive`, `traceabilityVersion`).
 - Quando traceability está ausente, a função preserva compatibilidade com A4+R-46 e registra limitação de modo compatível.
 - `isNoFailure=true` via traceability bloqueia derivação de precondition de falha.
-- `RESERVED_NOT_ACTIVE` ou `BLOCKED` em traceability bloqueiam derivação.
+- `NON_EXISTENT_IN_SERA_PT_V1` ou `BLOCKED` em traceability bloqueiam derivação.
 - Downstream permanece bloqueado.

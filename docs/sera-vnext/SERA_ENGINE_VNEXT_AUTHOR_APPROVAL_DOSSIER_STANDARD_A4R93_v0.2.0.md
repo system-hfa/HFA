@@ -78,7 +78,7 @@ Approval recording is not valid if:
 ## Canonical Trace Dependency Rule
 If the dossier is used as evidence for reference-case validity, front-end calibration display, methodology proof, or any code/release recommendation:
 - it must declare `canonicalTraceDependency=REQUIRED`;
-- it must reference a canonical trace containing exact SERA/CERA question traversal (`canonicalTreeSource`, `nodeId`, `exactQuestionTextPT`, `exactQuestionTextENAnchor`, answers, evidence);
+- it must reference a canonical trace containing exact SERA question traversal (`canonicalTreeSource`, `nodeId`, `exactQuestionTextPT`, `exactQuestionTextENAnchor`, answers, evidence);
 - if canonical trace is missing/incomplete, mark `BLOCKED_BY_MISSING_CANONICAL_TREE` and do not treat the dossier as approval proof.
 
 If the dossier is only a human textual review artifact (no canonical proof claim):

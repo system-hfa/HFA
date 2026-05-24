@@ -139,14 +139,14 @@ Definir um conjunto de casos adversariais sintéticos para testar fronteiras cr�
 - **expectedBehavior**: Nenhum código liberado. Status `INSUFFICIENT_EVIDENCE` para cada eixo.
 - **locks esperados**: downstream locked.
 
-### ADV-2-013 — O-E reserved: qualquer tentativa de uso deve bloquear
+### ADV-2-013 — O-E NON_EXISTENT_IN_SERA_PT_V1: qualquer tentativa de uso deve bloquear
 - **adversarialId**: ADV-2-013
-- **objetivo**: Garantir que O-E (RESERVED / NOT_ACTIVE) não possa ser usado como código ativo em nenhuma circunstância.
+- **objetivo**: Garantir que O-E (NON_EXISTENT_IN_SERA_PT_V1) não possa ser usado como código ativo em nenhuma circunstância.
 - **cenário**: Um revisor tenta classificar o eixo Objective como O-E, ou um input de teste injeta código O-E como released code.
-- **erro que o sistema deve evitar**: Aceitar O-E como código ativo. Qualquer tentativa deve gerar bloqueio com issue explícito: `O-E is RESERVED / NOT_ACTIVE`.
+- **erro que o sistema deve evitar**: Aceitar O-E como código ativo. Qualquer tentativa deve gerar bloqueio com issue explícito: `O-E is NON_EXISTENT_IN_SERA_PT_V1`.
 - **eixo alvo**: O
-- **código alvo**: O-E (RESERVED)
-- **expectedBehavior**: Bloqueio imediato. `status = RESERVED_NOT_ACTIVE`. Warning explícito.
+- **código alvo**: O-E (NON_EXISTENT_IN_SERA_PT_V1)
+- **expectedBehavior**: Bloqueio imediato. `status = NON_EXISTENT_IN_SERA_PT_V1`. Warning explícito.
 - **locks esperados**: downstream locked.
 
 ### ADV-2-014 — Multi-actor context: fronteira sem modelar múltiplos unsafe acts
@@ -175,7 +175,7 @@ Definir um conjunto de casos adversariais sintéticos para testar fronteiras cr�
 | 10 | ADV-2-010 | P-B vs P-C (sensorial vs conhecimento) |
 | 11 | ADV-2-011 | P-H vs A-J (informação perceptiva vs comunicação na ação) |
 | 12 | ADV-2-012 | Evidence insufficient → UNRESOLVED |
-| 13 | ADV-2-013 | O-E reserved → bloqueio |
+| 13 | ADV-2-013 | O-E NON_EXISTENT_IN_SERA_PT_V1 → bloqueio |
 | 14 | ADV-2-014 | Multi-actor context → fronteira do modelo |
 
 ## Status dos casos adversariais

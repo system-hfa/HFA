@@ -17,7 +17,7 @@ Controlar o andamento da revisão independente dos drafts de reference cases e r
 ## A4+R-55 — Divergence Resolution Guide
 
 - As divergências identificadas no dry run A4+R-54 foram analisadas e endereçadas pelo guia A4+R-55: [Dry Run Divergence Resolution Guide](../SERA_ENGINE_VNEXT_DRY_RUN_DIVERGENCE_RESOLUTION_GUIDE_v0.2.0.md).
-- Regras propostas para calibração de revisores reais: no-failure não é fallback para unknown; O-E reservado não vira O-A automático; A-C exige falha de verificação pós-ação própria.
+- Regras propostas para calibração de revisores reais: no-failure não é fallback para unknown; O-E NON_EXISTENT_IN_SERA_PT_V1 não vira O-A automático; A-C exige falha de verificação pós-ação própria.
 - Todos os casos permanecem NOT_CONSENSUS_VALIDATED.
 - Nenhum caso foi promovido para CONSENSUS_CANDIDATE formal.
 - A próxima revisão real (com avaliadores independentes) deve aplicar o guia A4+R-55 antes da classificação.

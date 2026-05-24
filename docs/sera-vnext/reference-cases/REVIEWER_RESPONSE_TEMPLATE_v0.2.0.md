@@ -36,7 +36,7 @@ Needs more evidence? yes/no:
 
 ## Regras A4+R-55 resumidas
 - no-failure não é fallback para ausência de evidência.
-- O-E reservado não vira O-A automaticamente.
+- O-E NON_EXISTENT_IN_SERA_PT_V1 não vira O-A automaticamente.
 - A-C exige falha de verificação pós-ação própria.
 - sem evidência suficiente por eixo: UNRESOLVED/INSUFFICIENT_EVIDENCE.
 

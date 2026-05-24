@@ -9,7 +9,7 @@ Phase: A4+R-96
 
 ## Error Description
 - A4+R-95 used reconstructed/generic P/O/A questions.
-- It did not prove traversal of the canonical SERA/CERA decision tree.
+- It did not prove traversal of the canonical SERA decision tree.
 - It is invalid for calibration/front-end reference use.
 
 ## Impact

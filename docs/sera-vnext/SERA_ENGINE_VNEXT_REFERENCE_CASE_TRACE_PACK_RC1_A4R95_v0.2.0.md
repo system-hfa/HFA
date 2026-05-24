@@ -12,7 +12,7 @@ Record completion of the first reference case calibration trace pack (RC-1 start
 
 ## A4+R-96 Correction Status
 - A4+R-95 trace is now `SUPERSEDED / INVALID_FOR_REFERENCE_USE`.
-- supersede reason: noncanonical/generic P/O/A questions were used instead of canonical SERA/CERA tree questions.
+- supersede reason: noncanonical/generic P/O/A questions were used instead of canonical SERA tree questions.
 - author feedback recorded: “Essas não são as perguntas do SERA.”
 - preserved for audit history only.
 - do not use this RC1 artifact for front-end calibration, methodological proof, or reference-case demonstration.

@@ -11,7 +11,7 @@ NO_DOWNSTREAM
 Define mandatory next phases after canonical contamination cleanup, with a strict sequencing lock that prevents new reference-trace builds before a canonical question-tree asset pack exists.
 
 ## Mandatory Sequence
-1. **A4+R-99 — Build Canonical Question Tree Asset Pack from SERA/CERA Sources**
+1. **A4+R-99 — Build Canonical Question Tree Asset Pack from SERA Sources**
    - Create one authoritative documentation asset with:
      - axis;
      - nodeId;
@@ -31,6 +31,15 @@ Define mandatory next phases after canonical contamination cleanup, with a stric
 
 4. **A4+R-102 — Resume event discovery/reference expansion**
    - Only after canonical rebuild artifacts pass governance checks.
+
+## A4+R-99 Completion Record
+- Canonical question-tree asset pack created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_QUESTION_TREE_ASSET_A4R99_v0.2.0.md`
+- Coverage matrix created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TREE_COVERAGE_MATRIX_A4R99_v0.2.0.md`
+- Validation checklist created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_VALIDATION_CHECKLIST_A4R99_v0.2.0.md`
+- Next actionable phase: **A4+R-100** (conditional on checklist pass for required path).
 
 ## Sequence Lock Rule
 Any attempt to skip A4+R-99 must be blocked:

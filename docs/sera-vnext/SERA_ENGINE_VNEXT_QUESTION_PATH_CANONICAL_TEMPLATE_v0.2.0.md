@@ -169,7 +169,7 @@ O_axis_questionPath:
 
 `O-E = NON_EXISTENT_IN_SERA_PT_V1`.
 
-Do not include `O-E` as a path result option. `O-E` may appear only as a negative/adversarial guardrail to block its use as an active code or future reserved code.
+Do not include `O-E` as a path result option. `O-E` may appear only as a negative/adversarial guardrail to block its use as an active code or non-existent code in SERA-PT v1.0.
 
 ## A_axis_questionPath template
 

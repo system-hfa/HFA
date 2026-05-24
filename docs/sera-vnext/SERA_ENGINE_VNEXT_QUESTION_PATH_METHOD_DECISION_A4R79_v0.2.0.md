@@ -34,7 +34,7 @@ Active Objective codes remain:
 - `O-D`
 - `UNRESOLVED`
 
-`O-E` must not be used as an active code or reserved future code. It may appear only as a negative/adversarial guardrail.
+`O-E` must not be used as an active code; it is NON_EXISTENT_IN_SERA_PT_V1. It may appear only as a negative/adversarial guardrail.
 
 ## Release posture
 This decision does not authorize:

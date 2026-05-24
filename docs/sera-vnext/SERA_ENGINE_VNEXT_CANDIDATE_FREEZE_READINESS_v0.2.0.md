@@ -1184,9 +1184,9 @@ Estado apos A4+R-95:
 O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
-- **A4+R-96 - Supersede Noncanonical Reference Trace and Recover Canonical SERA/CERA Tree**.
+- **A4+R-96 - Supersede Noncanonical Reference Trace and Recover Canonical SERA Tree**.
 
-## A4+R-96 - Supersede Noncanonical Reference Trace and Recover Canonical SERA/CERA Tree
+## A4+R-96 - Supersede Noncanonical Reference Trace and Recover Canonical SERA Tree
 
 Esta fase corrigiu governanca metodologica de reference trace apos feedback autoral direto de nao conformidade:
 
@@ -1239,5 +1239,23 @@ Estado após A4+R-98:
 - A4R97 permanece como triagem/candidate review, não como trace canônico;
 - nenhum reference case é considerado válido para front-end calibration até rebuild canônico completo;
 - nova trava de sequência: A4+R-99 (asset pack canônico) é pré-condição para rebuild de eventos.
+
+O candidate freeze final continua não autorizado.
+
+## A4+R-99 - SERA Terminology Lock and Canonical Question Tree Asset Pack
+
+Esta fase normalizou a terminologia para SERA e criou o primeiro asset canônico estruturado da árvore:
+
+- [SERA Terminology Lock A4R99](./SERA_ENGINE_VNEXT_SERA_TERMINOLOGY_LOCK_A4R99_v0.2.0.md)
+- [Canonical Question Tree Asset A4R99](./SERA_ENGINE_VNEXT_CANONICAL_QUESTION_TREE_ASSET_A4R99_v0.2.0.md)
+- [Canonical Tree Coverage Matrix A4R99](./SERA_ENGINE_VNEXT_CANONICAL_TREE_COVERAGE_MATRIX_A4R99_v0.2.0.md)
+- [Canonical Trace Validation Checklist A4R99](./SERA_ENGINE_VNEXT_CANONICAL_TRACE_VALIDATION_CHECKLIST_A4R99_v0.2.0.md)
+
+Estado após A4+R-99:
+- terminologia governança normalizada para SERA;
+- asset canônico de perguntas O/P/A disponível;
+- nenhum evento reanalisado nesta fase;
+- nenhum release/downstream/runtime alterado;
+- A4+R-100 pode iniciar rebuild de REAL-EVENT-0003 apenas se o caminho necessário passar no checklist canônico.
 
 O candidate freeze final continua não autorizado.

@@ -6,7 +6,7 @@ DOCS_ONLY
 CORRECTION_ONLY
 
 ## Objective
-Inventory canonical SERA/CERA tree sources for reference-trace construction using exact question wording and canonical branch logic.
+Inventory canonical SERA tree sources for reference-trace construction using exact question wording and canonical branch logic.
 
 ## Source Inventory
 | sourceFile | sourceType | containsExactQuestions | containsDecisionNodes | containsBranchingLogic | containsLeavesOrConclusions | containsPAxis | containsOAxis | containsAAxis | containsPreconditions | reliabilityForReferenceTrace | notes |

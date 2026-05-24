@@ -11,11 +11,11 @@ Audit residual O-E wording after A4+R-79b and classify occurrences without mass 
 - O-E = NON_EXISTENT_IN_SERA_PT_V1.
 - Active Objective codes: O-A/O-B/O-C/O-D.
 - O-E may appear only as a negative/adversarial guardrail.
-- O-E is not an active, reserved, inactive, or future code.
+- O-E is not an active or future code.
 
 ## Commands executed
-- rg broad search for O-E, NON_EXISTENT_IN_SERA_PT_V1, RESERVED, NOT_ACTIVE, inativo, reservado, future and futuro.
-- rg strict legacy search for O-E combined with reserved, NOT_ACTIVE, not active, inativo, reservado, future and futuro.
+- rg broad search for O-E, NON_EXISTENT_IN_SERA_PT_V1 and legacy status-tag wording.
+- rg strict legacy search for O-E combined with legacy non-canonical status-tag wording.
 
 ## Results
 - broadMatchCount=188
@@ -26,9 +26,9 @@ Audit residual O-E wording after A4+R-79b and classify occurrences without mass 
 | class | meaning | current assessment |
 |---|---|---|
 | OK_CURRENT_CANONICAL | Current text states O-E is non-existent in SERA-PT v1.0 | Canonical docs and A4+R-79/A4+R-79b docs are acceptable. |
-| OK_NEGATIVE_GUARDRAIL | O-E appears only to block active use or fallback to O-A | Some current guardrail text is acceptable, especially where it explicitly blocks active use; wording should still avoid reserved/future language. |
+| OK_NEGATIVE_GUARDRAIL | O-E appears only to block active use or fallback to O-A | Some current guardrail text is acceptable, especially where it explicitly blocks active use; wording should still avoid legacy status-tag/future language. |
 | HISTORICAL_QUOTE_REQUIRES_CONTEXT | Older review/dry-run material records historical reviewer wording | Review dry-run and divergence documents should not be rewritten in bulk in A4+R-80. |
-| NEEDS_FUTURE_DOCS_CLEANUP | Old wording says RESERVED/NOT_ACTIVE/reserved/inativo for O-E in active-seeming docs | Several legacy governance/design docs should be normalized in a dedicated docs cleanup phase. |
+| NEEDS_FUTURE_DOCS_CLEANUP | Old wording uses non-canonical status tags for O-E in active-seeming docs | Several legacy governance/design docs should be normalized in a dedicated docs cleanup phase. |
 | NOT_RELEVANT | Matches are unrelated to O-E, such as generic future/backlog wording | Broad search includes non-O-E incidental matches. |
 
 ## Files needing future cleanup consideration

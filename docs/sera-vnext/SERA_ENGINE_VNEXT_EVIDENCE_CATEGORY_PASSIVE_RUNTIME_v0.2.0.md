@@ -49,7 +49,7 @@ Adições no contrato vNext:
 - Não há novo bloqueio por ausência de category.
 - Category não altera classificação P/O/A.
 - `selectedCode` permanece `UNRESOLVED` no core analisado.
-- `O-E` permanece `RESERVED_NOT_ACTIVE`.
+- `O-E` permanece `NON_EXISTENT_IN_SERA_PT_V1`.
 - A-A/A-C não são redefinidos.
 - Sem downstream, sem `finalConclusion`, sem HFACS, sem Risk/ERC, sem recommendations.
 
@@ -66,7 +66,7 @@ Locks de downstream permanecem ativos (`downstream`, `finalConclusion`, `HFACS`,
 - Presença de hints preservada sem alterar código/status.
 - Ausência de hints não bloqueia o fluxo.
 - `PHYSICAL_CAPABILITY` pode acompanhar `A-D` como hint.
-- `O-E` continua reservado/inativo.
+- `O-E` continua `NON_EXISTENT_IN_SERA_PT_V1`.
 - Locks de downstream preservados.
 - `selectedCode` permanece `UNRESOLVED`.
 

@@ -105,14 +105,14 @@ Executar uma rodada simulada/documental de revisão independente para validar o 
 
 ### Reviewer-A
 - P: P-A
-- O: O-E (flagged reserved)
+- O: O-E (flagged NON_EXISTENT_IN_SERA_PT_V1)
 - A: A-A
 - rationale P: sem evidência perceptiva dominante além do cenário de teste.
 - rationale O: marcação adversarial proposital para confirmar bloqueio de código reservado.
 - rationale A: sem mecanismo de falha de ação dominante.
 - confidence P/O/A: MEDIUM / LOW / MEDIUM
 - insufficient evidence por eixo: P=não, O=não, A=não
-- notes: O-E deve ser tratado como RESERVED_NOT_ACTIVE e não como candidato ativo.
+- notes: O-E deve ser tratado como NON_EXISTENT_IN_SERA_PT_V1 e não como candidato ativo.
 
 ### Reviewer-B
 - P: P-A
@@ -123,7 +123,7 @@ Executar uma rodada simulada/documental de revisão independente para validar o 
 - rationale A: sem evidência de falha de ação específica.
 - confidence P/O/A: MEDIUM / MEDIUM / MEDIUM
 - insufficient evidence por eixo: P=não, O=sim, A=não
-- notes: reforça regra canônica de O-E reservado/inativo.
+- notes: reforça regra canônica de O-E NON_EXISTENT_IN_SERA_PT_V1.
 
 ### Divergence analysis
 - P agreement: yes

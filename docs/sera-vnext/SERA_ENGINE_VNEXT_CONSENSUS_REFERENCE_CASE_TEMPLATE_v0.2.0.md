@@ -101,6 +101,6 @@ Um de:
 - **Não usar como verdade absoluta.** Este caso é referência de consenso, não prova de causalidade real.
 - **Não promover sem pelo menos 2 avaliadores.** `consensusStatus = CONSENSUS_VALIDATED` exige revisão documentada.
 - **Respeitar A-A/A-C.** `A-A` = sem falha de ação específica; `A-C` = falha de feedback/verificação pós-ação própria.
-- **Respeitar O-E RESERVED.** `O-E` não pode ser usado como código ativo. Qualquer tentativa deve gerar bloqueio.
+- **Respeitar O-E NON_EXISTENT_IN_SERA_PT_V1.** `O-E` não pode ser usado como código ativo. Qualquer tentativa deve gerar bloqueio.
 - **Não abrir HFACS/Risk/ERC/recommendations/finalConclusion.** Locks downstream devem permanecer ativos.
 - **Não usar para claim de validação científica.** Linguagem: `consensus reference case for calibration`.

@@ -53,7 +53,7 @@ Each trace pack must be:
 - A4+R-95 trace pack for REAL-EVENT-0003 was superseded:
   - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md`
 - Supersede reason:
-  - noncanonical/generic P/O/A question flow (not canonical SERA/CERA tree questions).
+  - noncanonical/generic P/O/A question flow (not canonical SERA tree questions).
 - Impact guardrails:
   - no release impact;
   - no runtime impact;

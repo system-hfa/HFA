@@ -6,7 +6,7 @@ Scope: all `docs/sera-vnext`
 Purpose: identify documents contaminated by noncanonical question flows.
 
 ## Audit Rule
-Any methodological flow that uses reconstructed/generic question text instead of exact canonical SERA/CERA tree questions is invalid for reference/front-end/calibration proof use.
+Any methodological flow that uses reconstructed/generic question text instead of exact canonical SERA tree questions is invalid for reference/front-end/calibration proof use.
 
 ## Classification Table
 | file | contaminationRisk | reason | affectedUse | requiredAction | notes |
@@ -36,6 +36,9 @@ Any methodological flow that uses reconstructed/generic question text instead of
 - confirmed contaminated artifacts: 3 primary files.
 - high-risk noncanonical methodological families: questionPath backfills and pre-contract adjudication question prompts.
 - valid governance controls: A4R96 canonical contract + source inventory + updated A4R94/A4R93 contracts/templates.
+- terminology normalized to `SERA` under A4R99 lock.
+- canonical tree asset now available:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_QUESTION_TREE_ASSET_A4R99_v0.2.0.md`
 
 ## Mandatory Use Restriction After A4R98
 - No artifact with `CONFIRMED_CONTAMINATED` or `HIGH` risk can be used for front-end calibration, reference-case proof, release decision, or methodology demonstration.

@@ -26,7 +26,7 @@ Consolidar resultados agregados do dry run documental de revisão independente s
 - qualitative observations:
   - Caso nominal mostrou alinhamento completo entre revisores simulados.
   - Controle negativo expôs divergência sobre abstenção total vs fallback A-A em baixa evidência.
-  - Caso O-E reserved mostrou convergência metodológica na proibição de O-E ativo, apesar de diferença de codificação preliminar em O.
+  - Caso O-E NON_EXISTENT_IN_SERA_PT_V1 mostrou convergência metodológica na proibição de O-E ativo, apesar de diferença de codificação preliminar em O.
   - Caso A-A vs A-C manteve divergência esperada de fronteira taxonômica, confirmando valor adversarial para calibração.
 
 ## Limitações
