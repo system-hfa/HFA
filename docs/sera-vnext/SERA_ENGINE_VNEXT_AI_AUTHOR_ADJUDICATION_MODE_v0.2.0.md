@@ -34,7 +34,7 @@ Formalizar o modo operacional vNext em que o agente aplica a metodologia SERA-PT
 - Sem abertura downstream.
 - Sem promoção automática para `CLASSIFIED`.
 - Sem `finalConclusion`, HFACS, Risk/ERC, recommendations.
-- Sem alteração da decisão canônica A-A/A-C e do status reservado de O-E.
+- Sem alteração da decisão canônica A-A/A-C e da decisão canônica `O-E = NON_EXISTENT_IN_SERA_PT_V1` (guardrail negativo/adversarial).
 
 ## Relação com freeze
 - Evolução operacional do produto pode continuar sob modo AI/Author adjudication.

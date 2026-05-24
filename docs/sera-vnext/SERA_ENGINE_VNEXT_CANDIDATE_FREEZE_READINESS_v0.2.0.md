@@ -491,7 +491,7 @@ Estado após A4+R-71 (text set):
 - inventário de expansão de corpus textual foi criado;
 - plano de expansão de amostra para Batch 2 foi criado;
 - decisão taxonômica reforçada: `O-E = NON_EXISTENT_IN_SERA_PT_V1`;
-- `O-E` não faz parte da taxonomia canônica ativa e não é código reservado para uso futuro sem decisão autoral explícita;
+- `O-E` não faz parte da taxonomia canônica ativa e só pode aparecer como guardrail negativo/adversarial;
 - nenhum caso foi classificado nesta fase;
 - nenhum `releasedCode` foi criado;
 - nenhum downstream foi aberto;
@@ -686,9 +686,22 @@ Estado após A4+R-79:
 Decisão mantida:
 - `questionPath` passa a ser obrigatório para novas adjudicações AI/Author;
 - `questionPath` é pré-requisito documental para comparação e futura discussão de release, mas não é release gate automático;
-- `O-E` permanece `NON_EXISTENT_IN_SERA_PT_V1` e não é código ativo nem reservado futuro.
+- `O-E` permanece `NON_EXISTENT_IN_SERA_PT_V1` e só pode aparecer como guardrail negativo/adversarial.
 
 Próxima fase recomendada:
 - **A4+R-80 — QuestionPath Backfill for First 15 Events**.
 
 O candidate freeze final permanece não autorizado.
+
+## A4+R-79b — Normalize Legacy O-E Wording
+
+Esta fase realizou correção documental de formulações legadas sobre O-E sem mudança funcional:
+
+- `O-E = NON_EXISTENT_IN_SERA_PT_V1`;
+- Objective ativo permanece `O-A/O-B/O-C/O-D`;
+- `O-E` permanece apenas como guardrail negativo/adversarial.
+
+Estado após A4+R-79b:
+- old O-E wording normalized nos arquivos alvo desta fase;
+- nenhuma alteração funcional de taxonomia, adjudicação ou métricas;
+- nenhum release/downstream habilitado.

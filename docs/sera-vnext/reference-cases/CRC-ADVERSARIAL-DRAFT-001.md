@@ -1,4 +1,4 @@
-# CRC-ADVERSARIAL-DRAFT-001 — O-E Reserved Boundary Draft
+# CRC-ADVERSARIAL-DRAFT-001 — O-E Non-Existent Boundary Draft
 
 Status: MATERIALIZED_DRAFT
 consensusStatus: NOT_CONSENSUS_VALIDATED
@@ -13,7 +13,7 @@ CRC-ADVERSARIAL-DRAFT-001
 ADVERSARIAL
 
 ## fronteira coberta
-ADV-2-013 — `O-E` reservado (`RESERVED / NOT_ACTIVE`) não pode ser usado como código objetivo ativo.
+ADV-2-013 — `O-E = NON_EXISTENT_IN_SERA_PT_V1` e não pode ser usado como código objetivo ativo.
 
 ## factualSummary
 Cenário sintético controlado para estressar a fronteira do eixo Objective. Um revisor humano registra narrativa com contexto operacional ambíguo e tenta propor `O-E` como atalho de classificação para "objetivo indefinido". O caso simula situação de revisão em que há pressão para fechar classificação, mas sem evidência semântica de `O-A/O-B/O-C/O-D` suficiente.
@@ -35,17 +35,17 @@ Revisor operacional único (papel funcional), sem dados pessoais.
 | A    | A-A (sem falha de ação específica dominante nesta síntese) |
 
 ## expected behavior
-- `O-E` deve ser tratado como `RESERVED_NOT_ACTIVE`.
+- `O-E` deve ser tratado como `NON_EXISTENT_IN_SERA_PT_V1`.
 - Não deve existir promoção para candidato objetivo ativo a partir de `O-E`.
 - Caso deve permanecer em trilha de revisão/limitação, não em consenso.
 
 ## rationale preliminar
 - **P**: não há evidência sintética suficiente de mecanismo perceptivo específico; postura conservadora.
-- **O**: a proposta de `O-E` é intencionalmente adversarial para validar bloqueio de código reservado.
+- **O**: a proposta de `O-E` é intencionalmente adversarial para validar bloqueio de código inexistente na taxonomia ativa.
 - **A**: não há mecanismo sintético explícito de falha de ação dominante neste draft.
 
 ## evidenceRefs
-- [E-001] Taxonomia canônica define `O-E` como `RESERVED / NOT_ACTIVE`.
+- [E-001] Taxonomia canônica define `O-E = NON_EXISTENT_IN_SERA_PT_V1`.
 - [E-002] Contrato adversarial ADV-2-013 exige bloqueio de `O-E` ativo.
 - [E-003] Guia de consenso requer coerência com taxonomia canônica e decisão autoral.
 
@@ -57,7 +57,7 @@ Revisor operacional único (papel funcional), sem dados pessoais.
 ## rejectedAlternatives
 | Axis | Rejected Code | Rationale for Rejection |
 |------|---------------|--------------------------|
-| O    | O-E ativo | Rejeitado por regra canônica: `O-E` é reservado/inativo. |
+| O    | O-E ativo | Rejeitado por regra canônica: `O-E = NON_EXISTENT_IN_SERA_PT_V1`. |
 | O    | O-C | Ausência de evidência robusta de intent/rule-awareness neste draft. |
 | O    | O-D | Ausência de evidência robusta de tradeoff de eficiência formalizado. |
 
