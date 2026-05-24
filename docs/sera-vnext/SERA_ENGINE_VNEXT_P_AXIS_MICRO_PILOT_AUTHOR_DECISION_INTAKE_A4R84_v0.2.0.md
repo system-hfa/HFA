@@ -12,7 +12,9 @@ NO_BASELINE
 ## Objective
 Record the author decision status for the 4 P-axis micro-pilot candidates without executing release.
 
-No explicit case-by-case author decision was provided in the A4+R-84 prompt. Therefore all four candidates remain pending author decision.
+The initial A4+R-84 intake recorded all four candidates as pending because no explicit case-by-case author decision was available at that time.
+
+A subsequent author instruction explicitly approved all four candidates for a future P-axis release pilot. This update records that author decision. The release pilot itself is documented separately in A4+R-85.
 
 ## Scope
 Included:
@@ -32,24 +34,27 @@ Excluded:
 ## Decision by Candidate
 | candidateId | caseId | proposedCode | authorDecisionStatus | authorDecision | authorRationale | acceptedUncertainty | requiredBeforeFutureRelease | rollbackTriggers | notes |
 |---|---|---|---|---|---|---|---|---|---|
-| A4R83-P-001 | REAL-EVENT-0003 | P-G | PENDING_AUTHOR_DECISION | NONE_RECORDED | Not recorded in current prompt. | Not accepted yet. | Explicit author decision, evidenceRefs confirmation, release limitation, downstream lock confirmation. | New source contradiction; author disagreement; unresolved critical P question. | Awaiting explicit author decision. |
-| A4R83-P-002 | REAL-EVENT-0015 | P-G | PENDING_AUTHOR_DECISION | NONE_RECORDED | Not recorded in current prompt. | Not accepted yet. | Explicit author decision, evidenceRefs confirmation, release limitation, downstream lock confirmation. | New source contradiction; author disagreement; unresolved critical P question. | Awaiting explicit author decision. |
-| A4R83-P-003 | N109W | P-G | PENDING_AUTHOR_DECISION | NONE_RECORDED | Not recorded in current prompt. | Not accepted yet. | Explicit author decision, evidenceRefs confirmation, release limitation, downstream lock confirmation. | New source contradiction; author disagreement; unresolved critical P question. | Awaiting explicit author decision. |
-| A4R83-P-004 | N11NM | P-C | PENDING_AUTHOR_DECISION | NONE_RECORDED | Not recorded in current prompt. | Not accepted yet. | Explicit author decision, evidenceRefs confirmation, release limitation, downstream lock confirmation. | New source contradiction; author disagreement; unresolved critical P question. | Awaiting explicit author decision. |
+| A4R83-P-001 | REAL-EVENT-0003 | P-G | AUTHOR_DECISION_RECORDED | APPROVE_FOR_FUTURE_RELEASE_PILOT | Approved by author according to prior AI/Author analysis and release pilot packet. | Preserve packet limitations. | Execute docs-only release pilot with downstream locks. | Source contradiction; method inconsistency; author withdrawal; downstream misuse. | Decision recorded after initial A4+R-84 intake. |
+| A4R83-P-002 | REAL-EVENT-0015 | P-G | AUTHOR_DECISION_RECORDED | APPROVE_FOR_FUTURE_RELEASE_PILOT | Approved by author according to prior AI/Author analysis and release pilot packet. | Preserve packet limitations. | Execute docs-only release pilot with downstream locks. | Source contradiction; method inconsistency; author withdrawal; downstream misuse. | Decision recorded after initial A4+R-84 intake. |
+| A4R83-P-003 | N109W | P-G | AUTHOR_DECISION_RECORDED | APPROVE_FOR_FUTURE_RELEASE_PILOT | Approved by author according to prior AI/Author analysis and release pilot packet. | Preserve packet limitations. | Execute docs-only release pilot with downstream locks. | Source contradiction; method inconsistency; author withdrawal; downstream misuse. | Decision recorded after initial A4+R-84 intake. |
+| A4R83-P-004 | N11NM | P-C | AUTHOR_DECISION_RECORDED | APPROVE_FOR_FUTURE_RELEASE_PILOT | Approved by author according to prior AI/Author analysis and release pilot packet. | Preserve packet limitations. | Execute docs-only release pilot with downstream locks. | Source contradiction; method inconsistency; author withdrawal; downstream misuse. | Decision recorded after initial A4+R-84 intake. |
 
 ## Permitted Future Decision Values
-Future author intake may record one of:
+Author intake may record one of:
 - `APPROVE_FOR_FUTURE_RELEASE_PILOT`
 - `HOLD_FOR_AUTHOR_CLARIFICATION`
 - `HOLD_FOR_SOURCE_ENRICHMENT`
 - `HOLD_FOR_METHOD_REFINEMENT`
 - `REJECT_FOR_RELEASE_PILOT`
 
-None of those decisions is recorded in A4+R-84.
+This updated A4+R-84 intake records `APPROVE_FOR_FUTURE_RELEASE_PILOT` for all four P-axis candidates.
+
+## A4+R-85 Update Note
+The explicit author decision was provided after the initial A4+R-84 intake. This document records that decision so A4+R-85 can document the controlled P-axis release pilot. The A4+R-84 update itself does not create runtime behavior, selectedCode changes, case classification, finalConclusion, HFACS, Risk/ERC, ARMS/ERC, recommendations, fixture, baseline, UI/API/DB, migration, or implementation output.
 
 ## Confirmations
-- Author decision intake is not release.
-- No releasedCode created.
+- Author decision intake records approval for future release pilot.
+- A4+R-84 itself does not create releasedCode; A4+R-85 documents the pilot release records.
 - No proposedCode altered.
 - No `UNRESOLVED` reduced.
 - Downstream remains locked.

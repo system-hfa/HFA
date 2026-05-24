@@ -870,3 +870,43 @@ Proxima fase recomendada:
 - coletar decisao explicita do autor para cada candidato antes de qualquer fase de release pilot;
 - **A4+R-85 - P-Axis Release Pilot Execution** somente se o autor fornecer decisoes explicitas `APPROVE_FOR_FUTURE_RELEASE_PILOT`;
 - se os candidatos forem mantidos em hold, priorizar Source Enrichment ou Method Clarification.
+
+## A4+R-85 - P-Axis Release Pilot Execution
+
+Esta fase executou um micro-pilot documental controlado de release somente no eixo P, apos decisao autoral explicita para os quatro candidatos:
+
+- [P-Axis Release Pilot Execution A4R85](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_PILOT_EXECUTION_A4R85_v0.2.0.md)
+- [P-Axis Release Pilot Method Decision A4R85](./SERA_ENGINE_VNEXT_P_AXIS_RELEASE_PILOT_METHOD_DECISION_A4R85_v0.2.0.md)
+- [P-Axis Release Pilot Tracker A4R85](./release-pilot/P_AXIS_RELEASE_PILOT_TRACKER_A4R85_v0.2.0.md)
+- release docs individuais em `docs/sera-vnext/release-pilot/`.
+
+Estado apos A4+R-85:
+- 4 P-axis release pilot docs criados;
+- releasedCodeCount documental/piloto = 4;
+- O-axis released = 0;
+- A-axis released = 0;
+- caseLevelClassifications = 0;
+- downstreamOpenedCount = 0;
+- finalConclusionCount = 0;
+- hfacsCount = 0;
+- riskCount = 0;
+- recommendationsCount = 0;
+- fixturePromotionCount = 0;
+- baselinePromotionCount = 0;
+- proposedCodeChanges = 0;
+- unresolvedReduced = 0;
+- nenhum selectedCode foi promovido para CLASSIFIED;
+- nenhum fixture/baseline/codigo alterado.
+
+Limitacoes do piloto:
+- piloto documental;
+- eixo P somente;
+- sem runtime;
+- sem downstream;
+- sem classificacao de caso inteiro;
+- sem liberacao de O/A.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-86 - P-Axis Release Pilot Audit and Rollback Readiness**.

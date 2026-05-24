@@ -93,3 +93,11 @@ Carry to A4+R-84 author decision intake as a P-axis candidate for future author 
 - requiredBeforeFutureRelease: explicit author decision, evidenceRefs confirmation, release limitation text, and downstream lock confirmation.
 - rollbackTriggers: new source contradiction; author disagreement; unresolved critical P-axis question; any request to use this packet for downstream output.
 - noReleasedCodeCreated: true
+
+## A4+R-85 Author Decision and Release Pilot Status
+- Author decision recorded: APPROVE_FOR_FUTURE_RELEASE_PILOT
+- Decision basis: author approved all four P-axis candidates according to the analysis.
+- Release pilot status: eligible for docs-only P-axis release pilot.
+- No downstream.
+- No case-level classification.
+- No O/A release.
