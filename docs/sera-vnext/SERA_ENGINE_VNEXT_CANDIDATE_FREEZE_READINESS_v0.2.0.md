@@ -1456,3 +1456,16 @@ Included in bundle:
 
 Excluded from approval bundle:
 - ASIANA-214 (pending review/source-slice refinement pathway)
+
+## A4+R-109 — Register Chat Author Decisions for A4R106 Eligible Cases
+
+This phase recorded chat-based author decisions for eligible A4R106 cases:
+- COMAIR-5191: approved with limitations (`P-G` internal draft);
+- KOREAN-801: approved with limitations (`P-F` internal boundary draft);
+- ASIANA-214: not reviewed in A4R109 and remains `REVIEW_REQUIRED`.
+
+A4R109 controls:
+- releases created: none;
+- downstream opened: none;
+- O/A closure: none;
+- baseline/front-end promotion: none.

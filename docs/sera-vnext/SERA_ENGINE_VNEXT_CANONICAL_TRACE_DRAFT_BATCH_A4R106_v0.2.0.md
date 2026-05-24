@@ -41,3 +41,13 @@ NO_DOWNSTREAM
 - Chat author review bundle prepared with eligible cases only (`COMAIR-5191`, `KOREAN-801`).
 - `ASIANA-214` remains outside approval bundle in A4R108.
 - Author review not yet performed and no decision recorded in repository.
+
+## A4+R-109 author decision intake update
+- A4R109 author decisions recorded in:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_CHAT_AUTHOR_DECISION_INTAKE_A4R109_v0.2.0.md`
+- Decision summary:
+  - `COMAIR-5191`: APPROVE_WITH_LIMITATIONS (`P-G` internal draft)
+  - `KOREAN-801`: APPROVE_WITH_LIMITATIONS_P_F (`P-F` internal boundary draft)
+  - `ASIANA-214`: NOT_REVIEWED_IN_A4R109 / REVIEW_REQUIRED
+- release created: no
+- downstream opened: no

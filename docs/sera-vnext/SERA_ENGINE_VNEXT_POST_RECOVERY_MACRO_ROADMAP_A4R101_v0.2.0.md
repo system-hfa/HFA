@@ -225,3 +225,19 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Conduct one chat-based author review for COMAIR-5191 and KOREAN-801.
 2. Route ASIANA-214 to the pending review/source-slice refinement path before any new approval attempt.
 3. Keep release/downstream/front-end promotion closed until explicit post-review decisions.
+
+## A4+R-109 Execution Update (Author Decision Intake Recorded)
+- Decision intake artifact created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R106_CHAT_AUTHOR_DECISION_INTAKE_A4R109_v0.2.0.md`
+- Outcomes recorded:
+  - COMAIR-5191: approved with limitations (`P-G` internal draft)
+  - KOREAN-801: approved with limitations (`P-F` internal boundary draft)
+  - ASIANA-214: not reviewed in A4R109 (`REVIEW_REQUIRED`)
+- Release created in A4R109: no
+- Downstream opened in A4R109: no
+- O/A closure in A4R109: no
+
+## Updated Immediate Sequence After A4R109
+1. Prepare controlled internal-reference package for COMAIR-5191 and KOREAN-801 with explicit limitations retained.
+2. Keep ASIANA-214 in `REVIEW_REQUIRED` pathway until additional source-slice/method review is completed.
+3. If a cleaner positive reference is required, activate reserve candidate pathway without release/downstream opening.

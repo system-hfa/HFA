@@ -69,3 +69,13 @@ Official-report factual sequence indicates a visual approach with known glidepat
 ## 11. Future author review questions
 - Which exact factual point should be treated as the canonical stabilized-approach escape gate for this case?
 - Is there enough factual support to test an A-axis draft without importing probable-cause language?
+
+## 12. A4R109 author decision intake status
+- authorDecisionStatus: NOT_REVIEWED_IN_A4R109
+- statusA4R109: REVIEW_REQUIRED
+- internalReferenceCandidateStatus: REVIEW_REQUIRED_SOURCE_SLICE_OR_METHOD_REVIEW_REQUIRED
+- releaseStatus: NOT_RELEASED
+- downstreamStatus: NOT_OPENED
+- frontendPromotionStatus: NOT_READY_FOR_PROMOTION
+- O_axis_status: UNRESOLVED
+- A_axis_status: UNRESOLVED

@@ -68,3 +68,13 @@ Official-report factual sequence shows runway-22 assignment repeatedly present i
 ## 11. Future author review questions
 - Should runway-verification escape point be fixed at hold-short crossing or lineup checklist completion for canonical trace consistency?
 - Is the present evidence sufficient to test an A-axis draft without overclassification risk?
+
+## 12. A4R109 author decision intake status
+- authorDecisionStatus: APPROVED_WITH_LIMITATIONS_IN_A4R109
+- internalReferenceCandidateStatus: APPROVED_INTERNAL_DRAFT_NOT_RELEASED
+- internalDraftLeaf: P-G
+- releaseStatus: NOT_RELEASED
+- downstreamStatus: NOT_OPENED
+- frontendPromotionStatus: NOT_READY_FOR_PROMOTION
+- O_axis_status: UNRESOLVED
+- A_axis_status: UNRESOLVED

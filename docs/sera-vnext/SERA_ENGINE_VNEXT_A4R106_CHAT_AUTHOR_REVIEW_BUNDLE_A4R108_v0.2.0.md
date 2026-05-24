@@ -114,3 +114,10 @@ Future approval would not mean:
 - if both approved/approved with limitations: prepare controlled internal-reference package;
 - if one approved: activate next reserve candidate;
 - if none approved: return to A4R105 reserves.
+
+## A4+R-109 decision intake result
+- A4R109 decision intake completed.
+- COMAIR-5191 approved with limitations.
+- KOREAN-801 approved with limitations as P-F boundary case.
+- ASIANA-214 remains excluded/review-required.
+- no release/downstream.

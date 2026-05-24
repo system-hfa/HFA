@@ -24,3 +24,9 @@ NO_DOWNSTREAM
 - This phase does not request or execute author approval.
 - This phase does not create release/front-end/downstream outcomes.
 - This phase does not modify official P/O/A.
+
+## A4+R-109 outcome linkage
+- COMAIR-5191: outcome aligned with `KEEP_PASS_WITH_LIMITATIONS`.
+- KOREAN-801: outcome aligned with `KEEP_PASS_WITH_LIMITATIONS` (boundary limitation retained).
+- ASIANA-214: remained outside approval and continues `REVIEW_REQUIRED` path.
+- no release/downstream action derived from this outcome.

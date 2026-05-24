@@ -29,3 +29,16 @@ NO_DOWNSTREAM
 - no decision has been recorded in repository artifacts.
 - included cases for chat review: `COMAIR-5191`, `KOREAN-801`.
 - excluded from approval bundle: `ASIANA-214` pending additional review/source-slice work.
+
+## A4+R-109 decision intake update
+- decision intake recorded for eligible chat-review cases.
+- approved with limitations:
+  - COMAIR-5191 (`P-G` internal draft)
+  - KOREAN-801 (`P-F` internal boundary draft)
+- not reviewed in A4R109:
+  - ASIANA-214 (`REVIEW_REQUIRED`)
+- release created: no
+- downstream opened: no
+
+## Post-A4R109 gate
+- next macro step can proceed to controlled internal-reference packaging for approved-with-limitations drafts, while preserving all no-release/no-downstream controls.

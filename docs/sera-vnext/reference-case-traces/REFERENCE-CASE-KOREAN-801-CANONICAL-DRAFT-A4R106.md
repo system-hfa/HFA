@@ -67,3 +67,14 @@ Official-report factual sequence shows nonprecision-approach constraints with gl
 ## 11. Future author review questions
 - Should ambiguity handling in this case remain at P-F, or does additional source slicing support migration to P-G?
 - Which single escape-point marker is preferred for cross-case consistency: first glideslope inconsistency or first hard altitude-warning gate?
+
+## 12. A4R109 author decision intake status
+- authorDecisionStatus: APPROVED_WITH_LIMITATIONS_IN_A4R109
+- internalReferenceCandidateStatus: APPROVED_INTERNAL_BOUNDARY_DRAFT_NOT_RELEASED
+- internalDraftLeaf: P-F
+- boundaryNoteA4R109: P-F vs P-G remains explicit limitation
+- releaseStatus: NOT_RELEASED
+- downstreamStatus: NOT_OPENED
+- frontendPromotionStatus: NOT_READY_FOR_PROMOTION
+- O_axis_status: UNRESOLVED
+- A_axis_status: UNRESOLVED
