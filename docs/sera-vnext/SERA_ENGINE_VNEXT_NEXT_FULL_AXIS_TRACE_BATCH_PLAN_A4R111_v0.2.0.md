@@ -32,3 +32,11 @@ If one selected event fails readiness during source slicing, fallback candidate 
 ## nextPhaseRecommendation
 - Execute A4R112 as a full-axis trace-draft batch for the four selected candidates above.
 - Keep COMAIR-5191 and KOREAN-801 as P-only internal references unless dedicated O/A source-slice expansion is run later.
+
+## A4R112 supersession note
+- This A4R111 plan is superseded for execution sequencing by:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R112_v0.2.0.md`
+- Reason: A4R112 expanded selection from a shortlist-only view to full combined-corpus mining across both A4R111 lots.
+- Governance continuity retained:
+  - COMAIR-5191 and KOREAN-801 remain P-only internal drafts;
+  - no automatic O/A closure.

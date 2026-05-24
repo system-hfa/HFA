@@ -1530,3 +1530,26 @@ A4R113 controls:
 - no release created;
 - no downstream opened;
 - no baseline/front-end promotion.
+
+## A4+R-112 — Full Official Report Corpus Mining and P/O/A Candidate Selection
+
+This phase mined the combined A4R111 corpus (two 50-candidate feeds) using archived manifests and extracted TXT files, with selection constrained to full-axis P/O/A planning:
+- [Official Report Corpus Audit A4R112](./SERA_ENGINE_VNEXT_OFFICIAL_REPORT_CORPUS_AUDIT_A4R112_v0.2.0.md)
+- [Full Corpus Unified Candidate Index A4R112](./SERA_ENGINE_VNEXT_FULL_CORPUS_UNIFIED_CANDIDATE_INDEX_A4R112_v0.2.0.md)
+- [Full Corpus P/O/A Signal Mining A4R112](./SERA_ENGINE_VNEXT_FULL_CORPUS_POA_SIGNAL_MINING_A4R112_v0.2.0.md)
+- [Full Corpus P/O/A Candidate Matrix A4R112](./SERA_ENGINE_VNEXT_FULL_CORPUS_POA_CANDIDATE_MATRIX_A4R112_v0.2.0.md)
+- [Axis-Balanced Shortlist A4R112](./SERA_ENGINE_VNEXT_AXIS_BALANCED_SHORTLIST_A4R112_v0.2.0.md)
+- [Next Full-Axis Trace Batch Plan A4R112](./SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R112_v0.2.0.md)
+
+Readiness impact:
+- combined pool audited: 96 candidates;
+- downloaded official reports: 59;
+- TXT extractions usable for mining: 57;
+- COMAIR-5191 and KOREAN-801 remain P-only internal/boundary drafts and are not treated as complete full-axis references;
+- next full-axis batch selection is updated from corpus-wide mining evidence.
+
+A4R112 controls:
+- no P/O/A closure;
+- no release created;
+- no downstream opened;
+- no baseline/front-end promotion.

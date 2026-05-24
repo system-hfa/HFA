@@ -53,3 +53,11 @@ NO_DOWNSTREAM
 - P-only strength is insufficient for complete reference designation.
 - Next batch should prioritize candidates with better combined O/A evidence while keeping P documented.
 - Boundary-heavy events remain useful, but should not dominate a full-axis reference batch alone.
+
+## A4R112 supersession note
+- This A4R111 matrix remains valid as rebalancing rationale, but operational selection is superseded by full-corpus outputs:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_CORPUS_POA_CANDIDATE_MATRIX_A4R112_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_AXIS_BALANCED_SHORTLIST_A4R112_v0.2.0.md`
+- Reason: A4R112 added corpus-wide evidence from both 50-candidate lots and harmonized selection under explicit P/O/A coverage constraints.
+- Governance continuity retained:
+  - COMAIR-5191 and KOREAN-801 remain P-only internal/boundary drafts.

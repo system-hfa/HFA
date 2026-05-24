@@ -300,3 +300,27 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Keep canonical source-of-truth anchored on A4R99 asset/checklist and active-source index.
 2. Start A4R112 mining from full corpus using versioned TXT/CSV/manifests and quarantine protocol.
 3. Keep archived/pre-canonical artifacts outside active reference-proof flow; decide questionpath-backfill disposition in dedicated governance pass.
+
+## A4+R-112 Execution Update (Full Official Report Corpus Mining and P/O/A Selection)
+- Combined corpus mining package created from both A4R111 lots:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OFFICIAL_REPORT_CORPUS_AUDIT_A4R112_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_CORPUS_UNIFIED_CANDIDATE_INDEX_A4R112_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_CORPUS_POA_SIGNAL_MINING_A4R112_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FULL_CORPUS_POA_CANDIDATE_MATRIX_A4R112_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_AXIS_BALANCED_SHORTLIST_A4R112_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_FULL_AXIS_TRACE_BATCH_PLAN_A4R112_v0.2.0.md`
+- Combined corpus numbers validated in A4R112:
+  - 96 candidates in unified pool;
+  - 59 downloaded report files;
+  - 57 TXT files usable for mining.
+- Governance continuity:
+  - COMAIR-5191 and KOREAN-801 remain P-only internal drafts;
+  - no promotion to complete full-axis reference status.
+- P/O/A closure in A4R112: no
+- release created in A4R112: no
+- downstream opened in A4R112: no
+
+## Updated Immediate Sequence After A4R112
+1. Build full-axis trace drafts for the A4R112 selected balanced batch (`UPS-1354`, `AMERICAN-1420`, `ASIANA-214`, `COLGAN-3407`, `US AIRWAYS 1549`).
+2. Enforce explicit P/O/A documentation for every selected event, including nominal/no-failure or unresolved handling where canonical closure is not supportable.
+3. Keep COMAIR-5191 and KOREAN-801 as P-only internal drafts unless dedicated O/A expansion is separately executed.

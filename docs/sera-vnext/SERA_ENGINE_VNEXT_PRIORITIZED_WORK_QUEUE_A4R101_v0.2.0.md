@@ -160,3 +160,19 @@ NO_DOWNSTREAM
 | P0 | Execute A4R112 full-corpus mining kickoff | A4R111 full pool + new50 TXT/manifests | Hygiene baseline is now explicit; corpus is ready for controlled mining. | Codex | 1 macro cycle | Mining starts from versioned TXT/CSV/manifests with quarantine discipline. |
 | P1 | Controlled review of questionpath-backfill family | A4R79/A4R80 docs and annexes | Noncanonical backfill remains high-risk for reference-proof usage and needs dedicated disposition. | Codex + user | 1 governance cycle | Decision logged: retain with stronger labels or move to archive/invalid-methodology/questionpath-backfill. |
 | P1 | Maintain archived-status discipline | archive subtree | Prevent accidental reuse of archived pre-canonical artifacts in active workflows. | Codex | continuous | Archive headers and active index remain aligned with current methodology lock. |
+
+## A4+R-112 queue update
+- Completed in A4R112:
+  - combined-corpus audit across both A4R111 lots;
+  - unified index and P/O/A signal mining over extracted TXT corpus;
+  - full-axis candidate matrix and axis-balanced shortlist;
+  - next full-axis 3-5 batch selection updated from full corpus evidence.
+- Execution remained docs/source-archive/mining only.
+
+## Immediate queue after A4R112
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Build full-axis trace draft batch from A4R112 selection | UPS-1354, AMERICAN-1420, ASIANA-214, COLGAN-3407, US AIRWAYS 1549 | Combined corpus mining improved balance across P/O/A and nominal-path calibration candidates. | Codex | 5 events | Each event gets explicit P/O/A axis documentation with canonical or unresolved outcome per axis. |
+| P1 | Focused source-slice expansion during trace build | weak O/A branches in selected A4R112 events | Reduces overclassification risk and prevents axis omission in full-axis traces. | Codex | 1 focused round | Weak O/A nodes are either evidentially reinforced or marked SOURCE_SLICE_REQUIRED/UNRESOLVED. |
+| P1 | Maintain P-only internal boundary status | COMAIR-5191 and KOREAN-801 | Prior P approvals remain valid but do not satisfy full-axis completeness. | Codex | 1 status cycle | Both remain explicitly scoped as P-only internal drafts. |
+| P1 | Source recheck queue (conditional) | candidates tagged SOURCE_RECHECK_REQUIRED in A4R112 audit/index | Some corpus entries still depend on blocked/non-ideal links and need official-source recheck before reuse. | Codex | 1 recheck cycle | Recheck list is triaged without internet expansion unless official link recovery is required. |
