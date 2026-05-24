@@ -566,3 +566,22 @@ Estado após A4+R-74:
 
 Próxima fase ampla recomendada:
 - **A4+R-75 — Select Batch 3 to reach 30 events** (ampliar amostra para validar estabilidade metodológica com maior diversidade factual antes de qualquer trilha de release).
+
+## A4+R-75 — Select Batch 3 to Reach 30 Real Events
+
+Esta fase selecionou o próximo lote de expansão sem executar extração/adjudicação/classificação:
+
+- [Batch 3 Selection A4R75](./SERA_ENGINE_VNEXT_BATCH_3_SELECTION_A4R75_v0.2.0.md)
+- [Batch 3 Extraction Plan A4R75](./SERA_ENGINE_VNEXT_BATCH_3_EXTRACTION_PLAN_A4R75_v0.2.0.md)
+
+Estado após A4+R-75:
+- Batch 3 selecionado com 15 casos para levar o corpus de 15 para 30 eventos;
+- seleção orientada por lacunas metodológicas (A-axis clarity, objective diversity, CRM/coordenação, procedimento/feedback);
+- nenhum caso classificado nesta fase;
+- nenhum `proposedCode` criado nesta fase;
+- nenhum `releasedCode` criado;
+- nenhum downstream aberto;
+- freeze final continua não autorizado.
+
+Próxima fase ampla recomendada:
+- **A4+R-76 — Structured Extraction Batch 3 from Selected 15 Events**.
