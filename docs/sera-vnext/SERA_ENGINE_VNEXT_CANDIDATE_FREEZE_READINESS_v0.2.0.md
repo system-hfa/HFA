@@ -496,3 +496,29 @@ Estado após A4+R-71 (text set):
 - nenhum `releasedCode` foi criado;
 - nenhum downstream foi aberto;
 - freeze final continua não autorizado.
+
+## A4+R-72 — Structured Extraction Batch 2 from PDF24 Text Corpus
+
+Esta fase executou extração factual estruturada em lote para os 10 casos `P1` definidos em A4+R-71:
+
+- [Structured Extraction Batch 2 A4R72](./SERA_ENGINE_VNEXT_STRUCTURED_EXTRACTION_BATCH_2_A4R72_v0.2.0.md)
+- extrações por caso em:
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-001.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-002.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-003.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-004.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-005.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-006.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-007.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-008.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-009.md`
+  - `docs/sera-vnext/real-event-extractions-batch-2/REAL-EVENT-BATCH2-EXTRACTION-010.md`
+
+Estado após A4+R-72:
+- 10 casos Batch 2 extraídos;
+- total de extrações real-event no programa (amostra original 5 + batch 2) agora em 15;
+- classificação continua pendente para os 10 casos do Batch 2;
+- nenhuma classificação SERA foi executada nesta fase de extração;
+- nenhum `releasedCode` foi criado;
+- nenhum downstream foi aberto;
+- freeze final continua não autorizado.

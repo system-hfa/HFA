@@ -83,3 +83,9 @@ Transformar o inventário de candidatos do corpus `pdf24_merged*.txt` em uma nov
 - confirmar anchors oficiais para candidatos com `source pending`/`UNKNOWN_SOURCE_TYPE`;
 - enriquecer candidatos de baixa granularidade antes de promoção a P1;
 - manter trilha de source-quality explícita durante todo o Batch 2.
+
+## A4+R-72 Update
+- Batch 2 `P1` extraído em lote único.
+- 10 arquivos de extração estruturada criados em `docs/sera-vnext/real-event-extractions-batch-2/`.
+- Nenhuma classificação SERA executada nesta etapa.
+- Próxima fase mantida: **A4+R-73 — Batch 2 AI/Author Adjudication for 10 extracted cases**.
