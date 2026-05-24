@@ -62,3 +62,16 @@ NO_DOWNSTREAM
 | P0 | Prepare one author-review bundle for A4R106 | ASIANA-214, COMAIR-5191, KOREAN-801 | Three drafts are already `PASS_WITH_LIMITATIONS`; bundle review is now the next governance gate. | Codex | 1 bundle | Bundle finalized without release/front-end promotion. |
 | P1 | Targeted source-slice expansion (conditional) | weak nodes from A4R106 gaps | Reduces overclassification risk before any O/A closure attempt. | Codex | 1 focused round | Weak-node evidence is strengthened for at least two cases. |
 | P1 | Reserve activation (conditional) | UPS-1354, FIRST-AIR-6560, AMERICAN-1420, AMERICAN-965, AIR-CANADA-624, KEGWORTH-GOBME, G-BLUN-OFFSHORE | Fallback path if author review rejects majority of A4R106 path assumptions. | Codex | 1 reserve batch | Next batch selected without release/downstream changes. |
+
+## A4+R-105b queue update
+- Completed in A4R105b:
+  - local archive consolidation for curated official reports;
+  - checksum and file-type inventory;
+  - PDF/HTML text extraction prep and search indexing.
+- Execution remained docs/source-archive/extraction-prep only.
+
+## Immediate queue impact after A4R105b
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Use local corpus first for A4R106 inputs | ASIANA-214, COMAIR-5191, KOREAN-801 | Reduces source drift and keeps trace build reproducible. | Codex | 3 reports | Source slices built from local PDFs/TXTs with quarantine discipline. |
+| P1 | Reserve-source deep extraction (conditional) | remaining curated reserve | Enables next batch readiness if top-3 weakens. | Codex | 1 prep batch | Reserve reports receive extraction indices and search slices. |

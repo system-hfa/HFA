@@ -1,0 +1,16 @@
+0d196026832f73438551d283d443cd99a44d1d27dbc397384d78c3272e61328d  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/UPS-1354-NTSB-AAR1402.pdf
+15ebe8f40fae1edd659e8dcfba88142b5141f4ffe15440593f490cf003d30ec8  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/AMERICAN-1420-NTSB-AAR0102.pdf
+661449016d8ea633211d23c14ef813b07927b325095663f43928e37d1ae6415e  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/G-BLUN-OFFSHORE-AAIB-AAR-7-2008-SUMMARY.pdf
+6a104e1f1b856810397b4df9760424ec235ac7f9ec542e1ccaf59b11cd661cfe  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/KOREAN-801-NTSB-AAR0001.pdf
+6cb77a50cc7b6e0d2065e7015ea29faa2d9310ca78e9c9649654e21d3111b6ce  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/KEGWORTH-GOBME-AAIB-4-1990.html
+79f763eb416238347993d1f60ba045ee0b82bbb4ac9d38cd645286083470b7b6  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/AIR-CANADA-624-TSB-A15H0002.html
+7c8ef0f2ae38bcd22e9d5292caabb7a8224fc9e5fa96de7d08ec2ae4e9ba873c  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/AIR-CANADA-624-TSB-A15H0002.pdf
+842b2947e957b64d948d6a9d38a4aac3203f11f22946906c8e807a94a9508e6f  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/ASIANA-214-NTSB-AAR1401.pdf
+9ad8cdfcf4a508852a705b34f1965856e14016666ae9e0382a1ae8fa40246ad0  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/COMAIR-5191-NTSB-AAR0705.pdf
+c9465f021a5069668d8a2da77a245c8a96948f9c25251de48d8a51ebf84ba30d  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/FIRST-AIR-6560-TSB-A11H0002.html
+d1ff8bf7e5801dd2f553f2f656a65bf499945815b2f569c0f431801eb5ec9172  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/G-BLUN-OFFSHORE-AAIB-AAR-7-2008.html
+dbaac9d393791edae0620615a230685ea9277b9c1495eab305008c236d3426e4  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/AMERICAN-965-CALI-ACCIDENT-REPORT.pdf
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/SHA256SUMS.txt
+ea9f4e1c31c7b39902dffd0aa4e6be29e6fb996d31c0602c1e2beffe97fb904e  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/G-BLUN-OFFSHORE-AAIB-AAR-7-2008.pdf
+f96c8a9d83bfac91a10a8a5fa46a865a057c7199a6750649eae888fe4c2763ef  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/KEGWORTH-GOBME-AAIB-4-1990.pdf
+fe9f654c2e331d33a3a94e1416df4fd2ea21164e57ab097b5289b5ad2d5bad07  docs/sera-vnext/source-corpus/official-reports/a4r105-curated/KEGWORTH-GOBME-AAIB-4-1990-APPENDICES.pdf

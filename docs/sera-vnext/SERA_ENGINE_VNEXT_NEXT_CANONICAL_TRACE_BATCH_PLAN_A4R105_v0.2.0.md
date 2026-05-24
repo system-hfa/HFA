@@ -53,3 +53,11 @@ Build three canonical trace drafts from official reports with cleaner factual st
 - prepare one author-review bundle for the A4R106 triple-draft package;
 - if review identifies significant weak-node exposure, perform targeted source-slice expansion before any O/A closure attempt;
 - keep front-end and release promotion closed.
+
+## A4+R-105b prep update
+- Local archive and text extraction prep completed before A4R106 trace work.
+- A4R106 input precedence is now explicit:
+  1. local official PDFs in `a4r105-curated` or `a4r106`
+  2. local extracted TXTs in `a4r105-curated-txt`
+  3. internet fetch only if local file is missing/corrupted/unreadable.
+- No SERA classification occurred in this prep phase.

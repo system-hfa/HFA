@@ -1,0 +1,2218 @@
+Cali Accident Report
+
+University of Bielefeld - Faculty of technology
+
+Networks and distributed Systems
+Research group of Prof. Peter B. Ladkin, Ph.D.
+Back to Abstracts of References and Incidents
+
+Back to Root
+
+Back to `..Incidents..Aircraft'
+
+AA965 Cali Accident Report
+Near Buga, Colombia, Dec 20, 1995
+Prepared for the WWW by
+Peter Ladkin
+Universität Bielefeld
+Germany
+Prepared November 6, 1996
+
+[Preparer's Note: Footnote markers are written in square brackets, e.g., [22], and footnotes appear
+denoted by the same figures in brackets at the bottom of the same page, separated from the page contents
+by a dashed line. Typographical errors have been retained in the original as far as possible, except for
+occasional double full stops at the ends of some paragraphs. PBL]
+AERONAUTICA CIVIL
+of THE REPUBLIC OF COLOMBIA
+SANTAFE DE BOGOTA, D.C. - COLOMBIA
+AIRCRAFT ACCIDENT REPORT
+CONTROLLED FLIGHT INTO TERRAIN
+AMERICAN AIRLINES FLIGHT 965
+BOEING 757-223, N651AA
+NEAR CALI, COLOMBIA
+DECEMBER 20, 1995
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (1 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+CONTENTS
+Final Report of Aircraft Accident
+American Airlines flight 965, December 20, 1995
+1. FACTUAL INFORMATION
+1.1 History of Flight
+1
+1.2 Injuries to Persons
+5
+1.3 Damage to Aircraft
+5
+1.4 Other Damage
+1.5 Personnel Information
+5
+1.6 Airplane Information
+9
+1.7 Meteorological Information
+10
+1.8 Aids to Navigation
+11
+1.9 Communications
+11
+1.10 Aerodrome Information<11>
+1.11 Flight Recorders
+12
+1.12 Wreckage and Impact Information
+13
+1.13 Medical and Pathological Information
+14
+1.14 Fire
+15
+1.15 Survival Aspects
+15
+1.16 Tests and Research
+15
+1.17 Organizational and Management Information 21
+1.18 Additional Information
+22
+2. ANALYSIS
+2.1 General
+The Decision to Accept Runway
+2.2
+19
+2.3 Situational Awareness
+2.4 Awareness of Terrain
+2.5 Automation
+2.6 Crew Resource Management
+2.7 Speedbrakes
+
+28
+29
+32
+35
+40
+46
+48
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (2 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+2.8 The Cali Approach Controller
+2.9 FAA Oversight
+2.10 GPWS Escape Maneuver
+2.11 Recording of FMS Data
+
+49
+51
+51
+54
+i
+
+3
+3.1
+3.2
+3.3
+
+CONCLUSIONS
+Findings
+Probable Cause
+Contributing Factors
+
+55
+57
+57
+
+4
+
+RECOMMENDATIONS
+
+58
+
+5
+APPENDIXES
+Appendix A--Investigation
+62
+Appendix B-- Cockpit Voice Recorder Transcript 63
+Appendix C--Cali Approach Charts
+64
+Appendix D--American Airlines Ops. Manual page 65
+Appendix E--Photos of Wreckage
+66
+Appendix F--Route Pages Prior to Impact
+67
+ii
+
+AIRCRAFT ACCIDENT REPORT
+AERONAUTICA CIVIL OF THE REPUBLIC OF COLOMBIA
+SANTAFE DE BOGOTA, D.C. - COLOMBIA
+CONTROLLED FLIGHT INTO TERRAIN
+AMERICAN AIRLINES FLIGHT 965, BOEING 757-223, N651AA
+NEAR CALI, COLOMBIA, DECEMBER 20, 1995
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (3 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+1. FACTUAL INFORMATION
+1.1 History of Flight
+At 2142 eastern standard time (est) [l], on December 20, 1995, American Airlines Flight 965 (AA965), a
+Boeing 757-223, N651AA, on a regularly scheduled passenger flight from Miami International Airport
+(MIA), Florida, U.S.A., to Alfonso Bonilla Aragon International Airport (SKCL), in Cali, Colombia,
+operating under instrument flight rules (IFR), crashed into mountainous terrain during a descent from
+cruise altitude in visual meteorological conditions (VMC). The accident site was near the town of Buga,
+33 miles northeast of the Cali VOR [2] (CLO). The airplane impacted at about 8,900 feet mean sea level
+(msl), near the summit of El Deluvio and approximately 10 miles east of Airway W3. Of the 155
+passengers, 2 flightcrew members, and 6 cabincrew members on board, 4 passengers survived the
+accident.
+On the previous flight under a different crew, the airplane arrived at MIA from Guayaquil, Equador, at
+1438, on December 20, 1996. The Guayaquil to MIA flightcrew reported that there were no significant
+maintenance or operations-related discrepancies on the airplane. The captain and first officer of AA965
+(MIA to SKCL) arrived at the airline's MIA operations office about 1 hour before the proposed
+departure time of 1640. The operations base manager later stated that
+---------------[1] All times herein are expressed in est, based on the 24-hour clock, unless otherwise indicated. The
+Colombian and MIA local time was the same (est).
+[2] Very high frequency (VHF) omni-directional radio range.
+1
+
+both the captain and first officer were in his office about 40 minutes before the required check-in time,
+and appeared to be in good spirits.
+According to the AA flight dispatcher at MIA, AA965 was delayed about 34 minutes, waiting for the
+arrival of connecting passengers and baggage. The flight departed the gate at 1714, and then experienced
+another ground delay of 1 hour 21 minutes that the flight dispatcher stated was related to gate congestion
+due to airport traffic. AA965 departed MIA at 1835, with an estimated time enroute to Cali of 3 hour 12
+minutes.
+AA965 was cleared to climb to flight level (FL) 370 [3]. The route of flight was from MIA through
+Cuban airspace, then through Jamaican airspace, and into Colombian airspace, where the flight was
+recleared by Barranquilla Air Traffic Control Center (Barranquilla Center) to proceed from KILER
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (4 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+Intersection direct to BUTAL Intersection. The flight then passed abeam Cartegena (CTG). Bogota
+Center subsequently cleared the flight to fly direct from BUTAL to the Tulua VOR (ULQ)
+At 2103, AA965 estimated to Bogota Center that they would cross BUTAL at 2107. As AA965 passed
+BUTAL, Bogota Center again cleared the flight from its present position to ULQ, and told the flight to
+report when they were ready to descend. At 2110, AA965 communicated via ACARS [4] with AA's
+System Operations Control (SOC) center, asking for weather information at Cali. At 2111, Cali weather
+was reported as clear, visibility greater than 10 kilometers, and scattered clouds. At 2126:16, AA965
+requested descent clearance. The flight was initially cleared to FL 240 and then to FL 200. At 2134:04,
+the flight was instructed to contact Cali Approach Control (Approach).
+AA965 contacted Approach at 2134:40. The captain, making the radio transmissions [5] said, "Cali
+approach, American nine six five." The approach controller replied, "American niner six five, good
+evening. go ahead." The captain stated, "ah, buenos noches senor, American nine six five leaving two
+three zero, descending to two zero zero. go ahead sir." The controller asked, "the uh, distance DME [6]
+from Cali?" The captain replied, "the DME is six three." The controller
+---------------[3] 37,000 feet. Flight levels are expressed in hundreds of feet above msl.
+[4]Aircraft Communications Addressing and Reporting System.
+[5] Based on the air traffic control (ATC) and cockpit voice recordings (CVR), the captain made the
+radio communications and the first officer was at the controls of the airplane.
+[6]Distance measuring equipment, providing a display in nautical miles.
+2
+
+then stated, "roger, is cleared to Cali VOR, uh, descend and maintain one, fve thousand feet. altimeter
+three zero zero two.... no delay expect for approach. report uh, Tulua VOR." The captain replied, "OK,
+understood. cleared direct to Cali VOR. uh, report Tulua and altitude one five, that's fifteen thousand
+three zero.. zero.. two. is that all correct sir?" The controller stated, "affirmative." The captain replied at
+2135:27, "Thank you. At 2135:28, the captain informed the first officer that he had "...put direct Cali for
+you in there." [7]
+At 2136:31, Approach asked AA965, "sir the wind is calm. are you able to [execute the] approach [to]
+runway one niner?" (see approach charts, appendix C, "VOR DME Rwy 19" and "ILS RWY 01") The
+captain responded, "uh yes sir, we'll need a lower altitude right away though." The approach controller
+then stated, "roger. American nine six five is cleared to VOR DME approach runway one niner. Rozo
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (5 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+number one, arrival. report Tulua VOR." The captain, replied, "cleared the VOR DME to one nine, Rozo
+one arrival. will report the VOR, thank you sir." The controller stated, "report uh, Tulua VOR." The
+captain replied, "report Tulua."
+At 2137:29, AA965 asked Approach, "can American airlines uh, nine six five go direct to Rozo and then
+do the Rozo arrival sir?" The Cali approach controller replied, "affirmative. take the Rozo one and
+runway one niner, the wind is calm." The captain responded, "alright Rozo, the Rozo one to one nine,
+thank you, American nine six five." The controller stated, "(thank you very much) [8].... report Tulua
+and e'eh, twenty one miles ah, five thousand feet." The captain responded, "OK, report Tulua twenty one
+miles and five thousand feet, American nine uh, six five."
+At 2137, after passing ULQ [9], during the descent, the airplane began to turn to the left of the cleared
+course and flew on an easterly heading for approximately one minute. Then the airplane turned to the
+right, while still in the descent. At 2139:25, Morse code for the letters "VC" was recorded by navigation
+radio onto the airplane's CVR. At 2139:29, Morse code similar to the letters "ULQ" was recorded. At
+2140:01, the captain asked Approach, "and American uh,
+---------------[7] A reference to the airplane's flight management system (FMS).
+[8] "Questionable insertion" transcribed during hearing of the tape by CVR invest1gators.
+[9]Position based on ATC and CVR recordings, flight data recorder (FDR) information, time and
+distance measurements, and reconstructed data from the airplane's flight management computer (FMC).
+(see section 1.16).
+3
+
+thirty eight miles north of Cali, and you want us to go Tulua and then do the Rozo uh, to uh, the runway,
+right to runway one nine?" The controller answered, "...you can [unintelligible word] landed, runway
+one niner, you can use runway one niner. what is (you) altitude and (the) DME from Cali?" The flight
+responded, "OK, we're thirty seven DME [10] at ten thousand feet." The controller stated at 2140:25,
+"roger. report (uh) five thousand and uh, final to one one, runway one niner."
+The CVR recorded the flightcrew's conversations as well as radio transmissions. At 2140:40, the captain
+stated, "it's that [expletive] Tulua I'm not getting for some reason. see I can't get. OK now, no. Tulua's
+[expletive] up." At 2140:49 the captain said, "but I can put it in the box if you want it." The first officer
+replied, "I don't want Tulua. let's just go to the extended centerline of uh...." The captain stated, "which
+is Rozo." At 2140:56, the captain stated, "why don't you just go direct to Rozo then, alright?" The first
+officer replied, "OK, let's...The captain said, "I'm goin' to put that over you." The first officer replied, "...
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (6 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+get some altimeters, we'er out of uh, ten now."
+At 2141:02, Cali Approach requested the flight's altitude. The flight replied, "nine six five, nine
+thousand feet." The controller then asked at 2141: 10, "roger, distance now?" The flightcrew did not
+respond to the controller. At 2141:15, the CVR recorded from the cockpit area microphone the
+mechanical voice and sounds of the airplane's ground proximity warning system (GPWS), "terrain,
+terrain, whoop, whoop." The captain stated, "Oh [expletive]," and a sound similar to autopilot disconnect
+warning began. The captain said, "...pull up baby." The mechanical voice and sound continued, "...pull
+up, whoop, whoop, pull up." The FDR showed that the flightcrew added full power and raised the nose
+of the airplane, the spoilers (speedbrakes) that had been extended during the descent were not retracted.
+The airplane entered into the regime of stick shaker stall warning, nose up attitude was lowered slightly
+[11], the airplane came out of stick shaker warning, nose up attitude then increased and stick shaker was
+reentered. The CVR ended at 2141 :28.
+The wreckage path and FDR data evidenced that the airplane was on a magnetic heading of 223 degrees,
+nose up, and wings approximately level, as it struck trees at about 8,900 feet msl on the east side of El
+Deluvio. The airplane
+---------------[10] 37 DME north of the Cali VOR (CLO) places the airplane 6 miles south of ULQ and 28 miles north
+of the approach end of runway 19 at SKCL.
+[11] From FDR data.
+4
+
+continued over a ridge near the summit and impacted and burned on the west side of the mountain, at 3
+degrees 50 minutes 45.2 seconds north latitude and 76 degrees 6 minutes 17.1 seconds west longitude.
+Approach unsuccessfully attempted to contact AA965 several times after the time of impact (see
+appendix D, two photographs of the accident site).
+1.2 Injuries to Persons
+Injuries Flightcrew Cabincrew Passengers Total
+Fatal 2
+6
+151
+159
+Serious 0
+0
+4
+4
+Minor 0
+0
+0
+0
+None 0
+0
+0
+0
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (7 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+Total
+
+2
+
+6
+
+155
+
+163
+
+1.3 Damage to Airplane
+The airplane was destroyed.
+1.4 Other Damage
+None. Impact was in tree-covered mountainous terrain.
+1.5 Personnel Information
+The captain and first officer were certified by the U.S. Federal Aviation Administration (FAA) to hold
+their respective positions in the Boeing 757 (B-757) and each possessed a current first class medical
+certificate. FAA records showed that neither had been involved in an accident, incident, or enforcement
+action.
+1.5.1. Cockpit Crew
+
+Age
+Date of Birth
+Date of Hire with American
+Airlines
+First Class Medical Certificate
+
+Pilot In Command First Officer
+57
+39
+11/17/38
+6/24/56
+9/22/69
+
+10/11/86
+
+Issued 12/7/95
+5
+
+Approximate Total Flying Time
+Total on Type (B757/B767)
+Total hrs last 90 Days
+Total hrs last 60 Days
+Total hrs last 30 Days
+Total Last 7 Days
+Accident Flight hrs (est.)
+Hours On Duty Prior to Accident
+
+13,000 hrs
+2,260 hrs
+182: 13
+104: 14
+60:13
+12:19
+4:38
+5:58
+
+5,800 hrs
+2,286 hrs
+163 :40
+101 :55
+19:50
+13:22
+4:38
+5:58
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (8 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+Hours Off Duty Prior to Work Period 120+ (5 days)
+
+120+(5
+days)
+
+1.5.2 Captain
+The captain began flying as a civilian student pilot in September 1963. He then joined the U.S. Air
+Force, became an Air Force pilot and flew a variety of military airplanes including fighters and 4-engine
+transport airplanes in domestic and foreign operations through 1969. He became employed by AA on
+September 22, 1969. Employment records at AA indicated that he had acquired about 2,698 flight hours
+before being hired, and all except 36 hours were with the U.S. Air Force. His service at AA began as a B­
+727 flight engineer. As flew as captain on the B-727, -757 and -767 [12].
+The captain underwent his last proficiency check in a flight simulator on April 28, 1995. AA referred to
+this check as the "R2" check or the "simulator check." The check ended a S-day training and checking
+sequence in which other annual requirements were also met, including training regarding security and
+hazardous materials, crew resource management (CRM), and international operations. The captain
+completed annual line checks, administered by an AA FAA-approved check airman on November 9,
+1995 (domestic) and on December 9, 1995 (international). In the line check on December 9, 1995, he
+flew as captain on AA965 from MIA to SKCL. Including flights to SKCL on December 9, and
+December 14, 1995, the captain flew a total of 13 times into Cali before the accident flight.
+---------------[12] The FAA awards common type ratings to pilots qualifying on the B-757 and -767 because of the
+similarities between the two airplanes. B-757/767 type rated pilots for AA and other airlines may serve
+on both airplane types equally, without need of additional certification.
+6
+
+The captain's last medical examination was on December 7, 1995, when his Class I medical certificate
+was renewed. His certificate bore the following limitation: "Holder shall wear lenses that correct for
+distant vision and possess glasses that correct for near vision while exercising the privileges of this
+airman certificate."
+The captain was described by his colleagues as a non-smoker, avid tennis player, in exemplary health,
+and respected for his professional skills, including his skill in communicating with crewmembers and
+passengers. Company records contained numerous letters from passengers and company employees that
+reflected outstanding and courteous performance. The captain was married and had two adult children
+who lived outside of the home.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (9 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+On the day of the accident, December 20, 1995, the captain arose around 0500. His wife began to
+prepare for a trip in her capacity as an AA flight attendant. She was later not sure whether the captain
+had returned to sleep after she departed their home at 0600. She estimated that he departed from home
+about 1200 for the drive to MIA.
+The day prior to the accident, December 19, the captain awoke about 0700, and spent the day relaxing
+around the house and then playing tennis about l 1/2 hours with his wife. They returned home about
+2130. From December 15 through 18, the captain and his wife visited his family in New Jersey, on what
+was described as an enjoyable Christmas visit that they took early because of the scheduled trips.
+1.5.3 First Officer
+The first officer began his flying eareer as a college undergraduate by enrolling in the U.S. Air Force
+Reserve Officer Training Corps. He began pilot training with the Air Force in 1979, flying a variety of
+aircraft, including trainers and F-4E fighters, through 1986. He served as an instructor in ground school,
+in flight simulators, and in airplanes, and in 1985 was awarded Air Force Instruetor of the Year.
+The first officer beeame employed by AA on Oetober 11, 1986. Company reeords indicated that he had
+accumulated a total of 1,362 flight hours when hired. He began as a flight engineer on the B-727. Later
+duties included first
+7
+
+officer on the B-727, McDonnell Douglas (MD) 11, and B-757 and -767. He possessed type ratings in
+the MD 11 and B757/B767.
+The first officer attended the AA 5-day qualification and recurrence course and satisfactorily completed
+the required annual simulator check on November 27, 1995. As part of that sequence, annual recurrent
+requirements also ineluded training regarding security, hazardous materials, CRM, and international
+operations. The first officer's annual line cheek was aeeomplished on August 31, 1995.
+The first offieer's Class 1 medical certificate was renewed on June 21, 1995, with no limitations.
+The first officer had never flown into Cali. However, he had flown to other destinations in South
+America as an internationally qualified B-757/767 first officer.
+The first officer was described by his colleagues as professionally competent, and appropriately
+assertive as a flightcrew member. He was married and the father of three young children who lived at
+home.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (10 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+On the day of the accident, the first officer arose about 0700, and had breakfast with his family. Around
+0830, he worked with his wife to prepare for their children's home schooling aetivities. He later
+exercised. He visited with his father and family around midday and, around 1230, left for the airport at
+Orlando, Florida, for the flight to MIA.
+On the day prior to the accident, December 19, the first officer arose about 0700, and had an 0830,
+appointment with an aviation medical examiner (AME) for a flight physical [13]. Afterwards, the first
+officer visited with his brother at his brother's place of business, and later the two had lunch. The first
+officer returned home at 1530, and played basketball with his children. The family had dinner about
+1730, and at 1900, he, his wife, and children attended a basketball game where their son was playing.
+The family returned home about 2015, and at 2115 the first officer helped put the children to bed. He
+and his wife watched television briefly and retired about 2330.
+---------------[13] The AME later stated that the first officer was found in excellent health.
+8
+
+On December 18, the first officer arose about 0715, and after breakfast exercised at the local YMCA. He
+assisted his wife in home schooling their children and then had lunch with his wife. After shopping for
+holiday gifts, they took the children to a restaurant for dinner and returned home about 2100.
+1.6 Airplane Information
+The airplane, a Boeing 757-223, serial no. 24609, was operated by AA since new on August 27, 1991.
+The airplane was owned by Meridian Trust Company of Reading, Pennsylvania, U.S.A., and leased to
+the airline.
+Before the accident flight, the airplane accumulated 13,782 flight hours and 4,922 cycles. The airplane
+was equipped with two RB-211 535E 4B Rolls Royce turbofan engines. The left engine, serial no.
+31146, accumulated 10,657 hours and 3,768 cycles. The right engine, serial no. 31042, had accumulated
+13,274 total hours and 4,966 cycles.
+There were no malfunctions or outstanding maintenance items on the airplane prior to its departure from
+MIA on December 20, 1995. The airplane received a B-level maintenance check (B-check) in November
+1995, and all subsequent required maintenance checks were performed. In addition, there was no record
+of repetitive navigation or flight control system anomalies.
+1.6.1 Weight and Balance Information
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (11 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+The airplane weight and balance was determined by AA's dispatch center at Dallas/Ft. Worth
+International Airport (DFW), Texas, U.S.A. The airplane was loaded with 43,300 pounds of fuel for
+takeoff from MIA on December 20, 1995. Its takeoff gross weight was calculated as 209,520 pounds.
+The airplane's center of gravity (c.g.) at takeoff was determined to be 25.2 percent mean aerodynamic
+chord (MAC). The gross weight and c.g. were within limits for takeoff.
+Estimated flight plan calculations indicated that the airplane consumed 26,620 pounds of fuel prior to
+impact. Its impact gross weight was 182,900 pounds and its c.g. was 23.8 percent MAC. The final gross
+weight and c.g. were within landing limits.
+9
+
+1.6.2 Flight Management System
+The B-757 and -767 are flight management system (FMS)-equipped airplanes. The accident airplane
+incorporated an FMS that included an flight management computer (FMC), a worldwide navigation data
+base that contained radio frequencies, and latitude and longitude coordinates of relevant navigation aids
+as well as coordinates of airports capable of B-757 operations. The FMC data base also included B-757
+performance data which, combined with pilot inputs, governed autothrottle and autopilot functions. The
+FMS monitored the system and engine status and displayed the information, as well as airplane attitude,
+flightpath, navigation, and other information, through electronically-generated cathode ray tube (CRT)
+displays [14].
+Pilot input into the FMS could be performed either through a keyboard and associated cathode ray tube
+(CRT), known as a control display unit (CDU), or through more limited FMS input via controls on the
+glareshield (see section 1.16, regarding post-accident testing of FMS components).
+1.7 Meteorological Information
+The flight crew received the following AA terminal weather forecast for Cali in the flight dispatch
+records:
+Cali at 0606 universal coordinated time (utc) [15]: Winds calm, visibility more than 10 kilometers,
+clouds scattered at 2,500 and 10,000 feet
+Temporary change (Cali) from 0900 to 1300 utc: 8000 meters visibility, rain showers in the vicinity,
+clouds scattered at 2,000, broken at 8,500 feet
+Temporary change (Cali) from 2000 through 0200 utc: Winds 360 degrees at 05 knots, rain showers in
+the vicinity, clouds scattered at 2,000 feet and broken at 8,000 feet
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (12 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+The flight departure paper recorded the weather at 1500 est as: Winds calm, visibility more than 10
+kilometers, clouds scattered at 2,000 and 12,000 feet,
+---------------[14] On the instrument panel before each pilot
+[15] Universal coordinate time. Est is 5 hours behind utc.
+10
+
+temperature 28 centigrade, dew point 18 degrees centigrade (C.), altimeter (QNH) 29.94 inches of
+mercury
+The flight crew received an updated weather message via the ACARS. The weather was for 1700 est and
+was reported as:
+(Cali): Winds 340 degrees at 06 knots, visibility more than 10 kilometers, rain showers in the vicinity,
+clouds scattered at 1,700 feet and broken at 10,000 feet, temperature 28 degrees C., dew point 18
+degrees C., altimeter (QNH) 29.98 inches of mercury
+Enroute, the flight crew requested the Cali weather via ACARS at 2050 est. The company replied at
+2051, via ACARS, that there was "no current data."
+At 2110 est, the flightcrew requested, again, the weather for Cali. At 2111, the flightcrew received via
+the uplink, the following weather information for 2000 local at Cali: Winds 160 degrees at 04 knots,
+visibility more than 10 kilometers, clouds scattered at 1,700 and 10,000 feet, temperature 23 degrees and
+dew point 18 degrees C., altimeter (QNH) 29.98 inches of mercury. This was the last request and uplink
+of weather recorded.
+1.8 Aids to Navigation
+There were no difficulties with aids to navigation.
+1.9 Communications
+There were no difficulties with communications equipment.
+1.10 Aerodrome Information
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (13 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+Alfonso Bonilla Aragon Airport (SKCL) in Cali, is located in a long, narrow valley oriented north to
+south. Mountains extend up to 14,000 feet msl to the east and west of the valley. The airport is located
+approximately 7.5 miles north of CLO, at an elevation of 3,162 feet msl.
+11
+
+At the time of the accident, the airport control tower operated 24 hours a day, controlling departing and
+arriving traffic to runways 01 and 19. The runway was hard surfaced, 9,842 feet long, and 148 feet wide,
+with a parallel taxiway running the full length. Runway 01 had instrument landing system (ILS) CAT 1
+and VOR/DME approaches available. The ILS has a 2.5 degree glide slope, with precision approach
+path indicator (PAPI) visual glide path lighting to match the 2.5 degree electronic glide slope. Runway
+19 had a VOR/DME approach available and the lighting included a PAPI system with a 3.0 degree glide
+path. Two standard arrivals (STARs) were available, one from the north of the airport (ROZO 1) and
+one from the east (MANGA 1). There were 12 published departures available.
+Radio navigation facilities included the ILS (IPAS), the Cali VOR (CLO), Rozo NDB (R), the middle
+marker (AS), and the Cali NDB (CLO). The Tulua VOR (ULQ) was approximately 33 nautical miles
+north of the airfield (43 DME from CLO), and was the initial point depicted on the ROZO 1 arrival.
+The airport was served by Cali Approach. No approach control radar was available.
+The field report recorded in the AA dispatch records indicated that runways 01 and 19 were open and
+dry. There were three notices to airmen (NOTAMS) in the flight departure papers, they were:
+1. Until further notice, runway 01 LM/AS frequency 240 Mhz ops on test period.
+2. Fire and rescue services downgrades to VII cat.
+3. Until further notice, MER/NDB 1.685 Khz inop.
+1.11 Flight Recorders
+1.11.1 Flight Data Recorder
+The airplane was equipped a Sundstrand digital FDR, serial no. 6707. FDR recorded parameters
+included: pressure altitude; radio altitude; magnetic heading; computed airspeed; pitch attitude; roll
+attitude; engine status; navigation mode; indicated airspeed; autothrottle and autopilot parameters;
+ground proximity warning alerts; and parameters indicating flight control position, including speed
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (14 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+12
+
+brake deployment. The data were recorded on a continuous 25 hour cycle in which the oldest data were
+erased and new data recorded.
+The FDR was extensively damaged by impact forces. There was no evidence of fire damage to the
+recorder. The tape recording medium was undamaged. The FDR was brought to the U.S. National
+Transportation Safety Board's (NTSB's) laboratories in Washington, D.C., U.S.A., and read out.
+1.11.2 Cockpit Voice Recorder
+The airplane was equipped with a Fairchild model A-lOOa CVR, serial no. 59225. Examination in the
+NTSB CVR laboratory found exterior structural damage. The exterior case was cut away to access the
+tape medium. The tape did not sustain heat or impact damage. The recording was of good quality and a
+transcript was prepared of the entire 30:40 minute recording.
+1.12 Wreckage and Impact Information
+The airplane struck near the top of a mountain ridge about 35 miles northeast of Cali. The elevation of
+the top of the ridge was about 9,000 feet mean sea level. The airplane initially struck trees on the east
+side of the ridge, and the preponderance of the wreckage, which contained the occupants of the airplane
+and included both engines, came to rest on the west face of the ridge. There was no indication of in­
+flight fire or separation of parts before initial impact.
+The initial impact area was marked by an area of broken trees, followed by a swath where the trees had
+been essentially flattened or uprooted. The area of uprooted trees began about 250 feet below the top of
+the ridge. The initial impact swath was oriented along a heading of about 220°. Wreckage that was found
+at the beginning of the wreckage path included thrust reverser parts, a fan cowling, an APU tail cone,
+flap jackscrews, an engine fire bottle, the FDR, and a small section of wing. The pattern of the broken
+trees indicated that the airplane initially struck at a high nose up attitude.
+The main wreckage came to rest on the west side of the ridge, about 400 to 500 feet from the top. In
+addition to the engines, the largest portion of wreckage included the cockpit, a section of center fuselage
+about 35 feet long, the CVR, aviation electronics (avionics) boxes, a section of the aft fuselage, and a
+portion of the wing center section.
+13
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (15 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+The wreckage evidence indicated that both flaps and landing gear were in the retracted position at the
+time of impact.
+Both engines were examined on site. The left engine showed ingestion of soil and foliage as far aft as
+the inlet guide vanes to the intermediate compressor section. There was a substantial bending of fan
+blades in a counter-clockwise direction, with some bent clockwise.
+The right engine was found slightly buried into the ground. The blade damage that was observable was
+similar to the damage observed on the left engine. Soil and foliage were found as far aft as the inlet to
+the intermediate compressor section. Neither engine showed evidence of fire damage.
+Numerous cireuit cards and other parts that were onsidered likely to contain non-volatile memory were
+retrieved from the site, packed in static free material, and shipped to the United States for read out at the
+facilities of their manufacturers. With the exception of one circuit card from the Honeywellmanufaetured FMC, the material either did not contain non-volatile memory or was too severely
+damaged to permit data retrieval. Discussion of the data retrieval of the non-volatile memory from the
+FMC is located in section 1.16, Tests and Research.
+1.13 Medical and Pathological Information
+The body of the first officer was recovered on the first day after the accident. The body of the captain
+was retrieved from the crash site on the third day after the accident. The cause of death of each was
+determined to be blunt force trauma.
+Specimens of liver, blood, and vitreous humor were obtained and analyzed by the Colombian Instituto
+Nacional de Medicina Legal. The samples from the body of the first officer were found to be negative
+for alcohol and drugs of abuse. The blood and liver samples from the captain were found to be positive
+for alcohol at 0.074 percent and 0.35 percent blood alcohol levels, respectively, and negative for drugs
+of abuse. Vitreous specimens were found to be negative for both pilots.
+Portions of the liver and blood samples from the bodies of the flightcrew members were then flown to
+the United States to be further analyzed by
+14
+
+the Forensic Toxicology Laboratory of the U.S. Armed Forces Institute of Pathology. The analysis and
+subsequent reexamination of the results of the analysis in Colombia indicated that the positive alcohol
+level derived from post-mortem microbial action, and not from pre-mortem alcohol ingestion.
+1.14 Fire
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (16 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+The was no evidence preimpact fire or explosion. There was limited postimpact fire, where the main
+fuselage came to rest.
+1.15 Survival Factors
+Search and rescue facilities coordinators around the Cali and Buga area were notified of the missing
+flight at 2150 local time. At 2230, the Civil Defense, Red Cross, Police and Army contingencies were
+mobilized to the Buga general area where the airplane was last reported. The initial sighting of the crash
+site was made by a helicopter at 06:30, December 21, 1995. Search teams arrived by helicopter to the
+crash site within a few minutes of the sighting.
+The characteristics and magnitude of the impact and subsequent destruction of the airplane indicated that
+the accident was non survivable. However, 5 passengers initially survived the crash, having sustained
+serious injuries. One died later in the hospital.
+Postmortem examination of the occupants indicated that the characteristics of the fatal and non fatal
+injuries varied according to the location of the persons in the crashed airplane. All of the injuries were
+consistent with deceleration trauma of different intensity consistent with the aircraft's impact and
+breakdown pattern. Because some passengers were found to have changed seats within the airplane,
+evaluating individual injuries by seat assignment was not successful.
+1.16 Tests and Research
+Follow-up examinations and testing were conducted regarding aircraft systems, operations procedures,
+and human performance. These were conducted in the United States at Flight Safety International
+Academy in Miami, Florida; Honeywell Air Transport Systems, in Phoenix, Arizona; Jeppesen
+Sanderson
+15
+
+Company, in Englewood, Colorado; American Airlines in Fort Worth, Texas; and Boeing Commercial
+Airplane Group, in Seattle, Washington.
+1.16.1 FMS Component Examinations
+Portions of the FMS, including the FMC, that had been recovered from the wreckage, were examined at
+Honeywell Air Transport Systems.
+After the components were cleaned for laboratory examination, it was found that the FMC contained a
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (17 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+printed circuit card that had two non-volatile memory integrated circuits. Data recovered from the
+integrated circuits included a navigation data base, guidance buffer, built in test equipment (BITE)
+history file, operational program, and other reference information.
+A load test of the FMC memory showed that the operational software and navigational data were current
+for the time of the accident. The BITE showed that there had been no recorded loss of function during
+the last 10 flights of the airplane.
+The guidance buffer recorded that the FMC-planned route of flight at the point of power loss [16] was
+from the last passed waypoint, shown as KILER, direct to the next waypoint that had not yet been
+passed, shown as ULQ. The route beyond ULQ was shown as waypoint R, then CLO, then CLO03 [17],
+then the stored ILS runway 01 approach of CI01, then FI01, then RW01, then ROZO, then a hold [18] at
+ROZO.
+When the FMC memory was first restored, a modification to the above route was displayed. The
+modified route was shown as ULQ, a ROUTE DISCONTINUITY message, then R, another ROUTE
+DISCONTINUITY message, then CLO, then CLO03, then CI01, then FI01, then RW01, then ROZO,
+then a hold at ROZO.
+The FMC was put through a short term (power transient) initialization and the captain's and first officer's
+CDU displays were identical, as follows:
+---------------[16] Coinciding with the time of impact.
+[17] CLO03 was found to be a point-bearing distance location.
+[18] BITE provided non volatile memory of FMC activity for previous 10 flights of the accident
+airplane. Hold indicates routing to a preplanned holding pattern location.
+16
+
+MOD RTE 1 LEGS
+066°
+R
+THEN
+IIIIII
+--ROUTE DISCONTINUITY -
+
+1/2
+268/FL364
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (18 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+CLO
+161°
+CLO03
+307°
+CI01
+
+237/5510
+3NM
+207/5190
+2NM
+189/5000
+
+<ERASE
+
+RTE DATA>
+
+The CLO03 was not seen on a printed format of the route. When the (L4) line select key (LSK) for
+CLO03 was pressed, the scratch pad area (LSK L6) at the bottom of the screen was displayed:
+CLO163.0/003.0
+Pushing the NEXT PAGE button showed:
+MOD RTE LEGS
+2/2
+013°
+2NM
+FI01
+170/5000
+013°
+7NM
+RW01
+130/3200
+013°
+4NM
+ROZO
+---/3560A
+HOLD AT
+ROZO
+---/5000
+<ERASE
+
+RTE DATA>
+
+---------------[19] The font size on the airspeeds and altitudes associated with CLO and CLO03 were smaller than the
+font sizes of comparable information for CI01. These differences indicate that the information for CI01
+was inputted by the pilot whereas the information for CLO were generated by the FMS.
+17
+
+REF NAV DATA was displayed for the following points:
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (19 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+FREQ
+IDENT
+LAT
+LONG
+MAG
+VAR ELEV
+ULQ
+N04degO5.8 W076degl3.6
+177.70
+W1
+CLO
+N03deg24.2 W076deg24.6
+115.50
+W2
+3300ft
+CLO03
+N03deg21.4 W076deg23.6
+CI01
+N03deg22.5 W076deg25.0
+FI01
+N03deg24.5 W076deg24.7
+RW01
+N03deg31.6 W076deg23.2
+LENGTH=9842ft
+3150ft
+ROZO
+N03deg35.8 W076deg22.5
+R
+N04deg40.7 W074deg06.3 [20]
+SKCL
+N03deg32.8 W076deg23.1
+3160ft
+KILER
+N15deO0.0 W076deg52.0
+All of the above points were within 0.1 mile of their location in the ARINC-424 [21] navigational data
+for December 21, 1995, with the exception of RW01 at SKCL. However, it was found that the FMC
+display showed the threshold of the runway and the ARINC-424 data showed the touch-down point for
+the instrument landing system.
+During testing at Honeywell Systems, the memory card from the accident airplane was installed into an
+FMC that was programmed in the AA configuration and run on an engineering simulator. Different
+route modifications were executed and timed for delays after the EXECUTE button was pushed. Over
+ULQ, inputting "direct" changes to ROZO from different orientations, as well as to KILER, resulted in
+execution delays of not more than approximately 2 seconds (see appendix E, Reconstructed Route Pages
+from accident FMC).
+At the completion of the tests, the memory card was returned to the original FMC computer case that
+had been recovered from the accident site. Dirt
+---------------[20] R refers to an NDB in Bogota, located about 130 miles east-northeast of Cali.
+[21] Aeronautical Radio. Inc. of Annapolis, Maryland).
+18
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (20 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+was vacuumed from the interior of the FMC and brushed from the faces of dirty circuit cards. Although
+a number of connector pins were found broken from the dented rear face, they were then box mounted
+into the simulator without difficulty and operated successfully.
+1.16.2 At Jeppesen Sanderson
+The Jeppesen Sanderson Company described that software inputs that are provided by contract to
+operators of FMS-equipped aircraft are made in accordance with the guidelines of ARINC-424 Chapter
+7, "Naming Conventions, " establishes the coding rules of identifiers and Name fields when government
+source data does not provide these Identifiers or Names within the rules established by International
+Civil Aviation Organization (ICAO) Annex 11. As stated by the Jeppesen Sanderson Senior Vice
+President, Flight Information and Technology, in a subsequent letter to the President of the
+Investigation:
+An important item to remember is that all of Jeppesen's navigation data is entered into our database
+using the ARINC 424 Aeronautical Database Specifications standard. This standard is the result of an
+effort that began in August 1973 and has been continuously updated and now is in its 14th revision. The
+ARINC spec is a set of rules that has been established by industry, airlines, avionics manufacturers,
+FAA, ICAO, international AIS offices, and others to ensure agreement in concept of using aeronautical
+information in automated systems worldwide.
+As one of the first considerations, databases cannot accept duplicate information. There cannot be two
+names for the same item. Specifically, the Romeo NDB uses the letter R for its identifier. The Rozo
+NDB also uses the same letter R for its identifier. The letter R was assigned to both of these navaids by
+the Colombian government.
+Both of these navaids are within the same country and therefore have the same ICAO identifier. For
+enroute facilities, the combination of both the NDB identifier and [emphasis in original] the ICAO code
+is normally adequate to provide uniqueness for entering data in the database.
+19
+
+When entering navaid information into the database, the navaid identifier is used as the key identifier.
+This means that the letter R is the default value for the Romeo NDB and the Rozo NDB. Since the
+Bogota city and airport is larger than Cali, the larger airports are entered sequentially at the beginning to
+satisfy the greatest amount of users. The letter R was entered for the Romeo NDB as the "key" to the
+navaid. Therefore, when using most FMSs, entering the letter R when in Colombia will call up the
+Romeo NDB since it is the identifier for the Romeo NDB.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (21 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+When the Rozo NDB was entered into the database, the letter R was attempted, but the computer
+rejected the letter R since it had already been used for the Romeo NDB. According to the ARINC 424
+standards, when a duplicate exists, the name of the NDB can be used as the identifier for entry into the
+database. In the case of Rozo, since the name is four letters or less, the complete name of Rozo was used
+as the identifier. At Jeppesen, we are not experts on the use of FMSs, but we understand the access to
+NDBs in most FMSs is via their identifier. In this case, an entry of the single letter R would retrieve
+Rome since R is the identifier for Romeo. To retrieve the Rozo NDB, the letters ROZO would need to
+be entered into the FMS since that is the identifier for Rozo.
+Under the NavData tab in the Jeppesen Airway Manual, there is an explanation of most of the
+procedures specified in ARINC 424 as they apply to the user of an FMS....
+1.16.3 At Boeing
+Following the examinations at Honeywell Systems and the meehngs at Jeppesen Sanderson, tests were
+conducted at Boeing Commercial Airplane Group, using a B-757 fixed base simulator as well as a CDU/
+FMS bench-type simulator. Several different displays were used to replicate the flightpath and routing
+information that was recovered from the accident FMC non volatile memory at Honeywell Systems, and
+the accident flight's arrival, descent, approach phase, and attempted escape maneuver were replicated as
+closely as possible on the fixed-base simulator.
+20
+
+It was found that neither the Boeing fixed base simulator nor the CDU/FMS simulator could be
+backdriven with the data obtained directly from the accident airplane's FDR. Instead, data obtained from
+the FDR and non volatile memory data from the FMC were input into both simulators, to replicate the
+flight as closely as possible from 63 miles north of CLO to and including the escape maneuver. It was
+found that calling up R on the CDU displayed a series of waypoints and their coordinates. They were
+located north and south of the equator and ordered from top to bottom of the display by their distance
+from the airplane. Romeo, a non directional radio beacon (NDB) in the City of Bogota, was the first and
+closest waypoint displayed. Rozo, which was also an NDB, was not displayed, and entering R would not
+call up Rozo. Rozo could only called up by spelling out ROZO on the CDU.
+The Simulations found that when R was entered into the CDU, a white dashed line pointed off the map
+display towards the east-northeast. When R was "executed," the airplane turned towards R (in the City of
+Bogota) and the white dashed line turned to a solid magenta colored line on the display.
+Investigators also attempted to replicate the GPWS escape maneuver, particularly because wreckage
+examinations and FDR data indicated that the speedbrakes were not retracted during the escape
+maneuver. Because the B-757 flight simulators could not be back driven during the tests, it could not be
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (22 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+determined with precision whether the airplane would have missed the mountain/tree tops if the
+speedbrakes had been retracted during the escape attempt.
+1.17 Organizational and Management Information
+AA began operating its Latin American routes in July 1991, and the MIA crew base opened at that time.
+At the time of the accident, the MIA base was third in terms of the number of pilots, behind DFW and
+Chicago-O'Hare International Airport (ORD). The accident flightcrew members were based at MIA. On
+AA's Latin American and Caribbean routs, 98.4 percent of the flightcrews were based at MIA.
+The MIA base was overseen by a base manager who was a B-757/767 captain in their South American
+division. He had been a line pilot until approximately one year before the accident. AA's Latin American
+operations and domestic operations from MIA were each overseen by their own chief pilot.
+21
+
+Pilots based at MIA reported to the base manager. He was supervised by the Assistant Vice President,
+Line Operations., who reported to the Vice President, Flight Operations. He was supervised by the
+Executive Vice President, Operations, who reported to the President of AA. The President was
+responsible to the Chief Executive Officer of the airline.
+1.18 Additional lnformation
+1.18.1 Air Traffic Control
+Upon entering Colombian airspace on December 20, 1995, AA965 was under the control of the
+Barranquilla Center, and then Bogota Center. Upon exiting the limits of the Bogota Center airspace, the
+airplane entered the airspace controlled by Cali Approach.
+At the time of the accident, the Cali approach control facility was located in the control tower at SKCL.
+The approach controller was located in a small cab 8 to 10 feet from the tower controller. Flight progress
+strips were used to keep track of aircraft that were inbound or outbound from the airport, or traversing
+the Cali airspace. Radar coverage and radar services were not available.
+Colombian controllers operate under rules promulgated by the Aeronautica Civil Communications.
+Pilots are governed by Annex 10 to the Convention on International Civil Aviation, "Aeronautical
+Telecommunications." The annex establishes the rules under which pilots and controllers, who are not
+conversant in each other' s native language, can communicate. Section 1.2 of Annex 10 states:
+The primary means for exchanging information in air-ground communications is the language of the
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (23 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+ground stations, which will in most cases be the national language of the State responsible for the
+station.
+Paragraph 5.2.1.1 2 recommends, that where English is not the language of the ground station the
+English language should be available on request, thereby, the recommendations of the Annex indicate
+that the English language will be available as a universal medium for radiotelephone communications.
+22
+
+Section 1.4 of the Annex adds:
+That means of assuring safety, however, can hardly be satisfactory in practice. It is always possible that
+an emergency may require communication with a ground station not foreseen in the original planning,
+and that the handicapping or prevention of such emergency communications by the lack of a language
+common to the flightcrew and the ground station could lead to an accident.
+In the Latin American Pilot Reference Guide that AA provided to its Latin American division pilots, the
+following guidance was given:
+Because the controller may not understand any comments that are unexpected, out of sequence, or not in
+the ICAO format, you should use only ICAO accepted radio-telephony terminology.
+Colombian rules included the following:
+If a clearance given by the air traffic control center is not satisfactory to the pilot of the aircraft, the pilot
+can request an amended clearance, and if possible, he will receive an amended clearance.
+1.18.2 Cali Air Traffic Controller
+The air traffic controller, who was on duty at the time of the accident, in his first interview indicated to
+investigators that there were no language difficulties in the communications between himself and the
+accident flightcrew. However, in a second interview, when asked a specific question regarding his
+opinion about the effects the difference in native languages between the accident flightcrew and
+approach control may have had, he stated that he would have asked the pilots of AA965 more detailed
+questions regarding the routing and the approach if the pilots had spoken Spanish. He stated that he
+believed that his comprehension of the pilot's transmission was satisfactory and that the pilot also
+understood him. The controller said that, in a non-radar environment, it was unusual for a pilot to
+request to fly from his or her present position to the arrival transition. The air traffic controller also
+stated that the request from the flight to fly direct to the Tulua VOR, when the flight was 38 miles north
+of Cali, made no sense to him. He said that his fluency in non-aviation English was limited and he could
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (24 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+not ask them to elaborate on the request. Rather, he restated the clearance and requested their position
+23
+
+relative to the Cali VOR. He believed that the pilot's response, that AA965 was 37 miles from Cali,
+suggested that perhaps the pilot had forgotten to report passing the Tulua VOR.
+The controller further stated that had the pilots been Spanish-speaking, he would have told them that
+their request made little sense, and that it was illogical and incongruent. He said that because of
+limitations in his command of English he was unable to convey these thoughts to the crew.
+1.18.3 FAA Surveillance
+At the time of the accident, FAA oversight of AA's operations into Latin America was the carried out by
+its Flight Standards District Office (FSDO) No. 19, based at MIA. The FAA office responsible for
+overall surveillance of AA was based near the airline's headquarters in at DFW. FSDO 19 was the
+largest FSDO in the United States, responsible for the oversight of 11 carriers operating under 14 Code
+of Federal Regulations (CFR) Part 121, 51 carriers under Part 135, 12 flight schools operating under Part
+141, 233 repair stations operating under Part 145, as well as several other certificates. FSDO 23, also
+based at MIA was responsible for surveillance of Part 129 foreign carriers operating into MIA. Under a
+memorandum of understanding (MOU) with FSDO-19, FSDO-23 accomplished some of the
+surveillance of U.S. carriers operating into Latin America. FSDO 19 was responsible for performing
+geographic surveillance of AA surveillance as well as surveillance of United Airlines and Continental
+Airlines operations into Latin America and the Caribbean. AA management personnel described the
+FAA presence at MIA as positive and cooperative.
+During post accident interviews, FAA personnel indicated that AA conducted about 1,870 of the 7,200
+weekly operations at MIA, and that enroute surveillance of operations into South America were often
+conducted by airworthiness inspectors who were already traveling to Latin America to perform facility
+inspections. Airworthiness inspectors would plan and conduct enroute inspections on flights to South
+America, inspect the facility at the destination, and conduct enroute inspections on the return trip.
+Inspections were planned in this manner to reduce the FAA expenses associated with overseas travel.
+During interviews, FAA personnel verified that operations inspectors, who perform cockpit enroute
+checks are given different FAA training than airworthiness inspectors. Airworthiness inspectors
+specialize in maintenance matters and are not qualified flightcrew operational evaluators.
+24
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (25 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+International Civil Aviation Organization (ICAO) document no. 8335, Chapter 9, part 9.4.1 states:
+Ideally a CAA inspector should be at least as qualified as the personnel to be inspected or supervised. To
+carry out in-flight inspections, a CAA inspector should not only be qualified in the type of aircraft used
+but also possess appropriate route experience.
+Part 9.6.33 states:
+The following guidelines are suggested as minimum requirements with respect to the frequency of
+conducting the various inspections.
+Type
+Frequency
+En-route inspection quarterly
+Three operations inspectors at FSDO-19 performed 1,807 flight checks, including simulator, oral or
+actual airplane checks, out of 3,400 requests.
+1.18.4 American Airlines Training in Latin American Operations
+AA provided additional ground school instruction to all flightcrew members who were to begin
+operations into Latin America. This followed a 2-day ground school for all pilots who were to begin
+flying international routes. In the Latin America training, the airline also distributed to students a
+Jeppesen-sized reference guide devoted exclusively to the hazards and demands of flying into Latin
+America. Pilots also participated annually AA provided CRM training, exclusive to Latin American
+flight operations. The training and reference guide were not required by Federal Aviation Regulations
+(FARs).
+The following were among the title of topics addressed in both the reference guide and initial ground
+school training:
+Warning! Arrivals May be Hazardous
+● They'll [ATC] Forget About You
+● Know Where You Are!
+●
+
+25
+
+When "Knowing Where You Are" is Critical
+● Howto Determine Terrain Altitude
+●
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (26 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+In addition, the introduction to the reference guide included the following guidance:
+Flights into Latin America can be more challenging and far more dangerous than domestic flying or the
+highly structured North Atlantic/European operation. Some Latin American destinations have multiple
+hazards to air operations, and ATC facilities may provide little assistance in avoiding them.
+Enroute and terminal radar coverage may be limited or non-existent. Mountains, larger and more
+extensive than anything you've probably ever seen, will loom up around you during descent and
+approach, and during departure. Communications, navigation, weather problems, and an Air Traffic
+Control philosophy peculiar to Latin America may conspire with disastrous consequences.
+There are many hazards in this environment, but the greatest danger is pilot complacency. From 1979
+through 1989, 44 major accidents involving large commercial aircraft occurred in South America. Of
+these 44 accidents, 34 were attributable to pilot error, or were pilot-preventable with proper situational
+awareness (emphasis in original).
+1.18.5 Speedbrake System Description for the B-757
+The speedbrake system in the B-757 consists of overwing control surfaces that extend and retract at the
+command of the pilot through the aft and forward movement of the speedbrake control lever located in
+the top left side of the center control stand. In flight operation of the speedbrake system is manual.
+Automatic extension and retraction are restricted to the landing phase and is activated upon main wheel
+touchdown and forward movement of the power levers respectively. Due to the limited aerodynamic
+effect of the speedbrakes, flightcrews may become unaware that they are in the extended mode.
+Annunciation of speedbrake deployment only becomes activated in landing configuration and / or below
+800 feet. (see appendix D, Aileron and Spoiler Controls)
+26
+
+1.18.6GPWS Escape Maneuvers
+The Ground Proximity Warning Escape Maneuver procedure was contained in American Airlines B-757
+Flight Operations Manual under the section entitled, "Instruments." The procedure addressed the
+flightcrew actions that must be carried out in order to attain maximum climb performance of the airplane
+in order to overcome the obstacles ahead of its flight path. These pilot actions include the dlsengagement
+of autopilot and autothrottle system as well as selecting maximum power and attaining best angle of
+climb.
+27
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (27 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+2. ANALYSIS
+2.1 General
+There was no evidence of failures or malfunctions in the airplane, its components, or its systems.
+Weather was not a factor in this accident. Both crewmembers were properly qualified and certificated to
+operate the airplane on this flight. The specific details of the training history of the accident flightcrew
+was not available to the accident investigation team, because of the AA policy of maintaining training
+records which indicate only pass/fail on evaluations. No evidence was found that either crewmember
+was experiencing a behavioral or physiological impairment at the time that could have caused or
+contributed to of the accident.
+The evidence indicates that AA965 continued on the appropriate flight path until it entered the Cali
+Approach airspace. After contacting the Cali approach controller, the flightcrew accepted the controller's
+offer to land on runway 19 at SKCL, rather than runway 01 per the flight planned route. After receiving
+clearances to descend, lastly to 5,000 feet msl, neither flighterew member made an attempt to terminate
+the descent, despite the airplane's deviation from the published approach course, in a valley between two
+mountain ridges. After the flightcrew recognized that the airplane had deviated from the prescribed
+inbound course, as the first offieer stated less than 1 minute prior to impact, they attempted to turn back
+to the "extended centerline" of the runway, which as the eaptain then stated, "...is Rozo." The accident
+occurred following the turn back to the right from a track to the east of the prescribed course and an
+attempt to fly in a southwesterly heading to directly intercept the extended runway centerline.
+The investigation examined flightcrew actions to determine how a properly trained and qualified crew
+would allow the airplane to proceed off course, and continue the descent into an area of mountainous
+terrain. In addition, the investigation examined the actions of the Cali approach controller to determine
+what role, if any, his actions may have had upon the accident. The quality of the FAA surveillance of the
+AA South American operation was examined. The investigation also assessed survivability issues to
+determine the extent to which the number of the injuries and fatalities could have been reduced, and the
+design of the speedbrake, and AA's procedures and training in retracting speedbrakes during GPWS
+escape maneuvers..
+28
+
+2.2 The Decision to Accept Runway 19
+The evidence indicates that the captain and first officer committed a series of operational errors that led
+to the accident. The errors, which individually were not causal, interacted in a way that caused the
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (28 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+accident. The CVR contained the final approximately 30 minutes of cockpit voice recording, but did not
+contain details of an approach briefing into Cali, and investigators were unable to determine whether or
+how detailed a flightcrew approach briefing took place before the beginning of recorded information.
+However, investigators were able to identify a series of errors that initiated with the flightcrew's
+acceptance of the controller's offer to land on runway 19 rather than the filed approach to runway 01.
+This expectation was based on the experience of AA pilots operating into Cali, where almost all landings
+had been on runway 01, and AA's operations office at SKCL had radioed the accident flightcrew about 5
+minutes prior to the controller's offer information regarding the active runway. Also, FMC
+reconstruction found that the ILS approach to runway 01 had been entered into the airplane's FMS.
+The CVR indicates that the decision to accept the offer to land on runway 19 was made jointly by the
+captain and first officer in a 4-second exchange that began at 2136:38. The captain asked: "would you
+like to shoot the one nine straight in?" The first officer responded, "Yeah, we'll have to scramble to get
+down. We can do it." This interchange followed an earlier discussion in which the captain indicated to
+the first officer his desire to hurry the arrival into Cali, following the delay on departure from MIA, in an
+apparent attempt to minimize the effect of the delay on the flight attendants' rest requirements. For
+example, at 2126:01, he asked the first officer to "keep the speed up in the descent."
+As a result of the decision to accept a straight in approach to runway 19, the flightcrew needed to
+accomplish the following actions expeditiously:
+Locate, remove from its binder, and prominently position the chart for the approach to runway 19
+● Review the approach chart for relevant information such as radio frequencies, headings, altitudes,
+distances, and missed approach procedures
+● Select and enter data from the airplane's flight management system (FMS) computers regarding
+the new approach
+●
+
+29
+
+Compare information on the VOR DME Runway 19 approach chart with approach information
+displayed from FMS data
+● Verify that selected radio frequencies, airplane headings, and FMS- entered data were correct
+● Recalculate airspeeds, altitudes, configurations and other airplane control factors for selected
+points on the approach
+● Hasten the descent of the airplane because of the shorter distance available to the end of new
+runway.
+● Monitor the course and descent of the airplane, while maintaining communications with air
+traffi1c control (ATC)
+●
+
+The evidence of the hurried nature of the tasks performed and the inadequate review of critical
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (29 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+information between the time of the flightcrew's acceptance of the offer to land on runway 19 and the
+flight's crossing the initial approach fix, ULQ, indicates that insufficient time was available to fully or
+effectively carry out these actions. Consequently, several necessary steps were performed improperly or
+not at all and the flightcrew failed to recognize that the airplane was heading towards terrain, until just
+before impact. Therefore, Aeronautica Civil believes that flightcrew actions caused the accident.
+Researchers studying decision making in dynamic situations [22] have suggested that experienced
+persons can quickly make decisions based on cues that they match with those from previous experiences
+encountered in similar situations. A referenced text refers to this characteristic as Recognition Primed
+Decision Making, in which a decision maker's rapid assessment of the situation is almost immediately
+followed by the selection of an outcome. It states:
+Our research has shown that recognitional decision making is more likely when the decision maker is
+experienced, when time pressure is greater, and when conditions are less stable. [23]
+It is likely therefore that when previously faced with similar situations, such as the opportunity to
+execute an approach that was closer to the airplane's
+---------------[22] Klein, G., (1993), Naturalistic Decision Making: Implications for Design. Wright-Patterson Air
+Force Base, Ohio: Crew System Ergonomics Information Analysis Center.
+[23] Klein, G., (1993), A recognition primed decision (RPD) model of rapid decision making. In Klein,
+G. A., Orasanu, J., Calderwood, R., and Zsambok, C. E., (Eds.), Decision Making in Action: Models and
+Methods. Norwood, New Jersey, Ablex, p. 146.
+30
+
+position than the approach anticipated, the pilots of AA965, each of whom had acquired years of
+experience as air transport pilots, accepted the offers and landed without incident.
+However, recognition primed decision making can present risks to the decision maker if the initial
+assessment of the situation is incorrect, or if the situation changes sufficiently after the decision has been
+made but the initial decision is not reconsidered. In this accident, the latter scenario appears to have been
+the case; there is no evidence that either flightcrew member reconsidered the initial decision to accept
+the offer to land on runway 19 and all subsequent actions were directed to completing the steps
+necessary to successfully land.
+The evidence suggests that either of two reasons could account for the flightcrew's persistence in
+attempting to land rather than discontinuing the approach. These include the failure to adequately
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (30 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+consider the time required to perform the steps needed to execute the approach and the reluctance of
+decision makers in general to alter a decision once it has been made.
+The CVR transcript indicates that the captain, at 2137:10, gave the only consideration either flightcrew
+member expressed in reference to the time available, after accepting the offer to land on runway 19,
+when he asked the first officer, in response to an ATC clearance, "Yeah he did [say the Rozo 1 arrival].
+We have time to pull that [approach chart] out?" There is no response to this question, but the CVR
+records the sound of "rustling pages," likely the approach chart. Despite this comment, there is no
+evidence that either pilot acknowledged that little time was available to perform the preliminary tasks
+such as verifying their position relative to the navaids that formed the basis for the approach or to
+execute the approach.
+Once they began to prepare for the approach to runway 19, there is no evidence that the flightcrew
+revisited the decision, despite increasing evidence that should have discontinued the approach. This
+evidence, supported by recovered FMC non volatile memory, includes the following:
+Inability to adequately review and brief the approach
+● Inability to adhere to requirement to obtain oral approval from the other pilot before executing a
+flight path change through the FMS
+● Difficulty in locating the VLQ and Rozo fixes that were critical to conducting the approach.
+●
+
+31
+
+●
+
+Turning left to fly for over one minute a heading that was approximately a right angle from the
+published inbound course, while continuing the descent to Cali
+
+By not reconsidering that initial decision, the flightcrew acted consistently with the findings of human
+factors research on decision making that found that decision makers are reluctant to alter a decision after
+it has been made. For example [24]:
+Operators tend to seek (and therefore find) information that confirms the chosen hypothesis and to avoid
+information or tests whose outcome ... could disconfirm it. This bias produces a sort of "cognitive tunnel
+vision" in which operators fail to encode or process information that is contradictory to or inconsistent
+with the initially formulated hypothesis. Such tunneling seems to be enhanced particularly under
+conditions of high stress and workload.
+Thus, in addition to simply being too busy to recognize that they could not properly execute the
+approach, once the decision to land on runway 19 had been made, the course of action taken was to
+continue the approach, rather to consider discontinuing it.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (31 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+2.3 Situational Awareness
+Once they made the decision to accept the offer to land on runway 19, the flightcrew displayed poor
+situation awareness, with regard to such critical factors as the following:
+Location of navaids and fixes
+● Proximity of terrain
+● Flight Path
+●
+
+The flightcrew's situation awareness was further compromised by a lack of information regarding the
+rules which governed the logic and priorities of the navigation data base in the FMS.
+---------------[24] Wickens, C. D., (1984), Engineering Psychology and Human Performance. Columbus, Ohio:
+Charles E. Merrill, p. 97.
+32
+
+Situational awareness has been defined [25] as the:
+...perception of the elements in the environment within a volume of time and space, the comprehension
+of their meaning, and the projection of their status in the near future.
+To airline pilots, situational awareness refers to a flightcrew's understanding of the status and flightpath
+of the aircraft, and the accuracy of their prediction about its future status and flightpath. Deficiencies in
+situation awareness can lead to potentially catastrophic failures involving flightpath prediction or
+comprehension and prediction of system parameters.
+The accident CVR indicated that from the beginning of their attempt to land on runway 19, the
+flightcrew exhibited a lack of awareness of fundamental parameters of the approach. From 2137:11,
+when the sound of rustling pages can be heard, the flightcrew attempted to both review the approach and
+determine the airplane's present and predicted position in reference to critical points on the approach.
+Their inability to effectively do both tasks is evidenced at 2138:49, when the first officer asked, "where
+are we," followed by a short discussion between both the captain and first officer regarding their
+position relative to the ULQ VOR. Again at 2139:30, two minutes before impact, neither flightcrew
+member could determine which navaid they were to proceed towards. The first officer stated, "left turn,
+so you want a left turn back around to ULQ." The captain replied, "Nawww... hell no, let's press on to..."
+The first officer stated, "well we're, press on to where though?" The captain replied, "Tulua." The first
+officer staid, "that's a right u u. The captain stated, "where we goin'? one two.. come to the right. let' go
+to Cali first of all, lets, we got [expletive] up her didn't we." The first officer replied, "yeah."
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (32 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+The captain established the flightpath that initially led to the deficiency in situational awareness by
+misinterpreting the Cali approach controller's clearance to proceed to Cali, given at 2134:59, as a
+clearance "direct to" Cali. The captain's readback of the clearance, "... understood. Cleared direct to Cali
+VOR. Report Tulua ... " received an affirmative response from the controller. The captain's readback
+was technically correct because he stated that he was to report Tulua, thus requiring him to report
+"crossing" the fix first. However, the CVR indicates that the
+---------------[25] Endsley, M R. (1995). Toward a theory of situation awareness in dynamic systems. Human
+Factors, 37, 65-84, p. 36.
+33
+
+captain then executed a change in the FMS programmed flightpath to proceed "direct to" the Cali VOR.
+In so doing he removed all fixes between the airplane's present position and Cali, including Tulua, the
+fix they were to proceed towards.
+There is no evidence in the CVR transcript that either pilot recognized that ULQ had been deleted from
+the display until they were considerably closer to Cali, and were in fact past ULQ at that time.
+Consequently, largely as a result of this action, the flightcrew crossed the initial approach fix ULQ,
+without realizing that they had done so and without acknowledging the crossing to the controller.
+Aeronautica Civil believes that the logic of the FMS that removed all fixes between the airplane's
+present position and the "direct to" fix compromised the situational awareness of the flightcrew. In
+particular, it affected their awareness of the position of the airplane relative to critical fixes and navaids
+necessary for the approach. Sinee the initial certification of the FMS on the B-757/-767, the Boeing
+Company has developed and implemented a change to the B-757 software that allowed such fixes to be
+retained in the display. However, this retrofit, part of a product improvement package for the airplane,
+had not been incorporated into the accident airplane. Aeronautica Civil believes that the FAA should
+evaluate all FMS-equipped aircraft and, where necessary, require manufacturers to modify the FMS
+logic to retain those fixes between the airplane's position and those the airplane is proceeding towards,
+following the execution of a command to the FMS to proceed direct to a fix.
+Deficient situation awareness is also evident from the captain's interaction with the Cali air traffic
+controller. At 2137:29, the captain asked the controller if AA965 could "go direct to [the non directional
+beacon] Rozo and then do the Rozo arrival." The controller later stated that this question that made little
+sense since Rozo was a beacon located just before the approach end of runway, and not an initial or
+intermediate approach fix located considerably before the runway. The interaction with the controller
+continued at 2140:01, when the captain asked the controller a similar question. The captain announced
+his position and properly interpreted the approach when he asked "...You want us to go to Tulua and
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (33 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+then do the Rozo ... to the runway?" While this question demonstrated that the captain understood the
+appropriate flight path necessary to execute the approach, his position report contradicted his statement,
+because the airplane had already crossed ULQ and therefore would have to reverse course to comply
+with his statement
+34
+
+2.4 Awareness of Terrain
+In addition to deficiencies in situation awareness already noted, there is no evidence that, before the
+onset of the ground proximity warning system (GPWS) alert, the flightcrew recognized the proximity of
+terrain to the airplane's present and future flight path. The evidence suggests several explanations for this
+deficiency in the flightcrew's situational awareness:
+Cali was not on the "hit list" [26] of South American airports
+● The guidance given in the AA referenced guide and in training did not have sufficient impact to
+be recalled in a time of high stress and workload.
+● They had become acclimated to the hazards of flying in mountainous terrain.
+● The first officer relied primarily on the captain's experience in operating into Cali and
+consequently relaxed his vigilance
+● Terrain information was not shown on the electronic horizontal situation indicator (EHSI) or
+graphically portrayed on the approach chart
+● The night visual conditions limited the ability to see the terrain
+●
+
+There was evidence that AA provided the captain and first officer of AA965 with the information they
+needed to be sufficiently alert to the need to maintain constant awareness of proximity to terrain when
+operating in South America. The training and information that AA provided to its crews on the hazards
+specific to Latin America addressed many of the issues noted in the investigation of this accident.
+Following its entry into the South American market, AA developed the information in the reference
+guide and in training, after making significant effort to identify and address the unique demands of
+South American flight operations.
+Aeronautica Civil believes that AA provided valuable information to its flightcrews regarding flying in
+South America, including many safety topics and advisories that were overlooked by the crew of
+AA965. Despite the high quality of the training that AA provided to their flightcrews, this accident
+demonstrates that the performance of flightcrews in the cockpit may not manifest the attitudes, skills,
+and procedures that such a training program addresses.
+---------------[26] AA defined airplanes deserving special pre approach briefing criteria.
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (34 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+35
+
+Both the reference guide and the Latin American training program noted that three South American
+airports: Bogota, Colombia; Quito, Ecuador; and La Paz, Bolivia, were critical airports because of the
+effects of their high altitudes on aircraft performance. Pilots were required to meet additional training
+requirements before being permitted to fly into these cities for the first time. Because Cali, Colombia,
+was not at high altitude, it was not listed as a special airport and no additional training or checking was
+required to operate into it. Therefore, because it was not given "special consideration," the accident
+flightcrew may not have exercised the same level of vigilance when operating into Cali as they would
+have when operating into the three target airports.
+In the years since the flightcrew members received their initial Latin American training, both had
+operated in South America and the captain had operated into Cali 13 times without incident. Over time,
+repeated exposure to flight operations into potentially hazardous environments can become routine as
+pilots acclimate to the environment and their vigilance is diminished. Unless information is presented
+regularly in a novel and interesting way, pilots may fail to display the lessons of earlier training when
+those lessons are most needed. The Investigation Team believes that the pilots of AA965 became task
+saturated and did not recognize that the hazards the airline had warned them about as they were
+encountered during the accident approach.
+In addition, the first officer's lack of experience in the Cali environment served to increase his reliance
+on the captain for situational awareness. For example, at 2133:25, the first officer asked the captain for
+the transition level at which altimeter settings were to be changed on approach to Cali. Two minutes
+later, at 2135:44, he asked the captain whether speed restrictions were required, as well. Throughout the
+approach, the captain's experience into Cali appears to have reduced the first officer's otherwise assertive
+role as the pilot flying.
+The CVR indicates that the flightcrew had insufficient time to review thoroughly or effectively the
+approach chart for Cali's VOR DME approach to runway 19. Had more time been available, the
+flightcrew likely would also have selected the VOR DME runway 19 approach in the FMS. By using the
+approach chart as the primary reference to execute the approach into Cali, the pilots relied on it as their
+source for terrain information. High point of the terrain were displayed by several altitude dots on the
+chart and their associated elevations above msl. Although this method presents the necessary
+information, it takes pilots time to recognize and understand its significance because of the lack of
+prominence of this
+36
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (35 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+information. During a high workload period, or when insufficient time may be available to adequately
+review the chart pilots may not be able to assimilate that information to gain a comprehensive view of
+the airplane, its flight path, and its adherence to the approach parameters.
+Before the accident, the Jeppesen Sanderson Company, the supplier of approach charts and navigation
+information for electronic navigation data bases, began to change the portrayal of terrain on the charts
+and maps that it supplied to its customers. In the new method, terrain is portrayed using graphics similar
+to those used in topographic charts, with colors added to enhance the prominence of terrain and heighten
+its contrast with other information on the chart. The criteria the company uses to determine whether to
+display terrain information on approach charts require that terrain is 2,000 feet above the airport within 6
+miles of the airport, and on local area charts, that terrain is elevated more than 4,000 feet above the
+planned view of the airport. Because neither of these criteria was met in the VOR DME runway 19
+approach chart, terrain was not graphically presented on it.
+the terrain display criteria Jeppesen Sanderson developed were met regarding the local area chart, at the
+time of the accident the company had not yet converted the Cali local area chart to the new format. The
+chart that was available displayed terrain high points, but not in the same color graphic portrayal as is
+used in the newer format. Consequently, the chart used by the flightcrew did not graphically show the
+high terrain on either side of the descent into Cali. The Investigation Team believes that graphically
+portraying terrain information on approach charts is an effective means of presenting critical information
+to flightcrews quickly and without extensive interference with other tasks. Aeronautica Civil appreciates
+the efforts of Jeppesen Sanderson in upgrading its approach charts in order to present such information
+in an absence of a requirement to do so. Had this portrayal of terrain been available to the flightcrew,
+and had they referred to charts containing the information, it may have heightened their awareness of the
+proximity of terrain in their flightpath and the accident could have been avoided. Therefore, Aeronautica
+Civil believes that the FAA should require that all approach and navigation charts portray the presence
+of terrain located near airports, or flight paths.
+The evidence from the flightcrew's statements on the CVR and their inability to initially locate ULQ
+indicates that they did not refer to the local area chart during the flight and only referred to the approach
+chart. Therefore, during the descent they had no information available that could have quickly informed
+them of
+37
+
+the proximity of terrain. AA did however, provide the flightcrew with written terrain information on the
+flightplan. This noted that: "Critical terrain exists during the descent--Strict adherence to STAR
+necessary for terrain clearance." The evidence suggests that the flightcrew did not take this information
+into consideration during the descent into Cali.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (36 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+In FMS-equipped aircraft, the portrayal of flightpath, (in the Boeing/Honeywell Systems-equipped
+airplanes by means of a magenta colored line), is so accurate and informative that pilots are permitted to
+rely on it as the primary means of navigation, believing that they are secure in the knowledge that the
+airplane will be maintained along a safe flightpath as long as the magenta line is followed. However,
+unlike charts, the FMS-generated displays do not present associated information, such as terrain, and do
+not display navaids that are behind the airplane unless specifically directed to by a flightcrew member.
+As a result, pilots who are accustomed to relying exclusively on FMS-generated displays for navigation,
+can, over time, fail to recognize the relative proximity of terrain and can lose the ability to quickly
+determine that a fix or beacon is behind them. The evidence suggests that this partially explains the
+difficulty of the AA965 flightcrew in locating the ULQ. Aeronautica Civil believes that the FAA should
+require pilots operating FMS-equipped aircraft to have open and easily accessible the approach and
+navigation charts applicable to each phase of flight before each phase is reached.
+In addition, technological advances in the more than one decade since the introduction of "glass cockpit"
+aircraft allow for the presentation of terrain information on FMS-generated displays, a feature that was
+not possible at the time of their introduction. This information can enhance pilot situation awareness and
+considerably expand the ability of pilots operating glass cockpit aircraft to maintain awareness of the
+proximity of terrain to the airplane's flightpath. Therefore, because of the importance of FMS-generated
+displays to flightcrew situation awareness, Aeronautica Civil believes that that the FAA should
+encourage manufacturers to develop and validate methods of accurately displaying terrain information
+on airplane flightpath displays.
+Nevertheless, the history of flight indicates that the AA965 flightcrew did not effectively use all
+navigation information that was available to them and that they relied almost exclusively on their EHSI
+for navigation. Furthermore, they attempted to review the chart of the Cali VOR DME runway 19
+approach only during the period while the airplane was descending towards Cali and while they
+38
+
+were engaged in numerous critieal tasks. There is no evidence that they reviewed that chart earlier in the
+flight, or referred to the Cali area chart at any time. Had they done so, it is possible that they would have
+recognized that they had already crossed the initial approaeh fix, (ULQ), were flying between two
+mountain ranges, that necessitated adherence to approach charts, and as a result the accident may have
+been avoided.
+The captain's communications also indicate a lack of appreciation for the differences between South
+American airspace and that in the United States. Terrain clearance in the United States is much more
+likely because of the ATC surveillance available with radar coverage over most of the airspace, the
+integration of computer programs with radar to alert controllers to aircraft that are descending towards
+terrain, and the common use of the English language. As a result, pilot requests for clearances direct to a
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (37 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+fix are often made, and often granted. The captain's misinterpretation of the controller's clearance to Cali
+indicates that, despite his experience in operating into South America, his expectations of controller's
+capabilities were still largely influenced by his experience in the United States. Irrespective of the
+controller's "affirmative" response to the readback of the clearance to Cali, the captain could not assume
+that the controller understood the captain's intent, could monitor the airplane's flight path to assure
+terrain clearance, or could even assume that that the "direet to" clearance was legal. Aeronautica Civil
+believes, based on the interactions with the controller, that the captain and first officer both incorreetly
+assumed that a level of redundancy existed in the ability of the Cali controller to provide terrain
+clearance to the crew when no such ability existed.
+The limited visibility resulting from nighttime conditions at the time of the accident also hindered the
+flightcrew's terrain awareness. As a result, they were unable to visually reeognize the terrain until just
+before impact while descending towards Cali, despite the visual meteorologieal eonditions with visibility
+"greater than 10 kilometers" [27] that were present. The fact that the captain, the only one of the two
+flightcrew members to have operated into Cali, had likely previously landed only at night, also limited
+his appreciation for the presence of the mountains along either side of the approach into Cali.
+---------------[27] See section 1.7, Meteorological Information
+39
+
+2.5 Automation
+The accident airplane, a B-757, is one of the first automated "glass cockpit" types of transport aircraft
+introduced into the commercial aviation fleet in reeent years. These automated airplanes employ
+computers, known as FMSs on Boeing aircraft, extensively for navigation, systems monitoring, and
+flight path control. The FMS monitors and can display systems information and navigation data,
+including the airplane's predicted flight path, in an electronically generated graphic format. The FMS,
+considered to be highly reliable, can also exercise almost complete flightpath control through pilot
+inputs into CDUs, which are located on the console, one for the captain and one for the first officer.
+Either pilot can generate, select, and execute all or part of a flightpath from origin to destination through
+CDU inputs. In addition, as in other glass cockpit aircraft, only a 2-pilot flightcrew is required to fly the
+airplane and monitor its systems.
+Among its features is the map display, which graphically displays on the EHSI the airplane's present
+position and future flightpath, as well as the location and relative position of adjacent navigational aids
+and airports, at the option of the pilot. The FMS also calculates and can display the position of the
+airplane at the conclusion of a constant rate climb or descent and can automatically tune and locate
+navigational aids to assure positioning on the programmed flightpath.
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (38 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+The FMS navigation data base is developed and maintained for AA and most other airlines by the
+Jeppesen Sanderson Company, the organization that also supplies most airlines with navigation charts,
+and is formatted by the manufacturer of the FMS itself. The data base, updated at regular intervals as are
+the approach charts, includes frequencies and positions of navigational aids worldwide. In addition,
+instrument approach proeedures are maintained, using similar, but not identical data, to those shown in
+the charts.
+Pilots of glass cockpit aircraft can select an instrument approach procedure from the approaches stored
+in the FMS data base. They can then either direct the FMS to electronically fly the approach or manually
+fly it. Retrieving the available approaches and selecting a procedure requires several key strokes on the
+CDU. The FMS also possess superior computational ability. It can perform highly complex aircraft
+performance calculations more quickly and accurately than any pilot can.
+40
+
+Human factors researchers have written extensively on the potential risks that have been introduced by
+the automation capabilities of glass cockpit aircraft [28]. Among those identified are: over reliance on
+automation; shifting workload by increasing it during periods of already high workload and decreasing it
+during periods of already low workload; being "clumsy" or difficult to use; being opaque or difficult to
+understand, and requiring excessive experience to gain proficiency in its use. One researcher [29] has
+observed pilots on numerous occasions, even ones experienced in the systems, asking "What's it doing
+now?" in reference to an action of the FMS that they could neither explain nor understand.
+In recent years aircraft automation technology has changed, and line pilots, training departments, and
+flight standards and procedures officials have attempted to adopt to its demands. Researchers have also
+gained better understanding of the potential risks and benefits that highly automated FMS systems have
+brought to air transport operations, while identifying other risks as well. For example, with the
+introduction of highly advanced "fly-by-wire" aircraft, researchers [30] have noted that pilots can lose
+awareness of the flight mode the aircraft is operating in. Investigators attempted to identify what role, if
+any, use of the FMS played in the sequence of events that led to this accident.
+Both of AA965's pilots were experienced in the airplane, and were described as proficient in the use of
+the FMS by their peers. Yet, most likely because of the self-induced time pressure and continued
+attempts to execute the approach without adequate preparation, the flightcrew committed a critical error
+by executing a change of course through the FMS without verifying its effect on the flightpath. The
+evidence indicates that either the captain or the first officer selected and executed a direct course to the
+identifier "R," in the mistaken belief that R was Rozo as it was identified on the approach chart. The
+pilots could not know without verification with the EHSI display or considerable calculation that instead
+of selecting Rozo, they had selected the Rome beacon, located near Bogota, some 132
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (39 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+---------------[28] Wiener, E. L., & Curry, R. E., (1980). Flight deck automation: Promises and problems.
+Ergonomics, 23, 995-1011. Billings, C. E., (1996). Human-centered aviation automation: Principles and
+Guidelines. (TM No. 110381) Moffett Field, California: NASA-Ames Research Center.
+[29] Wiener, E. L. (1989). Human factors of advanced technology (Glass cockpit) transport aircraft
+(NASA CP No. 177528). Moffett Field, California: NASA-Ames Research Center.
+[30] Sarter, N. B., & Woods, D. D. (1995). How in the world did we ever get into that mode? Mode
+error and awareness in supervisory control. Human Factors, 37, 5- 19
+41
+
+miles east-northeast of Cali. Both beacons had the same radio frequency, 274 kilohertz, and had the
+same identifier "R" provided in Morse code on that frequency. In executing a turn toward Romeo rather
+than Rozo, the flightcrew had the airplane turn away from Cali and towards mountainous terrain to the
+east of the approach course, while the descent continued. At this time, both pilots also attempted to
+determine the airplane's position in relation to ULQ, the initial approach fix. Neither flightcrew member
+was able to determine why the navaid was not where they believed it should be, and neither noted nor
+commented on the continued descent. The CVR indicates that the flightcrew became confused and
+attempted to determine their position through the FMS. For example, at 2138:49 the first officer asked,
+"Uh, where are we?" and again, 9 seconds later asked, "Where [are] we headed?" The captain responded,
+"I don't know ... what happened here?" The discussion continued as each attempted to determine the
+position and path of the airplane relative to the VOR DME 19 approach to Cali. At 2140:40, the captain
+indicated that he was having difficulty again, apparently in locating Tulua VOR through the FMS. Over
+1- minute later the deviation from course was recognized by both and a return to the extended runway
+centerline was attempted by turning right. However, since they had been flying on an easterly heading
+for approximately 1 minute and were now well east of the prescribed course, the direct track back
+towards "centerline," or "Rozo," about 2 miles north of the approach end of runway 19, took the flight
+towards mountainous terrain which was then between them and the approach end of the runway. Impact
+occurred shortly thereafter.
+The first automation-related error by the flightcrew, the selection of Romeo instead of Rozo, was a
+simple one, based on the method used to generate a selection of navaids from the FMS data base, using
+the single letter identifier. All navaids having that identifier are displayed, in descending order of
+proximity to the airplane. The one closest to the airplane is presented first, the second is further from the
+position and so on. Selecting R resulted in a display of 12 NDBs, each of which used the "R" as an
+identifier. Choosing the first beacon presented in this list resulted from a logical assumption by the pilot.
+The investigation determined that because of rules governing the structure of the FMS data base, Rozo,
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (40 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+despite its prominent display as "R" on the approach chart, was not available for selection as "R" from
+the FMS, but only by its full name. The evidence indicates that this information was not known by the
+flightcrew of AA965. Furthermore, considerable additional differences existed in the presentation of
+identical navigation information between that on the approach charts and that in the FMS data base,
+despite the fact that the same company
+42
+
+supplied the data to both. For example, DME fixes for the Cali VOR DME runway 19 approach that
+were labeled on the charts as D-21 and D-16 were depicted on the FMS using a different nomenclature
+entirely, that is, CF19 and FF19. The company explained that it presented data in the FMS according to
+a naming convention, ARINC 424, developed for electronic data, while data presented on approach
+charts met requirements of government civil aviation authorities.
+Aeronautica Civil believes that the discrepancy between the approach chart and FMS presentation of
+data for the same approach can hinder the ability of pilots to execute an instrument approach, especially
+since flightcrews are expected to rely on both the FMS-generated display and the approach chart for
+information regarding the conduct of the approach. When two methods of presenting approach
+information depict important information differently or one readily show it at all, that information can be
+counterproductive to flightcrew performance in general, and their ability to prepare for an approach in
+particular. The lack of coordinated standards for the development and portrayal of aeronautical charts
+and FMS data bases and displays has led to a situation in which, not only are the charts and displays
+different in appearance, but the basic data are different. This lack of commonality is confusing, time
+consuming, and increases pilot workload during a critical phase of flight, the approach phase. Therefore,
+Aeronautica Civil urges the FAA to develop and implement standards for the portrayal of terminal
+environment information on FMS/electronic flight instruments (EFIS) displays that match, as closely as
+possible, the portrayal of that information on approach charts. Furthermore, until such time as the
+differences between FMS-based navigation data and data on approach and navigation charts is
+eliminated to the extent possible, Aeronautica Civil believes that the FAA should require the JeppesenSanderson Company to inform airlines operating glass cockpit aircraft of the presence of each difference
+in the naming or portrayal of navigation information on FMS-generated and approach chart information,
+and require airlines to inform their flightcrews of these differences.
+Although the differences between the presentation of the same information could be confusing, and the
+selection of Romeo instead of Rozo can be understood according to the logic of the FMS, the fact
+remains that one of the pilots of AA965 executed a direct heading to Romeo in violation of AA's policy
+of requiring flightcrew members of FMS-equipped aircraft to verify coordinates and to obtain approval
+of the other pilot before executing a change of course through the FMS. The failure to verify and to
+obtain verbal approval for the execution of the course to "R" occurred primarily because of the selfinduced pressure of the pilots of AA965 to execute the approach without adequate time being available.
+This exacerbated their confusion regarding their
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (41 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+43
+
+position, the positions of the critieal navaids, and the manner in which the approach was to be flown.
+Subsequently, the captain continued unsuccessful attempts to locate Tulua VOR, the initial approaeh fix,
+through the FMS. Perhaps had more time been available the flightcrew would have been under less
+pressure and could have recognized earlier that the airplane had turned away from Cali and was
+continuing to descend and could also have referred to their Cali area navigation charts to help determine
+their position. Furthermore, with more time the flightcrew may have selected the VOR DME Runway 19
+approaeh on the FMS. The continued use of the FMS to mitigate their confusion was unsuccessful and
+contributed to their not using other sources of information, such as charts, to reduce their confusion, as
+well as to their failure to consider discontinuing the approach.
+The FMS is highly reliable and presents navigation information in an easily interpretable manner.
+Researchers have shown [31] that operators will increase their use of and reliance on an automated
+system as their trust in the system increases. Also, as noted, pilot confusion regarding FMS-presented
+information is not unusual, even among experienced pilots. Confusion about the FMS presentation, as is
+true for use of any computer, is often resolved after persistent interaction with it. Thus, it is likely that
+the captain believed that the confusion he was encountering was related to his use of the FMS, and that
+continued interaction with it would ultimately clarify the situation. He could not be expected to
+recognize, because it rarely occurs in regular flight operations, that the fix he was attempting to locate
+(Tulua VOR) was by this time behind him, and the FMS-generated display did not provide sufficient
+information to the flightcrew that the fix was behind the airplane.
+In addition, the actions of the captain are consistent with literature that indicates that under stress, people
+tend to narrow their focus of attention [32].
+Probably the most widespread finding is that under various forms of stress, people tend to narrow their
+field of attention to include
+---------------[31] Moray, N., Lee, J. D., & Hiskes, D. (1994). Why do people intervene in the control of automated
+systems? In Mouloua, M. & Parasuraman, R. (Eds.) Proceedings of the first Automation Technology and
+Human Performance Conference. Washington, DC
+[32] ibid. Endsley.
+44
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (42 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+only a limited number of central aspects.... In many dynamic systems, high mental workload is a stressor
+of particular importance...
+Therefore because of the lack of time, the need to perform multiple tasks in the limited time, with the
+difficulty in locating a critical navaid, the accident captain appears to have been under considerable
+stress, which further compromised his ability to perform in the objective manner needed to develop and
+maintain good situation awareness. His attention thus narrowed to further repeated unsuccessful attempts
+to locate ULQ through the FMS.
+The evidence indicates that AA, as other airlines operating FMS-equipped aircraft, communicated to its
+pilots the appropriate impression of the high reliability of the FMS. Failure of the FMS is so unlikely
+that if it occurs it is it is believed to be likely be an electrical system anomaly and not one of the FMS
+itself. Pilot training in FMS-system failures is generally directed to display or total computer failures and
+the response suggested is to substitute working displays or computers for non-working ones. As a result,
+flightcrews have been taught that the FMS is an all-or-none system that will either work or not work,
+and that failures, which are few and far between, will be total. Therefore, since the FMS and the
+electronic displays were functioning, the appropriate pilot assumption was that difficulty in interacting
+with it was because of pilot input, and not something related to the FMS.
+At the same time, the FMS is a complex system that requires extended experience for pilots to gain
+proficiency it. Researchers [33], have noted that it often takes pilots as long as a year of regularly flying
+a glass cockpit airplane before feeling proficient in use of the FMS. Pilots are generally trained to be
+able to use almost all of the capabilities of the FMS, from programming simple courses, to "building" a
+course or holding pattern with navaids that are not part of a "canned" or FMS-stored flight plan in order
+to obtain the skills needed to pass a flight check. However, pilots are not given much information about
+the logic underlying much of the performance of the FMS, or shown many of the numerous options
+available to achieve identical goals in the FMS. This accident demonstrates that proficiency in the use of
+the FMS, without knowledge of the logic underlying such critical features as the design and
+programmed priorities of its navigation data base, can lead to its misuse. Such priorities in the system
+logic may result in one waypoint or fix being easily called up via the CDU by inputting simply the first
+letter of the name, and
+---------------[33] ibid. Wiener.
+45
+
+then selecting the nearest waypoint, at the top of the display, while another, equally important waypoint,
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (43 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+can never be called up unless it is spelled out properly on the CDU keyboard. Such partially understood
+logic may partially account for the finding that use of the FMS often increases workload during periods
+of already high workload.
+Aeronautica Civil believes that the circumstances of this accident demonstrate the need for airlines to
+revise the procedures used to operate FMS-equipped aircraft, and the training they provide to pilots in
+the application of those procedures. Giving pilots information on the FMS sufficient to pass a flight test,
+and relying on sustained use of the equipment thereafter to gain fluency in its use is counter to safe
+operating practices. Therefore, Aeronautica Civil urges the FAA to evaluate the curricula and flight
+check requirements used to train and certificate pilots to operate FMS-equipped aircraft, and revise the
+curricula and flight check requirements to assure that pilots are fully knowledgeable in the logic
+underlying the FMS or similar aircraft computer system before being granted airman certification to
+operate the aircraft.
+2.6 Crew Resource Management
+In a previous accident involving an FMS-equipped airplane, the flightcrew of a Thai Airways Airbus A­
+310 that crashed into the side of a mountain while on approach to Katmandu, Nepal, lost awareness of
+terrain and of the location of navaids that were in reality behind the aircraft [34]. Investigators found that
+after encountering and correcting a system anomaly during the approach, which was a period of high
+workload, the pilots lost awareness of the airplane's course and did not realize that they were headed
+towards, and not away from, high terrain. The displayed navigation information was confusing to them
+and they repeatedly attempted to use the FMS to clarify their understanding of the airplane's position.
+The airplane impacted the terrain while both the captain and first officer were interacting with the FMS.
+Numerous parallels exist between the findings of the Thai accident and the subject accident. In both,
+pilots of sophisticated glass cockpit aircraft on approach in mountainous environments relied on the
+FMS and continued to interact
+---------------[34] Aviation Accident Report, Thai Airways International Airways, Ltd., Airbus Industrie A310-304,
+HS-TID, Near Katmandu, Nepal, 23 NNE, 31 July 1992. His Majesty's Government of Nepal. June 1993
+46
+
+with the FMS in futile efforts to gain situational awareness, at the expense of reference to charts that
+could have enhanced terrain awareness. Yet, to its credit, AA has used the report of the Thai accident to
+train flightcrews on the potential risks of piloting highly automated aircraft, in a recent recurrent CRM
+training session that was given to well over 95 percent of AA's pilots. It is likely that the Cali accident
+pilots were trained in reference to lessons learned from the Thai accident, in recurrent CRM training.
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (44 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+AA had also, in the recurrent CRM program, begun to inform pilots that they should use charts and
+either partially or completely disengage the FMS when they believe that the FMS is exacerbating and
+not alleviating a confusing or difficult situation. Delta Airlines developed a similar course, given to all
+pilots before they first transition to a glass cockpit airplane, providing comparable guidance.
+Nevertheless, the subject accident at Cali demonstrates that when they encountered very similar
+circumstances to those experienced by the Thai Airways crew, the flightcrew of AA965 was too busy
+attempting to use the FMS in order to execute the approach to recognize the many parallels between the
+two accidents, even as they were experiencing them. This accident demonstrates that merely informing
+crews of the hazards of over reliance on automation and advising them to turn off the automation is
+insufficient and may not affect pilot procedures when it is needed most.
+This accident also demonstrates that even superior CRM programs, as evidenced at AA, cannot assure
+that under times of stress or high workload, when it is most critically needed, effective CRM will be
+manifest. In this accident, the CRM of the crew was deficient as neither pilot was able to recognize the
+following:
+The use of the FMS was confusing and did not clarify the situation
+● Neither understood the steps necessary to execute the approach, even while trying to execute it
+● Numerous cues were available that illustrated that the initial decision to accept runway 19 was ill
+advised and should be changed
+● They were encountering numerous parallels with an accident scenario they had reviewed in
+recent CRM training
+● The flight path was not monitored for over a minute just before the accident.
+●
+
+47
+
+Although the accident flightcrew articulated misgivings several times during the approach, neither pilot
+displayed the objectivity necessary to recognize that they had lost situation awareness and effective
+CRM.
+The FAA has encouraged airlines to implement effective CRM programs and has mandated it as a
+fundamental part of the advanced qualification program (AQP), an innovative method of training airline
+pilots. The FAA has issued an advisory circular (AC), No. 120-51A, that provides guidance to airlines
+on elements needed for a effective CRM program. The AC identifies topics that should be included in a
+CRM program. These include: communications processes and decision behavior; briefings; inquiry/
+advocacy/assertion, crew self-critique; conflict resolution; communications and decision making; team
+building and maintenance; and individual factors/stress reduction. Within the topic of team building, the
+AC suggests that workload management and situational awareness be addressed, so that "... the
+importance of maintaining awareness of the operational environment and anticipating contingencies ..."
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (45 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+is addressed.
+Aeronautica Civil believes that this accident demonstrates the difficulty in training for enhanced pilot
+situational awareness. The crew of AA965 was trained in a CRM program that adhered to the guidance
+of AC 120-51A, and that had added additional information on hazards unique to the South American
+operating environment. The evidence indicates that this crew was given background material and
+information necessary to avoid this accident, but during a stressful situation, when it was most needed,
+the information was not applied, most likely because the critical situation was not recognized.
+Offering further guidance on training in situation awareness does not address the fact that pilots who
+have lost or not achieved situation awareness cannot be expected to recognize that they have lost or not
+achieved it. More importantly, these pilots cannot be expected to develop a mechanism to efficiently
+achieve it.
+2.7 Speedbrakes
+After the GPWS alerted, the first officer initiated a go around and correctly followed AA's procedures
+regarding GPWS escape maneuvers. However, neither pilot recognized that the speedbrakes (spoilers),
+deployed earlier to increase the descent rate, remained deployed, and no effort was made to retract them.
+The evidence indicates that few cues were available to the pilots to recognize the speedbrake extension
+and the airline had no procedure at the time to require
+48
+
+speedbrake retraction as part of a GPWS escape maneuver. Nevertheless, because of the critical effect of
+speedbrakes on maximum performance maneuvers, the flightcrew should have recognized that the
+spoilers were still extended during the attempt to avoid the terrain, and should have retracted them early
+in the escape maneuver.
+2.8 The Cali Approach Controller
+The investigation examined the performance of the Cali approach controller to determine what role, if
+any, he may have played in the cause of the accident. The evidence indicates that he provided clearances
+in accordance with applicable ICAO and Aeronautica Civil rules and requirements, maintained
+separation of the aircraft he was controlling, and sequenced flights expeditiously and efficiently. His
+offer to AA965 to land on runway 19 was consistent with standards of safety and airspace management.
+By the standards of the FAA, ICAO and Aeronautica Civil, the flightcrew and not the controller was in
+the best position to determine the safety of the acceptance of that offer.
+However, the Cali airspace differed in several critical ways from comparable airspace in the contiguous
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (46 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+48 states of the United States, the airspace in which the accident flightcrew had accrued the
+overwhelming majority of their flight experience. The Cali airspace was not provided with:
+radar coverage
+● computer software to alert aircraft deviation from a safe altitude
+● computer software to enhance the radar image of a particular flight
+● a controller who shared a native language and culture with the flightcrew.
+●
+
+Because of these not insubstantial differences, unlike in domestic U.S. airspace, the Cali approach
+controller was entirely dependent on crew-provided information to determine the location, altitude,
+airspeed and climb/descent rate of a flight, and to assess whether that flight required air traffic control
+services beyond that provided for in the applicable rules and regulations. Consequently, in this airspace a
+controller's perception of the state of a flight that he or she is controlling is entirely dependent on the
+quality of the information that flightcrew provides. Deficiencies in that information directly caused
+deficiencies in the controller's awareness of the situation experienced by that particular flight.
+49
+
+The accident flightcrew did not request additional services from the Cali controller and at all times
+expressed confidence in their position, their flight path, and their ability to properly execute the
+approach and landing that the controller had offered them. The controller could not know and could not
+be expected to have known that the conversation within the cockpit, as recorded by the CVR, indicated
+that just the opposite was true.
+Nevertheless, the investigation determined that within the communications between the controller and
+the flightcrew, two critical sources of information may have provided some indication that AA965 was
+experiencing difficulty: 1) the captain asked the controller two questions regarding the execution of the
+approach to runway 19 that made little sense, and 2) two of the captain's position reports did not match
+the time in which they were made.
+The investigation team examined closely the quality of this information to determine whether it was
+sufficient to enable the controller to recognize that the flightcrew was facing imminent danger. Although
+the crew expressed to him no misgivings about the offer to land on runway 19, these elements may have
+provided some indication of potential difficulty.
+However, the approach controller was not trained to solicit the information necessary from the
+flightcrew in order to determine first hand the extent of the difficulty they were experiencing. He also
+lacked the ability that radar coverage would have provided him to observe the flightpath directly. In
+addition, he lacked the English language fluency needed to probe the flightcrew, from the subtle hints in
+the inconsistencies of their responses to him, to learn of the extent of their difficulties. Both AA's
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (47 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+guidance and ICAO's standards made it clear that English language ability by a controller who was not a
+native English speaker was limited to routine aeronautical communications. It would have been very
+difficult, in any event, for a Colombian controller to question or critically respond to the statements of an
+airline captain. Moreover, based on his experience of aircraft flying into Cali and their responses to the
+clearances he provided them, had he been able to suspect that the airplane was off course, he could not
+then be expected to suspect that, given the nature of the terrain in the valley north of Cali, the flight
+would also continue its descent.
+The approach controllers experience in Cali was such that the flightcrews of all aircraft arriving from the
+north recognized the proximity of high
+50
+
+terrain to the flight path to the airport. Thus, if a flightcrew was off course and needed assistance from
+the controller, the controller's natural expectation would be that they would ask for specific assistance
+from him. His training, experience, and guidance under the applicable rules in the non-radar
+environment of Cali would have made it unlikely for him to solicit the necessary information from the
+flightcrew of AA965 that would enabled him or the flightcrew to recognize the precarious nature of their
+flight path. Consequently, Aeronautica Civil concludes that the Cali controller neither caused nor
+contributed to the cause of this accident.
+2.9 FAA Oversight
+The investigation examined the quality of FAA surveillance of AA's operations into Cali to determine
+whether surveillance played a role in the cause of the accident. Aeronautica Civil believes that
+deficiencies in FAA surveillance of these operations were present, but that these deficiencies did not
+adversely affect the performance of the flight crew or the safety of AA965.
+Nonetheless, Aeronautica Civil is concerned that the FAA relied upon airworthiness inspectors to
+perform en route inspections of flights into Latin America. These inspections, which were primarily
+performed to conserve expense involved in sending operations inspectors abroad, were performed by
+inspectors who lacked the training that operations inspectors received to assess the quality of flight
+operations in the B-757, and crew compliance with required rules and procedures. Because AA
+operations and training were considered to meet standards and were not believed to have played a role in
+this accident, Aeronautica Civil concludes that the quality of FAA surveillance was deficient, but that
+this deficiency did not contribute to the accident. Nevertheless, because of the importance of assessing
+the quality of flight operations into the unique airspace of Latin America, Aeronautica Civil urges the
+FAA to perform en route inspections of U.S. carriers operating into Latin America in compliance with
+standards contained in ICAO manual 8335, paragraphs 9.4.1, and 9.6.3.3.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (48 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+2.10 GPWS Escape Maneuver
+FDR data from AA965 showed that within 2 seconds of the GPWS warning, the engines began to
+accelerate from flight idle at a rate of change consistent with a rapid advancement of the throttles. The
+speedbrakes were not retracted. Results of an initial study of the performance of AA965 following the
+GPWS warning indicates that if the flightcrew had retracted the speedbrakes l
+51
+
+second after initiating the escape maneuver, the airplane could have been climbing through a position
+that was 150 feet above the initial impact point. Therefore, because the airplane would have continued to
+climb and had the potential to increase its rate of climb, it may well have cleared the trees at the top of
+the ridge. The study also showed that if the speedbrakes had been retracted upon initiation of the escape
+maneuver and if the pitch attitude had been varied to perfectly maintain the stickshaker activation angle
+[35] the airplane could have been climbing through a position that was 300 feet above the initial impact
+point.
+Boeing's B-757 Flight Crew Training Manual provides one method of monitoring the status of
+speedbrake deployment. The manual states that "The Captain should keep his right hand on the
+speedbrake lever whenever they are used in-flight. This will preclude leaving the speedbrakes
+extended." AA does not have a similar procedure. Furthermore, neither the Boeing Operations Manual
+addressing terrain avoidance nor the AA Operating Manual addressing GPWS escape procedures discuss
+the need to stow the speedbrakes to extract maximum performance from the airplane during an escape
+maneuver. The investigation team noted that Boeing placed the terrain avoidance procedures in the NonNormal Procedures section of the manual while AA placed the GPWS escape procedures in Section 13 Flight Instruments. Airlines often place such procedures in non-operational sections of their manuals.
+Aeronautica Civil believes that the FAA should evaluate the Boeing procedure for guarding the
+speedbrake handle during periods of deployment, and require airlines to implement the procedure if it
+increases the speed of stowage or decreases the likelihood of forgetting to stow the speed brakes in an
+emergency situation. In addition, Aeronautica Civil believes that the FAA should evaluate the controlled
+flight into terrain (CFIT) escape procedures of air carriers operating transport category aircraft to ensure
+that the procedures provide for the extraction of maximum escape performance and ensure that those
+procedures are placed in operating sections of the approved operations manuals.
+The speedbrake handle may be pulled back to any desired level of spoiler panel deflection. The
+speedbrake handle also has an armed detent position to allow automatic deployment on landing. When
+the automatic speedbrake feature is in use and the airplane is on the ground, advancement of either thrust
+lever from flight idle will cause any extended spoiler panels to stow. However, advancing the
+---------------http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (49 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+[35] The FDR data revealed that, at the sound of the stickshaker, the pilots "relaxed" back pressure on
+the control yoke and then again pulled the control yoke to the point of stickshaker activation.
+52
+
+thrust levers in flight has no effect on deployed speedbrakes. In addition, flightcrews would receive an
+amber center panel speedbrake light and an amber engine indicating and crew alerting system (EICAS)
+SPEED BRAKES EXT message, master caution light, and chime when a speedbrake fails to retract. The
+speedbrakes remained extended and the CVR did not record the chime which indicates that the crew did
+not attempt to retract the speedbrakes.
+Investigators interviewed numerous B-757/767 pilots who reported that circumstances exist in which
+engine power may be advanced above flight idle, when speedbrakes are extended and it is desired that
+they remain extended. The B-757/767 Operating Manual states that to maintain pressurization of anti-ice
+bleed devices during descent above 10,000 feet, the engines should be kept at more than 70 percent N1.
+Some airplanes, such as the B-727, require engine power during descent to provide adequate bleed air to
+pressurize the cabin. Speedbrakes are required to counteract the effects of increased thrust. There are
+operational requirements to maintain engine power at levels greater than idle when the speed brakes are
+deployed, however, a need for speedbrakes at maximum power could not be identified.
+Although for both a controlled flight into terrain (CFIT) and windshear escape maneuver, immediate
+retraction of the speedbrakes is needed to achieve the maximum climb performance of the airplane,
+during periods of high workload, flightcrews may not recognize that speedbrakes have remained
+extended. Thus, it is possible that the automatic stowing of speedbrakes may provide a significant safety
+enhancement.
+Examination of other large jet transport category airplanes showed that 37 types do not have an
+automatic speedbrake stowing feature when full forward thrust is used, while, at least eight jet airplanes
+including one corporate jet, the Airbus A-330, A-340, and Fokker F28 and F100 airplanes have such a
+feature. However, the fly-by-wire airplanes have enhancements to the pitch control system to
+compensate for the automatic retraction of the speedbrakes. In addition, Boeing engineers state that, for
+the B-757, automatic retraction of the speedbrakes in a go-around maneuver may result in unwanted
+pitch excursions. If the speedbrakes are stowed as the throttles advance, the airplane would pitch down
+due to the aerodynamic effects of stowing the speedbrakes. The pilot would likely pull back on the
+control column to regain the desired pitch attitude as the engines began to spool up. The pilot effort and
+the increasing thrust could result in an undesirable upward pitch excursion. In fact, Boeing added
+compensating features to the B-777
+53
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (50 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+to minimize such effects which can occur during manual retraction of the speedbrakes while in flight
+(the B-777 does not have automatic speedbrake retraction). Aeronautica Civil believes that the FAA
+should evaluate the dynamic and operational effects of automatically stowing the speedbrakes when high
+power is commanded and determine the desirability of incorporating on existing airplanes automatic
+speedbrake retraction that would operate during windshear and GPWS escape maneuvers, or other
+situations demanding maximum thrust and climb capability. In addition, Aeronautica Civil believes that
+the FAA should require that newly certified transport category airplanes include automatic speedbrake
+retraction during windshear and GPWS escape maneuvers, or other situations demanding maximum
+thrust and climb capability.
+Although such educational efforts enhance the flightcrew's awareness of CFIT issues, those efforts
+cannot provide the safety benefits provided by the wind shear training or rejected takeoff training
+programs. Those programs include not only training aids but also specific simulator exercises that
+provide crew with sufficient hands-on training in a realistic environment. Simulator training is the best
+method for pilots to extract maximum performance from large airplanes during a CFIT escape
+maneuver. Therefore, Aeronautica Civil urges the FAA to require a CFIT training program that includes
+realistic simulator exercises comparable to the successful windshear and rejected takeoff training
+programs.
+2.11 Recording of FMS Data
+Aeronautica Civil, assisted by specialists from the NTSB, has been hampered during the investigation by
+the lack of recorded FMS information on AA965. Although the FDR provided considerable data
+including the engagement status and mode selection of the airplane's automatic flight control system,
+other pertinent information were not recorded, including pilot selected navigation aids; selected mode
+specific parameter values such as heading, airspeed, altitude, and vertical velocity; and selected
+electronic horizontal situation indicator formats such as maps, scales, and radio facilities selected to be
+displayed. This information would have enhanced the investigation of the crew's actions leading to the
+accident. Without knowledge of the nature and display of FMS information presented to flightcrews, and
+their interactions with FMS systems; investigators may not be able to explain many potentially critical
+flightcrew actions related to the FMS. Therefore, Aeronautica Civil believes that flightcrew-generated/
+selected inputs to the FMC should be recorded as parameters in the FDR.
+54
+
+3.0 Conclusion.
+3. 1 Findings
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (51 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+1. The pilots were trained and properly certified to conduct the flight. Neither was experiencing
+behavioral or physiological impairment at the time of the accident.
+2. American Airlines provided training in flying in South America that provided flightcrews with
+adequate information regarding the hazards unique to operating there.
+3. The AA965 flightcrew accepted the offer by the Cali approach controller to land on runway 19 at
+SKCL.
+4. The flightcrew expressed concern about possible delays and accepted an offer to expedite their
+approach into Cali.
+5. The flightcrew had insufficient time to prepare for the approach to runway 19 before beginning the
+approach.
+6. The flightcrew failed to discontinue the approach despite their confusion regarding elements of the
+approach and numerous cues indicating the inadvisability of continuing the approach.
+7. Numerous important differences existed between the display of identical navigation data on approach
+charts and on FMS-generated displays, despite the fact that the same supplier provided AA with the
+navigational data.
+8. The AA965 flightcrew was not informed or aware of the fact that the "R" identifier that appeared on
+the approach (Rozo) did not correspond to the "R" identifier (Romeo) that they entered and executed as
+an FMS command.
+9. One of the AA965 pilots selected a direct course to the Romeo NDB believing that it was the Rozo
+NDB, and upon executing the selection in the FMS permitted a turn of the airplane towards Romeo,
+without having verified that it was the correct selection and without having first obtained approval of the
+other pilot, contrary to AA's procedures.
+55
+
+10. The incorrect FMS entry led to the airplane departing the inbound course to Cali and turning it
+towards the City of Bogota. The subsequent turn to intercept the extended centerline of runway 19 led to
+the turn towards high terrain.
+11. The descent was continuous from FL 230 until the crash.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (52 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+12. Neither pilot recognized that the speedbrakes were extended during the GPWS escape maneuver,
+due to the lack of clues available to alert them about the extended condition.
+13 Considering the remote, mountainous terrain, the search and rescue response was timely and
+effective.
+14. Although five passengers initially survived, this is considered a non survivable accident due to the
+destruction of the cabin.
+15. The Cali approach controller followed applieable ICAO and Colombian air traffic control rules and
+did not contribute to the cause of the accident.
+16. The FAA did not conduct the oversight of AA flightcrews operating into South America according
+to the provisions of ICAO document 8335, parts 9.4 and 9.6.33.
+17. AA training policies do not include provision for keeping pilots' flight training records, which
+indicate any details of pilot performance.
+18. AA includes the GPWS escape maneuver under section 13 of the Flight Instrument Chapter of the
+Boeing 757 Flight Operations Manual and Boeing Commercial Airplane Group has placed the
+description of this maneuver in the Non Normal Procedures section of their Flight Operations Manual.
+56
+
+3.2 Probable Cause
+Aeronautica Civil determines that the probable causes of this accident were:
+1. The flightcrew's failure to adequately plan and execute the approach to runway 19 at SKCL and their
+inadequate use of automation.
+2. Failure of the flightcrew to discontinue the approach into Cali, despite numerous cues alerting them of
+the inadvisability of continuing the approach.
+3. The lack of situational awareness of the flightcrew regarding vertical navigation, proximity to terrain,
+and the relative location of critical radio aids.
+4. Failure of the flightcrew to revert to basic radio navigation at the time when the FMS-assisted
+navigation became confusing and demanded an excessive workload in a critieal phase of the flight.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (53 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+3.3 Contributing Factors
+Contributing to the cause of the accident were:
+1. The flightcrew's ongoing efforts to expedite their approach and landing in order to avoid potential
+delays.
+2. The flightcrew's execution of the GPWS escape maneuver while the speedbrakes remained deployed.
+3. FMS logic that dropped all intermediate fixes from the display(s) in the event of execution of a direct
+routing.
+4. FMS-generated navigational information that used a different naming convention from that published
+in navigational charts.
+57
+
+4.0 Recommendations
+As a result of this accident, Aeronautica Civil issues the following recommendations to the Federal
+Aviation Administration:
+1. Develop and implement standards for the portrayal of terminal environment information on FMS/
+EFIS displays that match, as closely as possible, the portrayal of that information on approach charts.
+2. Evaluate all FMS-equipped aircraft and, where necessary, require manufacturers to modify the FMS
+logic to retain those fixes between he airplane's position and one the airplane is proceeding towards,
+following the execution of a command to the FMS to proceed direct to a fix.
+3. Require airlines to provide pilots through CRM and flight training with the tools to recognize when
+the FMC becomes an obstacle to the proper conduct of the flight and correctly evaluate when to
+discontinue the use of the FMC and revert to basic radio navigation.
+4. Require that all approach and navigation charts used in aviation graphically portray the presence of
+terrain that are located near airports, or flight paths.
+5. Require pilots operating FMS equipped aircraft to have open and easily accessible the navigation
+charts applicable to each phase of flight before each phase is reached.
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (54 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+6. Encourage manufacturers to develop and validate methods to present accurate terrain information on
+flight displays as part of a system of early ground proximity warning. (Enhanced GPWS)
+58
+
+7. Require Jeppesen-Sanderson Company to inform airlines operating FMS-equipped aircraft of the
+presence of each difference in the naming or portrayal of navigation information on FMS-generated and
+approach chart information, and require airlines to inform their pilots of these differences, as well as the
+logic and priorities employed in the display of electronic FMS navigation information.
+8. Evaluate the curricula and flight check requirements used to train and certificate pilots to operate
+pilots to operate FMS equipped aircraft, and revise the curricula and flight check requirements to assure
+that pilots are fully knowledgeable in the logic underlying the FMS or similar aircraft computer system
+before being granted airman certification to operate the aircraft.
+9. Perform en route inspections of US carriers operating into Latin America in compliance with
+standards according to the provisions of ICAO document 8335 part 9.4 and 9.6.33.
+10. Evaluate the Boeing procedure for guarding the speedbrake handle during periods of deployment,
+and require airlines to implement the procedure if it increases the speed of stowage or decreases the
+likelihood of forgetting to stow the speed brakes in an emergency situation.
+11. Evaluate the dynamic and operational effects of automatically stowing the speedbrakes when high
+power is commanded and determine the desirability of incorporating on existing airplanes automatic
+speedbrake retraction that would operate during windshear and GPWS escape maneuvers, or other
+situations demanding maximum thrust and climb capability.
+12. Require that newly certified transport category airplanes include automatic speedbrake retraction
+during windshear and GPWS escape maneuvers, or other situations demanding maximum thrust and
+climb capability.
+13. Develop a mandatory CFIT training program that includes realistic simulator exercises that are
+comparable to the successful windshear and rejected takeoff training programs.
+59
+
+14. Evaluate the CFIT escape procedures of aircarriers operating transport category aircraft to ensure
+that the proeedures provide for the extraction of maximum escape performance and ensure that those
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (55 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+procedures are placed in operating sections of the approved operations manuals.
+15. Alert pilots of FMS equipped airplanes to the hazard of cornmonly identified navigation stations
+when operating outside of the United States.
+16. Review the pilot training record keeping systems of airlines operated under FAR Parts 121 and 135
+to determine the quality of the information contained therein, and require the airlines to maintain
+appropriate information on the quality of pilot performance in training and checking programs.
+17. Evaluate the possibility of requiring that flight crew generated inputs to the FMC be recorded as
+parameters in the FDR in order to permit investigators to reconstruct pilot - FMS interaction.
+The following recommendations are issued to the International Civil Aviation Organization:
+1. Urge the members states to encourage its pilots and air traffic controllers to strictly adhere to ICAO
+standards phraseology and terminology in all radio telecommunications between pilots and controllers.
+2. Evaluate and consider the adoption of the recommendations produced by the CFIT Task Force that
+has been created under the initiative of the Flight Safety Foundation.
+Establish a single standard worldwide that provides an unified criteria for the providers of electronic
+navigational databases used in Flight Management Systems.
+60
+
+The following recommendations are issued to American Airlines:
+1. Review the guidelines for ensuring that the flight crew preparation rendered by the training given at
+the Flight Training Academy is maintained throughout the different operational pilot bases by the
+standardizing the evaluation criteria of the check pilots.
+2. Address the analysis of flight crew performance in flight crew training records in order to reinforce
+CRM and the individual aspects of flight training programs.
+BY AERONAUTICA CIVIL
+/s/ Rodrigo Cabrera C.
+Chief of the Investigation Committee
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (56 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+/s/ Orlando Jimenez R.
+Senior Investigator
+/s/ Saul Pertuz G.
+Senior Investigator
+September, 1996 Santafe de Bogota D.C., Colombia
+61
+
+5. APPENDICES
+APPENDIX A
+INVESTIGATION
+Aeronautica Civil was notified of the accident at 2150 est, December 20, 1995. An investigative team
+was dispatched, departing Bogota at 0600, necember 21 and arriving at the crash site at 0830, December
+21, 1995.
+Aeronautica Civil was assisted by a U.S. Accredited Representat1ve throughout the investigation and
+preparation of the draft Report. The substance of the Accredited Representative's comments have been
+included in the Final Report. It should be noted that investigative groups were formed using specialists
+from Aeronautica Civil and the NTSB. The following groups participated in the investigation and in the
+preparation of the Final Report as follows:
+
+Aircraft Performance
+Aircraft Systems
+Air Traffic Control
+Cockpit Voice Recorder
+Flight Data Recorder
+Human Performance
+Operations
+Powerplants
+Structures
+Survival Factors
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (57 of 58) [1/20/2009 2:27:31 PM]
+
+Cali Accident Report
+
+Aeronautica Civil wishes to acknowledge with gratitude the participation of the following parties to the
+investigation:
+
+U.S. Federal Aviation Administration
+Allied Pilots Association
+American Airlines
+Boeing Commercial Airplane Group
+Rolls Royce Engines
+62
+
+Back to top
+Back to the `Incidents and Accidents' Compendium
+
+Peter B. Ladkin, 1999-02-08
+Last modification on 1999-06-15
+
+by Michael Blume
+
+http://www.rvs.uni-bielefeld.de/publications/Incidents/DOCS/ComAndRep/Cali/calirep.html (58 of 58) [1/20/2009 2:27:31 PM]
+
+

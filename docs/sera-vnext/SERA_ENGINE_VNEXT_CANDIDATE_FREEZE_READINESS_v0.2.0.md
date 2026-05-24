@@ -1412,3 +1412,16 @@ Registro de estado A4+R-106:
 Próxima ação macro:
 - preparar um único bundle de review autoral para o lote A4R106;
 - manter promoção/release/downstream fechados até decisão pós-review.
+
+## A4+R-105b — Official Report Corpus Local Archive and Extraction Prep
+
+This phase consolidated the curated official-report corpus locally and prepared extraction artifacts:
+- local archive manifest created;
+- attachment-PDF discovery/download completed for local HTML sources when available;
+- PDF/HTML to TXT conversion completed with extraction index and search index.
+
+Status controls for A4R105b:
+- no SERA classification performed;
+- no author approval requested;
+- no release created;
+- no downstream opened.

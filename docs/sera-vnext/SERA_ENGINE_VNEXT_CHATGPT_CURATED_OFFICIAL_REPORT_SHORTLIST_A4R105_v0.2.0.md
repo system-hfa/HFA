@@ -47,3 +47,14 @@ Notes:
 - A4R106 used official local reports as primary factual source.
 - No author approval was requested in A4R106.
 - No release and no downstream artifact were created.
+
+## A4+R-105b local archive/extraction prep status
+- local archive directory prepared: `docs/sera-vnext/source-corpus/official-reports/a4r105-curated/`
+- extraction directory prepared: `docs/sera-vnext/source-corpus/official-reports/a4r105-curated-txt/`
+- archive manifest: `docs/sera-vnext/SERA_ENGINE_VNEXT_OFFICIAL_REPORT_LOCAL_ARCHIVE_A4R105B_v0.2.0.md`
+- extraction index: `docs/sera-vnext/SERA_ENGINE_VNEXT_OFFICIAL_REPORT_TEXT_EXTRACTION_INDEX_A4R105B_v0.2.0.md`
+- source-slice search index: `docs/sera-vnext/SERA_ENGINE_VNEXT_OFFICIAL_REPORT_SOURCE_SLICE_SEARCH_INDEX_A4R105B_v0.2.0.md`
+
+Notes:
+- This was source-archive and extraction-prep only.
+- No SERA classification was performed in A4R105b.
