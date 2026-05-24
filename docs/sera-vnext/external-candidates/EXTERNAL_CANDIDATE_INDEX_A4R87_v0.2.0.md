@@ -1,0 +1,29 @@
+# External Candidate Index A4R87 v0.2.0
+
+Status: CURATED_INDEX  
+Phase: A4+R-87 — Version External Candidate Discovery Pack  
+CuratedBy: ChatGPT web/search  
+VersionedBy: Codex repository documentation update only  
+DOCS_ONLY  
+NO_CLASSIFICATION  
+NO_PROPOSED_CODE  
+NO_NEW_RELEASED_CODE
+
+| candidateId | priority | agency | reportId | url | aircraft | operationContext | seraGapTarget | recommendedUse | misuseRisk | shortlistedBatch1 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| A4R87-EXT-001 | P1 | TSB | A19A0055 | https://www.tsb.gc.ca/eng/rapports-reports/aviation/2019/a19a0055/a19a0055.html | S-92A | Offshore approach/descent near water | A axis evidence, PF/PM, feedback/checking | Batch 1 enrichment and stress-test | Importing report conclusion as SERA answer | yes |
+| A4R87-EXT-002 | P1 | NTSB | ERA19FA210 | https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/99766/pdf | AW139 | Night over-water warning-intensive flight | P vs A and warning-response boundary | Batch 1 adversarial boundary case | Automatic warning-to-code mapping | yes |
+| A4R87-EXT-003 | P1 | AAIB UK | 5/1988 | https://www.gov.uk/aaib-reports/5-1988-sikorsky-s-76a-g-bhyb-9-december-1987 | S-76A | Offshore night approach to platform | Perception spatial cues and low-energy boundary | Batch 1 enrichment anchor | Duplicating known case as independent new case | yes |
+| A4R87-EXT-004 | P1 | TSB | A15P0217 | https://www.tsb.gc.ca/eng/rapports-reports/aviation/2015/a15p0217/a15p0217.html | S-76C+ | Night approach loss of control | P-G stability and monitoring chain | Batch 1 targeted release challenge/reinforcement | Treating enrichment as automatic release change | yes |
+| A4R87-EXT-005 | P1 | ATSB | AO-2024-007 | https://www.atsb.gov.au/investigations/ao-2024-007 | E190 | Mode/configuration confusion | P-C vs P-G mode awareness boundary | Batch 1 fixed-wing mode case | Collapsing config issue into unsplit causal label | yes |
+| A4R87-EXT-006 | P1 | NTSB | AAR-18/02 | https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1802.pdf | C208B | TAWS inhibited CFIT context | Objective/procedure/action boundary | Batch 1 objective/action adversarial case | Importing probable cause as SERA output | yes |
+| A4R87-EXT-007 | P2 | NTSB | CEN10FA079 | https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/75203/pdf | S-76C++ | Helideck/platform rollover | Action feedback and mechanism | Batch 1 secondary enrichment | Assuming action fault without decomposition | yes |
+| A4R87-EXT-008 | P2 | TSB | A11H0001 | https://www.tsb.gc.ca/eng/rapports-reports/aviation/2011/a11h0001/a11h0001.html | S-92A | Go-around mode/AFCS near water | Automation mode awareness offshore | Batch 1 secondary enrichment | Human-fault attribution without automation evidence | yes |
+| A4R87-EXT-009 | P2 | TSB | A23P0136 | https://www.tsb.gc.ca/eng/rapports-reports/aviation/2023/a23p0136/a23p0136.html | S-76C++ | Lightning strike and rapid descent | Condition-dominant control | Batch 1 adversarial control | Human overclassification under dominant condition | yes |
+| A4R87-EXT-010 | P2 | BEA | PK-TVY notified event | https://bea.aero/en/investigation-reports/notified-events/detail/accident-to-the-sikorsky-s76-registered-pk-tvy-operated-by-travira-air-on-20-07-2021-on-soehanah-offshore-platform/ | S-76 | Offshore platform notified event | Helideck condition/action boundary | Batch 1 locator for later primary report | Treating notified page as final source | yes |
+| A4R87-EXT-011 | P2 | BEA | 5N-BQJ notified event | https://bea.aero/en/investigation-reports/notified-events/detail/accident-to-a-sikorsky-s76-registered-5n-bqj-and-operated-by-bristow-helicopters-ltd-occured-on-02-03-16-in-nigeria-investigation-led-by-aib---nigeria/ | S-76 | Offshore ditching notified event | Existing-case enrichment boundary | Batch 1 locator for known-case enrichment | Treating locator as full primary report | yes |
+| A4R87-EXT-012 | P2 | NTSB | CEN17FA072 | https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/94545/pdf | Citation CJ4 | Mode/autopilot status event | P-C/P-G mode-feedback boundary | Batch 1 fixed-wing comparator | Direct mode-confusion labeling | yes |
+| A4R87-EXT-013 | P3 | TSB | A12P0134 | https://www.tsb.gc.ca/eng/rapports-reports/aviation/2012/a12p0134/a12p0134.html | S-76A | Engine loss and ditching | Condition-dominant emergency response control | Later adversarial expansion | Turning emergency response into unsupported fault | no |
+| A4R87-EXT-014 | P3 | TSB | A08O0029 | https://www.tsb.gc.ca/eng/rapports-reports/aviation/2008/a08o0029/a08o0029.html | S-76A | Night medevac collision near helipad | Night approach perception/action expansion | Later rotorcraft expansion | CFIT outcome labeling without chain evidence | no |
+| A4R87-EXT-015 | P3 | NTSB | CEN23FA084 | https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/106588/pdf | Fixed-wing | AP unusual attitude/conflicting inputs | Automation vs action boundary stress | Later A axis stress case | Importing report causal language | no |
+| A4R87-EXT-016 | P3 | BEA | 5N-BQG notified event | https://bea.aero/en/investigation-reports/notified-events/detail/accident-to-the-sikorsky-s76c-registered-5n-bqg-on-24-10-2024-near-port-harcourt-nigeria/ | S-76C | Offshore approach water impact notified event | Preliminary offshore enrichment | Later-stage enrichment after maturation | Treating preliminary event as closed report | no |

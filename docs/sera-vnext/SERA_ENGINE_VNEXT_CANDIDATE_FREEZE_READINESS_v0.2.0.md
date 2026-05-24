@@ -941,3 +941,30 @@ O candidate freeze final continua nao autorizado.
 Proxima fase recomendada:
 - **A4+R-87 - External Source Enrichment Strategy for Released P-Axis Trace Stability**; ou
 - **A4+R-87 - Product/Runtime Contract for Released Axis Separation** (docs-only, sem implementacao).
+
+## A4+R-87 - Version External Candidate Discovery Pack
+
+Esta fase versionou no repositorio a curadoria externa ja feita no ChatGPT, sem executar busca primaria nova no Codex:
+
+- [External Candidate Discovery A4R87](./SERA_ENGINE_VNEXT_EXTERNAL_CANDIDATE_DISCOVERY_A4R87_v0.2.0.md)
+- [External Report Conclusion Quarantine Protocol A4R87](./SERA_ENGINE_VNEXT_EXTERNAL_REPORT_CONCLUSION_QUARANTINE_PROTOCOL_A4R87_v0.2.0.md)
+- [External Harvest Batch 1 Plan A4R87](./SERA_ENGINE_VNEXT_EXTERNAL_HARVEST_BATCH_1_PLAN_A4R87_v0.2.0.md)
+- [Released P-Axis External Enrichment Plan A4R87](./SERA_ENGINE_VNEXT_RELEASED_P_AXIS_EXTERNAL_ENRICHMENT_PLAN_A4R87_v0.2.0.md)
+- [External Candidate Index A4R87](./external-candidates/EXTERNAL_CANDIDATE_INDEX_A4R87_v0.2.0.md)
+
+Estado apos A4+R-87:
+- external candidate discovery versioned;
+- 16 candidatos externos curados registrados;
+- 12 candidatos shortlisted para Batch 1 externo;
+- busca externa primaria executada pelo ChatGPT;
+- Codex apenas versionou/organizou no repo;
+- nenhum proposedCode criado;
+- nenhum novo releasedCode criado;
+- nenhum P/O/A novo criado;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-88 - External Harvest Batch 1 Structured Extraction**, usando somente a shortlist curada.
