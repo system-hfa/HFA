@@ -272,6 +272,29 @@ Pendências remanescentes:
 - reavaliar eventual piloto de `NON_BLOCKING_WARNING` em fase posterior dedicada;
 - freeze final continua não autorizado.
 
+## A4+R-61 — Real Event Corpus Inventory + Sample Selection
+
+Esta fase iniciou a trilha de uso de corpora reais/compilados sem classificação causal:
+
+- [Real Event Corpus Inventory](./SERA_ENGINE_VNEXT_REAL_EVENT_CORPUS_INVENTORY_v0.2.0.md)
+- [Real Event Case Extraction Plan](./SERA_ENGINE_VNEXT_REAL_EVENT_CASE_EXTRACTION_PLAN_v0.2.0.md)
+
+Estado após A4+R-61:
+- inventário documental de corpus real criado;
+- amostra inicial de casos candidatos selecionada para extração futura;
+- extração estruturada ainda pendente de execução;
+- classificação SERA ainda não executada nesta trilha;
+- nenhum fixture oficial criado;
+- nenhum baseline alterado;
+- warning de evidence category ainda não ativo;
+- freeze final continua não autorizado.
+
+Pendências remanescentes:
+- executar extração estruturada da amostra com registro de incerteza por caso;
+- confirmar/localizar fontes primárias faltantes para referências `pdf24_merged*.pdf`;
+- manter separação estrita entre fato extraído e hipótese metodológica futura;
+- só depois avançar para fase de classificação AI/Author controlada.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.
