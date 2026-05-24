@@ -525,6 +525,28 @@ export interface SeraVNextEvidenceCategoryHint {
   note?: string
 }
 
+export type EvidenceCategoryCoverageStatus = 'PASSIVE_COVERAGE_RECORDED' | 'PASSIVE_COVERAGE_INCOMPLETE'
+
+export interface EvidenceCategoryCoverageFinding {
+  axis: PoaAxis | 'unknown'
+  code: string
+  requiredCategories: SeraVNextEvidenceCategory[]
+  matchedCategories: SeraVNextEvidenceCategory[]
+  missingCategories: SeraVNextEvidenceCategory[]
+  severity: 'PASSIVE_OK' | 'PASSIVE_GAP'
+  note: string
+}
+
+export interface EvidenceCategoryCoverageSummary {
+  status: EvidenceCategoryCoverageStatus
+  mode: SeraVNextEvidenceCategoryMode
+  totalItemsAudited: number
+  totalHintsObserved: number
+  categoriesObservedCount: Partial<Record<SeraVNextEvidenceCategory, number>>
+  findings: EvidenceCategoryCoverageFinding[]
+  passiveDiagnostics: string[]
+}
+
 export type HumanReviewStatusCode = 'HUMAN_DECISION_REQUIRED' | 'HUMAN_DECISION_CONTRACT_READY'
 
 export interface HumanReviewStatus {

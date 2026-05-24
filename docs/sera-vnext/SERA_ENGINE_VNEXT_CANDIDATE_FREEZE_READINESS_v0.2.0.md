@@ -232,6 +232,28 @@ Pendências remanescentes:
 - manter trilha opcional de validação externa para claims científicos/externos;
 - reavaliar freeze final conforme objetivo operacional vs externo.
 
+## A4+R-59 — Evidence Category Passive Coverage Audit
+
+Esta fase adicionou auditoria diagnóstica passiva de cobertura de evidence categories:
+
+- [Evidence Category Passive Coverage Audit](./SERA_ENGINE_VNEXT_EVIDENCE_CATEGORY_PASSIVE_COVERAGE_AUDIT_v0.2.0.md)
+- Helper dedicado no runtime vNext:
+  - `frontend/src/lib/sera-vnext/evidence-category-coverage.ts`
+- Trial dedicado executável:
+  - [Evidence Category Coverage Trial](../tests/sera-vnext/evidence-category-coverage-trial-001.ts)
+
+Estado após A4+R-59:
+- cobertura passiva por fronteira crítica agora é auditável;
+- gaps são registrados como diagnóstico passivo (`PASSIVE_GAP`) e não como bloqueio;
+- evidence categories continuam opcionais/passivas;
+- nenhum downstream habilitado;
+- AI/Author adjudication permanece vigente.
+
+Pendências remanescentes:
+- consolidar volume de casos para calibrar thresholds de qualidade de cobertura;
+- decidir critérios objetivos de transição para modo `warning` futuro sem gate bloqueante imediato;
+- manter validação externa opcional para claims científicos/externos.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.

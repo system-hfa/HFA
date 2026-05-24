@@ -75,5 +75,11 @@ Locks de downstream permanecem ativos (`downstream`, `finalConclusion`, `HFACS`,
 - Hints não substituem evidência metodológica por eixo.
 - Sem mudança de regra do semantic guard nesta fase.
 
+## Atualização A4+R-59 — Passive Coverage Audit
+- Auditoria passiva de cobertura categorial adicionada como diagnóstico não bloqueante.
+- Gaps de cobertura são registrados como `PASSIVE_GAP` sem efeito de gate.
+- Nenhuma mudança em `releasedCode`/`selectedCode`/status de classificação.
+- Nenhum warning obrigatório novo no runtime nesta fase.
+
 ## Próxima fase recomendada
 Evoluir de passivo para `warning` em escopo controlado, apenas após calibração de falso alarme/falso bloqueio e revisão metodológica incremental.
