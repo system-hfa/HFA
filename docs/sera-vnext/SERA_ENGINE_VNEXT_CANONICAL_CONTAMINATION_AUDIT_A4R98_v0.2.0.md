@@ -36,7 +36,7 @@ Any methodological flow that uses reconstructed/generic question text instead of
 - confirmed contaminated artifacts: 3 primary files.
 - high-risk noncanonical methodological families: questionPath backfills and pre-contract adjudication question prompts.
 - valid governance controls: A4R96 canonical contract + source inventory + updated A4R94/A4R93 contracts/templates.
-- terminology normalized to `SERA` under A4R99 lock.
+- terminology normalized to `SERA` under A4R99 terminology correction.
 - canonical tree asset now available:
   - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_QUESTION_TREE_ASSET_A4R99_v0.2.0.md`
 

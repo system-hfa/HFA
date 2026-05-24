@@ -20,7 +20,7 @@ Use this checklist before approving any reference trace or front-end calibration
 | CV-08 | Quarantine section present | External probable cause/HFACS/recommendations are quarantined | BLOCK |
 | CV-09 | No invented questions | No reconstructed/generic/free-translation question text | BLOCK |
 | CV-10 | No generic placeholders | No `P1/P2/O1/A1` style flow placeholders | BLOCK |
-| CV-11 | Terminology lock respected | Uses `SERA` only (no hybrid slash naming labels) | BLOCK |
+| CV-11 | Terminology lock respected | Uses `SERA` only (no hybrid slash naming labels and no `CERA` as methodology name) | BLOCK |
 | CV-12 | O-E guardrail respected | `O-E` appears only as `NON_EXISTENT_IN_SERA_PT_V1` guardrail | BLOCK |
 | CV-13 | Missing-node handling | Missing node marked `CANONICAL_NODE_MISSING` and trace stops | BLOCK |
 | CV-14 | Missing-tree handling | Missing canonical question/tree marked `REAL_TREE_MISSING` and trace stops | BLOCK |

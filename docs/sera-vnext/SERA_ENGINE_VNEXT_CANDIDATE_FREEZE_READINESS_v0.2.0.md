@@ -1242,11 +1242,11 @@ Estado após A4+R-98:
 
 O candidate freeze final continua não autorizado.
 
-## A4+R-99 - SERA Terminology Lock and Canonical Question Tree Asset Pack
+## A4+R-99 - SERA Terminology Correction and Canonical Question Tree Asset Pack
 
 Esta fase normalizou a terminologia para SERA e criou o primeiro asset canônico estruturado da árvore:
 
-- [SERA Terminology Lock A4R99](./SERA_ENGINE_VNEXT_SERA_TERMINOLOGY_LOCK_A4R99_v0.2.0.md)
+- [SERA Terminology Correction A4R99](./SERA_ENGINE_VNEXT_SERA_TERMINOLOGY_CORRECTION_A4R99_v0.2.0.md)
 - [Canonical Question Tree Asset A4R99](./SERA_ENGINE_VNEXT_CANONICAL_QUESTION_TREE_ASSET_A4R99_v0.2.0.md)
 - [Canonical Tree Coverage Matrix A4R99](./SERA_ENGINE_VNEXT_CANONICAL_TREE_COVERAGE_MATRIX_A4R99_v0.2.0.md)
 - [Canonical Trace Validation Checklist A4R99](./SERA_ENGINE_VNEXT_CANONICAL_TRACE_VALIDATION_CHECKLIST_A4R99_v0.2.0.md)

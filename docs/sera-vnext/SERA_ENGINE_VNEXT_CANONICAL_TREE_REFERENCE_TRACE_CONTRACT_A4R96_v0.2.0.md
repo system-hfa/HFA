@@ -5,7 +5,7 @@ Phase: A4+R-96
 DOCS_ONLY  
 GOVERNANCE_CORRECTION
 
-Terminology lock (A4+R-99): use `SERA` only.
+Terminology correction (A4+R-99): use `SERA` only.
 
 ## Absolute Rules
 1. Reference trace must use real/canonical SERA questions.
