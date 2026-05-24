@@ -61,6 +61,12 @@ Para divergência entre fontes:
 2. Runtime HFA/SERA vNext alinhado ao canon;
 3. Fontes históricas/metodológicas (Hendy, Daumas) como referência de origem.
 
+## 8. Nota de Consistência com Objective Axis
+Embora esta decisão trate de `A-A`/`A-C`, fica registrada consistência com a governança taxonômica atual:
+- `O-E = NON_EXISTENT_IN_SERA_PT_V1`;
+- `O-E` não integra a taxonomia canônica ativa;
+- eventual menção de `O-E` só pode ocorrer como guardrail negativo/adversarial.
+
 Referências normativas diretas:
 - [SERA_PT_TAXONOMY_CANONICAL_v1.0.md](/Users/filipedaumas/SAAS/HFA/docs/sera-vnext/SERA_PT_TAXONOMY_CANONICAL_v1.0.md)
 - [SERA_PT_TAXONOMY_CANONICAL_AUDIT_v1.0.md](/Users/filipedaumas/SAAS/HFA/docs/sera-vnext/SERA_PT_TAXONOMY_CANONICAL_AUDIT_v1.0.md)

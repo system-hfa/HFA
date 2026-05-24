@@ -43,7 +43,7 @@ Fora de escopo desta fase:
 5. “Ausência de falha” não pode colidir com código de falha ativa.
 6. Pressão temporal é variável explícita quando separa classes semânticas.
 7. O-C e O-D exigem evidência de intenção e de relação com regra/risco conforme seu critério.
-8. O-E não pode permanecer ativo sem definição formal aprovada.
+8. `O-E` é `NON_EXISTENT_IN_SERA_PT_V1` e não integra a taxonomia canônica ativa.
 
 ## 4. Decisões Canônicas Obrigatórias
 
@@ -62,12 +62,13 @@ Resolução normativa:
 
 ### 4.2 Decisão O-E
 Decisão canônica v1.0:
-- `O-E` = **RESERVED / NOT_ACTIVE**.
+- `O-E` = **NON_EXISTENT_IN_SERA_PT_V1**.
 
 Resolução normativa:
 - eixo Objective ativo em v1.0: `O-A`, `O-B`, `O-C`, `O-D`;
-- `O-E` fica reservado para eventual futura formalização, com definição e evidências mínimas aprovadas;
-- `O-E` não deve ser exigido pelo semantic guard nesta fase.
+- `O-E` não faz parte da taxonomia canônica ativa;
+- qualquer menção a `O-E` só pode ocorrer como guardrail negativo/adversarial para bloquear uso indevido e impedir fallback automático para `O-A`;
+- `O-E` não deve ser exigido nem classificado pelo semantic guard.
 
 ### 4.3 Decisão A-G / A-J
 Decisão canônica v1.0:
@@ -109,7 +110,9 @@ Uso canônico:
 | O-B | O | Violação rotineira normalizada | Desvio habitual/culturalmente normalizado | evidência de repetição/normalização/tolerância | O-C/O-D | prova de habitualidade | Hendy + Daumas | ACTIVE |
 | O-C | O | Violação excepcional/circunstancial | Desvio consciente pontual não rotineiro de regra/procedimento conhecido | evidência de consciência + desvio + não rotina | O-B/O-D/O-A | intenção consciente e awareness de regra | Hendy + Daumas + HFA adaptation | ACTIVE |
 | O-D | O | Objetivo de eficiência/economia | Objetivo de ganho operacional sem violação formal explícita, mas menos conservador | evidência explícita de eficiência/economia/ganho operacional | O-B/O-C/O-A | relação com gestão de risco | Hendy + Daumas + HFA adaptation | ACTIVE |
-| O-E | O | Reserved (not active) | Código reservado sem definição formal aprovada no v1.0 | n/a | n/a | decisão futura do autor | HFA placeholder | RESERVED |
+
+Guardrail negativo/adversarial para Objective:
+- `O-E` é `NON_EXISTENT_IN_SERA_PT_V1` e não pode ser usado como código de classificação.
 
 ### 5.3 Action
 | code | axis | canonical label | canonical definition | minimum evidence | exclusions | dependencies | source | status |
@@ -130,7 +133,7 @@ Uso canônico:
 - A-A = sem falha de ação específica;
 - A-C = falha de feedback pós-ação própria.
 
-2. O-E sem definição formal foi removido do conjunto ativo e definido como `RESERVED`.
+2. `O-E` foi removido da taxonomia canônica ativa e definido como `NON_EXISTENT_IN_SERA_PT_V1`.
 
 3. Fronteira A-G/A-J foi canonizada por critério de pressão temporal dominante e natureza da falha (supervisão/coordenação vs comunicação/readback em pressão).
 
@@ -139,7 +142,7 @@ Uso canônico:
 ## 7. Impacto no Semantic Guard (A4+R-45)
 Estado esperado após canonização:
 - semantic guard deve tratar objetivo estrito apenas com códigos ativos (`O-C`, `O-D`);
-- `O-E` não deve ser exigido nem classificado como ativo no guard semântico nesta fase;
+- `O-E` deve ser tratado apenas como guardrail negativo/adversarial (`NON_EXISTENT_IN_SERA_PT_V1`);
 - locks permanecem inalterados: sem downstream, sem finalConclusion, sem HFACS/Risk/ERC/ARMS.
 
 Arquivos de impacto:
@@ -150,4 +153,4 @@ Arquivos de impacto:
 Com esta canonização, o bloqueio taxonômico de definição foi reduzido para implementação pontual de alinhamento no semantic guard.
 
 Decisão desta fase:
-- após alinhar `O-E` para `RESERVED` no semantic guard e validar suite vNext, **A4+R-46 pode prosseguir**.
+- após alinhar `O-E` para `NON_EXISTENT_IN_SERA_PT_V1` no semantic guard e validar suite vNext, **A4+R-46 pode prosseguir**.

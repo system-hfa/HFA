@@ -18,7 +18,7 @@ Consolidar o estado de maturidade do núcleo causal vNext e explicitar critério
 ## Critérios já atendidos
 - Taxonomia canônica publicada.
 - Decisão autoral A-A/A-C aplicada.
-- O-E reservado/inativo aplicado.
+- O-E tratado como `NON_EXISTENT_IN_SERA_PT_V1` (fora da taxonomia canônica ativa).
 - Release gate e semantic guard com testes dedicados.
 - Preconditions candidatas com rastreabilidade mínima.
 - Sem import legacy no fluxo vNext.
@@ -195,7 +195,7 @@ Estado após A4+R-57:
 Esta fase transformou as divergências encontradas no dry run A4+R-54 em guia de decisão para revisores reais:
 
 - [Dry Run Divergence Resolution Guide](./SERA_ENGINE_VNEXT_DRY_RUN_DIVERGENCE_RESOLUTION_GUIDE_v0.2.0.md) criado.
-- Três regras-síntese estabelecidas: no-failure não é fallback para unknown; O-E reservado não vira O-A automático; A-C exige falha de verificação pós-ação própria.
+- Três regras-síntese estabelecidas: no-failure não é fallback para unknown; O-E `NON_EXISTENT_IN_SERA_PT_V1` não vira O-A automático; A-C exige falha de verificação pós-ação própria.
 - [Review Package](./SERA_ENGINE_VNEXT_REFERENCE_CASE_REVIEW_PACKAGE_v0.2.0.md) atualizado com as regras pré-revisão.
 - [Review Tracker](./reference-cases/REVIEW_TRACKER_v0.2.0.md) atualizado com referência ao guia.
 
@@ -461,3 +461,20 @@ Estado após A4+R-70:
 
 Trilha recomendada para A4+R-71:
 - opção principal: **D — Evidence Coverage Metrics on Real Events**, seguida de sprint focal de enrichment mecanístico se lacunas críticas persistirem.
+
+## A4+R-71 — Real Event Corpus Expansion from Uploaded pdf24 Set
+
+Esta fase ampliou inventário de corpus real-event sem classificação causal:
+
+- [PDF24 Real Event Corpus Inventory A4R71](./SERA_ENGINE_VNEXT_PDF24_REAL_EVENT_CORPUS_INVENTORY_A4R71_v0.2.0.md)
+- [Real Event Sample Expansion Plan A4R71](./SERA_ENGINE_VNEXT_REAL_EVENT_SAMPLE_EXPANSION_PLAN_A4R71_v0.2.0.md)
+
+Estado após A4+R-71:
+- PDFs `pdf24_merged*.pdf` confirmados localmente (caminhos externos ao repo) e correlacionados com índices de harvest;
+- inventário de expansão de corpus criado com seleção de novos candidatos para extração futura;
+- plano de expansão de amostra criado com proposta de Batch 2;
+- decisão taxonômica reforçada: `O-E = NON_EXISTENT_IN_SERA_PT_V1` (apenas guardrail negativo/adversarial);
+- nenhum caso classificado nesta fase;
+- nenhum `releasedCode` criado;
+- nenhum downstream aberto;
+- freeze final continua não autorizado.
