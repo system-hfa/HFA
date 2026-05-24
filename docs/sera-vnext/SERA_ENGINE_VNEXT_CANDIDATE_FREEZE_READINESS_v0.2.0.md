@@ -1163,3 +1163,25 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-95 - Build First Reference Case Trace Pack for REAL-EVENT-0003**.
+
+## A4+R-95 - Build First Reference Case Trace Pack for REAL-EVENT-0003
+
+Esta fase materializou o primeiro reference case calibration trace pack completo:
+
+- [Reference Case Trace REAL-EVENT-0003 P-G A4R95](./reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md)
+- [Reference Case Trace Pack RC1 Summary A4R95](./SERA_ENGINE_VNEXT_REFERENCE_CASE_TRACE_PACK_RC1_A4R95_v0.2.0.md)
+- [Reference Case Candidate Shortlist A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_CANDIDATE_SHORTLIST_A4R94_v0.2.0.md) atualizado com status de pack criado.
+- [Reference Case Trace Pack Plan A4R94](./SERA_ENGINE_VNEXT_REFERENCE_CASE_TRACE_PACK_PLAN_A4R94_v0.2.0.md) atualizado com execucao A4+R-95.
+
+Estado apos A4+R-95:
+- first reference case trace pack created (REAL-EVENT-0003 / P-G maintained);
+- no new release created;
+- no downstream opened;
+- front-end future use notes preserved in trace structure;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-96 - Build Withdrawn/Boundary Reference Trace Pack** para REAL-EVENT-0015, N109W e N11NM.

@@ -41,3 +41,10 @@ Each trace pack must be:
 - No release/proposed changes.
 - No downstream opening.
 - No runtime/UI implementation in this phase.
+
+## A4+R-95 Execution Update
+- RC-1 positive reference trace created for REAL-EVENT-0003:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0003-PG-A4R95.md`
+- Next RC-1 priority:
+  - build withdrawn/boundary reference pack for REAL-EVENT-0015; or
+  - build combined withdrawn trio pack (REAL-EVENT-0015, N109W, N11NM).
