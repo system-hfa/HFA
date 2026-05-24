@@ -1,0 +1,24 @@
+# Batch 2 Adjudication Tracker A4R73 v0.2.0
+
+Status: DRAFT_TRACKER  
+Phase: A4+R-73 — Batch 2 AI/Author Adjudication
+
+| case | sourceExtraction | P | O | A | unresolvedAxes | maturityStatus | sourceEnrichmentNeeded | sourceQuality | nextStep | locks |
+|---|---|---|---|---|---|---|---|---|---|---|
+| REAL-EVENT-0003 | A4R72-B2-001 | P-G | O-A | UNRESOLVED | A | AUTHOR_REVIEW_READY | no | HIGH | A4+R-74 pattern consolidation | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0005 | A4R72-B2-002 | UNRESOLVED | O-A | UNRESOLVED | P,A | EVIDENCE_ENRICHMENT_REQUIRED | yes | MEDIUM | PF/PM timeline enrichment | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0010 | A4R72-B2-003 | UNRESOLVED | O-A | UNRESOLVED | P,A | HOLD_UNRESOLVED | no | HIGH | manter hold conservador | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0013 | A4R72-B2-004 | UNRESOLVED | UNRESOLVED | UNRESOLVED | P,O,A | TRIAGE_ONLY | yes | LOW | source identity reconciliation | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0015 | A4R72-B2-005 | P-G | O-A | UNRESOLVED | A | AUTHOR_REVIEW_READY | no | HIGH | consolidar padrão P/A | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0016 | A4R72-B2-006 | P-C | O-A | UNRESOLVED | A | AUTHOR_REVIEW_READY | no | HIGH | consolidar padrão automação | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0007 | A4R72-B2-007 | UNRESOLVED | O-A | UNRESOLVED | P,A | EVIDENCE_ENRICHMENT_REQUIRED | yes | HIGH | maintenance-chain enrichment | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0008 | A4R72-B2-008 | UNRESOLVED | O-A | UNRESOLVED | P,A | HOLD_UNRESOLVED | no | HIGH | manter hold condition-dominant | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0009 | A4R72-B2-009 | UNRESOLVED | O-A | UNRESOLVED | P,A | EVIDENCE_ENRICHMENT_REQUIRED | yes | HIGH | barrier/certification enrichment | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-0011 | A4R72-B2-010 | UNRESOLVED | O-A | UNRESOLVED | P,A | EVIDENCE_ENRICHMENT_REQUIRED | yes | HIGH | hazard-awareness enrichment | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+
+## Aggregate snapshot
+- totalCases: 10
+- totalAxes: 30
+- totalUnresolvedAxes: 18
+- releasedCodeCount: 0
+- downstreamOpenedCount: 0

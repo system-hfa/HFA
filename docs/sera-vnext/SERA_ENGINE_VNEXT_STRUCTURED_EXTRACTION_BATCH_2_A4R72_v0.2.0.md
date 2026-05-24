@@ -46,3 +46,10 @@ Executar extração factual estruturada em lote para os 10 candidatos `P1` defin
 
 ## Próxima fase recomendada
 - **A4+R-73 — Batch 2 AI/Author Adjudication for 10 extracted cases**.
+
+## A4+R-73 Update
+- adjudicação Batch 2 executada em lote único.
+- 10 arquivos de adjudicação criados em `docs/sera-vnext/real-event-adjudications-batch-2/`.
+- nenhum `releasedCode` criado.
+- nenhum downstream aberto.
+- próxima fase recomendada: **A4+R-74 — Consolidated Metrics and Pattern Review for 15 Real Events**.

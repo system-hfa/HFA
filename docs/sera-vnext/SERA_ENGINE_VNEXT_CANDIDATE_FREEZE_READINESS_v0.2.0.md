@@ -522,3 +522,28 @@ Estado após A4+R-72:
 - nenhum `releasedCode` foi criado;
 - nenhum downstream foi aberto;
 - freeze final continua não autorizado.
+
+## A4+R-73 — Batch 2 AI/Author Adjudication for 10 Extracted Cases
+
+Esta fase executou adjudicação AI/Author em lote para os 10 casos extraídos no Batch 2:
+
+- [Batch 2 AI/Author Adjudication A4R73](./SERA_ENGINE_VNEXT_BATCH_2_AI_AUTHOR_ADJUDICATION_A4R73_v0.2.0.md)
+- [Batch 2 Adjudication Tracker A4R73](./real-event-adjudications-batch-2/BATCH_2_ADJUDICATION_TRACKER_A4R73_v0.2.0.md)
+- adjudicações por caso em:
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-001.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-002.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-003.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-004.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-005.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-006.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-007.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-008.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-009.md`
+  - `docs/sera-vnext/real-event-adjudications-batch-2/REAL-EVENT-BATCH2-ADJUDICATION-010.md`
+
+Estado após A4+R-73:
+- 10 casos do Batch 2 adjudicados em draft;
+- total de real-event adjudication drafts agora em 15 casos;
+- nenhum `releasedCode` criado;
+- nenhum downstream aberto;
+- freeze final continua não autorizado.
