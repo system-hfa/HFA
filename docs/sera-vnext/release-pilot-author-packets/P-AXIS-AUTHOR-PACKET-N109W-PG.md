@@ -84,3 +84,11 @@ HIGH source quality with MEDIUM adjudication confidence.
 
 ## nextStepRecommendation
 Carry to A4+R-84 author decision intake as a P-axis candidate for future author approval, not as a released code.
+
+## A4+R-84 Author Decision Intake Status
+- authorDecisionStatus: PENDING_AUTHOR_DECISION
+- authorDecision: NONE_RECORDED
+- authorRationale: Not recorded in the current prompt.
+- requiredBeforeFutureRelease: explicit author decision, evidenceRefs confirmation, release limitation text, and downstream lock confirmation.
+- rollbackTriggers: new source contradiction; author disagreement; unresolved critical P-axis question; any request to use this packet for downstream output.
+- noReleasedCodeCreated: true

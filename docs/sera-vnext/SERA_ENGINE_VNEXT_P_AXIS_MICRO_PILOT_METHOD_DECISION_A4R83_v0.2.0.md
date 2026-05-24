@@ -40,3 +40,23 @@ Recommended next phase:
 - **A4+R-84 — Author Decision Intake for P-Axis Micro-Pilot**.
 
 A4+R-84 should remain docs-only and record explicit user/author decisions for the four prepared packets. It should still avoid real release unless separately and explicitly authorized.
+
+## A4+R-84 Decision Intake Note
+
+A4+R-84 created an author decision intake layer for the four prepared P-axis packets.
+
+Decision status after intake:
+- REAL-EVENT-0003 P-G: PENDING_AUTHOR_DECISION.
+- REAL-EVENT-0015 P-G: PENDING_AUTHOR_DECISION.
+- N109W P-G: PENDING_AUTHOR_DECISION.
+- N11NM P-C: PENDING_AUTHOR_DECISION.
+
+No explicit case-by-case author decision was provided in the A4+R-84 prompt. Therefore, no packet was approved, held, or rejected as an author decision in this phase.
+
+A4+R-84 confirms:
+- no releasedCode was created;
+- releasedCodeCount remains 0;
+- no proposedCode was changed;
+- no UNRESOLVED axis was reduced;
+- no finalConclusion, HFACS, Risk/ERC, ARMS/ERC, recommendations, fixture, baseline, UI/API/DB, migration, or runtime output was opened;
+- downstream remains locked.

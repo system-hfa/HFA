@@ -837,3 +837,36 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-84 - Author Decision Intake for P-Axis Micro-Pilot**.
+
+## A4+R-84 - Author Decision Intake for P-Axis Micro-Pilot
+
+Esta fase registrou o intake documental de decisao autoral para os quatro candidatos P-axis do micro-pilot, sem executar release real:
+
+- [P-Axis Micro-Pilot Author Decision Intake A4R84](./SERA_ENGINE_VNEXT_P_AXIS_MICRO_PILOT_AUTHOR_DECISION_INTAKE_A4R84_v0.2.0.md)
+- [P-Axis Micro-Pilot Author Decision Tracker A4R84](./release-pilot-author-packets/P_AXIS_MICRO_PILOT_AUTHOR_DECISION_TRACKER_A4R84_v0.2.0.md)
+- [Post Author Decision Intake Plan A4R84](./SERA_ENGINE_VNEXT_POST_AUTHOR_DECISION_INTAKE_PLAN_A4R84_v0.2.0.md)
+
+Status por candidato:
+- REAL-EVENT-0003 — P-G: PENDING_AUTHOR_DECISION;
+- REAL-EVENT-0015 — P-G: PENDING_AUTHOR_DECISION;
+- N109W — P-G: PENDING_AUTHOR_DECISION;
+- N11NM — P-C: PENDING_AUTHOR_DECISION.
+
+Estado apos A4+R-84:
+- decision intake criado;
+- 4 packets individuais atualizados com status de intake;
+- author decision tracker criado;
+- nenhuma decisao autoral explicita foi fornecida no prompt;
+- releasedCodeCount permanece 0;
+- proposedCodeChanges=0;
+- unresolvedReduced=0;
+- nenhum downstream aberto;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations criado;
+- nenhum fixture/baseline/codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- coletar decisao explicita do autor para cada candidato antes de qualquer fase de release pilot;
+- **A4+R-85 - P-Axis Release Pilot Execution** somente se o autor fornecer decisoes explicitas `APPROVE_FOR_FUTURE_RELEASE_PILOT`;
+- se os candidatos forem mantidos em hold, priorizar Source Enrichment ou Method Clarification.
