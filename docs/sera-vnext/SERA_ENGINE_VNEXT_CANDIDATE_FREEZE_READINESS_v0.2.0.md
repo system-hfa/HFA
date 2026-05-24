@@ -994,3 +994,34 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-89 - External Batch 1 Evidence Normalization and Internal Trace Anchoring** (docs-only, sem classificacao SERA).
+
+## A4+R-89 - External Batch 1 Evidence Normalization and Internal Trace Anchoring
+
+Esta fase normalizou as 12 extracoes externas do Batch 1 em categorias comuns de evidencia e preparou ancoragem de trace interno sem classificar eventos:
+
+- [External Batch 1 Evidence Normalization A4R89](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_EVIDENCE_NORMALIZATION_A4R89_v0.2.0.md)
+- [External Batch 1 Trace Anchoring A4R89](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_TRACE_ANCHORING_A4R89_v0.2.0.md)
+- [External Batch 1 Adjudication Readiness A4R89](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_ADJUDICATION_READINESS_A4R89_v0.2.0.md)
+- [External Batch 1 Internal Trace Linkage A4R89](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_INTERNAL_TRACE_LINKAGE_A4R89_v0.2.0.md)
+- [External Batch 1 Next Phase Plan A4R89](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_NEXT_PHASE_PLAN_A4R89_v0.2.0.md)
+
+Estado apos A4+R-89:
+- evidence normalization criada;
+- trace anchoring criado;
+- adjudication readiness criado;
+- internal trace linkage criado;
+- next phase plan criado;
+- READY_FOR_FUTURE_ADJUDICATION = 7;
+- NEEDS_SOURCE_RECHECK = 3;
+- ENRICHMENT_ONLY = 1;
+- ADVERSARIAL_CONTROL_ONLY = 1;
+- nenhum P/O/A novo criado;
+- nenhum proposedCode criado;
+- nenhum novo releasedCode criado;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-90 - External Batch 1 AI/Author Adjudication Pilot for Ready Cases** (docs-only, com escopo pequeno e quarentena preservada).
