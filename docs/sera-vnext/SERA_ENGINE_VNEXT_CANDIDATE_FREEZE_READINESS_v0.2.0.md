@@ -1025,3 +1025,31 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-90 - External Batch 1 AI/Author Adjudication Pilot for Ready Cases** (docs-only, com escopo pequeno e quarentena preservada).
+
+## A4+R-90 - External Batch 1 AI/Author Adjudication Pilot for Ready Cases
+
+Esta fase criou drafts documentais de adjudicacao AI/Author para os 7 casos externos marcados como READY_FOR_FUTURE_ADJUDICATION em A4+R-89:
+
+- [External Batch 1 AI/Author Adjudication Pilot Summary A4R90](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_AI_AUTHOR_ADJUDICATION_PILOT_A4R90_v0.2.0.md)
+- [External Batch 1 Adjudication Tracker A4R90](./external-candidates/adjudications-batch-1/EXTERNAL_BATCH_1_ADJUDICATION_TRACKER_A4R90_v0.2.0.md)
+- [External Batch 1 Adjudication Backlog A4R90](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_ADJUDICATION_BACKLOG_A4R90_v0.2.0.md)
+- [External Batch 1 Adjudications Folder](./external-candidates/adjudications-batch-1/)
+
+Estado apos A4+R-90:
+- 7 external adjudication drafts criados;
+- proposedPAxes = 5;
+- proposedOAxes = 1;
+- proposedAAxes = 0;
+- unresolvedPAxes = 2;
+- unresolvedOAxes = 6;
+- unresolvedAAxes = 7;
+- releasedCodeCount = 0;
+- downstreamOpenedCount = 0;
+- conclusoes externas preservadas em quarentena;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-91 - External Batch 1 Author Review and Source-Slicing Plan** (docs-only, revisar os 6 eixos propostos e enriquecer o caso unresolved-only).
