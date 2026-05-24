@@ -1367,3 +1367,26 @@ Registro de estado A4+R-104:
 Próxima ação macro:
 - se pelo menos 2 drafts mantiverem `PASS_WITH_LIMITATIONS` ou melhor após revisão de consistência, preparar bundle único de review autoral;
 - se menos de 2 drafts passarem, executar source-slice expansion antes de qualquer bundle de review.
+
+## A4+R-105 — ChatGPT Curated Official Report Shortlist and Next Trace Batch Plan
+
+Esta fase registrou curadoria técnica de fontes oficiais e replanejou a próxima rodada de trace drafts:
+- [Curated Source Inventory A4R105](./SERA_ENGINE_VNEXT_CURATED_SOURCE_INVENTORY_A4R105_v0.2.0.md)
+- [A4R104 Hold and Official Report Strategy A4R105](./SERA_ENGINE_VNEXT_A4R104_HOLD_AND_OFFICIAL_REPORT_STRATEGY_A4R105_v0.2.0.md)
+- [ChatGPT Curated Official Report Shortlist A4R105](./SERA_ENGINE_VNEXT_CHATGPT_CURATED_OFFICIAL_REPORT_SHORTLIST_A4R105_v0.2.0.md)
+- [Next Canonical Trace Batch Plan A4R105](./SERA_ENGINE_VNEXT_NEXT_CANONICAL_TRACE_BATCH_PLAN_A4R105_v0.2.0.md)
+- [A4R104 vs Curated Official Reports Comparison A4R105](./SERA_ENGINE_VNEXT_A4R104_VS_CURATED_OFFICIAL_REPORTS_COMPARISON_A4R105_v0.2.0.md)
+
+Registro de estado A4+R-105:
+- A4R104 status: `HELD_EXPLORATORY` (valid and retained, not invalidated);
+- curated official shortlist completed: yes (top-10 registered);
+- top-3 selected for A4R106: `ASIANA-214`, `COMAIR-5191`, `KOREAN-801`;
+- no author approval used in this phase;
+- no release created;
+- no downstream opened;
+- frontend readiness remains not ready for promotion;
+- freeze final authorized: no.
+
+Próxima ação macro:
+- executar A4R106 para construir três canonical trace drafts a partir do top-3 oficial curado;
+- manter A4R104 como fallback exploratório para rodada posterior de source-slice, sem promoção nesta etapa.

@@ -34,3 +34,17 @@ NO_DOWNSTREAM
 | P0 | Batch author-review bundle preparation (conditional) | A4R104 three-trace batch | Move from draft build to comparable review package without promotion. | Codex | 1 bundle | At least two A4R104 drafts are `PASS_WITH_LIMITATIONS` or better; bundle excludes any release action. |
 | P0 | Source-slice expansion fallback (conditional) | Any A4R104 draft below threshold | Prevent overclassification when canonical confidence is insufficient. | Codex | 1 focused slice batch | Missing/weak evidence for weak nodes is explicitly reduced before review bundle. |
 | P1 | Candidate shortlist hardening | Remaining strong/good candidates | Keeps reference pipeline scalable after first draft batch. | Codex | 5-8 events | Updated shortlist with explicit draft-readiness flags and blocking reasons. |
+
+## A4+R-105 queue update
+- Completed in A4R105:
+  - curated official-report shortlist (top-10 with top-3 selected for next batch);
+  - A4R104 marked as held exploratory for immediate prioritization;
+  - source inventory and comparative package completed.
+- Execution remained docs-only, curation-only, no release, no downstream, no author approval.
+
+## Immediate queue after A4R105
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Build canonical trace drafts from curated official top-3 | ASIANA-214, COMAIR-5191, KOREAN-801 | Cleaner official-source package is expected to improve trace efficiency and reduce overclassification pressure. | Codex | 3 traces | At least two traces `PASS_WITH_LIMITATIONS` or better with release/downstream closed. |
+| P1 | Curated reserve activation | UPS-1354, FIRST-AIR-6560, AMERICAN-1420, AMERICAN-965, AIR-CANADA-624, KEGWORTH-GOBME, G-BLUN-OFFSHORE | Provides immediate fallback if top-3 produce weak canonical closure. | Codex | 1 reserve batch | Reserve batch selected without changing release/front-end status. |
+| P1 | Held A4R104 source-slice round (deferred) | REAL-EVENT-0016, BS211-Q400, EXT-002 | Preserve prior work while avoiding forced hardening before cleaner official batch. | Codex | 1 deferred round | Re-open only after A4R106 outcome review. |

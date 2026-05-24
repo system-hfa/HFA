@@ -28,3 +28,10 @@ NO_DOWNSTREAM
 - no official P/O/A changed
 - no downstream opened
 - frontend status remains `NOT_READY_AUTHOR_REVIEW_REQUIRED`
+
+## A4+R-105 hold status
+- statusUpdate: `HELD_EXPLORATORY`
+- holdReason: exploratory drafts are valid but central gaps remain and official-report-first curation is more efficient for the next batch.
+- invalidated: no
+- superseded: no
+- immediateNextUse: keep as comparative and fallback material for later source-slice rounds.

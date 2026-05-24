@@ -56,3 +56,11 @@ Execution notes:
 Next macro rule:
 - if at least 2 drafts are `PASS_WITH_LIMITATIONS` or better: prepare one author review bundle for the batch;
 - if fewer than 2 drafts pass: run source-slice expansion (and external search only in a dedicated next phase).
+
+## A4+R-105 curated-official pivot
+- A4R104 remains `HELD_EXPLORATORY` and valid, not invalidated.
+- A4R105 completed curated official-report shortlist and selected a cleaner top-3 for A4R106:
+  - ASIANA-214
+  - COMAIR-5191
+  - KOREAN-801
+- This does not change A4R103 categories and does not promote any event to release/front-end status.

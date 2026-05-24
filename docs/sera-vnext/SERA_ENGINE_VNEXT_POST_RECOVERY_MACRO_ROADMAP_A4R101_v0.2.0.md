@@ -152,3 +152,21 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Validate batch-level consistency across the three canonical drafts and prepare one author-review bundle only if at least two drafts are `PASS_WITH_LIMITATIONS` or better.
 2. If fewer than two drafts satisfy that threshold, execute source-slice expansion before any author-review bundle.
 3. Keep release/downstream/front-end promotion closed until post-review promotion decisions.
+
+## A4+R-105 Execution Update (Curated Official Report Strategy)
+- A4R104 was kept as `HELD_EXPLORATORY` (valid but not prioritized for immediate hardening).
+- Curated official-report shortlist was completed:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CHATGPT_CURATED_OFFICIAL_REPORT_SHORTLIST_A4R105_v0.2.0.md`
+- Official-source inventory and comparison package were added:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CURATED_SOURCE_INVENTORY_A4R105_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R104_HOLD_AND_OFFICIAL_REPORT_STRATEGY_A4R105_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R104_VS_CURATED_OFFICIAL_REPORTS_COMPARISON_A4R105_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_NEXT_CANONICAL_TRACE_BATCH_PLAN_A4R105_v0.2.0.md`
+- No author approval used in A4R105.
+- No release created in A4R105.
+- No downstream opened in A4R105.
+
+## Updated Immediate Sequence After A4R105
+1. Execute A4R106 with the curated top-3 official reports (`ASIANA-214`, `COMAIR-5191`, `KOREAN-801`) to build canonical trace drafts.
+2. Keep A4R104 as held exploratory fallback material for later source-slice rounds.
+3. Keep release/downstream/front-end promotion closed until post-A4R106 review decisions.
