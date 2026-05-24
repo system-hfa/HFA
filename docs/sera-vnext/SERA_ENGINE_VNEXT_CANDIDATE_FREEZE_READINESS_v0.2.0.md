@@ -478,3 +478,21 @@ Estado após A4+R-71:
 - nenhum `releasedCode` criado;
 - nenhum downstream aberto;
 - freeze final continua não autorizado.
+
+## A4+R-71 — Real Event Corpus Expansion from Uploaded pdf24 Text Set
+
+Esta atualização de A4+R-71 priorizou corpus textual convertido (`pdf24_merged*.txt`) para expansão de amostra real-event sem classificação causal.
+
+- [PDF24 Text Real Event Corpus Inventory A4R71](./SERA_ENGINE_VNEXT_PDF24_TEXT_REAL_EVENT_CORPUS_INVENTORY_A4R71_v0.2.0.md)
+- [Real Event Sample Expansion Plan A4R71](./SERA_ENGINE_VNEXT_REAL_EVENT_SAMPLE_EXPANSION_PLAN_A4R71_v0.2.0.md)
+
+Estado após A4+R-71 (text set):
+- arquivos `.txt` convertidos foram localizados e triados;
+- inventário de expansão de corpus textual foi criado;
+- plano de expansão de amostra para Batch 2 foi criado;
+- decisão taxonômica reforçada: `O-E = NON_EXISTENT_IN_SERA_PT_V1`;
+- `O-E` não faz parte da taxonomia canônica ativa e não é código reservado para uso futuro sem decisão autoral explícita;
+- nenhum caso foi classificado nesta fase;
+- nenhum `releasedCode` foi criado;
+- nenhum downstream foi aberto;
+- freeze final continua não autorizado.
