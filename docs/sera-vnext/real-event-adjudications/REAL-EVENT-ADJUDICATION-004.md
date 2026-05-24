@@ -141,3 +141,13 @@ Manter caso como referência adversarial de disciplina metodológica (não forç
 - canExitEnrichment: yes
 - canProceedToAdjudication: yes
 - noReleasedCode: true
+
+## A4+R-68 consolidation status
+- readjudicationCreated: true
+- readjudicationDocument: REAL-EVENT-READJUDICATION-004-A4R68.md
+- sourceQualityAfterA4R67: IMPROVED_MEDIUM
+- enrichmentBlockStatus: CLEARED_FOR_READJUDICATION
+- revisedMaturityStatus: HOLD_UNRESOLVED
+- proposedCodeChanged: no
+- noReleasedCode: true
+- downstreamStillLocked: true

@@ -8,7 +8,7 @@ Phase: A4+R-66 — Real Event Adjudication Coverage Metrics
 | REAL-EVENT-ADJUDICATION-001 | AUTHOR_REVIEW_READY | P-G | O-A | UNRESOLVED | insufficient_pf_pm_decomposition | true | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
 | REAL-EVENT-ADJUDICATION-002 | HOLD_UNRESOLVED | UNRESOLVED | O-A | UNRESOLVED | warning_or_alert_mechanism_unclear | true | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
 | REAL-EVENT-ADJUDICATION-003 | HOLD_UNRESOLVED | UNRESOLVED | O-A | UNRESOLVED | multi_actor_not_decomposed | true | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
-| REAL-EVENT-ADJUDICATION-004 | EVIDENCE_ENRICHMENT_REQUIRED | UNRESOLVED | O-A | UNRESOLVED | technical_failure_dominant | true | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+| REAL-EVENT-ADJUDICATION-004 | HOLD_UNRESOLVED | UNRESOLVED | O-A | UNRESOLVED | technical_failure_dominant | false (strict) | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
 | REAL-EVENT-TRIAGE-005 | TRIAGE_ONLY | UNRESOLVED | UNRESOLVED | UNRESOLVED | source_partial | true | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
 
 ## Aggregate snapshot
@@ -16,7 +16,7 @@ Phase: A4+R-66 — Real Event Adjudication Coverage Metrics
 - total axes: 15
 - unresolved axes: 10
 - draft proposed codes: 5
-- enrichment-required cases: 2 (004, 005)
+- enrichment-required cases: 1 strict (005)
 - released code: 0
 
 ## A4+R-67 enrichment update
@@ -31,4 +31,19 @@ Phase: A4+R-66 — Real Event Adjudication Coverage Metrics
   - canExitEnrichment: no
   - canProceedToAdjudication: no
 - remaining enrichment-required cases: 1 strict (`REAL-EVENT-TRIAGE-005`)
+- released code: 0 (unchanged)
+
+## A4+R-68 consolidation update
+- REAL-EVENT-ADJUDICATION-004:
+  - readjudicationCreated: true (`REAL-EVENT-READJUDICATION-004-A4R68.md`)
+  - revisedMaturityStatus: HOLD_UNRESOLVED
+  - proposedCodeChanged: no
+- REAL-EVENT-TRIAGE-005:
+  - remainsTriageOnly: true
+  - canProceedToAdjudication: false
+- post-A4+R-68 status distribution:
+  - AUTHOR_REVIEW_READY: 1
+  - HOLD_UNRESOLVED: 3
+  - TRIAGE_ONLY: 1
+  - strict EVIDENCE_ENRICHMENT_REQUIRED backlog: 1 (`005`)
 - released code: 0 (unchanged)

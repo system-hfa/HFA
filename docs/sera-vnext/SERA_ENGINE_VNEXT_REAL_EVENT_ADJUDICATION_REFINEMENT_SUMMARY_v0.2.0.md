@@ -80,3 +80,30 @@ Padrões observados:
 
 Próxima fase recomendada:
 - A4+R-67 — Source Enrichment Execution for 004/005.
+
+## A4+R-68 — Consolidation pack pós-enrichment
+- Re-adjudicação dedicada criada:
+  - `real-event-adjudications/REAL-EVENT-READJUDICATION-004-A4R68.md`
+- Consolidação ampla criada:
+  - `SERA_ENGINE_VNEXT_REAL_EVENT_CONSOLIDATION_PACK_A4R68_v0.2.0.md`
+
+Resultado consolidado por caso:
+- 001: mantém `AUTHOR_REVIEW_READY` (`P-G`, `O-A`, `A=UNRESOLVED`).
+- 002: mantém `HOLD_UNRESOLVED` (`P=UNRESOLVED`, `O-A`, `A=UNRESOLVED`).
+- 003: mantém `HOLD_UNRESOLVED` (`P=UNRESOLVED`, `O-A`, `A=UNRESOLVED`).
+- 004: sai de bloqueio estrito de enrichment e entra em `HOLD_UNRESOLVED` pós-re-adjudicação (`P=UNRESOLVED`, `O-A`, `A=UNRESOLVED`).
+- 005: mantém `TRIAGE_ONLY` com `EVIDENCE_ENRICHMENT_REQUIRED`.
+
+Métricas pós-A4+R-68:
+- `totalCases=5`
+- `holdUnresolvedCases=3`
+- `strictEnrichmentBacklog=1` (005)
+- `releasedCodeCount=0`
+
+Locks preservados:
+- nenhum `proposedCode` foi promovido;
+- nenhum `releasedCode` criado;
+- nenhum downstream aberto.
+
+Próxima fase recomendada:
+- A4+R-69 — Guarded Narrative Draft for eligible cases (001 e 004) + continuidade de enrichment para 005.

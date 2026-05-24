@@ -21,8 +21,8 @@ Medir cobertura metodológica da amostra real adjudicada sem alterar decisões d
 - `adjudicationDraftCases`: 4
 - `triageOnlyCases`: 1
 - `authorReviewReadyCases`: 1
-- `holdUnresolvedCases`: 2
-- `evidenceEnrichmentRequiredCases`: 2
+- `holdUnresolvedCases`: 3
+- `evidenceEnrichmentRequiredCases`: 1
 - `notForDownstreamCases`: 5
 - `notFixtureCases`: 5
 - `notBaselineCases`: 5
@@ -60,9 +60,9 @@ Distribuição por eixo `UNRESOLVED` (10 eixos), usando razão dominante por eix
 - `unknown_or_other`: 0
 
 ## Evidence enrichment metrics
-- `enrichmentRequiredCases`: 2 (`REAL-EVENT-ADJUDICATION-004`, `REAL-EVENT-TRIAGE-005`)
+- `enrichmentRequiredCases`: 1 (`REAL-EVENT-TRIAGE-005`)
 - `sourcePartialCases`: 1 (`REAL-EVENT-TRIAGE-005`)
-- `technicalEnrichmentCases`: 1 (`REAL-EVENT-ADJUDICATION-004`)
+- `technicalEnrichmentCases`: 1 (residual, non-blocking: `REAL-EVENT-ADJUDICATION-004`)
 - `actorDecompositionNeededCases`: 3 (`001`, `002`, `003`)
 
 ## Tabela por caso
@@ -71,7 +71,7 @@ Distribuição por eixo `UNRESOLVED` (10 eixos), usando razão dominante por eix
 | REAL-EVENT-ADJUDICATION-001 | Thebaud S-92A offshore low-energy descent | AUTHOR_REVIEW_READY | P-G | O-A | UNRESOLVED | A | insufficient_pf_pm_decomposition | true | RULE_APPLIED | Refino PF/PM/callouts sem release |
 | REAL-EVENT-ADJUDICATION-002 | Peasmarsh discontinued night approach near trees | HOLD_UNRESOLVED | UNRESOLVED | O-A | UNRESOLVED | P,A | warning_or_alert_mechanism_unclear | true | AUTHOR_DECISION_REQUIRED | Manter hold e reduzir ambiguidade warning/go-around |
 | REAL-EVENT-ADJUDICATION-003 | Vigo SAR training low-height descent | HOLD_UNRESOLVED | UNRESOLVED | O-A | UNRESOLVED | P,A | multi_actor_not_decomposed | true | RULE_APPLIED | Refinar papéis PF/PM/mission crew |
-| REAL-EVENT-ADJUDICATION-004 | 5N-BQJ DAFCS/TRIM FAIL offshore ditching | EVIDENCE_ENRICHMENT_REQUIRED | UNRESOLVED | O-A | UNRESOLVED | P,A | technical_failure_dominant | true | ENRICHMENT_REQUIRED | Enriquecimento técnico/factual antes de nova adjudicação |
+| REAL-EVENT-ADJUDICATION-004 | 5N-BQJ DAFCS/TRIM FAIL offshore ditching | HOLD_UNRESOLVED | UNRESOLVED | O-A | UNRESOLVED | P,A | technical_failure_dominant | false (strict) | ENRICHMENT_REQUIRED | Re-adjudicação executada; manter hold P/A e refino técnico residual |
 | REAL-EVENT-TRIAGE-005 | HL9661 tail rotor strike (source partial) | TRIAGE_ONLY | UNRESOLVED | UNRESOLVED | UNRESOLVED | P,O,A | source_partial | true | ENRICHMENT_REQUIRED | Permanecer triage-only até source anchor mínimo |
 
 ## Leitura metodológica
@@ -108,3 +108,24 @@ Enrichment foi executado para os dois casos bloqueados em A4+R-66, sem alterar `
   - `005`: `no` (permanece triage/source-partial)
 - `remainingStrictEnrichmentRequiredCases`: 1 (`005`)
 - `releasedCodeCount`: 0 (inalterado)
+
+## A4+R-68 consolidation update
+Re-adjudicação do caso 004 foi executada após enrichment, com manutenção conservadora de códigos draft:
+
+- `004 readjudication`: created (`REAL-EVENT-READJUDICATION-004-A4R68.md`)
+- `004 proposed codes`: unchanged (`P=UNRESOLVED`, `O=O-A`, `A=UNRESOLVED`)
+- `005 status`: remains `TRIAGE_ONLY` with `canProceedToAdjudication=no`
+
+Métricas consolidadas pós-A4+R-68:
+- `totalCases=5`
+- `adjudicationDraftCases=4`
+- `triageOnlyCases=1`
+- `authorReviewReadyCases=1`
+- `holdUnresolvedCases=3` (002, 003, 004)
+- `evidenceEnrichmentRequiredCases=1` (strict backlog: 005)
+- `totalAxes=15`
+- `totalUnresolvedAxes=10`
+- `proposedPAxes=1`
+- `proposedOAxes=4`
+- `proposedAAxes=0`
+- `releasedCodeCount=0`

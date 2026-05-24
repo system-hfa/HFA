@@ -399,6 +399,22 @@ Estado após A4+R-67:
 - nenhum downstream habilitado;
 - freeze final continua não autorizado.
 
+## A4+R-68 — Real Event Adjudication Consolidation Pack
+
+Esta fase consolidou a rodada pós-enrichment com re-adjudicação dedicada do caso 004:
+
+- [Real Event Consolidation Pack](./SERA_ENGINE_VNEXT_REAL_EVENT_CONSOLIDATION_PACK_A4R68_v0.2.0.md)
+- [Real Event Re-adjudication 004](./real-event-adjudications/REAL-EVENT-READJUDICATION-004-A4R68.md)
+
+Estado após A4+R-68:
+- 004 re-adjudicado após enrichment (`IMPROVED_MEDIUM`) e movido para `HOLD_UNRESOLVED` com `O-A` draft mantido;
+- 005 permanece `TRIAGE_ONLY` com `EVIDENCE_ENRICHMENT_REQUIRED` (`IMPROVED_LOW`);
+- métricas consolidadas: `totalCases=5`, `holdUnresolvedCases=3`, backlog estrito de enrichment=1 (005);
+- nenhum `proposedCode` promovido;
+- nenhum `releasedCode` criado;
+- nenhum downstream habilitado;
+- freeze final continua não autorizado.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.

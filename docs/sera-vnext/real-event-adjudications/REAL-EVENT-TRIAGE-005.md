@@ -134,3 +134,12 @@ Classificar como `ENRICHMENT_NEEDED` e não incluir em adjudicação causal deta
 - canExitEnrichment: no
 - canProceedToAdjudication: no
 - noReleasedCode: true
+
+## A4+R-68 consolidation status
+- sourceQualityAfterA4R67: IMPROVED_LOW
+- remainsTriageOnly: true
+- canProceedToAdjudication: false
+- requiredNextSourceStep:
+  - Obter relatório oficial primário acessível com locator de seção/página e extrair cronologia detalhada de coordenação solo-ar.
+- noReleasedCode: true
+- downstreamStillLocked: true
