@@ -49,3 +49,13 @@ Consolidar o refinamento da adjudicação AI/Author de eventos reais e registrar
 
 ## Próxima fase recomendada
 A4+R-65 — Author Decision Intake for Open Adjudication Questions + Source Enrichment Execution.
+
+## A4+R-65 — Intake e enrichment plan
+- Author Decision Intake criado:
+  - `SERA_ENGINE_VNEXT_AUTHOR_DECISION_INTAKE_REAL_EVENTS_v0.2.0.md`
+- Source Enrichment Plan criado:
+  - `SERA_ENGINE_VNEXT_REAL_EVENT_SOURCE_ENRICHMENT_PLAN_v0.2.0.md`
+- Status por caso atualizado com `authorDecisionIntakeStatus`.
+- `proposedCode` permanece apenas draft documental.
+- Nenhum `releasedCode` foi criado.
+- Nenhum downstream foi aberto.

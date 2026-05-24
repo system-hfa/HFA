@@ -114,3 +114,12 @@ Manter caso como referência adversarial de disciplina metodológica (não forç
 - authorQuestionsRemaining:
   - Definir limiar mínimo para sair de `unsafe-condition-dominant`.
 - noReleasedCode: true
+
+## A4+R-65 author decision intake
+- authorDecisionIntakeStatus: ENRICHMENT_REQUIRED
+- decisionNotes: Mantido `unsafe-condition-dominant` com `P/A=UNRESOLVED`; aplicado limiar mínimo operacional para saída de hold: sequência temporal de ações humanas + evidência por eixo + rejeição explícita de alternativa técnica isolada.
+- remainingOpenQuestions:
+  - Nenhuma decisão autoral imediata; prioridade é enriquecimento de fonte/evidência.
+- sourceEnrichmentNeeded:
+  - true (alto)
+- noReleasedCode: true

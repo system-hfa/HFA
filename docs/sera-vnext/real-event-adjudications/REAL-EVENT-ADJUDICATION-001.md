@@ -113,3 +113,12 @@ Levar para A4+R-64 com possibilidade de refinamento PF/PM e revisão de evidênc
   - Confirmar fronteira final `P-G` vs `P-H`.
   - Confirmar manutenção de `A=UNRESOLVED` neste estágio.
 - noReleasedCode: true
+
+## A4+R-65 author decision intake
+- authorDecisionIntakeStatus: RULE_APPLIED
+- decisionNotes: Aplicada regra de fronteira P-G/P-H; sem evidência comunicacional explícita suficiente para migrar para P-H. Mantido `A=UNRESOLVED` por ausência de decomposição PF/PM/callouts.
+- remainingOpenQuestions:
+  - Nenhuma pendência autoral obrigatória para mudança de draft nesta fase.
+- sourceEnrichmentNeeded:
+  - true (refinamento PF/PM e callouts para eventual redução de incerteza do eixo A)
+- noReleasedCode: true

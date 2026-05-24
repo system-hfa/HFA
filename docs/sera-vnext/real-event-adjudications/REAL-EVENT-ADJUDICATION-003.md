@@ -115,3 +115,12 @@ Levar para A4+R-64 com pedido explícito de refinamento de papéis e cadeia de m
   - Confirmar manutenção de `A=UNRESOLVED`.
   - Confirmar tratamento da ausência de alerta sonoro como condição dominante.
 - noReleasedCode: true
+
+## A4+R-65 author decision intake
+- authorDecisionIntakeStatus: RULE_APPLIED
+- decisionNotes: Regra aplicada para manter ausência de alerta sonoro como condição/barreira degradada e manter `P/A=UNRESOLVED` sem separação robusta PF/PM/mission crew.
+- remainingOpenQuestions:
+  - Nenhuma pendência autoral obrigatória para mudar draft nesta fase.
+- sourceEnrichmentNeeded:
+  - true (decomposição de papéis e sequência de monitoramento para eventual redução de UNRESOLVED)
+- noReleasedCode: true

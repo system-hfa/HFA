@@ -107,3 +107,12 @@ Classificar como `ENRICHMENT_NEEDED` e não incluir em adjudicação causal deta
 - authorQuestionsRemaining:
   - Confirmar critérios mínimos de source anchor para saída de triage-only.
 - noReleasedCode: true
+
+## A4+R-65 author decision intake
+- authorDecisionIntakeStatus: ENRICHMENT_REQUIRED
+- decisionNotes: Mantido `TRIAGE_ONLY` com todos os eixos `UNRESOLVED`; saída condicionada a source anchor mínimo (fonte identificável + locator + cronologia + atores + fragmentos factuais).
+- remainingOpenQuestions:
+  - Nenhuma decisão de código pendente; pendência é exclusivamente de enriquecimento de fonte.
+- sourceEnrichmentNeeded:
+  - true (crítico)
+- noReleasedCode: true

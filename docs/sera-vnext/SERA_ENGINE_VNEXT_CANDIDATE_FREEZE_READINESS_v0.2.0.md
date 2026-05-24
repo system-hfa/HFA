@@ -352,6 +352,22 @@ Estado após A4+R-64:
 - nenhum downstream habilitado;
 - freeze final continua não autorizado.
 
+## A4+R-65 — Author Decision Intake + Source Enrichment Plan
+
+Esta fase consolidou decisões autorais pendentes e separou trilha de enrichment:
+
+- [Author Decision Intake Real Events](./SERA_ENGINE_VNEXT_AUTHOR_DECISION_INTAKE_REAL_EVENTS_v0.2.0.md)
+- [Real Event Source Enrichment Plan](./SERA_ENGINE_VNEXT_REAL_EVENT_SOURCE_ENRICHMENT_PLAN_v0.2.0.md)
+
+Estado após A4+R-65:
+- author decision intake criado;
+- source enrichment plan criado;
+- status de intake adicionados aos 5 casos de adjudicação/triage;
+- `proposedCode` continua em modo draft;
+- nenhum `releasedCode` criado;
+- nenhum downstream habilitado;
+- freeze final continua não autorizado.
+
 ## Leitura de prontidão atual
 - **Pronto para evolução controlada** de contratos técnicos e rastreabilidade.
 - **Não pronto** para freeze metodológico final com claims externos fortes.

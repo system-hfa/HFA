@@ -116,3 +116,12 @@ Priorizar em A4+R-64 coleta de evidência sobre desenho/briefing de go-around e 
   - Confirmar manutenção de `P=UNRESOLVED`.
   - Confirmar robustez de `O-A` draft no contexto sem rota briefada.
 - noReleasedCode: true
+
+## A4+R-65 author decision intake
+- authorDecisionIntakeStatus: AUTHOR_DECISION_REQUIRED
+- decisionNotes: Regra aplicada para manter `P=UNRESOLVED` e `A=UNRESOLVED`; decisão autoral ainda requerida para confirmar manutenção de `O-A` draft no contexto sem rota briefada.
+- remainingOpenQuestions:
+  - Confirmar se `O-A` permanece o melhor draft no eixo O.
+- sourceEnrichmentNeeded:
+  - true (evidência adicional sobre cadeia de warning/go-around pode reduzir ambiguidade de P/A e apoiar decisão no eixo O)
+- noReleasedCode: true
