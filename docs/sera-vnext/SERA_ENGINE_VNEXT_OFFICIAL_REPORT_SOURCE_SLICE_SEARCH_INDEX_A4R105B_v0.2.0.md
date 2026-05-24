@@ -32,13 +32,13 @@ rg -n -i "CVR|FDR|DFDR|QAR|cockpit voice|flight data|ATC|transcript|callout|warn
 |---:|---|---:|---:|---|
 | 1 | ASIANA-214 | 3 | 1202 | high keyword density plus CVR/FDR/warning/path evidence families |
 | 2 | KOREAN-801 | 3 | 1098 | high keyword density plus CVR/FDR/warning/path evidence families |
-| 3 | AMERICAN-1420 | 3 | 1066 | high keyword density plus CVR/FDR/warning/path evidence families |
+| 3 | COMAIR-5191 | 3 | 1029 | high keyword density plus CVR/FDR/warning/path evidence families |
 
 ## Reserve readiness
 | reportId | prepScore | hitCount | readinessNote |
 |---|---:|---:|---|
+| AMERICAN-1420 | 3 | 1066 | READY_FOR_A4R106 |
 | UPS-1354 | 3 | 1061 | READY_FOR_A4R106 |
-| COMAIR-5191 | 3 | 1029 | READY_FOR_A4R106 |
 | AIR-CANADA-624 | 3 | 240 | READY_FOR_A4R106 |
 | AMERICAN-965 | 3 | 154 | READY_FOR_A4R106 |
 | FIRST-AIR-6560 | 3 | 13 | READY_FOR_A4R106 |
