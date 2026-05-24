@@ -1109,3 +1109,30 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-93 - Author Approval Dossier Format Standardization**, para endurecer gate de aprovacao antes de qualquer novo release pilot.
+
+## A4+R-93 - Author Approval Dossier Format Standardization + Solid Event Priority Policy
+
+Esta fase padronizou governanca de decisao autoral simples e priorizacao metodologica de eventos solidos:
+
+- [Author Approval Dossier Standard A4R93](./SERA_ENGINE_VNEXT_AUTHOR_APPROVAL_DOSSIER_STANDARD_A4R93_v0.2.0.md)
+- [Author Approval Dossier Template A4R93](./SERA_ENGINE_VNEXT_AUTHOR_APPROVAL_DOSSIER_TEMPLATE_A4R93_v0.2.0.md)
+- [Solid Event Priority Policy A4R93](./SERA_ENGINE_VNEXT_SOLID_EVENT_PRIORITY_POLICY_A4R93_v0.2.0.md)
+- [Ambiguous Case Parking Policy A4R93](./SERA_ENGINE_VNEXT_AMBIGUOUS_CASE_PARKING_POLICY_A4R93_v0.2.0.md)
+- [Current Case Priority Review A4R93](./SERA_ENGINE_VNEXT_CURRENT_CASE_PRIORITY_REVIEW_A4R93_v0.2.0.md)
+- [Post Dossier Standard Next Phase A4R93](./SERA_ENGINE_VNEXT_POST_DOSSIER_STANDARD_NEXT_PHASE_A4R93_v0.2.0.md)
+
+Estado apos A4+R-93:
+- author approval dossier standard criado;
+- author approval dossier template criado;
+- solid event priority policy criada;
+- ambiguous case parking policy criada;
+- current case priority review criado;
+- nenhum release novo;
+- nenhum downstream aberto;
+- nenhum finalConclusion/HFACS/Risk/ERC/recommendations criado;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-94 - ChatGPT Solid Event Discovery Batch 2**, com apoio opcional do Perplexity Pro apenas para localizar fontes oficiais quando necessario.
