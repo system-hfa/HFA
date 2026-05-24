@@ -1,0 +1,61 @@
+# EXT-BATCH1-EXTRACTION-010
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-010
+- sourceCandidateId: A4R87-EXT-010
+- originalA4R87CandidateId: A4R87-EXT-010
+- sourceAgency: BEA France
+- reportId: PK-TVY notified event
+- officialUrl: https://bea.aero/en/investigation-reports/notified-events/detail/accident-to-the-sikorsky-s76-registered-pk-tvy-operated-by-travira-air-on-20-07-2021-on-soehanah-offshore-platform/
+- sourceType: NOTIFIED_EVENT_LOCATOR
+- urlAccessStatus: ACCESSED
+- shortLabel: PK-TVY S-76 notified offshore platform event
+- aircraftType: Sikorsky S-76
+- operationContext: Offshore platform operation; investigation responsibility external to BEA
+- sourceQuality: PRELIMINARY
+- factualSummary: BEA notified-event page confirms occurrence metadata and locator context, but does not provide final investigation-level factual depth.
+- factualTimeline:
+  - Notified event date and operator context listed.
+  - Offshore platform location reference provided.
+  - Investigation lead assigned to non-BEA authority.
+- aircraftSystemState:
+  - Detailed system/parameter data not included in notified page.
+- crewRoleEvidence:
+  - Crew-role specifics not available beyond high-level locator metadata.
+- alertWarningChronology:
+  - Not available in notified event locator.
+- procedureOrAutomationEvidence:
+  - Not available at final-report granularity in this source type.
+- factualEvidenceAnchors:
+  - BEA notified event metadata entry.
+  - Investigation-led-by note indicating external primary authority.
+- excludedConclusions:
+  - No external causal labels imported.
+  - Any later conclusions must come from primary investigating authority, not locator page.
+- quarantineNotes: Treat strictly as locator and context marker; not a final evidentiary report body.
+- SERAUsePotential: Supports source mapping and later primary-report retrieval planning for offshore event comparators.
+- methodologicalGapTargets:
+  - Source governance and reliability hierarchy
+  - Offshore context candidate tracking
+- linkedInternalCases:
+  - REAL-EVENT-0003
+  - REAL-EVENT-0015
+- sourceLimitations:
+  - Preliminary/locator nature only.
+  - Requires primary authority report before deep factual extraction.
+- extractionConfidence: LOW
+- nextStepRecommendation: Keep in queue for primary-source follow-up; do not use as standalone evidence base.
+

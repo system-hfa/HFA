@@ -1,0 +1,64 @@
+# EXT-BATCH1-EXTRACTION-006
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-006
+- sourceCandidateId: A4R87-EXT-006
+- originalA4R87CandidateId: A4R87-EXT-006
+- sourceAgency: NTSB
+- reportId: AAR-18/02
+- officialUrl: https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1802.pdf
+- sourceType: FINAL_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: C208B TAWS inhibited, controlled flight into terrain sequence
+- aircraftType: Cessna 208B
+- operationContext: Part 135 operation in deteriorating weather/terrain environment
+- sourceQuality: HIGH
+- factualSummary: NTSB accident report documents flight conducted with terrain warning inhibit context, followed by impact sequence in terrain environment, with detailed operational timeline and company/procedure evidence.
+- factualTimeline:
+  - Flight departed into weather-constrained route environment.
+  - Terrain-awareness inhibit context and monitoring burden documented.
+  - Flight continued into terrain conflict condition.
+  - CFIT impact occurred.
+- aircraftSystemState:
+  - Aircraft airworthy baseline discussed in report.
+  - Warning-system configuration state is a documented factual element.
+- crewRoleEvidence:
+  - Pilot actions and operational communications documented.
+  - Organizational/procedural context present in report record.
+- alertWarningChronology:
+  - TAWS-related system state and alerting context available.
+  - Timing/sequence details present in report narrative and data references.
+- procedureOrAutomationEvidence:
+  - Operational policies, procedural expectations, and alert-system usage context documented.
+- factualEvidenceAnchors:
+  - NTSB report abstract/timeline sections.
+  - Flight data, operational records, and system-state descriptions in report body.
+- excludedConclusions:
+  - NTSB probable cause and contributing factors excluded from direct coding.
+  - Safety recommendation set quarantined.
+- quarantineNotes: This case is high-value for objective/procedure boundary stress-testing, but all causal phrasing remains quarantined.
+- SERAUsePotential: Adversarial enrichment for objective non-nominal behavior evidence and action/procedure boundary clarity.
+- methodologicalGapTargets:
+  - O-axis non-nominal objective evidence
+  - Action/procedure separation controls
+  - Warning-system state interpretation discipline
+- linkedInternalCases:
+  - N109W
+- sourceLimitations:
+  - Strong external causal language requires strict quarantine discipline.
+- extractionConfidence: HIGH
+- nextStepRecommendation: Use in controlled adversarial review set with explicit excluded-conclusion tracing.
+

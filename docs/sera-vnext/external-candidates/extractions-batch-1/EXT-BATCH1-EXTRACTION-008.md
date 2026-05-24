@@ -1,0 +1,64 @@
+# EXT-BATCH1-EXTRACTION-008
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-008
+- sourceCandidateId: A4R87-EXT-008
+- originalA4R87CandidateId: A4R87-EXT-008
+- sourceAgency: TSB Canada
+- reportId: A11H0001
+- officialUrl: https://www.tsb.gc.ca/eng/rapports-reports/aviation/2011/a11h0001/a11h0001.html
+- sourceType: FINAL_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: S-92A go-around mode / AFCS and low-airspeed descent near water
+- aircraftType: Sikorsky S-92A
+- operationContext: Offshore approach with automation mode transition and low-energy exposure
+- sourceQuality: HIGH
+- factualSummary: TSB summary records go-around mode/AFCS context and subsequent low-airspeed descent progression near water during offshore approach operations.
+- factualTimeline:
+  - Offshore operation in approach segment.
+  - Go-around mode / AFCS interaction became operationally relevant.
+  - Low-speed descent profile developed near water.
+  - Recovery/impact-risk sequence captured in report record.
+- aircraftSystemState:
+  - AFCS mode behavior and airspeed-energy state are central factual elements.
+  - Water-proximity and low-energy profile documented.
+- crewRoleEvidence:
+  - Crew interaction with automation modes described.
+  - Monitoring and control-response evidence present.
+- alertWarningChronology:
+  - Mode/awareness chronology and related cues documented in report structure.
+- procedureOrAutomationEvidence:
+  - Automation mode transitions, approach/go-around procedures, and crew expectations explicitly relevant.
+- factualEvidenceAnchors:
+  - TSB executive summary and findings-support sections.
+  - Flight profile/mode interaction descriptions.
+- excludedConclusions:
+  - TSB findings as to causes/contributing factors excluded.
+  - Safety actions and recommendations quarantined.
+- quarantineNotes: Use as automation-mode factual anchor; avoid direct human-fault assignment without internal decomposition.
+- SERAUsePotential: Strong enrichment case for automation awareness, monitoring, and feedback evidence boundaries.
+- methodologicalGapTargets:
+  - Automation/mode awareness evidence quality
+  - Feedback/checking under low-energy offshore approach
+  - PF/PM coordination anchors
+- linkedInternalCases:
+  - N11NM
+  - N109W
+- sourceLimitations:
+  - Requires disciplined separation of AFCS technical behavior vs crew interpretation evidence.
+- extractionConfidence: HIGH
+- nextStepRecommendation: Use in first automation-focused enrichment pass for mode-awareness stability checks.
+

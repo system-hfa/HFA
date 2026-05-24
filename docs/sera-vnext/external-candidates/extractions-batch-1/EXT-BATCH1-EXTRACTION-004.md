@@ -1,0 +1,64 @@
+# EXT-BATCH1-EXTRACTION-004
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-004
+- sourceCandidateId: A4R87-EXT-004
+- originalA4R87CandidateId: A4R87-EXT-004
+- sourceAgency: TSB Canada
+- reportId: A15P0217
+- officialUrl: https://www.tsb.gc.ca/eng/rapports-reports/aviation/2015/a15p0217/a15p0217.html
+- sourceType: FINAL_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: Helijet S-76C+ night approach near Tofino / Long Beach
+- aircraftType: Sikorsky S-76C+
+- operationContext: Night offshore/coastal approach in marginal weather
+- sourceQuality: HIGH
+- factualSummary: TSB summary states two instrument approaches were flown, then a visual approach attempted in low visibility; aircraft descended and impacted terrain/water environment during final segment.
+- factualTimeline:
+  - 26 Oct 2015 flight from Vancouver toward Tofino.
+  - Multiple approach attempts under constrained visibility.
+  - Visual approach transition executed.
+  - Loss of control / impact sequence followed.
+- aircraftSystemState:
+  - No immediate pre-impact system-collapse narrative in summary.
+  - Flight path/altitude control degraded during approach segment.
+- crewRoleEvidence:
+  - Two-crew operation and approach management described in report narrative.
+- alertWarningChronology:
+  - Warning/callout chronology available in full report detail sections.
+- procedureOrAutomationEvidence:
+  - Instrument-to-visual transition and approach decision chain documented.
+  - Procedural context and cue availability limits explicitly relevant.
+- factualEvidenceAnchors:
+  - TSB executive summary and occurrence timeline.
+  - TSB supporting sections for approach profile and environmental factors.
+- excludedConclusions:
+  - Findings as to cause/contributing factors excluded from direct SERA use.
+  - Safety actions/recommendations quarantined.
+- quarantineNotes: Use as high-value factual comparator for approach monitoring sequence; keep external causal wording out of SERA decision artifacts.
+- SERAUsePotential: Direct enrichment/challenge source for previously released P-axis pilot cases in night approach contexts.
+- methodologicalGapTargets:
+  - P-axis monitoring stability under low-visibility approach
+  - PF/PM evidence anchors on repeated approach attempts
+  - Feedback/checking evidence quality
+- linkedInternalCases:
+  - REAL-EVENT-0003
+  - REAL-EVENT-0015
+- sourceLimitations:
+  - Requires structured extraction of specific data points before comparative use.
+- extractionConfidence: HIGH
+- nextStepRecommendation: Treat as primary comparator in released P-axis enrichment review cycle.
+

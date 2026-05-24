@@ -1,0 +1,69 @@
+# EXT-BATCH1-EXTRACTION-002
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-002
+- sourceCandidateId: A4R87-EXT-002
+- originalA4R87CandidateId: A4R87-EXT-002
+- sourceAgency: NTSB
+- reportId: ERA19FA210
+- officialUrl: https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/99766/pdf
+- sourceType: PDF_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: AW139 night over-water flight with EGPWS warning sequence
+- aircraftType: Leonardo AW139
+- operationContext: Night offshore/over-water air medical transfer with instrument monitoring demand
+- sourceQuality: HIGH
+- factualSummary: Report describes a night over-water profile where multiple EGPWS alerts occurred before impact sequence, with crew-control and monitoring evidence documented in the record.
+- factualTimeline:
+  - Medical mission launched from Bahamas toward destination.
+  - En route profile degraded in dark-night water environment.
+  - Repeated EGPWS alert sequence documented.
+  - Aircraft impacted water after descending from cruise segment.
+- aircraftSystemState:
+  - Helicopter remained controllable before final descent segment.
+  - Terrain/clearance alerting available and active during sequence.
+- crewRoleEvidence:
+  - Crew composition and task roles described in report.
+  - Crew communications and instrument-management evidence present.
+- alertWarningChronology:
+  - Multiple EGPWS warnings recorded.
+  - Warning-response intervals can be anchored to timeline excerpts.
+- procedureOrAutomationEvidence:
+  - Instrument scanning/monitoring expectations referenced by the report context.
+  - Operational pressure and night-water conditions explicitly relevant to procedural workload.
+- factualEvidenceAnchors:
+  - NTSB docket narrative for timeline and cockpit exchanges.
+  - Alerting chronology entries from report text.
+- excludedConclusions:
+  - Probable cause statement excluded.
+  - Contributing factors excluded from direct SERA mapping.
+  - Board safety recommendations excluded from coding decisions.
+- quarantineNotes: Treat warning chronology as factual evidence only; do not map alert non-response directly to any axis without internal questionPath testing.
+- SERAUsePotential: Strong boundary case for perception/action/feedback evidence separation under alert-rich night operations.
+- methodologicalGapTargets:
+  - Alert response chronology quality
+  - Crew monitoring behavior evidence
+  - PF/PM role clarity under high warning load
+- linkedInternalCases:
+  - REAL-EVENT-0003
+  - REAL-EVENT-0015
+  - N109W
+- sourceLimitations:
+  - External language includes causal framing that must remain quarantined.
+  - Detailed CVR/FDR references require controlled extraction granularity.
+- extractionConfidence: HIGH
+- nextStepRecommendation: Prioritize this case in adversarial enrichment cycle for warning-response timelines and instrument-monitoring anchors.
+

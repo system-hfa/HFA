@@ -1,0 +1,61 @@
+# EXT-BATCH1-EXTRACTION-009
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-009
+- sourceCandidateId: A4R87-EXT-009
+- originalA4R87CandidateId: A4R87-EXT-009
+- sourceAgency: TSB Canada
+- reportId: A23P0136
+- officialUrl: https://www.tsb.gc.ca/eng/rapports-reports/aviation/2023/a23p0136/a23p0136.html
+- sourceType: FINAL_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: S-76C++ lightning strike and uncontrolled rapid descent
+- aircraftType: Sikorsky S-76C++
+- operationContext: Offshore/coastal helicopter operation under severe weather/electrical exposure
+- sourceQuality: MEDIUM
+- factualSummary: TSB page records a lightning strike occurrence followed by uncontrolled rapid descent characteristics, creating a condition-dominant scenario for evidence-control use.
+- factualTimeline:
+  - Flight in weather-active environment.
+  - Lightning strike event occurred.
+  - Rapid descent/loss-of-control sequence followed.
+  - Survivability and damage sequence documented in investigation record.
+- aircraftSystemState:
+  - External environmental shock (lightning) is explicit factual anchor.
+  - Post-strike system/control state transitions require detailed report extraction.
+- crewRoleEvidence:
+  - Crew response timeline exists but should be interpreted under condition-dominant context.
+- alertWarningChronology:
+  - Warning/system cues after strike likely present; details require full report pass.
+- procedureOrAutomationEvidence:
+  - Emergency response and control actions are context-dependent on external condition dominance.
+- factualEvidenceAnchors:
+  - TSB occurrence summary for strike and descent sequence.
+  - Investigation detail sections for post-strike aircraft state.
+- excludedConclusions:
+  - Any causal finding language excluded from direct SERA use.
+  - Recommendations and external labels quarantined.
+- quarantineNotes: Primary methodological role is adversarial control against over-attributing human failure in condition-dominant scenarios.
+- SERAUsePotential: Strong adversarial control case for condition-dominant filtering and cautious human-factor attribution.
+- methodologicalGapTargets:
+  - Condition-dominant adversarial control
+  - Technical-state vs human-response separation
+- linkedInternalCases:
+  - N109W
+- sourceLimitations:
+  - Medium confidence until detailed post-strike parameter extraction is completed.
+- extractionConfidence: MEDIUM
+- nextStepRecommendation: Use as mandatory control case when testing enrichment effects on released pilot interpretations.
+

@@ -1,0 +1,62 @@
+# EXT-BATCH1-EXTRACTION-007
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-007
+- sourceCandidateId: A4R87-EXT-007
+- originalA4R87CandidateId: A4R87-EXT-007
+- sourceAgency: NTSB
+- reportId: CEN10FA079
+- officialUrl: https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/75203/pdf
+- sourceType: PDF_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: S-76C++ helideck/platform rollover sequence
+- aircraftType: Sikorsky S-76C++
+- operationContext: Offshore platform/helideck operation during low-altitude terminal segment
+- sourceQuality: MEDIUM
+- factualSummary: NTSB report content indicates platform/helideck context with abrupt roll-over or loss-of-control characteristics during terminal operation.
+- factualTimeline:
+  - Offshore/platform operation underway.
+  - Terminal segment entered helideck-proximate regime.
+  - Rapid control upset / rollover sequence occurred.
+- aircraftSystemState:
+  - Rotorcraft low-altitude terminal dynamics central to event.
+  - System-state detail available but requires deeper section-by-section extraction.
+- crewRoleEvidence:
+  - Crew actions and immediate control response narrative present in report.
+- alertWarningChronology:
+  - Limited explicit alert sequence in high-level extract; detailed timeline requires full parsing.
+- procedureOrAutomationEvidence:
+  - Approach/landing handling and control-response evidence available in record.
+- factualEvidenceAnchors:
+  - NTSB report narrative sections for event progression.
+  - Sequence descriptions around terminal handling and rollover dynamics.
+- excludedConclusions:
+  - NTSB causal determinations excluded.
+  - External recommendations excluded from SERA outputs.
+- quarantineNotes: Keep event useful for action/feedback evidence depth; do not infer fault labels from outcome alone.
+- SERAUsePotential: Secondary enrichment for helideck action mechanism and feedback-checking evidence templates.
+- methodologicalGapTargets:
+  - A-axis action mechanism evidence
+  - Feedback/checking in terminal handling
+  - Condition-vs-action separation controls
+- linkedInternalCases:
+  - REAL-EVENT-0003
+  - REAL-EVENT-0015
+- sourceLimitations:
+  - Medium confidence due limited fast-pass extraction granularity.
+- extractionConfidence: MEDIUM
+- nextStepRecommendation: Include in action-mechanism enrichment queue after top P1 sources.
+

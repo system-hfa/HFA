@@ -1,0 +1,63 @@
+# EXT-BATCH1-EXTRACTION-003
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-003
+- sourceCandidateId: A4R87-EXT-003
+- originalA4R87CandidateId: A4R87-EXT-003
+- sourceAgency: AAIB UK
+- reportId: 5/1988
+- officialUrl: https://www.gov.uk/aaib-reports/5-1988-sikorsky-s-76a-g-bhyb-9-december-1987
+- sourceType: PDF_REPORT
+- urlAccessStatus: PARTIAL_ACCESS
+- shortLabel: G-BHYB S-76A near Fulmar A platform
+- aircraftType: Sikorsky S-76A
+- operationContext: Offshore night approach to oil platform
+- sourceQuality: MEDIUM
+- factualSummary: Official AAIB entry confirms offshore night platform operation and accident context; legacy report format provides relevant sequence anchors but with limited machine-readable access.
+- factualTimeline:
+  - 09 Dec 1987 occurrence date (AAIB record).
+  - Offshore platform vicinity event during approach phase.
+  - Event progression available in historical report body (scanned/legacy).
+- aircraftSystemState:
+  - Legacy report indicates approach-phase dynamics near platform environment.
+  - Full parameter detail requires manual PDF review due legacy format.
+- crewRoleEvidence:
+  - Crew operational context exists in report, but extraction confidence reduced by format constraints.
+- alertWarningChronology:
+  - Not fully machine-readable from accessed content.
+  - Requires manual archival review for precise chronology.
+- procedureOrAutomationEvidence:
+  - Offshore approach procedures and visual/attitude demands are central context.
+- factualEvidenceAnchors:
+  - GOV.UK official report entry metadata.
+  - Linked AAIB archive PDF (legacy scan).
+- excludedConclusions:
+  - Any AAIB causal findings excluded from SERA outputs.
+  - Recommendations and external labels quarantined.
+- quarantineNotes: Keep this extraction as enrichment locator plus historical anchor; avoid direct causal mapping without controlled internal decomposition.
+- SERAUsePotential: Historical comparator for offshore approach perception/monitoring evidence and helideck cue limitations.
+- methodologicalGapTargets:
+  - P-axis monitoring under offshore night cues
+  - Legacy-source evidence handling protocol
+- linkedInternalCases:
+  - REAL-EVENT-0015
+  - G-BHYB related corpus references
+- sourceLimitations:
+  - Legacy scanned report not fully parseable in automated pass.
+  - Partial access status requires secondary archival pass if used in deeper comparisons.
+- extractionConfidence: MEDIUM
+- nextStepRecommendation: Keep as anchor-level enrichment reference; perform manual archive capture before using detailed timeline fragments.
+

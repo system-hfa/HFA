@@ -1,0 +1,62 @@
+# EXT-BATCH1-EXTRACTION-005
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-005
+- sourceCandidateId: A4R87-EXT-005
+- originalA4R87CandidateId: A4R87-EXT-005
+- sourceAgency: ATSB
+- reportId: AO-2024-007
+- officialUrl: https://www.atsb.gov.au/investigations/ao-2024-007
+- sourceType: PRELIMINARY_OR_LIMITED
+- urlAccessStatus: PARTIAL_ACCESS
+- shortLabel: Embraer E190 incorrect configuration / mode awareness event
+- aircraftType: Embraer E190
+- operationContext: Scheduled fixed-wing operation with configuration and mode management demands
+- sourceQuality: LOW
+- factualSummary: Official ATSB investigation page confirms an occurrence related to incorrect aircraft configuration and mode/context awareness, but full structured technical sequence was not fully accessible in this pass.
+- factualTimeline:
+  - Event registered under AO-2024-007.
+  - Investigation publication context accessible.
+  - Detailed step-by-step timeline requires report body retrieval.
+- aircraftSystemState:
+  - Configuration/mode state mismatch context explicitly indicated.
+  - Full parameterized state transitions unavailable in current partial access.
+- crewRoleEvidence:
+  - Crew-role specifics not fully extractable from page-only access.
+- alertWarningChronology:
+  - Not fully available in current accessible content.
+- procedureOrAutomationEvidence:
+  - Automation/mode management is central scenario element.
+  - Procedure cross-check details require full report retrieval.
+- factualEvidenceAnchors:
+  - ATSB occurrence/investigation metadata page.
+  - Public title/descriptor indicating configuration/mode issue scope.
+- excludedConclusions:
+  - Any ATSB analysis or safety framing excluded from SERA outputs.
+  - Potential recommendation content quarantined.
+- quarantineNotes: Use as limited-visibility extractor artifact; do not over-interpret beyond confirmed metadata until fuller source capture.
+- SERAUsePotential: Fixed-wing adversarial candidate for automation-mode evidence structure and monitoring boundary tests.
+- methodologicalGapTargets:
+  - Automation/mode awareness evidence framing
+  - Fixed-wing comparator beyond rotorcraft-heavy corpus
+- linkedInternalCases:
+  - N11NM
+- sourceLimitations:
+  - Partial access to factual body.
+  - Needs URL/report-body recheck before higher-confidence enrichment use.
+- extractionConfidence: LOW
+- nextStepRecommendation: Mark for early recheck and full report capture before applying in structured comparisons.
+

@@ -53,3 +53,18 @@ Plan structured factual harvesting for the curated external shortlist without pe
 2. Apply quarantine protocol to all external conclusions.
 3. Link extracted evidence to existing internal cases when applicable.
 4. Record unresolved evidence gaps without forcing classification.
+
+## A4+R-88 Execution Update
+- 12 structured extractions completed for the shortlisted Batch 1 candidates.
+- No classification executed.
+- No proposed code created.
+- No new released code created.
+- No downstream output opened.
+
+Generated in A4+R-88:
+- [External Harvest Batch 1 Structured Extraction Summary A4R88](./SERA_ENGINE_VNEXT_EXTERNAL_HARVEST_BATCH_1_STRUCTURED_EXTRACTION_A4R88_v0.2.0.md)
+- [External Batch 1 Gap Coverage Matrix A4R88](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_GAP_COVERAGE_MATRIX_A4R88_v0.2.0.md)
+- [External Batch 1 Released P-Axis Linkage A4R88](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_RELEASED_P_AXIS_LINKAGE_A4R88_v0.2.0.md)
+
+Next phase recommendation:
+- A4+R-89 — External Batch 1 Evidence Normalization and Internal Trace Anchoring (docs-only).

@@ -1,0 +1,60 @@
+# EXT-BATCH1-EXTRACTION-011
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-011
+- sourceCandidateId: A4R87-EXT-011
+- originalA4R87CandidateId: A4R87-EXT-011
+- sourceAgency: BEA France
+- reportId: 5N-BQJ notified event
+- officialUrl: https://bea.aero/en/investigation-reports/notified-events/detail/accident-to-a-sikorsky-s76-registered-5n-bqj-and-operated-by-bristow-helicopters-ltd-occured-on-02-03-16-in-nigeria-investigation-led-by-aib---nigeria/
+- sourceType: NOTIFIED_EVENT_LOCATOR
+- urlAccessStatus: ACCESSED
+- shortLabel: 5N-BQJ S-76 notified event with Nigeria AIB lead
+- aircraftType: Sikorsky S-76
+- operationContext: Offshore/near-water operation in Nigeria; external investigating authority
+- sourceQuality: PRELIMINARY
+- factualSummary: BEA notified-event entry provides event locator metadata and states investigation leadership by Nigeria AIB; no full factual body is provided by the locator itself.
+- factualTimeline:
+  - Event date and aircraft/operator identifiers listed.
+  - Investigation lead authority explicitly indicated.
+  - Detailed sequence not available in notified entry.
+- aircraftSystemState:
+  - Not available in notified locator level.
+- crewRoleEvidence:
+  - Not available in notified locator level.
+- alertWarningChronology:
+  - Not available in notified locator level.
+- procedureOrAutomationEvidence:
+  - Not available in notified locator level.
+- factualEvidenceAnchors:
+  - BEA notified-event metadata.
+  - Investigation-led-by statement.
+- excludedConclusions:
+  - No conclusion statements imported from locator text.
+  - Any external analysis references remain quarantined until primary report retrieval.
+- quarantineNotes: Locator-only artifact for source tracking; do not treat as full evidence package.
+- SERAUsePotential: Existing-case enrichment routing support and source-governance check for known Nigeria-related offshore events.
+- methodologicalGapTargets:
+  - Source traceability governance
+  - External-primary vs locator-secondary distinction
+- linkedInternalCases:
+  - REAL-EVENT-004
+- sourceLimitations:
+  - Preliminary metadata only.
+  - Requires primary AIB Nigeria report for full extraction.
+- extractionConfidence: LOW
+- nextStepRecommendation: Keep as linkage marker; fetch primary authority report before any detailed methodological use.
+

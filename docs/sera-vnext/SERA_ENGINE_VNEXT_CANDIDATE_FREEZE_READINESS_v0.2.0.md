@@ -968,3 +968,29 @@ O candidate freeze final continua nao autorizado.
 
 Proxima fase recomendada:
 - **A4+R-88 - External Harvest Batch 1 Structured Extraction**, usando somente a shortlist curada.
+
+## A4+R-88 - External Harvest Batch 1 Structured Extraction
+
+Esta fase executou extração factual estruturada para os 12 candidatos externos shortlisted, aplicando protocolo de quarentena de conclusões:
+
+- [External Harvest Batch 1 Structured Extraction Summary A4R88](./SERA_ENGINE_VNEXT_EXTERNAL_HARVEST_BATCH_1_STRUCTURED_EXTRACTION_A4R88_v0.2.0.md)
+- [External Batch 1 Gap Coverage Matrix A4R88](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_GAP_COVERAGE_MATRIX_A4R88_v0.2.0.md)
+- [External Batch 1 Released P-Axis Linkage A4R88](./SERA_ENGINE_VNEXT_EXTERNAL_BATCH_1_RELEASED_P_AXIS_LINKAGE_A4R88_v0.2.0.md)
+- [External Candidate Index A4R87 Updated with A4R88 extraction metadata](./external-candidates/EXTERNAL_CANDIDATE_INDEX_A4R87_v0.2.0.md)
+- [External Batch 1 Extractions Folder](./external-candidates/extractions-batch-1/)
+
+Estado apos A4+R-88:
+- external Batch 1 structured extraction executado;
+- 12 extracoes criadas;
+- gap coverage matrix criada;
+- released P-axis linkage criado;
+- nenhum P/O/A novo criado;
+- nenhum proposedCode criado;
+- nenhum novo releasedCode criado;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/codigo/runtime/UI/API/DB alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-89 - External Batch 1 Evidence Normalization and Internal Trace Anchoring** (docs-only, sem classificacao SERA).

@@ -1,0 +1,66 @@
+# EXT-BATCH1-EXTRACTION-001
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-001
+- sourceCandidateId: A4R87-EXT-001
+- originalA4R87CandidateId: A4R87-EXT-001
+- sourceAgency: TSB Canada
+- reportId: A19A0055
+- officialUrl: https://www.tsb.gc.ca/eng/rapports-reports/aviation/2019/a19a0055/a19a0055.html
+- sourceType: FINAL_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: S-92A inadvertent descent near Sable Island
+- aircraftType: Sikorsky S-92A
+- operationContext: Offshore IFR operation with platform approaches in low visibility
+- sourceQuality: HIGH
+- factualSummary: Flight departed Halifax for offshore facility; after two unsuccessful instrument approaches, crew transitioned to visual approach and entered high-rate descent / low-airspeed condition in low visibility.
+- factualTimeline:
+  - 24 Jul 2019 flight from CYHZ to Thebaud Central Facility.
+  - Two instrument approaches discontinued due to weather/visibility.
+  - During visual approach attempt, rapid descent and low airspeed developed.
+  - Engine overtorque recorded during recovery sequence.
+- aircraftSystemState:
+  - Rotorcraft in low-energy profile during approach.
+  - Engine/torque exceedance occurred during descent/recovery.
+- crewRoleEvidence:
+  - Two-pilot operation documented.
+  - Approach transition decision and handling actions described in report narrative.
+- alertWarningChronology:
+  - Report provides approach/energy-state progression; specific cockpit warning chronology available in full report appendices.
+- procedureOrAutomationEvidence:
+  - Instrument approach attempts followed by visual approach decision.
+  - Offshore approach environment with IFR-to-visual transition pressure.
+- factualEvidenceAnchors:
+  - TSB executive summary (occurrence sequence and energy-state change).
+  - TSB appendices (flight-parameter figures, mode boundary comparison references).
+- excludedConclusions:
+  - TSB causal/contributing findings not imported as SERA outputs.
+  - Any safety recommendations and deficiency labels kept quarantined.
+- quarantineNotes: Use only sequence/parameters and crew-role evidence; keep board conclusions outside coding decisions.
+- SERAUsePotential: Enrichment candidate for action/monitoring and feedback-checking evidence quality in offshore low-visibility approach sequences.
+- methodologicalGapTargets:
+  - A-axis action mechanism evidence depth
+  - PF/PM role clarity
+  - Feedback/checking under low-energy state
+- linkedInternalCases:
+  - REAL-EVENT-0003
+  - REAL-EVENT-0015
+- sourceLimitations:
+  - No direct transfer of investigation conclusions.
+  - Requires controlled mapping to internal questionPath evidence fields.
+- extractionConfidence: HIGH
+- nextStepRecommendation: Use as first enrichment comparator for offshore descent monitoring chains; run side-by-side traceability review with existing internal cases.
+

@@ -1,0 +1,62 @@
+# EXT-BATCH1-EXTRACTION-012
+
+Status:
+- STRUCTURED_EXTERNAL_EXTRACTION_DRAFT
+- A4R88_BATCH_1
+- NOT_CLASSIFIED
+- NO_PROPOSED_CODE
+- NO_NEW_RELEASED_CODE
+- NOT_FIXTURE
+- NOT_BASELINE
+- NOT_FOR_DOWNSTREAM
+- NO_FINAL_CONCLUSION
+- NO_HFACS
+- NO_RISK_ERC
+- NO_RECOMMENDATIONS
+
+- extractionId: EXT-BATCH1-EXTRACTION-012
+- sourceCandidateId: A4R87-EXT-012
+- originalA4R87CandidateId: A4R87-EXT-012
+- sourceAgency: NTSB
+- reportId: CEN17FA072
+- officialUrl: https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/94545/pdf
+- sourceType: PDF_REPORT
+- urlAccessStatus: ACCESSED
+- shortLabel: Citation CJ4 mode/autopilot status event
+- aircraftType: Cessna Citation CJ4
+- operationContext: Fixed-wing operation with automation mode-state awareness demands
+- sourceQuality: MEDIUM
+- factualSummary: NTSB report presents an event where autopilot/mode-state awareness and control-management sequence are central factual elements before the loss-of-control/impact outcome.
+- factualTimeline:
+  - Flight progressed under autopilot/mode-managed profile.
+  - Mode/state interpretation and control inputs became operationally critical.
+  - Flight path diverged into destabilized sequence leading to impact.
+- aircraftSystemState:
+  - Autopilot/mode-state evidence present in report narrative and data sections.
+  - System behavior and crew interaction require structured extraction pass.
+- crewRoleEvidence:
+  - Pilot/crew actions and control inputs documented.
+  - Role-specific monitoring evidence partially extractable from report body.
+- alertWarningChronology:
+  - Mode and control-state cues available; warning timing detail requires deeper extraction.
+- procedureOrAutomationEvidence:
+  - Automation engagement/disengagement context and checklist/procedural interactions relevant.
+- factualEvidenceAnchors:
+  - NTSB report narrative and factual sections.
+  - Control-input and mode-status references in report detail.
+- excludedConclusions:
+  - NTSB probable cause statement excluded.
+  - Contributing-factor labels and recommendations quarantined.
+- quarantineNotes: Use as fixed-wing automation evidence case; keep external causal statements outside SERA decisions.
+- SERAUsePotential: Comparator for automation mode-awareness evidence quality and monitoring/feedback boundaries.
+- methodologicalGapTargets:
+  - Automation/mode awareness
+  - Feedback/checking under mode transitions
+  - Fixed-wing contrast for rotorcraft-weighted corpus
+- linkedInternalCases:
+  - N11NM
+- sourceLimitations:
+  - Medium-confidence fast-pass; detailed timeline anchoring still needed for full utilization.
+- extractionConfidence: MEDIUM
+- nextStepRecommendation: Include in fixed-wing comparator subset for next controlled enrichment review.
+
