@@ -732,3 +732,40 @@ O candidate freeze final continua nao autorizado.
 Proxima fase recomendada:
 - **A4+R-81 - Release Criteria Design for AI/Author Proposed Codes** (docs-only primeiro), porque a cobertura de questionPath agora esta homogenea em 30/30.
 - Alternativa posterior: **A4+R-81 - External Investigation Report Harvest Strategy**, se a prioridade passar a ser reduzir lacunas de fonte antes de criterios de release.
+
+## A4+R-81 - Release Criteria Design for AI/Author Proposed Codes
+
+Esta fase desenhou criterios documentais para futura avaliacao de release de `proposedCode` AI/Author, sem executar release real:
+
+- [Release Criteria Design A4R81](./SERA_ENGINE_VNEXT_RELEASE_CRITERIA_DESIGN_A4R81_v0.2.0.md)
+- [Release Criteria by Axis A4R81](./SERA_ENGINE_VNEXT_RELEASE_CRITERIA_BY_AXIS_A4R81_v0.2.0.md)
+- [Release Criteria for Observed Codes A4R81](./SERA_ENGINE_VNEXT_RELEASE_CRITERIA_FOR_OBSERVED_CODES_A4R81_v0.2.0.md)
+- [Release Eligibility Dry-Run Matrix A4R81](./SERA_ENGINE_VNEXT_RELEASE_ELIGIBILITY_DRY_RUN_MATRIX_A4R81_v0.2.0.md)
+- [Release Criteria Method Decision A4R81](./SERA_ENGINE_VNEXT_RELEASE_CRITERIA_METHOD_DECISION_A4R81_v0.2.0.md)
+- [Post Release Criteria Next Phase Plan A4R81](./SERA_ENGINE_VNEXT_POST_RELEASE_CRITERIA_NEXT_PHASE_PLAN_A4R81_v0.2.0.md)
+
+Estado apos A4+R-81:
+- release criteria design criado;
+- criterios por eixo criados;
+- criterios por codigos observados criados para `P-G`, `P-C`, `P-F`, `P-H`, `O-A`, `O-C`, `O-D` e `A-F`;
+- eligibility dry-run matrix criada para 30 casos e 90 eixos;
+- method decision draft criado;
+- no release real;
+- releasedCodeCount=0;
+- proposedCodeChanges=0;
+- unresolvedReduced=0;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/codigo alterado.
+
+Dry-run A4+R-81:
+- ELIGIBLE_FOR_AUTHOR_REVIEW: 21 eixos;
+- NOT_ELIGIBLE: 0 eixos no nivel de celula, porque casos triage-only continuam bloqueados por `UNRESOLVED`;
+- NEEDS_ENRICHMENT: 6 eixos;
+- BLOCKED_UNRESOLVED: 52 eixos;
+- DESIGN_ONLY_NOT_ASSESSED: 11 eixos.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-82 - Author Review of Release Eligibility Matrix**.
+- Alternativa se o autor priorizar reforco factual antes da revisao: **A4+R-82 - Source Enrichment Sprint for release-eligible candidates**.
