@@ -640,3 +640,25 @@ Estado após A4+R-77:
 
 Próxima fase ampla recomendada:
 - **A4+R-78 — Consolidated Metrics and QuestionPath Review for 30 Real Events**.
+
+## A4+R-78 — Consolidated Metrics and QuestionPath Review for 30 Real Events
+
+Esta fase consolidou os 30 eventos reais em métricas globais, revisão de padrões, cobertura de `questionPath` e decisão de próxima trilha:
+
+- [30 Real Events Consolidated Metrics A4R78](./SERA_ENGINE_VNEXT_30_REAL_EVENTS_CONSOLIDATED_METRICS_A4R78_v0.2.0.md)
+- [QuestionPath Review A4R78](./SERA_ENGINE_VNEXT_QUESTION_PATH_REVIEW_A4R78_v0.2.0.md)
+- [30 Real Events Pattern Review A4R78](./SERA_ENGINE_VNEXT_30_REAL_EVENTS_PATTERN_REVIEW_A4R78_v0.2.0.md)
+- [Consolidated 30 Real Events Tracker A4R78](./real-event-adjudications/CONSOLIDATED_30_REAL_EVENTS_TRACKER_A4R78_v0.2.0.md)
+- [Post-30 Events Next Phase Decision A4R78](./SERA_ENGINE_VNEXT_POST_30_EVENTS_NEXT_PHASE_DECISION_A4R78_v0.2.0.md)
+
+Estado após A4+R-78:
+- 30 real events consolidated;
+- métricas globais: `totalCases=30`, `totalAxes=90`, `proposedPAxes=12`, `proposedOAxes=25`, `proposedAAxes=1`, `totalUnresolvedAxes=52`;
+- `questionPath` padronizado presente nos 15 casos Batch 3 e ausente/não padronizado nos 15 primeiros;
+- `releasedCodeCount=0`;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/código alterado;
+- freeze final continua não autorizado.
+
+Próxima fase ampla escolhida:
+- **A4+R-79 — QuestionPath Template and Backfill Plan**.
