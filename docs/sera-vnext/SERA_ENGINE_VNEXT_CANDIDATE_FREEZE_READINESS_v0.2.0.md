@@ -705,3 +705,30 @@ Estado após A4+R-79b:
 - old O-E wording normalized nos arquivos alvo desta fase;
 - nenhuma alteração funcional de taxonomia, adjudicação ou métricas;
 - nenhum release/downstream habilitado.
+
+## A4+R-80 - QuestionPath Backfill for First 15 Events
+
+Esta fase executou o backfill documental de questionPath para os 15 primeiros eventos reais e adicionou auditorias metodologicas de consistencia:
+
+- [QuestionPath Backfill Execution A4R80](./SERA_ENGINE_VNEXT_QUESTION_PATH_BACKFILL_EXECUTION_A4R80_v0.2.0.md)
+- [O-E Residual Wording Audit A4R80](./SERA_ENGINE_VNEXT_OE_RESIDUAL_WORDING_AUDIT_A4R80_v0.2.0.md)
+- [Method Locks Audit A4R80](./SERA_ENGINE_VNEXT_METHOD_LOCKS_AUDIT_A4R80_v0.2.0.md)
+- [QuestionPath Consistency Audit A4R80](./SERA_ENGINE_VNEXT_QUESTION_PATH_CONSISTENCY_AUDIT_A4R80_v0.2.0.md)
+
+Estado apos A4+R-80:
+- backfill executado para 15/15 casos alvo;
+- questionPath coverage: 30/30;
+- O-E residual audit criado;
+- method locks audit criado;
+- questionPath consistency audit criado;
+- proposedCodeChanges=0;
+- unresolvedReduced=0;
+- releasedCodeCount=0;
+- nenhum downstream aberto;
+- nenhum fixture/baseline/codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- **A4+R-81 - Release Criteria Design for AI/Author Proposed Codes** (docs-only primeiro), porque a cobertura de questionPath agora esta homogenea em 30/30.
+- Alternativa posterior: **A4+R-81 - External Investigation Report Harvest Strategy**, se a prioridade passar a ser reduzir lacunas de fonte antes de criterios de release.

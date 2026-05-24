@@ -35,3 +35,28 @@ Phase: A4+R-78 — Consolidated Metrics and QuestionPath Review for 30 Real Even
 | 028 | BATCH_3_15 | BS211-Q400 | Unstable approach sequence | P-H | O-C | A-F | none | AUTHOR_REVIEW_READY | no | yes | no | communication_objective_action_diversity | author review of O-C/A-F drafts | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
 | 029 | BATCH_3_15 | REAL-EVENT-0032 | A320 G-EZWM correspondence triage | UNRESOLVED | UNRESOLVED | UNRESOLVED | P,O,A | TRIAGE_ONLY | yes | yes | no | source_partial_triage | primary source enrichment | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
 | 030 | BATCH_3_15 | REAL-EVENT-0033 | B737 EI-EFB correspondence triage | UNRESOLVED | UNRESOLVED | UNRESOLVED | P,O,A | TRIAGE_ONLY | yes | yes | no | source_partial_triage | primary source enrichment | NO_RELEASED_CODE / NO_DOWNSTREAM / NOT_FIXTURE / NOT_BASELINE |
+
+## A4+R-80 QuestionPath Backfill Reference
+
+This section adds questionPath backfill references without changing the original A4+R-78 tracker table, P/O/A values, maturityStatus, enrichmentNeeded, guardedNarrative, mainPattern, nextStep, or locks.
+
+| caseId | sourceBatch | questionPathPresentBeforeA4R80 | questionPathBackfillDoc | questionPathPresentAfterA4R80 | conflictStatus |
+|---|---|---|---|---|---|
+| REAL-EVENT-0001 | BATCH_INITIAL_5 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-REAL-EVENT-001.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0002 | BATCH_INITIAL_5 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-REAL-EVENT-002.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0004 | BATCH_INITIAL_5 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-REAL-EVENT-003.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0006 | BATCH_INITIAL_5 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-REAL-EVENT-004.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0028 | BATCH_INITIAL_5 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-REAL-EVENT-005.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0003 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-001.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0005 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-002.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0010 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-003.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0013 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-004.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0015 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-005.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0016 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-006.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0007 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-007.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0008 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-008.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0009 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-009.md) | yes | NO_CONFLICT |
+| REAL-EVENT-0011 | BATCH_2_10 | no | [BACKFILL](../real-event-questionpath-backfill/QUESTIONPATH-BACKFILL-BATCH2-010.md) | yes | NO_CONFLICT |
+| Batch 3 cases 016-030 | BATCH_3_15 | yes | not applicable | yes | NO_CONFLICT |
+
+A4+R-80 coverage result: 30/30 real events have questionPath coverage when Batch 3 native questionPath and first-15 backfill annexes are counted together.
