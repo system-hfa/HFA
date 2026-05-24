@@ -34,3 +34,25 @@ Build 3-5 traces from:
 - No release.
 - No author approval request at screening stage.
 - No front-end promotion.
+
+## A4+R-104 execution update
+Batch built in A4R104 from this shortlist:
+- REAL-EVENT-0016
+- BS211-Q400
+- EXT-002
+
+Output artifacts:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_A4R104_v0.2.0.md`
+- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0016-CANONICAL-DRAFT-A4R104.md`
+- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-BS211-Q400-CANONICAL-DRAFT-A4R104.md`
+- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-EXT-002-CANONICAL-DRAFT-A4R104.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_GAPS_A4R104_v0.2.0.md`
+
+Execution notes:
+- no author approval used in A4R104
+- no release created in A4R104
+- frontend remains `NOT_READY_AUTHOR_REVIEW_REQUIRED`
+
+Next macro rule:
+- if at least 2 drafts are `PASS_WITH_LIMITATIONS` or better: prepare one author review bundle for the batch;
+- if fewer than 2 drafts pass: run source-slice expansion (and external search only in a dedicated next phase).

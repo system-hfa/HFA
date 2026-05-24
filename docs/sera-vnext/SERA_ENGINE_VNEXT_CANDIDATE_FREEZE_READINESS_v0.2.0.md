@@ -1344,3 +1344,26 @@ Registro de estado A4+R-103:
 Próxima ação macro:
 - escolher 3-5 candidatos fortes para canonical trace build;
 - review autoral somente depois dos trace candidates, se houver proposta de promoção para reference/front-end/proof/release.
+
+## A4+R-104 — Canonical Trace Draft Batch for Strong Candidates
+
+Esta fase construiu um lote único de trace drafts canônicos a partir da shortlist A4R103, usando exclusivamente o asset canônico A4R99:
+- [Canonical Trace Draft Batch A4R104](./SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_A4R104_v0.2.0.md)
+- [Canonical Trace Draft Batch Gaps A4R104](./SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_GAPS_A4R104_v0.2.0.md)
+- [Trace Draft REAL-EVENT-0016 A4R104](./reference-case-traces/REFERENCE-CASE-REAL-EVENT-0016-CANONICAL-DRAFT-A4R104.md)
+- [Trace Draft BS211-Q400 A4R104](./reference-case-traces/REFERENCE-CASE-BS211-Q400-CANONICAL-DRAFT-A4R104.md)
+- [Trace Draft EXT-002 A4R104](./reference-case-traces/REFERENCE-CASE-EXT-002-CANONICAL-DRAFT-A4R104.md)
+
+Registro de estado A4+R-104:
+- candidates in batch: 3 (`REAL-EVENT-0016`, `BS211-Q400`, `EXT-002`);
+- trace drafts created: 3;
+- validation status: all 3 as `PASS_WITH_LIMITATIONS`;
+- author approval used in this phase: no;
+- new release created: no;
+- downstream opened: no;
+- frontend readiness after batch: `NOT_READY_AUTHOR_REVIEW_REQUIRED`;
+- freeze final authorized: no.
+
+Próxima ação macro:
+- se pelo menos 2 drafts mantiverem `PASS_WITH_LIMITATIONS` ou melhor após revisão de consistência, preparar bundle único de review autoral;
+- se menos de 2 drafts passarem, executar source-slice expansion antes de qualquer bundle de review.

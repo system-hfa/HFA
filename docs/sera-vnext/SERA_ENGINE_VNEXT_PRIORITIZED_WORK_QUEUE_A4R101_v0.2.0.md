@@ -22,3 +22,15 @@ NO_DOWNSTREAM
 - No work item in this queue authorizes downstream opening.
 - Any missing canonical node/question path must stop trace work (`CANONICAL_NODE_MISSING`).
 - A4R103 screening is complete and did not require author approval.
+
+## A4+R-104 queue update
+- Completed in A4R104:
+  - P0 batch selection and canonical trace drafts for `REAL-EVENT-0016`, `BS211-Q400`, and `EXT-002`.
+  - Execution remained docs-only, no release, no downstream, no author approval.
+
+## Immediate queue after A4R104
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Batch author-review bundle preparation (conditional) | A4R104 three-trace batch | Move from draft build to comparable review package without promotion. | Codex | 1 bundle | At least two A4R104 drafts are `PASS_WITH_LIMITATIONS` or better; bundle excludes any release action. |
+| P0 | Source-slice expansion fallback (conditional) | Any A4R104 draft below threshold | Prevent overclassification when canonical confidence is insufficient. | Codex | 1 focused slice batch | Missing/weak evidence for weak nodes is explicitly reduced before review bundle. |
+| P1 | Candidate shortlist hardening | Remaining strong/good candidates | Keeps reference pipeline scalable after first draft batch. | Codex | 5-8 events | Updated shortlist with explicit draft-readiness flags and blocking reasons. |

@@ -134,3 +134,21 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Choose 3-5 strongest events from the A4R103 shortlist for canonical trace builds.
 2. Build trace candidates from the A4R99 asset only.
 3. Ask for author review only after trace candidates are ready for promotion decisions.
+
+## A4+R-104 Execution Update (Trace Draft Batch)
+- Canonical trace draft batch built for three strong candidates:
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-REAL-EVENT-0016-CANONICAL-DRAFT-A4R104.md`
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-BS211-Q400-CANONICAL-DRAFT-A4R104.md`
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-EXT-002-CANONICAL-DRAFT-A4R104.md`
+- Batch summary and gaps:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_A4R104_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_DRAFT_BATCH_GAPS_A4R104_v0.2.0.md`
+- Author approval used in A4R104: no
+- New release created in A4R104: no
+- Downstream opened in A4R104: no
+- Frontend readiness after A4R104: `NOT_READY_AUTHOR_REVIEW_REQUIRED`
+
+## Updated Immediate Sequence After A4R104
+1. Validate batch-level consistency across the three canonical drafts and prepare one author-review bundle only if at least two drafts are `PASS_WITH_LIMITATIONS` or better.
+2. If fewer than two drafts satisfy that threshold, execute source-slice expansion before any author-review bundle.
+3. Keep release/downstream/front-end promotion closed until post-review promotion decisions.

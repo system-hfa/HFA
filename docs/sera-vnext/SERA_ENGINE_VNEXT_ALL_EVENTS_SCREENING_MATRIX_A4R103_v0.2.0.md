@@ -73,3 +73,17 @@ NO_DOWNSTREAM
 - NOT_REFERENCE_PRIORITY: 5
 - CANONICAL_NODE_MISSING: 0
 - DUPLICATE_OR_ALREADY_COVERED: 5
+
+## A4+R-104 Trace-Draft Overlay
+This overlay records trace-draft execution only. It does not alter A4R103 categories, does not alter official P/O/A status, and does not create release.
+
+| eventId | A4R103Category | traceDraftFile | traceDraftStatus | strongestAxisDrafted | validationStatus | authorApprovalUsedNow | releaseCreated | frontendStatus |
+|---|---|---|---|---|---|---|---|---|
+| REAL-EVENT-0016 | STRONG_REFERENCE_CANDIDATE | `reference-case-traces/REFERENCE-CASE-REAL-EVENT-0016-CANONICAL-DRAFT-A4R104.md` | TRACE_DRAFT_CREATED | P-C (draft) | PASS_WITH_LIMITATIONS | false | false | NOT_READY_AUTHOR_REVIEW_REQUIRED |
+| BS211-Q400 | STRONG_REFERENCE_CANDIDATE | `reference-case-traces/REFERENCE-CASE-BS211-Q400-CANONICAL-DRAFT-A4R104.md` | TRACE_DRAFT_CREATED | P-H (draft) | PASS_WITH_LIMITATIONS | false | false | NOT_READY_AUTHOR_REVIEW_REQUIRED |
+| EXT-002 | STRONG_REFERENCE_CANDIDATE | `reference-case-traces/REFERENCE-CASE-EXT-002-CANONICAL-DRAFT-A4R104.md` | TRACE_DRAFT_CREATED | P-G (draft) | PASS_WITH_LIMITATIONS | false | false | NOT_READY_AUTHOR_REVIEW_REQUIRED |
+
+Overlay confirmations:
+- no author approval used in A4R104
+- no release created in A4R104
+- no downstream opened in A4R104
