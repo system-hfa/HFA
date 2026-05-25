@@ -2084,3 +2084,46 @@ Proxima fase recomendada:
 - prioridade: corrigir gate BS211-Q400 e A4R87-EXT-002 antes de qualquer aprovacao;
 - REAL-EVENT-0003 pronto para aprovacao parcial imediata;
 - REAL-EVENT-0016 e ASIANA-214 requerem decisao consciente sobre boundaries P-C/P-G e A-F/A-E.
+
+## A4+R-133 — Author Decision for REAL-EVENT-0003 and Consolidated Event Status
+
+Esta fase registrou a decisao autoral consolidada para REAL-EVENT-0003, incorporando o source enrichment sobre a desconexao manual do autopilot, sem criar releasedCode e sem aprovar os outros quatro eventos A4R131:
+
+- [Author Decision REAL-EVENT-0003 A4R133](./SERA_ENGINE_VNEXT_AUTHOR_DECISION_REAL_EVENT_0003_A4R133_v0.2.0.md)
+- [Author Decision Status After A4R133](./author-review-packets-a4r131/AUTHOR_DECISION_STATUS_AFTER_A4R133_v0.2.0.md)
+
+Estado apos A4+R-133:
+
+REAL-EVENT-0003:
+- status: AUTHOR_APPROVED_DRAFT_PARTIAL;
+- ponto de fuga: APROVADO COM NOTA — desconexao manual do autopilot pelo PF as 0239:01 como contexto, nao como falha SERA;
+- "Quando..." revisado: inclui "apos a desconexao manual do autopilot pelo PF durante a transicao para aproximacao visual/manual";
+- P-G aprovado, O-A aprovado, A-UNRESOLVED mantido;
+- saida parcial da quarentena apenas como AUTHOR_APPROVED_DRAFT_PARTIAL;
+- nao serve como referencia completa do eixo A;
+- nenhum releasedCode, downstream, finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations.
+
+Demais eventos:
+- REAL-EVENT-0016: AUTHOR_REVIEW_PENDING (fronteira P-C vs P-G pendente);
+- BS211-Q400: NOT_APPROVED_REQUIRES_REBUILD (gate e ponto de fuga precisam de rebuild);
+- A4R87-EXT-002: REQUIRES_ESCAPE_POINT_PATCH (EGPWS como marcador temporal precisa revisao);
+- ASIANA-214: AUTHOR_REVIEW_PENDING (O-D threshold e A-F vs A-E pendentes);
+- AMERICAN-965 e COMAIR-5191: nao processados (source-enrichment lane).
+
+Metricas:
+- authorDecisionsRecordedCount: 1
+- authorApprovedDraftPartialCount: 1
+- authorReviewPendingCount: 2
+- notApprovedRequiresRebuildCount: 1
+- requiresEscapePointPatchCount: 1
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- rebuild do gate BS211-Q400 (ponto de fuga e quando);
+- patch do escape point A4R87-EXT-002 (isolar degradacao pre-EGPWS);
+- coleta de decisao autoral consciente para REAL-EVENT-0016 (P-C vs P-G) e ASIANA-214 (A-F vs A-E);
+- REAL-EVENT-0003 aguarda fase futura de release governance.
