@@ -314,3 +314,18 @@ NO_DOWNSTREAM
 | P0 | Run dedicated future author-review lane for consolidated real set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`, `EASTERN-401` | Real-event set is now governance-consolidated with explicit warnings and caveats. | Codex + user | 1 future bundle cycle | Author decisions captured in dedicated phase only, without release/downstream. |
 | P1 | Start synthetic model event framework phase (no real-event substitution) | 12 planned synthetic model events (4P/4O/4A emphasis) | Coverage matrix identifies controlled gaps better explored by synthetic didactic/adversarial cases. | Codex | 1 framework cycle | First synthetic draft framework produced with explicit `SYNTHETIC_MODEL_EVENT` source discipline. |
 | P1 | Keep held/rework register active | `ATLAS-3591`, `AMERICAN-1420`, `ASIANA-214`, `AMERICAN-965`, `HELIOS-522`, `USAIR-427`, `TUROY-EC225`, `KOREAN-801` | Out-of-bundle cases need dedicated evidence/scope gates, not bundle backfill by pressure. | Codex | continuous | Reopen only when documented conditions are satisfied. |
+
+## A4+R-124 queue update
+- Completed in A4R124:
+  - documented an auditable selection-funnel explanation for why consolidated real references are six warning-bound cases;
+  - built non-selected real-event use register with reopen conditions;
+  - built canonical question trace dossier for the six consolidated events;
+  - built author-facing explainer for governance readability.
+- Execution remained docs-only, real-event-rationale-and-dossier-only, no author decision, no release, no downstream.
+
+## Immediate queue after A4R124
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Execute dedicated future author-review lane with dossier support | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`, `EASTERN-401` | Canonical rationale and per-axis evidence trail are now explicitly audit-ready for review session. | Codex + user | 1 future bundle cycle | Author decisions captured in dedicated phase only, without release/downstream action. |
+| P1 | Keep non-selected lanes active | rework/hold/boundary/deferred registers | Non-selected events remain method assets with explicit reopen conditions. | Codex | continuous | Reopen only when documented conditions are satisfied. |
+| P1 | Prepare synthetic framework phase (without creating cases in this queue step) | synthetic model event framework readiness | A4R123 readiness exists; queue timing should follow author lane gating priorities. | Codex | 1 framework planning cycle | Framework phase opened explicitly in future phase, still no release/downstream. |

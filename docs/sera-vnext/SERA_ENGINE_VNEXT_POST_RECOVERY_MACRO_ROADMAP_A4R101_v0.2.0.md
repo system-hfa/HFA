@@ -523,3 +523,28 @@ Controles A4R123:
 1. Execute future author-review lane dos 6 eventos reais consolidados em fase dedicada.
 2. Iniciar framework de synthetic model events em fase própria, sem substituir evidência real.
 3. Manter trilha de held/rework com reabertura somente por condição metodológica documentada.
+
+## A4+R-124 — Real Event Reference Rationale and Canonical Dossier
+
+Esta fase criou o pacote explicativo/auditável do conjunto real consolidado:
+- [Real Event Selection Funnel Explanation A4R124](./SERA_ENGINE_VNEXT_REAL_EVENT_SELECTION_FUNNEL_EXPLANATION_A4R124_v0.2.0.md)
+- [Non-Selected Real Events Use Register A4R124](./SERA_ENGINE_VNEXT_NON_SELECTED_REAL_EVENTS_USE_REGISTER_A4R124_v0.2.0.md)
+- [Real Event Canonical Trace Dossier A4R124](./SERA_ENGINE_VNEXT_REAL_EVENT_CANONICAL_TRACE_DOSSIER_A4R124_v0.2.0.md)
+- [Real Event Reference Explainer for Author A4R124](./SERA_ENGINE_VNEXT_REAL_EVENT_REFERENCE_EXPLAINER_FOR_AUTHOR_A4R124_v0.2.0.md)
+
+Resultado macro A4R124:
+- justificativa de por que o funil consolidou 6 eventos documentada com critérios metodológicos explícitos;
+- destino dos eventos não selecionados documentado por categoria de governança;
+- trilha canônica de perguntas/respostas/evidências dos 6 eventos consolidada para auditabilidade.
+
+Controles A4R124:
+- nenhum evento sintético criado;
+- nenhum novo trace criado;
+- nenhuma alteração de classificação P/O/A;
+- nenhuma decisão autoral;
+- nenhum release/downstream.
+
+## Updated Immediate Sequence After A4R124
+1. Executar a future author-review lane dos 6 eventos com suporte do dossiê canônico A4R124.
+2. Manter lanes de rework/hold/boundary/deferred com reabertura por condição explícita.
+3. Abrir fase de framework sintético apenas em fase dedicada, após prioridade da lane autoral.

@@ -1766,3 +1766,23 @@ Controles A4R123:
 - nenhum release criado;
 - nenhum downstream aberto;
 - nenhum artefato final-causation/HF taxonomy/Risk/ERC/ARMS/ERC/recommendations criado.
+
+## A4+R-124 - Real Event Reference Rationale and Canonical Question Trace Dossier
+
+Esta fase adicionou explicação auditável do funil de seleção real e dossiê canônico detalhado dos 6 eventos consolidados:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_SELECTION_FUNNEL_EXPLANATION_A4R124_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_NON_SELECTED_REAL_EVENTS_USE_REGISTER_A4R124_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_CANONICAL_TRACE_DOSSIER_A4R124_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_REFERENCE_EXPLAINER_FOR_AUTHOR_A4R124_v0.2.0.md`
+
+Resultado A4R124:
+- justificativa do funil e da consolidação em 6 casos documentada;
+- registro de uso dos não selecionados por categoria de governança documentado;
+- trilhas P/O/A canônicas dos 6 eventos detalhadas com perguntas exatas, respostas, evidências, alternativas e limites.
+
+Controles A4R124:
+- nenhum evento sintético criado;
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto.

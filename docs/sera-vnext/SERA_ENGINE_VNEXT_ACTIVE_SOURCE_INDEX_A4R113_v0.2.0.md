@@ -161,3 +161,15 @@ A4R123 governance state:
 - held/rework cases remain out-of-bundle with explicit reopen conditions.
 - synthetic model event readiness is defined, but no synthetic event was created in A4R123.
 - no author decision, no release, no downstream, no final-causation artifact.
+
+## Active real-event rationale and dossier outputs (A4R124)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_SELECTION_FUNNEL_EXPLANATION_A4R124_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_NON_SELECTED_REAL_EVENTS_USE_REGISTER_A4R124_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_CANONICAL_TRACE_DOSSIER_A4R124_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_REFERENCE_EXPLAINER_FOR_AUTHOR_A4R124_v0.2.0.md`
+
+A4R124 governance state:
+- explains, with auditable funnel logic, why six real events are currently consolidated as review-ready/warning-bound;
+- documents non-selected event future-use lanes and reopen conditions;
+- preserves canonical SERA question-path traceability for the six consolidated events.
+- no synthetic event created, no author decision, no release, no downstream, no final-causation artifact.
