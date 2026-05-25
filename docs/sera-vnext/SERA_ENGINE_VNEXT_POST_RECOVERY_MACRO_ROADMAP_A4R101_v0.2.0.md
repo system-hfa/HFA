@@ -410,3 +410,26 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Execute `A4R118` as minimal author-review bundle for `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`.
 2. Keep `AMERICAN-1420` in dedicated retrace/rework path (`A4R118-B` option) before any bundle re-entry.
 3. Keep review-required and held/boundary queues unchanged until dedicated evidence work is completed.
+
+## A4+R-119 Execution Update (Opus Discovery Intake + Priority Source-Slice/Trace Start)
+- A4R118 corpus-discovery package reviewed and intake-governed via Opus:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_TXT_CORPUS_INVENTORY_FOR_OPUS_A4R118_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_TXT_CORPUS_POA_SIGNAL_SCREENING_A4R118_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OPUS_CORPUS_CANDIDATE_SELECTION_A4R118_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OPUS_CORPUS_DISCOVERY_AUDIT_INTAKE_A4R119_v0.2.0.md`
+- Priority source-validation and build outputs:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_PRIORITY_CANDIDATE_SOURCE_VALIDATION_A4R119_v0.2.0.md`
+  - `docs/sera-vnext/official-report-source-slices/a4r119/`
+  - `docs/sera-vnext/reference-case-traces/*A4R119*.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_PRIORITY_SOURCE_SLICE_TRACE_BATCH_A4R119_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_PRIORITY_BATCH_GAPS_AND_HOLDS_A4R119_v0.2.0.md`
+- Batch result:
+  - trace drafts created for `UNITED-173`, `ATLAS-3591`, `UNITED-232`;
+  - `EASTERN-401` held as `HOLD_OCR_REQUIRED`;
+  - no author decision, no release, no downstream.
+
+## Updated Immediate Sequence After A4R119
+1. Run independent QA on A4R119 new traces (`UNITED-173`, `ATLAS-3591`, `UNITED-232`) before any bundle consideration.
+2. Keep stable A4R117 bundle path unchanged (`UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`) for future author-review phase.
+3. Execute source-recovery/OCR lane for `EASTERN-401` before any source-slice or trace re-entry.
+4. Activate Opus batch-2 candidates (`EXECUFLIGHT-1526`, `EC225-NORTH-SEA`, `CROSSAIR-3597`) only after A4R119 QA outcome is recorded.

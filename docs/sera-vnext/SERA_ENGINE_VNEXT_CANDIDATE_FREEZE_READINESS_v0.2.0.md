@@ -1651,3 +1651,25 @@ A4R117 controles:
 - nenhum fechamento release de P/O/A;
 - nenhum release criado;
 - nenhum downstream aberto.
+
+## A4+R-119 — Opus Corpus Discovery Intake and Priority Batch Start
+
+Esta fase registrou intake da auditoria Opus sobre o pacote A4R118 e iniciou lote prioritário de source-slice/trace draft sem decisão autoral:
+- [Opus Corpus Discovery Audit Intake A4R119](./SERA_ENGINE_VNEXT_OPUS_CORPUS_DISCOVERY_AUDIT_INTAKE_A4R119_v0.2.0.md)
+- [Priority Candidate Source Validation A4R119](./SERA_ENGINE_VNEXT_PRIORITY_CANDIDATE_SOURCE_VALIDATION_A4R119_v0.2.0.md)
+- [Priority Source-Slice Trace Batch A4R119](./SERA_ENGINE_VNEXT_PRIORITY_SOURCE_SLICE_TRACE_BATCH_A4R119_v0.2.0.md)
+- [Priority Batch Gaps and Holds A4R119](./SERA_ENGINE_VNEXT_PRIORITY_BATCH_GAPS_AND_HOLDS_A4R119_v0.2.0.md)
+
+Resultado macro A4R119:
+- A4R118 discovery package foi revisado e incorporado sob governança Opus.
+- lote prioritário avaliado: `UNITED-173`, `ATLAS-3591`, `EASTERN-401`, `UNITED-232`.
+- source slices criados: `UNITED-173`, `ATLAS-3591`, `UNITED-232`.
+- trace drafts full-axis criados: `UNITED-173`, `ATLAS-3591`, `UNITED-232`.
+- `EASTERN-401` ficou em `HOLD_OCR_REQUIRED` por insuficiência de TXT oficial utilizável.
+
+Controles A4R119:
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto;
+- nenhum artefato de conclusão final, HF taxonomy, Risk/ERC, ARMS/ERC ou recommendations criado.

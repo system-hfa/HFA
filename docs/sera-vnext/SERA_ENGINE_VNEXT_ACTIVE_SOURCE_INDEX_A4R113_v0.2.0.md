@@ -91,3 +91,26 @@ A4R116 QA outputs are active governance and QA artifacts only. They do not creat
 A4R117 governance supersession:
 - AMERICAN-1420 bundle-readiness in A4R116 is superseded from minor-fix framing to substantive rework-required.
 - Stable next-phase review-candidate set is now: UPS-1354, COLGAN-3407, US-AIRWAYS-1549.
+
+## Active Opus discovery package (A4R118)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_TXT_CORPUS_INVENTORY_FOR_OPUS_A4R118_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_TXT_CORPUS_POA_SIGNAL_SCREENING_A4R118_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_OPUS_CORPUS_CANDIDATE_SELECTION_A4R118_v0.2.0.md`
+
+A4R118 package status:
+- discovery/screening artifacts only;
+- no author decision;
+- no release/downstream effect.
+
+## Active Opus discovery intake and priority build outputs (A4R119)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_OPUS_CORPUS_DISCOVERY_AUDIT_INTAKE_A4R119_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_PRIORITY_CANDIDATE_SOURCE_VALIDATION_A4R119_v0.2.0.md`
+- `docs/sera-vnext/official-report-source-slices/a4r119/`
+- `docs/sera-vnext/reference-case-traces/*A4R119*.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_PRIORITY_SOURCE_SLICE_TRACE_BATCH_A4R119_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_PRIORITY_BATCH_GAPS_AND_HOLDS_A4R119_v0.2.0.md`
+
+A4R119 governance state:
+- priority candidates assessed: UNITED-173, ATLAS-3591, EASTERN-401, UNITED-232.
+- EASTERN-401 remains blocked as `HOLD_OCR_REQUIRED` due source weakness.
+- no author decision, no release, no downstream, no final-causation artifact.

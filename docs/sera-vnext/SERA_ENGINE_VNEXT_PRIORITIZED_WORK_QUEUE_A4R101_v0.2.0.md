@@ -237,3 +237,20 @@ NO_DOWNSTREAM
 | P0 | Prepare minimal author-review bundle in next phase | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549` | These are the stable full-axis traces after Opus intake and A4R117 patching. | Codex + user | 1 bundle | Bundle executed in next phase only, with no release/downstream. |
 | P1 | AMERICAN-1420 retrace/rework | `AMERICAN-1420` | Substantive overclassification risk remains across P/O/A framing. | Codex | 1 focused retrace | Case exits `REWORK_REQUIRED` only after conservative branch support improves. |
 | P1 | Keep review-required and held queues unchanged | `ASIANA-214`, `AMERICAN-965`, `HELIOS-522`, `USAIR-427`, `TUROY EC225`, `KOREAN-801` | Opus intake confirmed these should stay out of bundle scope now. | Codex | 1 governance cycle | Queue status remains explicit and unchanged until dedicated evidence work. |
+
+## A4+R-119 queue update
+- Completed in A4R119:
+  - Opus audit intake registered for A4R118 corpus-discovery package;
+  - source validation executed for priority candidates (`UNITED-173`, `ATLAS-3591`, `EASTERN-401`, `UNITED-232`);
+  - source slices built for allowed candidates (`UNITED-173`, `ATLAS-3591`, `UNITED-232`);
+  - full-axis draft traces built only where source sufficiency supported (`UNITED-173`, `ATLAS-3591`, `UNITED-232`);
+  - `EASTERN-401` held as `HOLD_OCR_REQUIRED`.
+- Execution remained docs-only, source-slice/trace-draft only, no author decision, no release, no downstream.
+
+## Immediate queue after A4R119
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Independent QA pass for A4R119 new traces | `UNITED-173`, `ATLAS-3591`, `UNITED-232` | New drafts need method QA before any bundle discussion. | Codex | 1 QA cycle | Each draft receives explicit readiness or hold status without release/downstream action. |
+| P0 | Execute minimal author-review bundle from stable A4R117 set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549` | A4R117 stable set remains unaffected by A4R119 intake batch. | Codex + user | 1 bundle | Author decisions captured in future phase only; no release/downstream. |
+| P1 | Recover usable official text for EASTERN-401 | `EASTERN-401` | Priority candidate is blocked by OCR/source quality. | Codex + retrieval workflow | 1 recovery cycle | Event exits hold only when official TXT is usable for controlled slicing. |
+| P1 | Batch-2 activation planning | `EXECUFLIGHT-1526`, `EC225-NORTH-SEA`, `CROSSAIR-3597` | Opus ranked these as next discovery lane after priority batch. | Codex | 1 planning cycle | Next source-validation set defined with explicit hold criteria. |
