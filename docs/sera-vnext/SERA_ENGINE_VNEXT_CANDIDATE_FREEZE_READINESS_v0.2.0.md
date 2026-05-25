@@ -2841,3 +2841,32 @@ Esta fase criou drafts estruturados de gate de ponto de fuga para 3 candidatos L
 - executar revisao autoral focada do texto "Quando..." para COMAIR-5191 e UNITED-173;
 - consolidar micro-anchors temporais dos 3 casos em pacote de gate final (ainda sem P/O/A);
 - somente apos gate autoral consolidado considerar entrada de fase de reaudit.
+
+## A4R147 — Synthetic Event Governance and Design Contract
+
+Esta fase criou governanca metodologica para eventos sinteticos SERA vNext:
+
+- [Synthetic Event Governance A4R147](./SERA_ENGINE_VNEXT_SYNTHETIC_EVENT_GOVERNANCE_A4R147_v0.2.0.md)
+- [Synthetic Event Template A4R147](./SYNTHETIC_EVENT_TEMPLATE_A4R147.md)
+- [Synthetic Event Taxonomy A4R147](./SERA_ENGINE_VNEXT_SYNTHETIC_EVENT_TAXONOMY_A4R147_v0.2.0.md)
+- [Synthetic Event Future Workflow A4R147](./SERA_ENGINE_VNEXT_SYNTHETIC_EVENT_FUTURE_WORKFLOW_A4R147_v0.2.0.md)
+
+### Resultado A4R147
+
+- synthetic governance criada;
+- nenhum evento sintetico final criado;
+- nenhum synthetic fixture criado;
+- nenhum P/O/A classificado;
+- nenhum release/downstream;
+- nenhum codigo/fixture/baseline/corpus alterado.
+
+### Controles A4R147
+
+- sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- sem alteracao de runtime, UI, API, DB, migration ou engine SERA;
+- sem modificacao de eventos reais.
+
+### Proximos passos apos A4R147
+
+- eventos sinteticos podem ser preparados em trilha documental, mas nao finalizados como fixtures antes da reconciliacao das auditorias Opus/Claude em eventos reais;
+- proxima fase sintetica recomendada: A4R148 para synthetic case design pack (documents only), mantendo bloqueios de release/downstream.

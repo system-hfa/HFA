@@ -154,6 +154,12 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R146 creates escape-point gate drafts only.
 - A4R146 does not create P/O/A reference authority.
 
+## A4R147 Synthetic Governance Note
+
+- A4R147 governs future synthetic cases only.
+- Synthetic cases do not create real-event reference authority.
+- Synthetic cases cannot supersede real-event adjudications.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.

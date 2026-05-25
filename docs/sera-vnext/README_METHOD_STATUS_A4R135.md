@@ -24,6 +24,10 @@
 - [Escape-Point Gate Drafts A4R146](./SERA_ENGINE_VNEXT_ESCAPE_POINT_GATE_DRAFTS_A4R146_v0.2.0.md)
 - [Escape-Point Gate Draft Tracker A4R146](./escape-point-gates-a4r146/ESCAPE_POINT_GATE_DRAFT_TRACKER_A4R146_v0.2.0.md)
 - [Escape-Point Gate Draft Directory A4R146](./escape-point-gates-a4r146/)
+- [Synthetic Event Governance A4R147](./SERA_ENGINE_VNEXT_SYNTHETIC_EVENT_GOVERNANCE_A4R147_v0.2.0.md)
+- [Synthetic Event Template A4R147](./SYNTHETIC_EVENT_TEMPLATE_A4R147.md)
+- [Synthetic Event Taxonomy A4R147](./SERA_ENGINE_VNEXT_SYNTHETIC_EVENT_TAXONOMY_A4R147_v0.2.0.md)
+- [Synthetic Event Future Workflow A4R147](./SERA_ENGINE_VNEXT_SYNTHETIC_EVENT_FUTURE_WORKFLOW_A4R147_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras
@@ -32,6 +36,7 @@
 - **P/O/A deve ser analisado no momento do ponto de fuga, nao a partir de eventos posteriores.** (A4R137)
 - **Progressive escape zones exigem guidance A4R140 antes da decisao P/O/A.**
 - **A4R142 screening is intake-only and must be read through A4R143 audit overlay before selecting pilots.**
+- **A4R147 synthetic screening/design is synthetic-only and must not be treated as real-event reference authority.**
 - "Quando..." nao pode embutir causa, violacao ou warning como primeira saida.
 - Arvore SERA real nao pode ser inventada.
 - proposedCode nao e releasedCode.
