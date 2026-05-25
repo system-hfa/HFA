@@ -165,6 +165,13 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R148 is audit handoff prep only.
 - A4R148 does not revise real events, synthetic cases, P/O/A, or reference authority.
 
+## A4R149 External Candidate Discovery Note
+
+- A4R149 external candidates are discovery-only.
+- A4R149 external candidates do not create corpus authority.
+- A4R149 external candidates do not create P/O/A reference authority.
+- A4R149 external candidates must pass source recovery and extraction before operational use.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.

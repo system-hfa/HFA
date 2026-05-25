@@ -2899,3 +2899,30 @@ Esta fase criou apenas pacote de preparacao documental para auditoria Opus:
 
 - executar auditoria Opus fora do repo usando somente o ZIP puro dos 89 TXT;
 - reconciliar Opus x ChatGPT x Codex em fase dedicada antes de qualquer mudanca de lane operacional.
+
+## A4R149 — External Candidate Discovery Under Escape-Point Premise
+
+Esta fase registrou a shortlist externa de 25 eventos como camada discovery-only:
+
+- [External Candidate Discovery A4R149](./SERA_ENGINE_VNEXT_EXTERNAL_CANDIDATE_DISCOVERY_A4R149_v0.2.0.md)
+- [External Candidate Index A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_INDEX_A4R149_v0.2.0.md)
+- [External Candidate Source Hygiene A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_SOURCE_HYGIENE_A4R149_v0.2.0.md)
+- [External Candidate Category Summary A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_CATEGORY_SUMMARY_A4R149_v0.2.0.md)
+- [External Candidate Next Phase Plan A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_NEXT_PHASE_PLAN_A4R149_v0.2.0.md)
+
+### Resultado A4R149
+
+- external candidate discovery criado;
+- 25 eventos registrados;
+- nenhuma ingestao de corpus;
+- nenhum P/O/A classificado;
+- status de source hygiene registrado para todos os 25 eventos;
+- auditoria Opus dos 89 TXT permanece pendente.
+
+### Controles A4R149
+
+- no corpus ingestion;
+- no P/O/A;
+- no release/downstream;
+- no finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhuma alteracao de codigo/fixture/baseline/corpus.

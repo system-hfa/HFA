@@ -31,6 +31,11 @@
 - [Opus Audit Handoff Prep A4R148](./SERA_ENGINE_VNEXT_OPUS_AUDIT_HANDOFF_PREP_A4R148_v0.2.0.md)
 - [Opus Audit Prompt A4R148](./OPUS_AUDIT_PROMPT_A4R148.md)
 - [Opus Audit Reconciliation Checklist A4R148](./OPUS_AUDIT_RECONCILIATION_CHECKLIST_A4R148.md)
+- [External Candidate Discovery A4R149](./SERA_ENGINE_VNEXT_EXTERNAL_CANDIDATE_DISCOVERY_A4R149_v0.2.0.md)
+- [External Candidate Index A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_INDEX_A4R149_v0.2.0.md)
+- [External Candidate Source Hygiene A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_SOURCE_HYGIENE_A4R149_v0.2.0.md)
+- [External Candidate Category Summary A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_CATEGORY_SUMMARY_A4R149_v0.2.0.md)
+- [External Candidate Next Phase Plan A4R149](./external-candidates-a4r149/EXTERNAL_CANDIDATE_NEXT_PHASE_PLAN_A4R149_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras
