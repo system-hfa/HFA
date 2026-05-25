@@ -1,10 +1,10 @@
 # SERA Engine vNext Expanded Full-Axis Trace Gaps A4R115 v0.2.0
 
-Status: EXPANDED_FULL_AXIS_TRACE_GAPS  
-Phase: A4+R-115  
-DOCS_ONLY  
-TRACE_CANDIDATE_BUILD_ONLY  
-NO_RELEASE  
+Status: EXPANDED_FULL_AXIS_TRACE_GAPS
+Phase: A4+R-115
+DOCS_ONLY
+TRACE_CANDIDATE_BUILD_ONLY
+NO_RELEASE
 NO_DOWNSTREAM
 
 ## Gap taxonomy
@@ -23,6 +23,7 @@ NO_DOWNSTREAM
 | UPS-1354 | A | action execution gap | A-F versus A-G boundary around warning feedback timing and response opportunity | isolate warning-to-response sequence with tighter timestamp chain |
 | AMERICAN-1420 | P | source gap | weather/cue interpretation chain needs tighter factual separation from outcome-focused language | focused extraction on pre-landing perception cues and cockpit recognition points |
 | AMERICAN-1420 | O | objective/intent gap | continuation objective under adverse weather needs stronger SOP/risk-management anchoring | explicit briefing/decision checkpoints source slice |
+| AMERICAN-1420 | P/O/A | overclassification risk | Opus intake flagged substantive risk in current P-D, O-C, and A-C framing | run substantive retrace before any author-review bundle inclusion |
 | ASIANA-214 | P | PF/PM role gap | PM callouts and PF interpretation boundary remains broad | finer-grain role-specific sequence for final approach |
 | ASIANA-214 | O | objective/intent gap | continuation versus go-around objective needs clearer decision windows | source slice around stabilized criteria gates and go-around triggers |
 | ASIANA-214 | A | action execution gap | A-F versus A-E branch needs tighter evidence about selected mode/response chain | focused mode-change and thrust-management sequence extraction |
@@ -39,5 +40,7 @@ NO_DOWNSTREAM
 - Second most frequent: `objective/intent gap` in continuation decisions.
 - Highest overclassification risk cluster: USAIR-427, TUROY EC225, and boundary reuse of KOREAN-801.
 
-## Batch-level recommendation
-Proceed to one author review bundle only for events with usable full-axis drafts and manageable uncertainty (UPS-1354, AMERICAN-1420, COLGAN-3407, US AIRWAYS 1549). Keep ASIANA-214 and AMERICAN-965 as review-required outside closure decisions until focused source slicing is done.
+## Batch-level recommendation (updated by A4R117 Opus intake)
+Proceed to one author review bundle only for events with usable full-axis drafts and manageable uncertainty (`UPS-1354`, `COLGAN-3407`, `US AIRWAYS 1549`).
+Keep `AMERICAN-1420` in substantive patch/retrace-required status before bundle use.
+Keep `ASIANA-214` and `AMERICAN-965` as review-required outside closure decisions until focused source slicing is done.

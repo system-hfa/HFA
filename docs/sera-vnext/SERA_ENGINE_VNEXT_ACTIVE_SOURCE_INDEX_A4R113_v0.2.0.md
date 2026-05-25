@@ -1,6 +1,6 @@
 # SERA Engine vNext Active Source Index A4R113 v0.2.0
 
-Status: ACTIVE_INDEX  
+Status: ACTIVE_INDEX
 Purpose: identify active methodology sources and separate archive-only material.
 
 ## Canonical source (active)
@@ -81,3 +81,13 @@ A4R116 active-corpus supplement rule:
 - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_HELD_BOUNDARY_AUDIT_A4R116_v0.2.0.md`
 
 A4R116 QA outputs are active governance and QA artifacts only. They do not create released codes, front-end calibration artifacts, downstream scope, or final accident causation.
+
+## Active Opus intake and patch outputs (A4R117)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_OPUS_EXTERNAL_AUDIT_INTAKE_A4R117_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_UPS1354_DOUBLE_COUNTING_CAUTION_PATCH_A4R117_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_AMERICAN_1420_SUBSTANTIVE_PATCH_A4R117_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_OPUS_REVIEW_NEXT_PHASE_PLAN_A4R117_v0.2.0.md`
+
+A4R117 governance supersession:
+- AMERICAN-1420 bundle-readiness in A4R116 is superseded from minor-fix framing to substantive rework-required.
+- Stable next-phase review-candidate set is now: UPS-1354, COLGAN-3407, US-AIRWAYS-1549.

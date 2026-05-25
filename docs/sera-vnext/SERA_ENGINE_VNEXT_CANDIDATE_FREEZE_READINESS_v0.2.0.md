@@ -1,6 +1,6 @@
 # SERA Engine vNext Candidate Freeze Readiness v0.2.0
 
-Status: DRAFT_FOR_REVIEW  
+Status: DRAFT_FOR_REVIEW
 Phase: A4+R-57 — Candidate Freeze Readiness (atualizado com ai/author adjudication mode)
 
 ## Objetivo
@@ -1624,3 +1624,30 @@ A4R116 controls:
 - no fixture/baseline/code/runtime/UI/API/DB change.
 
 Freeze final continua não autorizado.
+
+## A4+R-117 - Opus Audit Intake and A4R115 Trace Corrections
+
+Esta fase registrou intake da auditoria externa Opus e aplicou patch metodológico documental antes de qualquer author review bundle:
+- [Opus External Audit Intake A4R117](./SERA_ENGINE_VNEXT_OPUS_EXTERNAL_AUDIT_INTAKE_A4R117_v0.2.0.md)
+- [UPS-1354 Double-Counting Caution Patch A4R117](./SERA_ENGINE_VNEXT_UPS1354_DOUBLE_COUNTING_CAUTION_PATCH_A4R117_v0.2.0.md)
+- [AMERICAN-1420 Substantive Patch A4R117](./SERA_ENGINE_VNEXT_AMERICAN_1420_SUBSTANTIVE_PATCH_A4R117_v0.2.0.md)
+- [Post-Opus Next Phase Plan A4R117](./SERA_ENGINE_VNEXT_POST_OPUS_REVIEW_NEXT_PHASE_PLAN_A4R117_v0.2.0.md)
+
+Decisão de governança aplicada:
+- `AMERICAN-1420` removido do conjunto ready-for-bundle e movido para `REWORK_REQUIRED` por risco substantivo de overclassification em P/O/A.
+- `UPS-1354` mantido com warning obrigatório de double-counting e boundary live (`P-F/P-G`, `A-F/A-G`).
+- `COLGAN-3407` e `US-AIRWAYS-1549` mantidos como candidatos estáveis para próximo bundle.
+- `ASIANA-214` e `AMERICAN-965` permanecem fora (`HOLD_OVERCLASSIFICATION_RISK`/`REVIEW_REQUIRED`).
+- held/boundary (`HELIOS-522`, `USAIR-427`, `TUROY EC225`, `KOREAN-801`) permanecem corretos.
+- recovered corpus não altera decisões A4R115.
+
+Conjunto estável pós-Opus para próximo author review bundle (fase futura):
+- `UPS-1354`
+- `COLGAN-3407`
+- `US-AIRWAYS-1549`
+
+A4R117 controles:
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto.

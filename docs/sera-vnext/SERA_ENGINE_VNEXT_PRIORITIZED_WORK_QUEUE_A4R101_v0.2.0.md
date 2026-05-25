@@ -1,10 +1,10 @@
 # SERA Engine vNext Prioritized Work Queue A4R101 v0.2.0
 
-Status: PRIORITIZED_WORK_QUEUE  
-Phase: A4+R-101  
-DOCS_ONLY  
-PRIORITIZATION_ONLY  
-NO_RELEASE  
+Status: PRIORITIZED_WORK_QUEUE
+Phase: A4+R-101
+DOCS_ONLY
+PRIORITIZATION_ONLY
+NO_RELEASE
 NO_DOWNSTREAM
 
 ## Queue Table
@@ -218,7 +218,22 @@ NO_DOWNSTREAM
 ## Immediate queue after A4R116
 | priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
 |---|---|---|---|---|---:|---|
-| P0 | Prepare one author-review bundle after QA caution patch | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, and `AMERICAN-1420` only if the O/P caution is explicit | A4R116 found canonical paths valid but flagged AMERICAN-1420 as needing minor caution/status wording before bundle use. | Codex + user | 1 bundle | Bundle captures author decisions without release/downstream and without hiding uncertainty. |
+| P0 | Prepare one author-review bundle after QA caution patch | superseded by A4R117 | A4R117 replaced this interim step by removing AMERICAN-1420 from the stable bundle set and requiring substantive rework. | Codex + user | 1 bundle | superseded |
 | P1 | Focused source-slice refinement for review-required traces | `ASIANA-214`, `AMERICAN-965` | Both remain too method-sensitive for bundle promotion. | Codex | 1 focused round | P/O/A weak branches are either reinforced or kept unresolved/source-slice dependent. |
 | P1 | Future recovered-corpus batch planning | 10 recovered content-bearing TXT files | Recovered corpus improves future candidate breadth but did not alter A4R115. | Codex | 1 corpus planning pass | Future batch candidates are selected without direct import of report conclusions. |
 | P1 | Deferred source recovery cleanup | OCR, ATSB network, official-download-failed, secondary-source-only, not-found, and source-recheck groups | These items are not active trace evidence yet. | Codex or retrieval tool | 1 recovery cycle | OCR/network/source-governance state updated before any trace use. |
+
+## A4+R-117 queue update
+- Completed in A4R117:
+  - Opus external audit intake recorded;
+  - UPS-1354 double-counting caution patch applied;
+  - AMERICAN-1420 substantive patch applied and case moved to rework-required;
+  - A4R115/A4R116 status docs updated with partial supersession.
+- Execution remained docs-only, Opus-intake-and-patch only, no author review, no release, no downstream.
+
+## Immediate queue after A4R117
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Prepare minimal author-review bundle in next phase | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549` | These are the stable full-axis traces after Opus intake and A4R117 patching. | Codex + user | 1 bundle | Bundle executed in next phase only, with no release/downstream. |
+| P1 | AMERICAN-1420 retrace/rework | `AMERICAN-1420` | Substantive overclassification risk remains across P/O/A framing. | Codex | 1 focused retrace | Case exits `REWORK_REQUIRED` only after conservative branch support improves. |
+| P1 | Keep review-required and held queues unchanged | `ASIANA-214`, `AMERICAN-965`, `HELIOS-522`, `USAIR-427`, `TUROY EC225`, `KOREAN-801` | Opus intake confirmed these should stay out of bundle scope now. | Codex | 1 governance cycle | Queue status remains explicit and unchanged until dedicated evidence work. |

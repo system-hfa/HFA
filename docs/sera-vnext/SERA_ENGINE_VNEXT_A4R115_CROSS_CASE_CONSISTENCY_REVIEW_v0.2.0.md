@@ -1,10 +1,10 @@
 # SERA Engine vNext A4R115 Cross-Case Consistency Review v0.2.0
 
-Status: CROSS_CASE_CONSISTENCY_REVIEW  
-Phase: A4+R-115  
-DOCS_ONLY  
-TRACE_CANDIDATE_BUILD_ONLY  
-NO_RELEASE  
+Status: CROSS_CASE_CONSISTENCY_REVIEW
+Phase: A4+R-115
+DOCS_ONLY
+TRACE_CANDIDATE_BUILD_ONLY
+NO_RELEASE
 NO_DOWNSTREAM
 
 ## Consistency checks applied
@@ -39,4 +39,6 @@ NO_DOWNSTREAM
 - Threshold for preparing one author review bundle (>=3 useful full-axis traces): PASS
 
 ## Recommendation
-Prepare one consolidated author review bundle for UPS-1354, AMERICAN-1420, COLGAN-3407, and US AIRWAYS 1549. Keep ASIANA-214 and AMERICAN-965 in review-required track and keep HELIOS-522/USAIR-427/TUROY/KOREAN in held or boundary queues.
+Prepare one consolidated author review bundle for UPS-1354, COLGAN-3407, and US AIRWAYS 1549.
+Keep AMERICAN-1420 in substantive patch/retrace-required status per A4R117 Opus intake before any bundle inclusion.
+Keep ASIANA-214 and AMERICAN-965 in review-required track and keep HELIOS-522/USAIR-427/TUROY/KOREAN in held or boundary queues.

@@ -1,10 +1,10 @@
 # SERA Engine vNext Post Recovery Macro Roadmap A4R101 v0.2.0
 
-Status: POST_RECOVERY_MACRO_ROADMAP  
-Phase: A4+R-101  
-DOCS_ONLY  
-PRIORITIZATION_ONLY  
-NO_RELEASE  
+Status: POST_RECOVERY_MACRO_ROADMAP
+Phase: A4+R-101
+DOCS_ONLY
+PRIORITIZATION_ONLY
+NO_RELEASE
 NO_DOWNSTREAM
 
 ## Macro Objective
@@ -385,7 +385,28 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 - No release created, no downstream opened, no final causation artifact, HF taxonomy artifact, risk layer, ERC, ARMS, or safety recommendation artifact created.
 
 ## Updated Immediate Sequence After A4R116
-1. Prepare one author-review bundle only after carrying forward the A4R116 caution that `AMERICAN-1420` needs minor pre-review wording/status tightening.
+1. Superseded by A4R117 Opus intake.
 2. Keep `ASIANA-214` and `AMERICAN-965` in the review-required/source-slice refinement track.
 3. Use recovered content-bearing TXT files for a later future-batch planning pass, not to retrofit A4R115.
 4. Keep OCR/network/source-recheck items deferred until usable text or source-governance status exists.
+
+## A4+R-117 Execution Update (Opus Audit Intake and Trace Corrections)
+- Opus external audit intake recorded:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_OPUS_EXTERNAL_AUDIT_INTAKE_A4R117_v0.2.0.md`
+- UPS-1354 caution patch recorded:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_UPS1354_DOUBLE_COUNTING_CAUTION_PATCH_A4R117_v0.2.0.md`
+- AMERICAN-1420 substantive patch recorded:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_AMERICAN_1420_SUBSTANTIVE_PATCH_A4R117_v0.2.0.md`
+- Post-Opus plan recorded:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_OPUS_REVIEW_NEXT_PHASE_PLAN_A4R117_v0.2.0.md`
+- Governance outcome:
+  - stable next-phase bundle set: `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`;
+  - `AMERICAN-1420` moved to `REWORK_REQUIRED` (substantive overclassification patch needed);
+  - `ASIANA-214` and `AMERICAN-965` remain out;
+  - held/boundary set unchanged;
+  - no author decision, no release, no downstream.
+
+## Updated Immediate Sequence After A4R117
+1. Execute `A4R118` as minimal author-review bundle for `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`.
+2. Keep `AMERICAN-1420` in dedicated retrace/rework path (`A4R118-B` option) before any bundle re-entry.
+3. Keep review-required and held/boundary queues unchanged until dedicated evidence work is completed.
