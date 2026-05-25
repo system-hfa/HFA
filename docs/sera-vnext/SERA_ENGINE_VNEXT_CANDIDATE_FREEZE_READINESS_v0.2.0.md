@@ -2721,3 +2721,30 @@ O candidate freeze final continua nao autorizado.
 Proxima fase recomendada (A4R141-b):
 - iniciar A4R142 apenas com entrada condicional sob A4R138/A4R140 e registro explicito de que A4R141 foi confirmado por A4R141-b no escopo de 89 TXT;
 - manter bloqueio conservador de eixos nao separaveis no momento inicial de fuga.
+
+## A4R142 — Human Factors Corpus Screening and Negative Control Protocol
+
+Esta fase criou uma camada de triagem metodologica para os 89 TXT do corpus local:
+
+- [Human Factors Corpus Screening Protocol A4R142](./SERA_ENGINE_VNEXT_HUMAN_FACTORS_CORPUS_SCREENING_PROTOCOL_A4R142_v0.2.0.md)
+- [Human Factors Corpus Screening Tracker A4R142](./source-corpus/HUMAN_FACTORS_CORPUS_SCREENING_TRACKER_A4R142_v0.2.0.md)
+- [Human Factors Corpus Screening Summary A4R142](./SERA_ENGINE_VNEXT_HUMAN_FACTORS_CORPUS_SCREENING_SUMMARY_A4R142_v0.2.0.md)
+
+### Resultado A4R142
+
+- 89 TXT triados por valor metodologico de fator humano;
+- separacao explicita entre candidatos HF, casos mistos, negative controls tecnicos, fonte insuficiente, duplicados e fora de escopo;
+- nenhum P/O/A classificado;
+- nenhum release/downstream.
+
+### Controles A4R142
+
+- sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- sem alteracao de fixture/baseline/codigo/corpus.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada (A4R142):
+- abrir batch de intake focado nos top candidatos HF e mistos com melhor fonte;
+- executar trilha paralela de validacao de negative controls tecnicos;
+- recuperar qualidade de fonte dos casos SOURCE_INSUFFICIENT antes de qualquer tentativa de reaudit.

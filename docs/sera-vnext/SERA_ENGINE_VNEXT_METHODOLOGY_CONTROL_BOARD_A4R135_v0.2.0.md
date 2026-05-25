@@ -128,6 +128,11 @@ REAL-EVENT-0002, REAL-EVENT-0004, REAL-EVENT-0006, REAL-EVENT-0010, N56RD, PR-CH
 | Consensus validation | NO (requires separate governance) | NO | NO |
 | Historical traceability | YES | YES | YES |
 
+## A4R142 Intake Note
+
+A4R142 corpus screening artifacts are intake/screening material only.
+They do not constitute P/O/A reference authority and must not be used as classified P/O/A evidence without event-level escape-point processing under A4R137/A4R138/A4R140.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.
