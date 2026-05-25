@@ -2127,3 +2127,87 @@ Proxima fase recomendada:
 - patch do escape point A4R87-EXT-002 (isolar degradacao pre-EGPWS);
 - coleta de decisao autoral consciente para REAL-EVENT-0016 (P-C vs P-G) e ASIANA-214 (A-F vs A-E);
 - REAL-EVENT-0003 aguarda fase futura de release governance.
+
+## A4+R-134 — Gate Patch for BS211-Q400 and A4R87-EXT-002
+
+Esta fase executou patch metodologico do gate "Quando..." para os dois eventos bloqueados em A4R133, sem aprovar P/O/A:
+
+- [Gate Patch BS211 and A4R87 A4R134](./SERA_ENGINE_VNEXT_GATE_PATCH_BS211_A4R87_A4R134_v0.2.0.md)
+- [Gate Patch Status A4R134](./author-review-packets-a4r131/GATE_PATCH_STATUS_A4R134_v0.2.0.md)
+
+### BS211-Q400 — Gate Rebuild
+
+- Problema: "fora da trajetoria/downwind atribuida" embutia linguagem de violacao e pre-determinava O-C.
+- Correcao aplicada: substituido por "com perda de estabilidade e desalinhamento de pista apos o contexto de sequenciamento ATC" (degradacao observavel, sem violacao).
+- unsafeActOrCondition: aproximacao perdeu estabilidade e alinhamento apos contexto de sequenciamento ATC.
+- controlledVariable: estabilidade da aproximacao e alinhamento de pista.
+- safeLimit: reentrada estabilizada com alinhamento mantido ou aproximacao descontinuada com margem segura.
+- temporalConfidence: MEDIUM.
+- O-C e A-F permanecem drafts de alto risco, nao aprovados.
+
+### A4R87-EXT-002 — Escape Point Patch
+
+- Problema: "multiplos alertas EGPWS ativos" usado como marcador temporal; EGPWS e consequencia da saida, nao a saida em si.
+- Correcao aplicada: substituido por "perfil de altitude degradado com separacao vertical reduzida" (degradacao do perfil antes dos alertas).
+- unsafeActOrCondition: voo noturno entrou em perfil de descida com altitude degradada e separacao reduzida, ativando alertas EGPWS como consequencia.
+- controlledVariable: separacao vertical sobre agua, altitude path e perfil de voo monitorado.
+- safeLimit: perfil noturno monitorado mantendo separacao segura com recuperacao tempestiva antes de ativacao de alertas.
+- temporalConfidence: MEDIUM — A4R130 explicita que degradacao precedeu os alertas.
+- Cronologia EGPWS permanece valida como evidencia/anchor, nao como primeira saida.
+
+### Eventos nao alterados (do A4R133)
+
+| eventId | status |
+|---|---|
+| REAL-EVENT-0003 | AUTHOR_APPROVED_DRAFT_PARTIAL — P-G/O-A aprovados, A-UNRESOLVED |
+| REAL-EVENT-0016 | AUTHOR_REVIEW_PENDING — P-C vs P-G boundary |
+| ASIANA-214 | AUTHOR_REVIEW_PENDING — O-D threshold e A-F vs A-E boundary |
+
+### Exclusoes mantidas
+
+| eventId | reason |
+|---|---|
+| AMERICAN-965 | source-enrichment lane |
+| COMAIR-5191 | source-enrichment lane |
+
+Estado apos A4+R-134:
+
+- gate patch aplicado para BS211-Q400 e A4R87-EXT-002;
+- ambos com status PATCHED_GATE_DRAFT_NOT_APPROVED;
+- ambos permanecem REMAINS_IN_QUARANTINE;
+- nenhum P/O/A foi revisado, aprovado ou alterado;
+- REAL-EVENT-0003 mantido como AUTHOR_APPROVED_DRAFT_PARTIAL;
+- REAL-EVENT-0016 e ASIANA-214 mantidos como AUTHOR_REVIEW_PENDING;
+- AMERICAN-965 e COMAIR-5191 permanecem em source-enrichment lane;
+- riscos sistemicos abordados: "Quando" como veiculo de pre-classificacao (BS211) e warnings como marcador temporal (A4R87).
+
+Metricas A4R134:
+- eventsProcessedForGatePatch: 2
+- gatePatchDraftedCount: 2
+- gateRebuildIncompleteCount: 0
+- escapePointSourceInsufficientCount: 0
+- authorDecisionRecordedCount: 0
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- sourceEnrichmentPerformedCount: 0
+
+Controles A4R134:
+- NO_NEW_AUTHOR_DECISION;
+- NO_RELEASED_CODE para todos os 5 eventos;
+- NO_DOWNSTREAM para todos os 5 eventos;
+- nenhuma mudanca P/O/A desde A4R130/A4R131/A4R133;
+- nenhum source enrichment executado;
+- nenhum processamento de AMERICAN-965 ou COMAIR-5191;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum runtime, UI, API, DB, migration, fixture, baseline ou codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- revisao autoral do gate patch para BS211-Q400 e A4R87-EXT-002;
+- se gates aceitos: prosseguir para revisao P/O/A de ambos;
+- se gates rejeitados: marcar GATE_REBUILD_INCOMPLETE ou ESCAPE_POINT_SOURCE_INSUFFICIENT;
+- coleta de decisao autoral consciente para REAL-EVENT-0016 e ASIANA-214;
+- O-C/A-F do BS211-Q400 permanecem alto risco — recomendar UNRESOLVED/O-D para O e UNRESOLVED para A;
+- REAL-EVENT-0003 aguarda future release governance.
