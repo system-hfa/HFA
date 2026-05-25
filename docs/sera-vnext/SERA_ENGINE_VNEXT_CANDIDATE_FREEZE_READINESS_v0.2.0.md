@@ -2973,8 +2973,33 @@ Esta fase executou somente higiene de fonte oficial e verificacao de qualidade d
 - nao cria corpus ingestion;
 - nao versiona PDFs baixados em tmp;
 - organiza pacote OPUS_READY_CORE / OPUS_READY_NEGATIVE_CONTROLS / OPUS_SOURCE_RECOVERY_PENDING.
+- OPUS_READY representa prioridade de deep-review, nao limite de escopo de auditoria.
 
 ### Controles A4R151
+
+- sem reauditoria de eventos;
+- sem selectedCode CLASSIFIED, sem releasedCode;
+- sem downstream;
+- sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhuma alteracao de codigo/fixture/baseline/corpus.
+
+## A4R151b — Perplexity Source Recovery Addendum and Full Opus Scope Correction
+
+Esta fase adiciona addendum de source recovery e corrige escopo total da auditoria Opus:
+
+- [Source Recovery Addendum A4R151b](./source-hygiene-a4r151/SOURCE_RECOVERY_ADDENDUM_A4R151B_v0.2.0.md)
+- [Official Source Recovery Matrix A4R151b](./source-hygiene-a4r151/OFFICIAL_SOURCE_RECOVERY_MATRIX_A4R151B_v0.2.0.md)
+- [Opus Packet Delta A4R151b](./source-hygiene-a4r151/OPUS_PACKET_DELTA_A4R151B_v0.2.0.md)
+
+### Resultado A4R151b
+
+- Perplexity/web source recovery addendum criado;
+- full Opus scope clarification aplicada;
+- universo de auditoria preservado em 89 TXT + 25 externos;
+- OPUS_READY subset mantido como prioridade de deep-review, nao limite de escopo;
+- nenhum P/O/A.
+
+### Controles A4R151b
 
 - sem reauditoria de eventos;
 - sem selectedCode CLASSIFIED, sem releasedCode;

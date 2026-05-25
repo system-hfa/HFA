@@ -8,7 +8,7 @@ downstreamStatus: NO_DOWNSTREAM
 
 ## objective
 
-Prepare internal handoff documentation for an independent Opus audit over the local 89-TXT corpus, without revising events, without P/O/A classification, and without methodology change.
+Prepare internal handoff documentation for an independent Opus audit over the integrated universe (89 local TXT + 25 external candidates with reconciliation/source-hygiene metadata), without revising events, without P/O/A classification, and without methodology change.
 
 ## current methodology state
 
@@ -21,10 +21,13 @@ Prepare internal handoff documentation for an independent Opus audit over the lo
 
 ## what Opus will receive
 
-Opus audit input must be limited to:
-- the pure ZIP containing the 89 local TXT files selected for corpus audit.
+Opus receives a full integrated package:
+- the 89 local TXT files selected for corpus audit;
+- the 25 external candidates from A4R149 as metadata candidates;
+- A4R150 integrated reconciliation matrix/manifest context;
+- A4R151 and A4R151b source-readiness status layers.
 
-No repository methodology docs are required in the Opus input package for this run.
+OPUS_READY subsets are deep-review priority lanes, not scope limits.
 
 ## what Opus must not receive
 
@@ -34,6 +37,8 @@ Do not send:
 - prior model rankings/lane decisions;
 - repository control-board conclusions as answer keys;
 - any pre-labeled expected category file.
+
+Do send integrated metadata documents required for source-quality critique, prioritization, and false-positive/false-negative detection, while preserving independence from expected answers.
 
 ## why Codex/ChatGPT reports should not be sent to Opus
 

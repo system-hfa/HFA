@@ -23,3 +23,10 @@ methodology: SERA
 ## quarantine rule reminder
 
 Probable cause, conclusions, and recommendations from official reports remain quarantined for this phase. No P/O/A was performed in A4R151.
+
+## A4R151b addendum note
+
+- A4R151b incorporated Perplexity/web source-recovery metadata for 8 priority events.
+- AF66, F-GRHT, and QF32 moved from recovery pressure to official-ready lanes at metadata level.
+- Eastern 401 and Delta 191 remain OCR-required before strong extraction use.
+- QF72 remains manual-confirmation-required for final-report completeness.

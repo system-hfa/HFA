@@ -6,18 +6,21 @@ methodology: SERA
 
 ## MUST_RECOVER_BEFORE_OPUS
 
-- AIR-FRANCE-AF66 (EXT-A4R149-015) — OFFICIAL_SOURCE_NOT_FOUND_IN_A4R151
-- AIR-FRANCE-F-GRHT (EXT-A4R149-010) — OFFICIAL_SOURCE_NOT_FOUND_IN_A4R151
 - EASTERN-401 (EXT-A4R149-021) — OFFICIAL_PDF_OCR_POOR (FAA-hosted copy); needs better official text source/OCR
-- QANTAS-QF72 (EXT-A4R149-014) — OFFICIAL_SOURCE_FOUND_DOWNLOAD_FAILED_IN_A4R151
+- QANTAS-QF72 (EXT-A4R149-014) — OFFICIAL_SOURCE_NEEDS_MANUAL_CONFIRMATION (final AO-2008-070 completeness check pending)
+- DELTA-191 variants (TXT-040 / TXT-062) — OFFICIAL_PDF_READY_OCR_REQUIRED
 
 ## RECOVER_BEFORE_EXTRACTION
 
-- QANTAS-QF32 (EXT-A4R149-011) — FAA-hosted page confirmed; direct ATSB retrieval failed in this run
-- COUGAR-A11H0001 (EXT-A4R149-005) — official source confirmed, but no local TXT mapped for current Opus corpus audit
-- CHO-A19A0055 (EXT-A4R149-008) — official source confirmed, external-only lane
-- DELTA-191 variants (TXT-040 / TXT-062) — official PDF confirmed; extracted text OCR-poor
+- COUGAR-A11H0001 (EXT-A4R149-005) — official HTML ready (external-only); keep metadata-focused deep-review lane
+- CHO-A19A0055 (EXT-A4R149-008) — official HTML ready (external-only); keep metadata-focused deep-review lane
 
 ## RECOVER_LATER
 
 - none added in A4R151 beyond existing A4R150 queue.
+
+## status update note (A4R151b)
+
+- AIR-FRANCE-AF66 moved out of recovery pending (official BEA PDF identified via Perplexity input).
+- AIR-FRANCE-F-GRHT moved out of recovery pending (official BEA PDF identified; alias F-GRHT vs F-GZCJ resolved).
+- QANTAS-QF32 moved out of recovery pending (official PDF ready via ATSB/FAA-hosted source).

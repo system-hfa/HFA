@@ -183,6 +183,12 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R151 does not create P/O/A reference authority.
 - Source status upgrades in A4R151 do not authorize extraction or P/O/A without subsequent gated phases.
 
+## A4R151b Source Recovery Addendum Note
+
+- A4R151b does not change event methodology status.
+- A4R151b corrects source readiness and Opus audit scope only.
+- A4R151b confirms that OPUS_READY lanes are deep-review priorities and not an audit scope limit.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.

@@ -1,0 +1,45 @@
+# Opus Packet Delta A4R151b v0.2.0
+
+Status: OPUS_PACKET_DELTA_RECORDED
+Phase: A4R151b
+methodology: SERA
+releaseStatus: NO_RELEASED_CODE
+downstreamStatus: NO_DOWNSTREAM
+
+## status changes after Perplexity source recovery
+
+- AIR-FRANCE-AF66: SOURCE_RECOVERY_PENDING -> OPUS_READY_NEGATIVE_CONTROLS
+- AIR-FRANCE-F-GRHT: SOURCE_RECOVERY_PENDING -> OPUS_READY_CORE
+- QANTAS-QF32: SOURCE_RECOVERY_PENDING -> OPUS_READY_NEGATIVE_CONTROLS
+- COUGAR-A11H0001: SOURCE_RECOVERY_PENDING -> OPUS_READY_CORE
+- CHO-A19A0055: SOURCE_RECOVERY_PENDING -> OPUS_READY_CORE
+
+## promoted to OPUS_READY_CORE
+
+- AIR-FRANCE-F-GRHT
+- COUGAR-A11H0001
+- CHO-A19A0055
+
+## promoted to OPUS_READY_NEGATIVE_CONTROLS
+
+- AIR-FRANCE-AF66
+- QANTAS-QF32
+
+## remain in OPUS_SOURCE_RECOVERY_PENDING
+
+- EASTERN-401
+- QANTAS-QF72
+- DELTA-191 cluster (TXT-040 and TXT-062)
+
+## OCR required
+
+- EASTERN-401
+- DELTA-191 cluster
+
+## manual confirmation required
+
+- QANTAS-QF72 (final-complete AO-2008-070 verification)
+
+## scope rule
+
+OPUS_READY does not define the full audit scope; it defines deep-review priority only.

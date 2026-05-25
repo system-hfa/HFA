@@ -8,6 +8,8 @@ downstreamStatus: NO_DOWNSTREAM
 
 This manifest defines one integrated packet strategy for Opus using local 89 TXT + A4R149 external reconciliation metadata. No report content is copied; only event/path/priority references are included.
 
+Note: A4R151 and A4R151b refine source-readiness and priority-lane hygiene, but the full Opus audit scope remains the integrated universe.
+
 ## Core packet
 
 Count: 9
@@ -127,8 +129,8 @@ Count: 2
 
 ## Instructions for Opus (short)
 
-1. Use only the 89 local TXT files as audit input corpus.
-2. Use this manifest only as reconciliation metadata and prioritization hints.
+1. Audit the integrated universe: 89 local TXT files plus 25 external candidates as metadata layer.
+2. Use this manifest as reconciliation metadata and prioritization hints, not as scope limitation.
 3. Do not classify P/O/A and do not generate final conclusions or downstream fields.
 4. Preserve negative-control packet integrity to prevent human-factor overclassification.
 5. Flag source-recovery-only items for post-audit action, not immediate extraction.
