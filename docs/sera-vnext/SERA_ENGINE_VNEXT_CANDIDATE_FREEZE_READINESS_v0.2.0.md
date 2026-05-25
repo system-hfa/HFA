@@ -1888,3 +1888,38 @@ Proximas fases possiveis:
 - `QUEUE_D_SOURCE_ENRICHMENT` para fortalecer evidencia antes de qualquer rebuild;
 - `QUEUE_E_PARKED` para decisoes de fronteira tecnica, condicional, ator direto ou arvore real;
 - `QUEUE_F_DUPLICATE_OR_SUPERSEDED` para limpeza de dependencia documental.
+
+## A4+R-128 - Queue A P0 Escape-Point Gate Recovery
+
+Esta fase processou apenas os eventos A4R127 com `assignedQueue=QUEUE_A_WHEN_ONLY` e `priority=P0`, formalizando o gate Hendy completo do ponto de fuga sem executar rebuild P/O/A, sem classificar novos eventos e sem abrir downstream:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_QUEUE_A_P0_WHEN_RECOVERY_A4R128_v0.2.0.md`
+- `docs/sera-vnext/real-event-escape-point-reaudit/QUEUE_A_P0_WHEN_RECOVERY_TRACKER_A4R128_v0.2.0.md`
+
+Eventos elegiveis processados:
+- `UPS-1354`
+- `COLGAN-3407`
+- `UNITED-173`
+
+Resultado macro A4R128:
+- totalQueueAP0Eligible: 3
+- escapePointGateRecovered: 3
+- remainsInQuarantine: 0
+- whenStatementValid: 3
+- whenStatementInvalid: 0
+- preventabilityPass: 3
+- directActorClear: 3
+- poaChangedCount: 0
+- releasedCodeCreatedCount: 0
+- downstreamOpenedCount: 0
+
+Estado de freeze apos A4R128:
+- o gate de ponto de fuga foi recuperado apenas para `UPS-1354`, `COLGAN-3407` e `UNITED-173`;
+- P/O/A permanece draft/proposed e nao foi alterado;
+- release e downstream continuam bloqueados;
+- caveats existentes permanecem ativos, incluindo double-counting em `UPS-1354` e OCR/source-quality em `UNITED-173`;
+- freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- executar `QUEUE_B_POA_REVIEW` por batch controlado depois de confirmar `escapePointWhenStatement` valido por evento;
+- executar `QUEUE_C_FULL_REBUILD` apenas com prompt completo do gate Hendy para eventos ja marcados como rebuild;
+- executar `QUEUE_D_SOURCE_ENRICHMENT` antes de tentar recuperar casos com fonte parcial.
