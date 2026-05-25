@@ -345,3 +345,21 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 1. Execute full-axis trace batch from A4R112: `UC-003` UPS-1354, `UC-004` AMERICAN-1420, `UC-002` ASIANA-214, `UC-001` COLGAN-3407, `UC-039` US AIRWAYS 1549.
 2. Enforce explicit P/O/A sections for each event, with canonical closure only when evidence supports it, otherwise `UNRESOLVED` or `SOURCE_SLICE_REQUIRED`.
 3. Keep `a4r111-recovered-pool-txt/` deferred to a separate corpus-governance phase to preserve scope control.
+
+## A4+R-115 Execution Update (Expanded Full-Axis Candidate Build)
+- Expanded source-slice set built for 10 events:
+  - `docs/sera-vnext/official-report-source-slices/a4r115/*.md`
+- Full-axis canonical drafts built for 6 events:
+  - `UPS-1354`, `AMERICAN-1420`, `ASIANA-214`, `COLGAN-3407`, `US AIRWAYS 1549`, `AMERICAN-965`
+- Held or boundary-only outcomes applied where needed:
+  - `HELIOS-522` (source insufficient)
+  - `USAIR-427` (overclassification risk)
+  - `TUROY EC225` (boundary-only)
+  - `KOREAN-801` (boundary-only)
+- No release created, no downstream opened, no finalConclusion/HFACS/Risk/ERC/recommendations created.
+
+## Updated Immediate Sequence After A4R115
+1. Prepare one full-axis author review bundle for `UPS-1354`, `AMERICAN-1420`, `COLGAN-3407`, and `US AIRWAYS 1549`.
+2. Keep `ASIANA-214` and `AMERICAN-965` in targeted review-required/source-slice expansion before any closure attempt.
+3. Keep `HELIOS-522`, `USAIR-427`, `TUROY EC225`, and `KOREAN-801` in held/boundary track until stronger evidence or dedicated boundary review is completed.
+4. Maintain `COMAIR-5191` and `KOREAN-801` as P-only/internal boundary references, not complete full-axis references.

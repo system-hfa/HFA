@@ -49,3 +49,12 @@ Purpose: identify active methodology sources and separate archive-only material.
 ## Local-only archive pools
 - `docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool/` (PDF/HTML local-only)
 - `docs/sera-vnext/source-corpus/official-reports/a4r111-new50-pool/` (PDF/HTML local-only)
+
+## Active full-axis build outputs (A4R115)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EXPANDED_FULL_AXIS_TRACE_PREFLIGHT_A4R115_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_TRACE_CANDIDATE_SELECTION_DECISION_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EXPANDED_FULL_AXIS_TRACE_DRAFT_BATCH_A4R115_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EXPANDED_FULL_AXIS_TRACE_GAPS_A4R115_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_CROSS_CASE_CONSISTENCY_REVIEW_v0.2.0.md`
+- `docs/sera-vnext/official-report-source-slices/a4r115/`
+- `docs/sera-vnext/reference-case-traces/*A4R115*.md`

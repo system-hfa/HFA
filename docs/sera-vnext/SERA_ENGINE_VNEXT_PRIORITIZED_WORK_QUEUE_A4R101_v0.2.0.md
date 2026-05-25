@@ -190,3 +190,18 @@ NO_DOWNSTREAM
 | P0 | Build full-axis trace draft batch | UC-003 UPS-1354, UC-004 AMERICAN-1420, UC-002 ASIANA-214, UC-001 COLGAN-3407, UC-039 US AIRWAYS 1549 | Reconciled corpus-mining outputs now provide one aligned next batch across P/O/A. | Codex | 5 events | Every event includes explicit P/O/A sections with canonical closure or unresolved/source-slice markers per axis. |
 | P1 | Keep P-only boundary governance explicit | COMAIR-5191 and KOREAN-801 | Prior P approvals remain valid but not full-axis complete. | Codex | 1 status cycle | Both remain tagged as P-only internal/boundary drafts in active planning docs. |
 | P1 | Deferred corpus handling (separate phase) | `a4r111-recovered-pool-txt/` untracked set | Corpus policy allows deferred ingestion; this phase avoids scope mixing. | Codex | 1 deferred governance cycle | Deferred set disposition recorded without polluting full-axis trace batch scope. |
+
+## A4+R-115 queue update
+- Completed in A4R115:
+  - expanded full-axis source-slice build for 10 events;
+  - 6 full-axis canonical draft traces built;
+  - held/boundary governance applied where evidence was insufficient or overclassification risk was high.
+- Execution remained docs-only, trace-candidate/source-slice only, no release, no downstream.
+
+## Immediate queue after A4R115
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Build one full-axis author-review bundle | UPS-1354, AMERICAN-1420, COLGAN-3407, US AIRWAYS 1549 | Four traces are usable with manageable limitations and explicit axis separation. | Codex + user | 1 bundle | Author review decisions captured without release/downstream. |
+| P1 | Focused source-slice expansion for review-required traces | ASIANA-214 and AMERICAN-965 | These traces remain review-required with unresolved P/O/A boundaries. | Codex | 1 focused round | Each weak boundary is either reinforced or kept unresolved with rationale. |
+| P1 | Maintain held/boundary queue | HELIOS-522, USAIR-427, TUROY EC225, KOREAN-801 boundary | Prevent forced closure on weak or system-dominant events. | Codex | 1 governance cycle | Held/boundary statuses remain explicit with re-entry criteria. |
+| P1 | Preserve P-only internal status | COMAIR-5191 and KOREAN-801 | Prior P approvals remain valid but are not full-axis reference closures. | Codex | 1 status cycle | Both remain tagged P-only/internal boundary in active docs. |

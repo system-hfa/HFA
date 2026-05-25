@@ -28,3 +28,12 @@ NO_DOWNSTREAM
 
 ## Scope guardrail
 - COMAIR-5191 and KOREAN-801 remain P-only internal/boundary drafts and are not used as full-reference closures in this batch.
+
+## A4+R-115 execution note
+- A4R112 selected batch was executed and expanded in A4R115.
+- Core five candidates were attempted with source slices and full-axis draft attempts.
+- One additional expanded full-axis draft was added (`UC-024 AMERICAN-965`) due to adequate source density.
+- A4R115 outcomes are recorded in:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_EXPANDED_FULL_AXIS_TRACE_DRAFT_BATCH_A4R115_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_EXPANDED_FULL_AXIS_TRACE_GAPS_A4R115_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_CROSS_CASE_CONSISTENCY_REVIEW_v0.2.0.md`

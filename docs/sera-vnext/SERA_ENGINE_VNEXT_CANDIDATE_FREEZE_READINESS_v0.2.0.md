@@ -1575,3 +1575,21 @@ A4R114 controls:
 - no release created;
 - no downstream opened;
 - no baseline/front-end promotion.
+
+## A4+R-115 — Expanded Full-Axis Trace Candidate Build
+
+Esta fase executou construção expandida de candidatos full-axis a partir do corpus A4R112, sem release/downstream:
+- 10 eventos source-sliced em `docs/sera-vnext/official-report-source-slices/a4r115/`
+- 6 traces full-axis em `docs/sera-vnext/reference-case-traces/*A4R115*.md`
+- 4 eventos mantidos como `HELD_SOURCE_INSUFFICIENT`, `HELD_OVERCLASSIFICATION_RISK` ou `BOUNDARY_ONLY`
+
+Estado metodológico após A4R115:
+- P/O/A foi documentado em todos os traces full-axis construídos.
+- Não houve fechamento oficial P/O/A, release, ou baseline promotion.
+- `COMAIR-5191` e `KOREAN-801` permanecem P-only/internal boundary e não são reference cases completos.
+- Casos com maior prontidão para review bundle: `UPS-1354`, `AMERICAN-1420`, `COLGAN-3407`, `US AIRWAYS 1549`.
+- Casos mantidos em `REVIEW_REQUIRED`: `ASIANA-214`, `AMERICAN-965`.
+
+Readiness gate após A4R115:
+- Há massa crítica para um único author-review bundle full-axis (>=3 casos úteis).
+- Freeze final continua não autorizado.
