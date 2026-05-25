@@ -8,6 +8,9 @@
 - [Reset Register A4R137](./SERA_ENGINE_VNEXT_REAL_EVENT_POA_REAUDIT_RESET_REGISTER_A4R137_v0.2.0.md)
 - [Methodology Control Board](./SERA_ENGINE_VNEXT_METHODOLOGY_CONTROL_BOARD_A4R135_v0.2.0.md)
 - [Superseded and Quarantine Register](./SERA_ENGINE_VNEXT_SUPERSEDED_AND_QUARANTINE_REGISTER_A4R135_v0.2.0.md)
+- [Reaudit Protocol A4R138](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PROTOCOL_A4R138_v0.2.0.md)
+- [Reaudit Template](./REAL_EVENT_REAUDIT_TEMPLATE_A4R138.md)
+- [Reaudit Pilot Plan](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PILOT_PLAN_A4R138_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras
@@ -44,6 +47,7 @@
 
 ## O que usar
 
+- A4R138 Reaudit Protocol para protocolo formal de reauditoria (template, piloto, regras).
 - A4R137 Reset Register para status atual de P/O/A.
 - A4R135 Control Board (com override A4R137) para status de evento.
 - Factual extractions, source enrichment, timelines, evidence anchors (nao P/O/A).

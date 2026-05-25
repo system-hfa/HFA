@@ -2432,7 +2432,7 @@ Fases afetadas:
 
 O candidate freeze final continua nao autorizado. O metodo foi resetado para a regra "P/O/A at escape point" e todas as analises de eventos reais precisam ser revalidadas sob essa regra antes de qualquer release ou downstream.
 
-Proxima fase recomendada:
+Proxima fase recomendada (A4R137):
 - reauditar REAL-EVENT-0003 P/O/A no momento do ponto de fuga (autopilot disconnect);
 - source enrichment para REAL-EVENT-0016: GPS/autopilot failure vs interpretation no escape point;
 - reauditar ASIANA-214 O-axis no momento do ponto de fuga;
@@ -2440,3 +2440,70 @@ Proxima fase recomendada:
 - reauditar A4R87-EXT-002 com gate patch A4R134 + P/O/A no momento pre-EGPWS;
 - source enrichment para AMERICAN-965 e COMAIR-5191 com foco em evidencia no escape point;
 - expandir reauditoria para os 52 eventos restantes conforme capacidade.
+
+## A4+R-138 — Real Event Reaudit Protocol: P/O/A at Escape Point
+
+Esta fase cria o protocolo formal para reauditoria de eventos reais sob a regra "P/O/A at escape point" (A4R137), sem executar nenhuma reauditoria.
+
+- [Real Event Reaudit Protocol A4R138](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PROTOCOL_A4R138_v0.2.0.md)
+- [Reaudit Template A4R138](./REAL_EVENT_REAUDIT_TEMPLATE_A4R138.md)
+- [Reaudit Pilot Plan A4R138](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PILOT_PLAN_A4R138_v0.2.0.md)
+
+### Protocolo
+
+Sequencia obrigatoria em 6 passos:
+1. Separacao temporal: pre-escape context, escape point moment, post-escape consequence.
+2. Gate Hendy do ponto de fuga com 12 campos obrigatorios e 9 valores de escapePointStatus.
+3. Validacao do "Quando..." — nucleo nao pode conter causa psicologica, violacao, codigo SERA, warning consequente, resultado final.
+4. P/O/A no momento do ponto de fuga: cada eixo responde apenas ao que existia no momento exato da saida do estado seguro.
+5. Bloqueios automaticos: 8 codigos de bloqueio (BLOCK_POA_*) que impedem classificacao quando evidencias sao insuficientes ou post-escape.
+6. Saidas permitidas: 8 status (REAUDITED_AT_ESCAPE_POINT_DRAFT a CONDITION_DOMINANT) — nenhum release/downstream.
+
+### Template
+
+Template canonico criado com campos para: identificacao do evento, pre-escape context, escape point moment, post-escape consequences, P/O/A no escape point (com evidencias, confianca, mecanismo), blocos ativos, decisao de reauditoria e controles.
+
+### Plano Piloto
+
+Ordem definida para as primeiras reauditorias:
+1. REAL-EVENT-0003 — tem enrichment do autopilot manual disconnect
+2. REAL-EVENT-0016 — precisa distinguir falha tecnica GPS/autopilot vs interpretacao
+3. ASIANA-214 — testa objetivo no ponto de fuga
+4. BS211-Q400 — so depois de revisar gate patch A4R134
+5. A4R87-EXT-002 — so depois de isolar momento pre-EGPWS
+
+Criterios de sucesso e parada definidos. Nenhuma reauditoria executada nesta fase.
+
+### Controles A4R138
+
+- NO_NEW_AUTHOR_DECISION;
+- NO_RELEASED_CODE;
+- NO_DOWNSTREAM;
+- nenhuma reauditoria executada;
+- nenhum P/O/A reclassificado;
+- nenhum source enrichment;
+- nenhum documento deletado ou movido;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum runtime, UI, API, DB, migration, fixture, baseline ou codigo alterado.
+
+### Metricas A4R138
+
+- protocolCreatedCount: 1
+- templateCreatedCount: 1
+- pilotPlanCreatedCount: 1
+- eventsReauditedCount: 0
+- poaReclassifiedCount: 0
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- sourceEnrichmentPerformedCount: 0
+- documentsDeletedCount: 0
+- documentsMovedCount: 0
+
+O candidate freeze final continua nao autorizado. O protocolo de reauditoria foi criado mas nenhuma reauditoria foi executada ainda.
+
+Proxima fase recomendada (A4R138):
+- autor revisar e aprovar o protocolo A4R138;
+- executar piloto 1: REAL-EVENT-0003 P/O/A no momento do ponto de fuga;
+- source enrichment pre-piloto para REAL-EVENT-0016: GPS/autopilot failure vs interpretation;
+- gate patch review para BS211-Q400 e A4R87-EXT-002 antes de seus pilotos.
