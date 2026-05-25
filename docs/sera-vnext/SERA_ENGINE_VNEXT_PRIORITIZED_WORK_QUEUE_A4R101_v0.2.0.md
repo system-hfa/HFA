@@ -205,3 +205,20 @@ NO_DOWNSTREAM
 | P1 | Focused source-slice expansion for review-required traces | ASIANA-214 and AMERICAN-965 | These traces remain review-required with unresolved P/O/A boundaries. | Codex | 1 focused round | Each weak boundary is either reinforced or kept unresolved with rationale. |
 | P1 | Maintain held/boundary queue | HELIOS-522, USAIR-427, TUROY EC225, KOREAN-801 boundary | Prevent forced closure on weak or system-dominant events. | Codex | 1 governance cycle | Held/boundary statuses remain explicit with re-entry criteria. |
 | P1 | Preserve P-only internal status | COMAIR-5191 and KOREAN-801 | Prior P approvals remain valid but are not full-axis reference closures. | Codex | 1 status cycle | Both remain tagged P-only/internal boundary in active docs. |
+
+## A4+R-116 queue update
+- Completed in A4R116:
+  - controlled integration of DeepSeek recovered-link metadata and 10 content-bearing recovered TXT files;
+  - independent methodological QA of A4R115 source slices and full-axis trace drafts;
+  - review-bundle eligibility audit for `UPS-1354`, `AMERICAN-1420`, `COLGAN-3407`, and `US-AIRWAYS-1549`;
+  - review-required audit for `ASIANA-214` and `AMERICAN-965`;
+  - held/boundary audit for `HELIOS-522`, `USAIR-427`, `TUROY EC225`, and `KOREAN-801`.
+- Execution remained docs/corpus-integration/QA only, no release, no downstream.
+
+## Immediate queue after A4R116
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Prepare one author-review bundle after QA caution patch | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, and `AMERICAN-1420` only if the O/P caution is explicit | A4R116 found canonical paths valid but flagged AMERICAN-1420 as needing minor caution/status wording before bundle use. | Codex + user | 1 bundle | Bundle captures author decisions without release/downstream and without hiding uncertainty. |
+| P1 | Focused source-slice refinement for review-required traces | `ASIANA-214`, `AMERICAN-965` | Both remain too method-sensitive for bundle promotion. | Codex | 1 focused round | P/O/A weak branches are either reinforced or kept unresolved/source-slice dependent. |
+| P1 | Future recovered-corpus batch planning | 10 recovered content-bearing TXT files | Recovered corpus improves future candidate breadth but did not alter A4R115. | Codex | 1 corpus planning pass | Future batch candidates are selected without direct import of report conclusions. |
+| P1 | Deferred source recovery cleanup | OCR, ATSB network, official-download-failed, secondary-source-only, not-found, and source-recheck groups | These items are not active trace evidence yet. | Codex or retrieval tool | 1 recovery cycle | OCR/network/source-governance state updated before any trace use. |

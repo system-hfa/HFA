@@ -1,0 +1,363 @@
+        AVIATION INVESTIGATION REPORT
+                   A13W0070
+
+
+
+
+LOSS OF TAIL ROTOR EFFECTIVENESS, AND COLLISION
+                 WITH TERRAIN
+
+ AURORA HELICOPTERS LTD. (DBA WOOD BUFFALO
+               HELICOPTERS)
+              BELL 206B C-FZWB
+      FORT MCMURRAY, ALBERTA 75 NM N
+                 29 MAY 2013
+The Transportation Safety Board of Canada (TSB) investigated this occurrence for the purpose
+of advancing transportation safety. It is not the function of the Board to assign fault or
+determine civil or criminal liability.
+
+
+
+        Aviation Investigation Report
+
+        Loss of Tail Rotor Effectiveness, and Collision with
+        Terrain
+
+        Aurora Helicopters Ltd. (dba Wood Buffalo
+        Helicopters)
+        Bell 206B C-FZWB
+        Fort McMurray, Alberta 75 nm N
+        29 May 2013
+
+        Report Number A13W0070
+
+
+Summary
+A Wood Buffalo Helicopters, Bell 206B helicopter (registration C-FZWB, serial number 1342),
+was conducting wildlife survey work approximately 75 nautical miles north of Fort McMurray,
+Alberta. In the course of identifying a landing site, the helicopter entered an un-commanded
+rotation to the right, and descended into a stand of trees at 1058 Mountain Daylight Time. The
+pilot and right rear seat passenger sustained fatal injuries. The remaining passenger, who
+occupied the left front seat, was seriously injured. The 406 MHz emergency locator transmitter
+activated on impact. There was no post-impact fire.
+
+
+Ce rapport est également disponible en français.
+                                                -3-
+
+
+Factual Information
+
+History of the Flight
+The flight was chartered by Alberta Sustainable Resource Development (ASRD) to track
+discarded caribou radio collars. Two wildlife biologists would use an externally-mounted
+antenna coupled to a portable receiver to track these collars. Once found, the helicopter would
+land in the vicinity of the collar, and the biologists would disembark, locate, and retrieve the
+collar on foot.
+
+Aircraft operating under contract to ASRD are required to maintain a radio watch with the local
+command and control centre located in Fort McMurray. The pilot made an initial radio check
+call with the ASRD command centre at 0915. 1 At 0924, the pilot called in to report that they were
+departing northbound. The flight departed the Wood Buffalo Helicopters’ facility, located at the
+Fort McMurray Airport, at 0928. As required by ASRD policy, the pilot transmitted a 30-minute
+position/status call to the ASRD command centre at 0959, reporting that they were north of Fort
+MacKay/Firebag Aerodrome. The helicopter was at 1340 feet above ground level (agl) with a
+ground speed of 99 knots (Appendix A). 2
+
+At 1010, the helicopter entered area 1, where a number of orbits were conducted in order to fix
+the location of a radio collar. The helicopter flew as low as 100 feet agl, but did not land in the
+area. The ASRD command centre attempted radio contact at 1029 with no response. The pilot
+did check in at 1032 indicating that operations were normal and that they were proceeding to
+the second site to the northwest. At that time, the helicopter was at an altitude of 550 feet agl
+and at a groundspeed of 58 knots.
+
+At 1048, the helicopter arrived in the vicinity of area 2. The next 8 minutes were spent orbiting
+the area to fix the radio collar’s location and assessing a suitable landing zone.
+
+At 1055, the helicopter orbited the area and executed a wide left-hand turn at 140 feet agl. At
+1056:14, the helicopter turned eastbound at 120 feet agl at a ground speed of 36 knots. At
+1056:24, the helicopter was at 105 feet agl at a ground speed of 27 knots. The wind component at
+this time would have been predominantly a left crosswind from the north at approximately
+5 knots.
+
+At 1056:34, the helicopter was at 115 feet agl with a ground speed of 16 knots. At this point, a
+right turn to the south was initiated. The ground speed had reduced to 5 knots. A final global
+positioning system (GPS) waypoint was recorded at 1056:54 with the aircraft at 18 feet agl with
+a ground speed of 3 knots. Upon completion of the turn to the south, the helicopter would have
+been exposed to a tail-wind condition. The helicopter entered an un-commanded rotation to the
+right. There were no indications of mechanical malfunction prior to or during the rotation. The
+helicopter descended into a stand of poplar trees 60 to 70 feet tall, coming to rest on its right
+side.
+
+
+
+
+1    All times are Mountain Daylight Time (Coordinated Universal Time minus 6 hours).
+2    Altitude and speed were derived from GPS data and had not been relayed to ASRD.
+                                                 -4-
+
+
+
+
+Photo 1. Wreckage of helicopter C-FZWB in the stand of poplar trees
+
+
+After ASRD attempted radio contact at 1108, with no response, it received a telephone call from
+Wood Buffalo Helicopters at 1109 regarding a reported emergency locator transmitter (ELT)
+signal 3 for C-FZWB. At 1114, a company helicopter was dispatched to the last known co-
+ordinates to search for the helicopter, arriving over the site at 1143. It located C-FZWB at 1154.
+Additional rescue resources arrived on scene to help recover the helicopter’s pilot and
+passengers.
+
+Wreckage Examination
+Three trees adjacent to the site exhibited damage related to the helicopter’s descent through the
+trees. All 3 showed rotor-blade damage near the tops; 1 tree had been topped and the majority
+of its branches stripped off.
+
+All of the helicopter’s components were identified within a 100-foot radius of the aircraft. The
+helicopter’s cabin and fuselage were in a single piece, but it had sustained substantial impact
+damage, particularly on the right side of the fuselage. The main rotor head shaft had separated
+below the rotor head, and was located 26 feet from the wreckage. One main rotor blade had
+sustained 2 fractures. The other main rotor blade, while still attached to the rotor head, was
+substantially damaged.
+
+
+
+3    Wood Buffalo Helicopters was contacted by Trenton Rescue Coordination Centre, which had
+     received a 406 MHz ELT signal assigned to C-FZWB.
+                                                   -5-
+
+
+The tail boom was adjacent to the fuselage but it was severed approximately 3 feet aft of the
+horizontal stabilizers. It had indications that it had struck a tree at that point, on the left side of
+the tail boom. The remainder of the tail boom, including the vertical fin and tail rotor, was
+located about 7 feet aft and slightly east of the forward section. The aft section was oriented
+with the tail cone towards the main wreckage.
+
+The tail rotor was mostly intact with one blade still attached to the yoke. This blade was straight
+with minor impact damage to the skin. The other blade had fractured just outboard of the yoke,
+and was lying on the ground approximately 5 feet east of the aft section of tail boom.
+
+The investigation determined that there had been flight control continuity before the accident.
+Continuity with the engine, transmission, and tail rotor assembly was verified. Damage to the
+aircraft was consistent with power being produced. Tree impact damage to the main rotor
+blades was to the under-surface of the blades.
+
+At the time of the occurrence, the pilot was occupying the right front seat, which is the
+traditional pilot position in helicopters. One passenger was in the right rear seat. Both pilot and
+the right seat passenger were wearing aviation helmets at the time of the occurrence, and had
+been secured with the available 4-point harnesses. The surviving passenger, in the left front
+position, was not wearing a helmet and was using the 4-point harness. This passenger was able
+to evacuate from the helicopter through the broken front windscreen.
+
+At the time of the occurrence, the helicopter was within the prescribed weight 4 and balance
+limits.
+
+Flight Crew
+Records indicate that the pilot was certified and qualified for the flight in accordance with
+existing regulations. The pilot held a valid commercial pilot licence – helicopters, endorsed for
+the Bell 206 helicopter. At the time of the occurrence, the pilot held a valid Category 1 civil
+aviation medical certificate with no restrictions.
+
+The pilot had begun employment with Wood Buffalo Helicopters on 01 April 2013, and had
+received ground training—which included awareness of vortex ring state and loss of tail rotor
+effectiveness,—and flight training on the Bell 206B helicopter. The pilot successfully completed
+a company-administered pilot proficiency check for the Bell 206B on 14 April 2013.
+
+At the time of the occurrence, the pilot had accumulated approximately 504 hours of flight time
+on helicopters, 400 hours of which on the Bell 206 helicopter. The pilot was on his 11th
+consecutive duty day, after having had 8 days off.
+
+The pilot’s last 3 days of work consisted of no flying on 26 May, 3.1 hours of flying on 27 May,
+and 3.0 hours of flying on 28 May. There was no indication that any physiological factors,
+including fatigue, played a role in the accident.
+
+
+
+
+4     The weight of the helicopter at the time of the occurrence was calculated to be 2944 lb. The
+      maximum take-off weight was 3200 lb.
+                                                  -6-
+
+
+Aircraft
+The helicopter was owned by Wood Buffalo Helicopters and operated under Subpart 702 of the
+Canadian Aviation Regulations at the time of the occurrence. A review of the helicopter’s
+maintenance records indicated that the helicopter was maintained in accordance with the
+existing regulations at the time of the occurrence. There were no reported or outstanding
+defects. The helicopter was not equipped with flight data recorders or cockpit voice recorders
+nor was it required to be by regulation. It was equipped with a Garmin GPS, which retained
+track data of the occurrence flight (Appendix A).
+
+Weather
+The ASRD produced a weather observation from Birch Mountain, which is located
+approximately 11 nautical miles south of the accident site. At 1200, the visibility was 19 nautical
+miles. The temperature was 18°C and the relative humidity was 51%. The density altitude was
+calculated to be 2198 feet above sea level. The winds were reported to have been from the north
+at 5 knots; the cloud height was not reported.
+
+A pilot report from the company helicopter, the first on site after the accident, indicated that the
+sky was clear, winds were light, and the temperature was about 23 to 24°C. No cumulonimbus
+clouds or adverse weather conditions were observed.
+
+Unanticipated Yaw or Loss of Tail Rotor Effectiveness
+The main rotor blades of the
+Bell 206B helicopter rotate
+counter-clockwise when
+observed from above. As a
+result of this rotation, the
+helicopter experiences a
+torque effect in the opposite
+direction, which results in the
+helicopter yawing to the right.
+To counter this movement, the
+helicopter is equipped with a
+tail rotor system. As torque is
+transmitted through the main
+rotor system, the pilot is able
+to counter the resulting yaw      Figure 1. Torque effect (Transport Canada, 2006) 5
+with the use of the tail rotor
+control pedals, which increases or decreases the amount of anti-torque thrust as required.
+
+Loss of tail rotor effectiveness (LTE) is the occurrence of an un-commanded yaw rate that does
+not subside of its own accord and, which, if not corrected, can result in the loss of the
+
+
+5    Transport Canada, TP 9982E – Helicopter Flight Training Manual (2nd edition, 06/2006), Figure 3-3,
+     page 13, available at http://www.tc.gc.ca/publications/en/tp9982/pdf/hr/tp9982e.pdf (last
+     accessed on 21 January 2014)
+                                                   -7-
+
+
+helicopter. 6 LTE is not related to an equipment or maintenance malfunction, and may occur in
+all single-rotor helicopters at airspeeds less than 30 knots. It is the result of the tail rotor not
+providing adequate thrust to maintain directional control, and is usually caused by either
+certain wind azimuths (directions) while hovering or by an insufficient tail rotor thrust for a
+given setting at higher density altitudes.
+
+The Bell 206 aircraft flight manual advises caution
+when operating when the relative wind is within
+the critical wind azimuth area. The aircraft flight
+manual goes on to discuss hovering ceilings, and
+alerts the pilot that when operating within area
+B, 7 depicted by the hatched area in Figure 2, tail
+rotor control margin and/or control of engine
+temperature may preclude operation in area B of
+the hover ceiling charts when the relative wind is
+in the critical wind azimuth area. As a result,
+there is the potential for a loss of tail rotor
+effectiveness.
+
+The aircraft flight manual cautions that when
+operating at low airspeeds above altitudes
+published in performance charts, tail rotor
+effectiveness may be marginal at high power                Figure 2. Critical wind azimuth area (source:
+settings under these conditions.                           Bell Helicopters, Bell Jet Ranger-II Model 206B
+                                                           Flight Manual (2009))
+Bell Helicopters issued Information Letter 206-84-
+41 in 1984 identifying low speed flight characteristics that can result in unanticipated right yaw.
+The Federal Aviation Administration’s Advisory Circular 90-95 discusses the phenomenon of
+unanticipated right yaw and recommends recovery techniques. This article identifies conditions
+in which LTE may occur, notably “during any maneuver which requires the pilot to operate in a
+high-power, low-airspeed environment with a left crosswind or tail wind,” especially in right
+turns. The recommended recovery procedure would require the application of full left pedal,
+movement of the cyclic forward and, potentially, a reduction in power, if altitude permits.
+
+Transport Canada, in an issue of Aviation Safety Vortex 8 discussed the phenomenon of
+unanticipated right yaw and recommended recovery procedure.
+
+Transport Canada’s Study and Reference Guide: Private and Commercial Pilot Licence (Helicopter) 9
+identifies LTE as a ground school topic to be discussed as part of aircraft performance.
+Transport Canada’s Helicopter Flight Training Manual 10 makes the following reference to LTE:
+
+6    U.S. Department of Transportation, Federal Aviation Administration, Rotorcraft Flying Handbook
+     (2000), pp. 11–12
+7    Bell Helicopters, Bell Jet Ranger-II Model 206B Flight Manual (2009), p. 3-6D
+8    Transport Canada, Aviation Safety Vortex, Issue 1/2002
+9    Transport Canada, TP 2476E − Study and Reference Guide: Private and Commercial Pilot Licence
+     including Aeroplane to Helicopter Licences—Helicopter (5th edition, June 2004, revised November 2005)
+10   Transport Canada, TP 9982E – Helicopter Flight Training Manual (2nd edition, 06/2006), page 39,
+     available at http://www.tc.gc.ca/publications/en/tp9982/pdf/hr/tp9982e.pdf (last accessed on
+     21 January 2014)
+                                              -8-
+
+
+
+       In strong gusty wind conditions, a turn away from the into-wind position should
+       be opposite to the torque reaction […]. In this way you will ensure that there is
+       sufficient tail rotor control available. Should control limits be reached at this
+       stage, a safe turn back into wind can be accomplished.
+
+TSB Laboratory Reports
+The following TSB Laboratory report was completed:
+
+   •   LP 104/2013 - GPS and Annunciator Panel
+
+This report is available from the TSB upon request.
+                                                -9-
+
+
+Analysis
+The examination of the helicopter as well as the data collected during the investigation indicate
+there were no mechanical issues that would have resulted in the loss of control and subsequent
+crash. There was no indication that any physiological factors, including fatigue, played a role in
+the accident. The analysis will focus, therefore, on the aerodynamic phenomenon known as loss
+of tail rotor effectiveness (LTE).
+
+The helicopter was operating in a flight regime where it was exposed to the left crosswind and
+tail wind, which would have placed the relative wind into the critical azimuth zone. While
+conducting a reconnaissance for landing, the helicopter was flown at a low speed and high
+power setting. As the pilot progressively reduced speed, the helicopter became increasingly
+vulnerable to LTE. The damage to the under-surface of the main rotor blades indicated that the
+pilot attempted to increase his collective control input in an effort to power out of the area. The
+application of power in this particular flight regime would have exacerbated the right yaw
+tendency and aggravated the loss of control. The helicopter experienced LTE, causing a loss of
+directional control at a height above the trees that precluded an effective recovery.
+
+The manufacturer and regulator have produced information to alert pilots to the phenomenon
+of LTE. The pilot would have been exposed to this information during his initial training and
+subsequent training on the Bell 206 helicopter. The investigation could not determine the pilot’s
+level of awareness of LTE in the flight regime in which the helicopter was operating.
+                                                    - 10 -
+
+
+Findings
+
+Findings as to Causes and Contributing Factors
+1. The helicopter entered a flight regime that resulted in a loss of tail rotor effectiveness,
+   causing a loss of directional control at a height that precluded recovery, resulting in a
+   collision with terrain.
+
+
+
+
+Safety Action
+
+Safety Action Taken
+
+Wood Buffalo Helicopters
+
+Wood Buffalo Helicopters has instituted a change to its training forms to document that loss of
+tail rotor effectiveness instruction (LTE) was completed during its technical ground training and
+flight training programs. The company also conducted an LTE awareness campaign after this
+accident through a company safety meeting as well as through the creation and distribution of
+an operations bulletin on LTE and the hazards related to slow and low flight.
+
+
+
+This report concludes the Transportation Safety Board’s investigation into this occurrence. Consequently,
+the Board authorized the release of this report on 17 December 2013. It was officially released on
+5 February 2014.
+
+Visit the Transportation Safety Board’s website (www.bst-tsb.gc.ca) for information about the
+Transportation Safety Board and its products and services. You will also find the Watchlist, which
+identifies the transportation safety issues that pose the greatest risk to Canadians. In each case, the TSB
+has found that actions taken to date are inadequate, and that industry and regulators need to take
+additional concrete measures to eliminate the risks.
+                           - 11 -
+
+
+Appendices
+
+Appendix A – Flight Path
+

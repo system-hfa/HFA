@@ -41,3 +41,14 @@ This policy governs storage hygiene only. It does not authorize:
 - release/downstream creation;
 - canonical-tree changes;
 - conversion of report conclusions/HFACS labels into SERA expected values.
+
+## A4R116 recovered-corpus policy application
+- Version DeepSeek recovery metadata and manifests:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FAILED_LINK_RECOVERY_A4R111_DEEPSEEK_v0.2.0.md`
+  - `docs/sera-vnext/source-corpus/report-url-manifest/A4R111_FAILED_LINK_RECOVERY_DEEPSEEK.csv`
+- Version recovered TXT files only when they contain usable extracted text.
+- Keep recovered PDF/HTML files local-only under `docs/sera-vnext/source-corpus/official-reports/a4r111-recovered-pool/` unless explicitly approved later.
+- Keep scanned or form-feed-only TXT placeholders local-only when the recovery report and CSV already preserve the OCR-required marker.
+- Treat secondary-source-only TXT files as source-caveated corpus supplements; they require source-governance review before trace or expected-value use.
+
+A4R116 does not change the storage policy into methodology authorization. Corpus inclusion does not authorize P/O/A closure, trace creation, release/downstream, or conversion of external report conclusions into SERA values.

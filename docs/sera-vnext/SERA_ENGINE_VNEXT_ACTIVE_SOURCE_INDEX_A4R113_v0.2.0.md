@@ -58,3 +58,26 @@ Purpose: identify active methodology sources and separate archive-only material.
 - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_CROSS_CASE_CONSISTENCY_REVIEW_v0.2.0.md`
 - `docs/sera-vnext/official-report-source-slices/a4r115/`
 - `docs/sera-vnext/reference-case-traces/*A4R115*.md`
+
+## Active recovered corpus supplement (A4R116)
+- Recovery report:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FAILED_LINK_RECOVERY_A4R111_DEEPSEEK_v0.2.0.md`
+- Recovery manifest:
+  - `docs/sera-vnext/source-corpus/report-url-manifest/A4R111_FAILED_LINK_RECOVERY_DEEPSEEK.csv`
+- Recovered text pool supplement:
+  - `docs/sera-vnext/source-corpus/official-reports/a4r111-recovered-pool-txt/`
+
+A4R116 active-corpus supplement rule:
+- content-bearing TXT files are active for future mining and future batch planning;
+- scanned/form-feed-only TXT placeholders remain local-only unless OCR text is produced;
+- recovered PDF/HTML files remain local-only under corpus policy.
+
+## Active QA outputs (A4R116)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_RECOVERED_CORPUS_INTEGRATION_A4R116_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_RECOVERED_CORPUS_IMPACT_ON_A4R115_A4R116_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_FULL_AXIS_TRACE_METHOD_QA_A4R116_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_REVIEW_BUNDLE_ELIGIBILITY_AUDIT_A4R116_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_REVIEW_REQUIRED_CASES_AUDIT_A4R116_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_HELD_BOUNDARY_AUDIT_A4R116_v0.2.0.md`
+
+A4R116 QA outputs are active governance and QA artifacts only. They do not create released codes, front-end calibration artifacts, downstream scope, or final accident causation.

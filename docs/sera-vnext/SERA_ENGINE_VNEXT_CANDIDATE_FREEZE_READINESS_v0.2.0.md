@@ -1593,3 +1593,34 @@ Estado metodológico após A4R115:
 Readiness gate após A4R115:
 - Há massa crítica para um único author-review bundle full-axis (>=3 casos úteis).
 - Freeze final continua não autorizado.
+
+## A4+R-116 — Recovered Corpus Integration and A4R115 Method QA
+
+Esta fase integrou metadata e TXT recuperados pelo DeepSeek e executou QA metodológico independente dos trace drafts A4R115:
+- [Recovered Corpus Integration A4R116](./SERA_ENGINE_VNEXT_RECOVERED_CORPUS_INTEGRATION_A4R116_v0.2.0.md)
+- [Recovered Corpus Impact on A4R115 A4R116](./SERA_ENGINE_VNEXT_RECOVERED_CORPUS_IMPACT_ON_A4R115_A4R116_v0.2.0.md)
+- [A4R115 Full-Axis Trace Method QA A4R116](./SERA_ENGINE_VNEXT_A4R115_FULL_AXIS_TRACE_METHOD_QA_A4R116_v0.2.0.md)
+- [A4R115 Review Bundle Eligibility Audit A4R116](./SERA_ENGINE_VNEXT_A4R115_REVIEW_BUNDLE_ELIGIBILITY_AUDIT_A4R116_v0.2.0.md)
+- [A4R115 Review-Required Cases Audit A4R116](./SERA_ENGINE_VNEXT_A4R115_REVIEW_REQUIRED_CASES_AUDIT_A4R116_v0.2.0.md)
+- [A4R115 Held Boundary Audit A4R116](./SERA_ENGINE_VNEXT_A4R115_HELD_BOUNDARY_AUDIT_A4R116_v0.2.0.md)
+
+Corpus outcome:
+- 10 recovered TXT files with usable content incorporated as `ACTIVE_CORPUS_SUPPLEMENT`.
+- 2 recovered scanned/empty TXT placeholders kept local-only as OCR deferred.
+- 8 ATSB network-blocked cases, 4 official URL/download-failed cases, 7 secondary-source-only cases, 2 not-found cases, and 8 source-recheck cases remain deferred.
+
+A4R115 QA outcome:
+- `UPS-1354`, `COLGAN-3407`, and `US-AIRWAYS-1549` remain suitable for author review with explicit warnings where needed.
+- `AMERICAN-1420` requires a minor caution/status wording patch before inclusion in an author-review bundle.
+- `ASIANA-214` and `AMERICAN-965` remain outside bundle promotion as `REVIEW_REQUIRED` cases.
+- `HELIOS-522`, `USAIR-427`, `TUROY EC225`, and `KOREAN-801` remain held/boundary.
+
+A4R116 controls:
+- no new trace draft;
+- no P/O/A closure;
+- no release created;
+- no downstream opened;
+- no final causation artifact, HF taxonomy artifact, risk layer, ERC, ARMS, or safety recommendation artifact created;
+- no fixture/baseline/code/runtime/UI/API/DB change.
+
+Freeze final continua não autorizado.

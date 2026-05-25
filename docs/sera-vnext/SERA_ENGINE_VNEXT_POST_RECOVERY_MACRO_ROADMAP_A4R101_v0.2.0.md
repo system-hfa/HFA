@@ -363,3 +363,29 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 2. Keep `ASIANA-214` and `AMERICAN-965` in targeted review-required/source-slice expansion before any closure attempt.
 3. Keep `HELIOS-522`, `USAIR-427`, `TUROY EC225`, and `KOREAN-801` in held/boundary track until stronger evidence or dedicated boundary review is completed.
 4. Maintain `COMAIR-5191` and `KOREAN-801` as P-only/internal boundary references, not complete full-axis references.
+
+## A4+R-116 Execution Update (Recovered Corpus Integration and A4R115 QA)
+- DeepSeek recovery metadata integrated:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_FAILED_LINK_RECOVERY_A4R111_DEEPSEEK_v0.2.0.md`
+  - `docs/sera-vnext/source-corpus/report-url-manifest/A4R111_FAILED_LINK_RECOVERY_DEEPSEEK.csv`
+- Content-bearing recovered TXT files incorporated as active corpus supplement:
+  - 10 TXT files under `docs/sera-vnext/source-corpus/official-reports/a4r111-recovered-pool-txt/`
+- OCR/network/source-recheck items deferred:
+  - 2 scanned recovered PDFs/TXTs need OCR;
+  - 8 ATSB cases remain network-blocked;
+  - 4 official URLs need retry/manual recovery;
+  - 7 secondary-source-only cases need source-governance review;
+  - 2 not-found cases need source-data verification;
+  - 8 source-recheck cases remain unresolved.
+- A4R115 independent QA completed:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_FULL_AXIS_TRACE_METHOD_QA_A4R116_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_REVIEW_BUNDLE_ELIGIBILITY_AUDIT_A4R116_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_REVIEW_REQUIRED_CASES_AUDIT_A4R116_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R115_HELD_BOUNDARY_AUDIT_A4R116_v0.2.0.md`
+- No release created, no downstream opened, no final causation artifact, HF taxonomy artifact, risk layer, ERC, ARMS, or safety recommendation artifact created.
+
+## Updated Immediate Sequence After A4R116
+1. Prepare one author-review bundle only after carrying forward the A4R116 caution that `AMERICAN-1420` needs minor pre-review wording/status tightening.
+2. Keep `ASIANA-214` and `AMERICAN-965` in the review-required/source-slice refinement track.
+3. Use recovered content-bearing TXT files for a later future-batch planning pass, not to retrofit A4R115.
+4. Keep OCR/network/source-recheck items deferred until usable text or source-governance status exists.
