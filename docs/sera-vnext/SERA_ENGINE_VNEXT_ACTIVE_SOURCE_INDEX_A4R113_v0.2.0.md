@@ -147,3 +147,17 @@ A4R122 governance state:
 - EASTERN-401 moved from `REVIEW_AFTER_MINOR_PATCH` posture to `REVIEW_AFTER_MINOR_PATCH_APPLIED` with `READY_WITH_WARNINGS`.
 - case remains draft-governed and caution-bound (`LEGACY_SCAN_LIMITED_LEGIBILITY`).
 - no author decision, no release, no downstream, no final-causation artifact.
+
+## Active real-event consolidation outputs (A4R123)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_REFERENCE_SET_CONSOLIDATION_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_POA_COVERAGE_MATRIX_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_HELD_AND_REWORK_REGISTER_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_SYNTHETIC_MODEL_EVENT_READINESS_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_REAL_EVENT_REFERENCE_ROADMAP_A4R123_v0.2.0.md`
+
+A4R123 governance state:
+- consolidated real-event set for future author-review lane:
+  - `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`, `EASTERN-401`.
+- held/rework cases remain out-of-bundle with explicit reopen conditions.
+- synthetic model event readiness is defined, but no synthetic event was created in A4R123.
+- no author decision, no release, no downstream, no final-causation artifact.

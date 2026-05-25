@@ -496,3 +496,30 @@ Controles A4R122:
 1. Consider EASTERN-401 only in future author-review lanes with explicit warnings preserved.
 2. Keep ATLAS-3591 in targeted refinement track before any future eligibility discussion.
 3. Preserve release/downstream closure while all traces remain draft/QA-governed artifacts.
+
+## A4+R-123 — Real Event Reference Set Consolidation and Synthetic Model Readiness
+
+Esta fase consolidou a governança dos eventos reais e preparou a frente sintética sem criar eventos sintéticos:
+- [Real Event Reference Set Consolidation A4R123](./SERA_ENGINE_VNEXT_REAL_EVENT_REFERENCE_SET_CONSOLIDATION_A4R123_v0.2.0.md)
+- [Real Event POA Coverage Matrix A4R123](./SERA_ENGINE_VNEXT_REAL_EVENT_POA_COVERAGE_MATRIX_A4R123_v0.2.0.md)
+- [Real Event Held and Rework Register A4R123](./SERA_ENGINE_VNEXT_REAL_EVENT_HELD_AND_REWORK_REGISTER_A4R123_v0.2.0.md)
+- [Synthetic Model Event Readiness A4R123](./SERA_ENGINE_VNEXT_SYNTHETIC_MODEL_EVENT_READINESS_A4R123_v0.2.0.md)
+- [Post Real Event Reference Roadmap A4R123](./SERA_ENGINE_VNEXT_POST_REAL_EVENT_REFERENCE_ROADMAP_A4R123_v0.2.0.md)
+
+Resultado macro A4R123:
+- conjunto real consolidado com 6 eventos `review-ready/warning-bound`;
+- eventos fora do bundle fixados com condições de reabertura explícitas;
+- cobertura P/O/A real mapeada para orientar expansão;
+- readiness sintético definido para fase futura, sem criação de casos nesta fase.
+
+Controles A4R123:
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto;
+- nenhum artefato final-causation/HF taxonomy/Risk/ERC/ARMS/ERC/recommendations criado.
+
+## Updated Immediate Sequence After A4R123
+1. Execute future author-review lane dos 6 eventos reais consolidados em fase dedicada.
+2. Iniciar framework de synthetic model events em fase própria, sem substituir evidência real.
+3. Manter trilha de held/rework com reabertura somente por condição metodológica documentada.

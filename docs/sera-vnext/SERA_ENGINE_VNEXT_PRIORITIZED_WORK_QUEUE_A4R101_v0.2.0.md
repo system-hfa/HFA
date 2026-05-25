@@ -298,3 +298,19 @@ NO_DOWNSTREAM
 | P0 | Prepare future author-review lane from stabilized set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`, `EASTERN-401` | EASTERN-401 now has QA-stabilized warning-bound readiness for future consideration. | Codex + user | 1 future bundle cycle | Dedicated future phase defines inclusion and ordering, with no release/downstream action. |
 | P1 | ATLAS-3591 targeted refinement | `ATLAS-3591` | Remains review-required after substantive patch. | Codex | 1 focused refinement cycle | Actor-scope and A-axis uncertainty reduced before re-eligibility discussion. |
 | P1 | Preserve warning-bound controls on EASTERN-401 | `EASTERN-401` | Legacy scan legibility still constrains confidence; boundary-live A-axis must remain explicit. | Codex | continuous | Warning controls retained in all future review artifacts until author adjudication. |
+
+## A4+R-123 queue update
+- Completed in A4R123:
+  - consolidated real-event reference set governance into one controlled package;
+  - fixed the stable `review-ready/warning-bound` set at six real events;
+  - registered held/rework cases with explicit reopen conditions;
+  - created P/O/A coverage matrix for real-event portfolio;
+  - defined synthetic model event readiness and macro roadmap without creating synthetic events.
+- Execution remained docs-only, real-event-consolidation-only, no author decision, no release, no downstream.
+
+## Immediate queue after A4R123
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Run dedicated future author-review lane for consolidated real set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`, `EASTERN-401` | Real-event set is now governance-consolidated with explicit warnings and caveats. | Codex + user | 1 future bundle cycle | Author decisions captured in dedicated phase only, without release/downstream. |
+| P1 | Start synthetic model event framework phase (no real-event substitution) | 12 planned synthetic model events (4P/4O/4A emphasis) | Coverage matrix identifies controlled gaps better explored by synthetic didactic/adversarial cases. | Codex | 1 framework cycle | First synthetic draft framework produced with explicit `SYNTHETIC_MODEL_EVENT` source discipline. |
+| P1 | Keep held/rework register active | `ATLAS-3591`, `AMERICAN-1420`, `ASIANA-214`, `AMERICAN-965`, `HELIOS-522`, `USAIR-427`, `TUROY-EC225`, `KOREAN-801` | Out-of-bundle cases need dedicated evidence/scope gates, not bundle backfill by pressure. | Codex | continuous | Reopen only when documented conditions are satisfied. |

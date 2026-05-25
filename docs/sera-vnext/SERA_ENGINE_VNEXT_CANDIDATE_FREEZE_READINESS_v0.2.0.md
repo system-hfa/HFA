@@ -1735,3 +1735,34 @@ Controles A4R122:
 - nenhum release criado;
 - nenhum downstream aberto;
 - nenhum artifact de final causation, HF taxonomy, risk/ERC, ARMS/ERC ou recommendations criado.
+
+## A4+R-123 - Real Event Reference Set Consolidation and Synthetic Model Readiness
+
+Esta fase consolidou a governança do conjunto real de referência após A4R122 e definiu prontidão para a frente sintética sem criar eventos sintéticos:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_REFERENCE_SET_CONSOLIDATION_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_POA_COVERAGE_MATRIX_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_HELD_AND_REWORK_REGISTER_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_SYNTHETIC_MODEL_EVENT_READINESS_A4R123_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_REAL_EVENT_REFERENCE_ROADMAP_A4R123_v0.2.0.md`
+
+Consolidação real A4R123:
+- conjunto `review-ready/warning-bound` consolidado em 6 eventos:
+  - `UPS-1354`
+  - `COLGAN-3407`
+  - `US-AIRWAYS-1549`
+  - `UNITED-173`
+  - `UNITED-232`
+  - `EASTERN-401`
+- casos fora do bundle registrados com condição de reabertura explícita.
+- matriz de cobertura P/O/A consolidada para orientar próximos lotes.
+
+Readiness sintético A4R123:
+- framework sintético marcado como pronto para fase futura.
+- criação de eventos sintéticos nesta fase: não.
+
+Controles A4R123:
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto;
+- nenhum artefato final-causation/HF taxonomy/Risk/ERC/ARMS/ERC/recommendations criado.
