@@ -2926,3 +2926,31 @@ Esta fase registrou a shortlist externa de 25 eventos como camada discovery-only
 - no release/downstream;
 - no finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
 - nenhuma alteracao de codigo/fixture/baseline/corpus.
+
+## A4R150 — Integrated Corpus + External Candidate Reconciliation for Opus
+
+Esta fase integrou em uma unica frente os 89 TXT locais e os 25 candidatos externos A4R149:
+
+- [Integrated Corpus Reconciliation A4R150](./SERA_ENGINE_VNEXT_INTEGRATED_CORPUS_RECONCILIATION_A4R150_v0.2.0.md)
+- [Integrated Event Source Matrix A4R150](./integrated-corpus-reconciliation-a4r150/INTEGRATED_EVENT_SOURCE_MATRIX_A4R150_v0.2.0.md)
+- [Opus Audit Packet Manifest A4R150](./integrated-corpus-reconciliation-a4r150/OPUS_AUDIT_PACKET_MANIFEST_A4R150_v0.2.0.md)
+- [Source Recovery Queue A4R150](./integrated-corpus-reconciliation-a4r150/SOURCE_RECOVERY_QUEUE_A4R150_v0.2.0.md)
+- [Post-Opus Selection Candidate Plan A4R150](./integrated-corpus-reconciliation-a4r150/POST_OPUS_SELECTION_CANDIDATE_PLAN_A4R150_v0.2.0.md)
+
+### Resultado A4R150
+
+- integra 89 TXT + 25 externos em matriz unica;
+- nao cria P/O/A;
+- nao cria corpus ingestion;
+- nao baixa relatorios;
+- cria manifest unico para Opus;
+- cria fila unificada de source recovery;
+- cria plano pos-Opus de lote pequeno.
+
+### Controles A4R150
+
+- sem reauditoria de eventos;
+- sem selectedCode CLASSIFIED, sem releasedCode;
+- sem downstream;
+- sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhuma alteracao de codigo/fixture/baseline/corpus.

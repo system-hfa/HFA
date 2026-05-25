@@ -172,6 +172,11 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R149 external candidates do not create P/O/A reference authority.
 - A4R149 external candidates must pass source recovery and extraction before operational use.
 
+## A4R150 Integrated Reconciliation Note
+
+- A4R150 integrated reconciliation does not create P/O/A reference authority.
+- External candidates and local TXT candidates remain non-authoritative until source recovery + extraction + escape-point gate.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.
