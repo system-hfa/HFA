@@ -177,6 +177,12 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R150 integrated reconciliation does not create P/O/A reference authority.
 - External candidates and local TXT candidates remain non-authoritative until source recovery + extraction + escape-point gate.
 
+## A4R151 Source Hygiene Note
+
+- A4R151 source hygiene verifies official-source readiness only.
+- A4R151 does not create P/O/A reference authority.
+- Source status upgrades in A4R151 do not authorize extraction or P/O/A without subsequent gated phases.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.

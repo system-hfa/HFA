@@ -2954,3 +2954,30 @@ Esta fase integrou em uma unica frente os 89 TXT locais e os 25 candidatos exter
 - sem downstream;
 - sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
 - nenhuma alteracao de codigo/fixture/baseline/corpus.
+
+## A4R151 — Official Source Hygiene and Download Prep for Opus Packet
+
+Esta fase executou somente higiene de fonte oficial e verificacao de qualidade de artefatos temporarios para o pacote Opus:
+
+- [Source Hygiene Execution A4R151](./source-hygiene-a4r151/SOURCE_HYGIENE_EXECUTION_A4R151_v0.2.0.md)
+- [Official Source Status Matrix A4R151](./source-hygiene-a4r151/OFFICIAL_SOURCE_STATUS_MATRIX_A4R151_v0.2.0.md)
+- [Opus Ready Packet Manifest A4R151](./source-hygiene-a4r151/OPUS_READY_PACKET_MANIFEST_A4R151_v0.2.0.md)
+- [Source Recovery Remaining Queue A4R151](./source-hygiene-a4r151/SOURCE_RECOVERY_REMAINING_QUEUE_A4R151_v0.2.0.md)
+- [Source Quality Notes A4R151](./source-hygiene-a4r151/SOURCE_QUALITY_NOTES_A4R151_v0.2.0.md)
+
+### Resultado A4R151
+
+- valida links oficiais prioritarios para pacote Opus;
+- registra qualidade de PDF/TXT/OCR em camada documental;
+- nao cria P/O/A;
+- nao cria corpus ingestion;
+- nao versiona PDFs baixados em tmp;
+- organiza pacote OPUS_READY_CORE / OPUS_READY_NEGATIVE_CONTROLS / OPUS_SOURCE_RECOVERY_PENDING.
+
+### Controles A4R151
+
+- sem reauditoria de eventos;
+- sem selectedCode CLASSIFIED, sem releasedCode;
+- sem downstream;
+- sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhuma alteracao de codigo/fixture/baseline/corpus.

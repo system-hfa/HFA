@@ -39,6 +39,9 @@
 - [Integrated Corpus Reconciliation A4R150](./SERA_ENGINE_VNEXT_INTEGRATED_CORPUS_RECONCILIATION_A4R150_v0.2.0.md)
 - [Integrated Event Source Matrix A4R150](./integrated-corpus-reconciliation-a4r150/INTEGRATED_EVENT_SOURCE_MATRIX_A4R150_v0.2.0.md)
 - [Opus Audit Packet Manifest A4R150](./integrated-corpus-reconciliation-a4r150/OPUS_AUDIT_PACKET_MANIFEST_A4R150_v0.2.0.md)
+- [Source Hygiene Execution A4R151](./source-hygiene-a4r151/SOURCE_HYGIENE_EXECUTION_A4R151_v0.2.0.md)
+- [Official Source Status Matrix A4R151](./source-hygiene-a4r151/OFFICIAL_SOURCE_STATUS_MATRIX_A4R151_v0.2.0.md)
+- [Opus Ready Packet Manifest A4R151](./source-hygiene-a4r151/OPUS_READY_PACKET_MANIFEST_A4R151_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras
@@ -49,6 +52,7 @@
 - **A4R142 screening is intake-only and must be read through A4R143 audit overlay before selecting pilots.**
 - **A4R147 synthetic screening/design is synthetic-only and must not be treated as real-event reference authority.**
 - **A4R150 integrated reconciliation is an integrated intake layer only and does not create corpus authority or P/O/A authority.**
+- **A4R151 source hygiene is a source-readiness layer only and does not create corpus authority or P/O/A authority.**
 - "Quando..." nao pode embutir causa, violacao ou warning como primeira saida.
 - Arvore SERA real nao pode ser inventada.
 - proposedCode nao e releasedCode.

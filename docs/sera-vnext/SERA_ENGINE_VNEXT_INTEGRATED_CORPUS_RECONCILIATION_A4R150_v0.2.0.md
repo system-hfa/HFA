@@ -58,4 +58,4 @@ A4R150 removes parallel-triage risk by consolidating local and external candidat
 
 ## next step
 
-Execute A4R151 Opus audit intake using the single A4R150 packet manifest, then run A4R152 post-Opus reconciliation and small-batch selection.
+Source-hygiene readiness for this packet was further refined in A4R151. For Opus packet readiness, prefer A4R151 source-hygiene artifacts as the current source-quality authority layer.
