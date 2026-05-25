@@ -2012,3 +2012,50 @@ Proxima fase recomendada:
 - revisao autoral dos cinco `REBUILT_POA_DRAFT_NOT_RELEASED`, com prioridade para as fronteiras P/A de `ASIANA-214` e O/A de `BS211-Q400`;
 - `SOURCE_ENRICHMENT` para `AMERICAN-965` e `COMAIR-5191` antes de qualquer rebuild;
 - fase separada para `QUEUE_C_FULL_REBUILD`, sem abrir downstream automaticamente.
+
+## A4+R-131 - Author Review Packets for A4R130 Rebuilt Drafts
+
+Esta fase preparou pacotes simples de decisao autoral para os cinco eventos reconstruidos em A4R130:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_AUTHOR_REVIEW_PACKETS_A4R131_v0.2.0.md`
+- `docs/sera-vnext/author-review-packets-a4r131/AUTHOR_REVIEW_TRACKER_A4R131_v0.2.0.md`
+- `docs/sera-vnext/author-review-packets-a4r131/AUTHOR-REVIEW-REAL-EVENT-0003-A4R131.md`
+- `docs/sera-vnext/author-review-packets-a4r131/AUTHOR-REVIEW-REAL-EVENT-0016-A4R131.md`
+- `docs/sera-vnext/author-review-packets-a4r131/AUTHOR-REVIEW-BS211-Q400-A4R131.md`
+- `docs/sera-vnext/author-review-packets-a4r131/AUTHOR-REVIEW-A4R87-EXT-002-A4R131.md`
+- `docs/sera-vnext/author-review-packets-a4r131/AUTHOR-REVIEW-ASIANA-214-A4R131.md`
+
+Eventos incluidos:
+- `REAL-EVENT-0003`
+- `REAL-EVENT-0016`
+- `BS211-Q400`
+- `A4R87-EXT-002`
+- `ASIANA-214`
+
+Eventos excluidos por `SOURCE_ENRICHMENT`:
+- `AMERICAN-965`
+- `COMAIR-5191`
+
+Resultado macro A4R131:
+- totalAuthorReviewPacketsCreated: 5
+- eventsIncluded: 5
+- eventsExcludedForSourceEnrichment: 2
+- authorDecisionPendingCount: 5
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- poaChangedCount: 0
+- sourceEnrichmentPerformedCount: 0
+
+Estado de freeze apos A4R131:
+- nenhum pacote registra aprovacao autoral;
+- todos permanecem `AUTHOR_DECISION_PENDING`;
+- todos permanecem `NO_RELEASED_CODE` e `NO_DOWNSTREAM`;
+- P/O/A tecnico da A4R130 nao foi alterado;
+- nenhuma source enrichment foi executada;
+- `AMERICAN-965` e `COMAIR-5191` nao foram processados;
+- freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- coletar respostas autorais para os cinco pacotes;
+- registrar as decisoes autorais em fase separada;
+- manter release/downstream bloqueados ate governanca explicita posterior.
