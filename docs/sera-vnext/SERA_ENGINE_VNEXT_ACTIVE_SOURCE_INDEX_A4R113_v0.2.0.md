@@ -137,3 +137,13 @@ A4R121 governance state:
 - EASTERN-401 hold in A4R119/A4R120 is superseded for future cycles by official-source recovery.
 - EASTERN-401 now sits in `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS` lane.
 - no author decision, no release, no downstream, no final-causation artifact.
+
+## Active Eastern-401 stabilization outputs (A4R122)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_INDEPENDENT_QA_INTAKE_A4R122_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_STABILIZATION_PATCH_A4R122_v0.2.0.md`
+- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-EASTERN-401-FULL-AXIS-CANONICAL-DRAFT-A4R121.md` (stabilized in A4R122)
+
+A4R122 governance state:
+- EASTERN-401 moved from `REVIEW_AFTER_MINOR_PATCH` posture to `REVIEW_AFTER_MINOR_PATCH_APPLIED` with `READY_WITH_WARNINGS`.
+- case remains draft-governed and caution-bound (`LEGACY_SCAN_LIMITED_LEGIBILITY`).
+- no author decision, no release, no downstream, no final-causation artifact.

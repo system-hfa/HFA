@@ -33,3 +33,11 @@ Reprocess EASTERN-401 from `HOLD_OCR_REQUIRED` using official FAA-hosted NTSB re
 - EASTERN-401 exits hard hold for this cycle and enters controlled draft lane with source-quality warning.
 - no author decision is recorded.
 - no release or downstream action is created.
+
+## A4R122 stabilization supersession note
+- Independent QA intake and minor stabilization patch were applied in A4R122:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_INDEPENDENT_QA_INTAKE_A4R122_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_STABILIZATION_PATCH_A4R122_v0.2.0.md`
+- EASTERN-401 moved from `REVIEW_AFTER_MINOR_PATCH` posture to `REVIEW_AFTER_MINOR_PATCH_APPLIED` with `READY_WITH_WARNINGS` governance for future author-review consideration.
+- No author decision was recorded.
+- No release or downstream action was created.

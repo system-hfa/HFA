@@ -1715,3 +1715,23 @@ Resultado macro A4R121:
 - Reentrada ocorreu com caveat explícito de legibilidade (legacy scan).
 - Nenhuma decisão autoral foi registrada.
 - Nenhum release/downstream foi criado.
+
+## A4+R-122 - Eastern-401 Trace Stabilization After Independent QA
+
+Esta fase estabilizou o trace EASTERN-401 A4R121 após intake de QA independente:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_INDEPENDENT_QA_INTAKE_A4R122_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_STABILIZATION_PATCH_A4R122_v0.2.0.md`
+
+Resultado de governança:
+- `canonicalPathIntegrity` permanece PASS;
+- controle explícito de double-counting P/A foi adicionado;
+- framing temporal O-axis foi reforçado (`O-A` inicial vs `O-D` janela crítica);
+- A-axis mantém alternativas boundary-live (`A-F`, `A-G`) com `A-C` apenas como draft plausível;
+- EASTERN-401 passa para `REVIEW_AFTER_MINOR_PATCH_APPLIED` com `READY_WITH_WARNINGS` para futuro lane de author review.
+
+Controles A4R122:
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto;
+- nenhum artifact de final causation, HF taxonomy, risk/ERC, ARMS/ERC ou recommendations criado.

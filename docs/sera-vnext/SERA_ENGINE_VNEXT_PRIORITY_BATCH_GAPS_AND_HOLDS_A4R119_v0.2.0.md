@@ -59,3 +59,14 @@ Before any future review bundle decision on A4R119 outputs, run independent QA p
 - New state:
   - `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS` with legacy-scan legibility caveat.
 - Hold-lane governance remains active for any event where official text is still unusable.
+
+## A4R122 hold-lane update for EASTERN-401
+- EASTERN-401 is no longer in hard hold for future cycles.
+- Current controlled state after A4R122:
+  - `REVIEW_AFTER_MINOR_PATCH_APPLIED`
+  - `READY_WITH_WARNINGS`
+- Residual gap remains:
+  - source legibility (`LEGACY_SCAN_LIMITED_LEGIBILITY`) still requires caution in line-level interpretation.
+- Method gate remains active:
+  - avoid P/A double-counting from shared altitude-cue facts;
+  - keep A-axis boundary-live framing until author adjudication.

@@ -71,3 +71,15 @@ No author decision is recorded in A4R119.
 - EASTERN-401 phase status update:
   - historical A4R119 hold remains accurate for that phase;
   - superseded for future cycles by `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS`.
+
+## A4R122 Eastern-401 stabilization update
+- EASTERN-401 A4R121 draft received independent QA intake and minor stabilization patch in A4R122.
+- Governance state for future cycles:
+  - `validationStatus: REVIEW_AFTER_MINOR_PATCH_APPLIED`
+  - `authorReviewReadiness: READY_WITH_WARNINGS`
+- Method controls added in trace:
+  - explicit P/A double-counting separation;
+  - A-axis boundary-live framing (`A-C` draft plausibility with `A-F`/`A-G` live);
+  - O-axis temporal framing (`O-A` early window vs `O-D` critical window);
+  - explicit legacy-scan source caveat retention.
+- No author decision, no release, and no downstream action in A4R122.

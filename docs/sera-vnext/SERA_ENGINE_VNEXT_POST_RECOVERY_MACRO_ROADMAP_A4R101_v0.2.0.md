@@ -471,3 +471,28 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 2. Keep future review lane anchored on stable set (`UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`) until Eastern QA completes.
 3. Keep `ATLAS-3591` in targeted refinement cycle.
 4. Preserve release/downstream closure across all reopened draft work.
+
+## A4+R-122 — Eastern-401 Independent QA Intake and Stabilization
+
+Esta fase estabilizou EASTERN-401 após QA independente, sem decisão autoral e sem release:
+- [Eastern-401 Independent QA Intake A4R122](./SERA_ENGINE_VNEXT_EASTERN_401_INDEPENDENT_QA_INTAKE_A4R122_v0.2.0.md)
+- [Eastern-401 Stabilization Patch A4R122](./SERA_ENGINE_VNEXT_EASTERN_401_STABILIZATION_PATCH_A4R122_v0.2.0.md)
+
+Resultado macro A4R122:
+- `canonicalPathIntegrity` mantido como PASS;
+- risco de double-counting P/A mitigado por seção explícita no trace;
+- framing temporal O-axis formalizado (`O-A` inicial, `O-D` janela crítica);
+- A-axis mantido conservador com boundaries vivas (`A-F`, `A-G`) e `A-C` como draft plausível;
+- EASTERN-401 passa para `REVIEW_AFTER_MINOR_PATCH_APPLIED` + `READY_WITH_WARNINGS` para possível bundle futuro.
+
+Controles A4R122:
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto;
+- nenhum final-causation/HF taxonomy/Risk/ERC/ARMS/ERC/recommendations criado.
+
+## Updated Immediate Sequence After A4R122
+1. Consider EASTERN-401 only in future author-review lanes with explicit warnings preserved.
+2. Keep ATLAS-3591 in targeted refinement track before any future eligibility discussion.
+3. Preserve release/downstream closure while all traces remain draft/QA-governed artifacts.

@@ -284,3 +284,17 @@ NO_DOWNSTREAM
 | P0 | QA pass for EASTERN-401 A4R121 draft | `EASTERN-401` | Reopened case needs independent QA before any future review-lane decision. | Codex | 1 QA cycle | Case receives explicit keep/downgrade status with no release/downstream action. |
 | P0 | Prepare future author-review lane from stabilized set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232` | Stable set remains unchanged by Eastern reentry. | Codex + user | 1 future bundle cycle | Bundle planning remains in dedicated future phase only. |
 | P1 | ATLAS-3591 targeted refinement | `ATLAS-3591` | Remains review-required after substantive patch. | Codex | 1 focused refinement cycle | Actor-scope and A-axis uncertainty reduced before re-eligibility discussion. |
+
+## A4+R-122 queue update
+- Completed in A4R122:
+  - independent QA intake recorded for EASTERN-401 A4R121 trace draft;
+  - minor stabilization patch applied to enforce P/A double-counting control and temporal O-axis framing;
+  - EASTERN-401 status moved to `REVIEW_AFTER_MINOR_PATCH_APPLIED` with `READY_WITH_WARNINGS`.
+- Execution remained docs-only, EASTERN-401-stabilization-only, no author decision, no release, no downstream.
+
+## Immediate queue after A4R122
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Prepare future author-review lane from stabilized set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`, `EASTERN-401` | EASTERN-401 now has QA-stabilized warning-bound readiness for future consideration. | Codex + user | 1 future bundle cycle | Dedicated future phase defines inclusion and ordering, with no release/downstream action. |
+| P1 | ATLAS-3591 targeted refinement | `ATLAS-3591` | Remains review-required after substantive patch. | Codex | 1 focused refinement cycle | Actor-scope and A-axis uncertainty reduced before re-eligibility discussion. |
+| P1 | Preserve warning-bound controls on EASTERN-401 | `EASTERN-401` | Legacy scan legibility still constrains confidence; boundary-live A-axis must remain explicit. | Codex | continuous | Warning controls retained in all future review artifacts until author adjudication. |
