@@ -42,9 +42,9 @@ Applied controls:
 - A-axis dominance is still review-sensitive and must stay warning-bound.
 
 ## Post-patch status
-- EASTERN-401 state: `REVIEW_AFTER_MINOR_PATCH_APPLIED` and `READY_WITH_WARNINGS` for future author-review consideration.
+- EASTERN-401 state (superseded by A4R125): `REVIEW_AFTER_ESCAPE_POINT_PATCH` and `NOT_READY_PENDING_ESCAPE_POINT_PATCH`.
 - Not a release artifact.
 - No downstream action.
 
 ## Recommendation
-- EASTERN-401 may enter a future author-review bundle with warnings, conditioned on clean validation pass and preserved caveats.
+- EASTERN-401 reentry to future author-review bundle requires explicit `preEscapeEvidence`/`postEscapeEvidence` split patch and revalidation of P-G/O-D/A-C support in the pre-escape window.

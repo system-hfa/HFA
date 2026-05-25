@@ -30,7 +30,8 @@ downstreamStatus: NO_DOWNSTREAM
 | 2 | P_ASSESSMENT | Avaliação correta ou adequada da situação? | NÃO | UPS-E3, UPS-E5 | Não reconhecimento de path inválido e falha de integração de gates | P-A | Não inferir de outcome |
 | 3 | P_CAPABILITY | Possuía a capacidade necessária para sentir e perceber a situação? | SIM | UPS-E3, UPS-E5, UPS-E6 | Cues e alertas estavam disponíveis | P-B, P-C | — |
 | 4 | P_TIME_PRESSURE | A pressão do tempo percebida era excessiva? | NÃO | UPS-E1, UPS-E5 | Pressão existia, mas não dominante no slice | P-D, P-E | — |
-| 5 | P_INFORMATION_AMBIGUOUS | A informação era ilusória ou ambígua? | SIM | UPS-E3 | Ambiguidade/ilusão do VDI/FMC é eixo forte | P-G | Boundary P-F/P-G vivo |
+| 5 | P_INFORMATION_AMBIGUOUS | A informação era ilusória ou ambígua? | NÃO | UPS-E3, UPS-E5 | Ambiguidade de VDI/FMC não eliminou cues centrais de altitude/descida | P-F | P-F fica boundary live |
+| 6 | P_INFORMATION_AVAILABLE | A informação estava disponível e correta? | SIM | UPS-E5, UPS-E6 | Falha de integração/monitoramento com informação disponível e correta | P-F | P-G primário no draft |
 
 ### 4. Objective axis canonical path
 | step | nodeId | exactQuestionTextPT | answerSelected | evidenceRefs | rationale | alternativesRejected | warning |
@@ -49,8 +50,9 @@ downstreamStatus: NO_DOWNSTREAM
 | 5 | A_TIME_PRESSURE | A pressão do tempo era realmente excessiva? | NÃO_SELECAO | UPS-E5, UPS-E6 | Falha primária draft de seleção/continuação | A-G | Boundary A-F/A-G vivo |
 
 ### 6. Boundaries and warnings
-- boundaries vivos: `P-F/P-G` e `A-F/A-G`.
+- boundaries vivos: `P-F` (boundary only) e `A-F/A-G`.
 - double-counting warning: `UPS-E5` não pode ser usado como chave única para P/O/A.
+- escape-point warning: justificativas P/O/A devem ficar ancoradas antes da perda crítica de margem operacional.
 - source caveat: não crítico (fonte forte), mas exige separação por eixo.
 - actor scope caveat: não há split actor exigido no draft atual.
 - outcome-bias caveat: O-D e A-F não derivam do impacto, mas da sequência observável anterior.
@@ -274,8 +276,8 @@ downstreamStatus: NO_DOWNSTREAM
 ## EASTERN-401
 
 ### 1. Status
-- review status: `REVIEW_AFTER_MINOR_PATCH_APPLIED`
-- warning-bound status: `READY_WITH_WARNINGS` / `REVIEW_READY_WITH_WARNINGS`
+- review status: `REVIEW_AFTER_ESCAPE_POINT_PATCH`
+- warning-bound status: `NOT_READY_PENDING_ESCAPE_POINT_PATCH`
 - source status: official recovered TXT com `LEGACY_SCAN_LIMITED_LEGIBILITY`
 - release status: `NO_RELEASE`
 - downstream status: `CLOSED`
@@ -284,6 +286,7 @@ downstreamStatus: NO_DOWNSTREAM
 - janela factual analisada: troubleshooting de gear-light na faixa de 2.000 ft com deriva de altitude não integrada e recuperação tardia.
 - por que essa janela foi escolhida: concentra o conflito P/O/A com cues de altitude disponíveis e resposta incompleta.
 - ponto de fuga da operação segura: onset do intervalo de alertas/cues de desvio de altitude durante troubleshooting.
+- pendência obrigatória: separar evidência em `preEscapeEvidence` e `postEscapeEvidence` antes de reentrada em bundle.
 
 ### 3. Perception axis canonical path
 | step | nodeId | exactQuestionTextPT | answerSelected | evidenceRefs | rationale | alternativesRejected | warning |
@@ -293,7 +296,7 @@ downstreamStatus: NO_DOWNSTREAM
 | 3 | P_CAPABILITY | Possuía a capacidade necessária para sentir e perceber a situação? | SIM | E401-E1 | Cues de instrumentos presentes | P-B, P-C | — |
 | 4 | P_TIME_PRESSURE | A pressão do tempo percebida era excessiva? | NÃO | E401-E2 | Pressão não dominante no branch | P-D, P-E | — |
 | 5 | P_INFORMATION_AMBIGUOUS | A informação era ilusória ou ambígua? | NÃO | E401-E1 | Ambiguidade não dominante no recorte | P-F | P-F segue boundary live |
-| 6 | P_INFORMATION_AVAILABLE | A informação estava disponível e correta? | SIM | E401-E1 | Falha de integração atencional com informação disponível | P-H | — |
+| 6 | P_INFORMATION_AVAILABLE | A informação estava disponível e correta? | SIM | E401-E1 | Falha de integração atencional com informação disponível | P-G | P-G é hipótese draft até split pré/pós-fuga |
 
 ### 4. Objective axis canonical path
 | step | nodeId | exactQuestionTextPT | answerSelected | evidenceRefs | rationale | alternativesRejected | warning |
@@ -314,9 +317,10 @@ downstreamStatus: NO_DOWNSTREAM
 - source caveats: `LEGACY_SCAN_LIMITED_LEGIBILITY` obrigatório.
 - actor scope caveats: interpretação de integração de tarefas deve permanecer conservadora.
 - outcome-bias caveats: O-D e A-C não são inferidos do crash; são inferidos da continuidade observável sob cues de altitude.
+- escape-point caveat: P-G/O-D/A-C ficam como hipóteses draft apenas quando sustentadas por evidência pré-fuga; suporte pós-fuga isolado exige downgrade para unresolved/boundary.
 
 ### 7. Why this is not a release
 - não há decisão autoral.
 - não há `releasedCode`.
 - não há downstream.
-- status é `review-ready/warning-bound` após patch, não fechamento final.
+- status é `REVIEW_AFTER_ESCAPE_POINT_PATCH` e fora do bundle até reconciliação pré/pós-fuga.

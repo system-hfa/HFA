@@ -548,3 +548,24 @@ Controles A4R124:
 1. Executar a future author-review lane dos 6 eventos com suporte do dossiê canônico A4R124.
 2. Manter lanes de rework/hold/boundary/deferred com reabertura por condição explícita.
 3. Abrir fase de framework sintético apenas em fase dedicada, após prioridade da lane autoral.
+
+## A4+R-125 — Real Event Escape-Point Reconciliation Update
+
+Esta fase reconciliou revisão autoral/metodológica do ponto de fuga sem criar novos traces:
+- [Real Event Author Review Intake A4R125](./SERA_ENGINE_VNEXT_REAL_EVENT_AUTHOR_REVIEW_INTAKE_A4R125_v0.2.0.md)
+- [Real Event Escape Point Reconciliation A4R125](./SERA_ENGINE_VNEXT_REAL_EVENT_ESCAPE_POINT_RECONCILIATION_A4R125_v0.2.0.md)
+
+Resultado macro A4R125:
+- UPS-1354 percepção corrigida para `P-G` (mantidos `O-D` e `A-F`);
+- EASTERN-401 removido temporariamente do lane autoral e marcado como `REVIEW_AFTER_ESCAPE_POINT_PATCH`;
+- lane autoral imediato consolidado em 5 eventos (`UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`).
+
+Controles A4R125:
+- nenhuma decisão autoral convertida em release;
+- nenhum `releasedCode`;
+- nenhum release/downstream.
+
+## Updated Immediate Sequence After A4R125
+1. Execute future author-review lane for the immediate stable set of 5 events with warnings preserved.
+2. Run EASTERN-401 targeted escape-point patch to split `preEscapeEvidence` and `postEscapeEvidence` before reentry.
+3. Keep rework/hold/boundary/deferred lanes active with conservative reopen criteria.

@@ -38,6 +38,6 @@ Reprocess EASTERN-401 from `HOLD_OCR_REQUIRED` using official FAA-hosted NTSB re
 - Independent QA intake and minor stabilization patch were applied in A4R122:
   - `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_INDEPENDENT_QA_INTAKE_A4R122_v0.2.0.md`
   - `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_STABILIZATION_PATCH_A4R122_v0.2.0.md`
-- EASTERN-401 moved from `REVIEW_AFTER_MINOR_PATCH` posture to `REVIEW_AFTER_MINOR_PATCH_APPLIED` with `READY_WITH_WARNINGS` governance for future author-review consideration.
+- EASTERN-401 moved to `REVIEW_AFTER_MINOR_PATCH_APPLIED` in A4R122 and was later superseded in A4R125 to `REVIEW_AFTER_ESCAPE_POINT_PATCH` pending pre/post escape-point evidence split.
 - No author decision was recorded.
 - No release or downstream action was created.

@@ -8,12 +8,12 @@ methodology: SERA
 canonicalTreeSource: `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_QUESTION_TREE_ASSET_A4R99_v0.2.0.md`
 checklist: `docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_TRACE_VALIDATION_CHECKLIST_A4R99_v0.2.0.md`
 reportSource: NTSB AAR-73-14 (FAA-hosted official PDF) local extracted TXT
-validationStatus: REVIEW_AFTER_MINOR_PATCH_APPLIED
+validationStatus: REVIEW_AFTER_ESCAPE_POINT_PATCH
 releaseStatus: NO_RELEASE
 downstreamStatus: CLOSED
-frontendReadiness: REVIEW_READY_WITH_WARNINGS
-authorReviewReadiness: READY_WITH_WARNINGS
-reviewBundleStatus: REVIEW_READY_WITH_WARNINGS
+frontendReadiness: NOT_READY_PENDING_ESCAPE_POINT_PATCH
+authorReviewReadiness: NOT_READY_PENDING_ESCAPE_POINT_PATCH
+reviewBundleStatus: REMOVED_PENDING_ESCAPE_POINT_PATCH
 sourceQualityStatus: LEGACY_SCAN_LIMITED_LEGIBILITY
 
 ## 1. Event factual summary
@@ -21,6 +21,7 @@ EASTERN-401 diverted from landing completion after nose-gear indicator anomaly, 
 
 ## 2. Escape point definition
 Primary escape point: first altitude-deviation alert/cue interval during troubleshooting, where instrument cross-check and immediate altitude recovery should have interrupted fixation.
+Patch requirement: evidence must be explicitly split into `preEscapeEvidence` and `postEscapeEvidence` before bundle re-entry; post-escape-only evidence cannot independently close P/O/A dominance.
 
 ## 3. Canonical source preflight
 - asset file: A4R99 canonical tree asset
@@ -41,6 +42,9 @@ Primary escape point: first altitude-deviation alert/cue interval during trouble
 
 P-axis provisional outcome: P-G draft candidate.
 Rejected alternative: P-F remains live only as boundary if author review interprets mode/cue interaction as primary ambiguity channel.
+Escape-point control:
+- P-G remains usable only when tied to cues and non-integration observable before critical margin loss.
+- If support collapses to post-escape perception only, P-axis must be downgraded to boundary/UNRESOLVED in future patching.
 
 ## 5. O-axis canonical path
 | nodeId | exactQuestionTextPT | exactQuestionTextENAnchor | answerOptionSelected | evidenceIds | nextNodeId/leaf | uncertainty |
@@ -55,6 +59,7 @@ Temporal framing control:
 - O-A remains defensible in the initial troubleshooting segment where resolving the gear-light anomaly was operationally legitimate.
 - O-D is applied only in the critical late window, based on continued troubleshooting while altitude-risk management degraded.
 - O-D is not inferred from crash outcome; it is tied to the observed continuation logic under active altitude-loss cues.
+- If O-D support depends only on post-escape hindsight, O-axis must fall back to O-A/UNRESOLVED pending refined split evidence.
 
 ## 6. A-axis canonical path
 | nodeId | exactQuestionTextPT | exactQuestionTextENAnchor | answerOptionSelected | evidenceIds | nextNodeId/leaf | uncertainty |
@@ -67,6 +72,9 @@ Rejected alternatives:
 - A-F remains live if author review treats the primary failure as action-selection inadequacy (continuing troubleshooting instead of immediate altitude recovery priority).
 - A-G remains live if author review weights available alert/feedback cues as inadequately transformed into timely corrective response.
 - A-C remains plausible but not a clean closure; A-axis stays boundary-live for author adjudication.
+Escape-point control:
+- A-C remains a draft hypothesis only where pre-escape implementation evidence exists.
+- If A evidence is predominantly post-escape, keep A-F/A-G as active boundaries and avoid dominant closure.
 
 ## 7. P/A double-counting control
 - P-G is used for perception-state integration: altitude/descida cues were available but not effectively integrated into situational awareness.
@@ -77,8 +85,8 @@ Rejected alternatives:
 ## 8. Axis outcome summary
 | axis | status | provisional outcome |
 |---|---|---|
-| P | REVIEW_READY_WITH_WARNINGS | P-G (P-F boundary live) |
-| O | REVIEW_READY_WITH_WARNINGS | O-D (O-A early-phase alternative retained) |
+| P | REVIEW_REQUIRED_PENDING_ESCAPE_POINT_PATCH | P-G draft hypothesis (P-F boundary live) |
+| O | REVIEW_REQUIRED_PENDING_ESCAPE_POINT_PATCH | O-D draft hypothesis (O-A early-phase alternative retained) |
 | A | REVIEW_REQUIRED_BOUNDARY_LIVE | A-C draft plausibility only (A-F/A-G boundary live) |
 
 No final classification is created.
@@ -97,11 +105,12 @@ Probable cause, contributing factors, findings, and safety recommendation materi
 - source is official but derived from legacy-scan extraction with residual noise;
 - additional clean transcription would reduce uncertainty in borderline nodes;
 - source caveat remains mandatory: LEGACY_SCAN_LIMITED_LEGIBILITY.
+- pre/post escape-point evidence split is pending and required before any future bundle re-entry.
 
 ## 12. Front-end future display notes
 Draft only; not final causation; not risk scoring; not a safety recommendation; not release-ready.
 
 ## 13. Review questions for author
-- Is A-axis better represented as A-C or A-F once cleaner text is available?
-- Should P-F remain live, or can P-G dominate with current evidence quality?
-- Does A-G gain weight once alert-to-response timing is re-checked line-by-line in cleaner text?
+- Are P/O/A dominant hypotheses still supported when restricted to pre-escape evidence only?
+- Is A-axis better represented as A-C or A-F once pre/post escape split is explicit?
+- Does A-G gain weight once alert-to-response timing is re-checked line-by-line with pre-escape anchoring?

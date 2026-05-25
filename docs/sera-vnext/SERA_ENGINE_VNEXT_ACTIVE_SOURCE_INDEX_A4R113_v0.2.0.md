@@ -173,3 +173,15 @@ A4R124 governance state:
 - documents non-selected event future-use lanes and reopen conditions;
 - preserves canonical SERA question-path traceability for the six consolidated events.
 - no synthetic event created, no author decision, no release, no downstream, no final-causation artifact.
+
+## Active author-intake and escape-point reconciliation outputs (A4R125)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_AUTHOR_REVIEW_INTAKE_A4R125_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_ESCAPE_POINT_RECONCILIATION_A4R125_v0.2.0.md`
+- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-UPS-1354-FULL-AXIS-CANONICAL-DRAFT-A4R115.md` (P-axis corrected to `P-G`)
+- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-EASTERN-401-FULL-AXIS-CANONICAL-DRAFT-A4R121.md` (downgraded to `REVIEW_AFTER_ESCAPE_POINT_PATCH`)
+
+A4R125 governance state:
+- immediate future author-review lane set is now five events:
+  - `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`.
+- EASTERN-401 remains active but temporarily out-of-bundle pending explicit `preEscapeEvidence`/`postEscapeEvidence` split patch.
+- no synthetic event created, no author decision converted to release, no downstream, no final-causation artifact.

@@ -33,10 +33,11 @@ Primary escape point: below 1,000 ft AFE at a descent rate greater than 1,000 fp
 | P_ASSESSMENT | Avaliação correta ou adequada da situação? | Correct or adequate assessment of the situation? | NÃO | UPS-E3, UPS-E5 | P_CAPABILITY | Crew did not recognize invalid/meaningless vertical path and descent gate failures. |
 | P_CAPABILITY | Possuía a capacidade necessária para sentir e perceber a situação? | Had the pre-requisite capability to sense and perceive the situation? | SIM | UPS-E3, UPS-E5, UPS-E6 | P_TIME_PRESSURE | Instruments/callouts/warnings were available; no primary sensory incapacity shown. |
 | P_TIME_PRESSURE | A pressão do tempo percebida era excessiva? | Time pressure excessive? | NÃO | UPS-E1, UPS-E5 | P_INFORMATION_AMBIGUOUS | Night/approach pressure existed, but the slice does not support excessive time pressure as dominant. |
-| P_INFORMATION_AMBIGUOUS | A informação era ilusória ou ambígua? | Information illusory or ambiguous? | SIM | UPS-E3 | P-F | Meaningless FMC/VDI path information creates an ambiguity/illusion candidate. |
+| P_INFORMATION_AMBIGUOUS | A informação era ilusória ou ambígua? | Information illusory or ambiguous? | NÃO | UPS-E3, UPS-E5 | P_INFORMATION_AVAILABLE | FMC/VDI issue did not remove access to core altitude/descent cues. |
+| P_INFORMATION_AVAILABLE | A informação estava disponível e correta? | Information available and correct? | SIM | UPS-E5, UPS-E6 | P-G | Altitude, descent-rate, callout, and warning cues were available but not integrated in time. |
 
-P-axis provisional outcome: P-F draft candidate.
-Rejected alternative: P-G remains plausible for the later altitude/callout cues, but the FMC/VDI ambiguity is the stronger P branch in this draft.
+P-axis provisional outcome: P-G draft candidate.
+Rejected alternative: P-F remains live only as boundary if author review re-weights FMC/VDI interpretability over available altitude/callout cues.
 
 ## 5. O-axis canonical path
 | nodeId | exactQuestionTextPT | exactQuestionTextENAnchor | answerOptionSelected | evidenceIds | nextNodeId/leaf | uncertainty |
@@ -63,7 +64,7 @@ Rejected alternative: A-G held because EGPWS feedback occurred late, but the str
 ## 7. Axis outcome summary
 | axis | status | provisional outcome |
 |---|---|---|
-| P | DRAFT_WITH_LIMITATIONS | P-F |
+| P | DRAFT_WITH_LIMITATIONS | P-G |
 | O | DRAFT_WITH_LIMITATIONS | O-D |
 | A | DRAFT_WITH_LIMITATIONS | A-F |
 
@@ -82,12 +83,13 @@ No final classification is created.
   - P-axis: assessment and cue-recognition logic.
   - O-axis: continuation objective and risk-management logic.
   - A-axis: action-selection versus feedback-response logic.
-- `P-F` versus `P-G` remains a live boundary.
+- `P-G` is primary in this draft; `P-F` remains a live boundary only.
 - `A-F` versus `A-G` remains a live boundary.
 - `O-D` remains reviewable only when justified by observable continuation/decision behavior, not by outcome proximity.
+- Escape-point warning: P/O/A rationale must stay anchored before stabilized-approach gate loss becomes unrecoverable.
 
 ## 9. Rejected alternatives
-- P-G: possible for late altitude/callout cues, but FMC/VDI ambiguity is central enough to require P-F review.
+- P-F: kept as boundary-only alternative if author review judges FMC/VDI interpretability as dominant over available altitude/callout cues.
 - O-A: not supported by continuation below stabilized/minimum-altitude controls.
 - A-C: not selected because the draft treats vertical-speed descent continuation as intentional action selection rather than implementation slip.
 
@@ -95,7 +97,7 @@ No final classification is created.
 Probable cause, contributing factors, findings, and safety recommendations are quarantined and not used as SERA answer keys.
 
 ## 11. Source gaps
-- Need author review on P-F versus P-G boundary.
+- Need author review confirmation that P-G remains primary with P-F boundary-only.
 - Need focused review on A-F versus A-G if EGPWS feedback is treated as dominant.
 - Need per-axis rationale verification where `UPS-E5` is reused to prevent double-counting.
 
@@ -103,5 +105,5 @@ Probable cause, contributing factors, findings, and safety recommendations are q
 Draft only; not final causation; not risk scoring; not a safety recommendation; not release-ready.
 
 ## 13. Review questions for author
-- UPS-1354: keep P-F as draft, or switch P to P-G because altitude/callout information was available and correct?
+- UPS-1354: confirm P-G as primary with P-F boundary-only under escape-point framing.
 - UPS-1354: keep A-F, or treat late warning/feedback as A-G review-required?

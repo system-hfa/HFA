@@ -1786,3 +1786,27 @@ Controles A4R124:
 - nenhum fechamento release de P/O/A;
 - nenhum release criado;
 - nenhum downstream aberto.
+
+## A4+R-125 - Real Event Author Review Intake and Escape-Point Reconciliation
+
+Esta fase registrou intake da revisão autoral/metodológica e reconciliou o ponto de fuga da operação segura para os eventos reais consolidados:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_AUTHOR_REVIEW_INTAKE_A4R125_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_REAL_EVENT_ESCAPE_POINT_RECONCILIATION_A4R125_v0.2.0.md`
+
+Resultado macro A4R125:
+- UPS-1354 corrigido no eixo Percepção de `P-F` para `P-G` (com `O-D` e `A-F` mantidos);
+- EASTERN-401 rebaixado para `REVIEW_AFTER_ESCAPE_POINT_PATCH` e removido temporariamente do bundle;
+- lane autoral imediato passa para 5 eventos:
+  - `UPS-1354`
+  - `COLGAN-3407`
+  - `US-AIRWAYS-1549`
+  - `UNITED-173`
+  - `UNITED-232`
+- EASTERN-401 permanece útil e não descartado, condicionado a patch de separação `preEscapeEvidence`/`postEscapeEvidence`.
+
+Controles A4R125:
+- nenhuma decisão autoral virou release;
+- nenhum `releasedCode` criado;
+- nenhum release criado;
+- nenhum downstream aberto;
+- nenhum artefato de final-causation/HF taxonomy/Risk/ERC/ARMS/ERC/recommendations criado.

@@ -329,3 +329,17 @@ NO_DOWNSTREAM
 | P0 | Execute dedicated future author-review lane with dossier support | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`, `EASTERN-401` | Canonical rationale and per-axis evidence trail are now explicitly audit-ready for review session. | Codex + user | 1 future bundle cycle | Author decisions captured in dedicated phase only, without release/downstream action. |
 | P1 | Keep non-selected lanes active | rework/hold/boundary/deferred registers | Non-selected events remain method assets with explicit reopen conditions. | Codex | continuous | Reopen only when documented conditions are satisfied. |
 | P1 | Prepare synthetic framework phase (without creating cases in this queue step) | synthetic model event framework readiness | A4R123 readiness exists; queue timing should follow author lane gating priorities. | Codex | 1 framework planning cycle | Framework phase opened explicitly in future phase, still no release/downstream. |
+
+## A4+R-125 queue update
+- Completed in A4R125:
+  - author review intake recorded for consolidated real-event set;
+  - UPS-1354 P-axis corrected from `P-F` to `P-G` with escape-point warning;
+  - EASTERN-401 downgraded to `REVIEW_AFTER_ESCAPE_POINT_PATCH` pending pre/post evidence split.
+- Execution remained docs-only, real-event-escape-point-reconciliation-only, no release, no downstream.
+
+## Immediate queue after A4R125
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Execute future author-review lane with immediate stable set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232` | These five remain warning-bound and governance-ready after reconciliation. | Codex + user | 1 future bundle cycle | Author decisions captured in dedicated phase only; no release/downstream. |
+| P0 | Apply EASTERN-401 escape-point evidence split patch | `EASTERN-401` | Reentry now depends on explicit `preEscapeEvidence`/`postEscapeEvidence` split and revalidation. | Codex | 1 targeted patch cycle | Case exits `REVIEW_AFTER_ESCAPE_POINT_PATCH` only after pre-escape anchoring is explicit. |
+| P1 | Keep non-selected governance lanes active | rework/hold/boundary/deferred registers | Avoid forced closure by bundle pressure and preserve methodological conservatism. | Codex | continuous | Reopen only by documented evidence/scope conditions. |
