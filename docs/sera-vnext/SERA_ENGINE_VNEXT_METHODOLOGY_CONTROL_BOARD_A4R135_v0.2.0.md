@@ -15,14 +15,24 @@ Establish a single source of truth for the methodological status of all real eve
 
 After A4R126 through A4R134, the repository accumulated multiple layers of documents (pre-gate adjudications, helper traces, withdrawn releases, superseded artifacts). Without a control board, any agent or human could pick up a stale document and treat it as current methodology. This board prevents that.
 
+## A4R137 OVERRIDE — P/O/A at Escape Point Rule
+
+**A4R137 supersedes all prior P/O/A author draft statuses for real events unless explicitly reaudited under the "P/O/A at escape point" rule.**
+
+- REAL-EVENT-0003 AUTHOR_APPROVED_DRAFT_PARTIAL is **suspended** for P/O/A reference use pending at-escape-point reaudit.
+- All P/O/A from A4R129, A4R130, A4R131, A4R132 (approval interpretations), A4R133 (approval), and A4R136 (decision forms) is suspended as current reference.
+- Control Board status must now be read through the [A4R137 Reset Register](./SERA_ENGINE_VNEXT_REAL_EVENT_POA_REAUDIT_RESET_REGISTER_A4R137_v0.2.0.md).
+- P/O/A analysis must occur at the moment of the escape point, not from post-escape events.
+
 ## Supreme Rules
 
 1. **Escape point before P/O/A.** No event can be used as a reference case without a validated Hendy escape-point gate ("Quando..." statement).
-2. **"Quando..." must not embed cause, violation, SERA code, or warning as first departure.** The phrase must describe an observable act/condition.
-3. **The canonical SERA question tree must not be invented.** Only questions from the A4R99 canonical asset or the Hendy/Daumas source tree are valid.
-4. **proposedCode is not releasedCode.** No draft P/O/A creates release authority.
-5. **Author-approved draft partial is not full release.** AUTHOR_APPROVED_DRAFT_PARTIAL is scoped to the approved axes only.
-6. **Downstream remains blocked.** No event has downstream opened.
+2. **P/O/A at escape point.** P/O/A must be analyzed at the moment the operation left the safe state, not from post-escape events. (A4R137)
+3. **"Quando..." must not embed cause, violation, SERA code, or warning as first departure.** The phrase must describe an observable act/condition.
+4. **The canonical SERA question tree must not be invented.** Only questions from the A4R99 canonical asset or the Hendy/Daumas source tree are valid.
+5. **proposedCode is not releasedCode.** No draft P/O/A creates release authority.
+6. **Author-approved draft partial is not full release.** AUTHOR_APPROVED_DRAFT_PARTIAL is scoped to the approved axes only.
+7. **Downstream remains blocked.** No event has downstream opened.
 
 ## Valid Methodological Statuses
 

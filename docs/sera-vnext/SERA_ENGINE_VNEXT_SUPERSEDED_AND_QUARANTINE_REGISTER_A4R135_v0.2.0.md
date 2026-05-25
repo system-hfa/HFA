@@ -100,6 +100,23 @@ Documents that reference external report conclusions.
 |---|---|---|---|
 | `docs/sera-vnext/external-candidates/extractions-batch-1/*.md` | External report facts extracted under quarantine protocol (A4R87). | A4R89 normalization for ready cases. | HISTORICAL_ONLY (for facts); DO_NOT_USE_FOR_RELEASE (for conclusions) |
 
+## Category 9 — poa_not_at_escape_point_artifacts (A4R137)
+
+Documents whose P/O/A was not analyzed at the escape-point moment. All P/O/A in these documents is suspended as current reference.
+
+| glob/path | reason | substitute | status |
+|---|---|---|---|
+| `docs/sera-vnext/SERA_ENGINE_VNEXT_QUEUE_B_P0_POA_REVIEW_A4R129_v0.2.0.md` | POA review diagnostic; P/O/A not tied to escape-point moment. | A4R137 reset register. | POA_SUSPENDED |
+| `docs/sera-vnext/SERA_ENGINE_VNEXT_QUEUE_B_P0_FULL_REBUILD_A4R130_v0.2.0.md` | Full rebuild drafts; P/O/A may include post-escape analysis. | A4R137 reset register; reaudit at escape point. | POA_SUSPENDED |
+| `docs/sera-vnext/real-event-escape-point-reaudit/QUEUE_B_P0_FULL_REBUILD_TRACKER_A4R130_v0.2.0.md` | Rebuild tracker with P/O/A not validated at escape point. | A4R137 reset register. | POA_SUSPENDED |
+| `docs/sera-vnext/author-review-packets-a4r131/AUTHOR-REVIEW-*-A4R131.md` | Author review packets; P/O/A was draft not validated at escape point. | A4R137 reset register. | POA_SUSPENDED |
+| `docs/sera-vnext/SERA_ENGINE_VNEXT_INDEPENDENT_OPUS_REVIEW_A4R132_v0.2.0.md` | Opus review P/O/A approval interpretations only (escape point and systemic risks sections remain valid). | A4R137 reset register. | POA_SUSPENDED (P/O/A interpretations only) |
+| `docs/sera-vnext/SERA_ENGINE_VNEXT_AUTHOR_DECISION_REAL_EVENT_0003_A4R133_v0.2.0.md` | Author decision for REAL-EVENT-0003; P/O/A approval suspended (autopilot enrichment remains valid). | A4R137 reset register; reaudit at escape point. | POA_APPROVAL_SUSPENDED |
+| `docs/sera-vnext/author-review-packets-a4r131/AUTHOR_DECISION_STATUS_AFTER_A4R133_v0.2.0.md` | Consolidated decision status; P/O/A statuses suspended by A4R137. | A4R137 reset register. | POA_SUSPENDED |
+| `docs/sera-vnext/SERA_ENGINE_VNEXT_AUTHOR_DECISION_PREP_ACTIVE_REVIEW_A4R136_v0.2.0.md` | Decision prep for REAL-EVENT-0016 and ASIANA-214; suspended before decision. | A4R137 reset register. | POA_SUSPENDED |
+| `docs/sera-vnext/author-review-packets-a4r131/AUTHOR_DECISION_FORM_REAL_EVENT_0016_ASIANA_214_A4R136_v0.2.0.md` | Decision forms not to be used until at-escape-point reaudit. | A4R137 reset register. | POA_SUSPENDED |
+| All 52 A4R126 event P/O/A drafts | Any P/O/A not explicitly reaudited under A4R137+ at-escape-point rule. | A4R137 reset register. | POA_SUSPENDED |
+
 ## Locks Preserved
 
 - NO_RELEASED_CODE for all events.
@@ -112,6 +129,7 @@ Documents that reference external report conclusions.
 ## Next Steps
 
 1. This register should be consulted before using any pre-A4R135 document as methodological reference.
-2. Documents not listed here are not automatically valid — verify against the Control Board.
-3. Future phases may promote documents from SUPERSEDED to HISTORICAL_ONLY or restore them if rebuilt.
-4. This register itself may be updated in future phases as statuses evolve.
+2. Category 9 (A4R137) supersedes all prior P/O/A for reference use.
+3. Documents not listed here are not automatically valid — verify against the Control Board.
+4. Future phases may promote documents from SUPERSEDED to HISTORICAL_ONLY or restore them if rebuilt under the at-escape-point rule.
+5. This register itself may be updated in future phases as statuses evolve.

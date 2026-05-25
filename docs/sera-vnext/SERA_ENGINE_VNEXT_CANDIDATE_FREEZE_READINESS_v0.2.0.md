@@ -2339,8 +2339,104 @@ Controles A4R136:
 
 O candidate freeze final continua nao autorizado.
 
-Proxima fase recomendada:
+Proxima fase recomendada (A4R136):
 - autor responder o formulario A4R136 para REAL-EVENT-0016 e ASIANA-214;
-- apos resposta: registrar decisoes em fase separada (A4R137);
+- apos resposta: registrar decisoes em fase separada;
 - paralelamente: revisao autoral do gate patch A4R134;
 - source enrichment para AMERICAN-965 e COMAIR-5191.
+
+## A4+R-137 — Methodological Reset: P/O/A at Escape Point
+
+Esta fase registra uma correcao metodologica critica: a analise P/O/A deve ocorrer no momento do ponto de fuga da operacao segura, e nao a partir dos eventos posteriores ao ponto de fuga.
+
+- [P/O/A at Escape Point Method Reset A4R137](./SERA_ENGINE_VNEXT_POA_AT_ESCAPE_POINT_METHOD_RESET_A4R137_v0.2.0.md)
+- [Real Event POA Reaudit Reset Register A4R137](./SERA_ENGINE_VNEXT_REAL_EVENT_POA_REAUDIT_RESET_REGISTER_A4R137_v0.2.0.md)
+
+### Regra Central
+
+A pergunta correta NAO e:
+
+> "Que falhas ocorreram depois que a trajetoria ja estava degradada?"
+
+A pergunta correta E:
+
+> "No momento em que a operacao saiu do estado seguro, por que aquele ponto de fuga aconteceu?"
+
+### Per-Eixo
+
+- **P (Percepcao):** O que o operador percebeu/acreditava no momento do ponto de fuga?
+- **O (Objetivo):** Qual era o objetivo no momento do ponto de fuga?
+- **A (Acao):** Que acao estava sendo executada/tentada no momento do ponto de fuga?
+
+### Impacto nos Eventos Reais
+
+**Todos os P/O/A de eventos reais estao suspensos como referencia atual** ate reauditoria explicita sob a regra "P/O/A at escape point".
+
+Fases afetadas:
+- A4R129 — Queue B P0 POA Review diagnostic
+- A4R130 — Queue B P0 Full Rebuild drafts
+- A4R131 — Author review packets
+- A4R132 — Opus independent review (interpretacoes de P/O/A apenas)
+- A4R133 — Author decision for REAL-EVENT-0003 (aprovacao de P/O/A apenas)
+- A4R136 — Author decision forms for REAL-EVENT-0016 and ASIANA-214
+- Todos os 52 eventos A4R126 com P/O/A nao explicitamente vinculado ao momento do ponto de fuga
+
+### Status dos 7 Eventos Prioritarios (pos-A4R137)
+
+| eventId | resetStatus (A4R137) | escapePoint | P/O/A reference |
+|---|---|---|---|
+| REAL-EVENT-0003 | POA_APPROVAL_SUSPENDED | DEFINED (A4R133) | NO — suspended |
+| REAL-EVENT-0016 | NEEDS_SOURCE_ENRICHMENT_FOR_ESCAPE_POINT_POA | DEFINED (A4R130) | NO |
+| BS211-Q400 | FULL_REBUILD_REQUIRED_AT_ESCAPE_POINT | PATCHED (A4R134) | NO |
+| A4R87-EXT-002 | ESCAPE_POINT_AND_POA_REAUDIT_REQUIRED | PATCHED (A4R134) | NO |
+| ASIANA-214 | POA_REAUDIT_REQUIRED_AT_ESCAPE_POINT | DEFINED (A4R130) | NO |
+| AMERICAN-965 | NEEDS_SOURCE_ENRICHMENT | UNRESOLVED | NO |
+| COMAIR-5191 | NEEDS_SOURCE_ENRICHMENT | UNRESOLVED | NO |
+
+### O Que Permanece Valido
+
+- Extracoes factuais (A4R62, A4R72, A4R76, A4R88)
+- Source enrichment factual (A4R67, A4R132 autopilot)
+- Timelines e evidence anchors
+- "Quando..." statements que passam o gate Hendy
+- Gate patch documents (A4R134)
+- Control Board e Quarantine Register (A4R135)
+- Arvore SERA canonica (A4R99)
+- Regras metodologicas, locks e definicoes
+
+### Controles A4R137
+
+- NO_NEW_AUTHOR_DECISION — aprovacoes autorais anteriores suspensas para referencia P/O/A;
+- NO_RELEASED_CODE;
+- NO_DOWNSTREAM;
+- nenhum P/O/A reclassificado;
+- nenhum source enrichment executado;
+- nenhum documento deletado ou movido;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum runtime, UI, API, DB, migration, fixture, baseline ou codigo alterado.
+
+### Metricas A4R137
+
+- methodResetCreatedCount: 1
+- poaAtEscapePointRuleRegisteredCount: 1
+- realEventPOAReferenceSuspendedCount: 52
+- priorityEventsResetCount: 7
+- authorApprovedDraftsSuspendedCount: 1 (REAL-EVENT-0003)
+- documentsDeletedCount: 0
+- documentsMovedCount: 0
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- poaReclassifiedCount: 0
+- sourceEnrichmentPerformedCount: 0
+
+O candidate freeze final continua nao autorizado. O metodo foi resetado para a regra "P/O/A at escape point" e todas as analises de eventos reais precisam ser revalidadas sob essa regra antes de qualquer release ou downstream.
+
+Proxima fase recomendada:
+- reauditar REAL-EVENT-0003 P/O/A no momento do ponto de fuga (autopilot disconnect);
+- source enrichment para REAL-EVENT-0016: GPS/autopilot failure vs interpretation no escape point;
+- reauditar ASIANA-214 O-axis no momento do ponto de fuga;
+- full rebuild para BS211-Q400 com gate patch A4R134 + P/O/A no escape point;
+- reauditar A4R87-EXT-002 com gate patch A4R134 + P/O/A no momento pre-EGPWS;
+- source enrichment para AMERICAN-965 e COMAIR-5191 com foco em evidencia no escape point;
+- expandir reauditoria para os 52 eventos restantes conforme capacidade.
