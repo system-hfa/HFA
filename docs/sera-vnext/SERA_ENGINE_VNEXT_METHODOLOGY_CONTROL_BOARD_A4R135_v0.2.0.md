@@ -144,6 +144,11 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R144 source-slice intake does not create P/O/A reference authority.
 - A4R144 is planning-layer material for future reaudits under A4R137/A4R138/A4R140.
 
+## A4R145 Gate Readiness and Negative Control Note
+
+- A4R145 remains pre-gate and negative-control validation only.
+- A4R145 does not create P/O/A reference authority.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.

@@ -18,6 +18,9 @@
 - [Independent ChatGPT A4R142 Audit A4R143](./SERA_ENGINE_VNEXT_INDEPENDENT_CHATGPT_A4R142_AUDIT_A4R143_v0.2.0.md)
 - [Lane A Source-Slice Intake A4R144](./SERA_ENGINE_VNEXT_LANE_A_SOURCE_SLICE_INTAKE_A4R144_v0.2.0.md)
 - [Lane A Source-Slice Tracker A4R144](./lane-a-source-slices-a4r144/LANE_A_SOURCE_SLICE_TRACKER_A4R144_v0.2.0.md)
+- [Gate Readiness and Negative Control Balance A4R145](./SERA_ENGINE_VNEXT_GATE_READINESS_AND_NEGATIVE_CONTROL_BALANCE_A4R145_v0.2.0.md)
+- [Gate + Negative Control Tracker A4R145](./gate-readiness-a4r145/GATE_READINESS_AND_NEGATIVE_CONTROL_TRACKER_A4R145_v0.2.0.md)
+- [Negative Controls Directory A4R145](./negative-controls-a4r145/)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras

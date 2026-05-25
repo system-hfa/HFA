@@ -2794,3 +2794,26 @@ Esta fase criou um pacote de intake por source-slice para candidatos Lane A:
 - tratar ASIANA-214 e AMERICAN-1420 com trilha de cautela temporal (progressive/post-escape contamination risk);
 - mover AMERICAN-965 para source recovery antes de selecao de piloto;
 - manter KOREAN-801 em hold boundary-complex ate separacao clara entre cadeia frontline e fatores sistemicos.
+
+## A4R145 — Gate Readiness and Negative Control Balance Pack
+
+Esta fase criou um pacote balanceado de preparacao metodologica:
+
+- [Gate Readiness and Negative Control Balance A4R145](./SERA_ENGINE_VNEXT_GATE_READINESS_AND_NEGATIVE_CONTROL_BALANCE_A4R145_v0.2.0.md)
+- [Gate + Negative Control Tracker A4R145](./gate-readiness-a4r145/GATE_READINESS_AND_NEGATIVE_CONTROL_TRACKER_A4R145_v0.2.0.md)
+- [Gate Readiness Files A4R145](./gate-readiness-a4r145/)
+- [Negative Controls A4R145](./negative-controls-a4r145/)
+
+### Resultado A4R145
+
+- gate readiness criado para 3 candidatos positivos: COMAIR-5191, UPS-1354, UNITED-173;
+- negative-control validation pack criado para 2 controles: US-AIRWAYS-1549, DELTA-191;
+- nenhum P/O/A classificado;
+- nenhum release/downstream;
+- nenhum codigo/fixture/baseline/corpus alterado.
+
+### Proximos passos apos A4R145
+
+- preparar gate draft completo (sem P/O/A) para COMAIR-5191, UPS-1354 e UNITED-173;
+- manter validacao anti-overclassification com US-AIRWAYS-1549;
+- abrir source-recovery local para DELTA-191 antes de uso detalhado de gate.
