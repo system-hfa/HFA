@@ -2286,3 +2286,61 @@ Proxima fase recomendada:
 - source enrichment para AMERICAN-965 e COMAIR-5191;
 - rebuild dos eventos QUEUE_C com gate Hendy completo;
 - consultar sempre o Control Board A4R135 antes de usar qualquer documento pre-A4R135 como referencia.
+
+## A4+R-136 — Author Decision Prep for Active Review Cases
+
+Esta fase preparou folha objetiva de decisao autoral para os dois eventos ACTIVE_REVIEW do Control Board A4R135, sem registrar aprovacao:
+
+- [Author Decision Prep A4R136](./SERA_ENGINE_VNEXT_AUTHOR_DECISION_PREP_ACTIVE_REVIEW_A4R136_v0.2.0.md)
+- [Decision Form REAL-EVENT-0016 and ASIANA-214 A4R136](./author-review-packets-a4r131/AUTHOR_DECISION_FORM_REAL_EVENT_0016_ASIANA_214_A4R136_v0.2.0.md)
+
+### REAL-EVENT-0016
+
+- decisao pendente: P-C vs P-G.
+- argumentos P-C: automation/interface interpretation, mode-state understanding deficit.
+- argumentos P-G: information available and correct, not monitored/integrated.
+- O-A e A-UNRESOLVED mantidos como plausiveis.
+
+### ASIANA-214
+
+- Percepcao: P-G (recomendado) vs P-F (automacao ambigua).
+- Objetivo: O-D (threshold) vs O-A (sem objetivo inseguro isolado).
+- Acao: A-F (selecao/execucao) vs A-E (knowledge/mental model).
+- Formulario cobre todas as combinacoes.
+
+Estado apos A4+R-136:
+
+- folha de decisao criada para REAL-EVENT-0016 e ASIANA-214;
+- formulario com opcoes objetivas por eixo e decisao geral;
+- nenhuma decisao autoral registrada;
+- nenhum P/O/A alterado;
+- nenhum release/downstream.
+
+Metricas A4R136:
+- authorDecisionPrepCreatedCount: 1
+- authorDecisionFormsCreatedCount: 1
+- eventsPreparedForAuthorDecision: 2
+- authorDecisionRecordedCount: 0
+- poaChangedCount: 0
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- sourceEnrichmentPerformedCount: 0
+
+Controles A4R136:
+- NO_NEW_AUTHOR_DECISION;
+- NO_RELEASED_CODE;
+- NO_DOWNSTREAM;
+- nenhum P/O/A alterado;
+- nenhum source enrichment;
+- BS211-Q400, A4R87-EXT-002, AMERICAN-965, COMAIR-5191 nao processados;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum runtime, UI, API, DB, migration, fixture, baseline ou codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- autor responder o formulario A4R136 para REAL-EVENT-0016 e ASIANA-214;
+- apos resposta: registrar decisoes em fase separada (A4R137);
+- paralelamente: revisao autoral do gate patch A4R134;
+- source enrichment para AMERICAN-965 e COMAIR-5191.
