@@ -160,6 +160,11 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - Synthetic cases do not create real-event reference authority.
 - Synthetic cases cannot supersede real-event adjudications.
 
+## A4R148 Opus Audit Handoff Note
+
+- A4R148 is audit handoff prep only.
+- A4R148 does not revise real events, synthetic cases, P/O/A, or reference authority.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.

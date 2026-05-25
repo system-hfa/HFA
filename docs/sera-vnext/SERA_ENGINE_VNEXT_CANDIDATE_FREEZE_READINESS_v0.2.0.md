@@ -2870,3 +2870,32 @@ Esta fase criou governanca metodologica para eventos sinteticos SERA vNext:
 
 - eventos sinteticos podem ser preparados em trilha documental, mas nao finalizados como fixtures antes da reconciliacao das auditorias Opus/Claude em eventos reais;
 - proxima fase sintetica recomendada: A4R148 para synthetic case design pack (documents only), mantendo bloqueios de release/downstream.
+
+## A4R148 — Opus Audit Handoff Prep
+
+Esta fase criou apenas pacote de preparacao documental para auditoria Opus:
+
+- [Opus Audit Handoff Prep A4R148](./SERA_ENGINE_VNEXT_OPUS_AUDIT_HANDOFF_PREP_A4R148_v0.2.0.md)
+- [Opus Audit Prompt A4R148](./OPUS_AUDIT_PROMPT_A4R148.md)
+- [Opus Audit Reconciliation Checklist A4R148](./OPUS_AUDIT_RECONCILIATION_CHECKLIST_A4R148.md)
+
+### Resultado A4R148
+
+- handoff prep criado;
+- prompt Opus criado;
+- reconciliation checklist criado;
+- nenhum evento revisado;
+- nenhum P/O/A;
+- nenhum release/downstream.
+
+### Controles A4R148
+
+- nenhum evento sintetico final criado;
+- nenhum synthetic fixture criado;
+- nenhuma alteracao de codigo/fixture/baseline/corpus;
+- sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations.
+
+### Proximo passo apos A4R148
+
+- executar auditoria Opus fora do repo usando somente o ZIP puro dos 89 TXT;
+- reconciliar Opus x ChatGPT x Codex em fase dedicada antes de qualquer mudanca de lane operacional.
