@@ -1967,3 +1967,48 @@ Estado de freeze apos A4R129:
 Proxima fase recomendada:
 - executar uma fase dedicada de `FULL_REBUILD_WITH_ESCAPE_POINT_GATE` para os cinco casos `QUEUE_B` P0 de alta dependencia que nao precisam primeiro de nova source slice;
 - executar `SOURCE_ENRICHMENT` para `AMERICAN-965` e `COMAIR-5191` antes de qualquer tentativa de revisao P/O/A.
+
+## A4+R-130 - Queue B P0 Full Rebuild With Escape-Point Gate
+
+Esta fase processou apenas os cinco eventos A4R129 `QUEUE_B_POA_REVIEW` P0 encaminhados para `FULL_REBUILD_WITH_ESCAPE_POINT_GATE`, aplicando o gate Hendy antes de qualquer P/O/A draft:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_QUEUE_B_P0_FULL_REBUILD_A4R130_v0.2.0.md`
+- `docs/sera-vnext/real-event-escape-point-reaudit/QUEUE_B_P0_FULL_REBUILD_TRACKER_A4R130_v0.2.0.md`
+
+Eventos processados:
+- `REAL-EVENT-0003`
+- `REAL-EVENT-0016`
+- `BS211-Q400`
+- `A4R87-EXT-002`
+- `ASIANA-214`
+
+Eventos excluidos para `SOURCE_ENRICHMENT`:
+- `AMERICAN-965`
+- `COMAIR-5191`
+
+Resultado macro A4R130:
+- totalQueueBP0FullRebuildEligible: 5
+- excludedForSourceEnrichment: 2
+- escapePointDefinedCount: 5
+- escapePointBlockedCount: 0
+- whenStatementValidCount: 5
+- whenStatementInvalidCount: 0
+- classificationPermissionGrantedCount: 5
+- poaRebuiltDraftCount: 5
+- requiresAuthorReviewCount: 5
+- remainsInQuarantineCount: 5
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+
+Estado de freeze apos A4R130:
+- os cinco casos receberam `escapePointWhenStatement` valido e gate Hendy documentado;
+- os cinco casos receberam somente `REBUILT_POA_DRAFT_NOT_RELEASED`;
+- todos permanecem `NOT_FOR_RELEASE`, `NOT_FOR_REFERENCE_CASE`, `NOT_FOR_CONSENSUS`, `NOT_FOR_TRAINING` e `NOT_FOR_DOWNSTREAM` ate revisao autoral e governanca de release;
+- nenhum `releasedCode`, `selectedCode CLASSIFIED`, conclusao final, HF taxonomy, Risk/ERC, ARMS/ERC ou recommendation ativa foi criado;
+- nenhum arquivo de fonte/corpus, codigo, fixture, baseline, UI/API/DB/migration ou `.ts` foi alterado;
+- freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- revisao autoral dos cinco `REBUILT_POA_DRAFT_NOT_RELEASED`, com prioridade para as fronteiras P/A de `ASIANA-214` e O/A de `BS211-Q400`;
+- `SOURCE_ENRICHMENT` para `AMERICAN-965` e `COMAIR-5191` antes de qualquer rebuild;
+- fase separada para `QUEUE_C_FULL_REBUILD`, sem abrir downstream automaticamente.
