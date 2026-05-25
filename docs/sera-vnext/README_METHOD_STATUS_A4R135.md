@@ -45,6 +45,7 @@
 - [Source Recovery Addendum A4R151b](./source-hygiene-a4r151/SOURCE_RECOVERY_ADDENDUM_A4R151B_v0.2.0.md)
 - [Official Source Recovery Matrix A4R151b](./source-hygiene-a4r151/OFFICIAL_SOURCE_RECOVERY_MATRIX_A4R151B_v0.2.0.md)
 - [Opus Packet Delta A4R151b](./source-hygiene-a4r151/OPUS_PACKET_DELTA_A4R151B_v0.2.0.md)
+- [Opus Packet Assembly A4R152](./SERA_ENGINE_VNEXT_OPUS_PACKET_ASSEMBLY_A4R152_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras
@@ -57,6 +58,7 @@
 - **A4R150 integrated reconciliation is an integrated intake layer only and does not create corpus authority or P/O/A authority.**
 - **A4R151 source hygiene is a source-readiness layer only and does not create corpus authority or P/O/A authority.**
 - **Opus audit scope = integrated universe (89 local TXT + 25 external candidates); OPUS_READY defines deep-review priority subset only.**
+- **A4R152 assembled the Opus packet locally (ZIP not versioned) with integrated 89+25 scope and no P/O/A/release/downstream.**
 - "Quando..." nao pode embutir causa, violacao ou warning como primeira saida.
 - Arvore SERA real nao pode ser inventada.
 - proposedCode nao e releasedCode.

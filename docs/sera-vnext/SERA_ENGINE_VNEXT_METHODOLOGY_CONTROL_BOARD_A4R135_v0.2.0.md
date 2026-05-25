@@ -189,6 +189,12 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R151b corrects source readiness and Opus audit scope only.
 - A4R151b confirms that OPUS_READY lanes are deep-review priorities and not an audit scope limit.
 
+## A4R152 Opus Packet Assembly Note
+
+- A4R152 assembles a local Opus audit packet only.
+- The packet preserves integrated 89+25 audit scope and method locks.
+- A4R152 does not create P/O/A authority, release authority, or downstream authority.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.

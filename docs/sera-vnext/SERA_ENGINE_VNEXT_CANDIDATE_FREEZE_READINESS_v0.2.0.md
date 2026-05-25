@@ -3006,3 +3006,21 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - sem downstream;
 - sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
 - nenhuma alteracao de codigo/fixture/baseline/corpus.
+
+## A4R152 — Push A4R151b and Clean Opus Packet Assembly
+
+- [Opus Packet Assembly A4R152](./SERA_ENGINE_VNEXT_OPUS_PACKET_ASSEMBLY_A4R152_v0.2.0.md)
+
+### Resultado A4R152
+
+- pacote Opus montado localmente em `tmp/a4r152-opus-packet/`;
+- ZIP local gerado e nao versionado;
+- escopo integrado 89 TXT + 25 externos preservado;
+- sem P/O/A;
+- sem release/downstream.
+
+### Controles A4R152
+
+- sem alteracao de corpus;
+- sem versionamento de PDF/HTML de relatorio;
+- sem alteracao de codigo/fixture/baseline.
