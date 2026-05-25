@@ -2694,3 +2694,30 @@ Proxima fase recomendada (A4R141):
   - technical failure nao suportada pela evidencia local atual;
   - ancoragem estrita no escape point;
   - bloqueio conservador de eixos nao separaveis.
+
+## A4R141-b — Supplemental Local Corpus Search for REAL-EVENT-0016
+
+Esta fase executou busca complementar no corpus local TXT especificado:
+
+- [REAL-EVENT-0016 Local Corpus Search Addendum A4R141-b](./source-enrichment/REAL-EVENT-0016_LOCAL_CORPUS_SEARCH_ADDENDUM_A4R141B_v0.2.0.md)
+
+### Resultado A4R141-b
+
+- escopo ampliado para os 89 TXT do corpus local/oficial solicitado;
+- decisao: `A4R141_CONFIRMED`;
+- resposta central mantida: interpretacao/mode-state dominante (B);
+- confianca mantida em `MEDIUM`;
+- pronto para piloto 2 segue `CONDITIONAL`;
+- nenhum P/O/A classificado.
+
+### Controles A4R141-b
+
+- nenhum release/downstream;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum fixture/baseline/codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada (A4R141-b):
+- iniciar A4R142 apenas com entrada condicional sob A4R138/A4R140 e registro explicito de que A4R141 foi confirmado por A4R141-b no escopo de 89 TXT;
+- manter bloqueio conservador de eixos nao separaveis no momento inicial de fuga.

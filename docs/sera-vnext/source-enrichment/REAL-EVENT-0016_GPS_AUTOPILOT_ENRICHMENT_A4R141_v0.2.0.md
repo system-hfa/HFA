@@ -139,3 +139,18 @@ Rationale:
 - No `selectedCode=CLASSIFIED`.
 - No final conclusion artifacts.
 - No fixture/baseline/runtime/UI/API/DB/migration/code changes.
+
+## A4R141-b Supplemental Local Corpus Search
+
+Supplemental addendum:
+- [REAL-EVENT-0016 Local Corpus Search Addendum A4R141-b](./REAL-EVENT-0016_LOCAL_CORPUS_SEARCH_ADDENDUM_A4R141B_v0.2.0.md)
+
+Outcome recorded by A4R141-b:
+- decision: `A4R141_CONFIRMED`
+- updatedDirectAnswerToCentralQuestion: `B. Pilot interpretation / mode-state understanding likely`
+- updatedSourceConfidence: `MEDIUM`
+- updatedReadyForPilot2: `CONDITIONAL`
+
+Notes:
+- A4R141-b expanded search to 89 local TXT files in the specified source-corpus directories.
+- No local-corpus evidence was found that upgrades the interpretation to technical-failure-dominant.

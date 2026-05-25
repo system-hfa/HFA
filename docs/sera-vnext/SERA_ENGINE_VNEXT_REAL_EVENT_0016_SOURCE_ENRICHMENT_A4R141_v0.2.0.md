@@ -65,3 +65,18 @@ Entry must include explicit safeguards:
 - No P/O/A classification in this phase.
 - No finalConclusion, HFACS, Risk/ERC, ARMS/ERC, or recommendations.
 - No fixture, baseline, runtime, UI, API, DB, migration, or code changes.
+
+## A4R141-b Supplemental Local Corpus Search Result
+
+Addendum:
+- [REAL-EVENT-0016 Local Corpus Search Addendum A4R141-b](./source-enrichment/REAL-EVENT-0016_LOCAL_CORPUS_SEARCH_ADDENDUM_A4R141B_v0.2.0.md)
+
+Recorded result:
+- decision: `A4R141_CONFIRMED`
+- updatedDirectAnswerToCentralQuestion: `B_PILOT_INTERPRETATION_MODE_STATE_LIKELY`
+- updatedSourceConfidence: `MEDIUM`
+- updatedReadyForPilot2: `CONDITIONAL`
+
+Method note:
+- A4R141-b executed supplemental search across the 89 specified local TXT corpus files.
+- No contradictory local evidence was found to support a technical-failure-dominant interpretation.
