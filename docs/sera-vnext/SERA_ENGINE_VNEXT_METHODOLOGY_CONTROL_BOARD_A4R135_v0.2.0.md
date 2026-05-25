@@ -1,0 +1,141 @@
+# SERA Engine vNext Methodology Control Board A4R135 v0.2.0
+
+Status: CONTROL_BOARD_RECORDED
+Phase: A4+R-135
+methodology: SERA
+authorDecisionStatus: NO_NEW_AUTHOR_DECISION
+releaseStatus: NO_RELEASED_CODE
+downstreamStatus: NO_DOWNSTREAM
+
+## Objective
+
+Establish a single source of truth for the methodological status of all real events in the SERA vNext program. This document is the authoritative index for what can and cannot be used as reference, training material, calibration case, or release candidate.
+
+## Rationale
+
+After A4R126 through A4R134, the repository accumulated multiple layers of documents (pre-gate adjudications, helper traces, withdrawn releases, superseded artifacts). Without a control board, any agent or human could pick up a stale document and treat it as current methodology. This board prevents that.
+
+## Supreme Rules
+
+1. **Escape point before P/O/A.** No event can be used as a reference case without a validated Hendy escape-point gate ("Quando..." statement).
+2. **"Quando..." must not embed cause, violation, SERA code, or warning as first departure.** The phrase must describe an observable act/condition.
+3. **The canonical SERA question tree must not be invented.** Only questions from the A4R99 canonical asset or the Hendy/Daumas source tree are valid.
+4. **proposedCode is not releasedCode.** No draft P/O/A creates release authority.
+5. **Author-approved draft partial is not full release.** AUTHOR_APPROVED_DRAFT_PARTIAL is scoped to the approved axes only.
+6. **Downstream remains blocked.** No event has downstream opened.
+
+## Valid Methodological Statuses
+
+| status | description | usableAsReference | usableForTraining | usableForCalibration |
+|---|---|---|---|---|
+| CURRENT_VALID | Fully validated by author, Hendy gate, and canonical tree. | YES | YES | YES |
+| AUTHOR_APPROVED_DRAFT_PARTIAL | Approved only on specific axes. | ONLY on approved axes | ONLY on approved axes | ONLY on approved axes |
+| AUTHOR_APPROVED_DRAFT_FULL | Approved on all three axes. | YES | YES | YES |
+| ACTIVE_REVIEW | Under author or methodological review. | NO | NO | NO |
+| NEEDS_REBUILD | Requires full rebuild with escape-point gate. | NO | NO | NO |
+| NEEDS_SOURCE_ENRICHMENT | Requires additional source evidence. | NO | NO | NO |
+| PARKED | Parked for boundary, technical, or actor reasons. | NO | NO | NO |
+| SUPERSEDED | Replaced by a newer document or analysis. | NO | NO | NO |
+| INVALID_FOR_REFERENCE_USE | Contains methodological errors (noncanonical, contaminated). | NO | NO | NO |
+| HISTORICAL_ONLY | Preserved for traceability only. | NO | NO | NO |
+| DO_NOT_USE_FOR_TRAINING | Explicitly blocked from training use. | NO | NO | NO |
+| DO_NOT_USE_FOR_RELEASE | Explicitly blocked from release. | NO | NO | NO |
+| DO_NOT_USE_FOR_CALIBRATION | Explicitly blocked from calibration. | NO | NO | NO |
+
+## Master Event Table — Priority 7 Events
+
+| eventId | name/alias | currentStatus | escapePointStatus | whenStatus | P | O | A | usableAsExampleFor | restrictions | nextAction |
+|---|---|---|---|---|---|---|---|---|---|---|
+| REAL-EVENT-0003 | Tofino night approach near-CFIT | AUTHOR_APPROVED_DRAFT_PARTIAL | DEFINED | VALID (A4R133 revised with autopilot context) | P-G | O-A | UNRESOLVED | P-G and conservative O-A only | NOT a full A-axis reference; NO_RELEASED_CODE; NO_DOWNSTREAM; PF/PM chain not closed | FUTURE_RELEASE_GOVERNANCE |
+| REAL-EVENT-0016 | N8DX automation confusion LOC | ACTIVE_REVIEW | DEFINED (A4R130) | VALID (A4R130) | P-C | O-A | UNRESOLVED | NONE until author decision | P-C vs P-G boundary requires conscious author decision; NO_RELEASED_CODE; NO_DOWNSTREAM | COLLECT_AUTHOR_DECISION |
+| BS211-Q400 | Unstable approach sequence | NEEDS_REBUILD | PATCHED (A4R134 gate patch draft) | REVISED (A4R134: "com perda de estabilidade e desalinhamento de pista") | P-H | O-C | A-F | NONE | Gate patch NOT approved; O-C/A-F high overclassification risk; "fora da trajetoria atribuida" removed but O-C/A-F not yet revised; NO_RELEASED_CODE; NO_DOWNSTREAM | AUTHOR_REVIEW_AFTER_GATE_PATCH |
+| A4R87-EXT-002 | AW139 night over-water warning sequence | NEEDS_REBUILD | PATCHED (A4R134 escape point patch draft) | REVISED (A4R134: "perfil de altitude degradado com separacao vertical reduzida") | P-G | UNRESOLVED | UNRESOLVED | NONE | Gate patch NOT approved; EGPWS removed as temporal core but degradation timing confidence is MEDIUM; O/A UNRESOLVED; NO_RELEASED_CODE; NO_DOWNSTREAM | AUTHOR_REVIEW_AFTER_GATE_PATCH |
+| ASIANA-214 | Asiana 214 visual approach energy deviation | ACTIVE_REVIEW | DEFINED (A4R130) | VALID (A4R130) | P-G | O-D | A-F | NONE until author decision | O-D threshold and A-F vs A-E boundary require conscious author decision; NO_RELEASED_CODE; NO_DOWNSTREAM | COLLECT_AUTHOR_DECISION |
+| AMERICAN-965 | American 965 CFIT | NEEDS_SOURCE_ENRICHMENT | UNRESOLVED (A4R126) | UNRESOLVED | review | O-D review | review | NONE | Source-enrichment lane; NO_RELEASED_CODE; NO_DOWNSTREAM | SOURCE_ENRICHMENT_BEFORE_REBUILD |
+| COMAIR-5191 | Comair 5191 wrong-runway takeoff | NEEDS_SOURCE_ENRICHMENT | UNRESOLVED (A4R126) | UNRESOLVED | P-G draft | UNRESOLVED | UNRESOLVED | NONE | P-G is internal/boundary draft only; O/A need source slice; NO_RELEASED_CODE; NO_DOWNSTREAM | SOURCE_ENRICHMENT_BEFORE_REBUILD |
+
+## Master Event Table — All 52 A4R126 Events (Compact)
+
+### QUEUE A — When-Only (3 events): CURRENT_VALID when-statement, P/O/A draft retained
+
+| eventId | currentStatus | P | O | A | restrictions |
+|---|---|---|---|---|---|
+| UPS-1354 | CURRENT_VALID (when gate recovered A4R128) | P-G draft | O-D draft | A-F draft | Double-counting warning active; NO_RELEASE |
+| COLGAN-3407 | CURRENT_VALID (when gate recovered A4R128) | P-G draft | O-A draft | A-F draft | A-F/A-E boundary live; NO_RELEASE |
+| UNITED-173 | CURRENT_VALID (when gate recovered A4R128) | P-G draft | O-D draft | A-F draft | OCR/source-quality caveat; NO_RELEASE |
+
+### QUEUE B — POA Review (14 events)
+
+| eventId | currentStatus | P | O | A | nextAction |
+|---|---|---|---|---|---|
+| REAL-EVENT-0001 | PARKED (P1, viable draft) | P-G | O-A | UNRESOLVED | POA_REVIEW |
+| REAL-EVENT-0003 | AUTHOR_APPROVED_DRAFT_PARTIAL | P-G | O-A | UNRESOLVED | FUTURE_RELEASE_GOVERNANCE |
+| REAL-EVENT-0016 | ACTIVE_REVIEW | P-C | O-A | UNRESOLVED | COLLECT_AUTHOR_DECISION |
+| BS211-Q400 | NEEDS_REBUILD | P-H | O-C | A-F | AUTHOR_REVIEW_AFTER_GATE_PATCH |
+| A4R87-EXT-002 | NEEDS_REBUILD | P-G | UNRESOLVED | UNRESOLVED | AUTHOR_REVIEW_AFTER_GATE_PATCH |
+| D-HHNH | PARKED (P1) | P-G | O-A | UNRESOLVED | POA_REVIEW |
+| G-BHYB | PARKED (P1) | P-F | O-A | UNRESOLVED | POA_REVIEW |
+| HL9294 | PARKED (P1) | P-G | O-D | UNRESOLVED | POA_REVIEW |
+| A4R87-EXT-001 | PARKED (P1) | P-G | UNRESOLVED | UNRESOLVED | POA_REVIEW |
+| A4R87-EXT-008 | PARKED (P1) | P-C | UNRESOLVED | UNRESOLVED | POA_REVIEW |
+| A4R87-EXT-012 | PARKED (P1) | P-C | UNRESOLVED | UNRESOLVED | POA_REVIEW |
+| ASIANA-214 | ACTIVE_REVIEW | P-G | O-D | A-F | COLLECT_AUTHOR_DECISION |
+| AMERICAN-965 | NEEDS_SOURCE_ENRICHMENT | review | O-D review | review | SOURCE_ENRICHMENT |
+| COMAIR-5191 | NEEDS_SOURCE_ENRICHMENT | P-G draft | UNRESOLVED | UNRESOLVED | SOURCE_ENRICHMENT |
+
+### QUEUE C — Full Rebuild (4 events)
+
+| eventId | currentStatus | priorP | priorO | priorA | nextAction |
+|---|---|---|---|---|---|
+| REAL-EVENT-0015 | NEEDS_REBUILD | P-G (withdrawn A4R92) | O-A | UNRESOLVED | FULL_REBUILD |
+| N109W | NEEDS_REBUILD | P-G (withdrawn A4R92) | O-D | UNRESOLVED | FULL_REBUILD |
+| N11NM | NEEDS_REBUILD | P-C (withdrawn A4R92) | O-A | UNRESOLVED | FULL_REBUILD |
+| AMERICAN-1420 | NEEDS_REBUILD | P-D contested | O-C | A-C | FULL_REBUILD |
+
+### QUEUE D — Source Enrichment (11 events): NEEDS_SOURCE_ENRICHMENT
+
+REAL-EVENT-0028, REAL-EVENT-0005, REAL-EVENT-0013, REAL-EVENT-0007, REAL-EVENT-0009, REAL-EVENT-0011, REAL-EVENT-0032, REAL-EVENT-0033, A4R87-EXT-007, EASTERN-401, HELIOS-522
+
+### QUEUE E — Parked (19 events): PARKED
+
+REAL-EVENT-0002, REAL-EVENT-0004, REAL-EVENT-0006, REAL-EVENT-0010, N56RD, PR-CHI, N200BK, N127LN, N120HH, N525TA, A4R87-EXT-004, A4R87-EXT-006, US-AIRWAYS-1549, UNITED-232, ATLAS-3591, USAIR-427, TUROY EC225, KOREAN-801, plus REAL-EVENT-0014/0030 moved to QUEUE_F
+
+### QUEUE F — Duplicate/Superseded (1 event)
+
+| eventId | currentStatus | nextAction |
+|---|---|---|
+| REAL-EVENT-0014/0030 | SUPERSEDED | DEPENDENCY_CLEANUP |
+
+## Scope of Permitted Use
+
+| scope | CURRENT_VALID only | AUTHOR_APPROVED_DRAFT_PARTIAL | all others |
+|---|---|---|---|
+| Reference case for methodology | YES | Only on approved axes | NO |
+| Training material | YES | Only on approved axes, with caveats | NO |
+| Frontend calibration | YES | Only on approved axes, with caveats | NO |
+| Release candidate | NO (requires separate governance) | NO | NO |
+| Downstream consumption | NO | NO | NO |
+| Consensus validation | NO (requires separate governance) | NO | NO |
+| Historical traceability | YES | YES | YES |
+
+## Restrictions Preserved
+
+- NO_RELEASED_CODE for all events.
+- NO_DOWNSTREAM for all events.
+- No finalConclusion, HFACS, Risk/ERC, ARMS/ERC, or recommendations.
+- No P/O/A change from prior phases.
+- No source enrichment executed in this phase.
+- No new events classified.
+- No documents deleted or moved.
+- No runtime, UI, API, DB, migration, fixture, baseline, or code changes.
+
+## Next Steps
+
+1. Author review of BS211-Q400 and A4R87-EXT-002 gate patches (A4R134).
+2. Collect conscious author decision for REAL-EVENT-0016 (P-C vs P-G) and ASIANA-214 (O-D, A-F vs A-E).
+3. Source enrichment for AMERICAN-965 and COMAIR-5191.
+4. Rebuild QUEUE_C events (REAL-EVENT-0015, N109W, N11NM, AMERICAN-1420) with full Hendy gate.
+5. POA review for QUEUE_B P1 events after when-statement resolution.
+6. Source enrichment for QUEUE_D events.
+7. Boundary resolution for QUEUE_E parked events.
+8. All release/downstream decisions require separate explicit governance.

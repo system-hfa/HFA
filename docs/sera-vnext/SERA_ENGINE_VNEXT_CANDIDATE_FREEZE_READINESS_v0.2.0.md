@@ -2211,3 +2211,78 @@ Proxima fase recomendada:
 - coleta de decisao autoral consciente para REAL-EVENT-0016 e ASIANA-214;
 - O-C/A-F do BS211-Q400 permanecem alto risco — recomendar UNRESOLVED/O-D para O e UNRESOLVED para A;
 - REAL-EVENT-0003 aguarda future release governance.
+
+## A4+R-135 — Documentation Hygiene and Methodology Control Board
+
+Esta fase criou uma camada de governanca documental para limpar a confusao metodologica acumulada, sem apagar historico e sem alterar codigo:
+
+- [Methodology Control Board A4R135](./SERA_ENGINE_VNEXT_METHODOLOGY_CONTROL_BOARD_A4R135_v0.2.0.md)
+- [Superseded and Quarantine Register A4R135](./SERA_ENGINE_VNEXT_SUPERSEDED_AND_QUARANTINE_REGISTER_A4R135_v0.2.0.md)
+- [Method Status README A4R135](./README_METHOD_STATUS_A4R135.md)
+
+### Control Board
+
+- fonte unica de verdade para o estado metodologico de todos os eventos reais SERA vNext.
+- tabela mestre cobre os 7 eventos prioritarios e os 52 eventos A4R126 de forma compacta.
+- 13 status metodologicos definidos com regras de uso para referencia, treinamento e calibracao.
+- regras supremas formalizadas: ponto de fuga antes de P/O/A, "Quando..." sem violacao/warning, arvore canonica nao inventavel, proposedCode != releasedCode, downstream bloqueado.
+
+### Superseded and Quarantine Register
+
+- 8 categorias de documentos marcados como nao utilizaveis para referencia atual.
+- categorias: pre-gate artifacts, helper/noncanonical traces, pre-A4R126 adjudications, A4R131 packets superseded, "Quando..." nao validados, drafts nao aprovados, historical-only, external conclusion quarantine.
+- nenhum documento foi apagado ou movido.
+
+### Method Status README
+
+- README curto para humanos e agentes com regras, status rapido dos 7 eventos, e listas do que usar e nao usar.
+
+Estado apos A4+R-135:
+
+- control board criado como fonte unica de verdade metodologica;
+- superseded register criado com 8 categorias de documentos quarantinados;
+- README de status criado para orientacao rapida;
+- todos os 52 eventos A4R126 listados no control board;
+- 7 eventos principais com status detalhado;
+- nenhum documento apagado;
+- nenhum documento movido;
+- nenhuma decisao autoral nova;
+- nenhum P/O/A novo;
+- nenhum releasedCode;
+- nenhum downstream;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations.
+
+Metricas A4R135:
+- controlBoardCreatedCount: 1
+- supersededRegisterCreatedCount: 1
+- methodStatusReadmeCreatedCount: 1
+- totalEventsListedInControlBoard: 52
+- authorApprovedDraftPartialCount: 1 (REAL-EVENT-0003)
+- activeReviewCount: 2 (REAL-EVENT-0016, ASIANA-214)
+- needsRebuildCount: 2 (BS211-Q400, A4R87-EXT-002)
+- needsSourceEnrichmentCount: 2 (AMERICAN-965, COMAIR-5191)
+- parkedOrHistoricalOnlyCount: 19 (QUEUE_E) + 1 (QUEUE_F) = 20
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- documentsDeletedCount: 0
+- documentsMovedCount: 0
+
+Controles A4R135:
+- NO_NEW_AUTHOR_DECISION;
+- NO_RELEASED_CODE;
+- NO_DOWNSTREAM;
+- nenhum P/O/A alterado;
+- nenhum documento apagado ou movido;
+- nenhum source enrichment;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum runtime, UI, API, DB, migration, fixture, baseline ou codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- revisao autoral do gate patch A4R134 para BS211-Q400 e A4R87-EXT-002;
+- coleta de decisao autoral para REAL-EVENT-0016 e ASIANA-214;
+- source enrichment para AMERICAN-965 e COMAIR-5191;
+- rebuild dos eventos QUEUE_C com gate Hendy completo;
+- consultar sempre o Control Board A4R135 antes de usar qualquer documento pre-A4R135 como referencia.
