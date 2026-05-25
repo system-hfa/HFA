@@ -2748,3 +2748,27 @@ Proxima fase recomendada (A4R142):
 - abrir batch de intake focado nos top candidatos HF e mistos com melhor fonte;
 - executar trilha paralela de validacao de negative controls tecnicos;
 - recuperar qualidade de fonte dos casos SOURCE_INSUFFICIENT antes de qualquer tentativa de reaudit.
+
+## A4R143 — Independent ChatGPT Audit of A4R142 Corpus Screening
+
+Esta fase registrou auditoria independente do ChatGPT 5.5 sobre a triagem A4R142:
+
+- [Independent ChatGPT A4R142 Audit A4R143](./SERA_ENGINE_VNEXT_INDEPENDENT_CHATGPT_A4R142_AUDIT_A4R143_v0.2.0.md)
+
+### Resultado A4R143
+
+- independent audit created;
+- A4R142 accepted as intake inventory only;
+- corrective overlay added to summary and tracker;
+- no P/O/A;
+- no release/downstream;
+- future Claude/Opus audit deferred to A4R144.
+
+### Direcao de proxima fase apos A4R143
+
+- next phase should not blindly proceed to REAL-EVENT-0016;
+- next phase options:
+  1. source-slice intake for Lane A solid HF candidates;
+  2. negative-control validation pack Lane C;
+  3. source recovery Lane B;
+  4. conditional pilot 2 REAL-EVENT-0016 only if explicitly chosen.

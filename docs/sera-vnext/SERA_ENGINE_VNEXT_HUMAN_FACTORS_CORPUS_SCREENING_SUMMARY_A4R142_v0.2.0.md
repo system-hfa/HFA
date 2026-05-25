@@ -86,3 +86,14 @@ This output is an intake-screening layer only and must not be interpreted as P/O
 - no selectedCode classified
 - no finalConclusion, HFACS, Risk/ERC, ARMS/ERC, recommendations
 - no code/fixture/baseline/corpus modification
+
+## A4R143 Independent Audit Overlay
+
+- A4R143 audit recorded.
+- A4R142 remains valid only as intake screening.
+- HF_MIXED category must not be treated as final operational lane.
+- SOURCE_INSUFFICIENT can mean poor local extraction, not poor event.
+- Technical dominant cases remain negative controls.
+- Revised lane structure must be used before selecting pilots.
+- No P/O/A authority created.
+- Future Claude/Opus audit may supersede or refine this overlay.

@@ -99,3 +99,20 @@
 | TXT-087 | `docs/sera-vnext/source-corpus/txt-events/pdf24_merged-3.txt` | `txt-events` | pdf24_merged 3 | `DUPLICATE_OR_ALREADY_TRACKED` | `MEDIUM` | Aggregate packet | Multi-event overlap | Needs per-event split | `NONE` | `NO` | Do not use directly |
 | TXT-088 | `docs/sera-vnext/source-corpus/txt-events/pdf24_merged-8.txt` | `txt-events` | pdf24_merged 8 | `OUT_OF_SCOPE` | `HIGH` | Method/library compilation | Not single event | Not isolable | `NONE` | `NO` | Background only |
 | TXT-089 | `docs/sera-vnext/source-corpus/official-reports/a4r105-curated/SHA256SUMS.txt` | `a4r105-curated` | SHA256SUMS | `OUT_OF_SCOPE` | `HIGH` | No event narrative | Checksum file | None | `NONE` | `NO` | Exclude from intake |
+
+## A4R143 audit overlay
+
+- Este tracker e intake-only.
+- Linhas com `HF_MIXED_TECHNICAL_HUMAN` devem ser re-laneadas antes de uso operacional.
+- Linhas `SOURCE_INSUFFICIENT` devem distinguir OCR/local-text failure de baixa relevancia metodologica.
+- Negative controls preservados.
+- Nenhum item do tracker e P/O/A reference.
+- Auditoria Claude/Opus futura pode revisar esta leitura.
+
+| overlayLane | candidateExamples | action |
+|---|---|---|
+| LANE_A_SOLID_HF_POSITIVE | ASIANA-214, COMAIR-5191, AMERICAN-965, AMERICAN-1420, COLGAN-3407, HELIOS-522, KOREAN-801, UPS-1354, UNITED-173 | prepare source-slice intake before P/O/A |
+| LANE_B_SOURCE_RECOVERY_HIGH_VALUE | AIR FRANCE 358, KEGWORTH, FIRST AIR 6560, AIR CANADA 624 | recover better local text before screening decision |
+| LANE_C_TECHNICAL_ENV_NEGATIVE_CONTROL | US-AIRWAYS-1549, DELTA-191 | preserve for anti-overclassification validation |
+| LANE_D_SYSTEMIC_TECH_BOUNDARY | TUROY EC225, gearbox/technical onset helicopter cases | separate systemic HF from frontline P/O/A |
+| LANE_E_CONDITIONAL_ACTIVE_PILOT | REAL-EVENT-0016, ASIANA-214, BS211-Q400, A4R87-EXT-002 | only proceed under A4R137/A4R138/A4R140 conditions |

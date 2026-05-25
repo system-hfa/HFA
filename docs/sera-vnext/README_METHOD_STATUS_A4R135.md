@@ -15,6 +15,7 @@
 - [Human Factors Corpus Screening Protocol A4R142](./SERA_ENGINE_VNEXT_HUMAN_FACTORS_CORPUS_SCREENING_PROTOCOL_A4R142_v0.2.0.md)
 - [Human Factors Corpus Screening Tracker A4R142](./source-corpus/HUMAN_FACTORS_CORPUS_SCREENING_TRACKER_A4R142_v0.2.0.md)
 - [Human Factors Corpus Screening Summary A4R142](./SERA_ENGINE_VNEXT_HUMAN_FACTORS_CORPUS_SCREENING_SUMMARY_A4R142_v0.2.0.md)
+- [Independent ChatGPT A4R142 Audit A4R143](./SERA_ENGINE_VNEXT_INDEPENDENT_CHATGPT_A4R142_AUDIT_A4R143_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras
@@ -22,6 +23,7 @@
 - Ponto de fuga antes de P/O/A.
 - **P/O/A deve ser analisado no momento do ponto de fuga, nao a partir de eventos posteriores.** (A4R137)
 - **Progressive escape zones exigem guidance A4R140 antes da decisao P/O/A.**
+- **A4R142 screening is intake-only and must be read through A4R143 audit overlay before selecting pilots.**
 - "Quando..." nao pode embutir causa, violacao ou warning como primeira saida.
 - Arvore SERA real nao pode ser inventada.
 - proposedCode nao e releasedCode.

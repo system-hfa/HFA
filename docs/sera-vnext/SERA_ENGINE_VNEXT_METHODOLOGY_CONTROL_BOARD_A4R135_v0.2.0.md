@@ -133,6 +133,12 @@ REAL-EVENT-0002, REAL-EVENT-0004, REAL-EVENT-0006, REAL-EVENT-0010, N56RD, PR-CH
 A4R142 corpus screening artifacts are intake/screening material only.
 They do not constitute P/O/A reference authority and must not be used as classified P/O/A evidence without event-level escape-point processing under A4R137/A4R138/A4R140.
 
+## A4R143 Audit Overlay Note
+
+- A4R143 audit overlay governs use of A4R142 screening artifacts.
+- A4R142 does not create reference authority.
+- Future Claude/Opus audit may be recorded as A4R144.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.
