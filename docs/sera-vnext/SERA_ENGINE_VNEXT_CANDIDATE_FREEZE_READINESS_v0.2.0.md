@@ -2507,3 +2507,80 @@ Proxima fase recomendada (A4R138):
 - executar piloto 1: REAL-EVENT-0003 P/O/A no momento do ponto de fuga;
 - source enrichment pre-piloto para REAL-EVENT-0016: GPS/autopilot failure vs interpretation;
 - gate patch review para BS211-Q400 e A4R87-EXT-002 antes de seus pilotos.
+
+## A4+R-139 — Pilot 1: REAL-EVENT-0003 P/O/A Reaudit at Escape Point
+
+Esta fase aplica o protocolo A4R138 ao primeiro evento-piloto: REAL-EVENT-0003 (Tofino night approach near-CFIT).
+
+- [REAL-EVENT-0003 Reaudit at Escape Point A4R139](./real-event-reaudits-a4r139/REAL-EVENT-0003_REAUDIT_AT_ESCAPE_POINT_A4R139_v0.2.0.md)
+- [Pilot Reaudit Report A4R139](./SERA_ENGINE_VNEXT_REAL_EVENT_0003_PILOT_REAUDIT_A4R139_v0.2.0.md)
+
+### Resultado
+
+| field | value |
+|---|---|
+| escapePointStatus | SOURCE_PARTIAL |
+| sourceConfidence | MEDIUM |
+| P | UNRESOLVED |
+| O | O-A (HIGH confidence) |
+| A | UNRESOLVED |
+| blockedReasons | BLOCK_POA_SOURCE_PARTIAL, BLOCK_POA_ACTION_INFERRED_FROM_OUTCOME |
+| reAuditDecision | PARTIAL_REAUDIT_AT_ESCAPE_POINT |
+
+### Achados Principais
+
+1. A desconexao manual do autopilot (0239:01, 600 ft ASL) foi contextual/SOP-compliant — nao e o ponto de fuga. O ponto de fuga ocorreu depois, quando o perfil manual/visual comecou a divergir progressivamente.
+
+2. O ponto de fuga e uma zona progressiva (desaceleracao → baixa velocidade → pitch excessivo → grandes inputs → perfil perigoso), nao um momento discreto unico. A fonte nao permite isolar o primeiro momento exato com HIGH confidence → escapePointStatus = SOURCE_PARTIAL.
+
+3. O-A sobrevive a reauditoria com HIGH confidence: o objetivo no ponto de fuga era completar a aproximacao visual e pousar com seguranca. Nao ha evidencia de objetivo inseguro em nenhum momento. As acoes corretivas posteriores do PF (baixar coletivo, ajustar trajetoria) sao consistentes com objetivo seguro.
+
+4. P-G NAO foi reinstated: a classificacao anterior de P-G foi baseada em inferencia generica de falha de monitoramento a partir do desfecho (perfil perigoso), nao em evidencia de percepcao no momento do ponto de fuga. A fonte descreve o que o PF reconheceu DEPOIS que o desvio progrediu (zona de pouso mais proxima que o esperado), nao no primeiro momento do desvio.
+
+5. A permanece UNRESOLVED: as acoes documentadas (grandes inputs de controle) sao correcoes pos-desvio, nao acoes no momento do ponto de fuga. Cadeia PF/PM nao foi decomposta.
+
+### Avaliacao do Protocolo
+
+O protocolo A4R138 funcionou: identificou corretamente limitacoes da fonte, bloqueou classificacoes nao suportadas (P e A) e preservou a unica classificacao bem suportada (O-A). O resultado e conservador e baseado em evidencia.
+
+Problema encontrado: pontos de fuga progressivos desafiam a premissa de "momento discreto". Recomenda-se guidance explicita para zonas de escape progressivo.
+
+### Controles A4R139
+
+- NO_NEW_AUTHOR_DECISION — aprovacao anterior A4R133 P/O/A permanece suspensa;
+- NO_RELEASED_CODE;
+- NO_DOWNSTREAM;
+- nenhum outro evento processado;
+- nenhum P/O/A reclassificado alem de REAL-EVENT-0003;
+- nenhum source enrichment executado;
+- nenhum documento deletado ou movido;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum runtime, UI, API, DB, migration, fixture, baseline ou codigo alterado.
+
+### Metricas A4R139
+
+- pilotEventsProcessedCount: 1
+- eventId: REAL-EVENT-0003
+- escapePointDefinedCount: 0 (SOURCE_PARTIAL, nao DEFINED)
+- escapePointUnresolvedCount: 0
+- poaReauditedAtEscapePointCount: 1 (PARTIAL)
+- pCodeDraft: UNRESOLVED
+- oCodeDraft: O-A
+- aCodeDraft: UNRESOLVED
+- unresolvedAxisCount: 2
+- blockedReasonsCount: 2
+- needsSourceEnrichmentCount: 0
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- finalConclusionCreatedCount: 0
+- documentsDeletedCount: 0
+- documentsMovedCount: 0
+
+O candidate freeze final continua nao autorizado. O primeiro piloto de reauditoria foi concluido com resultado PARTIAL_REAUDIT_AT_ESCAPE_POINT.
+
+Proxima fase recomendada:
+- autor revisar resultado do piloto A4R139 e decidir sobre P=UNRESOLVED e A=UNRESOLVED como finais ou buscar enrichment adicional;
+- source enrichment pre-piloto para REAL-EVENT-0016: GPS/autopilot failure vs interpretation;
+- executar piloto 2: REAL-EVENT-0016 reaudit at escape point;
+- considerar emenda ao protocolo A4R138 para pontos de fuga progressivos/graduais.
