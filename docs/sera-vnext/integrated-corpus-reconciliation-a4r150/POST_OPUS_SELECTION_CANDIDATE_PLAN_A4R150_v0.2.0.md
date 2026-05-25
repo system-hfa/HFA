@@ -10,7 +10,7 @@ Recommended small batch after Opus (3–5 events), no ingestion/classification i
 
 - COLGAN-3407 — rationale: local/external evidence balance, escape-point usefulness=HIGH, sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION.
 - UPS-1354 — rationale: local/external evidence balance, escape-point usefulness=HIGH, sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION.
-- COUGAR-A11H0001 — rationale: local/external evidence balance, escape-point usefulness=HIGH, sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT.
+- AIR-CANADA-624 — rationale: local/external evidence balance, escape-point usefulness=MEDIUM, sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT.
 - QANTAS-QF72 — rationale: local/external evidence balance, escape-point usefulness=NEGATIVE_CONTROL_HIGH, sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION.
 - COMAIR-5191 — rationale: local/external evidence balance, escape-point usefulness=MEDIUM, sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION.
 

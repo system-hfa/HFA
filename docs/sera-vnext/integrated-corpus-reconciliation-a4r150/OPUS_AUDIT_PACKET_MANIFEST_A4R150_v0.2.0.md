@@ -10,13 +10,12 @@ This manifest defines one integrated packet strategy for Opus using local 89 TXT
 
 ## Core packet
 
-Count: 10
+Count: 9
 
 - AIR-CANADA-624 (EXT-A4R149-007) — sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT — localPath=docs/sera-vnext/source-corpus/official-reports/a4r105-curated-txt/AIR-CANADA-624-TSB-A15H0002.txt
 - COLGAN-3407 (EXT-A4R149-001) — sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/1__2010__NTSB-USA__DHC-8-402-Q400__Loss-of-Control-on-Approach-Colgan-Air-Conti.txt
 - COMAIR-5191 (EXT-A4R149-018) — sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION — localPath=docs/sera-vnext/source-corpus/official-reports/a4r105-curated-txt/COMAIR-5191-NTSB-AAR0705.txt
 - CORPORATE-5966 (EXT-A4R149-017) — sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/31__2006__NTSB-USA__BAe-Jetstream-3201__Aircraft-Accident-Report-AAR-06-01-Corporat.txt
-- COUGAR-A11H0001 (EXT-A4R149-005) — sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-recovered-pool-txt/34__2011__TSB-Canada__Sikorsky-S-92A__TSB-A09A0016-Cougar-S-92A.txt
 - EXECUFLIGHT-1526 (EXT-A4R149-016) — sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/32__2016__NTSB-USA__Hawker-HS-125-700A__Crash-During-Nonprecision-Instrument-Approach.txt
 - G-WNSB-SUPER-PUMA-SUMBURGH (EXT-A4R149-004) — sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-new50-pool-txt/NEW50-21__2016__AAIB-UK__Eurocopter-AS332-L2-Super-Puma__Eurocopter-AS332-L2-Super-Puma-G-WNSB-Sumbu.txt
 - HELIOS-522 (EXT-A4R149-022) — sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-new50-pool-txt/NEW50-3__2006__AAIASB-Greece__Boeing-737-31S__Accident-Report-11-2006-Helios-Airways-Flig.txt
@@ -45,8 +44,8 @@ Count: 53
 - ATLAS-3591 (TXT-054) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-new50-pool-txt/NEW50-1__2020__NTSB-USA__Boeing-767-375BCF__Atlas-Air-Flight-3591-Rapid-Descent-and-Cra.txt
 - AVIATION-INVESTIGATION-FINAL-REPORT-WPR18MA08 (TXT-015) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/19__2021__NTSB-USA__Eurocopter-EC130__Aviation-Investigation-Final-Report-WPR18MA08.txt
 - BS211-Q400 (TXT-029) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/1__2010__NTSB-USA__DHC-8-402-Q400__Loss-of-Control-on-Approach-Colgan-Air-Conti.txt
-- CARSON-S-61N (EXT-A4R149-020) — sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-new50-pool-txt/NEW50-41__1984__AAIB-UK__Sikorsky-S-61N__Sikorsky-S-61N-G-BEON-British-Airways-Helic.txt
 - CHO-A19A0055 (EXT-A4R149-008) — sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT — localPath=NO_LOCAL_TXT_PATH
+- COUGAR-A11H0001 (EXT-A4R149-005) — sourceStatus=PRIMARY_OFFICIAL_LINK_PRESENT — localPath=NO_LOCAL_TXT_PATH
 - CRASH-DURING-NIGHTTIME-NONPRECISION-APPROACH (TXT-005) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/3__2014__NTSB-USA__Airbus-A300-600F__Crash-During-Nighttime-Nonprecision-Approach.txt
 - CRASH-DURING-NONPRECISION-INSTRUMENT-APPROACH (TXT-032) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/32__2016__NTSB-USA__Hawker-HS-125-700A__Crash-During-Nonprecision-Instrument-Approach.txt
 - CRASH-OF-PINNACLE-AIRLINES-FLIGHT-3701-CRJ-20 (TXT-031) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/33__2007__NTSB-USA__CRJ-200__Crash-of-Pinnacle-Airlines-Flight-3701-CRJ-20.txt
@@ -96,7 +95,7 @@ Count: 8
 
 ## Source-recovery-only list
 
-Count: 19
+Count: 20
 
 - AAIB-BULLETIN-SIKORSKY-S-76C-G-JCBJ-HEAVY-L (TXT-019) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/30__2004__AAIB-UK__Sikorsky-S-76C__AAIB-Bulletin-Sikorsky-S-76C-G-JCBJ-Heavy-L.txt
 - AIR-FRANCE-F-GRHT (EXT-A4R149-010) — sourceStatus=SOURCE_RECOVERY_REQUIRED — localPath=NO_LOCAL_TXT_PATH
@@ -106,6 +105,7 @@ Count: 19
 - AIRCRAFT-ACCIDENT-REPORT-AAR-3-2015-EUROCOP (TXT-012) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/14__2015__AAIB-UK__Eurocopter-EC135-T2__Aircraft-Accident-Report-AAR-3-2015-Eurocop.txt
 - AIRCRAFT-ACCIDENT-REPORT-AAR-86-05-DELTA-AI (TXT-013) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/40__1986__NTSB-USA__Lockheed-L-1011-385-1-TriStar__Aircraft-Accident-Report-AAR-86-05-Delta-Ai.txt
 - ASIANA-214 (EXT-A4R149-002) — sourceStatus=SECONDARY_LINK_NEEDS_REPLACEMENT — localPath=docs/sera-vnext/source-corpus/official-reports/a4r105-curated-txt/ASIANA-214-NTSB-AAR1401.txt
+- CARSON-S-61N (EXT-A4R149-020) — sourceStatus=OFFICIAL_LINK_NEEDS_CONFIRMATION — localPath=NO_LOCAL_TXT_PATH
 - EASTERN-401 (EXT-A4R149-021) — sourceStatus=SOURCE_RECOVERY_REQUIRED — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/44__1973__NTSB-USA__Lockheed-L-1011-1__Eastern-Air-Lines-Flight-401-NTSB-PDF-Artef.txt
 - FINAL-REPORT-ACCIDENT-TO-AIRBUS-A330-203-F (TXT-017) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r111-full-pool-txt/7__2012__BEA-France__Airbus-A330-203__Final-Report-Accident-to-Airbus-A330-203-F.txt
 - FIRST-AIR-6560-TSB-A11H0002 (TXT-079) — sourceStatus=LOCAL_TXT_ONLY_NEEDS_OFFICIAL_LINK — localPath=docs/sera-vnext/source-corpus/official-reports/a4r105-curated-txt/FIRST-AIR-6560-TSB-A11H0002.txt

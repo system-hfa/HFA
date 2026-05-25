@@ -32,12 +32,12 @@ A4R150 removes parallel-triage risk by consolidating local and external candidat
 
 - localTxtFilesConsideredCount: 89
 - externalCandidateCount: 25
-- overlapLocalExternalCount: 15
+- overlapLocalExternalCount: 13
 - integratedRegistryRowCount: 92
-- opusCorePacketCount: 10
+- opusCorePacketCount: 9
 - opusSecondaryPacketCount: 53
 - opusNegativeControlPacketCount: 8
-- opusSourceRecoveryOnlyCount: 19
+- opusSourceRecoveryOnlyCount: 20
 - opusExcludeForNowCount: 2
 
 ## key findings
