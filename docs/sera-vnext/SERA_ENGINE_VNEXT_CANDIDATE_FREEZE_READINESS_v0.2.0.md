@@ -2059,3 +2059,28 @@ Proxima fase recomendada:
 - coletar respostas autorais para os cinco pacotes;
 - registrar as decisoes autorais em fase separada;
 - manter release/downstream bloqueados ate governanca explicita posterior.
+
+## A4+R-132 — Independent Opus Review Register
+
+Esta fase registrou a revisao independente do Opus sobre os cinco pacotes A4R131 e preparou uma folha de decisao autoral, sem registrar aprovacao autoral:
+
+- [Independent Opus Review A4R132](./SERA_ENGINE_VNEXT_INDEPENDENT_OPUS_REVIEW_A4R132_v0.2.0.md)
+- [Author Decision Intake After Opus A4R132](./author-review-packets-a4r131/AUTHOR_DECISION_INTAKE_AFTER_OPUS_A4R132_v0.2.0.md)
+
+Estado apos A4+R-132:
+- revisao Opus registrada como EXTERNAL_INDEPENDENT_REVIEW;
+- nenhuma decisao autoral registrada;
+- nenhum releasedCode criado;
+- nenhum downstream aberto;
+- nenhum P/O/A alterado;
+- BS211-Q400 e A4R87-EXT-002 nao devem avancar sem correcao do gate/ponto de fuga;
+- REAL-EVENT-0003 e o unico candidato claro para aprovacao parcial;
+- REAL-EVENT-0016 e ASIANA-214 exigem decisao autoral consciente sobre boundaries;
+- riscos sistemicos registrados: 4 (frase "Quando" como veiculo de pre-classificacao, warnings como marcador temporal, carryover bias A4R130, tratamento de fronteiras P/O/A);
+- freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- coleta de decisao autoral explicita usando a folha AUTHOR_DECISION_INTAKE_AFTER_OPUS_A4R132;
+- prioridade: corrigir gate BS211-Q400 e A4R87-EXT-002 antes de qualquer aprovacao;
+- REAL-EVENT-0003 pronto para aprovacao parcial imediata;
+- REAL-EVENT-0016 e ASIANA-214 requerem decisao consciente sobre boundaries P-C/P-G e A-F/A-E.
