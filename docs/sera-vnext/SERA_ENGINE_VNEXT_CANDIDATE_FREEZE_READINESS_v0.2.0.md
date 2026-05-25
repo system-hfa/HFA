@@ -1858,3 +1858,33 @@ Proxima fase recomendada:
 - complemento/rebuild dos casos com `BLOCKED_ESCAPE_POINT_WHEN_STATEMENT_UNRESOLVED`, conforme a causa metodologica principal registrada;
 - limpeza ou rebuild de artefatos contaminados por helper/pre-canonical tree material;
 - somente depois retomar novas analises.
+
+## A4+R-127 - Post A4R126 Recovery Triage
+
+Esta fase transformou a reauditoria A4R126 em um plano operacional de recuperacao controlada, sem executar rebuild P/O/A, sem classificar novos eventos e sem abrir downstream:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_POST_A4R126_RECOVERY_TRIAGE_A4R127_v0.2.0.md`
+- `docs/sera-vnext/real-event-escape-point-reaudit/POST_A4R126_RECOVERY_QUEUE_A4R127_v0.2.0.md`
+
+Resultado macro A4R127:
+- totalEventsTriaged: 52
+- queueAWhenOnly: 3
+- queueBPOAReview: 14
+- queueCFullRebuild: 4
+- queueDSourceEnrichment: 11
+- queueEParked: 19
+- queueFDuplicateOrSuperseded: 1
+- priorityP0/P1/P2/P3: 19/7/10/16
+- priorReleasedCodeAffected: 4
+- priorReferenceCaseAffected: 18
+- priorAuthorApprovalAffected: 10
+- priorQuestionPathAffected: 30
+- priorProposedCodeAffected: 43
+- downstreamOpenedCount: 0
+
+Proximas fases possiveis:
+- `QUEUE_A_WHEN_ONLY` para complemento formal de campos Hendy;
+- `QUEUE_C_FULL_REBUILD` para os eventos fail com gate Hendy completo;
+- `QUEUE_B_POA_REVIEW` para revisao focada dos eixos apos ponto de fuga explicitado;
+- `QUEUE_D_SOURCE_ENRICHMENT` para fortalecer evidencia antes de qualquer rebuild;
+- `QUEUE_E_PARKED` para decisoes de fronteira tecnica, condicional, ator direto ou arvore real;
+- `QUEUE_F_DUPLICATE_OR_SUPERSEDED` para limpeza de dependencia documental.
