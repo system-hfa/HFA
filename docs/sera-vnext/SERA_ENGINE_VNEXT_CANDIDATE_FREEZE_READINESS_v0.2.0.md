@@ -1673,3 +1673,32 @@ Controles A4R119:
 - nenhum release criado;
 - nenhum downstream aberto;
 - nenhum artefato de conclusão final, HF taxonomy, Risk/ERC, ARMS/ERC ou recommendations criado.
+
+## A4+R-120 — A4R119 Independent QA Intake and Trace Stabilization
+
+Esta fase estabilizou metodologicamente os traces A4R119 antes de qualquer author review bundle:
+- [A4R119 External QA Intake A4R120](./SERA_ENGINE_VNEXT_A4R119_EXTERNAL_QA_INTAKE_A4R120_v0.2.0.md)
+- [UNITED-173 Source Quality Caution A4R120](./SERA_ENGINE_VNEXT_UNITED_173_SOURCE_QUALITY_CAUTION_A4R120_v0.2.0.md)
+- [UNITED-232 Nominal Adversarial Display Patch A4R120](./SERA_ENGINE_VNEXT_UNITED_232_NOMINAL_ADVERSARIAL_DISPLAY_PATCH_A4R120_v0.2.0.md)
+- [ATLAS-3591 Substantive Patch A4R120](./SERA_ENGINE_VNEXT_ATLAS_3591_SUBSTANTIVE_PATCH_A4R120_v0.2.0.md)
+- [Trace Boundary Path and Actor Scope Rule A4R120](./SERA_ENGINE_VNEXT_TRACE_BOUNDARY_PATH_AND_ACTOR_SCOPE_RULE_A4R120_v0.2.0.md)
+
+Resultado macro A4R120:
+- `UNITED-173` e `UNITED-232` mantidos como candidatos estáveis para futuro review lane (com warnings obrigatórios).
+- `ATLAS-3591` recebeu patch substantivo e permanece `REVIEW_REQUIRED` (fora de bundle).
+- `EASTERN-401` permanece `HOLD_OCR_REQUIRED`.
+- nova regra formal aplicada: consistência de boundary path e declaração de `tracedActor`.
+
+Conjunto estável para futuro author review bundle após A4R120:
+- `UPS-1354`
+- `COLGAN-3407`
+- `US-AIRWAYS-1549`
+- `UNITED-173`
+- `UNITED-232`
+
+Controles A4R120:
+- nenhuma decisão autoral registrada;
+- nenhum fechamento release de P/O/A;
+- nenhum release criado;
+- nenhum downstream aberto;
+- nenhum artefato de conclusão final, HF taxonomy, Risk/ERC, ARMS/ERC ou recommendations criado.

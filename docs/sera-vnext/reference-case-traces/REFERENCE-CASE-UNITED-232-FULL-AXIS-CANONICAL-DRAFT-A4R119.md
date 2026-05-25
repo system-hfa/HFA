@@ -13,6 +13,7 @@ releaseStatus: NO_RELEASE
 downstreamStatus: NO_DOWNSTREAM
 frontendReadiness: NOT_READY_REVIEW_REQUIRED
 reviewBundleStatus: NOT_EVALUATED_IN_A4R119
+qaIntakeStatusA4R120: KEEP_FOR_FUTURE_AUTHOR_REVIEW_WITH_DISPLAY_WARNING
 
 ## 1. Event factual summary
 United 232 suffered a catastrophic technical failure with near-total hydraulic control loss. The crew identified controllability collapse, declared emergency, redistributed cockpit roles, and executed an adaptive differential-thrust strategy during an attempted emergency landing.
@@ -85,6 +86,14 @@ Probable cause, contributing factors, findings, and safety recommendations are q
 
 ## 12. Front-end future display notes
 Draft only; not final causation; not risk scoring; not a safety recommendation; not release-ready.
+
+## 12.1 A4R120 nominal/adversarial display warning
+- This case is "nominal action under catastrophic system failure"; it does not mean "no problem occurred."
+- Catastrophic outcome must not be used to force downgrade of A-A when action adequacy under constraints remains supported.
+- Narrative heroism is not used as proof of A-A; the branch is supported only by observable adaptive actions in the recorded timeline.
+- Distinction from USAIR-427 must remain explicit:
+  - USAIR-427 = `HELD_TECHNICAL_DOMINANT` with zero/near-zero effective human response window.
+  - UNITED-232 = substantial response window with relevant adaptive human actions.
 
 ## 13. Review questions for author
 - Does UNITED-232 remain a valid adversarial nominal A candidate despite catastrophic outcome?

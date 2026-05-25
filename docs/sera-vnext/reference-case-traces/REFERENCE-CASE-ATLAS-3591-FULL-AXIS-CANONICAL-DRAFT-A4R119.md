@@ -12,7 +12,8 @@ validationStatus: REVIEW_REQUIRED
 releaseStatus: NO_RELEASE
 downstreamStatus: NO_DOWNSTREAM
 frontendReadiness: NOT_READY_REVIEW_REQUIRED
-reviewBundleStatus: NOT_EVALUATED_IN_A4R119
+reviewBundleStatus: NOT_READY_FOR_AUTHOR_REVIEW_BUNDLE
+qaIntakeStatusA4R120: PATCHED_REVIEW_REQUIRED
 
 ## 1. Event factual summary
 Atlas 3591 experienced unintended go-around mode activation during descent/approach, followed by rapid nose-down control inputs and unrecovered steep descent. CVR/FDR data support a mode-awareness, perception, and multi-actor intervention sequence.
@@ -26,6 +27,11 @@ Primary escape point: immediate recognition of unexpected mode activation with e
 - node path availability: P, O, and A nodes used below exist in A4R99
 - missing nodes: none identified
 
+## 3.1 Traced actor scope
+- tracedActor: Combined
+- actor-scope rationale: the critical sequence is a tightly coupled PF/PM interaction window (unexpected mode activation, PF control inputs, PM intervention timing) where splitting into two separate traces at this stage would duplicate shared decision-state context and increase double-counting risk.
+- boundary note: combined scope is provisional and does not prevent future per-actor retrace if author review requests stricter decomposition.
+
 ## 4. P-axis canonical path
 | nodeId | exactQuestionTextPT | exactQuestionTextENAnchor | answerOptionSelected | evidenceIds | nextNodeId/leaf | uncertainty |
 |---|---|---|---|---|---|---|
@@ -36,7 +42,10 @@ Primary escape point: immediate recognition of unexpected mode activation with e
 | P_INFORMATION_AMBIGUOUS | A informação era ilusória ou ambígua? | Information illusory or ambiguous? | SIM | AT3591-E3 | P-F | Spatial-orientation and unexpected-mode interaction supports ambiguity branch. |
 
 P-axis provisional outcome: P-F draft candidate.
-Rejected alternative: P-D remains live boundary if reviewer judges perceived time pressure as the central mechanism.
+Rejected alternative: P-G remains live boundary because ADI/FMA/instrument cues were available and correct while vestibular/somatogravic conflict remained possible.
+
+A4R120 boundary-path consistency note:
+- P-D is not listed as a boundary in this draft because `P_TIME_PRESSURE = NÃO` makes P-D canonically unreachable in the selected path.
 
 ## 5. O-axis canonical path
 | nodeId | exactQuestionTextPT | exactQuestionTextENAnchor | answerOptionSelected | evidenceIds | nextNodeId/leaf | uncertainty |
@@ -51,18 +60,30 @@ Rejected alternative: O-D remains boundary-live if reviewer interprets continuat
 ## 6. A-axis canonical path
 | nodeId | exactQuestionTextPT | exactQuestionTextENAnchor | answerOptionSelected | evidenceIds | nextNodeId/leaf | uncertainty |
 |---|---|---|---|---|---|---|
-| A_ROOT | Como o operador estava tentando atingir o objetivo? | How was the operator trying to achieve the goal(s)? | START | AT3591-E6, AT3591-E7, AT3591-E8 | A_IMPLEMENTED | Sequence includes manual control override, captain intervention attempt, and unresolved recovery. |
-| A_IMPLEMENTED | A ação foi implementada como pretendida? | Implemented as intended? | NÃO_DESLIZE_LAPSO_ERRO | AT3591-E6, AT3591-E7 | A-C | Control-input pattern supports an implementation-error candidate. |
+| A_ROOT | Como o operador estava tentando atingir o objetivo? | How was the operator trying to achieve the goal(s)? | START | AT3591-E6, AT3591-E7, AT3591-E8 | A_IMPLEMENTED | Sequence includes PF manual nose-down inputs and PM intervention attempts after unexpected mode activation. |
+| A_IMPLEMENTED | A ação foi implementada como pretendida? | Implemented as intended? | SIM | AT3591-E6 | A_CORRECT | Inputs appear intentionally executed by PF under distorted perceived state. |
+| A_CORRECT | A ação foi a correta ou adequada? | Correct or adequate? | NÃO | AT3591-E6, AT3591-E7, AT3591-E8 | A_CAPABILITY | Action choice was not adequate for actual aircraft state and recovery needs. |
+| A_CAPABILITY | O operador ou a tripulação possuía o pré-requisito de capacidade, conhecimento ou habilidades necessárias para formar e implementar uma ação apropriada para a situação? | Had the pre-requisite capability to make a response? | SIM | AT3591-E7, AT3591-E8 | A_TIME_PRESSURE | Current evidence does not isolate inability as primary branch closure. |
+| A_TIME_PRESSURE | A pressão do tempo era realmente excessiva? | Time pressure excessive? | NÃO_SELECAO | AT3591-E6, AT3591-E8 | A-F | Primary draft branch treats action selection under distorted perception as central. |
 
-A-axis provisional outcome: A-C draft candidate.
-Rejected alternative: A-F remains live because multi-actor command/transfer dynamics can also be interpreted as action-selection inadequacy under upset management.
+A-axis provisional outcome: A-F draft candidate.
+Rejected alternatives:
+- A-C remains live but fragile; current evidence does not support clean slip/lapse closure.
+- A-E remains live if later review treats automation mental-model deficit as dominant knowledge-decision branch.
+
+### 6.1 Actor-separated evidence framing (A-axis)
+| actor | evidence focus | notes |
+|---|---|---|
+| PF | AT3591-E6 | Primary manual nose-down input sequence after unintended mode activation. |
+| PM | AT3591-E7 | Delayed/insufficient intervention timing in rapidly evolving upset window. |
+| Combined crew | AT3591-E8 | Coordination and control-transfer dynamics affecting recovery feasibility. |
 
 ## 7. Axis outcome summary
 | axis | status | provisional outcome |
 |---|---|---|
-| P | REVIEW_REQUIRED | P-F (P-D boundary live) |
+| P | REVIEW_REQUIRED | P-F (P-G boundary live) |
 | O | REVIEW_REQUIRED | O-A (O-D boundary live) |
-| A | REVIEW_REQUIRED | A-C (A-F boundary live) |
+| A | PATCHED_REVIEW_REQUIRED | A-F (A-C/A-E boundary live) |
 
 No final classification is created.
 
@@ -74,20 +95,23 @@ No final classification is created.
 | AT3591-E6 | A_IMPLEMENTED |
 
 ## 9. Rejected alternatives
-- P-D: kept boundary-live.
+- P-D: removed as boundary due canonical path inaccessibility under `P_TIME_PRESSURE = NÃO`.
+- P-G: kept boundary-live.
 - O-D: kept boundary-live.
-- A-F: kept boundary-live.
+- A-C: kept boundary-live but fragile.
+- A-E: kept boundary-live.
 
 ## 10. Quarantine of external investigation conclusions
 Probable cause, contributing factors, findings, and safety recommendations are quarantined and not used as SERA answer keys.
 
 ## 11. Source gaps
 - Objective-axis intent boundary needs stricter evidence segregation from post-event performance context.
-- Multi-actor A-axis needs explicit check against double-counting of the same mode-change fact.
+- A-axis remains review-required after patch and cannot be treated as closure-ready.
+- Combined actor scope still requires author-level check on whether per-actor split traces are needed.
 
 ## 12. Front-end future display notes
 Draft only; not final causation; not risk scoring; not a safety recommendation; not release-ready.
 
 ## 13. Review questions for author
 - Should O-axis remain O-A or shift to O-D under stricter managed-risk interpretation?
-- Is A-C sufficiently supported, or should A-F dominate for multi-actor upset-management framing?
+- Is A-F sufficiently supported as primary, or should A-axis remain UNRESOLVED after per-actor decomposition?

@@ -433,3 +433,24 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 2. Keep stable A4R117 bundle path unchanged (`UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`) for future author-review phase.
 3. Execute source-recovery/OCR lane for `EASTERN-401` before any source-slice or trace re-entry.
 4. Activate Opus batch-2 candidates (`EXECUFLIGHT-1526`, `EC225-NORTH-SEA`, `CROSSAIR-3597`) only after A4R119 QA outcome is recorded.
+
+## A4+R-120 Execution Update (A4R119 QA Intake + Trace Stabilization)
+- External QA intake recorded:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R119_EXTERNAL_QA_INTAKE_A4R120_v0.2.0.md`
+- Trace stabilization patches recorded:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_UNITED_173_SOURCE_QUALITY_CAUTION_A4R120_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_UNITED_232_NOMINAL_ADVERSARIAL_DISPLAY_PATCH_A4R120_v0.2.0.md`
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_ATLAS_3591_SUBSTANTIVE_PATCH_A4R120_v0.2.0.md`
+- New method guardrail recorded:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_TRACE_BOUNDARY_PATH_AND_ACTOR_SCOPE_RULE_A4R120_v0.2.0.md`
+- Stabilization outcome:
+  - future-review stable additions: `UNITED-173`, `UNITED-232`;
+  - `ATLAS-3591` remains `PATCHED_REVIEW_REQUIRED`;
+  - `EASTERN-401` remains `HOLD_OCR_REQUIRED`;
+  - no author decision, no release, no downstream.
+
+## Updated Immediate Sequence After A4R120
+1. Keep future review lane anchored on stable set: `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`.
+2. Run targeted refinement on `ATLAS-3591` before any future bundle consideration.
+3. Keep `EASTERN-401` blocked until OCR/official-text sufficiency is resolved.
+4. Preserve release/downstream closure while A4R119-derived traces remain draft/qa-governed artifacts.

@@ -114,3 +114,16 @@ A4R119 governance state:
 - priority candidates assessed: UNITED-173, ATLAS-3591, EASTERN-401, UNITED-232.
 - EASTERN-401 remains blocked as `HOLD_OCR_REQUIRED` due source weakness.
 - no author decision, no release, no downstream, no final-causation artifact.
+
+## Active QA intake and trace stabilization outputs (A4R120)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R119_EXTERNAL_QA_INTAKE_A4R120_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_UNITED_173_SOURCE_QUALITY_CAUTION_A4R120_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_UNITED_232_NOMINAL_ADVERSARIAL_DISPLAY_PATCH_A4R120_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_ATLAS_3591_SUBSTANTIVE_PATCH_A4R120_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_TRACE_BOUNDARY_PATH_AND_ACTOR_SCOPE_RULE_A4R120_v0.2.0.md`
+
+A4R120 governance state:
+- stable future-review candidate set includes: UPS-1354, COLGAN-3407, US-AIRWAYS-1549, UNITED-173, UNITED-232.
+- ATLAS-3591 remains `PATCHED_REVIEW_REQUIRED`.
+- EASTERN-401 remains `HOLD_OCR_REQUIRED`.
+- no author decision, no release, no downstream, no final-causation artifact.

@@ -52,3 +52,13 @@ A4R119 adds new draft candidates for future review lanes but does not alter A4R1
 - prerequisite for EASTERN-401: OCR/official-text recovery before any trace attempt.
 
 No author decision is recorded in A4R119.
+
+## A4R120 independent QA stabilization update
+- External QA intake recorded in:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_A4R119_EXTERNAL_QA_INTAKE_A4R120_v0.2.0.md`
+- Stabilization outcome:
+  - `UNITED-173`: kept for future author review with OCR/source-quality warning.
+  - `UNITED-232`: kept for future author review with nominal/adversarial display warning.
+  - `ATLAS-3591`: patched but remains `PATCHED_REVIEW_REQUIRED` and out of future bundle set for now.
+  - `EASTERN-401`: unchanged `HOLD_OCR_REQUIRED`.
+- A4R120 does not create author decision, release, or downstream action.

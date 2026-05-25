@@ -13,6 +13,7 @@ releaseStatus: NO_RELEASE
 downstreamStatus: NO_DOWNSTREAM
 frontendReadiness: NOT_READY_REVIEW_REQUIRED
 reviewBundleStatus: NOT_EVALUATED_IN_A4R119
+qaIntakeStatusA4R120: KEEP_FOR_FUTURE_AUTHOR_REVIEW_WITH_OCR_WARNING
 
 ## 1. Event factual summary
 United 173 prolonged gear-malfunction troubleshooting and emergency-preparation work while fuel state degraded. CVR/FDR-supported sequence shows repeated fuel advisories and delayed transition to immediate landing execution, ending in multi-engine fuel exhaustion.
@@ -25,6 +26,11 @@ Primary escape point: when repeated fuel-state advisories and remaining-time est
 - checklist file: A4R99 validation checklist
 - node path availability: P, O, and A nodes used below exist in A4R99
 - missing nodes: none identified
+
+## 3.1 A4R120 source-quality caution
+- OCR/source-quality caveat remains active for this case.
+- O-D is treated as a strong anchor in this draft, but depends on reliable legibility of the fuel/gear/callout sequence in source text.
+- This caveat does not authorize release closure; it is a review-quality warning only.
 
 ## 4. P-axis canonical path
 | nodeId | exactQuestionTextPT | exactQuestionTextENAnchor | answerOptionSelected | evidenceIds | nextNodeId/leaf | uncertainty |
@@ -88,6 +94,7 @@ Probable cause, contributing factors, findings, and safety recommendations are q
 ## 11. Source gaps
 - OCR quality requires careful author review on line-level factual interpretation.
 - Additional source slicing could strengthen timing granularity between fuel warnings and action transition.
+- P-D and A-G boundaries remain live alternatives pending higher-confidence source legibility review.
 
 ## 12. Front-end future display notes
 Draft only; not final causation; not risk scoring; not a safety recommendation; not release-ready.

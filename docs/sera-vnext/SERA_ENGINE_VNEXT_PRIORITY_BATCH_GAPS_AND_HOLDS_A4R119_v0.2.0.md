@@ -42,3 +42,14 @@ downstreamStatus: NO_DOWNSTREAM
 
 ## Next gating condition
 Before any future review bundle decision on A4R119 outputs, run independent QA pass across the three new drafts and keep EASTERN-401 blocked until official OCR-quality text is recovered.
+
+## A4R120 post-QA gating update
+- Independent QA intake was executed in A4R120 and trace stabilization patches were applied.
+- Updated status after A4R120:
+  - `UNITED-173`: future-review eligible with OCR warning.
+  - `UNITED-232`: future-review eligible with mandatory display warning.
+  - `ATLAS-3591`: remains `PATCHED_REVIEW_REQUIRED` (not future-bundle eligible yet).
+  - `EASTERN-401`: remains `HOLD_OCR_REQUIRED`.
+- Additional methodological gate introduced:
+  - boundary alternatives must be canonically reachable from selected path answers;
+  - multi-actor traces must declare `tracedActor` and justify combined scope when used.

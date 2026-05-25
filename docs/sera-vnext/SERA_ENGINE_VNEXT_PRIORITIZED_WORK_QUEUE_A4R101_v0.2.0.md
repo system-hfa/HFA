@@ -254,3 +254,19 @@ NO_DOWNSTREAM
 | P0 | Execute minimal author-review bundle from stable A4R117 set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549` | A4R117 stable set remains unaffected by A4R119 intake batch. | Codex + user | 1 bundle | Author decisions captured in future phase only; no release/downstream. |
 | P1 | Recover usable official text for EASTERN-401 | `EASTERN-401` | Priority candidate is blocked by OCR/source quality. | Codex + retrieval workflow | 1 recovery cycle | Event exits hold only when official TXT is usable for controlled slicing. |
 | P1 | Batch-2 activation planning | `EXECUFLIGHT-1526`, `EC225-NORTH-SEA`, `CROSSAIR-3597` | Opus ranked these as next discovery lane after priority batch. | Codex | 1 planning cycle | Next source-validation set defined with explicit hold criteria. |
+
+## A4+R-120 queue update
+- Completed in A4R120:
+  - independent external QA intake recorded for A4R119 traces;
+  - UNITED-173 caution patch applied (OCR/source-quality warning);
+  - UNITED-232 display patch applied (nominal/adversarial interpretation guardrail);
+  - ATLAS-3591 substantive patch applied (boundary-path consistency + actor scope + A-axis reframe);
+  - boundary-path and tracedActor rule formalized for future traces/revisions.
+- Execution remained docs-only, QA-intake-and-trace-stabilization only, no author decision, no release, no downstream.
+
+## Immediate queue after A4R120
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | Prepare future author-review lane from stabilized set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232` | These are currently the stable future-review candidates after A4R120 stabilization. | Codex + user | 1 future bundle cycle | Future bundle is assembled in dedicated phase only, with no release/downstream. |
+| P1 | ATLAS-3591 targeted refinement | `ATLAS-3591` | Substantive patch reduced errors but case remains review-required. | Codex | 1 focused refinement cycle | Case exits review-required only after actor-scope and A-axis uncertainty are further reduced. |
+| P1 | Keep hold lane unchanged | `EASTERN-401` | OCR/source insufficiency remains unresolved. | Codex + retrieval workflow | 1 recovery cycle | Hold removed only when usable official text is available. |
