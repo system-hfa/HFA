@@ -16,6 +16,8 @@
 - [Human Factors Corpus Screening Tracker A4R142](./source-corpus/HUMAN_FACTORS_CORPUS_SCREENING_TRACKER_A4R142_v0.2.0.md)
 - [Human Factors Corpus Screening Summary A4R142](./SERA_ENGINE_VNEXT_HUMAN_FACTORS_CORPUS_SCREENING_SUMMARY_A4R142_v0.2.0.md)
 - [Independent ChatGPT A4R142 Audit A4R143](./SERA_ENGINE_VNEXT_INDEPENDENT_CHATGPT_A4R142_AUDIT_A4R143_v0.2.0.md)
+- [Lane A Source-Slice Intake A4R144](./SERA_ENGINE_VNEXT_LANE_A_SOURCE_SLICE_INTAKE_A4R144_v0.2.0.md)
+- [Lane A Source-Slice Tracker A4R144](./lane-a-source-slices-a4r144/LANE_A_SOURCE_SLICE_TRACKER_A4R144_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras

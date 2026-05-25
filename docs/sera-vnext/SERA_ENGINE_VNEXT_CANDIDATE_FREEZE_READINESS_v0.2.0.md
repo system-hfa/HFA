@@ -2772,3 +2772,25 @@ Esta fase registrou auditoria independente do ChatGPT 5.5 sobre a triagem A4R142
   2. negative-control validation pack Lane C;
   3. source recovery Lane B;
   4. conditional pilot 2 REAL-EVENT-0016 only if explicitly chosen.
+
+## A4R144 — Lane A Source-Slice Intake Pack
+
+Esta fase criou um pacote de intake por source-slice para candidatos Lane A:
+
+- [Lane A Source-Slice Intake A4R144](./SERA_ENGINE_VNEXT_LANE_A_SOURCE_SLICE_INTAKE_A4R144_v0.2.0.md)
+- [Lane A Source-Slice Tracker A4R144](./lane-a-source-slices-a4r144/LANE_A_SOURCE_SLICE_TRACKER_A4R144_v0.2.0.md)
+
+### Resultado A4R144
+
+- lane a source-slice intake criado;
+- 7 eventos avaliados (ASIANA-214, COMAIR-5191, AMERICAN-965, AMERICAN-1420, KOREAN-801, UPS-1354, UNITED-173);
+- nenhum P/O/A classificado;
+- nenhum release/downstream;
+- nenhum codigo/fixture/baseline/corpus alterado.
+
+### Proximos passos apos A4R144
+
+- iniciar preparacao de gate de escape point para COMAIR-5191, UPS-1354 e UNITED-173;
+- tratar ASIANA-214 e AMERICAN-1420 com trilha de cautela temporal (progressive/post-escape contamination risk);
+- mover AMERICAN-965 para source recovery antes de selecao de piloto;
+- manter KOREAN-801 em hold boundary-complex ate separacao clara entre cadeia frontline e fatores sistemicos.

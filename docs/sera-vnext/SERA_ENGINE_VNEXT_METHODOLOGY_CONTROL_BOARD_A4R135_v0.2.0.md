@@ -139,6 +139,11 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R142 does not create reference authority.
 - Future Claude/Opus audit may be recorded as A4R144.
 
+## A4R144 Source-Slice Intake Note
+
+- A4R144 source-slice intake does not create P/O/A reference authority.
+- A4R144 is planning-layer material for future reaudits under A4R137/A4R138/A4R140.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.
