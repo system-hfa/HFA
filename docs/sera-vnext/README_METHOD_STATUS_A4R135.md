@@ -21,6 +21,9 @@
 - [Gate Readiness and Negative Control Balance A4R145](./SERA_ENGINE_VNEXT_GATE_READINESS_AND_NEGATIVE_CONTROL_BALANCE_A4R145_v0.2.0.md)
 - [Gate + Negative Control Tracker A4R145](./gate-readiness-a4r145/GATE_READINESS_AND_NEGATIVE_CONTROL_TRACKER_A4R145_v0.2.0.md)
 - [Negative Controls Directory A4R145](./negative-controls-a4r145/)
+- [Escape-Point Gate Drafts A4R146](./SERA_ENGINE_VNEXT_ESCAPE_POINT_GATE_DRAFTS_A4R146_v0.2.0.md)
+- [Escape-Point Gate Draft Tracker A4R146](./escape-point-gates-a4r146/ESCAPE_POINT_GATE_DRAFT_TRACKER_A4R146_v0.2.0.md)
+- [Escape-Point Gate Draft Directory A4R146](./escape-point-gates-a4r146/)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras

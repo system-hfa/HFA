@@ -2817,3 +2817,27 @@ Esta fase criou um pacote balanceado de preparacao metodologica:
 - preparar gate draft completo (sem P/O/A) para COMAIR-5191, UPS-1354 e UNITED-173;
 - manter validacao anti-overclassification com US-AIRWAYS-1549;
 - abrir source-recovery local para DELTA-191 antes de uso detalhado de gate.
+
+## A4R146 — Escape-Point Gate Drafts for Lane A Candidates
+
+Esta fase criou drafts estruturados de gate de ponto de fuga para 3 candidatos Lane A:
+
+- [Escape-Point Gate Drafts A4R146](./SERA_ENGINE_VNEXT_ESCAPE_POINT_GATE_DRAFTS_A4R146_v0.2.0.md)
+- [Escape-Point Gate Draft Tracker A4R146](./escape-point-gates-a4r146/ESCAPE_POINT_GATE_DRAFT_TRACKER_A4R146_v0.2.0.md)
+- [Escape-Point Gate Draft Files A4R146](./escape-point-gates-a4r146/)
+
+### Resultado A4R146
+
+- 3 escape-point gate drafts criados: COMAIR-5191, UPS-1354, UNITED-173;
+- COMAIR-5191: gate draft ready (author review required for final wording quality);
+- UPS-1354: gate draft ready with caution (warning/outcome contamination guard required);
+- UNITED-173: gate draft ready with caution (pre-flameout anchor hardening required);
+- nenhum P/O/A classificado;
+- nenhum release/downstream;
+- nenhum codigo/fixture/baseline/corpus alterado.
+
+### Proximos passos apos A4R146
+
+- executar revisao autoral focada do texto "Quando..." para COMAIR-5191 e UNITED-173;
+- consolidar micro-anchors temporais dos 3 casos em pacote de gate final (ainda sem P/O/A);
+- somente apos gate autoral consolidado considerar entrada de fase de reaudit.

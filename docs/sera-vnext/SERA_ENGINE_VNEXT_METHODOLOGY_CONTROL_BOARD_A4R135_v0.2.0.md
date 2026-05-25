@@ -149,6 +149,11 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R145 remains pre-gate and negative-control validation only.
 - A4R145 does not create P/O/A reference authority.
 
+## A4R146 Escape-Point Gate Draft Note
+
+- A4R146 creates escape-point gate drafts only.
+- A4R146 does not create P/O/A reference authority.
+
 ## Restrictions Preserved
 
 - NO_RELEASED_CODE for all events.
