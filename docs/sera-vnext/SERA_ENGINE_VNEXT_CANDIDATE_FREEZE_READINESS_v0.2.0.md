@@ -1923,3 +1923,47 @@ Proxima fase recomendada:
 - executar `QUEUE_B_POA_REVIEW` por batch controlado depois de confirmar `escapePointWhenStatement` valido por evento;
 - executar `QUEUE_C_FULL_REBUILD` apenas com prompt completo do gate Hendy para eventos ja marcados como rebuild;
 - executar `QUEUE_D_SOURCE_ENRICHMENT` antes de tentar recuperar casos com fonte parcial.
+
+## A4+R-129 - Queue B P0 POA Review Gate Diagnostic
+
+Esta fase processou apenas os eventos A4R127 com `assignedQueue=QUEUE_B_POA_REVIEW` e `priority=P0`, mas nao executou revisao P/O/A substantiva porque todos permanecem sem ponto de fuga Hendy pronto:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_QUEUE_B_P0_POA_REVIEW_A4R129_v0.2.0.md`
+- `docs/sera-vnext/real-event-escape-point-reaudit/QUEUE_B_P0_POA_REVIEW_TRACKER_A4R129_v0.2.0.md`
+
+Eventos elegiveis processados:
+- `REAL-EVENT-0003`
+- `REAL-EVENT-0016`
+- `BS211-Q400`
+- `A4R87-EXT-002`
+- `ASIANA-214`
+- `AMERICAN-965`
+- `COMAIR-5191`
+
+Resultado macro A4R129:
+- totalQueueBP0Eligible: 7
+- escapePointReadyCount: 0
+- escapePointNotReadyCount: 7
+- whenStatementValid: 0
+- whenStatementInvalid: 0
+- poaReviewedCount: 0
+- priorPOARetainedCount: 0
+- draftPOARevisedCount: 0
+- pAxisUnresolved: 7
+- oAxisUnresolved: 7
+- aAxisUnresolved: 7
+- requiresAuthorReviewCount: 0
+- requiresFullRebuildCount: 5
+- remainsInQuarantineCount: 7
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+
+Estado de freeze apos A4R129:
+- nenhum evento `QUEUE_B` P0 saiu da quarentena;
+- nenhum P/O/A foi retido, revisado ou convertido em saida final;
+- release e downstream continuam bloqueados;
+- freeze final continua nao autorizado.
+
+Proxima fase recomendada:
+- executar uma fase dedicada de `FULL_REBUILD_WITH_ESCAPE_POINT_GATE` para os cinco casos `QUEUE_B` P0 de alta dependencia que nao precisam primeiro de nova source slice;
+- executar `SOURCE_ENRICHMENT` para `AMERICAN-965` e `COMAIR-5191` antes de qualquer tentativa de revisao P/O/A.
