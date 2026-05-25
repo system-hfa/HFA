@@ -1,0 +1,2044 @@
+SOURCE_NOTE: Extracted from official FAA-hosted NTSB report PDF.
+SOURCE_URL: https://www.faa.gov/sites/faa.gov/files/2022-11/AAR73-14%20(Eastern%20Flight%20401%20accident%20report).pdf
+SOURCE_SHA256_PDF: 755ba5bb52d54018d9708dfc4b6d7815b57922a8ca47fa0b300db429faf44da5
+EXTRACTION_METHOD: pdftotext -raw
+EXTRACTION_DATE_LOCAL: 2026-05-24
+LEGIBILITY_CAVEAT: legacy scan with partially illegible sections; use with caution.
+
+II iiw- -___ ._.._ _-.----._ __ _ _._ .._ --
+.
+“ 8
+. .
+T
+.
+: : *I’ .-. .:.
+NOTICE
+TBIS DOCUM.ENT HAS BEEN REPRODUCED
+FROM THE BEST COPY FURNISHED US BY
+T
+T.HE S P O N S O R I N G AGEN,CY. -4LTHOUGH I T *
+I
+/-
+IS RECOGNIZED THA.T CEkT-AIN. PORTIONS
+ARE ILLEGIBLE, I T I S B E I N G RELEASED
+I N T H E JNTEREST. O F MAII.ING.,4VAIL,A’ B.LE -’ .
+‘AS ‘ b$UCH’ TNFORMATION. AS :‘ POSSI’ bLE. .
+..’ ,. I
+,
+. . .., ’
+.
+_’
+r
+. . . : ‘ .
+:
+_: . ._’ .
+:
+. . .
+. . . . . 1. ; :
+; : _ :
+,_ . . .
+-* :
+_. _. _, .
+I
+. :. :,
+: :
+, . . .
+.‘ .
+.,.. *:,
+;:. :
+.
+‘ .
+%I
+.:
+: . .
+_~ .- ,
+. .
+: :
+. .
+‘ .
+.
+._, :-
+., .:
+. -.
+I : .
+/
+L
+:
+.
+:
+4:
+“ ’
+3
+L ---7
+,2.
+,
+.. . .
+.’
+L-1011, N310EA
+; ” .
+i
+DECEMBER 29,1972
+M
+.
+1 :
+‘ .
+.-
+.” .._..
+.-&~;*-‘: _.,. - . . -
+L . .
+. . _. -:
+r
+--.-. : AIRCRAFT ACCIDENT REPORT
+Washington, D.C.. 20591
+,
+.
+7
+-4
+i
+C
+I
+I
+1
+I
+. . TECHNICAL REPORT STANDARD TITLE PAGE
+Report No.
+‘ NTSB-AAR-73-14
+Z.Government Accession No. 3.Recizi.yn:‘ s
+)?jz, -, .-, . ,
+Cat$log No.
+ZJ 2-i;
+I. Title and Subtitle Aircraft Accident Report
+Eastern Air Lines, Inc.
+S.Report Date
+June 14, 1973
+L:lOll, N31QEA
+!Y~fSVibZrl~,d~ 9 7 2
+6.Performing Organization
+Code
+1. Author(s) 8.Performing Organization
+. - Report No.
+. I. Performing Organization Name and Address lO.Work Unit No.
+. National Transportation Safety Board -
+Bureau of Aviation Safety
+1018-C
+II .Contract or Grant No.
+W a s h i n g t o n , D . C . 2 0 5 9 1 ’
+i 13.Type of Report and
+Period Covered
+12.Sponsoring Agency Name and Address !’
+I Aircraft Accident Report
+c
+December 29, 1972
+NATIONAL TRANSPORTATION SAFETY BOARD ;
+Washington, D. C. 20591 14.Sponsoring Agency Code
+15.Supplementary Notes
+I
+This report contains aviation Safety Recommendation A-73-46.
+16.Abstract An Eastern Air Lines Lockheed L-1011 crashed at 2342 eastern
+standard time, December 29, 1972, 18.7 miles west-northwest. of Miami Inter’ -
+national Airport, Miami, Florida. The aircraft was destroyed. Of the 163
+passengers and 13 crew-members aboard, 94 passengers and 5 crewmembers re-,
+ceived fatal injuries. Two survivors died later as a result of their injuries. .
+Following a missed approach because of a suspected nose gear malfunction,
+the aircraft climbed to 2, 000 feet mean sea level and proceeded ona westerly
+heading. The three flight crewmembers and a jumpseat occupant became en-
+grossed in the malfunction.
+The National Transportation Safety Board determines that the probable cause
+of this accident was the failure of the flightcrew to monitor the flight instruments.
+during the final 4 minutes of flight, and to detect an unexpected descent soon
+enough to prevent impact with the ground. Preoccupation with a malfunction of .
+the nose landing gear position’ indicating system distracted the crew’ s attention
+from the instruments and allowed the descent to go unnoticed.
+As a result of the investigation of this accident, the Safety Board has made
+recommendations to the Administrator of the Federal Aviation Administration.
+UNCLASSIFIED I UNCLASSIFIED
+NTSB Fox-m 1765.2 (11/70)
+ii ’
+Push Forces.
+19.Security Classification 20,Security Classification
+(of this report) (of this page)
+17.Key Words
+Go-Around, Initial -4pproach, Malfunction, Nose
+Landing Gear Position Indicating System, Monitor
+Aircraft Instruments, Unexpected. Descent, Pre-
+occupation, Altitude Alert, Autoflight System,
+ing
+18.0istribution Statement
+This document is avail-
+able to the public through
+the National Technical
+Information Service,
+Springfield, Va. 2215 1
+-..
+:
+C’
+a
+l -y
+.-
+. .
+?
+I’
+? *
+. ”
+. . .
+3
+‘ . EASTERN AIR LINES, INC.
+i-1011, N310EA - ’
+MIAMI, FLORIDA
+.
+DECEMBER 29, 1972 .
+- :
+TABLE OF CONTENTS
+Page
+Synopsis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. .w:Investigation
+1. 1 ‘ .\kisto
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+ry of the Flight . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. +,,Injuries ,toPersons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.3 Damage to Aircraft.;. . . . . . . . . . . . . . . . . . i . . . . . . . . . . . .
+1.4 Other Damage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.5 Crew Information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.6 Aircraft Information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..T . .
+1 .. . Meteorological Information .' . . . . . . . . . . . . . . . . . . . . . . . . .
+1.8 Aids’ to Navigation
+. . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.9 Communications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.10 Aerodrome and Ground Facilities ...................
+.-I. 11 Flight Recorders . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+.?I. 12 Aircraft ‘ Wreckage . . . . . . . . . . . . . . . . . . . . ; . . . . . . . . . . . . . .
+1.13.Fire.. . . . . . . . . . . . . . . . . . . . . . . . I...... . . . . . . . . . . . . . .
+‘1.14 Survival Aspects . . . . . . . . . . . . . . . . . . . . . . :; . . . . . . . .; . . .
+1. 15’ Tests and Research . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. 16 Other Information . . . . . . . . . . . . . . . . . . . . . . . . . . ..i . . .
+2. Analysis and Conclusions . . . . . . . . . . . . . . . . . . . . . . . . . .
+2.1 Analysis r . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2.2 Conclusions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+(a) Findings . . . . . . . . . . . . . . . . . . . . . . . . . . . .;. . . . . . .
+(b) Probable Cause . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3. Recommendations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Appendices
+Appendix A Investigation and Hearing . . . . . . . . . . . .
+Appendix B Airman Information . . . . . . . . . . . . . . . . .
+Appendix C Aircraft Information . . . . . . . . . . . . .:. .
+Appendix D Flight Profile . . . . . . . . . . . . . . . . . . . . . .
+Appendix E Wreckage Distribution Chart . . . . . . . . . . .
+Appendix F Flightpath Summary . . . . . . . . . . . . . . . . . .
+Appendix G Mode' A&s es’ sment Summary . . . . . . . . . . . . 38
+Appendix H NTSB Safety Recommendations
+A - 7 3 - l l t h r u 1 3 . . . . . . . . . . . . . . . . . . . . . 39
+Append& I NTSB Safety Recommendations
+A-73-39 thru 43 43 . . . . . . . . . . . . . . . . . . . . .
+1
+3
+3
+6
+6
+6’
+7
+7
+7
+7
+8
+‘ 8
+8 ..
+“8
+10. ..
+10
+11 ..
+1 2
+1 4
+‘ >
+14 .
+22
+22
+23
+24
+26
+27
+30
+33
+35
+37
+l
+‘.
+c
+.
+. . .
+I I I
+B .--.C_.----- _ _ _. . . . . - .__ _._ __“__ -... .-. . . . _-- ___-.- . .- _--. - -- .-.-.-_ -- . - -
+^.. * I- .
+. _
+. .
+. .
+i . I_ . .
+, ..’
+-_
+r
+i..
+‘ .
+. _. _. _..
+.- .‘ .
+. . . .
+. . .
+. . .
+I ‘ .
+. . .
+I
+.
+.._
+,. .: : .,
+-
+.
+.
+.
+.
+: I
+.:. .
+.
+,. :
+.
+File No: I-0016
+NATIONAL TRANSPORTATION SAFETY BOARD
+Washington, D. C. 20591
+Aircraft Accident Report
+Adopted: June 14, 1973
+EASTERN AIR LINES, INC.
+L-lOi1, N310EA
+: MIAMI, FLORIDA
+i DECEMBER 29, 1972
+.:
+-%
+SY NOPSiS
+An Eastern Air Lines Lockheed L-1011 crashed at 2342 eastern
+;
+standard time,. December 29, 1972, approximateiy 18 miles west-
+‘ northwest of Miami International Airport, Miami, Florida. The air- .
+craft was destroyed. There were 163 passengers and a crew of 13
+aboard the aircraft; 94 passengers and 5 crewmembers received fatal.
+injuries. All other occupants received injuries- which ranged in severity
+from minor to critical. 1 “A
+The flight diverted from its approach to Miami International Airport
+because the nose landing gear position indicating system of the aircraft
+did not indicate that the nose gear was locked in the ‘ down position. The
+aircraft climbed to 2, OCO feet mean sea level and foilo\ved a clearance to
+proceed west from the airport at that altitude. During this time, the
+crew attempted to correct the malfunction and to determine whether or
+not the nose landing gear was extended.
+The aircraft crashed into the Everglades shortly after being cleared
+by Miami Approach Control for a left turn back to Miami international
+Airport. Surviving passengers and crewmembers stated that the flight
+was routine and operated normally befoze impact with the ground.
+-,. .,
+The National Trarisportation.Safety Board determines that the
+probable cause of this accident ,was the failure’ bf the flight crew to
+monitor the flight instruments during the final 4 minutes of flight, and
+. to detect an unexpected descent soon enoughto prevent impact with the ’
+ground. Preoccupation with a malfunction of the nose landing gear
+position indicating system distracted the crew’ s attention from the
+instruments and allowed the descent to go unnoticed.
+Y
+:-
+: :
+: ,.
+‘* e’,. . . /.“‘. .
+e-- .-_------.-----..--
+- 2 - .1
+As a result of the investigation of this accident, the Safety Board’
+has made recommendations to the Administrator of the Federal Aviation
+Administration.
+.
+,:.
+. ; :... ’ .
+:
+.
+.
+.
+.
+.-
+.
+I
+-
+?
+.
+.
+r
+- 3 -
+I. INVESTIGATION
+1. 1 History of the Flight
+Eastern Air Lines, Inc., Lockheed L- 1011, N31 OEA, operating as
+Flight 4OJ (EAL 401), was a scheduled passenger flight from the John F.
+- - enne y International Airport (JFK), Jrlmaica, New York, to the Miami
+International Airport (MIA j, Miami, Florida.
+On December 29, 1972, the flight departed from JFK at 2120 L/with
+_ 143 passengers and 13 crewmembers on board and was cleared t.o MIA
+in accordance with an instrument flight rules flight plan.
+The flight was uneventful until the approach to .MIA. The landing
+gear handle was placed in the “down” position during the preparation
+for landing, and’ the green light, which would have‘ indicated to. the flight-
+crew that the nose landing gear was fully extended and locked, failed to
+illuminate. The captain recycled the landing gear, but the green light
+still failed to illuminate. /
+‘ 3
+At-2334:05, EAL 401 called the lMIA tower and stated, “Ah, towcrfs;
+this is Eastern, ah, four zero one, it looks like we’ re gonna have to
+circle; we don’ t have a light on our nose gear yet. ”
+\ ,4t 2334:14, the tower advised, “Eastern four oh one heavy, roger,
+pull up, climb straig’ nt ahead to two thousand, go back to approach con-
+trol, one twenty eight six. ”
+-4t 2334:21, ;he flight acknowledged, “Okay, going up.to two
+thousand, one twenty eight six. ”
+At 2335:09, EAL 401 contacted MIA approach control and reported,
+“All right, ah, approach control, Eastern four zero one, we’ re right
+over the airport here and climbing to two thousand feet, in fact, we’ ve
+just reached two thousand feet and we’ ve got to get a green light on our
+nose gear. Ii
+At 2335:20, approach control acknowledged the flight’ s transmission
+and instructed EAL 401 to maintain 2, 000 feet mean sea level and turn
+to a heading of 360’ magnetic.. -The ne’ w heading was acknowledged by
+EAL 401 at 2335:28.
+r/ All times herein are eastern standard, based on the 24-hour clock.
+.
+- 4 -
+&i”“ 6 At 2336:04, the captain instructed the first officer, who was flying
+9 the aircraft, to engage the autopilot. The first officer acknowledged
+the instruction.
+-,
+.
+.
+. .
+At 2336:27, MIA approach control requested, “Eastern four oh one,
+turn left heading three zero zero.” EAL 401 acknowledged the request
+and complied.
+-L;
+-.
+c
+The first officer successfully removed the nose gear light lens
+-
+\/’ assembly, but it jammed when he attempted to replace it.
+. At 2337:08, the captain instructed the v to enter the
+forward electronics bay, below the fli ht deck, to check visually the
+2&
+b.
+alignment of the nose gear indices. -
+6
+At 2337:24, a downward vertical acceleration transient of 0. 04 g
+caused the aircraft to descend 100 feet; the loss in. altitude was arrested
+by a pitchup input.
+At 2337:48, approach control requested the flight to turn left to a
+heading of 270° magnetic. EAL 401 acknowledged the request and turned
+to the new heading.
+. Meanwhile, the flightcrew conti.nued their attempts to free the nose 1
+.
+._._,_ ‘ 3 gear position light lens from its retainer, without success. .At 2338:34,
+--.3 the captain again directed the second officer to descend into the forward .
+electronics bay and check the alignment of the nose gear indices.” ’ 2&J *
+At 2338:46, EAL 401 called MIA approach control and said, “Eastern
+four oh one’ 11 go ih, out west just a little further if we can here and, ah,
+see if we can get this light to come on here. ” MIA approach control
+granted the request.
+From 2338:56 until 2341:05, the captain and the first officer dis-
+. cussed the faulty nose gear position light lens assembly and how it
+might have been reinserted incorrectly.
+y-----
+@I At 2340:38, a half-second C-chord, which indicated a deviation of
+f 250 feet from the selected.altitude, sounded in the cockpit.
+P- -
+PO crew-
+member commented on the C-chord. --. ----. __.________- -- hJ%pitch change to correct for the
+10~s of altitude was recordedt,.- . :: ‘ -Y--.“ ’~e~~~---m-m~~.- -
+kz/p P ro er nose.gear extension is *indicated by the .physical a!igntnent of
+two rods on the landing gear linkage. With the nose wheelwell light
+illuminated, these rods may be viewed by me’ ans of an optical sight
+which is located in the forward electronics bay, just forward of the
+nose w’ ~:eelwell.
+.
+- 5 -
+Shortly after 2341, the second officer raised his head into the
+cockpit and stated, “I can’ t see it, it’ s pitch dark and I throw the
+little light, I get, ah, nothing. ”
+The flightcrew and an Eastern Air Lines maintenance specialist
+who was occupying the forward observer seat then discussed the oper-
+ation of the nose wheelwell light. After*ward, the specialist went into
+the electronics bay to assist the second officer.
+At 2341:40, MIA approach control asked, “Eastern, ah, four oh
+one how are things comin’ along out there? ”
+i
+This query was made a few seconds after the MIA controller noted
+an altitude reading of 900 feet in the EAL 401 alphanumeric data block
+-on his radar display. The controller testified that he contacted EAL
+401 because the flight was nearing the airspace boundary within his
+jurisdiction.’ He further stated that he had no doubt at that moment
+fabout the safety of the aircraft. M.omentary deviations inaltitude in-
+: formation on the radar display, he said, are not uncommon; and more
+than one. scan on the display would be required to verify a deviation
+: requiring controller action.
+.: At 2341:44, EAL.401 replied to the controller’ s query with, “Okay,
+Y we’ d like to turn’ around and come, come back in, Ii and at 2341:47,
+approach control granted the request with; “Eastern four oh one turn
+left heading one eight zero. ” EAL 401 acknowledged and started the
+turn. - :
+A-42:05, the first officer said, “We did something to the altitude. ”
+The captain’ s reply was, “What? ”
+At 2342:07, the first officer asked, “We’ re.still at two thousand,
+\I
+right. 7 ” and the captain immediately exclaimed, “Hey, what’ s happening
+h’ here? ”
+i >- . SC.
+\
+At 2342:10, the first of six radio altimeter warning “beep” sounds
+began; they ceased immediately before the sound of the initial ground
+impact.
+_.
+At 2342:12, while the aircraft was in a left bank of 28’ , it crashed
+. *
+into the Everglades at a point-.lg. 7.statute miles west-northwest of
+MIA (latitude 25O52’ N., lobgitude 8’ 0’ 36’ W.). The aircraft was
+destroyed by the impact. ,
+..
+Local weather at the time of the accidentswas clear, with un-
+-y
+restricted visibility. The accident occurred in darkness, and there
+was no Moon.
+,_. .: .._ _ __ ._ _._ _. _,. ..__ ._-e-----e
+- 6 -
+Two ground witnesses had observed the aircraft shortly before
+impact to be at an altitude that appeared low.
+1.2 Injuries to Persons
+Injuries Crew
+Fatal
+Nonfatal 2% l’ ,*
+Passengers Other
+94 0
+67 0
+None 0 0
+...__
++Includes two nonrevenue passengers, one occupying an observer seat
+in the cockpit and the other seated in the,first-class section of the cabin.
+The accident survivors sustained various injuries; the most preva-
+lent were fractures of the ribs, spine, pelvis, and lower extremities.
+Fourteen persons had various degrees of burns; Seventeen persons
+received only minor injuries and did not require hospitalization:
+Post-mortem examination of the captain revealed a tumor which
+emanated from the right side of.-the tentorium in the cranial cavity.
+The tumor displaced and thinned the adjacent right occipital lobe of the
+brain. The lesser portion of this meningioma extended downwa’ rd into
+. - . ._
+the. superior-portion of the rightcerebella’ r hemisphere. The tumor’ -.
+measured 4. 3 centimeters laterally, 5. 7 centimeters vertically, and
+4. 0
+1.3
+1.4
+centimeters in an anterior-posterior direction.
+1 :
+Damage to Aircraft
+The aircraft was destroyed.
+Other Damage
+None.
+,-_
+-3/ One nonrevenue passenger and one other passenger succumbed to
+.
+their injuries more’ than 7. days subsequent to the accident. 14 CFK
+430, section 430. 2, riquires’ that these deaths be classified herein .
+2s “nonfatal. ”
+,
+,
+.
+7
+.
+1. 5 Crew Information __ __ ____. -. ._ ~. ._.. -
+4 L .- . . . _ .- : ,_. _ - ,,-, - _, __i : . .- . . I-. . . . . . .”
+The captain, the first officer, and the second officer were certifi-
+cated to serve as crewmembers for this flight. (See Appendix B for
+, detailed information. ). .’ .. _ *. ‘-. -.: I . ’ --;’
+-i
+-.
+An Eastern -4ir Lines L-101 1 maintenance specialist, one of the
+two nonrevenue passengers, occupied the forward observer seat during
+the flight from JFK.
+1: 1; 6. Aircraft Information- Y
+.-...:i
+. . . . - .z.. -
+._ i ‘ . _.: .
+\
+I, .._
+: -.-.
+.’ .‘ ‘ :The’ Lockheed L- 1011,’ skrial’ No.‘ - N31 PEA,: was opkrate.d. by
+_. _~ . ..s ._ .,Eastern Air Lines; Ino. .-
+; ‘ . The ai;cra~“was;C.ertifidateId,“eqLi~ped, and
+“:. .ma-intained in accordance‘ with Fe’ derai Aviation- Adrriinistration (FAA)
+.I .
+. : ._: . . . , .
+--‘ -‘ requirem.ents., ( See Appendix C for detailed
+-. ._;1 ..:. . . . . ,. ._ - . -_ J .,-
+info&&t<on. )- ~ ;.
+I ;. : 2 .:
+:-.. -.
+-..;I.:.. _:: 1. 7 Metebrblogical Informgtion ‘ ., ” ’ ’ ,-- T
+: ‘ : _ . , _’ , ( ,: I, - .. .._
+,-.I..: :. - . . ‘. _.. - . -.A-The-official surface weather observations’ &-: MIA]:Eiefore .and after
+..1 _ : -- : ‘.:
+.,. . ;
+.I , -. ._ :- j .:-.the time of ‘ the accident ‘ were, in part,. as follots: .: -yt.’ ‘ - ._ 1 _
+, ,_’ : ... _ ‘> :i .__ ‘ . ,.:,.:..:;;f -..-.:_.,.:y
+2. j .p. _.-. __ i. “...-,-.-. : ‘T .
+; .- .:( :.. -:2253 - 2, 500 feet scatteted;l.Gisibilitly”i 0 miles,. .l..’
+::;
+.,.. temperature 72’ F.; dew point 59O F.’ ,’ -&ind..O8po at _. W.
+,‘. __ : _ 7 knots,‘ . altimeter setting 30. 2‘ 0 inches. *.. -‘_ . , ‘.L .. .__ . --
+2350 - 2, 500 feet scattered, visibility 10 mile‘ s, *
+tempe’ r:ture 72O F., debv ooint 59O F ‘ . wind 080° at .
+8 knots, altimeter setting 30. 19 inch:;. ’
+1.8 Aids to Navigation
+_
+: - ..The flight path of the aircraft’ was being monitored by MIA approach
+control.. aide
+.
+i
+equipm&* 27
+by the Automated Radar Terminal Service (ARTS-III)
+_ : ‘ X-;’ ..1 -. -“.: _ _
+. : .
+: . :y i : _
+.-.,.
+d/ ARTS-III is a ‘ system which automatically procksses the transponder
+.. : -- . . .., a
+.. ‘ --... beac:on.‘ r-eturn from ali’ tran.s~or?d.e;-e’ q~ipped_ai~~c:~af_t’ .;~it,~‘ in a specific-
+-- A.__ ___.:.:
+:
+‘ F’ :--: . . . . rangk of ‘ $2 app;oich.-c:bntrol:r-~~~r ,q.U’ i,/-e,tt
+,The c,.om$ut.kd d a t a -.
+__ i 7.; I . . 1:. -- :.- I ’
+are ‘ s‘ electively’ presented on- a d’ 4t.a .blO-ck next t,oleach aircraft’ s updated
+. :;;.:::7.- ; ;- _. I.position‘ on the air. traffic cd~t;oller]ls.i~d.r :djsp’ lay.. ;;The information
+-.‘ I’ provided to the’ controller iS’ ~~ird~~ft.id.;?;;tiiicatibn,;~ groundspeed in
+.‘ _ .’
+;..i:. kfibts, &$;. &&-fh~ ‘ t;~ansp~o&,;“of &$&;&t bein-&t]ja;ked has a
+. . __...,.. . . . . ._._
+. ‘ , : .:. . _ -_ ‘. _’ _ -. ‘ special M0DE.C capability; pressure-altitude in 100-f& increments.
+.
+. -.
+.
+- 8 -
+1. 9 Communications
+No difficulties with communications between the flight and the air
+traffic control facilities were reported.
+1. 10 Aerodrome and Ground Facilities
+-. Not involved.
+1. 11 Flight Recorders
+N31 OEA was equipped with a Lockheed Aircraft Service Co. ,
+Model. 209, expandable digital flight data recorder system (DFDR),
+serial No. 105. This is a new type of recorder which has the capability
+to record numerous performance parameters on l/4-inch magnetic
+tape. Recorded data are retrieved and printed out. In this case, 62
+parameters were printed out. This large number of performance
+parameters provided the investigators a comprehensive and detailed
+history of flight. In addition to the normal description of the airspeed,
+altitude, heading, and vertical a.cceleration of the aircraft, availabiiity
+of additional data relating to engine thrust, control surface position,
+roll angle, pitch attitude, angle of attack, etc., provided the basis for
+a comprehensive aerodynamic ‘ evaluation and the basis for the analysis
+of theautopilot and autothrottle systems.
+The aircraft was also equipped with a Fairchild Ivbdel A- 100
+Cockpit Voice Recorder (CVR), serial NO. 3125. The CVR tape was
+recovered intact, and a transcription was made of the voices and
+sounds commending at the time of the crew’ s initial call to the MIA
+Tower. (See Appendix’ D for details. )
+1.12 Aircraft Wreckage
+\I The terrain in the impact area was flat marshland, covered with
+soft ‘ mud under 6 to 12 inches of water. The elevation at the accident
+site was approximately 8 feet above sea level.
+The left outer wing structure impacted the ground first; the No. 1
+engine,. and then the left main landing gear, followed immediately. The
+aircraft disintegrated, scattering yreckage over an area approximately
+1,600 feet long and 300 feet-wide. No complete circumferential c ros s -
+section remained of the passenger compartment of the fuselage, which
+was broken into four main sections and numerous small pieces. The
+entire left wing and left stabilizer were demolished. No evidence of in- -
+flight structural failure, fire, or explosion was found.
+. ..
+.- -9-
+The nature of the breakup precluded determination, by physical
+means, of the integrity of the primary flight control system before
+impact. The primary flight control positions were recorded, however,
+by the Dl?.DR. These data show that the control columns were in an
+aircraft noseup position when the crash occurred. The DFDR record
+depicted the spoiler positions as retracted; the three intact spoilers on
+the remains of the right wing were found, by inspection, to be retracted.
+The wing flap lever in the cockpit was set at 18O flap extension, and the
+extension of the inboard jackscrew on the inboard section of the right
+wing flap corresponded with that setting. The leading edge slat sections
+on the intact portion of the right wing were found fully extended. The
+wing flap and leading edge slat positions agreed with the DFDR record.
+The landing gear lever was in the geardown position . The right
+main landing ‘ gear, which remained in place, was down and locked.
+The left main landing gear and the nose landing gear, along with portions
+of their attach structure, were separated from the airplane and were
+ext ens ive ly damaged. The nose eear down-and-locked visual indicitfor
+s-ight and the nose wheelwell servic..e.light.~assemb.Ly~~ere~~othinplace
+and operative. - - - - The nose gear warning light lens assembly was jammed
+in a position that was 90° clockwise to and protruding a quarter of an
+inch from its normal position. Both bulbs in the ILnifWprprntit.
+. Except for the altitude portion of the first officer’ s Air Data
+Computer (ADc), both ADC’ s and the Pitot static instruments operated.
+satisfactorily during functional testing. The first officer’ s ADC sus-
+tained impact damage, and the altitude sensing portion of the unit could
+not be tested. The captain’ s ADC altitude, true airspeed, and calibrated
+airspeed validity flags were monitored by the DFDR. NO failures were
+recorded.
+The captain’ s and first officer’ s altimeters both indicated approxi-
+mately 75 feet below sea level. The readings on the captain’ s airspeed
+and vertical speed indicators were 198 knots and 3, 010 feet per minute
+down. The readings on the first officer’ s airspeed and vertical speed
+indicators were 197 knots and 2,950 feet per minute down. The captain’ s
+radio altimeter was set for a decision height of 30 feet, whereas the first
+officer’ s radio altimeter was set for 5i feet. The radio altimeter aural
+tone, which sounds during descent at 50 feet above the selected decision
+height, was recorded on the CVR‘ 2 seconds before impact.
+Functional tests of the captain’ s and first officer’ s attitude director
+indicators revealed that both units were capable of satisfactory operation.
+-
+- 10 -
+The two autopilot-engage switches and the two flight director
+system select switches were found in the “off” position. An altitude
+of 2, 000 feet was found selected in the altitude select window. The
+heading select window shovied a. 180’ heading selection. The vertical
+speed window showed a descent of 2,500 feet per minute.
+Preimpact malfunction was not evident in the examination of the
+aircraft hydraulic and electrical systems. Until the aircraft crashed,
+the DFDR recorded proper operation by the various controls and instru-
+ments which used hydraulic and electrical power.
+The No. 1 engine separated from its attach structure and came
+to rest near its point of’ initial impact. The No. 2 engine remained in
+place, and was relatively undama.ged. The No. 3 engine separated
+from its attach structure and came to rest near the remains of the right
+wing. All engines showed evidence of leading edge damage to the fan
+blades, breakage of the low-pressure (LP) fan blades, or blade bending
+in a direction opposite to the engine rotation. All of the LP fan discs
+were intact and secured; operational distress was not evident. The
+engine pressure ratio (EPR) values of each engine were recorded by
+the’ DFDR. The record showed that the EPR values of the NOS. 1, 2, ‘z
+and 3 engine were 1. 083, 1. 073, and 1. 066, respectively,. at the time -
+of ground impact.
+.,
+1. 13 Fire
+_.
+-.
+.’ \ There was no evidence of in-flight fire or explosion. After impact,
+a flash fire developed from sprayed fuel. Some of the burning fuel
+penetrated the cabin area, causing 14 passengers to suffer various degrees
+of burns on exposed body surfaces.
+1. 14 Survival Aspects
+hr
+The search for the aircraft and the initial rescue efforts tiere
+coordinated by the United States Coast Guard, which was notified of
+the accident by Miami tower controllers. Helicopters were airborne
+almost immediately from the Coast Guard station at Opa Locka, Florida.
+The crash site was !ocatcd about 15 to 20 minutes later. Despite the
+-.total darkness and the swampy condition of the site, as well as the
+relative remoteness of one group of survivors from another, rescue
+efforts were started immediately and were completed approximately
+4 hours later, Sixty-eight survivors were airlifted to local hospitals.
+.
+‘ -T
+:-
+-.
+..-
+‘ L.
+.
+.
+Y- - 11 -
+,
+,
+Most of the survivors were located in the vicinity of the cockp.it
+area, the midcabin service area, the overwing area, and the empennage
+section; these sections were located at the far end of the wreckzge path.
+In contrast, most fatalities were found in the center of the crash path.
+Crushing injuries to the chest were the predominant causes of death.
+1. 15 Tests and Research
+i
+Performance tests were conducted at Miami on January 7, 1973,
+using the Eastern Air Lines L-l 011 simulator, and on January 9, 1973,
+using an L- 1011 test aircraft. Before the flight tests, the computers
+(except the roll computers) from the accident aircraft’ s Avionic Flight
+Control System (AFCS), and a new flight data recorder were installed
+in the test aircraft.
+In addition to the tests in Miami, the Safety Board organized an
+Aircraft Performance Group at the Lockheed-California Company,
+Palmdale, California, to analyze the aerodynamic characteristics of
+the Lockheed L-1011 in relation to the flight performance characteristics
+of the accident aircraft. The DFDR and the CVR readouts from the
+Miami test aircraft were used by the group in the comparative analysis.,
+This group also conducted a collateral study of the aircraft’ s autopilot
+and autothrottle systems, based on normal operation, to determine if
+they were operational during the final moments of Flight 401. This
+..-.-..
+- ----_ - ..
+The accident flightpath was consistent with the established--A
+aerodynamic characteristics of the L-1011.
+..- ^ .-_.____.____________ _--A--,
+2. The autopilot was engaged at various times during the
+flight, and was in the control wheel steering (CWS) pitch
+mode during the last 288 seconds of the flight.
+3. The autothrottle system was not in use during the final
+descent.
+The AFCS computers were checked for operation. The computers
+for pitch control and autothrottle were found operative. Subsequent flight
+tests of the computers in th.e test aircraft simulating the flightpath of
+Flight 401 were satisfactory. .’
+Autoflight engage switches, altitude select controls, and speed
+control system selectors in the AFCS also checked satisfactory. The
+autopilot pitch control servo that interfaces the autopilot with the pri-
+mary flight controls likewise was bench tested with satisfactory results.
+,
+- 12 - - b
+:_ :. The throttle control servo in the
+throttle clutch system were tested,
+speed control system and the
+-_ and no discrepancies were uncovered.
+\ :
+The air data computers and the associated indicators were found
+to function satisfactorily.
+The CVR showed that the radio altimeters were operating at the
+time the aircraft impacted the ground.
+’
+1,. 16 Other Information
+The Lockheed L-1011 Avionic Flight Control System is composed
+of four major subsystems: the autopilot flight director system, the yaw
+stability augmentation system, the speed control syst.em, and the flight
+control electronics system.
+’ The autopilot flight director system (APFDS), which provides
+autopilot and flight-director pitch and steering commands, has two
+roll and two pitch computers. One set is designated the “A” system
+-iz . . \I? . . . and the other. the “B” system.
+:
+,_ - . $4
+: - ~The .“A” system relates to autopilot
+on.the captain’ s side; the ”
+“A” and to the flight director
+. . T B” system relates to autopilot “B” and to
+the flight director on the first officer’ s side. Each pitch and roll corn-
+‘ puter has- a dual channel with a self-monitoring capability. .Both autoiz’ -
+pilots cannot be operated simultaneously, except in the autoland mode.
+Ihe function and operation of the autopilot are displayed on the captain’ s
+and the first officer’ s panels through AFCS warning and AFCS mode
+annunicators. The APFDS engage panel, the Nos. 1 and 2 VHF navi-
+gat ion panels, the autothrottle system panel, the heading and pitch
+m o d e p a n e l , a navigation mode panel, and the altitude select panel
+are all located on the glare shield; they are the means by which the
+various functions of the AFCS are selected.
+9
+:-
+The basic mode of autopilot system operation is control wheel
+steering, In this mode of operation, the autopilot provides attitude
+1. ‘ _ stabilization with attitude changes effected by the application of light
+. . forces to the control wheel by the crew.
+. . .‘ .
+. .
+The autopilot, when eng’ aged in‘ a command mode of operation,
+will provide total control of the aircraft in accordance .with selected
+! : - heading,. pitch, or navigational system inputs. In this mode of oper-
+.’ ation, the autopilot signals are derived from various computers and
+. . sensors in the integrated avionics flight control system. .
+.
+I
+.
+. -
+,
+- 13 -
+When operating in any mode, the selected heading or pitch
+command function may be disengaged by an overriding 15-pound force
+i
+applied to the respective, i. e. , lateral or pitch, control system through
+\
+.
+the control wheel. If the force is applied to the pitch control system, i
+only pitch axis control will be effected, reverting to the basic attitude -.
+stabilization mode of operation. If the force is applied to the roll control .
+system, the autopilot engage lever will revert to the CWS position.
+The autopilot may be completely disengaged by moving the engage
+lever to “OFF” or by operating a button switch on either control wheel.
+An additional safety featu.re is incorporated into the autopilot design by
+limiting the control wheel induced force such that a pilot may at any
+time manually override autopilot signals.
+The altitude hold mode of operation is unique in that, although it
+is a command function, it may be engaged when the autopilot is selected
+to provide either basic CWS or Command operation. When altitude hold
+is selected, the autopilot provides pitch signals to maintain the altitude
+existing at the time of engagement. As described, pilot-applied pitch !
+forces on the control wheel will cause disengagement of the altitude
+hold function, reverting the autopilot pitch channel to attitude stabili-
+zation sensitive to control wheel inputs. The autopilot engagement lever
+will, how ever, remain in the previously selected position, i. e., either
+:CWS or sommand. It is possible, therefore, to disengage altitude hold
+without an accompanying “CMD DISC” warning appearing on the captain
+or first officer annunciator panels. The normal indications of such an .,
+occurrence would be only the extinguishing of the altitude mode select
+light on the glage shield and the disappearance of the “ALT” annunci-
+’
+ation on both annunciator panels.
+The two pitch computers in N310EA were not matched. The pitch
+override force required to disengage the altitude hold function in com-
+puter “A” was 15 pounds, whereas in computer “B” it was 20 pounds.
+As a result of the mismatch, it would be possible, with the “A” auto-
+pilot system engaged, to disengage the “A” XFCS computer, but not the
+“B” AFCS computer. In this situation, the altitude mode select light
+would remain on, the “ALT” indication on the captain’ s annunciator
+panel would go out, and the same indication on the first officer’ s
+annunciator panel would remain on, which would give the first officer
+the erroneous indication tnat the autopilot was engaged’ in the altitude
+hold mode.
+- 14 -
+- .
+2. ANALYSIS AND CONCLUSIONS
+.
+2.1 Analysis
+It was concluded from the investigation and the data obtained
+f r o m t e s t s , that the aircraft powerplants, airframe, electrical and s
+i
+Pitot static instruments, flight controls, and hydraulic and electrical
+systems were not factors contributing to this accident.
+‘ <
+;
+. .
+.
+Investigation of the Air Traffic Control responsibilities in this
+accident revealed another instance where the ARTS III system con-
+ceivably could have aided the approach controller in his ability to detect
+an altitude deviation of a transponder-equipped aircraft, analyze the
+situation, and take timely action in an effort to assist the flightcrew.
+In this instance, the controller, after noticing on’ his radar that the
+alphanumeric block representing Flight 401 indicated an altitude of 900
+! feet, immediately queried the flightsas to its progress. An immediate
+i
+positive response from the flightcrew, and the knowledge that the
+i ARTS III equipment, at times, indicates incorrect information for up
+f ‘ to three scans, led the controller to believe that Flight 401 was in no
+; immediate danger. The controller continued with his responsibilities ’
+’ to the five other flights within his jurisdiction.
+2’
+.
+: The Board recognizes that the ARTS III system was not ‘ designed’
+to provide terrain clearance information and that the FAA has no proce‘ -
+dures which require the controller to provide such a service. However, .
+it would appear that everyone in the overall aircraft control system has
+an inherent responpibility to alert others to apparent hazardous situations,
+even though it is not his primary duty to effect the corrective action.
+The destruction of the fuselage, with the possible exception of the
+cockpit area, was to such an extent that the generally accepted factors
+which affect occupant survivability could not be applied. Survivability
+in accidents generally is determined by these factors: a relatively intact
+environment for the occupants, crash forces which do not exceed the
+limits of human tolerance, adequate occupant restraints, and sufficient
+escape provisions. A useful distinction may, therefore, be made
+between impact survival and postcrash survival. Impact survival implies
+that the crash forces generated by the impact were of a nature which did
+not exceed the limits of the occupant’ s structural environment nor the
+occupant’ s physiological limits. Postcrash survival is determined by
+the occupant’ s successful escape from his environment before conditions
+become intolerable as a result of fire, water immersion, or other
+- 15 -
+. -
+postcrash conditions. This requires nonincapacitation and adequate
+exit provisions.
+From the above, it is evident that two important factors affecting
+impact survival were exceeded in this accident: loss of environmental
+protection and loss of restraint. The injuries of most of the fatalities
+can be attributed directly to these factors. Therefore, de’ spite the fact
+that 77 occupants survived, the Board cannot place this accident in the
+survivable category.
+The high survival rate is difficult to explain. The location of
+the majority of survivors near the ‘ larger fuselage sections would in-
+dicate that they remained with these sections until the velocity was
+considerably reduced or until thes-e sections came to a stop. Although
+the fuselage shell was torn away, thereby exposing the occupants to
+external hazards, the fuselage structure apparently did not impinge
+on these survivors. The Board believes, therefore, that the 76 cabin
+occupants survived because either their seats remained attached to
+large floor sections or the occupants were thrown ciear of the wreckage
+at considerably reduced velocities.
+A final survival factor which deserves attention is the design of
+the passenger seats in this aircraft. These seats incorporated emnergy
+absorbers in the support structure. Additionally, in contrast with the
+conventional floor tiedown arrangement of aircraft seats, each of the
+seat units in this aircraft was bolted to a platform, which in turn was
+fitted to tracks attached to basic aircraft structure. It was noted that
+many of the seat units remained attached to these platforms and that
+failures occurred because the basic aircraft structure was compromised,
+rather than the platform attachments. Although many seat leg failures
+also were noted, these failures occurred because forces were applied in
+an aft direction; the seats are stressed to withstand much lower loads
+in the aft direction than in a forward direction. In fact, the Federal
+Aviation Regulations do not have a stress requirement in the aft direction
+for aircraft seats. The Board is of the opinion that the design of the
+passenger seats in this aircraft materially contributed to the survival
+of many occupants.
+The thrust of the investigation was focused on ascertaining the
+reasons for the unexpected descerit. The areas considered were:
+I ..- -
+.
+.
+- 16 -
+1. Subtle incapacitation of the pilot.
+.
+2. The autoflight system operation.
+3. Flightcrew training.
+4. Flightcrew distractions.
+Subtle incapacitation ha’ d to be considered in view of the finding of
+a tumor in the cranial cavity of the captain. The medical examiner sug-
+gested that the space-occupying lesion could have affected the captain’ s
+vision particularly where peripheral vision was concerned. Additionally,
+in the public hearing held in connection with this accident, expert testi-
+mony revealed that the onset of this type of tumor is slow enough to
+.‘ allow’ an individual to adapt, by compensation, to the lack of peripheral
+vision so that neither he nor other close associates &ould.be aware of
+any changed behavior. It was also noted that the extent of peripheral
+vision loss, .in this case, could not be predicated with any degree of
+accuracy on iti size and location in the cranial cavity. ,,
+It was hypothesized that if the captain’ s peripheral vision was *.
+severely impaired, he might.:not have detected movements in the “ .i.
+altimeter‘ .and vertical speed indicators- while he watched the first -:
+officer remove and replace the npse gear light lens. However, the 1:
+captain’ s family,. close friends,and fellow pilots advised that he showed
+no signs of visual‘ difficulties in the performance of his duties and in q
+other activities requiring peripheral vision. In the absence of any
+indications to thercontrary, the Board believes that the presence of
+this tumor in the captain was not a causal factor in this accident.
+.
+In considering the use of the autoflight system, it was noted that
+the go-around was flown manually by the first officer until 2336:04
+when the captain ordered engagement of the autopilot. The affirmative
+reply by the first officer implies that the autopilot was engaged at this
+time. Verification of such action‘ was provided by the aircraft per-
+formance group analysis of the DFDR readout which showed pitch control
+.: .‘ .I... .,,
+_. :
+- 17 -
+--.-- -..-- - ___.. - .____
+surface motions indicative of autopilot control in either altitude hold
+or pitch CWS. _ 5/ Which of the autopilots was engaged, i. e. , s y s t e m
+“A” or system “B, ” could not be determined. Testimony by pilots at
+the public hearing indicated that the first officer would have probably
+engaged system “B” to the command position with the altitude hold and --
+.:
+heading select functions selected, in accordance with general practices.
+At the same time, the first officer probably selected 2, 000 feet into
+the altitude select/alert panel.
+..
+At approximately 2337, some 288 seconds prior to impact, the
+DFDR readout indicates a vertical acceleration transient of 0. 04 g
+causing a 200-f. p. m. rate of descent. For a pilot to induce such a
+transient, he would have to intentionally or inadvertently disengage
+the altitude hold function. It is conceivable that such a transient
+could have been produced by an inadvertent action on the part of the
+pilot which caused a force to be applied to the control column. Such
+a force would have been sufficient to disengage the altitude hold mode.
+It was noted that the pitch transient occurred at the same time the
+captain commented to the second officer to “Get down there and see if
+the . . . nose wheel’ s down. ” If the captain had applied a force to the
+control wheel while turning to talk to the second officer, the altitude
+hold function might have been accidentally disengaged! Such an
+occurrence could have been evident to both the captain and first officer
+by the change on the annunciator panel and the extinguishing of the
+,altitude mode select light. ._- If-autopilot system “A” were engaged,
+however, the discrepancy in the disengage force comparators, i. e., .
+5/ It was concluded that the autopilot was engaged at various times -
+throughout the flight from JFK. A complete mode assessment
+summary for the pertinent portions of the 27-minute period preceding
+impact is contained in Appendix G. In attempts to distinguish between
+autopilot “ON” and “OFF, ” considerable reliance was placed on DFDR
+data which showed the ratio between pilot and copilot control cable system
+input motion in the roll axis, since the ratio varies between manual
+and autopilot operation. This characteristic of the L- 1011 lateral
+control system, verified by ground and flight tests, was used to dis-
+tinguish between autopilot “ON” and “OFF” whenever there was
+appreciable roll activity. , During lateral maneuvering with CWS,
+this ratio becomes less dkfinitive, and, although autopilot “OX”” and
+“OFF” status can be determined, positive identification of the selected
+mode becomes more difficult-
+,
+- 18 -
+the mismatch between computers “A” and “B” would become a
+significant factor in this analysis. Because of this mismatch and
+the system design, a force eserted on the captain’ s control wheel
+in excess of 15 pounds, but less than 20 pounds, could result in dis-
+engagement of the altitude hold function wit’ hout the occurrence of a
+corresponding indicption of the first officer’ s annunciator panel.
+This would lead to a situation in which the first officer, unaware
+that altitude hold had been disengaged, would not be alerted to the
+aircraft altitude deviation. If the autopilot system “B” was engaged,
+as is believed to have happened, such a situation could not have
+occurred since a force in excess of 20 pounds would have been requirecl
+to disengage the altitude hold function and both annunciator panels
+would have indicated correctly. Therefore, the Board concludes that
+the mismatched pitch computers in the autoflight system were not a
+critical factor in this accident.
+However, it is significant that recognition of the aforementioned
+lOO-foot loss took 30 seconds after the 0. 04 g pitch transient occurred,
+and after a heading change was requested by approach control. The
+DFDR readout indicates a 0. 9’pitchup maneuver coincident with a
+change of heading. It was concluded from the DFDR analysis of lateral
+control system motions that the heading select mode was used for the
+last 255 seconds of flight to control the aircraft to a heading of 270’ .
+Since selection of the new heading would have required action by the
+first officer, which included attention to the autopilot control panel,
+it is reasonable to assume that he’ should have been aware of the
+selected heading select functions at this time. It is also reasonable
+to assume that the autopilot was set up to provide pitch attitude stabili-
+zation sensitive to control wheel inputs and heading select, wherein
+lateral guidance signals were provided to achieve and maintain the
+270’ heading.
+In the pitch attitude stabilization mode, the aircraft will respond
+to intentional or unintentional movements of the control wheel. Furtbcr-
+more, while the aircraft is operating in this mode, the effect of aircraft
+thrust changes, without compensating pitch attitude control inputs, will
+be directly related to changes in vertjc’ al sp’ eed.
+A series of reductions in power began 1.6.O seconds before impact.
+The power reductions and slight nosedown p:ifc.h.control movements to-
+gether were responsible for the unrecognized .de,g’ cent’ which followed. ...
+Extensive f!ight testing and simulation studies.of N310EA’ s entire
+Speed Control System (SCS) (autothrottle) were conducted to identify the
+- 19 -
+reason for the series of reductions in thrust during the last few
+minutes of the flight. Thrust reductions generated by the N310EA
+autothrottle components installed in the test aircraft were dissimilar
+to those reductions recorded on the DFDR from the accident aircraft.
+In one series of flight tests, the autothrottle speed reference was
+set to 175 knots indicated airspeed (IAS);and a descent rate of 200
+feet per minute was established. The airspeed was maintained to
+within f 3 knots of the reference speed by the SCS, until the auta-
+throttleauthority limits were reached (flight idle thrust}. Such
+control during the flioht of N301EA was not evident; a 15-knot increase .F!
+in airspeed did occur,‘with throttle authority still available. Com-
+parison of the autothrottle system simulation data with Flight 401’ s
+airspeed and acceleration data confirmed that the throttles would
+have been retarded to the flight idle position relatively quickly.
+Reference to the DFDR shows that power on the No. 3 engine
+was inc reas ed slightly, 1 minute before reduction of power on the
+Nos. 2 and 3 engines (the initiation of the descent profile). This is
+a normal manual adjustment typically made by a pilot, and cannot
+be accomplished by the autothrottle system. Additionally, the speed
+found set on the autothrottle selector dial was 160 knots, a speed
+well below that attained or maintained during the last 4 minutes of
+flight.
+An indication that the throttles were not retarded by a properly
+operating autothrottle system is the sequence in which the power was
+reduced. The first power reduction occurred on the NOS. 2 and 3
+engines 160 seconds before impact. In the second reduction, the
+power on the No. 1 engine was matched with the power on the NOS. 2
+and 3 engines. Finally, the power onthe No. 1 engine was retarded
+for more than 10 seconds before reduction of power in the two other
+engines. The throttles were clutched together and driven simultaneously
+by one servo. If the autothrottle system was “on, ” only intermittent
+and random failures in the clutch system would have produced
+asymmetrical reduction of power similar to that typical of manual
+throttle movement. Since the autothrottle system of N310E-4 was
+found to have been functional, the Board does not believe that this
+system was involved in the reduction of thrust.
+Another explanation of the thrust reductions would seem to be
+one of two alternatives -- either an inadvertent or an intentional action
+by one or both of the pilots. The captain might have inadvertently
+- 20 -
+bumped the throttles with his right arm when he leaned over the
+control pedestal to assist the first officer. Similarly, the first
+officer’ s left arm might have accidentally bumped the throttles
+while he was occupied with the nose gear indicating system.
+Because the EPR reductions reflected by the DFDR do even out,
+at times, one of the pilots might have noted an uneven EPR display
+(which usually accompanies movement of a throttle), and his re- ’
+action might have been to reposition the throttle without reference
+to the flight instruments.
+The other alternative is that one of the pilots intentionally
+! reduced thrust power when he noted that the speed of the aircraft
+was exceeding the desired speed (160- 170 knots) for the flight
+i regime involved. The intentional adjustment, similarly, most prob-
+I ably was made with reference to the airspeed indicators only. Lf
+j the crew relied on the autoflight system to maintain the aircraft’ s
+i altitude, it is conceivable that a correction in airspeed might have
+I been made without reference to other instruments. Of the two
+i possibilities, the Board believes that the throttles were intentiona!ly
+\ retarded by one or both of the pilots.
+Regardless of the way in which the status of the autoflight
+system was indicated to the flightcrew, or the manner in which the
+thrust reduction occurred, the flight instruments (altimeters, ’
+vertical speed indicators, airspeed indicators, pitch attitude indi-
+CatOiS, and the autopilot vertical speed selector) would have indi-
+cated abnormally for a level-flight condition. Together with the
+altitude-alerting, l/2-second, C-chord signal, the flight instrument
+indications should have alerted the crew to the undesired descent.
+The throttle reductions and control column force inputs which
+were made by the crew, and which caused the aircraft to descend,
+1 suggest that crewmembers were not aware of the low force gradient
+,I input required to effect a change in aircraft attitude while in CWS.
+\ The Board learned that this lack of knowledge about the capabilities
+of the new autopilot was not limited to the flightcrew of Flight 401.
+Pilot training and autopilot operational policies were studied exten-
+sively during the field phase of the investigation, and were discussed,
+at great length, in the public hearing connected with this accident.
+Although formal training pro\*ided adequate opportunity to become
+familiar with this new concept of aircraft control, operational
+experience with the autopilot was limited by company policy. Com-
+pany operational procedures.did not permit operation of the aircraft
+in CWS; they required all operations to be conducted in the command
+modes. This restriction might have compromised the ability of
+‘ Y
+e
+rob-
+‘ e
+ally
+le
+3nt
+ch
+znt
+es
+Tl-
+s ed,
+T-L-
+i f t
+2nd
+pilots to use and understand the uniqu
+autopilot .
+e CWS feature of the new
+However, the Board believes that the present Eastern Air
+Lines training program is adequate but is in need of more frequent
+quality control progress checks of the student during the ground
+school phase of the training and an early operational proficiency
+followup check in the flight simulator after the pilot has flown the
+L-1011 in scheduled passenger service.
+Another problem concerns the new automatic systems which
+are coming into service with newer aircraft and being added to
+older aircraft. Flightcrews become more reliant upon the function-
+ing of sophisticated avionics systems, and their associated
+to fly the airplane. This is increasingly so as the reliability of such
+equipment improves. Basic control of the aircraft and supervision
+of the flight’ s progress by instrument indications diminish as other
+more pressing tasks in the cockpit attract attention because of the
+overreliance on such automatic equipment.
+Pilots’ testimm bdic&.eri that dependence on the reliability ’ - -
+and capability of the autopilot is actually greater than anticipated in3 ’ ,
+its early design and its certification. This is particularly true in
+the cruise phase of flight. However, in this phase of flight, the
+autopilot is not designed to remain correctly and safely operational,
+without performance degradation, after a significant failure occurs.
+In any event, good pilot practices and company training dictate -’ -Y
+that one pilot will monitor the progress of the aircraft at all times
+and under all circumstances.
+The Board is aware of the distractions that can interrupt the
+’ routine of flight. Such distractions usually do not affect other flight
+requirements because of their short duration or their routine
+integration into the flying task, However, the following took place
+in this accident:
+1. The approach and landing routine was interrupted by an
+abnormal gear indication.
+-1 2. The aircraft was flown to a safe altitude, and the autopilot
+was engaged to reduce workload, hut positive delegation of
+aircraft control was not accomplished.
+I _ ..- -_-_.. .------ -- .r---___-_ .._ -. .__-- --
+I
+- 22 -
+3.
+5.
+i
+6.
+The nose gear position light lens assembly was removed
+and incorrectly reinstalled. \
+The first officer became preoccupied with his attempts
+to remove the jammed light assembly.
+The captain divided his attention between attempts to help
+the first officer and orders to other crewmembers to try
+other approaches to the problem.
+The flightcrew devoted approximately 4 minutes to the
+distraction, with minimal regard for other flight
+requirements.
+It is obvious that this accident, as well as others, was not the
+final consequence of a single error, but was the cumulative result of
+,’
+L
+.‘ --..
+several minor deviations from normal operating procedures which
+‘ .,_ triggered a sequence of events with disastrous results.
+2.2 Conclusions
+(a) Findings
+1. The crew was trained, qualified, and certificated for
+the operation.
+2. The aircraft was certificated, equipped, and maintained
+in accordance with applicable regulations.
+8, 3. There was no failure or malfunction of the structure,
+powerplants, systems, or components of the aircraft
+before impact, except that both bulbs in the nose landing
+gear position indicating system were burned out.
+4. The aircraft struck the ground in a 2S” left bank with
+a high rate of sink.
+5. There was no fire until the integrity of the left wing
+fuel tanks was destroyed after the impact.
+6. The tumor in the cranial cavity of the captain did not
+contribute to the accident.
+7. The autopilot was utilized in basic CWS.
+8. The flightcrew was unaware of the low force gradient
+input required to effect a change in aircraft attitude
+while in C WS .
+9. The company training program met the requirements
+of the Federal Aviation Administration.
+\i 10. The three flight crewmembers were preoccupied in an
+attempt to ascertain the position of the nose landing
+gear.
+11. The second officer, followed later by the jump seat
+occupant, went into the forward electronics bay to
+check the nose gear down position indices.
+‘ -12.
+‘ v 13.
+The second officer was unable visually to determine
+the position of the nose gear. -zz J&e
+The flightcrew did not hear the aura! altitude alert
+which sounded as the aircraft descended through
+1, 750 feet m. s. 1.
+14. There were,,several manual thrust reductions during
+the final descent. 1
+t
+15. The speed control system did not affect the reduction
+in thrust.
+16.
+17.
+The flightcrew did not monitor the flight instruments ,
+during the final descent until seconds before impact. 1
+The captain failed to assure that a pilot was monitoring
+the progress of the aircraft at all times.
+(b) Probable Cause
+The National Transportation Safety Board determines that the
+probable cause of this accident was the failure of the flightcrew to
+monitor the flight instruments during the final 4 minutes of flight, and
+to detect an unexpected descent soon enough to prevent impact with the
+ground. Preoccupation with a malfunction of, the nose landing gear
+- 23 -
+.
+- 24 -
+position indicating system distracted the crew’ s attention from the
+/
+instruments and allowed the descent to go unnoticed.
+3. RECOMMENDATIONS
+As a result of the investigation of this accident, the Safety Board
+on April 23, 1973, submitted three recommendations (A-73-l 1 through
+13) to the Administrator of the Federal Aviation Administration: .Copies
+of the recommendation letter and the Administrator’ s response thereto
+\ are included in Appendix H.
+..
+Recommendations concerning the crash survival aspects of this
+accident have been combined with those of two other recent accidents
+and were submitted to the FAA on June 15, 1973. (See Appendix I...)
+_.
+The Board further recommends that the Federal Aviation
+Administration:
+Review the ARTS III program for the possible develop-
+ment of procedures to aid flightcrews when marked deviations
+in altitude are noticed by an Air Traffic Controller. (Recom-
+mendation A-73-46. )
+The Board is aware of the present rulemaking proceedings initiated
+by the Flight Standards Service on April 18 concerning the required in-
+stallation of Ground Proximity Warning Devices. I-lowever, in view of
+this accident and of previous recommendations on this subject made by
+.this Board, we urge that the Federal Aviation -4dministration expedite
+its rulemaking proceedings.
+- 25 -
+-BY THE NATIONAL TRANSPORTATION SAFETY BOARD
+June 14, 1973
+IS/
+/S/
+IS/
+IS/
+IS1
+JOHN H. REED
+Chairman
+FRANCIS H. McADAMS
+hiember
+LOUIS M. THAYER
+Member
+ISABEL A. BURGESS
+Member
+WILLIAM R. HALEY
+Member
+- 26 -
+1. Investigation
+APPENDIX A
+INVESTIGATION AND HEARING
+The National Transportation Safety Board received notification of
+the accident at 0025 eastern standard time on December 30, 1972, from
+the Federal Aviation Admin’ istration. An investigation team was dis-
+patched immediately to the scene. Investigative groups were established
+for Operations, Air Traffic Control, Witnesses, LVeather, Human Factors,
+Structures, Powerplants, Systems, Flight Data Recorder, and Cockpit
+Voice Recorder. An Aircraft Performance Group was formed at the
+Lockheed-California Company’ s flight test facility in Palmdale, California.
+The Federal Aviation Administration, Eastern Air Lines, Lockheed-
+California Company, Rolls-Royce (1971) Limited, the Air Line Pilots
+Association, and the Air Line Stewards and Stewardesses Association
+participated and assisted the Board in this investigation.
+2. Hearing
+A public hearing was held at the Miami Springs Villas, Miami
+r
+‘ Springs, Florida, March 5 through March 9, 1973. Federal Aviation
+I .- --.--
+Administration, Eastern Air Lines, Inc. , Lockheed-California Com-
+_.--...
+pany; -Air-Line Pilots Association, ‘ and the Aviation Consumer Action
+i
+Project were parties to the hearing.
+3. Preliminary Report
+A preliminary report of the investigation was released by the
+Safety Board on January-l 1, 1973.
+I
+:d
+nia.
+!-
+- 27 -
+APPENDIX B
+AIRMAN INFORMATION
+Captain Robert A. Loft, aged 55, was employed by Eastern Air
+Lines on September 20, 1940. He received his Airline Transport
+Rating on July 15, 1942, and was promoted to captain on February 8,
+1951. Captain Loft qualified for the DC-8 on March 13, 1969. He
+completed his L-1011 simulator check on April 20, 1972, and his air-
+craft flight check on June 7, 1972. Both checks were observed by an
+FAA inspector. Captain Loft’ s ground school instructor rated him
+satisfactory for the entire 8 days of his L-1011 training. Captain Loft
+received 2 hours and 30 minutes of flight training in the L- 1011 air-
+craft. He completed his rating ride in 1 hour and 30 minutes. His
+initial line check was completed on July 1, 1972. The officer giving
+the flight check stated, in part, in his comments, “Good knowledge
+of aircraft and procedures. ” Captain Loft’ s last first-class medical
+certificate was issued on November 21, 1972, with the limitation that
+“The holder shall possess correcting glasses for near vision. ”
+First Officer Albert J. Stockstill, aged 39, was employed by
+Eastern Air Lines on August 7, 1959, as a Flight Engineer. He had
+prior experience as an Air Force pilot. First Officer Stockstill com-
+pleted his Second-in-Command training in the DC-8 on December 13,
+1971. He began his L-1011 training on March 6, 1972. He completed
+his oral check on hfarch 15, 1972, and his transition check on March
+27, 1972; both were satisfactory. On June 1, 1972, he satisfactorily
+completed his First Officer qualification, which included Category
+III-A maneuvers. First Officer Stockstill’ s last first-class medical
+certificate was issued on April 11, 1972, with no limitations.
+Second Officer Donald A. Repo, aged 51, was employed by Eastern
+Air Lines on September 11, 1947, as an aircraft mechanic prior to
+attendance at an Eastern Air Lines flight engineer school. On November
+19, 1955, he qualified for his Flight Engineer Certificate, and on April
+13, 1967, he qualified for his Commercial Piiot Certificate, with airplane
+single-engine land and instrument privileges. He began his L-1011
+training on September 18, 1972. He completed his oral examination on
+September 29, 1972, and his simulator check on October 5, 1972. On
+October 3, 1972, he received a l-l/2 hour walk around of L-1011,
+N3 1 OEA. On October 7, 1972, Second Officer Repo completed his
+- 28 -
+APPENDIX B
+aircraft check, which included the emergency and abnormal proce-
+dures associated with the hydraulic systems and the ‘ landing gear.
+On December 19, 1972, he completed his line check. His last
+second-class medical certificate was issued on August 10, 1972,
+with the limitation that “The holder shall possess correcting glasses
+for near vision. ”
+The following is a listing of pertinent flightcrew information:
+Item
+Age 55
+Date of birth 3/17/17 6
+Time L-1011
+Total time
+Certificates
+Numbers
+Ratings
+Hours flown
+24 hrs. prior
+this flight
+Hours flown
+this flight
+Capt. Loft F/O Stockstill S/O Repo
+39 51
+9/33 S/10/21
+280 hrs. 306 hrs. 53 hrs,
+29, 700 hrs.
+ATR
+5,800 hrs.
+ATR & FE
+15, 700 hrs.
+FE, A&P &
+Commercial
+ATR-464- 38 ATR-1311877
+FE- 1547248
+FE-1752585
+Comm. -13278
+A&P-291 795
+AMEL, D C - 3 - 4 , AMEL, D C - 3
+6, 7, 8, M202, Comm. Priv.
+404, L-49, ASEL. FE -
+L-188 DC-7, L-188
+L-1011 B-727
+B-751/720
+CW-46
+Comm. Priv.
+ASEL k Inst.
+F E - Recip.
+Turbo Prop gi
+Turbo Jet
+2:25 2
+2:22 2
+25
+22
+5:oo
+2:22
+Item Capt. -Loft F/O Stockstill S/O Repo
+- 29 -
+Duty time
+last 24 hrs. 9:52
+,
+9:52 ;.;
+APPENDM B
+9:52
+Rest24hrs. ; . .
+prior to
+accident 14:08 14:08 14:08
+All 10 flight attendants were qualified.in‘ accordance with existing
+regulations.
+..
+,
+- 30 -
+APPENDIX C
+AIRCRAFT HISTORY
+Aircraft N310EA, a Lockheed L-1011-385-1, serial NO. N193A- -
+1011, was operated by Eastern Air Lines, Inc., and registered to the
+Manufacturers National Bank of Detroit, Michigan. It was received
+by Eastern Air Lines on August 18, 1972, and placed into scheduled
+service on August 21, 1972. At the time of the accident, it had accu-
+mulated 986 hours and 502 landings. Scheduled maintenance was
+accomplished by “A” (line) and “C” (major) phase checks. The air-
+craft had accumulated 132 hours and 69 landings since the last “C”
+check and 19 hours and 10 landings since the last “A” check.
+The aircraft was equipped with three Rolls-Royce, RB 21 l-22C,
+engines . Engine serial numbers and times were as follows:
+Engine Date Serial TSO F 1 ight Hours Since Cycles Since
+Location Installed Number Hours Cycles Installed Installed -
+1 10-30-72 10071 807 403 407 252
+2 12-14-72 10072 1144 632 130 65
+3 12-S-72 10061 711 686 164 104
+The weight and balance manifest for this flight indicated that the
+aircraft was within its weight and balance limitations both at takeoff
+and at the time of the accident.
+There were 85, 000 pounds of fuel aboard the aircraft upon departure
+from New York. The planned fuel burn-off for the flight to Miami was
+42, 000 pounds.
+From October 17, 1972, to November 14, 1972, N310EA was used
+for the installation and testing of modified Fault Isolation kfonitoring
+(FM) equipment under operating conditions. Fault Isolation Monitoring
+is the system used on the L-101 1 aircraft’ s Avionic Flight Control
+System to identify detected faults within the autopilot system. A com-
+plete set of modified AFCS computers was installed in t’ ne aircraft on
+October 29, 1972, to evaluate the revised FM circuitry. On November
+14, 1972, the modified FM equipment was removed, and the original
+AFCS computers were reinstalled in the aircraft.
+- 31 -,
+APPENDIX C
+Company records indicated that N310EA had been maintained
+in accordance with colnpany procedures and with FAA requirements.
+.. Investigation revealed that N310EA was equipped with mismatched
+autopilot pitch computers. The “A” system pitch computer would re-
+vert from altitude hold to control wheel steering with only 15 pounds
+of’ pitch pressure on either control wheel.’ The “B” system, however,
+would not revert until it sensed 20 pounds.of pressure. On July 15,
+1972, Lockheed Serv!ce Bulletin No. 093-22-012 (nonmandatory-) was
+issued, calling for the modification of pitch computers, which changed
+the 20-pound release value to a 15-pound release value.
+‘ /
+_ .
+:
+......
+: ,‘ :
+;. .
+; .’-. L
+:
+. _.
+: /.
+. ‘ I : -. ”
+.. .
+. . ‘ _
+._
+.
+_.
+-
+:
+:
+.._.. .
+-.
+-f . .-. ,;, ; ;
+. . . . _ ;. :, * I. e.
+: ., : i
+. . :
+7 ji
+* . . . . i
+-:-f -;- i
+.-.- 4 -;,:,: j
+:
+j
+!
+!,
+_: :
+.i .+ :
+I ’ “ ’ b
+. . . .
+- ., .,“ ;~~.*.~~.‘ ~ ::-,.: :;‘ . :
+_ - -.. . ,.,,,, :
+- . . . . . .
+_
+:::
+‘ _! j, :-
+_..! i.:; i:.
+: : /.
+..;.;‘ .
+1 :.I I_
+! ., ‘ .I -.i.
+i . . / ._: 41..
+:
+! i
+I ; ‘ -
+I,
+_, :. !
+I
+i !I : _‘ ,._.i_
+., ; .‘:.. I ._
+: I _ _! :
+! !
+.,..;
+/ / . .
+j I ___--..- L. ._. ..”
+.,.._ \.e;“ Nv,A1l ri--. I - -...--- -‘ --.
+H;AMI INTtRNATlONAL A I R P O R T
+a
+16.
+17.
+18. I
+19.
+?O.
+LEGEND:
+Smell piecer of leit-hand Wing, outer structure.
+Smell Fngine parts-? fan hlot!e:, Oil cooler.
+Engine mount frame. port of No. I fan case, oil ccavengs filter.
+No. 1 Pylon upper :upport structure and front beam fittings.
+Section of left-hand wing tip.
+Section of left horironttil rlobilizsr leading edge.
+a! ft. ,ection of kft e~evarOr panel.
+Ew$na nose cowl-upper half.
+Scgttcrtd debris Irun gollrv, c a b i n i n t e r i o r and cargo compts.
+Engine hotstream spoiler section.
+Section cl lcfchond wing upper surface.
+Section of left-hand wing, No. 1 engine.
+P o r t i o n of N o . I thrurt rtivurter cupport r i n g .
+N o w l a n d i n g oeor strut osrembly.
+Right-how! wing ports- i n and around crater.
+Section of Cabin f!ow with 4 first closr seats.
+Srcrice o f cobin and right-hwd wing.
+: I . N o . 3 Engine.
+APP:NDI!! E
+Z?. Forward Fureloge inc!udinC f l i g h t stotion.
+73. A f t Fwuloge, Aftcrbaiy, No. 2 Engine ond remains of Empennogo.
+24. S e c t i o n o f Furel4go-galley area.
+-m
+_.. _j “ _&M ___... -. .
+...-_ _. ._ .-- ~. . _.. _._ -. - _. .-., .- __ _ - . . .
+FLIGHT PATH
+SUMMARY
+EAL FLT. 401
+12.29-72
+INTERNATIONAL
+: 7 $
+.I.
+-_ ____ ._.____ -.. _ ._.. _,._-._C- ..- .-:
+. __ .
+.
+:-. .--
+*
+APPENDIX G - 38 -
+SIODE ASSESSMENTSIJ~PURY
+TIME t I TUS
+ROL'
+CWS
+A
+PITCH
+CKS
+rOPILOT
+4LTITUDE
+:APT/HOL SELECT
+IGAGE sl
+VERTICi
+SPEEI
+BEFORE
+IMPACT NWEUVER
+27 min. Descent to
+to 9700 feet
+20.6 min. altitude
+OFI
+20.6 min. Altitude Cap-
+to ture at 9700
+19.3 min. feet altitude
+19.3 min. Level flight
+to at 9700 feet X
+16.3 min. altitude
+420 sec. Level out at
+to 2000 feet n”
+373 sec. altitude
+373 sec. Period before
+to Autopi lot #
+355 sec. engage order
+355 sec. Period after
+t0 autopilot en-
+278 sec. gage order;
+left turn
+with 12O
+roll angle
+270 sec. Acquire head -
+to ing of 270°
+220 sec.
+220 sec. None -
+to constant
+140 set heading
+1 4 0 sec. Pitch over
+to and descent
+20 sec.
+20 to 0 Left turn
+sec. t o w a r d 180’ ;
+ImD2ct
+SECMEKT
+X
+X
+*prf!
+Xafter
+288
+s e c.
+*pre
+288
+sec.
+..
+7
+x //
+4
+X
+lpre
+tfter
+!56
+;ec .’
+*after
+256
+sec.
+8
+9
+-.
+.\
+10
+*
+333 THE X DENOTES THE NODE ENGAGED AS INDICATED BY THE PERFORUKE A'JALYSIS.
+THE * DESOTES EITHER OF TWO MODES IKDICATED.
+TEE # DEWTES POSSIBLE PIODES WHEN MORE THU TN0 ARE POSSIBLE.
+-39-
+APPENDIX H
+UNITED STATES OF AMERICA
+NATIONAL TRANSPORTATION SAFETY BOARD
+WASHINGTON, D.C.
+ISSUED: Nay 2, 1973
+Adopted by the NATIONAL TRANSPORTATION SAFETY BOARD
+at its office in Washington, D. C.
+on the 11th day of April 1973
+_------- -__--_--_-------------------
+FORWARDED TO: 1
+Honorable Alexander P. Butterfield )
+Administrator
+Federal Aviation Administration
+Washington, D. C. 20591
+is
+1
+_--me _---__--_----------------------
+-iI SAFETY .RECOMMENDATIONS A-73-11 thru 13
+'\I.
+The National Transportation Safety Board's current investigation of
+a fatal air carrier accident involving an Eastern Air Lines, Inc., L-1011,
+h310EA, which crashed near Miami, Florida, on December 29, 1972, has
+revealed two areas in which we believe early corrective action is needed
+to prevent the recurrence of similar accidents.
+The airplane involved crashed about 6 minutes afterthe crew kad
+executed a missed agrcach in order to check the status of the nose gear.
+The green, gear-safe annunciator light had failed to illuminate when the
+gear handle was placed in the gear-dab-n position during the initial approach.
+Our investigation indicates that at the.tise of the acci,dent, all
+three flight crewmem*oers were engrossed in an attempt to ascertain whether
+the landing gear k-as safely extended, and they were not aware until just
+before impact that the airplane had departed the 2,000-foot clearance alti-
+tude. The flight engineer was in the fomard avionics center, located
+beneath the cockgis flcor and just forward of the nose whtelvell, attempting
+to ascertain visually, by means of an cptical sight tube, whether the gear
+wzs locked down.
+The flight engineer was not successful in his attempt to vie-~ the
+rods on the nose lending gear linlcage which indicate whet her the gear is
+loclied d0L-n. if this is to be done at nig'nt, a light in tk2 noti2 vheell.Jell
+must be turne,:! on by a s-ditch on the captain's eyebrow panel. Tr_e sersoc
+who attempts to vies; the indica';or rods must pull a knob located ov2r an
+optical sight in order to remove a cover on the far end of the sight,. 12
+this C'SO, the flight engineer twice noted that.he cculd see nothing -- t-hat
+it was "pitch dark." Wa d o rr,t !ir?ow whether ( 1 ) the czgtair. 2v2r attef?ced
+I
+I
+APPENDIX H
+Honorable Alexander P. Butterfield _ 40 -
+to turn on the light (the crew seemed to think that the light should bs
+on whensv2r the landing gear was extended), (2) the light vas inoperative,
+or (3) the flight engineer properly operated the knob which removes the
+optical t*ube cover. In any event, the Safety Board believes that this
+unsuccessful attempt to ascertain wha' ibher the nose landing gear was locked
+down contributed to the distraction cf the flightcrex during this flight.
+For this reason, the Safety Board believes that this system should be oper-
+able by one man; therefore, the switch for the wheelwell light should be
+located near the optical sight. Furthermore, a placard outlining the
+proper use of the systen should be installed near the light sxitch and the
+knob for the optical sight cover.
+Th2 reason for the descent from an altitude of nearly 2,930 feet has
+not yet been d-etermined. The cockpit voice recorder (03) indicates, how-
+ever that the altitude select, alert system sounded shortly after the initial
+descint..
+.
+This alert system is comprised of a single C-chord and a flashing
+pznber alert light. When the airplane departs the selected altitude by
++ 250 feet, the C-chcrd soiL'ds once, and the amber light flashes continuously. *
+%w2-f2r, on the Eastern Air Lines configuration, this light is inhibited
+from operating below 2,503 feet radar altitude. Thus, cr. the accident air-
+plane, the only altitude alert system warning to the crew that the airplane
+h-as descending x'as the single C-chord. There is no evidence on the 0T.R to
+indicate that the crew ever heard the audible warnirig as the airplane main-
+tained a continuous descent into the ground.
+Therefore, the Safety Board reco-mmends that the Federal Aviation
+Administration:
+\i. Require the installation of a switch for the L-1011
+nose wheel~ell light near the nose gear indicator
+optical sight.
+\ 2. Require, near the optical sight, the installation of
+A placard which explains the use of the system.
+\'3* Require that the altitude select alert light system on
+Eastern Air Lines-configured L-1011 airplanes be modified
+to pro*Jidt a flashing light warning to the crew whenever
+an airplane departs any seleL~- a-L+ el-tit;l<;,t by 2 250 fttt,
+inciuding operations below 2,5*G;'J feet radar altit:-Ze.
+b!tzicers of cur Bureau of Pviaticn Safety Ml1 be available for ccn-
+sultaticn in the 250~2 rrattzr if desired.
+Honorable Alexander P. Butterfield -41-
+APPENDIX H ;
+These .recommendations will be released to the public on the issue
+date shown above. No public disseriiination of the conterits of this
+docuent should be made prior to that date.
+._ H--- -.
+..
+Reed, Chairman; McAdams, Thayer, Burgess, and Haley, Members,
+concurred in the above recomendations.
+APPENDIX H - 42 -
+DEPARTMENT OF TRANSPORTATION
+FEDERAL AVIATION ADMINISTRATION
+May 14, 1973
+WASHINGTON. D.C. 2059i)
+Honorable John H. Reed
+Chairman, National Transportation Safety Board
+Department of Transportation
+Washington, D. C. 20591
+Dear Mr. Chairman:
+This replies to your Safety Recommendation A-73-11 thru 13
+issued May 2, 1973, concerning modifications to preclude the
+recurrence of an accident such as the Eastern Air Lines, Inc.,
+L-1011, N3lOEA, which crashed near Miami, Florida, on
+December 29, 1972.
+We are studying the recommendations and will advise what actions
+will be taken as soon as our evaluation is completed.
+Sincerely,
+. Acting Administrator
+OFFICE OF
+THE ADMIHISTRATL
+-43 - APPENDIX I
+UNITED STATES OF AMERICA
+NATIONAL TRANSPORTATION SAFETY BOARD
+WASHINGTON, D.C.
+ISSUED: June 25, 1973
+Adopted by the EiATIONAL TRANSPORTATION SAFETY BOARD
+at its office in Washington, D. C. .
+o n t h e 6 t h day of June 1973
+_-----------------------------------
+FORWARDEDTO: 1
+Honorable Alexander P. Butterfield
+Administrator *I
+Federal Aviation Administration )
+Washington, D. C. ‘ 20591
+SAFETY RECOMMENDATIONS A-73-39 thru 43
+The Xational Transportation Safety Board has under investigation,
+three accidents involving: a United Air Lines Boeing 737 at Nidk-ay
+Airport, Chicago, Illinois, on December 8, 1972; a North Central
+Airlines DC-g, at O’ Hare International Airport, also at Chicago,
+Illinois, on December 20, 1972; and an Eastern Air Lines Lockheed
+L-1011 at Miami, Florida, on December 29, 1972.
+The Safety Board has identified several areas in occupant sur-
+vival and evacuation common to these accidents which it believes merit
+remedial action by the Federal Aviation Administration. These areas
+are delineated below:
+Shoulder Harness Restraint. Testimony at the Safety Board’ s public’
+hearing concerning the United B-737 accident revealed that crew takeoff
+and before-landing checklists did not contain the item “Shoulder harness
+Fas tened. ” The injurie’ s sustained by the captain, as well as the con-
+ditions of the captain’ s and first officer’ s shoulder harness in the
+wreckage, indicated that the shoulder harness had not been used.
+In the EAL accident, we noted that the shoulder harness on the
+aft facing cabin attendant seats had been removed, In a letter dated
+p!arch 12, 1973, the Board, in commenting on your Notice of Proposed
+Rule >Iaking 73-1, expressed its concern about the absence of a require-
+ment to have shoulder harnesses installed on aft facing seats. \de
+- pointed out that in crashes or ener;ency landings involving nultidirec-
+tional inertia forces, shoulder harnesses vould provide an additional,
+APPENDIX I -44-
+and possibly vital, measure of protection for occupants of aft facing
+seats. The principal advantage of a shoulder harness, both in fon.;ard
+and rearxard facing seats, is that it helps to restrain the user in
+an upright position, thereby keeping the spinal column in a more suit-
+able position from the standpoint of load distribution, Additionally,
+the shoulder harness prevents the upper body from flailing, a frequent
+cause of serious injuries in aircraft accidents. The Eoard believes .
+that increased protec.tion from injury of the flightcrew as well as the
+cabin attendants is of vital importance, since their availability to
+guide and aid passengers during evacuation may make the difference
+between survival and disaster. Therefore, the Safety Board recommends
+that the Federal -Aviation Administration:
+1. Take the necessary steps to ensure that all air carrier
+before-landing and takeoff checklists contain a “Fasten
+Shoulder Harnesses” item.
+?
+L. :?nend 14 CFR 25.785(h) to require provisions for a
+shoulder harness at each cabin attendant seat, and
+amend 14 CFR 121.321 to require that shoulder harnesses
+be installed at each cabin attendant seat. .
+Auxiliarv Portable Lirhtinn. During the investigation and public hcar-
+ing held in connection with the EXL L-1011 accident, testimony indicated
+chat the absence of lighting of any kind at the crash scene seriously
+hampered. survivors ’ ability to orient themelves and prcventcd them .
+from searching for and assisting other injured survivors. A d d i t i o n a l l y , !
+t!lis lack of light prevented cabin attendants from taking effective
+charge among the surviving passengers. In both Chicago accidents, a i
+similar lighting problem uas encountered. Although section 121.549(b)
+of the Federal Aviation Regulations requires each crewmember to have
+available a flashlight, cabin attendants usually stow their personal
+flashlights in their handbags, which tend to become lost in the debris
+of the wreckage. This, for example, was the case in both Chicago
+accidents. The Board believes that effective alternate means of light-
+ing, ?<hich is not dependent on random stowage and location, should be
+readily accessible to the flight attendants. Therefore, the Safety
+.
+Board recommends that the Federal Aviation Administration:
+3. Amend 14 CFR 25.812 to require provisions for the stow-
+age of a portable, high-intensity light at cabin attend-
+ant Stations; and amend 14 CFR 121.310 to require the
+installation of such portable, high-intensity lights at
+cabin attendant stations,
+V
+45 - APPENDIX I
+Em2rgency Lighting. Evidence obtained during the invastigation of the
+Elorth Central DC-9 accident and the United B-737 accident in Chicago,
+indicated that many passengers had difficulties in escaping from the
+wreckage. These difficulties liere a result of inadequate illumination,
+combined with a heavy smoke condition in one of these accidents. In
+the United accident, survivors specifically mentioned the absence of
+any light in the cabin. In the Korth Central accident, passengers
+experienced great difficulty in locating t’ ne exits,.,reportedly because
+of darkness and heavy smoke in the cabin. Yet, the cr2w testified
+that the emergency lighting system was armed, and th2 in.ves tigation
+indicated that they should have been operational. Hor;ever, f o u r o f
+the nine fatally injured passengers apparently died :.lhile th2y were
+attempting to find an exit. On2 passenger was found in the cockpit,
+one near the cockpit door, and two others were found near the aft end
+of the cabin. The five remaining fatalities apparently had not left
+their seats.
+Numerous rcconunendations and proposals to improvs occupant escape
+capabilities in survivable accidents have been made ov2r the years by
+various Government and industry organizations; and, indeed, significant
+improvements have occurred. Unfortunately, however, experience indicates
+that the existing escape potential from aircraft in which postcrash fire
+is involved is still marginal. These accidsnts illustrate the vital
+role that adequate illumination can play in contributing to such postcrash
+survivability.
+A review of 14 CFR 25.811 and 25.812 indicates that paragraph 811(c)
+requires meabs to assist occupants in locating exits in conditions of
+dense smoke. Yet, information from’ ths Civil Aerom2dical Institute in
+Oklahoma City indicates that the illumination levels speciEied in para-
+graph 812 .are not predicated on a smoky environment, and t’ nerefore may
+be ineffectivs under conditions of dense smoke. in ord2r to eliminate
+this incons is t cncy , the Board believes that illumination levels should
+b2 specified in paragraph 812, which are consistent with the require-
+ments of 14 CFR 25.811(c) . Noreover, ttlese and other accident experi-
+ences have shown that for various reasons aircraft emergency lighting
+systems often do not work or are proved ineffective in survivable acci-
+dents. Therefore, the Safety Board recommends that the Federal Aviation
+Administration:
+4. Amend 14 CFR 25.812 to require exit sign brightness
+and general illuminstion levels in tiie passenger
+cabin that are corsistent with those necessary to
+provide adequate visibility in conditions of d2nse
+smke.
+APPENDIX I
+I:
+5. Amend 15 CFR 25.S12 to provide an addition31 means for
+activating the main emergency 1iglltin.g syscanr to provide
+rcdundaricy and tl;creby improve its reliability. : .’
+E;?2rrcncv Evacuation Prsblcss: .4 recurring problun of galley security
+was enccuntcrcd in the C.AL C-737 accident !.;!IQ~, during impact, food and
+sarvice items fell f:om the two aft cabir. galley units. l-112 impact,
+:.:,’
+r
+:
+:,+ich was descrjbcd by cabin attzndants as a series of mild to moderate :
+jolts acting forward’ and rcarxard, caused thz four oven units and food :
+carriers, the co12 food trays, and the liquor supply ur.its to be thru:m .,
+to the floor near the rear service door. The Duoard previously has
+commented on the evacuation hazard caused by loose galley equipment and
+acknowledges a letter from the PA4 dated February 16, 1973, !.:hich cites :
+corrective actions to ailcvintc the galley security problem. Specifically, j_ :
+i.~e are encouraged by recent amendments to Parts 25 a:ld 121 @f the F2dera.l
+Aviation Rcoulations , rrhich ccvcr the retention of items of mass in
+passenger and crew comp3rtmcnts. Nevertheless xc xish to reiterate
+cur belief conccrnin2 the ncclil for furt!lcr imp~ovcmcnts to ensure the
+s2curity of galley equlpccnt under crash landi;:,; loads. The Board is
+aarc that an amendment to lC, GFR 25.789, which :Jould require the instal-
+lation of SccondJry retention dctiices on galltiy cquipmcnt, is under car,-
+sideration for i’ ulemakin;: action.-. In view of the steps that you ha.‘ :4
+initiated to remedy this safety problem, the Safety Eoard is not making
+a formal rccorxcndation at tilis time. I’ o\\Qv*2 r > we urge you to esprdite
+vour consid?rstion of tilis matter in order t!xtt an amcndcd gallev rcten-
+tion regulation can be IKIJC: effective at an early date.
+This document 5.511 bc rclcased to the public 0:: t!lc t!zt2 SliO!rIT
+abcve. ::o public dissemination of this docbZi~:nt silculd b:~ cad2 prier
+to that date.
+APPENDIX I - 46 -
+5. Amend 14 CFR 25.812 to provide an additional meads for
+activating the main emergency lighting system to provide
+redundancy and thereby improve its reliability.
+Emerpcncv Evacuation Problems: A recurring problem of galley security
+was enccuntcrcd in the b’ :\I B-73? accident rihcn, during impact, food and
+service items fell from the two aft cabin galley units. The impact, .
+which was described by cabin attendants as 3 series of mild to moderate
+jolts acting forward’ and roar-ward, caused the four oven units and food
+carriers, the cold food trays, and the liquor’ supply units to be thrown
+to the floor near the rear service door. The Board previously has
+commented on the evacuation hazard caused by loose galley equipment and
+acknowledges a letter from tl!e FAA dated February 16, 1973, which cites
+corrective actions to ailcviatc the galley security problem. SpoLifical lY,
+we are encouraged by recent amendments to Parts 25 and 121 of the Federal
+Aviation Regulations, which cover the retention of items of mass in
+passenger and crew compartments. Naverthclcss, WC :;ish to reiterate
+our belief concerning the need for further improvcmcnts to ensure the
+security of galley equip,mcnt under crash landing lads. The Board is
+aware that an amendment to 14 6FR 25.789, vilich would rcquirc the ins tal-
+lation of secondary retention devices on ~allcy equipment, is under COI;-
+sideration for i’ ulemaking action.-- In vice of tllc steps that you hal.,$
+initiatfd to remedy this sa,fcty problem, the Safety Board is not ma:cing
+a formal rccommcndatiori at ‘ tllis time. Howcvc r, we urge you to expedite
+‘ your consideration of tllis matter in order that an amcndcci galley rcten-
+tiou regulation can be made cffhctiva at an early date.
+a
+This document -Gill IJC rclcased to the public 0:: the dats shci:n
+above. No public clisscninntion of this clcchw1~t should be mJ2 prior ;
+to that date.
+~ccd, Chairman, ~k&lams, Thnycr, and HaIcy, Xcmbcrs, concurred in
+tile above recommendations. B.urgess, ?!cribar, r..*as absent, not voting.

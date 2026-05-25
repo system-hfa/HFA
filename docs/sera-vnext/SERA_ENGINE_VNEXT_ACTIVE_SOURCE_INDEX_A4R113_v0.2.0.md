@@ -127,3 +127,13 @@ A4R120 governance state:
 - ATLAS-3591 remains `PATCHED_REVIEW_REQUIRED`.
 - EASTERN-401 remains `HOLD_OCR_REQUIRED`.
 - no author decision, no release, no downstream, no final-causation artifact.
+
+## Active Eastern-401 recovery and re-entry outputs (A4R121)
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_OFFICIAL_SOURCE_RECOVERY_A4R121_v0.2.0.md`
+- `docs/sera-vnext/official-report-source-slices/a4r121/SOURCE-SLICE-EASTERN-401-A4R121.md`
+- `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-EASTERN-401-FULL-AXIS-CANONICAL-DRAFT-A4R121.md`
+
+A4R121 governance state:
+- EASTERN-401 hold in A4R119/A4R120 is superseded for future cycles by official-source recovery.
+- EASTERN-401 now sits in `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS` lane.
+- no author decision, no release, no downstream, no final-causation artifact.

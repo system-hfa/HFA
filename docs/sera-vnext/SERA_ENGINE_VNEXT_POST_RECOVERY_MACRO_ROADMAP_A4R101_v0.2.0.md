@@ -454,3 +454,20 @@ Define one coherent post-recovery sequence after canonical cleanup, without micr
 2. Run targeted refinement on `ATLAS-3591` before any future bundle consideration.
 3. Keep `EASTERN-401` blocked until OCR/official-text sufficiency is resolved.
 4. Preserve release/downstream closure while A4R119-derived traces remain draft/qa-governed artifacts.
+
+## A4+R-121 Execution Update (Eastern-401 Official Source Recovery)
+- Official FAA-hosted NTSB source recovered and extracted to content-bearing TXT:
+  - `docs/sera-vnext/source-corpus/official-reports/a4r111-recovered-pool-txt/38__1973__NTSB-USA__Lockheed-L-1011-1__NTSB-AAR-73-14-Eastern-401.txt`
+- Governance docs created:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_OFFICIAL_SOURCE_RECOVERY_A4R121_v0.2.0.md`
+  - `docs/sera-vnext/official-report-source-slices/a4r121/SOURCE-SLICE-EASTERN-401-A4R121.md`
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-EASTERN-401-FULL-AXIS-CANONICAL-DRAFT-A4R121.md`
+- Outcome:
+  - EASTERN-401 moves from hard hold to controlled draft lane with explicit source-legibility caution.
+  - no author decision, no release, no downstream.
+
+## Updated Immediate Sequence After A4R121
+1. Run independent QA intake for `EASTERN-401` A4R121 draft before any future review-lane promotion.
+2. Keep future review lane anchored on stable set (`UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232`) until Eastern QA completes.
+3. Keep `ATLAS-3591` in targeted refinement cycle.
+4. Preserve release/downstream closure across all reopened draft work.

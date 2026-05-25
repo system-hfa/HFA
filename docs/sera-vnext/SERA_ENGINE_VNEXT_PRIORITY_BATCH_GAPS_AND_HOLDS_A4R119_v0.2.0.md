@@ -53,3 +53,9 @@ Before any future review bundle decision on A4R119 outputs, run independent QA p
 - Additional methodological gate introduced:
   - boundary alternatives must be canonically reachable from selected path answers;
   - multi-actor traces must declare `tracedActor` and justify combined scope when used.
+
+## A4R121 Eastern-401 hold supersession note
+- EASTERN-401 `HOLD_OCR_REQUIRED` is superseded for future cycles by official-source recovery in A4R121.
+- New state:
+  - `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS` with legacy-scan legibility caveat.
+- Hold-lane governance remains active for any event where official text is still unusable.

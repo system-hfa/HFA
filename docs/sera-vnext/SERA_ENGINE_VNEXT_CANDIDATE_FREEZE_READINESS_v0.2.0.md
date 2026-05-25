@@ -1702,3 +1702,16 @@ Controles A4R120:
 - nenhum release criado;
 - nenhum downstream aberto;
 - nenhum artefato de conclusão final, HF taxonomy, Risk/ERC, ARMS/ERC ou recommendations criado.
+
+## A4+R-121 — Eastern-401 Official Recovery and Controlled Re-entry
+
+Esta fase executou recuperação oficial de fonte para EASTERN-401 e reentrada controlada no pipeline de draft:
+- [Eastern-401 Official Source Recovery A4R121](./SERA_ENGINE_VNEXT_EASTERN_401_OFFICIAL_SOURCE_RECOVERY_A4R121_v0.2.0.md)
+- [Source Slice Eastern-401 A4R121](./official-report-source-slices/a4r121/SOURCE-SLICE-EASTERN-401-A4R121.md)
+- [Trace Draft Eastern-401 A4R121](./reference-case-traces/REFERENCE-CASE-EASTERN-401-FULL-AXIS-CANONICAL-DRAFT-A4R121.md)
+
+Resultado macro A4R121:
+- EASTERN-401 saiu de `HOLD_OCR_REQUIRED` para `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS`.
+- Reentrada ocorreu com caveat explícito de legibilidade (legacy scan).
+- Nenhuma decisão autoral foi registrada.
+- Nenhum release/downstream foi criado.

@@ -57,3 +57,11 @@ downstreamStatus: NO_DOWNSTREAM
 ## Cross-candidate validation notes
 - EASTERN-401 is explicitly held due to OCR/source weakness and does not enter A4R119 trace drafting.
 - USAIR-427 remains outside this batch as technical-dominant anchor and is not re-opened as human-failure trace in A4R119.
+
+## A4R121 supersession addendum for EASTERN-401
+- official FAA-hosted NTSB PDF was recovered and extracted to content-bearing local TXT:
+  - `docs/sera-vnext/source-corpus/official-reports/a4r111-recovered-pool-txt/38__1973__NTSB-USA__Lockheed-L-1011-1__NTSB-AAR-73-14-Eastern-401.txt`
+- updated A4R121 source decision:
+  - `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS`
+- governance note:
+  - A4R119 hold status remains historically correct for that phase, but is superseded for future work by A4R121 recovery.

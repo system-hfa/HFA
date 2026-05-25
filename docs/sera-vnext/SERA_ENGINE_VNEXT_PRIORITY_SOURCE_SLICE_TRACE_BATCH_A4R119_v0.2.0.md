@@ -62,3 +62,12 @@ No author decision is recorded in A4R119.
   - `ATLAS-3591`: patched but remains `PATCHED_REVIEW_REQUIRED` and out of future bundle set for now.
   - `EASTERN-401`: unchanged `HOLD_OCR_REQUIRED`.
 - A4R120 does not create author decision, release, or downstream action.
+
+## A4R121 Eastern-401 recovery supersession
+- Official-source recovery and re-entry docs:
+  - `docs/sera-vnext/SERA_ENGINE_VNEXT_EASTERN_401_OFFICIAL_SOURCE_RECOVERY_A4R121_v0.2.0.md`
+  - `docs/sera-vnext/official-report-source-slices/a4r121/SOURCE-SLICE-EASTERN-401-A4R121.md`
+  - `docs/sera-vnext/reference-case-traces/REFERENCE-CASE-EASTERN-401-FULL-AXIS-CANONICAL-DRAFT-A4R121.md`
+- EASTERN-401 phase status update:
+  - historical A4R119 hold remains accurate for that phase;
+  - superseded for future cycles by `TRACE_DRAFT_ALLOWED_WITH_LIMITATIONS`.

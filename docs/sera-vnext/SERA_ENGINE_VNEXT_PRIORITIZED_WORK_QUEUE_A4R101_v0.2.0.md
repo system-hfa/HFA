@@ -270,3 +270,17 @@ NO_DOWNSTREAM
 | P0 | Prepare future author-review lane from stabilized set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232` | These are currently the stable future-review candidates after A4R120 stabilization. | Codex + user | 1 future bundle cycle | Future bundle is assembled in dedicated phase only, with no release/downstream. |
 | P1 | ATLAS-3591 targeted refinement | `ATLAS-3591` | Substantive patch reduced errors but case remains review-required. | Codex | 1 focused refinement cycle | Case exits review-required only after actor-scope and A-axis uncertainty are further reduced. |
 | P1 | Keep hold lane unchanged | `EASTERN-401` | OCR/source insufficiency remains unresolved. | Codex + retrieval workflow | 1 recovery cycle | Hold removed only when usable official text is available. |
+
+## A4+R-121 queue update
+- Completed in A4R121:
+  - official FAA-hosted source recovered for EASTERN-401;
+  - content-bearing recovered TXT generated and versioned;
+  - source slice and full-axis canonical draft created with legibility caveat.
+- Execution remained docs/source-slice/trace-draft only, no author decision, no release, no downstream.
+
+## Immediate queue after A4R121
+| priority | workItem | scope | why | suggestedTool | batchSize | exitCriteria |
+|---|---|---|---|---|---:|---|
+| P0 | QA pass for EASTERN-401 A4R121 draft | `EASTERN-401` | Reopened case needs independent QA before any future review-lane decision. | Codex | 1 QA cycle | Case receives explicit keep/downgrade status with no release/downstream action. |
+| P0 | Prepare future author-review lane from stabilized set | `UPS-1354`, `COLGAN-3407`, `US-AIRWAYS-1549`, `UNITED-173`, `UNITED-232` | Stable set remains unchanged by Eastern reentry. | Codex + user | 1 future bundle cycle | Bundle planning remains in dedicated future phase only. |
+| P1 | ATLAS-3591 targeted refinement | `ATLAS-3591` | Remains review-required after substantive patch. | Codex | 1 focused refinement cycle | Actor-scope and A-axis uncertainty reduced before re-eligibility discussion. |
