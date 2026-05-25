@@ -103,3 +103,10 @@
 - NO_DOWNSTREAM.
 - Sem finalConclusion, HFACS, Risk/ERC, ARMS/ERC, recommendations.
 - Candidate freeze final nao autorizado.
+
+## A4R152a Preflight Note
+
+- A4R152a preflight completed.
+- no methodology change.
+- no corpus change.
+- no P/O/A.

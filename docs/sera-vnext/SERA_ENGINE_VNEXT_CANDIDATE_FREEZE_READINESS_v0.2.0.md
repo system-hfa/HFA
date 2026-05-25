@@ -3024,3 +3024,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - sem alteracao de corpus;
 - sem versionamento de PDF/HTML de relatorio;
 - sem alteracao de codigo/fixture/baseline.
+
+## A4R152a Preflight Note
+
+- A4R152a preflight completed.
+- no methodology change.
+- no corpus change.
+- no P/O/A.
