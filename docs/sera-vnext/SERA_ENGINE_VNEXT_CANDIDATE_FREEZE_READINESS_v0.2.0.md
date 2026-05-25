@@ -1810,3 +1810,51 @@ Controles A4R125:
 - nenhum release criado;
 - nenhum downstream aberto;
 - nenhum artefato de final-causation/HF taxonomy/Risk/ERC/ARMS/ERC/recommendations criado.
+
+## A4+R-126 - Global Real Event Escape-Point Reaudit and Pre-Gate Quarantine
+
+Esta fase executou a reauditoria global do passivo de eventos reais SERA vNext antes da formalizacao do gate Hendy de ponto de fuga da operacao segura:
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_GLOBAL_ESCAPE_POINT_REAUDIT_A4R126_v0.2.0.md`
+- `docs/sera-vnext/real-event-escape-point-reaudit/GLOBAL_ESCAPE_POINT_REAUDIT_TRACKER_A4R126_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_PRE_GATE_EVENT_QUARANTINE_REGISTER_A4R126_v0.2.0.md`
+- `docs/sera-vnext/SERA_ENGINE_VNEXT_EVENT_ARTIFACT_DEPENDENCY_MATRIX_A4R126_v0.2.0.md`
+
+Gate adicional incorporado:
+- `escapePointWhenStatement` passa a ser campo obrigatorio.
+- `escapePointWhenStatementPreviouslyExplicit` passa a registrar se o campo "Quando..." ja existia no artefato anterior.
+- O formato exigido e: `Quando [ato/condicao observavel] colocou [variavel operacional controlada] fora de [limite seguro/estado esperado].`
+- Eventos sem essa frase evidenciavel permanecem `ESCAPE_POINT_WHEN_STATEMENT_UNRESOLVED` e nao sao tratados como validados.
+- O bloqueio formal `BLOCKED_ESCAPE_POINT_WHEN_STATEMENT_UNRESOLVED` foi incorporado como status de gate complementar, sem substituir decisoes metodologicas mais fortes ja registradas.
+
+Resultado macro A4R126:
+- totalFilesScanned: 638
+- totalRelevantFiles: 406
+- totalUniqueEvents auditados: 52
+- eventos com prior proposedCode pre-gate: 43
+- eventos com releasedCode historico afetado: 4
+- explicitEscapePointWhenStatementAlreadyPresent: 0
+- escapePointWhenStatementDefinedByReaudit: 5
+- escapePointWhenStatementUnresolved: 47
+- blockedEscapePointWhenStatementUnresolved: 47
+- eventos `PASS_REQUIRES_MINOR_WORDING_FIX`: 3
+- eventos `PARTIAL_REQUIRES_POA_REVIEW`: 14
+- eventos `FAIL_REQUIRES_REBUILD`: 4
+- eventos `BLOCKED/PARKED`: 31
+- priorProposedCodesQuarantined: 43
+- releasedCodesAffected: 4
+- downstreamOpenedCount: 0
+
+Estado de freeze apos A4R126:
+- eventos pre-gate permanecem em quarentena;
+- freeze final ainda nao autorizado;
+- release/downstream continuam bloqueados salvo registros historicos explicitamente auditados, que tambem ficam sob cautela pre-gate;
+- reference cases, author packets e questionPath/backfills nao podem ser usados para consenso, treinamento, frontend calibration ou downstream ate satisfazerem o gate Hendy.
+- eventos com `ESCAPE_POINT_WHEN_STATEMENT_UNRESOLVED` nao podem ser usados como release, referencia, consenso, treinamento ou downstream.
+
+Proxima fase recomendada:
+- rebuild dos `FAIL_REQUIRES_REBUILD` com prompt completo do gate Hendy;
+- P/O/A review dos `PARTIAL_REQUIRES_POA_REVIEW`;
+- source enrichment dos `BLOCKED_SOURCE_PARTIAL`;
+- complemento/rebuild dos casos com `BLOCKED_ESCAPE_POINT_WHEN_STATEMENT_UNRESOLVED`, conforme a causa metodologica principal registrada;
+- limpeza ou rebuild de artefatos contaminados por helper/pre-canonical tree material;
+- somente depois retomar novas analises.
