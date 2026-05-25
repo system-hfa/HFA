@@ -27,6 +27,10 @@ This protocol enforces the methodological correction systematically.
 
 A4R137 established the rule: P/O/A must be analyzed at the escape-point moment. This protocol (A4R138) defines the mandatory procedure to execute that rule for every real event. A4R137 is the what; A4R138 is the how.
 
+## Relation to A4R140
+
+A4R140 amends this protocol for events where escape from safe operation is progressive, not a single discrete instant. In those cases, P/O/A must be anchored at the earliest documentable start of the progressive escape zone, never at the critical point or accident outcome.
+
 ## Mandatory Sequence
 
 ### Step 1 — Temporal Separation
@@ -43,9 +47,9 @@ What existed before the escape point:
 - task context (phase of flight, workload, time pressure, distractions);
 - source limitations (what the source evidence does and does not cover).
 
-#### B. ESCAPE POINT MOMENT
+#### B. ESCAPE POINT MOMENT OR PROGRESSIVE ESCAPE ZONE START
 
-The exact moment the operation left the safe state:
+The exact moment the operation left the safe state (discrete), or the earliest documentable start of a progressive departure from the safe state:
 - observable act or condition;
 - controlled operational variable;
 - safe limit or expected state;
@@ -84,6 +88,17 @@ Required fields for the escape-point gate:
 | technicalFailureAlternative | Could a technical failure explain this departure? |
 | sourceConfidence | HIGH/MEDIUM/LOW — confidence in the escape-point definition |
 | escapePointStatus | See status values below |
+| escapePointTemporalType | DISCRETE_ESCAPE_POINT / PROGRESSIVE_ESCAPE_ZONE / FIRST_OBSERVABLE_UNSAFE_MARKER_ONLY / CRITICAL_POINT_ONLY / POST_ESCAPE_ONLY |
+| progressiveEscapeZoneStartCandidate | Earliest documentable start candidate for progressive departure |
+| progressiveEscapeZoneEndCandidate | End marker for the progressive zone (if available) |
+| firstObservableUnsafeMarker | First documented marker that operation was already unsafe or becoming unsafe |
+| inferredEarlierDeparturePossible | true/false with confidence and limitation note |
+| criticalPointMarker | Later point where recovery became difficult/improbable |
+| accidentOutcomeMarker | Final outcome marker (never escape point) |
+| sourceCanIdentifyFirstDeparture | YES / NO / PARTIAL |
+| poaAnalysisAnchor | DISCRETE_ESCAPE_POINT / EARLIEST_DOCUMENTED_ZONE_START / FIRST_OBSERVABLE_UNSAFE_MARKER / UNAVAILABLE_BLOCK_POA |
+| postEscapeActionsExcludedFromPoa | YES/NO + description |
+| progressiveEscapeLimitations | Explicit limitations for progressive-zone timing and axis analysis |
 
 **escapePointStatus values:**
 
@@ -98,6 +113,7 @@ Required fields for the escape-point gate:
 | MULTI_ACTOR_NOT_DECOMPOSED | Multiple actors contributed but not decomposed |
 | POST_ESCAPE_ONLY | Only post-escape evidence exists; pre-escape context missing |
 | WARNING_AS_CONSEQUENCE_ONLY | Warning/alerts available but they are consequences, not the escape point |
+| PROGRESSIVE_ESCAPE_ZONE_SOURCE_PARTIAL | Progressive escape zone identified but exact first departure moment is partially documented |
 
 ### Step 3 — "Quando..." Gate Validation
 
@@ -120,6 +136,8 @@ If the "Quando..." phrase embeds any of these as its nucleus, the gate is NOT pa
 ### Step 4 — P/O/A at the Escape Point Moment
 
 Each axis must be analyzed exclusively at the escape-point moment:
+
+For progressive cases, each axis must be analyzed at the earliest documentable start of the progressive escape zone. The critical point, late corrective actions, and accident outcome are post-escape evidence and cannot be used as primary anchor.
 
 #### P — Perception
 
@@ -148,6 +166,7 @@ Question: What action was being executed/attempted at the moment of the escape p
 - Was an alternative known action available at that moment?
 - What is the mechanism: selection, execution, knowledge, feedback, coordination, or not isolable?
 - Do not classify A-F/A-E based on post-escape consequence.
+- Do not classify A from corrective actions observed only after the progressive degradation was already evident.
 - If the action at the escape-point moment cannot be determined, A = UNRESOLVED.
 
 ### Step 5 — Automatic Blocks
@@ -164,6 +183,9 @@ P/O/A classification must be blocked when any of the following conditions apply:
 | BLOCK_POA_WARNING_AS_ESCAPE_POINT | Warning/alert is used as escape point when it is a consequence | Move escape point earlier; isolate pre-warning moment |
 | BLOCK_POA_OBJECTIVE_INFERRED_FROM_OUTCOME | Objective classified from post-escape continuation/outcome | Re-evaluate objective at the escape-point moment only |
 | BLOCK_POA_ACTION_INFERRED_FROM_OUTCOME | Action classified from post-escape consequence | Re-evaluate action at the escape-point moment only |
+| BLOCK_POA_PROGRESSIVE_ESCAPE_START_NOT_DOCUMENTED | Progressive escape exists but earliest documentable start cannot be anchored | Mark SOURCE_PARTIAL and block unsupported axes |
+| BLOCK_POA_CRITICAL_POINT_CONFUSED_WITH_ESCAPE_POINT | Critical point used as if it were first departure from safe operation | Re-anchor to first departure evidence or block P/O/A |
+| BLOCK_POA_POST_ESCAPE_CORRECTIVE_ACTION_ONLY | Only post-escape corrective actions are available for A-axis basis | Keep A as UNRESOLVED or require source enrichment |
 
 A blocked event cannot produce P/O/A classification. It must be sent to SOURCE_ENRICHMENT, FULL_REBUILD, or PARKED.
 
@@ -181,6 +203,23 @@ After reaudit, each event may receive one of the following statuses:
 | PARKED | Boundary, technical, or actor issues prevent reaudit |
 | TECHNICAL_FAILURE_DOMINANT | Technical failure dominates; human P/O/A not applicable |
 | CONDITION_DOMINANT | Environmental/organizational condition dominates; act not isolable |
+| PARTIAL_REAUDIT_PROGRESSIVE_ESCAPE | Progressive escape case with only some axes supportable at earliest zone start |
+| NEEDS_PROGRESSIVE_ESCAPE_SOURCE_ENRICHMENT | Progressive-zone first departure evidence is insufficient for required axes |
+
+`PARTIAL_REAUDIT_AT_ESCAPE_POINT` remains valid and can be used when outputs were produced before A4R140 naming normalization.
+
+## A4R140 Amendment — Progressive Escape Point Guidance
+
+This protocol is amended by [SERA_ENGINE_VNEXT_PROGRESSIVE_ESCAPE_POINT_GUIDANCE_A4R140_v0.2.0.md](./SERA_ENGINE_VNEXT_PROGRESSIVE_ESCAPE_POINT_GUIDANCE_A4R140_v0.2.0.md).
+
+Mandatory amendment summary:
+
+1. Escape point temporal type must be declared for every reaudit.
+2. Progressive escape cases must fill all progressive fields in Step 2.
+3. P/O/A in progressive cases must anchor at `EARLIEST_DOCUMENTED_ZONE_START`.
+4. `CRITICAL_POINT` and `ACCIDENT_OUTCOME` must never be used as escape point anchors.
+5. Post-escape corrective actions must be explicitly excluded from primary A-axis basis.
+6. `SOURCE_PARTIAL` is a valid methodological result in progressive cases when first-departure precision is not fully documentable.
 
 No output may be releasedCode.
 No output may open downstream.

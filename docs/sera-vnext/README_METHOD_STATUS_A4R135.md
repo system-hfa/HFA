@@ -11,12 +11,14 @@
 - [Reaudit Protocol A4R138](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PROTOCOL_A4R138_v0.2.0.md)
 - [Reaudit Template](./REAL_EVENT_REAUDIT_TEMPLATE_A4R138.md)
 - [Reaudit Pilot Plan](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PILOT_PLAN_A4R138_v0.2.0.md)
+- [Progressive Escape Point Guidance A4R140](./SERA_ENGINE_VNEXT_PROGRESSIVE_ESCAPE_POINT_GUIDANCE_A4R140_v0.2.0.md)
 - [Candidate Freeze Readiness](./SERA_ENGINE_VNEXT_CANDIDATE_FREEZE_READINESS_v0.2.0.md)
 
 ## Regras
 
 - Ponto de fuga antes de P/O/A.
 - **P/O/A deve ser analisado no momento do ponto de fuga, nao a partir de eventos posteriores.** (A4R137)
+- **Progressive escape zones exigem guidance A4R140 antes da decisao P/O/A.**
 - "Quando..." nao pode embutir causa, violacao ou warning como primeira saida.
 - Arvore SERA real nao pode ser inventada.
 - proposedCode nao e releasedCode.

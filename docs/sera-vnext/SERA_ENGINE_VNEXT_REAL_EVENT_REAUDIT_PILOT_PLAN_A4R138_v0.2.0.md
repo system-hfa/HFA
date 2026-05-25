@@ -13,6 +13,21 @@ Define the order, rationale, and success criteria for the first real-event reaud
 
 No reaudit is executed in this phase. This is the plan only.
 
+## A4R140 Progressive Escape Amendment
+
+From A4R140 onward, every pilot must explicitly declare whether the escape point is:
+
+- `DISCRETE_ESCAPE_POINT`, or
+- `PROGRESSIVE_ESCAPE_ZONE`.
+
+This declaration must be completed before any P/O/A axis analysis.
+
+Pilot-specific application:
+
+- REAL-EVENT-0016 and ASIANA-214 must apply the discrete-vs-progressive distinction before P/O/A.
+- BS211-Q400 and A4R87-EXT-002 must avoid using critical-point markers or warnings as escape-point anchors.
+- When only first observable unsafe markers exist, pilots must record the limitation and apply SOURCE_PARTIAL logic per A4R140.
+
 ## Pilot Order
 
 ### 1. REAL-EVENT-0003 (Tofino night approach near-CFIT)
@@ -92,10 +107,11 @@ No reaudit is executed in this phase. This is the plan only.
 A pilot reaudit is successful when:
 
 1. The escape-point "Quando..." statement passes the Hendy gate and the A4R138 Step 3 validation.
-2. P/O/A analysis is demonstrably limited to the escape-point moment, with no axis inferred from post-escape consequence.
-3. Blocks are explicitly checked and none remain unresolved.
-4. The reaudit decision is explicit (REAUDITED_AT_ESCAPE_POINT_DRAFT, PARTIAL, UNRESOLVED, etc.).
-5. The filled template is complete and internally consistent.
+2. Escape point temporal type is explicitly declared (`DISCRETE_ESCAPE_POINT` vs `PROGRESSIVE_ESCAPE_ZONE`) before P/O/A.
+3. P/O/A analysis is demonstrably limited to the escape-point moment or earliest documented progressive-zone start, with no axis inferred from post-escape consequence.
+4. Blocks are explicitly checked and none remain unresolved.
+5. The reaudit decision is explicit (REAUDITED_AT_ESCAPE_POINT_DRAFT, PARTIAL, UNRESOLVED, etc.).
+6. The filled template is complete and internally consistent.
 
 ## Pilot Stop Criteria
 

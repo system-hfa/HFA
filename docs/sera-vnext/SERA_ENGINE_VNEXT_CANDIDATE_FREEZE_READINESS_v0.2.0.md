@@ -2584,3 +2584,71 @@ Proxima fase recomendada:
 - source enrichment pre-piloto para REAL-EVENT-0016: GPS/autopilot failure vs interpretation;
 - executar piloto 2: REAL-EVENT-0016 reaudit at escape point;
 - considerar emenda ao protocolo A4R138 para pontos de fuga progressivos/graduais.
+
+## A4+R-140 — Progressive Escape Point Guidance and Protocol Amendment
+
+Esta fase formaliza guidance metodologica para casos em que o ponto de fuga nao e um instante discreto, mas uma zona progressiva de degradacao.
+
+- [Progressive Escape Point Guidance A4R140](./SERA_ENGINE_VNEXT_PROGRESSIVE_ESCAPE_POINT_GUIDANCE_A4R140_v0.2.0.md)
+- [Real Event Reaudit Protocol A4R138](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PROTOCOL_A4R138_v0.2.0.md) (amended)
+- [Reaudit Template A4R138](./REAL_EVENT_REAUDIT_TEMPLATE_A4R138.md) (amended)
+- [Reaudit Pilot Plan A4R138](./SERA_ENGINE_VNEXT_REAL_EVENT_REAUDIT_PILOT_PLAN_A4R138_v0.2.0.md) (amended)
+
+### Resultado A4R140
+
+- guidance progressiva criada e registrada;
+- protocolo/template/plano piloto atualizados para distinguir `DISCRETE_ESCAPE_POINT` vs `PROGRESSIVE_ESCAPE_ZONE`;
+- nenhum evento reauditado nesta fase;
+- nenhum P/O/A alterado nesta fase;
+- nenhum releasedCode;
+- nenhum downstream;
+- nenhum source enrichment.
+
+### Impacto sobre A4R139 (REAL-EVENT-0003)
+
+O resultado A4R139 permanece valido e inalterado:
+- `escapePointStatus = SOURCE_PARTIAL`
+- `P = UNRESOLVED`
+- `O = O-A`
+- `A = UNRESOLVED`
+- `reAuditDecision = PARTIAL_REAUDIT_AT_ESCAPE_POINT`
+
+Reinterpretacao formal A4R140:
+- caso tratado como `PROGRESSIVE_ESCAPE_ZONE`;
+- O-A valido no inicio documentavel da zona de fuga progressiva;
+- P e A bloqueados por insuficiencia de evidencia no inicio da zona, nao por falha de protocolo.
+
+### Metricas A4R140
+
+- progressiveGuidanceCreatedCount: 1
+- protocolAmendedCount: 1
+- templateAmendedCount: 1
+- pilotPlanAmendedCount: 1
+- methodReadmeUpdatedCount: 1
+- eventsReauditedCount: 0
+- poaReclassifiedCount: 0
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- sourceEnrichmentPerformedCount: 0
+- documentsDeletedCount: 0
+- documentsMovedCount: 0
+
+### Controles A4R140
+
+- NO_NEW_AUTHOR_DECISION;
+- NO_RELEASED_CODE;
+- NO_DOWNSTREAM;
+- nenhuma reauditoria executada;
+- nenhum P/O/A reclassificado;
+- nenhum source enrichment;
+- nenhum documento deletado ou movido;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum runtime, UI, API, DB, migration, fixture, baseline ou codigo alterado.
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada (A4R140):
+- aplicar a declaracao obrigatoria de temporalidade do escape point em REAL-EVENT-0016 e ASIANA-214 antes de qualquer P/O/A;
+- em BS211-Q400 e A4R87-EXT-002, impedir uso de critical point/warning como escape point;
+- executar pilotos seguintes sob a nova guidance progressiva, mantendo bloqueio conservador quando `sourceCanIdentifyFirstDeparture != YES`.
