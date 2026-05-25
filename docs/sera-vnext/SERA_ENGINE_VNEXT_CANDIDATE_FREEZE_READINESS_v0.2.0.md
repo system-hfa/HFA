@@ -2652,3 +2652,45 @@ Proxima fase recomendada (A4R140):
 - aplicar a declaracao obrigatoria de temporalidade do escape point em REAL-EVENT-0016 e ASIANA-214 antes de qualquer P/O/A;
 - em BS211-Q400 e A4R87-EXT-002, impedir uso de critical point/warning como escape point;
 - executar pilotos seguintes sob a nova guidance progressiva, mantendo bloqueio conservador quando `sourceCanIdentifyFirstDeparture != YES`.
+
+## A4R141 — Source Enrichment for REAL-EVENT-0016 GPS/Autopilot at Escape Point
+
+Esta fase executou source enrichment focal e local para REAL-EVENT-0016 antes do piloto 2 de reauditoria:
+
+- [REAL-EVENT-0016 GPS/Autopilot Source Enrichment A4R141](./source-enrichment/REAL-EVENT-0016_GPS_AUTOPILOT_ENRICHMENT_A4R141_v0.2.0.md)
+- [REAL-EVENT-0016 Source Enrichment Summary A4R141](./SERA_ENGINE_VNEXT_REAL_EVENT_0016_SOURCE_ENRICHMENT_A4R141_v0.2.0.md)
+
+### Resultado A4R141
+
+- enrichment executado com fontes locais existentes;
+- evidencia favorece leitura de interpretacao/mode-state da automacao como dominante;
+- sem evidencia local confirmando falha tecnica preimpacto de autopilot;
+- ambiguidade residual mantida para timeline fina de mode-state e cadeia de acao;
+- pronto para piloto 2 em modo condicional (`CONDITIONAL_READY_PILOT2`).
+
+### Escopo e Controles
+
+- nenhum P/O/A classificado nesta fase;
+- nenhum release/downstream;
+- nenhum finalConclusion, HFACS, Risk/ERC, ARMS/ERC ou recommendations;
+- nenhum fixture/baseline/codigo alterado.
+
+### Metricas A4R141
+
+- sourceEnrichmentPerformedCount: 1
+- eventId: REAL-EVENT-0016
+- poaReclassifiedCount: 0
+- releasedCodeCreatedCount: 0
+- selectedCodeClassifiedCount: 0
+- downstreamOpenedCount: 0
+- finalConclusionCreatedCount: 0
+- documentsDeletedCount: 0
+- documentsMovedCount: 0
+
+O candidate freeze final continua nao autorizado.
+
+Proxima fase recomendada (A4R141):
+- executar A4R142 (piloto 2) para REAL-EVENT-0016 sob A4R138/A4R140, com entrada condicional explicitando:
+  - technical failure nao suportada pela evidencia local atual;
+  - ancoragem estrita no escape point;
+  - bloqueio conservador de eixos nao separaveis.

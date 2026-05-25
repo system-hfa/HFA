@@ -57,7 +57,7 @@ After A4R126 through A4R134, the repository accumulated multiple layers of docum
 | eventId | name/alias | currentStatus | escapePointStatus | whenStatus | P | O | A | usableAsExampleFor | restrictions | nextAction |
 |---|---|---|---|---|---|---|---|---|---|---|
 | REAL-EVENT-0003 | Tofino night approach near-CFIT | PARTIAL_REAUDIT_AT_ESCAPE_POINT (A4R139) | SOURCE_PARTIAL (A4R139) | CANDIDATE (A4R139: progressive degradation zone, not single discrete moment) | UNRESOLVED (A4R139: perception evidence at first deviation moment insufficient) | O-A (A4R139: objective to land safely validated at escape point, HIGH confidence) | UNRESOLVED (A4R139: actions documented are post-escape corrective, not at escape-point moment) | O-A draft only | P and A UNRESOLVED; prior P-G NOT reinstated; NO_RELEASED_CODE; NO_DOWNSTREAM; PF/PM chain not closed | AUTHOR_REVIEW; P source enrichment or accept UNRESOLVED; A PF/PM decomposition |
-| REAL-EVENT-0016 | N8DX automation confusion LOC | ACTIVE_REVIEW | DEFINED (A4R130) | VALID (A4R130) | P-C | O-A | UNRESOLVED | NONE until author decision | P-C vs P-G boundary requires conscious author decision; NO_RELEASED_CODE; NO_DOWNSTREAM | COLLECT_AUTHOR_DECISION |
+| REAL-EVENT-0016 | N8DX automation confusion LOC | ACTIVE_REVIEW_SOURCE_ENRICHED (A4R141) | DEFINED (A4R130) | VALID (A4R130) | P-C | O-A | UNRESOLVED | NONE until pilot 2 reaudit at escape point | A4R141: interpretation/mode-state evidence dominant; no confirmed preimpact autopilot hardware failure; mode-state/action chain still partially unresolved; NO_RELEASED_CODE; NO_DOWNSTREAM | PILOT_2_REAUDIT_CONDITIONAL_ENTRY |
 | BS211-Q400 | Unstable approach sequence | NEEDS_REBUILD | PATCHED (A4R134 gate patch draft) | REVISED (A4R134: "com perda de estabilidade e desalinhamento de pista") | P-H | O-C | A-F | NONE | Gate patch NOT approved; O-C/A-F high overclassification risk; "fora da trajetoria atribuida" removed but O-C/A-F not yet revised; NO_RELEASED_CODE; NO_DOWNSTREAM | AUTHOR_REVIEW_AFTER_GATE_PATCH |
 | A4R87-EXT-002 | AW139 night over-water warning sequence | NEEDS_REBUILD | PATCHED (A4R134 escape point patch draft) | REVISED (A4R134: "perfil de altitude degradado com separacao vertical reduzida") | P-G | UNRESOLVED | UNRESOLVED | NONE | Gate patch NOT approved; EGPWS removed as temporal core but degradation timing confidence is MEDIUM; O/A UNRESOLVED; NO_RELEASED_CODE; NO_DOWNSTREAM | AUTHOR_REVIEW_AFTER_GATE_PATCH |
 | ASIANA-214 | Asiana 214 visual approach energy deviation | ACTIVE_REVIEW | DEFINED (A4R130) | VALID (A4R130) | P-G | O-D | A-F | NONE until author decision | O-D threshold and A-F vs A-E boundary require conscious author decision; NO_RELEASED_CODE; NO_DOWNSTREAM | COLLECT_AUTHOR_DECISION |
@@ -80,7 +80,7 @@ After A4R126 through A4R134, the repository accumulated multiple layers of docum
 |---|---|---|---|---|---|
 | REAL-EVENT-0001 | PARKED (P1, viable draft) | P-G | O-A | UNRESOLVED | POA_REVIEW |
 | REAL-EVENT-0003 | AUTHOR_APPROVED_DRAFT_PARTIAL | P-G | O-A | UNRESOLVED | FUTURE_RELEASE_GOVERNANCE |
-| REAL-EVENT-0016 | ACTIVE_REVIEW | P-C | O-A | UNRESOLVED | COLLECT_AUTHOR_DECISION |
+| REAL-EVENT-0016 | ACTIVE_REVIEW_SOURCE_ENRICHED (A4R141) | P-C | O-A | UNRESOLVED | PILOT_2_REAUDIT_CONDITIONAL_ENTRY |
 | BS211-Q400 | NEEDS_REBUILD | P-H | O-C | A-F | AUTHOR_REVIEW_AFTER_GATE_PATCH |
 | A4R87-EXT-002 | NEEDS_REBUILD | P-G | UNRESOLVED | UNRESOLVED | AUTHOR_REVIEW_AFTER_GATE_PATCH |
 | D-HHNH | PARKED (P1) | P-G | O-A | UNRESOLVED | POA_REVIEW |
