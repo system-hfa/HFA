@@ -124,3 +124,10 @@
 - A4R153 overlays remain active and authoritative where source-status conflict exists.
 - NO P/O/A in A4R154.
 - Next phase recommendation from A4R154: prefer A4R155 Source Recovery Execution before any gate-prep expansion.
+
+## A4R155 Source Recovery Execution Note
+
+- A4R155 source recovery execution completed.
+- Downloads/extractions were local-only in `tmp/a4r155-source-recovery/`.
+- No corpus file was modified, moved, or deleted.
+- Next phase recommendation from A4R155: prefer A4R156 Continue Source Recovery / OCR.

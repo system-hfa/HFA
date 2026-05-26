@@ -230,3 +230,9 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R154 does not change event methodology status.
 - Source-status overlays continue to block any future P/O/A until source hardening constraints are satisfied.
 - BS211, G-WNSB, Delta, QF32/QF72/AF66 remain blocked for deep-review use until source correction/recovery is completed.
+
+## A4R155 Source Governance Note
+
+- A4R155 changes source-readiness status only through recovery evidence and extraction-quality checks.
+- A4R155 does not change methodology status and does not authorize P/O/A.
+- Source governance blockers remain active where official access, OCR quality, or source integrity are still unresolved.

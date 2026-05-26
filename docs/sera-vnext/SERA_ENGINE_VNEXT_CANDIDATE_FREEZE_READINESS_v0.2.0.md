@@ -287,6 +287,13 @@ Esta fase iniciou a trilha de uso de corpora reais/compilados sem classificaçã
 - small batch readiness updated for gate-prep-only posture.
 - freeze remains not authorized.
 
+## A4R155 — Source Recovery Execution
+
+- priority source recovery execution completed with local-only downloads/extractions.
+- recovery metrics recorded for 8 official targets with extraction-quality outcomes.
+- unresolved blockers remain (restricted official access, OCR-required, download failure).
+- freeze remains not authorized.
+
 Estado após A4+R-61:
 - inventário documental de corpus real criado;
 - amostra inicial de casos candidatos selecionada para extração futura;
