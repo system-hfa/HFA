@@ -195,3 +195,9 @@
 - first P/O/A pilot design created for 5 confirmed gates
 - no P/O/A executed
 - 5 gates available for future explicit authorization
+
+## A4R164 — Author Authorization and Scope Lock
+
+- author authorization scope lock recorded
+- 5 cases authorized for future pilot only
+- no P/O/A executed

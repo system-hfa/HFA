@@ -289,3 +289,10 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R163 is pilot design only for future P/O/A execution.
 - Any future P/O/A execution requires explicit user authorization.
 - releasedCode remains prohibited.
+
+## A4R164 Governance Note
+
+- A4R164 records authorization and scope lock only.
+- Any execution still requires explicit next prompt.
+- A4R164 performs no axis classification.
+- releasedCode/downstream remain prohibited.

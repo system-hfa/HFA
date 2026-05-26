@@ -3115,3 +3115,9 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - design metrics for first P/O/A pilot were recorded.
 - freeze remains not authorized.
 - P/O/A was not opened.
+
+## A4R164 — Author Authorization and Scope Lock
+
+- authorization metrics were recorded.
+- freeze remains not authorized.
+- no P/O/A was executed.
