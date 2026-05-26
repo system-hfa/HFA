@@ -149,3 +149,12 @@
 - No corpus file was modified, moved, or deleted.
 - No P/O/A was executed.
 - Next phase recommendation from A4R157: prefer A4R158 Registry Correction Overlay.
+
+
+## A4R158 — Registry Correction Overlay
+
+- registry correction overlay created
+- logical quarantine added for wrong-event/contamination/external-only lanes
+- no corpus modified
+- no P/O/A
+- next phase decision recorded for A4R159

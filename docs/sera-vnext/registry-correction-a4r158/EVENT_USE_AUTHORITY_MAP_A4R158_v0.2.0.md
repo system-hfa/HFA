@@ -1,0 +1,61 @@
+# Event Use Authority Map A4R158 v0.2.0
+
+Status: EVENT_USE_AUTHORITY_MAPPED
+Phase: A4R158
+
+| eventId | eventName | useAuthority | reason | sourceDoc | nextAction |
+|---|---|---|---|---|---|
+| EXT-A4R149-001 | COLGAN-3407 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=3407|air|approach|colgan|ntsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-003 | UPS-1354 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=1354|approach|nighttime|nonprecision|ntsb|ups | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-004 | G-WNSB-SUPER-PUMA-SUMBURGH | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=g-wnsb|puma|sumburgh|super|wnsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-007 | AIR-CANADA-624 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=a15h0002|air|canada|halifax|tsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-007 | AIR-CANADA-624 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=a15h0002|air|canada|halifax|short|tsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-009 | ORNGE-A13H0001 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=76a|a13h0001|moosonee|s-76a|tsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-012 | COUGAR-A09A0016 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=92a|a09a0016|cougar|gearbox|main|oil|s-92a | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-013 | EC225-G-REDW-G-CHCN | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=2014|aaib|chcn|ec225|g-chcn|g-redw|redw | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-016 | EXECUFLIGHT-1526 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=125|1526|aar|akron|execuflight|ntsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| EXT-A4R149-017 | CORPORATE-5966 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=5966|aar|corporate|j32|kirksville|ntsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-080 | AIR-CANADA-624-TSB-A15H0002 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=a15h0002|air|canada|other|tsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-028 | AIRCRAFT-ACCIDENT-REPORT-AAR-06-01-CORPORAT | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=aar|aircraft|corporat | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-001 | AIRCRAFT-ACCIDENT-REPORT-AAR-2-2014-EC225-L | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=2014|aircraft|ec225|other | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-015 | AVIATION-INVESTIGATION-FINAL-REPORT-WPR18MA08 | CANNOT_USE_WRONG_EVENT_RISK | status=WRONG_EVENT_SUSPECTED; matched=wpr18ma08 | A4R157 + A4R156 + A4R158 overlay | Potential misattribution; run manual header check |
+| TXT-029 | BS211-Q400 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=other | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-032 | CRASH-DURING-NONPRECISION-INSTRUMENT-APPROACH | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=approach|crash|instrument|nonprecision|other | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-058 | CROSSAIR-FLIGHT-3597-AVRO-RJ100-HB-IXM-CFI | CANNOT_USE_WRONG_EVENT_RISK | status=WRONG_EVENT_SUSPECTED; matched=other | A4R157 + A4R156 + A4R158 overlay | Potential misattribution; run manual header check |
+| TXT-040 | DELTA-AIR-LINES-FLIGHT-191-L-1011-DFW-MICRO | CANNOT_USE_WRONG_EVENT_RISK | status=WRONG_EVENT_SUSPECTED; matched= | A4R157 + A4R156 + A4R158 overlay | Potential misattribution; run manual header check |
+| TXT-056 | EUROCOPTER-AS332-L2-SUPER-PUMA-G-WNSB-SUMBU | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=as332|eurocopter|g-wnsb|other|puma|sumbu|super|wnsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-061 | GOL-1907-ASN-MIRROR | CANNOT_USE_WRONG_EVENT_RISK | status=WRONG_EVENT_SUSPECTED; matched= | A4R157 + A4R156 + A4R158 overlay | Potential misattribution; run manual header check |
+| TXT-062 | NTSB-AAR-86-05-DELTA-191 | CANNOT_USE_WRONG_EVENT_RISK | status=WRONG_EVENT_SUSPECTED; matched= | A4R157 + A4R156 + A4R158 overlay | Potential misattribution; run manual header check |
+| TXT-082 | REAL-EVENT-0016-MULTI-EVENT-PACKET | CANNOT_USE_NON_EVENT | status=JOURNALISM_NOT_REPORT; matched=other | A4R157 + A4R156 + A4R158 overlay | Journalism path; keep out of event evidence lane |
+| TXT-045 | SIKORSKY-S-76A-OFFSHORE-CFIT-GULF-OF-MEXIC | CANNOT_USE_WRONG_EVENT_RISK | status=WRONG_EVENT_SUSPECTED; matched= | A4R157 + A4R156 + A4R158 overlay | Potential misattribution; run manual header check |
+| TXT-064 | TSB-A09A0016-COUGAR-S-92A | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=92a|a09a0016|cougar|other|s-92a | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-068 | TSB-A13H0001-ORNGE-S-76A-MOOSONEE | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=76a|a13h0001|moosonee|other|s-76a|tsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-071 | TSB-A15H0002-AIR-CANADA-A320-HALIFAX | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=a15h0002|a320|air|canada|halifax|tsb | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-074 | UPS-1354-NTSB-AAR1402 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | status=DUPLICATE_PATH_SHARED; matched=1354|ntsb|ups | A4R157 + A4R156 + A4R158 overlay | Resolve alias ownership before gate-prep |
+| TXT-069 | UPS6-CAA-UK-MIRROR | CANNOT_USE_WRONG_EVENT_RISK | status=WRONG_EVENT_SUSPECTED; matched= | A4R157 + A4R156 + A4R158 overlay | Potential misattribution; run manual header check |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_OR_ALIAS_ENTRY | CANNOT_USE_NON_EVENT | Present in local corpus inventory but not referenced by integrated registry | A4R157 + A4R156 + A4R158 overlay | Keep as non-authoritative context only |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_OR_ALIAS_ENTRY | CANNOT_USE_NON_EVENT | Present in local corpus inventory but not referenced by integrated registry | A4R157 + A4R156 + A4R158 overlay | Keep only as indexing aid; exclude from event evidence |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_OR_ALIAS_ENTRY | CANNOT_USE_NON_EVENT | Present in local corpus inventory but not referenced by integrated registry | A4R157 + A4R156 + A4R158 overlay | Maintain quarantine as out-of-scope reference material |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_OR_ALIAS_ENTRY | CANNOT_USE_NON_EVENT | Present in local corpus inventory but not referenced by integrated registry | A4R157 + A4R156 + A4R158 overlay | Maintain quarantine as out-of-scope reference material |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_OR_ALIAS_ENTRY | CANNOT_USE_NON_EVENT | Present in local corpus inventory but not referenced by integrated registry | A4R157 + A4R156 + A4R158 overlay | Maintain quarantine as out-of-scope reference material |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_OR_ALIAS_ENTRY | CANNOT_USE_NON_EVENT | Present in local corpus inventory but not referenced by integrated registry | A4R157 + A4R156 + A4R158 overlay | Maintain quarantine as out-of-scope reference material |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_LOCAL_TXT | CANNOT_USE_NON_EVENT | Checksum index file, not event evidence | A4R157 + A4R156 + A4R158 overlay | Keep logical quarantine until explicit registry binding decision |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_LOCAL_TXT | MANUAL_REVIEW_REQUIRED | Local TXT exists but is not referenced by A4R150 registry | A4R157 + A4R156 + A4R158 overlay | Keep logical quarantine until explicit registry binding decision |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_LOCAL_TXT | MANUAL_REVIEW_REQUIRED | Local TXT exists but is not referenced by A4R150 registry | A4R157 + A4R156 + A4R158 overlay | Keep logical quarantine until explicit registry binding decision |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_LOCAL_TXT | MANUAL_REVIEW_REQUIRED | Local TXT exists but is not referenced by A4R150 registry | A4R157 + A4R156 + A4R158 overlay | Keep logical quarantine until explicit registry binding decision |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_LOCAL_TXT | MANUAL_REVIEW_REQUIRED | Local TXT exists but is not referenced by A4R150 registry | A4R157 + A4R156 + A4R158 overlay | Keep logical quarantine until explicit registry binding decision |
+| UNREFERENCED_LOCAL_TXT | UNREFERENCED_LOCAL_TXT | MANUAL_REVIEW_REQUIRED | Local TXT exists but is not referenced by A4R150 registry | A4R157 + A4R156 + A4R158 overlay | Keep logical quarantine until explicit registry binding decision |
+| BS211-Q400 | BS211-Q400 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | Official text recovered but no direct official PDF | A4R157 + A4R156 + A4R158 overlay | Maintain caution lane; continue official PDF recovery |
+| QF72 | QANTAS-QF72 | CANNOT_USE_PENDING_SOURCE_RECOVERY | Automated ATSB final report download still blocked | A4R157 + A4R156 + A4R158 overlay | Manual official retrieval required before any use |
+| DELTA-191 | DELTA-191 | CAN_USE_AS_NEGATIVE_CONTROL_WITH_CAUTION | OCR improved and usable with artifact caution | A4R157 + A4R156 + A4R158 overlay | Allow negative control with OCR caution annotation |
+| TUROY-EC225 | TUROY-EC225 | CAN_USE_AS_NEGATIVE_CONTROL_WITH_CAUTION | Full report recovered via official mirror with source-chain note | A4R157 + A4R156 + A4R158 overlay | Preserve source-chain note during future use |
+| COMAIR-5191 | COMAIR-5191 | CAN_USE_FOR_GATE_PREP | Path confirmed in A4R157 | A4R157 + A4R156 + A4R158 overlay | Eligible for future gate-prep authorization |
+| COLGAN-3407 | COLGAN-3407 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | Alias collision normalized by overlay ownership rule | A4R157 + A4R156 + A4R158 overlay | Use canonical ownership only |
+| EXECUFLIGHT-1526 | EXECUFLIGHT-1526 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | Duplicate ownership controlled by overlay | A4R157 + A4R156 + A4R158 overlay | Use canonical path with alias lock |
+| HELIOS-522 | HELIOS-522 | CAN_USE_FOR_GATE_PREP_WITH_CAUTION | Source/link reconfirmation caution remains | A4R157 + A4R156 + A4R158 overlay | Keep caution tag in any future gate step |
+| US-AIRWAYS-1549 | US-AIRWAYS-1549 | CAN_USE_AS_NEGATIVE_CONTROL_WITH_CAUTION | Usable with duplicate-copy caution controls | A4R157 + A4R156 + A4R158 overlay | Maintain canonical path and caution note |
+| EC225-G-REDW/G-CHCN | EC225-G-REDW/G-CHCN | CAN_USE_AS_NEGATIVE_CONTROL_WITH_CAUTION | Source ready but duplicate lane needs canonical ownership | A4R157 + A4R156 + A4R158 overlay | Use as negative control with duplicate caution |
+| COUGAR-A09A0016 | COUGAR-A09A0016 | CAN_USE_AS_NEGATIVE_CONTROL_WITH_CAUTION | Source ready with duplicate ownership caution | A4R157 + A4R156 + A4R158 overlay | Use as negative control with caution |
+| QF32 | QF32 | CANNOT_USE_PENDING_SOURCE_RECOVERY | External/source lane exists but normalized local registry mapping remains pending | A4R157 + A4R156 + A4R158 overlay | Complete normalized local mapping before use |
+| AF66 | AF66 | CANNOT_USE_PENDING_SOURCE_RECOVERY | Local-only extraction exists but not normalized in integrated registry surface | A4R157 + A4R156 + A4R158 overlay | Complete normalized local mapping before use |
+| LEARJET-35A/N47BA | LEARJET-35A/N47BA | MANUAL_REVIEW_REQUIRED | Future candidate lane requires dedicated manual integrity review | A4R157 + A4R156 + A4R158 overlay | Keep future-candidate status |

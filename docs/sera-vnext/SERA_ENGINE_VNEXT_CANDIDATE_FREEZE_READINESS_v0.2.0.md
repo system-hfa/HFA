@@ -3073,3 +3073,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - source-readiness corrections documented without physical corpus moves/deletions.
 - small batch selected for pre-P/O/A gate work only.
 - freeze remains not authorized.
+
+
+## A4R158 — Registry Correction Overlay
+
+- correction overlay metrics recorded and logical quarantine enforced.
+- freeze remains not authorized.
+- any future gate-prep depends on A4R159 authorization scope.

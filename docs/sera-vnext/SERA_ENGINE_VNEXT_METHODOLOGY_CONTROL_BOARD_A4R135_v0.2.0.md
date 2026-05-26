@@ -249,3 +249,11 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R157 executes registry/path/header integrity checks only.
 - A4R157 does not change event methodology status and does not authorize P/O/A.
 - Registry integrity closure remains required before any gate-prep expansion.
+
+
+## A4R158 Governance Note
+
+- Future phases must consult A4R158 overlays before using any event/path.
+- A4R158 changes source/path authority only.
+- No methodology status changed.
+- No P/O/A status changed.
