@@ -264,3 +264,10 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - Gate candidates are advisory only.
 - No P/O/A status changed in A4R159.
 - Author review is required before any P/O/A progression.
+
+## A4R160 Governance Note
+
+- Author gate decisions were recorded without applying gate text changes in-place.
+- A4R159 gate drafts remain unmodified in A4R160.
+- A4R161 is required to apply approved edits/revisions before any P/O/A progression.
+- No P/O/A status changed.

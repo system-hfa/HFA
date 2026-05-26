@@ -165,3 +165,11 @@
 - gate-prep only created for authorized small batch (5 events)
 - no P/O/A executed
 - author review required before any future P/O/A
+
+
+## A4R160 — Author Decision Intake
+
+- author gate decision intake recorded for 5 gate candidates
+- 1 approved, 2 approved with minor edit, 2 require gate revision
+- no P/O/A executed
+- next phase decision recorded for A4R161 gate revision application

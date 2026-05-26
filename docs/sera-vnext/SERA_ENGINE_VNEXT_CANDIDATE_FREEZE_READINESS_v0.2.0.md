@@ -3087,3 +3087,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - gate-prep metrics for authorized small batch were recorded.
 - freeze remains not authorized.
 - no P/O/A was executed.
+
+
+## A4R160 — Author Decision Intake
+
+- author decision metrics for 5 gate candidates were recorded.
+- freeze remains not authorized.
+- no P/O/A was executed.
