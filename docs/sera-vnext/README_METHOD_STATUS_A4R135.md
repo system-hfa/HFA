@@ -141,3 +141,11 @@
 - QF72 remains blocked (ATSB final report automated retrieval timeout/error).
 - Next phase recommendation from A4R156: prefer A4R157 Registry Integrity Machine Check.
 - no P/O/A in A4R156.
+
+## A4R157 Registry Integrity Machine Check Note
+
+- A4R157 registry integrity machine check executed with local-only tooling in `tmp/a4r157-registry-integrity/`.
+- Path/alias/duplicate integrity risks were measured before any gate-prep or P/O/A.
+- No corpus file was modified, moved, or deleted.
+- No P/O/A was executed.
+- Next phase recommendation from A4R157: prefer A4R158 Registry Correction Overlay.

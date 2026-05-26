@@ -304,6 +304,15 @@ Esta fase iniciou a trilha de uso de corpora reais/compilados sem classificaçã
 - negative-control readiness improved, but freeze remains not authorized.
 - registry integrity machine check is required before any gate-prep expansion.
 
+## A4R157 — Registry Integrity Machine Check
+
+- registry/path integrity machine check executed over integrated registry and local TXT inventory.
+- duplicate/alias/path-ownership issues remain material in part of the registry surface.
+- no corpus files modified, moved, or deleted.
+- no P/O/A executed.
+- freeze remains not authorized.
+- next phase recommendation: A4R158 Registry Correction Overlay.
+
 Estado após A4+R-61:
 - inventário documental de corpus real criado;
 - amostra inicial de casos candidatos selecionada para extração futura;

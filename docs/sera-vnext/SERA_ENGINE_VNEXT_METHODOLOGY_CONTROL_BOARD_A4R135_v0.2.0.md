@@ -243,3 +243,9 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R156 does not change event methodology status and does not authorize P/O/A.
 - Delta and Turoy source readiness improved; BS211 remains caution/partial; QF72 remains blocked.
 - Path/header/event integrity checks remain required before any gate-prep expansion.
+
+## A4R157 Source Governance Note
+
+- A4R157 executes registry/path/header integrity checks only.
+- A4R157 does not change event methodology status and does not authorize P/O/A.
+- Registry integrity closure remains required before any gate-prep expansion.
