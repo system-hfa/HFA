@@ -173,3 +173,11 @@
 - 1 approved, 2 approved with minor edit, 2 require gate revision
 - no P/O/A executed
 - next phase decision recorded for A4R161 gate revision application
+
+
+## A4R161 — Apply Author Gate Revisions
+
+- author gate revisions applied to the 5-event small batch
+- 3 gates approved/usable only after explicit authorization
+- 2 gates remain provisional pending second author confirmation
+- no P/O/A executed

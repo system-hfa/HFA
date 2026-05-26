@@ -271,3 +271,9 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R159 gate drafts remain unmodified in A4R160.
 - A4R161 is required to apply approved edits/revisions before any P/O/A progression.
 - No P/O/A status changed.
+
+## A4R161 Governance Note
+
+- Approved/provisional gate set was created from A4R160 author decisions.
+- No P/O/A status changed in A4R161.
+- Any future P/O/A requires explicit authorization.

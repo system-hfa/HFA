@@ -3094,3 +3094,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - author decision metrics for 5 gate candidates were recorded.
 - freeze remains not authorized.
 - no P/O/A was executed.
+
+
+## A4R161 — Approved Gate Set Application
+
+- approved/provisional gate set metrics were recorded.
+- freeze remains not authorized.
+- P/O/A was not opened.
