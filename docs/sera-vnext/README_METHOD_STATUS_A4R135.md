@@ -158,3 +158,10 @@
 - no corpus modified
 - no P/O/A
 - next phase decision recorded for A4R159
+
+
+## A4R159 — Gate Prep Only
+
+- gate-prep only created for authorized small batch (5 events)
+- no P/O/A executed
+- author review required before any future P/O/A

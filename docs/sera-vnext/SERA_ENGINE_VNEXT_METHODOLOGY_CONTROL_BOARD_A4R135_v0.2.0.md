@@ -257,3 +257,10 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R158 changes source/path authority only.
 - No methodology status changed.
 - No P/O/A status changed.
+
+
+## A4R159 Governance Note
+
+- Gate candidates are advisory only.
+- No P/O/A status changed in A4R159.
+- Author review is required before any P/O/A progression.

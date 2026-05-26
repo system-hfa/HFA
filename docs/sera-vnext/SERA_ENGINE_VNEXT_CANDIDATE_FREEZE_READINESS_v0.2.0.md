@@ -3080,3 +3080,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - correction overlay metrics recorded and logical quarantine enforced.
 - freeze remains not authorized.
 - any future gate-prep depends on A4R159 authorization scope.
+
+
+## A4R159 — Gate Prep Only
+
+- gate-prep metrics for authorized small batch were recorded.
+- freeze remains not authorized.
+- no P/O/A was executed.
