@@ -189,3 +189,9 @@
 - COLGAN-3407 and HELIOS-522 confirmed with minor edit
 - all 5 small-batch gates now have confirmed/applied gate status
 - no P/O/A executed
+
+## A4R163 — First P/O/A Pilot Design
+
+- first P/O/A pilot design created for 5 confirmed gates
+- no P/O/A executed
+- 5 gates available for future explicit authorization

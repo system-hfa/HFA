@@ -283,3 +283,9 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - All 5 small-batch gates are now in confirmed/applied gate status.
 - P/O/A remains closed.
 - Future pilot activity still requires explicit authorization.
+
+## A4R163 Governance Note
+
+- A4R163 is pilot design only for future P/O/A execution.
+- Any future P/O/A execution requires explicit user authorization.
+- releasedCode remains prohibited.

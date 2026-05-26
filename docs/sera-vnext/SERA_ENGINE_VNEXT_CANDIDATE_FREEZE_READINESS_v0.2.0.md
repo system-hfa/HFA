@@ -3108,3 +3108,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - second author confirmation metrics were recorded.
 - freeze remains not authorized.
 - P/O/A was not opened.
+
+
+## A4R163 — First P/O/A Pilot Design
+
+- design metrics for first P/O/A pilot were recorded.
+- freeze remains not authorized.
+- P/O/A was not opened.
