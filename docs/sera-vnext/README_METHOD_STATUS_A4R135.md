@@ -117,3 +117,10 @@
 - Opus found corpus contamination, misattribution, and source-readiness issues.
 - A4R153 overlays supersede A4R150/A4R151/A4R152 source-readiness claims where conflict exists.
 - NO P/O/A until A4R153 corrections are respected.
+
+## A4R154 Source Recovery/Integrity Pass Note
+
+- A4R154 source recovery/integrity pass recorded.
+- A4R153 overlays remain active and authoritative where source-status conflict exists.
+- NO P/O/A in A4R154.
+- Next phase recommendation from A4R154: prefer A4R155 Source Recovery Execution before any gate-prep expansion.

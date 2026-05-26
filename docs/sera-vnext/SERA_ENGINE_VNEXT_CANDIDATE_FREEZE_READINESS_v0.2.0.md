@@ -279,6 +279,14 @@ Esta fase iniciou a trilha de uso de corpora reais/compilados sem classificaçã
 - [Real Event Corpus Inventory](./SERA_ENGINE_VNEXT_REAL_EVENT_CORPUS_INVENTORY_v0.2.0.md)
 - [Real Event Case Extraction Plan](./SERA_ENGINE_VNEXT_REAL_EVENT_CASE_EXTRACTION_PLAN_v0.2.0.md)
 
+## A4R154 — Source Recovery and Registry Integrity Pass
+
+- post-Opus source recovery/integrity pass recorded.
+- PASS_WITH_WARNINGS near fail context preserved from Opus intake.
+- contamination and misattribution corrections reinforced via A4R154 overlays.
+- small batch readiness updated for gate-prep-only posture.
+- freeze remains not authorized.
+
 Estado após A4+R-61:
 - inventário documental de corpus real criado;
 - amostra inicial de casos candidatos selecionada para extração futura;

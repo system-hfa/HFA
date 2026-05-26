@@ -223,3 +223,10 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - No event methodology status is changed by A4R153.
 - Real-event P/O/A remains blocked unless reaudit is performed at escape point under A4R137/A4R140.
 - BS211, G-WNSB, Delta, QF32/QF72/AF66 are blocked for deep-review use until source correction/hardening is completed.
+
+## A4R154 Source Governance Note
+
+- A4R154 extends source-status overlays and registry-integrity overlays only.
+- A4R154 does not change event methodology status.
+- Source-status overlays continue to block any future P/O/A until source hardening constraints are satisfied.
+- BS211, G-WNSB, Delta, QF32/QF72/AF66 remain blocked for deep-review use until source correction/recovery is completed.
