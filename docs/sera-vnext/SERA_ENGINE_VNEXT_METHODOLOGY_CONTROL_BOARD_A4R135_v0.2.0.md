@@ -216,3 +216,10 @@ They do not constitute P/O/A reference authority and must not be used as classif
 6. Source enrichment for QUEUE_D events.
 7. Boundary resolution for QUEUE_E parked events.
 8. All release/downstream decisions require separate explicit governance.
+
+## A4R153 Source Governance Override
+
+- A4R153 introduces source-status overlays only.
+- No event methodology status is changed by A4R153.
+- Real-event P/O/A remains blocked unless reaudit is performed at escape point under A4R137/A4R140.
+- BS211, G-WNSB, Delta, QF32/QF72/AF66 are blocked for deep-review use until source correction/hardening is completed.

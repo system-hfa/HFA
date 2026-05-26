@@ -110,3 +110,10 @@
 - no methodology change.
 - no corpus change.
 - no P/O/A.
+
+## A4R153 Post-Opus Intake Note
+
+- A4R153 Post-Opus Intake registered.
+- Opus found corpus contamination, misattribution, and source-readiness issues.
+- A4R153 overlays supersede A4R150/A4R151/A4R152 source-readiness claims where conflict exists.
+- NO P/O/A until A4R153 corrections are respected.

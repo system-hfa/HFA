@@ -1,0 +1,17 @@
+itemId,eventIdOrFile,priorA4R152IncludedAs,priorA4R152UsableForDeepReview,opusFinding,correctedIncludedAs,correctedUsableForDeepReview,correctedUsableForSourceCritique,correctionReason,requiredNextAction
+A4R153-001,pdf24_merged-5.txt,TXT_FULL_TEXT,YES,ICAO SMM non-event contamination,OUT_OF_SCOPE_REFERENCE_MATERIAL,NO,YES,Not an event report,Quarantine from event evidence lanes
+A4R153-002,pdf24_merged-6.txt,TXT_FULL_TEXT,YES,Academic dissertation contamination,OUT_OF_SCOPE_REFERENCE_MATERIAL,NO,YES,Not an official event report,Quarantine from event evidence lanes
+A4R153-003,pdf24_merged-7.txt,TXT_FULL_TEXT,YES,DoD HFACS guide contamination,OUT_OF_SCOPE_REFERENCE_MATERIAL,NO,YES,Not an event report,Quarantine from event evidence lanes
+A4R153-004,pdf24_merged-8.txt,TXT_FULL_TEXT,YES,Offshore engineering paper contamination,OUT_OF_SCOPE_REFERENCE_MATERIAL,NO,YES,Not an aviation official event report,Quarantine from event evidence lanes
+A4R153-005,pdf24_merged-2.txt,TXT_FULL_TEXT,YES,Journalism article (B&CA),JOURNALISM_NOT_REPORT,NO,YES,Journalism is not official report,Keep only as contextual non-authoritative material
+A4R153-006,pdf24_merged.txt,TXT_FULL_TEXT,YES,Journalism article (B&CA),JOURNALISM_NOT_REPORT,NO,YES,Journalism is not official report,Keep only as contextual non-authoritative material
+A4R153-007,pdf24_merged-3.txt,TXT_FULL_TEXT,YES,AAIB multi-event bulletin index,BULLETIN_INDEX_MULTI_EVENT,NO,YES,Multi-event bulletin not single-event evidence,Use only for indexing/recovery prioritization
+A4R153-008,EXT-A4R149-004 G-WNSB-SUMBURGH,TXT_FULL_TEXT,YES,False full-text from GOV.UK scrape,HTML_STATUS_ONLY/SOURCE_PENDING,NO,YES,Source page scrape treated as complete AAR,Recover full AAIB AAR and replace source lane after validation
+A4R153-009,TXT-040 Delta-191 cluster,TXT_FULL_TEXT,CAUTION,OCR/readability failure,OCR_REQUIRED,NO,YES,Unreadable extraction quality,Run OCR recovery before any deep-review use
+A4R153-010,TXT-062 Delta-191 cluster,TXT_FULL_TEXT,CAUTION,OCR/readability failure,OCR_REQUIRED,NO,YES,Unreadable extraction quality,Run OCR recovery before any deep-review use
+A4R153-011,NEW50-11 Delta-191 cluster,TXT_FULL_TEXT,CAUTION,Cluster inconsistency and extraction failure,SOURCE_RECOVERY_PENDING,NO,YES,Layer divergence + weak text body,Reconcile A4R150/A4R151 positions under recovery queue
+A4R153-012,TXT-029 BS211-Q400,TXT_FULL_TEXT,YES,Cross-event misattribution to Colgan path,NO_LOCAL_VALID_SOURCE,NO,YES,Invalid event-to-file mapping,Recover valid BS211 source and remap path integrity
+A4R153-013,EXT-A4R149-011 QF32,OPUS_NEGATIVE_CONTROL_PACKET,CAUTION,No extracted local TXT in packet,SOURCE_RECOVERY_PENDING,NO,YES,Official source found but text not extracted,Perform TXT extraction before negative-control use
+A4R153-014,EXT-A4R149-014 QF72,OPUS_NEGATIVE_CONTROL_PACKET,CAUTION,No extracted local TXT in packet,SOURCE_RECOVERY_PENDING,NO,YES,Manual confirmation + extraction pending,Confirm final report and extract TXT
+A4R153-015,EXT-A4R149-015 AF66,OPUS_NEGATIVE_CONTROL_PACKET,CAUTION,No extracted local TXT in packet,SOURCE_RECOVERY_PENDING,NO,YES,Official PDF identified but not extracted,Extract TXT before negative-control use
+A4R153-016,EXT-A4R149-002 ASIANA-214,TXT_FULL_TEXT,YES,Layer conflict across matrix/registry/manifest,STATUS_CONFLICT_REQUIRES_SINGLE_AUTHORITY_DECISION,NO,YES,Inconsistent source-readiness status,Issue single authority decision before any next phase

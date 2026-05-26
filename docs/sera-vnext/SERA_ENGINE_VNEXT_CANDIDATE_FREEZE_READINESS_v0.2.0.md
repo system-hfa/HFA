@@ -3031,3 +3031,11 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - no methodology change.
 - no corpus change.
 - no P/O/A.
+
+## A4R153 — Post-Opus Intake and Source Hygiene Hardening
+
+- post-Opus intake recorded (`PASS_WITH_WARNINGS_NEAR_FAIL_FOR_OPUS_USE`).
+- contamination and cross-event misattribution corrections registered as overlays.
+- source-readiness corrections documented without physical corpus moves/deletions.
+- small batch selected for pre-P/O/A gate work only.
+- freeze remains not authorized.
