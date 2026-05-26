@@ -181,3 +181,11 @@
 - 3 gates approved/usable only after explicit authorization
 - 2 gates remain provisional pending second author confirmation
 - no P/O/A executed
+
+
+## A4R162 — Second Author Confirmation
+
+- second author confirmation recorded
+- COLGAN-3407 and HELIOS-522 confirmed with minor edit
+- all 5 small-batch gates now have confirmed/applied gate status
+- no P/O/A executed

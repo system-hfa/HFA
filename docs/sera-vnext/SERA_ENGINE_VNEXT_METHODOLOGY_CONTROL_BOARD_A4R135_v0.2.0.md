@@ -277,3 +277,9 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - Approved/provisional gate set was created from A4R160 author decisions.
 - No P/O/A status changed in A4R161.
 - Any future P/O/A requires explicit authorization.
+
+## A4R162 Governance Note
+
+- All 5 small-batch gates are now in confirmed/applied gate status.
+- P/O/A remains closed.
+- Future pilot activity still requires explicit authorization.

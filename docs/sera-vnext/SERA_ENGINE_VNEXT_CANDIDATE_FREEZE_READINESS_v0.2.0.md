@@ -3101,3 +3101,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - approved/provisional gate set metrics were recorded.
 - freeze remains not authorized.
 - P/O/A was not opened.
+
+
+## A4R162 — Second Author Gate Confirmation
+
+- second author confirmation metrics were recorded.
+- freeze remains not authorized.
+- P/O/A was not opened.
