@@ -1,0 +1,5 @@
+itemId,priorA4R155Status,a4r156Result,fullTextAvailableLocalOnly,canPromoteToDeepReview,canPromoteToNegativeControl,remainsBlocked,blocker,requiredNextAction
+BS211,RESTRICTED_GOVERNMENT_REPOSITORY,OFFICIAL_TEXT_RECOVERED_NO_DIRECT_PDF,YES,CAUTION,NO,PARTIAL,no direct official PDF; official text export only,Keep caution lane and continue official PDF retrieval monitoring
+DELTA-191,OCR_REQUIRED,OCR_IMPROVED_USABLE,YES,CAUTION,YES_WITH_OCR_CAUTION,NO,NONE,Promote with OCR-caution annotation
+QF72,DOWNLOAD_FAILED,DOWNLOAD_TIMEOUT_ATSB_FINAL_REPORT,NO,NO,NO,YES,ATSB final PDF automated download failed / manual browser download required,Run manual browser retrieval or alternate network path
+TUROY-EC225,USABLE_WITH_CAUTION,READY,YES,YES_WITH_SOURCE_CHAIN_NOTE,YES,NO,NONE,Keep source-chain note and allow ready usage

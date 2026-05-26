@@ -131,3 +131,13 @@
 - Downloads/extractions were local-only in `tmp/a4r155-source-recovery/`.
 - No corpus file was modified, moved, or deleted.
 - Next phase recommendation from A4R155: prefer A4R156 Continue Source Recovery / OCR.
+
+## A4R156 Source Recovery OCR Closeout Note
+
+- A4R156 source recovery/OCR closeout completed with local-only downloads/extractions/OCR in `tmp/a4r156-source-recovery/`.
+- Delta 191 moved to OCR_IMPROVED_USABLE (usable with OCR caution).
+- Turoy EC225 moved to READY with source-chain note.
+- BS211 remains partial/caution (official text export recovered, no direct official PDF).
+- QF72 remains blocked (ATSB final report automated retrieval timeout/error).
+- Next phase recommendation from A4R156: prefer A4R157 Registry Integrity Machine Check.
+- no P/O/A in A4R156.

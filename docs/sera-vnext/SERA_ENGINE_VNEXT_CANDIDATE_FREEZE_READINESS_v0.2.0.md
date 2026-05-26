@@ -294,6 +294,16 @@ Esta fase iniciou a trilha de uso de corpora reais/compilados sem classificaçã
 - unresolved blockers remain (restricted official access, OCR-required, download failure).
 - freeze remains not authorized.
 
+## A4R156 — Source Recovery OCR Closeout
+
+- source recovery/OCR closeout completed for BS211, Delta 191, QF72, and Turoy using local-only execution.
+- Delta 191 OCR improved extraction to usable-with-caution status.
+- Turoy advanced to ready with source-chain note.
+- BS211 remains partial/caution (official text recovered, direct official PDF still unavailable).
+- QF72 remains blocked pending manual/alternate-network official final report retrieval.
+- negative-control readiness improved, but freeze remains not authorized.
+- registry integrity machine check is required before any gate-prep expansion.
+
 Estado após A4+R-61:
 - inventário documental de corpus real criado;
 - amostra inicial de casos candidatos selecionada para extração futura;

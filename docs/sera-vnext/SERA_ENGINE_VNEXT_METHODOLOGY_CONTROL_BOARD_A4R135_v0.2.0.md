@@ -236,3 +236,10 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R155 changes source-readiness status only through recovery evidence and extraction-quality checks.
 - A4R155 does not change methodology status and does not authorize P/O/A.
 - Source governance blockers remain active where official access, OCR quality, or source integrity are still unresolved.
+
+## A4R156 Source Governance Note
+
+- A4R156 changes source-readiness status only through local-only recovery/OCR evidence.
+- A4R156 does not change event methodology status and does not authorize P/O/A.
+- Delta and Turoy source readiness improved; BS211 remains caution/partial; QF72 remains blocked.
+- Path/header/event integrity checks remain required before any gate-prep expansion.
