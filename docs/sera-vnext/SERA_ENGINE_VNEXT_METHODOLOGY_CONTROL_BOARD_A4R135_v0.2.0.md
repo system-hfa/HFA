@@ -296,3 +296,11 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - Any execution still requires explicit next prompt.
 - A4R164 performs no axis classification.
 - releasedCode/downstream remain prohibited.
+
+## A4R165 Governance Note
+
+- A4R165 executed draft-only axis outcomes for the 5 A4R164-authorized pilot cases.
+- UNRESOLVED outcomes were preserved where evidence did not safely support closure.
+- Negative control behavior remained preserved with non-human-origin onset handling.
+- No release scope opened.
+- No downstream opened.

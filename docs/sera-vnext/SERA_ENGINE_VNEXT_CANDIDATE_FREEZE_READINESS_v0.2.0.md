@@ -3121,3 +3121,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - authorization metrics were recorded.
 - freeze remains not authorized.
 - no P/O/A was executed.
+
+## A4R165 — First P/O/A Pilot Draft Execution
+
+- pilot draft execution metrics were recorded for 5 authorized cases.
+- UNRESOLVED and HOLD outcomes were preserved where methodologically required.
+- freeze remains not authorized.
+- no release scope opened and no downstream opened.

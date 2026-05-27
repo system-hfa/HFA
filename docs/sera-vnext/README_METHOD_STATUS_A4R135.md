@@ -201,3 +201,11 @@
 - author authorization scope lock recorded
 - 5 cases authorized for future pilot only
 - no P/O/A executed
+
+## A4R165 — First P/O/A Pilot Draft Execution
+
+- first P/O/A pilot draft executed for 5 authorized cases under A4R164 scope lock
+- draft-only outputs created with UNRESOLVED allowed and applied where needed
+- negative control (US-AIRWAYS-1549) preserved as non-human origin at escape-point onset
+- no release scope opened and no downstream opened
+- next phase recommendation recorded for A4R166 author review/confirmation
