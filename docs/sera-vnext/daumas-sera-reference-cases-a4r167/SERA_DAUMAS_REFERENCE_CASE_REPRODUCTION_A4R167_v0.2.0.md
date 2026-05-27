@@ -186,7 +186,7 @@ Observacoes adicionais da dissertacao: O outro piloto, apos a ordem para reduzir
 - A decisao inicial de continuar o voo mesmo em condicoes abaixo dos minimos (500 pes, IMC) foi uma barreira de seguranca ultrapassada antes do ponto de fuga.
 - Diferenca com A4R166: A4R166 exigiria actor split formal, mas a dissertacao trata como falha do piloto que executou a acao. A decisao previa de continuar em condicoes abaixo dos minimos poderia ser um "pre-escape-point condition" no modelo A4R166.
 - Lacunas: A dissertacao nao especifica se a altitude de 500 pes estava legalmente permitida ou era uma violacao regulatoria previa.
-- **DECISAO AUTORAL A4R167**: Caso Daumas 2 permanece em escopo 2A apenas. Escopo 2B (analise da barreira de 500 pes como escape point adicional) NAO e aberto nesta fase. A barreira dos 500 pes permanece como contexto/MDC — registrada como informacao relevante da dissertacao, mas sem abertura de novo escape point. Uma eventual reanalise SERA vNext com actor split e escape points multiplos devera ocorrer em fase separada, fora do A4R167.
+- **DECISAO AUTORAL A4R167**: Caso Daumas 2 permanece em escopo 2A apenas. Escopo 2B (analise alternativa da barreira de 500 pes como possivel escopo proprio de ponto de fuga) NAO e aberto nesta fase. A barreira dos 500 pes permanece como contexto/MDC — registrada como informacao relevante da dissertacao, mas sem abertura de novo escape point. Uma eventual reanalise SERA vNext devera ocorrer em fase separada, com escopo proprio de ponto de fuga e, se necessario, contribuicoes de ator documentadas dentro desse escopo, fora do A4R167.
 
 #### 9. Status
 

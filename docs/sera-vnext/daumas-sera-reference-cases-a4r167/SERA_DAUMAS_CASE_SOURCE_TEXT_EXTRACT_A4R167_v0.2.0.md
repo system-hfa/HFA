@@ -203,7 +203,7 @@ g) A aeronave entrou em estol e comecou a afundar com nenhuma velocidade de desl
 
 **Barreira ultrapassada**: O piloto entrevistado considera que uma barreira de seguranca foi ultrapassada quando resolveram manter 500 pes para tentar localizar a plataforma mesmo em condicoes nao visuais. Estavam fora da regra que estabelece altitude minima de 700 pes para o teto das nuvens vendo a plataforma a pelo menos 5 milhas. "Nos passamos do limite de visibilidade e passamos do limite de teto" (p.67).
 
-**DECISAO AUTORAL A4R167**: Esta barreira de 500 pes permanece como contexto/MDC. O escopo 2B (analise da barreira como escape point adicional) NAO e aberto nesta fase. Caso Daumas 2 permanece em escopo 2A apenas.
+**DECISAO AUTORAL A4R167**: Esta barreira de 500 pes permanece como contexto/MDC. O escopo 2B (analise alternativa da barreira dos 500 pes como possivel escopo proprio de ponto de fuga) NAO e aberto nesta fase. Caso Daumas 2 permanece em escopo 2A apenas.
 
 **"E se?" (p.67)**: "E se voces tivessem estabelecido a divisao de tarefas mais claramente, voce acha que teria evitado os dois pilotos estarem olhando para fora ao mesmo tempo?" — "Sim. Acredito que faltou uma comunicacao maior entre nos."
 

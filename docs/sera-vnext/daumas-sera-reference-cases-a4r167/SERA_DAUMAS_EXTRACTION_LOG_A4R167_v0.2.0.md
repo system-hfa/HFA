@@ -127,7 +127,7 @@ Todos os caseIds foram renomeados de `DAUMAS-ENTREVISTA-X` para `DAUMAS-CASE-X` 
 
 - **Escopo 2A**: Mantido como na dissertacao — escape point = cancelamento do automatismo + reducao manual de velocidade.
 - **Escopo 2B**: NAO ABERTO. A barreira de 500 pes (decisao de continuar em condicoes abaixo dos minimos) permanece como contexto/MDC, registrada como informacao relevante da dissertacao, mas sem abertura de novo escape point.
-- **Futuro**: Uma eventual reanalise SERA vNext com actor split e escape points multiplos devera ocorrer em fase separada, fora do A4R167.
+- **Futuro**: Uma eventual reanalise SERA vNext devera ocorrer em fase separada, com escopo proprio de ponto de fuga e, se necessario, contribuicoes de ator documentadas dentro desse escopo.
 
 ### Locks mantidos
 
