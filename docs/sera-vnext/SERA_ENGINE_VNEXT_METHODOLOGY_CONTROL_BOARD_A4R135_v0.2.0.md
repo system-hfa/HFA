@@ -297,10 +297,12 @@ They do not constitute P/O/A reference authority and must not be used as classif
 - A4R164 performs no axis classification.
 - releasedCode/downstream remain prohibited.
 
-## A4R165 Governance Note
+## A4R165-STOP Governance Note
 
-- A4R165 executed draft-only axis outcomes for the 5 A4R164-authorized pilot cases.
-- UNRESOLVED outcomes were preserved where evidence did not safely support closure.
-- Negative control behavior remained preserved with non-human-origin onset handling.
+- A4R165 draft package is under containment: METHODOLOGY_VIOLATION and REWORK_REQUIRED.
+- Any draft axis outcome from A4R165 is blocked for methodological trust use until canonical-question rework/audit completes.
+- Canonical-question lock is now explicit and mandatory: no invented/adapted question may replace canonical SERA/Hendy method questions.
+- UNRESOLVED and HOLD remain legitimate required outputs when canonical evidence is insufficient.
 - No release scope opened.
 - No downstream opened.
+- Next phase recommendation: A4R166-CANONICAL-REWORK.

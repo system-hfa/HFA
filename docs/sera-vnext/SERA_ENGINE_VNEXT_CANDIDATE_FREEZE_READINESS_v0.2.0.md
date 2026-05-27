@@ -3122,9 +3122,10 @@ Esta fase adiciona addendum de source recovery e corrige escopo total da auditor
 - freeze remains not authorized.
 - no P/O/A was executed.
 
-## A4R165 — First P/O/A Pilot Draft Execution
+## A4R165-STOP — Methodology Violation Containment
 
-- pilot draft execution metrics were recorded for 5 authorized cases.
-- UNRESOLVED and HOLD outcomes were preserved where methodologically required.
+- A4R165 draft package is marked METHODOLOGY_VIOLATION and REWORK_REQUIRED until canonical-question rework/audit.
+- no A4R165 draft result is considered methodologically validated for freeze or promotion decisions.
 - freeze remains not authorized.
 - no release scope opened and no downstream opened.
+- next phase recommendation updated to A4R166-CANONICAL-REWORK.

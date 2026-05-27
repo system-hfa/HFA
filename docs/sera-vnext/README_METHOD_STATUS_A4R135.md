@@ -202,10 +202,10 @@
 - 5 cases authorized for future pilot only
 - no P/O/A executed
 
-## A4R165 — First P/O/A Pilot Draft Execution
+## A4R165-STOP — Methodology Violation Containment
 
-- first P/O/A pilot draft executed for 5 authorized cases under A4R164 scope lock
-- draft-only outputs created with UNRESOLVED allowed and applied where needed
-- negative control (US-AIRWAYS-1549) preserved as non-human origin at escape-point onset
+- A4R165 draft package is now marked METHODOLOGY_VIOLATION and REWORK_REQUIRED until canonical-question audit/rework
+- no A4R165 draft axis output is validated for methodology proof, release, baseline, or downstream use
+- canonical method question lock was added and is mandatory for future P/O/A execution
 - no release scope opened and no downstream opened
-- next phase recommendation recorded for A4R166 author review/confirmation
+- next phase recommendation updated to A4R166-CANONICAL-REWORK

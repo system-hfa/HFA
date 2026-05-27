@@ -6,6 +6,13 @@ methodology: SERA
 releaseStatus: NO_RELEASE_SCOPE
 flowStatus: NO_DOWNSTREAM
 
+## Containment Override (A4R165-STOP)
+
+- overrideStatus: METHODOLOGY_VIOLATION
+- promotionStatus: REWORK_REQUIRED
+- trustStatus: NOT_TRUSTED_UNTIL_CANONICAL_REWORK
+- this draft must not be used for release, baseline, downstream, or methodology-proof use until canonical-question audit/rework is completed.
+
 ## Objective
 
 Execute the first P/O/A pilot in draft-only mode for the five cases authorized in A4R164, applying the A4R163 protocol and guardrails without opening any release path.
