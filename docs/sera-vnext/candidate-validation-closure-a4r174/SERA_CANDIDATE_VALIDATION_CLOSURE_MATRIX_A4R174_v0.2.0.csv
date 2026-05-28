@@ -1,0 +1,7 @@
+item,status,scope,decision,nextAction,locks
+P1-A positive fixture candidate,VALIDATED_CANDIDATE_ONLY,A4R172+A4R173,keep candidate-only and outside official runner,hold for gated promotion decision,NO_BASELINE|NO_RELEASED_CODE|NO_DOWNSTREAM
+P1-A negative control candidate,VALIDATED_CANDIDATE_ONLY,A4R172+A4R173,keep candidate-only and preserve NOT_APPLICABLE_AT_ESCAPE_POINT,hold for gated promotion decision,NO_BASELINE|NO_RELEASED_CODE|NO_DOWNSTREAM
+NOT_APPLICABLE_AT_ESCAPE_POINT support,CANDIDATE_ONLY_ACCEPTED,A4R173+A4R174,restrict to candidate-only until separate authorized runner phase,open dedicated policy phase before integration,NO_BASELINE|NO_RELEASED_CODE|NO_DOWNSTREAM
+official runner,UNCHANGED,A4R174,no official runner change now,defer any adaptation to future authorized phase,NO_OFFICIAL_RUNNER_CHANGE|NO_BASELINE|NO_DOWNSTREAM
+baseline,UNCHANGED,A4R174,baseline remains untouched,continue isolated validation only,NO_BASELINE|NO_RELEASED_CODE|NO_DOWNSTREAM
+P1-B EXECUFLIGHT expansion,CONTRACT_PREPARED,A4R174,prepare multi-actor candidate-only expansion contract,start A4R175 only if authorized,NO_FIXTURE_CREATED|NO_BASELINE|NO_RELEASED_CODE|NO_DOWNSTREAM
