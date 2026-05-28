@@ -1,0 +1,72 @@
+{
+  "id": "REF-P1A-US-AIRWAYS-1549-NEGATIVE-001",
+  "title": "US-AIRWAYS-1549 negative control fixture draft",
+  "domain": "aviation",
+  "sourceCaseId": "US-AIRWAYS-1549",
+  "fixtureStatus": "DRAFT_ONLY",
+  "referenceStatus": "READY_FOR_NEGATIVE_CONTROL_FIXTURE_DRAFT",
+  "fixtureType": "negative_control",
+  "escapePointId": "US-AIRWAYS-1549-ESCAPE-001",
+  "unsafeConditionType": "technical_environmental_onset",
+  "directHumanActorAtEscapePoint": "none",
+  "humanPoaApplicable": false,
+  "negativeControl": true,
+  "description": "During initial climb, the aircraft struck birds and suffered substantial bilateral thrust loss. The crew response occurred after the technical and environmental onset. The escape point for this draft is the bird strike and thrust loss condition, not a direct human unsafe act. Later ditching or return decisions are outside this fixture scope.",
+  "expected": {
+    "perception_code": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+    "objective_code": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+    "action_code": "NOT_APPLICABLE_AT_ESCAPE_POINT"
+  },
+  "expectedTrace": [
+    {
+      "node": "ESCAPE_POINT_IDENTIFIED",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "UNSAFE_CONDITION_IDENTIFIED",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "HUMAN_UNSAFE_ACT_AT_ESCAPE_POINT",
+      "expectedAnswer": "NO",
+      "consequence": "Human P/O/A tree is not applied"
+    },
+    {
+      "node": "P_ROOT",
+      "expectedAnswer": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+      "consequence": "No P code"
+    },
+    {
+      "node": "O_ROOT",
+      "expectedAnswer": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+      "consequence": "No O code"
+    },
+    {
+      "node": "A_ROOT",
+      "expectedAnswer": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+      "consequence": "No A code"
+    }
+  ],
+  "assertions": {
+    "expectedP": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+    "expectedO": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+    "expectedA": "NOT_APPLICABLE_AT_ESCAPE_POINT",
+    "negativeControl": true,
+    "humanPoaApplicable": false,
+    "directHumanActorAtEscapePoint": "none",
+    "unsafeConditionType": "technical_environmental_onset",
+    "escapePointMustRemain": "US-AIRWAYS-1549-ESCAPE-001"
+  },
+  "locks": [
+    "NO_BASELINE",
+    "NO_RELEASED_CODE",
+    "NO_DOWNSTREAM"
+  ],
+  "methodologyNotes": [
+    "Candidate fixture isolated from official fixtures and baseline.",
+    "The current official runner may not support NOT_APPLICABLE_AT_ESCAPE_POINT; this draft stays outside the runner until a separate authorized phase adds support.",
+    "No selectedCode, final conclusion, HFACS, Risk/ERC, ARMS/ERC, or recommendations are active in this draft."
+  ]
+}

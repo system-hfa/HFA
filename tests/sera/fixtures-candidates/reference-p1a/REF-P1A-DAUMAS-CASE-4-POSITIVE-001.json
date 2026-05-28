@@ -1,0 +1,110 @@
+{
+  "id": "REF-P1A-DAUMAS-CASE-4-POSITIVE-001",
+  "title": "DAUMAS-CASE-4 positive reference fixture draft",
+  "domain": "aviation_offshore",
+  "sourceCaseId": "DAUMAS-CASE-4",
+  "fixtureStatus": "DRAFT_ONLY",
+  "referenceStatus": "READY_FOR_FIXTURE_DRAFT",
+  "fixtureType": "positive_reference",
+  "escapePointId": "DAUMAS-CASE-4-ESCAPE-001",
+  "directActor": "pilot_interviewed",
+  "humanPoaApplicable": true,
+  "negativeControl": false,
+  "description": "Offshore pilot decides to land on his own side of the platform. Landing from the other side was available and had lower obstacle exposure. The pilot later recognized that the other side would have been more favorable. Prior accident influence and confirmation bias are context only. The fixture must not use outcome or hindsight as the classification key.",
+  "expected": {
+    "perception_code": "P-G",
+    "objective_code": "O-D",
+    "action_code": "A-F"
+  },
+  "expectedTrace": [
+    {
+      "node": "P_ROOT",
+      "expectedAnswer": "Pilot believed landing on his own side was acceptable or better.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_ASSESSMENT",
+      "expectedAnswer": "NO",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_CAPABILITY",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_TIME_PRESSURE",
+      "expectedAnswer": "NO",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_INFORMATION_AMBIGUOUS",
+      "expectedAnswer": "NO",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_INFORMATION_AVAILABLE",
+      "expectedAnswer": "YES",
+      "consequence": "P-G"
+    },
+    {
+      "node": "O_ROOT",
+      "expectedAnswer": "Land on the platform from the pilot's own side.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "O_RULES",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "O_MANAGED_RISK",
+      "expectedAnswer": "NO",
+      "consequence": "O-D"
+    },
+    {
+      "node": "A_ROOT",
+      "expectedAnswer": "Perform the landing from the selected side.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_IMPLEMENTED",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_CORRECT",
+      "expectedAnswer": "NO",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_CAPABILITY",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_TIME_PRESSURE",
+      "expectedAnswer": "NO",
+      "consequence": "A-F"
+    }
+  ],
+  "assertions": {
+    "expectedP": "P-G",
+    "expectedO": "O-D",
+    "expectedA": "A-F",
+    "negativeControl": false,
+    "humanPoaApplicable": true,
+    "escapePointMustRemain": "DAUMAS-CASE-4-ESCAPE-001",
+    "mustNotUseOutcomeOrHindsight": true
+  },
+  "locks": [
+    "NO_BASELINE",
+    "NO_RELEASED_CODE",
+    "NO_DOWNSTREAM"
+  ],
+  "methodologyNotes": [
+    "Candidate fixture isolated from official fixtures and baseline.",
+    "No ERC or risk-layer expected value is provided because this draft is not integrated with the official runner.",
+    "No selectedCode, final conclusion, HFACS, Risk/ERC, ARMS/ERC, or recommendations are active in this draft."
+  ]
+}
