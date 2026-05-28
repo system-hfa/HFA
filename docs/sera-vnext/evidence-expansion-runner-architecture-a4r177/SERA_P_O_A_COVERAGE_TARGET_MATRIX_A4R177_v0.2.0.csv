@@ -1,0 +1,24 @@
+axis,code,currentP1Coverage,realEventNeeded,syntheticAllowedIfGapPersists,priority,notes
+P,P-A,covered_by_P1B_Captain_PM,true,true,high,covered in P1 but needs broad real-event replication
+P,P-B,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+P,P-C,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+P,P-D,covered_by_P1B_FO_PF,true,true,high,covered in P1 but needs broad real-event replication
+P,P-E,not_covered_in_P1,true,true,medium,NEEDS_CANONICAL_TREE_CHECK
+P,P-F,not_covered_in_P1,true,true,medium,NEEDS_CANONICAL_TREE_CHECK
+P,P-G,covered_by_P1A_DAUMAS,true,true,high,covered in P1 but needs broad real-event replication
+P,P-H,not_covered_in_P1,true,true,medium,NEEDS_CANONICAL_TREE_CHECK
+O,O-A,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+O,O-B,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+O,O-C,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+O,O-D,covered_by_P1A_and_P1B,true,true,high,well represented in P1 but still needs real-event diversity
+O,O-E,not_active_in_P1,true,true,low,RESERVED_OR_NOT_ACTIVE_NEEDS_CANONICAL_TREE_CHECK
+A,A-A,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+A,A-B,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+A,A-C,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+A,A-D,not_covered_in_P1,true,true,high,NEEDS_CANONICAL_TREE_CHECK
+A,A-E,not_covered_in_P1,true,true,medium,NEEDS_CANONICAL_TREE_CHECK
+A,A-F,covered_by_P1A_DAUMAS,true,true,high,covered in P1 but needs real-event breadth
+A,A-G,covered_by_P1B_Captain_PM,true,true,high,covered in P1 but needs real-event breadth
+A,A-H,covered_by_P1B_FO_PF,true,true,high,covered in P1 but needs real-event breadth
+A,A-I,not_covered_in_P1,true,true,medium,NEEDS_CANONICAL_TREE_CHECK
+A,A-J,not_covered_in_P1,true,true,medium,NEEDS_CANONICAL_TREE_CHECK
