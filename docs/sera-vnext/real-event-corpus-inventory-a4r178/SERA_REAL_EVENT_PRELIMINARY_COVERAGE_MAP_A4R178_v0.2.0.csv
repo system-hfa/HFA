@@ -1,0 +1,24 @@
+axis,code,currentP1Coverage,realCorpusPotential,inventoryEvidenceCount,priorityForBatchSelection,notes
+P,P-A,covered_by_P1B_Captain_PM,MEDIUM_POTENTIAL,NOT_ASSESSED,P2,hypothesis-only real corpus potential; no definitive SERA classification
+P,P-B,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+P,P-C,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+P,P-D,covered_by_P1B_FO_PF,MEDIUM_POTENTIAL,NOT_ASSESSED,P2,hypothesis-only real corpus potential; no definitive SERA classification
+P,P-E,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+P,P-F,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+P,P-G,covered_by_P1A_DAUMAS,MEDIUM_POTENTIAL,NOT_ASSESSED,P2,hypothesis-only real corpus potential; no definitive SERA classification
+P,P-H,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+O,O-A,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+O,O-B,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+O,O-C,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+O,O-D,covered_by_P1A_and_P1B,MEDIUM_POTENTIAL,NOT_ASSESSED,P2,hypothesis-only real corpus potential; no definitive SERA classification
+O,O-E,not_active_in_P1,NOT_ACTIVE,NOT_ASSESSED,HOLD,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-A,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-B,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-C,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-D,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-E,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-F,covered_by_P1A_DAUMAS,MEDIUM_POTENTIAL,NOT_ASSESSED,P2,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-G,covered_by_P1B_Captain_PM,MEDIUM_POTENTIAL,NOT_ASSESSED,P2,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-H,covered_by_P1B_FO_PF,MEDIUM_POTENTIAL,NOT_ASSESSED,P2,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-I,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
+A,A-J,not_covered_in_P1,HIGH_POTENTIAL,NOT_ASSESSED,P1,hypothesis-only real corpus potential; no definitive SERA classification
