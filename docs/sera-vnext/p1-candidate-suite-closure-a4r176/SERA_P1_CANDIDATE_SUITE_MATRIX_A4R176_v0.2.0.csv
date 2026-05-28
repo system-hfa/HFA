@@ -1,0 +1,5 @@
+fixtureId,block,sourceCaseId,type,escapePointId,actorContributionId,expectedP,expectedO,expectedA,humanPoaApplicable,negativeControl,multiActor,status,runnerScope,baselineStatus,nextAction
+REF-P1A-DAUMAS-CASE-4-POSITIVE-001,P1-A,DAUMAS-CASE-4,positive_reference,DAUMAS-CASE-4-ESCAPE-001,,P-G,O-D,A-F,true,false,false,DRAFT_ONLY,candidate-only,untouched,hold_for_vnext_runner_phase
+REF-P1A-US-AIRWAYS-1549-NEGATIVE-001,P1-A,US-AIRWAYS-1549,negative_control,US-AIRWAYS-1549-ESCAPE-001,,NOT_APPLICABLE_AT_ESCAPE_POINT,NOT_APPLICABLE_AT_ESCAPE_POINT,NOT_APPLICABLE_AT_ESCAPE_POINT,false,true,false,DRAFT_ONLY,candidate-only,untouched,hold_for_vnext_runner_phase
+REF-P1B-EXECUFLIGHT-1526-FO-PF-001,P1-B,EXECUFLIGHT-1526,multi_actor_candidate_reference,EXECUFLIGHT-1526-ESCAPE-001,EXECUFLIGHT-1526-ESCAPE-001-ACTOR-FO-PF,P-D,O-D,A-H,true,false,true,DRAFT_ONLY,candidate-only,untouched,hold_for_vnext_runner_phase
+REF-P1B-EXECUFLIGHT-1526-CAPTAIN-PM-001,P1-B,EXECUFLIGHT-1526,multi_actor_candidate_reference,EXECUFLIGHT-1526-ESCAPE-001,EXECUFLIGHT-1526-ESCAPE-001-ACTOR-CAPTAIN-PM,P-A,O-D,A-G,true,false,true,DRAFT_ONLY,candidate-only,untouched,hold_for_vnext_runner_phase
