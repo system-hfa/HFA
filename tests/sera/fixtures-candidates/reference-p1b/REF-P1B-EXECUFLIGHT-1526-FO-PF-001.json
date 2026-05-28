@@ -1,0 +1,108 @@
+{
+  "id": "REF-P1B-EXECUFLIGHT-1526-FO-PF-001",
+  "title": "EXECUFLIGHT-1526 FO/PF multi-actor candidate fixture draft",
+  "domain": "aviation",
+  "sourceCaseId": "EXECUFLIGHT-1526",
+  "fixtureStatus": "DRAFT_ONLY",
+  "referenceStatus": "READY_FOR_MULTI_ACTOR_CANDIDATE_DRAFT",
+  "fixtureType": "multi_actor_candidate_reference",
+  "escapePointId": "EXECUFLIGHT-1526-ESCAPE-001",
+  "actorContributionId": "EXECUFLIGHT-1526-ESCAPE-001-ACTOR-FO-PF",
+  "actorRole": "FO/PF",
+  "directActor": "first_officer_pilot_flying",
+  "humanPoaApplicable": true,
+  "negativeControl": false,
+  "multiActor": true,
+  "description": "After crossing the FAF high, the FO/PF kept controlling descent profile, speed, and approach continuation in a nondefensible trajectory at the same single escape point.",
+  "rawText": "FO/PF controlled thrust and descent, entered/continued aggressive descent, and maintained continuation of the approach after the escape point was reached.",
+  "expected": {
+    "perception_code": "P-D",
+    "objective_code": "O-D",
+    "action_code": "A-H"
+  },
+  "expectedTrace": [
+    {
+      "node": "P_ROOT",
+      "expectedAnswer": "FO/PF assessed continuation profile as acceptable in the critical interval.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_ASSESSMENT",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_CAPABILITY",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_TIME_PRESSURE",
+      "expectedAnswer": "YES",
+      "consequence": "P-D"
+    },
+    {
+      "node": "O_ROOT",
+      "expectedAnswer": "Continue approach to landing under deteriorated vertical profile.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "O_RULES",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "O_MANAGED_RISK",
+      "expectedAnswer": "NO",
+      "consequence": "O-D"
+    },
+    {
+      "node": "A_ROOT",
+      "expectedAnswer": "Control descent, speed, and continuation during critical segment.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_IMPLEMENTED",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_CORRECT",
+      "expectedAnswer": "NO",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_CAPABILITY",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_TIME_PRESSURE",
+      "expectedAnswer": "YES",
+      "consequence": "A-H"
+    }
+  ],
+  "assertions": {
+    "expectedP": "P-D",
+    "expectedO": "O-D",
+    "expectedA": "A-H",
+    "singleEscapePoint": true,
+    "noSecondEscapePoint": true,
+    "actorContributionSeparated": true,
+    "negativeControl": false,
+    "humanPoaApplicable": true,
+    "escapePointMustRemain": "EXECUFLIGHT-1526-ESCAPE-001",
+    "actorContributionIdMustRemain": "EXECUFLIGHT-1526-ESCAPE-001-ACTOR-FO-PF"
+  },
+  "locks": [
+    "NO_BASELINE",
+    "NO_RELEASED_CODE",
+    "NO_DOWNSTREAM",
+    "NO_OFFICIAL_RUNNER"
+  ],
+  "methodologyNotes": [
+    "Single escape point only for EXECUFLIGHT-1526 candidate multi-actor draft.",
+    "FO/PF contribution remains isolated from Captain/PM contribution.",
+    "No selectedCode, releasedCode, downstream, finalConclusion, HFACS, Risk/ERC, ARMS/ERC, or recommendations are active."
+  ]
+}

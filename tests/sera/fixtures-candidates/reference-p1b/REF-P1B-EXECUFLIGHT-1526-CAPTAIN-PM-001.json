@@ -1,0 +1,103 @@
+{
+  "id": "REF-P1B-EXECUFLIGHT-1526-CAPTAIN-PM-001",
+  "title": "EXECUFLIGHT-1526 Captain/PM multi-actor candidate fixture draft",
+  "domain": "aviation",
+  "sourceCaseId": "EXECUFLIGHT-1526",
+  "fixtureStatus": "DRAFT_ONLY",
+  "referenceStatus": "READY_FOR_MULTI_ACTOR_CANDIDATE_DRAFT",
+  "fixtureType": "multi_actor_candidate_reference",
+  "escapePointId": "EXECUFLIGHT-1526-ESCAPE-001",
+  "actorContributionId": "EXECUFLIGHT-1526-ESCAPE-001-ACTOR-CAPTAIN-PM",
+  "actorRole": "Captain/PM",
+  "directActor": "captain_pilot_monitoring",
+  "humanPoaApplicable": true,
+  "negativeControl": false,
+  "multiActor": true,
+  "description": "After the same single escape point was reached, the Captain/PM monitored and verbalized concern but did not intervene with takeover or missed-approach initiation in the critical interval.",
+  "rawText": "Captain/PM recognized concern cues, maintained monitoring role, and did not perform decisive intervention/takeover/missed approach in the critical segment tied to the same escape point.",
+  "expected": {
+    "perception_code": "P-A",
+    "objective_code": "O-D",
+    "action_code": "A-G"
+  },
+  "expectedTrace": [
+    {
+      "node": "P_ROOT",
+      "expectedAnswer": "Captain/PM perceived the abnormal profile and verbalized concern.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "P_ASSESSMENT",
+      "expectedAnswer": "NO",
+      "consequence": "P-A"
+    },
+    {
+      "node": "O_ROOT",
+      "expectedAnswer": "Continue monitoring and support approach continuation in critical interval.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "O_RULES",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "O_MANAGED_RISK",
+      "expectedAnswer": "NO",
+      "consequence": "O-D"
+    },
+    {
+      "node": "A_ROOT",
+      "expectedAnswer": "Monitor, back up, and intervene when approach ceases to be defensibly safe.",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_IMPLEMENTED",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_CORRECT",
+      "expectedAnswer": "NO",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_CAPABILITY",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_TIME_PRESSURE",
+      "expectedAnswer": "YES",
+      "consequence": "Continue"
+    },
+    {
+      "node": "A_FEEDBACK_OR_MONITORING",
+      "expectedAnswer": "INSUFFICIENT",
+      "consequence": "A-G"
+    }
+  ],
+  "assertions": {
+    "expectedP": "P-A",
+    "expectedO": "O-D",
+    "expectedA": "A-G",
+    "singleEscapePoint": true,
+    "noSecondEscapePoint": true,
+    "actorContributionSeparated": true,
+    "negativeControl": false,
+    "humanPoaApplicable": true,
+    "escapePointMustRemain": "EXECUFLIGHT-1526-ESCAPE-001",
+    "actorContributionIdMustRemain": "EXECUFLIGHT-1526-ESCAPE-001-ACTOR-CAPTAIN-PM"
+  },
+  "locks": [
+    "NO_BASELINE",
+    "NO_RELEASED_CODE",
+    "NO_DOWNSTREAM",
+    "NO_OFFICIAL_RUNNER"
+  ],
+  "methodologyNotes": [
+    "Single escape point only for EXECUFLIGHT-1526 candidate multi-actor draft.",
+    "Captain/PM contribution remains isolated from FO/PF contribution.",
+    "No selectedCode, releasedCode, downstream, finalConclusion, HFACS, Risk/ERC, ARMS/ERC, or recommendations are active."
+  ]
+}
