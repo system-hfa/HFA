@@ -1,11 +1,11 @@
 # SERA Real Tree Requirement for A4R185
 
-Phase: A4R184-Q  
-Version: v0.2.0  
-Date: 2026-05-30  
-Status: GATE_ACTIVE  
-DOCS_ONLY  
-NO_EVENT_ANALYSIS  
+Phase: A4R184-Q
+Version: v0.2.0
+Date: 2026-05-30
+Status: GATE_ACTIVE
+DOCS_ONLY
+NO_EVENT_ANALYSIS
 NO_AXIS_DECISION
 
 ---
@@ -50,8 +50,8 @@ A fase A4R184-Q identificou a seguinte fonte como candidata a satisfazer o REAL_
 docs/sera-vnext/SERA_ENGINE_VNEXT_CANONICAL_QUESTION_TREE_ASSET_A4R99_v0.2.0.md
 ```
 
-**Status declarado**: `CANONICAL_QUESTION_TREE_ASSET`  
-**Node ID type**: `TECHNICAL_STABLE_ID` (não é o ID original da fonte Hendy; é ID técnico estável criado para o projeto)  
+**Status declarado**: `CANONICAL_QUESTION_TREE_ASSET`
+**Node ID type**: `TECHNICAL_STABLE_ID` (não é o ID original da fonte Hendy; é ID técnico estável criado para o projeto)
 **Fonte primária declarada**: `backend/app/sera/documents/SERA.pdf` + `docs/reference/hendy-sera-2003.txt`
 
 **Nodes identificados** (técnicos estáveis):

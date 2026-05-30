@@ -1,9 +1,9 @@
 # SERA A4R184 Quarantine Log
 
-Phase: A4R184-Q  
-Version: v0.2.0  
-Date: 2026-05-30  
-Status: QUARANTINE_LOG  
+Phase: A4R184-Q
+Version: v0.2.0
+Date: 2026-05-30
+Status: QUARANTINE_LOG
 DOCS_ONLY
 
 ---

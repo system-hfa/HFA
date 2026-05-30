@@ -1,11 +1,11 @@
 # SERA A4R185 Real Tree Rebuild Plan
 
-Phase: A4R184-Q (planejamento de A4R185)  
-Version: v0.2.0  
-Date: 2026-05-30  
-Status: PLAN_DRAFT  
-DOCS_ONLY  
-NO_EVENT_ANALYSIS  
+Phase: A4R184-Q (planejamento de A4R185)
+Version: v0.2.0
+Date: 2026-05-30
+Status: PLAN_DRAFT
+DOCS_ONLY
+NO_EVENT_ANALYSIS
 NO_AXIS_DECISION
 
 ---
