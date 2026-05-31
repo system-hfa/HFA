@@ -1,0 +1,2 @@
+case_id,event_name,batch,source_quality,reentry_status,agent_kind,point_topology,operational_moment_ref,poa_metadata_complete,candidate_only_ready,selectedCode_absent,releasedCode_absent,downstream_absent,rr001_status,rr003_status,next_lane,notes
+REAL-EVENT-AMERICAN-965-CALI-1995-REENTRY-001,American 965 Cali,A4R193-H,MEDIUM_HIGH,READY_FOR_CANDIDATE_ONLY_TRIAL,crew_collective,progressive,seq:5,YES,YES,YES,YES,YES,OPEN,PARTIALLY_MITIGATED,MAINTAIN_CANDIDATE_ONLY_REENTRY,Batch4 single-entry reentry under passive intake lock with Delta191 and Colgan3407 still in hold
