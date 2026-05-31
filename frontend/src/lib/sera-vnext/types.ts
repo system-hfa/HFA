@@ -26,6 +26,12 @@ export type CanonicalActionLeafCode =
 
 export type CanonicalSeraLeafCode = CanonicalPerceptionLeafCode | CanonicalObjectiveLeafCode | CanonicalActionLeafCode
 
+export type CanonicalSeraProposedCode = CanonicalSeraLeafCode
+
+export type CanonicalSeraReleasedCode = CanonicalSeraLeafCode
+
+export type CanonicalSeraCandidateLeafCode = CanonicalSeraLeafCode
+
 export type CanonicalSeraNonExistentLeafCode = 'O-E'
 
 export interface SeraCanonicalQuestionTreeNode {
@@ -408,7 +414,7 @@ export interface ManualClassificationDryRunResult {
 
 export interface HumanValidatedAxisClassification {
   axis: PoaAxis
-  releasedCode: string | null
+  releasedCode: CanonicalSeraReleasedCode | null
   source: 'HUMAN_REVIEW'
   reviewerRationale: string
   evidenceReferences: string[]
@@ -452,7 +458,7 @@ export interface ReleasedCodeWaiverConsistency {
 
 export interface ReleasedCodeSemanticConsistencyResult {
   axis: PoaAxis
-  releasedCode: string | null
+  releasedCode: CanonicalSeraReleasedCode | null
   status: 'SEMANTICALLY_CONSISTENT' | 'SEMANTIC_REVIEW_REQUIRED' | 'SEMANTICALLY_BLOCKED'
   checks: ReleasedCodeSemanticCheck[]
   blockingIssues: string[]

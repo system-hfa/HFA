@@ -35,7 +35,7 @@ function allPresent(text: string, keywords: string[]): { matched: string[]; miss
   return { matched, missing }
 }
 
-function semanticRuleSet(axis: string, releasedCode: string | null): {
+function semanticRuleSet(axis: string, releasedCode: ReleasedCodeSemanticConsistencyResult['releasedCode']): {
   requiredEvidence: string[]
   requiredAcknowledgements: string[]
   strictBlockWhenMissing: boolean

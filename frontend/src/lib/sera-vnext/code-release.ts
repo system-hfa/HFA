@@ -1,4 +1,5 @@
 import { SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS } from './constants'
+import { assertCanonicalSeraLeafCode } from './canonical-codes'
 import { validateHumanDecisionInput } from './human-decision'
 import type {
   CodeReleaseGateResult,
@@ -103,6 +104,9 @@ export function buildCodeReleaseGateResult(input: {
 
     if (validation && !(validation.valid && validation.status === 'VALID_FOR_RELEASE_GATE' && validation.acceptedForNextGate)) {
       releaseBlockingIssues.push(`Validation status is ${validation.status}.`)
+      if (validation.blockingIssues.length > 0) {
+        releaseBlockingIssues.push(...validation.blockingIssues)
+      }
     }
 
     if (axisInput && !hasRequiredProposalFields(axisInput)) {
@@ -129,12 +133,22 @@ export function buildCodeReleaseGateResult(input: {
       releaseBlockingIssues.push(...structuralIssues)
     }
 
+    let canonicalReleasedCode: HumanValidatedAxisClassification['releasedCode'] = null
+    if (releaseBlockingIssues.length === 0) {
+      try {
+        canonicalReleasedCode = assertCanonicalSeraLeafCode(contract.axis, axisInput?.proposedCode || '')
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error)
+        releaseBlockingIssues.push(`Canonical releasedCode validation failed: ${message}`)
+      }
+    }
+
     const releaseStatus: HumanValidatedAxisClassification['releaseStatus'] =
       releaseBlockingIssues.length === 0 ? 'RELEASED_BY_HUMAN_REVIEW' : 'RELEASE_BLOCKED'
 
     return {
       axis: contract.axis,
-      releasedCode: releaseStatus === 'RELEASED_BY_HUMAN_REVIEW' ? axisInput?.proposedCode || null : null,
+      releasedCode: releaseStatus === 'RELEASED_BY_HUMAN_REVIEW' ? canonicalReleasedCode : null,
       source: 'HUMAN_REVIEW',
       reviewerRationale: axisInput?.reviewerRationale || '',
       evidenceReferences: axisInput?.evidenceReferences || [],
