@@ -75,6 +75,26 @@ export interface EscapePointEnforcementResult {
   notFinalClassification: true
 }
 
+export interface EscapePointEnforcementCodeTrace {
+  code: EscapePointEnforcementBlockingIssueCode | EscapePointEnforcementWarningCode
+  kind: 'BLOCKING' | 'WARNING'
+  present: boolean
+}
+
+export interface EscapePointEnforcementDiagnosticsSummary {
+  status: EscapePointEnforcementStatus
+  enforcementMode: EscapePointEnforcementMode
+  enforced: boolean
+  blockingIssues: EscapePointEnforcementBlockingIssueCode[]
+  warnings: EscapePointEnforcementWarningCode[]
+  allBlockingIssueTrace: EscapePointEnforcementCodeTrace[]
+  allWarningTrace: EscapePointEnforcementCodeTrace[]
+  auditTrace: string[]
+  candidateOnlyLocksIntact: boolean
+  downstreamOutputsAbsent: boolean
+  readinessForIndependentReview: 'READY' | 'BLOCKED'
+}
+
 const CANDIDATE_ONLY_LOCKS = {
   selectedCodeAllowed: false as const,
   releasedCodeAllowed: false as const,
@@ -84,6 +104,25 @@ const CANDIDATE_ONLY_LOCKS = {
   finalConclusionAllowed: false as const,
   notFinalClassification: true as const,
 }
+
+const BLOCKING_ISSUE_CATALOG: readonly EscapePointEnforcementBlockingIssueCode[] = [
+  'EP-B01_AGENT_MIGRATION',
+  'EP-B02_POST_EVENT_ANALYSIS',
+  'EP-B03_CONSEQUENCE_AS_BASIS',
+  'EP-B04_FORBIDDEN_CODE_FOR_AGENT',
+  'EP-B05_DIFFUSE_REQUIRES_SPLIT',
+  'EP-B06_MULTIPLE_POINTS',
+  'EP-B07_SCOPE_INVALID',
+  'EP-B08_SCOPE_ABSENT',
+]
+
+const WARNING_CATALOG: readonly EscapePointEnforcementWarningCode[] = [
+  'EP-W01_PROGRESSIVE_ZONE_EARLIEST_CONTROLLABLE_REF_REQUIRED',
+  'EP-W02_UNKNOWN_AGENT_CONSERVATIVE_REVIEW',
+  'EP-W03_AXIS_EVIDENCE_BOUNDARY_WEAK',
+  'EP-W04_SECONDARY_ANALYSIS_REQUIRED_FOR_OTHER_AGENT_RESPONSE',
+  'EP-W05_PASSIVE_NOT_ENFORCED_COMPAT_MODE',
+]
 
 const CANONICAL_LEAF_CODES: ReadonlySet<string> = new Set([
   'P-A', 'P-B', 'P-C', 'P-D', 'P-E', 'P-F', 'P-G', 'P-H',
@@ -227,6 +266,70 @@ function buildResult(
   >,
 ): EscapePointEnforcementResult {
   return { ...partial, ...CANDIDATE_ONLY_LOCKS }
+}
+
+export function summarizeEscapePointEnforcementDiagnostics(
+  result: EscapePointEnforcementResult,
+): EscapePointEnforcementDiagnosticsSummary {
+  const raw = result as unknown as Record<string, unknown>
+  const candidateOnlyLocksIntact =
+    result.selectedCodeAllowed === false &&
+    result.releasedCodeAllowed === false &&
+    result.poaClosureAllowed === false &&
+    result.classificationAllowed === false &&
+    result.downstreamAllowed === false &&
+    result.finalConclusionAllowed === false &&
+    result.notFinalClassification === true
+
+  const downstreamOutputsAbsent =
+    !Object.prototype.hasOwnProperty.call(raw, 'selectedCode') &&
+    !Object.prototype.hasOwnProperty.call(raw, 'releasedCode') &&
+    !Object.prototype.hasOwnProperty.call(raw, 'finalConclusion') &&
+    !Object.prototype.hasOwnProperty.call(raw, 'hfacs') &&
+    !Object.prototype.hasOwnProperty.call(raw, 'risk') &&
+    !Object.prototype.hasOwnProperty.call(raw, 'erc') &&
+    !Object.prototype.hasOwnProperty.call(raw, 'armsErc') &&
+    !Object.prototype.hasOwnProperty.call(raw, 'recommendations')
+
+  const allBlockingIssueTrace: EscapePointEnforcementCodeTrace[] = BLOCKING_ISSUE_CATALOG.map((code) => ({
+    code,
+    kind: 'BLOCKING',
+    present: result.blockingIssues.includes(code),
+  }))
+  const allWarningTrace: EscapePointEnforcementCodeTrace[] = WARNING_CATALOG.map((code) => ({
+    code,
+    kind: 'WARNING',
+    present: result.warnings.includes(code),
+  }))
+
+  const auditTrace: string[] = [
+    `status:${result.status}`,
+    `enforcementMode:${result.enforcementMode}`,
+    `enforced:${String(result.enforced)}`,
+    `scopeId:${result.scopeId ?? 'null'}`,
+    `agentId:${result.agentId ?? 'null'}`,
+    `topology:${result.topology ?? 'null'}`,
+    `anchorReadiness:${result.anchorReadiness}`,
+    ...result.blockingIssues.map((code) => `blocking:${code}`),
+    ...result.warnings.map((code) => `warning:${code}`),
+    ...result.diagnostics.map((item, index) => `diagnostic#${index + 1}:${item}`),
+    `candidateOnlyLocksIntact:${String(candidateOnlyLocksIntact)}`,
+    `downstreamOutputsAbsent:${String(downstreamOutputsAbsent)}`,
+  ]
+
+  return {
+    status: result.status,
+    enforcementMode: result.enforcementMode,
+    enforced: result.enforced,
+    blockingIssues: [...result.blockingIssues],
+    warnings: [...result.warnings],
+    allBlockingIssueTrace,
+    allWarningTrace,
+    auditTrace,
+    candidateOnlyLocksIntact,
+    downstreamOutputsAbsent,
+    readinessForIndependentReview: candidateOnlyLocksIntact && downstreamOutputsAbsent ? 'READY' : 'BLOCKED',
+  }
 }
 
 export function enforceEscapePointScope(input: EscapePointEnforcementInput): EscapePointEnforcementResult {
