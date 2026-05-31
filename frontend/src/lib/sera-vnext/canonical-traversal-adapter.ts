@@ -8,7 +8,9 @@ import type {
 import type {
   ApprovedEscapePointScope,
   CanonicalSeraAxis,
+  CanonicalSeraLeafCode,
 } from './types'
+import type { EscapePointEnforcementMode } from './escape-point-enforcement'
 
 export type SeraCanonicalNodeAuthorDecision =
   | 'ACCEPT_NODE_ANSWER'
@@ -60,6 +62,11 @@ export interface CanonicalTraversalAdapterAxisResult {
 export interface CanonicalTraversalAdapterBuildInput {
   nodeDecisions: readonly SeraCanonicalNodeDecisionInput[]
   approvedEscapePointScope?: ApprovedEscapePointScope
+  enforcementMode?: EscapePointEnforcementMode
+  axisAgentRefs?: Partial<Record<CanonicalSeraAxis, string | null>>
+  axisMomentRefs?: Partial<Record<CanonicalSeraAxis, string | null>>
+  axisEvidenceRefs?: Partial<Record<CanonicalSeraAxis, string[]>>
+  proposedCodes?: Partial<Record<CanonicalSeraAxis, CanonicalSeraLeafCode | null>>
   intakeNodeIdsByAxis?: Partial<Record<CanonicalSeraAxis, readonly string[]>>
 }
 
@@ -170,6 +177,11 @@ function simulateAxisTraversal(input: {
   axis: CanonicalSeraAxis
   nodeDecisions: readonly SeraCanonicalNodeDecisionInput[]
   approvedEscapePointScope?: ApprovedEscapePointScope
+  enforcementMode?: EscapePointEnforcementMode
+  axisAgentRef?: string | null
+  axisMomentRef?: string | null
+  axisEvidenceRefs?: string[]
+  proposedCode?: CanonicalSeraLeafCode | null
   intakeNodeIds?: readonly string[]
 }): CanonicalTraversalAdapterAxisResult {
   const eventId = input.nodeDecisions[0]?.eventId ?? 'UNKNOWN_EVENT'
@@ -183,6 +195,11 @@ function simulateAxisTraversal(input: {
         axis: input.axis,
         answers: toTraversalAnswers(acceptedDecisions),
         approvedEscapePointScope: input.approvedEscapePointScope,
+        enforcementMode: input.enforcementMode,
+        axisAgentRef: input.axisAgentRef,
+        axisMomentRef: input.axisMomentRef,
+        axisEvidenceRefs: input.axisEvidenceRefs,
+        proposedCode: input.proposedCode,
         intakeNodeIds: input.intakeNodeIds,
       })
 
@@ -204,6 +221,11 @@ function simulateAxisTraversal(input: {
         axis: input.axis,
         answers: toTraversalAnswers(acceptedDecisions),
         approvedEscapePointScope: input.approvedEscapePointScope,
+        enforcementMode: input.enforcementMode,
+        axisAgentRef: input.axisAgentRef,
+        axisMomentRef: input.axisMomentRef,
+        axisEvidenceRefs: input.axisEvidenceRefs,
+        proposedCode: input.proposedCode,
         intakeNodeIds: input.intakeNodeIds,
       })
       const blockingIssue = error instanceof Error ? error.message : String(error)
@@ -223,6 +245,11 @@ function simulateAxisTraversal(input: {
         axis: input.axis,
         answers: toTraversalAnswers(acceptedDecisions),
         approvedEscapePointScope: input.approvedEscapePointScope,
+        enforcementMode: input.enforcementMode,
+        axisAgentRef: input.axisAgentRef,
+        axisMomentRef: input.axisMomentRef,
+        axisEvidenceRefs: input.axisEvidenceRefs,
+        proposedCode: input.proposedCode,
         intakeNodeIds: input.intakeNodeIds,
       })
 
@@ -242,6 +269,11 @@ function simulateAxisTraversal(input: {
         axis: input.axis,
         answers: toTraversalAnswers(acceptedDecisions),
         approvedEscapePointScope: input.approvedEscapePointScope,
+        enforcementMode: input.enforcementMode,
+        axisAgentRef: input.axisAgentRef,
+        axisMomentRef: input.axisMomentRef,
+        axisEvidenceRefs: input.axisEvidenceRefs,
+        proposedCode: input.proposedCode,
         intakeNodeIds: input.intakeNodeIds,
       })
 
@@ -265,6 +297,11 @@ function simulateAxisTraversal(input: {
     axis: input.axis,
     answers: toTraversalAnswers(acceptedDecisions),
     approvedEscapePointScope: input.approvedEscapePointScope,
+    enforcementMode: input.enforcementMode,
+    axisAgentRef: input.axisAgentRef,
+    axisMomentRef: input.axisMomentRef,
+    axisEvidenceRefs: input.axisEvidenceRefs,
+    proposedCode: input.proposedCode,
     intakeNodeIds: input.intakeNodeIds,
   })
 
@@ -298,6 +335,11 @@ export function buildCanonicalTraversalFromNodeDecisions(
       axis,
       nodeDecisions,
       approvedEscapePointScope: input.approvedEscapePointScope,
+      enforcementMode: input.enforcementMode,
+      axisAgentRef: input.axisAgentRefs?.[axis],
+      axisMomentRef: input.axisMomentRefs?.[axis],
+      axisEvidenceRefs: input.axisEvidenceRefs?.[axis],
+      proposedCode: input.proposedCodes?.[axis],
       intakeNodeIds: input.intakeNodeIdsByAxis?.[axis],
     })
 

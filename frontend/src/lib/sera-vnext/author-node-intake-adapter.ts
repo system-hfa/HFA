@@ -11,7 +11,12 @@ import {
   type CanonicalTraversalLeafCandidate,
   type CanonicalTraversalStatus,
 } from './canonical-traversal'
-import type { CanonicalSeraAxis } from './types'
+import type {
+  ApprovedEscapePointScope,
+  CanonicalSeraAxis,
+  CanonicalSeraLeafCode,
+} from './types'
+import type { EscapePointEnforcementMode } from './escape-point-enforcement'
 
 const FINAL_FREE_CONCLUSION_ALLOWED_KEY = 'final' + 'ConclusionAllowed'
 
@@ -29,13 +34,17 @@ export interface AuthorNodeIntakeRecord {
   authorDecision?: AuthorNodeIntakeDecision | null
   authorDecisionRationale?: string | null
   evidenceAnchor?: string | null
+  axisAgentRef?: string | null
+  axisMomentRef?: string | null
+  axisEvidenceRefs?: string[]
+  proposedCode?: CanonicalSeraLeafCode | null
   answerValue?: string | null
   notFinalClassification?: boolean
   poaClosureAllowed?: boolean
 }
 
 export type AuthorNodeIntakeAxisStatus = CanonicalTraversalAdapterStatus | 'AUTHOR_DECISION_PENDING' | 'AXIS_INPUT_INVALID'
-export type AuthorNodeIntakeEscapePointScopeStatus = 'PASSIVE_NOT_ENFORCED'
+export type AuthorNodeIntakeEscapePointScopeStatus = 'PASSIVE_NOT_ENFORCED' | 'ENFORCEMENT_REQUESTED'
 
 export interface AuthorNodeIntakeAxisSummary {
   outcome: 'BLOCKED' | 'PENDING' | 'INCOMPLETE' | 'LEAF_REACHED'
@@ -95,6 +104,12 @@ export interface AuthorNodeIntakeEventResult {
 
 export interface BuildCandidateTraversalFromAuthorNodeIntakeInput {
   records: readonly AuthorNodeIntakeRecord[]
+  approvedEscapePointScope?: ApprovedEscapePointScope
+  enforcementMode?: EscapePointEnforcementMode
+  axisAgentRefs?: Partial<Record<CanonicalSeraAxis, string | null>>
+  axisMomentRefs?: Partial<Record<CanonicalSeraAxis, string | null>>
+  axisEvidenceRefs?: Partial<Record<CanonicalSeraAxis, string[]>>
+  proposedCodes?: Partial<Record<CanonicalSeraAxis, CanonicalSeraLeafCode | null>>
 }
 
 export interface CandidateTraversalFromAuthorNodeIntakeResult {
@@ -114,9 +129,27 @@ function unique<T>(values: readonly T[]): T[] {
   return [...new Set(values)]
 }
 
-const ESCAPE_POINT_SCOPE_STATUS: AuthorNodeIntakeEscapePointScopeStatus = 'PASSIVE_NOT_ENFORCED'
-const ESCAPE_POINT_SCOPE_BLOCKER =
+const PASSIVE_ESCAPE_POINT_SCOPE_STATUS: AuthorNodeIntakeEscapePointScopeStatus = 'PASSIVE_NOT_ENFORCED'
+const ACTIVE_ESCAPE_POINT_SCOPE_STATUS: AuthorNodeIntakeEscapePointScopeStatus = 'ENFORCEMENT_REQUESTED'
+const PASSIVE_ESCAPE_POINT_SCOPE_BLOCKER =
   'F-01 HIGH: approvedEscapePointScope is PASSIVE_NOT_ENFORCED; real integration/UI/API remains blocked until explicit enforcement phase (A4R191+).'
+
+interface AuthorNodeIntakeAxisEnforcementContext {
+  approvedEscapePointScope?: ApprovedEscapePointScope
+  enforcementMode?: EscapePointEnforcementMode
+  axisAgentRef?: string | null
+  axisMomentRef?: string | null
+  axisEvidenceRefs?: string[]
+  proposedCode?: CanonicalSeraLeafCode | null
+}
+
+function escapePointScopeStatusFor(enforcementMode: EscapePointEnforcementMode | undefined): AuthorNodeIntakeEscapePointScopeStatus {
+  return enforcementMode === 'ENFORCE' ? ACTIVE_ESCAPE_POINT_SCOPE_STATUS : PASSIVE_ESCAPE_POINT_SCOPE_STATUS
+}
+
+function escapePointFutureBlockersFor(enforcementMode: EscapePointEnforcementMode | undefined): string[] {
+  return enforcementMode === 'ENFORCE' ? [] : [PASSIVE_ESCAPE_POINT_SCOPE_BLOCKER]
+}
 
 function hasIssue(blockingIssues: readonly string[], pattern: RegExp): boolean {
   return blockingIssues.some((issue) => pattern.test(issue))
@@ -206,6 +239,8 @@ function buildAxisWarnings(input: {
   status: AuthorNodeIntakeAxisStatus
   extensionRequired: boolean
   leafCandidate: CanonicalTraversalLeafCandidate | null
+  escapePointScopeStatus: AuthorNodeIntakeEscapePointScopeStatus
+  integrationFutureBlockers: readonly string[]
 }): string[] {
   const warnings: string[] = []
   if (input.status === 'AUTHOR_DECISION_PENDING') {
@@ -220,7 +255,10 @@ function buildAxisWarnings(input: {
   if (input.leafCandidate !== null) {
     warnings.push('Leaf reached remains candidate-only; selected/released/classified/downstream outputs stay locked.')
   }
-  warnings.push(ESCAPE_POINT_SCOPE_BLOCKER)
+  if (input.escapePointScopeStatus === 'ENFORCEMENT_REQUESTED') {
+    warnings.push('Escape-point enforcement was requested; adapter output remains candidate-only and locked.')
+  }
+  warnings.push(...input.integrationFutureBlockers)
   return unique(warnings)
 }
 
@@ -234,6 +272,8 @@ function buildAxisAuditTrace(input: {
   blockingIssues: readonly string[]
   extensionRequired: boolean
   leafCandidate: CanonicalTraversalLeafCandidate | null
+  escapePointScopeStatus: AuthorNodeIntakeEscapePointScopeStatus
+  integrationFutureBlockers: readonly string[]
 }): string[] {
   const trace = [
     `eventId:${input.eventId}`,
@@ -244,9 +284,12 @@ function buildAxisAuditTrace(input: {
     `consumedDecisionCount:${input.consumedDecisionIds.length}`,
     `extensionRequired:${input.extensionRequired}`,
     `leafReached:${input.leafCandidate !== null}`,
-    `approvedEscapePointScope:${ESCAPE_POINT_SCOPE_STATUS}`,
-    `integrationBlocker:${ESCAPE_POINT_SCOPE_BLOCKER}`,
+    `approvedEscapePointScope:${input.escapePointScopeStatus}`,
   ]
+
+  for (const blocker of input.integrationFutureBlockers) {
+    trace.push(`integrationBlocker:${blocker}`)
+  }
 
   for (const issue of input.blockingIssues) {
     trace.push(`blockingIssue:${issue}`)
@@ -311,14 +354,65 @@ function sortRecordsForTraversal(records: readonly AuthorNodeIntakeRecord[]): Au
   return cloned
 }
 
+function firstDefined<T>(values: readonly (T | undefined)[]): T | undefined {
+  return values.find((value) => value !== undefined)
+}
+
+function normalizeOptionalText(value: string | null | undefined): string | null | undefined {
+  if (value === undefined) {
+    return undefined
+  }
+  if (value === null) {
+    return null
+  }
+  const trimmed = value.trim()
+  return trimmed.length > 0 ? trimmed : null
+}
+
+function buildAxisEnforcementContext(input: {
+  axis: CanonicalSeraAxis
+  records: readonly AuthorNodeIntakeRecord[]
+  approvedEscapePointScope?: ApprovedEscapePointScope
+  enforcementMode?: EscapePointEnforcementMode
+  axisAgentRefs?: Partial<Record<CanonicalSeraAxis, string | null>>
+  axisMomentRefs?: Partial<Record<CanonicalSeraAxis, string | null>>
+  axisEvidenceRefs?: Partial<Record<CanonicalSeraAxis, string[]>>
+  proposedCodes?: Partial<Record<CanonicalSeraAxis, CanonicalSeraLeafCode | null>>
+}): AuthorNodeIntakeAxisEnforcementContext {
+  const axisAgentRef = Object.prototype.hasOwnProperty.call(input.axisAgentRefs ?? {}, input.axis)
+    ? input.axisAgentRefs?.[input.axis]
+    : firstDefined(input.records.map((record) => normalizeOptionalText(record.axisAgentRef)))
+  const axisMomentRef = Object.prototype.hasOwnProperty.call(input.axisMomentRefs ?? {}, input.axis)
+    ? input.axisMomentRefs?.[input.axis]
+    : firstDefined(input.records.map((record) => normalizeOptionalText(record.axisMomentRef)))
+  const axisEvidenceRefs = Object.prototype.hasOwnProperty.call(input.axisEvidenceRefs ?? {}, input.axis)
+    ? input.axisEvidenceRefs?.[input.axis]
+    : unique(input.records.flatMap((record) => record.axisEvidenceRefs ?? []))
+  const proposedCode = Object.prototype.hasOwnProperty.call(input.proposedCodes ?? {}, input.axis)
+    ? input.proposedCodes?.[input.axis]
+    : firstDefined(input.records.map((record) => record.proposedCode ?? undefined))
+
+  return {
+    approvedEscapePointScope: input.approvedEscapePointScope,
+    enforcementMode: input.enforcementMode,
+    axisAgentRef,
+    axisMomentRef,
+    axisEvidenceRefs: axisEvidenceRefs && axisEvidenceRefs.length > 0 ? axisEvidenceRefs : undefined,
+    proposedCode,
+  }
+}
+
 function buildInvalidAxisResult(input: {
   eventId: string
   eventName: string | null
   axis: CanonicalSeraAxis
   sourceIntakeIds: string[]
   blockingIssues: string[]
+  enforcementContext: AuthorNodeIntakeAxisEnforcementContext
 }): AuthorNodeIntakeAxisResult {
   const normalizedBlockingIssues = unique(input.blockingIssues)
+  const escapePointScopeStatus = escapePointScopeStatusFor(input.enforcementContext.enforcementMode)
+  const integrationFutureBlockers = escapePointFutureBlockersFor(input.enforcementContext.enforcementMode)
   const status = classifyInvalidAxisStatus(normalizedBlockingIssues)
   const traversalStatus: CanonicalTraversalStatus =
     status === 'TRAVERSAL_BLOCKED_BY_INVALID_ANSWER'
@@ -339,6 +433,8 @@ function buildInvalidAxisResult(input: {
     status,
     extensionRequired,
     leafCandidate,
+    escapePointScopeStatus,
+    integrationFutureBlockers,
   })
   const auditTrace = buildAxisAuditTrace({
     eventId: input.eventId,
@@ -350,6 +446,8 @@ function buildInvalidAxisResult(input: {
     blockingIssues: normalizedBlockingIssues,
     extensionRequired,
     leafCandidate,
+    escapePointScopeStatus,
+    integrationFutureBlockers,
   })
 
   return {
@@ -374,8 +472,8 @@ function buildInvalidAxisResult(input: {
     sourceIntakeIds: input.sourceIntakeIds,
     consumedDecisionIds: [],
     leafCandidate,
-    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
-    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
+    approvedEscapePointScopeStatus: escapePointScopeStatus,
+    integrationFutureBlockers,
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
@@ -394,7 +492,10 @@ function buildPendingAxisResult(input: {
   acceptedDecisions: readonly SeraCanonicalNodeDecisionInput[]
   intakeNodeIds: readonly string[]
   blockingIssues: string[]
+  enforcementContext: AuthorNodeIntakeAxisEnforcementContext
 }): AuthorNodeIntakeAxisResult {
+  const escapePointScopeStatus = escapePointScopeStatusFor(input.enforcementContext.enforcementMode)
+  const integrationFutureBlockers = escapePointFutureBlockersFor(input.enforcementContext.enforcementMode)
   const snapshot = runCanonicalAxisTraversal({
     axis: input.axis,
     answers: input.acceptedDecisions.map((decision) => ({
@@ -403,6 +504,12 @@ function buildPendingAxisResult(input: {
       answerSource: 'AUTHOR_DECISION',
       evidenceReferences: decision.evidenceRefs,
     })),
+    approvedEscapePointScope: input.enforcementContext.approvedEscapePointScope,
+    enforcementMode: input.enforcementContext.enforcementMode,
+    axisAgentRef: input.enforcementContext.axisAgentRef,
+    axisMomentRef: input.enforcementContext.axisMomentRef,
+    axisEvidenceRefs: input.enforcementContext.axisEvidenceRefs,
+    proposedCode: input.enforcementContext.proposedCode,
     intakeNodeIds: input.intakeNodeIds,
   })
 
@@ -424,6 +531,8 @@ function buildPendingAxisResult(input: {
     status,
     extensionRequired,
     leafCandidate,
+    escapePointScopeStatus,
+    integrationFutureBlockers,
   })
   const auditTrace = buildAxisAuditTrace({
     eventId: input.eventId,
@@ -435,6 +544,8 @@ function buildPendingAxisResult(input: {
     blockingIssues,
     extensionRequired,
     leafCandidate,
+    escapePointScopeStatus,
+    integrationFutureBlockers,
   })
 
   return {
@@ -459,8 +570,8 @@ function buildPendingAxisResult(input: {
     sourceIntakeIds: input.sourceIntakeIds,
     consumedDecisionIds: input.acceptedDecisions.map((item) => item.decisionId),
     leafCandidate,
-    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
-    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
+    approvedEscapePointScopeStatus: escapePointScopeStatus,
+    integrationFutureBlockers,
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
@@ -476,6 +587,7 @@ function adaptAxisRecords(input: {
   eventName: string | null
   axis: CanonicalSeraAxis
   records: readonly AuthorNodeIntakeRecord[]
+  enforcementContext: AuthorNodeIntakeAxisEnforcementContext
 }): AuthorNodeIntakeAxisResult {
   const sourceIntakeIds = input.records.map((item) => item.intakeId)
   const blockingIssues: string[] = []
@@ -491,6 +603,7 @@ function adaptAxisRecords(input: {
       axis: input.axis,
       sourceIntakeIds,
       blockingIssues: [`Invalid canonical node in intake set: ${message}`],
+      enforcementContext: input.enforcementContext,
     })
   }
 
@@ -591,6 +704,7 @@ function adaptAxisRecords(input: {
       axis: input.axis,
       sourceIntakeIds,
       blockingIssues,
+      enforcementContext: input.enforcementContext,
     })
   }
 
@@ -603,11 +717,20 @@ function adaptAxisRecords(input: {
       acceptedDecisions,
       intakeNodeIds: unique(intakeNodeIds),
       blockingIssues,
+      enforcementContext: input.enforcementContext,
     })
   }
 
   const adapterOutput = buildCanonicalTraversalFromNodeDecisions({
     nodeDecisions: [...acceptedDecisions, ...otherAuthorDecisions],
+    approvedEscapePointScope: input.enforcementContext.approvedEscapePointScope,
+    enforcementMode: input.enforcementContext.enforcementMode,
+    axisAgentRefs: { [input.axis]: input.enforcementContext.axisAgentRef },
+    axisMomentRefs: { [input.axis]: input.enforcementContext.axisMomentRef },
+    axisEvidenceRefs: input.enforcementContext.axisEvidenceRefs
+      ? { [input.axis]: input.enforcementContext.axisEvidenceRefs }
+      : undefined,
+    proposedCodes: { [input.axis]: input.enforcementContext.proposedCode },
     intakeNodeIdsByAxis: {
       [input.axis]: unique(intakeNodeIds),
     },
@@ -623,8 +746,17 @@ function adaptAxisRecords(input: {
       acceptedDecisions,
       intakeNodeIds: unique(intakeNodeIds),
       blockingIssues: ['No axis traversal result generated from author intake decisions.'],
+      enforcementContext: input.enforcementContext,
     })
   }
+
+  const axisBlockingIssues = unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])])
+  const extensionRequired =
+    axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
+    axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
+    axisResult.traversalStep.status === 'NEXT_NODE_READY'
+  const escapePointScopeStatus = escapePointScopeStatusFor(input.enforcementContext.enforcementMode)
+  const integrationFutureBlockers = escapePointFutureBlockersFor(input.enforcementContext.enforcementMode)
 
   return {
     eventId: input.eventId,
@@ -633,20 +765,16 @@ function adaptAxisRecords(input: {
     status: axisResult.status,
     traversalStatus: axisResult.traversalStep.status,
     pendingAuthorDecision: false,
-    extensionRequired:
-      axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
-      axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
-      axisResult.traversalStep.status === 'NEXT_NODE_READY',
+    extensionRequired,
     blocked: Boolean(axisResult.blockingIssue) || axisResult.status.includes('BLOCKED'),
-    blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
+    blockingIssues: axisBlockingIssues,
     warnings: buildAxisWarnings({
-      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
+      blockingIssues: axisBlockingIssues,
       status: axisResult.status,
-      extensionRequired:
-        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      extensionRequired,
       leafCandidate: axisResult.leafCandidate,
+      escapePointScopeStatus,
+      integrationFutureBlockers,
     }),
     auditTrace: buildAxisAuditTrace({
       eventId: input.eventId,
@@ -655,36 +783,29 @@ function adaptAxisRecords(input: {
       traversalStatus: axisResult.traversalStep.status,
       sourceIntakeIds,
       consumedDecisionIds: axisResult.consumedDecisionIds,
-      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
-      extensionRequired:
-        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      blockingIssues: axisBlockingIssues,
+      extensionRequired,
       leafCandidate: axisResult.leafCandidate,
+      escapePointScopeStatus,
+      integrationFutureBlockers,
     }),
     nextRequiredAction: buildNextRequiredAction({
       status: axisResult.status,
-      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
-      extensionRequired:
-        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      blockingIssues: axisBlockingIssues,
+      extensionRequired,
       leafCandidate: axisResult.leafCandidate,
     }),
     axisSummary: buildAxisSummary({
       status: axisResult.status,
-      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
-      extensionRequired:
-        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
-        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      blockingIssues: axisBlockingIssues,
+      extensionRequired,
       leafCandidate: axisResult.leafCandidate,
     }),
     sourceIntakeIds,
     consumedDecisionIds: axisResult.consumedDecisionIds,
     leafCandidate: axisResult.leafCandidate,
-    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
-    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
+    approvedEscapePointScopeStatus: escapePointScopeStatus,
+    integrationFutureBlockers,
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
@@ -711,6 +832,10 @@ function groupRecordsByEvent(input: readonly AuthorNodeIntakeRecord[]): Map<stri
       authorDecision: record.authorDecision?.trim() as AuthorNodeIntakeDecision | undefined,
       authorDecisionRationale: record.authorDecisionRationale?.trim(),
       evidenceAnchor: record.evidenceAnchor?.trim(),
+      axisAgentRef: record.axisAgentRef?.trim(),
+      axisMomentRef: record.axisMomentRef?.trim(),
+      axisEvidenceRefs: record.axisEvidenceRefs?.map((item) => item.trim()).filter((item) => item.length > 0),
+      proposedCode: record.proposedCode ?? undefined,
       answerValue: record.answerValue?.trim(),
     })
     grouped.set(eventId, list)
@@ -723,6 +848,8 @@ export function buildCandidateTraversalFromAuthorNodeIntake(
 ): CandidateTraversalFromAuthorNodeIntakeResult {
   const events: AuthorNodeIntakeEventResult[] = []
   const groupedEvents = groupRecordsByEvent(input.records)
+  const escapePointScopeStatus = escapePointScopeStatusFor(input.enforcementMode)
+  const integrationFutureBlockers = escapePointFutureBlockersFor(input.enforcementMode)
 
   for (const [eventId, records] of groupedEvents.entries()) {
     const axisResults: AuthorNodeIntakeAxisResult[] = []
@@ -739,6 +866,16 @@ export function buildCandidateTraversalFromAuthorNodeIntake(
           eventName,
           axis,
           records: axisRecords,
+          enforcementContext: buildAxisEnforcementContext({
+            axis,
+            records: axisRecords,
+            approvedEscapePointScope: input.approvedEscapePointScope,
+            enforcementMode: input.enforcementMode,
+            axisAgentRefs: input.axisAgentRefs,
+            axisMomentRefs: input.axisMomentRefs,
+            axisEvidenceRefs: input.axisEvidenceRefs,
+            proposedCodes: input.proposedCodes,
+          }),
         })
       )
     }
@@ -755,8 +892,8 @@ export function buildCandidateTraversalFromAuthorNodeIntake(
       statusByAxis,
       hasPendingAuthorDecision: axisResults.some((item) => item.pendingAuthorDecision),
       hasBlockingIssues: axisResults.some((item) => item.blocked || item.blockingIssues.length > 0),
-      approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
-      integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
+      approvedEscapePointScopeStatus: escapePointScopeStatus,
+      integrationFutureBlockers,
       selectedCodeAllowed: false,
       releasedCodeAllowed: false,
       poaClosureAllowed: false,
@@ -769,8 +906,8 @@ export function buildCandidateTraversalFromAuthorNodeIntake(
 
   return {
     events,
-    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
-    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
+    approvedEscapePointScopeStatus: escapePointScopeStatus,
+    integrationFutureBlockers,
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
