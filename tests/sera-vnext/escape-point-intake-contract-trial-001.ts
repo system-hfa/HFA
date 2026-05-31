@@ -114,9 +114,9 @@ function buildCompleteDiscreteIntake(): SeraVNextEscapePointIntake {
       }),
     }),
     axisMetadata: {
-      perception: { axisAgentRef: 'maintenance-copterline' },
-      objective: { axisAgentRef: 'maintenance-copterline' },
-      action: { axisAgentRef: 'maintenance-copterline' },
+      perception: { axisAgentRef: 'maintenance-copterline', axisMomentRef: 'seq:2', axisEvidenceRefs: ['ev-p-2'] },
+      objective: { axisAgentRef: 'maintenance-copterline', axisMomentRef: 'seq:2', axisEvidenceRefs: ['ev-o-2'] },
+      action: { axisAgentRef: 'maintenance-copterline', axisMomentRef: 'seq:2', axisEvidenceRefs: ['ev-a-2'] },
     },
   })
   const validation = validatePassiveEscapePointIntake(intake)
@@ -135,9 +135,9 @@ function buildCompleteDiscreteIntake(): SeraVNextEscapePointIntake {
       escapePointAnchor: discreteAnchor({ pointTopology: 'diffuse' }),
     }),
     axisMetadata: {
-      perception: { axisAgentRef: 'maintenance-copterline' },
-      objective: { axisAgentRef: 'maintenance-copterline' },
-      action: { axisAgentRef: 'maintenance-copterline' },
+      perception: { axisAgentRef: 'maintenance-copterline', axisMomentRef: 'seq:3', axisEvidenceRefs: ['ev-p-3'] },
+      objective: { axisAgentRef: 'maintenance-copterline', axisMomentRef: 'seq:3', axisEvidenceRefs: ['ev-o-3'] },
+      action: { axisAgentRef: 'maintenance-copterline', axisMomentRef: 'seq:3', axisEvidenceRefs: ['ev-a-3'] },
     },
   })
   const validation = validatePassiveEscapePointIntake(intake)
@@ -176,7 +176,7 @@ function buildCompleteDiscreteIntake(): SeraVNextEscapePointIntake {
   const intake = buildCompleteDiscreteIntake()
   intake.axisMetadata.objective.proposedCode = 'O-E'
   const validation = validatePassiveEscapePointIntake(intake)
-  assert.equal(validation.readinessStatus, 'PASSIVE_INTAKE_INCOMPLETE')
+  assert.equal(validation.readinessStatus, 'PASSIVE_INTAKE_READY_WITH_WARNINGS')
   assert.ok(validation.issues.some((item) => item.code === 'INTAKE_NON_EXISTENT_PROPOSED_CODE' && item.axis === 'O'))
 }
 
@@ -230,4 +230,3 @@ function buildCompleteDiscreteIntake(): SeraVNextEscapePointIntake {
 }
 
 console.log('escape-point-intake-contract-trial-001: OK')
-

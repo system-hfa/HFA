@@ -5,9 +5,11 @@ import {
 } from './escape-point-scope'
 import type {
   ApprovedEscapePointScope,
+  CanonicalSeraCandidateLeafCode,
   CanonicalSeraAxis,
   CanonicalSeraLeafCode,
   CanonicalSeraNonExistentLeafCode,
+  SeraVNextEscapePointAnchor,
   SeraVNextCanonicalRuntimeContext,
   SeraVNextSourceType,
 } from './types'
@@ -20,20 +22,27 @@ export type SeraVNextEscapePointIntakeIssueCode =
   | 'INTAKE_AGENT_MISSING'
   | 'INTAKE_ACT_OR_OMISSION_MISSING'
   | 'INTAKE_OPERATIONAL_MOMENT_MISSING'
+  | 'INTAKE_FUTURE_ENFORCE_TEMPORAL_ANCHOR_MISSING'
   | 'INTAKE_TOPOLOGY_MISSING'
   | 'INTAKE_PROGRESSIVE_ZONE_BOUNDARY_MISSING'
   | 'INTAKE_PROGRESSIVE_ZONE_BOUNDARY_INCOMPLETE'
   | 'INTAKE_DIFFUSE_SPLIT_REQUIRED'
   | 'INTAKE_AXIS_METADATA_MISSING'
   | 'INTAKE_AXIS_AGENT_REF_MISSING'
+  | 'INTAKE_AXIS_AGENT_REF_MISMATCH'
+  | 'INTAKE_AXIS_MOMENT_REF_MISSING'
+  | 'INTAKE_AXIS_EVIDENCE_REFS_MISSING'
   | 'INTAKE_NON_EXISTENT_PROPOSED_CODE'
+  | 'INTAKE_INVALID_PROPOSED_CODE'
   | 'INTAKE_CANDIDATE_LOCK_VIOLATION'
 
 export type SeraVNextEscapePointIntakeIssueSeverity = 'PASSIVE_INFO' | 'PASSIVE_DIAGNOSTIC'
+export type SeraVNextEscapePointIntakeIssueClass = 'ISSUE' | 'WARNING' | 'BLOCKER_PASSIVE'
 
 export interface SeraVNextEscapePointIntakeIssue {
   code: SeraVNextEscapePointIntakeIssueCode
   severity: SeraVNextEscapePointIntakeIssueSeverity
+  issueClass: SeraVNextEscapePointIntakeIssueClass
   message: string
   axis?: CanonicalSeraAxis
   axisKey?: SeraVNextEscapePointIntakeAxisKey
@@ -85,6 +94,9 @@ export interface SeraVNextEscapePointIntakeValidationResult {
   readinessStatus: SeraVNextEscapePointIntakeReadinessStatus
   readyForFutureEnforcement: boolean
   issues: SeraVNextEscapePointIntakeIssue[]
+  issueCount: number
+  warningCount: number
+  passiveBlockerCount: number
   scopeAcceptedForPassiveRuntime: boolean
   normalizedScopeStatus: SeraVNextEscapePointStatusMappingResult | null
   selectedCodeAllowed: false
@@ -170,12 +182,14 @@ function normalizeAxisMetadata(input: SeraVNextEscapePointIntakeAxisMetadata | u
 function issue(
   code: SeraVNextEscapePointIntakeIssueCode,
   severity: SeraVNextEscapePointIntakeIssueSeverity,
+  issueClass: SeraVNextEscapePointIntakeIssueClass,
   message: string,
   context?: Partial<Pick<SeraVNextEscapePointIntakeIssue, 'axis' | 'axisKey'>>,
 ): SeraVNextEscapePointIntakeIssue {
   return {
     code,
     severity,
+    issueClass,
     message,
     blocksRuntime: false,
     ...(context?.axis ? { axis: context.axis } : {}),
@@ -193,6 +207,28 @@ function hasLockViolation(intake: SeraVNextEscapePointIntake): boolean {
     intake.finalConclusionAllowed !== false ||
     intake.notFinalClassification !== true
   )
+}
+
+function hasFutureTemporalAnchor(anchor: SeraVNextEscapePointAnchor): boolean {
+  if (isNonEmptyString(anchor.operationalMoment.sequenceRef) || isNonEmptyString(anchor.operationalMoment.phaseRef)) {
+    return true
+  }
+  return isNonEmptyString(anchor.zoneBoundary?.earliestControllableRef)
+}
+
+function getAxisMetadata(
+  intake: SeraVNextEscapePointIntake,
+  axisKey: SeraVNextEscapePointIntakeAxisKey,
+): SeraVNextEscapePointIntakeAxisMetadata | null {
+  const raw = (intake as unknown as { axisMetadata?: Record<string, unknown> }).axisMetadata
+  if (!raw || typeof raw !== 'object') {
+    return null
+  }
+  const candidate = raw[axisKey]
+  if (!candidate || typeof candidate !== 'object') {
+    return null
+  }
+  return candidate as SeraVNextEscapePointIntakeAxisMetadata
 }
 
 export function buildPassiveEscapePointIntake(input: BuildPassiveEscapePointIntakeInput): SeraVNextEscapePointIntake {
@@ -223,6 +259,7 @@ export function validatePassiveEscapePointIntake(
       issue(
         'INTAKE_SCOPE_REQUIRED',
         'PASSIVE_DIAGNOSTIC',
+        'BLOCKER_PASSIVE',
         'Passive intake must include either approvedEscapePointScope or draftEscapePointScope.',
       ),
     )
@@ -238,18 +275,27 @@ export function validatePassiveEscapePointIntake(
         issue(
           'INTAKE_SCOPE_ANCHOR_MISSING',
           'PASSIVE_DIAGNOSTIC',
+          'BLOCKER_PASSIVE',
           'Escape-point scope is present but missing escapePointAnchor in intake.',
         ),
       )
     } else {
       if (!isNonEmptyString(anchor.agentId)) {
-        issues.push(issue('INTAKE_AGENT_MISSING', 'PASSIVE_DIAGNOSTIC', 'Escape-point intake is missing anchor agentId.'))
+        issues.push(
+          issue(
+            'INTAKE_AGENT_MISSING',
+            'PASSIVE_DIAGNOSTIC',
+            'BLOCKER_PASSIVE',
+            'Escape-point intake is missing anchor agentId.',
+          ),
+        )
       }
       if (!isNonEmptyString(anchor.unsafeActOrOmission?.statement)) {
         issues.push(
           issue(
             'INTAKE_ACT_OR_OMISSION_MISSING',
             'PASSIVE_DIAGNOSTIC',
+            'BLOCKER_PASSIVE',
             'Escape-point intake is missing observable unsafe act/omission statement.',
           ),
         )
@@ -259,7 +305,18 @@ export function validatePassiveEscapePointIntake(
           issue(
             'INTAKE_OPERATIONAL_MOMENT_MISSING',
             'PASSIVE_DIAGNOSTIC',
+            'BLOCKER_PASSIVE',
             'Escape-point intake is missing operational moment description.',
+          ),
+        )
+      }
+      if (!hasFutureTemporalAnchor(anchor)) {
+        issues.push(
+          issue(
+            'INTAKE_FUTURE_ENFORCE_TEMPORAL_ANCHOR_MISSING',
+            'PASSIVE_DIAGNOSTIC',
+            'BLOCKER_PASSIVE',
+            'Future ENFORCE readiness requires sequenceRef/phaseRef/earliestControllableRef in escape-point scope.',
           ),
         )
       }
@@ -269,6 +326,7 @@ export function validatePassiveEscapePointIntake(
             issue(
               'INTAKE_PROGRESSIVE_ZONE_BOUNDARY_MISSING',
               'PASSIVE_DIAGNOSTIC',
+              'BLOCKER_PASSIVE',
               'Progressive intake requires zoneBoundary with earliest/latest controllable references.',
             ),
           )
@@ -280,6 +338,7 @@ export function validatePassiveEscapePointIntake(
             issue(
               'INTAKE_PROGRESSIVE_ZONE_BOUNDARY_INCOMPLETE',
               'PASSIVE_DIAGNOSTIC',
+              'BLOCKER_PASSIVE',
               'Progressive intake zoneBoundary must include earliestControllableRef and latestControllableRef.',
             ),
           )
@@ -289,23 +348,32 @@ export function validatePassiveEscapePointIntake(
           issue(
             'INTAKE_DIFFUSE_SPLIT_REQUIRED',
             'PASSIVE_DIAGNOSTIC',
+            'BLOCKER_PASSIVE',
             'Diffuse intake remains candidate-only and requires split into discrete/progressive before future enforcement.',
           ),
         )
       } else if (anchor.pointTopology !== 'discrete') {
-        issues.push(issue('INTAKE_TOPOLOGY_MISSING', 'PASSIVE_DIAGNOSTIC', 'Escape-point intake has invalid or missing topology.'))
+        issues.push(
+          issue(
+            'INTAKE_TOPOLOGY_MISSING',
+            'PASSIVE_DIAGNOSTIC',
+            'BLOCKER_PASSIVE',
+            'Escape-point intake has invalid or missing topology.',
+          ),
+        )
       }
     }
   }
 
   for (const axisKey of ['perception', 'objective', 'action'] as const) {
     const axis = toCanonicalAxis(axisKey)
-    const metadata = intake.axisMetadata[axisKey]
+    const metadata = getAxisMetadata(intake, axisKey)
     if (!metadata) {
       issues.push(
         issue(
           'INTAKE_AXIS_METADATA_MISSING',
           'PASSIVE_DIAGNOSTIC',
+          'BLOCKER_PASSIVE',
           `Escape-point intake is missing ${axisKey} axis metadata.`,
           { axis, axisKey },
         ),
@@ -318,7 +386,43 @@ export function validatePassiveEscapePointIntake(
         issue(
           'INTAKE_AXIS_AGENT_REF_MISSING',
           'PASSIVE_DIAGNOSTIC',
+          'BLOCKER_PASSIVE',
           `${axisKey} axis metadata is missing axisAgentRef for future ENFORCE readiness.`,
+          { axis, axisKey },
+        ),
+      )
+    }
+    const scopeAgentId = activeScope?.escapePointAnchor?.agentId?.trim()
+    const axisAgentRef = metadata.axisAgentRef?.trim()
+    if (isNonEmptyString(scopeAgentId) && isNonEmptyString(axisAgentRef) && axisAgentRef !== scopeAgentId) {
+      issues.push(
+        issue(
+          'INTAKE_AXIS_AGENT_REF_MISMATCH',
+          'PASSIVE_DIAGNOSTIC',
+          'BLOCKER_PASSIVE',
+          `${axisKey} axisAgentRef diverges from escape-point anchor agentId.`,
+          { axis, axisKey },
+        ),
+      )
+    }
+    if (!isNonEmptyString(metadata.axisMomentRef)) {
+      issues.push(
+        issue(
+          'INTAKE_AXIS_MOMENT_REF_MISSING',
+          'PASSIVE_INFO',
+          'WARNING',
+          `${axisKey} axis metadata is missing axisMomentRef for future temporal consistency checks.`,
+          { axis, axisKey },
+        ),
+      )
+    }
+    if (!metadata.axisEvidenceRefs || metadata.axisEvidenceRefs.length === 0) {
+      issues.push(
+        issue(
+          'INTAKE_AXIS_EVIDENCE_REFS_MISSING',
+          'PASSIVE_INFO',
+          'WARNING',
+          `${axisKey} axis metadata is missing axisEvidenceRefs for evidence-bound enforcement readiness.`,
           { axis, axisKey },
         ),
       )
@@ -329,10 +433,26 @@ export function validatePassiveEscapePointIntake(
         issue(
           'INTAKE_NON_EXISTENT_PROPOSED_CODE',
           'PASSIVE_DIAGNOSTIC',
+          'ISSUE',
           `${axisKey} proposedCode "O-E" is NON_EXISTENT_IN_SERA_PT_V1 and remains blocked/non-active.`,
           { axis, axisKey },
         ),
       )
+      continue
+    }
+    if (metadata.proposedCode) {
+      const proposed = metadata.proposedCode as string
+      if (!isCanonicalSeraLeafCode(axis, proposed)) {
+        issues.push(
+          issue(
+            'INTAKE_INVALID_PROPOSED_CODE',
+            'PASSIVE_DIAGNOSTIC',
+            'ISSUE',
+            `${axisKey} proposedCode "${proposed}" is outside canonical allowlist for axis ${axis}.`,
+            { axis, axisKey },
+          ),
+        )
+      }
     }
   }
 
@@ -341,34 +461,24 @@ export function validatePassiveEscapePointIntake(
       issue(
         'INTAKE_CANDIDATE_LOCK_VIOLATION',
         'PASSIVE_DIAGNOSTIC',
+        'BLOCKER_PASSIVE',
         'Passive intake lock violation detected; candidate-only locks must stay closed.',
       ),
     )
   }
 
+  const passiveBlockerCount = issues.filter((item) => item.issueClass === 'BLOCKER_PASSIVE').length
+  const warningCount = issues.filter((item) => item.issueClass === 'WARNING').length
+  const issueCount = issues.filter((item) => item.issueClass === 'ISSUE').length
   const hasScopeMissing = issues.some((item) => item.code === 'INTAKE_SCOPE_REQUIRED')
   const hasDiffuseSplitRequirement = issues.some((item) => item.code === 'INTAKE_DIFFUSE_SPLIT_REQUIRED')
-  const hasReadinessIssue = issues.some((item) =>
-    [
-      'INTAKE_SCOPE_ANCHOR_MISSING',
-      'INTAKE_AGENT_MISSING',
-      'INTAKE_ACT_OR_OMISSION_MISSING',
-      'INTAKE_OPERATIONAL_MOMENT_MISSING',
-      'INTAKE_TOPOLOGY_MISSING',
-      'INTAKE_PROGRESSIVE_ZONE_BOUNDARY_MISSING',
-      'INTAKE_PROGRESSIVE_ZONE_BOUNDARY_INCOMPLETE',
-      'INTAKE_AXIS_METADATA_MISSING',
-      'INTAKE_AXIS_AGENT_REF_MISSING',
-      'INTAKE_NON_EXISTENT_PROPOSED_CODE',
-      'INTAKE_CANDIDATE_LOCK_VIOLATION',
-    ].includes(item.code),
-  )
+  const hasPassiveBlocker = passiveBlockerCount > 0
 
   const readinessStatus: SeraVNextEscapePointIntakeReadinessStatus = hasScopeMissing
     ? 'PASSIVE_INTAKE_SCOPE_MISSING'
     : hasDiffuseSplitRequirement
       ? 'PASSIVE_INTAKE_DIFFUSE_SPLIT_REQUIRED'
-      : hasReadinessIssue
+      : hasPassiveBlocker
         ? 'PASSIVE_INTAKE_INCOMPLETE'
         : issues.length > 0
           ? 'PASSIVE_INTAKE_READY_WITH_WARNINGS'
@@ -381,8 +491,11 @@ export function validatePassiveEscapePointIntake(
     readyForFutureEnforcement:
       readinessStatus === 'PASSIVE_INTAKE_READY' &&
       normalizedScopeStatus?.readyForFutureEnforcement === true &&
-      !hasReadinessIssue,
+      !hasPassiveBlocker,
     issues,
+    issueCount,
+    warningCount,
+    passiveBlockerCount,
     scopeAcceptedForPassiveRuntime: Boolean(activeScope),
     normalizedScopeStatus,
     ...CANDIDATE_ONLY_LOCKS,
@@ -407,7 +520,10 @@ export function convertIntakeToCanonicalRuntimeContext(
 
   for (const axisKey of ['perception', 'objective', 'action'] as const) {
     const axis = toCanonicalAxis(axisKey)
-    const metadata = intake.axisMetadata[axisKey]
+    const metadata = getAxisMetadata(intake, axisKey)
+    if (!metadata) {
+      continue
+    }
 
     if (metadata.axisAgentRef !== undefined) {
       axisAgentRefs[axis] = metadata.axisAgentRef ?? null
@@ -431,8 +547,9 @@ export function convertIntakeToCanonicalRuntimeContext(
       continue
     }
 
-    if (metadata.proposedCode && isCanonicalSeraLeafCode(axis, metadata.proposedCode)) {
-      proposedCodes[axis] = metadata.proposedCode
+    const proposedCode = metadata.proposedCode as CanonicalSeraCandidateLeafCode | undefined
+    if (proposedCode && isCanonicalSeraLeafCode(axis, proposedCode)) {
+      proposedCodes[axis] = proposedCode
     } else if (metadata.proposedCode) {
       proposedCodes[axis] = null
     }
@@ -454,4 +571,3 @@ export function convertIntakeToCanonicalRuntimeContext(
     ...CANDIDATE_ONLY_LOCKS,
   }
 }
-
