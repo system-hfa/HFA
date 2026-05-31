@@ -6,6 +6,7 @@ import type {
   ApprovedEscapePointScope,
   CanonicalSeraAxis,
   CanonicalSeraLeafCode,
+  SeraVNextEscapePointAnchor,
   SeraVNextEscapePointTopology,
 } from './types'
 
@@ -126,6 +127,23 @@ const PHYSICAL_LIMITATION_MARKERS = [
   'ppe', 'epi',
 ]
 
+const MAINTENANCE_OR_ORG_AGENT_MARKERS = [
+  'maintenance', 'manutenção', 'manutencao',
+  'technician', 'técnico', 'tecnico',
+  'mechanic', 'mecânico', 'mecanico',
+  'organization', 'organização', 'organizacao',
+  'supervisor', 'supervisão', 'supervisao',
+  'management', 'gestão', 'gestao',
+]
+
+const DESIGN_MANAGEMENT_AGENT_MARKERS = [
+  'design', 'projeto',
+  'engineering', 'engenharia',
+  'engineer', 'engenheiro',
+  'management', 'gestão', 'gestao',
+  'manufacturer', 'fabricante',
+]
+
 function normalizeRefText(values: readonly (string | null | undefined)[]): string {
   return values
     .filter((value): value is string => typeof value === 'string')
@@ -135,6 +153,33 @@ function normalizeRefText(values: readonly (string | null | undefined)[]): strin
 
 function matchesAnyMarker(haystack: string, markers: readonly string[]): boolean {
   return markers.some((marker) => haystack.includes(marker.toLowerCase()))
+}
+
+function hasOwnAgentPhysicalLimitationEvidence(input: {
+  evidenceText: string
+  anchor: SeraVNextEscapePointAnchor
+  axisAgentRef: string
+}): boolean {
+  if (!matchesAnyMarker(input.evidenceText, PHYSICAL_LIMITATION_MARKERS)) {
+    return false
+  }
+
+  const explicitAgentRefs = [input.anchor.agentId, input.axisAgentRef]
+    .map((ref) => ref.trim().toLowerCase())
+    .filter((ref) => ref.length > 0)
+  if (explicitAgentRefs.some((ref) => input.evidenceText.includes(ref))) {
+    return true
+  }
+
+  if (input.anchor.agentKind === 'maintenance_or_org') {
+    return matchesAnyMarker(input.evidenceText, MAINTENANCE_OR_ORG_AGENT_MARKERS)
+  }
+
+  if (input.anchor.agentKind === 'design_mgmt') {
+    return matchesAnyMarker(input.evidenceText, DESIGN_MANAGEMENT_AGENT_MARKERS)
+  }
+
+  return false
 }
 
 function parseSequenceIndex(ref: string | null | undefined): number | null {
@@ -464,7 +509,7 @@ export function enforceEscapePointScope(input: EscapePointEnforcementInput): Esc
   const agentKind = anchor.agentKind
   const isMaintenanceOrOrgAgent = agentKind === 'maintenance_or_org' || agentKind === 'design_mgmt'
   if (isMaintenanceOrOrgAgent && input.proposedCode === 'A-D') {
-    const hasPhysicalLimitationEvidence = matchesAnyMarker(evidenceText, PHYSICAL_LIMITATION_MARKERS)
+    const hasPhysicalLimitationEvidence = hasOwnAgentPhysicalLimitationEvidence({ evidenceText, anchor, axisAgentRef })
     if (!hasPhysicalLimitationEvidence) {
       return buildResult({
         status: 'ESCAPE_POINT_BLOCKED_FORBIDDEN_CODE_FOR_AGENT',
