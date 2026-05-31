@@ -196,7 +196,7 @@ function scope(overrides: Partial<ApprovedEscapePointScope> = {}): ApprovedEscap
     axis: 'A',
     enforcementMode: 'ENFORCE',
     axisAgentRef: 'maintenance-copterline',
-    axisEvidenceRefs: ['ev-maint-1', 'physical limitation: technician could not reach the actuator without lift'],
+    axisEvidenceRefs: ['ev-maint-1', 'agent maintenance-copterline had a physical limitation: could not reach the actuator without lift'],
     proposedCode: 'A-D',
   })
   assert.equal(allowed.status, 'ESCAPE_POINT_ENFORCED_OK')

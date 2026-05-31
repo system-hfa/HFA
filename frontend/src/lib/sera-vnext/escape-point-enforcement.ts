@@ -18,6 +18,8 @@ export type EscapePointEnforcementStatus =
   | 'ESCAPE_POINT_BLOCKED_SCOPE_ABSENT'
   | 'ESCAPE_POINT_BLOCKED_SCOPE_INVALID'
   | 'ESCAPE_POINT_BLOCKED_AGENT_MIGRATION'
+  | 'ESCAPE_POINT_BLOCKED_AXIS_AGENT_REF_REQUIRED'
+  | 'ESCAPE_POINT_BLOCKED_SEQUENCE_REF_REQUIRED'
   | 'ESCAPE_POINT_BLOCKED_POST_EVENT_ANALYSIS'
   | 'ESCAPE_POINT_BLOCKED_CONSEQUENCE_AS_BASIS'
   | 'ESCAPE_POINT_BLOCKED_FORBIDDEN_CODE_FOR_AGENT'
@@ -33,6 +35,8 @@ export type EscapePointEnforcementBlockingIssueCode =
   | 'EP-B06_MULTIPLE_POINTS'
   | 'EP-B07_SCOPE_INVALID'
   | 'EP-B08_SCOPE_ABSENT'
+  | 'EP-B09_AXIS_AGENT_REF_REQUIRED'
+  | 'EP-B10_SEQUENCE_REF_REQUIRED_FOR_ENFORCE'
 
 export type EscapePointEnforcementWarningCode =
   | 'EP-W01_PROGRESSIVE_ZONE_EARLIEST_CONTROLLABLE_REF_REQUIRED'
@@ -114,6 +118,8 @@ const BLOCKING_ISSUE_CATALOG: readonly EscapePointEnforcementBlockingIssueCode[]
   'EP-B06_MULTIPLE_POINTS',
   'EP-B07_SCOPE_INVALID',
   'EP-B08_SCOPE_ABSENT',
+  'EP-B09_AXIS_AGENT_REF_REQUIRED',
+  'EP-B10_SEQUENCE_REF_REQUIRED_FOR_ENFORCE',
 ]
 
 const WARNING_CATALOG: readonly EscapePointEnforcementWarningCode[] = [
@@ -158,6 +164,8 @@ const OTHER_AGENT_RESPONSE_MARKERS = [
 
 const PHYSICAL_LIMITATION_MARKERS = [
   'physical limitation', 'limitação física', 'limitacao fisica',
+  'injury', 'lesão', 'lesao',
+  'hand injury', 'lesão na mão', 'lesao na mao',
   'ergonom',
   'reach limitation', 'limitação de alcance', 'limitacao de alcance',
   'strength limitation', 'limitação de força', 'limitacao de forca',
@@ -166,21 +174,22 @@ const PHYSICAL_LIMITATION_MARKERS = [
   'ppe', 'epi',
 ]
 
-const MAINTENANCE_OR_ORG_AGENT_MARKERS = [
-  'maintenance', 'manutenção', 'manutencao',
-  'technician', 'técnico', 'tecnico',
-  'mechanic', 'mecânico', 'mecanico',
-  'organization', 'organização', 'organizacao',
-  'supervisor', 'supervisão', 'supervisao',
-  'management', 'gestão', 'gestao',
+const OWN_AGENT_LINK_MARKERS = [
+  'had', 'has',
+  'with',
+  'presented', 'shows', 'showed',
+  'documented', 'documentada', 'documentado',
+  'apresentava', 'tinha', 'possuía', 'possuia',
+  'limiting', 'affecting',
+  'limitando', 'afetando',
+  'could not', 'não conseguia', 'nao conseguia',
 ]
 
-const DESIGN_MANAGEMENT_AGENT_MARKERS = [
-  'design', 'projeto',
-  'engineering', 'engenharia',
-  'engineer', 'engenheiro',
-  'management', 'gestão', 'gestao',
-  'manufacturer', 'fabricante',
+const OTHER_ACTOR_MARKERS = [
+  'pilot', 'piloto',
+  'crew', 'tripulação', 'tripulacao',
+  'another worker', 'outro trabalhador',
+  'other actor', 'outro ator',
 ]
 
 function normalizeRefText(values: readonly (string | null | undefined)[]): string {
@@ -192,6 +201,17 @@ function normalizeRefText(values: readonly (string | null | undefined)[]): strin
 
 function matchesAnyMarker(haystack: string, markers: readonly string[]): boolean {
   return markers.some((marker) => haystack.includes(marker.toLowerCase()))
+}
+
+function splitEvidenceClauses(text: string): string[] {
+  return text
+    .split(/[\n.;]|(?:\bwhile\b|\benquanto\b|\bbut\b|\bpor[eé]m\b|\bwhereas\b)/i)
+    .map((clause) => clause.trim())
+    .filter((clause) => clause.length > 0)
+}
+
+function hasOwnAgentReference(clause: string, refs: readonly string[]): boolean {
+  return refs.some((ref) => clause.includes(ref))
 }
 
 function hasOwnAgentPhysicalLimitationEvidence(input: {
@@ -206,16 +226,25 @@ function hasOwnAgentPhysicalLimitationEvidence(input: {
   const explicitAgentRefs = [input.anchor.agentId, input.axisAgentRef]
     .map((ref) => ref.trim().toLowerCase())
     .filter((ref) => ref.length > 0)
-  if (explicitAgentRefs.some((ref) => input.evidenceText.includes(ref))) {
+  if (explicitAgentRefs.length === 0) {
+    return false
+  }
+
+  const clauses = splitEvidenceClauses(input.evidenceText)
+  for (const clause of clauses) {
+    if (!matchesAnyMarker(clause, PHYSICAL_LIMITATION_MARKERS)) {
+      continue
+    }
+    if (!hasOwnAgentReference(clause, explicitAgentRefs)) {
+      continue
+    }
+    if (!matchesAnyMarker(clause, OWN_AGENT_LINK_MARKERS)) {
+      continue
+    }
+    if (matchesAnyMarker(clause, OTHER_ACTOR_MARKERS) && !hasOwnAgentReference(clause, explicitAgentRefs)) {
+      continue
+    }
     return true
-  }
-
-  if (input.anchor.agentKind === 'maintenance_or_org') {
-    return matchesAnyMarker(input.evidenceText, MAINTENANCE_OR_ORG_AGENT_MARKERS)
-  }
-
-  if (input.anchor.agentKind === 'design_mgmt') {
-    return matchesAnyMarker(input.evidenceText, DESIGN_MANAGEMENT_AGENT_MARKERS)
   }
 
   return false
@@ -495,7 +524,7 @@ export function enforceEscapePointScope(input: EscapePointEnforcementInput): Esc
   const warnings: EscapePointEnforcementWarningCode[] = []
   const diagnostics: string[] = []
 
-  let anchorMomentRef: string | null = anchor.operationalMoment.sequenceRef ?? null
+  let anchorMomentRef: string | null = anchor.operationalMoment.sequenceRef ?? anchor.operationalMoment.phaseRef ?? null
   if (anchorReadiness === 'ANCHORED_PROGRESSIVE_COMPLETE' && anchor.zoneBoundary) {
     anchorMomentRef = anchor.zoneBoundary.earliestControllableRef
     warnings.push('EP-W01_PROGRESSIVE_ZONE_EARLIEST_CONTROLLABLE_REF_REQUIRED')
@@ -546,8 +575,31 @@ export function enforceEscapePointScope(input: EscapePointEnforcementInput): Esc
     })
   }
 
-  // EP-B01: agent migration.
   const axisAgentRef = typeof input.axisAgentRef === 'string' ? input.axisAgentRef.trim() : ''
+
+  // EP-B09: ENFORCE mode requires an explicit axis agent reference.
+  if (axisAgentRef.length === 0) {
+    return buildResult({
+      status: 'ESCAPE_POINT_BLOCKED_AXIS_AGENT_REF_REQUIRED',
+      axis,
+      enforced: false,
+      enforcementMode,
+      scopeId,
+      agentId,
+      topology,
+      anchorReadiness,
+      blockingIssues: ['EP-B09_AXIS_AGENT_REF_REQUIRED'],
+      warnings,
+      diagnostics: [
+        ...diagnostics,
+        'ENFORCE mode requires axisAgentRef so P/O/A stays anchored to the same escape-point agent.',
+      ],
+      nextRequiredAction:
+        `Provide axisAgentRef="${anchor.agentId}" (or an equivalent explicit reference to the same agent) before ENFORCE.`,
+    })
+  }
+
+  // EP-B01: agent migration.
   if (axisAgentRef.length > 0 && axisAgentRef !== anchor.agentId) {
     return buildResult({
       status: 'ESCAPE_POINT_BLOCKED_AGENT_MIGRATION',
@@ -565,6 +617,28 @@ export function enforceEscapePointScope(input: EscapePointEnforcementInput): Esc
         `Axis agent "${axisAgentRef}" differs from escape-point agent "${anchor.agentId}".`,
       ],
       nextRequiredAction: `Re-anchor P/O/A to escape-point agent "${anchor.agentId}", or open a separate secondary analysis for the other agent.`,
+    })
+  }
+
+  // EP-B10: ENFORCE mode requires sequenceRef (or equivalent temporal anchor) for anti-post-event checks.
+  if (typeof anchorMomentRef !== 'string' || anchorMomentRef.trim().length === 0) {
+    return buildResult({
+      status: 'ESCAPE_POINT_BLOCKED_SEQUENCE_REF_REQUIRED',
+      axis,
+      enforced: false,
+      enforcementMode,
+      scopeId,
+      agentId,
+      topology,
+      anchorReadiness,
+      blockingIssues: ['EP-B10_SEQUENCE_REF_REQUIRED_FOR_ENFORCE'],
+      warnings,
+      diagnostics: [
+        ...diagnostics,
+        'ENFORCE mode requires escape-point sequenceRef (or equivalent temporal anchor) for deterministic anti-post-event validation.',
+      ],
+      nextRequiredAction:
+        'Provide escapePointAnchor.operationalMoment.sequenceRef (or explicit equivalent temporal reference) before ENFORCE.',
     })
   }
 

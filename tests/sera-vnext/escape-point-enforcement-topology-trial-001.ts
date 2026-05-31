@@ -253,7 +253,7 @@ function enforce(input: Parameters<typeof enforceEscapePointScope>[0]): EscapePo
     axis: 'A',
     enforcementMode: 'ENFORCE',
     axisAgentRef: 'maintenance-copterline',
-    axisEvidenceRefs: ['physical limitation: maintenance technician could not reach the actuator without lift'],
+    axisEvidenceRefs: ['agent maintenance-copterline had a physical limitation: could not reach the actuator without lift'],
     proposedCode: 'A-D',
   })
   assert.equal(result.status, 'ESCAPE_POINT_ENFORCED_OK')
