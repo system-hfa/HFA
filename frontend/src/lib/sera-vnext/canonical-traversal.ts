@@ -1,5 +1,14 @@
 import { assertCanonicalSeraLeafCode } from './canonical-codes'
 import { SERA_CANONICAL_TREE_NODES } from './canonical-tree'
+import {
+  enforceEscapePointScope,
+  type EscapePointEnforcementBlockingIssueCode,
+  type EscapePointEnforcementMode,
+  type EscapePointEnforcementResult,
+  type EscapePointEnforcementStatus,
+  type EscapePointEnforcementWarningCode,
+} from './escape-point-enforcement'
+import type { SeraVNextEscapePointAnchorReadiness } from './escape-point-scope'
 import type {
   ApprovedEscapePointScope,
   CanonicalSeraAxis,
@@ -29,10 +38,18 @@ export interface CanonicalTraversalLeafCandidate {
   releasedCodeAllowed: false
 }
 
+export type CanonicalTraversalEnforcementTraceStatus =
+  | 'PASSIVE_NOT_ENFORCED'
+  | EscapePointEnforcementStatus
+
 export interface CanonicalTraversalRuntimeContextTrace {
   approvedEscapePointScopeStatus: ApprovedEscapePointScope['status'] | null
   approvedEscapePointScopeId: string | null
-  enforcementStatus: 'PASSIVE_NOT_ENFORCED'
+  enforcementStatus: CanonicalTraversalEnforcementTraceStatus
+  enforcementMode: EscapePointEnforcementMode
+  enforcementBlockingIssues: EscapePointEnforcementBlockingIssueCode[]
+  enforcementWarnings: EscapePointEnforcementWarningCode[]
+  anchorReadiness: SeraVNextEscapePointAnchorReadiness | null
 }
 
 export interface CanonicalTraversalNodeTransition {
@@ -53,7 +70,15 @@ export interface CanonicalTraversalNodeDescriptor {
   transitions: readonly CanonicalTraversalNodeTransition[]
 }
 
-export interface CanonicalTraversalAdvanceInput {
+export interface CanonicalTraversalEscapePointEnforcementInput {
+  enforcementMode?: EscapePointEnforcementMode
+  axisAgentRef?: string | null
+  axisMomentRef?: string | null
+  axisEvidenceRefs?: string[]
+  proposedCode?: CanonicalSeraLeafCode | null
+}
+
+export interface CanonicalTraversalAdvanceInput extends CanonicalTraversalEscapePointEnforcementInput {
   axis: CanonicalSeraAxis
   currentNodeId: string
   answerValue: string
@@ -70,7 +95,7 @@ export interface CanonicalAxisTraversalAnswerInput {
   evidenceReferences?: string[]
 }
 
-export interface CanonicalAxisTraversalRunInput {
+export interface CanonicalAxisTraversalRunInput extends CanonicalTraversalEscapePointEnforcementInput {
   axis: CanonicalSeraAxis
   answers: readonly CanonicalAxisTraversalAnswerInput[]
   approvedEscapePointScope?: ApprovedEscapePointScope
@@ -152,6 +177,36 @@ const AXIS_ROOT_NODE: Readonly<Record<CanonicalSeraAxis, string>> = {
   A: 'A_ROOT',
 }
 
+function runTraversalEnforcement(input: {
+  axis: CanonicalSeraAxis
+  approvedEscapePointScope?: ApprovedEscapePointScope
+  enforcementMode?: EscapePointEnforcementMode
+  axisAgentRef?: string | null
+  axisMomentRef?: string | null
+  axisEvidenceRefs?: string[]
+  proposedCode?: CanonicalSeraLeafCode | null
+}): EscapePointEnforcementResult {
+  return enforceEscapePointScope({
+    scope: input.approvedEscapePointScope,
+    axis: input.axis,
+    enforcementMode: input.enforcementMode,
+    axisAgentRef: input.axisAgentRef,
+    axisMomentRef: input.axisMomentRef,
+    axisEvidenceRefs: input.axisEvidenceRefs,
+    proposedCode: input.proposedCode,
+  })
+}
+
+function enforcementBlocksTraversal(enforcement: EscapePointEnforcementResult): boolean {
+  return enforcement.enforcementMode === 'ENFORCE' && enforcement.blockingIssues.length > 0
+}
+
+function escapePointBlockingIssueText(enforcement: EscapePointEnforcementResult): string {
+  const codes = enforcement.blockingIssues.join(', ')
+  const detail = enforcement.diagnostics[0] ?? enforcement.nextRequiredAction
+  return `AXIS_TRAVERSAL_BLOCKED: escape-point enforcement blocked traversal [${enforcement.status}] (${codes}): ${detail}`
+}
+
 function baseStepOutput(input: {
   axis: CanonicalSeraAxis
   nodeId: string
@@ -161,11 +216,17 @@ function baseStepOutput(input: {
   exactQuestionTextPt: string
   exactQuestionTextEn: string
   approvedEscapePointScope?: ApprovedEscapePointScope
+  enforcement: EscapePointEnforcementResult | null
 }): CanonicalTraversalStepOutput {
+  const enforcement = input.enforcement
   const runtimeContextTrace: CanonicalTraversalRuntimeContextTrace = {
     approvedEscapePointScopeStatus: input.approvedEscapePointScope?.status ?? null,
     approvedEscapePointScopeId: input.approvedEscapePointScope?.scopeId ?? null,
-    enforcementStatus: 'PASSIVE_NOT_ENFORCED',
+    enforcementStatus: enforcement ? enforcement.status : 'PASSIVE_NOT_ENFORCED',
+    enforcementMode: enforcement ? enforcement.enforcementMode : 'PASSIVE_COMPAT',
+    enforcementBlockingIssues: enforcement ? [...enforcement.blockingIssues] : [],
+    enforcementWarnings: enforcement ? [...enforcement.warnings] : [],
+    anchorReadiness: enforcement ? enforcement.anchorReadiness : null,
   }
 
   return {
@@ -232,6 +293,15 @@ export function validateCanonicalTraversalAnswer(nodeId: string, answerValue: st
 
 export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput): CanonicalTraversalStepOutput {
   const normalizedAnswerValue = input.answerValue.trim()
+  const enforcement = runTraversalEnforcement({
+    axis: input.axis,
+    approvedEscapePointScope: input.approvedEscapePointScope,
+    enforcementMode: input.enforcementMode,
+    axisAgentRef: input.axisAgentRef,
+    axisMomentRef: input.axisMomentRef,
+    axisEvidenceRefs: input.axisEvidenceRefs,
+    proposedCode: input.proposedCode,
+  })
   let node: CanonicalTraversalNodeDescriptor
 
   try {
@@ -247,7 +317,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
         status: 'INVALID_NODE',
         exactQuestionTextPt: '',
         exactQuestionTextEn: '',
-        approvedEscapePointScope: input.approvedEscapePointScope,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
       }),
       blockingIssue: message,
     }
@@ -263,7 +333,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
         status: 'AXIS_TRAVERSAL_BLOCKED',
         exactQuestionTextPt: node.exactQuestionTextPt,
         exactQuestionTextEn: node.exactQuestionTextEn,
-        approvedEscapePointScope: input.approvedEscapePointScope,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
       }),
       blockingIssue: `AXIS_TRAVERSAL_BLOCKED: node ${input.currentNodeId} belongs to axis ${node.axis}, not ${input.axis}.`,
     }
@@ -280,7 +350,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
         status: answerValidation.status,
         exactQuestionTextPt: node.exactQuestionTextPt,
         exactQuestionTextEn: node.exactQuestionTextEn,
-        approvedEscapePointScope: input.approvedEscapePointScope,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
       }),
       blockingIssue: answerValidation.blockingIssue,
     }
@@ -297,7 +367,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
         status: 'INVALID_ANSWER',
         exactQuestionTextPt: node.exactQuestionTextPt,
         exactQuestionTextEn: node.exactQuestionTextEn,
-        approvedEscapePointScope: input.approvedEscapePointScope,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
       }),
       blockingIssue: `INVALID_CANONICAL_ANSWER_VALUE: no canonical transition was found for ${input.currentNodeId} + ${normalizedAnswerValue}.`,
     }
@@ -314,7 +384,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
           status: 'AXIS_TRAVERSAL_BLOCKED',
           exactQuestionTextPt: node.exactQuestionTextPt,
           exactQuestionTextEn: node.exactQuestionTextEn,
-          approvedEscapePointScope: input.approvedEscapePointScope,
+          approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
         }),
         blockingIssue: `AXIS_TRAVERSAL_BLOCKED: canonical leaf transition without leafCode in node ${input.currentNodeId}.`,
       }
@@ -333,9 +403,25 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
           status: 'AXIS_TRAVERSAL_BLOCKED',
           exactQuestionTextPt: node.exactQuestionTextPt,
           exactQuestionTextEn: node.exactQuestionTextEn,
-          approvedEscapePointScope: input.approvedEscapePointScope,
+          approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
         }),
         blockingIssue: `AXIS_TRAVERSAL_BLOCKED: ${message}`,
+      }
+    }
+
+    if (enforcementBlocksTraversal(enforcement)) {
+      return {
+        ...baseStepOutput({
+          axis: input.axis,
+          nodeId: input.currentNodeId,
+          answerValue: normalizedAnswerValue,
+          answerSource: input.answerSource,
+          status: 'AXIS_TRAVERSAL_BLOCKED',
+          exactQuestionTextPt: node.exactQuestionTextPt,
+          exactQuestionTextEn: node.exactQuestionTextEn,
+          approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
+        }),
+        blockingIssue: escapePointBlockingIssueText(enforcement),
       }
     }
 
@@ -348,7 +434,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
         status: 'LEAF_REACHED_NOT_CLASSIFIED',
         exactQuestionTextPt: node.exactQuestionTextPt,
         exactQuestionTextEn: node.exactQuestionTextEn,
-        approvedEscapePointScope: input.approvedEscapePointScope,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
       }),
       leafCandidate: {
         axis: input.axis,
@@ -373,9 +459,25 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
         status: 'AXIS_TRAVERSAL_BLOCKED',
         exactQuestionTextPt: node.exactQuestionTextPt,
         exactQuestionTextEn: node.exactQuestionTextEn,
-        approvedEscapePointScope: input.approvedEscapePointScope,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
       }),
       blockingIssue: `AXIS_TRAVERSAL_BLOCKED: NEXT_NODE transition without nextNodeId in ${input.currentNodeId}.`,
+    }
+  }
+
+  if (enforcementBlocksTraversal(enforcement)) {
+    return {
+      ...baseStepOutput({
+        axis: input.axis,
+        nodeId: input.currentNodeId,
+        answerValue: normalizedAnswerValue,
+        answerSource: input.answerSource,
+        status: 'AXIS_TRAVERSAL_BLOCKED',
+        exactQuestionTextPt: node.exactQuestionTextPt,
+        exactQuestionTextEn: node.exactQuestionTextEn,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
+      }),
+      blockingIssue: escapePointBlockingIssueText(enforcement),
     }
   }
 
@@ -394,7 +496,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
       status: extensionRequired ? 'TRAVERSAL_EXTENSION_REQUIRED' : 'NEXT_NODE_READY',
       exactQuestionTextPt: node.exactQuestionTextPt,
       exactQuestionTextEn: node.exactQuestionTextEn,
-      approvedEscapePointScope: input.approvedEscapePointScope,
+      approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
     }),
     nextNodeId: transition.nextNodeId,
   }
@@ -402,6 +504,15 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
 
 export function runCanonicalAxisTraversal(input: CanonicalAxisTraversalRunInput): CanonicalTraversalStepOutput {
   const rootNodeId = AXIS_ROOT_NODE[input.axis]
+  const enforcement = runTraversalEnforcement({
+    axis: input.axis,
+    approvedEscapePointScope: input.approvedEscapePointScope,
+    enforcementMode: input.enforcementMode,
+    axisAgentRef: input.axisAgentRef,
+    axisMomentRef: input.axisMomentRef,
+    axisEvidenceRefs: input.axisEvidenceRefs,
+    proposedCode: input.proposedCode,
+  })
   if (input.answers.length === 0) {
     const rootNode = getCanonicalTraversalNode(rootNodeId)
     return {
@@ -413,7 +524,7 @@ export function runCanonicalAxisTraversal(input: CanonicalAxisTraversalRunInput)
         status: 'NODE_PENDING',
         exactQuestionTextPt: rootNode.exactQuestionTextPt,
         exactQuestionTextEn: rootNode.exactQuestionTextEn,
-        approvedEscapePointScope: input.approvedEscapePointScope,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
       }),
     }
   }
@@ -433,7 +544,7 @@ export function runCanonicalAxisTraversal(input: CanonicalAxisTraversalRunInput)
           status: 'AXIS_TRAVERSAL_BLOCKED',
           exactQuestionTextPt: expectedNode.exactQuestionTextPt,
           exactQuestionTextEn: expectedNode.exactQuestionTextEn,
-          approvedEscapePointScope: input.approvedEscapePointScope,
+          approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
         }),
         blockingIssue: `AXIS_TRAVERSAL_BLOCKED: expected answer for node ${expectedNodeId}, received ${answer.nodeId}.`,
       }
@@ -447,6 +558,11 @@ export function runCanonicalAxisTraversal(input: CanonicalAxisTraversalRunInput)
       approvedEscapePointScope: input.approvedEscapePointScope,
       evidenceReferences: answer.evidenceReferences,
       intakeNodeIds: input.intakeNodeIds,
+      enforcementMode: input.enforcementMode,
+      axisAgentRef: input.axisAgentRef,
+      axisMomentRef: input.axisMomentRef,
+      axisEvidenceRefs: input.axisEvidenceRefs,
+      proposedCode: input.proposedCode,
     })
 
     lastStep = step
@@ -473,6 +589,23 @@ export function runCanonicalAxisTraversal(input: CanonicalAxisTraversalRunInput)
   }
 
   const pendingNode = getCanonicalTraversalNode(expectedNodeId)
+
+  if (enforcementBlocksTraversal(enforcement)) {
+    return {
+      ...baseStepOutput({
+        axis: input.axis,
+        nodeId: expectedNodeId,
+        answerValue: null,
+        answerSource: null,
+        status: 'AXIS_TRAVERSAL_BLOCKED',
+        exactQuestionTextPt: pendingNode.exactQuestionTextPt,
+        exactQuestionTextEn: pendingNode.exactQuestionTextEn,
+        approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
+      }),
+      blockingIssue: escapePointBlockingIssueText(enforcement),
+    }
+  }
+
   const extensionRequired = Boolean(
     input.intakeNodeIds &&
       input.intakeNodeIds.length > 0 &&
@@ -488,7 +621,7 @@ export function runCanonicalAxisTraversal(input: CanonicalAxisTraversalRunInput)
       status: extensionRequired ? 'TRAVERSAL_EXTENSION_REQUIRED' : 'NEXT_NODE_READY',
       exactQuestionTextPt: pendingNode.exactQuestionTextPt,
       exactQuestionTextEn: pendingNode.exactQuestionTextEn,
-      approvedEscapePointScope: input.approvedEscapePointScope,
+      approvedEscapePointScope: input.approvedEscapePointScope, enforcement,
     }),
     ...(lastStep?.status === 'NEXT_NODE_READY' ? { nextNodeId: expectedNodeId } : {}),
   }
