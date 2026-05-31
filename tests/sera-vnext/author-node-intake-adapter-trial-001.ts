@@ -290,7 +290,7 @@ function main() {
     ],
   })
   const invalidNodeAxis = axisResultByEvent(invalidNodeOutput, 'MOCK-INV', 'P')
-  assert.equal(invalidNodeAxis.status, 'AXIS_INPUT_INVALID')
+  assert.equal(invalidNodeAxis.status, 'TRAVERSAL_BLOCKED_BY_INVALID_NODE')
   assert.ok(invalidNodeAxis.blockingIssues.join(' ').includes('INVALID_NODE'))
 
   // 9) exactQuestionTextPt mismatch is explicit.
@@ -317,7 +317,7 @@ function main() {
     ],
   })
   const oEAxis = axisResultByEvent(oEOutput, 'MOCK-OE', 'O')
-  assert.equal(oEAxis.status, 'AXIS_INPUT_INVALID')
+  assert.equal(oEAxis.status, 'TRAVERSAL_BLOCKED_BY_INVALID_ANSWER')
   assert.ok(oEAxis.blockingIssues.join(' ').includes('INVALID_CANONICAL_ANSWER_VALUE'))
 
   // 11) Cross-axis injection blocks.

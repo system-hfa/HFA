@@ -35,6 +35,17 @@ export interface AuthorNodeIntakeRecord {
 }
 
 export type AuthorNodeIntakeAxisStatus = CanonicalTraversalAdapterStatus | 'AUTHOR_DECISION_PENDING' | 'AXIS_INPUT_INVALID'
+export type AuthorNodeIntakeEscapePointScopeStatus = 'PASSIVE_NOT_ENFORCED'
+
+export interface AuthorNodeIntakeAxisSummary {
+  outcome: 'BLOCKED' | 'PENDING' | 'INCOMPLETE' | 'LEAF_REACHED'
+  hasUnknownAuthorDecision: boolean
+  hasInvalidNode: boolean
+  hasInvalidAnswer: boolean
+  hasQuestionMismatch: boolean
+  hasLockConflict: boolean
+  hasAuthorBlock: boolean
+}
 
 export interface AuthorNodeIntakeAxisResult {
   eventId: string
@@ -46,9 +57,15 @@ export interface AuthorNodeIntakeAxisResult {
   extensionRequired: boolean
   blocked: boolean
   blockingIssues: string[]
+  warnings: string[]
+  auditTrace: string[]
+  nextRequiredAction: string
+  axisSummary: AuthorNodeIntakeAxisSummary
   sourceIntakeIds: string[]
   consumedDecisionIds: string[]
   leafCandidate: CanonicalTraversalLeafCandidate | null
+  approvedEscapePointScopeStatus: AuthorNodeIntakeEscapePointScopeStatus
+  integrationFutureBlockers: string[]
   selectedCodeAllowed: false
   releasedCodeAllowed: false
   poaClosureAllowed: false
@@ -65,6 +82,8 @@ export interface AuthorNodeIntakeEventResult {
   statusByAxis: Partial<Record<CanonicalSeraAxis, AuthorNodeIntakeAxisStatus>>
   hasPendingAuthorDecision: boolean
   hasBlockingIssues: boolean
+  approvedEscapePointScopeStatus: AuthorNodeIntakeEscapePointScopeStatus
+  integrationFutureBlockers: string[]
   selectedCodeAllowed: false
   releasedCodeAllowed: false
   poaClosureAllowed: false
@@ -80,6 +99,8 @@ export interface BuildCandidateTraversalFromAuthorNodeIntakeInput {
 
 export interface CandidateTraversalFromAuthorNodeIntakeResult {
   events: AuthorNodeIntakeEventResult[]
+  approvedEscapePointScopeStatus: AuthorNodeIntakeEscapePointScopeStatus
+  integrationFutureBlockers: string[]
   selectedCodeAllowed: false
   releasedCodeAllowed: false
   poaClosureAllowed: false
@@ -91,6 +112,147 @@ export interface CandidateTraversalFromAuthorNodeIntakeResult {
 
 function unique<T>(values: readonly T[]): T[] {
   return [...new Set(values)]
+}
+
+const ESCAPE_POINT_SCOPE_STATUS: AuthorNodeIntakeEscapePointScopeStatus = 'PASSIVE_NOT_ENFORCED'
+const ESCAPE_POINT_SCOPE_BLOCKER =
+  'F-01 HIGH: approvedEscapePointScope is PASSIVE_NOT_ENFORCED; real integration/UI/API remains blocked until explicit enforcement phase (A4R191+).'
+
+function hasIssue(blockingIssues: readonly string[], pattern: RegExp): boolean {
+  return blockingIssues.some((issue) => pattern.test(issue))
+}
+
+function buildAxisSummary(input: {
+  status: AuthorNodeIntakeAxisStatus
+  blockingIssues: readonly string[]
+  extensionRequired: boolean
+  leafCandidate: CanonicalTraversalLeafCandidate | null
+}): AuthorNodeIntakeAxisSummary {
+  const hasInvalidNode = hasIssue(input.blockingIssues, /\bINVALID_NODE\b/)
+  const hasInvalidAnswer = hasIssue(input.blockingIssues, /\bINVALID_CANONICAL_ANSWER_VALUE\b/)
+  const hasUnknownAuthorDecision = hasIssue(input.blockingIssues, /\bUNKNOWN_AUTHOR_DECISION_VALUE:/)
+  const hasQuestionMismatch = hasIssue(input.blockingIssues, /\bCANONICAL_QUESTION_MISMATCH\b/)
+  const hasLockConflict = hasIssue(input.blockingIssues, /\bLOCK_CONFLICT\b/)
+  const hasAuthorBlock = input.status === 'TRAVERSAL_BLOCKED_BY_AUTHOR_DECISION'
+
+  const outcome: AuthorNodeIntakeAxisSummary['outcome'] =
+    input.leafCandidate !== null
+      ? 'LEAF_REACHED'
+      : input.status === 'AUTHOR_DECISION_PENDING'
+        ? 'PENDING'
+        : input.extensionRequired
+          ? 'INCOMPLETE'
+          : 'BLOCKED'
+
+  return {
+    outcome,
+    hasUnknownAuthorDecision,
+    hasInvalidNode,
+    hasInvalidAnswer,
+    hasQuestionMismatch,
+    hasLockConflict,
+    hasAuthorBlock,
+  }
+}
+
+function classifyInvalidAxisStatus(blockingIssues: readonly string[]): AuthorNodeIntakeAxisStatus {
+  if (hasIssue(blockingIssues, /\bINVALID_NODE\b/)) {
+    return 'TRAVERSAL_BLOCKED_BY_INVALID_NODE'
+  }
+  if (hasIssue(blockingIssues, /\bINVALID_CANONICAL_ANSWER_VALUE\b/)) {
+    return 'TRAVERSAL_BLOCKED_BY_INVALID_ANSWER'
+  }
+  return 'AXIS_INPUT_INVALID'
+}
+
+function buildNextRequiredAction(input: {
+  status: AuthorNodeIntakeAxisStatus
+  blockingIssues: readonly string[]
+  extensionRequired: boolean
+  leafCandidate: CanonicalTraversalLeafCandidate | null
+}): string {
+  if (input.status === 'AUTHOR_DECISION_PENDING') {
+    return 'Provide missing authorDecision values for pending intake records and rerun candidate-only traversal.'
+  }
+  if (hasIssue(input.blockingIssues, /\bUNKNOWN_AUTHOR_DECISION_VALUE:/)) {
+    return 'Replace unknown authorDecision values with allowed contract values and rerun candidate-only traversal.'
+  }
+  if (hasIssue(input.blockingIssues, /\bINVALID_NODE\b/)) {
+    return 'Correct nodeId to a canonical node in the same axis and rerun candidate-only traversal.'
+  }
+  if (hasIssue(input.blockingIssues, /\bINVALID_CANONICAL_ANSWER_VALUE\b/)) {
+    return 'Correct answerValue to an allowed canonical answer for the node and rerun candidate-only traversal.'
+  }
+  if (hasIssue(input.blockingIssues, /\bCANONICAL_QUESTION_MISMATCH\b/)) {
+    return 'Align exactQuestionTextPt with canonical tree question text and rerun candidate-only traversal.'
+  }
+  if (hasIssue(input.blockingIssues, /\bLOCK_CONFLICT\b/)) {
+    return 'Restore candidate-only lock fields (notFinalClassification=true, poaClosureAllowed=false) and rerun.'
+  }
+  if (input.status === 'TRAVERSAL_BLOCKED_BY_AUTHOR_DECISION') {
+    return 'Resolve blocking author decision state or provide accepted node answers to continue candidate-only traversal.'
+  }
+  if (input.leafCandidate !== null) {
+    return 'Leaf reached in candidate-only mode. Keep classification/release locked and proceed to human review workflow.'
+  }
+  if (input.extensionRequired || input.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED') {
+    return 'Provide next canonical node decision(s) required by traversal extension and rerun candidate-only traversal.'
+  }
+  return 'Review blockingIssues and provide canonical intake corrections before rerun.'
+}
+
+function buildAxisWarnings(input: {
+  blockingIssues: readonly string[]
+  status: AuthorNodeIntakeAxisStatus
+  extensionRequired: boolean
+  leafCandidate: CanonicalTraversalLeafCandidate | null
+}): string[] {
+  const warnings: string[] = []
+  if (input.status === 'AUTHOR_DECISION_PENDING') {
+    warnings.push('Author decisions remain pending; traversal output is diagnostic-only and not classifiable.')
+  }
+  if (input.extensionRequired) {
+    warnings.push('Traversal extension required: additional canonical node decisions are still missing.')
+  }
+  if (hasIssue(input.blockingIssues, /\bUNKNOWN_AUTHOR_DECISION_VALUE:/)) {
+    warnings.push('Unknown authorDecision values were blocked and require explicit correction.')
+  }
+  if (input.leafCandidate !== null) {
+    warnings.push('Leaf reached remains candidate-only; selected/released/classified/downstream outputs stay locked.')
+  }
+  warnings.push(ESCAPE_POINT_SCOPE_BLOCKER)
+  return unique(warnings)
+}
+
+function buildAxisAuditTrace(input: {
+  eventId: string
+  axis: CanonicalSeraAxis
+  status: AuthorNodeIntakeAxisStatus
+  traversalStatus: CanonicalTraversalStatus
+  sourceIntakeIds: readonly string[]
+  consumedDecisionIds: readonly string[]
+  blockingIssues: readonly string[]
+  extensionRequired: boolean
+  leafCandidate: CanonicalTraversalLeafCandidate | null
+}): string[] {
+  const trace = [
+    `eventId:${input.eventId}`,
+    `axis:${input.axis}`,
+    `status:${input.status}`,
+    `traversalStatus:${input.traversalStatus}`,
+    `sourceIntakeCount:${input.sourceIntakeIds.length}`,
+    `consumedDecisionCount:${input.consumedDecisionIds.length}`,
+    `extensionRequired:${input.extensionRequired}`,
+    `leafReached:${input.leafCandidate !== null}`,
+    `approvedEscapePointScope:${ESCAPE_POINT_SCOPE_STATUS}`,
+    `integrationBlocker:${ESCAPE_POINT_SCOPE_BLOCKER}`,
+  ]
+
+  for (const issue of input.blockingIssues) {
+    trace.push(`blockingIssue:${issue}`)
+  }
+
+  return trace
 }
 
 type NormalizedAuthorDecisionResult =
@@ -156,19 +318,64 @@ function buildInvalidAxisResult(input: {
   sourceIntakeIds: string[]
   blockingIssues: string[]
 }): AuthorNodeIntakeAxisResult {
+  const normalizedBlockingIssues = unique(input.blockingIssues)
+  const status = classifyInvalidAxisStatus(normalizedBlockingIssues)
+  const traversalStatus: CanonicalTraversalStatus =
+    status === 'TRAVERSAL_BLOCKED_BY_INVALID_ANSWER'
+      ? 'INVALID_ANSWER'
+      : status === 'TRAVERSAL_BLOCKED_BY_INVALID_NODE'
+        ? 'INVALID_NODE'
+        : 'AXIS_TRAVERSAL_BLOCKED'
+  const extensionRequired = false
+  const leafCandidate = null
+  const nextRequiredAction = buildNextRequiredAction({
+    status,
+    blockingIssues: normalizedBlockingIssues,
+    extensionRequired,
+    leafCandidate,
+  })
+  const warnings = buildAxisWarnings({
+    blockingIssues: normalizedBlockingIssues,
+    status,
+    extensionRequired,
+    leafCandidate,
+  })
+  const auditTrace = buildAxisAuditTrace({
+    eventId: input.eventId,
+    axis: input.axis,
+    status,
+    traversalStatus,
+    sourceIntakeIds: input.sourceIntakeIds,
+    consumedDecisionIds: [],
+    blockingIssues: normalizedBlockingIssues,
+    extensionRequired,
+    leafCandidate,
+  })
+
   return {
     eventId: input.eventId,
     eventName: input.eventName,
     axis: input.axis,
-    status: 'AXIS_INPUT_INVALID',
-    traversalStatus: 'AXIS_TRAVERSAL_BLOCKED',
+    status,
+    traversalStatus,
     pendingAuthorDecision: false,
-    extensionRequired: false,
+    extensionRequired,
     blocked: true,
-    blockingIssues: unique(input.blockingIssues),
+    blockingIssues: normalizedBlockingIssues,
+    warnings,
+    auditTrace,
+    nextRequiredAction,
+    axisSummary: buildAxisSummary({
+      status,
+      blockingIssues: normalizedBlockingIssues,
+      extensionRequired,
+      leafCandidate,
+    }),
     sourceIntakeIds: input.sourceIntakeIds,
     consumedDecisionIds: [],
-    leafCandidate: null,
+    leafCandidate,
+    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
+    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
@@ -199,22 +406,61 @@ function buildPendingAxisResult(input: {
     intakeNodeIds: input.intakeNodeIds,
   })
 
+  const status: AuthorNodeIntakeAxisStatus = 'AUTHOR_DECISION_PENDING'
+  const extensionRequired = snapshot.status === 'TRAVERSAL_EXTENSION_REQUIRED' || snapshot.status === 'NEXT_NODE_READY'
+  const blockingIssues = unique([
+    ...input.blockingIssues,
+    'PENDING_AUTHOR_DECISION: intake contains unresolved author decision entries.',
+  ])
+  const leafCandidate = null
+  const nextRequiredAction = buildNextRequiredAction({
+    status,
+    blockingIssues,
+    extensionRequired,
+    leafCandidate,
+  })
+  const warnings = buildAxisWarnings({
+    blockingIssues,
+    status,
+    extensionRequired,
+    leafCandidate,
+  })
+  const auditTrace = buildAxisAuditTrace({
+    eventId: input.eventId,
+    axis: input.axis,
+    status,
+    traversalStatus: snapshot.status,
+    sourceIntakeIds: input.sourceIntakeIds,
+    consumedDecisionIds: input.acceptedDecisions.map((item) => item.decisionId),
+    blockingIssues,
+    extensionRequired,
+    leafCandidate,
+  })
+
   return {
     eventId: input.eventId,
     eventName: input.eventName,
     axis: input.axis,
-    status: 'AUTHOR_DECISION_PENDING',
+    status,
     traversalStatus: snapshot.status,
     pendingAuthorDecision: true,
-    extensionRequired: snapshot.status === 'TRAVERSAL_EXTENSION_REQUIRED' || snapshot.status === 'NEXT_NODE_READY',
+    extensionRequired,
     blocked: false,
-    blockingIssues: unique([
-      ...input.blockingIssues,
-      'PENDING_AUTHOR_DECISION: intake contains unresolved author decision entries.',
-    ]),
+    blockingIssues,
+    warnings,
+    auditTrace,
+    nextRequiredAction,
+    axisSummary: buildAxisSummary({
+      status,
+      blockingIssues,
+      extensionRequired,
+      leafCandidate,
+    }),
     sourceIntakeIds: input.sourceIntakeIds,
     consumedDecisionIds: input.acceptedDecisions.map((item) => item.decisionId),
-    leafCandidate: null,
+    leafCandidate,
+    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
+    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
@@ -393,9 +639,52 @@ function adaptAxisRecords(input: {
       axisResult.traversalStep.status === 'NEXT_NODE_READY',
     blocked: Boolean(axisResult.blockingIssue) || axisResult.status.includes('BLOCKED'),
     blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
+    warnings: buildAxisWarnings({
+      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
+      status: axisResult.status,
+      extensionRequired:
+        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      leafCandidate: axisResult.leafCandidate,
+    }),
+    auditTrace: buildAxisAuditTrace({
+      eventId: input.eventId,
+      axis: input.axis,
+      status: axisResult.status,
+      traversalStatus: axisResult.traversalStep.status,
+      sourceIntakeIds,
+      consumedDecisionIds: axisResult.consumedDecisionIds,
+      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
+      extensionRequired:
+        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      leafCandidate: axisResult.leafCandidate,
+    }),
+    nextRequiredAction: buildNextRequiredAction({
+      status: axisResult.status,
+      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
+      extensionRequired:
+        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      leafCandidate: axisResult.leafCandidate,
+    }),
+    axisSummary: buildAxisSummary({
+      status: axisResult.status,
+      blockingIssues: unique([...(axisResult.blockingIssue ? [axisResult.blockingIssue] : [])]),
+      extensionRequired:
+        axisResult.status === 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'TRAVERSAL_EXTENSION_REQUIRED' ||
+        axisResult.traversalStep.status === 'NEXT_NODE_READY',
+      leafCandidate: axisResult.leafCandidate,
+    }),
     sourceIntakeIds,
     consumedDecisionIds: axisResult.consumedDecisionIds,
     leafCandidate: axisResult.leafCandidate,
+    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
+    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
@@ -466,6 +755,8 @@ export function buildCandidateTraversalFromAuthorNodeIntake(
       statusByAxis,
       hasPendingAuthorDecision: axisResults.some((item) => item.pendingAuthorDecision),
       hasBlockingIssues: axisResults.some((item) => item.blocked || item.blockingIssues.length > 0),
+      approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
+      integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
       selectedCodeAllowed: false,
       releasedCodeAllowed: false,
       poaClosureAllowed: false,
@@ -478,6 +769,8 @@ export function buildCandidateTraversalFromAuthorNodeIntake(
 
   return {
     events,
+    approvedEscapePointScopeStatus: ESCAPE_POINT_SCOPE_STATUS,
+    integrationFutureBlockers: [ESCAPE_POINT_SCOPE_BLOCKER],
     selectedCodeAllowed: false,
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
