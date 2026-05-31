@@ -55,12 +55,64 @@ export interface SeraCanonicalQuestionTreeNode {
   notes: string
 }
 
+export type SeraVNextEscapePointScopeStatus =
+  | 'DEFINED_NOT_ENFORCED'
+  | 'APPROVED_NOT_ENFORCED'
+  | 'PASSIVE_NOT_ENFORCED'
+
+export type SeraVNextEscapePointAgentKind =
+  | 'specific_actor'
+  | 'crew_collective'
+  | 'multi_actor'
+  | 'system_or_condition_dominant'
+  | 'unknown'
+
+export type SeraVNextEscapePointActOrOmissionKind =
+  | 'unsafe_act'
+  | 'unsafe_omission'
+  | 'mixed_act_and_omission'
+  | 'unknown'
+
+export type SeraVNextEscapePointTopology = 'discrete' | 'progressive' | 'diffuse'
+
+export type SeraVNextEscapePointEnforcementMode = 'PASSIVE_CANDIDATE_ONLY'
+
+export interface SeraVNextEscapePointUnsafeActOrOmission {
+  kind: SeraVNextEscapePointActOrOmissionKind
+  statement: string
+  evidenceRefs?: string[]
+}
+
+export interface SeraVNextEscapePointOperationalMoment {
+  description: string
+  phaseRef?: string | null
+  sequenceRef?: string | null
+}
+
+export interface SeraVNextEscapePointZoneBoundary {
+  earliestControllableRef: string
+  latestControllableRef: string
+  rationale?: string
+}
+
+export interface SeraVNextEscapePointAnchor {
+  agentId: string
+  agentKind: SeraVNextEscapePointAgentKind
+  unsafeActOrOmission: SeraVNextEscapePointUnsafeActOrOmission
+  operationalMoment: SeraVNextEscapePointOperationalMoment
+  pointTopology: SeraVNextEscapePointTopology
+  zoneBoundary?: SeraVNextEscapePointZoneBoundary
+  boundaryEvidenceRefs?: string[]
+}
+
 export interface ApprovedEscapePointScope {
   scopeId: string
   scopeStatement: string
   boundaryEvidenceRefs: string[]
   rationale: string
-  status: 'DEFINED_NOT_ENFORCED' | 'APPROVED_NOT_ENFORCED'
+  status: SeraVNextEscapePointScopeStatus
+  escapePointAnchor?: SeraVNextEscapePointAnchor
+  enforcementMode?: SeraVNextEscapePointEnforcementMode
 }
 
 export interface SeraVNextCanonicalRuntimeContext {
