@@ -148,13 +148,13 @@ async function main() {
   const actionCandidateB = preconditionsScenarioB.candidates.find((item) => item.sourceAxis === 'action')
   assert.equal(actionCandidateB?.status, 'BLOCKED', 'Scenario B: semantic blocked axis must remain BLOCKED')
 
-  // Scenario C: O-E is RESERVED/NOT_ACTIVE and must block derivation
+  // Scenario C: O-E is NON_EXISTENT_IN_SERA_PT_V1 and must block derivation
   const releaseScenarioC = JSON.parse(JSON.stringify(releaseScenarioA.codeReleaseGateResult))
   const objectiveReleaseC = releaseScenarioC.axisReleases.find((axis: { axis: string }) => axis.axis === 'objective')
   assert.ok(objectiveReleaseC, 'Scenario C: objective release must exist')
   if (objectiveReleaseC) {
     objectiveReleaseC.releasedCode = 'O-E'
-    objectiveReleaseC.evidenceReferences = ['Objective code O-E forced for reserved-code negative scenario.']
+    objectiveReleaseC.evidenceReferences = ['Objective code O-E forced for non-existent-code negative scenario.']
     objectiveReleaseC.reviewerRationale = 'Reserved code test'
   }
   const semanticScenarioC = cloneSemantic(semanticScenarioA)

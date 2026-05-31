@@ -7,7 +7,7 @@ A4R190-B — Canonical code enforcement in active vNext decision paths.
 1. Canonical allowlist enforcement added to human proposal path (`validateHumanAxisDecision`).
 2. `O-E` active acceptance path removed from objective intent checks.
 3. Causal assurance active code-token check aligned to canonical active allowlist exports.
-4. Runtime wording moved from `RESERVED_NOT_ACTIVE` semantics to `NON_EXISTENT_IN_SERA_PT_V1` for explicit `O-E` blocking messages.
+4. Runtime wording moved from historical/superseded `RESERVED_NOT_ACTIVE` semantics to `NON_EXISTENT_IN_SERA_PT_V1` for explicit `O-E` blocking messages.
 5. New targeted trial created:
 - `tests/sera-vnext/canonical-code-enforcement-trial-001.ts`
 
@@ -25,7 +25,7 @@ A4R190-B — Canonical code enforcement in active vNext decision paths.
 5. No UI/API/Stripe/Risk/ERC changes.
 
 ## Known Contract Compatibility
-- `SeraVNextCodeTraceability.status` retains token `RESERVED_NOT_ACTIVE` in this phase for compatibility with existing negative-blocking contracts.
+- Historical note (superseded by A4R190-C): `SeraVNextCodeTraceability.status` temporarily retained token `RESERVED_NOT_ACTIVE` in A4R190-B for compatibility.
 - Enforcement and wording now explicitly assert `O-E = NON_EXISTENT_IN_SERA_PT_V1` at active validation and blocking-message level.
 
 ## Remaining Out-of-Scope Items

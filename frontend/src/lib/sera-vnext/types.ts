@@ -524,7 +524,7 @@ export interface SeraVNextDerivationStep {
   rationale?: string
 }
 
-export type SeraVNextCodeTraceabilityStatus = 'TRACEABLE' | 'RESERVED_NOT_ACTIVE' | 'BLOCKED'
+export type SeraVNextCodeTraceabilityStatus = 'TRACEABLE' | 'NON_EXISTENT_CODE' | 'BLOCKED'
 
 export interface SeraVNextCodeTraceability {
   axis: PoaAxis

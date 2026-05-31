@@ -251,7 +251,7 @@ async function main() {
   // ADV-2-013
   const gate013 = gate('ADV-2-013', [
     release('objective', 'O-E', {
-      evidenceReferences: ['attempt to use reserved objective code'],
+      evidenceReferences: ['attempt to use non-existent objective code'],
       reviewerRationale: 'O-E forced as active code.',
       guardrailAcknowledgements: ['objective reviewed'],
     }),
@@ -264,7 +264,7 @@ async function main() {
     traceabilityResult: trace013,
     baseResult: base,
   })
-  assert.equal(traceAxis(trace013, 'objective')?.status, 'RESERVED_NOT_ACTIVE', 'ADV-2-013: O-E must remain RESERVED_NOT_ACTIVE')
+  assert.equal(traceAxis(trace013, 'objective')?.status, 'NON_EXISTENT_CODE', 'ADV-2-013: O-E must remain NON_EXISTENT_CODE')
   assert.equal(preconditionAxis(pre013, 'objective')?.status, 'BLOCKED', 'ADV-2-013: O-E must never become active precondition candidate')
 
   // ADV-2-014

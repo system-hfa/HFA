@@ -150,11 +150,11 @@ async function main() {
     'Scenario D: O-C gap should include INTENT_AWARENESS'
   )
 
-  // Scenario E: O-E remains RESERVED_NOT_ACTIVE after audit
+  // Scenario E: O-E remains NON_EXISTENT_CODE after audit
   const scenarioEGate = gate('COVERAGE-E', [
     release('objective', 'O-E', {
-      evidenceReferences: ['attempt to use reserved objective code'],
-      reviewerRationale: 'O-E reserved contract test for coverage audit.',
+      evidenceReferences: ['attempt to use non-existent objective code'],
+      reviewerRationale: 'O-E non-existent contract test for coverage audit.',
     }),
   ])
   const scenarioESemantic = validateReleasedCodeSemanticConsistency({ codeReleaseGateResult: scenarioEGate, baseResult: base })
@@ -164,7 +164,7 @@ async function main() {
     baseResult: base,
   })
   auditPassiveEvidenceCategoryCoverage({ traceability: scenarioETrace })
-  assert.equal(traceAxis(scenarioETrace, 'objective')?.status, 'RESERVED_NOT_ACTIVE', 'Scenario E: O-E must remain RESERVED_NOT_ACTIVE')
+  assert.equal(traceAxis(scenarioETrace, 'objective')?.status, 'NON_EXISTENT_CODE', 'Scenario E: O-E must remain NON_EXISTENT_CODE')
 
   // Scenario F: downstream remains locked
   assert.equal(scenarioETrace.downstreamLocked, true, 'Scenario F: downstream must remain locked')

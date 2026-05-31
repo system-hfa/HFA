@@ -43,3 +43,10 @@ Intentionally not implemented in this phase:
 1. Canonical traversal engine by `nodeId`.
 2. Escape-point gate enforcement.
 3. Runtime bilingual canonical question delivery.
+
+## Supersession Note
+The temporary A4R190-B compatibility wording for O-E as reserved/not-active was superseded by A4R190-C.
+
+Current semantic lock:
+1. `O-E = NON_EXISTENT_IN_SERA_PT_V1`
+2. O-E does not exist in SERA-PT v1 and cannot be used as objective code.

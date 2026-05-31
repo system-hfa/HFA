@@ -160,14 +160,14 @@ async function main() {
   assert.equal(actionTraceB?.isNoFailure, true, 'Scenario B: A-A must be marked as no-failure')
   assert.equal(actionTraceB?.hendyCategory, null, 'Scenario B: A-A must have null Hendy category')
 
-  // Scenario C: O-E is reserved/not active and cannot be traced as active objective code
+  // Scenario C: O-E is non-existent and cannot be traced as active objective code
   const scenarioCGate = makeSingleAxisGate(releaseScenarioA.codeReleaseGateResult, 'objective', 'O-E')
   const traceabilityScenarioC = buildReleasedCodeTraceability({
     codeReleaseGateResult: scenarioCGate,
     baseResult: base001,
   })
   const objectiveTraceC = traceabilityScenarioC.traces[0]
-  assert.equal(objectiveTraceC?.status, 'RESERVED_NOT_ACTIVE', 'Scenario C: O-E must be RESERVED_NOT_ACTIVE')
+  assert.equal(objectiveTraceC?.status, 'NON_EXISTENT_CODE', 'Scenario C: O-E must be NON_EXISTENT_CODE')
   assert.ok(
     objectiveTraceC?.warnings.some((item) => item.includes('NON_EXISTENT_IN_SERA_PT_V1')),
     'Scenario C: warning must explicitly reference NON_EXISTENT_IN_SERA_PT_V1'

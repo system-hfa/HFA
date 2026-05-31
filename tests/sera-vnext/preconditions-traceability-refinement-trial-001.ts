@@ -208,7 +208,7 @@ async function main() {
   assert.equal(preconditionsScenarioC.candidates[0]?.sourceIsNoFailure, true, 'Scenario C: A-A should carry sourceIsNoFailure=true')
   assert.equal(preconditionsScenarioC.candidates[0]?.status, 'BLOCKED', 'Scenario C: A-A should block failure precondition derivation')
 
-  // Scenario D: O-E trace marked reserved blocks derivation
+  // Scenario D: O-E trace marked non-existent blocks derivation
   const scenarioDGate = makeSingleAxisGate(releaseScenarioA.codeReleaseGateResult, 'objective', 'O-E')
   const scenarioDSemantic = cloneSemantic(semanticScenarioA)
   scenarioDSemantic.axisResults = [

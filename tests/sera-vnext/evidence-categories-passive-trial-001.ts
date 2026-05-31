@@ -143,8 +143,8 @@ async function main() {
   // Scenario D: evidence categories do not reactivate O-E
   const scenarioDGate = gate('PASSIVE-D', [
     release('objective', 'O-E', {
-      evidenceReferences: ['attempt to use reserved objective code'],
-      reviewerRationale: 'O-E forced for passive-hint contract test.',
+      evidenceReferences: ['attempt to use non-existent objective code'],
+      reviewerRationale: 'O-E forced for passive-hint non-existent-code contract test.',
     }),
   ])
   const scenarioDSemantic = validateReleasedCodeSemanticConsistency({ codeReleaseGateResult: scenarioDGate, baseResult: base })
@@ -153,7 +153,7 @@ async function main() {
     semanticConsistencyGateResult: scenarioDSemantic,
     baseResult: base,
   })
-  assert.equal(traceAxis(scenarioDTrace, 'objective')?.status, 'RESERVED_NOT_ACTIVE', 'Scenario D: O-E remains RESERVED_NOT_ACTIVE')
+  assert.equal(traceAxis(scenarioDTrace, 'objective')?.status, 'NON_EXISTENT_CODE', 'Scenario D: O-E remains NON_EXISTENT_CODE')
 
   // Scenario E: no downstream artifacts are generated
   assert.equal(scenarioCTrace.downstreamLocked, true, 'Scenario E: downstream remains locked')

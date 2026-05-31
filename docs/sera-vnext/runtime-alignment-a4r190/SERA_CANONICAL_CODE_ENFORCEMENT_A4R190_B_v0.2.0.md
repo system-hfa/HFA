@@ -24,7 +24,7 @@ Apply minimum active enforcement of canonical SERA code allowlist in vNext human
 
 2. `frontend/src/lib/sera-vnext/preconditions.ts`
 - Blocking wording for `O-E` updated to `NON_EXISTENT_IN_SERA_PT_V1`.
-- Compatibility note kept when traceability status token remains `RESERVED_NOT_ACTIVE`.
+- Historical note (superseded by A4R190-C): A4R190-B still retained `RESERVED_NOT_ACTIVE` traceability status token for compatibility at that time.
 
 ## Scope Protection
 - Legacy runtime not changed:

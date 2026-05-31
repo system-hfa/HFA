@@ -242,9 +242,9 @@ export function derivePreconditionsFromReleasedCodes(input: {
       if (axisTraceability.code.toUpperCase() !== codeUpper) {
         blockingIssues.push('Traceability code mismatch with releasedCode; derivation blocked for axis.')
       }
-      if (axisTraceability.status === 'RESERVED_NOT_ACTIVE') {
+      if (axisTraceability.status === 'NON_EXISTENT_CODE') {
         blockingIssues.push(
-          'Traceability marks this code as RESERVED_NOT_ACTIVE (NON_EXISTENT_IN_SERA_PT_V1); precondition derivation is blocked.'
+          'Traceability marks this code as NON_EXISTENT_CODE (NON_EXISTENT_IN_SERA_PT_V1); precondition derivation is blocked.'
         )
       }
       if (axisTraceability.status === 'BLOCKED') {

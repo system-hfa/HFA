@@ -218,7 +218,7 @@ export function buildReleasedCodeTraceability(input: {
 
       const status: SeraVNextCodeTraceability['status'] =
         code === 'O-E'
-          ? 'RESERVED_NOT_ACTIVE'
+          ? 'NON_EXISTENT_CODE'
           : blockingIssues.length > 0
             ? 'BLOCKED'
             : 'TRACEABLE'
