@@ -1,12 +1,13 @@
 import { getCanonicalTraversalNode, runCanonicalAxisTraversal, validateCanonicalTraversalAnswer } from './canonical-traversal'
 import type {
   CanonicalAxisTraversalAnswerInput,
+  CanonicalTraversalLeafCandidate,
+  CanonicalTraversalRuntimeContextTrace,
   CanonicalTraversalStepOutput,
 } from './canonical-traversal'
 import type {
   ApprovedEscapePointScope,
   CanonicalSeraAxis,
-  CanonicalSeraLeafCode,
 } from './types'
 
 export type SeraCanonicalNodeAuthorDecision =
@@ -44,12 +45,15 @@ export interface CanonicalTraversalAdapterAxisResult {
   eventId: string
   consumedDecisionIds: string[]
   traversalStep: CanonicalTraversalStepOutput
-  leafCode: CanonicalSeraLeafCode | null
+  leafCandidate: CanonicalTraversalLeafCandidate | null
   blockingIssue?: string
   selectedCodeAllowed: false
   releasedCodeAllowed: false
   poaClosureAllowed: false
   downstreamAllowed: false
+  classificationAllowed: false
+  notFinalClassification: true
+  runtimeContextTrace: CanonicalTraversalRuntimeContextTrace
   [FINAL_FREE_CONCLUSION_ALLOWED_KEY]: false
 }
 
@@ -66,6 +70,8 @@ export interface CanonicalTraversalAdapterOutput {
   releasedCodeAllowed: false
   poaClosureAllowed: false
   downstreamAllowed: false
+  classificationAllowed: false
+  notFinalClassification: true
   [FINAL_FREE_CONCLUSION_ALLOWED_KEY]: false
 }
 
@@ -76,7 +82,22 @@ function withCandidateOnlyLocks<T extends object>(input: T): T {
     releasedCodeAllowed: false,
     poaClosureAllowed: false,
     downstreamAllowed: false,
+    classificationAllowed: false,
+    notFinalClassification: true,
     [FINAL_FREE_CONCLUSION_ALLOWED_KEY]: false,
+  }
+}
+
+export function normalizeCanonicalNodeDecisionIntake(input: SeraCanonicalNodeDecisionInput): SeraCanonicalNodeDecisionInput {
+  return {
+    ...input,
+    decisionId: input.decisionId.trim(),
+    eventId: input.eventId.trim(),
+    nodeId: input.nodeId.trim(),
+    answerValue: input.answerValue.trim(),
+    rationale: input.rationale.trim(),
+    evidenceRefs: input.evidenceRefs.map((item) => item.trim()).filter((item) => item.length > 0),
+    sourcePhase: input.sourcePhase.trim(),
   }
 }
 
@@ -139,7 +160,8 @@ function buildBlockedResult(input: {
     consumedDecisionIds: input.consumedDecisionIds,
     traversalStep: input.traversalStep,
     status: input.status,
-    leafCode: null,
+    leafCandidate: null,
+    runtimeContextTrace: input.traversalStep.runtimeContextTrace,
     ...(input.blockingIssue ? { blockingIssue: input.blockingIssue } : {}),
   }) as CanonicalTraversalAdapterAxisResult
 }
@@ -153,7 +175,9 @@ function simulateAxisTraversal(input: {
   const eventId = input.nodeDecisions[0]?.eventId ?? 'UNKNOWN_EVENT'
   const acceptedDecisions: SeraCanonicalNodeDecisionInput[] = []
 
-  for (const decision of input.nodeDecisions) {
+  for (const rawDecision of input.nodeDecisions) {
+    const decision = normalizeCanonicalNodeDecisionIntake(rawDecision)
+
     if (decision.authorDecision === 'NEEDS_MORE_EVIDENCE' || decision.authorDecision === 'BRANCH_BLOCKED' || decision.authorDecision === 'AXIS_TRAVERSAL_BLOCKED' || decision.authorDecision === 'REJECT_NODE_ANSWER') {
       const snapshot = runCanonicalAxisTraversal({
         axis: input.axis,
@@ -252,7 +276,8 @@ function simulateAxisTraversal(input: {
     consumedDecisionIds: acceptedDecisions.map((item) => item.decisionId),
     traversalStep,
     status,
-    leafCode: traversalStep.leafCandidate?.leafCode ?? null,
+    leafCandidate: traversalStep.leafCandidate ?? null,
+    runtimeContextTrace: traversalStep.runtimeContextTrace,
     ...(traversalStep.blockingIssue ? { blockingIssue: traversalStep.blockingIssue } : {}),
   }) as CanonicalTraversalAdapterAxisResult
 }
@@ -295,16 +320,24 @@ export function assertAdapterOutputLocks(output: CanonicalTraversalAdapterOutput
   const hasSelectedCode = Object.prototype.hasOwnProperty.call(rawOutput, 'selectedCode')
   const hasReleasedCode = Object.prototype.hasOwnProperty.call(rawOutput, 'releasedCode')
   const hasFinalFreeConclusion = Object.prototype.hasOwnProperty.call(rawOutput, FINAL_FREE_CONCLUSION_KEY)
+  const hasClassifiedStatus = rawOutput.status === 'CLASSIFIED'
+  const hasSelectedCodeField = Object.prototype.hasOwnProperty.call(rawOutput, 'selectedCode')
+  const hasReleasedCodeField = Object.prototype.hasOwnProperty.call(rawOutput, 'releasedCode')
 
   if (
     output.selectedCodeAllowed ||
     output.releasedCodeAllowed ||
     output.poaClosureAllowed ||
     output.downstreamAllowed ||
+    output.classificationAllowed ||
+    !output.notFinalClassification ||
     output[FINAL_FREE_CONCLUSION_ALLOWED_KEY] !== false ||
     hasSelectedCode ||
     hasReleasedCode ||
-    hasFinalFreeConclusion
+    hasFinalFreeConclusion ||
+    hasClassifiedStatus ||
+    hasSelectedCodeField ||
+    hasReleasedCodeField
   ) {
     throw new Error('Adapter lock violation: candidate-only traversal output cannot expose final or downstream fields.')
   }

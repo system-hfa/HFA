@@ -60,7 +60,9 @@ function main() {
   })
   const pAxis = axisResult(pCase, 'P')
   assert.equal(pAxis.status, 'TRAVERSAL_SIMULATED_LEAF_REACHED_NOT_CLASSIFIED')
-  assert.equal(pAxis.leafCode, 'P-A')
+  assert.equal(pAxis.leafCandidate?.candidateOnlyLeafCode, 'P-A')
+  assert.equal(pAxis.leafCandidate?.candidateOnly, true)
+  assert.equal(pAxis.leafCandidate?.classificationAllowed, false)
   assert.equal(pAxis.traversalStep.status, 'LEAF_REACHED_NOT_CLASSIFIED')
   assertAdapterOutputLocks(pCase)
   assertAdapterOutputLocks(pAxis)
@@ -107,7 +109,7 @@ function main() {
   })
   const oAxis = axisResult(oCase, 'O')
   assert.equal(oAxis.status, 'TRAVERSAL_SIMULATED_LEAF_REACHED_NOT_CLASSIFIED')
-  assert.equal(oAxis.leafCode, 'O-A')
+  assert.equal(oAxis.leafCandidate?.candidateOnlyLeafCode, 'O-A')
   assert.equal(oAxis.traversalStep.status, 'LEAF_REACHED_NOT_CLASSIFIED')
 
   // 3) A complete leaf: A_ROOT START -> A_IMPLEMENTED SIM -> A_CORRECT SIM -> A-A
@@ -150,7 +152,7 @@ function main() {
   })
   const aAxis = axisResult(aCase, 'A')
   assert.equal(aAxis.status, 'TRAVERSAL_SIMULATED_LEAF_REACHED_NOT_CLASSIFIED')
-  assert.equal(aAxis.leafCode, 'A-A')
+  assert.equal(aAxis.leafCandidate?.candidateOnlyLeafCode, 'A-A')
   assert.equal(aAxis.traversalStep.status, 'LEAF_REACHED_NOT_CLASSIFIED')
 
   // 4) Incomplete traversal requiring additional node answer.
@@ -182,7 +184,7 @@ function main() {
   })
   const extensionAxis = axisResult(extensionCase, 'O')
   assert.equal(extensionAxis.status, 'TRAVERSAL_INCOMPLETE_EXTENSION_REQUIRED')
-  assert.equal(extensionAxis.leafCode, null)
+  assert.equal(extensionAxis.leafCandidate, null)
 
   // 5) Blocked by author decision.
   const blockedCase = buildCanonicalTraversalFromNodeDecisions({
@@ -213,7 +215,7 @@ function main() {
   })
   const blockedAxis = axisResult(blockedCase, 'P')
   assert.equal(blockedAxis.status, 'TRAVERSAL_BLOCKED_BY_AUTHOR_DECISION')
-  assert.equal(blockedAxis.leafCode, null)
+  assert.equal(blockedAxis.leafCandidate, null)
 
   // 6) Invalid node.
   const invalidNodeCase = buildCanonicalTraversalFromNodeDecisions({
@@ -252,6 +254,10 @@ function main() {
   })
   const invalidAnswerAxis = axisResult(invalidAnswerCase, 'P')
   assert.equal(invalidAnswerAxis.status, 'TRAVERSAL_BLOCKED_BY_INVALID_ANSWER')
+  assert.ok(
+    invalidAnswerAxis.blockingIssue?.includes('INVALID_CANONICAL_ANSWER_VALUE'),
+    'Invalid answer path must expose INVALID_CANONICAL_ANSWER_VALUE.'
+  )
 
   // 8) O-E never accepted/returned as active leaf.
   const oENegativeCase = buildCanonicalTraversalFromNodeDecisions({
@@ -282,7 +288,7 @@ function main() {
   })
   const oENegativeAxis = axisResult(oENegativeCase, 'O')
   assert.equal(oENegativeAxis.status, 'TRAVERSAL_BLOCKED_BY_INVALID_ANSWER')
-  assert.notEqual(oENegativeAxis.leafCode, 'O-E')
+  assert.notEqual(oENegativeAxis.leafCandidate?.candidateOnlyLeafCode, 'O-E')
 
   // 9) Lock checks: no selected/released/final/downstream emissions.
   for (const output of [

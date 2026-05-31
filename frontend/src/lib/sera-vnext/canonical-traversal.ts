@@ -20,10 +20,19 @@ export type CanonicalTraversalStatus =
 
 export interface CanonicalTraversalLeafCandidate {
   axis: CanonicalSeraAxis
-  leafCode: CanonicalSeraLeafCode
+  candidateOnlyLeafCode: CanonicalSeraLeafCode
   status: 'LEAF_REACHED_NOT_CLASSIFIED'
+  candidateOnly: true
+  classificationAllowed: false
+  notFinalClassification: true
   selectedCodeAllowed: false
   releasedCodeAllowed: false
+}
+
+export interface CanonicalTraversalRuntimeContextTrace {
+  approvedEscapePointScopeStatus: ApprovedEscapePointScope['status'] | null
+  approvedEscapePointScopeId: string | null
+  enforcementStatus: 'PASSIVE_NOT_ENFORCED'
 }
 
 export interface CanonicalTraversalNodeTransition {
@@ -84,6 +93,7 @@ export interface CanonicalTraversalStepOutput {
   notFinalClassification: true
   poaClosureAllowed: false
   approvedEscapePointScopeAccepted: boolean
+  runtimeContextTrace: CanonicalTraversalRuntimeContextTrace
 }
 
 function buildNodeTransitionIndex(): Map<string, CanonicalTraversalNodeDescriptor> {
@@ -152,6 +162,12 @@ function baseStepOutput(input: {
   exactQuestionTextEn: string
   approvedEscapePointScope?: ApprovedEscapePointScope
 }): CanonicalTraversalStepOutput {
+  const runtimeContextTrace: CanonicalTraversalRuntimeContextTrace = {
+    approvedEscapePointScopeStatus: input.approvedEscapePointScope?.status ?? null,
+    approvedEscapePointScopeId: input.approvedEscapePointScope?.scopeId ?? null,
+    enforcementStatus: 'PASSIVE_NOT_ENFORCED',
+  }
+
   return {
     axis: input.axis,
     currentNodeId: input.nodeId,
@@ -165,6 +181,7 @@ function baseStepOutput(input: {
     notFinalClassification: true,
     poaClosureAllowed: false,
     approvedEscapePointScopeAccepted: Boolean(input.approvedEscapePointScope),
+    runtimeContextTrace,
   }
 }
 
@@ -202,7 +219,7 @@ export function validateCanonicalTraversalAnswer(nodeId: string, answerValue: st
       valid: false,
       status: 'INVALID_ANSWER',
       normalizedAnswerValue,
-      blockingIssue: `INVALID_ANSWER: ${normalizedAnswerValue} is not a canonical branch for node ${nodeId}.`,
+      blockingIssue: `INVALID_CANONICAL_ANSWER_VALUE: ${normalizedAnswerValue} is not a canonical branch for node ${nodeId}.`,
     }
   }
 
@@ -282,7 +299,7 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
         exactQuestionTextEn: node.exactQuestionTextEn,
         approvedEscapePointScope: input.approvedEscapePointScope,
       }),
-      blockingIssue: `INVALID_ANSWER: no canonical transition was found for ${input.currentNodeId} + ${normalizedAnswerValue}.`,
+      blockingIssue: `INVALID_CANONICAL_ANSWER_VALUE: no canonical transition was found for ${input.currentNodeId} + ${normalizedAnswerValue}.`,
     }
   }
 
@@ -335,8 +352,11 @@ export function advanceCanonicalTraversal(input: CanonicalTraversalAdvanceInput)
       }),
       leafCandidate: {
         axis: input.axis,
-        leafCode: transition.leafCode,
+        candidateOnlyLeafCode: transition.leafCode,
         status: 'LEAF_REACHED_NOT_CLASSIFIED',
+        candidateOnly: true,
+        classificationAllowed: false,
+        notFinalClassification: true,
         selectedCodeAllowed: false,
         releasedCodeAllowed: false,
       },
@@ -491,5 +511,11 @@ export function assertNoFinalClassification(output: CanonicalTraversalStepOutput
     exposesFinalFreeConclusion
   ) {
     throw new Error('Traversal skeleton lock violation: final classification outputs are not allowed in A4R190-D.')
+  }
+
+  if (output.leafCandidate) {
+    if (!output.leafCandidate.candidateOnly || output.leafCandidate.classificationAllowed || !output.leafCandidate.notFinalClassification) {
+      throw new Error('Traversal skeleton lock violation: leaf candidate must remain candidate-only and non-final.')
+    }
   }
 }

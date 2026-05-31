@@ -56,7 +56,9 @@ function main() {
     ],
   })
   assert.equal(pLeaf.status, 'LEAF_REACHED_NOT_CLASSIFIED', 'P path should reach leaf candidate.')
-  assert.equal(pLeaf.leafCandidate?.leafCode, 'P-A', 'P path should reach P-A in this scenario.')
+  assert.equal(pLeaf.leafCandidate?.candidateOnlyLeafCode, 'P-A', 'P path should reach P-A in this scenario.')
+  assert.equal(pLeaf.leafCandidate?.candidateOnly, true, 'Leaf candidate must remain candidate-only.')
+  assert.equal(pLeaf.leafCandidate?.classificationAllowed, false, 'Leaf candidate must not allow classification.')
   assertNoFinalClassification(pLeaf)
 
   // 6) O path rejects O-E and does not return O-E leaf.
@@ -72,7 +74,7 @@ function main() {
     ],
   })
   assert.equal(oLeaf.status, 'LEAF_REACHED_NOT_CLASSIFIED', 'O path should reach a structural leaf candidate.')
-  assert.notEqual(oLeaf.leafCandidate?.leafCode, 'O-E', 'O-E must never be returned as leaf.')
+  assert.notEqual(oLeaf.leafCandidate?.candidateOnlyLeafCode, 'O-E', 'O-E must never be returned as leaf.')
   assertNoFinalClassification(oLeaf)
 
   // 7) A path reaches leaf candidate without classification.
@@ -85,7 +87,7 @@ function main() {
     ],
   })
   assert.equal(aLeaf.status, 'LEAF_REACHED_NOT_CLASSIFIED', 'A path should reach leaf candidate.')
-  assert.equal(aLeaf.leafCandidate?.leafCode, 'A-A', 'A path should reach A-A in this scenario.')
+  assert.equal(aLeaf.leafCandidate?.candidateOnlyLeafCode, 'A-A', 'A path should reach A-A in this scenario.')
   assertNoFinalClassification(aLeaf)
 
   // 8) Leaf candidate never exposes selectedCode/releasedCode permissions.
