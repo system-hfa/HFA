@@ -65,6 +65,8 @@ export type SeraVNextEscapePointAgentKind =
   | 'crew_collective'
   | 'multi_actor'
   | 'system_or_condition_dominant'
+  | 'maintenance_or_org'
+  | 'design_mgmt'
   | 'unknown'
 
 export type SeraVNextEscapePointActOrOmissionKind =
