@@ -173,8 +173,8 @@ async function main() {
   const objectiveCandidateC = preconditionsScenarioC.candidates.find((item) => item.sourceAxis === 'objective')
   assert.equal(objectiveCandidateC?.status, 'BLOCKED', 'Scenario C: O-E must be blocked')
   assert.ok(
-    objectiveCandidateC?.blockingIssues.some((issue) => issue.includes('RESERVED/NOT_ACTIVE')),
-    'Scenario C: O-E blocking issue should reference RESERVED/NOT_ACTIVE'
+    objectiveCandidateC?.blockingIssues.some((issue) => issue.includes('NON_EXISTENT_IN_SERA_PT_V1')),
+    'Scenario C: O-E blocking issue should reference NON_EXISTENT_IN_SERA_PT_V1'
   )
 
   // Scenario D: released code without HUMAN_REVIEW source should be blocked

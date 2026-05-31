@@ -29,3 +29,17 @@ Rationale:
 - A4R190-A is structural/passive and already anchored to A4R99/A4R185 locks.
 - Main unresolved risk is engineering integration correctness (runtime wiring), better handled with targeted deterministic tests first.
 - Optional Opus re-audit can be requested after first A4R190-B integration draft if an independent narrative check is needed.
+
+## Execution Status Update (A4R190-B)
+Status: executed with controlled/minimum enforcement.
+
+Implemented in this phase:
+1. Canonical allowlist assertion wired into active human proposal validation path.
+2. Residual `O-E` active acceptance removed from objective intent runtime checks.
+3. Causal assurance code-token guard aligned to canonical active allowlist exports.
+4. Targeted enforcement trial added for `O-E`/unknown-code rejection and canonical acceptance.
+
+Intentionally not implemented in this phase:
+1. Canonical traversal engine by `nodeId`.
+2. Escape-point gate enforcement.
+3. Runtime bilingual canonical question delivery.

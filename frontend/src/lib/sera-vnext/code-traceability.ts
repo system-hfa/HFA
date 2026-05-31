@@ -121,9 +121,9 @@ function buildBaseDerivationPath(input: {
 
   if (input.code === 'O-E') {
     steps.push({
-      step: 'OBJECTIVE_RESERVED_CODE_CHECK',
-      answer: 'RESERVED_NOT_ACTIVE',
-      rationale: 'O-E is explicitly reserved and cannot be treated as active objective code in v1.0.',
+      step: 'OBJECTIVE_NON_EXISTENT_CODE_CHECK',
+      answer: 'NON_EXISTENT_IN_SERA_PT_V1',
+      rationale: 'O-E is non-existent in SERA-PT v1 and cannot be treated as active objective code.',
     })
   }
 
@@ -205,7 +205,7 @@ export function buildReleasedCodeTraceability(input: {
       }
 
       if (code === 'O-E') {
-        warnings.push('O-E is RESERVED/NOT_ACTIVE in SERA_PT_CANONICAL_v1.0 and must not be treated as active objective code.')
+        warnings.push('O-E is NON_EXISTENT_IN_SERA_PT_V1 in SERA_PT_CANONICAL_v1.0 and must not be treated as active objective code.')
       }
 
       if (!isNoFailure && hendyCategory === null && code !== 'O-E') {

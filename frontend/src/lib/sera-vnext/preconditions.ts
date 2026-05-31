@@ -208,7 +208,7 @@ export function derivePreconditionsFromReleasedCodes(input: {
     }
 
     if (codeUpper === 'O-E') {
-      blockingIssues.push('O-E is RESERVED/NOT_ACTIVE in canonical taxonomy v1.0 and cannot derive preconditions.')
+      blockingIssues.push('O-E is NON_EXISTENT_IN_SERA_PT_V1 in canonical taxonomy v1.0 and cannot derive preconditions.')
     }
 
     if (codeUpper === 'A-A') {
@@ -243,7 +243,9 @@ export function derivePreconditionsFromReleasedCodes(input: {
         blockingIssues.push('Traceability code mismatch with releasedCode; derivation blocked for axis.')
       }
       if (axisTraceability.status === 'RESERVED_NOT_ACTIVE') {
-        blockingIssues.push('Traceability marks this code as RESERVED_NOT_ACTIVE; precondition derivation is blocked.')
+        blockingIssues.push(
+          'Traceability marks this code as RESERVED_NOT_ACTIVE (NON_EXISTENT_IN_SERA_PT_V1); precondition derivation is blocked.'
+        )
       }
       if (axisTraceability.status === 'BLOCKED') {
         blockingIssues.push('Traceability marks this code as BLOCKED; precondition derivation is blocked.')

@@ -1,4 +1,5 @@
 import { SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS } from './constants'
+import { assertCanonicalSeraLeafCode } from './canonical-codes'
 import type {
   HumanAxisDecisionInput,
   HumanDecisionInputSet,
@@ -9,7 +10,8 @@ import type {
   PoaAxis,
 } from './types'
 
-const OBJECTIVE_INTENT_CODES = new Set(['O-C', 'O-D', 'O-E'])
+export const HUMAN_DECISION_OBJECTIVE_INTENT_CODES = ['O-C', 'O-D'] as const
+const OBJECTIVE_INTENT_CODES: ReadonlySet<string> = new Set(HUMAN_DECISION_OBJECTIVE_INTENT_CODES)
 const PERCEPTION_FAILURE_CODES = new Set(['P-D', 'P-F', 'P-G'])
 
 function normalize(value: string): string {
@@ -168,8 +170,22 @@ export function validateHumanAxisDecision(
   }
 
   const proposedCode = (input.proposedCode || '').trim().toUpperCase()
+  let canonicalProposedCode: string | null = null
 
-  if (input.decisionIntent === 'PROPOSE_CODE' && proposedCode === 'A-D') {
+  if (input.decisionIntent === 'PROPOSE_CODE') {
+    try {
+      canonicalProposedCode = assertCanonicalSeraLeafCode(contract.axis, proposedCode)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error)
+      result = setInvalid(
+        result,
+        'INVALID_GUARDRAIL_CONFLICT',
+        `proposedCode is invalid for axis ${contract.axis}: ${message}`
+      )
+    }
+  }
+
+  if (input.decisionIntent === 'PROPOSE_CODE' && canonicalProposedCode === 'A-D') {
     const adAckOk = hasKeywordMatch(input.guardrailAcknowledgements, ['physical', 'motor', 'ergonomic'])
     if (!adAckOk) {
       result = setInvalid(
@@ -180,7 +196,7 @@ export function validateHumanAxisDecision(
     }
   }
 
-  if (input.decisionIntent === 'PROPOSE_CODE' && OBJECTIVE_INTENT_CODES.has(proposedCode)) {
+  if (input.decisionIntent === 'PROPOSE_CODE' && canonicalProposedCode !== null && OBJECTIVE_INTENT_CODES.has(canonicalProposedCode)) {
     const objectiveAckOk =
       hasKeywordMatch(input.guardrailAcknowledgements, ['intent']) &&
       hasKeywordMatch(input.guardrailAcknowledgements, ['rule-awareness', 'rule awareness'])
@@ -193,7 +209,7 @@ export function validateHumanAxisDecision(
     }
   }
 
-  if (input.decisionIntent === 'PROPOSE_CODE' && PERCEPTION_FAILURE_CODES.has(proposedCode)) {
+  if (input.decisionIntent === 'PROPOSE_CODE' && canonicalProposedCode !== null && PERCEPTION_FAILURE_CODES.has(canonicalProposedCode)) {
     const perceptionAckOk = hasKeywordMatch(input.guardrailAcknowledgements, [
       'cue uptake',
       'recognition',

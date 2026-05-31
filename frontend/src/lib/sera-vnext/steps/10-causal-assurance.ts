@@ -3,6 +3,11 @@ import {
   SERA_VNEXT_HUMAN_REVIEW_PROHIBITED_OUTPUTS,
   SERA_VNEXT_STATUS,
 } from '../constants'
+import {
+  SERA_CANONICAL_ACTION_LEAF_CODES,
+  SERA_CANONICAL_OBJECTIVE_LEAF_CODES,
+  SERA_CANONICAL_PERCEPTION_LEAF_CODES,
+} from '../canonical-codes'
 import type {
   CausalAssurance,
   DirectActorAnalysis,
@@ -19,6 +24,12 @@ import type {
   PreconditionsAnalysis,
   UnsafeActConditionAnalysis,
 } from '../types'
+
+const SERA_ACTIVE_LEAF_CODE_TOKENS = [
+  ...SERA_CANONICAL_PERCEPTION_LEAF_CODES,
+  ...SERA_CANONICAL_OBJECTIVE_LEAF_CODES,
+  ...SERA_CANONICAL_ACTION_LEAF_CODES,
+]
 
 function hasAny(text: string, patterns: string[]): boolean {
   const t = text.toLowerCase()
@@ -193,11 +204,7 @@ export function runStep10CausalAssurance(input: {
     input.poaStatements.actionStatement || '',
   ].join(' ')
 
-  const statementsContainCodes = hasAny(statementsText, [
-    'P-A', 'P-B', 'P-C', 'P-D', 'P-E', 'P-F', 'P-G', 'P-H',
-    'O-A', 'O-B', 'O-C', 'O-D', 'O-E',
-    'A-A', 'A-B', 'A-C', 'A-D', 'A-E', 'A-F', 'A-G', 'A-H', 'A-I', 'A-J',
-  ])
+  const statementsContainCodes = hasAny(statementsText, SERA_ACTIVE_LEAF_CODE_TOKENS)
   checks.push({
     checkId: 'CHK-STATEMENTS-NO-SERA-CODES',
     passed: !statementsContainCodes,

@@ -169,8 +169,8 @@ async function main() {
   const objectiveTraceC = traceabilityScenarioC.traces[0]
   assert.equal(objectiveTraceC?.status, 'RESERVED_NOT_ACTIVE', 'Scenario C: O-E must be RESERVED_NOT_ACTIVE')
   assert.ok(
-    objectiveTraceC?.warnings.some((item) => item.includes('RESERVED/NOT_ACTIVE')),
-    'Scenario C: warning must explicitly reference RESERVED/NOT_ACTIVE'
+    objectiveTraceC?.warnings.some((item) => item.includes('NON_EXISTENT_IN_SERA_PT_V1')),
+    'Scenario C: warning must explicitly reference NON_EXISTENT_IN_SERA_PT_V1'
   )
 
   // Scenario D: timePressureExcessive canonical mapping
