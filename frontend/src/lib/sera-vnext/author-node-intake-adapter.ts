@@ -16,6 +16,7 @@ import type { CanonicalSeraAxis } from './types'
 const FINAL_FREE_CONCLUSION_ALLOWED_KEY = 'final' + 'ConclusionAllowed'
 
 export type AuthorNodeIntakeDecision = SeraCanonicalNodeAuthorDecision | 'PENDING_AUTHOR_DECISION'
+type ValidAuthorNodeIntakeDecision = Exclude<AuthorNodeIntakeDecision, 'PENDING_AUTHOR_DECISION'>
 
 export interface AuthorNodeIntakeRecord {
   eventId: string
@@ -92,11 +93,22 @@ function unique<T>(values: readonly T[]): T[] {
   return [...new Set(values)]
 }
 
-function normalizeDecision(value: AuthorNodeIntakeRecord['authorDecision']): AuthorNodeIntakeDecision {
+type NormalizedAuthorDecisionResult =
+  | { kind: 'PENDING' }
+  | { kind: 'VALID'; decision: ValidAuthorNodeIntakeDecision }
+  | { kind: 'UNKNOWN'; rawValue: string; normalizedValue: string }
+
+function normalizeDecision(value: AuthorNodeIntakeRecord['authorDecision']): NormalizedAuthorDecisionResult {
   if (!value) {
-    return 'PENDING_AUTHOR_DECISION'
+    return { kind: 'PENDING' }
   }
-  const normalized = value.trim().toUpperCase()
+
+  const trimmed = value.trim()
+  if (trimmed.length === 0) {
+    return { kind: 'PENDING' }
+  }
+
+  const normalized = trimmed.toUpperCase()
   const allowed: readonly AuthorNodeIntakeDecision[] = [
     'ACCEPT_NODE_ANSWER',
     'REJECT_NODE_ANSWER',
@@ -105,10 +117,23 @@ function normalizeDecision(value: AuthorNodeIntakeRecord['authorDecision']): Aut
     'AXIS_TRAVERSAL_BLOCKED',
     'PENDING_AUTHOR_DECISION',
   ]
+
   if ((allowed as readonly string[]).includes(normalized)) {
-    return normalized as AuthorNodeIntakeDecision
+    if (normalized === 'PENDING_AUTHOR_DECISION') {
+      return { kind: 'PENDING' }
+    }
+
+    return {
+      kind: 'VALID',
+      decision: normalized as ValidAuthorNodeIntakeDecision,
+    }
   }
-  return 'PENDING_AUTHOR_DECISION'
+
+  return {
+    kind: 'UNKNOWN',
+    rawValue: trimmed,
+    normalizedValue: normalized,
+  }
 }
 
 function sortRecordsForTraversal(records: readonly AuthorNodeIntakeRecord[]): AuthorNodeIntakeRecord[] {
@@ -260,11 +285,18 @@ function adaptAxisRecords(input: {
       blockingIssues.push(`LOCK_CONFLICT: poaClosureAllowed must remain false for intakeId ${record.intakeId}.`)
     }
 
-    const decision = normalizeDecision(record.authorDecision)
-    if (decision === 'PENDING_AUTHOR_DECISION') {
+    const normalizedDecision = normalizeDecision(record.authorDecision)
+    if (normalizedDecision.kind === 'PENDING') {
       hasPendingDecision = true
       continue
     }
+
+    if (normalizedDecision.kind === 'UNKNOWN') {
+      blockingIssues.push(`UNKNOWN_AUTHOR_DECISION_VALUE:${normalizedDecision.normalizedValue}`)
+      continue
+    }
+
+    const decision = normalizedDecision.decision
 
     if (decision === 'ACCEPT_NODE_ANSWER') {
       const answerValue = (record.answerValue || '').trim()

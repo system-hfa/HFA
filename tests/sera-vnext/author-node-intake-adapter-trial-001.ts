@@ -153,6 +153,55 @@ function main() {
   assert.equal(pendingAxis.status, 'AUTHOR_DECISION_PENDING')
   assert.equal(pendingAxis.pendingAuthorDecision, true)
   assert.equal(pendingAxis.leafCandidate, null)
+  assert.equal(
+    pendingAxis.blockingIssues.some((issue) => issue.includes('UNKNOWN_AUTHOR_DECISION_VALUE')),
+    false,
+    'Pending rows must not produce unknown-author-decision blocking issue.'
+  )
+
+  // 1b) Missing/null/empty authorDecision stays pending without unknown-decision blocking.
+  const pendingVariantsOutput = buildCandidateTraversalFromAuthorNodeIntake({
+    records: [
+      {
+        ...mkAccepted({
+          intakeId: 'MOCK-PENDING-MISSING',
+          eventId: 'MOCK-PENDING',
+          axis: 'P',
+          nodeId: 'P_ROOT',
+          answerValue: 'START',
+        }),
+        authorDecision: undefined,
+      },
+      {
+        ...mkAccepted({
+          intakeId: 'MOCK-PENDING-NULL',
+          eventId: 'MOCK-PENDING',
+          axis: 'P',
+          nodeId: 'P_ASSESSMENT',
+          answerValue: 'SIM',
+        }),
+        authorDecision: null,
+      },
+      {
+        ...mkAccepted({
+          intakeId: 'MOCK-PENDING-EMPTY',
+          eventId: 'MOCK-PENDING',
+          axis: 'P',
+          nodeId: 'P_CAPABILITY',
+          answerValue: 'SIM',
+        }),
+        authorDecision: '   ',
+      },
+    ],
+  })
+  const pendingVariantsAxis = axisResultByEvent(pendingVariantsOutput, 'MOCK-PENDING', 'P')
+  assert.equal(pendingVariantsAxis.status, 'AUTHOR_DECISION_PENDING')
+  assert.equal(pendingVariantsAxis.leafCandidate, null)
+  assert.equal(
+    pendingVariantsAxis.blockingIssues.some((issue) => issue.includes('UNKNOWN_AUTHOR_DECISION_VALUE')),
+    false,
+    'Missing/null/empty authorDecision must not produce UNKNOWN_AUTHOR_DECISION_VALUE.'
+  )
 
   // 2) Mock P complete decisions reach candidate-only leaf.
   const pMockOutput = buildCandidateTraversalFromAuthorNodeIntake({
@@ -285,8 +334,50 @@ function main() {
   assert.equal(crossAxis.status, 'AXIS_INPUT_INVALID')
   assert.ok(crossAxis.blockingIssues.join(' ').includes('AXIS_TRAVERSAL_BLOCKED'))
 
-  // 12) Output has no selected/released/classified/downstream fields.
-  for (const output of [pendingOutput, pMockOutput, oMockOutput, aMockOutput]) {
+  // 12) Unknown authorDecision values are blocked and auditable.
+  const unknownDecisionCases: Array<{ value: string; suffix: string }> = [
+    { value: 'ACCEPTED', suffix: 'ACCEPTED' },
+    { value: 'APPROVE', suffix: 'APPROVE' },
+    { value: 'SIM', suffix: 'SIM' },
+    { value: 'YES', suffix: 'YES' },
+    { value: 'CLASSIFIED', suffix: 'CLASSIFIED' },
+  ]
+  const unknownDecisionOutputs: ReturnType<typeof buildCandidateTraversalFromAuthorNodeIntake>[] = []
+  for (const unknown of unknownDecisionCases) {
+    const eventId = `MOCK-UNK-${unknown.suffix}`
+    const output = buildCandidateTraversalFromAuthorNodeIntake({
+      records: [
+        {
+          ...mkAccepted({
+            intakeId: `MOCK-UNK-001-${unknown.suffix}`,
+            eventId,
+            axis: 'P',
+            nodeId: 'P_ROOT',
+            answerValue: 'START',
+          }),
+          authorDecision: unknown.value as AuthorNodeIntakeRecord['authorDecision'],
+        },
+      ],
+    })
+    unknownDecisionOutputs.push(output)
+    const axis = axisResultByEvent(output, eventId, 'P')
+    assert.equal(axis.status, 'AXIS_INPUT_INVALID')
+    assert.equal(axis.leafCandidate, null)
+    assert.ok(
+      axis.blockingIssues.includes(`UNKNOWN_AUTHOR_DECISION_VALUE:${unknown.suffix}`),
+      `Expected unknown decision blocking issue for ${unknown.suffix}.`
+    )
+  }
+
+  // 13) Output has no selected/released/classified/downstream fields.
+  for (const output of [
+    pendingOutput,
+    pendingVariantsOutput,
+    pMockOutput,
+    oMockOutput,
+    aMockOutput,
+    ...unknownDecisionOutputs,
+  ]) {
     assertCandidateOnlyLocks(output as unknown as Record<string, unknown>, 'output')
     assertNoDownstreamFields(output as unknown as Record<string, unknown>, 'output')
 
