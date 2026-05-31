@@ -4,11 +4,69 @@ export type SeraVNextSourceType = 'neutral_trial' | 'user_event' | 'report_extra
 
 export type SeraVNextLocale = 'pt-BR' | 'en'
 
+export type CanonicalSeraAxis = 'P' | 'O' | 'A'
+
+export type CanonicalSeraCodeAxis = CanonicalSeraAxis
+
+export type CanonicalPerceptionLeafCode = 'P-A' | 'P-B' | 'P-C' | 'P-D' | 'P-E' | 'P-F' | 'P-G' | 'P-H'
+
+export type CanonicalObjectiveLeafCode = 'O-A' | 'O-B' | 'O-C' | 'O-D'
+
+export type CanonicalActionLeafCode =
+  | 'A-A'
+  | 'A-B'
+  | 'A-C'
+  | 'A-D'
+  | 'A-E'
+  | 'A-F'
+  | 'A-G'
+  | 'A-H'
+  | 'A-I'
+  | 'A-J'
+
+export type CanonicalSeraLeafCode = CanonicalPerceptionLeafCode | CanonicalObjectiveLeafCode | CanonicalActionLeafCode
+
+export type CanonicalSeraNonExistentLeafCode = 'O-E'
+
+export interface SeraCanonicalQuestionTreeNode {
+  nodeInventoryId: string
+  sourcePath: string
+  sourceStatus: string
+  nodeIdType: string
+  nodeId: string
+  axis: CanonicalSeraAxis
+  nodeOrder: number
+  exactQuestionTextPt: string
+  exactQuestionTextEn: string
+  branchCondition: string
+  nextNodeHint: string
+  transitionKind: 'NEXT_NODE' | 'LEAF'
+  nextNodeId: string | null
+  leafCode: CanonicalSeraLeafCode | null
+  canonicalStatus: string
+  usableForAxisDecision: boolean
+  issueFlag: string
+  notes: string
+}
+
+export interface ApprovedEscapePointScope {
+  scopeId: string
+  scopeStatement: string
+  boundaryEvidenceRefs: string[]
+  rationale: string
+  status: 'DEFINED_NOT_ENFORCED' | 'APPROVED_NOT_ENFORCED'
+}
+
+export interface SeraVNextCanonicalRuntimeContext {
+  approvedEscapePointScope: ApprovedEscapePointScope
+}
+
 export interface SeraVNextInput {
   inputId: string
   narrative: string
   sourceType: SeraVNextSourceType
   locale?: SeraVNextLocale
+  canonicalRuntimeContext?: SeraVNextCanonicalRuntimeContext
   humanDecisionInput?: HumanDecisionInputSet
   options?: {
     allowLlm?: boolean
