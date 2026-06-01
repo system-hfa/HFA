@@ -1,0 +1,101 @@
+{
+  "status": [
+    "CONTROLLED_MATERIALIZATION_DRAFT",
+    "NOT_A_FIXTURE",
+    "NOT_BASELINE",
+    "NOT_PRODUCT",
+    "NOT_CLASSIFIED",
+    "NOT_REAL_EVENT",
+    "SYNTHETIC_ONLY"
+  ],
+  "phase": "A4R194-J",
+  "syntheticPilotId": "SYN-PILOT-GAP001-PFPM-DRAFT-001",
+  "controlledMaterializationId": "SYN-PILOT-GAP001-PFPM-CONTROLLED-DRAFT-001",
+  "syntheticType": "TYPE-07_WARNING_TRAP",
+  "learningGap": "GAP-001_PF_PM_SEPARATION",
+  "boundaryDecision": "PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY",
+  "sourceStatus": "SYNTHETIC_ONLY",
+  "notARealEvent": true,
+  "canonicalProvenance": {
+    "primary_gap_basis": ["Thebaud", "Peasmarsh", "Vigo", "Colgan 3407"],
+    "boundary_case_basis": ["Asiana 214", "Comair 5191", "American 965"],
+    "contextual_calibration_basis": [
+      "A4R193-P/Q synthetic gap audit",
+      "A4R194-A/I",
+      "A4R195-A/C"
+    ],
+    "not_narrative_source": "all real events above"
+  },
+  "explicitExclusions": {
+    "pmPrimaryMonitoringFailure": "EXCLUDED_REQUIRES_SEPARATE_FUTURE_DRAFT",
+    "crewCollectiveFallback": "EXCLUDED",
+    "consequenceAsCause": "BLOCKED",
+    "warningAsAnchor": "BLOCKED",
+    "realEventNarrative": "EXCLUDED",
+    "daumasReentry": "EXCLUDED"
+  },
+  "agents": {
+    "pf": {
+      "agentId": "synthetic-pf-001",
+      "role": "pilot flying",
+      "status": "PRIMARY_SYNTHETIC_ESCAPE_POINT_CANDIDATE_ACTOR"
+    },
+    "pm": {
+      "agentId": "synthetic-pm-001",
+      "role": "pilot monitoring",
+      "status": "MONITORING_CALLOUT_OBLIGATION_NOT_EARLIER_THAN_PF_ANCHOR"
+    },
+    "crewCollective": {
+      "status": "CONTEXT_ONLY",
+      "fallbackAllowed": false,
+      "mayReplacePfPm": false
+    }
+  },
+  "operationalSequence": {
+    "pfSequenceRef": "seq:synthetic:pf:03",
+    "pfSequenceMeaning": "first controllable synthetic escape-point candidate",
+    "pmSequenceRef": "seq:synthetic:pm:03",
+    "pmSequenceMeaning": "same macro gate / PM monitoring obligation, not earlier than PF anchor",
+    "futureGranularOrderingRequiresSeparatePhase": true
+  },
+  "minimalSyntheticScenarioSkeleton": {
+    "status": "FIELD_SKELETON_ONLY",
+    "syntheticContextPlaceholder": "Synthetic-only context placeholder; no named real event and no copied event chain.",
+    "pfActionOrOmissionPlaceholder": "Observable first-departure placeholder bound to synthetic-pf-001 and seq:synthetic:pf:03.",
+    "pmMonitoringOrCalloutObligationPlaceholder": "Monitoring/callout obligation placeholder bound to synthetic-pm-001 and seq:synthetic:pm:03; not an earlier anchor.",
+    "boundaryEvidencePlaceholders": [
+      "SYN-GAP001-J-EV-PF-001",
+      "SYN-GAP001-J-EV-PM-001",
+      "SYN-GAP001-J-EV-BOUNDARY-001"
+    ],
+    "consequenceBoundaryPlaceholder": "Post-anchor consequence zone; cannot be used as cause or classification basis.",
+    "completeOperationalNarrativeCreated": false
+  },
+  "poaClassification": {
+    "status": "NOT_CLASSIFIED",
+    "selectedCode": null,
+    "releasedCode": null,
+    "finalConclusion": null
+  },
+  "locks": {
+    "fixtureAllowed": false,
+    "baselineAllowed": false,
+    "productAllowed": false,
+    "classificationAllowed": false,
+    "selectedCodeAllowed": false,
+    "releasedCodeAllowed": false,
+    "finalConclusionAllowed": false,
+    "downstreamAllowed": false
+  },
+  "downstream": {
+    "HFACS": "blocked",
+    "Risk/ERC": "blocked",
+    "ARMS/ERC": "blocked",
+    "recommendations": "blocked"
+  },
+  "nextStatus": {
+    "requiresA4R194KIndependentAudit": true,
+    "promotionBeforeAuditAllowed": false,
+    "a4r194KInitiated": false
+  }
+}

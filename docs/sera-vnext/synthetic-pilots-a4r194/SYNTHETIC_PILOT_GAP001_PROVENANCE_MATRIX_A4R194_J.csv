@@ -1,0 +1,13 @@
+basis_type,item,status,allowed_use,blocked_use,notes
+primary_gap_basis,Thebaud,canonical,methodological gap basis only,narrative source; fixture; baseline; product; selected/released/final output,May justify PF/PM separation gap but cannot supply synthetic story facts
+primary_gap_basis,Peasmarsh,canonical,methodological gap basis only,narrative source; fixture; baseline; product; selected/released/final output,May calibrate warning/callout ambiguity but cannot become a synthetic occurrence
+primary_gap_basis,Vigo,canonical,methodological gap basis only,narrative source; fixture; baseline; product; selected/released/final output,May support actor-boundary need only
+primary_gap_basis,Colgan 3407,canonical,methodological gap basis only,narrative source; fixture; baseline; product; selected/released/final output,May support agent-migration boundary need only
+boundary_case_basis,Asiana 214,canonical,boundary calibration only,narrative source; fixture; baseline; product; selected/released/final output,Explains A4R195-A related boundary case reference
+boundary_case_basis,Comair 5191,canonical,boundary calibration only,narrative source; fixture; baseline; product; selected/released/final output,Explains A4R195-A related boundary case reference
+boundary_case_basis,American 965,canonical,boundary calibration only,narrative source; fixture; baseline; product; selected/released/final output,Calibrates consequence-as-cause and progressive boundary risk
+contextual_calibration_basis,A4R193-P/Q synthetic gap audit,canonical,scope and governance calibration,synthetic narrative source; fixture; baseline; product; final output,Design-only/audit context
+contextual_calibration_basis,A4R194-A/I,canonical,PFPM pilot scope and lock calibration,synthetic narrative source; fixture; baseline; product; final output,Controls boundary and authorization posture
+contextual_calibration_basis,A4R195-A/C,canonical,state and human-decision calibration,synthetic narrative source; fixture; baseline; product; final output,Confirms product and final-output locks
+not_narrative_source,all real events above,canonical,methodology reference only,operational narrative; copied sequence; empirical evidence; release basis,Real events are excluded from the synthetic scenario skeleton
+not_narrative_source,Daumas,canonical,methodology/reference-only,narrative provenance; automatic reentry; fixture; baseline; product,Reference lane only
