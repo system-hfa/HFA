@@ -1,0 +1,17 @@
+authorization_item,status,required_value,current_value,blocking_if_failed,next_action,notes
+human_authorization_present,PASS,present,HUMAN_AUTHORIZATION_FOR_CONTROLLED_MATERIALIZATION_DRAFT_ONLY,yes,keep_human_gate,explicit human authorization recorded for draft-only scope
+final_audit_h_pass,PASS,FINAL_DRAFT_AUDIT_PASS_WITH_WARNINGS,FINAL_DRAFT_AUDIT_PASS_WITH_WARNINGS,yes,preserve_audit_trail,A4R194-H final audit verdict
+no_blocker_high_medium,PASS,none,blocker_none_high_none_medium_none,yes,keep_clean_severity,H severities BLOCKER/HIGH/MEDIUM none
+pf_primary_boundary,PASS,PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY,PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY,yes,preserve_boundary,PF primary with PM in consequence zone
+pm_primary_separate_draft,PASS,PM_PRIMARY_MONITORING_FAILURE_REQUIRES_SEPARATE_DRAFT,required,yes,require_new_draft_for_pm_primary,PM-primary variant blocked in this lineage
+no_fixture,PASS,false,fixtureAllowed_false,yes,keep_fixture_block,no fixture in I or J
+no_baseline,PASS,false,baselineAllowed_false,yes,keep_baseline_block,no baseline in I or J
+product_blocked,PASS,blocked,productAllowed_false,yes,keep_product_block,no product/UI/API opening
+selectedCode_null_or_absent,PASS,null,null,yes,keep_selected_code_null,explicit prohibitive null
+releasedCode_null_or_absent,PASS,null,null,yes,keep_released_code_null,explicit prohibitive null
+finalConclusion_null_or_absent,PASS,null,null,yes,keep_final_conclusion_null,explicit prohibitive null
+classification_not_classified,PASS,NOT_CLASSIFIED,NOT_CLASSIFIED,yes,keep_classification_block,poaClassification status NOT_CLASSIFIED
+rr001_open_acknowledged,PASS,OPEN,OPEN,yes,keep_anti_fallback_language,RR-001 lexical/agent ambiguity remains open
+rr003_partial_acknowledged,PASS,PARTIALLY_MITIGATED,PARTIALLY_MITIGATED,yes,confirm_no_productive_path,RR-003 MDC/intake partial mitigation
+a4r194_j_limited_scope,PASS,limited,A4R194-J_CONTROLLED_MATERIALIZATION_DRAFT,yes,enforce_j_scope_contract,J limited to minimal draft, no fixture/baseline/product
+no_automatic_materialization,PASS,manual_human_gate,manual_human_gate,yes,require_new_human_authorization,materialization never automatic after authorization
