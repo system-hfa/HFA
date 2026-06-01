@@ -1,0 +1,13 @@
+case_id,event_name,field,prior_status,new_status,evidence_refs,sufficiency,notes
+REAL-EVENT-0001,Thebaud legacy,agentId,PARTIAL,PARTIAL,"RVD0001-72; ADJ001-39; EXT001-40",INSUFFICIENT_FOR_REENTRY,"flight crew coletivo permanece sem ator especifico"
+REAL-EVENT-0001,Thebaud legacy,agentKind,PARTIAL,PARTIAL,"A4R126-21; GATE-L-1",INSUFFICIENT_FOR_REENTRY,"crew_collective mantido"
+REAL-EVENT-0001,Thebaud legacy,PF_PM_boundary,PENDING,PENDING,"RVD0001-141; DEEP0001-163; ADJ001-71",INSUFFICIENT_FOR_REENTRY,"sem decomposicao PF/PM por acao/callout"
+REAL-EVENT-0001,Thebaud legacy,unsafeActOrOmission,PARTIAL,PARTIAL,"DEEP0001-247; RVD0001-89; ADJ001-36",INSUFFICIENT_FOR_REENTRY,"continua ambiguo entre acao e deteccao tardia"
+REAL-EVENT-0001,Thebaud legacy,operationalMoment,PARTIAL,PARTIAL,"DEEP0001-91-101; RVD0001-56-57; ADJ001-28",PARTIAL,"momento macro estavel"
+REAL-EVENT-0001,Thebaud legacy,sequenceRef,PARTIAL,PARTIAL,"DEEP0001-91-103; EXT001-44-52; L-HOLD-18",INSUFFICIENT_FOR_REENTRY,"sem sequenceRef por ator/callout"
+REAL-EVENT-0001,Thebaud legacy,pointTopology,PARTIAL,PARTIAL,"GATE-L-5; RVD0001-69",INSUFFICIENT_FOR_REENTRY,"fronteira ainda nao isolada por ator"
+REAL-EVENT-0001,Thebaud legacy,boundaryEvidenceRefs,PARTIAL,PARTIAL,"EXT001-44-48; ADJ001-25; A4R126-21",INSUFFICIENT_FOR_REENTRY,"refs existem, mas nao fecham agent-act-moment"
+REAL-EVENT-0001,Thebaud legacy,agentMigrationRisk,RISK_PRESENT,RISK_PRESENT,"GATE-L-7; HOLD-L-20; A4R126-21",HIGH,"risco permanece ativo"
+REAL-EVENT-0001,Thebaud legacy,consequenceAsCauseRisk,RISK_PRESENT,RISK_PRESENT,"GATE-L-8; DEEP0001-123",MEDIUM,"risco residual permanece"
+REAL-EVENT-0001,Thebaud legacy,technicalConditionDominanceRisk,NOT_PRIMARY_BLOCKER,NOT_PRIMARY_BLOCKER,"GATE-L-9; ADJ001-35",LOW,"nao e bloqueador principal"
+REAL-EVENT-0001,Thebaud legacy,reentryRetryReadiness,GATE_BLOCKED,THEBAUD_REMAINS_HOLD_AGENT_ACT_MOMENT,"GATE-L-10; L-HOLD-16-20; M-DECISION",INSUFFICIENT_FOR_REENTRY,"sem retry em M"
