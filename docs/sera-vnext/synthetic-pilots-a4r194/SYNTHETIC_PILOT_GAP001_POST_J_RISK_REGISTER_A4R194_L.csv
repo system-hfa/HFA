@@ -1,0 +1,17 @@
+risk_id,risk_name,status_after_j,severity_residual,current_controls,next_action,notes
+RISK-001,synthetic-as-real confusion,mitigated,LOW,notARealEvent true;SYNTHETIC_ONLY;SYN- ids;dedicated synthetic directory;synthetic placeholders,maintain strict synthetic labeling,no real narrative copied
+RISK-002,fixture leakage,blocked,NONE,fixtureAllowed false;no artifact in tests/sera/fixtures,keep blocked,no fixture created
+RISK-003,baseline leakage,blocked,NONE,baselineAllowed false;no artifact in tests/reports/baseline,keep blocked,no baseline created
+RISK-004,product leakage,blocked,NONE,productAllowed false;documentary non-operational,keep blocked,no UI/API opened
+RISK-005,selected/released/final leakage,blocked,NONE,selectedCode/releasedCode/finalConclusion null;locks false,keep blocked,three nulls preserved
+RISK-006,RR-001 agent ambiguity,OPEN,LOW,distinct agentId synthetic-pf-001/synthetic-pm-001;anti-fallback language,reinforce lexical separation in future phase,residual lexical only
+RISK-007,RR-003 intake/MDC partial mitigation,PARTIALLY_MITIGATED,LOW,structured intake envelope A4R192-A/B/C;no productive integration,confirm no productive path before any future phase,no productive path created
+RISK-008,provenance inconsistency,reconciled,LOW,design-provenance categories;not_narrative_source,closed for J;RR-001/RR-003 remain,resolved for A4R194-J scope
+RISK-009,PM-primary leakage,blocked,NONE,EXCLUDED_REQUIRES_SEPARATE_FUTURE_DRAFT,keep blocked;separate draft requires new ids,no silent reclassification
+RISK-010,crew collective fallback,blocked,NONE,CONTEXT_ONLY;fallbackAllowed false;mayReplacePfPm false,keep blocked,context only
+RISK-011,consequence-as-cause,blocked,NONE,consequenceMayBeUsedAsCause false;post-anchor consequence zone,keep blocked,consequence not cause
+RISK-012,warning-as-anchor,blocked,NONE,TYPE-07_WARNING_TRAP;PM warning in consequence zone,keep blocked,warning not anchor
+RISK-013,Daumas reentry misuse,blocked,NONE,daumasReentry EXCLUDED;reference-only;spelling Daumas with U,keep blocked,no reentry
+RISK-014,real-event narrative contamination,blocked,NONE,not_narrative_source;no copied event chain,keep blocked,real events are methodology basis only
+RISK-015,uncontrolled phase proliferation,controlled,LOW,A4R194-K not initiated by J;A4R194-M not initiated by L;human authorization gate,next phase = closure/intake not promotion,no auto-advance
+RISK-016,sequenceRef coarse,noted,LOW,coarse pf:03/pm:03 declared;granular ordering deferred to future phase,optional future SEQUENCE_REF_REFINEMENT design-only,LOW-001 from A4R194-K

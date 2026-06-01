@@ -1,0 +1,10 @@
+option_id,option_name,status,authorized_now,requires_human_authorization,allowed_actions,blocked_actions,recommended_model,notes
+L-STOP-HOLD,STOP_AND_HOLD,available,false,yes,record_post_j_stop_and_hold_closure,execution;materialization;fixture;baseline;product;classification,codex_gpt_5_3_high,safest path; retains J as audited controlled draft
+L-SOURCE-RECOVERY,SOURCE_RECOVERY,allowed_governance_path,false,yes,prepare_source_recovery_documentation,promotion_of_hold_to_ready_without_closure;fixture;baseline;product,codex_gpt_5_3_high,real-first path; not auto-started by this phase
+L-SEQUENCE-REF-REFINEMENT,SEQUENCE_REF_REFINEMENT_DESIGN_ONLY,blocked_until_authorized,false,yes,refine_sequenceref_granularity_design_only,promotion;fixture;baseline;product;classification,gpt_5_5_thinking,addresses LOW-001 coarse pf:03/pm:03; design-only; no promotion
+L-PM-PRIMARY-SEPARATE-DRAFT,PM_PRIMARY_SEPARATE_DRAFT,blocked_until_authorized,false,yes,prepare_pm_primary_separate_draft_new_ids,reuse_of_pf_primary_lineage;fixture;baseline;product;classification,gpt_5_5_thinking,requires new syntheticPilotId;new scopeId;new sequence;separate audit
+L-BASELINE-DESIGN-ONLY,BASELINE_METHODOLOGY_PACKAGE_DESIGN_ONLY,blocked_until_authorized,false,yes,prepare_baseline_methodology_design_only,baseline_promotion;fixture;product;final_outputs,gpt_5_5_thinking,design-only planning; promotion blocked
+L-BENCHMARK-DESIGN-ONLY-REVIEW,BENCHMARK_DESIGN_ONLY_REVIEW,blocked_until_authorized,false,yes,prepare_benchmark_design_only_review,benchmark_execution;promotion;fixture;baseline;product,opus,review-only; no benchmark execution; no promotion
+L-FIXTURE-PROMOTION,FIXTURE_PROMOTION,BLOCKED,false,no,none,fixture;promotion;classification,none,no authorization form in this phase; remains blocked
+L-BASELINE-PROMOTION,BASELINE_PROMOTION,BLOCKED,false,no,none,baseline;promotion;classification,none,no authorization form in this phase; remains blocked
+L-PRODUCT-UI-API,PRODUCT_UI_API,BLOCKED,false,no,none,product;ui;api;all_outputs,none,no authorization form in this phase; remains blocked
