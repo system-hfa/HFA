@@ -1,0 +1,17 @@
+check_id,check_name,status,required_value,current_value,risk_if_failed,next_action,notes
+CHK-001,draft_design_only,PASS,SYNTHETIC_DRAFT_DESIGN_ONLY,SYNTHETIC_DRAFT_DESIGN_ONLY,high,keep_design_only_status,draft is structural design-only not executable
+CHK-002,not_real_event,PASS,true,true,high,keep_not_real_event_marker,notARealEvent is true
+CHK-003,pf_agent_present,PASS,synthetic-pf-001,synthetic-pf-001,high,preserve_pf_agent,PF agentId explicit and immutable per future anchor
+CHK-004,pm_agent_present,PASS,synthetic-pm-001,synthetic-pm-001,high,preserve_pm_agent,PM agentId explicit and immutable per future anchor
+CHK-005,crew_collective_context_only,PASS,true,true,high,block_crew_collective_fallback,crew collective cannot replace PF or PM
+CHK-006,pf_sequenceRef_present,PASS,seq:synthetic:pf:03,seq:synthetic:pf:03,high,preserve_pf_sequence_ref,actor-level sequenceRef for PF
+CHK-007,pm_sequenceRef_present,PASS,seq:synthetic:pm:03,seq:synthetic:pm:03,high,preserve_pm_sequence_ref,actor-level sequenceRef for PM
+CHK-008,synthetic_boundary_evidence_placeholders,PASS,true,true,high,keep_synthetic_label,boundaryEvidenceRefs are synthetic placeholders not real source
+CHK-009,no_selectedCode,PASS,null,null,high,keep_selected_code_null,explicit prohibitive null not code emission
+CHK-010,no_releasedCode,PASS,null,null,high,keep_released_code_null,explicit prohibitive null not code emission
+CHK-011,no_finalConclusion,PASS,null,null,high,keep_final_conclusion_null,no final conclusion produced
+CHK-012,no_hfacs_risk_arms_recommendations,PASS,all_blocked,all_blocked,high,keep_downstream_blocks,no HFACS no Risk/ERC no ARMS/ERC no recommendations
+CHK-013,no_fixture_no_baseline,PASS,blocked,blocked,high,keep_fixture_baseline_block,no fixture and no baseline conversion
+CHK-014,product_blocked,PASS,blocked,blocked,high,keep_product_block,no product no UI no API no DB
+CHK-015,audit_required_before_materialization,PASS,required,required,high,enforce_independent_audit_gate,Opus or GPT-5.5 audit before any materialization
+CHK-016,human_authorization_required,PASS,required,required,high,enforce_human_authorization_gate,explicit human authorization before materialization

@@ -1,0 +1,88 @@
+{
+  "status": "SYNTHETIC_DRAFT_DESIGN_ONLY",
+  "phase": "A4R194-E",
+  "syntheticPilotId": "SYN-PILOT-GAP001-PFPM-DRAFT-001",
+  "notARealEvent": true,
+  "syntheticCaseInstanceCreated": false,
+  "completeNarrativeCreated": false,
+  "fixtureAllowed": false,
+  "baselineAllowed": false,
+  "productAllowed": false,
+  "classificationAllowed": false,
+  "selectedCodeAllowed": false,
+  "releasedCodeAllowed": false,
+  "finalConclusionAllowed": false,
+  "hfacsAllowed": false,
+  "riskErcAllowed": false,
+  "armsErcAllowed": false,
+  "recommendationsAllowed": false,
+  "gapId": "GAP-001",
+  "gapName": "PF/PM separation",
+  "syntheticType": "TYPE-07_WARNING_TRAP",
+  "syntheticTypeAlternativeConsidered": "TYPE-02_PROGRESSIVE_HF_POSITIVE",
+  "realEventBasis": ["Thebaud", "Peasmarsh", "Vigo", "Colgan 3407"],
+  "methodologicalPurpose": "test PF/PM separation, agent-act-moment binding, and avoid agent migration",
+  "agentSet": {
+    "pf": {
+      "agentId": "synthetic-pf-001",
+      "agentKind": "frontline_operator",
+      "role": "pilot flying"
+    },
+    "pm": {
+      "agentId": "synthetic-pm-001",
+      "agentKind": "frontline_operator",
+      "role": "pilot monitoring"
+    },
+    "crewCollectiveContextOnly": true,
+    "crewCollectiveMayReplacePfPm": false
+  },
+  "escapePointDraft": {
+    "scopeId": "synthetic-gap001-pfpm-scope-draft-001",
+    "status": "DRAFT_NOT_APPROVED_NOT_ENFORCED",
+    "pointTopology": "DISCRETE",
+    "pointTopologyJustification": "PF first observable departure is a single discrete act; the PM warning/callout belongs to the post-departure consequence zone and must not become the escape anchor",
+    "pfSequenceRef": "seq:synthetic:pf:03",
+    "pmSequenceRef": "seq:synthetic:pm:03",
+    "pfUnsafeActOrOmissionDraft": "PF placeholder: observable first departure act draft only, no final event narrative",
+    "pmMonitoringOrCalloutObligationDraft": "PM placeholder: monitoring/callout/go-around obligation draft only, no final event narrative",
+    "boundaryEvidenceRefs": [
+      "SYN-GAP001-EV-PF-001",
+      "SYN-GAP001-EV-PM-001",
+      "SYN-GAP001-EV-BOUNDARY-001"
+    ],
+    "boundaryEvidenceRefsAreSyntheticPlaceholders": true
+  },
+  "consequenceBoundary": {
+    "escapePointIsPreConsequence": true,
+    "warningAndCalloutAreConsequenceZone": true,
+    "consequenceMayBeUsedAsCause": false
+  },
+  "poaClassification": {
+    "status": "NOT_CLASSIFIED",
+    "classificationTarget": "PENDING_FUTURE_MATERIALIZATION",
+    "selectedCode": null,
+    "releasedCode": null,
+    "finalConclusion": null
+  },
+  "prohibitedShortcuts": [
+    "crew_collective_fallback",
+    "post_event_reasoning",
+    "consequence_as_cause",
+    "invented_method_questions",
+    "synthetic_as_real",
+    "fixture_or_baseline_conversion",
+    "direct_product_usage"
+  ],
+  "futureMaterializationRequirements": [
+    "explicit_human_authorization",
+    "independent_audit_opus_or_gpt55",
+    "rr001_review",
+    "rr003_review",
+    "lock_check",
+    "no_fixture_no_baseline_without_dedicated_phase"
+  ],
+  "residualRisks": {
+    "rr001": "OPEN",
+    "rr003": "PARTIALLY_MITIGATED"
+  }
+}
