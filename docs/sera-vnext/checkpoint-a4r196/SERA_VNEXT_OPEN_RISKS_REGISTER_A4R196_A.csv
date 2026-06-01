@@ -1,0 +1,12 @@
+risk_id,risk_name,status,severity,current_controls,next_possible_action,blocking_for_product,blocking_for_baseline,notes
+RR-001,agent_lexical_ambiguity,OPEN,LOW,distinct_agent_ids_and_boundary_language,sequence_refinement_design_only,YES,YES,residual lexical ambiguity remains
+RR-003,intake_mdc_partial_mitigation,PARTIALLY_MITIGATED,LOW,structured_intake_bridge_and_product_block,source_recovery_and_intake_hardening,YES,YES,candidate-only posture preserved
+RISK-SEQREF-001,sequenceRef_coarse,OPEN,LOW,coarse_pf03_pm03_declared,optional_sequence_refinement_design_only,YES,YES,granularity not refined in this checkpoint
+RISK-PM-001,pm_primary_not_covered,OPEN,MEDIUM,pm_primary_excluded_requires_separate_draft,pm_primary_separate_draft_if_authorized,YES,YES,separate lineage required
+RISK-SOURCE-001,source_recovery_pending,OPEN,MEDIUM,hold_queue_and_source_gates,source_recovery_only,YES,YES,hold pool cannot be promoted without source closure
+RISK-SYNREAL-001,synthetic_as_real_confusion,MITIGATED,LOW,synthetic_only_tags_and_not_real_event_controls,maintain_controls,YES,YES,keep strict synthetic labeling
+RISK-FIXTURE-001,fixture_leakage,BLOCKED,NONE,fixture_allowed_false_and_no_fixture_artifacts,keep_blocked,YES,YES,no fixture created
+RISK-BASELINE-001,baseline_leakage,BLOCKED,NONE,baseline_allowed_false_and_no_baseline_artifacts,keep_blocked,YES,YES,no baseline created
+RISK-PRODUCT-001,product_leakage,BLOCKED,NONE,product_allowed_false_and_governance_gates,keep_blocked,YES,YES,no UI API integration
+RISK-DOWNSTREAM-001,downstream_leakage,BLOCKED,NONE,downstream_allowed_false,keep_blocked,YES,YES,HFACS Risk ERC ARMS ERC recommendations blocked
+RISK-PHASE-001,uncontrolled_phase_proliferation,CONTROLLED,LOW,human_authorization_gate_and_non_auto_start,stop_and_hold_or_explicit_route_authorization,YES,YES,no automatic phase chain

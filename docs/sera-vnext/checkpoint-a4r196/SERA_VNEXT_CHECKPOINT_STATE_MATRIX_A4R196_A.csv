@@ -1,0 +1,11 @@
+domain,status,current_artifact,validated_by,open_risk,next_allowed_action,blocked_action,notes
+Escape point enforcement,STABLE,docs/sera-vnext/runtime-alignment-a4r192,SERA_A4R195_A_consolidation,RR-003,maintain_contract,runtime_unlock,escape-point contract preserved
+Intake bridge,CANDIDATE_ONLY,docs/sera-vnext/runtime-alignment-a4r192,SERA_A4R195_A_consolidation,RR-003,documentation_refinement,product_integration,no productive path opened
+Real-event reentry,READY_PLUS_HOLD_SPLIT,docs/sera-vnext/real-event-reentry-a4r193,SERA_A4R193_O_closure,source_recovery_pending,source_recovery_only,hold_promotion_without_closure,ready remains candidate-only
+Daumas lane,REFERENCE_ONLY,docs/sera-vnext/real-event-reentry-a4r193/SERA_A4R193_D2_PRIOR_WORK_RECOVERY_DAUMAS_v0.2.0.md,SERA_A4R193_D2_reconciliation,daumas_reentry_blocked,method_context_use,automatic_reentry,Daumas only with U
+Synthetic gap design,DESIGN_ONLY,docs/sera-vnext/real-event-reentry-a4r193/SERA_A4R193_P_SYNTHETIC_GAP_DESIGN_PACK_v0.2.0.md,SERA_A4R193_P_audit,synthetic_as_real_confusion,design_review,materialization_without_authorization,GAP-001..GAP-010 are design-only
+GAP-001 PF/PM controlled draft,CONTROLLED_DRAFT_RETAINED,docs/sera-vnext/synthetic-pilots-a4r194/SYNTHETIC_PILOT_GAP001_CONTROLLED_MATERIALIZATION_DRAFT_A4R194_J_v0.2.0.md,J_AUDIT_PASS,RR-001_and_sequenceRef_coarse,authorized_design_route_only,fixture_baseline_product_selected_released_final,J_AUDIT_PASS and NO_PROMOTION preserved
+Event HOLD pool,HOLD_PENDING_SOURCE_RECOVERY,docs/sera-vnext/real-event-reentry-a4r193/SERA_A4R193_O_HOLD_AND_GAP_MATRIX.csv,SERA_A4R193_O_closure,source_recovery_pending,source_recovery_only,direct_hold_to_ready_promotion,requires source closure and contour
+Product integration,BLOCKED,none,SERA_A4R195_B_governance,product_leakage,none,product_ui_api,product remains blocked
+Fixture/baseline,BLOCKED,none,SERA_A4R195_B_governance,fixture_and_baseline_leakage,none,fixture_or_baseline_promotion,no promotion in this phase
+Downstream risk layer,BLOCKED,none,SERA_A4R194_J_validation,downstream_leakage,none,HFACS_Risk_ERC_ARMS_ERC_recommendations,causal baseline and risk layer remain separate

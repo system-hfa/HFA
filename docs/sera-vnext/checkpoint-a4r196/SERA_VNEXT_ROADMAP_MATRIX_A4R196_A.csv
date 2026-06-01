@@ -1,0 +1,11 @@
+route_id,route_name,current_status,allowed_now,requires_human_authorization,recommended_model,risk_level,methodological_value,blocked_outputs,next_gate,notes
+ROUTE-0,STOP_AND_HOLD,RECOMMENDED_IMMEDIATE,false,yes,codex_gpt_5_3_high,LOW,HIGH,none,HUMAN_AUTH_TEXT_REQUIRED,checkpoint closure path with lowest operational risk
+ROUTE-1,SOURCE_RECOVERY,ALLOWED_IF_AUTHORIZED,false,yes,codex_gpt_5_3_high,LOW,HIGH,fixture|baseline|product|selected|released|final,SOURCE_CLOSURE_GATE,real-first governance path; no auto-start
+ROUTE-2,SEQUENCE_REF_REFINEMENT,BLOCKED_UNTIL_AUTHORIZED,false,yes,gpt_5_5_thinking,LOW,MEDIUM,promotion|fixture|baseline|product|classification,DESIGN_ONLY_GATE,refine coarse pf:03 pm:03 ordering in design-only mode
+ROUTE-3,PM_PRIMARY_SEPARATE_DRAFT,BLOCKED_UNTIL_AUTHORIZED,false,yes,gpt_5_5_thinking,MEDIUM,HIGH,fixture|baseline|product|classification|lineage_reuse,SEPARATE_LINEAGE_GATE,requires new ids and separate audit
+ROUTE-4,BASELINE_METHODOLOGY_PACKAGE_DESIGN_ONLY,BLOCKED_UNTIL_AUTHORIZED,false,yes,gpt_5_5_thinking,MEDIUM,MEDIUM,baseline_promotion|fixture|product|final_outputs,DESIGN_ONLY_BASELINE_GATE,planning only and no promotion
+ROUTE-5,BENCHMARK_DESIGN_ONLY_REVIEW,BLOCKED_UNTIL_AUTHORIZED,false,yes,opus_or_gpt_5_5_thinking,LOW,MEDIUM,benchmark_execution|promotion|fixture|baseline|product,BENCHMARK_DESIGN_GATE,review only and no benchmark execution
+ROUTE-6,SECOND_SYNTHETIC,BLOCKED_UNTIL_HUMAN_DECISION,false,yes,gpt_5_5_thinking,MEDIUM,MEDIUM,fixture|baseline|product|classification,GAP001_DECISION_GATE,cannot start before explicit human decision after GAP-001 checkpoint
+ROUTE-7,PRODUCT_UI_API,BLOCKED_NO_AUTH_FORM,false,yes,none,HIGH,LOW,all_outputs|runtime_unlock|product_integration,PRODUCT_UNLOCK_GATE_NOT_AVAILABLE,no authorization available in this phase
+ROUTE-8,FIXTURE_PROMOTION,BLOCKED_NO_AUTH_FORM,false,yes,none,HIGH,LOW,fixture_creation|expected_values|promotion,FIXTURE_UNLOCK_GATE_NOT_AVAILABLE,no authorization available in this phase
+ROUTE-9,BASELINE_PROMOTION,BLOCKED_NO_AUTH_FORM,false,yes,none,HIGH,LOW,baseline_creation|promotion|downstream,BASELINE_UNLOCK_GATE_NOT_AVAILABLE,no authorization available in this phase
