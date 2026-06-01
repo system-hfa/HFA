@@ -1,0 +1,13 @@
+requirement_id,requirement_name,audit_status,risk_if_missing,real_event_basis_ok,a4r147_ok,escape_point_ok,authorization_ok,notes
+REQ-001,separate_PF_agentId,PASS,high,YES,YES,YES,YES,PF agent boundary explicit
+REQ-002,separate_PM_agentId,PASS,high,YES,YES,YES,YES,PM agent boundary explicit
+REQ-003,actor_specific_unsafeActOrOmission,PASS,high,YES,YES,YES,YES,actor-level act mapping explicit
+REQ-004,actor_specific_operationalMoment_sequenceRef,PASS,high,YES,YES,YES,YES,sequenceRef by actor explicit
+REQ-005,explicit_pointTopology,PASS,high,YES,YES,YES,YES,pre-consequence topology required
+REQ-006,boundaryEvidenceRefs_marked_synthetic,PASS_WITH_WARNING,medium,YES,YES,YES,YES,future blueprint must enforce synthetic labeling consistently
+REQ-007,no_crew_collective_fallback,PASS_WITH_WARNING,medium,YES,YES,YES,YES,keep anti-fallback language strict in next phase
+REQ-008,no_consequence_as_cause,PASS_WITH_WARNING,medium,YES,YES,YES,YES,causal direction wording must stay pre-consequence
+REQ-009,no_invented_SERA_question,PASS,high,YES,YES,YES,YES,canonical question discipline preserved
+REQ-010,no_fixture_baseline_downstream,PASS,high,YES,YES,YES,YES,no promotion or downstream release
+REQ-011,audit_required_before_materialization,PASS_WITH_WARNING,medium,YES,YES,YES,YES,must remain hard gate before any blueprint materialization step
+REQ-012,human_authorization_required,PASS,high,YES,YES,YES,YES,explicit human authorization remains mandatory
