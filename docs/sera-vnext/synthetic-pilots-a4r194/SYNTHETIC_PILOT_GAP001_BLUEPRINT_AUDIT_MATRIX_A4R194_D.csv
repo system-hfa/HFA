@@ -1,0 +1,17 @@
+audit_item,status,severity,blueprint_ok,schema_ok,precheck_ok,risk_if_missing,next_action,notes
+BLUEPRINT_ONLY status,PASS,INFO,YES,NA,NA,high,keep_blueprint_only_status,Blueprint C keeps documentation-only posture
+NO_SYNTHETIC_CASE_INSTANCE,PASS,INFO,YES,YES,YES,high,keep_case_instance_block,No case instance created in C or D
+NO_SYNTHETIC_EVENT_NARRATIVE,PASS,INFO,YES,YES,YES,high,keep_narrative_block,No complete synthetic event narrative created
+NO_FIXTURE,PASS,INFO,YES,YES,YES,high,keep_fixture_block,Fixture remains prohibited
+NO_BASELINE,PASS,INFO,YES,YES,YES,high,keep_baseline_block,Baseline remains prohibited
+PRODUCT_BLOCKED,PASS,INFO,YES,YES,YES,high,keep_product_block,No product/UI/API opening
+schema DOCUMENTATION_ONLY,PASS,INFO,NA,YES,NA,high,keep_documentary_schema,Schema purpose remains documentation-only
+PF agent field,PASS,INFO,YES,YES,YES,high,preserve_pf_field,Future field set includes pfAgentId
+PM agent field,PASS,INFO,YES,YES,YES,high,preserve_pm_field,Future field set includes pmAgentId
+actor-specific sequenceRefs,PASS,INFO,YES,YES,YES,high,preserve_actor_moment_refs,Future field set includes PF and PM sequence refs
+consequence boundary,PASS,INFO,YES,YES,YES,high,preserve_consequence_boundary,Future field set includes consequenceBoundary
+locks,PASS,INFO,YES,YES,YES,high,preserve_lock_set,Future field set includes locks
+auditTrail,PASS,INFO,YES,YES,YES,medium,preserve_audit_trail,Future field set includes auditTrail
+Opus/GPT-5.5 precheck,PASS,INFO,NA,NA,YES,high,enforce_independent_audit_gate,Precheck requires independent audit before materialization
+human authorization,PASS,INFO,NA,NA,YES,high,enforce_human_authorization_gate,Precheck requires explicit human authorization
+anchor immutability hardening,PASS_WITH_WARNING,MEDIUM,YES,YES,YES,medium,add_future_anchor_freeze_validation,Future draft phase should harden immutability checks
