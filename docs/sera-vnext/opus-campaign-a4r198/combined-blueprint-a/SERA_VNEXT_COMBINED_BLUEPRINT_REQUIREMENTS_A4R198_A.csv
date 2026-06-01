@@ -1,0 +1,15 @@
+requirement_id,gap_id,requirement_type,requirement_text,rationale,future_materialization_required,blocks_fixture_promotion,status
+REQ-001,GAP-004,escape_anchor,escape point must be declared before any outcome signal appears,protect pre-outcome causal anchor,true,YES,BLUEPRINT_ONLY
+REQ-002,GAP-004,evidence_boundary,only evidence up to ESCAPE_POINT_T may support causal selection,prevents consequence-as-cause contamination,true,YES,BLUEPRINT_ONLY
+REQ-003,GAP-004,outcome_distractor,at least one severe outcome distractor must not move the anchor,proves anti-outcome-bias behavior,true,YES,BLUEPRINT_ONLY
+REQ-004,GAP-004,negative_control,include negative variant where severe consequence does not alter anchor,validates non-forcing design,true,YES,BLUEPRINT_ONLY
+REQ-005,GAP-004,rejection_rule,reject blueprint if post-escape consequence is used as cause,preserves ponto de fuga rule,true,YES,BLUEPRINT_ONLY
+REQ-006,GAP-004,output_lock,no selected released final or classified output in design-only,prevents premature closure,true,YES,BLUEPRINT_ONLY
+REQ-007,GAP-002,actor_anchor,direct actor must be fixed at escape anchor,prevents implicit agent switch,true,YES,BLUEPRINT_ONLY
+REQ-008,GAP-002,actor_roles,boundaries for direct monitoring supporting context downstream actors must remain explicit,prevents role collapse,true,YES,BLUEPRINT_ONLY
+REQ-009,GAP-002,no_collective_fallback,crew collective label cannot replace direct actor assignment,preserves actor specificity,true,YES,BLUEPRINT_ONLY
+REQ-010,GAP-002,violation_language_guard,violation language cannot silently reattribute actor,controls TYPE-09 migration trap,true,YES,BLUEPRINT_ONLY
+REQ-011,GAP-002,gap010_coupling,agent migration blueprint must remain coupled to GAP-010 boundary decision,prevents divergent PF PM-like boundaries,true,YES,BLUEPRINT_ONLY
+REQ-012,GAP-002,rejection_rule,reject blueprint if actor changes without explicit evidence gate,preserves causal actor integrity,true,YES,BLUEPRINT_ONLY
+REQ-013,GAP-004|GAP-002,authorization_gate,future materialization requires explicit human authorization,locks remain closed by default,true,YES,BLUEPRINT_ONLY
+REQ-014,GAP-004|GAP-002,source_recovery_block,A4R197-E remains blocked by F-002 and F-003 until repaired,prevents unauthorized source recovery execution,true,YES,BLUEPRINT_ONLY

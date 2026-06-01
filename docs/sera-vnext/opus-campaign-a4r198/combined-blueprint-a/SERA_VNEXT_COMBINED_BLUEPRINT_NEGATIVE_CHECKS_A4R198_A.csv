@@ -1,0 +1,13 @@
+check_id,gap_id,check_name,prohibited_pattern,rejection_condition,rationale,status
+NC-001,GAP-004,outcome_used_as_cause,post-escape consequence selected as causal anchor,immediate rejection,violates consequence-as-cause barrier,BLUEPRINT_ONLY
+NC-002,GAP-004,outcome_moves_anchor,anchor moved after outcome signal,immediate rejection,violates escape-point precedence,BLUEPRINT_ONLY
+NC-003,GAP-004,severity_bias,high-severity outcome drives actor or axis selection,reject and request redesign,prevents outcome bias,BLUEPRINT_ONLY
+NC-004,GAP-004,post_escape_hunting,search for new failures only after escape point,reject and request redesign,forbidden post-escape hunting,BLUEPRINT_ONLY
+NC-005,GAP-004,final_output_in_design,selected released final classified output emitted,reject and lock violation report,design-only cannot emit active outputs,BLUEPRINT_ONLY
+NC-006,GAP-002,implicit_agent_switch,actor changes without explicit evidence gate,immediate rejection,core agent migration trap,BLUEPRINT_ONLY
+NC-007,GAP-002,violation_language_reassign,violation language silently reassigns direct actor,reject and request redesign,prevents linguistic actor drift,BLUEPRINT_ONLY
+NC-008,GAP-002,collective_fallback,collective actor replaces direct actor assignment,immediate rejection,forbidden crew collective fallback,BLUEPRINT_ONLY
+NC-009,GAP-002,downstream_actor_as_cause,downstream actor used to redefine escape-point cause,reject and request redesign,downstream role cannot redefine anchor,BLUEPRINT_ONLY
+NC-010,GAP-002,boundary_decoupled_from_gap010,agent migration logic detached from boundary decision gate,reject and request redesign,prevents boundary inconsistency,BLUEPRINT_ONLY
+NC-011,GAP-004|GAP-002,synthetic_real_blending,synthetic blueprint represented as real event material,reject and quarantine,protect real-first corpus integrity,BLUEPRINT_ONLY
+NC-012,GAP-004|GAP-002,source_recovery_activation,source recovery route started in blueprint phase,reject and mark blocked by F-002 F-003,A4R197-E must remain blocked,BLUEPRINT_ONLY

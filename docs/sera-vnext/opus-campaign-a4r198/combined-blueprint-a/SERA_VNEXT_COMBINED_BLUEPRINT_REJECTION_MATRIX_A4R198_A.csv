@@ -1,0 +1,11 @@
+rejection_id,gap_id,rejection_trigger,why_rejected,methodological_risk,future_fix_needed,status
+RJ-001,GAP-004,outcome_selected_as_cause,anchor contaminated by post-escape consequence,outcome_driven_anchor_selection,restore pre-outcome anchor gate,BLUEPRINT_ONLY
+RJ-002,GAP-004,anchor_defined_after_outcome,escape point precedence violated,post_escape_hunting_bias,rebuild timeline around escape point,BLUEPRINT_ONLY
+RJ-003,GAP-004,outcome_severity_used_for_axis,axis selection driven by result severity,outcome_bias,add negative outcome distractor and evidence boundary,BLUEPRINT_ONLY
+RJ-004,GAP-004,active_output_emitted,design-only phase attempted active classification,premature_classification,remove active outputs and re-lock,BLUEPRINT_ONLY
+RJ-005,GAP-002,actor_switched_without_evidence,implicit migration from direct actor,axis_agent_switch_after_anchor,add explicit actor gate and trace,BLUEPRINT_ONLY
+RJ-006,GAP-002,collective_actor_fallback,collective label collapsed actor distinctions,collective_label_overrides_distinct_acts,restate direct actor boundary and roles,BLUEPRINT_ONLY
+RJ-007,GAP-002,violation_language_reassignment,linguistic framing reassigned actor silently,violation_language_actor_drift,bind actor assignment to explicit evidence,BLUEPRINT_ONLY
+RJ-008,GAP-002,downstream_actor_retrofit,downstream response retrofitted as cause,downstream_retro_causation,restore escape-point actor integrity,BLUEPRINT_ONLY
+RJ-009,GAP-004|GAP-002,synthetic_presented_as_real,blueprint merged with real-event narrative,synthetic_real_blending,enforce synthetic-only placeholder format,BLUEPRINT_ONLY
+RJ-010,GAP-004|GAP-002,source_recovery_started,attempted to open A4R197-E during blueprint phase,unauthorized_route_activation,resolve F-002 F-003 and require explicit authorization,BLUEPRINT_ONLY
