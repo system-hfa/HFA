@@ -1,0 +1,9 @@
+intake_id,decision_option,current_status,authorization_text_required,authorized_now,next_action_if_authorized,blocked_even_if_authorized,notes
+INTAKE-0,STOP_AND_HOLD,available,yes,false,record_stop_and_hold_closure,none,safest path; keeps consolidated state
+INTAKE-1,A4R194-J,blocked_until_authorized,yes,false,prepare_a4r194_j_controlled_materialization_draft,fixture;baseline;product;selectedCode;releasedCode;finalConclusion;classification,requires new explicit human authorization; trial and later audit mandatory
+INTAKE-2,SOURCE_RECOVERY,allowed_governance_path,yes,false,prepare_source_recovery_documentation,promotion_of_hold_to_ready_without_closure,real-first path; not auto-started by this phase
+INTAKE-3,BASELINE_DESIGN_ONLY,blocked_until_authorized,yes,false,prepare_baseline_methodology_design_only,baseline_promotion;fixture;product,design-only planning may be allowed later; promotion blocked
+INTAKE-4,SECOND_SYNTHETIC,blocked_until_gap001_decision,yes,false,prepare_second_synthetic_after_gap001_decision,fixture;baseline;product;new_synthetic_instance,blocked until explicit GAP-001 closure decision
+INTAKE-5,INDEPENDENT_AUDIT,available_on_selection,yes,false,prepare_independent_methodological_audit,execution_of_audited_route,opus or external; recommended before sensitive advance
+INTAKE-6,PRODUCT_UI_API_BLOCKED,blocked,no,false,none,product;ui;api;all_outputs,no authorization form in this phase; remains blocked
+INTAKE-7,FIXTURE_BASELINE_BLOCKED,blocked,no,false,none,fixture;baseline_promotion,no authorization form in this phase; remains blocked

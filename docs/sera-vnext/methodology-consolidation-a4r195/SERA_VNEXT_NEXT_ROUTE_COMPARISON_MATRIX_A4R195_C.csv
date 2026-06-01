@@ -1,0 +1,8 @@
+route_id,route_name,status,allowed_now,requires_human_authorization,risk_level,methodological_value,cost_level,recommended_model,blocked_outputs,next_phase_if_selected,notes
+ROUTE-0,STOP_AND_HOLD,available,yes,no,low,medium,none,not_applicable,none_extra,a4r195_d_stop_closure,safest path; keeps consolidated state; no execution
+ROUTE-1,A4R194_J_CONTROLLED_MATERIALIZATION_DRAFT,blocked_until_authorized,no,yes,medium_high,high,medium,gpt_5_5_thinking,fixture;baseline;product;selectedCode;releasedCode;finalConclusion;classification,a4r195_d_a4r194_j_prompt,boundary-sensitive synthetic scope; opus optional for independent countercheck
+ROUTE-2,SOURCE_RECOVERY_ADDITIONAL,allowed_governance_path,yes,no,low,high,low,codex_gpt_5_3_high,promotion_of_hold_to_ready,a4r195_d_source_recovery_prompt,real-first documentation path; no HOLD to READY promotion without source/boundary closure
+ROUTE-3,BASELINE_METHODOLOGY_PACKAGE_DESIGN_ONLY,blocked_until_authorized,no,yes,medium,medium,medium,gpt_5_5_thinking,baseline_promotion;fixture;product,a4r195_d_baseline_design_only_prompt,design-only planning may be allowed later; promotion remains blocked
+ROUTE-4,SECOND_SYNTHETIC,blocked_until_gap001_decision,no,yes,high,medium,medium,gpt_5_5_thinking,fixture;baseline;product;new_synthetic_instance,a4r195_d_second_synthetic_prompt,blocked until explicit GAP-001 closure decision
+ROUTE-5,PRODUCT_UI_API,blocked,no,not_applicable,high,low,high,not_applicable,product;ui;api;all_outputs,none_blocked,remains blocked; no authorization form in this phase
+ROUTE-6,INDEPENDENT_OPUS_AUDIT,available_on_selection,no,yes,low,high,medium,opus,none_extra,a4r195_d_independent_audit_prompt,deep independent challenge and risk review before sensitive advance
