@@ -1,0 +1,23 @@
+{
+  "schemaPurpose": "DOCUMENTATION_ONLY",
+  "caseInstanceCreated": false,
+  "fixtureAllowed": false,
+  "baselineAllowed": false,
+  "productAllowed": false,
+  "fieldsRequiredForFutureMaterialization": [
+    "syntheticCaseId",
+    "syntheticType",
+    "learningGap",
+    "pfAgentId",
+    "pmAgentId",
+    "pfUnsafeActOrOmission",
+    "pmMonitoringOrCalloutObligation",
+    "pfOperationalMomentSequenceRef",
+    "pmOperationalMomentSequenceRef",
+    "pointTopology",
+    "boundaryEvidenceRefs",
+    "consequenceBoundary",
+    "locks",
+    "auditTrail"
+  ]
+}
