@@ -1,0 +1,11 @@
+gap_id,gap_name,audit_status,real_event_basis_ok,a4r147_mapping_ok,risk_level,merge_or_split_needed,authorization_required,notes
+GAP-001,PF_PM_separation,JUSTIFIED,YES,YES,HIGH,NONE,YES,boundary gap directly grounded in Thebaud Vigo Colgan
+GAP-002,Agent_migration,JUSTIFIED_WITH_WARNING,YES,YES,HIGH,SHOULD_MERGE_REVIEW_WITH_GAP001_GAP010,YES,keep separate now but control overlap with PF_PM boundary packets
+GAP-003,Actor_specific_sequenceRef,JUSTIFIED,YES,YES,HIGH,NONE,YES,sequenceRef by actor remains open in multiple holds
+GAP-004,Consequence_as_cause,JUSTIFIED_WITH_WARNING,YES,YES,HIGH,NONE,YES,American 965 warning retained from R M-1
+GAP-005,Technical_environment_negative_control,JUSTIFIED,YES,YES,HIGH,NONE,YES,critical anti-overclassification guard
+GAP-006,Warning_callout_go_around_mechanism,JUSTIFIED,YES,YES,HIGH,NONE,YES,actor mechanism gap remains open in Peasmarsh and Vigo
+GAP-007,Crew_collective_vs_individual_actor,JUSTIFIED_WITH_WARNING,YES,YES,HIGH,SHOULD_SPLIT_IF_DUAL_ACTOR_CONFLICT_PERSISTS,YES,retain warning until explicit collective vs split boundary rationale
+GAP-008,Progressive_zone_anchor_precision,JUSTIFIED_WITH_WARNING,YES,YES,MEDIUM,NONE,YES,progressive anchors should tighten to earliest controllable instant
+GAP-009,Automation_FMS_ambiguity,JUSTIFIED_WITH_WARNING,YES,YES,MEDIUM,NONE,YES,American 965 automation boundary ambiguity remains a known risk
+GAP-010,Colgan_style_boundary_decision,JUSTIFIED_WITH_WARNING,YES,YES,HIGH,SHOULD_MERGE_REVIEW_WITH_GAP001_GAP002,YES,Colgan PF_PM boundary decision still pending
