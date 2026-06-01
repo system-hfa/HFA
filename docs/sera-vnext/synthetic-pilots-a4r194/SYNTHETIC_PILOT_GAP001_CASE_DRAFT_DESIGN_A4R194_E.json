@@ -22,6 +22,13 @@
   "syntheticTypeAlternativeConsidered": "TYPE-02_PROGRESSIVE_HF_POSITIVE",
   "realEventBasis": ["Thebaud", "Peasmarsh", "Vigo", "Colgan 3407"],
   "methodologicalPurpose": "test PF/PM separation, agent-act-moment binding, and avoid agent migration",
+  "pilotBoundaryDecision": "PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY",
+  "pmPrimaryMonitoringFailureRequiresSeparateDraft": true,
+  "temporalClarification": {
+    "pfSequenceRole": "FIRST_CONTROLLABLE_SYNTHETIC_ESCAPE_POINT_CANDIDATE",
+    "pmSequenceRole": "SAME_MACRO_GATE_MONITORING_OBLIGATION_NOT_EARLIER_THAN_PF_ANCHOR",
+    "futureGranularOrderingRequiredBeforeMaterialization": true
+  },
   "agentSet": {
     "pf": {
       "agentId": "synthetic-pf-001",

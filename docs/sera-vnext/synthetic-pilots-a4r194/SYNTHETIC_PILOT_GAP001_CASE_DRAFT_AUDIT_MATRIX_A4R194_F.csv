@@ -1,0 +1,7 @@
+finding_id,severity,audit_status,finding,required_action,blocking_for_current_design,blocking_for_materialization,next_phase_status,notes
+F-MED-001,MEDIUM,OPEN_FOR_G_PATCH,PF-primary vs PM-primary boundary requires explicit decision,Declare PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY and require separate PM_PRIMARY_MONITORING_FAILURE draft,no,yes,A4R194-G_REQUIRED,current design remains acceptable but materialization needs closure
+F-LOW-001,LOW,OPEN_FOR_G_PATCH,Temporal ordering PF/PM needs clarification,Clarify seq:synthetic:pf:03 and seq:synthetic:pm:03 relationship,no,yes,A4R194-G_REQUIRED,prevents PM warning/callout from being treated as earlier anchor
+F-LOW-002,LOW,MONITOR,Explicit null fields must remain guarded,Keep selectedCode releasedCode and finalConclusion null,no,yes,KEEP_LOCKS,no downstream opening allowed
+F-INFO-001,INFO,RECORDED,TYPE-07_WARNING_TRAP defensible,Retain warning-as-anchor trap framing,no,no,RECORDED,does not authorize PM-primary interpretation
+F-PASS-001,PASS,CLOSED,Locks intact,Preserve all lock fields,no,yes,KEEP_LOCKS,design-only state remains valid
+F-PASS-002,PASS,CLOSED,No fixture baseline product,Keep fixture baseline and product blocked,no,yes,KEEP_BLOCKS,no product/UI/API opening

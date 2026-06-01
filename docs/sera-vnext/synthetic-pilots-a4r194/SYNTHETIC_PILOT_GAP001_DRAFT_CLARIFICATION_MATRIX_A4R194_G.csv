@@ -1,0 +1,6 @@
+clarification_id,source_finding,clarification,status,risk_closed,residual_risk,next_action
+G-001,F-MED-001,boundary decision PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY declared,COMPLETE,warning-as-anchor boundary clarified,PM-primary remains untested,send E+G to final audit
+G-002,F-MED-001,PM_PRIMARY_MONITORING_FAILURE requires separate draft,COMPLETE,prevents silent reclassification of this pilot,requires future human authorization if pursued,do not materialize PM-primary in this phase
+G-003,F-LOW-001,PF/PM temporal relationship clarified,COMPLETE,prevents PM callout from becoming earlier anchor,coarse sequence refs remain placeholders,consider granular refs only in future phase
+G-004,F-LOW-002,locks preserved,COMPLETE,selected released final and downstream outputs remain blocked,continued review required before any future phase,keep lock assertions active
+G-005,F-PASS-002,no materialization,COMPLETE,fixture baseline and product remain blocked,none for current draft,await A4R194-H or close block

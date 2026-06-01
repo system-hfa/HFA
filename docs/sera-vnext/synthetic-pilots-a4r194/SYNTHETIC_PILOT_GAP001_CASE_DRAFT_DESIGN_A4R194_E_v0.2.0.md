@@ -168,6 +168,39 @@ Antes de qualquer materializacao futura:
 Estas lacunas reais motivam o desenho do piloto sintetico, mas nenhum dado real e copiado
 nem simulado como real neste rascunho.
 
+## A4R194-G Clarification Overlay
+
+`pilotBoundaryDecision`: `PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY`
+
+Este overlay registra a decisao corretiva da auditoria A4R194-F sem materializar o
+piloto e sem alterar o estado design-only do draft.
+
+O draft atual testa:
+- PF como agente primario do ponto de fuga sintetico;
+- PM como ator de monitoramento/callout dentro da zona de consequencia/barreira;
+- warning/callout como armadilha metodologica, nao como ponto de fuga automatico.
+
+Declaracao de limite:
+- este draft NAO testa `PM_PRIMARY_MONITORING_FAILURE`;
+- uma variante PM-primary exige novo `syntheticPilotId`, novo `scopeId`, nova sequencia
+  e nova auditoria;
+- nao e permitido reclassificar este draft como PM-primary sem nova fase.
+
+Clarificacao temporal:
+- `seq:synthetic:pf:03` = first controllable synthetic escape-point candidate;
+- `seq:synthetic:pm:03` = same macro gate / PM monitoring obligation, not earlier than
+  PF anchor;
+- se fase futura exigir ordenacao mais granular, usar `seq:synthetic:pf:03a` e
+  `seq:synthetic:pm:03b` ou equivalente, mas nao agora.
+
+Locks preservados:
+- no selectedCode;
+- no releasedCode;
+- no finalConclusion;
+- no fixture;
+- no baseline;
+- product blocked.
+
 ## 9. Estado final desta fase
 
 `SYNTHETIC_DRAFT_DESIGN_ONLY`.

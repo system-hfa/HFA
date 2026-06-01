@@ -15,3 +15,6 @@ CHK-013,no_fixture_no_baseline,PASS,blocked,blocked,high,keep_fixture_baseline_b
 CHK-014,product_blocked,PASS,blocked,blocked,high,keep_product_block,no product no UI no API no DB
 CHK-015,audit_required_before_materialization,PASS,required,required,high,enforce_independent_audit_gate,Opus or GPT-5.5 audit before any materialization
 CHK-016,human_authorization_required,PASS,required,required,high,enforce_human_authorization_gate,explicit human authorization before materialization
+CHK-017,pf_primary_with_pm_consequence_boundary_declared,PASS,PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY,PF_PRIMARY_WITH_PM_CONSEQUENCE_BOUNDARY,medium,preserve_boundary_decision,clarifies that current draft tests PF-primary anchor with PM in consequence/barrier zone
+CHK-018,pm_primary_requires_separate_draft,PASS,true,true,medium,require_new_draft_for_pm_primary,PM_PRIMARY_MONITORING_FAILURE is not tested by this draft
+CHK-019,pf_pm_temporal_relationship_clarified,PASS,PF_anchor_before_or_same_macro_gate_PM_obligation,PM_not_earlier_than_PF_anchor,medium,preserve_temporal_clarification,seq refs remain coarse design placeholders pending future granular ordering
