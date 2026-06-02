@@ -1,0 +1,34 @@
+# SERA A4R200-A Log v0.2.0
+
+- branch: main
+- HEAD inicial: 3d64045dde504ccd20b7feb64beed6ca3a4a0090
+- HEAD final: PENDING_FINAL_HASH
+- arquivos criados:
+  - SERA_VNEXT_REFERENCE_CORPUS_ACCELERATION_PLAN_A4R200_A_v0.2.0.md
+  - SERA_VNEXT_BATCH_1_ROUTING_DECISION_MATRIX_A4R200_A.csv
+  - SERA_VNEXT_REFERENCE_EVENT_SELECTION_CRITERIA_A4R200_A.md
+  - SERA_VNEXT_DAUMAS_CALIBRATION_REFERENCE_PLAN_A4R200_A.md
+  - SERA_VNEXT_PERPLEXITY_EVENT_SEARCH_CAMPAIGN_A4R200_A.md
+  - SERA_VNEXT_SYNTHETIC_FILL_POLICY_A4R200_A.md
+  - SERA_VNEXT_REFERENCE_CORPUS_ROADMAP_A4R200_A.csv
+  - SERA_A4R200_A_LOG_v0.2.0.md
+  - tests/sera-vnext/reference-corpus-acceleration-a4r200a-trial-001.ts
+- validacoes: trial A4R200-A + regressao de trials A4R197/A4R198/A4R199 + full tests/sera-vnext loop + typecheck frontend
+- decisoes:
+  - acelerar corpus por triagem de utilidade metodologica
+  - manter controles negative/boundary
+  - usar Daumas como trilha humana/metodologica separada
+  - preparar campanha Perplexity futura sem execucao
+  - usar sintetico somente para lacunas nao cobertas
+- locks preservados:
+  - sem READY promotion
+  - sem P/O/A final
+  - sem selected/released/final/CLASSIFIED
+  - sem fixture/baseline/produto
+- web search executada: NAO
+- Perplexity executado: NAO
+- source recovery nova iniciada: NAO
+- evento promovido: NAO
+- classificacao P/O/A final criada: NAO
+- fixture/baseline/produto liberados: NAO
+- typecheck note: se falha persistir fora do escopo alterado, registrar LOW/TECH-DEBT preexistente
