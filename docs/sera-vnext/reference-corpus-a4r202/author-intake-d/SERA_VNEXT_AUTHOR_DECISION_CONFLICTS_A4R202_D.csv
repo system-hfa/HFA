@@ -1,0 +1,2 @@
+event_id,event_name,conflict_type,conflicting_responses,why_it_matters,required_resolution,status
+ALL,Top-3 candidate events,NONE,NONE,No answer conflict was detected and no clarification is required,NONE,NO_CONFLICTS
