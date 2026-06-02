@@ -1,0 +1,7 @@
+event_id,event_name,candidate_escape_point_clarity,direct_actor_clarity,perception_lane,objective_lane,action_lane,precondition_lane,source_depth,status_for_future_human_analysis,no_go_constraints,notes
+C-002,Asiana Airlines Flight 214,MEDIUM_HIGH,HIGH,HIGH,HIGH,HIGH,MEDIUM,HIGH,SUFFICIENT,"No final P/O/A, no READY, no baseline promotion","Best starting case for automation-monitoring and stable-gate work"
+C-003,UPS Airlines Flight 1354,MEDIUM_HIGH,HIGH,HIGH,HIGH,HIGH,MEDIUM,HIGH,SUFFICIENT,"No final P/O/A, no READY, no baseline promotion","Good for setup-versus-monitoring boundary review"
+C-007,G-WNSB Sumburgh helicopter accident,MEDIUM_HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,SUFFICIENT,"No final P/O/A, no READY, no baseline promotion","Strong offshore/rotorcraft evidence with explicit MDA and visual-search tension"
+C-020,Comair Flight 5191,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,SUFFICIENT,"No final P/O/A, no READY, no baseline promotion","Clean wrong-runway surface navigation packet"
+C-001,Colgan Air Flight 3407,MEDIUM,MEDIUM_HIGH,MEDIUM,HIGH,HIGH,MEDIUM,MEDIUM_HIGH,SUFFICIENT_WITH_REAUDIT,"No final P/O/A, no READY, no baseline promotion","Escape-point re-audit should precede any comparative use as reference anchor"
+C-016,Execuflight Flight 1526,MEDIUM_HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,SUFFICIENT,"No final P/O/A, no READY, no baseline promotion","Strong unstable-approach packet despite no FDR"
