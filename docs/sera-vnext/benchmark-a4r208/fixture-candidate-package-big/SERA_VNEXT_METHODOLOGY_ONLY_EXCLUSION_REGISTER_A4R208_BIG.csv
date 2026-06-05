@@ -1,0 +1,7 @@
+component_or_source,exclusion_type,allowed_use,prohibited_use,reason,notes
+"Daumas","methodology_only","methodology and depth reference only","factual source; fixture; baseline; expected output source","Daumas is operationalization and depth support, not event evidence","Daumas used as factual source: NO"
+"2026-0001 crank event","human_applied_reference_only","human-applied SERA reference; A-A/slip and precondition separation input","automatic fixture; positive fixture now; baseline; final vNext output","human classification is recorded as input only","human-applied non-automatic compliance required"
+"Raw Opus inputs","audit_input_only","audit input for prior reconciliation only","active methodology alone; fixture source; baseline source","raw model output is not authoritative methodology","do not reopen as source of expected values"
+"Broad scouting inputs","raw_scouting_only","raw scouting and discovery context only","authoritative corpus; fixture source; baseline source","scouting is not controlled source evidence","no new external search or download in A4R208-BIG"
+"GAP-002 agent_migration","synthetic_readiness_only","agent migration readiness reference only","candidate package fixture item now; active synthetic case; baseline","not materialized","requires separate materialization authorization before any candidate use"
+"GAP-001 PF_PM separation","retained_reference_only","retained and audited PF/PM guardrail reference","active fixture candidate; baseline; product","archived reference is not reopened","retain as reference only"
