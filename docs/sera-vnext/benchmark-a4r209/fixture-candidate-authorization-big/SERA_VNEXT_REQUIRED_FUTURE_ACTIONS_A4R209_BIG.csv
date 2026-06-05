@@ -1,0 +1,11 @@
+component_or_scope,required_action,required_before,priority,owner_decision,notes
+"Comair 5191","expected-output design only, still no final approval","any future fixture-design dry run","high","author must confirm future dry-run-only scope","strongest candidate but non-final"
+"Asiana 214","boundary-specific adversarial review","any future fixture-design dry run","high","author must preserve automation boundary warning","automation / 500 ft warning must remain explicit"
+"UPS 1354","boundary-specific adversarial review","any future fixture-design dry run","high","author must preserve setup / procedure / FMC / MDA warning","boundary warning must remain explicit"
+"GAP-004 consequence-as-cause","synthetic-specific author and adversarial review","any future synthetic fixture-design dry run","high","author must confirm not-real synthetic role","synthetic and non-real"
+"Delta 191 / USAir 427 / 5N-BQJ","define control expected behavior","any future control design dry run","medium","author must confirm control-only future use","controls cannot become positive candidates"
+"G-WNSB / Execuflight 1526","source and dossier expansion","any future authorization reconsideration","high","author must decide when second-wave lane is mature enough","hold for source or dossier work"
+"Colgan 3407","permanent boundary-control decision or separate method refinement","any future routing decision","high","author must decide whether positive lane stays closed permanently","reject as positive fixture candidate in A4R209-BIG"
+"GAP-002 agent_migration","materialization and design package","any future eligibility reconsideration","high","author must authorize controlled materialization first","not authorized now"
+"Typecheck environment","resolve `tsc` availability before code/runtime integration","any code or runtime integration","medium","owner must treat current failure as environment debt","current status is pre-existing environment failure"
+"Product/runtime scope","remain blocked","all future documentary phases until explicit authorization","high","author must keep product/runtime closed","no downstream"
