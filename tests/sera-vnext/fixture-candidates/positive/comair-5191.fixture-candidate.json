@@ -1,0 +1,80 @@
+{
+  "id": "A4R212-CAND-POS-COMAIR-5191",
+  "phase": "A4R212-BIG",
+  "status": "FIXTURE_CANDIDATE_ONLY",
+  "officialFixture": false,
+  "baselineEligibleNow": false,
+  "productEligibleNow": false,
+  "readyPromotion": false,
+  "selectedCode": null,
+  "releasedCode": null,
+  "finalConclusion": null,
+  "classifiedOutput": false,
+  "downstreamAllowed": false,
+  "componentType": "positive_candidate",
+  "sourceType": "real_event",
+  "title": "Comair 5191 isolated fixture candidate",
+  "sourceComponent": "Comair 5191",
+  "candidateRole": "clean anchor",
+  "expectedBehaviorStatus": "EXPECTED_BEHAVIOR_NON_FINAL",
+  "requiredLocks": [
+    "FIXTURE_CANDIDATE_ONLY",
+    "NOT_OFFICIAL_FIXTURE",
+    "NOT_BASELINE",
+    "NOT_PRODUCT",
+    "NOT_READY",
+    "NO_SELECTED_CODE",
+    "NO_RELEASED_CODE",
+    "NO_FINAL_CONCLUSION",
+    "NO_CLASSIFIED_OUTPUT",
+    "NO_DOWNSTREAM",
+    "EXPECTED_BEHAVIOR_NON_FINAL"
+  ],
+  "expectedMethodologicalBehavior": [
+    "treat wrong-runway lineup as the critical operational window",
+    "preserve the direct cockpit actor lane",
+    "block ATC/context migration into the direct actor role",
+    "block consequence-as-cause reasoning",
+    "preserve evidence-against review",
+    "keep all behavior non-final"
+  ],
+  "forbiddenBehavior": [
+    "official fixture creation",
+    "baseline use",
+    "product/runtime use",
+    "final P/O/A",
+    "final escape point approval",
+    "READY promotion"
+  ],
+  "boundaryWarnings": [],
+  "controlWarnings": [],
+  "limitations": [
+    "candidate-only record",
+    "not an official fixture",
+    "not baseline eligible now",
+    "expected behavior is non-final"
+  ],
+  "requiredFutureGates": [
+    "author review",
+    "expected behavior review",
+    "source traceability review",
+    "adversarial review",
+    "no downstream gate"
+  ],
+  "prohibitedUses": [
+    "tests/sera/fixtures use",
+    "baseline report use",
+    "engine/runtime import",
+    "product/API/UI import"
+  ],
+  "traceabilityInputs": [
+    "A4R211 authorization request",
+    "A4R210 expected behavior dry run",
+    "A4R209 authorization packet",
+    "A4R208 candidate package"
+  ],
+  "notes": [
+    "Created under isolated candidate-only authorization.",
+    "No operational classification is produced."
+  ]
+}

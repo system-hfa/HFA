@@ -1,0 +1,87 @@
+{
+  "id": "A4R212-CAND-POS-UPS-1354",
+  "phase": "A4R212-BIG",
+  "status": "FIXTURE_CANDIDATE_ONLY",
+  "officialFixture": false,
+  "baselineEligibleNow": false,
+  "productEligibleNow": false,
+  "readyPromotion": false,
+  "selectedCode": null,
+  "releasedCode": null,
+  "finalConclusion": null,
+  "classifiedOutput": false,
+  "downstreamAllowed": false,
+  "componentType": "positive_candidate",
+  "sourceType": "real_event",
+  "title": "UPS 1354 isolated fixture candidate",
+  "sourceComponent": "UPS 1354",
+  "candidateRole": "procedure/FMC/MDA boundary candidate",
+  "expectedBehaviorStatus": "EXPECTED_BEHAVIOR_NON_FINAL",
+  "requiredLocks": [
+    "FIXTURE_CANDIDATE_ONLY",
+    "NOT_OFFICIAL_FIXTURE",
+    "NOT_BASELINE",
+    "NOT_PRODUCT",
+    "NOT_READY",
+    "NO_SELECTED_CODE",
+    "NO_RELEASED_CODE",
+    "NO_FINAL_CONCLUSION",
+    "NO_CLASSIFIED_OUTPUT",
+    "NO_DOWNSTREAM",
+    "EXPECTED_BEHAVIOR_NON_FINAL",
+    "BOUNDARY_WARNING_REQUIRED"
+  ],
+  "expectedMethodologicalBehavior": [
+    "preserve setup/FMC/V-S/MDA separation",
+    "preserve the direct actor lane",
+    "block CFIT-as-cause reasoning",
+    "block procedure-context collapse into direct action",
+    "keep all behavior non-final"
+  ],
+  "forbiddenBehavior": [
+    "CFIT-as-cause",
+    "procedure-context collapse into direct action",
+    "official fixture creation",
+    "baseline use",
+    "product/runtime use",
+    "final P/O/A",
+    "READY promotion"
+  ],
+  "boundaryWarnings": [
+    "BOUNDARY_WARNING_REQUIRED",
+    "setup/FMC/V-S/MDA separation required",
+    "no CFIT-as-cause",
+    "no procedure-context collapse into direct action"
+  ],
+  "controlWarnings": [],
+  "limitations": [
+    "candidate-only record",
+    "not an official fixture",
+    "not baseline eligible now",
+    "boundary warning remains mandatory"
+  ],
+  "requiredFutureGates": [
+    "author review with boundary limitation",
+    "procedure/FMC/MDA boundary review",
+    "expected behavior review",
+    "source traceability review",
+    "adversarial review",
+    "no downstream gate"
+  ],
+  "prohibitedUses": [
+    "tests/sera/fixtures use",
+    "baseline report use",
+    "engine/runtime import",
+    "product/API/UI import"
+  ],
+  "traceabilityInputs": [
+    "A4R211 authorization request",
+    "A4R210 expected behavior dry run",
+    "A4R209 authorization packet",
+    "A4R208 candidate package"
+  ],
+  "notes": [
+    "Created under isolated candidate-only authorization.",
+    "No operational classification is produced."
+  ]
+}

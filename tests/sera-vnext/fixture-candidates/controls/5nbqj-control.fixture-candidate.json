@@ -1,0 +1,84 @@
+{
+  "id": "A4R212-CAND-CTRL-5NBQJ",
+  "phase": "A4R212-BIG",
+  "status": "FIXTURE_CANDIDATE_ONLY",
+  "officialFixture": false,
+  "baselineEligibleNow": false,
+  "productEligibleNow": false,
+  "readyPromotion": false,
+  "selectedCode": null,
+  "releasedCode": null,
+  "finalConclusion": null,
+  "classifiedOutput": false,
+  "downstreamAllowed": false,
+  "componentType": "control_candidate",
+  "sourceType": "control",
+  "title": "5N-BQJ isolated control fixture candidate",
+  "sourceComponent": "5N-BQJ",
+  "candidateRole": "technical/offshore control",
+  "expectedBehaviorStatus": "EXPECTED_BEHAVIOR_NON_FINAL",
+  "requiredLocks": [
+    "FIXTURE_CANDIDATE_ONLY",
+    "NOT_OFFICIAL_FIXTURE",
+    "NOT_BASELINE",
+    "NOT_PRODUCT",
+    "NOT_READY",
+    "NO_SELECTED_CODE",
+    "NO_RELEASED_CODE",
+    "NO_FINAL_CONCLUSION",
+    "NO_CLASSIFIED_OUTPUT",
+    "NO_DOWNSTREAM",
+    "EXPECTED_BEHAVIOR_NON_FINAL",
+    "CONTROL_ONLY",
+    "NOT_POSITIVE_FIXTURE"
+  ],
+  "expectedMethodologicalBehavior": [
+    "recognize technical/offshore dominance",
+    "block frontline human positive fixture use",
+    "remain control-only",
+    "keep all behavior non-final"
+  ],
+  "forbiddenBehavior": [
+    "frontline human positive fixture use",
+    "official fixture creation",
+    "baseline use",
+    "product/runtime use",
+    "final P/O/A",
+    "READY promotion"
+  ],
+  "boundaryWarnings": [],
+  "controlWarnings": [
+    "CONTROL_ONLY",
+    "NOT_POSITIVE_FIXTURE",
+    "technical/offshore control"
+  ],
+  "limitations": [
+    "candidate-only control record",
+    "not an official fixture",
+    "not baseline eligible now",
+    "not a positive fixture"
+  ],
+  "requiredFutureGates": [
+    "author review with control-only limitation",
+    "control guardrail review",
+    "expected behavior review",
+    "adversarial review",
+    "no downstream gate"
+  ],
+  "prohibitedUses": [
+    "positive fixture use",
+    "tests/sera/fixtures use",
+    "baseline report use",
+    "engine/runtime import",
+    "product/API/UI import"
+  ],
+  "traceabilityInputs": [
+    "A4R211 authorization request",
+    "A4R210 control expected behavior",
+    "A4R208 boundary/negative control package"
+  ],
+  "notes": [
+    "Created under isolated candidate-only authorization.",
+    "No operational classification is produced."
+  ]
+}

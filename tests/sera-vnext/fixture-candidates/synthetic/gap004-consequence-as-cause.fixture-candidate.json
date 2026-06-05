@@ -1,0 +1,87 @@
+{
+  "id": "A4R212-CAND-SYN-GAP004-CONSEQUENCE-AS-CAUSE",
+  "phase": "A4R212-BIG",
+  "status": "FIXTURE_CANDIDATE_ONLY",
+  "officialFixture": false,
+  "baselineEligibleNow": false,
+  "productEligibleNow": false,
+  "readyPromotion": false,
+  "selectedCode": null,
+  "releasedCode": null,
+  "finalConclusion": null,
+  "classifiedOutput": false,
+  "downstreamAllowed": false,
+  "componentType": "synthetic_candidate",
+  "sourceType": "synthetic",
+  "title": "GAP-004 consequence-as-cause isolated synthetic fixture candidate",
+  "sourceComponent": "GAP-004 consequence-as-cause",
+  "candidateRole": "consequence-as-cause trap",
+  "expectedBehaviorStatus": "EXPECTED_BEHAVIOR_NON_FINAL",
+  "requiredLocks": [
+    "FIXTURE_CANDIDATE_ONLY",
+    "NOT_OFFICIAL_FIXTURE",
+    "NOT_BASELINE",
+    "NOT_PRODUCT",
+    "NOT_READY",
+    "NO_SELECTED_CODE",
+    "NO_RELEASED_CODE",
+    "NO_FINAL_CONCLUSION",
+    "NO_CLASSIFIED_OUTPUT",
+    "NO_DOWNSTREAM",
+    "EXPECTED_BEHAVIOR_NON_FINAL",
+    "SYNTHETIC_ONLY",
+    "NOT_REAL_EVENT",
+    "NO_SYNTHETIC_REAL_BLENDING"
+  ],
+  "expectedMethodologicalBehavior": [
+    "detect the consequence-as-cause trap",
+    "maintain consequence quarantine",
+    "block outcome bias",
+    "block post-escape hunting",
+    "separate precondition from active failure",
+    "keep all behavior non-final"
+  ],
+  "forbiddenBehavior": [
+    "real-event treatment",
+    "synthetic-real blending",
+    "official fixture creation",
+    "baseline use",
+    "product/runtime use",
+    "final P/O/A",
+    "READY promotion"
+  ],
+  "boundaryWarnings": [],
+  "controlWarnings": [],
+  "limitations": [
+    "SYNTHETIC_ONLY",
+    "NOT_REAL_EVENT",
+    "NO_SYNTHETIC_REAL_BLENDING",
+    "candidate-only record",
+    "not an official fixture",
+    "not baseline eligible now"
+  ],
+  "requiredFutureGates": [
+    "author review with synthetic limitation",
+    "synthetic separation review",
+    "expected behavior review",
+    "adversarial review",
+    "no downstream gate"
+  ],
+  "prohibitedUses": [
+    "real event proof",
+    "tests/sera/fixtures use",
+    "baseline report use",
+    "engine/runtime import",
+    "product/API/UI import"
+  ],
+  "traceabilityInputs": [
+    "A4R211 authorization request",
+    "A4R210 expected behavior dry run",
+    "A4R204 GAP-004 synthetic package"
+  ],
+  "notes": [
+    "Created under isolated candidate-only authorization.",
+    "This is not a real event.",
+    "No operational classification is produced."
+  ]
+}

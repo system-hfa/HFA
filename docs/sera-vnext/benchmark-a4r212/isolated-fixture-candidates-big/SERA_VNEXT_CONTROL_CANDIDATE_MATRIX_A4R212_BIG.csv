@@ -1,0 +1,4 @@
+"candidate_id","control_role","expected_control_behavior","prohibited_positive_use","required_guardrail","notes"
+"A4R212-CAND-CTRL-DELTA-191","environmental/technical negative control","recognize environmental dominance; block positive human failure fixture use; remain control-only","positive human failure fixture","CONTROL_ONLY; NOT_POSITIVE_FIXTURE","isolated candidate only"
+"A4R212-CAND-CTRL-USAIR-427","technical-human boundary control","recognize technical-human boundary; block pure human positive fixture use; remain control-only","pure human positive fixture","CONTROL_ONLY; NOT_POSITIVE_FIXTURE","isolated candidate only"
+"A4R212-CAND-CTRL-5NBQJ","technical/offshore control","recognize technical/offshore dominance; block frontline human positive fixture use; remain control-only","frontline human positive fixture","CONTROL_ONLY; NOT_POSITIVE_FIXTURE","isolated candidate only"
