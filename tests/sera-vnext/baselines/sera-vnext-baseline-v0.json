@@ -1,0 +1,37 @@
+{
+  "baseline_id": "SERA_VNEXT_BASELINE_V0",
+  "phase": "A4R215-FINAL",
+  "status": "VNEXT_BASELINE_V0_OFFICIAL",
+  "namespace": "sera-vnext",
+  "legacyBaseline": false,
+  "productEligibleNow": false,
+  "runtimeIntegrationAllowed": false,
+  "downstreamAllowed": false,
+  "sourceFixtureSet": "SERA_VNEXT_FIXTURE_SET_V0",
+  "sourceExpectedOutputs": "SERA_VNEXT_FIXTURE_SET_V0_EXPECTED_OUTPUTS",
+  "baselineScope": "method_validation_only",
+  "fixtureCount": 7,
+  "expectedOutputCount": 7,
+  "positiveFixtures": [
+    "A4R214-FIX-POS-COMAIR-5191",
+    "A4R214-FIX-POS-ASIANA-214",
+    "A4R214-FIX-POS-UPS-1354"
+  ],
+  "syntheticFixtures": [
+    "A4R214-FIX-SYN-GAP004-CONSEQUENCE-AS-CAUSE"
+  ],
+  "controlFixtures": [
+    "A4R214-FIX-CTRL-DELTA-191",
+    "A4R214-FIX-CTRL-USAIR-427",
+    "A4R214-FIX-CTRL-5NBQJ"
+  ],
+  "runtimeBoundary": "NOT_INTEGRATED",
+  "productBoundary": "NOT_INTEGRATED",
+  "riskLayerBoundary": "NOT_INTEGRATED",
+  "rollbackRule": "DELETE_SERA_VNEXT_BASELINE_V0_FILES_ONLY",
+  "notes": [
+    "Official only inside the isolated sera-vnext namespace.",
+    "Method validation only.",
+    "No legacy baseline, product path, runtime path, or downstream activation is created."
+  ]
+}

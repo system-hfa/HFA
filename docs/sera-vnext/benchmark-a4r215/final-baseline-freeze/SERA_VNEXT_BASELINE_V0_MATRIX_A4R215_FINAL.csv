@@ -1,0 +1,2 @@
+"baseline_id","namespace","status","source_fixture_set","source_expected_outputs","fixture_count","expected_output_count","legacy_baseline","product_status","runtime_status","downstream_status","notes"
+"SERA_VNEXT_BASELINE_V0","sera-vnext","VNEXT_BASELINE_V0_OFFICIAL","SERA_VNEXT_FIXTURE_SET_V0","SERA_VNEXT_FIXTURE_SET_V0_EXPECTED_OUTPUTS","7","7","false","NOT_INTEGRATED","NOT_INTEGRATED","false","method validation only"
