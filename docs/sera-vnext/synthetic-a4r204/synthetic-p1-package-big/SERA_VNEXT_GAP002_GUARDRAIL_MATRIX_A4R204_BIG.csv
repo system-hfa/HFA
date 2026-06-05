@@ -1,0 +1,7 @@
+guardrail_id,gap,guardrail_name,required_rule,status,blocks
+"G2-001","GAP-002","direct_actor_fixed_at_anchor","direct operator at the escape boundary cannot migrate silently","DESIGN_READY_NOT_MATERIALIZED","NO_FINAL_CONCLUSION"
+"G2-002","GAP-002","support_actor_not_default_cause","supporting actors remain support/context without boundary evidence","DESIGN_READY_NOT_MATERIALIZED","NO_SELECTED_CODE"
+"G2-003","GAP-002","precondition_not_actor_replacement","reduced team and degraded supervision remain preconditions","DESIGN_READY_NOT_MATERIALIZED","NOT_READY"
+"G2-004","GAP-002","no_collective_fallback","collective actor cannot be used as an easy fallback","DESIGN_READY_NOT_MATERIALIZED","NO_CLASSIFIED_OUTPUT"
+"G2-005","GAP-002","downstream_actor_quarantine","post-boundary response actors cannot redefine the cause","DESIGN_READY_NOT_MATERIALIZED","NO_DOWNSTREAM"
+"G2-006","GAP-002","future_authorization_required","new draft or materialization requires explicit authorization","DESIGN_READY_NOT_MATERIALIZED","NOT_FIXTURE;NOT_BASELINE;NOT_PRODUCT"

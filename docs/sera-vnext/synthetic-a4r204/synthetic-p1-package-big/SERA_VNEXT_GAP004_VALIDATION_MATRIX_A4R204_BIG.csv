@@ -1,0 +1,9 @@
+check_id,gap,control,expected_state,validated_by,lock
+"G4-001","GAP-004","escape anchor before consequence","PASS_DESIGN_ONLY","trial checks earliest/latest and consequence quarantine terms","CONTROLLED_SYNTHETIC_DRAFT_ONLY"
+"G4-002","GAP-004","outcome context not cause","PASS_DESIGN_ONLY","trial checks consequence-as-cause text and quarantine","NO_FINAL_CONCLUSION"
+"G4-003","GAP-004","downstream distractor present","PASS_DESIGN_ONLY","draft includes short surge / equipment movement / startled response","NOT_READY"
+"G4-004","GAP-004","no real identifiers in synthetic draft","PASS_DESIGN_ONLY","trial checks forbidden human-event identifiers","NOT_REAL_EVENT"
+"G4-005","GAP-004","no fixture baseline product promotion","PASS_DESIGN_ONLY","trial checks locks and file paths","NOT_FIXTURE;NOT_BASELINE;NOT_PRODUCT"
+"G4-006","GAP-004","no selected released final active output","PASS_DESIGN_ONLY","trial checks negative-only locks","NO_SELECTED_CODE;NO_RELEASED_CODE;NO_FINAL_CONCLUSION"
+"G4-007","GAP-004","no classified active output","PASS_DESIGN_ONLY","trial checks NO_CLASSIFIED_OUTPUT only","NO_CLASSIFIED_OUTPUT"
+"G4-008","GAP-004","no downstream release behavior","PASS_DESIGN_ONLY","trial checks NO_DOWNSTREAM","NO_DOWNSTREAM"

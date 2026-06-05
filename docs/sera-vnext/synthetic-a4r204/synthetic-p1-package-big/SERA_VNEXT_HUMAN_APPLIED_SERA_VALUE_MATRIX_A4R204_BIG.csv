@@ -1,0 +1,11 @@
+dimension,status,evidence_from_human_input,vnext_value,lock
+"source_status","HUMAN_APPLIED_SERA_REFERENCE","user-provided DOCX copied locally","human input only","NOT_BASELINE;NOT_FIXTURE;NOT_PRODUCT"
+"human_escape_point","PRESERVED","Momento em que o piloto decide acionar o crank.","acceptable human-applied reference boundary","NO_FINAL_CONCLUSION;NOT_READY"
+"human_classification","RECORDED_INPUT_ONLY","O-A; P-A; A-A with slip / deslize predominance","human recorded classification not vNext final","HUMAN_CLASSIFICATION_RECORDED_AS_INPUT_ONLY"
+"earliest_controllable_ref","NON_FINAL_AUDIT_VALUE","decision / start of crank by pilot","supports pre-outcome anchor","NO_SELECTED_CODE"
+"latest_controllable_ref","NON_FINAL_AUDIT_VALUE","lever moved from STOP / incompatible command","supports sharp act boundary","NO_RELEASED_CODE"
+"first_departure_from_safe_operation","NON_FINAL_AUDIT_VALUE","start / execution of crank by pilot in context","does not displace human reference","NO_FINAL_CONCLUSION"
+"critical_unsafe_act","NON_FINAL_AUDIT_VALUE","moving lever out of STOP","act separated from consequence","NO_CLASSIFIED_OUTPUT"
+"consequence_quarantine","REQUIRED","brief ignition / limited blade rotation / no damage","supports GAP-004 consequence-as-cause design","NO_DOWNSTREAM"
+"preconditions","RECORDED_AS_PRECONDITIONS","reduced team; degraded team composition; lost cross-supervision; infrequent task exposure","TEAM_REDUCTION_PRECONDITION_NOT_ESCAPE_POINT","NOT_READY"
+"synthetic_value","DESIGN_SUPPORT_ONLY","human case shows salient consequence without finalizing cause","GAP-004 design and GAP-002 readiness support","NOT_PRODUCT"
