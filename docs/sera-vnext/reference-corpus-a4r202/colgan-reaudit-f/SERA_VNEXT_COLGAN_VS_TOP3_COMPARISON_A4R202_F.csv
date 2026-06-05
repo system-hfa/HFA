@@ -1,0 +1,7 @@
+dimension,Comair_5191,Asiana_214,UPS_1354,Colgan_3407,comparison_result,recommendation
+anchor_clarity,clean runway-entry anchor,automation/energy boundary,procedural/FMC/MDA setup-execution boundary,warning-window split between early margin loss and later PF action,Colgan is less stable than all top-3 anchors,keep Colgan outside the reference set
+earliest_vs_latest_relation,compressed and clean,meaningful automation gate window,meaningful procedural descent window,highly disputed pre-warning versus post-warning window,Colgan has the least settled earliest/latest structure,require more calibration before escalation
+first_departure_vs_critical_act,near-aligned,enough separation but manageable,separated but explainable,first departure and critical act likely split across Candidates A and B,Colgan has the strongest unresolved split,do not promote to author dossier yet
+direct_actor_clarity,high,high with automation nuance,high with procedural nuance,mixed because early window is shared and late window is PF-centered,Colgan has higher actor attribution instability,hold as boundary case under re-audit
+pf_pm_boundary_relevance,low,medium,medium,high,Colgan is the strongest PF/PM warning-boundary case,route to Daumas calibration before reuse
+reference_readiness,ready in candidate-only anchor role,usable with explicit caveats,usable with explicit caveats,not ready as fourth reference,Colgan remains outside calibrator set,await A4R203-A before any new decision
