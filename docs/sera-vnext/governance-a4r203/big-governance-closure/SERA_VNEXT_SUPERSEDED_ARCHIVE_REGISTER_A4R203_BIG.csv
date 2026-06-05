@@ -1,0 +1,13 @@
+item_or_pattern,status,superseded_by,retained_for,risk_if_used,notes
+Author Decision Model v1,SUPERSEDED,SERA_VNEXT_AUTHOR_DECISION_MODEL_V2_A4R202_DR2.md,audit lineage and wording comparison,old verbs imply more than candidate-only movement,v2 is the only active author-routing language
+Raw broad scouting outputs,ARCHIVED_INPUT_ONLY,A4R203-BIG living state and later narrow-gap search only,audit continuity and historical trace,low-authority scouting can masquerade as current truth,not authoritative corpus
+Raw Opus input files under A4R202-DR2,ARCHIVED_INPUT_ONLY,SERA_VNEXT_OPUS_CONSOLIDATION_A4R202_DR2_v0.2.0.md,audit provenance only,raw audit inputs can be mistaken for active methodology alone,use only through the DR2 consolidation outputs
+Candidate-only outputs,RETAINED_NON_FINAL,A4R203-BIG governance closure,non-final calibration history,candidate-only work can be mistaken for final closure,non-final status is permanent unless a later explicit phase changes it
+CERA,FORBIDDEN_HISTORICAL_NEGATIVE_ONLY,A4R203-BIG governance closure,negative token tracking only,invalid token could re-enter active reasoning,never active in SERA vNext
+DAL,FORBIDDEN_HISTORICAL_NEGATIVE_ONLY,A4R203-BIG governance closure,negative token tracking only,invalid token could re-enter active reasoning,erroneous search or typo term only
+Dalmos,FORBIDDEN_HISTORICAL_NEGATIVE_ONLY,A4R203-BIG governance closure,negative token tracking only,invalid token could re-enter active reasoning,erroneous search or typo term only
+Dalmais,FORBIDDEN_HISTORICAL_NEGATIVE_ONLY,A4R203-BIG governance closure,negative token tracking only,invalid token could re-enter active reasoning,erroneous search or typo term only
+O-E,NON_EXISTENT_IN_SERA_PT_V1,A4R203-BIG governance closure,negative code tracking only,non-existent code could contaminate later code handling,keep only as non-existent marker
+Invented question patterns from older drafts,INVALID_SUPERSEDED_PATTERN,A4R203-BIG governance closure,negative pattern tracking only,reconstructed question flows would violate canonical governance,none detected in this active package
+Colgan pre-A4R202-F candidate status,SUPERSEDED,SERA_VNEXT_COLGAN_ESCAPE_POINT_REAUDIT_A4R202_F_v0.2.0.md,audit history only,older Colgan position would ignore the structured warning window,A4R202-F is the active Colgan position
+N109W and N11NM release-pilot legacy,HISTORICAL_QUARANTINED,A4R193 D2 and hold closure docs,historical context only,historical release-pilot rows could be mistaken for current reentry packets,not for current active use

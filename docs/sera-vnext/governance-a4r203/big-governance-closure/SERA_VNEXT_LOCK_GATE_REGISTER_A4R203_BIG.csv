@@ -1,0 +1,24 @@
+lock_or_gate,type,applies_to,required_before,current_status,violation_example,owner_phase,notes
+NO_FINAL_P_O_A,LOCK,all current real and synthetic lanes,any downstream release,LOCKED,"candidate-only record treated as final P/O/A",A4R203-BIG,preserve non-final status
+NO_FINAL_ESCAPE_POINT,LOCK,all current real-event lanes,any comparative closure,LOCKED,"window candidate treated as approved final escape point",A4R203-BIG,earliest/latest remains analytical only
+NO_READY_PROMOTION,LOCK,all current real-event lanes,any release package,LOCKED,"event marked READY from candidate-only review",A4R203-BIG,READY remains blocked
+NO_SELECTED_RELEASED_FINAL,LOCK,all current real and synthetic lanes,any release package,LOCKED,"selectedCode or releasedCode activated from current docs",A4R203-BIG,selected and released outputs stay blocked
+NO_CLASSIFIED,LOCK,all current real and synthetic lanes,any classification output,LOCKED,"CLASSIFIED emitted from governance artifact",A4R203-BIG,no active classified output
+NO_FIXTURE,LOCK,all lanes,fixture phase with explicit authorization,LOCKED,"candidate-only artifact promoted to fixture",A4R203-BIG,fixture remains blocked
+NO_BASELINE,LOCK,all lanes,baseline phase with explicit authorization,LOCKED,"current corpus declared baseline",A4R203-BIG,baseline remains blocked
+NO_PRODUCT,LOCK,all lanes,product planning with explicit authorization,LOCKED,"UI/API/runtime opened from current package",A4R203-BIG,product remains unauthorized
+NO_HFACS_RISK_ARMS_ERC,LOCK,causal baseline corpus,separate future risk-layer route,LOCKED,"HFACS or Risk/ERC used as current causal output",A4R203-BIG,keep risk layer separate
+NO_DAUMAS_FACTUAL_SOURCE,LOCK,Daumas lane,any real-event evidence substitution,LOCKED,"Daumas case used as factual authority for Colgan",A4R203-BIG,Daumas stays method-only
+NO_DAUMAS_AUTOMATIC_REENTRY,LOCK,Daumas lane,any reentry decision,LOCKED,"Daumas extraction auto-activates a real-event lane",A4R203-BIG,no automatic reentry authority
+NO_SYNTHETIC_REAL_BLENDING,LOCK,synthetic and real-event lanes,any future synthetic draft,LOCKED,"synthetic microcase presented as real event support",A4R203-BIG,real and synthetic remain distinct
+NO_SOURCE_CORPUS_MOD_WITHOUT_SOURCE_PHASE,LOCK,source-corpus and locator packaging,authorized source phase,LOCKED,"governance phase edits tracked source corpus",A4R203-BIG,protect source-corpus versioned area
+NO_BROAD_SCOUTING_WITHOUT_EXPLICIT_NEED,LOCK,search and candidate expansion,explicit later authorization,LOCKED,"broad scouting reopened during governance closure",A4R203-BIG,narrow named-gap search only later
+CANDIDATE_ONLY_METHOD_REVIEW_GATE,GATE,top 3 real events,comparative calibration use,SATISFIED_NON_FINAL,"using a case comparatively before candidate-only review",A4R202-E,top 3 gate is complete and still non-final
+AUTHOR_REVIEW_GATE,GATE,any later author-routing use,author-facing escalation,PARTIAL_FUTURE,"treating candidate-only review as author approval",A4R202-D/A4R202-DR2,model v2 exists but no new author pass occurred here
+SOURCE_TRACEABILITY_GATE,GATE,real-event expansion and second-wave reuse,broader comparative or source-sensitive reuse,PARTIAL_FUTURE,"reusing weak locator packaging as if source closure were complete",A4R201-C/A4R202-A,top 3 workable; some second-wave and later lanes still limited
+DAUMAS_CALIBRATION_GATE,GATE,Daumas consumption in corpus decisions,any calibration-depth reuse,SATISFIED_NON_FINAL,"using Daumas before extraction and guardrails were explicit",A4R203-A,gate is now closed for method-only use
+SYNTHETIC_DESIGN_GATE,GATE,GAP-004 and GAP-002,any future controlled draft,SATISFIED_FOR_GAP004_DESIGN,"jumping to controlled draft without design guardrails",A4R197-D/A4R198-A/A4R203-BIG,design-first route only
+SYNTHETIC_MATERIALIZATION_GATE,GATE,any future synthetic draft,materialization step,NOT_SATISFIED,"creating a synthetic case instance from this package",FUTURE_PHASE_ONLY,no materialization authorized here
+FIXTURE_GATE,GATE,any fixture concept,fixture creation,NOT_SATISFIED,"creating expected-value fixture from current corpus",FUTURE_PHASE_ONLY,design-only may happen later but no creation now
+BASELINE_GATE,GATE,any baseline concept,baseline promotion,NOT_SATISFIED,"declaring the corpus baseline from candidate-only artifacts",FUTURE_PHASE_ONLY,baseline still blocked
+PRODUCT_GATE,GATE,product/UI/API/runtime,any implementation work,NOT_SATISFIED,"opening runtime or API from governance output",FUTURE_PHASE_ONLY,planning only much later
