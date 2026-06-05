@@ -1,0 +1,9 @@
+dimension,Comair_5191,Asiana_214,UPS_1354,consistency_status,risk,recommendation
+candidate_escape_point_clarity,clean anchor with stable factual spine,usable but boundary-sensitive,usable but composite,PARTIAL_CONSISTENCY,MEDIUM,preserve Comair as anchor and carry warnings for the other two
+earliest_latest_separation,clear earliest-latest window,clear window but rival latest anchor persists,clear span but middle anchor matters,CONSISTENT_WITH_WARNINGS,MEDIUM,keep earliest and latest explicit in all three
+first_departure_vs_critical_unsafe_act,stable two-step relation,divergent and unresolved,compound and unresolved,CONSISTENT_WITH_WARNINGS,HIGH,do not force a single-point closure in boundary cases
+actor_attribution,crew with captain-strong lane,PF strong with PM materially relevant,captain PF strong with PM materially relevant,CONSISTENT_WITH_WARNINGS,MEDIUM,keep direct actor human and treat systems as context
+evidence_lane_sufficiency,highest sufficiency of the three,sufficient but automation interpretation pressure,sufficient but setup/procedure interpretation pressure,CONSISTENT_WITH_WARNINGS,MEDIUM,carry method review forward without final coding
+outcome_quarantine,easy to quarantine post-critical consequences,requires discipline against late low-speed hindsight,requires discipline against CFIT hindsight,CONSISTENT,MEDIUM,retain explicit post-critical consequence quarantine
+agent_migration_risk,controlled toward ATC and FO context,controlled but vulnerable to automation migration,controlled but vulnerable to procedure migration,CONSISTENT_WITH_WARNINGS,MEDIUM,keep migration notes explicit in future review
+usefulness_for_sera_calibration,best clean anchor,boundary case for automation,boundary case for procedure and setup,CONSISTENT,LOW,use Comair as anchor and Asiana/UPS as warning-bearing comparators
