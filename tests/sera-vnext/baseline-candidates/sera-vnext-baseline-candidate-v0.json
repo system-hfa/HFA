@@ -1,0 +1,23 @@
+{
+  "baseline_candidate_id": "SERA_VNEXT_BASELINE_CANDIDATE_V0",
+  "phase": "A4R214-MAX",
+  "status": "BASELINE_CANDIDATE_DRY_RUN_ONLY",
+  "officialBaseline": false,
+  "baselinePromotionAllowedNow": false,
+  "baselineStatus": "NOT_BASELINE",
+  "productEligibleNow": false,
+  "runtimeIntegrationAllowed": false,
+  "requiresHumanAuthorizationForBaseline": true,
+  "fixtureSetId": "SERA_VNEXT_FIXTURE_SET_V0",
+  "expectedOutputsId": "SERA_VNEXT_FIXTURE_SET_V0_EXPECTED_OUTPUTS",
+  "supportingTrials": [
+    "tests/sera-vnext/official-fixture-set-a4r214max-trial-001.ts",
+    "tests/sera-vnext/mega-freeze-readiness-boundary-a4r213-trial-001.ts",
+    "tests/sera-vnext/isolated-fixture-candidates-a4r212big-trial-001.ts"
+  ],
+  "notes": [
+    "Dry run only.",
+    "Baseline promotion requires separate human authorization.",
+    "No product or runtime integration is created."
+  ]
+}

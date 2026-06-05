@@ -1,0 +1,69 @@
+{
+  "id": "A4R214-FIX-POS-COMAIR-5191",
+  "phase": "A4R214-MAX",
+  "status": "VNEXT_OFFICIAL_FIXTURE",
+  "fixtureNamespace": "sera-vnext",
+  "legacyFixture": false,
+  "baselineEligibleNow": false,
+  "baselineCandidateEligible": true,
+  "productEligibleNow": false,
+  "runtimeIntegrationAllowed": false,
+  "selectedCode": null,
+  "releasedCode": null,
+  "finalConclusion": null,
+  "classifiedOutput": false,
+  "readyPromotion": false,
+  "downstreamAllowed": false,
+  "componentType": "positive_fixture",
+  "sourceType": "real_event",
+  "title": "Comair 5191 vNext official isolated fixture",
+  "sourceCandidateId": "A4R212-CAND-POS-COMAIR-5191",
+  "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+  "expectedMethodologicalBehavior": [
+    "treat wrong-runway lineup as the critical operational window",
+    "preserve the direct cockpit actor lane",
+    "block ATC/context migration into the direct actor role",
+    "maintain consequence quarantine",
+    "retain evidence-against review",
+    "keep all behavior non-final"
+  ],
+  "forbiddenBehavior": [
+    "legacy fixture use",
+    "baseline use",
+    "product/runtime use",
+    "final P/O/A",
+    "final escape point approval",
+    "READY promotion"
+  ],
+  "boundaryWarnings": [],
+  "controlWarnings": [],
+  "limitations": [
+    "official only inside the isolated sera-vnext namespace",
+    "non-final expected behavior only",
+    "not baseline",
+    "not product"
+  ],
+  "requiredFutureGates": [
+    "separate human baseline authorization",
+    "expected-output stabilization review",
+    "regression review",
+    "runtime/product gate"
+  ],
+  "prohibitedUses": [
+    "tests/sera/fixtures use",
+    "engine/runtime import",
+    "product/API/UI import",
+    "baseline report use"
+  ],
+  "traceabilityInputs": [
+    "A4R213 mega freeze review",
+    "A4R212 isolated candidate",
+    "A4R211 authorization request",
+    "A4R210 expected output dry run"
+  ],
+  "rollbackRule": "DELETE_VNEXT_FIXTURE_FILE_ONLY",
+  "notes": [
+    "Official only for isolated vNext fixture work.",
+    "No operational classification is produced."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "fixture_set_id": "SERA_VNEXT_FIXTURE_SET_V0",
+  "phase": "A4R214-MAX",
+  "status": "VNEXT_FIXTURE_SET_OFFICIAL_NON_BASELINE",
+  "baselineStatus": "NOT_BASELINE",
+  "productStatus": "NOT_PRODUCT",
+  "runtimeIntegrationAllowed": false,
+  "fixtures": [
+    {
+      "fixtureId": "A4R214-FIX-POS-COMAIR-5191",
+      "fixtureType": "positive_fixture",
+      "path": "tests/sera-vnext/fixtures/positive/comair-5191.vnext-fixture.json"
+    },
+    {
+      "fixtureId": "A4R214-FIX-POS-ASIANA-214",
+      "fixtureType": "positive_fixture",
+      "path": "tests/sera-vnext/fixtures/positive/asiana-214.vnext-fixture.json"
+    },
+    {
+      "fixtureId": "A4R214-FIX-POS-UPS-1354",
+      "fixtureType": "positive_fixture",
+      "path": "tests/sera-vnext/fixtures/positive/ups-1354.vnext-fixture.json"
+    },
+    {
+      "fixtureId": "A4R214-FIX-SYN-GAP004-CONSEQUENCE-AS-CAUSE",
+      "fixtureType": "synthetic_fixture",
+      "path": "tests/sera-vnext/fixtures/synthetic/gap004-consequence-as-cause.vnext-fixture.json"
+    },
+    {
+      "fixtureId": "A4R214-FIX-CTRL-DELTA-191",
+      "fixtureType": "control_fixture",
+      "path": "tests/sera-vnext/fixtures/controls/delta-191-control.vnext-fixture.json"
+    },
+    {
+      "fixtureId": "A4R214-FIX-CTRL-USAIR-427",
+      "fixtureType": "control_fixture",
+      "path": "tests/sera-vnext/fixtures/controls/usair-427-control.vnext-fixture.json"
+    },
+    {
+      "fixtureId": "A4R214-FIX-CTRL-5NBQJ",
+      "fixtureType": "control_fixture",
+      "path": "tests/sera-vnext/fixtures/controls/5nbqj-control.vnext-fixture.json"
+    }
+  ],
+  "notes": [
+    "Official only inside the isolated sera-vnext namespace.",
+    "No baseline, product, or runtime integration is created."
+  ]
+}

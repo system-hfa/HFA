@@ -1,0 +1,73 @@
+{
+  "id": "A4R214-FIX-POS-UPS-1354",
+  "phase": "A4R214-MAX",
+  "status": "VNEXT_OFFICIAL_FIXTURE",
+  "fixtureNamespace": "sera-vnext",
+  "legacyFixture": false,
+  "baselineEligibleNow": false,
+  "baselineCandidateEligible": true,
+  "productEligibleNow": false,
+  "runtimeIntegrationAllowed": false,
+  "selectedCode": null,
+  "releasedCode": null,
+  "finalConclusion": null,
+  "classifiedOutput": false,
+  "readyPromotion": false,
+  "downstreamAllowed": false,
+  "componentType": "positive_fixture",
+  "sourceType": "real_event",
+  "title": "UPS 1354 vNext official isolated fixture",
+  "sourceCandidateId": "A4R212-CAND-POS-UPS-1354",
+  "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+  "expectedMethodologicalBehavior": [
+    "preserve setup/FMC/V-S/MDA separation",
+    "preserve the direct actor lane",
+    "block CFIT-as-cause reasoning",
+    "block procedure-context collapse into direct action",
+    "keep all behavior non-final"
+  ],
+  "forbiddenBehavior": [
+    "CFIT-as-cause",
+    "procedure-context collapse into direct action",
+    "legacy fixture use",
+    "baseline use",
+    "product/runtime use",
+    "final P/O/A"
+  ],
+  "boundaryWarnings": [
+    "BOUNDARY_WARNING_REQUIRED",
+    "setup/FMC/V-S/MDA separation required",
+    "no CFIT-as-cause",
+    "no procedure-context collapse into direct action"
+  ],
+  "controlWarnings": [],
+  "limitations": [
+    "boundary warning remains mandatory",
+    "official only inside the isolated sera-vnext namespace",
+    "non-final expected behavior only",
+    "not baseline"
+  ],
+  "requiredFutureGates": [
+    "separate human baseline authorization",
+    "boundary-stability review",
+    "expected-output stabilization review",
+    "runtime/product gate"
+  ],
+  "prohibitedUses": [
+    "tests/sera/fixtures use",
+    "engine/runtime import",
+    "product/API/UI import",
+    "baseline report use"
+  ],
+  "traceabilityInputs": [
+    "A4R213 mega freeze review",
+    "A4R212 isolated candidate",
+    "A4R211 authorization request",
+    "A4R210 expected output dry run"
+  ],
+  "rollbackRule": "DELETE_VNEXT_FIXTURE_FILE_ONLY",
+  "notes": [
+    "Boundary lock remains attached after promotion to isolated vNext fixture.",
+    "No operational classification is produced."
+  ]
+}

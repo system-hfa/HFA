@@ -1,0 +1,71 @@
+{
+  "id": "A4R214-FIX-CTRL-USAIR-427",
+  "phase": "A4R214-MAX",
+  "status": "VNEXT_OFFICIAL_FIXTURE",
+  "fixtureNamespace": "sera-vnext",
+  "legacyFixture": false,
+  "baselineEligibleNow": false,
+  "baselineCandidateEligible": true,
+  "productEligibleNow": false,
+  "runtimeIntegrationAllowed": false,
+  "selectedCode": null,
+  "releasedCode": null,
+  "finalConclusion": null,
+  "classifiedOutput": false,
+  "readyPromotion": false,
+  "downstreamAllowed": false,
+  "componentType": "control_fixture",
+  "sourceType": "control",
+  "title": "USAir 427 vNext official isolated control fixture",
+  "sourceCandidateId": "A4R212-CAND-CTRL-USAIR-427",
+  "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+  "expectedMethodologicalBehavior": [
+    "recognize the technical-human boundary",
+    "block pure human positive fixture use",
+    "remain control-only",
+    "keep all behavior non-final"
+  ],
+  "forbiddenBehavior": [
+    "pure human positive fixture use",
+    "legacy fixture use",
+    "baseline use",
+    "product/runtime use",
+    "final P/O/A",
+    "READY promotion"
+  ],
+  "boundaryWarnings": [],
+  "controlWarnings": [
+    "CONTROL_ONLY",
+    "NOT_POSITIVE_FIXTURE",
+    "technical-human boundary control"
+  ],
+  "limitations": [
+    "control-only artifact",
+    "not a positive fixture",
+    "official only inside the isolated sera-vnext namespace",
+    "non-final expected behavior only"
+  ],
+  "requiredFutureGates": [
+    "separate human baseline authorization",
+    "control-use review",
+    "expected-output stabilization review",
+    "runtime/product gate"
+  ],
+  "prohibitedUses": [
+    "positive fixture use",
+    "tests/sera/fixtures use",
+    "engine/runtime import",
+    "product/API/UI import"
+  ],
+  "traceabilityInputs": [
+    "A4R213 mega freeze review",
+    "A4R212 isolated candidate",
+    "A4R211 authorization request",
+    "A4R210 control expected behavior"
+  ],
+  "rollbackRule": "DELETE_VNEXT_FIXTURE_FILE_ONLY",
+  "notes": [
+    "Control guardrails remain attached after isolated promotion.",
+    "No operational classification is produced."
+  ]
+}

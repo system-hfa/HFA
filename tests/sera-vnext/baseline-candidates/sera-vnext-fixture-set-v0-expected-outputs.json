@@ -1,0 +1,217 @@
+{
+  "expected_outputs_id": "SERA_VNEXT_FIXTURE_SET_V0_EXPECTED_OUTPUTS",
+  "phase": "A4R214-MAX",
+  "status": "EXPECTED_OUTPUTS_OFFICIAL_VNEXT_NON_BASELINE",
+  "baselineStatus": "NOT_BASELINE",
+  "productStatus": "NOT_PRODUCT",
+  "runtimeIntegrationAllowed": false,
+  "expectedOutputs": [
+    {
+      "fixtureId": "A4R214-FIX-POS-COMAIR-5191",
+      "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+      "expectedMethodologicalBehavior": [
+        "clean anchor",
+        "wrong-runway lineup operational window",
+        "no ATC/context migration",
+        "non-final"
+      ],
+      "forbiddenBehavior": [
+        "selectedCode generation",
+        "releasedCode generation",
+        "finalConclusion generation",
+        "product/runtime use"
+      ],
+      "boundaryWarnings": [],
+      "controlWarnings": [],
+      "limitations": [
+        "non-final expected behavior only"
+      ],
+      "nonFinalConfirmations": [
+        "selectedCode remains null",
+        "releasedCode remains null",
+        "finalConclusion remains null",
+        "classifiedOutput remains false"
+      ]
+    },
+    {
+      "fixtureId": "A4R214-FIX-POS-ASIANA-214",
+      "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+      "expectedMethodologicalBehavior": [
+        "boundary warning automation/500 ft",
+        "preserve cockpit actor lane",
+        "no automation-as-actor",
+        "no impact/low-speed cause hunting",
+        "non-final"
+      ],
+      "forbiddenBehavior": [
+        "selectedCode generation",
+        "releasedCode generation",
+        "finalConclusion generation",
+        "product/runtime use"
+      ],
+      "boundaryWarnings": [
+        "BOUNDARY_WARNING_REQUIRED",
+        "automation / 500 ft gate must remain explicit"
+      ],
+      "controlWarnings": [],
+      "limitations": [
+        "boundary warning remains mandatory"
+      ],
+      "nonFinalConfirmations": [
+        "selectedCode remains null",
+        "releasedCode remains null",
+        "finalConclusion remains null",
+        "classifiedOutput remains false"
+      ]
+    },
+    {
+      "fixtureId": "A4R214-FIX-POS-UPS-1354",
+      "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+      "expectedMethodologicalBehavior": [
+        "boundary warning setup/FMC/V-S/MDA",
+        "preserve setup/execution/MDA separation",
+        "no CFIT-as-cause",
+        "non-final"
+      ],
+      "forbiddenBehavior": [
+        "selectedCode generation",
+        "releasedCode generation",
+        "finalConclusion generation",
+        "product/runtime use"
+      ],
+      "boundaryWarnings": [
+        "BOUNDARY_WARNING_REQUIRED",
+        "setup/FMC/V-S/MDA separation required"
+      ],
+      "controlWarnings": [],
+      "limitations": [
+        "boundary warning remains mandatory"
+      ],
+      "nonFinalConfirmations": [
+        "selectedCode remains null",
+        "releasedCode remains null",
+        "finalConclusion remains null",
+        "classifiedOutput remains false"
+      ]
+    },
+    {
+      "fixtureId": "A4R214-FIX-SYN-GAP004-CONSEQUENCE-AS-CAUSE",
+      "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+      "expectedMethodologicalBehavior": [
+        "consequence-as-cause trap",
+        "synthetic only",
+        "no real-event blending",
+        "outcome quarantine",
+        "non-final"
+      ],
+      "forbiddenBehavior": [
+        "selectedCode generation",
+        "releasedCode generation",
+        "finalConclusion generation",
+        "product/runtime use"
+      ],
+      "boundaryWarnings": [
+        "SYNTHETIC_ONLY",
+        "NOT_REAL_EVENT",
+        "NO_SYNTHETIC_REAL_BLENDING"
+      ],
+      "controlWarnings": [],
+      "limitations": [
+        "synthetic-only artifact"
+      ],
+      "nonFinalConfirmations": [
+        "selectedCode remains null",
+        "releasedCode remains null",
+        "finalConclusion remains null",
+        "classifiedOutput remains false"
+      ]
+    },
+    {
+      "fixtureId": "A4R214-FIX-CTRL-DELTA-191",
+      "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+      "expectedMethodologicalBehavior": [
+        "block positive human fixture use",
+        "remain control-only",
+        "non-final"
+      ],
+      "forbiddenBehavior": [
+        "selectedCode generation",
+        "releasedCode generation",
+        "finalConclusion generation",
+        "product/runtime use"
+      ],
+      "boundaryWarnings": [],
+      "controlWarnings": [
+        "CONTROL_ONLY",
+        "NOT_POSITIVE_FIXTURE"
+      ],
+      "limitations": [
+        "control-only artifact"
+      ],
+      "nonFinalConfirmations": [
+        "selectedCode remains null",
+        "releasedCode remains null",
+        "finalConclusion remains null",
+        "classifiedOutput remains false"
+      ]
+    },
+    {
+      "fixtureId": "A4R214-FIX-CTRL-USAIR-427",
+      "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+      "expectedMethodologicalBehavior": [
+        "block positive human fixture use",
+        "remain control-only",
+        "non-final"
+      ],
+      "forbiddenBehavior": [
+        "selectedCode generation",
+        "releasedCode generation",
+        "finalConclusion generation",
+        "product/runtime use"
+      ],
+      "boundaryWarnings": [],
+      "controlWarnings": [
+        "CONTROL_ONLY",
+        "NOT_POSITIVE_FIXTURE"
+      ],
+      "limitations": [
+        "control-only artifact"
+      ],
+      "nonFinalConfirmations": [
+        "selectedCode remains null",
+        "releasedCode remains null",
+        "finalConclusion remains null",
+        "classifiedOutput remains false"
+      ]
+    },
+    {
+      "fixtureId": "A4R214-FIX-CTRL-5NBQJ",
+      "expectedOutputStatus": "OFFICIAL_VNEXT_EXPECTED_OUTPUT_NON_FINAL",
+      "expectedMethodologicalBehavior": [
+        "block positive human fixture use",
+        "remain control-only",
+        "non-final"
+      ],
+      "forbiddenBehavior": [
+        "selectedCode generation",
+        "releasedCode generation",
+        "finalConclusion generation",
+        "product/runtime use"
+      ],
+      "boundaryWarnings": [],
+      "controlWarnings": [
+        "CONTROL_ONLY",
+        "NOT_POSITIVE_FIXTURE"
+      ],
+      "limitations": [
+        "control-only artifact"
+      ],
+      "nonFinalConfirmations": [
+        "selectedCode remains null",
+        "releasedCode remains null",
+        "finalConclusion remains null",
+        "classifiedOutput remains false"
+      ]
+    }
+  ]
+}
