@@ -1,0 +1,14 @@
+recommendation_id,recommendation_text,source_audit,reconciliation_status,rationale,next_action
+R-01,A4R202-E should proceed with the top 3,"A4R202-OPUS-1; A4R202-OPUS-FULL; A4R202-OPUS-SUPPLEMENTAL",ACCEPTED_FOR_NEXT_PHASE,All available local audits allow candidate-only continuation for the top 3 under locks,Route A4R202-E as the official next phase
+R-02,Comair enters as the clean anchor,"A4R202-OPUS-1; A4R202-OPUS-FULL",ACCEPTED_FOR_NEXT_PHASE,Comair is the only top-3 case consistently treated as the clean anchor,Use Comair as the anchor record in A4R202-E
+R-03,Asiana enters with warning,"A4R202-OPUS-1; A4R202-OPUS-FULL",ACCEPTED_FOR_NEXT_PHASE,Boundary between automation-state loss and the 500 ft gate remains open,Carry the warning and coevaluate the alternative candidate
+R-04,UPS enters with warning,"A4R202-OPUS-1; A4R202-OPUS-FULL",ACCEPTED_FOR_NEXT_PHASE,Boundary between setup failure and later MDA continuation remains open,Carry the warning and decompose the composite candidate
+R-05,Colgan stays out and requires re-audit,"A4R202-OPUS-1; A4R202-OPUS-FULL",ACCEPTED_FOR_PENDING_WORK,The candidate split is still too unstable for comparative use,Keep Colgan outside A4R202-E
+R-06,G-WNSB and Execuflight stay second-lane,"A4R202-OPUS-1; A4R202-OPUS-FULL",DEFERRED,They remain usable but are not first-lane clean anchors,Revisit after top-3 review and G-WNSB locator normalization
+R-07,Daumas extraction becomes P1 after or parallel to A4R202-E,"A4R202-OPUS-1; A4R202-OPUS-2; A4R202-OPUS-SUPPLEMENTAL",ACCEPTED_FOR_PENDING_WORK,The human-method reference lane is still needed but must remain non-factual,Register as pending work without treating Daumas as factual input
+R-08,Synthetic GAP-004 and GAP-002 wait until after candidate-only review,"A4R202-OPUS-1; A4R202-OPUS-SUPPLEMENTAL",ACCEPTED_FOR_PENDING_WORK,The top-3 review should happen before new synthetic materialization,Keep GAP-004 before GAP-002 and both after current review lane
+R-09,Governance simplification should occur before major new expansion,"A4R202-OPUS-2; A4R202-OPUS-FULL; A4R202-OPUS-SUPPLEMENTAL",ACCEPTED_FOR_PENDING_WORK,Documental review is at risk of replacing methodological validation,Create a simplification checkpoint
+R-10,Perplexity returns only for narrow targeted search later,"A4R202-OPUS-1; A4R202-OPUS-SUPPLEMENTAL",ACCEPTED_FOR_PENDING_WORK,Broad scouting is not justified while current gaps and review work remain open,Restrict any future search to named gap families only
+R-11,Carry OPUS-3 adversarial findings into this consolidation,A4R202-D/R2,NOT_AVAILABLE_IN_LOCAL_INPUTS,The file is not present in the repo and must not be invented,Record OPUS_3_NOT_PRESENT_IN_REPO_INPUTS
+R-12,Correct the author decision model language before further intake,"A4R202-OPUS-2; A4R202-OPUS-FULL",ACCEPTED_FOR_NEXT_PHASE,The current author-facing verbs imply more than candidate-only review,Adopt Author Decision Model v2
+

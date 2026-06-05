@@ -1,0 +1,15 @@
+priority,work_item,status,why,not_now_reason
+P1,A4R202-E top-3 candidate-only method review,PENDING,This is the direct next use of the consolidated top-3 route,Current phase is consolidation-only
+P1,Colgan-only re-audit,PENDING,Colgan remains excluded / re-audit required before comparative use,Not part of the top-3 review lane
+P1,Daumas calibration extraction,PENDING,The human-method reference lane remains incomplete,Daumas is not a factual source and is not part of A4R202-E
+P1,Governance simplification checkpoint,PENDING,Document proliferation risks replacing methodological validation,Separate scope from the current consolidation
+P2,G-WNSB locator normalization,PENDING,Comparative reuse requires reproducible locator packaging,Not necessary to define A4R202-E
+P2,Execuflight and G-WNSB author-dossier expansion,PENDING,Both remain second-lane candidates with limitations,Top-3 review comes first
+P2,Synthetic GAP-004 controlled design and materialization decision,PENDING,Future synthetic sequencing must start with GAP-004,Synthetic work is out of current scope
+P2,Synthetic GAP-002 after GAP-004,PENDING,Agent-migration synthetic remains downstream of GAP-004,Not authorized now
+P3,Perplexity targeted search for positive control or successful escape only,PENDING,Only narrow later search is justified,Broad scouting is stopped for now
+P3,Perplexity targeted search for human-dominant offshore or helicopter beyond G-WNSB,PENDING,Would diversify later family coverage,Not needed before A4R202-E
+P3,Perplexity targeted search for non-approach CFIT or non-approach decision point,PENDING,Would diversify the current corpus clustering,Not needed before A4R202-E
+P3,Deep Extraction Batch 2,PENDING,Expansion should follow review and simplification,Current route is top-3 consolidation then method review
+P0,Do not do now: baseline / fixture / product / broad scouting / more approach-continuation extraction / Colgan inside top-3 / synthetic materialization before method review,ACTIVE_PROHIBITION,These remain blocked by current methodology locks,Outside the authorized scope
+
