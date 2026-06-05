@@ -1,0 +1,12 @@
+failure_id,component,failed_or_limited_gate,severity,reason,mitigation,future_status
+"GF-001","Colgan 3407","Escape Window Stability Gate","HIGH","warning-window and PF-PM split remain unresolved for positive fixture use","retain boundary-control-only status and require future author decision before any positive use","OPEN_NOT_FIXTURE_ELIGIBLE_NOW"
+"GF-002","Colgan 3407","Actor Attribution Gate","MEDIUM_HIGH","early shared window and later PF-centered action keep actor attribution unstable","keep boundary role and do not treat as fourth positive reference","OPEN_BOUNDARY_ONLY"
+"GF-003","Asiana 214","Escape Window Stability Gate","MEDIUM_HIGH","automation-state and 500 ft gate boundary remains warning-bearing","carry explicit automation limitation into any future package","OPEN_LIMITATION"
+"GF-004","UPS 1354","Escape Window Stability Gate","MEDIUM_HIGH","setup/FMC/V-S/MDA boundary remains warning-bearing","carry setup and MDA limitation into any future package","OPEN_LIMITATION"
+"GF-005","GAP-002 agent_migration","Evidence Sufficiency Gate","HIGH","GAP-002 is not materialized and cannot exercise fixture gates as an active case","defer until separate materialization authorization","OPEN_NOT_MATERIALIZED"
+"GF-006","2026-0001 crank event","Human-Applied Non-Automatic Gate","MEDIUM","human-applied values are input only and not automatic fixture values","retain as methodology reference only","CONTROLLED_REFERENCE_ONLY"
+"GF-007","Daumas","Daumas Non-Factual Use Gate","HIGH","Daumas is methodological depth only and cannot supply event facts or expected outputs","retain method-only use in every future phase","CONTROLLED_METHOD_ONLY"
+"GF-008","Delta 191","Boundary/Negative Role Gate","MEDIUM","negative control must fail as positive fixture and pass only as control","retain negative-control label","CONTROL_ONLY"
+"GF-009","USAir 427","Boundary/Negative Role Gate","MEDIUM","boundary control must fail as positive fixture and pass only as control","retain boundary-control label","CONTROL_ONLY"
+"GF-010","5N-BQJ","Boundary/Negative Role Gate","MEDIUM","technical-dominance negative control must not become positive fixture","retain negative-control label and source limitation","CONTROL_ONLY"
+"GF-011","typecheck environment","Validation Process","MEDIUM","tsc is not resolvable in frontend environment in recent phases","record as environment debt and do not alter environment without authorization","PROCESS_RISK_NOT_METHOD_FAILURE"

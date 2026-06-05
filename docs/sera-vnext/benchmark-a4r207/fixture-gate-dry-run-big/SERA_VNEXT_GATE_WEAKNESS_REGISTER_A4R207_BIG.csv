@@ -1,0 +1,10 @@
+weakness_id,gate_or_scope,weakness,severity,recommended_action,next_phase
+"GW-001","Author Approval Gate","future exact authorization format is not yet specified","MEDIUM","add author check","A4R208-BIG"
+"GW-002","Adversarial Review Gate","future run semantics and blocker thresholds are not yet specified","MEDIUM","add adversarial review","A4R208-BIG"
+"GW-003","Boundary/Negative Role Gate","gate is clear but must remain prominent to avoid control misuse","LOW","keep","A4R208-BIG"
+"GW-004","Synthetic Separation Gate","applicable to synthetic cases but future synthetic fixture design needs stricter labels","MEDIUM","refine","A4R208-BIG"
+"GW-005","Human-Applied Non-Automatic Gate","human-applied reference handling is clear but easy to overread if separated from Daumas gate","LOW","keep","A4R208-BIG"
+"GW-006","Daumas Non-Factual Use Gate","method-only role is clear and should not be merged with source traceability","LOW","keep","A4R208-BIG"
+"GW-007","Evidence Against Gate","clear but future package needs a standard evidence-against field","MEDIUM","refine","A4R208-BIG"
+"GW-008","No-Downstream Gate","sufficient for document phases but should be checked again before any package design","LOW","keep","A4R208-BIG"
+"GW-009","Gate set overall","slightly redundant between role gate and evidence sufficiency gate for controls","LOW","defer","A4R208-BIG"
