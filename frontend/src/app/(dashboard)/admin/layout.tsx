@@ -5,8 +5,10 @@ import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { useMe } from '@/hooks/useMe'
 import {
-  LayoutDashboard, Users, Package, Bot, CreditCard, Settings, ShieldAlert, Menu, X,
+  LayoutDashboard, Users, Package, Bot, CreditCard, Settings, ShieldAlert, Menu, X, Activity,
 } from 'lucide-react'
+
+const seraVNextDiagnosticsEnabled = process.env.NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED === 'true'
 
 const adminNav = [
   { href: '/admin', label: 'Visão Geral', icon: LayoutDashboard },
@@ -15,6 +17,7 @@ const adminNav = [
   { href: '/admin/ai', label: 'IA', icon: Bot },
   { href: '/admin/payments', label: 'Pagamentos', icon: CreditCard },
   { href: '/admin/settings', label: 'Sistema', icon: Settings },
+  ...(seraVNextDiagnosticsEnabled ? [{ href: '/admin/sera-vnext', label: 'SERA vNext', icon: Activity }] : []),
 ]
 
 function Sidebar({ pathname, close }: { pathname: string; close?: () => void }) {

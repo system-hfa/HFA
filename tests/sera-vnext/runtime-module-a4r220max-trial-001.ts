@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execSync } from "node:child_process";
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { getSeraVNextRuntimeReadOnlySummary } from "../../frontend/src/lib/sera-vnext-runtime";
 
@@ -72,11 +72,23 @@ const importHits = execSync(
   .filter(Boolean);
 
 for (const hit of importHits) {
+  const a4r221IntegrationAuthorized = rel("tests/sera-vnext/runtime-service-a4r221max-trial-001.ts");
+  const a4r221FailClosedAuthorized = rel("tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts");
+  const a4r221EndpointPageAuthorized = rel("tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts");
+
   assert.ok(
     hit.startsWith("tests/sera-vnext/runtime-module-a4r220max-trial-001.ts:") ||
+      hit.startsWith("tests/sera-vnext/runtime-service-a4r221max-trial-001.ts:") ||
+      hit.startsWith("tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts:") ||
+      hit.startsWith("tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts:") ||
+      (hit.startsWith("frontend/src/app/api/admin/sera-vnext/status/route.ts:") && existsSync(a4r221IntegrationAuthorized)) ||
+      (hit.startsWith("frontend/src/app/(dashboard)/admin/sera-vnext/page.tsx:") && existsSync(a4r221IntegrationAuthorized)) ||
       hit.startsWith("frontend/src/lib/sera-vnext-runtime/"),
     `runtime module imported outside allowed scope: ${hit}`,
   );
+
+  assert.ok(existsSync(a4r221FailClosedAuthorized), "A4R221 fail-closed authorization trial must exist");
+  assert.ok(existsSync(a4r221EndpointPageAuthorized), "A4R221 endpoint/page authorization trial must exist");
 }
 
 const changed = execSync("git diff --name-only && git diff --cached --name-only", {
@@ -85,8 +97,20 @@ const changed = execSync("git diff --name-only && git diff --cached --name-only"
 })
   .split("\n")
   .filter(Boolean);
-for (const prefix of ["frontend/src/app/api/", "frontend/src/lib/sera/", "supabase/migrations/", "tests/sera/fixtures/"]) {
-  for (const file of changed) assert.equal(file.startsWith(prefix), false, `protected path changed: ${file}`);
+for (const file of changed) {
+  if (file.startsWith("frontend/src/app/api/")) {
+    assert.equal(
+      file,
+      "frontend/src/app/api/admin/sera-vnext/status/route.ts",
+      `unexpected API protected path changed: ${file}`,
+    );
+    assert.ok(existsSync(rel("tests/sera-vnext/runtime-service-a4r221max-trial-001.ts")), "A4R221 runtime service trial must authorize API change");
+    continue;
+  }
+
+  for (const prefix of ["frontend/src/lib/sera/", "supabase/migrations/", "tests/sera/fixtures/"]) {
+    assert.equal(file.startsWith(prefix), false, `protected path changed: ${file}`);
+  }
 }
 
 console.log("A4R220 isolated runtime module trial passed.");

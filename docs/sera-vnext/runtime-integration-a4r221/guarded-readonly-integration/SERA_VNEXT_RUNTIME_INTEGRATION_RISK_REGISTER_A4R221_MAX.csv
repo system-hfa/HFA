@@ -1,0 +1,8 @@
+risk,control,status
+Accidental product classification,service exposes status only and no classification API,CONTROLLED
+Endpoint exposure without auth,route reuses requireAdmin(req),CONTROLLED
+Feature accidentally enabled,server flag defaults false,CONTROLLED
+UI visible to non-admin,admin shell redirects non-admin users,CONTROLLED
+Baseline lock inconsistency,validator fail-closes to ERROR,CONTROLLED
+Database mutation,no Supabase/database import in runtime service,CONTROLLED
+Legacy methodology drift,no changes to frontend/src/lib/sera/*,CONTROLLED

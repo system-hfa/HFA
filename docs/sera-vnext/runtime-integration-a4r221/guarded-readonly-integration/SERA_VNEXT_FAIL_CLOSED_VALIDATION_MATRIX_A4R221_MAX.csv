@@ -1,0 +1,9 @@
+case,mutation,expected_result,validated_by
+wrong_namespace,baseline.namespace changed,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts
+wrong_fixture_count,baseline.fixtureCount changed,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts
+runtime_integration_allowed,baseline.runtimeIntegrationAllowed true,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts
+product_eligible_now,baseline.productEligibleNow true,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts
+downstream_allowed,baseline.downstreamAllowed true,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts
+boundary_warning_absent,BOUNDARY_WARNING_REQUIRED removed,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts
+asiana_warning_absent,automation / 500 ft warning removed,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts
+ups_warning_absent,setup/FMC/V-S/MDA warning removed,ERROR_OR_THROW,tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts

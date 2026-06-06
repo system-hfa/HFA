@@ -55,6 +55,8 @@ export function validateSeraVNextBaselineReadOnly(loaded: SeraVNextLoadedBaselin
 
   const warnings = collectSeraVNextBaselineWarnings(loaded);
   invariant(warnings.includes("BOUNDARY_WARNING_REQUIRED"), "boundary warning missing");
+  invariant(warnings.includes("automation / 500 ft gate must remain explicit"), "Asiana automation / 500 ft warning missing");
+  invariant(warnings.includes("setup/FMC/V-S/MDA separation required"), "UPS setup/FMC/V-S/MDA warning missing");
   invariant(warnings.includes("SYNTHETIC_ONLY"), "synthetic-only warning missing");
   invariant(warnings.includes("NO_SYNTHETIC_REAL_BLENDING"), "synthetic blending lock missing");
   invariant(warnings.includes("CONTROL_ONLY"), "control-only warning missing");

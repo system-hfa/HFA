@@ -68,3 +68,30 @@ export type SeraVNextLoadedBaseline = {
   fixtureSet: SeraVNextFixtureSetFile;
   expectedOutputs: SeraVNextExpectedOutputsFile;
 };
+
+export type SeraVNextRuntimeStatus =
+  | {
+      enabled: false;
+      status: "DISABLED";
+    }
+  | {
+      enabled: true;
+      status: "AVAILABLE";
+      baselineId: "SERA_VNEXT_BASELINE_V0";
+      namespace: "sera-vnext";
+      fixtureCount: 7;
+      expectedOutputCount: 7;
+      positiveFixtureCount: 3;
+      syntheticFixtureCount: 1;
+      controlFixtureCount: 3;
+      productIntegrated: false;
+      classificationEnabled: false;
+      downstreamAllowed: false;
+      warnings: string[];
+    }
+  | {
+      enabled: true;
+      status: "ERROR";
+      errorCode: string;
+      safeMessage: string;
+    };
