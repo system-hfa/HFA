@@ -31,7 +31,8 @@ type SeraVNextRuntimeStatus =
       safeMessage: string
     }
 
-const diagnosticsEnabled = process.env.NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED === 'true'
+const diagnosticsEnabled =
+  process.env.NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED?.trim().toLowerCase() === 'true'
 
 export default function AdminSeraVNextPage() {
   const [status, setStatus] = useState<SeraVNextRuntimeStatus | null>(null)

@@ -8,7 +8,10 @@ import {
   LayoutDashboard, Users, Package, Bot, CreditCard, Settings, ShieldAlert, Menu, X, Activity,
 } from 'lucide-react'
 
-const seraVNextDiagnosticsEnabled = process.env.NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED === 'true'
+const seraVNextDiagnosticsEnabled =
+  process.env.NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED?.trim().toLowerCase() === 'true'
+const seraVNextCandidateUiEnabled =
+  process.env.NEXT_PUBLIC_SERA_VNEXT_CANDIDATE_UI_ENABLED?.trim().toLowerCase() === 'true'
 
 const adminNav = [
   { href: '/admin', label: 'Visão Geral', icon: LayoutDashboard },
@@ -18,6 +21,7 @@ const adminNav = [
   { href: '/admin/payments', label: 'Pagamentos', icon: CreditCard },
   { href: '/admin/settings', label: 'Sistema', icon: Settings },
   ...(seraVNextDiagnosticsEnabled ? [{ href: '/admin/sera-vnext', label: 'SERA vNext', icon: Activity }] : []),
+  ...(seraVNextCandidateUiEnabled ? [{ href: '/admin/sera-vnext/candidate', label: 'SERA Candidate', icon: Activity }] : []),
 ]
 
 function Sidebar({ pathname, close }: { pathname: string; close?: () => void }) {

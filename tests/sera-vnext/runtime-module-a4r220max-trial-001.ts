@@ -83,6 +83,14 @@ for (const hit of importHits) {
   const a4r223AuthenticatedSmokeAuthorized = rel("tests/sera-vnext/authenticated-smoke-a4r223max-trial-001.ts");
   const a4r223RollbackAuthorized = rel("tests/sera-vnext/rollback-flags-a4r223max-trial-001.ts");
   const a4r223IntegrityHashAuthorized = rel("tests/sera-vnext/integrity-hash-a4r223max-trial-001.ts");
+  const a4r224RealAdminAuthorized = rel("tests/sera-vnext/real-admin-session-a4r224max-trial-001.ts");
+  const a4r224ManagedStagingAuthorized = rel("tests/sera-vnext/managed-staging-activation-a4r224max-trial-001.ts");
+  const a4r224TenantIsolationAuthorized = rel("tests/sera-vnext/staging-tenant-isolation-a4r224max-trial-001.ts");
+  const a4r224RollbackAuthorized = rel("tests/sera-vnext/staging-rollback-a4r224max-trial-001.ts");
+  const a4r224IntegrityAuthorized = rel("tests/sera-vnext/staging-integrity-a4r224max-trial-001.ts");
+  const a4r225CandidateAuthorized = rel("tests/sera-vnext/product-alpha-candidate-only-trial-001.ts");
+  const a4r225SecurityAuthorized = rel("tests/sera-vnext/product-alpha-security-trial-001.ts");
+  const a4r225IntegrityAuthorized = rel("tests/sera-vnext/product-alpha-integrity-trial-001.ts");
 
   assert.ok(
     hit.startsWith("tests/sera-vnext/runtime-module-a4r220max-trial-001.ts:") ||
@@ -97,7 +105,16 @@ for (const hit of importHits) {
       (hit.startsWith("tests/sera-vnext/authenticated-smoke-a4r223max-trial-001.ts:") && existsSync(a4r223AuthenticatedSmokeAuthorized)) ||
       (hit.startsWith("tests/sera-vnext/rollback-flags-a4r223max-trial-001.ts:") && existsSync(a4r223RollbackAuthorized)) ||
       (hit.startsWith("tests/sera-vnext/integrity-hash-a4r223max-trial-001.ts:") && existsSync(a4r223IntegrityHashAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/real-admin-session-a4r224max-trial-001.ts:") && existsSync(a4r224RealAdminAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/managed-staging-activation-a4r224max-trial-001.ts:") && existsSync(a4r224ManagedStagingAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/staging-tenant-isolation-a4r224max-trial-001.ts:") && existsSync(a4r224TenantIsolationAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/staging-rollback-a4r224max-trial-001.ts:") && existsSync(a4r224RollbackAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/staging-integrity-a4r224max-trial-001.ts:") && existsSync(a4r224IntegrityAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/product-alpha-candidate-only-trial-001.ts:") && existsSync(a4r225CandidateAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/product-alpha-security-trial-001.ts:") && existsSync(a4r225SecurityAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/product-alpha-integrity-trial-001.ts:") && existsSync(a4r225IntegrityAuthorized)) ||
       (hit.startsWith("frontend/src/app/api/admin/sera-vnext/status/route.ts:") && existsSync(a4r221IntegrationAuthorized)) ||
+      (hit.startsWith("frontend/src/app/api/admin/sera-vnext/candidate/route.ts:") && existsSync(a4r225CandidateAuthorized)) ||
       (hit.startsWith("frontend/src/app/(dashboard)/admin/sera-vnext/page.tsx:") && existsSync(a4r221IntegrationAuthorized)) ||
       hit.startsWith("frontend/src/lib/sera-vnext-runtime/"),
     `runtime module imported outside allowed scope: ${hit}`,
@@ -113,6 +130,14 @@ for (const hit of importHits) {
   assert.ok(existsSync(a4r223AuthenticatedSmokeAuthorized), "A4R223 authenticated smoke authorization trial must exist");
   assert.ok(existsSync(a4r223RollbackAuthorized), "A4R223 rollback authorization trial must exist");
   assert.ok(existsSync(a4r223IntegrityHashAuthorized), "A4R223 integrity hash authorization trial must exist");
+  assert.ok(existsSync(a4r224RealAdminAuthorized), "A4R224 real-admin authorization trial must exist");
+  assert.ok(existsSync(a4r224ManagedStagingAuthorized), "A4R224 managed-staging authorization trial must exist");
+  assert.ok(existsSync(a4r224TenantIsolationAuthorized), "A4R224 tenant-isolation authorization trial must exist");
+  assert.ok(existsSync(a4r224RollbackAuthorized), "A4R224 rollback authorization trial must exist");
+  assert.ok(existsSync(a4r224IntegrityAuthorized), "A4R224 integrity authorization trial must exist");
+  assert.ok(existsSync(a4r225CandidateAuthorized), "A4R225 candidate authorization trial must exist");
+  assert.ok(existsSync(a4r225SecurityAuthorized), "A4R225 security authorization trial must exist");
+  assert.ok(existsSync(a4r225IntegrityAuthorized), "A4R225 integrity authorization trial must exist");
 }
 
 const changed = execSync("git diff --name-only && git diff --cached --name-only", {
@@ -123,12 +148,18 @@ const changed = execSync("git diff --name-only && git diff --cached --name-only"
   .filter(Boolean);
 for (const file of changed) {
   if (file.startsWith("frontend/src/app/api/")) {
-    assert.equal(
-      file,
-      "frontend/src/app/api/admin/sera-vnext/status/route.ts",
+    assert.ok(
+      file === "frontend/src/app/api/admin/sera-vnext/status/route.ts" ||
+        file === "frontend/src/app/api/admin/sera-vnext/candidate/route.ts",
       `unexpected API protected path changed: ${file}`,
     );
-    assert.ok(existsSync(rel("tests/sera-vnext/runtime-service-a4r221max-trial-001.ts")), "A4R221 runtime service trial must authorize API change");
+    if (file === "frontend/src/app/api/admin/sera-vnext/status/route.ts") {
+      assert.ok(existsSync(rel("tests/sera-vnext/runtime-service-a4r221max-trial-001.ts")), "A4R221 runtime service trial must authorize status API change");
+    }
+    if (file === "frontend/src/app/api/admin/sera-vnext/candidate/route.ts") {
+      assert.ok(existsSync(rel("tests/sera-vnext/product-alpha-candidate-only-trial-001.ts")), "A4R225 candidate trial must authorize candidate API change");
+      assert.ok(existsSync(rel("tests/sera-vnext/product-alpha-security-trial-001.ts")), "A4R225 security trial must authorize candidate API change");
+    }
     continue;
   }
 
