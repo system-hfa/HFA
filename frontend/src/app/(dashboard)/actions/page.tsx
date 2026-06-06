@@ -310,7 +310,7 @@ export default function ActionsPage() {
               {filter === 'all' && (
                 <p className="text-slate-500 text-sm">
                   Para criar uma ação, abra o relatório de um evento e clique em{' '}
-                  <span className="text-slate-300 font-medium">"Criar ação corretiva"</span>{' '}
+                  <span className="text-slate-300 font-medium">&quot;Criar ação corretiva&quot;</span>{' '}
                   em qualquer recomendação da Etapa 7.
                 </p>
               )}

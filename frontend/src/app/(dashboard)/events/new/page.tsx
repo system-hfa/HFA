@@ -60,6 +60,7 @@ export default function NewEventPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     if (params.get('from') !== 'interview') return
+    let id: ReturnType<typeof setTimeout> | null = null
     try {
       const raw = sessionStorage.getItem('hfa_interview_payload')
       if (!raw) return
@@ -68,17 +69,22 @@ export default function NewEventPage() {
         aircraft_type?: string; occurred_at?: string;
       }
       sessionStorage.removeItem('hfa_interview_payload')
-      setForm((p) => ({
-        title: payload.title ?? p.title,
-        raw_input: payload.raw_input ?? p.raw_input,
-        operation_type: payload.operation_type ?? p.operation_type,
-        aircraft_type: payload.aircraft_type ?? p.aircraft_type,
-        occurred_at: payload.occurred_at ?? p.occurred_at,
-      }))
-      setFromInterview(true)
-      if (payload.operation_type || payload.aircraft_type) setShowDetails(true)
+      id = setTimeout(() => {
+        setForm((p) => ({
+          title: payload.title ?? p.title,
+          raw_input: payload.raw_input ?? p.raw_input,
+          operation_type: payload.operation_type ?? p.operation_type,
+          aircraft_type: payload.aircraft_type ?? p.aircraft_type,
+          occurred_at: payload.occurred_at ?? p.occurred_at,
+        }))
+        setFromInterview(true)
+        if (payload.operation_type || payload.aircraft_type) setShowDetails(true)
+      }, 0)
     } catch {
       // payload inválido ou sessionStorage indisponível — ignora
+    }
+    return () => {
+      if (id) clearTimeout(id)
     }
   }, [])
 

@@ -40,11 +40,7 @@ export function TrialUsageCard({
   const [loading, setLoading] = useState(used == null)
 
   useEffect(() => {
-    if (used != null) {
-      setRemoteUsage(null)
-      setLoading(false)
-      return
-    }
+    if (used != null) return
 
     let active = true
 
@@ -85,8 +81,9 @@ export function TrialUsageCard({
     if (used != null) return buildTrialUsage(used, limit)
     return remoteUsage
   }, [limit, remoteUsage, used])
+  const effectiveLoading = used == null && loading
 
-  if (loading) {
+  if (effectiveLoading) {
     return (
       <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
         <p className="text-slate-400 text-sm">Carregando status do trial...</p>
