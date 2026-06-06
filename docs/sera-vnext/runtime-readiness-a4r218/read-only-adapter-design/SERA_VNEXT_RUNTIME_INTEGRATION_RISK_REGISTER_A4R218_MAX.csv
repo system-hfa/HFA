@@ -1,0 +1,6 @@
+riskId,risk,control,status
+A4R218-RISK-001,Adapter accidentally becomes product runtime,Keep adapter under tests/sera-vnext/runtime-adapter only,CONTROLLED
+A4R218-RISK-002,Adapter emits downstream classification fields,Trial scans selected/released/final/classification/promotion fields,CONTROLLED
+A4R218-RISK-003,Adapter writes or mutates baseline artifacts,Trial compares protected artifact mtimes before and after loading,CONTROLLED
+A4R218-RISK-004,Boundary warnings are lost,Adapter validates warning set from expected outputs,CONTROLLED
+A4R218-RISK-005,Future integration bypasses explicit authorization,Decision remains separate authorization only,CONTROLLED
