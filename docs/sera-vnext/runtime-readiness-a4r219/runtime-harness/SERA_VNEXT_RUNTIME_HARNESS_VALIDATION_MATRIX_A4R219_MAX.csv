@@ -1,0 +1,8 @@
+checkId,check,status
+A4R219-CHECK-001,Harness imports only read-only adapter,PASS
+A4R219-CHECK-002,Harness returns baseline id and counts,PASS
+A4R219-CHECK-003,Harness preserves warning locks,PASS
+A4R219-CHECK-004,Harness keeps product/runtime/downstream false,PASS
+A4R219-CHECK-005,Harness keeps causal output fields null,PASS
+A4R219-CHECK-006,Harness does not write baseline artifacts,PASS
+A4R219-CHECK-007,Harness is not imported by API or UI,PASS
