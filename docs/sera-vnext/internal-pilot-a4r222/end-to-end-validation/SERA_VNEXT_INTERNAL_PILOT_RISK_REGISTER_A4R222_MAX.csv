@@ -1,0 +1,9 @@
+risk,control,status
+Feature accidentally exposed,server read-only and pilot flags both default false,CONTROLLED
+Public UI flag enables server access,server endpoint ignores public flag alone,CONTROLLED
+Unauthorized access,existing requireAdmin guard remains mandatory,CONTROLLED
+Tenant bypass,requireAdmin enforces enterprise tenant and admin role,CONTROLLED
+Baseline inconsistency,validator fails closed to sanitized error,CONTROLLED
+Classification activation,service returns status only and no classification API,CONTROLLED
+Database mutation,no DB import/write in runtime path,CONTROLLED
+Sensitive logging,observability helper logs only sanitized metadata,CONTROLLED

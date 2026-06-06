@@ -10,10 +10,14 @@ function rel(relativePath: string) {
 }
 
 const originalReadOnlyFlag = process.env.SERA_VNEXT_READONLY_ENABLED;
+const originalInternalPilotFlag = process.env.SERA_VNEXT_INTERNAL_PILOT_ENABLED;
 
 function restoreEnv() {
   if (originalReadOnlyFlag === undefined) delete process.env.SERA_VNEXT_READONLY_ENABLED;
   else process.env.SERA_VNEXT_READONLY_ENABLED = originalReadOnlyFlag;
+
+  if (originalInternalPilotFlag === undefined) delete process.env.SERA_VNEXT_INTERNAL_PILOT_ENABLED;
+  else process.env.SERA_VNEXT_INTERNAL_PILOT_ENABLED = originalInternalPilotFlag;
 }
 
 async function main() {
@@ -21,11 +25,12 @@ async function main() {
   const pageSource = readFileSync(rel("frontend/src/app/(dashboard)/admin/sera-vnext/page.tsx"), "utf8");
   const layoutSource = readFileSync(rel("frontend/src/app/(dashboard)/admin/layout.tsx"), "utf8");
 
-  assert.ok(routeSource.includes("requireAdmin(req)"), "endpoint must reuse admin auth guard");
-  assert.ok(routeSource.includes("isSeraVNextReadOnlyEnabled()"), "endpoint must be feature-flagged");
+  assert.ok(routeSource.includes("requireAdmin") && routeSource.includes("requireAdminUser"), "endpoint must reuse admin auth guard");
+  assert.ok(routeSource.includes("isSeraVNextReadOnlyEnabled") && routeSource.includes("isReadOnlyEnabled"), "endpoint must be feature-flagged");
+  assert.ok(routeSource.includes("isSeraVNextInternalPilotEnabled") && routeSource.includes("isInternalPilotEnabled"), "endpoint must be internal-pilot-flagged");
   assert.ok(routeSource.includes("no-store"), "endpoint must disable cache");
   assert.ok(routeSource.includes("dynamic = 'force-dynamic'"), "endpoint must be dynamic");
-  assert.ok(routeSource.indexOf("isSeraVNextReadOnlyEnabled()") < routeSource.indexOf("requireAdmin(req)"), "flag-off path must not reveal auth details");
+  assert.ok(routeSource.indexOf("isReadOnlyEnabled()") < routeSource.indexOf("requireAdminUser(req)"), "flag-off path must not reveal auth details");
   assert.equal(routeSource.includes("selectedCode"), false, "endpoint must not return selectedCode");
   assert.equal(routeSource.includes("releasedCode"), false, "endpoint must not return releasedCode");
   assert.equal(routeSource.includes("finalConclusion"), false, "endpoint must not return finalConclusion");
@@ -42,10 +47,12 @@ async function main() {
   assert.ok(layoutSource.includes("/admin/sera-vnext"), "admin shell must include the diagnostic route only through the flag-gated nav");
 
   delete process.env.SERA_VNEXT_READONLY_ENABLED;
+  delete process.env.SERA_VNEXT_INTERNAL_PILOT_ENABLED;
   const flagOffResponse = await GET(new Request("http://localhost/api/admin/sera-vnext/status"));
   assert.equal(flagOffResponse.status, 404, "flag-off endpoint must not reveal feature details");
 
   process.env.SERA_VNEXT_READONLY_ENABLED = "true";
+  process.env.SERA_VNEXT_INTERNAL_PILOT_ENABLED = "true";
   const unauthResponse = await GET(new Request("http://localhost/api/admin/sera-vnext/status"));
   assert.equal(unauthResponse.status, 401, "flag-on endpoint must reject missing auth");
 

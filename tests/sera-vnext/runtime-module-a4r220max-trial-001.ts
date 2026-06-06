@@ -75,12 +75,20 @@ for (const hit of importHits) {
   const a4r221IntegrationAuthorized = rel("tests/sera-vnext/runtime-service-a4r221max-trial-001.ts");
   const a4r221FailClosedAuthorized = rel("tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts");
   const a4r221EndpointPageAuthorized = rel("tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts");
+  const a4r222AuthFlagsAuthorized = rel("tests/sera-vnext/auth-feature-flags-a4r222max-trial-001.ts");
+  const a4r222InternalPilotAuthorized = rel("tests/sera-vnext/internal-pilot-a4r222max-trial-001.ts");
+  const a4r222IntegrityAuthorized = rel("tests/sera-vnext/runtime-integrity-a4r222max-trial-001.ts");
+  const a4r222PerformanceAuthorized = rel("tests/sera-vnext/runtime-performance-a4r222max-trial-001.ts");
 
   assert.ok(
     hit.startsWith("tests/sera-vnext/runtime-module-a4r220max-trial-001.ts:") ||
       hit.startsWith("tests/sera-vnext/runtime-service-a4r221max-trial-001.ts:") ||
       hit.startsWith("tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts:") ||
       hit.startsWith("tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts:") ||
+      (hit.startsWith("tests/sera-vnext/auth-feature-flags-a4r222max-trial-001.ts:") && existsSync(a4r222AuthFlagsAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/internal-pilot-a4r222max-trial-001.ts:") && existsSync(a4r222InternalPilotAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/runtime-integrity-a4r222max-trial-001.ts:") && existsSync(a4r222IntegrityAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/runtime-performance-a4r222max-trial-001.ts:") && existsSync(a4r222PerformanceAuthorized)) ||
       (hit.startsWith("frontend/src/app/api/admin/sera-vnext/status/route.ts:") && existsSync(a4r221IntegrationAuthorized)) ||
       (hit.startsWith("frontend/src/app/(dashboard)/admin/sera-vnext/page.tsx:") && existsSync(a4r221IntegrationAuthorized)) ||
       hit.startsWith("frontend/src/lib/sera-vnext-runtime/"),
@@ -89,6 +97,10 @@ for (const hit of importHits) {
 
   assert.ok(existsSync(a4r221FailClosedAuthorized), "A4R221 fail-closed authorization trial must exist");
   assert.ok(existsSync(a4r221EndpointPageAuthorized), "A4R221 endpoint/page authorization trial must exist");
+  assert.ok(existsSync(a4r222AuthFlagsAuthorized), "A4R222 auth/flags authorization trial must exist");
+  assert.ok(existsSync(a4r222InternalPilotAuthorized), "A4R222 internal pilot authorization trial must exist");
+  assert.ok(existsSync(a4r222IntegrityAuthorized), "A4R222 integrity authorization trial must exist");
+  assert.ok(existsSync(a4r222PerformanceAuthorized), "A4R222 performance authorization trial must exist");
 }
 
 const changed = execSync("git diff --name-only && git diff --cached --name-only", {

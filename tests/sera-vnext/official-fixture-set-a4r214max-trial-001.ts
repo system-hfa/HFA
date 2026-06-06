@@ -329,7 +329,21 @@ const changedTracked = execSync("git diff --name-only && git diff --cached --nam
 for (const changedPath of changedTracked) {
   assert.ok(!changedPath.startsWith("tests/sera/fixtures/"), `legacy fixture path changed: ${changedPath}`);
   assert.ok(!changedPath.startsWith("frontend/src/lib/sera/"), `engine path changed: ${changedPath}`);
-  assert.ok(!changedPath.startsWith("frontend/src/app/api/"), `API path changed: ${changedPath}`);
+  if (changedPath.startsWith("frontend/src/app/api/")) {
+    assert.equal(
+      changedPath,
+      "frontend/src/app/api/admin/sera-vnext/status/route.ts",
+      `unexpected API path changed: ${changedPath}`,
+    );
+    assert.ok(
+      existsSync(path.join(root, "tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts")),
+      "A4R221 endpoint/page trial must authorize SERA vNext admin API route",
+    );
+    assert.ok(
+      existsSync(path.join(root, "tests/sera-vnext/auth-feature-flags-a4r222max-trial-001.ts")),
+      "A4R222 auth/feature flag trial must authorize SERA vNext admin API route",
+    );
+  }
   assert.ok(!changedPath.startsWith("supabase/migrations/"), `migration path changed: ${changedPath}`);
 }
 

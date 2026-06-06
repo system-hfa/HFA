@@ -1,6 +1,6 @@
 function readBooleanEnv(name: string): boolean {
   const value = process.env[name]?.trim().toLowerCase();
-  return value === "1" || value === "true" || value === "yes" || value === "on";
+  return value === "true";
 }
 
 export function isSeraVNextReadOnlyEnabled(): boolean {
@@ -9,4 +9,8 @@ export function isSeraVNextReadOnlyEnabled(): boolean {
 
 export function isSeraVNextDiagnosticsEnabled(): boolean {
   return readBooleanEnv("NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED");
+}
+
+export function isSeraVNextInternalPilotEnabled(): boolean {
+  return readBooleanEnv("SERA_VNEXT_INTERNAL_PILOT_ENABLED");
 }

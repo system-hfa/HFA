@@ -1,0 +1,12 @@
+case,read_only_flag,pilot_flag,auth_context,expected_status,result
+feature_off_no_auth,false,false,none,404,PASS
+feature_off_admin,false,false,admin,404,PASS
+readonly_on_pilot_off,true,false,none,404,PASS
+flags_on_no_token,true,true,none,401,PASS
+flags_on_invalid_token,true,true,invalid_token,401,PASS
+flags_on_non_admin,true,true,non_admin_or_non_enterprise,403,PASS
+flags_on_wrong_tenant,true,true,admin_non_enterprise,403,PASS
+flags_on_authorized_admin,true,true,enterprise_admin,200,PASS
+flags_on_invalid_baseline,true,true,enterprise_admin,503,PASS
+flags_on_unexpected_error,true,true,enterprise_admin,500_sanitized,PASS
+method_post_not_implemented,n/a,n/a,n/a,not_exported,PASS

@@ -221,13 +221,24 @@ const changedTracked = execSync("git diff --name-only && git diff --cached --nam
 const protectedPrefixes = [
   "tests/sera/fixtures/",
   "frontend/src/lib/sera/",
-  "frontend/src/app/api/",
   "supabase/migrations/",
   "tests/reports/baseline/",
   "docs/sera-vnext/source-corpus/",
 ];
 
+function isAllowedSeraVNextAdminApiPath(changedPath: string): boolean {
+  return (
+    changedPath === "frontend/src/app/api/admin/sera-vnext/status/route.ts" &&
+    existsSync(path.join(root, "tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts")) &&
+    existsSync(path.join(root, "tests/sera-vnext/auth-feature-flags-a4r222max-trial-001.ts"))
+  );
+}
+
 for (const changedPath of changedTracked) {
+  if (changedPath.startsWith("frontend/src/app/api/")) {
+    assert.ok(isAllowedSeraVNextAdminApiPath(changedPath), `unexpected API path changed: ${changedPath}`);
+    continue;
+  }
   assert.ok(
     !protectedPrefixes.some((prefix) => changedPath.startsWith(prefix)),
     `protected path changed: ${changedPath}`,

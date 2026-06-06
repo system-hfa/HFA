@@ -25,6 +25,8 @@ export function validateSeraVNextBaselineReadOnly(loaded: SeraVNextLoadedBaselin
   invariant(baseline.sourceExpectedOutputs === expectedOutputs.expected_outputs_id, "expected outputs id mismatch");
   invariant(baseline.fixtureCount === 7, "unexpected fixture count");
   invariant(baseline.expectedOutputCount === 7, "unexpected expected output count");
+  invariant(Array.isArray(fixtureSet.fixtures), "fixture set missing fixtures array");
+  invariant(Array.isArray(expectedOutputs.expectedOutputs), "expected outputs array missing");
   invariant(fixtureSet.fixtures.length === baseline.fixtureCount, "fixture set count mismatch");
   invariant(expectedOutputs.expectedOutputs.length === baseline.expectedOutputCount, "expected output count mismatch");
   invariant(baseline.positiveFixtures.length === 3, "positive fixture count mismatch");
@@ -33,6 +35,22 @@ export function validateSeraVNextBaselineReadOnly(loaded: SeraVNextLoadedBaselin
   invariant(fixtureSet.fixtures.filter((fixture) => fixture.fixtureType === "positive_fixture").length === 3, "fixture positive count mismatch");
   invariant(fixtureSet.fixtures.filter((fixture) => fixture.fixtureType === "synthetic_fixture").length === 1, "fixture synthetic count mismatch");
   invariant(fixtureSet.fixtures.filter((fixture) => fixture.fixtureType === "control_fixture").length === 3, "fixture control count mismatch");
+
+  for (const fixture of fixtureSet.fixtures) {
+    const record = fixture as typeof fixture & { legacyFixture?: boolean };
+    invariant(record.legacyFixture !== true, `${fixture.fixtureId} must not be marked legacy`);
+    if (fixture.fixtureType === "positive_fixture") {
+      invariant(baseline.positiveFixtures.includes(fixture.fixtureId), `${fixture.fixtureId} missing from positive fixtures`);
+      invariant(!baseline.controlFixtures.includes(fixture.fixtureId), `${fixture.fixtureId} positive fixture cannot be control`);
+    }
+    if (fixture.fixtureType === "synthetic_fixture") {
+      invariant(baseline.syntheticFixtures.includes(fixture.fixtureId), `${fixture.fixtureId} missing from synthetic fixtures`);
+    }
+    if (fixture.fixtureType === "control_fixture") {
+      invariant(baseline.controlFixtures.includes(fixture.fixtureId), `${fixture.fixtureId} missing from control fixtures`);
+      invariant(!baseline.positiveFixtures.includes(fixture.fixtureId), `${fixture.fixtureId} control fixture cannot be positive`);
+    }
+  }
 
   invariant(baseline.legacyBaseline === false, "legacy baseline flag must remain false");
   invariant(baseline.productEligibleNow === false, "product eligibility must remain false");
@@ -45,7 +63,19 @@ export function validateSeraVNextBaselineReadOnly(loaded: SeraVNextLoadedBaselin
 
   const fixtureIds = new Set(fixtureSet.fixtures.map((fixture) => fixture.fixtureId));
   for (const output of expectedOutputs.expectedOutputs) {
+    const record = output as typeof output & {
+      selectedCode?: unknown;
+      releasedCode?: unknown;
+      finalConclusion?: unknown;
+      classifiedOutput?: unknown;
+      readyPromotion?: unknown;
+    };
     invariant(fixtureIds.has(output.fixtureId), `missing fixture for expected output ${output.fixtureId}`);
+    invariant(record.selectedCode == null, `${output.fixtureId} selectedCode must remain null`);
+    invariant(record.releasedCode == null, `${output.fixtureId} releasedCode must remain null`);
+    invariant(record.finalConclusion == null, `${output.fixtureId} finalConclusion must remain null`);
+    invariant(record.classifiedOutput !== true, `${output.fixtureId} classifiedOutput must not be true`);
+    invariant(record.readyPromotion !== true, `${output.fixtureId} readyPromotion must not be true`);
     invariant(output.forbiddenBehavior?.includes("product/runtime use"), `${output.fixtureId} missing product/runtime lock`);
     invariant(output.nonFinalConfirmations?.includes("selectedCode remains null"), `${output.fixtureId} missing selected code lock`);
     invariant(output.nonFinalConfirmations?.includes("releasedCode remains null"), `${output.fixtureId} missing released code lock`);

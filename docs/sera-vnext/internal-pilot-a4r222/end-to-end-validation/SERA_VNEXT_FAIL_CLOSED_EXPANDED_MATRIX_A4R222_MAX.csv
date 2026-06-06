@@ -1,0 +1,23 @@
+case,mutation,expected,result
+namespace_incorrect,baseline.namespace changed,fail_closed,PASS
+baseline_id_incorrect,baseline.baseline_id changed,fail_closed,PASS
+fixture_set_absent,fixtureSet.fixtures undefined,fail_closed,PASS
+expected_outputs_absent,expectedOutputs.expectedOutputs undefined,fail_closed,PASS
+fixture_count_wrong,fixtureCount not 7,fail_closed,PASS
+expected_output_count_wrong,expectedOutputCount not 7,fail_closed,PASS
+runtime_integration_allowed,runtimeIntegrationAllowed true,fail_closed,PASS
+product_eligible_now,productEligibleNow true,fail_closed,PASS
+downstream_allowed,downstreamAllowed true,fail_closed,PASS
+baseline_legacy,legacyBaseline true,fail_closed,PASS
+fixture_legacy,legacyFixture true,fail_closed,PASS
+asiana_warning_absent,automation / 500 ft warning removed,fail_closed,PASS
+ups_warning_absent,setup/FMC/V-S/MDA warning removed,fail_closed,PASS
+gap004_synthetic_only_absent,SYNTHETIC_ONLY removed,fail_closed,PASS
+control_only_absent,CONTROL_ONLY removed,fail_closed,PASS
+positive_as_control,positive fixture added to control list,fail_closed,PASS
+control_as_positive,control fixture added to positive list,fail_closed,PASS
+selected_code_non_null,selectedCode set,fail_closed,PASS
+released_code_non_null,releasedCode set,fail_closed,PASS
+final_conclusion_non_null,finalConclusion set,fail_closed,PASS
+classified_output_true,classifiedOutput true,fail_closed,PASS
+ready_promotion_true,readyPromotion true,fail_closed,PASS

@@ -6,7 +6,7 @@ export type {
   SeraVNextRuntimeMode,
   SeraVNextRuntimeStatus,
 } from "./types";
-export { isSeraVNextDiagnosticsEnabled, isSeraVNextReadOnlyEnabled } from "./feature-flags";
+export { isSeraVNextDiagnosticsEnabled, isSeraVNextInternalPilotEnabled, isSeraVNextReadOnlyEnabled } from "./feature-flags";
 export { loadSeraVNextBaselineFiles } from "./load-baseline";
 export { toSeraVNextRuntimeError } from "./runtime-errors";
 export { getSeraVNextRuntimeStatus } from "./runtime-service";
