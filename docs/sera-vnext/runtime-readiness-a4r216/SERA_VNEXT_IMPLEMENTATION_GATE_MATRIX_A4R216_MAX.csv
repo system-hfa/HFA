@@ -1,0 +1,14 @@
+gate_id,gate_name,required_status,current_a4r216_status,pass_fail,blocking_reason,required_action,protected_scope_impact
+G01,Repository preflight,main at expected HEAD and origin/main,main at 2c5f17d81a6792126fd9e29877ae0ae8f4f22f57,PASS,,Continue only with scoped A4R216 files,None
+G02,Tracked and cached cleanliness,no unexpected tracked or cached changes before work,clean before A4R216 work,PASS,,Stage only explicit A4R216 files,None
+G03,Typecheck dependency,local frontend compiler resolves,TypeScript 5.9.3 resolves after npm ci,PASS,,Keep dependency repair local and do not stage node_modules,None
+G04,Typecheck codebase,npm --prefix frontend exec -- tsc --noEmit exits zero,TYPECHECK_CODE_ERRORS_REMAIN,FAIL,code-level TypeScript diagnostics remain,Repair code-level diagnostics in a separately authorized phase before runtime integration,None
+G05,vNext baseline v0,A4R215 baseline v0 trial passes,passed in A4R216 revalidation,PASS,,Re-run after any later code repair,None
+G06,Official fixture set,A4R214 official fixture set trial passes,passed in A4R216 revalidation,PASS,,Re-run after any later code repair,None
+G07,Runtime boundary,no productive runtime edit,frontend/src/lib/sera untouched,PASS,,Require separate authorization before runtime implementation,Protected runtime remains closed
+G08,API boundary,no productive API edit,frontend/src/app/api untouched,PASS,,Require separate authorization before API implementation,Protected API remains closed
+G09,Legacy fixture boundary,no vNext copy into legacy fixtures,tests/sera/fixtures untouched,PASS,,Do not promote vNext fixtures to legacy fixtures,Legacy baseline remains closed
+G10,Database boundary,no schema or migration edit,supabase/migrations untouched,PASS,,Require separate authorization before persistence change,Database remains closed
+G11,Output activation boundary,no released product output from vNext expected-output records,design-only contract documents the prohibition,PASS,,Keep output fields null false or absent until authorized,Product output remains closed
+G12,Synthetic/control boundary,GAP-004 synthetic-only and control cases control-only,documented and trial-checked,PASS,,Preserve case boundaries in any future adapter,None
+G13,Implementation readiness,all gates pass before runtime implementation,blocked by G04,FAIL,typecheck codebase is not clean,Do not begin runtime implementation until G04 passes,None
