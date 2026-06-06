@@ -70,9 +70,11 @@ assert.equal(draft.armsErcAllowed, false);
 assert.equal(draft.recommendationsAllowed, false);
 assert.equal(draft.gapId, 'GAP-001');
 
-assert.equal(draft.agentSet.pf.agentId, 'synthetic-pf-001');
-assert.equal(draft.agentSet.pm.agentId, 'synthetic-pm-001');
-assert.ok(draft.agentSet.pf.agentId !== draft.agentSet.pm.agentId, 'PF and PM must be distinct agents');
+const pfAgentId: string = draft.agentSet.pf.agentId;
+const pmAgentId: string = draft.agentSet.pm.agentId;
+assert.ok(String(draft.agentSet.pf.agentId) !== String(draft.agentSet.pm.agentId), 'PF and PM must be distinct agents');
+assert.equal(pfAgentId, 'synthetic-pf-001');
+assert.equal(pmAgentId, 'synthetic-pm-001');
 assert.equal(draft.agentSet.crewCollectiveContextOnly, true);
 
 assert.ok(draft.escapePointDraft.pfSequenceRef.length > 0, 'PF sequenceRef must be present');

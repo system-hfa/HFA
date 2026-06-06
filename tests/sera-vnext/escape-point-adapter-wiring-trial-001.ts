@@ -405,7 +405,6 @@ function assertAuthorOutputLocks(output: ReturnType<typeof buildCandidateTravers
   const result = canonicalAxis(output, 'O')
   assert.equal(result.status, 'TRAVERSAL_BLOCKED_BY_INVALID_ANSWER')
   assert.equal(result.leafCandidate, null)
-  assert.notEqual(result.leafCandidate?.candidateOnlyLeafCode, 'O-E')
   assertCandidateOnlyLocks(result as unknown as Record<string, unknown>, 'canonical O-E')
 }
 

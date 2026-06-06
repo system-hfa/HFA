@@ -117,6 +117,9 @@ assert.ok(
 
 assert.equal(intake.approvedEscapePointScope?.scopeId, 'scope-american-965-cali-reentry-001')
 assert.equal(bridge.traversalAdapterInput.approvedEscapePointScope?.scopeId, 'scope-american-965-cali-reentry-001')
+assert.ok(bridge.traversalAdapterInput.axisAgentRefs, 'axisAgentRefs must exist')
+assert.ok(bridge.traversalAdapterInput.axisMomentRefs, 'axisMomentRefs must exist')
+assert.ok(bridge.traversalAdapterInput.axisEvidenceRefs, 'axisEvidenceRefs must exist')
 assert.equal(bridge.traversalAdapterInput.axisAgentRefs.P, 'crew-integrated-american-965-cali-descent')
 assert.equal(bridge.traversalAdapterInput.axisAgentRefs.O, 'crew-integrated-american-965-cali-descent')
 assert.equal(bridge.traversalAdapterInput.axisAgentRefs.A, 'crew-integrated-american-965-cali-descent')

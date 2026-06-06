@@ -130,7 +130,7 @@ async function main() {
     acceptedForNextGate,
     releaseStatus: acceptedForNextGate ? 'MANUAL_INPUT_VALIDATED_NOT_RELEASED' : 'MANUAL_INPUT_REJECTED',
     releaseBlockedReason: 'Final release gate is not authorized until A4+R-44.',
-    selectedCodesRemainUnresolved: ['perception', 'objective', 'action'].every(
+    selectedCodesRemainUnresolved: (['perception', 'objective', 'action'] as const).every(
       (axis) => baseTrial001.poaClassification[axis].selectedCode === 'UNRESOLVED'
     ),
     proposedCodes: {

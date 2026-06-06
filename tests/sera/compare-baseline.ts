@@ -43,6 +43,14 @@ interface ComparisonResult {
   fixtures: FixtureDiff[]
   totals: { regression: number; improvement: number; changed: number; unchanged: number; skipped: number; missing: number; new: number }
 }
+type DiffTagCategory = FixtureDiff['category']
+const DIFF_TAGS: Partial<Record<DiffTagCategory, string>> = {
+  regression: '▼',
+  improvement: '▲',
+  changed: '●',
+  missing_from_current: '✗',
+  new_in_current: '+',
+}
 
 function parseArgs(argv: string[]) {
   const args: Record<string, string | boolean> = {}
@@ -240,7 +248,7 @@ function printFull(result: ComparisonResult): void {
   if (diffs.length) {
     console.log(`\n  DIFFS:`)
     for (const d of diffs) {
-      const tag = { regression: '▼', improvement: '▲', changed: '●', missing_from_current: '✗', new_in_current: '+' }[d.category] ?? ' '
+      const tag = DIFF_TAGS[d.category] ?? ' '
       console.log(`    ${tag} ${d.fixture_id} [${d.category}]`)
       for (const detail of d.details) {
         console.log(`      ${detail}`)
@@ -268,7 +276,7 @@ function printCompact(result: ComparisonResult): void {
   const diffs = result.fixtures.filter(f => f.category !== 'unchanged' && f.category !== 'skipped')
   if (diffs.length) {
     const list = diffs.map(d => {
-      const tag = { regression: '▼', improvement: '▲', changed: '●', missing_from_current: '✗', new_in_current: '+' }[d.category] ?? ' '
+      const tag = DIFF_TAGS[d.category] ?? ' '
       return `${tag}${d.fixture_id}`
     })
     console.log(`[BASELINE] diffs: ${list.join(' ')}`)

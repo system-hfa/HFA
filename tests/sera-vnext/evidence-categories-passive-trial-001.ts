@@ -13,6 +13,7 @@ import type {
 } from '../../frontend/src/lib/sera-vnext/types'
 
 const OUTPUT_LOCKS = ['CLASSIFIED', 'finalConclusion', 'HFACS', 'Risk/ERC', 'ARMS/ERC']
+type PassiveTrialReleasedCode = HumanValidatedAxisClassification['releasedCode'] | 'O-E'
 
 function createBaseResult(inputId: string): SeraVNextResult {
   return {
@@ -25,10 +26,14 @@ function createBaseResult(inputId: string): SeraVNextResult {
   } as unknown as SeraVNextResult
 }
 
-function release(axis: PoaAxis, code: string, overrides: Partial<HumanValidatedAxisClassification> = {}): HumanValidatedAxisClassification {
+function release(
+  axis: PoaAxis,
+  code: PassiveTrialReleasedCode,
+  overrides: Partial<HumanValidatedAxisClassification> = {}
+): HumanValidatedAxisClassification {
   return {
     axis,
-    releasedCode: code,
+    releasedCode: code as HumanValidatedAxisClassification['releasedCode'],
     source: 'HUMAN_REVIEW',
     reviewerRationale: `Rationale for ${axis}/${code}`,
     evidenceReferences: [`Evidence for ${axis}/${code}`],

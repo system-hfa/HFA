@@ -85,10 +85,10 @@ for (const token of [
 // 9. F-002 / F-003 preserved as blocker for A4R197-E in decision.
 assert.match(decision, /F-002/);
 assert.match(decision, /F-003/);
-assert.match(decision, /A4R197-E.*(BLOQUEADA|bloqueada|continua bloqueada)/is);
+assert.match(decision, /A4R197-E[\s\S]*(BLOQUEADA|bloqueada|continua bloqueada)/i);
 
 // 10. Sequencing: GAP-004 precedes GAP-002 in future design-only blueprint.
-assert.match(decision, /GAP-004.*(precede|antes).*GAP-002/is);
+assert.match(decision, /GAP-004[\s\S]*(precede|antes)[\s\S]*GAP-002/i);
 
 // 11. Opus is reviewer, not sovereign author.
 assert.match(combined, /nao.*autor soberano|revisor\/priorizador/i);

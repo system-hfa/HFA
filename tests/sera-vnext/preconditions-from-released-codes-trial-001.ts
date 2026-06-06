@@ -153,14 +153,14 @@ async function main() {
   const objectiveReleaseC = releaseScenarioC.axisReleases.find((axis: { axis: string }) => axis.axis === 'objective')
   assert.ok(objectiveReleaseC, 'Scenario C: objective release must exist')
   if (objectiveReleaseC) {
-    objectiveReleaseC.releasedCode = 'O-E'
+    objectiveReleaseC.releasedCode = 'O-E' as unknown as typeof objectiveReleaseC.releasedCode
     objectiveReleaseC.evidenceReferences = ['Objective code O-E forced for non-existent-code negative scenario.']
     objectiveReleaseC.reviewerRationale = 'Reserved code test'
   }
   const semanticScenarioC = cloneSemantic(semanticScenarioA)
   const objectiveSemanticC = semanticScenarioC.axisResults.find((axis) => axis.axis === 'objective')
   if (objectiveSemanticC) {
-    objectiveSemanticC.releasedCode = 'O-E'
+    objectiveSemanticC.releasedCode = 'O-E' as unknown as typeof objectiveSemanticC.releasedCode
     objectiveSemanticC.status = 'SEMANTICALLY_CONSISTENT'
     objectiveSemanticC.blockingIssues = []
     objectiveSemanticC.warnings = []

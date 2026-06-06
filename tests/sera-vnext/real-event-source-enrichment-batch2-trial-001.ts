@@ -6,7 +6,7 @@ function readFile(relativePath: string): string {
   return fs.readFileSync(path.resolve(process.cwd(), relativePath), 'utf8')
 }
 
-function parseCsvRows<T extends Record<string, string>>(csv: string): T[] {
+function parseCsvRows<T>(csv: string): T[] {
   const lines = csv.trim().split('\n')
   const header = lines[0].split(',')
   return lines.slice(1).map((line) => {

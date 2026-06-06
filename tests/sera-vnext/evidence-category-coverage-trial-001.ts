@@ -13,6 +13,7 @@ import type {
 } from '../../frontend/src/lib/sera-vnext/types'
 
 const OUTPUT_LOCKS = ['CLASSIFIED', 'finalConclusion', 'HFACS', 'Risk/ERC', 'ARMS/ERC']
+type CoverageTrialReleasedCode = HumanValidatedAxisClassification['releasedCode'] | 'O-E'
 
 function createBaseResult(inputId: string): SeraVNextResult {
   return {
@@ -25,10 +26,14 @@ function createBaseResult(inputId: string): SeraVNextResult {
   } as unknown as SeraVNextResult
 }
 
-function release(axis: PoaAxis, code: string, overrides: Partial<HumanValidatedAxisClassification> = {}): HumanValidatedAxisClassification {
+function release(
+  axis: PoaAxis,
+  code: CoverageTrialReleasedCode,
+  overrides: Partial<HumanValidatedAxisClassification> = {}
+): HumanValidatedAxisClassification {
   return {
     axis,
-    releasedCode: code,
+    releasedCode: code as HumanValidatedAxisClassification['releasedCode'],
     source: 'HUMAN_REVIEW',
     reviewerRationale: `Rationale for ${axis}/${code}`,
     evidenceReferences: [`Evidence for ${axis}/${code}`],
@@ -101,7 +106,7 @@ async function main() {
       code: 'O-C',
       evidenceCategoryHints: [{ category: 'INTENT_AWARENESS', source: 'manual' as const }],
     },
-  ]
+  ] satisfies Parameters<typeof auditPassiveEvidenceCategoryCoverage>[0]['items']
 
   const scenarioAAudit = auditPassiveEvidenceCategoryCoverage({ items: scenarioAItems })
   assert.equal(scenarioAAudit.status, 'PASSIVE_COVERAGE_RECORDED', 'Scenario A: coverage should be recorded')
@@ -130,7 +135,7 @@ async function main() {
 
   // Scenario C: A-D without PHYSICAL_CAPABILITY -> passive gap only
   const scenarioCAudit = auditPassiveEvidenceCategoryCoverage({
-    items: [{ axis: 'action', code: 'A-D', evidenceCategoryHints: [{ category: 'TIME_PRESSURE', source: 'manual' }] }],
+    items: [{ axis: 'action', code: 'A-D', evidenceCategoryHints: [{ category: 'TIME_PRESSURE', source: 'manual' as const }] }],
   })
   const scenarioCGap = scenarioCAudit.findings.find((item) => item.code === 'A-D')
   assert.equal(scenarioCGap?.severity, 'PASSIVE_GAP', 'Scenario C: A-D should report passive gap')
@@ -141,7 +146,7 @@ async function main() {
 
   // Scenario D: O-C without INTENT_AWARENESS -> passive gap only
   const scenarioDAudit = auditPassiveEvidenceCategoryCoverage({
-    items: [{ axis: 'objective', code: 'O-C', evidenceCategoryHints: [{ category: 'RULE_NORM_CONTEXT', source: 'manual' }] }],
+    items: [{ axis: 'objective', code: 'O-C', evidenceCategoryHints: [{ category: 'RULE_NORM_CONTEXT', source: 'manual' as const }] }],
   })
   const scenarioDGap = scenarioDAudit.findings.find((item) => item.code === 'O-C')
   assert.equal(scenarioDGap?.severity, 'PASSIVE_GAP', 'Scenario D: O-C should report passive gap')

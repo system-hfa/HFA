@@ -44,7 +44,7 @@ function makeGateWithOe(): CodeReleaseGateResult {
     axisReleases: [
       {
         axis: 'objective',
-        releasedCode: 'O-E',
+        releasedCode: 'O-E' as unknown as CodeReleaseGateResult['axisReleases'][number]['releasedCode'],
         source: 'HUMAN_REVIEW',
         reviewerRationale: 'O-E negative-control injection for non-existent-code normalization.',
         evidenceReferences: ['Attempt to force O-E as objective code.'],
@@ -71,7 +71,7 @@ function makeSemanticGateWithOe(): SemanticConsistencyGateResult {
     axisResults: [
       {
         axis: 'objective',
-        releasedCode: 'O-E',
+        releasedCode: 'O-E' as unknown as SemanticConsistencyGateResult['axisResults'][number]['releasedCode'],
         status: 'SEMANTICALLY_CONSISTENT',
         checks: [],
         blockingIssues: [],

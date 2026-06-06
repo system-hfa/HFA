@@ -4,6 +4,7 @@ import path from 'node:path'
 import {
   buildCandidateTraversalFromAuthorNodeIntake,
   type AuthorNodeIntakeAxisResult,
+  type AuthorNodeIntakeDecision,
   type AuthorNodeIntakeRecord,
 } from '../../frontend/src/lib/sera-vnext/author-node-intake-adapter'
 import { getCanonicalTraversalNode } from '../../frontend/src/lib/sera-vnext/canonical-traversal'
@@ -190,7 +191,7 @@ function main() {
           nodeId: 'P_CAPABILITY',
           answerValue: 'SIM',
         }),
-        authorDecision: '   ',
+        authorDecision: '   ' as unknown as AuthorNodeIntakeDecision,
       },
     ],
   })

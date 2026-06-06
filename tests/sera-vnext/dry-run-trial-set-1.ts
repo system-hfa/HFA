@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict'
 import { analyzeSeraVNext } from '../../frontend/src/lib/sera-vnext'
-import type { HumanDecisionInputSet } from '../../frontend/src/lib/sera-vnext/types'
+import type {
+  HumanDecisionInputSet,
+  HumanDecisionValidationResult,
+  HumanReviewAxisDecisionContract,
+  PoaAxis,
+} from '../../frontend/src/lib/sera-vnext/types'
 
 type TrialInput = {
   inputId: string
@@ -113,6 +118,7 @@ const allowedStatuses = new Set([
   'READY_FOR_HUMAN_CLASSIFICATION',
   'NOT_IMPLEMENTED',
 ])
+const ALL_AXES: readonly PoaAxis[] = ['perception', 'objective', 'action']
 
 function assertNoForbiddenTopLevel(result: Record<string, unknown>, inputId: string) {
   for (const forbidden of ['hfacs', 'erc_level', 'risk', 'arms', 'finalConclusion', 'codeReleaseGate']) {
@@ -252,7 +258,11 @@ function assertCommon(result: any, inputId: string) {
   assert.equal(result.humanReviewDecisionGate.required, true, `${inputId}: humanReviewDecisionGate.required must be true`)
   assert.equal(result.humanReview.status, 'HUMAN_DECISION_REQUIRED', `${inputId}: humanReview status must be HUMAN_DECISION_REQUIRED`)
 
-  const gateByAxis = new Map(result.humanReviewDecisionGate.axisContracts.map((contract: any) => [contract.axis, contract]))
+  const gateByAxis = new Map<PoaAxis, HumanReviewAxisDecisionContract>(
+    result.humanReviewDecisionGate.axisContracts.map(
+      (contract: HumanReviewAxisDecisionContract) => [contract.axis, contract] as const
+    )
+  )
   for (const axis of [result.poaClassification.perception, result.poaClassification.objective, result.poaClassification.action]) {
     const contract = gateByAxis.get(axis.axis)
     assert.ok(contract, `${inputId}/${axis.axis}: missing decision gate contract`)
@@ -397,10 +407,18 @@ function assertMockHumanDecisionResult(baseResult: any, decisionResult: any, inp
     `${inputId}: mock validation must include results for the proposed axes`
   )
 
-  const contractsByAxis = new Map(baseResult.humanReviewDecisionGate.axisContracts.map((contract: any) => [contract.axis, contract]))
-  const validationByAxis = new Map(decisionResult.humanDecisionValidation.results.map((item: any) => [item.axis, item]))
+  const contractsByAxis = new Map<PoaAxis, HumanReviewAxisDecisionContract>(
+    baseResult.humanReviewDecisionGate.axisContracts.map(
+      (contract: HumanReviewAxisDecisionContract) => [contract.axis, contract] as const
+    )
+  )
+  const validationByAxis = new Map<PoaAxis, HumanDecisionValidationResult>(
+    decisionResult.humanDecisionValidation.results.map(
+      (item: HumanDecisionValidationResult) => [item.axis, item] as const
+    )
+  )
 
-  for (const axis of ['perception', 'objective', 'action']) {
+  for (const axis of ALL_AXES) {
     const contract = contractsByAxis.get(axis)
     const validation = validationByAxis.get(axis)
     const classification = decisionResult.poaClassification[axis]

@@ -5,6 +5,7 @@ import { buildReleasedCodeTraceability } from '../../frontend/src/lib/sera-vnext
 import { derivePreconditionsFromReleasedCodes } from '../../frontend/src/lib/sera-vnext/preconditions'
 import { validateReleasedCodeSemanticConsistency } from '../../frontend/src/lib/sera-vnext/semantic-consistency'
 import type { CodeReleaseGateResult, HumanDecisionInputSet, SemanticConsistencyGateResult } from '../../frontend/src/lib/sera-vnext/types'
+type PreconditionsTrialReleasedCode = CodeReleaseGateResult['axisReleases'][number]['releasedCode'] | 'O-E'
 
 const trial001Narrative = `A Sikorsky S-92A was conducting an offshore transport flight from Halifax/Stanfield International Airport to the Thebaud Central Facility with two pilots and passengers on board. The flight was conducted under IFR to an offshore installation.
 
@@ -24,12 +25,16 @@ function cloneSemantic(gate: SemanticConsistencyGateResult): SemanticConsistency
   return JSON.parse(JSON.stringify(gate)) as SemanticConsistencyGateResult
 }
 
-function makeSingleAxisGate(baseGate: CodeReleaseGateResult, axis: 'perception' | 'objective' | 'action', code: string): CodeReleaseGateResult {
+function makeSingleAxisGate(
+  baseGate: CodeReleaseGateResult,
+  axis: 'perception' | 'objective' | 'action',
+  code: PreconditionsTrialReleasedCode
+): CodeReleaseGateResult {
   const gate = cloneGate(baseGate)
   gate.axisReleases = [
     {
       axis,
-      releasedCode: code,
+      releasedCode: code as CodeReleaseGateResult['axisReleases'][number]['releasedCode'],
       source: 'HUMAN_REVIEW',
       reviewerRationale: `Traceability refinement scenario for ${code}.`,
       evidenceReferences: [`Evidence anchor for ${code}.`],
@@ -212,10 +217,10 @@ async function main() {
   const scenarioDGate = makeSingleAxisGate(releaseScenarioA.codeReleaseGateResult, 'objective', 'O-E')
   const scenarioDSemantic = cloneSemantic(semanticScenarioA)
   scenarioDSemantic.axisResults = [
-    {
-      axis: 'objective',
-      releasedCode: 'O-E',
-      status: 'SEMANTICALLY_CONSISTENT',
+      {
+        axis: 'objective',
+        releasedCode: 'O-E' as unknown as SemanticConsistencyGateResult['axisResults'][number]['releasedCode'],
+        status: 'SEMANTICALLY_CONSISTENT',
       checks: [],
       blockingIssues: [],
       warnings: [],

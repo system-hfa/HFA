@@ -171,7 +171,7 @@ for (const input of scenarios) {
   assertNoForbiddenOutputs(validation as unknown as Record<string, unknown>, `${input.eventId}: validation`)
   assertNoForbiddenOutputs(bridge as unknown as Record<string, unknown>, `${input.eventId}: bridge`)
 
-  assert.equal(bridge.traversalAdapterInput.proposedCodes?.O === 'O-E', false, `${input.eventId}: O-E cannot be active proposed code.`)
+  assert.notEqual(String(bridge.traversalAdapterInput.proposedCodes?.O ?? ''), 'O-E', `${input.eventId}: O-E cannot be active proposed code.`)
 }
 
 // Evidence lock checks from new docs.

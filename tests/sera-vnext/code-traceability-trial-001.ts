@@ -14,17 +14,22 @@ Shortly after the visual approach began, the helicopter developed a high rate of
 The event occurred in an offshore visual approach environment with degraded visual references. Available information included aircraft instruments, visual contact with the facility, flight path and airspeed cues, crew monitoring, standard operating procedures and onboard warning systems. The available warning system did not generate an alert in the relevant configuration/envelope.
 
 The available source material does not fully establish, in this neutral narrative, which pilot was flying, which pilot was monitoring, the exact callouts, the precise timing of recognition, or the exact control inputs during the recovery.`
+type TraceabilityTestCode = CodeReleaseGateResult['axisReleases'][number]['releasedCode'] | 'O-E'
 
 function cloneGate(gate: CodeReleaseGateResult): CodeReleaseGateResult {
   return JSON.parse(JSON.stringify(gate)) as CodeReleaseGateResult
 }
 
-function makeSingleAxisGate(baseGate: CodeReleaseGateResult, axis: 'perception' | 'objective' | 'action', code: string): CodeReleaseGateResult {
+function makeSingleAxisGate(
+  baseGate: CodeReleaseGateResult,
+  axis: 'perception' | 'objective' | 'action',
+  code: TraceabilityTestCode
+): CodeReleaseGateResult {
   const gate = cloneGate(baseGate)
   gate.axisReleases = [
     {
       axis,
-      releasedCode: code,
+      releasedCode: code as CodeReleaseGateResult['axisReleases'][number]['releasedCode'],
       source: 'HUMAN_REVIEW',
       reviewerRationale: `Traceability scenario for ${code}.`,
       evidenceReferences: [`Evidence anchor for ${code}.`],
@@ -174,7 +179,7 @@ async function main() {
   )
 
   // Scenario D: timePressureExcessive canonical mapping
-  const temporalExpectations: Array<{ axis: 'perception' | 'action'; code: string; expected: boolean }> = [
+  const temporalExpectations: Array<{ axis: 'perception' | 'action'; code: TraceabilityTestCode; expected: boolean }> = [
     { axis: 'perception', code: 'P-D', expected: true },
     { axis: 'perception', code: 'P-G', expected: false },
     { axis: 'action', code: 'A-F', expected: false },
