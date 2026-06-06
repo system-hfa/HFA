@@ -1,0 +1,62 @@
+.reportSection {
+  margin-top: 1.25rem;
+}
+
+.reportTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.reportText {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.reportList {
+  margin: 0.5rem 0 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.reportBox {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  padding: 0.625rem;
+}
+
+.reportNote {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #475569;
+}
+
+@media print {
+  .screenOnly {
+    display: none !important;
+  }
+
+  :global(body) {
+    background: #ffffff !important;
+  }
+
+  .reportPage {
+    margin: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .reportShell {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0.5in !important;
+  }
+
+  .reportSection {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
