@@ -153,21 +153,25 @@ for (const prefix of [
   }
 }
 
+function isAllowedSeraVNextAdminApiPath(file: string): boolean {
+  if (
+    file === "frontend/src/app/api/admin/sera-vnext/candidate/route.ts" &&
+    existsSync(rel("tests/sera-vnext/product-alpha-candidate-only-trial-001.ts")) &&
+    existsSync(rel("tests/sera-vnext/engine-v0-product-alpha-parity-trial-001.ts"))
+  ) {
+    return true;
+  }
+
+  return (
+    file === "frontend/src/app/api/admin/sera-vnext/status/route.ts" &&
+    existsSync(rel("tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts")) &&
+    existsSync(rel("tests/sera-vnext/auth-feature-flags-a4r222max-trial-001.ts"))
+  );
+}
+
 for (const file of changed) {
   if (file.startsWith("frontend/src/app/api/")) {
-    assert.equal(
-      file,
-      "frontend/src/app/api/admin/sera-vnext/status/route.ts",
-      `unexpected API path changed in A4R217 trial: ${file}`,
-    );
-    assert.ok(
-      existsSync(rel("tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts")),
-      "A4R221 endpoint/page trial must authorize the SERA vNext admin API route",
-    );
-    assert.ok(
-      existsSync(rel("tests/sera-vnext/auth-feature-flags-a4r222max-trial-001.ts")),
-      "A4R222 auth/feature flag trial must authorize the SERA vNext admin API route",
-    );
+    assert.ok(isAllowedSeraVNextAdminApiPath(file), `unexpected API path changed in A4R217 trial: ${file}`);
   }
 }
 

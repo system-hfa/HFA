@@ -70,10 +70,10 @@ export function validateSeraVNextCandidateInput(
     "NON_FINAL_OUTPUT_ONLY",
     "NO_PERSISTENCE",
     "NO_EXTERNAL_CALLS",
-    "REAL_TREE_MISSING",
+    "HUMAN_REVIEW_REQUIRED",
   ];
   const uncertainties: string[] = [
-    "Canonical SERA tree traversal is not available in this runtime path.",
+    "Candidate-only output remains non-final and requires human review before any methodological release.",
   ];
 
   const htmlStripped = stripHtmlTags(rawText);

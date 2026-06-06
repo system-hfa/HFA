@@ -1,3 +1,5 @@
+import type { SeraVNextEngineOutput } from "../../sera-vnext/engine-contract";
+
 export type SeraVNextCandidateOnlyInput = {
   eventText: string;
   clientRequestId?: string | null;
@@ -48,24 +50,13 @@ export type SeraVNextCandidateEscapeWindow = {
   limitations: string[];
 };
 
-export type SeraVNextCandidateOnlyResponse = {
-  mode: "CANDIDATE_ONLY_NON_FINAL";
+export type SeraVNextCandidateOnlyResponse = SeraVNextEngineOutput & {
   requestId: string;
   inputAccepted: true;
   analysisStatus: "CANDIDATE_ONLY";
-  canonicalTreeStatus: "REAL_TREE_MISSING";
-  facts: SeraVNextCandidateFact[];
-  timeline: SeraVNextCandidateTimelineItem[];
-  escapePointCandidate: SeraVNextCandidateEscapeWindow;
-  reasoningLanes: SeraVNextCandidateReasoningLane;
+  canonicalTreeStatus: SeraVNextEngineOutput["canonicalTraversal"]["status"];
   uncertainties: string[];
   warnings: string[];
-  selectedCode: null;
-  releasedCode: null;
-  finalConclusion: null;
-  classifiedOutput: false;
-  readyPromotion: false;
-  downstreamAllowed: false;
   persisted: false;
 };
 

@@ -1,12 +1,13 @@
-import { assertProductBetaBlocked, runSeraVNextEngineValidation } from "./engine-validation/run-engine-validation";
+import assert from 'node:assert/strict'
+import { runEngineValidationV0 } from './engine-validation-v0/run-all'
 
 async function main() {
-  const result = await runSeraVNextEngineValidation("generalization");
-  assertProductBetaBlocked(result);
-  console.log("SERA_VNEXT_ENGINE_GENERALIZATION_VALIDATION_BLOCKED_PRODUCT_BETA");
+  const report = await runEngineValidationV0({ groups: ['generalization'] })
+  assert.equal(report.failCount, 0)
+  console.log('SERA_VNEXT_ENGINE_GENERALIZATION_VALIDATION_OK')
 }
 
 main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+  console.error(error)
+  process.exitCode = 1
+})

@@ -25,9 +25,9 @@ async function main() {
   });
 
   assert.deepEqual(directRepeat, direct, "direct candidate service must be deterministic for equal input and requestId");
-  assert.equal(direct.mode, "CANDIDATE_ONLY_NON_FINAL");
+  assert.equal(direct.mode, "CANDIDATE_ONLY");
   assert.equal(direct.analysisStatus, "CANDIDATE_ONLY");
-  assert.equal(direct.canonicalTreeStatus, "REAL_TREE_MISSING");
+  assert.equal(direct.canonicalTreeStatus, "COMPLETED_CANDIDATE_ONLY");
   assert.equal(direct.selectedCode, null);
   assert.equal(direct.releasedCode, null);
   assert.equal(direct.finalConclusion, null);
@@ -35,17 +35,20 @@ async function main() {
   assert.equal(direct.readyPromotion, false);
   assert.equal(direct.downstreamAllowed, false);
   assert.equal(direct.persisted, false);
-  assert.ok(direct.facts.length >= 3, "factual extraction expected");
-  assert.ok(direct.timeline.length >= 3, "timeline expected");
-  assert.ok(direct.reasoningLanes.perception.length >= 1, "perception lane expected");
-  assert.ok(direct.reasoningLanes.objective.length >= 1, "objective lane expected");
-  assert.ok(direct.reasoningLanes.action.length >= 1, "action lane expected");
-  assert.ok(direct.escapePointCandidate.supportingEvidence.length >= 1, "escape window evidence expected");
+  assert.ok(direct.factualExtraction.facts.length >= 3, "factual extraction expected");
+  assert.ok(direct.factualExtraction.timeline.length >= 3, "timeline expected");
+  assert.notEqual(direct.axes.perception.status, "INSUFFICIENT_EVIDENCE", "perception axis expected");
+  assert.notEqual(direct.axes.objective.status, "INSUFFICIENT_EVIDENCE", "objective axis expected");
+  assert.notEqual(direct.axes.action.status, "INSUFFICIENT_EVIDENCE", "action axis expected");
+  assert.ok(direct.canonicalTraversal.paths.every((path) => path.nodeIds.length >= 1), "canonical paths expected");
+  assert.ok(direct.escapePoint.supportingEvidence.length >= 1, "escape window evidence expected");
   assert.equal(
-    direct.escapePointCandidate.latestCandidate?.includes("struck runway lights") ?? false,
+    direct.escapePoint.latestCandidate?.includes("struck runway lights") ?? false,
     false,
     "escape window must not use consequence as causal window boundary",
   );
+  assert.ok(direct.preconditions.length >= 1, "candidate-only preconditions expected");
+  assert.equal(direct.canonicalTraversal.paths.length, 3, "three canonical axis paths expected");
 
   const events: Array<Record<string, unknown>> = [];
   const request = new Request("http://localhost/api/admin/sera-vnext/candidate", {
@@ -80,7 +83,7 @@ async function main() {
   const payload = (await response.json()) as Awaited<ReturnType<typeof analyzeSeraVNextCandidateOnly>>;
   assert.equal(payload.requestId, "candidate-route-ok");
   assert.equal(payload.analysisStatus, "CANDIDATE_ONLY");
-  assert.equal(payload.canonicalTreeStatus, "REAL_TREE_MISSING");
+  assert.equal(payload.canonicalTreeStatus, "COMPLETED_CANDIDATE_ONLY");
   assert.equal(payload.persisted, false);
   assert.equal(payload.readyPromotion, false);
   assert.equal(payload.downstreamAllowed, false);
@@ -88,8 +91,9 @@ async function main() {
   assert.equal(payload.releasedCode, null);
   assert.equal(payload.finalConclusion, null);
   assert.ok(payload.warnings.includes("NON_FINAL_OUTPUT_ONLY"));
-  assert.ok(payload.warnings.includes("REAL_TREE_MISSING"));
-  assert.ok(payload.uncertainties.some((item) => item.includes("Canonical SERA tree traversal")));
+  assert.ok(payload.warnings.includes("HUMAN_REVIEW_REQUIRED"));
+  assert.equal(payload.canonicalTraversal.status, "COMPLETED_CANDIDATE_ONLY");
+  assert.ok(payload.humanReviewPackage.reviewerDecisionsRequired.length >= 1);
 
   const eventsText = JSON.stringify(events);
   assert.ok(events.some((event) => event.event === "sera_vnext_candidate_assessment_requested"));

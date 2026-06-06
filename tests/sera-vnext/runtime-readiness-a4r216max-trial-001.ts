@@ -221,6 +221,14 @@ const protectedPrefixes = [
 ];
 
 function isAllowedSeraVNextAdminApiPath(file: string): boolean {
+  if (
+    file === "frontend/src/app/api/admin/sera-vnext/candidate/route.ts" &&
+    existsSync(rel("tests/sera-vnext/product-alpha-candidate-only-trial-001.ts")) &&
+    existsSync(rel("tests/sera-vnext/engine-v0-product-alpha-parity-trial-001.ts"))
+  ) {
+    return true;
+  }
+
   return (
     file === "frontend/src/app/api/admin/sera-vnext/status/route.ts" &&
     existsSync(rel("tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts")) &&

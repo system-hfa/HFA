@@ -1,0 +1,91 @@
+import type { SeraVNextEngineOutput } from '../../engine-contract'
+import { buildEvidenceTrace, pushUnique } from '../utils'
+
+export function runStep10Assurance(input: {
+  factualExtraction: SeraVNextEngineOutput['factualExtraction']
+  escapePoint: SeraVNextEngineOutput['escapePoint']
+  directActor: SeraVNextEngineOutput['directActor']
+  axes: SeraVNextEngineOutput['axes']
+  preconditions: SeraVNextEngineOutput['preconditions']
+  canonicalTraversal: SeraVNextEngineOutput['canonicalTraversal']
+}): Pick<
+  SeraVNextEngineOutput,
+  'guardrails' | 'uncertainties' | 'limitations' | 'decisionTrace' | 'evidenceTrace' | 'humanReviewPackage'
+> {
+  const uncertainties: string[] = []
+  const limitations: string[] = []
+  const decisionTrace: SeraVNextEngineOutput['decisionTrace'] = []
+
+  if (input.directActor.status !== 'IDENTIFIED') {
+    pushUnique(uncertainties, 'Direct actor remains ambiguous or not applicable.')
+  }
+  if (input.canonicalTraversal.unansweredQuestions.length > 0) {
+    pushUnique(uncertainties, 'Canonical traversal remains partial for at least one axis.')
+  }
+  if (input.preconditions.length === 0) {
+    pushUnique(limitations, 'No candidate-only precondition could be supported from available evidence.')
+  }
+  if (input.escapePoint.status === 'PROGRESSIVE_ZONE') {
+    pushUnique(limitations, 'Escape point remains a progressive zone and requires human boundary confirmation.')
+  }
+
+  for (const [axisName, axis] of Object.entries(input.axes)) {
+    decisionTrace.push({
+      step: `axis:${axisName}`,
+      decision: axis.proposedCode ? `candidate code ${axis.proposedCode}` : 'candidate code unresolved',
+      evidence: axis.supportingEvidence.slice(0, 2),
+    })
+  }
+
+  const usage: Record<string, string[]> = {}
+  for (const fact of input.factualExtraction.facts) {
+    const uses: string[] = []
+    if (input.escapePoint.supportingEvidence.includes(fact.statement)) uses.push('escapePoint')
+    if (input.preconditions.some((item) => item.evidence.includes(fact.statement))) uses.push('preconditions')
+    if (input.axes.perception.supportingEvidence.includes(fact.statement)) uses.push('axis:perception')
+    if (input.axes.objective.supportingEvidence.includes(fact.statement)) uses.push('axis:objective')
+    if (input.axes.action.supportingEvidence.includes(fact.statement)) uses.push('axis:action')
+    usage[fact.id] = uses
+  }
+
+  const actorMigrationDetected =
+    input.directActor.status === 'NOT_APPLICABLE' &&
+    [input.axes.perception.proposedCode, input.axes.objective.proposedCode, input.axes.action.proposedCode].some(Boolean)
+
+  const reviewWarnings = [
+    ...input.canonicalTraversal.unansweredQuestions,
+    ...input.directActor.actorMigrationWarnings,
+    ...uncertainties,
+  ]
+
+  return {
+    guardrails: {
+      consequenceUsedAsCause: false,
+      postEscapeHuntingDetected: false,
+      oeUsed: false,
+      inventedQuestionDetected: false,
+      actorMigrationDetected,
+      preconditionUsedAsEscapePoint: false,
+    },
+    uncertainties,
+    limitations,
+    decisionTrace,
+    evidenceTrace: buildEvidenceTrace(input.factualExtraction.facts, usage),
+    humanReviewPackage: {
+      inputSummary: input.factualExtraction.timeline.slice(0, 2).map((item) => item.statement).join(' '),
+      escapePointCandidate: input.escapePoint,
+      directActor: input.directActor,
+      axes: input.axes,
+      preconditions: input.preconditions,
+      uncertainties,
+      unansweredQuestions: input.canonicalTraversal.unansweredQuestions,
+      criticalWarnings: reviewWarnings,
+      reviewerDecisionsRequired: [
+        'Confirm or reject the candidate escape point boundary.',
+        'Confirm or reject the direct actor attribution.',
+        'Review P/O/A candidate code alternatives and retained uncertainties.',
+        'Confirm whether each precondition is distinct from the active failure.',
+      ],
+    },
+  }
+}

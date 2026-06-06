@@ -4,43 +4,72 @@ import { useEffect, useState } from 'react'
 import { AlertTriangle, FileWarning, FlaskConical, Lock, ShieldCheck } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 
-type CandidateAssessment = {
-  statement: string
-  supportingEvidence: string[]
-  counterEvidence: string[]
-  limitations: string[]
-}
-
 type CandidateResponse = {
-  mode: 'CANDIDATE_ONLY_NON_FINAL'
+  mode: 'CANDIDATE_ONLY'
   requestId: string
   inputAccepted: true
   analysisStatus: 'CANDIDATE_ONLY'
-  canonicalTreeStatus: 'REAL_TREE_MISSING'
-  facts: Array<{
-    statement: string
-    category: string
-    sourceSentenceIndex: number
-  }>
-  timeline: Array<{
-    order: number
-    statement: string
-    temporalCue: string | null
-    sourceSentenceIndex: number
-  }>
-  escapePointCandidate: {
-    status: 'NON_FINAL_CANDIDATE'
+  canonicalTreeStatus: 'COMPLETED_CANDIDATE_ONLY' | 'PARTIAL' | 'REAL_TREE_MISSING' | 'INSUFFICIENT_EVIDENCE'
+  factualExtraction: {
+    facts: Array<{
+      id: string
+      statement: string
+      category: string
+      sourceSentenceIndex: number
+    }>
+    timeline: Array<{
+      id: string
+      order: number
+      statement: string
+      temporalCue: string | null
+      sourceSentenceIndex: number
+    }>
+    explicitlyUnsupportedClaims: string[]
+  }
+  escapePoint: {
+    status: 'CANDIDATE' | 'PROGRESSIVE_ZONE' | 'NO_HUMAN_ESCAPE_POINT' | 'INSUFFICIENT_EVIDENCE'
     statement: string | null
     earliestCandidate: string | null
     latestCandidate: string | null
+    directActor: string | null
     supportingEvidence: string[]
     counterEvidence: string[]
-    limitations: string[]
+    excludedPostEscapeEvidence: string[]
   }
-  reasoningLanes: {
-    perception: CandidateAssessment[]
-    objective: CandidateAssessment[]
-    action: CandidateAssessment[]
+  directActor: {
+    actor: string | null
+    status: 'IDENTIFIED' | 'AMBIGUOUS' | 'NOT_APPLICABLE'
+    alternatives: string[]
+    actorMigrationWarnings: string[]
+  }
+  axes: {
+    perception: CandidateAxis
+    objective: CandidateAxis
+    action: CandidateAxis
+  }
+  preconditions: Array<{
+    id: string
+    label: string
+    category: string
+    evidence: string[]
+    sourceRuleIds: string[]
+    linkedActor: string | null
+    confidence: string
+  }>
+  canonicalTraversal: {
+    status: 'COMPLETED_CANDIDATE_ONLY' | 'PARTIAL' | 'REAL_TREE_MISSING' | 'INSUFFICIENT_EVIDENCE'
+    paths: Array<{
+      axis: 'P' | 'O' | 'A'
+      candidateCode: string | null
+      status: 'COMPLETED_CANDIDATE_ONLY' | 'PARTIAL' | 'INSUFFICIENT_EVIDENCE'
+      nodeIds: string[]
+      questionPath: string[]
+    }>
+    unansweredQuestions: string[]
+  }
+  humanReviewPackage: {
+    reviewerDecisionsRequired: string[]
+    criticalWarnings: string[]
   }
   uncertainties: string[]
   warnings: string[]
@@ -51,6 +80,17 @@ type CandidateResponse = {
   readyPromotion: false
   downstreamAllowed: false
   persisted: false
+}
+
+type CandidateAxis = {
+  proposedCode: string | null
+  status: 'CANDIDATE' | 'NO_FAILURE' | 'INSUFFICIENT_EVIDENCE' | 'UNRESOLVED'
+  actor: string | null
+  statementAtEscapePoint: string | null
+  supportingEvidence: string[]
+  counterEvidence: string[]
+  excludedPostEscapeEvidence: string[]
+  confidence: string
 }
 
 const candidateUiEnabled =
@@ -207,7 +247,7 @@ export default function AdminSeraVNextCandidatePage() {
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-3">
             <h2 className="text-white font-semibold">Fatos extraídos</h2>
             <ul className="space-y-2 text-sm text-slate-300">
-              {result.facts.map((fact, index) => (
+              {result.factualExtraction.facts.map((fact, index) => (
                 <li key={`${fact.sourceSentenceIndex}-${index}`} className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2">
                   <span className="text-amber-300 mr-2 uppercase text-xs">{fact.category}</span>
                   {fact.statement}
@@ -219,7 +259,7 @@ export default function AdminSeraVNextCandidatePage() {
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-3">
             <h2 className="text-white font-semibold">Cronologia resumida</h2>
             <ul className="space-y-2 text-sm text-slate-300">
-              {result.timeline.map((item) => (
+              {result.factualExtraction.timeline.map((item) => (
                 <li key={item.order} className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2">
                   <span className="text-amber-300 mr-2">#{item.order}</span>
                   {item.statement}
@@ -234,36 +274,71 @@ export default function AdminSeraVNextCandidatePage() {
               <FileWarning className="size-4 text-amber-300" />
               Janela candidata de ponto de fuga
             </div>
-            <p className="text-sm text-slate-300">{result.escapePointCandidate.statement ?? 'Sem janela candidata explícita no texto enviado.'}</p>
+            <p className="text-sm text-slate-300">{result.escapePoint.statement ?? 'Sem janela candidata explícita no texto enviado.'}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
               <div className="rounded-lg border border-slate-800 bg-slate-950 p-3 text-slate-300">
                 <p className="text-xs uppercase tracking-wide text-slate-500 mb-1">Earliest candidate</p>
-                {result.escapePointCandidate.earliestCandidate ?? '-'}
+                {result.escapePoint.earliestCandidate ?? '-'}
               </div>
               <div className="rounded-lg border border-slate-800 bg-slate-950 p-3 text-slate-300">
                 <p className="text-xs uppercase tracking-wide text-slate-500 mb-1">Latest candidate</p>
-                {result.escapePointCandidate.latestCandidate ?? '-'}
+                {result.escapePoint.latestCandidate ?? '-'}
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
-            {(['perception', 'objective', 'action'] as const).map((lane) => (
+            {([
+              ['perception', result.axes.perception],
+              ['objective', result.axes.objective],
+              ['action', result.axes.action],
+            ] as const).map(([lane, item]) => (
               <div key={lane} className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
                 <h2 className="text-white font-semibold capitalize">{lane}</h2>
-                {result.reasoningLanes[lane].length === 0 ? (
-                  <p className="text-sm text-slate-400">Sem candidato não final suficiente nesta lane.</p>
-                ) : (
-                  result.reasoningLanes[lane].map((item, index) => (
-                    <div key={`${lane}-${index}`} className="rounded-lg border border-slate-800 bg-slate-950 p-3 space-y-2 text-sm text-slate-300">
-                      <p>{item.statement}</p>
-                      <p className="text-xs text-slate-500">A favor: {item.supportingEvidence.join(' | ')}</p>
-                      <p className="text-xs text-slate-500">Contra: {item.counterEvidence.join(' | ')}</p>
-                    </div>
-                  ))
-                )}
+                <div className="rounded-lg border border-slate-800 bg-slate-950 p-3 space-y-2 text-sm text-slate-300">
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Status</p>
+                  <p>{item.status}</p>
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Candidate code</p>
+                  <p>{item.proposedCode ?? 'INSUFFICIENT_EVIDENCE'}</p>
+                  <p className="text-xs uppercase tracking-wide text-slate-500">Statement</p>
+                  <p>{item.statementAtEscapePoint ?? 'Sem statement suficiente no ponto de fuga.'}</p>
+                  <p className="text-xs text-slate-500">A favor: {item.supportingEvidence.join(' | ') || '-'}</p>
+                  <p className="text-xs text-slate-500">Contra: {item.counterEvidence.join(' | ') || '-'}</p>
+                </div>
               </div>
             ))}
+          </div>
+
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+              <h2 className="text-white font-semibold mb-3">Preconditions</h2>
+              {result.preconditions.length === 0 ? (
+                <p className="text-sm text-slate-400">Nenhuma precondition candidata sustentada pelo texto disponível.</p>
+              ) : (
+                <ul className="space-y-2 text-sm text-slate-300">
+                  {result.preconditions.map((item) => (
+                    <li key={item.id} className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2">
+                      <p className="text-amber-300 text-xs uppercase">{item.category}</p>
+                      <p>{item.label}</p>
+                      <p className="text-xs text-slate-500 mt-1">{item.evidence.join(' | ')}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+              <h2 className="text-white font-semibold mb-3">Canonical traversal</h2>
+              <div className="space-y-2 text-sm text-slate-300">
+                <p>Status: {result.canonicalTraversal.status}</p>
+                {result.canonicalTraversal.paths.map((path) => (
+                  <div key={path.axis} className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2">
+                    <p className="text-amber-300 text-xs uppercase">{path.axis}</p>
+                    <p>Código: {path.candidateCode ?? 'INSUFFICIENT_EVIDENCE'}</p>
+                    <p className="text-xs text-slate-500">{path.nodeIds.join(' -> ') || 'Sem path executado.'}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
@@ -271,6 +346,11 @@ export default function AdminSeraVNextCandidatePage() {
             <p className="text-sm text-slate-400">
               Estes controles existem apenas no estado desta página. Não salvam dados e não mudam nenhum evento.
             </p>
+            <ul className="space-y-2 text-sm text-slate-300">
+              {result.humanReviewPackage.reviewerDecisionsRequired.map((item) => (
+                <li key={item} className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2">{item}</li>
+              ))}
+            </ul>
             <div className="flex flex-col gap-3 md:flex-row">
               {reviewChoices.map((choice) => (
                 <button

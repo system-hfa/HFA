@@ -227,6 +227,14 @@ const protectedPrefixes = [
 ];
 
 function isAllowedSeraVNextAdminApiPath(changedPath: string): boolean {
+  if (
+    changedPath === "frontend/src/app/api/admin/sera-vnext/candidate/route.ts" &&
+    existsSync(path.join(root, "tests/sera-vnext/product-alpha-candidate-only-trial-001.ts")) &&
+    existsSync(path.join(root, "tests/sera-vnext/engine-v0-product-alpha-parity-trial-001.ts"))
+  ) {
+    return true;
+  }
+
   return (
     changedPath === "frontend/src/app/api/admin/sera-vnext/status/route.ts" &&
     existsSync(path.join(root, "tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts")) &&
