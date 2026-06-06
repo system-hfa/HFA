@@ -1,0 +1,9 @@
+checkId,check,status
+A4R220-CHECK-001,Module imports and executes,PASS
+A4R220-CHECK-002,Summary mode is read-only runtime module,PASS
+A4R220-CHECK-003,Baseline id and counts are preserved,PASS
+A4R220-CHECK-004,Product API UI runtime fields remain false,PASS
+A4R220-CHECK-005,Causal output fields remain null,PASS
+A4R220-CHECK-006,Classification and promotion booleans remain false,PASS
+A4R220-CHECK-007,Warning locks are preserved,PASS
+A4R220-CHECK-008,No API or UI files changed,PASS

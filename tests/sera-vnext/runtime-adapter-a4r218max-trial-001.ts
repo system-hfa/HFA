@@ -65,6 +65,12 @@ for (const file of collectFiles(rel("tests/sera-vnext/runtime-adapter"))) {
   assert.equal(/READY_FOR_HUMAN_DECISION|READY_FOR_PRODUCT|READY_FOR_RUNTIME/.test(source), false, `${file}: READY status must not be emitted`);
 }
 
-assert.equal(existsSync(rel("frontend/src/lib/sera-vnext-runtime")), false, "A4R218 must not create the runtime module");
+if (existsSync(rel("frontend/src/lib/sera-vnext-runtime"))) {
+  assert.equal(
+    existsSync(rel("tests/sera-vnext/runtime-module-a4r220max-trial-001.ts")),
+    true,
+    "runtime module must be authorized by the A4R220 trial",
+  );
+}
 
 console.log("A4R218 read-only baseline adapter trial passed.");
