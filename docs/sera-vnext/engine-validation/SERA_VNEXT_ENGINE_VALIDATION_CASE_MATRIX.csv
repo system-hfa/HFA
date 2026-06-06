@@ -1,0 +1,6 @@
+caseId,scope,entrypoint,expectedStatus,expectedProductBetaGate,expectedObservation
+EV-REG-001-THEBAUD-NONFINAL,regression,frontend/src/lib/sera-vnext/engine.ts,SERA_VNEXT_ENGINE_NOT_IMPLEMENTED,PRODUCT_BETA_FOUNDATION_BLOCKED,Base vNext executes but remains non-final and preconditions are stubbed
+EV-GEN-001-RUNWAY-LIGHTS-NONFINAL,generalization,frontend/src/lib/sera-vnext/engine.ts,SERA_VNEXT_ENGINE_NOT_IMPLEMENTED,PRODUCT_BETA_FOUNDATION_BLOCKED,Second narrative remains non-final and unresolved
+EV-DET-001-PARTIAL-ENGINE-DETERMINISTIC,determinism,frontend/src/lib/sera-vnext/engine.ts and frontend/src/lib/sera-vnext-runtime/candidate-only/candidate-service.ts,SERA_VNEXT_ENGINE_NOT_IMPLEMENTED,PRODUCT_BETA_FOUNDATION_BLOCKED,Partial outputs are deterministic but not Product Beta capable
+EV-BOUNDARY-001-DOWNSTREAM-REQUEST-BLOCKED,boundary,frontend/src/lib/sera-vnext/engine.ts,SERA_VNEXT_ENGINE_NOT_IMPLEMENTED,PRODUCT_BETA_FOUNDATION_BLOCKED,Final conclusion HFACS Risk/ERC and automatic classification requests remain blocked
+EV-PA-E2E-001-CANDIDATE-ONLY-NONFINAL,product_alpha_e2e,frontend/src/app/api/admin/sera-vnext/candidate/route.ts,SERA_VNEXT_ENGINE_NOT_IMPLEMENTED,PRODUCT_BETA_FOUNDATION_BLOCKED,Product Alpha route returns CANDIDATE_ONLY and REAL_TREE_MISSING

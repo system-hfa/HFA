@@ -1,0 +1,6 @@
+id,severity,component,status,detail
+EV-DIV-001,blocking,frontend/src/lib/sera-vnext-runtime/candidate-only/candidate-service.ts,OPEN,Product runtime is candidate-only and reports REAL_TREE_MISSING
+EV-DIV-002,blocking,frontend/src/lib/sera-vnext/steps/07-preconditions.ts,OPEN,Base engine preconditions step is TODO/stub and returns an empty list
+EV-DIV-003,blocking,frontend/src/lib/sera-vnext/canonical-traversal.ts,OPEN,Canonical traversal emits candidate leaf only with selectedCodeAllowed false and releasedCodeAllowed false
+EV-DIV-004,blocking,frontend/src/lib/sera-vnext-runtime/readonly-summary.ts,OPEN,Runtime summary reports product/API/UI/runtime integration false
+EV-DIV-005,blocking,Product Beta foundation,OPEN,Migrations persistence review UI and Beta API remain blocked until executable engine gate is validated

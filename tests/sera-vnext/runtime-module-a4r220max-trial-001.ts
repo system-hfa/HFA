@@ -91,6 +91,7 @@ for (const hit of importHits) {
   const a4r225CandidateAuthorized = rel("tests/sera-vnext/product-alpha-candidate-only-trial-001.ts");
   const a4r225SecurityAuthorized = rel("tests/sera-vnext/product-alpha-security-trial-001.ts");
   const a4r225IntegrityAuthorized = rel("tests/sera-vnext/product-alpha-integrity-trial-001.ts");
+  const engineValidationHarnessAuthorized = rel("tests/sera-vnext/engine-validation/run-engine-validation.ts");
 
   assert.ok(
     hit.startsWith("tests/sera-vnext/runtime-module-a4r220max-trial-001.ts:") ||
@@ -113,6 +114,7 @@ for (const hit of importHits) {
       (hit.startsWith("tests/sera-vnext/product-alpha-candidate-only-trial-001.ts:") && existsSync(a4r225CandidateAuthorized)) ||
       (hit.startsWith("tests/sera-vnext/product-alpha-security-trial-001.ts:") && existsSync(a4r225SecurityAuthorized)) ||
       (hit.startsWith("tests/sera-vnext/product-alpha-integrity-trial-001.ts:") && existsSync(a4r225IntegrityAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/engine-validation/run-engine-validation.ts:") && existsSync(engineValidationHarnessAuthorized)) ||
       (hit.startsWith("frontend/src/app/api/admin/sera-vnext/status/route.ts:") && existsSync(a4r221IntegrationAuthorized)) ||
       (hit.startsWith("frontend/src/app/api/admin/sera-vnext/candidate/route.ts:") && existsSync(a4r225CandidateAuthorized)) ||
       (hit.startsWith("frontend/src/app/(dashboard)/admin/sera-vnext/page.tsx:") && existsSync(a4r221IntegrationAuthorized)) ||
@@ -138,6 +140,7 @@ for (const hit of importHits) {
   assert.ok(existsSync(a4r225CandidateAuthorized), "A4R225 candidate authorization trial must exist");
   assert.ok(existsSync(a4r225SecurityAuthorized), "A4R225 security authorization trial must exist");
   assert.ok(existsSync(a4r225IntegrityAuthorized), "A4R225 integrity authorization trial must exist");
+  assert.ok(existsSync(engineValidationHarnessAuthorized), "engine validation harness authorization trial must exist");
 }
 
 const changed = execSync("git diff --name-only && git diff --cached --name-only", {
