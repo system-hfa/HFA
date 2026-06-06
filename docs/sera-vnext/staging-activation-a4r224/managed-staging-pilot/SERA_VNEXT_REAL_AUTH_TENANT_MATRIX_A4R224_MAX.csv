@@ -1,0 +1,13 @@
+scenario_id,session_type,role,tenant_class,real_or_mock,flags_state,expected,actual,pass_fail,notes
+S01,no_session,none,none,MOCK,on,401,401,PASS,no auth header
+S02,invalid_token,none,none,MOCK,on,401,401,PASS,malformed JWT
+S03,expired_token,none,none,MOCK,on,401,401,PASS,expired JWT simulation
+S04,common_user,member,enterprise,MOCK,on,403,403,PASS,non-admin enterprise user
+S05,admin_non_authorized_tenant,admin,non_enterprise,MOCK,on,403,403,PASS,admin but tenant plan != enterprise
+S06,authorized_enterprise_admin,admin,enterprise,REAL,on,200,200,PASS,REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED
+S07,disabled_user,admin,enterprise,MOCK,on,401,401,PASS,disabled account simulation
+S08,session_without_tenant,admin,none,MOCK,on,403,403,PASS,missing tenant_id in session
+S09,tenant_divergent,admin,divergent,MOCK,on,403,403,PASS,tenant mismatch
+S10,admin_all_flags_off,admin,enterprise,MOCK,all_off,404,404,PASS,feature disabled
+S11,admin_pilot_flag_off,admin,enterprise,MOCK,pilot_off,404,404,PASS,pilot flag disabled
+S12,admin_all_flags_on,admin,enterprise,MOCK,on,200,200,PASS,all flags enabled

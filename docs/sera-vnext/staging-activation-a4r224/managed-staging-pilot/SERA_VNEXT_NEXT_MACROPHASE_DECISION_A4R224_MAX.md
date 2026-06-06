@@ -1,0 +1,50 @@
+# Next Macrophase Decision — A4R224-MAX
+
+Decision: `MANAGED_STAGING_ACTIVATION_VALIDATED_WITH_LIMITATIONS`
+
+## What Was Validated
+
+1. Environment: LOCAL_WITH_REAL_SUPABASE_SESSION_ONLY — activated
+2. Real Supabase enterprise admin session: VERIFIED (REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED)
+3. Tenant isolation: 12-scenario matrix — all PASS
+4. Endpoint GET /api/admin/sera-vnext/status: 200 with correct payload
+5. Panel /admin/sera-vnext: contract-validated, no write controls
+6. Feature flags: all three activated in controlled environment, defaults remain false
+7. Observability: all 5 events captured, no sensitive data leaked
+8. Rollback: 5-step sequence + 10 cycles — all PASS
+9. Integrity: all 10 artifact hashes confirmed, git diff clean
+10. Load: 50 sequential + 100 concurrent + 25 unauthorized + 25 tenant-mismatch — all correct
+11. TypeCheck: OK
+12. Build: OK
+13. Lint: 0 errors (29 pre-existing warnings)
+14. Full sweep: 14/14 trials passed
+
+## Limitations
+
+1. Environment: local only (no managed staging deployment)
+2. Browser visual smoke: not executed (no Playwright auth state)
+3. Admin pilot: one participant (ADMIN-PILOT-01 = REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED)
+
+## Resolved from A4R223
+
+- `painel preenchido não validado com sessão Supabase admin real` → RESOLVED
+  - Real enterprise admin verified from real Supabase DB
+  - Endpoint returned 200 with correct payload using real user context
+
+## Authorization Boundary (Unchanged)
+
+- Internal operational activation: AUTHORIZED
+- Public production: NOT AUTHORIZED
+- Productive classification: NOT AUTHORIZED
+
+## Recommended Next Phase: A4R225
+
+Execute the candidate-only runtime integration using the blueprint in `SERA_VNEXT_CANDIDATE_ONLY_RUNTIME_BLUEPRINT_A4R224_MAX.md`:
+1. Implement POST /api/admin/sera-vnext/candidate (no DB write)
+2. Validate with full authorization matrix
+3. Validate with tenant isolation
+4. Validate non-final output only
+5. Confirm selectedCode/releasedCode/finalConclusion remain null
+6. Confirm no downstream activation
+
+Do not expand to methodology, Risk Layer, P/O/A, HFACS, recommendations, or production in A4R225.

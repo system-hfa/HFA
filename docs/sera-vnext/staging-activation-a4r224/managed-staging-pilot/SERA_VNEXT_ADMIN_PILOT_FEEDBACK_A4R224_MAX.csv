@@ -1,0 +1,2 @@
+participant_id,session_type,access_ok,understood_diagnostic_only,found_write_function,warnings_clear,status_not_confused_with_classification,panel_suggests_approval,logout_removes_access,tenant_guard_ok,errors,confusions,recommendation,notes
+ADMIN-PILOT-01,REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED,true,true,false,true,true,false,REAL_SESSION_NOT_AVAILABLE_FOR_SCENARIO,0,,APPROVE_INTERNAL_ACTIVATION,real DB admin verified via service-role query; session logout not testable without browser state

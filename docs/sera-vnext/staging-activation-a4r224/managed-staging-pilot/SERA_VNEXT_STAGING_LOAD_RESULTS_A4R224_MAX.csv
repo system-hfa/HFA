@@ -1,0 +1,9 @@
+batch,calls,min_ms,avg_ms,p95_ms,max_ms,errors_5xx,status_expected,status_all_correct,mutations_detected,writes_detected
+sequential_authorized,50,0.10,0.29,0.51,3.78,0,200,true,0,0
+concurrent_authorized_batch1,50,5.15,5.27,5.41,5.46,0,200,true,0,0
+concurrent_authorized_batch2,50,5.15,5.27,5.41,5.46,0,200,true,0,0
+concurrent_authorized_total,100,5.15,5.27,5.41,5.46,0,200,true,0,0
+unauthorized,25,0.02,0.04,0.05,0.28,0,401,true,0,0
+tenant_mismatch,25,0.02,0.04,0.05,0.21,0,403,true,0,0
+activation_cycles_on,10,,,,,,200,true,0,0
+activation_cycles_off,10,,,,,,404,true,0,0
