@@ -1,0 +1,6 @@
+workload,calls,expected_status,actual_status,min_ms,average_ms,p95_ms,max_ms,errors,payload_variants,mutations
+sequential_authorized,25,200,200,0.194,0.691,2.469,5.216,0,1,0
+concurrent_authorized,50,200,200,8.297,8.534,8.745,8.770,0,1,0
+sequential_unauthorized,25,401,401,0.046,0.101,0.234,0.542,0,1,0
+sequential_flags_off,25,404,404,0.038,0.050,0.075,0.087,0,1,0
+flag_on_off_cycles,10,200_then_404,200_then_404,n/a,n/a,n/a,n/a,0,2,0

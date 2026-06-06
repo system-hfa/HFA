@@ -79,6 +79,10 @@ for (const hit of importHits) {
   const a4r222InternalPilotAuthorized = rel("tests/sera-vnext/internal-pilot-a4r222max-trial-001.ts");
   const a4r222IntegrityAuthorized = rel("tests/sera-vnext/runtime-integrity-a4r222max-trial-001.ts");
   const a4r222PerformanceAuthorized = rel("tests/sera-vnext/runtime-performance-a4r222max-trial-001.ts");
+  const a4r223ControlledActivationAuthorized = rel("tests/sera-vnext/controlled-internal-activation-a4r223max-trial-001.ts");
+  const a4r223AuthenticatedSmokeAuthorized = rel("tests/sera-vnext/authenticated-smoke-a4r223max-trial-001.ts");
+  const a4r223RollbackAuthorized = rel("tests/sera-vnext/rollback-flags-a4r223max-trial-001.ts");
+  const a4r223IntegrityHashAuthorized = rel("tests/sera-vnext/integrity-hash-a4r223max-trial-001.ts");
 
   assert.ok(
     hit.startsWith("tests/sera-vnext/runtime-module-a4r220max-trial-001.ts:") ||
@@ -89,6 +93,10 @@ for (const hit of importHits) {
       (hit.startsWith("tests/sera-vnext/internal-pilot-a4r222max-trial-001.ts:") && existsSync(a4r222InternalPilotAuthorized)) ||
       (hit.startsWith("tests/sera-vnext/runtime-integrity-a4r222max-trial-001.ts:") && existsSync(a4r222IntegrityAuthorized)) ||
       (hit.startsWith("tests/sera-vnext/runtime-performance-a4r222max-trial-001.ts:") && existsSync(a4r222PerformanceAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/controlled-internal-activation-a4r223max-trial-001.ts:") && existsSync(a4r223ControlledActivationAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/authenticated-smoke-a4r223max-trial-001.ts:") && existsSync(a4r223AuthenticatedSmokeAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/rollback-flags-a4r223max-trial-001.ts:") && existsSync(a4r223RollbackAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/integrity-hash-a4r223max-trial-001.ts:") && existsSync(a4r223IntegrityHashAuthorized)) ||
       (hit.startsWith("frontend/src/app/api/admin/sera-vnext/status/route.ts:") && existsSync(a4r221IntegrationAuthorized)) ||
       (hit.startsWith("frontend/src/app/(dashboard)/admin/sera-vnext/page.tsx:") && existsSync(a4r221IntegrationAuthorized)) ||
       hit.startsWith("frontend/src/lib/sera-vnext-runtime/"),
@@ -101,6 +109,10 @@ for (const hit of importHits) {
   assert.ok(existsSync(a4r222InternalPilotAuthorized), "A4R222 internal pilot authorization trial must exist");
   assert.ok(existsSync(a4r222IntegrityAuthorized), "A4R222 integrity authorization trial must exist");
   assert.ok(existsSync(a4r222PerformanceAuthorized), "A4R222 performance authorization trial must exist");
+  assert.ok(existsSync(a4r223ControlledActivationAuthorized), "A4R223 controlled activation authorization trial must exist");
+  assert.ok(existsSync(a4r223AuthenticatedSmokeAuthorized), "A4R223 authenticated smoke authorization trial must exist");
+  assert.ok(existsSync(a4r223RollbackAuthorized), "A4R223 rollback authorization trial must exist");
+  assert.ok(existsSync(a4r223IntegrityHashAuthorized), "A4R223 integrity hash authorization trial must exist");
 }
 
 const changed = execSync("git diff --name-only && git diff --cached --name-only", {

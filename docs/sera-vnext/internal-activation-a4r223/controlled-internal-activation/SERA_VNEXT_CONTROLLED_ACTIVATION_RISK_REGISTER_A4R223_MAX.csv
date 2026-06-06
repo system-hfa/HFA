@@ -1,0 +1,10 @@
+risk,control,status
+Accidental production activation,flags used only in local process and remain default false,CONTROLLED
+Unauthorized access,real no-session and invalid-token denial plus requireAdmin equivalent matrix,CONTROLLED
+Tenant bypass,wrong-plan missing-tenant and divergent-tenant contexts return 403,CONTROLLED
+Public flag bypass,public diagnostics flag cannot enable server endpoint,CONTROLLED
+Authorized browser path not live-tested,no reusable admin auth state; limitation recorded,OPEN_LIMITATION
+Classification activation,three runtime locks remain false,CONTROLLED
+Database mutation,no mutation imports or calls and hashes remain unchanged,CONTROLLED
+Sensitive logging,sanitized event schema and forbidden-field assertions,CONTROLLED
+UI rollback lag,NEXT_PUBLIC flag requires rebuild or restart; runbook records requirement,CONTROLLED

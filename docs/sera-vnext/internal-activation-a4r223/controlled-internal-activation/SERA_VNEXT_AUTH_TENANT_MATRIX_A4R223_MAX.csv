@@ -1,0 +1,11 @@
+actor,authenticated,role,tenant,flag_state,expected_status,actual_status,pass_fail,notes
+no_token,false,none,none,on,401,401,PASS,real HTTP and equivalent handler
+invalid_token,false,none,none,on,401,401,PASS,real HTTP and equivalent handler
+authenticated_non_admin,true,member,enterprise,on,403,403,PASS,safe equivalent auth context
+admin_wrong_tenant_plan,true,admin,non_enterprise,on,403,403,PASS,safe equivalent auth context
+authorized_admin,true,admin,enterprise,on,200,200,PASS,safe equivalent auth context
+expired_token,false,none,none,on,401,401,PASS,safe equivalent auth context
+disabled_user,false,disabled,enterprise,on,401,401,PASS,supported as rejected auth context
+session_without_tenant,true,admin,none,on,403,403,PASS,safe equivalent auth context
+tenant_mismatch,true,admin,divergent,on,403,403,PASS,safe equivalent auth context
+flags_off_admin,true,admin,enterprise,off,404,404,PASS,auth is not evaluated
