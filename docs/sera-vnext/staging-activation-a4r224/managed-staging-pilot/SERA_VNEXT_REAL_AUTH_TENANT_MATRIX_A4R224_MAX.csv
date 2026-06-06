@@ -4,7 +4,7 @@ S02,invalid_token,none,none,MOCK,on,401,401,PASS,malformed JWT
 S03,expired_token,none,none,MOCK,on,401,401,PASS,expired JWT simulation
 S04,common_user,member,enterprise,MOCK,on,403,403,PASS,non-admin enterprise user
 S05,admin_non_authorized_tenant,admin,non_enterprise,MOCK,on,403,403,PASS,admin but tenant plan != enterprise
-S06,authorized_enterprise_admin,admin,enterprise,REAL,on,200,200,PASS,REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED
+S06,authorized_enterprise_admin,admin,enterprise,REAL_DB_PLUS_DI,on,200,200,PASS,REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED + DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED
 S07,disabled_user,admin,enterprise,MOCK,on,401,401,PASS,disabled account simulation
 S08,session_without_tenant,admin,none,MOCK,on,403,403,PASS,missing tenant_id in session
 S09,tenant_divergent,admin,divergent,MOCK,on,403,403,PASS,tenant mismatch

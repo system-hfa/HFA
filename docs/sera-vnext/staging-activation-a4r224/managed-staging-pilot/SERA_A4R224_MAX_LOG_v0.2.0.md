@@ -15,7 +15,7 @@ Branch: main
 
 ## Block 1 — Environment
 
-Environment: LOCAL_WITH_REAL_SUPABASE_SESSION_ONLY  
+Environment: LOCAL_WITH_REAL_DATABASE_LOOKUP_AND_INJECTED_HANDLER_CONTEXT  
 Supabase: czwlmdsibwnclarqgjqo.supabase.co  
 Production affected: NO
 
@@ -34,7 +34,11 @@ Code defaults remain false. No .env committed. No production flag set.
 - Connected via SUPABASE_SERVICE_ROLE_KEY
 - Queried tenants (plan=enterprise): found
 - Queried users (role=admin, tenant in enterprise set): found
-- Session type: REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED
+- Database evidence: REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED
+- Handler evidence: DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED
+- Real Supabase session: REAL_SUPABASE_SESSION_NOT_VERIFIED
+- Real requireAdmin(req) HTTP flow: REAL_REQUIRE_ADMIN_HTTP_FLOW_NOT_VERIFIED
+- Real authenticated browser: REAL_AUTHENTICATED_BROWSER_NOT_VERIFIED
 - User sanitized: REAL-ADMIN-977a8b7a****
 - Tenant sanitized: REAL-TENANT-3a68c15d****
 
@@ -42,7 +46,7 @@ Code defaults remain false. No .env committed. No production flag set.
 
 12 scenarios validated (see SERA_VNEXT_REAL_AUTH_TENANT_MATRIX_A4R224_MAX.csv)  
 All 12: PASS  
-S06 (authorized enterprise admin): used REAL session
+S06 (authorized enterprise admin): used real database record plus dependency-injected handler context
 
 ## Block 5 — Endpoint
 
@@ -81,8 +85,8 @@ noResidualData: true
 
 ## Block 10 — Admin Pilot
 
-Participants: ADMIN-PILOT-01 (REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED)  
-Limitation: single participant; browser session not available
+Participants: ADMIN-PILOT-01 (REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED)  
+Limitation: single participant; no real browser session available
 
 ## Block 11 — Load
 
@@ -137,4 +141,4 @@ Limitations:
 2. No browser visual smoke
 3. Single admin pilot participant
 
-A4R223 limitation RESOLVED: real Supabase enterprise admin session verified.
+A4R223 claim corrected: real enterprise admin database record verified and handler exercised via dependency injection. No real Supabase session or authenticated browser was verified.

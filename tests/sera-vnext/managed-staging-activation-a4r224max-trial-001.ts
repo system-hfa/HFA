@@ -4,7 +4,7 @@ import { handleSeraVNextStatusRequest } from "../../frontend/src/app/api/admin/s
 import { getSeraVNextRuntimeStatus } from "../../frontend/src/lib/sera-vnext-runtime/runtime-service";
 import type { ApiUserContext } from "../../frontend/src/lib/server/api-auth";
 
-const ENVIRONMENT_NAME = "LOCAL_WITH_REAL_SUPABASE_SESSION_ONLY";
+const ENVIRONMENT_NAME = "LOCAL_WITH_REAL_DATABASE_LOOKUP_AND_INJECTED_HANDLER_CONTEXT";
 const SUPABASE_HOST_SANITIZED = "czwlmdsibwnclarqgjqo.supabase.co";
 const COMMIT = "0bc4f5d616390a847f8d8e1dbabb36b470722b94";
 const PHASE = "A4R224-MAX";
@@ -195,6 +195,13 @@ async function main() {
         SERA_VNEXT_READONLY_ENABLED: true,
         SERA_VNEXT_INTERNAL_PILOT_ENABLED: true,
         NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED: true,
+      },
+      evidenceStatus: {
+        databaseRecord: "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED",
+        dependencyInjectedHandler: "DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED",
+        realSupabaseSession: "REAL_SUPABASE_SESSION_NOT_VERIFIED",
+        realRequireAdminHttpFlow: "REAL_REQUIRE_ADMIN_HTTP_FLOW_NOT_VERIFIED",
+        realAuthenticatedBrowser: "REAL_AUTHENTICATED_BROWSER_NOT_VERIFIED",
       },
       flagDefaultsRemainFalse: true,
       sequentialLoad: seqMetrics,

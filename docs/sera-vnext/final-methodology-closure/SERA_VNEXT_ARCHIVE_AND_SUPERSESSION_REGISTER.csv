@@ -1,0 +1,8 @@
+artifact_or_phase,status,superseded_by,still_authoritative,reason,notes
+A4R224 real-session wording,CORRECTED,docs/sera-vnext/staging-activation-a4r224/managed-staging-pilot/SERA_VNEXT_A4R224_EVIDENCE_CORRECTION_NOTICE.md,false,Evidence wording overstated real-session proof,Keep historical file but read through correction notice
+Intermediate methodology readiness packets,SUPERSEDED,docs/sera-vnext/final-methodology-closure/SERA_VNEXT_FINAL_AUTHORITATIVE_STATE.md,false,Single authoritative state replaces layered readiness progression,Historical only
+Intermediate macro roadmaps,SUPERSEDED,docs/sera-vnext/final-methodology-closure/SERA_VNEXT_OPEN_PRODUCT_BACKLOG.csv,false,Product backlog now carries forward active work,Historical only
+Raw Opus inputs,HISTORICAL,docs/sera-vnext/final-methodology-closure/SERA_VNEXT_FINAL_AUTHORITATIVE_STATE.md,false,Not authoritative for current product-stage state,Do not delete history
+A4R223 and earlier activation packets,HISTORICAL,docs/sera-vnext/final-methodology-closure/SERA_VNEXT_PRODUCT_TRANSITION_CONTRACT.md,false,Activation history preserved but no longer state-defining,Use only for audit trail
+Scientific external-validation backlog,HISTORICAL_BACKLOG,docs/sera-vnext/final-methodology-closure/SERA_VNEXT_FINAL_AUTHORITATIVE_STATE.md,false,Optional future work and not a product gate,Not blocking Alpha
+Current product-stage status,ACTIVE,,true,Current authoritative state,Primary entrypoint is SERA_VNEXT_FINAL_AUTHORITATIVE_STATE.md

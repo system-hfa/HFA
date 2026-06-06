@@ -8,7 +8,7 @@
 
 ## Session Used
 
-`REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED` — enterprise admin from real DB (REAL-ADMIN-977a8b7a****)
+`REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED` plus `DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED` - enterprise admin record from real DB (REAL-ADMIN-977a8b7a****)
 
 ## Validation Method
 
@@ -57,4 +57,4 @@ When `NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED` is not set or false:
 
 ## Limitation
 
-Browser visual smoke (screenshot + DOM inspection) was not executed because no Playwright auth state is available in the controlled environment. The above validation is contract-based and statically confirmed. A browser smoke run with a real session is recommended when a managed staging deployment is available.
+Browser visual smoke (screenshot + DOM inspection) was not executed because no Playwright auth state is available in the controlled environment. The above validation is contract-based and statically confirmed. No real Supabase session or real `requireAdmin(req)` flow was executed. A browser smoke run with a real session is recommended when a managed staging deployment is available.

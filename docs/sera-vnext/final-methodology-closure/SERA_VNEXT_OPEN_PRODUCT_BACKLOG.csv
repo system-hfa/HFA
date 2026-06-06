@@ -1,0 +1,12 @@
+backlog_id,area,title,status,notes
+PA-001,alpha,Internal candidate-only runtime,IN_PROGRESS,Delivered in guarded form in this phase and remains under validation
+PA-002,persistence,Persistence for candidate analyses,PENDING,No migration in this phase
+PA-003,audit,Human decision audit trail,PENDING,Store review action plus versioning after Alpha evaluation
+PA-004,workflow,Human review workflow,PENDING,Still local-only state in Alpha
+PA-005,tenant,Enterprise tenant hardening,PENDING,Expand real-session coverage and tenant-specific operational checks
+PA-006,ui,Admin UX refinement,PENDING,Improve readability and operator efficiency without changing methodology
+PA-007,api,Operational endpoint hardening,PENDING,Rate limits and operational controls after Alpha
+PA-008,deployment,Controlled deployment target,PENDING,Provision managed staging or equivalent
+PA-009,monitoring,Operational monitoring,PENDING,Alerting and deeper observability for pilot usage
+PA-010,pilot,Controlled internal pilot,PENDING,Few admins and rollback-ready environment
+PA-011,beta,Internal beta expansion,PENDING,Only after Alpha and pilot evidence

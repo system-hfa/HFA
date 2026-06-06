@@ -4,32 +4,37 @@ Decision: `MANAGED_STAGING_ACTIVATION_VALIDATED_WITH_LIMITATIONS`
 
 ## What Was Validated
 
-1. Environment: LOCAL_WITH_REAL_SUPABASE_SESSION_ONLY — activated
-2. Real Supabase enterprise admin session: VERIFIED (REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED)
-3. Tenant isolation: 12-scenario matrix — all PASS
-4. Endpoint GET /api/admin/sera-vnext/status: 200 with correct payload
-5. Panel /admin/sera-vnext: contract-validated, no write controls
-6. Feature flags: all three activated in controlled environment, defaults remain false
-7. Observability: all 5 events captured, no sensitive data leaked
-8. Rollback: 5-step sequence + 10 cycles — all PASS
-9. Integrity: all 10 artifact hashes confirmed, git diff clean
-10. Load: 50 sequential + 100 concurrent + 25 unauthorized + 25 tenant-mismatch — all correct
-11. TypeCheck: OK
-12. Build: OK
-13. Lint: 0 errors (29 pre-existing warnings)
-14. Full sweep: 14/14 trials passed
+1. Environment: LOCAL_WITH_REAL_DATABASE_LOOKUP_AND_INJECTED_HANDLER_CONTEXT - activated
+2. Real enterprise admin database record: VERIFIED (REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED)
+3. Dependency-injected handler execution: VERIFIED (DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED)
+4. Real Supabase session: NOT VERIFIED (REAL_SUPABASE_SESSION_NOT_VERIFIED)
+5. Real `requireAdmin(req)` HTTP flow: NOT VERIFIED (REAL_REQUIRE_ADMIN_HTTP_FLOW_NOT_VERIFIED)
+6. Real authenticated browser: NOT VERIFIED (REAL_AUTHENTICATED_BROWSER_NOT_VERIFIED)
+7. Tenant isolation: 12-scenario matrix - all PASS
+8. Endpoint GET /api/admin/sera-vnext/status: 200 with correct payload
+9. Panel /admin/sera-vnext: contract-validated, no write controls
+10. Feature flags: all three activated in controlled environment, defaults remain false
+11. Observability: all 5 events captured, no sensitive data leaked
+12. Rollback: 5-step sequence + 10 cycles - all PASS
+13. Integrity: all 10 artifact hashes confirmed, git diff clean
+14. Load: 50 sequential + 100 concurrent + 25 unauthorized + 25 tenant-mismatch - all correct
+15. TypeCheck: OK
+16. Build: OK
+17. Lint: 0 errors (29 pre-existing warnings)
+18. Full sweep: 14/14 trials passed
 
 ## Limitations
 
 1. Environment: local only (no managed staging deployment)
 2. Browser visual smoke: not executed (no Playwright auth state)
-3. Admin pilot: one participant (ADMIN-PILOT-01 = REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED)
+3. Admin pilot: one participant (ADMIN-PILOT-01 = REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED)
 
 ## Resolved from A4R223
 
-- `painel preenchido não validado com sessão Supabase admin real` → RESOLVED
-  - Real enterprise admin verified from real Supabase DB
-  - Endpoint returned 200 with correct payload using real user context
+- `painel preenchido não validado com sessão Supabase admin real` -> corrected
+  - Real enterprise admin record verified from real Supabase DB
+  - Endpoint returned 200 with dependency-injected admin context
+  - No real JWT, cookie, `requireAdmin(req)` HTTP flow, or authenticated browser was validated
 
 ## Authorization Boundary (Unchanged)
 

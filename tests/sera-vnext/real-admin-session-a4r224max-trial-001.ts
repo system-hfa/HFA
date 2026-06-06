@@ -24,7 +24,12 @@ function parseEnvFile(content: string): EnvMap {
 }
 
 type RealSessionResult =
-  | { type: "REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED"; userIdSanitized: string; tenantIdSanitized: string; role: string }
+  | {
+      type: "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED";
+      userIdSanitized: string;
+      tenantIdSanitized: string;
+      role: string;
+    }
   | { type: "REAL_SESSION_NOT_AVAILABLE_FOR_SCENARIO"; reason: string };
 
 async function attemptRealSupabaseValidation(): Promise<RealSessionResult> {
@@ -92,7 +97,7 @@ async function attemptRealSupabaseValidation(): Promise<RealSessionResult> {
       }
       const user = usersResult2.data[0] as Record<string, unknown>;
       return {
-        type: "REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED",
+        type: "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED",
         userIdSanitized: `REAL-ADMIN-${String(user.id).slice(0, 8)}****`,
         tenantIdSanitized: `REAL-TENANT-${String(user.tenant_id).slice(0, 8)}****`,
         role: String(user.role),
@@ -101,7 +106,7 @@ async function attemptRealSupabaseValidation(): Promise<RealSessionResult> {
 
     const user = usersResult.data[0] as Record<string, unknown>;
     return {
-      type: "REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED",
+      type: "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED",
       userIdSanitized: `REAL-ADMIN-${String(user.id).slice(0, 8)}****`,
       tenantIdSanitized: `REAL-TENANT-${String(user.tenant_id).slice(0, 8)}****`,
       role: String(user.role),
@@ -131,13 +136,14 @@ async function main() {
 
     const sessionResult = await attemptRealSupabaseValidation();
 
-    const isReal = sessionResult.type === "REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED";
+    const hasRealDatabaseRecord =
+      sessionResult.type === "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED";
 
-    const adminContext: ApiUserContext = isReal
+    const adminContext: ApiUserContext = hasRealDatabaseRecord
       ? {
-          userId: (sessionResult as Extract<typeof sessionResult, { type: "REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED" }>).userIdSanitized,
+          userId: (sessionResult as Extract<typeof sessionResult, { type: "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED" }>).userIdSanitized,
           email: undefined,
-          tenantId: (sessionResult as Extract<typeof sessionResult, { type: "REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED" }>).tenantIdSanitized,
+          tenantId: (sessionResult as Extract<typeof sessionResult, { type: "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED" }>).tenantIdSanitized,
           role: "admin",
           accessToken: "not-logged",
         }
@@ -197,13 +203,22 @@ async function main() {
       assert.equal(eventsStr.includes(forbidden), false, `${forbidden} must not appear in events`);
     }
 
-    const sessionTypeTag = isReal
-      ? "REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED"
+    const recordStatus = hasRealDatabaseRecord
+      ? "REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED"
       : "REAL_SESSION_NOT_AVAILABLE_FOR_SCENARIO";
 
     console.log(JSON.stringify({
       sessionResult,
-      sessionType: sessionTypeTag,
+      evidenceStatus: {
+        databaseRecord: recordStatus,
+        dependencyInjectedHandler:
+          hasRealDatabaseRecord
+            ? "DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED"
+            : "DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_NOT_EXECUTED",
+        realSupabaseSession: "REAL_SUPABASE_SESSION_NOT_VERIFIED",
+        realRequireAdminHttpFlow: "REAL_REQUIRE_ADMIN_HTTP_FLOW_NOT_VERIFIED",
+        realAuthenticatedBrowser: "REAL_AUTHENTICATED_BROWSER_NOT_VERIFIED",
+      },
       endpointStatus: response.status,
       payloadBaselineId: payload.baselineId,
       payloadNamespace: payload.namespace,
@@ -212,7 +227,9 @@ async function main() {
       payloadProductIntegrated: payload.productIntegrated,
       payloadDownstreamAllowed: payload.downstreamAllowed,
       observabilityEvents: loggedEvents.map((e) => e.event),
-      limitation: isReal ? null : (sessionResult as Extract<typeof sessionResult, { type: "REAL_SESSION_NOT_AVAILABLE_FOR_SCENARIO" }>).reason,
+      limitation: hasRealDatabaseRecord
+        ? "Dependency-injected admin context validated the handler, but no real JWT, cookie, browser session, or requireAdmin(req) HTTP flow was executed."
+        : (sessionResult as Extract<typeof sessionResult, { type: "REAL_SESSION_NOT_AVAILABLE_FOR_SCENARIO" }>).reason,
     }, null, 2));
     console.log("REAL_ADMIN_SESSION_OK");
   } finally {

@@ -1,8 +1,8 @@
-# Real Admin Session Validation — A4R224-MAX
+# Real Admin Evidence Validation — A4R224-MAX
 
 ## Summary
 
-A4R223 limitation resolved: populated-panel visual smoke with a live enterprise admin session is now validated.
+A4R223 evidence gap was partially reduced: a real enterprise admin record was confirmed in the database and the status handler was exercised with dependency-injected admin context.
 
 ## Session Verification Method
 
@@ -11,22 +11,25 @@ A4R223 limitation resolved: populated-panel visual smoke with a live enterprise 
 3. Queried `tenants` table for `plan = 'enterprise'` rows.
 4. Queried `users` table for `role = 'admin'` within enterprise tenant IDs.
 5. Found a verified enterprise admin user.
-6. Called route handler with real user context (dependency injection without actual JWT string).
+6. Called route handler with dependency-injected admin context derived from the verified DB record.
 7. Received HTTP 200 with correct AVAILABLE payload.
 
 ## Session Record (Sanitized)
 
 | Field | Value |
 |---|---|
-| Session type | `REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED` |
+| Evidence status | `REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED` |
 | User ID (sanitized) | `REAL-ADMIN-977a8b7a****` |
 | Tenant ID (sanitized) | `REAL-TENANT-3a68c15d****` |
 | Tenant class | enterprise |
 | Role | admin |
 | User active | true |
-| Token used in request | NOT USED — dependency injection only |
+| Token used in request | NOT USED - dependency injection only |
 | Claims validated | role=admin, tenant plan=enterprise |
-| requireAdmin result | PASSED |
+| Handler evidence | `DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED` |
+| Real Supabase session | `REAL_SUPABASE_SESSION_NOT_VERIFIED` |
+| Real `requireAdmin(req)` HTTP flow | `REAL_REQUIRE_ADMIN_HTTP_FLOW_NOT_VERIFIED` |
+| Real authenticated browser | `REAL_AUTHENTICATED_BROWSER_NOT_VERIFIED` |
 
 ## Endpoint Result
 
@@ -61,15 +64,15 @@ A4R223 limitation resolved: populated-panel visual smoke with a live enterprise 
 
 | Limitation | Status |
 |---|---|
-| Populated-page visual smoke with real enterprise admin session | RESOLVED |
-| requireAdmin guard validation with real DB user | RESOLVED |
+| Populated-page visual smoke with real enterprise admin session | NOT VERIFIED |
+| Handler validation with dependency-injected enterprise admin context | RESOLVED |
 | Tenant enterprise plan verification | RESOLVED |
 
 ## Remaining Limitation
 
-Browser visual smoke (Playwright session with real cookie) was not executed because no persistent auth state is available in the controlled environment. Panel validation was performed via:
+Browser visual smoke (Playwright session with real cookie) was not executed because no persistent auth state is available in the controlled environment. `requireAdmin(req)` was also not exercised with a real JWT or cookie. Panel validation was performed via:
 - contract analysis (page.tsx static inspection)
 - endpoint response validation
 - observability event capture
 
-This limitation does not block internal operational activation.
+These limitations do not invalidate the read-only runtime or the structural activation evidence, but they do prevent any claim of real authenticated browser or real Supabase session verification.

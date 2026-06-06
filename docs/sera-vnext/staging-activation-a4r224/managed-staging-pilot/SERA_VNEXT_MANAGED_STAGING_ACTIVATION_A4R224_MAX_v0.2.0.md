@@ -7,34 +7,38 @@ Status: `MANAGED_STAGING_ACTIVATION_VALIDATED_WITH_LIMITATIONS`
 
 ## Objective
 
-Resolve the A4R223 limitation ("painel preenchido não validado com sessão Supabase admin real") and advance to the internal operational activation boundary.
+Reduce the A4R223 evidence gap, document the exact activation boundary, and advance to the internal operational activation boundary without overstating session evidence.
 
 ## Environment
 
 | Field | Value |
 |---|---|
-| Type | LOCAL_WITH_REAL_SUPABASE_SESSION_ONLY |
+| Type | LOCAL_WITH_REAL_DATABASE_LOOKUP_AND_INJECTED_HANDLER_CONTEXT |
 | Supabase host (sanitized) | czwlmdsibwnclarqgjqo.supabase.co |
 | Commit | 0bc4f5d616390a847f8d8e1dbabb36b470722b94 |
 | Production affected | NO |
 
-## Real Admin Session
+## Real Admin Evidence
 
 | Field | Value |
 |---|---|
-| Session type | REAL_SUPABASE_ENTERPRISE_ADMIN_VERIFIED |
+| Database evidence | REAL_DATABASE_ENTERPRISE_ADMIN_RECORD_VERIFIED |
 | User (sanitized) | REAL-ADMIN-977a8b7a**** |
 | Tenant (sanitized) | REAL-TENANT-3a68c15d**** |
 | Role | admin |
+| Handler evidence | DEPENDENCY_INJECTED_ADMIN_CONTEXT_HANDLER_VERIFIED |
+| Real session evidence | REAL_SUPABASE_SESSION_NOT_VERIFIED |
+| Real `requireAdmin(req)` HTTP flow | REAL_REQUIRE_ADMIN_HTTP_FLOW_NOT_VERIFIED |
+| Real authenticated browser | REAL_AUTHENTICATED_BROWSER_NOT_VERIFIED |
 | Endpoint HTTP status | 200 |
 
 ## Gate Summary
 
 | Gate | Status |
 |---|---|
-| Real Supabase enterprise admin session | PASS |
+| Real enterprise admin database record | PASS |
 | Tenant enterprise plan = enterprise | PASS |
-| requireAdmin guard | PASS |
+| Dependency-injected handler execution | PASS |
 | Endpoint payload correct | PASS |
 | No write/mutation | PASS |
 | No selectedCode/releasedCode/finalConclusion | PASS |
@@ -61,11 +65,11 @@ Resolve the A4R223 limitation ("painel preenchido não validado com sessão Supa
 
 ## A4R223 Limitation Resolution
 
-RESOLVED — real Supabase enterprise admin session verified via service-role DB query. Endpoint validated with real user context. Panel validated by contract + static analysis.
+PARTIALLY RESOLVED - real enterprise admin database record verified via service-role DB query. Endpoint validated with dependency-injected admin context. Panel validated by contract + static analysis.
 
 ## Candidate-Only Blueprint
 
-Prepared. Not executed. Status: CANDIDATE_ONLY_RUNTIME_BLUEPRINT_READY_NOT_EXECUTED
+Prepared. Not executed in A4R224. Status: CANDIDATE_ONLY_RUNTIME_BLUEPRINT_READY_NOT_EXECUTED
 
 ## Next Phase
 
