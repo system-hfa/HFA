@@ -4,11 +4,12 @@ Status: `SERA_VNEXT_PRODUCT_BETA_READY_WITH_LIMITATIONS`
 Blocker: `REAL_MIGRATION_AND_RLS_NOT_EXECUTED`
 
 Gate to internal pilot:
-- [ ] Supabase local or staging available
-- [ ] Migration `20260607135727_sera_vnext_product_beta.sql` applied
-- [ ] RLS tested with real JWT claims
-- [ ] API smoke against real database passed
-- [ ] UI smoke against real database passed
+- [x] Supabase available (real remote database)
+- [x] Migration `20260607135727_sera_vnext_product_beta.sql` applied — 2026-06-07
+- [x] RLS tested with real anon key — PASS (anon SELECT+INSERT blocked)
+- [x] DB constraints verified against real database — PASS (16/16)
+- [ ] API smoke against real database with admin JWT (requires running Next.js server)
+- [ ] UI smoke against real database (requires running Next.js server + browser)
 
 Enable only in internal controlled environments:
 

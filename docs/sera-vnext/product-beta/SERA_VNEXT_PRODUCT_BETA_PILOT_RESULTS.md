@@ -1,10 +1,15 @@
 # SERA vNext Product Beta Pilot Results
 
-Status: `SERA_VNEXT_PRODUCT_BETA_READY_WITH_LIMITATIONS`
-Blocker: `REAL_MIGRATION_AND_RLS_NOT_EXECUTED`
+Status: `SERA_VNEXT_PRODUCT_BETA_INTERNAL_READY_FOR_CONTROLLED_ADMIN_PILOT`
 
-Pilot mode: controlled internal simulation (static/structural), not executed against real database.
-Real pilot execution: PENDING — requires Supabase local or staging with migration applied.
+Real database validation: COMPLETE — 2026-06-07
+Migration applied: `20260607135727_sera_vnext_product_beta.sql`
+DB real: PASS 16/16
+RLS real: PASS 5/5
+Engine v0.1: PASS 39/39
+
+Pilot mode: static/structural simulation complete.
+Real API/UI pilot: PENDING — requires running Next.js server with SERA_VNEXT_PRODUCT_BETA_ENABLED=true and named admin user.
 
 Pilot coverage:
 

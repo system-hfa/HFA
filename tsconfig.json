@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["frontend/src/*"]
+      "@/*": ["frontend/src/*"],
+      "@supabase/supabase-js": ["frontend/node_modules/@supabase/supabase-js/dist/index.d.cts"]
     }
   },
   "include": ["tests/**/*.ts", "tests/**/*.tsx", "frontend/**/*.ts", "frontend/**/*.tsx"]
