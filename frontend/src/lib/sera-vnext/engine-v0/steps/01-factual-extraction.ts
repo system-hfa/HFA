@@ -1,4 +1,5 @@
 import type { SeraVNextEngineInput, SeraVNextEngineOutput } from '../../engine-contract'
+import { extractEvidenceItems } from '../../evidence'
 import { buildCandidateTimeline, extractCandidateFacts, OUTCOME_KEYWORDS } from '../factual-extraction-helpers'
 import { pushUnique } from '../utils'
 
@@ -53,15 +54,18 @@ export function runStep01FactualExtraction(input: SeraVNextEngineInput): SeraVNe
     }
   }
 
+  const normalizedTimeline = timeline.map((item: (typeof timeline)[number]) => ({
+    id: `TIME-${item.order}`,
+    order: item.order,
+    statement: item.statement,
+    temporalCue: item.temporalCue,
+    sourceSentenceIndex: item.sourceSentenceIndex,
+  }))
+
   return {
     facts: normalizedFacts,
-    timeline: timeline.map((item: (typeof timeline)[number]) => ({
-      id: `TIME-${item.order}`,
-      order: item.order,
-      statement: item.statement,
-      temporalCue: item.temporalCue,
-      sourceSentenceIndex: item.sourceSentenceIndex,
-    })),
+    timeline: normalizedTimeline,
+    evidence: extractEvidenceItems({ facts: normalizedFacts, timeline: normalizedTimeline }),
     explicitlyUnsupportedClaims,
   }
 }

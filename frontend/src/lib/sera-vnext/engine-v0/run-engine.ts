@@ -4,6 +4,7 @@ import {
   SERA_VNEXT_FIXTURE_SET_ID,
   SERA_VNEXT_METHODOLOGY_VERSION,
 } from '../ENGINE_VERSION'
+import { extractEvidenceItems } from '../evidence'
 import type { SeraVNextEngineInput, SeraVNextEngineOutput } from '../engine-contract'
 import { runStep01FactualExtraction } from './steps/01-factual-extraction'
 import { runStep02SafeOperationModel } from './steps/02-safe-operation-model'
@@ -23,16 +24,27 @@ export function runSeraVNextEngineV0(input: SeraVNextEngineInput): SeraVNextEngi
   const unsafeState = runStep04UnsafeState({ engineInput: input, factualExtraction })
   const unsafeActOrCondition = runStep05UnsafeActCondition({ engineInput: input, unsafeState })
   const directActor = runStep06DirectActor({ engineInput: input, unsafeActOrCondition })
+  const latestEscapeSentenceIndex =
+    factualExtraction.timeline.find((item) => item.statement === escapePoint.latestCandidate)?.sourceSentenceIndex ?? null
+  const factualExtractionWithEvidence = {
+    ...factualExtraction,
+    evidence: extractEvidenceItems({
+      facts: factualExtraction.facts,
+      timeline: factualExtraction.timeline,
+      directActor: directActor.actor,
+      latestEscapeSentenceIndex,
+    }),
+  }
   const axisStatements = runStep07AxisStatements({ engineInput: input, directActor, unsafeActOrCondition })
   const { axes, canonicalTraversal } = runStep08CanonicalTraversal({
-    engineInput: input,
+    factualExtraction: factualExtractionWithEvidence,
     axisStatements,
     directActor,
     escapePoint,
   })
-  const preconditions = runStep09Preconditions({ factualExtraction, escapePoint, directActor, axes })
+  const preconditions = runStep09Preconditions({ factualExtraction: factualExtractionWithEvidence, escapePoint, directActor, axes })
   const assurance = runStep10Assurance({
-    factualExtraction,
+    factualExtraction: factualExtractionWithEvidence,
     escapePoint,
     directActor,
     axes,
@@ -46,7 +58,7 @@ export function runSeraVNextEngineV0(input: SeraVNextEngineInput): SeraVNextEngi
     baselineId: SERA_VNEXT_BASELINE_ID,
     fixtureSetId: SERA_VNEXT_FIXTURE_SET_ID,
     mode: input.mode,
-    factualExtraction,
+    factualExtraction: factualExtractionWithEvidence,
     safeOperationModel,
     escapePoint: {
       ...escapePoint,

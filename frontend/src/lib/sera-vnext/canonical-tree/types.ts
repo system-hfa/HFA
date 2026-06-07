@@ -4,6 +4,7 @@ export type SeraCanonicalNode = {
   nodeId: string
   axis: CanonicalSeraAxis
   question: string
+  exactQuestionTextENAnchor: string
   questionSource: string
   evidenceRequired: string[]
   prohibitedInferences: string[]
@@ -23,7 +24,13 @@ export type SeraCanonicalTreeDefinition = {
 export type SeraCanonicalTraversalTrace = {
   nodeId: string
   question: string
+  exactQuestionTextENAnchor?: string
   answer: string
   nextNodeId: string | null
   terminalCode: string | null
+  supportingEvidence?: string[]
+  counterEvidence?: string[]
+  prohibitedInferenceChecks?: string[]
+  confidence?: 'LOW' | 'MEDIUM' | 'HIGH'
+  rationale?: string
 }

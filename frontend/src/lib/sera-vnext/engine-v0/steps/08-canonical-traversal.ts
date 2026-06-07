@@ -1,130 +1,77 @@
-import { assertCanonicalSeraLeafCode } from '../../canonical-codes'
 import {
-  buildCanonicalPathForLeaf,
-  collectAxisUnansweredQuestions,
+  runEvidenceTraversal,
   SERA_PT_V1_TREE,
   validateCanonicalTree,
 } from '../../canonical-tree/index'
-import type { SeraAxisCandidate, SeraCanonicalPath, SeraVNextEngineInput, SeraVNextEngineOutput } from '../../engine-contract'
-import { confidenceFromCount, hasAny, normalizeText } from '../utils'
+import type { SeraAxisCandidate, SeraCanonicalPath, SeraVNextEngineOutput } from '../../engine-contract'
+import type { SeraEvidenceItem } from '../../evidence'
+import { axisToEvidenceUse, isEvidenceUsableFor } from '../../evidence'
+import type { CanonicalSeraAxis } from '../../types'
+import { confidenceFromCount } from '../utils'
 
 validateCanonicalTree(SERA_PT_V1_TREE)
 
-function inferPerceptionCode(text: string): string | null {
-  if (hasAny(text, ['does not establish', 'not established', 'not clearly established', 'unclear whether'])) return null
-  if (hasAny(text, ['recognized the warning in time', 'noticed the warning in time', 'recognized the trend in time'])) return 'P-A'
-  if (hasAny(text, ['communication failure', 'misheard', 'readback'])) return 'P-H'
-  if (hasAny(text, ['distraction', 'workload', 'attention saturation', 'fixation', 'rushed'])) return 'P-D'
-  if (hasAny(text, ['monitoring gap', 'cross-check', 'verification missing'])) return 'P-G'
-  if (hasAny(text, ['unfamiliar', 'training', 'knowledge gap'])) return 'P-C'
-  if (hasAny(text, ['visibility', 'fog', 'night', 'degraded visual', 'did not see', 'failed to notice'])) return 'P-B'
-  if (hasAny(text, ['warning', 'cue', 'visual', 'instrument'])) return 'P-A'
-  return null
+function unique(values: string[]): string[] {
+  return [...new Set(values.filter((value) => value.trim().length > 0))]
 }
 
-function inferObjectiveCode(text: string): string | null {
-  if (hasAny(text, ['discontinued the approach', 'executed a go-around', 'aborted the takeoff', 'preserving safe separation'])) return 'O-A'
-  if (hasAny(text, ['does not establish', 'not established', 'not clearly established', 'unclear whether'])) return null
-  if (hasAny(text, ['schedule pressure', 'save time', 'expedite', 'hurry'])) return 'O-D'
-  if (hasAny(text, ['knowingly', 'deliberately', 'intentionally', 'consciously'])) return 'O-C'
-  if (hasAny(text, ['despite warning', 'continued', 'wrong runway', 'pressed on', 'continued approach'])) return 'O-B'
-  if (hasAny(text, ['goal', 'planned', 'intended', 'stabilized'])) return 'O-A'
-  return null
-}
-
-function inferActionCode(text: string): string | null {
-  if (hasAny(text, ['executed a go-around', 'discontinued the approach', 'aborted the takeoff', 'prompt correction'])) return 'A-A'
-  if (hasAny(text, ['does not establish', 'not established', 'not clearly established', 'unclear whether'])) return null
-  if (hasAny(text, ['readback', 'callout', 'communication breakdown'])) return 'A-J'
-  if (hasAny(text, ['time pressure', 'rushed sequence', 'late decision'])) return 'A-H'
-  if (hasAny(text, ['selected wrong', 'wrong runway', 'wrong mode'])) return 'A-I'
-  if (hasAny(text, ['unable physically', 'ergonomic', 'could not reach', 'physical limitation'])) return 'A-D'
-  if (hasAny(text, ['training', 'skill', 'unfamiliar'])) return 'A-E'
-  if (hasAny(text, ['failed to monitor', 'did not verify', 'no feedback', 'late correction'])) return 'A-C'
-  if (hasAny(text, ['technical dominant', 'system failure only', 'no human escape point'])) return 'A-A'
-  if (hasAny(text, ['continued', 'descended', 'turned', 'configured'])) return 'A-C'
-  return null
-}
-
-function candidateStatus(code: string | null): SeraAxisCandidate['status'] {
-  if (!code) return 'INSUFFICIENT_EVIDENCE'
-  if (['P-A', 'O-A', 'A-A'].includes(code)) return 'NO_FAILURE'
-  return 'CANDIDATE'
+function axisEvidence(args: {
+  axis: CanonicalSeraAxis
+  evidence: SeraEvidenceItem[]
+  supplementalEvidence: string[]
+}): string[] {
+  const use = axisToEvidenceUse(args.axis)
+  return unique([
+    ...args.evidence.filter((item) => isEvidenceUsableFor(item, use)).map((item) => item.statement),
+    ...args.supplementalEvidence,
+  ])
 }
 
 function buildAxisCandidate(input: {
-  axis: 'P' | 'O' | 'A'
+  axis: CanonicalSeraAxis
   statement: string | null
   actor: string | null
   supportingEvidence: string[]
   counterEvidence: string[]
   excludedPostEscapeEvidence: string[]
-  proposedCode: string | null
+  evidence: SeraEvidenceItem[]
 }): { axisCandidate: SeraAxisCandidate; path: SeraCanonicalPath; unansweredQuestions: string[] } {
-  const unresolvedPath: SeraCanonicalPath = {
+  const traversal = runEvidenceTraversal({
     axis: input.axis,
-    candidateCode: null,
-    status: input.supportingEvidence.length ? 'PARTIAL' : 'INSUFFICIENT_EVIDENCE',
-    nodeIds: [],
-    questionPath: [],
-    answers: [],
-  }
-
-  if (!input.proposedCode) {
-    return {
-      axisCandidate: {
-        axis: input.axis,
-        proposedCode: null,
-        status: input.supportingEvidence.length ? 'UNRESOLVED' : 'INSUFFICIENT_EVIDENCE',
-        actor: input.actor,
-        statementAtEscapePoint: input.statement,
-        supportingEvidence: input.supportingEvidence,
-        counterEvidence: input.counterEvidence,
-        excludedPostEscapeEvidence: input.excludedPostEscapeEvidence,
-        alternativesConsidered: [],
-        canonicalPath: [],
-        confidence: confidenceFromCount(input.supportingEvidence.length),
-      },
-      path: unresolvedPath,
-      unansweredQuestions: collectAxisUnansweredQuestions({ tree: SERA_PT_V1_TREE, axis: input.axis }),
-    }
-  }
-
-  const leafCode = assertCanonicalSeraLeafCode(input.axis, input.proposedCode)
-  const trace = buildCanonicalPathForLeaf({
-    tree: SERA_PT_V1_TREE,
-    axis: input.axis,
-    leafCode,
+    statementAtEscapePoint: input.statement,
+    evidence: input.evidence,
   })
+
+  const traversalSupport = unique(traversal.path.answers.flatMap((answer) => answer.supportingEvidence ?? []))
+  const traversalCounter = unique(traversal.path.answers.flatMap((answer) => answer.counterEvidence ?? []))
+  const supportingEvidence = axisEvidence({
+    axis: input.axis,
+    evidence: input.evidence,
+    supplementalEvidence: traversalSupport.length ? traversalSupport : input.supportingEvidence,
+  })
+  const counterEvidence = unique([...input.counterEvidence, ...traversalCounter])
 
   return {
     axisCandidate: {
       axis: input.axis,
-      proposedCode: leafCode,
-      status: candidateStatus(leafCode),
+      proposedCode: traversal.candidateCode,
+      status: traversal.status,
       actor: input.actor,
       statementAtEscapePoint: input.statement,
-      supportingEvidence: input.supportingEvidence,
-      counterEvidence: input.counterEvidence,
+      supportingEvidence,
+      counterEvidence,
       excludedPostEscapeEvidence: input.excludedPostEscapeEvidence,
-      alternativesConsidered: [],
-      canonicalPath: trace.map((item: (typeof trace)[number]) => item.nodeId),
-      confidence: confidenceFromCount(input.supportingEvidence.length),
+      alternativesConsidered: traversal.path.answers.map((answer) => `${answer.nodeId}:${answer.answer}`),
+      canonicalPath: traversal.path.nodeIds,
+      confidence: confidenceFromCount(supportingEvidence.length),
     },
-    path: {
-      axis: input.axis,
-      candidateCode: leafCode,
-      status: 'COMPLETED_CANDIDATE_ONLY',
-      nodeIds: trace.map((item: (typeof trace)[number]) => item.nodeId),
-      questionPath: trace.map((item: (typeof trace)[number]) => item.question),
-      answers: trace,
-    },
-    unansweredQuestions: [],
+    path: traversal.path,
+    unansweredQuestions: traversal.unansweredQuestions,
   }
 }
 
 export function runStep08CanonicalTraversal(input: {
-  engineInput: SeraVNextEngineInput
+  factualExtraction: SeraVNextEngineOutput['factualExtraction']
   axisStatements: {
     perception: { statement: string | null; supportingEvidence: string[]; counterEvidence: string[] }
     objective: { statement: string | null; supportingEvidence: string[]; counterEvidence: string[] }
@@ -136,7 +83,6 @@ export function runStep08CanonicalTraversal(input: {
   axes: SeraVNextEngineOutput['axes']
   canonicalTraversal: SeraVNextEngineOutput['canonicalTraversal']
 } {
-  const text = normalizeText(input.engineInput.narrative)
   const perception = buildAxisCandidate({
     axis: 'P',
     statement: input.axisStatements.perception.statement,
@@ -144,7 +90,7 @@ export function runStep08CanonicalTraversal(input: {
     supportingEvidence: input.axisStatements.perception.supportingEvidence,
     counterEvidence: input.axisStatements.perception.counterEvidence,
     excludedPostEscapeEvidence: input.escapePoint.excludedPostEscapeEvidence,
-    proposedCode: inferPerceptionCode(text),
+    evidence: input.factualExtraction.evidence,
   })
   const objective = buildAxisCandidate({
     axis: 'O',
@@ -153,7 +99,7 @@ export function runStep08CanonicalTraversal(input: {
     supportingEvidence: input.axisStatements.objective.supportingEvidence,
     counterEvidence: input.axisStatements.objective.counterEvidence,
     excludedPostEscapeEvidence: input.escapePoint.excludedPostEscapeEvidence,
-    proposedCode: inferObjectiveCode(text),
+    evidence: input.factualExtraction.evidence,
   })
   const action = buildAxisCandidate({
     axis: 'A',
@@ -162,7 +108,7 @@ export function runStep08CanonicalTraversal(input: {
     supportingEvidence: input.axisStatements.action.supportingEvidence,
     counterEvidence: input.axisStatements.action.counterEvidence,
     excludedPostEscapeEvidence: input.escapePoint.excludedPostEscapeEvidence,
-    proposedCode: inferActionCode(text),
+    evidence: input.factualExtraction.evidence,
   })
 
   const paths = [perception.path, objective.path, action.path]

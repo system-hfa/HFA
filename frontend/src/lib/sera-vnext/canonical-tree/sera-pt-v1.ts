@@ -5,6 +5,7 @@ type NodeAccumulator = {
   nodeId: string
   axis: SeraCanonicalNode['axis']
   question: string
+  exactQuestionTextENAnchor: string
   questionSource: string
   evidenceRequired: string[]
   prohibitedInferences: string[]
@@ -54,6 +55,7 @@ function buildTreeDefinition(): SeraCanonicalTreeDefinition {
         nodeId: row.nodeId,
         axis: row.axis,
         question: row.exactQuestionTextPt,
+        exactQuestionTextENAnchor: row.exactQuestionTextEn,
         questionSource: row.sourcePath,
         evidenceRequired: inferEvidenceRequired(row.nodeId),
         prohibitedInferences: inferProhibitedInferences(row.nodeId),

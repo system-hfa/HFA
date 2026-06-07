@@ -1,4 +1,5 @@
 import { buildPassiveEvidenceCategoryHints } from '../evidence-categories'
+import { excludedPostEscapeEvidenceFromTimeline } from '../evidence/temporal-scope'
 import type {
   SeraConfidence,
   SeraFact,
@@ -59,15 +60,15 @@ export function classifyPreconditionCategory(args: {
   const explicitMap: Array<[SeraPreconditionCategory, string[]]> = [
     ['SENSORY_LIMITATION', ['visibility', 'fog', 'night', 'sensory', 'low cloud', 'visual references']],
     ['KNOWLEDGE_TRAINING', ['training', 'knowledge', 'competence', 'unfamiliar']],
-    ['TIME_PRESSURE', ['time pressure', 'urgency', 'rushed', 'late']],
+    ['TIME_PRESSURE', ['time pressure', 'urgency', 'rushed', 'late decision', 'very late']],
     ['COMMUNICATION_INFORMATION', ['communication', 'readback', 'briefing', 'callout']],
     ['PROCEDURAL_MONITORING', ['monitoring', 'cross-check', 'procedure', 'verification']],
     ['FEEDBACK_VERIFICATION', ['feedback', 'verify', 'verification']],
-    ['INTENT_AWARENESS', ['intent', 'conscious', 'knowingly']],
+    ['INTENT_AWARENESS', ['intent', 'conscious', 'knowingly', 'decided', 'decision', 'start the crank']],
     ['TEAM_COORDINATION', ['crew coordination', 'team', 'captain', 'first officer', 'pf', 'pm']],
+    ['ORGANIZATIONAL_CONTEXT', ['schedule', 'organizational', 'dispatch', 'operator pressure', 'reduced staffing', 'degraded supervision', 'staffing', 'supervision']],
     ['ENVIRONMENTAL_CONTEXT', ['weather', 'wind', 'rain', 'runway condition', 'terrain']],
-    ['TECHNICAL_CONTEXT', ['warning', 'system', 'automation', 'fmc', 'equipment']],
-    ['ORGANIZATIONAL_CONTEXT', ['schedule', 'organizational', 'dispatch', 'operator pressure']],
+    ['TECHNICAL_CONTEXT', ['warning', 'system', 'automation', 'fmc', 'equipment', 'control law', 'autothrottle', 'dafcs', 'trim fail', 'rudder', 'technical', 'malfunction', 'failure', 'fault']],
     ['PHYSICAL_CAPABILITY', ['physical', 'fatigue', 'ergonomic', 'motor', 'reach']],
   ]
 
@@ -79,8 +80,5 @@ export function classifyPreconditionCategory(args: {
 }
 
 export function excludedPostEscapeEvidence(timeline: SeraTimelineItem[], latestSourceSentenceIndex: number | null): string[] {
-  if (latestSourceSentenceIndex == null) return []
-  return timeline
-    .filter((item) => item.sourceSentenceIndex > latestSourceSentenceIndex)
-    .map((item) => item.statement)
+  return excludedPostEscapeEvidenceFromTimeline(timeline, latestSourceSentenceIndex)
 }

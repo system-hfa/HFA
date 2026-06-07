@@ -1,4 +1,7 @@
 export { SERA_PT_V1_TREE } from './sera-pt-v1'
 export { validateCanonicalTree } from './validate-tree'
-export { buildCanonicalPathForLeaf, collectAxisUnansweredQuestions } from './traverse-tree'
+export { collectAxisUnansweredQuestions } from './traverse-tree'
+export { evaluateCanonicalNode } from './evaluate-node'
+export { runEvidenceTraversal } from './run-evidence-traversal'
+export type { SeraNodeAnswer, SeraNodeEvidenceContext } from './evaluate-node'
 export type { SeraCanonicalNode, SeraCanonicalTreeDefinition, SeraCanonicalTraversalTrace } from './types'

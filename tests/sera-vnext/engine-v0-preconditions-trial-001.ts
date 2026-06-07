@@ -15,7 +15,7 @@ const result = runSeraVNextEngineV0({
 assert.ok(result.preconditions.length >= 1)
 for (const item of result.preconditions) {
   assert.equal(item.explicitlyNotEscapePoint, true)
-  assert.equal(item.basedOnCandidateCode, true)
+  assert.equal(item.basedOnCandidateCode, false)
   assert.equal(item.nonFinal, true)
   assert.ok(item.evidence.length >= 1)
   assert.ok(item.sourceRuleIds.length >= 1)

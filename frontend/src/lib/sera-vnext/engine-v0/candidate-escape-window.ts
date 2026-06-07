@@ -1,4 +1,5 @@
 import type { SeraTimelineItem } from '../engine-contract'
+import { isPostEscapeStatement } from '../evidence/temporal-scope'
 import { OUTCOME_KEYWORDS } from './factual-extraction-helpers'
 
 type CandidateEscapeWindow = {
@@ -15,6 +16,7 @@ function hasOutcomeSignal(sentence: string): boolean {
 }
 
 function hasControlWindowSignal(sentence: string): boolean {
+  if (isPostEscapeStatement(sentence)) return false
   return /\b(crew|pilot|operator|decided|continued|failed to|did not|executed|turned|descended|climbed|approach|landing|crew|tripula|decidiu|continuou|falhou|executou|desceu|subiu|aproxima[cç][aã]o|pouso)\b/i.test(
     sentence
   )

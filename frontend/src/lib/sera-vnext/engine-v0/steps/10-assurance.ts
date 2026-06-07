@@ -22,6 +22,12 @@ export function runStep10Assurance(input: {
   if (input.canonicalTraversal.unansweredQuestions.length > 0) {
     pushUnique(uncertainties, 'Canonical traversal remains partial for at least one axis.')
   }
+  if (input.escapePoint.status === 'PROGRESSIVE_ZONE') {
+    pushUnique(uncertainties, 'Escape point is a progressive zone and its exact boundary remains non-final.')
+  }
+  if (input.escapePoint.excludedPostEscapeEvidence.length > 0) {
+    pushUnique(uncertainties, 'Post-escape evidence was quarantined from causal traversal.')
+  }
   if (input.preconditions.length === 0) {
     pushUnique(limitations, 'No candidate-only precondition could be supported from available evidence.')
   }

@@ -1,4 +1,5 @@
 import type { SeraVNextEngineOutput, SeraPreconditionCandidate } from '../../engine-contract'
+import type { SeraEvidenceItem, SeraEvidenceRelationshipToFailure } from '../../evidence'
 import { classifyPreconditionCategory, confidenceFromCount, pushUnique } from '../utils'
 
 const CATEGORY_RULE_ID: Record<string, string> = {
@@ -16,43 +17,49 @@ const CATEGORY_RULE_ID: Record<string, string> = {
   ORGANIZATIONAL_CONTEXT: 'PC-RULE-ORGANIZATIONAL_CONTEXT',
 }
 
+function relationshipForEvidence(items: SeraEvidenceItem[]): SeraEvidenceRelationshipToFailure {
+  if (items.some((item) => item.relationshipToFailure === 'CONTEXTUAL_PRECONDITION')) return 'CONTEXTUAL_PRECONDITION'
+  if (items.some((item) => item.relationshipToFailure === 'ENABLING_PRECONDITION')) return 'ENABLING_PRECONDITION'
+  if (items.some((item) => item.relationshipToFailure === 'DIRECT_ESCAPE_POINT')) return 'ENABLING_PRECONDITION'
+  return 'UNRELATED_OR_UNSUPPORTED'
+}
+
+function pushEvidence(target: SeraEvidenceItem[], item: SeraEvidenceItem): void {
+  if (!target.some((candidate) => candidate.evidenceId === item.evidenceId)) target.push(item)
+}
+
 export function runStep09Preconditions(input: {
   factualExtraction: SeraVNextEngineOutput['factualExtraction']
   escapePoint: SeraVNextEngineOutput['escapePoint']
   directActor: SeraVNextEngineOutput['directActor']
   axes: SeraVNextEngineOutput['axes']
 }): SeraPreconditionCandidate[] {
-  const candidates: SeraPreconditionCandidate[] = []
-  const sourceTexts = input.factualExtraction.facts
-    .filter((fact) => ['condition', 'environment', 'warning', 'decision', 'cue'].includes(fact.category))
-    .map((fact) => fact.statement)
+  const categoryEvidence: Record<string, { texts: string[]; sourceEvidence: SeraEvidenceItem[] }> = {}
+  const contextualEvidence = input.factualExtraction.evidence.filter(
+    (item) => item.temporalRelation !== 'POST_ESCAPE' && item.supports.includes('PRECONDITION'),
+  )
 
-  for (const [axisName, axis] of Object.entries(input.axes) as Array<[string, SeraVNextEngineOutput['axes'][keyof SeraVNextEngineOutput['axes']]]>) {
-    const evidence = [...axis.supportingEvidence, ...axis.counterEvidence].slice(0, 3)
-    const categoryEvidence: Record<string, string[]> = {}
-
-    for (const text of [...sourceTexts, ...evidence]) {
-      const category = classifyPreconditionCategory({ text, proposedCode: axis.proposedCode })
-      if (!category) continue
-      categoryEvidence[category] ||= []
-      pushUnique(categoryEvidence[category], text)
-    }
-
-    for (const [category, items] of Object.entries(categoryEvidence)) {
-      candidates.push({
-        id: `PC-${axisName.toUpperCase()}-${category}`,
-        label: `Candidate-only precondition for ${axisName} derived from contextual evidence.`,
-        category: category as SeraPreconditionCandidate['category'],
-        evidence: items,
-        sourceRuleIds: [CATEGORY_RULE_ID[category]],
-        linkedActor: input.directActor.actor,
-        explicitlyNotEscapePoint: true,
-        basedOnCandidateCode: true,
-        nonFinal: true,
-        confidence: confidenceFromCount(items.length),
-      })
-    }
+  for (const item of contextualEvidence) {
+    const category = classifyPreconditionCategory({ text: item.statement, proposedCode: null })
+    if (!category) continue
+    categoryEvidence[category] ||= { texts: [], sourceEvidence: [] }
+    pushUnique(categoryEvidence[category].texts, item.statement)
+    pushEvidence(categoryEvidence[category].sourceEvidence, item)
   }
 
-  return candidates
+  return Object.entries(categoryEvidence).map(([category, evidenceSet]) => ({
+    id: `PC-EVIDENCE-${category}`,
+    label: `Candidate-only ${category} precondition from factual evidence.`,
+    description: `Non-final ${category} precondition candidate retained separately from the escape point and active failure.`,
+    category: category as SeraPreconditionCandidate['category'],
+    evidence: evidenceSet.texts,
+    relationship: relationshipForEvidence(evidenceSet.sourceEvidence),
+    sourceEvidence: evidenceSet.sourceEvidence,
+    sourceRuleIds: [CATEGORY_RULE_ID[category]],
+    linkedActor: input.directActor.actor,
+    explicitlyNotEscapePoint: true,
+    basedOnCandidateCode: false,
+    nonFinal: true,
+    confidence: confidenceFromCount(evidenceSet.texts.length),
+  }))
 }

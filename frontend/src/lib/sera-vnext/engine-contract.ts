@@ -1,4 +1,5 @@
 import type { CanonicalSeraAxis } from './types'
+import type { SeraEvidenceItem, SeraEvidenceRelationshipToFailure } from './evidence/types'
 
 export type SeraConfidence = 'LOW' | 'MEDIUM' | 'HIGH'
 
@@ -48,9 +49,15 @@ export type SeraCanonicalPath = {
   answers: Array<{
     nodeId: string
     question: string
+    exactQuestionTextENAnchor?: string
     answer: string
     nextNodeId: string | null
     terminalCode: string | null
+    supportingEvidence?: string[]
+    counterEvidence?: string[]
+    prohibitedInferenceChecks?: string[]
+    confidence?: SeraConfidence
+    rationale?: string
   }>
 }
 
@@ -99,12 +106,15 @@ export type SeraPreconditionCategory =
 export type SeraPreconditionCandidate = {
   id: string
   label: string
+  description: string
   category: SeraPreconditionCategory
   evidence: string[]
+  relationship: SeraEvidenceRelationshipToFailure
+  sourceEvidence: SeraEvidenceItem[]
   sourceRuleIds: string[]
   linkedActor: string | null
   explicitlyNotEscapePoint: true
-  basedOnCandidateCode: true
+  basedOnCandidateCode: boolean
   nonFinal: true
   confidence: SeraConfidence
 }
@@ -146,6 +156,7 @@ export type SeraVNextEngineOutput = {
   factualExtraction: {
     facts: SeraFact[]
     timeline: SeraTimelineItem[]
+    evidence: SeraEvidenceItem[]
     explicitlyUnsupportedClaims: string[]
   }
 
