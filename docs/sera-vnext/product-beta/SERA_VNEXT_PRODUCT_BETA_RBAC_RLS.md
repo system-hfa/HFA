@@ -10,4 +10,10 @@ Migration RLS adds defense in depth:
 - Authenticated grants are scoped by RLS.
 - Soft-deleted analyses are hidden by default select policy.
 
-Static RLS validation passed. Real RLS execution is limited unless Supabase local/staging is available.
+Static RLS validation: PASSED
+Real RLS execution: NOT YET EXECUTED — blocked by `SUPABASE_LOCAL_UNAVAILABLE`
+
+Status: `RLS_OK_STATIC_LIMITED`
+
+Blocker: `REAL_MIGRATION_AND_RLS_NOT_EXECUTED`
+Required: Supabase local or authorized staging with migration applied before declaring internal pilot ready.

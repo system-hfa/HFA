@@ -1,5 +1,15 @@
 # SERA vNext Product Beta Runbook
 
+Status: `SERA_VNEXT_PRODUCT_BETA_READY_WITH_LIMITATIONS`
+Blocker: `REAL_MIGRATION_AND_RLS_NOT_EXECUTED`
+
+Gate to internal pilot:
+- [ ] Supabase local or staging available
+- [ ] Migration `20260607135727_sera_vnext_product_beta.sql` applied
+- [ ] RLS tested with real JWT claims
+- [ ] API smoke against real database passed
+- [ ] UI smoke against real database passed
+
 Enable only in internal controlled environments:
 
 ```text
