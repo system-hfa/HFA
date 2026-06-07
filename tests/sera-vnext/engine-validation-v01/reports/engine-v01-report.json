@@ -1,0 +1,1901 @@
+{
+  "generatedAt": "2026-06-07T03:31:34.234Z",
+  "totalCases": 39,
+  "groups": {
+    "official": 7,
+    "human": 2,
+    "generalization": 10,
+    "adversarial": 20
+  },
+  "passCount": 39,
+  "noncriticalCount": 0,
+  "criticalCount": 0,
+  "failCount": 0,
+  "errorCount": 0,
+  "caseResults": [
+    {
+      "caseId": "OFFICIAL-COMAIR-5191",
+      "title": "Comair 5191",
+      "group": "official",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "CANDIDATE",
+        "aCode": "A-I",
+        "unansweredQuestions": 1,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "OFFICIAL-ASIANA-214",
+      "title": "Asiana 214",
+      "group": "official",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "OFFICIAL-UPS-1354",
+      "title": "UPS 1354",
+      "group": "official",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "CANDIDATE",
+        "aCode": "A-C",
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "OFFICIAL-GAP-004",
+      "title": "GAP-004 consequence-as-cause",
+      "group": "official",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "CANDIDATE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "CANDIDATE",
+        "aCode": "A-C",
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 3,
+        "postEscapeExcluded": 2
+      }
+    },
+    {
+      "caseId": "OFFICIAL-DELTA-191",
+      "title": "Delta 191",
+      "group": "official",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 4,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "OFFICIAL-USAIR-427",
+      "title": "USAir 427",
+      "group": "official",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 4,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "OFFICIAL-5N-BQJ",
+      "title": "5N-BQJ",
+      "group": "official",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "INSUFFICIENT_EVIDENCE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "HUMAN-THEBAUD",
+      "title": "Thebaud",
+      "group": "human",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 6,
+        "postEscapeExcluded": 2
+      }
+    },
+    {
+      "caseId": "HUMAN-CRANK-2026-0001",
+      "title": "2026-0001 crank event",
+      "group": "human",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "CANDIDATE",
+        "directActor": "pilot",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "GEN-G-WNSB",
+      "title": "G-WNSB",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "GEN-EXECUFLIGHT-1526",
+      "title": "Execuflight 1526",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "CANDIDATE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "GEN-THEBAUD",
+      "title": "Thebaud generalized",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "GEN-PEL-AIR",
+      "title": "Pel-Air",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "CANDIDATE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 1,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "GEN-FIRST-AIR-6560",
+      "title": "First Air 6560",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "CANDIDATE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 1,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "GEN-AIR-CANADA-759",
+      "title": "Air Canada 759",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "CANDIDATE",
+        "pCode": "P-B",
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "CANDIDATE",
+        "aCode": "A-I",
+        "unansweredQuestions": 0,
+        "uncertainties": 1,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "GEN-TRANSASIA-GE235",
+      "title": "TransAsia GE235",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "GEN-TECHNICAL-DOMINANT",
+      "title": "technical dominant control",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "GEN-EVIDENCE-INSUFFICIENT",
+      "title": "evidence insufficient",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 3,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "GEN-NO-FAILURE",
+      "title": "no failure control",
+      "group": "generalization",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "NO_FAILURE",
+        "pCode": "P-A",
+        "oStatus": "NO_FAILURE",
+        "oCode": "O-A",
+        "aStatus": "NO_FAILURE",
+        "aCode": "A-A",
+        "unansweredQuestions": 0,
+        "uncertainties": 1,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-CONSEQUENCE-AS-CAUSE",
+      "title": "consequence as cause",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "CANDIDATE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "CANDIDATE",
+        "aCode": "A-C",
+        "unansweredQuestions": 1,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 3,
+        "postEscapeExcluded": 2
+      }
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-P",
+      "title": "post-escape perception hunting",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "CANDIDATE",
+        "aCode": "A-C",
+        "unansweredQuestions": 1,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 3,
+        "postEscapeExcluded": 2
+      }
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-O",
+      "title": "post-escape objective hunting",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 3,
+        "postEscapeExcluded": 2
+      }
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-A",
+      "title": "post-escape action hunting",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "CANDIDATE",
+        "aCode": "A-C",
+        "unansweredQuestions": 1,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 3,
+        "postEscapeExcluded": 2
+      }
+    },
+    {
+      "caseId": "ADV-ACTOR-MIGRATION",
+      "title": "actor migration",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-PRECONDITION-AS-ESCAPE",
+      "title": "precondition as escape point",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "pilot",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-OE",
+      "title": "O-E forbidden axis",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "INSUFFICIENT_EVIDENCE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-VIOLATION-WITHOUT-AWARENESS",
+      "title": "violation without awareness",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "NO_FAILURE",
+        "pCode": "P-A",
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "CANDIDATE",
+        "aCode": "A-I",
+        "unansweredQuestions": 0,
+        "uncertainties": 1,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-INVENTED-INTENTION",
+      "title": "invented intention",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "ADV-TECHNICAL-DOMINANT",
+      "title": "technical dominant",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "INSUFFICIENT_EVIDENCE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-ENVIRONMENTAL-DOMINANT",
+      "title": "environmental dominant",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 3,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-NO-FAILURE",
+      "title": "no failure",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "NO_FAILURE",
+        "pCode": "P-A",
+        "oStatus": "NO_FAILURE",
+        "oCode": "O-A",
+        "aStatus": "NO_FAILURE",
+        "aCode": "A-A",
+        "unansweredQuestions": 0,
+        "uncertainties": 1,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-INSUFFICIENT-EVIDENCE",
+      "title": "insufficient evidence",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "INSUFFICIENT_EVIDENCE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-PROGRESSIVE-ZONE",
+      "title": "progressive zone",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-PF-PM",
+      "title": "PF PM ambiguity",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 2,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-AA-AC",
+      "title": "A-A versus A-C",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "NO_FAILURE",
+        "oCode": "O-A",
+        "aStatus": "NO_FAILURE",
+        "aCode": "A-A",
+        "unansweredQuestions": 1,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-OA-OC",
+      "title": "O-A versus O-C",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-PC-PG",
+      "title": "P-C versus P-G",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "INSUFFICIENT_EVIDENCE",
+        "directActor": null,
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    },
+    {
+      "caseId": "ADV-WARNING-IGNORED",
+      "title": "warning ignored",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "CANDIDATE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "NO_FAILURE",
+        "pCode": "P-A",
+        "oStatus": "CANDIDATE",
+        "oCode": "O-B",
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 1,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 2,
+        "postEscapeExcluded": 1
+      }
+    },
+    {
+      "caseId": "ADV-WRONG-PERCEPTION-COHERENT-ACTION",
+      "title": "action coherent with wrong perception",
+      "group": "adversarial",
+      "passed": true,
+      "criticalFindings": 0,
+      "noncriticalFindings": 0,
+      "findings": [
+        {
+          "severity": "pass",
+          "field": "case",
+          "detail": "output matches v0.1 methodological boundaries"
+        }
+      ],
+      "outputSummary": {
+        "escapePointStatus": "PROGRESSIVE_ZONE",
+        "directActor": "flight crew (collective)",
+        "pStatus": "UNRESOLVED",
+        "pCode": null,
+        "oStatus": "UNRESOLVED",
+        "oCode": null,
+        "aStatus": "UNRESOLVED",
+        "aCode": null,
+        "unansweredQuestions": 3,
+        "uncertainties": 2,
+        "sourceEvidenceItems": 1,
+        "postEscapeExcluded": 0
+      }
+    }
+  ],
+  "determinism": [
+    {
+      "caseId": "OFFICIAL-COMAIR-5191",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "OFFICIAL-ASIANA-214",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "OFFICIAL-UPS-1354",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "OFFICIAL-GAP-004",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "OFFICIAL-DELTA-191",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "OFFICIAL-USAIR-427",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "OFFICIAL-5N-BQJ",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "HUMAN-THEBAUD",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "HUMAN-CRANK-2026-0001",
+      "runs": 5,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-G-WNSB",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-EXECUFLIGHT-1526",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-THEBAUD",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-PEL-AIR",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-FIRST-AIR-6560",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-AIR-CANADA-759",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-TRANSASIA-GE235",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-TECHNICAL-DOMINANT",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-EVIDENCE-INSUFFICIENT",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "GEN-NO-FAILURE",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-CONSEQUENCE-AS-CAUSE",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-P",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-O",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-A",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-ACTOR-MIGRATION",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-PRECONDITION-AS-ESCAPE",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-OE",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-VIOLATION-WITHOUT-AWARENESS",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-INVENTED-INTENTION",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-TECHNICAL-DOMINANT",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-ENVIRONMENTAL-DOMINANT",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-NO-FAILURE",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-INSUFFICIENT-EVIDENCE",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-PROGRESSIVE-ZONE",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-PF-PM",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-AA-AC",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-OA-OC",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-PC-PG",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-WARNING-IGNORED",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    },
+    {
+      "caseId": "ADV-WRONG-PERCEPTION-COHERENT-ACTION",
+      "runs": 3,
+      "structuralDeterminism": 1,
+      "semanticEquivalence": 1,
+      "identical": true
+    }
+  ],
+  "productAlphaParity": {
+    "passed": true,
+    "findings": []
+  },
+  "sourceDepth": [
+    {
+      "caseId": "OFFICIAL-COMAIR-5191",
+      "evidenceItems": 2,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 10,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "OFFICIAL-ASIANA-214",
+      "evidenceItems": 2,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "OFFICIAL-UPS-1354",
+      "evidenceItems": 2,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "OFFICIAL-GAP-004",
+      "evidenceItems": 3,
+      "postEscapeItems": 2,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "OFFICIAL-DELTA-191",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "OFFICIAL-USAIR-427",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "OFFICIAL-5N-BQJ",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "HUMAN-THEBAUD",
+      "evidenceItems": 6,
+      "postEscapeItems": 2,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "HUMAN_APPLIED_REFERENCE",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "HUMAN-CRANK-2026-0001",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "HUMAN_APPLIED_REFERENCE",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-G-WNSB",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-EXECUFLIGHT-1526",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-THEBAUD",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-PEL-AIR",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-FIRST-AIR-6560",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 8,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-AIR-CANADA-759",
+      "evidenceItems": 2,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 11,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-TRANSASIA-GE235",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-TECHNICAL-DOMINANT",
+      "evidenceItems": 2,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-EVIDENCE-INSUFFICIENT",
+      "evidenceItems": 3,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "GEN-NO-FAILURE",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 8,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-CONSEQUENCE-AS-CAUSE",
+      "evidenceItems": 3,
+      "postEscapeItems": 2,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-P",
+      "evidenceItems": 3,
+      "postEscapeItems": 2,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-O",
+      "evidenceItems": 3,
+      "postEscapeItems": 2,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-A",
+      "evidenceItems": 3,
+      "postEscapeItems": 2,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-ACTOR-MIGRATION",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-PRECONDITION-AS-ESCAPE",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-OE",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-VIOLATION-WITHOUT-AWARENESS",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 10,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-INVENTED-INTENTION",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-TECHNICAL-DOMINANT",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-ENVIRONMENTAL-DOMINANT",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-NO-FAILURE",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 8,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-INSUFFICIENT-EVIDENCE",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-PROGRESSIVE-ZONE",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-PF-PM",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-AA-AC",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 8,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-OA-OC",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-PC-PG",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-WARNING-IGNORED",
+      "evidenceItems": 2,
+      "postEscapeItems": 1,
+      "canonicalAnswers": 7,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    },
+    {
+      "caseId": "ADV-WRONG-PERCEPTION-COHERENT-ACTION",
+      "evidenceItems": 1,
+      "postEscapeItems": 0,
+      "canonicalAnswers": 6,
+      "sourceDepth": {
+        "evidenceSource": "NARRATIVE_ONLY",
+        "canonicalTreeRequired": true,
+        "reportConclusionQuarantined": true,
+        "llmAllowed": false
+      }
+    }
+  ],
+  "finalDecision": "SERA_VNEXT_ENGINE_V01_VALIDATED",
+  "productBetaGate": "PRODUCT_BETA_FOUNDATION_ALLOWED",
+  "blockingReasons": [],
+  "noncriticalLimitations": []
+}
