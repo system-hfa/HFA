@@ -1,4 +1,5 @@
 import { SERA_VNEXT_PRODUCT_BETA_INTERNAL_MARKERS } from '../constants'
+import { buildReviewerOutput } from '../reviewer-output'
 import type { SeraVNextExportPayload, SeraVNextProductContext } from '../types'
 import { getSeraVNextProductVersionSet } from '../versioning'
 import { createAuditEvent } from './create-audit-event'
@@ -35,6 +36,7 @@ export async function exportSeraVNextAnalysis(args: {
       narrative: '[REDACTED_IN_EXPORT_SUMMARY]',
     },
     candidateOutput: analysis.engine_output,
+    reviewerOutput: buildReviewerOutput(analysis.engine_output),
     versions: getSeraVNextProductVersionSet(),
     reviews,
     auditSummary: events.map((event) => ({

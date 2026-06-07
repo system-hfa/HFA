@@ -1,8 +1,8 @@
 issue_id,severity,category,status,title,evidence,recommended_action
-"CP-001","P2","reviewer-utility","OPEN","Candidate P/O/A not actionable for reviewers","Observed in 10/10 pilot cases","Refine beta output and review presentation without reopening methodology"
-"CP-002","P2","reviewer-utility","OPEN","Preconditions not explicit enough","Observed in 9/10 pilot cases","Improve precondition phrasing and surfacing in Product Beta UI/API"
-"CP-003","P2","reviewer-utility","OPEN","Escape point still needs human attention in boundary cases","Observed in 2/10 pilot cases","Improve boundary-case explanation and uncertainty messaging"
-"CP-004","P3","ui-polish","OPEN","Review route font preload warning","Observed in product-beta-ui-real-trial-001","Adjust preload usage or route asset loading"
+"CP-001","P2","reviewer-utility","RESOLVED","Candidate P/O/A not actionable for reviewers","Resolved 0/10 → 10/10 in reviewer-utility remediation 2026-06-07","Closed — reviewer-output layer + review page redesign"
+"CP-002","P2","reviewer-utility","RESOLVED","Preconditions not explicit enough","Resolved 1/10 → 10/10 in reviewer-utility remediation 2026-06-07","Closed — PreconditionReviewerCard with description + reviewerQuestion"
+"CP-003","P2","reviewer-utility","RESOLVED","Escape point still needs human attention in boundary cases","Resolved 8/10 → 10/10 in reviewer-utility remediation 2026-06-07","Closed — boundaryWarnings always explicit for non-CANDIDATE states"
+"CP-004","P3","ui-polish","RESOLVED","Review route font preload warning","Resolved in reviewer-utility remediation 2026-06-07","Closed — display: swap added to Inter font in layout.tsx"
 "CP-005","P1","product-bug","RESOLVED_IN_PHASE","Real admin flow depended on missing public.users mirroring","Fixed in tenant-user/context path during this phase","Keep regression coverage in real API/UI harnesses"
 "CP-006","P1","database-bug","RESOLVED_IN_PHASE","Regex constraint blocked HUMAN_REVIEW_COMPLETED_NON_FINAL","Fixed by migration 20260607164500_sera_vnext_product_beta_non_final_status_fix.sql","Preserve regression coverage in DB real trial"
 "CP-007","P3","test-harness","OPEN","Legacy real-admin-session trial still reports createClient compatibility limitation","Observed in root full sweep but non-blocking for pilot decision","Modernize that legacy helper separately from Product Beta scope"

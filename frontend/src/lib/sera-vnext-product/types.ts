@@ -1,5 +1,6 @@
 import type { ApiUserContext } from '@/lib/server/api-auth'
 import type { SeraVNextEngineInput, SeraVNextEngineOutput } from '@/lib/sera-vnext/engine-contract'
+import type { SeraReviewerOutput } from './reviewer-output'
 import type {
   SeraVNextAnalysisStatus,
   SeraVNextAuditEventType,
@@ -162,6 +163,7 @@ export type SeraVNextAnalysisDetail = {
     readyPromotion: false
     downstreamAllowed: false
   }
+  reviewerOutput: SeraReviewerOutput
 }
 
 export type SeraVNextCreateAnalysisResult = {
@@ -181,6 +183,7 @@ export type SeraVNextExportPayload = {
   markers: ['INTERNAL', 'NON_FINAL', 'NOT_OPERATIONAL']
   analysis: Omit<SeraVNextAnalysisRecord, 'narrative' | 'engine_input' | 'engine_output'> & { narrative: '[REDACTED_IN_EXPORT_SUMMARY]' }
   candidateOutput: SeraVNextEngineOutput
+  reviewerOutput: SeraReviewerOutput
   versions: SeraVNextProductVersionSet
   reviews: SeraVNextReviewRecord[]
   auditSummary: Array<Pick<SeraVNextAuditEventRecord, 'event_type' | 'created_at' | 'request_id' | 'from_status' | 'to_status'>>

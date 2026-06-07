@@ -1,0 +1,8 @@
+issue_id,severity,category,status,title,evidence,recommended_action
+"CP-001","P2","reviewer-utility","RESOLVED","Candidate P/O/A not actionable for reviewers","Resolved 0/10 → 10/10 after reviewer-output layer + review page redesign","Closed — monitor in next cohort"
+"CP-002","P2","reviewer-utility","RESOLVED","Preconditions not explicit enough","Resolved 1/10 → 10/10 after PreconditionReviewerCard + detailed UI","Closed — monitor in next cohort"
+"CP-003","P2","reviewer-utility","RESOLVED","Escape point still needs human attention in boundary cases","Resolved 8/10 → 10/10 after boundaryWarnings and reviewerQuestion always present","Closed — boundary cases now explained explicitly"
+"CP-004","P3","ui-polish","RESOLVED","Review route font preload warning","Fixed by adding display: swap to Inter font config in layout.tsx","Closed"
+"CP-005","P1","product-bug","RESOLVED_IN_PHASE","Real admin flow depended on missing public.users mirroring","Fixed in tenant-user/context path during previous phase","Closed"
+"CP-006","P1","database-bug","RESOLVED_IN_PHASE","Regex constraint blocked HUMAN_REVIEW_COMPLETED_NON_FINAL","Fixed by migration 20260607164500","Closed"
+"CP-007","P3","test-harness","OPEN","Legacy real-admin-session trial still reports createClient compatibility limitation","Observed in root full sweep but non-blocking","Modernize separately from Product Beta scope"

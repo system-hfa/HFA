@@ -1,4 +1,5 @@
 import { notFound } from '../errors'
+import { buildReviewerOutput } from '../reviewer-output'
 import type { SeraVNextAnalysisDetail, SeraVNextProductContext } from '../types'
 import { getSeraVNextProductVersionSet } from '../versioning'
 import { createAuditEvent } from './create-audit-event'
@@ -48,5 +49,6 @@ export async function getSeraVNextAnalysisDetail(args: {
     events,
     versions: getSeraVNextProductVersionSet(),
     locks: productBetaLocks(),
+    reviewerOutput: buildReviewerOutput(analysis.engine_output),
   }
 }
