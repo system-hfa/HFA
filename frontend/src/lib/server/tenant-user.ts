@@ -1,5 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 
+const VALID_USER_ROLES = new Set(['admin', 'analyst', 'viewer'])
+
 export async function ensurePublicUserRow(
   admin: SupabaseClient,
   tenantId: string,
@@ -7,17 +9,41 @@ export async function ensurePublicUserRow(
   email: string | undefined,
   role: string
 ): Promise<string> {
-  const em = email ?? ''
-  const { data: existing } = await admin.from('users').select('id').eq('email', em).limit(1).maybeSingle()
-  if (existing?.id) return existing.id as string
-  await admin.from('users').insert({
+  const normalizedEmail = (email ?? '').trim().toLowerCase() || `${authUserId}@auth.local`
+  const normalizedRole = VALID_USER_ROLES.has(role) ? role : 'viewer'
+
+  const { data: existingById, error: existingByIdError } = await admin
+    .from('users')
+    .select('id')
+    .eq('id', authUserId)
+    .maybeSingle()
+  if (existingByIdError) {
+    throw new Error(`ENSURE_PUBLIC_USER_ROW_LOOKUP_BY_ID_FAILED: ${existingByIdError.message}`)
+  }
+  if (existingById?.id) return authUserId
+
+  const { data: existingByEmail, error: existingByEmailError } = await admin
+    .from('users')
+    .select('id')
+    .eq('email', normalizedEmail)
+    .limit(1)
+    .maybeSingle()
+  if (existingByEmailError) {
+    throw new Error(`ENSURE_PUBLIC_USER_ROW_LOOKUP_BY_EMAIL_FAILED: ${existingByEmailError.message}`)
+  }
+  if (existingByEmail?.id) return existingByEmail.id as string
+
+  const { error: insertError } = await admin.from('users').insert({
     id: authUserId,
     tenant_id: tenantId,
-    email: em,
-    full_name: em ? em.split('@')[0] : 'user',
-    role: role || 'admin',
+    email: normalizedEmail,
+    full_name: normalizedEmail.split('@')[0] || 'user',
+    role: normalizedRole,
     is_active: true,
   })
+  if (insertError) {
+    throw new Error(`ENSURE_PUBLIC_USER_ROW_INSERT_FAILED: ${insertError.message}`)
+  }
   return authUserId
 }
 

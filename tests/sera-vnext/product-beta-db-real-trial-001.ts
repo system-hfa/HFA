@@ -10,11 +10,13 @@ export {};
  * Run: NODE_PATH=frontend/node_modules npx tsx tests/sera-vnext/product-beta-db-real-trial-001.ts
  */
 
-import { createClient } from '@supabase/supabase-js';
 import * as fs from 'fs';
+import { createRequire } from 'module';
 import * as path from 'path';
 
 const TRIAL_ID = 'product-beta-db-real-trial-001';
+const require = createRequire(import.meta.url);
+const { createClient: createSupabaseClient } = require(path.join(__dirname, '../../frontend/node_modules/@supabase/supabase-js'));
 
 // Load .env.local
 const envPath = path.join(__dirname, '../../frontend/.env.local');
@@ -49,7 +51,7 @@ async function run() {
     process.exit(0);
   }
 
-  const admin = createClient(supabaseUrl, serviceRole, {
+  const admin = createSupabaseClient(supabaseUrl, serviceRole, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
@@ -62,7 +64,7 @@ async function run() {
 
   // Anon blocked
   if (anonKey) {
-    const anon = createClient(supabaseUrl, anonKey, {
+    const anon = createSupabaseClient(supabaseUrl, anonKey, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
     for (const t of TABLES) {
@@ -79,11 +81,12 @@ async function run() {
   if (tenants?.length && users?.length) {
     const tenantId = (tenants[0] as { id: string }).id;
     const userId = (users[0] as { id: string }).id;
+    const runSuffix = `${Date.now()}`;
     const safe = { selectedCode: null, releasedCode: null, finalConclusion: null, classifiedOutput: false, readyPromotion: false, downstreamAllowed: false };
     const base = {
       tenant_id: tenantId, created_by: userId, review_status: 'NOT_REVIEWED',
       narrative: 'Real DB trial narrative with sufficient length for constraint validation.',
-      narrative_hash: 'hash', source_type: 'TEST', request_id: 'req-db-real-001',
+      narrative_hash: `hash-${runSuffix}`, source_type: 'TEST', request_id: `req-db-real-${runSuffix}`,
       engine_version: '0.1.0', methodology_version: 'SERA_PT_V1_FROZEN',
       baseline_id: 'SERA_VNEXT_BASELINE_V0', fixture_set_id: 'SERA_VNEXT_FIXTURE_SET_V0',
       input_schema_version: '1.0.0', output_schema_version: '1.0.0',
@@ -99,15 +102,15 @@ async function run() {
     const { error: e3 } = await admin.from('sera_vnext_analyses' as never).insert({ ...base, title: '[TEST] version-blocked', client_request_id: 'db-real-version-block', status: 'CANDIDATE_ANALYSIS_CREATED', engine_version: '9.9.9', engine_output_hash: 'h3', engine_output: safe } as never);
     logCheck('constraint_wrong_engine_version_blocked', !!e3, e3 ? 'BLOCKED' : 'NOT BLOCKED');
 
-    const { data: ins, error: e4 } = await admin.from('sera_vnext_analyses' as never).insert({ ...base, title: '[SERA_VNEXT_STAGING_VALIDATION_DO_NOT_USE] db-real-trial', client_request_id: 'db-real-valid-insert-001', status: 'CANDIDATE_ANALYSIS_CREATED', engine_output_hash: 'hv', engine_output: safe } as never).select('id');
+    const { data: ins, error: e4 } = await admin.from('sera_vnext_analyses' as never).insert({ ...base, title: '[SERA_VNEXT_STAGING_VALIDATION_DO_NOT_USE] db-real-trial', client_request_id: `db-real-valid-insert-${runSuffix}`, status: 'CANDIDATE_ANALYSIS_CREATED', engine_output_hash: `hv-${runSuffix}`, engine_output: safe } as never).select('id');
     logCheck('valid_insert_succeeds', !e4, e4 ? e4.message.slice(0, 60) : 'OK');
 
     if (!e4 && ins?.length) {
       const id = (ins[0] as { id: string }).id;
-      const { error: e5 } = await admin.from('sera_vnext_analyses' as never).insert({ ...base, title: '[TEST] dupe', client_request_id: 'db-real-valid-insert-001', status: 'CANDIDATE_ANALYSIS_CREATED', engine_output_hash: 'hd', engine_output: safe } as never);
+      const { error: e5 } = await admin.from('sera_vnext_analyses' as never).insert({ ...base, title: '[TEST] dupe', client_request_id: `db-real-valid-insert-${runSuffix}`, status: 'CANDIDATE_ANALYSIS_CREATED', engine_output_hash: `hd-${runSuffix}`, engine_output: safe } as never);
       logCheck('idempotency_duplicate_blocked', !!e5, e5 ? 'BLOCKED' : 'NOT BLOCKED');
 
-      const { error: e6 } = await admin.from('sera_vnext_analysis_events' as never).insert({ analysis_id: id, tenant_id: tenantId, actor_id: userId, event_type: 'analysis.created', request_id: 'req-db-real-001', payload: { synthetic: true } } as never);
+      const { error: e6 } = await admin.from('sera_vnext_analysis_events' as never).insert({ analysis_id: id, tenant_id: tenantId, actor_id: userId, event_type: 'analysis.created', request_id: `req-db-real-${runSuffix}`, payload: { synthetic: true } } as never);
       logCheck('audit_event_insert_ok', !e6, e6 ? e6.message.slice(0, 60) : 'OK');
 
       const { error: e7 } = await admin.from('sera_vnext_analysis_events' as never).update({ event_type: 'analysis.viewed' } as never).eq('analysis_id', id);

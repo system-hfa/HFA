@@ -10,11 +10,13 @@ export {};
  * Run: NODE_PATH=frontend/node_modules npx tsx tests/sera-vnext/product-beta-rls-real-trial-001.ts
  */
 
-import { createClient } from '@supabase/supabase-js';
 import * as fs from 'fs';
+import { createRequire } from 'module';
 import * as path from 'path';
 
 const TRIAL_ID = 'product-beta-rls-real-trial-001';
+const require = createRequire(import.meta.url);
+const { createClient: createSupabaseClient } = require(path.join(__dirname, '../../frontend/node_modules/@supabase/supabase-js'));
 
 const envPath = path.join(__dirname, '../../frontend/.env.local');
 if (fs.existsSync(envPath) && !process.env.NEXT_PUBLIC_SUPABASE_URL) {
@@ -44,10 +46,10 @@ async function run() {
     process.exit(0);
   }
 
-  const admin = createClient(supabaseUrl, serviceRole, { auth: { autoRefreshToken: false, persistSession: false } });
+  const admin = createSupabaseClient(supabaseUrl, serviceRole, { auth: { autoRefreshToken: false, persistSession: false } });
 
   if (anonKey) {
-    const anon = createClient(supabaseUrl, anonKey, { auth: { autoRefreshToken: false, persistSession: false } });
+    const anon = createSupabaseClient(supabaseUrl, anonKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
     for (const t of TABLES) {
       const { data, error } = await anon.from(t as never).select('id').limit(1);

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/server/admin-auth'
 import type { ApiUserContext } from '@/lib/server/api-auth'
+import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
+import { ensurePublicUserRow } from '@/lib/server/tenant-user'
 import { getOrCreateRequestId } from '@/lib/observability/request-id'
 import {
   archiveSeraVNextAnalysis,
@@ -28,6 +30,7 @@ export const productBetaNoStoreHeaders = {
 type HandlerDeps = {
   requireAdminUser?: (req: Request) => Promise<ApiUserContext>
   repository?: SeraVNextProductRepository
+  buildContext?: (user: ApiUserContext, requestId: string) => Promise<SeraVNextProductContext>
   isEnabled?: () => boolean
   logEvent?: (event: SeraVNextProductBetaEvent) => void
   requestId?: () => string
@@ -38,9 +41,16 @@ function nowFn(deps: HandlerDeps): () => number {
   return deps.now ?? (() => performance.now())
 }
 
-function buildContext(user: ApiUserContext, requestId: string): SeraVNextProductContext {
+async function buildContext(user: ApiUserContext, requestId: string): Promise<SeraVNextProductContext> {
+  const publicUserId = await ensurePublicUserRow(
+    getSupabaseAdmin(),
+    user.tenantId,
+    user.userId,
+    user.email,
+    user.role,
+  )
   return {
-    userId: user.userId,
+    userId: publicUserId,
     email: user.email,
     tenantId: user.tenantId,
     role: user.role,
@@ -53,12 +63,13 @@ async function routeContext(req: Request, deps: HandlerDeps) {
   const isEnabled = deps.isEnabled ?? isSeraVNextProductBetaEnabled
   const logEvent = deps.logEvent ?? logSeraVNextProductBetaEvent
   const requireAdminUser = deps.requireAdminUser ?? requireAdmin
+  const contextBuilder = deps.buildContext ?? buildContext
   if (!isEnabled()) {
     logEvent({ event: 'sera_vnext_beta_access_denied', requestId, status: 'DISABLED' })
     return { disabled: NextResponse.json({ detail: 'Not found' }, { status: 404, headers: productBetaNoStoreHeaders }), requestId, logEvent }
   }
   const user = await requireAdminUser(req)
-  return { context: buildContext(user, requestId), requestId, logEvent }
+  return { context: await contextBuilder(user, requestId), requestId, logEvent }
 }
 
 function responseError(error: unknown, requestId: string): NextResponse | Response {

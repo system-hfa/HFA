@@ -18,6 +18,7 @@ import type {
   SeraVNextAnalysisRecord,
   SeraVNextAuditEventRecord,
   SeraVNextListAnalysesQuery,
+  SeraVNextProductContext,
   SeraVNextReviewRecord,
   SeraVNextRevisionRecord,
 } from '../../frontend/src/lib/sera-vnext-product'
@@ -97,10 +98,18 @@ class MemoryRepo {
 }
 
 function deps(repo: MemoryRepo) {
+  const context: SeraVNextProductContext = {
+    userId: adminUser.userId,
+    email: adminUser.email,
+    tenantId: adminUser.tenantId,
+    role: adminUser.role,
+    requestId: 'api-trial-request',
+  }
   return {
     repository: repo,
     isEnabled: () => true,
     requireAdminUser: async () => adminUser,
+    buildContext: async () => context,
     requestId: () => 'api-trial-request',
     now: () => 1000,
     logEvent: () => undefined,
