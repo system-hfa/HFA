@@ -1,0 +1,26 @@
+case_id,case_type,source_type,sensitivity,assigned_reviewer,expected_review_difficulty,primary_boundary,notes
+ec-clean-anchor,clean_straightforward,synthetic,none,REVIEWER-01,low,approach_profile,Baseline positive anchor
+ec-unstable-continuation,clean_straightforward,synthetic,none,REVIEWER-01,low,stabilized_approach_criteria,Classic continue-after-unstable
+ec-warning-ignored,clean_straightforward,synthetic,none,REVIEWER-01,low,crew_response_to_warning,Three successive GPWS calls ignored
+ec-crm-callout,clean_straightforward,synthetic,none,REVIEWER-01,low,crew_resource_management,PM called correctly PF did not correct
+ec-visual-approach-degradation,clean_straightforward,synthetic,none,REVIEWER-01,low,visual_reference,Night visual approach somatogravic effect
+ec-automation-boundary,boundary_ambiguous,synthetic,none,REVIEWER-01,medium,automation_mode_awareness,AP coupled — crew unaware of profile deviation
+ec-procedural-fmc-mda,boundary_ambiguous,synthetic,none,REVIEWER-01,medium,non_precision_approach_gate,FMC adjustment at MDA
+ec-pf-pm-ambiguity,boundary_ambiguous,synthetic,none,REVIEWER-01,high,actor_attribution,Source conflict on who had controls
+ec-progressive-escape-zone,boundary_ambiguous,synthetic,none,REVIEWER-01,high,escape_point_identification,Gradual degradation no discrete marker
+ec-action-coherent-wrong-perception,boundary_ambiguous,synthetic,none,REVIEWER-01,high,perception_action_coherence,Technically correct action on wrong mental model
+ec-evidence-insufficient,evidence_insufficient,synthetic,none,REVIEWER-01,medium,evidence_completeness,Sparse report missing key call data
+ec-no-failure,no_failure,synthetic,none,REVIEWER-01,medium,correct_intervention,Crew identified and corrected within criteria
+ec-technical-dominant,technical_dominant,synthetic,none,REVIEWER-01,medium,technical_failure_role,Conflicting instrument indications
+ec-post-escape-evidence-trap,evidence_insufficient,synthetic,none,REVIEWER-01,high,temporal_boundary,Evidence concentrated post-escape
+ec-consequence-as-cause,evidence_insufficient,synthetic,none,REVIEWER-01,high,causal_attribution,Exceedance attributed to post-touchdown event
+ec-offshore-helicopter,operationally_realistic_mixed,synthetic,none,REVIEWER-01,medium,offshore_operations_gate,Helicopter platform landing visibility
+ec-wrong-runway-taxiway,operationally_realistic_mixed,synthetic,none,REVIEWER-01,high,surface_operations_gate,Wrong runway departure with ATC ambiguity
+ec-precondition-confusion,operationally_realistic_mixed,synthetic,none,REVIEWER-01,high,precondition_vs_escape_point,Fatigue meteo cabin coordination mixed in
+ec-oc-temptation,operationally_realistic_mixed,synthetic,none,REVIEWER-01,high,o_axis_boundary,Consequence code used without awareness evidence
+ec-ac-temptation,operationally_realistic_mixed,synthetic,none,REVIEWER-01,high,a_axis_boundary,Active control code without feedback evidence
+ec-supplemental-01,operationally_realistic_mixed,synthetic,none,REVIEWER-01,high,concurrent_issues,Multiple simultaneous degradations
+ec-supplemental-02,boundary_ambiguous,synthetic,none,REVIEWER-01,medium,single_pilot_checklist,Single pilot high workload checklist delay
+ec-supplemental-03,clean_straightforward,synthetic,none,REVIEWER-01,low,go_around_execution,Confirmed need then delayed execution
+ec-supplemental-04,technical_dominant,synthetic,none,REVIEWER-01,medium,fms_silent_deviation,Silent FMS lateral deviation no alarm
+ec-supplemental-05,evidence_insufficient,synthetic,none,REVIEWER-01,high,cvr_partial_recovery,Last 9 min fragmented CVR

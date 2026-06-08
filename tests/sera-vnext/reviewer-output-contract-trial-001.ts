@@ -85,7 +85,7 @@ function makeEngineOutput(overrides: Partial<SeraVNextEngineOutput> = {}): SeraV
         description: 'Tripulação operando sob checklist tardio que comprimiu tempo disponível para monitoramento.',
         category: 'TIME_PRESSURE',
         evidence: ['CVR registra checklist a 500ft', 'Procedimento padrão recomenda conclusão a 1000ft'],
-        relationship: 'contributing_factor' as const,
+        relationship: 'CONTEXTUAL_PRECONDITION' as const,
         sourceEvidence: [],
         sourceRuleIds: [],
         linkedActor: 'COPILOTO',

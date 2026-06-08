@@ -84,6 +84,7 @@ async function main() {
   try {
     pwExec(SESSION_ID, ['open', participant.actionLink, '--browser', 'firefox'])
     await pwWaitForUrlMatch(SESSION_ID, new RegExp(`^${escapeRegExp(baseUrl)}`), 20_000)
+    await sleep(2_000) // SDK sets session in localStorage from hash before goto fires
 
     pwExec(SESSION_ID, ['goto', `${baseUrl}/admin/sera-vnext/analyses`])
     const listText = await pwWaitForText(SESSION_ID, 'SERA vNext análises persistidas', 20_000)
@@ -110,10 +111,11 @@ async function main() {
     routeChecks.push({ route: '/admin/sera-vnext/analyses/new', status: 'PASS', detail: `created ${sanitizeId(analysisId)}` })
 
     const detailText = await pwWaitForText(SESSION_ID, 'Resultado candidate-only não final.', 20_000)
-    assert.match(detailText, /Audit timeline/)
+    assert.match(detailText, /Histórico auditável/)
     assert.match(detailText, /Incertezas/)
-    assert.match(detailText, /Revisions e reviews/)
-    routeChecks.push({ route: `/admin/sera-vnext/analyses/${analysisId}`, status: 'PASS', detail: 'detail shows audit timeline and uncertainties' })
+    assert.match(detailText, /Revisions/)
+    assert.match(detailText, /Reviews/)
+    routeChecks.push({ route: `/admin/sera-vnext/analyses/${analysisId}`, status: 'PASS', detail: 'detail shows audit history and uncertainties' })
 
     const labels = pwInteractiveLabels(SESSION_ID)
     const finalButtonsAbsent = !labels.some((label) => /ready|release|classifica/i.test(label))
@@ -123,7 +125,7 @@ async function main() {
     await pwWaitForText(SESSION_ID, 'Registrar decisão não final', 20_000)
     assert.equal(pwSetFormValue(SESSION_ID, 'select', 'RETURN_FOR_REANALYSIS'), true)
     assert.equal(pwSetFormValue(SESSION_ID, 'select:nth-of-type(2)', 'INSUFFICIENT'), true)
-    assert.equal(pwSetFormValue(SESSION_ID, 'textarea[placeholder="Notas de revisão humana"]', 'Pilot UI review returned the case for reanalysis.'), true)
+    assert.equal(pwSetFormValue(SESSION_ID, 'textarea[placeholder="Notas de revisão humana (justifique a decisão com base nos eixos acima)"]', 'Pilot UI review returned the case for reanalysis.'), true)
     assert.equal(pwSetCheckbox(SESSION_ID, 'input[type="checkbox"]', true), true)
     assert.equal(pwClickByText(SESSION_ID, 'button', 'Registrar revisão não final'), true)
     const reviewedText = await pwWaitForText(SESSION_ID, 'RETURNED_FOR_REANALYSIS', 20_000)
@@ -163,7 +165,7 @@ async function main() {
       observability: {
         consoleWarnings: consoleWarnings.replace(/\s+/g, ' ').trim(),
         requestCount: requests.length,
-        auditTimelineVisible: detailText.includes('Audit timeline'),
+        auditTimelineVisible: detailText.includes('Histórico auditável'),
         nonFinalMarkerVisible: detailText.includes('Resultado candidate-only não final.'),
         finalButtonsAbsent,
       },

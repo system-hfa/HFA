@@ -6,6 +6,7 @@ import {
   createMagicLinkSession,
   pwConsoleWarnings,
   pwExec,
+  pwWaitForUrlMatch,
   pwWaitForText,
   sanitizeId,
   sleep,
@@ -31,14 +32,20 @@ async function main() {
   })
 
   // Create analysis via API
-  const createRes = await apiJson(baseUrl, enterprise.accessToken, '/api/admin/sera-vnext/analyses', 'POST', {
-    title: `[SERA_VNEXT_REVIEWER_UTILITY_RERUN] UI trial — ${TRIAL_ID}`,
-    narrative: 'Durante a aproximação ILS o copiloto não monitorou a altitude após o FAF, resultando em desvio de perfil que só foi corrigido após o ativamento do GPWS. O comandante demorou 8 segundos para assumir os controles após o alarme.',
-    sourceType: 'INTERNAL_PILOT',
-    clientRequestId: `${TRIAL_ID}-create`,
+  const createRes = await apiJson<{ analysis?: { id?: string } }>({
+    baseUrl,
+    token: enterprise.accessToken,
+    path: '/api/admin/sera-vnext/analyses',
+    method: 'POST',
+    body: {
+      title: `[SERA_VNEXT_REVIEWER_UTILITY_RERUN] UI trial — ${TRIAL_ID}`,
+      narrative: 'Durante a aproximação ILS o copiloto não monitorou a altitude após o FAF, resultando em desvio de perfil que só foi corrigido após o ativamento do GPWS. O comandante demorou 8 segundos para assumir os controles após o alarme.',
+      sourceType: 'INTERNAL_PILOT',
+      clientRequestId: `${TRIAL_ID}-create`,
+    },
   })
 
-  const analysisId = (createRes.body as Record<string, Record<string, unknown>>)?.analysis?.id as string | null
+  const analysisId = createRes.json.analysis?.id ?? null
 
   const checks: UiCheck[] = []
 
@@ -50,13 +57,16 @@ async function main() {
   checks.push({ name: 'analysis_created', status: 'PASS', detail: sanitizeId(analysisId) })
 
   // Open browser session
-  await createMagicLinkBrowserSession({
+  const browserSession = await createMagicLinkBrowserSession({
     baseUrl,
     participantId: 'PILOT-ADMIN-01',
     tenantPrefix: ENTERPRISE_TENANT_PREFIX,
-    sessionId: SESSION_ID,
     requirePlan: 'enterprise',
   })
+
+  pwExec(SESSION_ID, ['open', browserSession.actionLink, '--browser', 'firefox'])
+  await pwWaitForUrlMatch(SESSION_ID, new RegExp(`^${baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`), 20_000)
+  await sleep(2_000) // SDK sets session in localStorage from hash before goto fires
 
   // Navigate to detail page
   pwExec(SESSION_ID, ['goto', `${baseUrl}/admin/sera-vnext/analyses/${analysisId}`])
@@ -117,17 +127,17 @@ async function main() {
   }
 
   try {
-    await pwWaitForText(SESSION_ID, 'Por que este código foi sugerido', 5_000)
-    checks.push({ name: 'detail_page_why_suggested_visible', status: 'PASS', detail: '"Why suggested" visible' })
+    await pwWaitForText(SESSION_ID, 'Por que isso importa', 5_000)
+    checks.push({ name: 'detail_page_why_this_matters_visible', status: 'PASS', detail: 'Escape point explanation visible' })
   } catch {
-    checks.push({ name: 'detail_page_why_suggested_visible', status: 'FAIL', detail: '"Why suggested" not visible' })
+    checks.push({ name: 'detail_page_why_this_matters_visible', status: 'FAIL', detail: 'Escape point explanation not visible' })
   }
 
   try {
-    await pwWaitForText(SESSION_ID, 'O revisor precisa decidir', 5_000)
-    checks.push({ name: 'detail_page_reviewer_must_decide_visible', status: 'PASS', detail: '"Reviewer must decide" visible' })
+    await pwWaitForText(SESSION_ID, 'Confiança:', 5_000)
+    checks.push({ name: 'detail_page_confidence_visible', status: 'PASS', detail: 'Confidence visible' })
   } catch {
-    checks.push({ name: 'detail_page_reviewer_must_decide_visible', status: 'FAIL', detail: '"Reviewer must decide" not visible' })
+    checks.push({ name: 'detail_page_confidence_visible', status: 'FAIL', detail: 'Confidence not visible' })
   }
 
   // Non-final locks must be visible and not show final outputs
@@ -141,17 +151,17 @@ async function main() {
   // Navigate to review page — check it loads analysis
   pwExec(SESSION_ID, ['goto', `${baseUrl}/admin/sera-vnext/analyses/${analysisId}/review`])
   try {
-    await pwWaitForText(SESSION_ID, 'Checklist de decisão', 20_000)
-    checks.push({ name: 'review_page_checklist_visible', status: 'PASS', detail: 'Review checklist visible' })
+    await pwWaitForText(SESSION_ID, 'Sugestão do motor', 20_000)
+    checks.push({ name: 'review_page_decision_guide_visible', status: 'PASS', detail: 'Decision guide visible' })
   } catch {
-    checks.push({ name: 'review_page_checklist_visible', status: 'FAIL', detail: 'Review checklist not visible' })
+    checks.push({ name: 'review_page_decision_guide_visible', status: 'FAIL', detail: 'Decision guide not visible' })
   }
 
   try {
-    await pwWaitForText(SESSION_ID, 'Ponto de fuga candidato', 10_000)
-    checks.push({ name: 'review_page_escape_point_visible', status: 'PASS', detail: 'Escape point visible on review page' })
+    await pwWaitForText(SESSION_ID, 'Registrar decisão não final', 10_000)
+    checks.push({ name: 'review_page_non_final_form_context_visible', status: 'PASS', detail: 'Non-final review context visible' })
   } catch {
-    checks.push({ name: 'review_page_escape_point_visible', status: 'FAIL', detail: 'Escape point not visible on review page' })
+    checks.push({ name: 'review_page_non_final_form_context_visible', status: 'FAIL', detail: 'Non-final review context not visible' })
   }
 
   try {
@@ -202,6 +212,11 @@ async function main() {
 
   writeJsonReport(TRIAL_ID, result)
   console.log(JSON.stringify(result, null, 2))
+  try {
+    pwExec(SESSION_ID, ['close'])
+  } catch {
+    // Best-effort browser cleanup for local Playwright daemon.
+  }
 
   if (fail > 0) process.exit(1)
 }
