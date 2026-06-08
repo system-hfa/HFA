@@ -86,13 +86,11 @@ async function main() {
     await pwWaitForUrlMatch(SESSION_ID, new RegExp(`^${escapeRegExp(baseUrl)}`), 20_000)
     await sleep(2_000) // SDK sets session in localStorage from hash before goto fires
 
-    pwExec(SESSION_ID, ['goto', `${baseUrl}/admin/sera-vnext/analyses`])
-    const listText = await pwWaitForText(SESSION_ID, 'SERA vNext análises persistidas', 20_000)
-    assert.match(listText, /Candidate-only persistente, auditável e com revisão humana obrigatória\./)
-    checks.push({ name: 'list_page_loads', status: 'PASS', detail: 'analyses list visible' })
-
     pwExec(SESSION_ID, ['goto', `${baseUrl}/admin/sera-vnext/analyses/new`])
-    await pwWaitForText(SESSION_ID, 'Executar motor vNext v0.1 e persistir', 20_000)
+    const newText = await pwWaitForText(SESSION_ID, 'Executar motor vNext v0.1 e persistir', 20_000)
+    assert.match(newText, /Resultado candidate-only não final\./)
+    assert.match(newText, /Criar análise candidate-only/)
+    checks.push({ name: 'new_page_loads', status: 'PASS', detail: 'create page visible' })
     assert.equal(pwSetFormValue(SESSION_ID, 'input[placeholder="Título"]', '[SERA_VNEXT_CONTROLLED_PILOT] UI smoke — automation boundary'), true)
     assert.equal(pwSetFormValue(SESSION_ID, 'input[placeholder="Referência da fonte (opcional)"]', TRIAL_ID), true)
     assert.equal(

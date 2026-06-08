@@ -194,29 +194,39 @@ export async function createMagicLinkSession(args: {
   const { admin, anon } = createSupabaseClients()
   const { baseUrl } = args
   const resolved = await resolvePilotUser(args)
+  let lastError: unknown = null
 
-  const link = await admin.auth.admin.generateLink({
-    type: 'magiclink',
-    email: resolved.email,
-    options: { redirectTo: `${baseUrl}/auth/callback` },
-  })
-  if (link.error || !link.data.properties?.hashed_token || !link.data.properties?.action_link) {
-    throw link.error ?? new Error('Magiclink generation failed')
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const link = await admin.auth.admin.generateLink({
+      type: 'magiclink',
+      email: resolved.email,
+      options: { redirectTo: `${baseUrl}/auth/callback` },
+    })
+    if (link.error || !link.data.properties?.hashed_token || !link.data.properties?.action_link) {
+      throw link.error ?? new Error('Magiclink generation failed')
+    }
+
+    const verify = await anon.auth.verifyOtp({
+      token_hash: link.data.properties.hashed_token,
+      type: 'magiclink',
+    })
+    if (!verify.error && verify.data.session?.access_token) {
+      return {
+        ...resolved,
+        accessToken: verify.data.session.access_token,
+        actionLink: link.data.properties.action_link,
+      }
+    }
+
+    lastError = verify.error ?? new Error('Magiclink verification failed')
+    const code = typeof verify.error === 'object' && verify.error !== null && 'code' in verify.error
+      ? String((verify.error as { code?: unknown }).code ?? '')
+      : ''
+    if (code !== 'otp_expired' || attempt === 3) break
+    await sleep(350)
   }
 
-  const verify = await anon.auth.verifyOtp({
-    token_hash: link.data.properties.hashed_token,
-    type: 'magiclink',
-  })
-  if (verify.error || !verify.data.session?.access_token) {
-    throw verify.error ?? new Error('Magiclink verification failed')
-  }
-
-  return {
-    ...resolved,
-    accessToken: verify.data.session.access_token,
-    actionLink: link.data.properties.action_link,
-  }
+  throw lastError ?? new Error('Magiclink verification failed')
 }
 
 export async function apiJson<T = unknown>(args: {

@@ -1,0 +1,9 @@
+shared_case_id,case_id,reviewer_a,reviewer_b,reason_for_sharing,comparison_focus,expected_disagreement_risk
+SHARED-001,HP-002,REVIEWER-02,REVIEWER-03,Basic agreement anchor,Callout response and first useful action point,LOW
+SHARED-002,HP-006,REVIEWER-01,REVIEWER-02,Automation boundary comparison,Wrong perception versus monitoring omission,MEDIUM
+SHARED-003,HP-008,REVIEWER-03,REVIEWER-04,Visual degradation boundary,First useful escape point before late warning,HIGH
+SHARED-004,HP-012,REVIEWER-02,REVIEWER-01,Insufficient evidence calibration,More-evidence decision consistency,HIGH
+SHARED-005,HP-016,REVIEWER-01,REVIEWER-04,Offshore progressive boundary,Visual reference loss and progressive escape zone,HIGH
+SHARED-006,HP-020,REVIEWER-05,REVIEWER-02,CRM warning review,Callout acknowledged but not acted on,MEDIUM
+SHARED-007,HP-023,REVIEWER-03,REVIEWER-01,Objective-axis trap,No O-C inference without awareness evidence,HIGH
+
