@@ -10,17 +10,20 @@ import {
 
 const seraVNextDiagnosticsEnabled =
   process.env.NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED?.trim().toLowerCase() === 'true'
+const seraVNextProductBetaUiEnabled =
+  process.env.NEXT_PUBLIC_SERA_VNEXT_PRODUCT_BETA_UI_ENABLED?.trim().toLowerCase() === 'true'
 const seraVNextCandidateUiEnabled =
   process.env.NEXT_PUBLIC_SERA_VNEXT_CANDIDATE_UI_ENABLED?.trim().toLowerCase() === 'true'
 
 const adminNav = [
-  { href: '/admin', label: 'Visão Geral', icon: LayoutDashboard },
+  { href: '/admin', label: 'Visão Geral', icon: LayoutDashboard, exact: true },
   { href: '/admin/tenants', label: 'Usuários', icon: Users },
   { href: '/admin/plans', label: 'Planos', icon: Package },
   { href: '/admin/ai', label: 'IA', icon: Bot },
   { href: '/admin/payments', label: 'Pagamentos', icon: CreditCard },
   { href: '/admin/settings', label: 'Sistema', icon: Settings },
-  ...(seraVNextDiagnosticsEnabled ? [{ href: '/admin/sera-vnext', label: 'SERA vNext', icon: Activity }] : []),
+  ...(seraVNextProductBetaUiEnabled ? [{ href: '/admin/sera-vnext/analyses', label: 'SERA vNext Beta', icon: Activity }] : []),
+  ...(seraVNextDiagnosticsEnabled ? [{ href: '/admin/sera-vnext', label: 'SERA vNext Runtime', icon: Activity, exact: true }] : []),
   ...(seraVNextCandidateUiEnabled ? [{ href: '/admin/sera-vnext/candidate', label: 'SERA Candidate', icon: Activity }] : []),
 ]
 
@@ -38,7 +41,9 @@ function Sidebar({ pathname, close }: { pathname: string; close?: () => void }) 
       <nav className="flex-1 px-2 py-4 space-y-0.5">
         {adminNav.map(item => {
           const Icon = item.icon
-          const active = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href))
+          const active = item.exact
+            ? pathname === item.href
+            : pathname === item.href || pathname.startsWith(`${item.href}/`)
           return (
             <Link
               key={item.href}

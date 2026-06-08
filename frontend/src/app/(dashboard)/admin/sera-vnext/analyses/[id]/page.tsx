@@ -117,6 +117,15 @@ export default function SeraVNextAnalysisDetailPage() {
 
   return (
     <div className="p-5 md:p-8 space-y-6">
+      <div className="flex flex-wrap items-center gap-4 text-sm">
+        <Link href="/admin/sera-vnext/analyses" className="text-cyan-300 hover:text-cyan-200">
+          ← Voltar à lista
+        </Link>
+        <Link href="/dashboard" className="text-slate-400 hover:text-slate-200">
+          Ir ao dashboard
+        </Link>
+      </div>
+
       {/* Non-final banner */}
       <div className="rounded-2xl border border-amber-800 bg-amber-950/20 p-4 text-sm text-amber-100">
         <div className="flex items-center gap-2 font-semibold"><ShieldAlert className="size-4" /> Resultado candidate-only não final.</div>

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Lock, Send } from 'lucide-react'
@@ -107,6 +108,14 @@ export default function SeraVNextReviewPage() {
   return (
     <div className="p-5 md:p-8 space-y-6">
       <div>
+        <div className="flex flex-wrap items-center gap-4 text-sm">
+          <Link href={`/admin/sera-vnext/analyses/${params.id}`} className="text-cyan-300 hover:text-cyan-200">
+            ← Voltar ao detalhe
+          </Link>
+          <Link href="/admin/sera-vnext/analyses" className="text-slate-400 hover:text-slate-200">
+            Ir à lista
+          </Link>
+        </div>
         <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">Revisão humana</p>
         <h1 className="mt-2 text-3xl font-bold text-white">Registrar decisão não final</h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-400">A revisão aceita ou rejeita uma hipótese de trabalho. Não libera classificação final, READY, releasedCode ou downstream.</p>

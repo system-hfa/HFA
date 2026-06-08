@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Lock, ShieldCheck } from 'lucide-react'
@@ -63,6 +64,9 @@ export default function NewSeraVNextAnalysisPage() {
   return (
     <div className="p-5 md:p-8 space-y-6">
       <div>
+        <Link href="/admin/sera-vnext/analyses" className="text-sm text-cyan-300 hover:text-cyan-200">
+          ← Voltar à lista
+        </Link>
         <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">Nova análise</p>
         <h1 className="mt-2 text-3xl font-bold text-white">Executar motor vNext v0.1 e persistir</h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-400">Resultado candidate-only não final. Exige revisão humana e não representa classificação SERA liberada.</p>

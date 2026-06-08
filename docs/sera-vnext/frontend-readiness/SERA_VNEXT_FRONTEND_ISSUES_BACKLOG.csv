@@ -1,0 +1,5 @@
+id,severity,area,status,summary,recommended_action
+FRONTEND-001,medium,auth/open-route,open,"Admin middleware does not actively deny or redirect /admin requests; effective enforcement currently happens deeper in API handlers.","Tighten frontend/src/middleware.ts or server route guards so unauthorized admin navigation fails earlier."
+FRONTEND-002,low,tenant-negative-path,open,"Wrong-tenant injected context fails closed with sanitized 500 instead of an explicit tenant-denied 403/404.","Normalize the tenant mismatch branch to an explicit denial response without changing data exposure."
+FRONTEND-003,low,dashboard-negative-session,open,"Dedicated blocked-admin browser-session validation was skipped because the session harness was unavailable.","Provision a reusable blocked/non-enterprise UI session harness and rerun the negative browser test."
+FRONTEND-004,low,usability,open,"Archive/reanalyze/export actions do not use explicit confirmation dialogs.","Add lightweight confirmations if pilot operators show accidental-action risk."
