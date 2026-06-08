@@ -38,14 +38,33 @@ export async function GET(req: Request) {
       .eq('tenant_id', user.tenantId)
       .order('created_at', { ascending: false })
     if (error) return jsonError(error.message, 400)
+    const eventIds = (data ?? []).map((event) => event.id).filter((id): id is string => typeof id === 'string')
+    const exclusions = eventIds.length === 0
+      ? { data: [], error: null }
+      : await admin
+        .from('risk_profile_exclusions')
+        .select('id, source_id, reason, excluded_at')
+        .eq('tenant_id', user.tenantId)
+        .eq('source_type', 'legacy_event')
+        .in('source_id', eventIds)
+        .is('restored_at', null)
+    if (exclusions.error) return jsonError(exclusions.error.message, 400)
+    const exclusionBySourceId = new Map(
+      (exclusions.data ?? []).map((row) => [row.source_id as string, row]),
+    )
     const rows = (data ?? []).map((ev) => {
       const analyses = ev.analyses
       const analysis = Array.isArray(analyses) ? (analyses[0] ?? null) : (analyses ?? null)
+      const exclusion = exclusionBySourceId.get(ev.id as string)
       return {
         ...ev,
         perception_code: (analysis as { perception_code?: string | null } | null)?.perception_code ?? null,
         objective_code:  (analysis as { objective_code?:  string | null } | null)?.objective_code  ?? null,
         action_code:     (analysis as { action_code?:     string | null } | null)?.action_code     ?? null,
+        is_excluded_from_risk_profile: !!exclusion,
+        risk_profile_exclusion_id: exclusion?.id ?? null,
+        risk_profile_exclusion_reason: (exclusion?.reason as string | null | undefined) ?? null,
+        risk_profile_exclusion_at: (exclusion?.excluded_at as string | null | undefined) ?? null,
         analyses: undefined,
       }
     })

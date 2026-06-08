@@ -62,20 +62,90 @@ export default function EventsPage() {
     perception_code?: string | null
     objective_code?: string | null
     action_code?: string | null
+    is_excluded_from_risk_profile?: boolean
+    risk_profile_exclusion_id?: string | null
+    risk_profile_exclusion_reason?: string | null
   }
   const [events, setEvents] = useState<EventItem[]>([])
   const [loading, setLoading] = useState(true)
+  const [token, setToken] = useState('')
+  const [canManageProfile, setCanManageProfile] = useState(false)
+  const [busyEventId, setBusyEventId] = useState<string | null>(null)
+  const [actionError, setActionError] = useState<string | null>(null)
 
   useEffect(() => {
     async function load() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
+      setToken(session.access_token)
+      setCanManageProfile(String(session.user.user_metadata?.role ?? '').toLowerCase() === 'admin')
       const data = await apiCall('/events/', {}, session.access_token)
       setEvents(data)
       setLoading(false)
     }
-    load()
+    void load()
   }, [])
+
+  async function refreshEvents() {
+    if (!token) return
+    const data = await apiCall('/events/', {}, token)
+    setEvents(data)
+  }
+
+  async function excludeFromProfile(event: EventItem) {
+    if (!token) return
+    if (!window.confirm('Desconsiderar este evento do Perfil de Risco? O evento continuará disponível na lista.')) return
+    const reason = window.prompt('Motivo opcional para desconsiderar este evento do perfil:', event.risk_profile_exclusion_reason ?? '') ?? ''
+    setBusyEventId(event.id)
+    setActionError(null)
+    try {
+      const res = await fetch('/api/risk-profile/exclusions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          sourceType: 'legacy_event',
+          sourceId: event.id,
+          reason: reason.trim() || undefined,
+        }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+      }
+      await refreshEvents()
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : String(error))
+    } finally {
+      setBusyEventId(null)
+    }
+  }
+
+  async function restoreToProfile(event: EventItem) {
+    if (!token || !event.risk_profile_exclusion_id) return
+    if (!window.confirm('Restaurar este evento no Perfil de Risco?')) return
+    setBusyEventId(event.id)
+    setActionError(null)
+    try {
+      const res = await fetch(`/api/risk-profile/exclusions/${event.risk_profile_exclusion_id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+      }
+      await refreshEvents()
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : String(error))
+    } finally {
+      setBusyEventId(null)
+    }
+  }
 
   return (
     <div className="p-8">
@@ -89,6 +159,12 @@ export default function EventsPage() {
           + {t('events.newAnalysis')}
         </Link>
       </div>
+
+      {actionError && (
+        <div className="bg-red-500/10 border border-red-500/30 text-red-300 rounded-lg px-4 py-3 text-sm mb-4">
+          {actionError}
+        </div>
+      )}
 
       {loading ? (
         <p className="text-slate-400">{t('common.loading')}</p>
@@ -108,18 +184,22 @@ export default function EventsPage() {
               : null
             const badge = erc !== null ? ERC_BADGE[erc] : null
             return (
-              <Link key={event.id} href={`/events/${event.id}`}
-                className="block bg-slate-900 border border-slate-800 hover:border-slate-600 rounded-xl p-5 transition">
+              <div key={event.id} className="bg-slate-900 border border-slate-800 hover:border-slate-600 rounded-xl p-5 transition">
                 <div className="flex justify-between items-start gap-4">
-                  <div className="flex-1 min-w-0">
+                  <Link href={`/events/${event.id}`} className="flex-1 min-w-0 block">
                     <h3 className="font-semibold text-white mb-1 truncate">{event.title}</h3>
                     <p className="text-slate-400 text-sm">
                       {event.operation_type && `${event.operation_type} • `}
                       {event.aircraft_type && `${event.aircraft_type} • `}
                       {new Date(event.created_at).toLocaleDateString('pt-BR')}
                     </p>
-                  </div>
-                  <div className="flex items-center gap-2 shrink-0">
+                  </Link>
+                  <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
+                    {event.is_excluded_from_risk_profile && (
+                      <span className="text-xs font-semibold px-2 py-0.5 rounded text-amber-200 bg-amber-500/10 border border-amber-500/20">
+                        Desconsiderado no perfil
+                      </span>
+                    )}
                     {badge && (
                       <span className={`text-xs font-semibold px-2 py-0.5 rounded ${badge.text} ${badge.bg}`}>
                         {badge.label}
@@ -128,7 +208,37 @@ export default function EventsPage() {
                     <span className={`text-sm font-medium ${s.color}`}>{s.label}</span>
                   </div>
                 </div>
-              </Link>
+                {(event.risk_profile_exclusion_reason || canManageProfile) && (
+                  <div className="mt-4 flex items-center justify-between gap-4">
+                    <div className="min-h-[1.25rem]">
+                      {event.risk_profile_exclusion_reason && (
+                        <p className="text-xs text-slate-500">Motivo no perfil: {event.risk_profile_exclusion_reason}</p>
+                      )}
+                    </div>
+                    {canManageProfile && (
+                      event.is_excluded_from_risk_profile ? (
+                        <button
+                          type="button"
+                          onClick={() => void restoreToProfile(event)}
+                          disabled={busyEventId === event.id}
+                          className="text-xs border border-green-500/30 bg-green-500/10 text-green-200 rounded-lg px-3 py-2 hover:bg-green-500/20 disabled:opacity-50 transition-colors"
+                        >
+                          {busyEventId === event.id ? 'Atualizando...' : 'Restaurar no perfil'}
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => void excludeFromProfile(event)}
+                          disabled={busyEventId === event.id}
+                          className="text-xs border border-amber-500/30 bg-amber-500/10 text-amber-200 rounded-lg px-3 py-2 hover:bg-amber-500/20 disabled:opacity-50 transition-colors"
+                        >
+                          {busyEventId === event.id ? 'Atualizando...' : 'Desconsiderar do perfil'}
+                        </button>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
             )
           })}
         </div>

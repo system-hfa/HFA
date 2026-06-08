@@ -12,6 +12,10 @@ export type AuditEventType =
   | 'analysis_failed'
   | 'corrective_action_created'
   | 'report_generated'
+  | 'risk_profile.generated'
+  | 'risk_profile.exclusion_created'
+  | 'risk_profile.exclusion_restored'
+  | 'risk_profile.export_requested'
   | 'tenant.bootstrap_failed'
   | 'classification_overridden' // reservado — implementar quando rota de override for instrumentada
 

@@ -233,7 +233,7 @@ export async function apiJson<T = unknown>(args: {
   baseUrl: string
   path: string
   token?: string
-  method?: 'GET' | 'POST'
+  method?: 'DELETE' | 'GET' | 'POST'
   body?: unknown
   extraHeaders?: Record<string, string>
 }): Promise<{ status: number; json: T; durationMs: number; requestId: string }> {

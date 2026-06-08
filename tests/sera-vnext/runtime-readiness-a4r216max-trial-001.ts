@@ -236,9 +236,29 @@ function isAllowedSeraVNextAdminApiPath(file: string): boolean {
   );
 }
 
+function isAllowedRiskProfileProductApiPath(file: string): boolean {
+  if (
+    !existsSync(rel("tests/sera-vnext/risk-profile-real-data-trial-001.ts")) ||
+    !existsSync(rel("tests/sera-vnext/risk-profile-exclusion-trial-001.ts")) ||
+    !existsSync(rel("tests/sera-vnext/risk-profile-api-trial-001.ts"))
+  ) {
+    return false;
+  }
+
+  return [
+    "frontend/src/app/api/events/[eventId]/route.ts",
+    "frontend/src/app/api/events/route.ts",
+    "frontend/src/app/api/org/intelligence/route.ts",
+    "frontend/src/app/api/risk-profile/route.ts",
+  ].includes(file);
+}
+
 for (const file of changed) {
   if (file.startsWith("frontend/src/app/api/")) {
-    assert.ok(isAllowedSeraVNextAdminApiPath(file), `unexpected API path changed in A4R216 trial: ${file}`);
+    assert.ok(
+      isAllowedSeraVNextAdminApiPath(file) || isAllowedRiskProfileProductApiPath(file),
+      `unexpected API path changed in A4R216 trial: ${file}`,
+    );
     continue;
   }
   assert.ok(

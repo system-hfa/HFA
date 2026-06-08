@@ -7,6 +7,7 @@ import { TrialUsageCard } from '@/components/product/TrialUsageCard'
 import { OrgScoreCard } from '@/components/sera/OrgScoreCard'
 import { AiInsightPanel } from '@/components/sera/AiInsightPanel'
 import { useT } from '@/lib/i18n'
+import type { RiskProfileSummary } from '@/lib/risk-profile/types'
 
 const CODE_INFO: Record<string, { name: string; def: string; example: string }> = {
   'P-A': { name: 'Sem Falha de Percepção', def: 'O operador percebeu a situação corretamente. A falha está em outro nível.', example: 'Piloto sabia da condição adversa mas decidiu prosseguir mesmo assim.' },
@@ -38,29 +39,7 @@ type ModalState = {
   sections: { label?: string; content: string }[]
 }
 
-interface Intelligence {
-  score: { value: number; level: 'critical' | 'warning' | 'ok'; label: string }
-  distribution: {
-    perception: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
-    objective: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
-    action: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
-    total: number
-  }
-  top_preconditions: { code: string; count: number; pct: number; name: string }[]
-  top_combinations: { pair: string; count: number; pct: number }[]
-  actions: {
-    open_total: number
-    open_overdue: number
-    open_no_owner: number
-    closed_last_30d: number
-    resolution_rate: number
-  }
-  trend: { month: string; count: number }[]
-  alerts: string[]
-  total_analyses: number
-  total_events_90d: number
-  recent_events: { id: string; title: string; created_at: string; perception_code: string | null; objective_code: string | null; action_code: string | null }[]
-}
+type Intelligence = RiskProfileSummary
 
 
 const distColors = {
@@ -126,28 +105,6 @@ function buildScoreModal(score: Intelligence['score']): ModalState {
       { label: 'Como é calculado', content: 'Combina falhas de Percepção (peso 1.0), Objetivo (peso 0.8) e Ação (peso 0.6) pelo total de análises, acrescido de penalidades por ações vencidas e picos de eventos.' },
       { label: 'Faixas', content: '0–39 → Normal\n40–69 → Atenção (monitoramento recomendado)\n70–100 → Crítico (intervenção imediata)' },
       { label: 'Score atual', content: `${score.value} — ${score.label}` },
-    ],
-  }
-}
-
-function buildCodeModal(code: string): ModalState {
-  const info = CODE_INFO[code]
-  if (!info) return { title: code, sections: [{ content: 'Código não reconhecido.' }] }
-  return {
-    title: `${code} — ${info.name}`,
-    sections: [
-      { label: 'Definição', content: info.def },
-      { label: 'Exemplo', content: info.example },
-    ],
-  }
-}
-
-function buildPreconditionModal(code: string, name: string): ModalState {
-  return {
-    title: name,
-    sections: [
-      { label: 'Código', content: code },
-      { content: PRECONDITION_DEFS[code] ?? 'Pré-condição identificada nas análises SERA. Representa um fator latente que contribuiu para a ocorrência do evento.' },
     ],
   }
 }
@@ -404,6 +361,22 @@ export default function DashboardPage() {
             >
               <span>⚠ {alert}</span>
               <HelpButton onClick={() => setModal(buildAlertModal(alert))} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {hasAnalyses && data && (
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          {[
+            { label: 'Universo canônico', value: data.total_events, tone: 'text-white' },
+            { label: 'Considerados no perfil', value: data.included_events, tone: 'text-green-300' },
+            { label: 'Desconsiderados', value: data.excluded_events, tone: 'text-amber-300' },
+            { label: 'ERC predominante', value: data.modal_erc_level ? `ERC ${data.modal_erc_level}` : 'n/d', tone: 'text-blue-300' },
+          ].map((item) => (
+            <div key={item.label} className="bg-slate-900 border border-slate-800 rounded-xl px-5 py-4">
+              <p className="text-slate-500 text-xs uppercase tracking-wide mb-2">{item.label}</p>
+              <p className={`text-2xl font-semibold ${item.tone}`}>{item.value}</p>
             </div>
           ))}
         </div>

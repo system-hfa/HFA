@@ -26,7 +26,22 @@ export async function GET(_req: Request, ctx: { params: Promise<{ eventId: strin
       .maybeSingle()
     if (error) return jsonError(error.message, 400)
     if (!data) return jsonError('Evento não encontrado', 404)
-    return NextResponse.json(data)
+    const exclusion = await admin
+      .from('risk_profile_exclusions')
+      .select('id, reason, excluded_at')
+      .eq('tenant_id', user.tenantId)
+      .eq('source_type', 'legacy_event')
+      .eq('source_id', eventId)
+      .is('restored_at', null)
+      .maybeSingle()
+    if (exclusion.error) return jsonError(exclusion.error.message, 400)
+    return NextResponse.json({
+      ...data,
+      is_excluded_from_risk_profile: !!exclusion.data,
+      risk_profile_exclusion_id: exclusion.data?.id ?? null,
+      risk_profile_exclusion_reason: exclusion.data?.reason ?? null,
+      risk_profile_exclusion_at: exclusion.data?.excluded_at ?? null,
+    })
   } catch (e) {
     if (e instanceof Response) return e
     return jsonError(String(e), 500)

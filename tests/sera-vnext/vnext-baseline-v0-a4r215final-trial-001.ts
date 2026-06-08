@@ -273,10 +273,30 @@ function isAllowedSeraVNextAdminApiPath(changedPath: string): boolean {
   );
 }
 
+function isAllowedRiskProfileProductApiPath(changedPath: string): boolean {
+  if (
+    !existsSync(path.join(root, "tests/sera-vnext/risk-profile-real-data-trial-001.ts")) ||
+    !existsSync(path.join(root, "tests/sera-vnext/risk-profile-exclusion-trial-001.ts")) ||
+    !existsSync(path.join(root, "tests/sera-vnext/risk-profile-api-trial-001.ts"))
+  ) {
+    return false;
+  }
+
+  return [
+    "frontend/src/app/api/events/[eventId]/route.ts",
+    "frontend/src/app/api/events/route.ts",
+    "frontend/src/app/api/org/intelligence/route.ts",
+    "frontend/src/app/api/risk-profile/route.ts",
+  ].includes(changedPath);
+}
+
 for (const changedPath of changedTracked) {
   assert.ok(!changedPath.startsWith("frontend/src/lib/sera/"), `engine path changed: ${changedPath}`);
   if (changedPath.startsWith("frontend/src/app/api/")) {
-    assert.ok(isAllowedSeraVNextAdminApiPath(changedPath), `unexpected API path changed: ${changedPath}`);
+    assert.ok(
+      isAllowedSeraVNextAdminApiPath(changedPath) || isAllowedRiskProfileProductApiPath(changedPath),
+      `unexpected API path changed: ${changedPath}`,
+    );
   }
   assert.ok(!changedPath.startsWith("supabase/migrations/"), `migration path changed: ${changedPath}`);
   assert.ok(!changedPath.startsWith("tests/sera/fixtures/"), `legacy fixture path changed: ${changedPath}`);

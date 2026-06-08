@@ -10,33 +10,9 @@ import { isHfaErcCategory } from '@/lib/sera/erc-conversion'
 import type { SafetyIssueCandidate } from '@/lib/sera/safety-issue-candidates'
 import type { RiskQualityTrendPoint } from '@/lib/sera/risk-quality-trend'
 import type { DataConfidence } from '@/lib/sera/data-confidence'
+import type { RiskProfileSourceEvent, RiskProfileSummary } from '@/lib/risk-profile/types'
 
-interface Intelligence {
-  score: { value: number; level: 'critical' | 'warning' | 'ok'; label: string }
-  distribution: {
-    perception: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
-    objective: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
-    action: { count: number; pct: number; top_code: string | null; top_codes: { code: string; count: number }[] }
-    total: number
-  }
-  top_preconditions: { code: string; count: number; pct: number; name: string }[]
-  top_combinations: { pair: string; count: number; pct: number }[]
-  actions: {
-    open_total: number
-    open_overdue: number
-    open_no_owner: number
-    closed_last_30d: number
-    resolution_rate: number
-  }
-  trend: { month: string; count: number }[]
-  alerts: string[]
-  total_analyses: number
-  total_events_90d: number
-  modal_erc_level?: number | null
-  safety_issue_candidates?: SafetyIssueCandidate[]
-  quality_trend?: RiskQualityTrendPoint[]
-  data_confidence?: DataConfidence
-}
+type Intelligence = RiskProfileSummary
 
 // ── Shared mapping constants ──────────────────────────────────────────────────
 
@@ -1507,6 +1483,29 @@ function SafetyIssueCandidatesPanel({ candidates }: { candidates: SafetyIssueCan
   )
 }
 
+const SOURCE_LABEL: Record<RiskProfileSourceEvent['source'], string> = {
+  legacy_event: 'Evento',
+  sera_vnext_analysis: 'SERA vNext',
+}
+
+const STATUS_LABEL: Record<RiskProfileSourceEvent['status'], { label: string; tone: string }> = {
+  received: { label: 'Recebido', tone: 'text-yellow-300 bg-yellow-500/10 border-yellow-500/20' },
+  processing: { label: 'Processando', tone: 'text-blue-300 bg-blue-500/10 border-blue-500/20' },
+  completed: { label: 'Concluído', tone: 'text-green-300 bg-green-500/10 border-green-500/20' },
+  error: { label: 'Erro', tone: 'text-red-300 bg-red-500/10 border-red-500/20' },
+  draft: { label: 'Rascunho', tone: 'text-slate-300 bg-slate-500/10 border-slate-500/20' },
+  archived: { label: 'Arquivado', tone: 'text-slate-300 bg-slate-500/10 border-slate-500/20' },
+}
+
+function sourceDate(source: RiskProfileSourceEvent): string {
+  return new Date(source.occurredAt ?? source.createdAt).toLocaleDateString('pt-BR')
+}
+
+function sourceDetailHref(source: RiskProfileSourceEvent): string | null {
+  if (source.source === 'legacy_event') return `/events/${source.id}`
+  return null
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RiskProfilePage() {
@@ -1515,29 +1514,109 @@ export default function RiskProfilePage() {
   const [loading, setLoading] = useState(true)
   const [matrixTab, setMatrixTab] = useState<'traditional' | 'arms'>('traditional')
   const [showGuide, setShowGuide] = useState(false)
+  const [canManageProfile, setCanManageProfile] = useState(false)
+  const [actionBusyId, setActionBusyId] = useState<string | null>(null)
+  const [actionError, setActionError] = useState<string | null>(null)
+  const [reloadNonce, setReloadNonce] = useState(0)
 
   useEffect(() => {
-    async function load() {
+    let cancelled = false
+
+    async function run() {
       const { data: { session } } = await supabase.auth.getSession()
-      if (!session) { setLoading(false); return }
+      if (!session) {
+        if (!cancelled) {
+          setLoading(false)
+          setCanManageProfile(false)
+        }
+        return
+      }
       const t = session.access_token
-      setToken(t)
+      if (!cancelled) {
+        setToken(t)
+        setCanManageProfile(String(session.user.user_metadata?.role ?? '').toLowerCase() === 'admin')
+      }
       try {
-        const res = await fetch('/api/org/intelligence', {
+        const res = await fetch('/api/risk-profile', {
           headers: { Authorization: `Bearer ${t}` },
         })
         if (res.ok) {
           const intel = await res.json()
-          if (intel?.score) setData(intel)
+          if (!cancelled && intel?.score) setData(intel)
         }
       } catch {
         // setData stays null → empty state
       } finally {
-        setLoading(false)
+        if (!cancelled) setLoading(false)
       }
     }
-    load()
-  }, [])
+
+    void run()
+    return () => {
+      cancelled = true
+    }
+  }, [reloadNonce])
+
+  async function excludeSource(source: RiskProfileSourceEvent) {
+    if (!token) return
+    if (!window.confirm('Desconsiderar este evento do Perfil de Risco? Ele não será apagado e poderá ser restaurado depois.')) {
+      return
+    }
+    const reason = window.prompt('Motivo opcional para desconsiderar este evento do perfil:', source.exclusionReason ?? '') ?? ''
+    setActionBusyId(source.id)
+    setActionError(null)
+    try {
+      const res = await fetch('/api/risk-profile/exclusions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          sourceType: source.source,
+          sourceId: source.id,
+          reason: reason.trim() || undefined,
+        }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+      }
+      setLoading(true)
+      setReloadNonce((value) => value + 1)
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : String(error))
+    } finally {
+      setActionBusyId(null)
+    }
+  }
+
+  async function restoreSource(source: RiskProfileSourceEvent) {
+    if (!token || !source.exclusionId) return
+    if (!window.confirm('Restaurar este evento no Perfil de Risco?')) {
+      return
+    }
+    setActionBusyId(source.id)
+    setActionError(null)
+    try {
+      const res = await fetch(`/api/risk-profile/exclusions/${source.exclusionId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+      }
+      setLoading(true)
+      setReloadNonce((value) => value + 1)
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : String(error))
+    } finally {
+      setActionBusyId(null)
+    }
+  }
 
   if (loading) {
     return (
@@ -1548,6 +1627,10 @@ export default function RiskProfilePage() {
   }
 
   const totalAnalyses = data?.total_analyses ?? 0
+  const totalEvents = data?.total_events ?? 0
+  const includedEvents = data?.included_events ?? 0
+  const excludedEvents = data?.excluded_events ?? 0
+  const errorAnalyses = data?.error_analyses ?? 0
   const hasAnalyses = totalAnalyses > 0
   const isForming = totalAnalyses > 0 && totalAnalyses < 10
 
@@ -1558,8 +1641,13 @@ export default function RiskProfilePage() {
         <div>
           <h1 className="text-2xl font-bold text-white">Perfil Organizacional</h1>
           <p className="text-slate-400 mt-1">
-            Diagnóstico preliminar baseado em {totalAnalyses} análise{totalAnalyses !== 1 ? 's' : ''} SERA registrada{totalAnalyses !== 1 ? 's' : ''}
+            Diagnóstico preliminar baseado em {includedEvents} evento{includedEvents !== 1 ? 's' : ''} considerado{includedEvents !== 1 ? 's' : ''} no perfil
           </p>
+          {totalEvents > 0 && (
+            <p className="text-slate-500 text-xs mt-1">
+              Universo auditado: {totalEvents} registro{totalEvents !== 1 ? 's' : ''} canônico{totalEvents !== 1 ? 's' : ''} · {excludedEvents} desconsiderado{excludedEvents !== 1 ? 's' : ''}
+            </p>
+          )}
         </div>
         <button
           className="bg-slate-800 hover:bg-slate-700 disabled:hover:bg-slate-800 disabled:opacity-50 border border-slate-700 text-slate-300 text-sm rounded-lg px-4 py-2 transition-colors"
@@ -1654,6 +1742,28 @@ export default function RiskProfilePage() {
             <strong className="text-slate-300">tendência qualitativa</strong>.
             As matrizes funcionam como apoio à triagem — não como conclusão isolada.
           </p>
+        </div>
+      )}
+
+      {actionError && (
+        <div className="bg-red-500/10 border border-red-500/30 text-red-300 rounded-xl px-4 py-3 text-sm">
+          {actionError}
+        </div>
+      )}
+
+      {hasAnalyses && (
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          {[
+            { label: 'Eventos no universo', value: totalEvents, tone: 'text-white' },
+            { label: 'Considerados', value: includedEvents, tone: 'text-green-300' },
+            { label: 'Desconsiderados', value: excludedEvents, tone: 'text-amber-300' },
+            { label: 'Erros fora do cálculo', value: errorAnalyses, tone: 'text-red-300' },
+          ].map((item) => (
+            <div key={item.label} className="bg-slate-900 border border-slate-800 rounded-xl px-5 py-4">
+              <p className="text-slate-500 text-xs uppercase tracking-wide mb-2">{item.label}</p>
+              <p className={`text-3xl font-semibold ${item.tone}`}>{item.value}</p>
+            </div>
+          ))}
         </div>
       )}
 
@@ -1840,6 +1950,19 @@ export default function RiskProfilePage() {
         </div>
       )}
 
+      {hasAnalyses && (data?.limitations ?? []).length > 0 && (
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <h3 className="text-white font-semibold mb-4">Limitações e exclusões do consolidado</h3>
+          <div className="space-y-2">
+            {data!.limitations.map((item) => (
+              <p key={item} className="text-sm text-slate-400 leading-relaxed">
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Análise por IA */}
       {data?.score && token && hasAnalyses && (
         <AiInsightPanel intelligenceData={data} token={token} />
@@ -1851,6 +1974,133 @@ export default function RiskProfilePage() {
           <h3 className="text-white font-semibold mb-1">Volume de análises por mês</h3>
           <p className="text-slate-500 text-xs mb-4">Frequência de registros — separada da qualidade/severidade observada.</p>
           <TrendLine trend={data!.trend} />
+        </div>
+      )}
+
+      {hasAnalyses && (
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div>
+                <h3 className="text-white font-semibold">Eventos considerados no perfil</h3>
+                <p className="text-slate-500 text-xs mt-1">Somente registros concluídos e ativos entram no cálculo.</p>
+              </div>
+              <span className="text-xs text-slate-400">{includedEvents}</span>
+            </div>
+            <div className="space-y-3">
+              {(data?.source_events_included ?? []).map((source) => {
+                const detailHref = sourceDetailHref(source)
+                const status = STATUS_LABEL[source.status]
+                const title = detailHref ? (
+                  <Link href={detailHref} className="text-white font-medium hover:text-blue-300 transition-colors">
+                    {source.title}
+                  </Link>
+                ) : (
+                  <span className="text-white font-medium">{source.title}</span>
+                )
+                return (
+                  <div key={`${source.source}:${source.id}`} className="border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        {title}
+                        <p className="text-slate-500 text-xs mt-1">
+                          {SOURCE_LABEL[source.source]} · {sourceDate(source)}
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap justify-end gap-2 shrink-0">
+                        <span className={`text-xs border rounded-full px-2 py-1 ${status.tone}`}>{status.label}</span>
+                        {source.erc?.code && (
+                          <span className="text-xs border border-slate-700 text-slate-200 rounded-full px-2 py-1">
+                            {source.erc.code} · {source.erc.label}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2 text-xs">
+                      {source.perceptionCode && <span className="bg-slate-800 text-slate-200 rounded-full px-2 py-1">{source.perceptionCode}</span>}
+                      {source.objectiveCode && <span className="bg-slate-800 text-slate-200 rounded-full px-2 py-1">{source.objectiveCode}</span>}
+                      {source.actionCode && <span className="bg-slate-800 text-slate-200 rounded-full px-2 py-1">{source.actionCode}</span>}
+                    </div>
+                    {(source.preconditions ?? []).length > 0 && (
+                      <p className="text-slate-400 text-xs">
+                        Preconditions: {(source.preconditions ?? []).slice(0, 3).join(', ')}
+                      </p>
+                    )}
+                    {canManageProfile && (
+                      <div className="flex justify-end">
+                        <button
+                          type="button"
+                          onClick={() => void excludeSource(source)}
+                          disabled={actionBusyId === source.id}
+                          className="text-xs border border-amber-500/30 bg-amber-500/10 text-amber-200 rounded-lg px-3 py-2 hover:bg-amber-500/20 disabled:opacity-50 transition-colors"
+                        >
+                          {actionBusyId === source.id ? 'Atualizando...' : 'Desconsiderar do perfil'}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+              {(data?.source_events_included ?? []).length === 0 && (
+                <p className="text-slate-500 text-sm">Nenhum evento concluído está entrando no consolidado neste momento.</p>
+              )}
+            </div>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div>
+                <h3 className="text-white font-semibold">Eventos desconsiderados</h3>
+                <p className="text-slate-500 text-xs mt-1">Registros fora do cálculo, preservados para restauração posterior.</p>
+              </div>
+              <span className="text-xs text-slate-400">{excludedEvents}</span>
+            </div>
+            <div className="space-y-3">
+              {(data?.source_events_excluded ?? []).map((source) => {
+                const detailHref = sourceDetailHref(source)
+                const title = detailHref ? (
+                  <Link href={detailHref} className="text-white font-medium hover:text-blue-300 transition-colors">
+                    {source.title}
+                  </Link>
+                ) : (
+                  <span className="text-white font-medium">{source.title}</span>
+                )
+                return (
+                  <div key={`${source.source}:${source.id}`} className="border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        {title}
+                        <p className="text-slate-500 text-xs mt-1">
+                          {SOURCE_LABEL[source.source]} · {sourceDate(source)}
+                        </p>
+                      </div>
+                      <span className="text-xs border border-amber-500/30 text-amber-200 bg-amber-500/10 rounded-full px-2 py-1 shrink-0">
+                        Excluído
+                      </span>
+                    </div>
+                    {source.exclusionReason && (
+                      <p className="text-slate-400 text-xs">Motivo: {source.exclusionReason}</p>
+                    )}
+                    {canManageProfile && source.exclusionId && (
+                      <div className="flex justify-end">
+                        <button
+                          type="button"
+                          onClick={() => void restoreSource(source)}
+                          disabled={actionBusyId === source.id}
+                          className="text-xs border border-green-500/30 bg-green-500/10 text-green-200 rounded-lg px-3 py-2 hover:bg-green-500/20 disabled:opacity-50 transition-colors"
+                        >
+                          {actionBusyId === source.id ? 'Atualizando...' : 'Restaurar no perfil'}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+              {(data?.source_events_excluded ?? []).length === 0 && (
+                <p className="text-slate-500 text-sm">Nenhum evento foi desconsiderado do Perfil de Risco.</p>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </div>

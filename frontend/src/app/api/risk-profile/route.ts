@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server'
 import { requireBearerUser } from '@/lib/server/api-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
+import { getOrCreateRequestId } from '@/lib/observability/request-id'
+import { writeAuditLog } from '@/lib/observability/audit'
+import { getRiskProfileSummaryForTenant } from '@/lib/risk-profile/server'
 
 function jsonError(message: string, status: number) {
   return NextResponse.json({ detail: message }, { status })
@@ -25,53 +28,29 @@ export async function GET(req: Request) {
     userId = user.userId
     tenantId = user.tenantId
     const admin = getSupabaseAdmin()
-    const { data, error } = await admin
-      .from('analyses')
-      .select('perception_code, objective_code, action_code, preconditions')
-      .eq('tenant_id', user.tenantId)
-    if (error) {
-      logRiskProfileError(error, 'query-analyses', user.userId, user.tenantId)
-      return jsonError(`Falha ao consultar análises: ${error.message}`, 500)
-    }
+    const requestId = getOrCreateRequestId(req)
+    const profile = await getRiskProfileSummaryForTenant(user.tenantId, admin)
 
-    const perception: Record<string, number> = {}
-    const objective: Record<string, number> = {}
-    const action: Record<string, number> = {}
-    const preconditions: Record<string, number> = {}
-
-    for (const r of data ?? []) {
-      if (r.perception_code) perception[r.perception_code as string] = (perception[r.perception_code as string] || 0) + 1
-      if (r.objective_code) objective[r.objective_code as string] = (objective[r.objective_code as string] || 0) + 1
-      if (r.action_code) action[r.action_code as string] = (action[r.action_code as string] || 0) + 1
-      const pre = r.preconditions as Array<{ code?: string }> | null
-      if (pre) {
-        for (const p of pre) {
-          const c = p?.code
-          if (c) preconditions[c] = (preconditions[c] || 0) + 1
-        }
-      }
-    }
-
-    const sortEntries = (o: Record<string, number>) =>
-      Object.fromEntries(Object.entries(o).sort((a, b) => b[1] - a[1]))
-
-    const topPrec = Object.fromEntries(
-      Object.entries(preconditions)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 10)
-    )
-
-    return NextResponse.json({
-      total_analyses: data?.length ?? 0,
-      perception_failures: sortEntries(perception),
-      objective_failures: sortEntries(objective),
-      action_failures: sortEntries(action),
-      top_preconditions: topPrec,
+    await writeAuditLog({
+      tenantId: user.tenantId,
+      userId: user.userId,
+      requestId,
+      eventType: 'risk_profile.generated',
+      entityType: 'risk_profile',
+      entityId: null,
+      route: '/api/risk-profile',
+      method: 'GET',
+      metadata: {
+        included_events: profile.included_events,
+        excluded_events: profile.excluded_events,
+        completed_analyses: profile.completed_analyses,
+      },
     })
+
+    return NextResponse.json(profile, { headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
     logRiskProfileError(e, 'top-level', userId, tenantId)
     return jsonError(String(e), 500)
   }
 }
-
