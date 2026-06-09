@@ -66,12 +66,15 @@ export type SeraVNextAnalysisRecord = {
   client_request_id: string
   request_id: string
   engine_version: string
+  engine_runtime_version: string | null
   methodology_version: string
   baseline_id: string
   fixture_set_id: string
   input_schema_version: string
   output_schema_version: string
   code_commit: string
+  source_flow: string | null
+  canonical_tree_version: string | null
   engine_input: SeraVNextEngineInput
   engine_output: SeraVNextEngineOutput
   engine_output_hash: string
@@ -97,6 +100,8 @@ export type SeraVNextRevisionRecord = {
   created_at: string
   request_id: string
   engine_version: string
+  engine_runtime_version: string | null
+  source_flow: string | null
   engine_input: SeraVNextEngineInput
   engine_output: SeraVNextEngineOutput
   engine_output_hash: string

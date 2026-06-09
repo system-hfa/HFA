@@ -98,7 +98,10 @@ type VNextAnalysisRow = {
   created_at: string
   deleted_at: string | null
   engine_version: string | null
+  engine_runtime_version: string | null
   methodology_version: string | null
+  canonical_tree_version: string | null
+  source_flow: string | null
   perception_candidate_code: string | null
   objective_candidate_code: string | null
   action_candidate_code: string | null
@@ -216,7 +219,12 @@ function toLegacySource(row: LegacyEventRow, exclusionLookup: Map<string, Exclus
     createdAt: row.created_at,
     status: normalizeLegacyStatus(row.status),
     source: 'legacy_event',
+    sourceFlow: 'LEGACY_SERA',
     analysisId: analysis?.id ?? null,
+    engineVersion: null,
+    engineRuntimeVersion: null,
+    methodologyVersion: null,
+    canonicalTreeVersion: null,
     erc: {
       code: erc.code,
       severity: erc.severity,
@@ -269,9 +277,12 @@ function toVNextSource(
     createdAt: row.created_at,
     status: normalizeVNextStatus(row.status, row.deleted_at),
     source: 'sera_vnext_analysis',
+    sourceFlow: row.source_flow ?? 'VNEXT_PRODUCT_BETA',
     analysisId: row.id,
     engineVersion: row.engine_version,
+    engineRuntimeVersion: row.engine_runtime_version,
     methodologyVersion: row.methodology_version,
+    canonicalTreeVersion: row.canonical_tree_version,
     erc: {
       code: erc.code,
       severity: erc.severity,
@@ -374,7 +385,7 @@ export async function loadRiskProfileUniverse(
       .is('restored_at', null),
     admin
       .from('sera_vnext_analyses')
-      .select('id, tenant_id, title, status, review_status, created_at, deleted_at, engine_version, methodology_version, perception_candidate_code, objective_candidate_code, action_candidate_code, warnings, limitations, uncertainties, engine_output')
+      .select('id, tenant_id, title, status, review_status, created_at, deleted_at, engine_version, engine_runtime_version, methodology_version, canonical_tree_version, source_flow, perception_candidate_code, objective_candidate_code, action_candidate_code, warnings, limitations, uncertainties, engine_output')
       .eq('tenant_id', tenantId)
       .order('created_at', { ascending: false }),
   ])
@@ -601,6 +612,10 @@ export async function getRiskProfileSummaryForTenant(
   )
 
   const summaryLimitations = [...universeLimitations]
+  summaryLimitations.push(
+    'Índice de risco descritivo interno — não validado como medida de risco operacional. ' +
+    'Pesos heurísticos (P×1.0, O×0.8, A×0.6) não foram calibrados empiricamente.'
+  )
   if (draftSources.length > 0) {
     summaryLimitations.push(`${draftSources.length} registro(s) ainda não concluído(s) ficaram fora do consolidado.`)
   }
@@ -612,6 +627,13 @@ export async function getRiskProfileSummaryForTenant(
   }
   if (excludedSources.length > 0) {
     summaryLimitations.push(`${excludedSources.length} fonte(s) foram desconsideradas manualmente do Perfil de Risco.`)
+  }
+  const legacyCount = includedSources.filter((s) => s.source === 'legacy_event').length
+  const vnextCount = includedSources.filter((s) => s.source === 'sera_vnext_analysis').length
+  if (legacyCount > 0 && vnextCount > 0) {
+    summaryLimitations.push(
+      `Agregados combinam ${legacyCount} análise(s) LEGACY_SERA e ${vnextCount} análise(s) VNEXT: versões metodológicas distintas. Classificação: MIXED_VERSION_LIMITATION.`
+    )
   }
 
   const dataConfidence = buildDataConfidence({

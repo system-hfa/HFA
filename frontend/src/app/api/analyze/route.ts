@@ -324,7 +324,7 @@ export async function POST(req: Request) {
     )
   } catch (e) {
     if (e instanceof Response) return e
-    console.error('[/api/analyze]', { requestId, error: String(e) })
-    return jsonError(String(e), 500)
+    console.error('[/api/analyze]', { requestId, error: e instanceof Error ? e.message : String(e) })
+    return jsonError('Erro interno na análise SERA.', 500)
   }
 }

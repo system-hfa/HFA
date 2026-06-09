@@ -21,9 +21,12 @@ export type RiskProfileSourceEvent = {
   createdAt: string
   status: RiskProfileSourceStatus
   source: RiskProfileSourceType
+  sourceFlow?: string | null
   analysisId?: string | null
   engineVersion?: string | null
+  engineRuntimeVersion?: string | null
   methodologyVersion?: string | null
+  canonicalTreeVersion?: string | null
   erc?: {
     code?: string | null
     severity?: string | null

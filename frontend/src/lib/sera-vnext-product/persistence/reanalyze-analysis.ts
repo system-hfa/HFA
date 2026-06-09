@@ -47,6 +47,8 @@ export async function reanalyzeSeraVNextAnalysis(args: {
     created_by: args.context.userId,
     request_id: args.context.requestId,
     engine_version: versions.engineVersion,
+    engine_runtime_version: versions.engineRuntimeVersion,
+    source_flow: versions.sourceFlow,
     engine_input: engineInput,
     engine_output: engineOutput,
     engine_output_hash: outputHash,
