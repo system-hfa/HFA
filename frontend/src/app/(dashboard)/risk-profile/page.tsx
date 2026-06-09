@@ -1662,7 +1662,7 @@ export default function RiskProfilePage() {
       {!hasAnalyses && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-8">
           <div className="max-w-lg">
-            <h2 className="text-white font-semibold text-lg mb-2">Seu perfil organizacional está em formação</h2>
+            <h2 className="text-white font-semibold text-lg mb-2">Seu panorama descritivo está em formação</h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Após algumas análises, o sistema começa a revelar padrões de fatores humanos, precondições recorrentes e distribuição por matriz da sua organização.
             </p>
@@ -1713,7 +1713,7 @@ export default function RiskProfilePage() {
               </p>
               <div className="mt-3">
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-1.5">
-                  <span>{totalAnalyses} de 10 análises para diagnóstico completo</span>
+                  <span>{totalAnalyses} de 10 análises para panorama descritivo</span>
                   <span>{totalAnalyses * 10}%</span>
                 </div>
                 <div className="h-1.5 bg-slate-800 rounded-full">

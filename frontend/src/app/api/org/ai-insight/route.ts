@@ -18,8 +18,11 @@ Restrições metodológicas obrigatórias:
 - Diferencie os três tipos de dado: ARMS/ERC (risco estimado de evento histórico individual), Matriz ISO/ICAO (frequência observada na amostra de análises, não probabilidade operacional real) e score HFA (índice heurístico organizacional). Não os confunda nem os equipare.
 - O campo nivel_risco é uma estimativa categórica assistiva. Nunca o apresente como diagnóstico estatístico definitivo.`
 
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
+function jsonError(message: string, status: number, requestId?: string) {
+  return NextResponse.json(
+    { detail: message, ...(requestId ? { request_id: requestId } : {}) },
+    { status }
+  )
 }
 
 function logError(error: unknown, stage: string, userId?: string) {
@@ -88,6 +91,6 @@ Retorne APENAS o JSON, sem texto adicional.`
   } catch (e) {
     if (e instanceof Response) return e
     logError(e, 'top-level', userId)
-    return jsonError(String(e), 500)
+    return jsonError('Erro interno ao gerar insight.', 500)
   }
 }

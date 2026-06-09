@@ -11,14 +11,17 @@ type ExclusionPayload = {
   reason?: string
 }
 
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
+function jsonError(message: string, status: number, requestId?: string) {
+  return NextResponse.json(
+    { detail: message, ...(requestId ? { request_id: requestId } : {}) },
+    { status }
+  )
 }
 
 export async function POST(req: Request) {
+  const requestId = getOrCreateRequestId(req)
   try {
     const user = await requireAdmin(req)
-    const requestId = getOrCreateRequestId(req)
     const body = (await req.json().catch(() => ({}))) as ExclusionPayload
     const sourceType = body.sourceType
     const sourceId = typeof body.sourceId === 'string' ? body.sourceId.trim() : ''
@@ -52,7 +55,8 @@ export async function POST(req: Request) {
       .maybeSingle()
 
     if (existing.error) {
-      return jsonError(existing.error.message, 500)
+      console.error('[risk-profile/exclusions] existing lookup failed', { requestId, error: existing.error.message })
+      return jsonError('Erro interno ao verificar exclusão existente.', 500, requestId)
     }
 
     if (existing.data) {
@@ -75,7 +79,8 @@ export async function POST(req: Request) {
       .single()
 
     if (inserted.error || !inserted.data) {
-      return jsonError(inserted.error?.message ?? 'Falha ao criar exclusão', 500)
+      console.error('[risk-profile/exclusions] insert failed', { requestId, error: inserted.error?.message })
+      return jsonError('Falha ao criar exclusão.', 500, requestId)
     }
 
     await writeAuditLog({
@@ -100,6 +105,7 @@ export async function POST(req: Request) {
     }, { status: 201, headers: { 'x-request-id': requestId } })
   } catch (error) {
     if (error instanceof Response) return error
-    return jsonError(error instanceof Error ? error.message : String(error), 500)
+    console.error('[risk-profile/exclusions] unhandled error', { requestId, error: error instanceof Error ? error.message : String(error) })
+    return jsonError('Erro interno ao processar exclusão.', 500, requestId)
   }
 }

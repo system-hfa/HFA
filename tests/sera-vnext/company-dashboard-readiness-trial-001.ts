@@ -77,8 +77,8 @@ async function main() {
 
     const requests = pwRequests(ENTERPRISE_SESSION_ID)
     assert.match(requests, /\/api\/auth\/me/)
-    assert.match(requests, /\/api\/org\/intelligence/)
-    checks.push({ name: 'dashboard_requests_tenant_scoped_endpoints', status: 'PASS', detail: '/api/auth/me and /api/org/intelligence observed' })
+    assert.match(requests, /\/api\/risk-profile/)
+    checks.push({ name: 'dashboard_requests_tenant_scoped_endpoints', status: 'PASS', detail: '/api/auth/me and /api/risk-profile observed' })
 
     const consoleWarnings = pwConsoleWarnings(ENTERPRISE_SESSION_ID)
     assert.equal(/Errors:\s*[1-9]/.test(consoleWarnings), false)

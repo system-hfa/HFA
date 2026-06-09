@@ -4,14 +4,17 @@ import { getOrCreateRequestId } from '@/lib/observability/request-id'
 import { requireAdmin } from '@/lib/server/admin-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
+function jsonError(message: string, status: number, requestId?: string) {
+  return NextResponse.json(
+    { detail: message, ...(requestId ? { request_id: requestId } : {}) },
+    { status }
+  )
 }
 
 export async function DELETE(req: Request, ctx: { params: Promise<{ exclusionId: string }> }) {
+  const requestId = getOrCreateRequestId(req)
   try {
     const user = await requireAdmin(req)
-    const requestId = getOrCreateRequestId(req)
     const { exclusionId } = await ctx.params
     const admin = getSupabaseAdmin()
 
@@ -23,7 +26,8 @@ export async function DELETE(req: Request, ctx: { params: Promise<{ exclusionId:
       .maybeSingle()
 
     if (current.error) {
-      return jsonError(current.error.message, 500)
+      console.error('[risk-profile/exclusions/restore] lookup failed', { requestId, error: current.error.message })
+      return jsonError('Erro interno ao verificar exclusão.', 500, requestId)
     }
     if (!current.data) {
       return jsonError('Exclusão não encontrada', 404)
@@ -48,7 +52,8 @@ export async function DELETE(req: Request, ctx: { params: Promise<{ exclusionId:
       .single()
 
     if (restored.error || !restored.data) {
-      return jsonError(restored.error?.message ?? 'Falha ao restaurar exclusão', 500)
+      console.error('[risk-profile/exclusions/restore] update failed', { requestId, error: restored.error?.message })
+      return jsonError('Falha ao restaurar exclusão.', 500, requestId)
     }
 
     await writeAuditLog({
@@ -73,6 +78,7 @@ export async function DELETE(req: Request, ctx: { params: Promise<{ exclusionId:
     }, { headers: { 'x-request-id': requestId } })
   } catch (error) {
     if (error instanceof Response) return error
-    return jsonError(error instanceof Error ? error.message : String(error), 500)
+    console.error('[risk-profile/exclusions/restore] unhandled error', { requestId, error: error instanceof Error ? error.message : String(error) })
+    return jsonError('Erro interno ao processar restauração.', 500, requestId)
   }
 }
