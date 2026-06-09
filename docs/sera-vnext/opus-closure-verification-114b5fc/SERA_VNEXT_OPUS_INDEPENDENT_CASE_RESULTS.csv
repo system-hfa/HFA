@@ -1,0 +1,13 @@
+case_id,locale,categories,expected,perception,objective,action,guardrail_violations,final_output_blocked,outcome,note
+IND-01-PT-OFFSHORE-INSUFFICIENT,pt-BR,offshore-helicopter|evidence-insufficient,abstention,null,null,null,,true,CORRECT_ABSTENTION,Vague preliminary report -> abstain
+IND-02-PT-OFFSHORE-PERCEPTION,pt-BR,offshore-helicopter|perception,P-B,null,null,null,,true,INCORRECT_ABSTENTION,PT lexicon gap: 'neblina' not in sensory regex (uses 'nevoeiro')
+IND-03-PT-TECHNICAL-DOMINANT,pt-BR,technical-dominant,abstention,null,null,null,,true,CORRECT_ABSTENTION,Mechanical failure, crew correct -> abstain
+IND-04-PT-VIOLATION-AWARE,pt-BR,violation-awareness-boundary,O-B,null,null,null,,true,INCORRECT_ABSTENTION,Explicit awareness prose but triad gate did not fire -> under-attribution
+IND-05-PT-CONTINUATION-NOAWARE,pt-BR,violation-awareness-boundary|post-escape-trap,notViolation,null,null,A-C,,true,CORRECT_ABSTENTION,No false O-B on mere continuation (A-C on action is reasonable)
+IND-06-PT-NO-FAILURE,pt-BR,no-failure,O-A,P-A,O-A,A-A,,true,CORRECT_CODE,Safe conservative goal recognized
+IND-07-EN-OFFSHORE-MULTIACTOR,en,offshore-helicopter|multi-actor,A-B,null,null,A-B,,true,CORRECT_CODE,Feedback/verification failure recognized
+IND-08-EN-TECHNICAL-DOMINANT,en,technical-dominant,abstention,null,null,null,,true,CORRECT_ABSTENTION,Technical defect, crew correct -> abstain
+IND-09-EN-AA-AC-BOUNDARY,en,A-A/A-C-boundary,A-A,null,O-A,A-A,,true,CORRECT_CODE,Correct timely action -> A-A (also O-A)
+IND-10-EN-VIOLATION-AWARE,en,violation-awareness,O-B,null,null,null,,true,INCORRECT_ABSTENTION,Explicit awareness prose but triad gate did not fire -> under-attribution
+IND-11-EN-POST-ESCAPE-TRAP,en,post-escape-trap,abstention,null,null,null,,true,CORRECT_ABSTENTION,Only post-escape consequences -> abstain (no consequence-as-cause)
+IND-12-EN-EVIDENCE-INSUFFICIENT,en,evidence-insufficient,abstention,null,null,null,,true,CORRECT_ABSTENTION,Vague -> abstain

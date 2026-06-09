@@ -1,0 +1,954 @@
+{
+  "generatedAt": "2026-06-09T13:42:07.839Z",
+  "manifestHash": "9dd566074e45ce95a681cf0d7da9e26cf935354350597174023e50c0b4f1d6ed",
+  "expectedOutputsHash": "858d17a75c2b3f7235a0d89fdc1d8404fd64c10a9c9df54dc7febdb4f19f97de",
+  "totalCases": 36,
+  "calibrationCases": 12,
+  "validationCases": 12,
+  "holdoutCases": 12,
+  "caseResults": [
+    {
+      "caseId": "V03-CAL-01",
+      "group": "calibration",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"perception\",\"code\":\"P-B\"} but engine abstained"
+      ],
+      "tags": [
+        "offshore",
+        "helicopter",
+        "sensory",
+        "night",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-02",
+      "group": "calibration",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "offshore",
+        "helicopter",
+        "communication",
+        "fatigue",
+        "pt-BR",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-03",
+      "group": "calibration",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-B\"} but engine abstained"
+      ],
+      "tags": [
+        "technical-dominant",
+        "automation",
+        "mode-confusion",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-04",
+      "group": "calibration",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-C"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"perception\",\"code\":\"P-C\"} but engine abstained"
+      ],
+      "tags": [
+        "technical-dominant",
+        "automation",
+        "training-gap",
+        "pt-BR",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-05",
+      "group": "calibration",
+      "locale": "en",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "evidence-insufficient",
+        "runway-incursion",
+        "minimal-detail",
+        "en",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-06",
+      "group": "calibration",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "evidence-insufficient",
+        "airprox",
+        "vague",
+        "pt-BR",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-07",
+      "group": "calibration",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-F"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-A",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-F\"} but engine abstained"
+      ],
+      "tags": [
+        "pf-pm",
+        "multi-actor",
+        "crew-coordination",
+        "go-around",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-08",
+      "group": "calibration",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-B\"} but engine abstained"
+      ],
+      "tags": [
+        "pf-pm",
+        "multi-actor",
+        "selection-error",
+        "altitude",
+        "pt-BR",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-09",
+      "group": "calibration",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-B\"} but engine abstained"
+      ],
+      "tags": [
+        "post-escape",
+        "survival-factors",
+        "evacuation",
+        "overrun",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-10",
+      "group": "calibration",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "post-escape",
+        "organizational-focus",
+        "wrong-airport",
+        "pt-BR",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-11",
+      "group": "calibration",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"objective\",\"code\":\"O-B\"} but engine abstained"
+      ],
+      "tags": [
+        "violation",
+        "awareness",
+        "weather-minimums",
+        "conscious-deviation",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-CAL-12",
+      "group": "calibration",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"objective\",\"code\":\"O-B\"} but engine abstained"
+      ],
+      "tags": [
+        "violation",
+        "awareness",
+        "approach-minimums",
+        "conscious-deviation",
+        "pt-BR",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-01",
+      "group": "validation",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_CODE",
+      "passed": false,
+      "findings": [
+        "INCORRECT_CODE: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-B\"}, got perception=null objective=null action=A-C"
+      ],
+      "tags": [
+        "offshore",
+        "helicopter",
+        "checklist-error",
+        "emergency",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-02",
+      "group": "validation",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"perception\",\"code\":\"P-B\"} but engine abstained"
+      ],
+      "tags": [
+        "offshore",
+        "helicopter",
+        "visual-reference",
+        "sea",
+        "pt-BR",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-03",
+      "group": "validation",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-B\"} but engine abstained"
+      ],
+      "tags": [
+        "technical-dominant",
+        "autothrottle",
+        "automation",
+        "landing",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-04",
+      "group": "validation",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"perception\",\"code\":\"P-B\"} but engine abstained"
+      ],
+      "tags": [
+        "technical-dominant",
+        "autopilot",
+        "mode-awareness",
+        "pt-BR",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-05",
+      "group": "validation",
+      "locale": "en",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-F"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-A",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-F\"} but engine abstained"
+      ],
+      "tags": [
+        "pf-pm",
+        "training",
+        "authority",
+        "go-around",
+        "en",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-06",
+      "group": "validation",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-F"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "INCORRECT_ABSTENTION",
+      "passed": false,
+      "findings": [
+        "INCORRECT_ABSTENTION: expected {\"kind\":\"code\",\"axis\":\"action\",\"code\":\"A-F\"} but engine abstained"
+      ],
+      "tags": [
+        "pf-pm",
+        "communication",
+        "takeoff",
+        "airspeed",
+        "pt-BR",
+        "code-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-07",
+      "group": "validation",
+      "locale": "en",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "violation-boundary",
+        "pressure",
+        "no-awareness",
+        "shortcut",
+        "en",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-08",
+      "group": "validation",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "violation-boundary",
+        "pressure",
+        "no-awareness",
+        "dispatch",
+        "pt-BR",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-09",
+      "group": "validation",
+      "locale": "en",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "no-failure",
+        "routine",
+        "normal",
+        "en",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-10",
+      "group": "validation",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "no-failure",
+        "routine",
+        "normal",
+        "pt-BR",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-11",
+      "group": "validation",
+      "locale": "en",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "consequence-as-cause",
+        "cfi",
+        "post-impact",
+        "insufficient",
+        "en",
+        "abstention-expected"
+      ]
+    },
+    {
+      "caseId": "V03-VAL-12",
+      "group": "validation",
+      "locale": "pt-BR",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "consequence-as-cause",
+        "cfi",
+        "post-impact",
+        "insufficient",
+        "pt-BR",
+        "abstention-expected"
+      ]
+    }
+  ],
+  "metrics": {
+    "code_expected_cases": 14,
+    "correct_code": 0,
+    "incorrect_code": 1,
+    "code_precision": 0,
+    "code_recall": 0,
+    "abstention_expected_cases": 10,
+    "correct_abstention": 10,
+    "incorrect_abstention": 13,
+    "abstention_precision": 0.43478260869565216,
+    "abstention_recall": 1,
+    "portuguese_code_recall": 0,
+    "english_code_recall": 0,
+    "language_recall_gap": 0,
+    "guardrail_true_positive_rate": 0,
+    "guardrail_false_positive_rate": 0,
+    "critical_boundary_accuracy": 0.625,
+    "violation_awareness_boundary_accuracy": 1,
+    "post_escape_boundary_accuracy": 0.5,
+    "consequence_quarantine_accuracy": 1,
+    "no_oe_accuracy": 1,
+    "aa_ac_boundary_accuracy": 0,
+    "determinism": 1,
+    "final_outputs_blocked_rate": 1
+  },
+  "finalDecision": "ENGINE_NATURALISTIC_VALIDATION_NOT_READY",
+  "limitations": [
+    "INCORRECT_CRITICAL_CODE: 1 incorrect codes on critical boundaries",
+    "PT_CODE_RECALL_BELOW_70: 0.0%",
+    "EN_CODE_RECALL_BELOW_70: 0.0%"
+  ]
+}

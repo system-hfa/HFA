@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { Archive, Download, Lock, RefreshCw, RotateCcw, ShieldAlert } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import type { SeraReviewerOutput, SeraReviewerAxisCard, SeraReviewerPreconditionCard } from '@/lib/sera-vnext-product/reviewer-output'
+import GuardrailPanel from '@/components/sera/GuardrailPanel'
 
 const betaUiEnabled = process.env.NEXT_PUBLIC_SERA_VNEXT_PRODUCT_BETA_UI_ENABLED?.trim().toLowerCase() === 'true'
 
@@ -222,8 +223,20 @@ export default function SeraVNextAnalysisDetailPage() {
             )}
           </ReviewSection>
 
-          {/* Seção 8 — Guia de decisão humana */}
-          <ReviewSection label="8. Guia de decisão humana">
+          {/* Seção 8 — Salvaguardas metodológicas (Guardrails) */}
+          <ReviewSection label="8. Salvaguardas metodológicas">
+            {analysis.engine_output && (analysis.engine_output as Record<string, unknown>).guardrails ? (
+              <GuardrailPanel
+                guardrails={(analysis.engine_output as Record<string, unknown>).guardrails as Record<string, boolean>}
+                guardrailEvidence={(analysis.engine_output as Record<string, unknown>).guardrailEvidence as Record<string, string[]> ?? {}}
+              />
+            ) : (
+              <p className="text-sm text-slate-400">Salvaguardas não disponíveis.</p>
+            )}
+          </ReviewSection>
+
+          {/* Seção 9 — Guia de decisão humana */}
+          <ReviewSection label="9. Guia de decisão humana">
             {ro ? (
               <DecisionGuideCard dg={ro.humanDecisionGuide} analysisId={params.id} />
             ) : (

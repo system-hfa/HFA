@@ -1,0 +1,51 @@
+{
+  "corpus": "SERA_VNEXT_V03_NATURALISTIC",
+  "version": "1.0.0",
+  "createdAt": "2026-06-09",
+  "description": "Independent naturalistic validation corpus. Cases authored with real narrative language, not copied from engine concept lexicon. Designed to measure real-world recall, not lexical matching.",
+  "totalCases": 36,
+  "localeDistribution": {
+    "pt-BR": 18,
+    "en": 18
+  },
+  "groups": {
+    "calibration": {
+      "count": 12,
+      "description": "Used to tune engine concept patterns. May be adjusted after first run.",
+      "caseIds": ["V03-CAL-01", "V03-CAL-02", "V03-CAL-03", "V03-CAL-04", "V03-CAL-05", "V03-CAL-06", "V03-CAL-07", "V03-CAL-08", "V03-CAL-09", "V03-CAL-10", "V03-CAL-11", "V03-CAL-12"]
+    },
+    "validation": {
+      "count": 12,
+      "description": "Fixed validation set. Results are reported. Must not be altered after first run.",
+      "caseIds": ["V03-VAL-01", "V03-VAL-02", "V03-VAL-03", "V03-VAL-04", "V03-VAL-05", "V03-VAL-06", "V03-VAL-07", "V03-VAL-08", "V03-VAL-09", "V03-VAL-10", "V03-VAL-11", "V03-VAL-12"]
+    },
+    "holdout": {
+      "count": 12,
+      "description": "Untouched holdout. Must NOT be run or altered until after pilot phase.",
+      "caseIds": ["V03-HLD-01", "V03-HLD-02", "V03-HLD-03", "V03-HLD-04", "V03-HLD-05", "V03-HLD-06", "V03-HLD-07", "V03-HLD-08", "V03-HLD-09", "V03-HLD-10", "V03-HLD-11", "V03-HLD-12"]
+    }
+  },
+  "coverageBreakdown": {
+    "offshore_helicopter": 6,
+    "technical_dominant": 4,
+    "evidence_insufficient": 4,
+    "pf_pm_multi_actor": 4,
+    "post_escape_traps": 4,
+    "violation_awareness_boundaries": 4,
+    "aa_ac_boundaries": 4,
+    "no_failure": 3,
+    "consequence_as_cause": 3,
+    "precondition_as_escape": 3
+  },
+  "designRules": [
+    "No phrases copied from engine regexes/concepts",
+    "No accident names or case IDs in narratives",
+    "No existing fixture-dominant accident patterns",
+    "Real natural language, varied syntax and vocabulary",
+    "Expected outputs defined before execution",
+    "Holdout not altered after seeing results",
+    "Hash registered before first run"
+  ],
+  "casePayloadSha256": "63c2e447636585d1da0423f59e5482413de9024b96592b215c7d9e555ac2f7df",
+  "expectedOutputsSha256": "b6e80c1c986ddde00987fcf3006072cf4400473ebaf1a6fb5c451d815738e555"
+}

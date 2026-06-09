@@ -1,0 +1,17 @@
+claim,verdict,evidence,qualification
+TECHNICAL_CLOSURE_READY_FOR_INDEPENDENT_AUDIT,VALID_WITH_QUALIFICATION,repo at fixed HEAD with input package present; engine v02 runnable,closure matrix itself is stale vs code (NF-07)
+all technical blockers resolved,OVERSTATED,F-13/F-15/F-16/F-17/F-18/F-22 still open; guardrail UI + analyze error leak open,several are low severity but not zero
+all mandatory Opus corrections addressed,VALID_WITH_QUALIFICATION,MC1 copy/MC3 sci-validation/MC5 guardrails/MC6 risk-errors done; MC4 violation done in code,MC2 (PT honesty) documented not solved; violation now under-attributes
+engine v02 technically validated,VALID_WITH_QUALIFICATION,deterministic; 22/22 reachable; final-output locked; guardrails computed,validated = boundary/lexical/determinism only; real accuracy unproven (my recall 3/6)
+product ready for controlled pilot,VALID_WITH_QUALIFICATION,admin vNext path safe; candidate-only; human review forced,only via admin path; not common flow; PT recall low; migration must be applied
+guardrails integrated,VALID_WITH_QUALIFICATION,computed in engine; persisted; in audit + warnings,no dedicated UI; absent from common flow (NF-02)
+dashboard parity pass,VALID,dashboard + risk-profile share canonical summary fn,parity != validated numbers
+endpoint parity pass,OVERSTATED,/api/analyses/risk-profile still divergent (legacy-only),F-13 not consolidated
+full sweep pass,VALID_WITH_QUALIFICATION,v02 (103) + reachability ran green with 0 skips,lexicon-aligned cases; root suite still static-grep dominated
+methodology preserved,VALID,canonical tree not invented/reordered; evidence-first; no code-first,metadata fields synthesized (F-16)
+final outputs blocked,VALID,assertNonFinalOutput lock; finalOutputsBlocked true on all 103 + my 12 cases,strongest verified claim
+Portuguese supported,OVERSTATED,bilingual concept regexes exist,real PT recall 1/3 in independent test; lexical not semantic
+8/22 leaves unreachable (closure matrix),FALSE,run-reachability 22/22 on real engine,closure matrix obsolete
+violation over-attribution unresolved (closure matrix),FALSE,O-B/O-C gated on awareness triad; IND-05 no false O-B,closure matrix obsolete; now under-attributes
+scientific validation,NOT_PROVEN,no inter-rater/empirical study; correctly not claimed,needs human study (F-24)
+deploy readiness,NOT_PROVEN,no deploy access,F-26 out-of-band

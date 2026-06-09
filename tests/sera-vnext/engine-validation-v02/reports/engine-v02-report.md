@@ -1,6 +1,6 @@
 # SERA vNext Engine Validation v02
 
-Generated at: 2026-06-09T02:46:29.594Z
+Generated at: 2026-06-09T13:42:06.770Z
 Final decision: SERA_VNEXT_ENGINE_V02_PASS_WITH_LIMITATIONS
 Manifest hash: cd66cae2a9c63a78f18ddf425830cc9ae703a5c7ca48ee741575b32879b1a207
 

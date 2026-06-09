@@ -1,0 +1,63 @@
+{
+  "corpus": "SERA_VNEXT_V03_NATURALISTIC",
+  "totalCases": 36,
+  "groups": {
+    "calibration": 12,
+    "validation": 12,
+    "holdout": 12
+  },
+  "localeDistribution": {
+    "pt-BR": 18,
+    "en": 18
+  },
+  "coverageBreakdown": {
+    "offshore_helicopter": 6,
+    "technical_dominant": 4,
+    "evidence_insufficient": 4,
+    "pf_pm_multi_actor": 4,
+    "post_escape_traps": 4,
+    "violation_awareness_boundaries": 4,
+    "aa_ac_boundaries": 4,
+    "no_failure": 3,
+    "consequence_as_cause": 3,
+    "precondition_as_escape": 3
+  },
+  "cases": {
+    "V03-CAL-01": { "kind": "code", "axis": "perception", "code": "P-B" },
+    "V03-CAL-02": { "kind": "abstention" },
+    "V03-CAL-03": { "kind": "code", "axis": "action", "code": "A-B" },
+    "V03-CAL-04": { "kind": "code", "axis": "perception", "code": "P-C" },
+    "V03-CAL-05": { "kind": "abstention" },
+    "V03-CAL-06": { "kind": "abstention" },
+    "V03-CAL-07": { "kind": "code", "axis": "action", "code": "A-F" },
+    "V03-CAL-08": { "kind": "code", "axis": "action", "code": "A-B" },
+    "V03-CAL-09": { "kind": "code", "axis": "action", "code": "A-B" },
+    "V03-CAL-10": { "kind": "abstention" },
+    "V03-CAL-11": { "kind": "code", "axis": "objective", "code": "O-B" },
+    "V03-CAL-12": { "kind": "code", "axis": "objective", "code": "O-B" },
+    "V03-VAL-01": { "kind": "code", "axis": "action", "code": "A-B" },
+    "V03-VAL-02": { "kind": "code", "axis": "perception", "code": "P-B" },
+    "V03-VAL-03": { "kind": "code", "axis": "action", "code": "A-B" },
+    "V03-VAL-04": { "kind": "code", "axis": "perception", "code": "P-B" },
+    "V03-VAL-05": { "kind": "code", "axis": "action", "code": "A-F" },
+    "V03-VAL-06": { "kind": "code", "axis": "action", "code": "A-F" },
+    "V03-VAL-07": { "kind": "abstention" },
+    "V03-VAL-08": { "kind": "abstention" },
+    "V03-VAL-09": { "kind": "abstention" },
+    "V03-VAL-10": { "kind": "abstention" },
+    "V03-VAL-11": { "kind": "abstention" },
+    "V03-VAL-12": { "kind": "abstention" },
+    "V03-HLD-01": { "kind": "code", "axis": "objective", "code": "O-C" },
+    "V03-HLD-02": { "kind": "code", "axis": "objective", "code": "O-C" },
+    "V03-HLD-03": { "kind": "code", "axis": "action", "code": "A-B" },
+    "V03-HLD-04": { "kind": "code", "axis": "action", "code": "A-C" },
+    "V03-HLD-05": { "kind": "abstention" },
+    "V03-HLD-06": { "kind": "abstention" },
+    "V03-HLD-07": { "kind": "abstention" },
+    "V03-HLD-08": { "kind": "abstention" },
+    "V03-HLD-09": { "kind": "code", "axis": "action", "code": "A-A" },
+    "V03-HLD-10": { "kind": "code", "axis": "action", "code": "A-A" },
+    "V03-HLD-11": { "kind": "abstention" },
+    "V03-HLD-12": { "kind": "abstention" }
+  }
+}

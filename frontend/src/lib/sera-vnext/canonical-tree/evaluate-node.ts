@@ -1,5 +1,5 @@
 import type { SeraConfidence } from '../engine-contract'
-import { hasConcept, matchingConceptStatements, type SeraEvidenceConcept } from '../engine-v02/language/concepts'
+import { hasConcept, hasConceptWithoutNegation, matchingConceptStatements, matchingConceptStatementsWithoutNegation, conceptsWithinWindow, type SeraEvidenceConcept } from '../engine-v02/language/concepts'
 import type { SeraEvidenceItem } from '../evidence'
 import { axisToEvidenceUse, isEvidenceUsableFor } from '../evidence'
 import type { CanonicalSeraAxis } from '../types'
@@ -125,29 +125,52 @@ function decideO(nodeId: string, statements: string[]): Decision {
     case 'O_RULES': {
       const safeGoal = concept(statements, 'safeGoal')
       const violationPrerequisites = unique([
-        ...concept(statements, 'knownRule'),
-        ...concept(statements, 'explicitAwareness'),
-        ...concept(statements, 'consciousDeviation'),
+        ...matchingConceptStatementsWithoutNegation(statements, 'knownRule'),
+        ...matchingConceptStatementsWithoutNegation(statements, 'explicitAwareness'),
+        ...matchingConceptStatementsWithoutNegation(statements, 'consciousDeviation'),
       ])
       const unmanagedRisk = concept(statements, 'unmanagedRisk')
+
       if (safeGoal.length > 0) return { answer: 'SIM', supportingEvidence: safeGoal, rationale: 'Objective evidence supports a safe or rule-consistent goal.' }
-      if (
-        hasConcept(statements, 'knownRule') &&
-        hasConcept(statements, 'explicitAwareness') &&
-        hasConcept(statements, 'consciousDeviation')
-      ) {
-        return { answer: 'NÃO', supportingEvidence: violationPrerequisites, rationale: 'Violation path is opened only by known-rule, awareness, and conscious-deviation evidence.' }
+
+      // Three-tier violation detection (all negation-aware):
+      // Tier 1 — Strict triad with contextual window (≤ 3 sentences apart)
+      const knownRuleWindow = matchingConceptStatementsWithoutNegation(statements, 'knownRule')
+      const explicitAwarenessWindow = matchingConceptStatementsWithoutNegation(statements, 'explicitAwareness')
+      const consciousDeviationWindow = matchingConceptStatementsWithoutNegation(statements, 'consciousDeviation')
+
+      const hasKnownRule = knownRuleWindow.length > 0
+      const hasAwareness = explicitAwarenessWindow.length > 0
+      const hasConscious = consciousDeviationWindow.length > 0
+
+      // Tier 1: All three present within contextual window
+      const windowPair1 = conceptsWithinWindow(statements, 'knownRule', 'explicitAwareness', 3)
+      const windowPair2 = conceptsWithinWindow(statements, 'explicitAwareness', 'consciousDeviation', 3)
+
+      if (hasKnownRule && hasAwareness && hasConscious && (windowPair1 || windowPair2)) {
+        return { answer: 'NÃO', supportingEvidence: violationPrerequisites, rationale: 'Violation path opened by known-rule, awareness, and conscious-deviation evidence within contextual proximity.' }
       }
+
+      // Tier 2: All three present (negation-aware) without window constraint
+      if (hasKnownRule && hasAwareness && hasConscious) {
+        return { answer: 'NÃO', supportingEvidence: violationPrerequisites, rationale: 'Violation path opened by known-rule, awareness, and conscious-deviation evidence (all three present without negation).' }
+      }
+
+      // Tier 3: Two of three with strong awareness present
+      if (hasAwareness && (hasKnownRule || hasConscious)) {
+        return { answer: 'NÃO', supportingEvidence: violationPrerequisites, rationale: 'Violation path opened by awareness evidence combined with known-rule or conscious-deviation.' }
+      }
+
       if (unmanagedRisk.length > 0) return { answer: 'SIM', supportingEvidence: unmanagedRisk, rationale: 'Goal evidence is rule-compatible enough to test risk-management adequacy without inferring violation.' }
       return { answer: 'INSUFFICIENT_EVIDENCE', supportingEvidence: [], rationale: 'No pre-escape goal evidence answers rule/risk consistency.' }
     }
     case 'O_ROUTINE': {
-      const routine = concept(statements, 'routineDeviation')
-      const exceptional = concept(statements, 'exceptionalDeviation')
+      const routine = matchingConceptStatementsWithoutNegation(statements, 'routineDeviation')
+      const exceptional = matchingConceptStatementsWithoutNegation(statements, 'exceptionalDeviation')
       const awareness = unique([
-        ...concept(statements, 'knownRule'),
-        ...concept(statements, 'explicitAwareness'),
-        ...concept(statements, 'consciousDeviation'),
+        ...matchingConceptStatementsWithoutNegation(statements, 'knownRule'),
+        ...matchingConceptStatementsWithoutNegation(statements, 'explicitAwareness'),
+        ...matchingConceptStatementsWithoutNegation(statements, 'consciousDeviation'),
       ])
       if (routine.length > 0 && awareness.length > 0) return { answer: 'SIM', supportingEvidence: unique([...routine, ...awareness]), rationale: 'Routine violation requires positive awareness and known-rule evidence.' }
       if (exceptional.length > 0 && awareness.length > 0) return { answer: 'NÃO', supportingEvidence: unique([...exceptional, ...awareness]), rationale: 'Exceptional violation requires positive awareness and known-rule evidence.' }

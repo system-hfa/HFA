@@ -1,4 +1,4 @@
-import { collectConceptMatches, hasConcept } from '../language/concepts'
+import { collectConceptMatches, hasConcept, hasConceptWithoutNegation } from '../language/concepts'
 import type { SeraVNextEngineOutput } from '../../engine-contract'
 
 export type SeraComputedGuardrail = {
@@ -69,9 +69,9 @@ export function computeSeraVNextGuardrails(input: {
   const awarenessMissingForViolation =
     violationCode &&
     !(
-      hasConcept(objectiveEvidence, 'knownRule') &&
-      hasConcept(objectiveEvidence, 'explicitAwareness') &&
-      hasConcept(objectiveEvidence, 'consciousDeviation')
+      hasConceptWithoutNegation(objectiveEvidence, 'knownRule') &&
+      hasConceptWithoutNegation(objectiveEvidence, 'explicitAwareness') &&
+      hasConceptWithoutNegation(objectiveEvidence, 'consciousDeviation')
     )
 
   return {
