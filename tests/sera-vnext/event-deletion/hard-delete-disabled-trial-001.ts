@@ -9,6 +9,7 @@ const source = readFileSync(routeFile, 'utf8')
 assert.match(source, /export async function DELETE/)
 assert.match(source, /requireAdmin\(req\)/)
 assert.match(source, /event\.hard_delete_denied/)
-assert.match(source, /EVENT_HARD_DELETE_DISABLED/)
+assert.match(source, /EVENT_PURGE_DRY_RUN_ONLY/)
+assert.match(source, /HARD_DELETE_DENIED/)
 
 console.log('HARD_DELETE_DISABLED_OK')

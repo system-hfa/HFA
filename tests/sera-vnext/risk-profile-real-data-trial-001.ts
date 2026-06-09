@@ -53,8 +53,9 @@ async function main() {
   const [legacyEventsRes, legacyExclusionsRes, vnextRes, vnextExclusionsRes] = await Promise.all([
     admin
       .from('events')
-      .select('id, status, analyses(id)')
-      .eq('tenant_id', enterprise.tenantId),
+      .select('id, status, deleted_at, analyses(id)')
+      .eq('tenant_id', enterprise.tenantId)
+      .is('deleted_at', null),
     admin
       .from('risk_profile_exclusions')
       .select('source_id')
@@ -64,7 +65,9 @@ async function main() {
     admin
       .from('sera_vnext_analyses')
       .select('id, status, deleted_at, perception_candidate_code, objective_candidate_code, action_candidate_code, engine_output')
-      .eq('tenant_id', enterprise.tenantId),
+      .eq('tenant_id', enterprise.tenantId)
+      .eq('status', 'HUMAN_REVIEW_COMPLETED_NON_FINAL')
+      .is('deleted_at', null),
     admin
       .from('risk_profile_exclusions')
       .select('source_id')

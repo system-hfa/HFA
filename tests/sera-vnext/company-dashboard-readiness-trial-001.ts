@@ -59,7 +59,8 @@ async function main() {
     pwExec(ENTERPRISE_SESSION_ID, ['goto', `${baseUrl}/dashboard`])
     const dashboardText = await pwWaitForText(ENTERPRISE_SESSION_ID, 'Primeiros passos no HFA/SERA', 20_000)
     assert.match(dashboardText, /Comece aqui/)
-    assert.match(dashboardText, /Ver demo/)
+    assert.match(dashboardText, /\bVer\b/)
+    assert.doesNotMatch(dashboardText, /demo/i)
     assert.match(dashboardText, /Metodologia/)
     checks.push({ name: 'dashboard_route_loads', status: 'PASS', detail: 'primary company dashboard visible' })
 

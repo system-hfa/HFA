@@ -41,7 +41,8 @@ async function main() {
     assert.match(bodyText, /considerados no perfil/i)
     assert.match(bodyText, /erc predominante/i)
     const requests = pwRequests(SESSION_ID)
-    assert.match(requests, /\/api\/org\/intelligence/)
+    assert.match(requests, /\/api\/risk-profile/)
+    assert.doesNotMatch(requests, /\/api\/org\/intelligence/)
 
     const report = {
       trialId: TRIAL_ID,

@@ -2,12 +2,11 @@ import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/server/admin-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 import { getOrCreateRequestId } from '@/lib/observability/request-id'
-import { writeCriticalAuditLog } from '@/lib/observability/audit'
-import { getEventDeletionImpact, getEventDeletionRecord, softDeleteEvent } from '@/lib/server/event-deletion'
+import { getEventDeletionImpact, getEventDeletionRecord, resolvePublicUserId, softDeleteEvent } from '@/lib/server/event-deletion'
 
-function jsonError(requestId: string, message: string, status: number, code?: string) {
+function jsonError(requestId: string, code: string, message: string, status: number) {
   return NextResponse.json(
-    { detail: message, ...(code ? { error: code } : {}), request_id: requestId },
+    { error: { code, message, requestId } },
     { status, headers: { 'x-request-id': requestId } },
   )
 }
@@ -25,12 +24,12 @@ export async function POST(req: Request, ctx: { params: Promise<{ eventId: strin
 
     const reason = body.reason?.trim() ?? ''
     const confirmationTitle = body.confirmationTitle?.trim() ?? ''
-    if (!reason) return jsonError(requestId, 'Motivo obrigatório.', 400, 'EVENT_DELETE_REASON_REQUIRED')
+    if (!reason) return jsonError(requestId, 'EVENT_DELETE_REASON_REQUIRED', 'Motivo obrigatório.', 400)
 
     const event = await getEventDeletionRecord(admin, user.tenantId, eventId)
-    if (!event) return jsonError(requestId, 'Evento não encontrado.', 404, 'EVENT_NOT_FOUND')
+    if (!event) return jsonError(requestId, 'EVENT_NOT_FOUND', 'Evento não encontrado.', 404)
     if (event.title !== confirmationTitle) {
-      return jsonError(requestId, 'O título digitado não corresponde exatamente ao evento.', 400, 'EVENT_DELETE_CONFIRMATION_MISMATCH')
+      return jsonError(requestId, 'EVENT_DELETE_TITLE_MISMATCH', 'O título digitado não corresponde exatamente ao evento.', 400)
     }
     if (event.deleted_at) {
       const impact = await getEventDeletionImpact(admin, user.tenantId, eventId)
@@ -40,46 +39,29 @@ export async function POST(req: Request, ctx: { params: Promise<{ eventId: strin
         impact,
         requestId,
         idempotent: true,
-      }, { headers: { 'x-request-id': requestId } })
+      }, { status: 200, headers: { 'x-request-id': requestId } })
     }
 
     const impact = await getEventDeletionImpact(admin, user.tenantId, eventId)
-    await writeCriticalAuditLog({
+    if (impact.unknownDependencies.length > 0) {
+      return jsonError(requestId, 'EVENT_DELETE_IMPACT_INCOMPLETE', 'O impacto da exclusão não pôde ser determinado integralmente.', 409)
+    }
+    const publicUserId = await resolvePublicUserId({
+      admin,
       tenantId: user.tenantId,
-      userId: user.userId,
-      requestId,
-      eventType: 'event.deletion_requested',
-      entityType: 'event',
-      entityId: eventId,
-      route: `/api/events/${eventId}/delete-request`,
-      method: 'POST',
-      metadata: {
-        impact,
-      },
+      authUserId: user.userId,
+      email: user.email,
     })
 
     const result = await softDeleteEvent({
       admin,
       tenantId: user.tenantId,
       eventId,
-      actorUserId: user.userId,
+      actorUserId: publicUserId,
       reason,
+      confirmationTitle,
       requestId,
-    })
-
-    await writeCriticalAuditLog({
-      tenantId: user.tenantId,
-      userId: user.userId,
-      requestId,
-      eventType: 'event.soft_deleted',
-      entityType: 'event',
-      entityId: eventId,
-      route: `/api/events/${eventId}/delete-request`,
-      method: 'POST',
-      metadata: {
-        recoverableUntil: result.recoverableUntil,
-        impact,
-      },
+      unknownDependencies: impact.unknownDependencies,
     })
 
     return NextResponse.json({
@@ -87,12 +69,19 @@ export async function POST(req: Request, ctx: { params: Promise<{ eventId: strin
       recoverableUntil: result.recoverableUntil,
       impact,
       requestId,
+      idempotent: result.idempotent,
     }, { headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
-    if (e instanceof Error && e.message === 'EVENT_DELETE_BLOCKED_BY_OPEN_CORRECTIVE_ACTIONS') {
-      return jsonError(requestId, 'Existem ações corretivas em aberto vinculadas ao evento.', 409, 'EVENT_DELETE_BLOCKED_BY_OPEN_CORRECTIVE_ACTIONS')
-    }
-    return jsonError(requestId, String(e), 500)
+    const msg = e instanceof Error ? e.message : ''
+    if (msg === 'EVENT_DELETE_CORRECTIVE_ACTION_BLOCK') return jsonError(requestId, msg, 'Existem ações corretivas em aberto vinculadas ao evento.', 409)
+    if (msg === 'EVENT_DELETE_IMPACT_INCOMPLETE') return jsonError(requestId, msg, 'O impacto da exclusão não pôde ser determinado integralmente.', 409)
+    if (msg === 'EVENT_DELETE_ALREADY_DELETED') return jsonError(requestId, msg, 'O evento já está excluído.', 409)
+    if (msg === 'EVENT_DELETE_TITLE_MISMATCH') return jsonError(requestId, msg, 'O título digitado não corresponde exatamente ao evento.', 400)
+    if (msg === 'EVENT_DELETE_REASON_REQUIRED') return jsonError(requestId, msg, 'Motivo obrigatório.', 400)
+    if (msg === 'EVENT_DELETE_FORBIDDEN') return jsonError(requestId, msg, 'Operação não autorizada.', 403)
+    if (msg === 'EVENT_DELETE_CONFLICT') return jsonError(requestId, msg, 'Operação concorrente detectada. Recarregue e tente novamente.', 409)
+    console.error('[delete-request] unexpected error', { requestId, code: msg.slice(0, 64) })
+    return jsonError(requestId, 'EVENT_DELETE_INTERNAL_ERROR', 'Não foi possível concluir a operação.', 500)
   }
 }

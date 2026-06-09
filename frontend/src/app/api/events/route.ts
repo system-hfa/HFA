@@ -39,12 +39,12 @@ export async function GET(req: Request) {
       .eq('tenant_id', user.tenantId)
       .order('created_at', { ascending: false })
     if (scope === 'deleted') {
-      query = query.not('deleted_at', 'is', null)
+      query = query.not('deleted_at', 'is', null).neq('deletion_status', 'PURGED')
     } else {
-      query = query.is('deleted_at', null)
+      query = query.is('deleted_at', null).neq('deletion_status', 'PURGED')
     }
     const { data, error } = await query
-    if (error) return jsonError(error.message, 400)
+    if (error) return jsonError('Não foi possível listar os eventos.', 500)
     const eventIds = (data ?? []).map((event) => event.id).filter((id): id is string => typeof id === 'string')
     const exclusions = eventIds.length === 0
       ? { data: [], error: null }
@@ -55,7 +55,7 @@ export async function GET(req: Request) {
         .eq('source_type', 'legacy_event')
         .in('source_id', eventIds)
         .is('restored_at', null)
-    if (exclusions.error) return jsonError(exclusions.error.message, 400)
+    if (exclusions.error) return jsonError('Não foi possível listar os eventos.', 500)
     const exclusionBySourceId = new Map(
       (exclusions.data ?? []).map((row) => [row.source_id as string, row]),
     )
@@ -82,7 +82,7 @@ export async function GET(req: Request) {
   } catch (e) {
     if (e instanceof Response) return e
     logEventsError(e, 'get-events', { requestId })
-    return jsonError(String(e), 500)
+    return jsonError('Não foi possível listar os eventos.', 500)
   }
 }
 
@@ -98,8 +98,8 @@ export async function POST(req: Request) {
     try {
       stage = 'assert-service-role-env'
       assertServiceRoleEnv()
-    } catch (cfg) {
-      return jsonError(cfg instanceof Error ? cfg.message : String(cfg), 503)
+    } catch {
+      return jsonError('Serviço temporariamente indisponível.', 503)
     }
     stage = 'supabase-admin'
     const admin = getSupabaseAdmin()
@@ -181,8 +181,8 @@ export async function POST(req: Request) {
     try {
       stage = 'llm-config'
       await applyUserAiSettingsToEnv(admin, user.userId)
-    } catch (cfgErr) {
-      return jsonError(cfgErr instanceof Error ? cfgErr.message : String(cfgErr), 503)
+    } catch {
+      return jsonError('Serviço temporariamente indisponível.', 503)
     }
 
     stage = 'insert-event'
@@ -203,7 +203,7 @@ export async function POST(req: Request) {
       .single()
 
     if (eerr || !eventRow) {
-      return jsonError(`Falha ao criar evento: ${eerr?.message || 'unknown'}`, 400)
+      return jsonError('Não foi possível criar o evento.', 500)
     }
 
     const eventId = eventRow.id as string
@@ -261,10 +261,7 @@ export async function POST(req: Request) {
         route: '/api/events', method: 'POST', status: 'failed',
         metadata: { stage },
       })
-      return jsonError(
-        err instanceof Error ? `Falha no pipeline SERA: ${err.message}` : 'Falha no pipeline SERA',
-        500
-      )
+      return jsonError('Não foi possível concluir a análise do evento.', 500)
     } finally {
       // Garante estorno quando o débito ocorreu mas a análise não terminou com sucesso.
       if (creditoDebitado && !respostaSucesso) {
@@ -328,6 +325,6 @@ export async function POST(req: Request) {
   } catch (e) {
     if (e instanceof Response) return e
     logEventsError(e, stage, context)
-    return jsonError(String(e), 500)
+    return jsonError('Não foi possível criar o evento.', 500)
   }
 }

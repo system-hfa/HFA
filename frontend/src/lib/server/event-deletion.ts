@@ -1,6 +1,8 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 
 export const EVENT_DELETION_RECOVERY_DAYS = 30
+export const SYNTHETIC_EVENT_PREFIX = '[EVENT_DELETE_TEST]'
+export const SYNTHETIC_PURGE_CONFIRMATION = 'PURGE_SYNTHETIC_FIXTURE_ONLY'
 
 export const EVENT_DELETION_STATUSES = [
   'ACTIVE',
@@ -13,27 +15,43 @@ export const EVENT_DELETION_STATUSES = [
 
 export type EventDeletionStatus = (typeof EVENT_DELETION_STATUSES)[number]
 
-export type EventDeletionImpact = {
+export type DeletionStorageObject = {
+  bucket: string
+  path: string
+  category: string
+  exists: boolean
+}
+
+export type CompleteDeletionImpact = {
   event: number
   legacyAnalyses: number
   vnextAnalyses: number
   revisions: number
   reviews: number
-  auditEvents: number
+  analysisEvents: number
+  auditLogs: number
   evidenceItems: number
   attachments: number
+  storageObjects: DeletionStorageObject[]
   exports: number
-  correctiveActions: number
-  riskProfileIncluded: boolean
+  correctiveActionsOpen: number
+  correctiveActionsClosed: number
+  riskProfileExclusions: number
+  relatedEventIds: string[]
+  unknownDependencies: string[]
   recoverableDays: number
-  hardDeleteAvailable: false
+  purgeEligible: boolean
+  purgeBlockers: string[]
 }
+
+export type EventDeletionImpact = CompleteDeletionImpact
 
 export type EventDeletionRecord = {
   id: string
   tenant_id: string
   title: string
   status: string
+  submitted_by: string | null
   deleted_at: string | null
   deleted_by: string | null
   deletion_reason: string | null
@@ -53,17 +71,102 @@ export type EventDeletionRecord = {
     | null
 }
 
-function plusDays(days: number) {
-  const value = new Date()
-  value.setUTCDate(value.getUTCDate() + days)
-  return value.toISOString()
-}
-
 export function normalizeAnalysis(
   value: EventDeletionRecord['analyses'],
 ): { id: string; source_file_url: string | null } | null {
   if (Array.isArray(value)) return value[0] ?? null
   return value ?? null
+}
+
+export async function resolvePublicUserId(args: {
+  admin: SupabaseClient
+  tenantId: string
+  authUserId: string
+  email?: string | null
+}): Promise<string> {
+  const { admin, tenantId, authUserId, email } = args
+  if (!authUserId?.trim()) throw new Error('EVENT_DELETE_FORBIDDEN')
+
+  const byId = await admin
+    .from('users')
+    .select('id, tenant_id, is_active')
+    .eq('id', authUserId)
+    .eq('tenant_id', tenantId)
+    .maybeSingle()
+  if (byId.error) throw new Error('EVENT_DELETE_IDENTITY_LOOKUP_FAILED')
+  if (byId.data?.is_active) return String(byId.data.id)
+
+  if (email?.trim()) {
+    const byEmail = await admin
+      .from('users')
+      .select('id, tenant_id, is_active')
+      .eq('email', email.trim())
+      .eq('tenant_id', tenantId)
+      .maybeSingle()
+    if (byEmail.error) throw new Error('EVENT_DELETE_IDENTITY_LOOKUP_FAILED')
+    if (byEmail.data?.is_active) return String(byEmail.data.id)
+  }
+
+  throw new Error('EVENT_DELETE_FORBIDDEN')
+}
+
+export function parseStorageObjectPath(value: string | null | undefined): { bucket: string; path: string } | null {
+  if (!value?.trim()) return null
+  const raw = value.trim()
+
+  try {
+    const url = new URL(raw)
+    const match = url.pathname.match(/\/storage\/v1\/object\/(?:public|sign|authenticated)\/([^/]+)\/(.+)$/)
+    if (match) {
+      return {
+        bucket: decodeURIComponent(match[1]),
+        path: decodeURIComponent(match[2]),
+      }
+    }
+  } catch {
+    // Raw bucket/path references are handled below.
+  }
+
+  const clean = raw.replace(/^\/+/, '').split('?')[0]
+  const slash = clean.indexOf('/')
+  if (slash <= 0 || slash === clean.length - 1) return null
+  return {
+    bucket: clean.slice(0, slash),
+    path: clean.slice(slash + 1),
+  }
+}
+
+async function storageObjectExists(
+  admin: SupabaseClient,
+  object: { bucket: string; path: string },
+): Promise<boolean> {
+  const slash = object.path.lastIndexOf('/')
+  const folder = slash >= 0 ? object.path.slice(0, slash) : ''
+  const name = slash >= 0 ? object.path.slice(slash + 1) : object.path
+  const { data, error } = await admin.storage.from(object.bucket).list(folder, {
+    limit: 100,
+    search: name,
+  })
+  if (error) return false
+  return (data ?? []).some((item) => item.name === name)
+}
+
+function countEvidenceValues(value: unknown): number {
+  if (!value || typeof value !== 'object') return 0
+  if (Array.isArray(value)) return value.reduce((total, item) => total + countEvidenceValues(item), 0)
+
+  return Object.entries(value as Record<string, unknown>).reduce((total, [key, item]) => {
+    const direct = /evidence/i.test(key) && Array.isArray(item) ? item.length : 0
+    return total + direct + countEvidenceValues(item)
+  }, 0)
+}
+
+function countByStatuses(actions: Array<{ status: string }>) {
+  const openStatuses = new Set(['pending', 'in_progress', 'overdue'])
+  return {
+    open: actions.filter((action) => openStatuses.has(action.status)).length,
+    closed: actions.filter((action) => !openStatuses.has(action.status)).length,
+  }
 }
 
 export async function getEventDeletionRecord(
@@ -73,12 +176,12 @@ export async function getEventDeletionRecord(
 ): Promise<EventDeletionRecord | null> {
   const { data, error } = await admin
     .from('events')
-    .select('id, tenant_id, title, status, deleted_at, deleted_by, deletion_reason, deletion_status, recoverable_until, purge_scheduled_at, purged_at, analyses(id, source_file_url)')
+    .select('id, tenant_id, title, status, submitted_by, deleted_at, deleted_by, deletion_reason, deletion_status, recoverable_until, purge_scheduled_at, purged_at, analyses(id, source_file_url)')
     .eq('tenant_id', tenantId)
     .eq('id', eventId)
     .maybeSingle()
 
-  if (error) throw new Error(`EVENT_DELETE_FETCH_FAILED: ${error.message}`)
+  if (error) throw new Error('EVENT_DELETE_FETCH_FAILED')
   return (data as EventDeletionRecord | null) ?? null
 }
 
@@ -86,16 +189,24 @@ export async function getEventDeletionImpact(
   admin: SupabaseClient,
   tenantId: string,
   eventId: string,
-): Promise<EventDeletionImpact> {
+): Promise<CompleteDeletionImpact> {
   const event = await getEventDeletionRecord(admin, tenantId, eventId)
-  if (!event) {
-    throw new Error('EVENT_NOT_FOUND')
-  }
+  if (!event) throw new Error('EVENT_NOT_FOUND')
 
-  const analysis = normalizeAnalysis(event.analyses)
-  const analysisId = analysis?.id ?? null
+  const legacyAnalysis = normalizeAnalysis(event.analyses)
+  const legacyAnalysisId = legacyAnalysis?.id ?? null
 
-  const [riskExclusionRes, actionsRes, auditEventRes] = await Promise.all([
+  const [vnextBySource, vnextByMetadata, riskExclusions, actions, auditLogs, legacyEdits] = await Promise.all([
+    admin
+      .from('sera_vnext_analyses')
+      .select('id, engine_input, engine_output, metadata')
+      .eq('tenant_id', tenantId)
+      .eq('source_reference', eventId),
+    admin
+      .from('sera_vnext_analyses')
+      .select('id, engine_input, engine_output, metadata')
+      .eq('tenant_id', tenantId)
+      .contains('metadata', { eventId }),
     admin
       .from('risk_profile_exclusions')
       .select('id')
@@ -103,108 +214,115 @@ export async function getEventDeletionImpact(
       .eq('source_type', 'legacy_event')
       .eq('source_id', eventId)
       .is('restored_at', null),
-    analysisId
-      ? admin
-          .from('corrective_actions')
-          .select('id, status')
-          .eq('tenant_id', tenantId)
-          .eq('analysis_id', analysisId)
-      : Promise.resolve({ data: [], error: null }),
+    legacyAnalysisId
+      ? admin.from('corrective_actions').select('id, status').eq('tenant_id', tenantId).eq('analysis_id', legacyAnalysisId)
+      : Promise.resolve({ data: [] as Array<{ id: string; status: string }>, error: null }),
     admin
       .from('audit_log')
       .select('id', { count: 'exact', head: true })
       .eq('tenant_id', tenantId)
-      .or(analysisId ? `entity_id.eq.${eventId},entity_id.eq.${analysisId}` : `entity_id.eq.${eventId}`),
+      .or(legacyAnalysisId ? `entity_id.eq.${eventId},entity_id.eq.${legacyAnalysisId}` : `entity_id.eq.${eventId}`),
+    legacyAnalysisId
+      ? admin.from('analysis_edits').select('id', { count: 'exact', head: true }).eq('analysis_id', legacyAnalysisId)
+      : Promise.resolve({ count: 0, error: null }),
   ])
 
-  if (riskExclusionRes.error) throw new Error(`EVENT_DELETE_EXCLUSION_LOOKUP_FAILED: ${riskExclusionRes.error.message}`)
-  if (actionsRes.error) throw new Error(`EVENT_DELETE_ACTION_LOOKUP_FAILED: ${actionsRes.error.message}`)
-  if (auditEventRes.error) throw new Error(`EVENT_DELETE_AUDIT_LOOKUP_FAILED: ${auditEventRes.error.message}`)
+  const lookupErrors = [
+    vnextBySource.error,
+    vnextByMetadata.error,
+    riskExclusions.error,
+    actions.error,
+    auditLogs.error,
+    legacyEdits.error,
+  ].filter(Boolean)
+  if (lookupErrors.length > 0) throw new Error('EVENT_DELETE_IMPACT_LOOKUP_FAILED')
+
+  const vnextMap = new Map<string, Record<string, unknown>>()
+  for (const row of [...(vnextBySource.data ?? []), ...(vnextByMetadata.data ?? [])]) {
+    vnextMap.set(String(row.id), row as Record<string, unknown>)
+  }
+  const vnextRows = [...vnextMap.values()]
+  const vnextIds = [...vnextMap.keys()]
+
+  const [revisions, reviews, analysisEvents] = vnextIds.length > 0
+    ? await Promise.all([
+        admin.from('sera_vnext_analysis_revisions').select('id', { count: 'exact', head: true }).eq('tenant_id', tenantId).in('analysis_id', vnextIds),
+        admin.from('sera_vnext_analysis_reviews').select('id', { count: 'exact', head: true }).eq('tenant_id', tenantId).in('analysis_id', vnextIds),
+        admin.from('sera_vnext_analysis_events').select('id, event_type').eq('tenant_id', tenantId).in('analysis_id', vnextIds),
+      ])
+    : [
+        { count: 0, error: null },
+        { count: 0, error: null },
+        { data: [] as Array<{ id: string; event_type: string }>, error: null },
+      ]
+
+  if (revisions.error || reviews.error || analysisEvents.error) {
+    throw new Error('EVENT_DELETE_IMPACT_LOOKUP_FAILED')
+  }
+
+  const unknownDependencies: string[] = []
+  const storageObjects: DeletionStorageObject[] = []
+  if (legacyAnalysis?.source_file_url) {
+    const parsed = parseStorageObjectPath(legacyAnalysis.source_file_url)
+    if (!parsed) {
+      unknownDependencies.push('legacy_analysis_source_file_url_unparseable')
+    } else {
+      storageObjects.push({
+        ...parsed,
+        category: 'legacy_analysis_source',
+        exists: await storageObjectExists(admin, parsed),
+      })
+    }
+  }
+
+  const actionCounts = countByStatuses((actions.data ?? []) as Array<{ status: string }>)
+  const eventRows = (analysisEvents.data ?? []) as Array<{ id: string; event_type: string }>
+  const purgeBlockers = [
+    ...unknownDependencies.map((item) => `unknown:${item}`),
+    ...(actionCounts.open > 0 ? [`open_corrective_actions:${actionCounts.open}`] : []),
+    ...storageObjects.filter((item) => !item.exists).map((item) => `storage_missing:${item.bucket}/${item.path}`),
+  ]
+  const recoveryExpired = !!event.recoverable_until && new Date(event.recoverable_until).getTime() < Date.now()
 
   return {
     event: 1,
-    legacyAnalyses: analysisId ? 1 : 0,
-    vnextAnalyses: 0,
-    revisions: 0,
-    reviews: 0,
-    auditEvents: auditEventRes.count ?? 0,
-    evidenceItems: 0,
-    attachments: analysis?.source_file_url ? 1 : 0,
-    exports: 0,
-    correctiveActions: (actionsRes.data ?? []).length,
-    riskProfileIncluded: !event.deleted_at && (riskExclusionRes.data ?? []).length === 0,
+    legacyAnalyses: legacyAnalysisId ? 1 : 0,
+    vnextAnalyses: vnextRows.length,
+    revisions: (legacyEdits.count ?? 0) + (revisions.count ?? 0),
+    reviews: reviews.count ?? 0,
+    analysisEvents: eventRows.length,
+    auditLogs: auditLogs.count ?? 0,
+    evidenceItems: vnextRows.reduce((total, row) => total + countEvidenceValues(row), 0),
+    attachments: legacyAnalysis?.source_file_url ? 1 : 0,
+    storageObjects,
+    exports: eventRows.filter((item) => item.event_type === 'analysis.exported').length,
+    correctiveActionsOpen: actionCounts.open,
+    correctiveActionsClosed: actionCounts.closed,
+    riskProfileExclusions: (riskExclusions.data ?? []).length,
+    relatedEventIds: [eventId],
+    unknownDependencies,
     recoverableDays: EVENT_DELETION_RECOVERY_DAYS,
-    hardDeleteAvailable: false,
+    purgeEligible: event.deletion_status === 'SOFT_DELETED' && recoveryExpired && purgeBlockers.length === 0,
+    purgeBlockers,
   }
 }
 
-export async function getOpenCorrectiveActionCount(
-  admin: SupabaseClient,
-  tenantId: string,
-  analysisId: string | null,
-): Promise<number> {
-  if (!analysisId) return 0
-  const { count, error } = await admin
-    .from('corrective_actions')
-    .select('id', { count: 'exact', head: true })
-    .eq('tenant_id', tenantId)
-    .eq('analysis_id', analysisId)
-    .in('status', ['pending', 'in_progress'])
-  if (error) throw new Error(`EVENT_DELETE_OPEN_ACTIONS_FAILED: ${error.message}`)
-  return count ?? 0
-}
-
-export async function upsertDeletionTombstone(args: {
-  admin: SupabaseClient
-  tenantId: string
-  eventId: string
-  title: string
-  requestedBy: string
-  requestId: string
-  reasonCategory: string
-  status: string
-  softDeletedAt?: string | null
-  purgedAt?: string | null
-  dataCategories?: string[]
-}) {
-  const {
-    admin,
-    tenantId,
-    eventId,
-    title,
-    requestedBy,
-    requestId,
-    reasonCategory,
-    status,
-    softDeletedAt = null,
-    purgedAt = null,
-    dataCategories = ['event', 'analysis', 'attachments', 'corrective_actions'],
-  } = args
-
-  const titleHash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(title))
-  const titleHashHex = Array.from(new Uint8Array(titleHash))
-    .map((value) => value.toString(16).padStart(2, '0'))
-    .join('')
-
-  const payload = {
-    tenant_id: tenantId,
-    event_id_original: eventId,
-    event_title_hash: titleHashHex,
-    requested_by: requestedBy,
-    requested_at: new Date().toISOString(),
-    soft_deleted_at: softDeletedAt,
-    purged_at: purgedAt,
-    reason_category: reasonCategory,
-    request_id: requestId,
-    data_categories: dataCategories,
-    status,
-  }
-
-  const { error } = await admin
-    .from('event_deletion_tombstones')
-    .upsert(payload, { onConflict: 'tenant_id,event_id_original' })
-
-  if (error) throw new Error(`EVENT_DELETE_TOMBSTONE_FAILED: ${error.message}`)
+function mapRpcError(message: string): never {
+  const knownCodes = [
+    'EVENT_NOT_FOUND',
+    'EVENT_DELETE_FORBIDDEN',
+    'EVENT_DELETE_TITLE_MISMATCH',
+    'EVENT_DELETE_REASON_REQUIRED',
+    'EVENT_DELETE_ALREADY_DELETED',
+    'EVENT_DELETE_CORRECTIVE_ACTION_BLOCK',
+    'EVENT_DELETE_IMPACT_INCOMPLETE',
+    'EVENT_RESTORE_WINDOW_EXPIRED',
+    'EVENT_RESTORE_NOT_ALLOWED',
+    'EVENT_PURGE_NOT_ELIGIBLE',
+    'EVENT_DELETE_CONFLICT',
+  ]
+  const known = knownCodes.find((code) => message.includes(code))
+  throw new Error(known ?? 'EVENT_DELETE_INTERNAL_ERROR')
 }
 
 export async function softDeleteEvent(args: {
@@ -213,55 +331,25 @@ export async function softDeleteEvent(args: {
   eventId: string
   actorUserId: string
   reason: string
+  confirmationTitle: string
   requestId: string
+  unknownDependencies: string[]
 }) {
-  const { admin, tenantId, eventId, actorUserId, reason, requestId } = args
-  const event = await getEventDeletionRecord(admin, tenantId, eventId)
-  if (!event) throw new Error('EVENT_NOT_FOUND')
-
-  const analysis = normalizeAnalysis(event.analyses)
-  const openActions = await getOpenCorrectiveActionCount(admin, tenantId, analysis?.id ?? null)
-  if (openActions > 0) {
-    throw new Error('EVENT_DELETE_BLOCKED_BY_OPEN_CORRECTIVE_ACTIONS')
-  }
-
-  const now = new Date().toISOString()
-  const recoverableUntil = plusDays(EVENT_DELETION_RECOVERY_DAYS)
-  const { error } = await admin
-    .from('events')
-    .update({
-      deleted_at: now,
-      deleted_by: actorUserId,
-      deletion_reason: reason.trim(),
-      deletion_status: 'SOFT_DELETED',
-      recoverable_until: recoverableUntil,
-      purge_scheduled_at: null,
-      purged_at: null,
-      updated_at: now,
-    })
-    .eq('tenant_id', tenantId)
-    .eq('id', eventId)
-    .is('deleted_at', null)
-
-  if (error) throw new Error(`EVENT_SOFT_DELETE_FAILED: ${error.message}`)
-
-  await upsertDeletionTombstone({
-    admin,
-    tenantId,
-    eventId,
-    title: event.title,
-    requestedBy: actorUserId,
-    requestId,
-    reasonCategory: 'USER_REQUEST',
-    status: 'SOFT_DELETED',
-    softDeletedAt: now,
+  const { data, error } = await args.admin.rpc('request_event_soft_delete', {
+    p_event_id: args.eventId,
+    p_tenant_id: args.tenantId,
+    p_actor_id: args.actorUserId,
+    p_reason: args.reason.trim(),
+    p_confirmation_title: args.confirmationTitle,
+    p_request_id: args.requestId,
+    p_unknown_dependencies: args.unknownDependencies,
   })
-
+  if (error) mapRpcError(error.message ?? '')
+  const result = data as { deleted_at: string; recoverable_until: string; idempotent: boolean }
   return {
-    event,
-    analysis,
-    deletedAt: now,
-    recoverableUntil,
+    deletedAt: result.deleted_at,
+    recoverableUntil: result.recoverable_until,
+    idempotent: result.idempotent ?? false,
   }
 }
 
@@ -269,43 +357,35 @@ export async function restoreSoftDeletedEvent(args: {
   admin: SupabaseClient
   tenantId: string
   eventId: string
+  actorUserId: string
+  requestId: string
 }) {
-  const { admin, tenantId, eventId } = args
-  const event = await getEventDeletionRecord(admin, tenantId, eventId)
-  if (!event) throw new Error('EVENT_NOT_FOUND')
-  if (!event.deleted_at || event.deletion_status !== 'SOFT_DELETED') {
-    throw new Error('EVENT_NOT_SOFT_DELETED')
-  }
-  if (!event.recoverable_until || new Date(event.recoverable_until).getTime() < Date.now()) {
-    throw new Error('EVENT_RESTORE_WINDOW_EXPIRED')
-  }
-
-  const now = new Date().toISOString()
-  const { error } = await admin
-    .from('events')
-    .update({
-      deleted_at: null,
-      deleted_by: null,
-      deletion_reason: null,
-      deletion_status: 'RESTORED',
-      recoverable_until: null,
-      purge_scheduled_at: null,
-      purged_at: null,
-      updated_at: now,
-    })
-    .eq('tenant_id', tenantId)
-    .eq('id', eventId)
-
-  if (error) throw new Error(`EVENT_RESTORE_FAILED: ${error.message}`)
-  return { restoredAt: now }
+  const { data, error } = await args.admin.rpc('restore_soft_deleted_event', {
+    p_event_id: args.eventId,
+    p_tenant_id: args.tenantId,
+    p_actor_id: args.actorUserId,
+    p_request_id: args.requestId,
+  })
+  if (error) mapRpcError(error.message ?? '')
+  const result = data as { restored_at: string; idempotent: boolean }
+  return { restoredAt: result.restored_at, idempotent: result.idempotent ?? false }
 }
 
-export async function listEventStorageObjects(
-  admin: SupabaseClient,
-  sourceFileUrl: string | null | undefined,
-): Promise<string[]> {
-  if (!sourceFileUrl?.trim()) return []
-  return [sourceFileUrl.trim()]
+async function markPurgeFailed(args: {
+  admin: SupabaseClient
+  tenantId: string
+  eventId: string
+  actorUserId: string
+  requestId: string
+  failureCode: string
+}) {
+  await args.admin.rpc('mark_event_purge_failed', {
+    p_event_id: args.eventId,
+    p_tenant_id: args.tenantId,
+    p_actor_id: args.actorUserId,
+    p_request_id: args.requestId,
+    p_failure_code: args.failureCode,
+  })
 }
 
 export async function purgeSoftDeletedEvent(args: {
@@ -314,31 +394,73 @@ export async function purgeSoftDeletedEvent(args: {
   eventId: string
   actorUserId: string
   requestId: string
-  dryRun?: boolean
+  executeSynthetic?: boolean
+  secondaryConfirmation?: string
 }) {
-  const { admin, tenantId, eventId, actorUserId, requestId, dryRun = true } = args
-  const event = await getEventDeletionRecord(admin, tenantId, eventId)
+  const event = await getEventDeletionRecord(args.admin, args.tenantId, args.eventId)
   if (!event) throw new Error('EVENT_NOT_FOUND')
-  if (event.deletion_status !== 'SOFT_DELETED' || !event.deleted_at) {
-    throw new Error('EVENT_NOT_READY_FOR_PURGE')
-  }
-  if (!event.recoverable_until || new Date(event.recoverable_until).getTime() >= Date.now()) {
-    throw new Error('EVENT_PURGE_WINDOW_NOT_REACHED')
-  }
 
-  const analysis = normalizeAnalysis(event.analyses)
-  const impact = await getEventDeletionImpact(admin, tenantId, eventId)
-  const storageObjects = await listEventStorageObjects(admin, analysis?.source_file_url)
-
-  if (dryRun) {
+  const impact = await getEventDeletionImpact(args.admin, args.tenantId, args.eventId)
+  if (!args.executeSynthetic) {
     return {
-      mode: 'DRY_RUN' as const,
+      mode: 'PURGE_DRY_RUN' as const,
       impact,
-      storageObjects,
-      requestId,
-      actorUserId,
+      storageObjects: impact.storageObjects,
+      requestId: args.requestId,
     }
   }
 
-  throw new Error('EVENT_PURGE_NON_DRY_RUN_BLOCKED')
+  const stagingRef = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'http://invalid').hostname.split('.')[0]
+  const executionEnabled = process.env.EVENT_PURGE_SYNTHETIC_EXECUTE_ENABLED === 'true'
+  if (
+    !executionEnabled ||
+    stagingRef.length < 8 ||
+    !event.title.startsWith(SYNTHETIC_EVENT_PREFIX) ||
+    args.secondaryConfirmation !== SYNTHETIC_PURGE_CONFIRMATION ||
+    impact.unknownDependencies.length > 0 ||
+    impact.purgeBlockers.length > 0
+  ) {
+    throw new Error('EVENT_PURGE_NOT_ELIGIBLE')
+  }
+
+  const scheduled = await args.admin.rpc('schedule_event_purge', {
+    p_event_id: args.eventId,
+    p_tenant_id: args.tenantId,
+    p_actor_id: args.actorUserId,
+    p_request_id: args.requestId,
+    p_unknown_dependencies: impact.unknownDependencies,
+    p_purge_blockers: impact.purgeBlockers,
+  })
+  if (scheduled.error) mapRpcError(scheduled.error.message ?? '')
+
+  try {
+    for (const object of impact.storageObjects) {
+      const remove = await args.admin.storage.from(object.bucket).remove([object.path])
+      if (remove.error) throw new Error('STORAGE_DELETE_FAILED')
+      if (await storageObjectExists(args.admin, object)) throw new Error('STORAGE_DELETE_CONFIRMATION_FAILED')
+    }
+  } catch (error) {
+    await markPurgeFailed({
+      ...args,
+      failureCode: error instanceof Error ? error.message : 'STORAGE_DELETE_FAILED',
+    })
+    throw new Error('EVENT_PURGE_NOT_ELIGIBLE')
+  }
+
+  const completed = await args.admin.rpc('complete_event_purge', {
+    p_event_id: args.eventId,
+    p_tenant_id: args.tenantId,
+    p_actor_id: args.actorUserId,
+    p_request_id: args.requestId,
+    p_secondary_confirmation: args.secondaryConfirmation,
+  })
+  if (completed.error) mapRpcError(completed.error.message ?? '')
+
+  return {
+    mode: 'PURGE_EXECUTE_SYNTHETIC' as const,
+    impact,
+    storageObjects: impact.storageObjects,
+    requestId: args.requestId,
+    result: completed.data,
+  }
 }

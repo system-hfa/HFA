@@ -2,12 +2,11 @@ import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/server/admin-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 import { getOrCreateRequestId } from '@/lib/observability/request-id'
-import { writeCriticalAuditLog } from '@/lib/observability/audit'
-import { purgeSoftDeletedEvent } from '@/lib/server/event-deletion'
+import { purgeSoftDeletedEvent, resolvePublicUserId } from '@/lib/server/event-deletion'
 
-function jsonError(requestId: string, message: string, status: number, code?: string) {
+function jsonError(requestId: string, code: string, message: string, status: number) {
   return NextResponse.json(
-    { detail: message, ...(code ? { error: code } : {}), request_id: requestId },
+    { error: { code, message, requestId } },
     { status, headers: { 'x-request-id': requestId } },
   )
 }
@@ -18,56 +17,31 @@ export async function POST(req: Request, ctx: { params: Promise<{ eventId: strin
     const user = await requireAdmin(req)
     const { eventId } = await ctx.params
     const admin = getSupabaseAdmin()
-    const body = await req.json().catch(() => ({})) as { mode?: string }
-    const dryRun = body.mode !== 'EXECUTE'
-
-    await writeCriticalAuditLog({
+    const body = await req.json().catch(() => ({})) as { mode?: string; secondaryConfirmation?: string }
+    const publicUserId = await resolvePublicUserId({
+      admin,
       tenantId: user.tenantId,
-      userId: user.userId,
-      requestId,
-      eventType: 'event.purge_started',
-      entityType: 'event',
-      entityId: eventId,
-      route: `/api/events/${eventId}/purge`,
-      method: 'POST',
-      metadata: {
-        mode: dryRun ? 'DRY_RUN' : 'EXECUTE',
-      },
+      authUserId: user.userId,
+      email: user.email,
     })
 
     const result = await purgeSoftDeletedEvent({
       admin,
       tenantId: user.tenantId,
       eventId,
-      actorUserId: user.userId,
+      actorUserId: publicUserId,
       requestId,
-      dryRun,
-    })
-
-    await writeCriticalAuditLog({
-      tenantId: user.tenantId,
-      userId: user.userId,
-      requestId,
-      eventType: 'event.purge_scheduled',
-      entityType: 'event',
-      entityId: eventId,
-      route: `/api/events/${eventId}/purge`,
-      method: 'POST',
-      metadata: {
-        mode: result.mode,
-        storageObjects: result.storageObjects.length,
-      },
+      executeSynthetic: body.mode === 'EXECUTE_SYNTHETIC',
+      secondaryConfirmation: body.secondaryConfirmation,
     })
 
     return NextResponse.json(result, { headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
-    if (e instanceof Error && e.message === 'EVENT_PURGE_NON_DRY_RUN_BLOCKED') {
-      return jsonError(requestId, 'Execução de purge fora do modo DRY_RUN permanece bloqueada nesta fase.', 409, 'EVENT_PURGE_NON_DRY_RUN_BLOCKED')
-    }
-    if (e instanceof Error && e.message === 'EVENT_PURGE_WINDOW_NOT_REACHED') {
-      return jsonError(requestId, 'O evento ainda está dentro da janela de recuperação.', 409, 'EVENT_PURGE_WINDOW_NOT_REACHED')
-    }
-    return jsonError(requestId, String(e), 500)
+    const msg = e instanceof Error ? e.message : ''
+    if (msg === 'EVENT_PURGE_NOT_ELIGIBLE') return jsonError(requestId, msg, 'O evento não atende aos gates para purge.', 409)
+    if (msg === 'EVENT_DELETE_FORBIDDEN') return jsonError(requestId, msg, 'Operação não autorizada.', 403)
+    console.error('[purge] unexpected error', { requestId, code: msg.slice(0, 64) })
+    return jsonError(requestId, 'EVENT_DELETE_INTERNAL_ERROR', 'Não foi possível executar o purge.', 500)
   }
 }

@@ -35,14 +35,29 @@ type DeletionImpact = {
   vnextAnalyses: number
   revisions: number
   reviews: number
-  auditEvents: number
+  analysisEvents: number
+  auditLogs: number
   evidenceItems: number
   attachments: number
+  storageObjects: Array<{ bucket: string; path: string; category: string; exists: boolean }>
   exports: number
-  correctiveActions: number
-  riskProfileIncluded: boolean
+  correctiveActionsOpen: number
+  correctiveActionsClosed: number
+  riskProfileExclusions: number
+  relatedEventIds: string[]
+  unknownDependencies: string[]
   recoverableDays: number
-  hardDeleteAvailable: false
+  purgeEligible: boolean
+  purgeBlockers: string[]
+}
+
+function responseErrorMessage(body: unknown, fallback: string): string {
+  if (!body || typeof body !== 'object') return fallback
+  const error = (body as { error?: unknown }).error
+  if (!error || typeof error !== 'object') return fallback
+  return typeof (error as { message?: unknown }).message === 'string'
+    ? String((error as { message: string }).message)
+    : fallback
 }
 
 function ErcBadge({ p, o, a }: { p: string | null; o: string | null; a: string | null }) {
@@ -90,12 +105,39 @@ function DeleteEventModal(props: {
   if (!event) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
-      <div className="w-full max-w-2xl rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose()
+      }}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="delete-event-title"
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') onClose()
+          if (e.key !== 'Tab') return
+          const controls = Array.from(e.currentTarget.querySelectorAll<HTMLElement>('button, textarea, input, [href], [tabindex]:not([tabindex="-1"])'))
+            .filter((control) => !control.hasAttribute('disabled'))
+          if (controls.length === 0) return
+          const first = controls[0]
+          const last = controls[controls.length - 1]
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
+        }}
+      >
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-red-300">Excluir evento e dados relacionados</p>
-            <h2 className="mt-2 text-xl font-semibold text-white">{event.title}</h2>
+            <h2 id="delete-event-title" className="mt-2 text-xl font-semibold text-white">{event.title}</h2>
             <p className="mt-2 text-sm text-slate-400">
               Esta ação remove o evento da operação ativa, inicia um período de recuperação de 30 dias e não equivale a desconsiderar do Perfil de Risco.
             </p>
@@ -116,7 +158,9 @@ function DeleteEventModal(props: {
           </div>
           <div className="rounded-xl border border-slate-800 bg-slate-900 px-4 py-3">
             <p className="text-xs uppercase tracking-wide text-slate-500">Ações corretivas</p>
-            <p className="mt-2 text-2xl font-semibold text-white">{impact?.correctiveActions ?? '-'}</p>
+            <p className="mt-2 text-2xl font-semibold text-white">
+              {impact ? `${impact.correctiveActionsOpen} abertas / ${impact.correctiveActionsClosed} encerradas` : '-'}
+            </p>
           </div>
           <div className="rounded-xl border border-slate-800 bg-slate-900 px-4 py-3">
             <p className="text-xs uppercase tracking-wide text-slate-500">Anexos</p>
@@ -124,12 +168,33 @@ function DeleteEventModal(props: {
           </div>
         </div>
 
+        {impact && (
+          <div className="mt-4 grid gap-3 rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm text-slate-300 sm:grid-cols-2">
+            <p>vNext: <strong>{impact.vnextAnalyses}</strong></p>
+            <p>Revisões: <strong>{impact.revisions}</strong></p>
+            <p>Reviews: <strong>{impact.reviews}</strong></p>
+            <p>Audit logs: <strong>{impact.auditLogs}</strong></p>
+            <p>Storage: <strong>{impact.storageObjects.length}</strong></p>
+            <p>Perfil de Risco: <strong>{impact.riskProfileExclusions} exclusão(ões)</strong></p>
+          </div>
+        )}
+
+        {impact && (impact.purgeBlockers.length > 0 || impact.unknownDependencies.length > 0) && (
+          <div className="mt-4 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+            <p className="font-semibold">Bloqueios identificados</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              {[...impact.purgeBlockers, ...impact.unknownDependencies].map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </div>
+        )}
+
         <div className="mt-5 grid gap-4">
           <label className="grid gap-2">
             <span className="text-sm font-medium text-slate-200">Motivo da exclusão</span>
             <textarea
               value={reason}
               onChange={(e) => onReasonChange(e.target.value)}
+              autoFocus
               className="min-h-28 rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-red-400"
               placeholder="Explique por que o evento e os dados relacionados devem entrar em recuperação."
             />
@@ -221,7 +286,7 @@ export default function EventsPage() {
       })
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
-        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+        throw new Error(responseErrorMessage(body, `HTTP ${res.status}`))
       }
       await refreshEvents()
     } catch (error) {
@@ -245,7 +310,7 @@ export default function EventsPage() {
       })
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
-        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+        throw new Error(responseErrorMessage(body, `HTTP ${res.status}`))
       }
       await refreshEvents()
     } catch (error) {
@@ -271,7 +336,7 @@ export default function EventsPage() {
       })
       const body = await res.json().catch(() => ({}))
       if (!res.ok) {
-        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+        throw new Error(responseErrorMessage(body, `HTTP ${res.status}`))
       }
       setDeleteImpact(body)
     } catch (error) {
@@ -300,7 +365,7 @@ export default function EventsPage() {
       })
       const body = await res.json().catch(() => ({}))
       if (!res.ok) {
-        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+        throw new Error(responseErrorMessage(body, `HTTP ${res.status}`))
       }
       setDeleteTarget(null)
       setDeleteImpact(null)

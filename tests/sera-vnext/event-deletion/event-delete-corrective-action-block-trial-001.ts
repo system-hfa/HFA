@@ -9,9 +9,8 @@ const routeFile = path.join(rootDir, 'frontend', 'src', 'app', 'api', 'events', 
 const helper = readFileSync(helperFile, 'utf8')
 const route = readFileSync(routeFile, 'utf8')
 
-assert.match(helper, /getOpenCorrectiveActionCount/)
-assert.match(helper, /EVENT_DELETE_BLOCKED_BY_OPEN_CORRECTIVE_ACTIONS/)
-assert.match(helper, /\.in\('status', \['pending', 'in_progress'\]\)/)
-assert.match(route, /EVENT_DELETE_BLOCKED_BY_OPEN_CORRECTIVE_ACTIONS/)
+assert.match(helper, /correctiveActionsOpen/)
+assert.match(helper, /open_corrective_actions/)
+assert.match(route, /EVENT_DELETE_CORRECTIVE_ACTION_BLOCK/)
 
 console.log('CORRECTIVE_ACTION_BLOCK_OK')

@@ -68,7 +68,29 @@ type EventPayload = {
   occurred_at?: string | null
   deleted_at?: string | null
   recoverable_until?: string | null
+  deletion_status?: string | null
   analyses?: AnalysisPayload | null
+}
+type DeletionImpact = {
+  event: number
+  legacyAnalyses: number
+  vnextAnalyses: number
+  revisions: number
+  reviews: number
+  analysisEvents: number
+  auditLogs: number
+  evidenceItems: number
+  attachments: number
+  storageObjects: Array<{ bucket: string; path: string; category: string; exists: boolean }>
+  exports: number
+  correctiveActionsOpen: number
+  correctiveActionsClosed: number
+  riskProfileExclusions: number
+  relatedEventIds: string[]
+  unknownDependencies: string[]
+  recoverableDays: number
+  purgeEligible: boolean
+  purgeBlockers: string[]
 }
 type FlowItem = {
   mermaid: string
@@ -309,12 +331,20 @@ export default function EventDetailPage() {
   const [pdfState, setPdfState]   = useState<PdfState>('idle')
   const [badges, setBadges]       = useState<BadgeMap>({})
   const [actionStates, setActionStates] = useState<Record<number, 'idle' | 'loading' | 'done' | 'error'>>({})
+  const [canManageDelete, setCanManageDelete] = useState(false)
+  const [deletionBusy, setDeletionBusy] = useState(false)
+  const [deletionError, setDeletionError] = useState<string | null>(null)
+  const [deletionImpact, setDeletionImpact] = useState<DeletionImpact | null>(null)
+  const [deletionModalOpen, setDeletionModalOpen] = useState(false)
+  const [deletionReason, setDeletionReason] = useState('')
+  const [deletionConfirmationTitle, setDeletionConfirmationTitle] = useState('')
 
   useEffect(() => {
     async function load() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
       setToken(session.access_token)
+      setCanManageDelete(String(session.user.user_metadata?.role ?? '').toLowerCase() === 'admin')
       const scope = searchParams?.get('scope') === 'deleted' ? 'deleted' : 'active'
       const data = await apiCall(`/events/${id}?scope=${scope}`, {}, session.access_token) as EventPayload
       setEvent(data)
@@ -411,6 +441,67 @@ export default function EventDetailPage() {
     }
   }
 
+  async function deleteEventFromDetail() {
+    if (!token || !event?.title || event.deleted_at) return
+    setDeletionBusy(true)
+    setDeletionError(null)
+    setDeletionImpact(null)
+    setDeletionReason('')
+    setDeletionConfirmationTitle('')
+    setDeletionModalOpen(true)
+    try {
+      const impactResponse = await fetch(`/api/events/${event.id}/deletion-impact`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      const impact = await impactResponse.json().catch(() => ({})) as DeletionImpact
+      if (!impactResponse.ok) throw new Error('Não foi possível calcular o impacto da exclusão.')
+      setDeletionImpact(impact)
+    } catch (error) {
+      setDeletionError(error instanceof Error ? error.message : 'Não foi possível calcular o impacto da exclusão.')
+    } finally {
+      setDeletionBusy(false)
+    }
+  }
+
+  async function confirmDeleteFromDetail() {
+    if (!token || !event?.title || !deletionReason.trim() || deletionConfirmationTitle !== event.title) return
+    setDeletionBusy(true)
+    setDeletionError(null)
+    try {
+      const response = await fetch(`/api/events/${event.id}/delete-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ reason: deletionReason.trim(), confirmationTitle: deletionConfirmationTitle }),
+      })
+      const body = await response.json().catch(() => ({})) as { error?: { message?: string } }
+      if (!response.ok) throw new Error(body.error?.message ?? 'Não foi possível excluir o evento.')
+      window.location.assign('/events/deleted')
+    } catch (error) {
+      setDeletionError(error instanceof Error ? error.message : 'Não foi possível excluir o evento.')
+    } finally {
+      setDeletionBusy(false)
+    }
+  }
+
+  async function restoreEventFromDetail() {
+    if (!token || !event?.deleted_at) return
+    setDeletionBusy(true)
+    setDeletionError(null)
+    try {
+      const response = await fetch(`/api/events/${event.id}/restore`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      const body = await response.json().catch(() => ({})) as { error?: { message?: string } }
+      if (!response.ok) throw new Error(body.error?.message ?? 'Não foi possível restaurar o evento.')
+      window.location.assign('/events')
+    } catch (error) {
+      setDeletionError(error instanceof Error ? error.message : 'Não foi possível restaurar o evento.')
+    } finally {
+      setDeletionBusy(false)
+    }
+  }
+
   if (loading) return <div className="p-8 text-slate-400">Carregando...</div>
   if (!event)  return <div className="p-8 text-slate-400">Evento não encontrado</div>
 
@@ -440,10 +531,117 @@ export default function EventDetailPage() {
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      {deletionModalOpen && event.title && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          onClick={(clickEvent) => {
+            if (clickEvent.target === clickEvent.currentTarget) setDeletionModalOpen(false)
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="detail-delete-event-title"
+            className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-700 bg-slate-950 p-6 shadow-2xl"
+            onClick={(clickEvent) => clickEvent.stopPropagation()}
+            onKeyDown={(keyEvent) => {
+              if (keyEvent.key === 'Escape') setDeletionModalOpen(false)
+              if (keyEvent.key !== 'Tab') return
+              const controls = Array.from(keyEvent.currentTarget.querySelectorAll<HTMLElement>('button, textarea, input, [href], [tabindex]:not([tabindex="-1"])'))
+                .filter((control) => !control.hasAttribute('disabled'))
+              if (controls.length === 0) return
+              const first = controls[0]
+              const last = controls[controls.length - 1]
+              if (keyEvent.shiftKey && document.activeElement === first) {
+                keyEvent.preventDefault()
+                last.focus()
+              } else if (!keyEvent.shiftKey && document.activeElement === last) {
+                keyEvent.preventDefault()
+                first.focus()
+              }
+            }}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-red-300">Excluir evento e dados relacionados</p>
+                <h2 id="detail-delete-event-title" className="mt-2 text-xl font-semibold text-white">{event.title}</h2>
+                <p className="mt-2 text-sm text-slate-400">
+                  O evento sairá da operação ativa e permanecerá recuperável por {deletionImpact?.recoverableDays ?? 30} dias.
+                </p>
+              </div>
+              <button type="button" onClick={() => setDeletionModalOpen(false)} className="text-slate-500 hover:text-white">Fechar</button>
+            </div>
+
+            {deletionError && (
+              <div className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">{deletionError}</div>
+            )}
+
+            <div className="mt-5 grid gap-3 text-sm sm:grid-cols-3">
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-3 text-slate-300">Legacy: <strong>{deletionImpact?.legacyAnalyses ?? '-'}</strong></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-3 text-slate-300">vNext: <strong>{deletionImpact?.vnextAnalyses ?? '-'}</strong></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-3 text-slate-300">Revisões: <strong>{deletionImpact?.revisions ?? '-'}</strong></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-3 text-slate-300">Reviews: <strong>{deletionImpact?.reviews ?? '-'}</strong></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-3 text-slate-300">Anexos/storage: <strong>{deletionImpact ? `${deletionImpact.attachments}/${deletionImpact.storageObjects.length}` : '-'}</strong></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-3 text-slate-300">Perfil de Risco: <strong>{deletionImpact?.riskProfileExclusions ?? '-'}</strong></div>
+              <div className="rounded-xl border border-slate-800 bg-slate-900 p-3 text-slate-300 sm:col-span-3">
+                Ações corretivas: <strong>{deletionImpact ? `${deletionImpact.correctiveActionsOpen} abertas / ${deletionImpact.correctiveActionsClosed} encerradas` : '-'}</strong>
+              </div>
+            </div>
+
+            {deletionImpact && (deletionImpact.purgeBlockers.length > 0 || deletionImpact.unknownDependencies.length > 0) && (
+              <div className="mt-4 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+                <p className="font-semibold">Bloqueios e dependências desconhecidas</p>
+                <ul className="mt-2 list-disc space-y-1 pl-5">
+                  {[...deletionImpact.purgeBlockers, ...deletionImpact.unknownDependencies].map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+            )}
+
+            <div className="mt-5 grid gap-4">
+              <label className="grid gap-2">
+                <span className="text-sm font-medium text-slate-200">Motivo da exclusão</span>
+                <textarea
+                  autoFocus
+                  value={deletionReason}
+                  onChange={(changeEvent) => setDeletionReason(changeEvent.target.value)}
+                  className="min-h-28 rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-red-400"
+                />
+              </label>
+              <label className="grid gap-2">
+                <span className="text-sm font-medium text-slate-200">Digite o título exato para confirmar</span>
+                <input
+                  value={deletionConfirmationTitle}
+                  onChange={(changeEvent) => setDeletionConfirmationTitle(changeEvent.target.value)}
+                  placeholder={event.title}
+                  className="rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-red-400"
+                />
+              </label>
+            </div>
+
+            <div className="mt-6 flex flex-wrap justify-end gap-2">
+              <button type="button" onClick={() => setDeletionModalOpen(false)} className="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-300">Cancelar</button>
+              <button
+                type="button"
+                onClick={() => void confirmDeleteFromDetail()}
+                disabled={deletionBusy || !deletionImpact || !deletionReason.trim() || deletionConfirmationTitle !== event.title}
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {deletionBusy ? 'Excluindo...' : 'Excluir e iniciar período de recuperação'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {event.deleted_at && (
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
           Evento em recuperação até {event.recoverable_until ? new Date(event.recoverable_until).toLocaleString('pt-BR') : 'prazo indisponível'}.
           Ele não aparece em listas ativas, dashboard ou Perfil de Risco.
+        </div>
+      )}
+      {deletionError && (
+        <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          {deletionError}
         </div>
       )}
 
@@ -457,6 +655,26 @@ export default function EventDetailPage() {
           </p>
         </div>
         <div className="flex gap-2 shrink-0">
+          {canManageDelete && !event.deleted_at && (
+            <button
+              type="button"
+              onClick={() => void deleteEventFromDetail()}
+              disabled={deletionBusy}
+              className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-200 hover:bg-red-500/20 disabled:opacity-50"
+            >
+              {deletionBusy ? 'Calculando impacto...' : 'Excluir evento'}
+            </button>
+          )}
+          {canManageDelete && !!event.deleted_at && event.deletion_status !== 'PURGED' && (
+            <button
+              type="button"
+              onClick={() => void restoreEventFromDetail()}
+              disabled={deletionBusy}
+              className="rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-2 text-sm font-medium text-green-200 hover:bg-green-500/20 disabled:opacity-50"
+            >
+              {deletionBusy ? 'Restaurando...' : 'Restaurar evento'}
+            </button>
+          )}
           <a
             href={`/reports/event/${event.id}${event.deleted_at ? '?scope=deleted' : ''}`}
             className="text-sm px-4 py-2 rounded-lg transition font-medium bg-slate-800 hover:bg-slate-700 text-white"

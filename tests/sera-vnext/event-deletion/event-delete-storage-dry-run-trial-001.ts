@@ -9,10 +9,10 @@ const routeFile = path.join(rootDir, 'frontend', 'src', 'app', 'api', 'events', 
 const helper = readFileSync(helperFile, 'utf8')
 const route = readFileSync(routeFile, 'utf8')
 
-assert.match(helper, /mode: 'DRY_RUN'/)
+assert.match(helper, /mode: 'PURGE_DRY_RUN'/)
 assert.match(helper, /storageObjects/)
-assert.match(helper, /EVENT_PURGE_NON_DRY_RUN_BLOCKED/)
-assert.match(route, /event\.purge_started/)
-assert.match(route, /event\.purge_scheduled/)
+assert.match(helper, /EVENT_PURGE_NOT_ELIGIBLE/)
+assert.match(helper, /schedule_event_purge/)
+assert.match(route, /EXECUTE_SYNTHETIC/)
 
 console.log('STORAGE_DRY_RUN_OK')

@@ -12,6 +12,18 @@ type DeletedEventItem = {
   deleted_at: string | null
   deletion_status: string | null
   recoverable_until: string | null
+  deleted_by: string | null
+  deletion_reason: string | null
+  purge_scheduled_at: string | null
+}
+
+function responseErrorMessage(body: unknown, fallback: string): string {
+  if (!body || typeof body !== 'object') return fallback
+  const error = (body as { error?: unknown }).error
+  if (!error || typeof error !== 'object') return fallback
+  return typeof (error as { message?: unknown }).message === 'string'
+    ? String((error as { message: string }).message)
+    : fallback
 }
 
 export default function DeletedEventsPage() {
@@ -52,7 +64,7 @@ export default function DeletedEventsPage() {
       })
       const body = await res.json().catch(() => ({}))
       if (!res.ok) {
-        throw new Error(typeof body.detail === 'string' ? body.detail : `HTTP ${res.status}`)
+        throw new Error(responseErrorMessage(body, `HTTP ${res.status}`))
       }
       await refresh()
     } catch (err) {
@@ -99,6 +111,14 @@ export default function DeletedEventsPage() {
                   <p className="mt-1 text-sm text-slate-500">
                     Recuperável até {event.recoverable_until ? new Date(event.recoverable_until).toLocaleString('pt-BR') : 'n/d'}
                   </p>
+                  <p className="mt-1 text-sm text-slate-500">Status: {event.deletion_status ?? 'SOFT_DELETED'}</p>
+                  <p className="mt-1 text-sm text-slate-500">Motivo: {event.deletion_reason ?? 'n/d'}</p>
+                  <p className="mt-1 text-sm text-slate-500">Actor: {event.deleted_by ? `${event.deleted_by.slice(0, 8)}...` : 'n/d'}</p>
+                  {event.purge_scheduled_at && (
+                    <p className="mt-1 text-sm text-amber-300">
+                      Purge agendado em {new Date(event.purge_scheduled_at).toLocaleString('pt-BR')}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <Link href={`/events/${event.id}?scope=deleted`} className="rounded-lg border border-slate-700 px-3 py-2 text-xs text-slate-200 hover:border-slate-500">

@@ -136,10 +136,10 @@ function countMapToSortedArray(counts: Record<string, number>): Array<{ code: st
     .map(([code, count]) => ({ code, count }))
 }
 
-function normalizeLegacyStatus(status: string): RiskProfileSourceStatus {
+function normalizeLegacyStatus(status: string, hasAnalysis: boolean): RiskProfileSourceStatus {
   switch (status) {
     case 'completed':
-      return 'completed'
+      return hasAnalysis ? 'completed' : 'received'
     case 'failed':
       return 'error'
     case 'processing':
@@ -217,7 +217,7 @@ function toLegacySource(row: LegacyEventRow, exclusionLookup: Map<string, Exclus
     title: row.title,
     occurredAt: row.occurred_at,
     createdAt: row.created_at,
-    status: normalizeLegacyStatus(row.status),
+    status: normalizeLegacyStatus(row.status, !!analysis),
     source: 'legacy_event',
     sourceFlow: 'LEGACY_SERA',
     analysisId: analysis?.id ?? null,
@@ -388,6 +388,8 @@ export async function loadRiskProfileUniverse(
       .from('sera_vnext_analyses')
       .select('id, tenant_id, title, status, review_status, created_at, deleted_at, engine_version, engine_runtime_version, methodology_version, canonical_tree_version, source_flow, perception_candidate_code, objective_candidate_code, action_candidate_code, warnings, limitations, uncertainties, engine_output')
       .eq('tenant_id', tenantId)
+      .eq('status', 'HUMAN_REVIEW_COMPLETED_NON_FINAL')
+      .is('deleted_at', null)
       .order('created_at', { ascending: false }),
   ])
 

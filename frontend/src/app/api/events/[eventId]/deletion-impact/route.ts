@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/server/admin-auth'
 import { getSupabaseAdmin } from '@/lib/server/supabase-admin'
 import { getOrCreateRequestId } from '@/lib/observability/request-id'
-import { writeCriticalAuditLog } from '@/lib/observability/audit'
-import { getEventDeletionImpact } from '@/lib/server/event-deletion'
+import { writeAuditLog } from '@/lib/observability/audit'
+import { getEventDeletionImpact, resolvePublicUserId } from '@/lib/server/event-deletion'
 
-function jsonError(requestId: string, message: string, status: number, code?: string) {
+function jsonError(requestId: string, code: string, message: string, status: number) {
   return NextResponse.json(
-    { detail: message, ...(code ? { error: code } : {}), request_id: requestId },
+    { error: { code, message, requestId } },
     { status, headers: { 'x-request-id': requestId } },
   )
 }
@@ -19,10 +19,16 @@ export async function GET(req: Request, ctx: { params: Promise<{ eventId: string
     const { eventId } = await ctx.params
     const admin = getSupabaseAdmin()
     const impact = await getEventDeletionImpact(admin, user.tenantId, eventId)
-
-    await writeCriticalAuditLog({
+    const publicUserId = await resolvePublicUserId({
+      admin,
       tenantId: user.tenantId,
-      userId: user.userId,
+      authUserId: user.userId,
+      email: user.email,
+    })
+
+    await writeAuditLog({
+      tenantId: user.tenantId,
+      userId: publicUserId,
       requestId,
       eventType: 'event.deletion_impact_viewed',
       entityType: 'event',
@@ -31,13 +37,27 @@ export async function GET(req: Request, ctx: { params: Promise<{ eventId: string
       method: 'GET',
       metadata: impact,
     })
+    const lifecycle = await admin.from('event_deletion_events').insert({
+      tenant_id: user.tenantId,
+      event_id: eventId,
+      event_status: 'DELETION_IMPACT_VIEWED',
+      actor_id: publicUserId,
+      request_id: requestId,
+      metadata: {
+        purgeEligible: impact.purgeEligible,
+        purgeBlockers: impact.purgeBlockers,
+      },
+    })
+    if (lifecycle.error) console.error('[deletion-impact] lifecycle telemetry failed', { requestId })
 
     return NextResponse.json(impact, { headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
-    if (e instanceof Error && e.message === 'EVENT_NOT_FOUND') {
-      return jsonError(requestId, 'Evento não encontrado', 404, 'EVENT_NOT_FOUND')
+    const msg = e instanceof Error ? e.message : ''
+    if (msg === 'EVENT_NOT_FOUND') {
+      return jsonError(requestId, 'EVENT_NOT_FOUND', 'Evento não encontrado.', 404)
     }
-    return jsonError(requestId, String(e), 500)
+    console.error('[deletion-impact] unexpected error', { requestId, code: msg.slice(0, 64) })
+    return jsonError(requestId, 'EVENT_DELETE_INTERNAL_ERROR', 'Não foi possível calcular o impacto.', 500)
   }
 }
