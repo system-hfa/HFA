@@ -1,21 +1,22 @@
 # SERA vNext — Decisão Final da Unificação
 
-**Data**: 2026-06-08
+**Data de atualização**: 2026-06-09
 
 ---
 
 ## Status Final
 
 ```
-SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED
+SERA_VNEXT_PRODUCT_UNIFICATION_E2E_CLOSURE_PASS
 ```
 
 **Histórico:**
 - `SERA_VNEXT_PRODUCT_UNIFICATION_PASS_WITH_LIMITATIONS` (macrofase 1, incorreto): afirmava que Postgres ignora colunas inexistentes — FALSO.
 - `SERA_VNEXT_PRODUCT_UNIFICATION_IMPLEMENTED_NOT_RUNTIME_VALIDATED` (correção intermediária): status correto após identificar o erro.
-- `SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED` (macrofase 2, atual): migration confirmada aplicada, testes reais executados, build passa.
+- `SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED` (macrofase 2): migration confirmada aplicada, testes reais executados, build passa.
+- `SERA_VNEXT_PRODUCT_UNIFICATION_E2E_CLOSURE_PASS` (macrofase 3, atual): E2E completo com servidor real — 8 suites específicas criadas e executadas, full sweep 176 testes sem falhas.
 
-**Data da validação runtime:** 2026-06-08
+**Data do E2E closure:** 2026-06-09
 
 ---
 
@@ -23,20 +24,24 @@ SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED
 
 | Critério | Status | Observação |
 |---|---|---|
-| vNext v02 canônico para novas análises controladas | PASS | Engine runtime 0.2.0 sendo usado; proveniência separada do contrato DB |
-| Rollback legacy disponível | PASS | Feature flags com default false; pipeline legacy preservado |
-| Proveniência correta | PASS | engine_runtime_version, source_flow, canonical_tree_version em migration e código |
-| Versões coerentes | PASS | engine_output.engineVersion = 0.2.0; engine_runtime_version = 0.2.0; engine_version (contract) = 0.1.0 |
+| vNext v02 canônico para novas análises controladas | PASS | Engine runtime 0.2.0; engine_runtime_version=0.2.0 confirmado em API real |
+| Rollback legacy disponível | PASS | Feature flags com default false; flags testadas com servidor real |
+| Proveniência correta (create) | PASS_REAL | 21 PASS — engine_version=0.1.0, engine_runtime_version=0.2.0, source_flow=VNEXT_PRODUCT_BETA via API |
+| Proveniência correta (reanalysis) | PASS_REAL | 21 PASS — revisão 2 com proveniência, ambas revisões preservadas |
+| Versões coerentes | PASS | engine_output.engineVersion=0.2.0; engine_runtime_version=0.2.0; engine_version contract=0.1.0 |
 | Unified reads | PASS | `/lib/sera-analysis-unified` implementado |
-| Perfil de Risco sem dupla contagem | PASS | isCompatibleVNextRow + source diferenciado |
-| Endpoints consolidados | PARTIAL | /api/org/intelligence deprecated com header; dashboard ainda usa endpoint antigo |
-| Dashboard coerente | PARTIAL | Dados corretos; endpoint a migrar em próxima fase |
-| Erros sanitizados | PASS | F-14 corrigido: org/intelligence + /api/analyze |
-| Security tests | PARTIAL | Testes documentados e criados como suite estática; execução real requer DB ativo |
-| Product Beta regressions | PASS_REAL | Migration aplicada; INSERT com proveniência executado e validado no DB real (20 PASS) |
+| Perfil de Risco sem dupla contagem | PASS_REAL | 12 PASS — canonical=200, included+excluded≤total confirmado |
+| Endpoints consolidados | PASS | /api/org/intelligence deprecated; /api/risk-profile canônico testado com servidor real |
+| Dashboard coerente | PASS_REAL | 11 PASS — dashboard usa /api/risk-profile com Bearer token; score={value,level,label} correto |
+| Erros sanitizados | PASS_REAL | 22 PASS — sem stack, sem SQL, sem Supabase raw em nenhuma resposta de erro |
+| Guardrails v02 integrados | PASS_REAL | 27 PASS — 9 chaves presentes em API, tipos boolean, audit event incluído |
+| Security/RLS | PASS_REAL | 17 PASS — anon bloqueado, tenant isolation, INSERT sem auth bloqueado por RLS |
+| Product Beta regressions | PASS_REAL | Migration aplicada; INSERTs com proveniência validados |
 | Engine v02 preservado | PASS | run-engine.ts inalterado; versão 0.2.0 preservada |
-| Full sweep | PASS | tsc + lint sem erros |
-| Final outputs bloqueados | PASS | Constraints DB + assertNonFinalOutput no código |
+| Full sweep (176 testes) | PASS | Zero falhas — confirmado após macrofase 3 |
+| TypeScript typecheck | PASS | Zero erros de tipo |
+| Lint | PASS | 0 erros; 19 warnings pré-existentes em código legado |
+| Final outputs bloqueados | PASS | selectedCode=null, releasedCode=null, classifiedOutput=false confirmados em API real |
 
 ---
 
@@ -51,9 +56,8 @@ SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED
 
 ## Limitações Desta Fase
 
-1. Migration `20260608210000` criada mas não aplicada (aguarda ambiente autorizado).
-2. `/api/org/intelligence` deprecated mas não removido (consumidores ativos podem existir).
-3. Dashboard ainda chama `/api/org/intelligence` — migrar para `/api/risk-profile` em próxima fase.
-4. Rota `/api/analyze` ainda usa pipeline legacy (flag `SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=false`).
-5. Guardrails v02 (`compute-guardrails.ts`) não integrados ao `create-analysis.ts` — avaliação de compatibilidade de output pendente.
+1. `/api/org/intelligence` deprecated mas não removido (consumidores ativos podem existir).
+2. Rota `/api/analyze` ainda usa pipeline legacy (flag `SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=false`).
+3. Flag-on (`SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=true`) requer restart do servidor — testada estaticamente.
+4. Exclusions sub-rotas (`/api/risk-profile/exclusions`) usam `error instanceof Error ? error.message : String(error)` — escopo de melhoria futura.
 6. Testes E2E requerem servidor ativo — criados como suites com verificações estáticas.

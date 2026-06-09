@@ -102,6 +102,48 @@ Esta seção registra as correções e validações reais executadas na macrofas
 
 ---
 
+## E2E Closure (Macrofase 3 — 2026-06-09)
+
+Esta seção registra os testes E2E com servidor real executados na macrofase de closure.
+
+### Suites E2E Executadas (8 arquivos, product-unification/)
+
+| Suite | Resultado | Detalhe |
+|---|---|---|
+| `provenance-rls-real-trial-001.ts` | 17 PASS, 0 FAIL | Schema, anon block, RLS, tenant isolation |
+| `provenance-api-real-trial-001.ts` | 21 PASS, 0 FAIL | Create API: proveniência completa, idempotência, conflito |
+| `provenance-reanalysis-api-real-trial-001.ts` | 21 PASS, 0 FAIL | Reanalysis: revisão 2 com proveniência, histórico preservado |
+| `canonical-routing-real-trial-001.ts` | 9 PASS, 1 SKIPPED, 0 FAIL | Feature flags default=false; flag-on requer restart |
+| `v02-guardrail-api-ui-trial-001.ts` | 27 PASS, 0 FAIL | 9 guardrail keys como boolean em API real |
+| `risk-profile-endpoint-parity-real-trial-001.ts` | 12 PASS, 3 SKIPPED, 0 FAIL | Canonical/deprecated/legacy; headers skipped (apiJson limitation) |
+| `dashboard-risk-profile-e2e-trial-001.ts` | 11 PASS, 1 SKIPPED, 0 FAIL | Dashboard usa /api/risk-profile com Bearer token |
+| `error-observability-e2e-trial-001.ts` | 22 PASS, 0 FAIL | Sem stack/SQL/Supabase raw em nenhuma resposta de erro |
+
+### Full Sweep (176 testes)
+
+- Total arquivos: 176
+- Falhas: 0
+- Comando: `for f in tests/sera-vnext/*.ts; do npx tsx "$f"; done`
+- Log: `tmp/sera-vnext-product-unification-final-e2e/full-sweep.log`
+
+### Scans de Segurança (Macrofase 3)
+
+| Scan | Resultado |
+|---|---|
+| Template literals Tailwind em className | CLEAR |
+| selectedCode ativo em produto | CLEAR |
+| anon GRANTS em migrations | CLEAR |
+| RLS DISABLE em migrations | CLEAR |
+| String(e) em rotas SERA | CLEAR (risk-profile, analyze, intelligence OK) |
+| Stack trace em respostas | CLEAR |
+| Claims proibidos em UI | CLEAR |
+| Cross-tenant (tenant_id filter) | CLEAR — todas as 5 queries em repositories.ts filtram por tenant_id |
+| Fetch cliente sem Authorization (dashboard) | CLEAR — Authorization: Bearer token presente |
+
+**Nota sobre String(e) em rotas não-SERA:** `settings/ai`, `auth/me`, `payments` usam `String(e)` — pré-existente, fora do escopo desta macrofase.
+
+---
+
 ## Alterações Implementadas
 
 | Parte | Status |
@@ -122,6 +164,7 @@ Esta seção registra as correções e validações reais executadas na macrofas
 | Guardrails v02 integrados | IMPLEMENTADO_MACROFASE_2 |
 | Dashboard migrado para /api/risk-profile | IMPLEMENTADO_MACROFASE_2 |
 | 14 docs product-unification | IMPLEMENTADO |
-| Testes product-unification | IMPLEMENTADO |
-| Typecheck | PASS |
+| Testes product-unification (8 suites E2E) | IMPLEMENTADO_MACROFASE_3 |
+| Full sweep 176 testes | PASS_MACROFASE_3 |
+| TypeScript typecheck | PASS |
 | Lint | PASS (0 erros) |
