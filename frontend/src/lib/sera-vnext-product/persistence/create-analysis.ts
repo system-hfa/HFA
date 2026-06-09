@@ -42,6 +42,9 @@ function collectWarnings(output: SeraVNextEngineOutput, inputWarnings: string[])
   if (output.canonicalTraversal.status !== 'COMPLETED_CANDIDATE_ONLY') warnings.add('CANONICAL_TRAVERSAL_REVIEW_REQUIRED')
   if (output.directActor.status !== 'IDENTIFIED') warnings.add('DIRECT_ACTOR_REVIEW_REQUIRED')
   if (output.preconditions.length === 0) warnings.add('NO_PRECONDITION_CANDIDATE')
+  for (const [name, violated] of Object.entries(output.guardrails)) {
+    if (violated) warnings.add(`GUARDRAIL_VIOLATED_${name.toUpperCase()}`)
+  }
   return [...warnings]
 }
 
@@ -144,6 +147,9 @@ export async function createSeraVNextAnalysis(args: {
       engineRuntimeVersion: versions.engineRuntimeVersion,
       sourceFlow: versions.sourceFlow,
       warningsCount: warnings.length,
+      guardrailViolations: Object.entries(engineOutput.guardrails)
+        .filter(([, violated]) => violated)
+        .map(([name]) => name),
     },
   })
 

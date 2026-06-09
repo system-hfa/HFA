@@ -5,8 +5,11 @@ import { getOrCreateRequestId } from '@/lib/observability/request-id'
 import { writeAuditLog } from '@/lib/observability/audit'
 import { getRiskProfileSummaryForTenant } from '@/lib/risk-profile/server'
 
-function jsonError(message: string, status: number) {
-  return NextResponse.json({ detail: message }, { status })
+function jsonError(code: string, message: string, status: number, requestId?: string) {
+  return NextResponse.json(
+    { error: code, detail: message, ...(requestId ? { request_id: requestId } : {}) },
+    { status }
+  )
 }
 
 function logRiskProfileError(error: unknown, stage: string, userId?: string, tenantId?: string) {
@@ -50,7 +53,8 @@ export async function GET(req: Request) {
     return NextResponse.json(profile, { headers: { 'x-request-id': requestId } })
   } catch (e) {
     if (e instanceof Response) return e
+    const requestId = getOrCreateRequestId(req)
     logRiskProfileError(e, 'top-level', userId, tenantId)
-    return jsonError(String(e), 500)
+    return jsonError('RISK_PROFILE_ERROR', 'Falha ao gerar perfil de risco.', 500, requestId)
   }
 }

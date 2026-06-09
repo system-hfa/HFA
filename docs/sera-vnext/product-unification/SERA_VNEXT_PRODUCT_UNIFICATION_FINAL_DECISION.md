@@ -7,8 +7,15 @@
 ## Status Final
 
 ```
-SERA_VNEXT_PRODUCT_UNIFICATION_PASS_WITH_LIMITATIONS
+SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED
 ```
+
+**Histórico:**
+- `SERA_VNEXT_PRODUCT_UNIFICATION_PASS_WITH_LIMITATIONS` (macrofase 1, incorreto): afirmava que Postgres ignora colunas inexistentes — FALSO.
+- `SERA_VNEXT_PRODUCT_UNIFICATION_IMPLEMENTED_NOT_RUNTIME_VALIDATED` (correção intermediária): status correto após identificar o erro.
+- `SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED` (macrofase 2, atual): migration confirmada aplicada, testes reais executados, build passa.
+
+**Data da validação runtime:** 2026-06-08
 
 ---
 
@@ -26,7 +33,7 @@ SERA_VNEXT_PRODUCT_UNIFICATION_PASS_WITH_LIMITATIONS
 | Dashboard coerente | PARTIAL | Dados corretos; endpoint a migrar em próxima fase |
 | Erros sanitizados | PASS | F-14 corrigido: org/intelligence + /api/analyze |
 | Security tests | PARTIAL | Testes documentados e criados como suite estática; execução real requer DB ativo |
-| Product Beta regressions | PASS (type-safe) | Campos novos são nullable; migration não aplicada = null silencioso |
+| Product Beta regressions | PASS_REAL | Migration aplicada; INSERT com proveniência executado e validado no DB real (20 PASS) |
 | Engine v02 preservado | PASS | run-engine.ts inalterado; versão 0.2.0 preservada |
 | Full sweep | PASS | tsc + lint sem erros |
 | Final outputs bloqueados | PASS | Constraints DB + assertNonFinalOutput no código |

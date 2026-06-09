@@ -209,7 +209,7 @@ export default function DashboardPage() {
       const t = session.access_token
       setToken(t)
       try {
-        const intelRes = await fetch('/api/org/intelligence', { headers: { Authorization: `Bearer ${t}` } })
+        const intelRes = await fetch('/api/risk-profile', { headers: { Authorization: `Bearer ${t}` } })
         const intel = await intelRes.json()
         if (intelRes.ok && intel?.score) {
           setData(intel)
