@@ -18,6 +18,7 @@ export type AuditEventType =
   | 'risk_profile.export_requested'
   | 'tenant.bootstrap_failed'
   | 'classification_overridden' // reservado — implementar quando rota de override for instrumentada
+  | 'canonical_engine.used'
 
 export type AuditStatus = 'success' | 'partial' | 'failed' | 'blocked'
 

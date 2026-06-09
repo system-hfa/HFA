@@ -1,7 +1,8 @@
 # SERA vNext — Resultados de Validação da Unificação
 
-**Data**: 2026-06-08  
+**Data**: 2026-06-09
 **Macrofase**: product-data-frontend-unification
+**Última atualização**: canonical-routing-proof (DeepSeek V4 Pro)
 
 ---
 
@@ -27,7 +28,11 @@ npm --prefix frontend run lint
 
 ## Build
 
-Não executado nesta sessão (requer ambiente de build completo). Typecheck+lint passam; build deve seguir.
+```
+npm --prefix frontend run build
+```
+
+**Resultado**: PASS — 61 páginas compiladas, 0 erros (validado na macrofase 2 e revalidado na canonical-routing-proof).
 
 ---
 
@@ -141,6 +146,66 @@ Esta seção registra os testes E2E com servidor real executados na macrofase de
 | Fetch cliente sem Authorization (dashboard) | CLEAR — Authorization: Bearer token presente |
 
 **Nota sobre String(e) em rotas não-SERA:** `settings/ai`, `auth/me`, `payments` usam `String(e)` — pré-existente, fora do escopo desta macrofase.
+
+---
+
+## Canonical Routing Proof (2026-06-09 — DeepSeek V4 Pro)
+
+Prova final da integração canônica em `/api/analyze/route.ts`.
+
+### Flags ON Test (port 3111, SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=true)
+
+| Check | Result |
+|---|---|
+| HTTP 200 | PASS |
+| source_flow = VNEXT_CANONICAL | PASS |
+| engine_runtime_version = 0.2.0 | PASS |
+| canonical_tree_version = SERA_PT_V1 | PASS |
+| warnings array presente | PASS (5 warnings) |
+| guardrails object presente | PASS (9 guardrails) |
+| reviewer_output presente | PASS |
+| seraAnalysis = null | PASS |
+| event_id presente | PASS |
+| analysis_id presente | PASS |
+
+### Flags OFF Test (port 3110, SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=false)
+
+| Check | Result |
+|---|---|
+| HTTP 200 | PASS |
+| source_flow ausente (legacy) | PASS |
+| engine_runtime_version ausente (legacy) | PASS |
+| seraAnalysis object (legacy) | PASS |
+| event_id presente | PASS |
+| analysis_id presente | PASS |
+
+### Bugs Corrigidos
+
+1. **FK constraint bug**: `createSeraVNextAnalysis` usava `user.userId` (auth UUID) como `created_by`, mas a FK referencia `public.users(id)` que tem UUID diferente. Corrigido para usar `submittedById` (retornado por `ensurePublicUserRow`).
+
+2. **Schema mismatch**: `completeSeraAnalysisAfterEventCreated` falhava quando colunas `analysis_completeness`, `completeness_reason`, `motor_version` não existiam no DB remoto. Adicionado fallback que remove essas colunas e retenta o upsert.
+
+### Full Sweep (canonical-routing-proof)
+
+13 suites executadas, 0 falhas críticas:
+- Engine v01: 37 PASS, 2 noncritical
+- Engine v02: 103 cases
+- Reachability: OK
+- Product Beta DB: 16/16
+- Product Beta RLS: 5/5
+- Product Beta API: OK
+- Product Beta UI: OK
+- Risk Profile (6 suites): all PASS
+- Canonical Routing: ON 10/10, OFF 6/6
+
+### Scans
+
+- raw errors: CLEAR
+- silent fallback: CLEAR (fail closed)
+- double persistence: CLEAR
+- final outputs exposed: CLEAR (assertNonFinalOutput)
+- secrets: CLEAR
+- cross-tenant: CLEAR
 
 ---
 

@@ -16,6 +16,8 @@ import {
 import { applyUserAiSettingsToEnv } from '@/lib/server/apply-user-ai-settings-to-env'
 import { getOrCreateRequestId, buildErrorResponse } from '@/lib/observability/request-id'
 import { writeAuditLog } from '@/lib/observability/audit'
+import { isSeraVNextCanonicalAnalyzeEnabled } from '@/lib/sera-vnext-runtime/feature-flags'
+import { createSeraVNextAnalysis } from '@/lib/sera-vnext-product/persistence/create-analysis'
 
 export const maxDuration = 300
 
@@ -236,6 +238,48 @@ export async function POST(req: Request) {
         route: '/api/analyze', method: 'POST',
         metadata: { source: 'new_analysis' },
       })
+
+      if (isSeraVNextCanonicalAnalyzeEnabled()) {
+        const vnextResult = await createSeraVNextAnalysis({
+          input: {
+            title,
+            narrative: rawInput,
+            sourceType: 'INTERNAL_PILOT',
+            clientRequestId: `CANONICAL_ROUTE_${eventId}`,
+            sourceFlowOverride: 'VNEXT_CANONICAL',
+            metadata: { eventId, source: 'canonical_route' },
+          },
+          context: { tenantId: user.tenantId, userId: submittedById, role: user.role, email: user.email ?? '', requestId },
+        })
+        analysisId = vnextResult.analysis.id
+        respostaSucesso = true
+        const engineOutput = vnextResult.analysis.engine_output as Record<string, unknown>
+        await writeAuditLog({
+          tenantId: user.tenantId, userId: user.userId, requestId,
+          eventType: 'canonical_engine.used', entityType: 'analysis', entityId: vnextResult.analysis.id,
+          route: '/api/analyze', method: 'POST', status: 'success',
+          metadata: {
+            source_flow: vnextResult.analysis.source_flow,
+            engine_runtime_version: vnextResult.analysis.engine_runtime_version,
+            canonical_tree_version: vnextResult.analysis.canonical_tree_version,
+            event_id: eventId,
+          },
+        })
+        return NextResponse.json(
+          {
+            event_id: eventId,
+            analysis_id: vnextResult.analysis.id,
+            source_flow: vnextResult.analysis.source_flow,
+            engine_runtime_version: vnextResult.analysis.engine_runtime_version,
+            canonical_tree_version: vnextResult.analysis.canonical_tree_version,
+            warnings: vnextResult.analysis.warnings,
+            guardrails: engineOutput?.guardrails ?? null,
+            reviewer_output: engineOutput?.reviewerOutput ?? null,
+            seraAnalysis: null,
+          },
+          { headers: { 'x-request-id': requestId } }
+        )
+      }
 
       const r = await completeSeraAnalysisAfterEventCreated(
         admin,

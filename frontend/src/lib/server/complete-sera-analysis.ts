@@ -23,11 +23,27 @@ export async function completeSeraAnalysisAfterEventCreated(
   const steps = await runSeraPipeline(rawInput)
   const payload = buildAnalysisUpsertPayload(eventId, user.tenantId, rawInput, steps, sourceMeta)
 
-  const { data: upserted, error: aerr } = await admin
+  let { data: upserted, error: aerr } = await admin
     .from('analyses')
     .upsert(payload, { onConflict: 'event_id' })
     .select('id')
     .single()
+
+  if (aerr) {
+    const errMsg = aerr.message ?? ''
+    if (errMsg.includes('analysis_completeness') || errMsg.includes('completeness_reason') || errMsg.includes('motor_version')) {
+      delete (payload as Record<string, unknown>).analysis_completeness
+      delete (payload as Record<string, unknown>).completeness_reason
+      delete (payload as Record<string, unknown>).motor_version
+      const retry = await admin
+        .from('analyses')
+        .upsert(payload, { onConflict: 'event_id' })
+        .select('id')
+        .single()
+      aerr = retry.error
+      upserted = retry.data
+    }
+  }
 
   if (aerr || !upserted) throw new Error(aerr?.message || 'Falha ao gravar análise')
 

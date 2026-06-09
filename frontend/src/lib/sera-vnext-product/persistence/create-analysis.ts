@@ -49,7 +49,7 @@ function collectWarnings(output: SeraVNextEngineOutput, inputWarnings: string[])
 }
 
 export async function createSeraVNextAnalysis(args: {
-  input: SeraVNextCreateAnalysisInput & { warnings?: string[] }
+  input: SeraVNextCreateAnalysisInput & { warnings?: string[]; sourceFlowOverride?: 'VNEXT_CANONICAL' | 'VNEXT_PRODUCT_BETA' }
   context: SeraVNextProductContext
   repository?: SeraVNextProductRepository
 }): Promise<SeraVNextCreateAnalysisResult> {
@@ -69,6 +69,7 @@ export async function createSeraVNextAnalysis(args: {
   }
 
   const versions = getSeraVNextProductVersionSet()
+  const effectiveSourceFlow = args.input.sourceFlowOverride ?? versions.sourceFlow
   const engineInput = buildEngineInput(args.input, args.context)
   const engineOutput = runSeraVNextEngineV0(engineInput)
   assertNonFinalOutput(engineOutput)
@@ -96,7 +97,7 @@ export async function createSeraVNextAnalysis(args: {
     input_schema_version: versions.inputSchemaVersion,
     output_schema_version: versions.outputSchemaVersion,
     code_commit: versions.codeCommit,
-    source_flow: versions.sourceFlow,
+    source_flow: effectiveSourceFlow,
     canonical_tree_version: versions.canonicalTreeVersion,
     engine_input: engineInput,
     engine_output: engineOutput,
@@ -126,7 +127,7 @@ export async function createSeraVNextAnalysis(args: {
     request_id: args.context.requestId,
     engine_version: versions.engineVersion,
     engine_runtime_version: versions.engineRuntimeVersion,
-    source_flow: versions.sourceFlow,
+    source_flow: effectiveSourceFlow,
     engine_input: engineInput,
     engine_output: engineOutput,
     engine_output_hash: outputHash,
@@ -145,7 +146,7 @@ export async function createSeraVNextAnalysis(args: {
       sourceType: analysis.source_type,
       engineVersion: versions.engineVersion,
       engineRuntimeVersion: versions.engineRuntimeVersion,
-      sourceFlow: versions.sourceFlow,
+      sourceFlow: effectiveSourceFlow,
       warningsCount: warnings.length,
       guardrailViolations: Object.entries(engineOutput.guardrails)
         .filter(([, violated]) => violated)

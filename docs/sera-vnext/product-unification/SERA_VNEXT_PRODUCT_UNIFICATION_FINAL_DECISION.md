@@ -7,16 +7,17 @@
 ## Status Final
 
 ```
-SERA_VNEXT_PRODUCT_UNIFICATION_E2E_CLOSURE_PASS
+SERA_VNEXT_PRODUCT_UNIFICATION_READY_FOR_CONTROLLED_PILOT
 ```
 
 **Histórico:**
 - `SERA_VNEXT_PRODUCT_UNIFICATION_PASS_WITH_LIMITATIONS` (macrofase 1, incorreto): afirmava que Postgres ignora colunas inexistentes — FALSO.
 - `SERA_VNEXT_PRODUCT_UNIFICATION_IMPLEMENTED_NOT_RUNTIME_VALIDATED` (correção intermediária): status correto após identificar o erro.
 - `SERA_VNEXT_PRODUCT_UNIFICATION_RUNTIME_VALIDATED` (macrofase 2): migration confirmada aplicada, testes reais executados, build passa.
-- `SERA_VNEXT_PRODUCT_UNIFICATION_E2E_CLOSURE_PASS` (macrofase 3, atual): E2E completo com servidor real — 8 suites específicas criadas e executadas, full sweep 176 testes sem falhas.
+- `SERA_VNEXT_PRODUCT_UNIFICATION_E2E_CLOSURE_PASS` (macrofase 3): E2E completo com servidor real — 8 suites específicas criadas e executadas, full sweep 176 testes sem falhas.
+- `SERA_VNEXT_PRODUCT_UNIFICATION_READY_FOR_CONTROLLED_PILOT` (canonical-routing-proof, atual): `/api/analyze` canonical routing testado com flags ON e OFF em servidor real; FK bug corrigido; schema fallback implementado.
 
-**Data do E2E closure:** 2026-06-09
+**Data do canonical routing proof:** 2026-06-09
 
 ---
 
@@ -57,7 +58,8 @@ SERA_VNEXT_PRODUCT_UNIFICATION_E2E_CLOSURE_PASS
 ## Limitações Desta Fase
 
 1. `/api/org/intelligence` deprecated mas não removido (consumidores ativos podem existir).
-2. Rota `/api/analyze` ainda usa pipeline legacy (flag `SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=false`).
-3. Flag-on (`SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=true`) requer restart do servidor — testada estaticamente.
+2. Rota `/api/analyze` com flag OFF usa pipeline legacy; com flag ON usa vNext v02 — ambos testados com servidor real.
+3. Flag-on (`SERA_VNEXT_CANONICAL_ANALYZE_ENABLED=true`) requer restart do servidor — testada com servidor real na canonical-routing-proof.
 4. Exclusions sub-rotas (`/api/risk-profile/exclusions`) usam `error instanceof Error ? error.message : String(error)` — escopo de melhoria futura.
-6. Testes E2E requerem servidor ativo — criados como suites com verificações estáticas.
+5. `audit_log` table não existe na instância Supabase remota — eventos de audit são best-effort e falham silenciosamente (pré-existente).
+6. Testes E2E requerem servidor ativo — canonical-routing test criado com documentação de processos separados para ON/OFF.
