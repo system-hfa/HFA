@@ -1,0 +1,32 @@
+# SERA vNext Canonical Leaf Reachability
+
+Source: `frontend/src/lib/sera-vnext/canonical-tree.ts`.
+
+Active leaves: 22.
+
+| code | reachable | canonical_path | required_answers | test_case |
+|---|---|---|---|---|
+| P-A | yes | P_ROOT -> P_ASSESSMENT | START, SIM | V02-LEAF-P-A-EN |
+| P-B | yes | P_ROOT -> P_ASSESSMENT -> P_CAPABILITY | START, NAO, NAO_SENSORIAL | V02-LEAF-P-B-EN |
+| P-C | yes | P_ROOT -> P_ASSESSMENT -> P_CAPABILITY | START, NAO, NAO_CONHECIMENTO | V02-LEAF-P-C-EN |
+| P-D | yes | P_ROOT -> P_ASSESSMENT -> P_CAPABILITY -> P_TIME_PRESSURE | START, NAO, SIM, SIM_ATENCAO | V02-LEAF-P-D-PT |
+| P-E | yes | P_ROOT -> P_ASSESSMENT -> P_CAPABILITY -> P_TIME_PRESSURE | START, NAO, SIM, SIM_GERENCIAMENTO | V02-LEAF-P-E-EN |
+| P-F | yes | P_ROOT -> P_ASSESSMENT -> P_CAPABILITY -> P_TIME_PRESSURE -> P_INFORMATION_AMBIGUOUS | START, NAO, SIM, NAO, SIM | V02-LEAF-P-F-EN |
+| P-G | yes | P_ROOT -> P_ASSESSMENT -> P_CAPABILITY -> P_TIME_PRESSURE -> P_INFORMATION_AMBIGUOUS -> P_INFORMATION_AVAILABLE | START, NAO, SIM, NAO, NAO, SIM | V02-LEAF-P-G-EN |
+| P-H | yes | same as P-G | START, NAO, SIM, NAO, NAO, NAO | V02-LEAF-P-H-EN |
+| O-A | yes | O_ROOT -> O_RULES -> O_MANAGED_RISK | START, SIM, SIM | V02-LEAF-O-A-PT |
+| O-B | yes | O_ROOT -> O_RULES -> O_ROUTINE | START, NAO, SIM | V02-LEAF-O-B-PT |
+| O-C | yes | O_ROOT -> O_RULES -> O_ROUTINE | START, NAO, NAO | V02-LEAF-O-C-EN |
+| O-D | yes | O_ROOT -> O_RULES -> O_MANAGED_RISK | START, SIM, NAO | V02-LEAF-O-D-EN |
+| A-A | yes | A_ROOT -> A_IMPLEMENTED -> A_CORRECT | START, SIM, SIM | V02-LEAF-A-A-PT |
+| A-B | yes | A_ROOT -> A_IMPLEMENTED | START, NAO_FEEDBACK | V02-LEAF-A-B-EN |
+| A-C | yes | A_ROOT -> A_IMPLEMENTED | START, NAO_DESLIZE_LAPSO_ERRO | V02-LEAF-A-C-PT |
+| A-D | yes | A_ROOT -> A_IMPLEMENTED -> A_CORRECT -> A_CAPABILITY | START, SIM, NAO, NAO_INABILIDADE | V02-LEAF-A-D-EN |
+| A-E | yes | same as A-D | START, SIM, NAO, NAO_CONHECIMENTO | V02-LEAF-A-E-PT |
+| A-F | yes | A_ROOT -> A_IMPLEMENTED -> A_CORRECT -> A_CAPABILITY -> A_TIME_PRESSURE | START, SIM, NAO, SIM, NAO_SELECAO | V02-LEAF-A-F-EN |
+| A-G | yes | same as A-F | START, SIM, NAO, SIM, NAO_FEEDBACK | V02-LEAF-A-G-PT |
+| A-H | yes | same as A-F | START, SIM, NAO, SIM, SIM_GERENCIAMENTO | V02-LEAF-A-H-EN |
+| A-I | yes | same as A-F | START, SIM, NAO, SIM, SIM_SELECAO | V02-LEAF-A-I-PT |
+| A-J | yes | same as A-F | START, SIM, NAO, SIM, SIM_FEEDBACK | V02-LEAF-A-J-EN |
+
+Each positive case has a generated neutral negative case in `leafReachabilityNegativeCases`.

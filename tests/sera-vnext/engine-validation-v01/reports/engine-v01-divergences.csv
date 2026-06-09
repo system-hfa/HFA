@@ -1,1 +1,3 @@
 "caseId","group","severity","field","detail"
+"GEN-FIRST-AIR-6560","generalization","noncritical","guardrails.consequenceUsedAsCause","v02 computed guardrail detected=consequenceUsedAsCause"
+"ADV-OE","adversarial","noncritical","guardrails.oeUsed","v02 computed guardrail detected=oeUsed"

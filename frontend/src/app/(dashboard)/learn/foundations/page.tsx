@@ -225,7 +225,7 @@ export default function FoundationsPage() {
 
           <p className="text-slate-400 text-sm leading-relaxed">
             O modelo de Processamento da Informação (Information Processing — IP) descreve como operadores humanos
-            coletam, interpretam e respondem a informações do ambiente. É a base científica que explica por que
+            coletam, interpretam e respondem a informações do ambiente. É a base metodológica que explica por que
             operadores erram mesmo quando são experientes, treinados e motivados.
           </p>
 

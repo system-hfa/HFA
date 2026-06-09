@@ -56,9 +56,9 @@ export default function OnboardingPage() {
   return (
     <div className="p-8 space-y-6 max-w-6xl mx-auto">
       <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-white">Comece pelo diagnóstico de fatores humanos</h1>
+        <h1 className="text-2xl font-bold text-white">Comece pela análise assistida de fatores humanos</h1>
         <p className="text-slate-400 max-w-4xl">
-          O HFA/SERA organiza relatos de eventos, aplica a metodologia SERA, gera recomendações e constrói progressivamente um perfil organizacional.
+          O HFA/SERA organiza relatos de eventos, aplica a metodologia SERA, gera hipóteses estruturadas para revisão humana e consolida dados descritivos da organização.
         </p>
       </div>
 
@@ -68,7 +68,7 @@ export default function OnboardingPage() {
           Use as primeiras análises para registrar eventos reais ou casos de treinamento. A partir delas, o sistema começa a identificar padrões recorrentes, confiança dos dados e tendência qualitativa.
         </p>
         <p className="text-slate-400 text-xs">
-          Com menos dados, o diagnóstico permanece em formação e deve ser interpretado como sinal inicial, não como conclusão definitiva.
+          Com menos dados, a consolidação permanece em formação e deve ser interpretada como sinal inicial, não como conclusão definitiva.
         </p>
         <div className="pt-2">
           <TrialUsageCard compact />

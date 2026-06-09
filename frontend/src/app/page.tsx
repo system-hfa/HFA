@@ -207,7 +207,7 @@ export default function Home() {
                   {
                     title: 'K.C. Hendy',
                     meta: 'DRDC Canada · SERA',
-                    desc: 'Base científica para investigar erro humano por processamento de informação, percepção, objetivo e ação.',
+                    desc: 'Base metodológica para investigar erro humano por processamento de informação, percepção, objetivo e ação.',
                   },
                   {
                     title: 'F.P. Daumas',
@@ -257,7 +257,7 @@ export default function Home() {
             </div>
 
             <div className="animate-fade-up delay-3" style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '34px' }}>
-              {['Metodologia validada', 'Ferramenta gratuita', 'Arquitetura determinística', 'Base científica', 'DRDC Canada'].map((badge) => (
+              {['Metodologia em validação técnica', 'Ferramenta gratuita', 'Arquitetura determinística', 'Base metodológica', 'DRDC Canada'].map((badge) => (
                 <span key={badge} style={{
                   border: '1px solid rgba(96,165,250,0.22)',
                   backgroundColor: 'rgba(15,23,42,0.52)',
@@ -481,7 +481,7 @@ export default function Home() {
                   { step: '01', title: 'A percepção estava correta?', desc: 'Se o texto não mostra falha perceptiva explícita, o sistema não força uma explicação de percepção.' },
                   { step: '02', title: 'Qual era o objetivo operacional?', desc: 'O sistema separa objetivo correto, atalho normalizado, proteção de pessoa e busca por eficiência.' },
                   { step: '03', title: 'A execução falhou por qual motivo?', desc: 'Incapacidade física, falta de treinamento, comunicação e seleção errada são avaliadas antes de omissões genéricas.' },
-                  { step: '04', title: 'A conclusão é coerente?', desc: 'Antes do resultado final, o sistema verifica se percepção, objetivo e ação não se contradizem.' },
+                  { step: '04', title: 'A hipótese é coerente?', desc: 'Antes da revisão humana, o sistema verifica se percepção, objetivo e ação não se contradizem.' },
                 ].map((item) => (
                   <div key={item.step} className="logic-card" style={{ borderRadius: '12px', padding: '18px 20px', display: 'grid', gridTemplateColumns: '44px 1fr', gap: '14px' }}>
                     <div style={{ fontFamily: 'monospace', fontSize: '12px', color: '#60A5FA' }}>{item.step}</div>
@@ -631,7 +631,7 @@ export default function Home() {
                   { title: '5. Como a ação falhou?', desc: 'Classifica omissão, verificação, incapacidade física, treinamento, seleção, supervisão ou comunicação.' },
                   { title: '6. Quais condições favoreceram?', desc: 'Levanta pré-condições ligadas a pessoa, supervisão, tarefa, trabalho e organização.' },
                   { title: '7. O erro era recuperável?', desc: 'Avalia detectabilidade, reversibilidade e barreiras disponíveis antes das consequências.' },
-                  { title: '8. O que fazer com isso?', desc: 'Gera conclusão, recomendações e dados para perfil de risco da organização.' },
+                  { title: '8. O que fazer com isso?', desc: 'Gera hipóteses estruturadas, recomendações candidatas e dados para consolidação descritiva da organização.' },
                 ].map((item) => (
                   <div key={item.title} style={{ backgroundColor: '#0D1A2D', border: '1px solid rgba(148,163,184,0.1)', borderRadius: '10px', padding: '16px 14px' }}>
                     <h4 style={{ fontSize: '13px', color: '#F8FAFC', margin: '0 0 7px', fontWeight: 600 }}>{item.title}</h4>
@@ -647,7 +647,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SEÇÃO 5 — BASE CIENTÍFICA */}
+        {/* SEÇÃO 5 — BASE METODOLÓGICA */}
         <section id="sobre-sera" style={{ backgroundColor: '#0A1628', padding: '96px 32px' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ marginBottom: '56px' }}>
@@ -976,13 +976,13 @@ export default function Home() {
         <section id="validacao" style={{ backgroundColor: '#060B14', padding: '96px 32px' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '42px', alignItems: 'start' }}>
             <div>
-              <div style={{ fontSize: '11px', color: '#3B82F6', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '16px' }}>VALIDAÇÃO METODOLÓGICA</div>
+              <div style={{ fontSize: '11px', color: '#3B82F6', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '16px' }}>VALIDAÇÃO TÉCNICA E OPERACIONAL</div>
               <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: '42px', lineHeight: 1.18, fontWeight: 400, color: '#F1F5F9', margin: '0 0 22px' }}>
-                A validação ocorre antes da conclusão.
+                A revisão ocorre antes da conclusão.
               </h2>
               <p style={{ fontSize: '16px', color: '#94A3B8', lineHeight: 1.8, marginBottom: '22px' }}>
-                O HFA/SERA foi validado através de análises comparativas, cenários operacionais reais e avaliações de consistência classificatória.
-                O sistema foi projetado para reduzir variabilidade interpretativa entre investigadores.
+                O HFA/SERA está em validação técnica e operacional por análises comparativas, cenários operacionais reais e avaliações de consistência.
+                O sistema foi projetado para reduzir variabilidade interpretativa, mantendo a decisão final sob revisão humana.
               </p>
               <p style={{ fontSize: '15px', color: '#CBD5E1', lineHeight: 1.75, marginBottom: '22px' }}>
                 Na prática, cada etapa produz um resultado e uma lista de hipóteses descartadas. O sistema cruza esses resultados para evitar
@@ -1109,7 +1109,7 @@ export default function Home() {
               </Link>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
-              {['rastreabilidade textual', 'metodologia validada', 'arquitetura determinística'].map((t) => (
+              {['rastreabilidade textual', 'metodologia em validação', 'arquitetura determinística'].map((t) => (
                 <span key={t} style={{ fontSize: '13px', color: '#475569' }}>{t}</span>
               ))}
             </div>

@@ -1,4 +1,5 @@
 import type { SeraVNextEngineOutput } from '../../engine-contract'
+import { computeSeraVNextGuardrails } from '../../engine-v02/guardrails/compute-guardrails'
 import { buildEvidenceTrace, pushUnique } from '../utils'
 
 export function runStep10Assurance(input: {
@@ -10,7 +11,7 @@ export function runStep10Assurance(input: {
   canonicalTraversal: SeraVNextEngineOutput['canonicalTraversal']
 }): Pick<
   SeraVNextEngineOutput,
-  'guardrails' | 'uncertainties' | 'limitations' | 'decisionTrace' | 'evidenceTrace' | 'humanReviewPackage'
+  'guardrails' | 'guardrailEvidence' | 'uncertainties' | 'limitations' | 'decisionTrace' | 'evidenceTrace' | 'humanReviewPackage'
 > {
   const uncertainties: string[] = []
   const limitations: string[] = []
@@ -57,22 +58,35 @@ export function runStep10Assurance(input: {
   const actorMigrationDetected =
     input.directActor.status === 'NOT_APPLICABLE' &&
     [input.axes.perception.proposedCode, input.axes.objective.proposedCode, input.axes.action.proposedCode].some(Boolean)
+  const computedGuardrails = computeSeraVNextGuardrails(input)
+  const guardrailEvidence = Object.fromEntries(
+    Object.entries(computedGuardrails).map(([key, value]) => [key, value.evidence]),
+  )
+  const guardrails = {
+    consequenceUsedAsCause: computedGuardrails.consequenceUsedAsCause.violated,
+    postEscapeHuntingDetected: computedGuardrails.postEscapeHuntingDetected.violated,
+    postEscapeEvidenceUsed: computedGuardrails.postEscapeEvidenceUsed.violated,
+    oeUsed: computedGuardrails.oeUsed.violated,
+    inventedQuestionDetected: computedGuardrails.inventedQuestionDetected.violated,
+    actorMigrationDetected: actorMigrationDetected || computedGuardrails.actorMigrationDetected.violated,
+    preconditionUsedAsEscapePoint: computedGuardrails.preconditionUsedAsEscapePoint.violated,
+    codeFirstPathDetected: computedGuardrails.codeFirstPathDetected.violated,
+    awarenessMissingForViolation: computedGuardrails.awarenessMissingForViolation.violated,
+  }
+  const guardrailWarnings = Object.entries(guardrails)
+    .filter(([, violated]) => violated)
+    .map(([name]) => `Guardrail violation detected: ${name}.`)
 
   const reviewWarnings = [
     ...input.canonicalTraversal.unansweredQuestions,
     ...input.directActor.actorMigrationWarnings,
     ...uncertainties,
+    ...guardrailWarnings,
   ]
 
   return {
-    guardrails: {
-      consequenceUsedAsCause: false,
-      postEscapeHuntingDetected: false,
-      oeUsed: false,
-      inventedQuestionDetected: false,
-      actorMigrationDetected,
-      preconditionUsedAsEscapePoint: false,
-    },
+    guardrails,
+    guardrailEvidence,
     uncertainties,
     limitations,
     decisionTrace,

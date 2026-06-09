@@ -1,0 +1,3237 @@
+{
+  "generatedAt": "2026-06-09T00:47:26.798Z",
+  "manifestHash": "cd66cae2a9c63a78f18ddf425830cc9ae703a5c7ca48ee741575b32879b1a207",
+  "existingRegressionCases": 39,
+  "v02Cases": 64,
+  "caseResults": [
+    {
+      "caseId": "OFFICIAL-COMAIR-5191",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": "P-B",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "OFFICIAL-ASIANA-214",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "OFFICIAL-UPS-1354",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": "P-B",
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "OFFICIAL-GAP-004",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "OFFICIAL-DELTA-191",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "OFFICIAL-USAIR-427",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "OFFICIAL-5N-BQJ",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "HUMAN-THEBAUD",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "HUMAN-CRANK-2026-0001",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-G-WNSB",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-EXECUFLIGHT-1526",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-THEBAUD",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-PEL-AIR",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-FIRST-AIR-6560",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": true,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-AIR-CANADA-759",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": "P-B",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-TRANSASIA-GE235",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-TECHNICAL-DOMINANT",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-EVIDENCE-INSUFFICIENT",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "GEN-NO-FAILURE",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": "P-A",
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-CONSEQUENCE-AS-CAUSE",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-P",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-O",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-POST-ESCAPE-A",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-ACTOR-MIGRATION",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-PRECONDITION-AS-ESCAPE",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-OE",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": true,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-VIOLATION-WITHOUT-AWARENESS",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-INVENTED-INTENTION",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-TECHNICAL-DOMINANT",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-ENVIRONMENTAL-DOMINANT",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-NO-FAILURE",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": "P-A",
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-INSUFFICIENT-EVIDENCE",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-PROGRESSIVE-ZONE",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-PF-PM",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-AA-AC",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": "P-A",
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-OA-OC",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-PC-PG",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-WARNING-IGNORED",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": "P-A",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "ADV-WRONG-PERCEPTION-COHERENT-ACTION",
+      "group": "existing_regression",
+      "expected": "REGRESSION_GUARDRAIL_ONLY",
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "existing-regression"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-HELI-PD",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-D"
+      },
+      "actual": {
+        "perception": "P-D",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "offshore-helicopter"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-HELI-OA",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "offshore-helicopter",
+        "no-failure"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-TECH-PH",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-H"
+      },
+      "actual": {
+        "perception": "P-H",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "technical-dominant"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-VIOL-AWARE",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-B",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "violation-awareness"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-VIOL-NO-AWARE",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "violation-awareness-boundary",
+        "insufficient-evidence"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-AC",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-C"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "A-A/A-C-boundary"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-AA",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "A-A/A-C-boundary",
+        "no-failure"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-PFPM",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "PF/PM",
+        "multi-actor",
+        "insufficient-evidence"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-POST-TRAP",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "post-escape-trap",
+        "insufficient-evidence"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-PT-HELI-AJ",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-J"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-J",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "pt-BR",
+        "offshore-helicopter",
+        "feedback"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-HELI-PF",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-F"
+      },
+      "actual": {
+        "perception": "P-F",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "offshore-helicopter"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-TECH-PG",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-G"
+      },
+      "actual": {
+        "perception": "P-G",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "technical-dominant"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-TECH-AB",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-B",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "technical-dominant",
+        "feedback"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-OD",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-D"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-D",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-VIOL-NO-AWARE",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "violation-awareness-boundary",
+        "insufficient-evidence"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-PFPM",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "PF/PM",
+        "multi-actor",
+        "insufficient-evidence"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-POST-TRAP",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "abstention"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "post-escape-trap",
+        "insufficient-evidence"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-AF",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-F"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-F",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-OA",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "no-failure"
+      ]
+    },
+    {
+      "caseId": "V02-INDEP-EN-HELI-AG",
+      "group": "independent_accuracy",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-G"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-G",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "en",
+        "offshore-helicopter",
+        "feedback"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-A-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-A"
+      },
+      "actual": {
+        "perception": "P-A",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-A",
+        "en",
+        "no-failure"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-B-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-B"
+      },
+      "actual": {
+        "perception": "P-B",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-B",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-C-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-C"
+      },
+      "actual": {
+        "perception": "P-C",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-C",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-D-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-D"
+      },
+      "actual": {
+        "perception": "P-D",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-D",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-E-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-E"
+      },
+      "actual": {
+        "perception": "P-E",
+        "objective": "O-D",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-E",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-F-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-F"
+      },
+      "actual": {
+        "perception": "P-F",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-F",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-G-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-G"
+      },
+      "actual": {
+        "perception": "P-G",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-G",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-H-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "perception",
+        "code": "P-H"
+      },
+      "actual": {
+        "perception": "P-H",
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:P-H",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-A-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:O-A",
+        "pt-BR",
+        "no-failure"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-B-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-B",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:O-B",
+        "pt-BR",
+        "violation-awareness"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-C-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-C"
+      },
+      "actual": {
+        "perception": "P-A",
+        "objective": "O-C",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:O-C",
+        "en",
+        "violation-awareness"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-D-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "objective",
+        "code": "O-D"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-D",
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:O-D",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-A-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": "O-A",
+        "action": "A-A",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-A",
+        "pt-BR",
+        "no-failure"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-B-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-B",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-B",
+        "en",
+        "feedback"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-C-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-C"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-C",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-C",
+        "pt-BR",
+        "A-A/A-C-boundary"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-D-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-D"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-D",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-D",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-E-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-E"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-E",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-E",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-F-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-F"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-F",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-F",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-G-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-G"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-G",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-G",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-H-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-H"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-H",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-H",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-I-PT",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-I"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-I",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-I",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-J-EN",
+      "group": "leaf_reachability_positive",
+      "expected": {
+        "kind": "code",
+        "axis": "action",
+        "code": "A-J"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": "A-J",
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_CODE",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "leaf:A-J",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-A-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-A",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-B-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-B",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-C-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-C"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-C",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-D-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-D"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-D",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-E-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-E"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-E",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-F-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-F"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-F",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-G-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-G"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-G",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-P-H-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "perception",
+        "code": "P-H"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:P-H",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-A-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "objective",
+        "code": "O-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:O-A",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-B-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "objective",
+        "code": "O-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:O-B",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-C-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "objective",
+        "code": "O-C"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:O-C",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-O-D-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "objective",
+        "code": "O-D"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:O-D",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-A-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-A"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-A",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-B-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-B"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-B",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-C-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-C"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-C",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-D-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-D"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-D",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-E-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-E"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-E",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-F-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-F"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-F",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-G-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-G"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-G",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-H-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-H"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-H",
+        "en"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-I-PT-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-I"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-I",
+        "pt-BR"
+      ]
+    },
+    {
+      "caseId": "V02-LEAF-A-J-EN-NEG",
+      "group": "leaf_reachability_negative",
+      "expected": {
+        "kind": "notCode",
+        "axis": "action",
+        "code": "A-J"
+      },
+      "actual": {
+        "perception": null,
+        "objective": null,
+        "action": null,
+        "finalOutputsBlocked": true,
+        "guardrails": {
+          "consequenceUsedAsCause": false,
+          "postEscapeHuntingDetected": false,
+          "postEscapeEvidenceUsed": false,
+          "oeUsed": false,
+          "inventedQuestionDetected": false,
+          "actorMigrationDetected": false,
+          "preconditionUsedAsEscapePoint": false,
+          "codeFirstPathDetected": false,
+          "awarenessMissingForViolation": false
+        }
+      },
+      "outcome": "CORRECT_ABSTENTION",
+      "passed": true,
+      "findings": [],
+      "tags": [
+        "negative:A-J",
+        "en"
+      ]
+    }
+  ],
+  "metrics": {
+    "classification_accuracy": 1,
+    "abstention_precision": 0.2143,
+    "abstention_recall": 1,
+    "guardrail_detection_rate": 1,
+    "leaf_coverage": 1,
+    "language_parity": {
+      "pt-BR": 1,
+      "en": 1
+    },
+    "determinism": 1,
+    "critical_boundary_pass_rate": 1,
+    "product_parity": 1
+  },
+  "finalDecision": "SERA_VNEXT_ENGINE_V02_PASS_WITH_LIMITATIONS",
+  "limitations": [
+    "v02 validation is deterministic technical validation, not scientific or human inter-rater validation.",
+    "existing 39-case regression is retained as boundary/final-output guardrail coverage, not accuracy proof."
+  ]
+}

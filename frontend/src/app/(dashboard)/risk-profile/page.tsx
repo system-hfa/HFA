@@ -1677,8 +1677,8 @@ export default function RiskProfilePage() {
               <div className="flex items-start gap-3">
                 <span className="w-6 h-6 rounded-full bg-slate-700 text-slate-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
                 <div>
-                  <p className="text-slate-300 text-sm font-medium">A IA classifica os fatores humanos</p>
-                  <p className="text-slate-500 text-xs mt-0.5">Percepção, Objetivo e Ação — com justificativa metodológica</p>
+                  <p className="text-slate-300 text-sm font-medium">A IA gera hipóteses estruturadas</p>
+                  <p className="text-slate-500 text-xs mt-0.5">Percepção, Objetivo e Ação — não final até revisão humana</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

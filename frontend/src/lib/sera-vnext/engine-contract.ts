@@ -212,12 +212,28 @@ export type SeraVNextEngineOutput = {
   }
 
   guardrails: {
-    consequenceUsedAsCause: false
-    postEscapeHuntingDetected: false
-    oeUsed: false
-    inventedQuestionDetected: false
+    consequenceUsedAsCause: boolean
+    postEscapeHuntingDetected: boolean
+    postEscapeEvidenceUsed: boolean
+    oeUsed: boolean
+    inventedQuestionDetected: boolean
     actorMigrationDetected: boolean
     preconditionUsedAsEscapePoint: boolean
+    codeFirstPathDetected: boolean
+    awarenessMissingForViolation: boolean
+  }
+
+  guardrailEvidence: Record<string, string[]>
+
+  validationOutcome?: {
+    status:
+      | 'CORRECT_CODE'
+      | 'CORRECT_ABSTENTION'
+      | 'INCORRECT_CODE'
+      | 'INCORRECT_ABSTENTION'
+      | 'INSUFFICIENT_EVIDENCE'
+      | 'ENGINE_ERROR'
+    rationale: string
   }
 
   uncertainties: string[]

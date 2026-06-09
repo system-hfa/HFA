@@ -1,0 +1,27 @@
+{
+  "manifestVersion": "SERA_VNEXT_ENGINE_V02_EXPECTED_MANIFEST_v0.2.0",
+  "frozenAt": "2026-06-08T00:00:00.000Z",
+  "freezeRule": "Expected outputs are authored before executing tests/sera-vnext/engine-validation-v02/run-all.ts. Changes require explicit adjudication in docs/sera-vnext/engine-v02.",
+  "existingRegressionCaseCount": 39,
+  "v02CaseCount": 64,
+  "composition": {
+    "existingRegression": 39,
+    "independentAccuracy": 20,
+    "leafReachabilityPositive": 22,
+    "leafReachabilityNegative": 22
+  },
+  "casePayloadSha256": "cd66cae2a9c63a78f18ddf425830cc9ae703a5c7ca48ee741575b32879b1a207",
+  "expectedStatusVocabulary": [
+    "CORRECT_CODE",
+    "CORRECT_ABSTENTION",
+    "INCORRECT_CODE",
+    "INCORRECT_ABSTENTION",
+    "INSUFFICIENT_EVIDENCE",
+    "ENGINE_ERROR"
+  ],
+  "allowedFinalDecisionStates": [
+    "SERA_VNEXT_ENGINE_V02_VALIDATED_FOR_CONTROLLED_PILOT",
+    "SERA_VNEXT_ENGINE_V02_PASS_WITH_LIMITATIONS",
+    "SERA_VNEXT_ENGINE_V02_NOT_READY"
+  ]
+}

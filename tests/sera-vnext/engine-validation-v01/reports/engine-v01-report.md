@@ -1,13 +1,13 @@
 # SERA vNext Engine Validation v0.1
 
-Generated at: 2026-06-07T15:35:56.817Z
+Generated at: 2026-06-09T00:47:27.009Z
 
-Final decision: SERA_VNEXT_ENGINE_V01_VALIDATED
+Final decision: SERA_VNEXT_ENGINE_V01_VALIDATED_WITH_NONCRITICAL_LIMITATIONS
 Product Beta gate: PRODUCT_BETA_FOUNDATION_ALLOWED
 
 Cases: 39
-Pass: 39
-Noncritical: 0
+Pass: 37
+Noncritical: 2
 Critical: 0
 Fail: 0
 Error: 0
@@ -16,7 +16,8 @@ Error: 0
 - none
 
 ## Noncritical limitations
-- none
+- GEN-FIRST-AIR-6560:guardrails.consequenceUsedAsCause:v02 computed guardrail detected=consequenceUsedAsCause
+- ADV-OE:guardrails.oeUsed:v02 computed guardrail detected=oeUsed
 
 ## Determinism
 - OFFICIAL-COMAIR-5191: runs=5 structural=1 semantic=1
@@ -76,7 +77,7 @@ Error: 0
 - GEN-EXECUFLIGHT-1526 [generalization] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - GEN-THEBAUD [generalization] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - GEN-PEL-AIR [generalization] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
-- GEN-FIRST-AIR-6560 [generalization] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
+- GEN-FIRST-AIR-6560 [generalization] passed=false critical=0 noncritical=1 findings=noncritical:guardrails.consequenceUsedAsCause:v02 computed guardrail detected=consequenceUsedAsCause
 - GEN-AIR-CANADA-759 [generalization] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - GEN-TRANSASIA-GE235 [generalization] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - GEN-TECHNICAL-DOMINANT [generalization] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
@@ -88,7 +89,7 @@ Error: 0
 - ADV-POST-ESCAPE-A [adversarial] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - ADV-ACTOR-MIGRATION [adversarial] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - ADV-PRECONDITION-AS-ESCAPE [adversarial] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
-- ADV-OE [adversarial] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
+- ADV-OE [adversarial] passed=false critical=0 noncritical=1 findings=noncritical:guardrails.oeUsed:v02 computed guardrail detected=oeUsed
 - ADV-VIOLATION-WITHOUT-AWARENESS [adversarial] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - ADV-INVENTED-INTENTION [adversarial] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries
 - ADV-TECHNICAL-DOMINANT [adversarial] passed=true critical=0 noncritical=0 findings=pass:case:output matches v0.1 methodological boundaries

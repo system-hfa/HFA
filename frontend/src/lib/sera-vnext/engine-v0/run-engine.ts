@@ -71,6 +71,7 @@ export function runSeraVNextEngineV0(input: SeraVNextEngineInput): SeraVNextEngi
     preconditions,
     canonicalTraversal,
     guardrails: assurance.guardrails,
+    guardrailEvidence: assurance.guardrailEvidence,
     uncertainties: assurance.uncertainties,
     limitations: assurance.limitations,
     decisionTrace: assurance.decisionTrace,

@@ -51,15 +51,15 @@ export async function POST(req: Request) {
     }
 
     const userMsg = `Analise os seguintes dados de segurança operacional da organização \
-e produza um diagnóstico organizacional completo em português.
+e produza uma consolidação descritiva em português, com limitações explícitas e sem tratá-la como diagnóstico validado.
 
 DADOS:
 ${JSON.stringify(body.intelligence_data, null, 2)}
 
 Produza um JSON com exatamente esta estrutura:
 {
-  "diagnostico_principal": "2-3 frases descrevendo o padrão dominante de falha humana desta organização",
-  "causa_raiz_provavel": "1-2 frases sobre a causa organizacional mais provável que explica o padrão observado",
+  "diagnostico_principal": "2-3 frases descrevendo o padrão observado como hipótese operacional não final",
+  "causa_raiz_provavel": "1-2 frases sobre hipótese organizacional plausível, sem afirmar causa validada",
   "nivel_risco": "crítico|elevado|moderado|baixo",
   "recomendacoes_prioritarias": [
     {
@@ -70,7 +70,7 @@ Produza um JSON com exatamente esta estrutura:
       "responsavel_sugerido": "Quem deve executar"
     }
   ],
-  "padrao_combinacao": "Explicação da combinação de falhas mais frequente e o que ela revela sobre a organização",
+  "padrao_combinacao": "Explicação descritiva da combinação de falhas mais frequente e suas limitações amostrais",
   "pontos_positivos": "O que os dados indicam de positivo (se houver — ex: taxa de resolução de ações)",
   "proximo_passo_imediato": "Uma única ação que o gestor deve fazer ainda hoje"
 }

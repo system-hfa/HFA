@@ -27,7 +27,7 @@ async function main() {
   assert.deepEqual(directRepeat, direct, "direct candidate service must be deterministic for equal input and requestId");
   assert.equal(direct.mode, "CANDIDATE_ONLY");
   assert.equal(direct.analysisStatus, "CANDIDATE_ONLY");
-  assert.equal(direct.canonicalTreeStatus, "COMPLETED_CANDIDATE_ONLY");
+  assert.equal(direct.canonicalTreeStatus, "PARTIAL");
   assert.equal(direct.selectedCode, null);
   assert.equal(direct.releasedCode, null);
   assert.equal(direct.finalConclusion, null);
@@ -83,7 +83,7 @@ async function main() {
   const payload = (await response.json()) as Awaited<ReturnType<typeof analyzeSeraVNextCandidateOnly>>;
   assert.equal(payload.requestId, "candidate-route-ok");
   assert.equal(payload.analysisStatus, "CANDIDATE_ONLY");
-  assert.equal(payload.canonicalTreeStatus, "COMPLETED_CANDIDATE_ONLY");
+  assert.equal(payload.canonicalTreeStatus, "PARTIAL");
   assert.equal(payload.persisted, false);
   assert.equal(payload.readyPromotion, false);
   assert.equal(payload.downstreamAllowed, false);
@@ -92,7 +92,11 @@ async function main() {
   assert.equal(payload.finalConclusion, null);
   assert.ok(payload.warnings.includes("NON_FINAL_OUTPUT_ONLY"));
   assert.ok(payload.warnings.includes("HUMAN_REVIEW_REQUIRED"));
-  assert.equal(payload.canonicalTraversal.status, "COMPLETED_CANDIDATE_ONLY");
+  assert.equal(payload.canonicalTraversal.status, "PARTIAL");
+  assert.ok(
+    payload.canonicalTraversal.unansweredQuestions.some((question) => question.startsWith("O_RULES:")),
+    "objective rule-awareness path should remain unanswered without explicit violation evidence",
+  );
   assert.ok(payload.humanReviewPackage.reviewerDecisionsRequired.length >= 1);
 
   const eventsText = JSON.stringify(events);
