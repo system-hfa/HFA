@@ -16,7 +16,7 @@ export async function completeSeraAnalysisAfterEventCreated(
   sourceMeta: SourceMeta,
   sourceFile: File | null
 ): Promise<{ analysisId: string }> {
-  await admin.from('events').update({ status: 'processing' }).eq('id', eventId)
+  await admin.from('events').update({ status: 'processing' }).eq('id', eventId).is('deleted_at', null)
 
   sourceMeta.sourceType = sourceMeta.sourceType ?? 'text'
 
@@ -75,7 +75,7 @@ export async function completeSeraAnalysisAfterEventCreated(
     }
   }
 
-  await admin.from('events').update({ status: 'completed', credits_used: 1 }).eq('id', eventId)
+  await admin.from('events').update({ status: 'completed', credits_used: 1 }).eq('id', eventId).is('deleted_at', null)
 
   return { analysisId }
 }

@@ -1,0 +1,37 @@
+route,page_or_handler,purpose,auth,tenant_guard,feature_flag,data_source,api_endpoint,status,known_issue,audit_verdict
+/,app/page.tsx,Landing/marketing,public,n/a,none,static,none,WORKING,none,PASS
+/login,(auth)/login/page.tsx,Email/password + OAuth login,public,n/a,none,supabase-auth,supabase.auth,WORKING,none,PASS
+/register,(auth)/register/page.tsx,Sign-up + tenant bootstrap,public,n/a,none,supabase-auth + /api/auth/bootstrap,/api/auth/bootstrap,WORKING,none,PASS
+/auth/callback,auth/callback/page.tsx,OAuth callback bootstrap,public,n/a,none,/api/auth/oauth/bootstrap,/api/auth/oauth/bootstrap,WORKING,none,PASS
+/dashboard,(dashboard)/dashboard/page.tsx,Operational intelligence,bearer,via API tenant filter,none,/api/risk-profile (unified legacy+vNext),/api/risk-profile,WORKING,Counts diverge from /events (vNext included here only); demo CTA links,PASS_WITH_WARNINGS
+/events,(dashboard)/events/page.tsx,Event/analysis list + risk-profile exclude,bearer,API tenant filter,none,/api/events (legacy only),/api/events,WORKING,No delete UI; vNext analyses not listed; exclude/restore admin-only,PASS_WITH_WARNINGS
+/events/[id],(dashboard)/events/[id]/page.tsx,Event detail + SERA analysis + edit/recalc,bearer,API tenant filter,none,/api/events/:id + /api/analyses/:id/flows,/api/events/[eventId],WORKING,No delete control; polling refresh uses stale closure (event from outer scope),PASS_WITH_WARNINGS
+/events/new,(dashboard)/events/new/page.tsx,Create event + run pipeline,bearer,API tenant filter,none,POST /api/events,/api/events,WORKING,none,PASS
+/analyze,(none),Referenced in spec but no route file,n/a,n/a,n/a,n/a,n/a,NOT_IMPLEMENTED,Route does not exist (analysis runs inside /events POST),INFORMATIONAL
+/risk-profile,(dashboard)/risk-profile/page.tsx,Risk profile consolidated view + exclusions,bearer,API tenant filter,none,/api/risk-profile (+ exclusions),/api/risk-profile,WORKING,Large client page; static severity reference text embedded,PASS_WITH_WARNINGS
+/actions,(dashboard)/actions/page.tsx,Corrective actions list/manage,bearer,API tenant filter,none,/api/actions,/api/actions,WORKING,none,PASS
+/reports,(none),No /reports index route,n/a,n/a,n/a,n/a,n/a,NOT_IMPLEMENTED,Only /reports/executive and /reports/event/[id] exist,INFORMATIONAL
+/reports/executive,(dashboard)/reports/executive/page.tsx,Executive report,bearer (page render),n/a,none,DEMO (lib/demo/hfa-demo-data),none,PLACEHOLDER,100% fictitious demo data; no real tenant data wired,NOT_READY
+/reports/event/[id],(dashboard)/reports/event/[id]/page.tsx,Per-event printable report,bearer,API tenant filter,none,/api/events/:id with DEMO fallback,/api/events/[eventId],PARTIALLY_WORKING,Falls back to demo data on error/missing analysis,PASS_WITH_WARNINGS
+/admin,(dashboard)/admin/page.tsx,Admin overview/stats,bearer+admin,client redirect + requireAdmin,none,/api/admin/stats (legacy analyses only),/api/admin/stats,WORKING,total_analyses excludes vNext,PASS_WITH_WARNINGS
+/admin/tenants,(dashboard)/admin/tenants/page.tsx,Tenant/user management,bearer+admin,requireAdmin,none,/api/admin/tenants,/api/admin/tenants,WORKING,none,PASS
+/admin/plans,(dashboard)/admin/plans/page.tsx,Credit packages CRUD,bearer+admin,requireAdmin,none,/api/admin/packages,/api/admin/packages,WORKING,Only place with an 'Excluir' button (deletes credit packages),PASS
+/admin/payments,(dashboard)/admin/payments/page.tsx,Payment transactions,bearer+admin,requireAdmin,none,/api/admin/payments/transactions,/api/admin/payments/transactions,WORKING,none,PASS
+/admin/ai,(dashboard)/admin/ai/page.tsx,AI provider config/test,bearer+admin,requireAdmin,none,/api/admin/settings + /api/admin/ai/test,/api/admin/ai/test,WORKING,none,PASS
+/admin/settings,(dashboard)/admin/settings/page.tsx,System settings + password reset,bearer+admin,requireAdmin,none,/api/admin/settings,/api/admin/settings,WORKING,none,PASS
+/admin/sera-vnext,(dashboard)/admin/sera-vnext/page.tsx,vNext runtime diagnostics,bearer+admin,requireAdmin,NEXT_PUBLIC_SERA_VNEXT_DIAGNOSTICS_ENABLED,/api/admin/sera-vnext/status,/api/admin/sera-vnext/status,WORKING,Hidden unless diagnostics flag on,PASS
+/admin/sera-vnext/candidate,(dashboard)/admin/sera-vnext/candidate/page.tsx,Candidate-only runtime probe,bearer+admin,requireAdmin,NEXT_PUBLIC_SERA_VNEXT_CANDIDATE_UI_ENABLED,/api/admin/sera-vnext/candidate,/api/admin/sera-vnext/candidate,WORKING,Flag-gated,PASS
+/admin/sera-vnext/analyses,(dashboard)/admin/sera-vnext/analyses/page.tsx,vNext Beta analyses list,bearer+admin,requireAdmin,NEXT_PUBLIC_SERA_VNEXT_PRODUCT_BETA_UI_ENABLED,/api/admin/sera-vnext/analyses,/api/admin/sera-vnext/analyses,WORKING,Disabled screen when flag off,PASS
+/admin/sera-vnext/analyses/new,.../analyses/new/page.tsx,Create vNext candidate analysis,bearer+admin,requireAdmin,PRODUCT_BETA_UI,POST /api/admin/sera-vnext/analyses,/api/admin/sera-vnext/analyses,WORKING,none,PASS
+/admin/sera-vnext/analyses/[id],.../analyses/[id]/page.tsx,vNext analysis detail + archive/restore/reanalyze/export,bearer+admin,requireAdmin,PRODUCT_BETA_UI,/api/admin/sera-vnext/analyses/:id (+ subroutes),/api/admin/sera-vnext/analyses/[id],WORKING,Archive==soft delete; no hard delete,PASS
+/admin/sera-vnext/analyses/[id]/review,.../analyses/[id]/review/page.tsx,Human review submission,bearer+admin,requireAdmin,PRODUCT_BETA_UI,POST /api/admin/sera-vnext/analyses/:id/reviews,/api/admin/sera-vnext/analyses/[id]/reviews,WORKING,none,PASS
+/settings,(none) — only /settings/ai exists,AI settings,bearer,API tenant filter,none,/api/settings/ai,/api/settings/ai,PARTIALLY_WORKING,No /settings index; only /settings/ai,INFORMATIONAL
+/settings/ai,(dashboard)/settings/ai/page.tsx,Per-user AI keys/provider,bearer,user_id scoped,none,/api/settings/ai,/api/settings/ai,WORKING,none,PASS
+/companies,(none),Spec route — does not exist,n/a,n/a,n/a,n/a,n/a,NOT_IMPLEMENTED,No /companies route; tenant mgmt under /admin/tenants,INFORMATIONAL
+/tenants,(none),Spec route — does not exist as top-level,n/a,n/a,n/a,n/a,n/a,NOT_IMPLEMENTED,Lives under /admin/tenants,INFORMATIONAL
+/credits,(dashboard)/credits/page.tsx,Credit balance/usage,bearer,API tenant filter,none,/api/credits,/api/credits,WORKING,none,PASS
+/demo,(dashboard)/demo/page.tsx,Intentional product demo,bearer,n/a,none,DEMO (lib/demo/hfa-demo-data),none,PLACEHOLDER,Intentional demo (acceptable),PASS
+/onboarding,(dashboard)/onboarding/page.tsx,First-run guide,bearer,n/a,none,static,none,WORKING,none,PASS
+/methodology,(dashboard)/methodology/page.tsx,SERA methodology reference,bearer,n/a,none,static,none,WORKING,none,PASS
+/learn,(dashboard)/learn/* (7 pages),Educational content,bearer,n/a,none,static,none,WORKING,none,PASS
+/sera/interview,(dashboard)/sera/interview/page.tsx,Structured interview helper,bearer,n/a,none,static/client,none,WORKING,none,PASS

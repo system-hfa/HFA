@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState, useCallback } from 'react'
-import { useParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { supabase } from '@/lib/supabase'
 import { apiCall, resolveApiUrl } from '@/lib/api'
@@ -66,6 +66,8 @@ type EventPayload = {
   aircraft_type?: string | null
   created_at: string
   occurred_at?: string | null
+  deleted_at?: string | null
+  recoverable_until?: string | null
   analyses?: AnalysisPayload | null
 }
 type FlowItem = {
@@ -297,6 +299,7 @@ function HfacsSection({ hfacs }: { hfacs: HfacsResult }) {
 
 export default function EventDetailPage() {
   const { id } = useParams()
+  const searchParams = useSearchParams()
   const [event, setEvent]         = useState<EventPayload | null>(null)
   const [analysis, setAnalysis]   = useState<AnalysisPayload | null>(null)
   const [token, setToken]         = useState<string>('')
@@ -312,7 +315,8 @@ export default function EventDetailPage() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
       setToken(session.access_token)
-      const data = await apiCall(`/events/${id}`, {}, session.access_token) as EventPayload
+      const scope = searchParams?.get('scope') === 'deleted' ? 'deleted' : 'active'
+      const data = await apiCall(`/events/${id}?scope=${scope}`, {}, session.access_token) as EventPayload
       setEvent(data)
       if (data?.analyses) setAnalysis(data.analyses)
       setLoading(false)
@@ -330,7 +334,7 @@ export default function EventDetailPage() {
       if (event?.status === 'processing') load()
     }, 5000)
     return () => clearInterval(interval)
-  }, [id])
+  }, [event?.status, id, searchParams])
 
   const handleRecalculated = useCallback((data: RecalculatePayload) => {
     if (!data?.analysis) return
@@ -436,6 +440,12 @@ export default function EventDetailPage() {
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      {event.deleted_at && (
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+          Evento em recuperação até {event.recoverable_until ? new Date(event.recoverable_until).toLocaleString('pt-BR') : 'prazo indisponível'}.
+          Ele não aparece em listas ativas, dashboard ou Perfil de Risco.
+        </div>
+      )}
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
@@ -448,7 +458,7 @@ export default function EventDetailPage() {
         </div>
         <div className="flex gap-2 shrink-0">
           <a
-            href={`/reports/event/${event.id}`}
+            href={`/reports/event/${event.id}${event.deleted_at ? '?scope=deleted' : ''}`}
             className="text-sm px-4 py-2 rounded-lg transition font-medium bg-slate-800 hover:bg-slate-700 text-white"
           >
             Relatorio do evento

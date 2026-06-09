@@ -31,12 +31,19 @@ export async function GET(req: Request) {
   const jsonError = (message: string, status: number) => buildErrorResponse(message, status, requestId)
   try {
     const user = await requireBearerUser(req)
+    const scope = new URL(req.url).searchParams.get('scope') ?? 'active'
     const admin = getSupabaseAdmin()
-    const { data, error } = await admin
+    let query = admin
       .from('events')
       .select('*, analyses(perception_code, objective_code, action_code)')
       .eq('tenant_id', user.tenantId)
       .order('created_at', { ascending: false })
+    if (scope === 'deleted') {
+      query = query.not('deleted_at', 'is', null)
+    } else {
+      query = query.is('deleted_at', null)
+    }
+    const { data, error } = await query
     if (error) return jsonError(error.message, 400)
     const eventIds = (data ?? []).map((event) => event.id).filter((id): id is string => typeof id === 'string')
     const exclusions = eventIds.length === 0
@@ -65,6 +72,9 @@ export async function GET(req: Request) {
         risk_profile_exclusion_id: exclusion?.id ?? null,
         risk_profile_exclusion_reason: (exclusion?.reason as string | null | undefined) ?? null,
         risk_profile_exclusion_at: (exclusion?.excluded_at as string | null | undefined) ?? null,
+        deleted_at: ev.deleted_at ?? null,
+        deletion_status: ev.deletion_status ?? null,
+        recoverable_until: ev.recoverable_until ?? null,
         analyses: undefined,
       }
     })

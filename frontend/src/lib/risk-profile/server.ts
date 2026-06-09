@@ -373,6 +373,7 @@ export async function loadRiskProfileUniverse(
       .from('events')
       .select('id, tenant_id, title, status, created_at, occurred_at, analyses(id, perception_code, objective_code, action_code, preconditions, created_at)')
       .eq('tenant_id', tenantId)
+      .is('deleted_at', null)
       .order('created_at', { ascending: false }),
     admin
       .from('corrective_actions')

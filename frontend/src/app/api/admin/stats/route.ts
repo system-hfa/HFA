@@ -24,15 +24,21 @@ export async function GET(req: Request) {
     await requireAdmin(req)
     const admin = getSupabaseAdmin()
 
-    const [tenants, analyses, transactions] = await Promise.all([
+    const [tenants, analyses, transactions, events, vnextAnalyses, exclusions] = await Promise.all([
       admin.from('tenants').select('id, plan, created_at'),
       admin.from('analyses').select('id, created_at'),
       admin.from('credit_transactions').select('amount'),
+      admin.from('events').select('id, deleted_at'),
+      admin.from('sera_vnext_analyses').select('id, deleted_at, status, review_status'),
+      admin.from('risk_profile_exclusions').select('id, restored_at'),
     ])
 
     const t = tenants.data ?? []
     const a = analyses.data ?? []
     const tx = transactions.data ?? []
+    const e = events.data ?? []
+    const v = vnextAnalyses.data ?? []
+    const x = exclusions.data ?? []
 
     const now = new Date()
     const { start: currentStart, end: currentEnd } = monthRange(now)
@@ -52,10 +58,20 @@ export async function GET(req: Request) {
     }
 
     const creditsConsumed = tx.reduce((s, x) => s + (x.amount < 0 ? Math.abs(x.amount) : 0), 0)
+    const totalActiveEvents = e.filter((item) => !item.deleted_at).length
+    const softDeletedEvents = e.filter((item) => !!item.deleted_at).length
+    const activeVNext = v.filter((item) => !item.deleted_at)
 
     return NextResponse.json({
       total_tenants: t.length,
       total_analyses: a.length,
+      total_active_events: totalActiveEvents,
+      soft_deleted_events: softDeletedEvents,
+      analyzed_events: a.length,
+      legacy_analyses: a.length,
+      vnext_analyses: activeVNext.length,
+      risk_profile_included: totalActiveEvents - x.filter((item) => !item.restored_at).length,
+      risk_profile_excluded: x.filter((item) => !item.restored_at).length,
       credits_consumed: creditsConsumed,
       enterprise_tenants: t.filter(x => x.plan === 'enterprise').length,
       free_tenants: t.filter(x => ['free', 'trial'].includes(x.plan ?? '')).length,

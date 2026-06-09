@@ -1,13 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import { PrintReportButton } from '@/components/product/PrintReportButton'
-import { demoAnalyses, demoCorrectiveActions } from '@/lib/demo/hfa-demo-data'
 import { apiCall } from '@/lib/api'
 import { supabase } from '@/lib/supabase'
-import { coerceMotorErcToHfaCategory } from '@/lib/sera/erc-conversion'
+import { computeHfaErcCategoryFromCodes } from '@/lib/risk-profile/erc'
 
 type Recommendation = {
   related_code?: string | null
@@ -46,10 +45,9 @@ type EventPayload = {
   operation_type?: string | null
   created_at?: string | null
   occurred_at?: string | null
+  deleted_at?: string | null
   analyses?: AnalysisPayload | null
 }
-
-type DataMode = 'real' | 'demo'
 
 function formatDate(value?: string | null) {
   if (!value) return 'Nao informado'
@@ -69,12 +67,13 @@ function hfaLabel(category: number | null) {
 
 export default function EventReportPage() {
   const params = useParams<{ id: string }>()
+  const searchParams = useSearchParams()
   const eventId = params?.id ?? ''
+  const scope = searchParams?.get('scope') === 'deleted' ? 'deleted' : 'active'
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [eventData, setEventData] = useState<EventPayload | null>(null)
-  const [dataMode, setDataMode] = useState<DataMode>('real')
 
   useEffect(() => {
     async function load() {
@@ -85,53 +84,45 @@ export default function EventReportPage() {
         const token = data.session?.access_token
 
         if (!token || !eventId) {
-          setDataMode('demo')
+          setEventData(null)
           setLoading(false)
           return
         }
 
-        const payload = (await apiCall(`/events/${eventId}`, {}, token)) as EventPayload
+        const payload = (await apiCall(`/events/${eventId}?scope=${scope}`, {}, token)) as EventPayload
         setEventData(payload)
-        setDataMode('real')
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Falha ao carregar evento')
-        setDataMode('demo')
+        setEventData(null)
       } finally {
         setLoading(false)
       }
     }
 
     load()
-  }, [eventId])
+  }, [eventId, scope])
 
   const analysis = eventData?.analyses ?? null
-  const demo = demoAnalyses[0]
 
   const emittedAt = useMemo(() => new Date().toLocaleDateString('pt-BR'), [])
-  const hfaCategory = analysis ? coerceMotorErcToHfaCategory(analysis.erc_level) : null
+  const hfaCategory = analysis
+    ? computeHfaErcCategoryFromCodes(
+        analysis.perception_code ?? null,
+        analysis.objective_code ?? null,
+        analysis.action_code ?? null,
+      )
+    : null
 
-  const eventTitle =
-    dataMode === 'real'
-      ? eventData?.title ?? analysis?.summary ?? `Evento ${eventId}`
-      : `Demonstracao para evento ${eventId || demo.id}`
+  const eventTitle = eventData?.title ?? analysis?.summary ?? `Evento ${eventId}`
 
-  const eventDate =
-    dataMode === 'real'
-      ? analysis?.event_date ?? eventData?.occurred_at ?? eventData?.created_at
-      : '2026-03-12'
+  const eventDate = analysis?.event_date ?? eventData?.occurred_at ?? eventData?.created_at
 
-  const eventType =
-    dataMode === 'real'
-      ? analysis?.operation_type ?? eventData?.operation_type ?? 'Nao informado'
-      : 'Operacao demonstrativa (ficticia)'
+  const eventType = analysis?.operation_type ?? eventData?.operation_type ?? 'Nao informado'
 
-  const summaryText =
-    dataMode === 'real'
-      ? analysis?.summary ?? analysis?.event_summary ?? 'Relato do evento indisponivel ou ainda em consolidacao.'
-      : `${demo.context} ${demo.summary}`
+  const summaryText = analysis?.summary ?? analysis?.event_summary ?? 'Dados indisponíveis'
 
-  const preconditions = dataMode === 'real' ? analysis?.preconditions ?? [] : []
-  const recommendations = dataMode === 'real' ? analysis?.recommendations ?? [] : []
+  const preconditions = analysis?.preconditions ?? []
+  const recommendations = analysis?.recommendations ?? []
 
   if (loading) {
     return <div className="p-8 text-slate-400">Carregando relatorio do evento...</div>
@@ -147,10 +138,10 @@ export default function EventReportPage() {
         <div className="flex gap-2">
           <PrintReportButton />
           <Link
-            href={`/events/${eventId}`}
+            href={scope === 'deleted' ? '/events/deleted' : `/events/${eventId}`}
             className="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
           >
-            Voltar ao evento
+            {scope === 'deleted' ? 'Voltar aos excluídos' : 'Voltar ao evento'}
           </Link>
         </div>
       </div>
@@ -165,12 +156,20 @@ export default function EventReportPage() {
           </p>
         </header>
 
-        {dataMode === 'demo' && (
+        {!eventData && (
           <section className="report-section">
             <p className="report-note">
-              Modo demonstrativo ativo: este relatorio usa dados ficticios de exemplo para preservar seguranca de implementacao nesta fase.
+              Dados indisponíveis para este relatório.
             </p>
             {error && <p className="report-note mt-1">Motivo tecnico: {error}</p>}
+          </section>
+        )}
+
+        {eventData?.deleted_at && (
+          <section className="report-section">
+            <p className="report-note">
+              Este evento está em recuperação e não integra listas ativas, dashboard ou Perfil de Risco.
+            </p>
           </section>
         )}
 
@@ -187,9 +186,9 @@ export default function EventReportPage() {
         <section className="report-section">
           <h3 className="report-title">2. Classificacao SERA</h3>
           <div className="report-box space-y-1">
-            <p><strong>Percepcao:</strong> {analysis?.perception_code ?? (dataMode === 'demo' ? demo.perception_code : 'Nao disponivel')}</p>
-            <p><strong>Objetivo:</strong> {analysis?.objective_code ?? (dataMode === 'demo' ? demo.objective_code : 'Nao disponivel')}</p>
-            <p><strong>Acao:</strong> {analysis?.action_code ?? (dataMode === 'demo' ? demo.action_code : 'Nao disponivel')}</p>
+            <p><strong>Percepcao:</strong> {analysis?.perception_code ?? 'Nao disponivel'}</p>
+            <p><strong>Objetivo:</strong> {analysis?.objective_code ?? 'Nao disponivel'}</p>
+            <p><strong>Acao:</strong> {analysis?.action_code ?? 'Nao disponivel'}</p>
           </div>
           <p className="report-note">
             A classificacao depende da evidencia disponivel no relato analisado e requer revisao humana antes de qualquer conclusao formal.
@@ -238,25 +237,8 @@ export default function EventReportPage() {
               ))}
             </div>
           ) : (
-            <div className="space-y-2">
-              {dataMode === 'demo' ? (
-                <>
-                  <div className="report-box">
-                    <p><strong>Recomendacao de exemplo</strong></p>
-                    <p className="text-sm text-slate-700 mt-1">{demo.recommendation}</p>
-                  </div>
-                  {demoCorrectiveActions.slice(0, 2).map((action) => (
-                    <div key={action.id} className="report-box">
-                      <p><strong>Acao orientativa:</strong> {action.title}</p>
-                      <p className="text-xs text-slate-600 mt-1">Status: {action.status} | Prioridade: {action.priority}</p>
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <div className="report-box">
-                  <p>Recomendacoes especificas dependem de analise concluida. Use o modulo de acoes para rastrear tratativas.</p>
-                </div>
-              )}
+            <div className="report-box">
+              <p>Dados indisponíveis. Use o módulo de ações para rastrear tratativas quando houver recomendações registradas.</p>
             </div>
           )}
         </section>

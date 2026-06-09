@@ -1,37 +1,66 @@
+'use client'
+
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { PrintReportButton } from '@/components/product/PrintReportButton'
-import {
-  demoAnalyses,
-  demoCorrectiveActions,
-  demoDataConfidence,
-  demoQualityTrend,
-  demoSafetyIssueCandidates,
-} from '@/lib/demo/hfa-demo-data'
+import { supabase } from '@/lib/supabase'
+import type { RiskProfileSummary } from '@/lib/risk-profile/types'
 import styles from './page.module.css'
 
-const OPEN_ACTION_STATUSES = new Set(['pending', 'in_progress'])
+type CorrectiveActionRow = {
+  id: string
+  title: string
+  status: string
+  due_date?: string | null
+}
 
 export default function ExecutiveReportPage() {
-  const analysesCount = demoAnalyses.length
-  const candidatesCount = demoSafetyIssueCandidates.length
-  const openActionsCount = demoCorrectiveActions.filter((a) => OPEN_ACTION_STATUSES.has(a.status)).length
-  const latestTrend = demoQualityTrend[demoQualityTrend.length - 1]
+  const [profile, setProfile] = useState<RiskProfileSummary | null>(null)
+  const [actions, setActions] = useState<CorrectiveActionRow[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function load() {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        setLoading(false)
+        return
+      }
+      try {
+        const [profileRes, actionsRes] = await Promise.all([
+          fetch('/api/risk-profile', { headers: { Authorization: `Bearer ${session.access_token}` } }),
+          fetch('/api/actions', { headers: { Authorization: `Bearer ${session.access_token}` } }),
+        ])
+        const profileBody = await profileRes.json().catch(() => null)
+        const actionsBody = await actionsRes.json().catch(() => [])
+        if (!profileRes.ok) {
+          throw new Error(profileBody?.detail ?? `HTTP ${profileRes.status}`)
+        }
+        if (!actionsRes.ok) {
+          throw new Error((actionsBody as { detail?: string })?.detail ?? `HTTP ${actionsRes.status}`)
+        }
+        setProfile(profileBody as RiskProfileSummary)
+        setActions(Array.isArray(actionsBody) ? actionsBody as CorrectiveActionRow[] : [])
+      } catch (err) {
+        setError(err instanceof Error ? err.message : String(err))
+      } finally {
+        setLoading(false)
+      }
+    }
+    void load()
+  }, [])
 
   return (
     <div className={`p-8 max-w-5xl mx-auto space-y-6 ${styles.reportPage}`}>
       <div className={`${styles.screenOnly} flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4`}>
         <div>
-          <h1 className="text-2xl font-bold text-white">Relatorio executivo HFA/SERA</h1>
-          <p className="text-slate-400 mt-1">
-            Resumo print-friendly para reuniao, auditoria ou acompanhamento SGSO/SMS.
-          </p>
+          <h1 className="text-2xl font-bold text-white">Relatório executivo HFA/SERA</h1>
+          <p className="text-slate-400 mt-1">Resumo print-friendly para reunião, auditoria ou acompanhamento SGSO/SMS.</p>
         </div>
         <div className="flex gap-2">
           <PrintReportButton />
-          <Link
-            href="/dashboard"
-            className="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-          >
+          <Link href="/dashboard" className="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
             Voltar ao dashboard
           </Link>
         </div>
@@ -39,117 +68,92 @@ export default function ExecutiveReportPage() {
 
       <article className={`bg-white text-black rounded-lg p-8 shadow ${styles.reportShell}`}>
         <header className="border-b border-slate-300 pb-4 mb-6">
-          <h2 className="text-2xl font-bold">Relatorio Executivo HFA/SERA</h2>
-          <p className="text-sm text-slate-700 mt-1">
-            Demonstracao com dados ficticios para formato executivo de compartilhamento.
-          </p>
+          <h2 className="text-2xl font-bold">Relatório Executivo HFA/SERA</h2>
           <p className="text-xs text-slate-600 mt-3 leading-relaxed">
-            Este relatorio e um apoio a analise tecnica. Nao substitui investigacao humana, validacao de Safety Issues formais ou avaliacao de risco completa.
+            Este relatório é apoio à análise técnica. Não substitui investigação humana, validação de Safety Issues formais ou avaliação completa de risco.
           </p>
         </header>
 
-        <section className={styles.reportSection}>
-          <h3 className={styles.reportTitle}>1. Resumo executivo</h3>
-          <p className={styles.reportText}>
-            O conjunto demonstrativo inclui <strong>{analysesCount}</strong> analises, <strong>{candidatesCount}</strong> candidatos a Safety Issue, <strong>{openActionsCount}</strong> acoes corretivas em aberto e tendencia qualitativa recente com categoria dominante HFA ERC <strong>{latestTrend?.dominant_hfa_erc_category ?? '-'}</strong>.
-          </p>
-        </section>
+        {loading && <p className={styles.reportText}>Carregando dados reais do tenant...</p>}
+        {!loading && error && <p className={styles.reportText}>Dados indisponíveis. Motivo técnico: {error}</p>}
 
-        <section className={styles.reportSection}>
-          <h3 className={styles.reportTitle}>2. Confianca dos dados</h3>
-          <p className={styles.reportText}>
-            Nivel informado: <strong>{demoDataConfidence.level}</strong>. Base: {demoDataConfidence.valid_erc_count}/{demoDataConfidence.total_analyses} analises com ERC valido.
-          </p>
-          <ul className={styles.reportList}>
-            {demoDataConfidence.messages.map((message) => (
-              <li key={message}>{message}</li>
-            ))}
-          </ul>
-          <p className={styles.reportNote}>
-            Caveat: confianca dos dados mede robustez da base, nao nivel de risco.
-          </p>
-        </section>
+        {!loading && !error && profile && (
+          <>
+            <section className={styles.reportSection}>
+              <h3 className={styles.reportTitle}>1. Resumo executivo</h3>
+              <p className={styles.reportText}>
+                A base ativa inclui <strong>{profile.included_events}</strong> eventos considerados no perfil, <strong>{profile.completed_analyses}</strong> análises concluídas, <strong>{profile.source_events_excluded.length}</strong> registros desconsiderados e categoria ERC dominante <strong>{profile.modal_erc_level ? `ERC ${profile.modal_erc_level}` : 'n/d'}</strong>.
+              </p>
+            </section>
 
-        <section className={styles.reportSection}>
-          <h3 className={styles.reportTitle}>3. Principais padroes recorrentes</h3>
-          <div className="space-y-2">
-            {demoSafetyIssueCandidates.map((candidate) => (
-              <div key={candidate.id} className={styles.reportBox}>
-                <p className="font-semibold">{candidate.label}</p>
-                <p className="text-sm text-slate-700">
-                  {candidate.count} ocorrencias ({Math.round(candidate.share * 100)}%) - confianca {candidate.confidence}.
-                </p>
-                <p className="text-xs text-slate-600 mt-1">{candidate.caveat}</p>
+            <section className={styles.reportSection}>
+              <h3 className={styles.reportTitle}>2. Confiabilidade dos dados</h3>
+              <p className={styles.reportText}>
+                Nível informado: <strong>{profile.data_confidence.level}</strong>. Base: {profile.data_confidence.valid_erc_count}/{profile.data_confidence.total_analyses} análises com ERC válido.
+              </p>
+              <ul className={styles.reportList}>
+                {profile.data_confidence.messages.map((message) => (
+                  <li key={message}>{message}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section className={styles.reportSection}>
+              <h3 className={styles.reportTitle}>3. Padrões recorrentes</h3>
+              <div className="space-y-2">
+                {profile.safety_issue_candidates.length > 0 ? profile.safety_issue_candidates.map((candidate) => (
+                  <div key={candidate.id} className={styles.reportBox}>
+                    <p className="font-semibold">{candidate.label}</p>
+                    <p className="text-sm text-slate-700">
+                      {candidate.count} ocorrências ({Math.round(candidate.share * 100)}%) - confiança {candidate.confidence}.
+                    </p>
+                    <p className="text-xs text-slate-600 mt-1">{candidate.caveat}</p>
+                  </div>
+                )) : (
+                  <div className={styles.reportBox}>
+                    <p>Dados indisponíveis.</p>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
-          <p className={styles.reportNote}>
-            Candidatos apontam recorrencia observada e nao confirmam Safety Issue formal automaticamente.
-          </p>
-        </section>
+            </section>
 
-        <section className={styles.reportSection}>
-          <h3 className={styles.reportTitle}>4. Tendencia qualitativa observada</h3>
-          <div className="space-y-2">
-            {demoQualityTrend.map((trend) => (
-              <div key={trend.month} className={styles.reportBox}>
-                <p className="font-semibold">{trend.month}</p>
-                <p className="text-sm text-slate-700">
-                  Dominante HFA ERC {trend.dominant_hfa_erc_category} | Critico/alto: {Math.round(trend.critical_or_high_share * 100)}%
-                </p>
-                <p className="text-xs text-slate-600 mt-1">{trend.note}</p>
+            <section className={styles.reportSection}>
+              <h3 className={styles.reportTitle}>4. Tendência qualitativa observada</h3>
+              <div className="space-y-2">
+                {profile.quality_trend.length > 0 ? profile.quality_trend.map((trend) => (
+                  <div key={trend.month} className={styles.reportBox}>
+                    <p className="font-semibold">{trend.month}</p>
+                    <p className="text-sm text-slate-700">
+                      Dominante HFA ERC {trend.dominant_hfa_erc_category ?? 'n/d'} | Crítico/alto: {Math.round(trend.critical_or_high_share * 100)}%
+                    </p>
+                  </div>
+                )) : (
+                  <div className={styles.reportBox}>
+                    <p>Dados indisponíveis.</p>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
-          <p className={styles.reportNote}>
-            A tendencia e descritiva, nao estima probabilidade futura e nao esta normalizada por exposicao operacional.
-          </p>
-        </section>
+            </section>
 
-        <section className={styles.reportSection}>
-          <h3 className={styles.reportTitle}>5. Acoes corretivas de exemplo</h3>
-          <div className="space-y-2">
-            {demoCorrectiveActions.map((action) => (
-              <div key={action.id} className={styles.reportBox}>
-                <p className="font-semibold">{action.title}</p>
-                <p className="text-sm text-slate-700">
-                  Status: {action.status} | Prioridade: {action.priority}
-                </p>
-                <p className="text-xs text-slate-600 mt-1">{action.due_label}</p>
+            <section className={styles.reportSection}>
+              <h3 className={styles.reportTitle}>5. Ações corretivas</h3>
+              <div className="space-y-2">
+                {actions.length > 0 ? actions.slice(0, 10).map((action) => (
+                  <div key={action.id} className={styles.reportBox}>
+                    <p className="font-semibold">{action.title}</p>
+                    <p className="text-sm text-slate-700">Status: {action.status}</p>
+                    <p className="text-xs text-slate-600 mt-1">{action.due_date ? `Prazo: ${new Date(action.due_date).toLocaleDateString('pt-BR')}` : 'Sem prazo definido'}</p>
+                  </div>
+                )) : (
+                  <div className={styles.reportBox}>
+                    <p>Nenhuma ação corretiva registrada.</p>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.reportSection}>
-          <h3 className={styles.reportTitle}>6. Metodologia resumida</h3>
-          <ul className={styles.reportList}>
-            <li>SERA organiza evidencia em Percepcao, Objetivo e Acao (P/O/A).</li>
-            <li>Classificacao exige evidencia suficiente; na ausencia de base, registrar incerteza.</li>
-            <li>Analise causal e avaliacao de risco sao camadas distintas.</li>
-            <li>HFA ERC Category nao representa ARMS Risk Index canonico (1-2500).</li>
-          </ul>
-        </section>
-
-        <section className={styles.reportSection}>
-          <h3 className={styles.reportTitle}>7. Proximos passos sugeridos</h3>
-          <ul className={styles.reportList}>
-            <li>Registrar mais eventos para aumentar a base observacional.</li>
-            <li>Completar evidencia com entrevista estruturada quando necessario.</li>
-            <li>Converter recomendacoes em acoes corretivas rastreaveis.</li>
-            <li>Acompanhar o Risk Profile como leitura preliminar de padroes.</li>
-            <li>Revisar candidatos a Safety Issue em reuniao tecnica dedicada.</li>
-          </ul>
-        </section>
+            </section>
+          </>
+        )}
       </article>
-
-      <div className={`${styles.screenOnly} bg-slate-900 border border-slate-800 rounded-xl p-5`}>
-        <h3 className="text-white font-semibold mb-1">Fonte de dados desta fase</h3>
-        <p className="text-slate-400 text-sm leading-relaxed">
-          Este relatorio usa dados ficticios versionados para demonstrar formato executivo de exportacao.
-          Conexao com dados reais do Risk Profile fica para fase futura dedicada.
-        </p>
-      </div>
     </div>
   )
 }

@@ -88,6 +88,7 @@ export async function POST(req: Request) {
         .select('id, tenant_id')
         .eq('id', body.eventId)
         .eq('tenant_id', user.tenantId)
+        .is('deleted_at', null)
         .maybeSingle()
 
       if (evErr || !ev) return sanitizedError('EVENT_NOT_FOUND', 'Evento não encontrado.', requestId, 404)
@@ -99,7 +100,7 @@ export async function POST(req: Request) {
         return sanitizedError('CONFIGURATION_ERROR', 'Erro de configuração do motor.', requestId, 503)
       }
 
-      await admin.from('events').update({ raw_input: rawInput }).eq('id', body.eventId)
+      await admin.from('events').update({ raw_input: rawInput }).eq('id', body.eventId).is('deleted_at', null)
 
       await writeAuditLog({
         tenantId: user.tenantId, userId: user.userId, requestId,
@@ -157,7 +158,7 @@ export async function POST(req: Request) {
           { headers: { 'x-request-id': requestId } }
         )
       } catch (err) {
-        await admin.from('events').update({ status: 'failed' }).eq('id', body.eventId)
+        await admin.from('events').update({ status: 'failed' }).eq('id', body.eventId).is('deleted_at', null)
         console.error('[/api/analyze] reanalysis error', { requestId, error: err instanceof Error ? err.message : String(err) })
         await writeAuditLog({
           tenantId: user.tenantId, userId: user.userId, requestId,
@@ -311,7 +312,7 @@ export async function POST(req: Request) {
       analysisId = r.analysisId
       respostaSucesso = true
     } catch (err) {
-      await admin.from('events').update({ status: 'failed' }).eq('id', eventId)
+      await admin.from('events').update({ status: 'failed' }).eq('id', eventId).is('deleted_at', null)
       console.error('[/api/analyze] analysis error', { requestId, error: err instanceof Error ? err.message : String(err) })
       await writeAuditLog({
         tenantId: user.tenantId, userId: user.userId, requestId,

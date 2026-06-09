@@ -275,12 +275,6 @@ export default function DashboardPage() {
             Comece aqui
           </Link>
           <Link
-            href="/demo"
-            className="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-          >
-            Ver demo
-          </Link>
-          <Link
             href="/methodology"
             className="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
           >
