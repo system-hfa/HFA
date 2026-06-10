@@ -6,6 +6,13 @@ import en from '@/messages/en.json'
 
 type Locale = 'pt-BR' | 'en'
 
+function detectBrowserLocale(): Locale {
+  if (typeof navigator === 'undefined') return 'pt-BR'
+  const lang = navigator.language?.toLowerCase() || ''
+  if (lang.startsWith('pt')) return 'pt-BR'
+  return 'en'
+}
+
 interface I18nStore {
   locale: Locale
   setLocale: (locale: Locale) => void
@@ -14,7 +21,7 @@ interface I18nStore {
 export const useI18n = create<I18nStore>()(
   persist(
     (set) => ({
-      locale: 'pt-BR',
+      locale: detectBrowserLocale(),
       setLocale: (locale) => set({ locale }),
     }),
     { name: 'hfa-locale' }

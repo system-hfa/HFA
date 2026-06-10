@@ -337,7 +337,6 @@ export default function EventDetailPage() {
   const [deletionImpact, setDeletionImpact] = useState<DeletionImpact | null>(null)
   const [deletionModalOpen, setDeletionModalOpen] = useState(false)
   const [deletionReason, setDeletionReason] = useState('')
-  const [deletionConfirmationTitle, setDeletionConfirmationTitle] = useState('')
 
   useEffect(() => {
     async function load() {
@@ -447,7 +446,6 @@ export default function EventDetailPage() {
     setDeletionError(null)
     setDeletionImpact(null)
     setDeletionReason('')
-    setDeletionConfirmationTitle('')
     setDeletionModalOpen(true)
     try {
       const impactResponse = await fetch(`/api/events/${event.id}/deletion-impact`, {
@@ -464,14 +462,14 @@ export default function EventDetailPage() {
   }
 
   async function confirmDeleteFromDetail() {
-    if (!token || !event?.title || !deletionReason.trim() || deletionConfirmationTitle !== event.title) return
+    if (!token || !event?.title || !deletionReason.trim()) return
     setDeletionBusy(true)
     setDeletionError(null)
     try {
       const response = await fetch(`/api/events/${event.id}/delete-request`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ reason: deletionReason.trim(), confirmationTitle: deletionConfirmationTitle }),
+        body: JSON.stringify({ reason: deletionReason.trim() }),
       })
       const body = await response.json().catch(() => ({})) as { error?: { message?: string } }
       if (!response.ok) throw new Error(body.error?.message ?? 'Não foi possível excluir o evento.')
@@ -607,15 +605,6 @@ export default function EventDetailPage() {
                   className="min-h-28 rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-red-400"
                 />
               </label>
-              <label className="grid gap-2">
-                <span className="text-sm font-medium text-slate-200">Digite o título exato para confirmar</span>
-                <input
-                  value={deletionConfirmationTitle}
-                  onChange={(changeEvent) => setDeletionConfirmationTitle(changeEvent.target.value)}
-                  placeholder={event.title}
-                  className="rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white outline-none focus:border-red-400"
-                />
-              </label>
             </div>
 
             <div className="mt-6 flex flex-wrap justify-end gap-2">
@@ -623,7 +612,7 @@ export default function EventDetailPage() {
               <button
                 type="button"
                 onClick={() => void confirmDeleteFromDetail()}
-                disabled={deletionBusy || !deletionImpact || !deletionReason.trim() || deletionConfirmationTitle !== event.title}
+                disabled={deletionBusy || !deletionImpact || !deletionReason.trim()}
                 className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {deletionBusy ? 'Excluindo...' : 'Excluir e iniciar período de recuperação'}

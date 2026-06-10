@@ -23,14 +23,10 @@ export async function POST(req: Request, ctx: { params: Promise<{ eventId: strin
     }
 
     const reason = body.reason?.trim() ?? ''
-    const confirmationTitle = body.confirmationTitle?.trim() ?? ''
     if (!reason) return jsonError(requestId, 'EVENT_DELETE_REASON_REQUIRED', 'Motivo obrigatório.', 400)
 
     const event = await getEventDeletionRecord(admin, user.tenantId, eventId)
     if (!event) return jsonError(requestId, 'EVENT_NOT_FOUND', 'Evento não encontrado.', 404)
-    if (event.title !== confirmationTitle) {
-      return jsonError(requestId, 'EVENT_DELETE_TITLE_MISMATCH', 'O título digitado não corresponde exatamente ao evento.', 400)
-    }
     if (event.deleted_at) {
       const impact = await getEventDeletionImpact(admin, user.tenantId, eventId)
       return NextResponse.json({
@@ -59,7 +55,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ eventId: strin
       eventId,
       actorUserId: publicUserId,
       reason,
-      confirmationTitle,
+      confirmationTitle: event.title,
       requestId,
       unknownDependencies: impact.unknownDependencies,
     })
