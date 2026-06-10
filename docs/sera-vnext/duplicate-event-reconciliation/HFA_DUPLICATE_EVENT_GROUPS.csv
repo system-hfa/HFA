@@ -1,0 +1,7 @@
+group_id,level,total,canonical_id,canonical_title,canonical_status,delete_count,delete_ids,delete_titles
+GRP-477ec7c2eeb3,A,4,00000000-0000-0000-0000-000000000123,"Teste — Trem de pouso não acionado",completed,3,00000000-0000-0000-0000-000000000124|00000000-0000-0000-0000-000000000001|00000000-0000-0000-0000-000000000125,"Teste — Trem de pouso não acionado|Teste — Trem de pouso não acionado|Teste — Trem de pouso não acionado"
+GRP-c083ad8104f9,B,2,740de696-7995-4828-9611-67f2675a691c,"Teste 2",completed,1,00506691-d55b-4bcc-8dc0-1cbd8ac0d56f,"Teste 2"
+GRP-bf8516b968bc,B,6,9c6c0c3e-d88f-4765-a867-cec042f3934b,"teste",completed,5,f695985a-4209-4be4-866d-7660de23d021|ba082880-07b3-46f1-8686-cbdd99f2bf6a|93b0b689-5026-4f67-b13c-7eed25560258|862cc991-d8e5-4dd5-b116-ce1f5559d8d5|f3f7e11e-e278-4276-bad7-10355355aa29,"teste|teste|teste|Teste|teste"
+GRP-c8e291bd8faf,A,2,6863433c-1646-43cf-a794-584124d16c7c,"teste cenipa",completed,1,117cd4f9-fdc3-453f-beff-50aac041546b,"Teste Cenipa"
+GRP-345df8c743b1,A,2,03976bbb-1c4d-4448-9ee1-f7e24ef3db37,"[CANONICAL_ROUTING_ON_TEST] Debug",received,1,0810ed2c-1b5e-46ce-89e7-bfd93f514a28,"[CANONICAL_ROUTING_ON_TEST] Debug"
+GRP-b111200ffba0,B,4,284f822b-953e-4b66-a309-97b78c4b6efb,"[CANONICAL_ROUTING_OFF_TEST] Debug",completed,3,e19b3e60-38e6-4aa5-8a24-48026afdbf0a|977e76ca-8164-4497-971c-5889381332cb|1d7e8898-ccea-4479-af1f-33ce44ac1486,"[CANONICAL_ROUTING_OFF_TEST] Debug|[CANONICAL_ROUTING_OFF_TEST] Debug|[CANONICAL_ROUTING_OFF_TEST] Debug"
