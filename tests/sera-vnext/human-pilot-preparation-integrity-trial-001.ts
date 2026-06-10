@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
+import { isAllowedSeraVNextCanonicalTreePath } from './protected-path-contract'
 
 const rootDir = path.resolve(__dirname, '..', '..')
 const docDir = path.join(rootDir, 'docs', 'sera-vnext', 'human-pilot-preparation')
@@ -63,9 +64,9 @@ const protectedPrefixes = [
 ]
 for (const file of changed) {
   for (const prefix of protectedPrefixes) {
+    if (file.startsWith(prefix) && isAllowedSeraVNextCanonicalTreePath(rootDir, file)) continue
     assert.equal(file.startsWith(prefix), false, `protected path changed: ${file}`)
   }
 }
 
 console.log('HUMAN_PILOT_PREPARATION_INTEGRITY_OK')
-

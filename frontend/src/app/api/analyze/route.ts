@@ -21,11 +21,47 @@ import { createSeraVNextAnalysis } from '@/lib/sera-vnext-product/persistence/cr
 
 export const maxDuration = 300
 
-function sanitizedError(code: string, message: string, requestId: string, status: number) {
+type AnalyzeErrorCode =
+  | 'ANALYZE_INVALID_INPUT'
+  | 'ANALYZE_UNAUTHORIZED'
+  | 'ANALYZE_FORBIDDEN'
+  | 'ANALYZE_ENGINE_UNAVAILABLE'
+  | 'ANALYZE_PERSISTENCE_ERROR'
+  | 'ANALYZE_INTERNAL_ERROR'
+
+const ANALYZE_PUBLIC_ERROR_MESSAGE = 'Não foi possível concluir a análise.'
+
+function buildErrorResponse(code: AnalyzeErrorCode, requestId: string, status: number) {
   return NextResponse.json(
-    { error: { code, message, requestId } },
+    { error: { code, message: ANALYZE_PUBLIC_ERROR_MESSAGE, requestId } },
     { status, headers: { 'x-request-id': requestId } }
   )
+}
+
+function errorType(error: unknown): string {
+  if (error instanceof Response) return `Response:${error.status}`
+  if (error instanceof Error) return error.name || 'Error'
+  return typeof error
+}
+
+function logAnalyzeError(
+  event: string,
+  requestId: string,
+  error: unknown,
+  context: Record<string, unknown> = {},
+) {
+  console.error('[/api/analyze]', {
+    event,
+    requestId,
+    errorType: errorType(error),
+    ...context,
+  })
+}
+
+function errorResponseFromAuthResponse(error: Response, requestId: string) {
+  if (error.status === 401) return buildErrorResponse('ANALYZE_UNAUTHORIZED', requestId, 401)
+  if (error.status === 403) return buildErrorResponse('ANALYZE_FORBIDDEN', requestId, 403)
+  return buildErrorResponse('ANALYZE_INTERNAL_ERROR', requestId, 500)
 }
 
 /**
@@ -42,11 +78,11 @@ export async function POST(req: Request) {
     try {
       assertServiceRoleEnv()
     } catch (cfg) {
-      console.error('[/api/analyze] SERVICE_ROLE_KEY not configured', { requestId })
-      return sanitizedError('SERVICE_UNAVAILABLE', 'Serviço temporariamente indisponível.', requestId, 503)
+      logAnalyzeError('service_role_missing', requestId, cfg)
+      return buildErrorResponse('ANALYZE_ENGINE_UNAVAILABLE', requestId, 503)
     }
     const admin = getSupabaseAdmin()
-    const body = (await req.json()) as {
+    let body: {
       eventoNarrativa: string
       userId?: string
       title?: string
@@ -59,12 +95,18 @@ export async function POST(req: Request) {
       sourceWordCount?: number
       sourceFileUrl?: string | null
     }
+    try {
+      body = (await req.json()) as typeof body
+    } catch (parseErr) {
+      logAnalyzeError('invalid_json_payload', requestId, parseErr)
+      return buildErrorResponse('ANALYZE_INVALID_INPUT', requestId, 400)
+    }
 
     const rawInput = body.eventoNarrativa?.trim()
-    if (!rawInput) return sanitizedError('MISSING_INPUT', 'eventoNarrativa é obrigatório.', requestId, 400)
+    if (!rawInput) return buildErrorResponse('ANALYZE_INVALID_INPUT', requestId, 400)
 
     if (body.userId && body.userId !== user.userId) {
-      return sanitizedError('USER_MISMATCH', 'Identidade não corresponde ao token.', requestId, 403)
+      return buildErrorResponse('ANALYZE_FORBIDDEN', requestId, 403)
     }
 
     const sourceMeta: SourceMeta = {
@@ -91,13 +133,16 @@ export async function POST(req: Request) {
         .is('deleted_at', null)
         .maybeSingle()
 
-      if (evErr || !ev) return sanitizedError('EVENT_NOT_FOUND', 'Evento não encontrado.', requestId, 404)
+      if (evErr || !ev) {
+        logAnalyzeError('event_lookup_failed', requestId, evErr, { phase: 'reanalysis_lookup' })
+        return buildErrorResponse('ANALYZE_FORBIDDEN', requestId, 403)
+      }
 
       try {
         await applyUserAiSettingsToEnv(admin, user.userId)
       } catch (cfgErr) {
-        console.error('[/api/analyze] AI settings config error', { requestId })
-        return sanitizedError('CONFIGURATION_ERROR', 'Erro de configuração do motor.', requestId, 503)
+        logAnalyzeError('ai_settings_config_error', requestId, cfgErr, { phase: 'reanalysis' })
+        return buildErrorResponse('ANALYZE_ENGINE_UNAVAILABLE', requestId, 503)
       }
 
       await admin.from('events').update({ raw_input: rawInput }).eq('id', body.eventId).is('deleted_at', null)
@@ -159,14 +204,14 @@ export async function POST(req: Request) {
         )
       } catch (err) {
         await admin.from('events').update({ status: 'failed' }).eq('id', body.eventId).is('deleted_at', null)
-        console.error('[/api/analyze] reanalysis error', { requestId, error: err instanceof Error ? err.message : String(err) })
+        logAnalyzeError('reanalysis_failed', requestId, err)
         await writeAuditLog({
           tenantId: user.tenantId, userId: user.userId, requestId,
           eventType: 'analysis_failed', entityType: 'event', entityId: body.eventId,
           route: '/api/analyze', method: 'POST', status: 'failed',
           metadata: { source: 'reanalysis' },
         })
-        return sanitizedError('ANALYSIS_FAILED', 'Falha ao executar a análise. Tente novamente.', requestId, 500)
+        return buildErrorResponse('ANALYZE_ENGINE_UNAVAILABLE', requestId, 500)
       }
     }
 
@@ -179,18 +224,21 @@ export async function POST(req: Request) {
       .select('plan, credits_balance')
       .eq('id', user.tenantId)
       .single()
-    if (terr || !tenant) return sanitizedError('TENANT_NOT_FOUND', 'Tenant não encontrado.', requestId, 400)
+    if (terr || !tenant) {
+      logAnalyzeError('tenant_lookup_failed', requestId, terr, { phase: 'tenant_lookup' })
+      return buildErrorResponse('ANALYZE_FORBIDDEN', requestId, 403)
+    }
 
     const isEnterprise = tenant.plan === 'enterprise'
     if (!isEnterprise && (tenant.credits_balance ?? 0) < 1) {
-      return sanitizedError('INSUFFICIENT_CREDITS', 'Créditos insuficientes para análise.', requestId, 402)
+      return buildErrorResponse('ANALYZE_FORBIDDEN', requestId, 403)
     }
 
     try {
       await applyUserAiSettingsToEnv(admin, user.userId)
     } catch (cfgErr) {
-      console.error('[/api/analyze] AI settings config error', { requestId })
-      return sanitizedError('CONFIGURATION_ERROR', 'Erro de configuração do motor.', requestId, 503)
+      logAnalyzeError('ai_settings_config_error', requestId, cfgErr, { phase: 'new_analysis' })
+      return buildErrorResponse('ANALYZE_ENGINE_UNAVAILABLE', requestId, 503)
     }
 
     const inputType = sourceMeta.sourceType === 'docx' || sourceMeta.sourceType === 'pdf'
@@ -214,8 +262,8 @@ export async function POST(req: Request) {
       .single()
 
     if (eerr || !eventRow) {
-      console.error('[/api/analyze] event creation failed', { requestId, error: eerr?.message })
-      return sanitizedError('EVENT_CREATION_FAILED', 'Falha ao criar evento.', requestId, 400)
+      logAnalyzeError('event_creation_failed', requestId, eerr, { phase: 'event_insert' })
+      return buildErrorResponse('ANALYZE_PERSISTENCE_ERROR', requestId, 500)
     }
 
     const eventId = eventRow.id as string
@@ -313,14 +361,14 @@ export async function POST(req: Request) {
       respostaSucesso = true
     } catch (err) {
       await admin.from('events').update({ status: 'failed' }).eq('id', eventId).is('deleted_at', null)
-      console.error('[/api/analyze] analysis error', { requestId, error: err instanceof Error ? err.message : String(err) })
+      logAnalyzeError('analysis_failed', requestId, err, { phase: 'new_analysis' })
       await writeAuditLog({
         tenantId: user.tenantId, userId: user.userId, requestId,
         eventType: 'analysis_failed', entityType: 'event', entityId: eventId,
         route: '/api/analyze', method: 'POST', status: 'failed',
         metadata: { source: 'new_analysis' },
       })
-      return sanitizedError('ANALYSIS_FAILED', 'Falha ao executar a análise. Tente novamente.', requestId, 500)
+      return buildErrorResponse('ANALYZE_ENGINE_UNAVAILABLE', requestId, 500)
     } finally {
       if (creditoDebitado && !respostaSucesso) {
         try {
@@ -340,12 +388,12 @@ export async function POST(req: Request) {
             currentBalanceAfterDebit: tNow?.credits_balance ?? 0,
           })
         } catch (refundErr) {
-          console.error('[/api/analyze] refund', { requestId, error: refundErr instanceof Error ? refundErr.message : String(refundErr) })
+          logAnalyzeError('refund_failed', requestId, refundErr)
         }
       }
     }
 
-    if (!analysisId) return sanitizedError('INTERNAL_ERROR', 'Falha interna. Tente novamente.', requestId, 500)
+    if (!analysisId) return buildErrorResponse('ANALYZE_INTERNAL_ERROR', requestId, 500)
 
     const { data: row } = await admin
       .from('analyses')
@@ -386,8 +434,8 @@ export async function POST(req: Request) {
       { headers: { 'x-request-id': requestId } }
     )
   } catch (e) {
-    if (e instanceof Response) return e
-    console.error('[/api/analyze] unhandled error', { requestId, error: e instanceof Error ? e.message : String(e) })
-    return sanitizedError('INTERNAL_ERROR', 'Erro interno. Tente novamente.', requestId, 500)
+    if (e instanceof Response) return errorResponseFromAuthResponse(e, requestId)
+    logAnalyzeError('unhandled_error', requestId, e)
+    return buildErrorResponse('ANALYZE_INTERNAL_ERROR', requestId, 500)
   }
 }

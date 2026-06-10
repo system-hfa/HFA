@@ -1,5 +1,5 @@
 import type { SeraConfidence } from '../engine-contract'
-import { hasConcept, hasConceptWithoutNegation, matchingConceptStatements, matchingConceptStatementsWithoutNegation, conceptsWithinWindow, type SeraEvidenceConcept } from '../engine-v02/language/concepts'
+import { hasConcept, matchingConceptStatements, matchingConceptStatementsWithoutNegation, conceptsWithinWindow, type SeraEvidenceConcept } from '../engine-v02/language/concepts'
 import type { SeraEvidenceItem } from '../evidence'
 import { axisToEvidenceUse, isEvidenceUsableFor } from '../evidence'
 import type { CanonicalSeraAxis } from '../types'
@@ -156,9 +156,10 @@ function decideO(nodeId: string, statements: string[]): Decision {
         return { answer: 'NÃO', supportingEvidence: violationPrerequisites, rationale: 'Violation path opened by known-rule, awareness, and conscious-deviation evidence (all three present without negation).' }
       }
 
-      // Tier 3: Two of three with strong awareness present
-      if (hasAwareness && (hasKnownRule || hasConscious)) {
-        return { answer: 'NÃO', supportingEvidence: violationPrerequisites, rationale: 'Violation path opened by awareness evidence combined with known-rule or conscious-deviation.' }
+      // Tier 3: conservative partial triad. Awareness plus a known-rule anchor can open
+      // the violation path; awareness plus continuation alone remains unanswered.
+      if (hasKnownRule && hasAwareness) {
+        return { answer: 'NÃO', supportingEvidence: violationPrerequisites, rationale: 'Violation path opened by awareness evidence combined with known-rule evidence.' }
       }
 
       if (unmanagedRisk.length > 0) return { answer: 'SIM', supportingEvidence: unmanagedRisk, rationale: 'Goal evidence is rule-compatible enough to test risk-management adequacy without inferring violation.' }

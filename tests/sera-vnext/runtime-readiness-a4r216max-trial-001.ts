@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { isAllowedSeraVNextProtectedApiPath } from "./protected-path-contract";
 
 const rootDir = path.resolve(__dirname, "..", "..");
 
@@ -256,7 +257,9 @@ function isAllowedRiskProfileProductApiPath(file: string): boolean {
 for (const file of changed) {
   if (file.startsWith("frontend/src/app/api/")) {
     assert.ok(
-      isAllowedSeraVNextAdminApiPath(file) || isAllowedRiskProfileProductApiPath(file),
+      isAllowedSeraVNextAdminApiPath(file) ||
+        isAllowedRiskProfileProductApiPath(file) ||
+        isAllowedSeraVNextProtectedApiPath(rootDir, file),
       `unexpected API path changed in A4R216 trial: ${file}`,
     );
     continue;

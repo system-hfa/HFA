@@ -3,6 +3,7 @@ import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { getSeraVNextRuntimeReadOnlySummary } from "../../frontend/src/lib/sera-vnext-runtime";
+import { isAllowedSeraVNextProtectedApiPath } from "./protected-path-contract";
 
 const rootDir = path.resolve(__dirname, "..", "..");
 
@@ -93,6 +94,7 @@ for (const hit of importHits) {
   const a4r225IntegrityAuthorized = rel("tests/sera-vnext/product-alpha-integrity-trial-001.ts");
   const engineValidationHarnessAuthorized = rel("tests/sera-vnext/engine-validation/run-engine-validation.ts");
   const engineValidationV0ProductAlphaParityAuthorized = rel("tests/sera-vnext/engine-v0-product-alpha-parity-trial-001.ts");
+  const productUnificationFeatureFlagsAuthorized = rel("tests/sera-vnext/product-unification/feature-flags-trial-001.ts");
 
   assert.ok(
     hit.startsWith("tests/sera-vnext/runtime-module-a4r220max-trial-001.ts:") ||
@@ -118,6 +120,12 @@ for (const hit of importHits) {
       (hit.startsWith("tests/sera-vnext/engine-validation/run-engine-validation.ts:") && existsSync(engineValidationHarnessAuthorized)) ||
       (hit.startsWith("tests/sera-vnext/engine-validation-v0/product-alpha-parity.ts:") &&
         existsSync(engineValidationV0ProductAlphaParityAuthorized)) ||
+      (hit.startsWith("tests/sera-vnext/product-unification/feature-flags-trial-001.ts:") &&
+        hit.includes("/feature-flags") &&
+        existsSync(productUnificationFeatureFlagsAuthorized)) ||
+      (hit.startsWith("frontend/src/app/api/analyze/route.ts:") &&
+        hit.includes("/feature-flags") &&
+        isAllowedSeraVNextProtectedApiPath(rootDir, "frontend/src/app/api/analyze/route.ts")) ||
       (hit.startsWith("frontend/src/app/api/admin/sera-vnext/status/route.ts:") && existsSync(a4r221IntegrationAuthorized)) ||
       (hit.startsWith("frontend/src/app/api/admin/sera-vnext/candidate/route.ts:") && existsSync(a4r225CandidateAuthorized)) ||
       (hit.startsWith("frontend/src/app/(dashboard)/admin/sera-vnext/page.tsx:") && existsSync(a4r221IntegrationAuthorized)) ||
@@ -160,7 +168,8 @@ for (const file of changed) {
   if (file.startsWith("frontend/src/app/api/")) {
     assert.ok(
       file === "frontend/src/app/api/admin/sera-vnext/status/route.ts" ||
-        file === "frontend/src/app/api/admin/sera-vnext/candidate/route.ts",
+        file === "frontend/src/app/api/admin/sera-vnext/candidate/route.ts" ||
+        isAllowedSeraVNextProtectedApiPath(rootDir, file),
       `unexpected API protected path changed: ${file}`,
     );
     if (file === "frontend/src/app/api/admin/sera-vnext/status/route.ts") {

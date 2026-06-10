@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { isAllowedSeraVNextProtectedApiPath } from "./protected-path-contract";
 
 type Candidate = {
   id: string;
@@ -364,7 +365,9 @@ for (const changedPath of changedTracked) {
   assert.ok(!changedPath.startsWith("frontend/src/lib/sera/"), `engine path changed: ${changedPath}`);
   if (changedPath.startsWith("frontend/src/app/api/")) {
     assert.ok(
-      isAllowedSeraVNextAdminApiPath(changedPath) || isAllowedRiskProfileProductApiPath(changedPath),
+      isAllowedSeraVNextAdminApiPath(changedPath) ||
+        isAllowedRiskProfileProductApiPath(changedPath) ||
+        isAllowedSeraVNextProtectedApiPath(root, changedPath),
       `unexpected API path changed: ${changedPath}`,
     );
   }

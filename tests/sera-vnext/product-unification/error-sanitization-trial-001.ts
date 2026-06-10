@@ -39,8 +39,17 @@ console.log('\n2. /api/analyze')
 const analyze = readFile('frontend/src/app/api/analyze/route.ts')
 
 assert(!analyze.includes('return jsonError(String(e)'), 'Sem return jsonError(String(e)) no catch final')
-assert(analyze.includes('Erro interno na análise SERA'), 'Mensagem sanitizada no catch final')
+assert(analyze.includes("'Não foi possível concluir a análise.'"), 'Mensagem pública estável em /api/analyze')
 assert(analyze.includes('buildErrorResponse'), 'Usa buildErrorResponse para erros estruturados')
+assert(analyze.includes('ANALYZE_INVALID_INPUT'), 'Usa ANALYZE_INVALID_INPUT')
+assert(analyze.includes('ANALYZE_UNAUTHORIZED'), 'Usa ANALYZE_UNAUTHORIZED')
+assert(analyze.includes('ANALYZE_FORBIDDEN'), 'Usa ANALYZE_FORBIDDEN')
+assert(analyze.includes('ANALYZE_ENGINE_UNAVAILABLE'), 'Usa ANALYZE_ENGINE_UNAVAILABLE')
+assert(analyze.includes('ANALYZE_PERSISTENCE_ERROR'), 'Usa ANALYZE_PERSISTENCE_ERROR')
+assert(analyze.includes('ANALYZE_INTERNAL_ERROR'), 'Usa ANALYZE_INTERNAL_ERROR')
+assert(!analyze.includes('String(err)'), 'Sem String(err) em /api/analyze')
+assert(!analyze.includes('String(e)'), 'Sem String(e) em /api/analyze')
+assert(!analyze.includes('error.message'), 'Sem error.message bruto em /api/analyze')
 
 // --- Product Beta handler ---
 console.log('\n3. Product Beta api-handlers')

@@ -1,0 +1,1737 @@
+[
+  {
+    "path": "tests/sera-vnext/adversarial-set-2-contract-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/auth-feature-flags-a4r222max-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/authenticated-smoke-a4r223max-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/author-decision-intake-a4r202d-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/author-node-intake-adapter-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/author-node-intake-diagnostics-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/batch1-source-recovery-a4r197e-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/benchmark-fixture-design-a4r206big-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/big-governance-closure-a4r203big-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/calibration-corpus-closure-a4r205big-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/candidate-only-method-review-a4r202e-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/candidate-review-batch1-a4r202b-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-code-enforcement-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-codes-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-released-code-typing-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-traversal-adapter-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-traversal-exhaustive-leaf-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-traversal-hardening-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-traversal-leaf-coverage-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-traversal-skeleton-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/canonical-tree-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/code-release-gate-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/code-traceability-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/colgan-escape-point-reaudit-a4r202f-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/combined-synthetic-blueprint-a4r198a-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/company-dashboard-readiness-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/controlled-internal-activation-a4r223max-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/controlled-pilot-api-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/controlled-pilot-ui-real-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/daumas-calibration-extraction-a4r203a-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/daumas-prior-work-reconciliation-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/deep-extraction-batch-1-a4r202a-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/dry-run-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/dry-run-trial-set-1.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-boundary-validation-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-determinism-validation-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-generalization-validation-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-product-alpha-e2e-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-regression-validation-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-adversarial-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-canonical-tree-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-contract-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-determinism-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-generalization-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-preconditions-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-product-alpha-parity-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v0-regression-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-adapter-wiring-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-enforcement-diagnostics-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-enforcement-hardening-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-enforcement-topology-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-enforcement-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-intake-bridge-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-intake-contract-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-intake-validation-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-preintegration-regression-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-scope-contract-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/escape-point-traversal-wiring-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/evidence-categories-passive-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/evidence-category-coverage-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/expanded-cohort-integrity-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/expanded-cohort-metrics-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/expanded-cohort-runner-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/expanded-cohort-security-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/expected-output-fixture-dry-run-a4r210big-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/final-methodology-closure-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/fixture-candidate-authorization-a4r209big-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/fixture-candidate-package-a4r208big-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/fixture-gate-dry-run-a4r207big-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/frontend-auth-tenant-readiness-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/frontend-data-parity-real-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/frontend-error-observability-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/frontend-navigation-readiness-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/frontend-responsive-readiness-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/frontend-sera-vnext-e2e-readiness-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/human-pilot-metrics-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/human-pilot-preparation-integrity-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/human-pilot-preparation-security-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/human-pilot-seed-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/human-pilot-shared-agreement-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/integrity-hash-a4r223max-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/internal-pilot-a4r222max-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/isolated-fixture-candidates-a4r212big-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/managed-staging-activation-a4r224max-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/manual-classification-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/mega-freeze-readiness-boundary-a4r213-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/methodological-state-consolidation-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/methodology-governance-board-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/methodology-human-decision-intake-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/oe-nonexistent-normalization-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/official-fixture-set-a4r214max-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/opus-audit-a4r197b-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/opus-consolidation-a4r202dr2-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/opus-gap-prioritization-a4r197c-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/opus-review-source-recovery-campaign-plan-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/opus-synthetic-design-review-a4r197d-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/perplexity-reconciliation-a4r201b-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/preconditions-from-released-codes-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/preconditions-traceability-refinement-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-alpha-candidate-only-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-alpha-integrity-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-alpha-security-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-api-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-api-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-audit-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-db-real-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-integrity-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-pilot-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-rls-real-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-rls-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-schema-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-security-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-ui-real-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-beta-workflow-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-admin-session-a4r224max-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-consolidated-hold-closure-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-peasmarsh-vigo-source-recovery-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-american-965-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-batch2-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-batch3-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-consolidated-metrics-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-copterline-s76-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-post-american-965-metrics-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-post-batch3-metrics-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-source-enrichment-decision-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-reentry-thebaud-gate-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-source-enrichment-batch-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-source-enrichment-batch2-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-source-recovery-continuation-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-event-thebaud-pfpm-sequence-recovery-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/real-fixture-authorization-request-a4r211big-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/reference-corpus-acceleration-a4r200a-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/reviewer-output-api-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/reviewer-output-contract-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/reviewer-output-ui-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/reviewer-utility-rerun-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/risk-profile-api-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/risk-profile-dashboard-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/risk-profile-exclusion-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/risk-profile-integrity-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/risk-profile-real-data-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/risk-profile-security-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/risk-profile-ui-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/rollback-flags-a4r223max-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-adapter-a4r218max-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-endpoint-page-a4r221max-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-fail-closed-a4r221max-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-harness-a4r219max-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-integrity-a4r222max-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-module-a4r220max-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-performance-a4r222max-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-readiness-a4r216max-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/runtime-service-a4r221max-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/semantic-consistency-released-codes-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/sera-vnext-checkpoint-roadmap-closure-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/source-depth-normalization-a4r201c-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/source-recovery-authorization-bridge-a4r199a-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/staging-integrity-a4r224max-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/staging-rollback-a4r224max-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/staging-tenant-isolation-a4r224max-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-gap-design-audit-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-gap-design-pack-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-p1-package-a4r204big-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-blueprint-audit-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-case-draft-design-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-controlled-materialization-authorization-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-controlled-materialization-draft-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-draft-clarification-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-final-draft-audit-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-materialization-blueprint-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-pfpm-design-audit-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-pfpm-design-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/synthetic-pilot-gap001-post-j-closure-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/top3-author-dossiers-a4r202c-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/typecheck-closure-runtime-gate-a4r217max-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/vnext-baseline-v0-a4r215final-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/atomicity-rpc-contract-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/complete-event-deletion-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/error-sanitization-contract-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/event-delete-corrective-action-block-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/event-delete-storage-dry-run-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/event-deletion-ui-real-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/hard-delete-disabled-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/event-deletion/purge-execute-synthetic-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/canonical-routing-dynamic-real-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/canonical-routing-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/dashboard-risk-profile-e2e-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/error-observability-e2e-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/error-sanitization-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/feature-flags-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/final-output-lock-trial-001.ts",
+    "type": "STATIC",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/provenance-api-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/provenance-db-real-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/provenance-model-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/provenance-reanalysis-api-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/provenance-rls-real-trial-001.ts",
+    "type": "REAL_DB",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/risk-profile-endpoint-parity-real-trial-001.ts",
+    "type": "REAL_API",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/risk-profile-provenance-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/risk-profile-real-trial-001.ts",
+    "type": "CONTRACT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/unified-adapter-trial-001.ts",
+    "type": "UNIT",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/product-unification/v02-guardrail-api-ui-trial-001.ts",
+    "type": "REAL_UI",
+    "requiredForRegression": false,
+    "requiredEnvironment": [
+      "LOCAL_FRONTEND_SERVER"
+    ],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-validation-v01/run-all.ts",
+    "type": "GATE",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-validation-v02/run-all.ts",
+    "type": "GATE",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-v02/reachability/run-reachability.ts",
+    "type": "GATE",
+    "requiredForRegression": true,
+    "requiredEnvironment": [],
+    "expectedExit": 0,
+    "expectedStatus": "PASS"
+  },
+  {
+    "path": "tests/sera-vnext/engine-validation-v03-naturalistic/run-all.ts",
+    "type": "GATE",
+    "requiredForRegression": false,
+    "requiredEnvironment": [],
+    "expectedExit": 1,
+    "expectedStatus": "NOT_READY"
+  }
+]

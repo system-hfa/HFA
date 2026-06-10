@@ -81,3 +81,14 @@
 - `docs/sera-vnext/final-technical-closure/SERA_VNEXT_OPUS_FINDINGS_CLOSURE_MATRIX.md` — stale vs code (marked NF-07); replaced by this living state + action matrix
 - `docs/sera-vnext/opus-comprehensive-audit-c4266d0/` — initial Opus audit at `c4266d0`; superseded by `opus-closure-verification-114b5fc/`
 - `docs/sera-vnext/product-unification/` — product unification phase; incorporated into current state
+
+## Global Technical Regression Closure - 2026-06-10
+- **Status**: `GLOBAL_TECHNICAL_REGRESSION_CLOSED`
+- **Canonical manifest**: `tests/sera-vnext/test-manifest.json` with 205 entries.
+- **Canonical runner**: `scripts/run-sera-vnext-regression.ts`.
+- **Final technical run**: 205 discovered, 205 executed, 158 required regression tests passed, 0 required failures, 0 skips, 0 race timeouts, 3 validation gates passed, 1 expected NOT_READY gate.
+- **Engine v03**: remains `ENGINE_NATURALISTIC_VALIDATION_NOT_READY` as a validation gate, not a technical regression failure.
+- **Product Alpha**: candidate-only lock preserved; O_RULES partial violation path now requires a known-rule anchor.
+- **Runtime boundary**: documented in `frontend/src/lib/sera-vnext-runtime/BOUNDARY_CONTRACT.md`; protected path gates now use semantic contracts.
+- **/api/analyze**: stable `ANALYZE_*` public error envelope with requestId; raw error messages/stacks are not returned by this route.
+- **Repository hygiene**: generated local artifacts ignored specifically; local corpus/reference material preserved and inventoried.
