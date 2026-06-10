@@ -1870,6 +1870,7 @@ function logMethodology(
 
 export async function runStep1(relato: string): Promise<Step1Result> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text, markdown, or explanation outside the JSON.
 - NEVER invent data. If a field is not present in the report, return null for that field.
 - NEVER reproduce the original report verbatim. Write a new narrative.
@@ -1912,6 +1913,7 @@ REGRAS OBRIGATÓRIAS:
 
 export async function runStep2(relato: string): Promise<Step2Result> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text outside the JSON block.
 - NEVER infer motivations or causes — describe only observable actions.
 - NEVER identify more than ONE departure point. Pick the most critical moment after which there was no return to safety.
@@ -1961,6 +1963,7 @@ Se faltar contexto causal, ainda assim identifique o ato inseguro factual mais o
 
 export async function runStep3(relato: string, pontoFuga: Step2Result): Promise<StepFlowResult> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text outside the JSON block.
 - Answer only the local question asked in the user prompt.
 - Do not choose SERA codes unless the prompt explicitly provides the local terminal alternatives.
@@ -2348,6 +2351,7 @@ Responda APENAS com JSON: {"resposta": "Sim/Não", "justificativa": "..."}`,
 
 async function runStep3Legacy(relato: string, pontoFuga: Step2Result): Promise<StepFlowResult> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text outside the JSON block.
 - Answer only the local yes/no question asked in the user prompt.
 - Do not choose SERA codes. The controller decides the code.
@@ -2622,6 +2626,7 @@ Responda APENAS com JSON: {"resposta": "Sim/Não", "justificativa": "evidência 
 
 export async function runStep4(relato: string, pontoFuga: Step2Result): Promise<StepFlowResult> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text outside the JSON block.
 - NEVER skip the first decision node: "Consistent with rules and regulations?" This MUST be answered before any other.
 - NEVER classify O-D if there is evidence of rule violation — O-D requires the goal to be consistent with rules but not conservative.
@@ -2790,6 +2795,7 @@ Responda APENAS com JSON: {"resposta": "Sim/Não", "justificativa": "..."}`
 
 export async function runStep5(relato: string, pontoFuga: Step2Result): Promise<StepFlowResult> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text outside the JSON block.
 - Answer only the local question asked in the user prompt.
 - Do not classify globally.
@@ -3374,6 +3380,7 @@ Responda APENAS com JSON: {"codigo": "A-H/A-I/A-J", "justificativa": "..."}`,
 
 async function runStep5Legacy(relato: string, pontoFuga: Step2Result): Promise<StepFlowResult> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text outside the JSON block.
 - Answer only the local question asked in the user prompt.
 - Do not choose SERA codes unless the prompt explicitly asks for one local binary distinction.
@@ -3816,6 +3823,7 @@ export async function runStep6_7(
   step5: StepFlowResult
 ): Promise<Step67Result> {
   const system = `CRITICAL RULES:
+- Responda SEMPRE em português do Brasil.
 - Return ONLY valid JSON. No text outside the JSON block.
 - NEVER repeat information already stated in steps 3, 4, or 5.
 - NEVER create a recommendation without a direct link to an identified failure code.
