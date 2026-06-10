@@ -101,6 +101,7 @@ type VNextAnalysisRow = {
   engine_runtime_version: string | null
   methodology_version: string | null
   canonical_tree_version: string | null
+  source_reference: string | null
   source_flow: string | null
   perception_candidate_code: string | null
   objective_candidate_code: string | null
@@ -386,7 +387,7 @@ export async function loadRiskProfileUniverse(
       .is('restored_at', null),
     admin
       .from('sera_vnext_analyses')
-      .select('id, tenant_id, title, status, review_status, created_at, deleted_at, engine_version, engine_runtime_version, methodology_version, canonical_tree_version, source_flow, perception_candidate_code, objective_candidate_code, action_candidate_code, warnings, limitations, uncertainties, engine_output')
+      .select('id, tenant_id, title, status, review_status, created_at, deleted_at, source_reference, engine_version, engine_runtime_version, methodology_version, canonical_tree_version, source_flow, perception_candidate_code, objective_candidate_code, action_candidate_code, warnings, limitations, uncertainties, engine_output')
       .eq('tenant_id', tenantId)
       .eq('status', 'HUMAN_REVIEW_COMPLETED_NON_FINAL')
       .is('deleted_at', null)
@@ -404,7 +405,15 @@ export async function loadRiskProfileUniverse(
   const compatibleVNextRows = allVNextRows.filter(isCompatibleVNextRow)
   const incompatibleVNextCount = allVNextRows.length - compatibleVNextRows.length
 
-  const vnextSources = compatibleVNextRows.map((row) => toVNextSource(row, exclusionLookup))
+  // Deduplicate vNext analyses by source_reference (event_id) — keep only the most recent per event
+  const seenEventIds = new Set<string>()
+  const deduped = new Array<VNextAnalysisRow>()
+  const sortedVNext = [...compatibleVNextRows].sort((a, b) => b.created_at.localeCompare(a.created_at))
+  for (const row of sortedVNext) {
+    const eventKey = row.source_reference || row.id
+    if (!seenEventIds.has(eventKey)) { seenEventIds.add(eventKey); deduped.push(row) }
+  }
+  const vnextSources = deduped.map((row) => toVNextSource(row, exclusionLookup))
   const limitations: string[] = []
   if (incompatibleVNextCount > 0) {
     limitations.push(
