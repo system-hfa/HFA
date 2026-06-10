@@ -494,7 +494,7 @@ export default function DashboardPage() {
               <tr className="text-slate-400 border-b border-slate-800">
                 <th className="text-left pb-2 font-medium">{t('dashboard.date')}</th>
                 <th className="text-left pb-2 font-medium">{t('dashboard.title_col')}</th>
-                <th className="text-left pb-2 font-medium">P / O / A</th>
+                <th className="text-left pb-2 font-medium">P · O · A</th>
                 <th className="pb-2" />
               </tr>
             </thead>
@@ -605,7 +605,7 @@ function TrendChart({ trend, insufficientDataLabel }: { trend: { month: string; 
   const totalW = trend.length * (barW + gap) - gap + padX * 2
 
   return (
-    <svg viewBox={`0 0 ${totalW} ${chartH + 40}`} className="w-full" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox={`0 0 ${totalW} ${chartH + 40}`} className="w-full max-h-[200px]" preserveAspectRatio="xMidYMid meet">
       {trend.map((t, i) => {
         const x = padX + i * (barW + gap)
         const barH = Math.min(Math.max((t.count / maxCount) * chartH, 4), chartH)
