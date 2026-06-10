@@ -408,7 +408,7 @@ export default function DashboardPage() {
                         <span className="font-mono text-xs font-bold flex-shrink-0 w-8">
                           {tc.code}
                         </span>
-                        <span className="text-slate-400 text-xs flex-shrink-0 min-w-0 truncate" style={{ maxWidth: '140px' }}>
+                        <span className="text-slate-400 text-xs min-w-0 truncate flex-1">
                           {FAILURE_NAMES[tc.code] ?? tc.code}
                         </span>
                         <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
@@ -605,7 +605,7 @@ function TrendChart({ trend, insufficientDataLabel }: { trend: { month: string; 
   const totalW = trend.length * (barW + gap) - gap + padX * 2
 
   return (
-    <svg viewBox={`0 0 ${totalW} ${chartH + 40}`} className="w-full overflow-visible">
+    <svg viewBox={`0 0 ${totalW} ${chartH + 40}`} className="w-full" preserveAspectRatio="xMidYMid meet">
       {trend.map((t, i) => {
         const x = padX + i * (barW + gap)
         const barH = Math.min(Math.max((t.count / maxCount) * chartH, 4), chartH)

@@ -161,7 +161,7 @@ export default function NewEventPage() {
   const showExtractBanner = tab === 'upload' && sourceMeta && form.raw_input.trim().length > 0
 
   return (
-    <div className="p-8 max-w-3xl">
+    <div className="p-8 w-full">
       {loading && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 bg-slate-950/70 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-700 rounded-2xl px-8 py-6 flex flex-col items-center gap-4 shadow-2xl max-w-sm w-full mx-4">
