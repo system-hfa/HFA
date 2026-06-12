@@ -1,13 +1,19 @@
 'use client'
-import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useState, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 
+function useRegisteredParam(): boolean {
+  return useMemo(() => {
+    if (typeof window === 'undefined') return false
+    return new URLSearchParams(window.location.search).get('registered') === 'true'
+  }, [])
+}
+
 export default function LoginPage() {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const registered = searchParams.get('registered')
+  const registered = useRegisteredParam()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -34,7 +40,7 @@ export default function LoginPage() {
           <p className="text-slate-400 mt-2">Acesse sua conta</p>
         </div>
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-4">
-          {registered === 'true' && (
+          {registered && (
             <div className="bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg text-sm">
               Conta criada com sucesso! Faça login para continuar.
             </div>
